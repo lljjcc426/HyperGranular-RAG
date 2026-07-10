@@ -3,7 +3,7 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage2F protocol frozen before independent test evaluation
+- Current stage: Stage2F completed and statistically verified
 - Data used so far: HotpotQA sample200 + MuSiQue sample200
 - Generator used: No
 - Gold labels used for indexing: No
@@ -82,7 +82,7 @@ Stage2D 证实保护式插入能提高 CR@10/CR@20，但 false insert rate 仍�
 
 结论边界：Stage2E 支持轻度 score filter 改善 protected evidence completion 的精度-召回折中；由于分位阈值与评测共享同一批 400 queries，尚未通过独立测试。
 
-## Next Experiment: Stage2F Frozen-Threshold Validation
+## Completed Experiment: Stage2F Frozen-Threshold Validation
 
 Protocol frozen in `docs/STAGE2F_PROTOCOL.md` before reading Stage2F test metrics.
 
@@ -91,3 +91,22 @@ Protocol frozen in `docs/STAGE2F_PROTOCOL.md` before reading Stage2F test metric
 3. 对 CR@10、CR@20、ER@10、ER@20、false insert 和平均插入数做 paired bootstrap 置信区间。
 4. 分开报告 HotpotQA 与 MuSiQue；对已饱和的 MuSiQue CR@20 改看 CR@10、证据召回与上下文成本。
 5. 若冻结阈值后增益不能复现，论文主张回退到“探索性的受保护证据补全机制”。
+
+## Stage2F Observed Results
+
+- Independent test: HotpotQA `[200:400)` + MuSiQue `[200:400)`, 400 queries, 12,333 candidate units, 882 gold units, calibration overlap = 0.
+- Primary q25 p5/i4 vs dense fixed CR@10 delta = +0.0175, 95% CI [-0.0125, 0.0475]: NOT SUPPORTED.
+- q25 p5/i4 vs unfiltered p5/i4 false-insert delta = -0.0129, 95% CI [-0.0206, -0.0055], with observed CR@10 delta +0.0075: SUPPORTED under the frozen gate.
+- q25 p10/i4 vs dense fixed CR@20 delta = +0.0175, 95% CI [0.0025, 0.0350]: SUPPORTED.
+- q50 p5/i2 vs unfiltered p5/i2 false-insert delta = -0.0512, 95% CI [-0.0783, -0.0259], with CR@10 delta -0.0025: exploratory precision-recall trade-off.
+- Dataset split: HotpotQA contributes the CR@20 gain (+0.0350); MuSiQue CR@20 is saturated at 1.0000.
+- Reproducibility: deterministic rerun produced byte-identical summary and bootstrap CSV files.
+- Validation confidence: CAUTION because the primary endpoint failed, supported effects are small, and external validity remains limited to the same datasets and encoder.
+
+## Next Experiment: Stage2G Boundary-Decision Mechanism Audit
+
+1. Freeze a new unseen slice before evaluation, preferably source rows `[400:600)` for both datasets.
+2. Compare dense fixed, all-query expansion, and boundary-only expansion under the same frozen q25 score floor and insertion budget.
+3. Primary mechanism endpoint: whether boundary-only triggering lowers false insert relative to all-query expansion without reducing CR@20.
+4. Report trigger coverage, positive-chain-completion precision, ER/CR, context tokens, and dataset-specific bootstrap intervals.
+5. Do not search new score thresholds in Stage2G; threshold optimization, if needed, belongs to a separate development stage.

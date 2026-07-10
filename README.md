@@ -103,6 +103,19 @@ Stage2E 对 gated 超边插入候选做了无标签分位筛选。阈值只由�
 
 当前证据支持“轻度候选筛选可以改善保护式证据补全的精度-召回折中”，不支持“已经解决噪声”。分位阈值和评测来自同一批 400 queries，因此属于探索性结果，还需要冻结阈值后的独立测试。
 
+## Stage2F 独立验证结果
+
+Stage2F 在测试前提交冻结协议，并使用两个原始 dev 文件中未被 Stage2E 使用的 `[200:400)` 切片，共 400 queries。测试集与校准集 query ID 交集为 0，q25/q50 阈值没有根据测试集重估。
+
+| Gate | Delta | 95% CI | Decision |
+|---|---:|---:|---|
+| q25 protect5/insert4 vs dense fixed CR@10 | +0.0175 | [-0.0125, 0.0475] | 主终点未通过 |
+| q25 protect5/insert4 vs unfiltered false insert | -0.0129 | [-0.0206, -0.0055] | 通过；CR@10 observed delta +0.0075 |
+| q25 protect10/insert4 vs dense fixed CR@20 | +0.0175 | [0.0025, 0.0350] | 通过 |
+| q50 protect5/insert2 vs unfiltered false insert | -0.0512 | [-0.0783, -0.0259] | 探索性；CR@10 delta -0.0025 |
+
+确定性复跑的两份 CSV 与首次运行 SHA256 完全一致。当前证据不支持“稳定提升 Top-10 证据链召回”，但支持较窄的结论：冻结的候选过滤能降低误插，且保护式插入能在未见 HotpotQA 查询上改善 Top-20 证据补全。MuSiQue 的 dense fixed CR@20 已为 1.0000，不能贡献 Top-20 增益。
+
 ## 下一步
 
-Stage2F 将冻结 Stage2E 的候选策略，并做开发集/测试集隔离验证：在开发集确定阈值，在未参与阈值选择的查询上报告 ER、CR、误插率及 bootstrap 置信区间；同时分开审计 HotpotQA 和 MuSiQue，避免由数据集饱和度掩盖差异。
+Stage2G 将预注册“边界决策机制审计”，使用下一段未见查询比较 boundary-only 与相同阈值下的 all-query expansion，检验边界不确定性是否真的提高触发精度，而不再继续搜索更有利的 q25/q50 阈值。
