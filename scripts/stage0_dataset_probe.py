@@ -150,6 +150,7 @@ def write_report(
     source_path: Path,
     rows: list[dict[str, Any]],
     unified: list[dict[str, Any]],
+    offset: int,
 ) -> None:
     keys = field_counter(rows)
     context_counts = [len(item["contexts"]) for item in unified]
@@ -162,6 +163,7 @@ def write_report(
         f"- Source file: `{source_path}`",
         f"- Dataset: `{dataset}`",
         f"- Raw rows inspected: {len(rows)}",
+        f"- Sample offset: {offset}",
         f"- Unified sample rows: {len(unified)}",
         "",
         "## Raw Field Coverage",
@@ -198,7 +200,13 @@ def main() -> None:
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--report", required=True, type=Path)
     parser.add_argument("--limit", type=int, default=200)
+    parser.add_argument("--offset", type=int, default=0)
     args = parser.parse_args()
+
+    if args.offset < 0:
+        raise ValueError("--offset must be non-negative")
+    if args.limit <= 0:
+        raise ValueError("--limit must be positive")
 
     if args.input.suffix.lower() == ".jsonl":
         raw_rows = load_jsonl(args.input)
@@ -209,16 +217,19 @@ def main() -> None:
     if not raw_rows:
         raise RuntimeError(f"No rows found in {args.input}")
 
-    sample = raw_rows[: args.limit]
+    sample = raw_rows[args.offset : args.offset + args.limit]
+    if not sample:
+        raise RuntimeError(f"No rows found at offset {args.offset} in {args.input}")
     unified = [normalize_row(args.dataset, row) for row in sample]
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(unified, ensure_ascii=False, indent=2), encoding="utf-8")
-    write_report(args.report, args.dataset, args.input, raw_rows, unified)
+    write_report(args.report, args.dataset, args.input, raw_rows, unified, args.offset)
 
     print(f"dataset={args.dataset}")
     print(f"raw_rows={len(raw_rows)}")
+    print(f"sample_offset={args.offset}")
     print(f"sample_rows={len(unified)}")
     print(f"output={args.output}")
     print(f"report={args.report}")

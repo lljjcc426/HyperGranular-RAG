@@ -3,7 +3,7 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage2E completed
+- Current stage: Stage2F protocol frozen before independent test evaluation
 - Data used so far: HotpotQA sample200 + MuSiQue sample200
 - Generator used: No
 - Gold labels used for indexing: No
@@ -83,6 +83,8 @@ Stage2D 证实保护式插入能提高 CR@10/CR@20，但 false insert rate 仍�
 结论边界：Stage2E 支持轻度 score filter 改善 protected evidence completion 的精度-召回折中；由于分位阈值与评测共享同一批 400 queries，尚未通过独立测试。
 
 ## Next Experiment: Stage2F Frozen-Threshold Validation
+
+Protocol frozen in `docs/STAGE2F_PROTOCOL.md` before reading Stage2F test metrics.
 
 1. 按数据集分层固定开发集/测试集，开发集只负责选择阈值，测试集只做一次最终报告。
 2. 优先比较 dense fixed、unfiltered gated、`score_q25` 和 `score_q50`，固定 protect/insert 组合，避免继续扩大搜索空间。
