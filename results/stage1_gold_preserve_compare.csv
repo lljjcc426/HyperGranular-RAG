@@ -1,0 +1,16 @@
+method_id,method,dataset,source_file,hyperedge_rate,avg_selected_edges,expansion_yield,false_expansion_rate,evidence_recall_at_10,chain_recall_at_10,delta_false_vs_stage1f,delta_cr10_vs_stage1f
+stage1e,Stage1E facet-aware e2/b2,ALL,stage1_facet_fill_e2_b2_s010_summary.csv,0.6200,1.0575,0.1440,0.8560,0.6345,0.3725,0.0224,0.0000
+stage1e,Stage1E facet-aware e2/b2,hotpotqa,stage1_facet_fill_e2_b2_s010_summary.csv,0.7000,1.2300,0.1433,0.8567,0.6290,0.3300,0.0279,0.0000
+stage1e,Stage1E facet-aware e2/b2,musique,stage1_facet_fill_e2_b2_s010_summary.csv,0.5400,0.8850,0.1450,0.8550,0.6400,0.4150,0.0135,0.0000
+stage1f_best,Stage1F best boundary size8 score12,ALL,stage1_fg_boundary_size8_score12_summary.csv,0.5300,0.8850,0.1664,0.8336,0.6335,0.3725,0.0000,0.0000
+stage1f_best,Stage1F best boundary size8 score12,hotpotqa,stage1_fg_boundary_size8_score12_summary.csv,0.5950,1.0100,0.1713,0.8287,0.6244,0.3300,0.0000,0.0000
+stage1f_best,Stage1F best boundary size8 score12,musique,stage1_fg_boundary_size8_score12_summary.csv,0.4650,0.7600,0.1585,0.8415,0.6425,0.4150,0.0000,0.0000
+gp_nonew025,Stage1H allow no-new if score >= 0.25,ALL,stage1_fg_gp_nonew025_summary.csv,0.5300,0.8850,0.1664,0.8336,0.6335,0.3725,0.0000,0.0000
+gp_nonew025,Stage1H allow no-new if score >= 0.25,hotpotqa,stage1_fg_gp_nonew025_summary.csv,0.5950,1.0100,0.1713,0.8287,0.6244,0.3300,0.0000,0.0000
+gp_nonew025,Stage1H allow no-new if score >= 0.25,musique,stage1_fg_gp_nonew025_summary.csv,0.4650,0.7600,0.1585,0.8415,0.6425,0.4150,0.0000,0.0000
+gp_nonew020,Stage1H allow no-new if score >= 0.20,ALL,stage1_fg_gp_nonew020_summary.csv,0.5300,0.8850,0.1664,0.8336,0.6335,0.3725,0.0000,0.0000
+gp_nonew020,Stage1H allow no-new if score >= 0.20,hotpotqa,stage1_fg_gp_nonew020_summary.csv,0.5950,1.0100,0.1713,0.8287,0.6244,0.3300,0.0000,0.0000
+gp_nonew020,Stage1H allow no-new if score >= 0.20,musique,stage1_fg_gp_nonew020_summary.csv,0.4650,0.7600,0.1585,0.8415,0.6425,0.4150,0.0000,0.0000
+gp_size12,Stage1H max candidate size 12,ALL,stage1_fg_gp_size12_summary.csv,0.5425,0.9050,0.1595,0.8405,0.6314,0.3675,0.0069,-0.0050
+gp_size12,Stage1H max candidate size 12,hotpotqa,stage1_fg_gp_size12_summary.csv,0.6100,1.0400,0.1604,0.8396,0.6202,0.3200,0.0108,-0.0100
+gp_size12,Stage1H max candidate size 12,musique,stage1_fg_gp_size12_summary.csv,0.4750,0.7700,0.1580,0.8420,0.6425,0.4150,0.0005,0.0000

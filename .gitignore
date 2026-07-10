@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local environments
+.venv/
+venv/
+env/
+
+# Large or regenerated experiment artifacts
+data/
+processed/
+artifacts/
+checkpoints/
+*.npz
+*.npy
+*.pt
+*.pth
+*.parquet
+
+# Large per-query outputs copied only when explicitly needed
+*_details.jsonl
+*_edges.jsonl
+*_hyperedges.jsonl
+*_balls.jsonl
+*_rejected_edges.jsonl
+
+# Local runtime logs
+*.log
+tmp/
+temp/
+

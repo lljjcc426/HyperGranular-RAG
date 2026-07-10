@@ -1,0 +1,19 @@
+method_id,method,dataset,source_file,er5,cr5,er10,cr10,tokens10,hyperedge_rate,expansion_yield,false_expansion_rate,delta_cr10_vs_dense_fixed,delta_cr10_vs_tfidf_fixed
+tfidf_fixed,TF-IDF fixed,ALL,stage1_tfidf_summary.csv,0.4832,0.1650,0.6187,0.3125,486.1225,0.0000,0.0000,0.0000,-0.2500,0.0000
+tfidf_fixed,TF-IDF fixed,hotpotqa,stage1_tfidf_summary.csv,0.4838,0.1700,0.6498,0.3300,234.9100,0.0000,0.0000,0.0000,-0.1400,0.0000
+tfidf_fixed,TF-IDF fixed,musique,stage1_tfidf_summary.csv,0.4825,0.1600,0.5875,0.2950,737.3350,0.0000,0.0000,0.0000,-0.3600,0.0000
+tfidf_stage1f,TF-IDF Stage1F gated,ALL,stage1_fg_boundary_size8_score12_summary.csv,0.4716,0.1850,0.6335,0.3725,490.6900,0.5300,0.1664,0.8336,-0.1900,0.0600
+tfidf_stage1f,TF-IDF Stage1F gated,hotpotqa,stage1_fg_boundary_size8_score12_summary.csv,0.4657,0.1700,0.6244,0.3300,234.7400,0.5950,0.1713,0.8287,-0.1400,0.0000
+tfidf_stage1f,TF-IDF Stage1F gated,musique,stage1_fg_boundary_size8_score12_summary.csv,0.4775,0.2000,0.6425,0.4150,746.6400,0.4650,0.1585,0.8415,-0.2400,0.1200
+dense_fixed,Dense fixed,ALL,stage2_dense_allminilm_fixed_summary.csv,0.6415,0.3375,0.7788,0.5625,478.1475,0.0000,0.0000,0.0000,0.0000,0.2500
+dense_fixed,Dense fixed,hotpotqa,stage2_dense_allminilm_fixed_summary.csv,0.6005,0.2950,0.7300,0.4700,218.2600,0.0000,0.0000,0.0000,0.0000,0.1400
+dense_fixed,Dense fixed,musique,stage2_dense_allminilm_fixed_summary.csv,0.6825,0.3800,0.8275,0.6550,738.0350,0.0000,0.0000,0.0000,0.0000,0.3600
+dense_ball,Dense ball-only,ALL,stage2_dense_allminilm_ball_summary.csv,0.5886,0.2900,0.6288,0.3525,344.5850,0.0000,0.0000,0.0000,-0.2100,0.0400
+dense_ball,Dense ball-only,hotpotqa,stage2_dense_allminilm_ball_summary.csv,0.5047,0.2000,0.5401,0.2450,153.4100,0.0000,0.0000,0.0000,-0.2250,-0.0850
+dense_ball,Dense ball-only,musique,stage2_dense_allminilm_ball_summary.csv,0.6725,0.3800,0.7175,0.4600,535.7600,0.0000,0.0000,0.0000,-0.1950,0.1650
+dense_facet,Dense facet,ALL,stage2_dense_allminilm_facet_summary.csv,0.6363,0.3375,0.7559,0.5350,432.5400,0.6400,0.0946,0.9054,-0.0275,0.2225
+dense_facet,Dense facet,hotpotqa,stage2_dense_allminilm_facet_summary.csv,0.5901,0.2750,0.7243,0.4850,211.6000,0.7750,0.1089,0.8911,0.0150,0.1550
+dense_facet,Dense facet,musique,stage2_dense_allminilm_facet_summary.csv,0.6825,0.4000,0.7875,0.5850,653.4800,0.5050,0.0627,0.9373,-0.0700,0.2900
+dense_gated,Dense gated,ALL,stage2_dense_allminilm_gated_summary.csv,0.6265,0.3250,0.7234,0.4750,408.1575,0.4775,0.1143,0.8857,-0.0875,0.1625
+dense_gated,Dense gated,hotpotqa,stage2_dense_allminilm_gated_summary.csv,0.5705,0.2500,0.6718,0.3900,196.2500,0.5800,0.1375,0.8625,-0.0800,0.0600
+dense_gated,Dense gated,musique,stage2_dense_allminilm_gated_summary.csv,0.6825,0.4000,0.7750,0.5600,620.0650,0.3750,0.0704,0.9296,-0.0950,0.2650

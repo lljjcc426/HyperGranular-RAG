@@ -1,0 +1,28 @@
+method_id,method,dataset,source_file,hyperedge_rate,avg_selected_edges,expansion_yield,false_expansion_rate,evidence_recall_at_5,chain_recall_at_5,evidence_recall_at_10,chain_recall_at_10,delta_cr10_vs_tfidf,delta_cr10_vs_stage1e,delta_false_vs_stage1e
+fixed_tfidf,Fixed TF-IDF,ALL,stage1_tfidf_summary.csv,,,,,0.4832,0.1650,0.6187,0.3125,0.0000,-0.0600,
+fixed_tfidf,Fixed TF-IDF,hotpotqa,stage1_tfidf_summary.csv,,,,,0.4838,0.1700,0.6498,0.3300,0.0000,0.0000,
+fixed_tfidf,Fixed TF-IDF,musique,stage1_tfidf_summary.csv,,,,,0.4825,0.1600,0.5875,0.2950,0.0000,-0.1200,
+facet_e2_b2,Stage1E facet-aware e2/b2,ALL,stage1_facet_fill_e2_b2_s010_summary.csv,0.6200,1.0575,0.1440,0.8560,0.4774,0.1925,0.6345,0.3725,0.0600,0.0000,0.0000
+facet_e2_b2,Stage1E facet-aware e2/b2,hotpotqa,stage1_facet_fill_e2_b2_s010_summary.csv,0.7000,1.2300,0.1433,0.8567,0.4773,0.1800,0.6290,0.3300,0.0000,0.0000,0.0000
+facet_e2_b2,Stage1E facet-aware e2/b2,musique,stage1_facet_fill_e2_b2_s010_summary.csv,0.5400,0.8850,0.1450,0.8550,0.4775,0.2050,0.6400,0.4150,0.1200,0.0000,0.0000
+fg_size8_score08,Stage1F gated size8 score08,ALL,stage1_fg_size8_score08_summary.csv,0.5725,0.9625,0.1567,0.8433,0.4728,0.1875,0.6295,0.3650,0.0525,-0.0075,-0.0127
+fg_size8_score08,Stage1F gated size8 score08,hotpotqa,stage1_fg_size8_score08_summary.csv,0.6350,1.0850,0.1631,0.8369,0.4657,0.1700,0.6215,0.3200,-0.0100,-0.0100,-0.0197
+fg_size8_score08,Stage1F gated size8 score08,musique,stage1_fg_size8_score08_summary.csv,0.5100,0.8400,0.1472,0.8528,0.4800,0.2050,0.6375,0.4100,0.1150,-0.0050,-0.0022
+fg_size5_score08,Stage1F gated size5 score08,ALL,stage1_fg_size5_score08_summary.csv,0.5300,0.8875,0.1620,0.8380,0.4691,0.1875,0.6218,0.3575,0.0450,-0.0150,-0.0180
+fg_size5_score08,Stage1F gated size5 score08,hotpotqa,stage1_fg_size5_score08_summary.csv,0.5700,0.9750,0.1672,0.8328,0.4557,0.1650,0.6036,0.3000,-0.0300,-0.0300,-0.0239
+fg_size5_score08,Stage1F gated size5 score08,musique,stage1_fg_size5_score08_summary.csv,0.4900,0.8000,0.1548,0.8452,0.4825,0.2100,0.6400,0.4150,0.1200,0.0000,-0.0098
+fg_size8_score12,Stage1F gated size8 score12,ALL,stage1_fg_size8_score12_summary.csv,0.5725,0.9575,0.1576,0.8424,0.4743,0.1875,0.6295,0.3650,0.0525,-0.0075,-0.0136
+fg_size8_score12,Stage1F gated size8 score12,hotpotqa,stage1_fg_size8_score12_summary.csv,0.6350,1.0750,0.1652,0.8348,0.4686,0.1700,0.6215,0.3200,-0.0100,-0.0100,-0.0219
+fg_size8_score12,Stage1F gated size8 score12,musique,stage1_fg_size8_score12_summary.csv,0.5100,0.8400,0.1462,0.8538,0.4800,0.2050,0.6375,0.4100,0.1150,-0.0050,-0.0012
+fg_boundary_size8_score08,Stage1F boundary-only size8 score08,ALL,stage1_fg_boundary_size8_score08_summary.csv,0.5300,0.8900,0.1654,0.8346,0.4701,0.1850,0.6335,0.3725,0.0600,0.0000,-0.0214
+fg_boundary_size8_score08,Stage1F boundary-only size8 score08,hotpotqa,stage1_fg_boundary_size8_score08_summary.csv,0.5950,1.0200,0.1689,0.8311,0.4627,0.1700,0.6244,0.3300,0.0000,0.0000,-0.0256
+fg_boundary_size8_score08,Stage1F boundary-only size8 score08,musique,stage1_fg_boundary_size8_score08_summary.csv,0.4650,0.7600,0.1597,0.8403,0.4775,0.2000,0.6425,0.4150,0.1200,0.0000,-0.0147
+fg_boundary_size5_score08,Stage1F boundary-only size5 score08,ALL,stage1_fg_boundary_size5_score08_summary.csv,0.4950,0.8275,0.1704,0.8296,0.4664,0.1850,0.6245,0.3625,0.0500,-0.0100,-0.0264
+fg_boundary_size5_score08,Stage1F boundary-only size5 score08,hotpotqa,stage1_fg_boundary_size5_score08_summary.csv,0.5400,0.9250,0.1709,0.8291,0.4527,0.1650,0.6040,0.3050,-0.0250,-0.0250,-0.0275
+fg_boundary_size5_score08,Stage1F boundary-only size5 score08,musique,stage1_fg_boundary_size5_score08_summary.csv,0.4500,0.7300,0.1698,0.8302,0.4800,0.2050,0.6450,0.4200,0.1250,0.0050,-0.0248
+fg_boundary_size8_score12,Stage1F boundary-only size8 score12,ALL,stage1_fg_boundary_size8_score12_summary.csv,0.5300,0.8850,0.1664,0.8336,0.4716,0.1850,0.6335,0.3725,0.0600,0.0000,-0.0224
+fg_boundary_size8_score12,Stage1F boundary-only size8 score12,hotpotqa,stage1_fg_boundary_size8_score12_summary.csv,0.5950,1.0100,0.1713,0.8287,0.4657,0.1700,0.6244,0.3300,0.0000,0.0000,-0.0279
+fg_boundary_size8_score12,Stage1F boundary-only size8 score12,musique,stage1_fg_boundary_size8_score12_summary.csv,0.4650,0.7600,0.1585,0.8415,0.4775,0.2000,0.6425,0.4150,0.1200,0.0000,-0.0135
+fg_boundary_size8_ratio4,Stage1F boundary-only size8 ratio4,ALL,stage1_fg_boundary_size8_ratio4_summary.csv,0.5150,0.8525,0.1702,0.8298,0.4668,0.1850,0.6316,0.3700,0.0575,-0.0025,-0.0263
+fg_boundary_size8_ratio4,Stage1F boundary-only size8 ratio4,hotpotqa,stage1_fg_boundary_size8_ratio4_summary.csv,0.5800,0.9850,0.1686,0.8314,0.4561,0.1700,0.6182,0.3200,-0.0100,-0.0100,-0.0252
+fg_boundary_size8_ratio4,Stage1F boundary-only size8 ratio4,musique,stage1_fg_boundary_size8_ratio4_summary.csv,0.4500,0.7200,0.1731,0.8269,0.4775,0.2000,0.6450,0.4200,0.1250,0.0050,-0.0281
