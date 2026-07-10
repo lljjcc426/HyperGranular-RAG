@@ -3,7 +3,7 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage2F completed and statistically verified
+- Current stage: Stage2G protocol frozen before mechanism test evaluation
 - Data used so far: HotpotQA sample200 + MuSiQue sample200
 - Generator used: No
 - Gold labels used for indexing: No
@@ -104,6 +104,8 @@ Protocol frozen in `docs/STAGE2F_PROTOCOL.md` before reading Stage2F test metric
 - Validation confidence: CAUTION because the primary endpoint failed, supported effects are small, and external validity remains limited to the same datasets and encoder.
 
 ## Next Experiment: Stage2G Boundary-Decision Mechanism Audit
+
+Protocol frozen in `docs/STAGE2G_PROTOCOL.md` before extracting or evaluating the `[400:600)` test slice.
 
 1. Freeze a new unseen slice before evaluation, preferably source rows `[400:600)` for both datasets.
 2. Compare dense fixed, all-query expansion, and boundary-only expansion under the same frozen q25 score floor and insertion budget.
