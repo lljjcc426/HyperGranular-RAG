@@ -115,3 +115,32 @@ Expected tracked outputs:
 - `reports/超粒球RAG_Stage2F_StatisticalValidation.md`
 
 The local test JSON/JSONL files and `stage2f_dense_allminilm_embeddings.npz` are intentionally not tracked. A deterministic rerun must produce byte-identical summary and bootstrap CSV files; timing and report paths are excluded from the equality check.
+
+## Stage2G Boundary-Mechanism Audit
+
+Stage2G uses raw rows `[400:600)` from each source dataset. Extract them with `scripts/stage0_dataset_probe.py --offset 400 --limit 200`, then combine them with `scripts/stage1_build_corpus.py` into `stage2g_unseen400_units.jsonl` and `stage2g_unseen400_queries.jsonl`.
+
+Mechanism audit:
+
+```powershell
+& "D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe" `
+  scripts/stage2g_boundary_mechanism_audit.py `
+  --units "E:\科研\超粒球RAG_数据\processed\stage2g_unseen400_units.jsonl" `
+  --queries "E:\科研\超粒球RAG_数据\processed\stage2g_unseen400_queries.jsonl" `
+  --prior-queries `
+    "E:\科研\超粒球RAG_数据\processed\stage1_sample400_queries.jsonl" `
+    "E:\科研\超粒球RAG_数据\processed\stage2f_unseen400_queries.jsonl" `
+  --calibration-summary results/stage2e_insert_noise_control_summary.csv `
+  --embedding-cache "E:\科研\超粒球RAG_数据\processed\stage2g_dense_allminilm_embeddings.npz" `
+  --output-dir results `
+  --report "reports\超粒球RAG_Stage2G_BoundaryMechanism报告.md"
+```
+
+Expected tracked outputs:
+
+- `results/stage2g_boundary_mechanism_summary.csv`
+- `results/stage2g_boundary_mechanism_bootstrap.csv`
+- `reports/超粒球RAG_Stage2G_BoundaryMechanism报告.md`
+- `reports/超粒球RAG_Stage2G_StatisticalValidation.md`
+
+The local Stage2G JSON/JSONL files and `stage2g_dense_allminilm_embeddings.npz` remain untracked. A deterministic rerun must produce byte-identical summary and bootstrap CSV files; timing and report paths are excluded from equality checks.

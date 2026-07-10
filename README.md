@@ -116,6 +116,20 @@ Stage2F 在测试前提交冻结协议，并使用两个原始 dev 文件中未�
 
 确定性复跑的两份 CSV 与首次运行 SHA256 完全一致。当前证据不支持“稳定提升 Top-10 证据链召回”，但支持较窄的结论：冻结的候选过滤能降低误插，且保护式插入能在未见 HotpotQA 查询上改善 Top-20 证据补全。MuSiQue 的 dense fixed CR@20 已为 1.0000，不能贡献 Top-20 增益。
 
+## Stage2G 边界机制审计结果
+
+Stage2G 使用两个源文件的 `[400:600)` 新切片，并在完全相同的 q25 阈值、候选构造和插入预算下比较 all-query 与 boundary-only。测试集与 Stage2E、Stage2F 均零交集。
+
+| Gate | Policy delta | 95% CI | Decision |
+|---|---:|---:|---|
+| p10/i4 boundary vs all false insert | +0.0043 | [-0.0054, 0.0150] | 未降低误插 |
+| p10/i4 boundary vs all CR@20 | -0.0075 | [-0.0200, 0.0025] | 未通过 -0.01 非劣门 |
+| p5/i4 boundary vs all false insert | -0.0011 | [-0.0105, 0.0086] | 不确定 |
+| p5/i4 boundary vs all CR@10 | -0.0075 | [-0.0200, 0.0050] | 未通过 -0.01 非劣门 |
+| Boundary vs non-boundary completion precision@20 | -0.0686 | [-0.4000, 0.2337] | 预测机制未通过 |
+
+当前 boundary rule 将 81% 的查询判为边界。它把 p10 触发率从 0.5225 降至 0.4450，但没有改善条件误插率，并损失少量召回。确定性复跑 CSV 完全一致。现有证据支持 q25 保护式证据补全，但不支持“当前边界不确定性规则能有效预测何时应扩展”。
+
 ## 下一步
 
-Stage2G 将预注册“边界决策机制审计”，使用下一段未见查询比较 boundary-only 与相同阈值下的 all-query expansion，检验边界不确定性是否真的提高触发精度，而不再继续搜索更有利的 q25/q50 阈值。
+Stage2H 先做边界规则失效诊断：分解 `boundary_margin`、`ball_score_margin` 和 `top_ball_score` 三个 OR 条件的覆盖贡献及其与真实扩展收益的关系。该阶段只做探索性机制分析，不把 Stage2G 测试结果用于重新宣称成功；若要提出新控制器，必须使用独立开发集并另留测试集。

@@ -3,7 +3,7 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage2G protocol frozen before mechanism test evaluation
+- Current stage: Stage2G completed and statistically verified; current boundary rule not supported
 - Data used so far: HotpotQA sample200 + MuSiQue sample200
 - Generator used: No
 - Gold labels used for indexing: No
@@ -103,7 +103,7 @@ Protocol frozen in `docs/STAGE2F_PROTOCOL.md` before reading Stage2F test metric
 - Reproducibility: deterministic rerun produced byte-identical summary and bootstrap CSV files.
 - Validation confidence: CAUTION because the primary endpoint failed, supported effects are small, and external validity remains limited to the same datasets and encoder.
 
-## Next Experiment: Stage2G Boundary-Decision Mechanism Audit
+## Completed Experiment: Stage2G Boundary-Decision Mechanism Audit
 
 Protocol frozen in `docs/STAGE2G_PROTOCOL.md` before extracting or evaluating the `[400:600)` test slice.
 
@@ -112,3 +112,24 @@ Protocol frozen in `docs/STAGE2G_PROTOCOL.md` before extracting or evaluating th
 3. Primary mechanism endpoint: whether boundary-only triggering lowers false insert relative to all-query expansion without reducing CR@20.
 4. Report trigger coverage, positive-chain-completion precision, ER/CR, context tokens, and dataset-specific bootstrap intervals.
 5. Do not search new score thresholds in Stage2G; threshold optimization, if needed, belongs to a separate development stage.
+
+## Stage2G Observed Results
+
+- Independent test: HotpotQA `[400:600)` + MuSiQue `[400:600)`, 400 queries, 12,122 candidate units, 882 gold units, zero overlap with Stage2E and Stage2F.
+- Boundary prevalence = 0.8100 in both datasets; p10 trigger rate fell from 0.5225 to 0.4450 under boundary-only.
+- Primary p10/i4 false-insert delta boundary-minus-all = +0.0043, 95% CI [-0.0054, 0.0150].
+- Primary p10/i4 CR@20 delta = -0.0075, 95% CI [-0.0200, 0.0025]; the frozen -0.01 non-inferiority margin was not met.
+- Secondary p5/i4 false-insert/CR@10 deltas = -0.0011/-0.0075; both frozen conditions failed.
+- Predictive completion-precision delta boundary-minus-non-boundary = -0.0686, 95% CI [-0.4000, 0.2337], based on 34 versus 12 opportunities.
+- All pre-registered mechanism gates: NOT SUPPORTED.
+- Reproducibility: deterministic rerun produced byte-identical summary and bootstrap CSV files.
+
+Interpretation boundary: q25 protected insertion can still improve retrieval relative to dense fixed, but the current OR-composed boundary rule is not validated as a selective benefit predictor.
+
+## Next Experiment: Stage2H Boundary-Rule Failure Diagnosis
+
+1. Generate per-query mechanism details for the already evaluated slices without changing Stage2G gate decisions.
+2. Decompose the OR gate into `boundary_margin`, `ball_score_margin`, and `top_ball_score` trigger components.
+3. Measure each component's prevalence, overlap, completion precision, harm rate, and false-insert yield.
+4. Treat all Stage2H findings as exploratory diagnostics; do not tune and evaluate a replacement rule on the same queries.
+5. If a replacement uncertainty controller is justified, develop it on a new `[600:1000)` slice and reserve a later slice for one final frozen test.
