@@ -3,7 +3,7 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage2D completed
+- Current stage: Stage2E completed
 - Data used so far: HotpotQA sample200 + MuSiQue sample200
 - Generator used: No
 - Gold labels used for indexing: No
@@ -58,7 +58,7 @@
 4. 增加结果校验脚本，检查报告中的关键数字是否能从 CSV 复算。
 5. 在 README 中补数据下载和处理步骤。
 
-## Next Experiment: Stage2E Evidence-Aware Noise Control
+## Completed Experiment Plan: Stage2E Evidence-Aware Noise Control
 
 Stage2D 证实保护式插入能提高 CR@10/CR@20，但 false insert rate 仍高。下一步应针对插入候选做更强约束，而不是继续增加插入预算。
 
@@ -69,3 +69,23 @@ Stage2D 证实保护式插入能提高 CR@10/CR@20，但 false insert rate 仍�
 3. 对 insert_budget=1/2/4 分别报告 CR 增益和 false insert rate。
 4. 做 query-level 审计：新增完整证据链的 query 与被破坏完整证据链的 query 分别列出。
 5. 如果 false insert 无法下降，把论文主张收窄为 protected evidence completion，而不是 noise suppression。
+
+## Stage2E Observed Results
+
+- 候选池：gated expansion 共 1,024 个单元；dense score q25/q50/q75 为 0.1957/0.3167/0.4231，facet score q50 为 0.2221。
+- 无筛选 `protect=5, insert=2` 完全复现 Stage2D：CR@10/CR@20 = 0.6100/0.8425，false insert = 0.8727。
+- `score_q25, protect=5, insert=4`：CR@10/CR@20 = 0.6125/0.8700，false insert = 0.8774；相对无筛选 insert=4 的 0.8984 有下降。
+- `score_q25, protect=10, insert=4`：CR@20 = 0.8825，false insert = 0.8733。
+- `score_q50, protect=5, insert=2`：CR@10/CR@20 = 0.5950/0.8375，false insert = 0.8407；噪声更低，但插入量与召回增益同时下降。
+- `score_q50 + facet_q50, protect=5, insert=2` 将 false insert 降至 0.7456，但平均每查询仅插入 0.285 个单元，不能单独作为噪声抑制成功证据。
+- HotpotQA 的 dense fixed CR@20 为 0.6500，仍有补全空间；MuSiQue 的 dense fixed CR@20 已为 1.0000，Top-20 指标饱和。
+
+结论边界：Stage2E 支持轻度 score filter 改善 protected evidence completion 的精度-召回折中；由于分位阈值与评测共享同一批 400 queries，尚未通过独立测试。
+
+## Next Experiment: Stage2F Frozen-Threshold Validation
+
+1. 按数据集分层固定开发集/测试集，开发集只负责选择阈值，测试集只做一次最终报告。
+2. 优先比较 dense fixed、unfiltered gated、`score_q25` 和 `score_q50`，固定 protect/insert 组合，避免继续扩大搜索空间。
+3. 对 CR@10、CR@20、ER@10、ER@20、false insert 和平均插入数做 paired bootstrap 置信区间。
+4. 分开报告 HotpotQA 与 MuSiQue；对已饱和的 MuSiQue CR@20 改看 CR@10、证据召回与上下文成本。
+5. 若冻结阈值后增益不能复现，论文主张回退到“探索性的受保护证据补全机制”。
