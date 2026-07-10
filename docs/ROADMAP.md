@@ -3,7 +3,7 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage2C completed
+- Current stage: Stage2D completed
 - Data used so far: HotpotQA sample200 + MuSiQue sample200
 - Generator used: No
 - Gold labels used for indexing: No
@@ -18,8 +18,9 @@
 6. Stage2A bootstrap：Stage1F 相对 TF-IDF 的 ALL CR@10 增益为 +0.0600，95% CI [0.0125, 0.1050]。
 7. Stage2B dense 复现：dense fixed 明显更强，原始 dense gated 不能替代 dense fixed。
 8. Stage2C dense 保护策略：fill/protect 策略显示 Top-20 证据补全价值。
+9. Stage2D protected dense reranking：保护 dense fixed 前缀后插入预算化超边扩展单元。ALL dense fixed CR@10/CR@20 = 0.5625/0.8250；facet protect=5 insert=2 达到 CR@10 = 0.6125；facet protect=10 insert=8 达到 CR@20 = 0.9000；gated protect=5 insert=2 达到 CR@10 = 0.6100。
 
-## Next Experiment: Stage2D Protected Dense Reranking
+## Completed Experiment: Stage2D Protected Dense Reranking
 
 目标：验证“边界不确定性驱动的超粒球扩展”是否能在不破坏 dense Top-k 主干的情况下提升证据链召回。
 
@@ -57,3 +58,14 @@
 4. 增加结果校验脚本，检查报告中的关键数字是否能从 CSV 复算。
 5. 在 README 中补数据下载和处理步骤。
 
+## Next Experiment: Stage2E Evidence-Aware Noise Control
+
+Stage2D 证实保护式插入能提高 CR@10/CR@20，但 false insert rate 仍高。下一步应针对插入候选做更强约束，而不是继续增加插入预算。
+
+建议实验：
+
+1. 只允许 boundary query 触发插入，同时比较 non-boundary query 的稳定性。
+2. 对插入候选加入 dense score floor、facet score floor、seed similarity floor。
+3. 对 insert_budget=1/2/4 分别报告 CR 增益和 false insert rate。
+4. 做 query-level 审计：新增完整证据链的 query 与被破坏完整证据链的 query 分别列出。
+5. 如果 false insert 无法下降，把论文主张收窄为 protected evidence completion，而不是 noise suppression。

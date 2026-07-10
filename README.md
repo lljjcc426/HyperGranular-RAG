@@ -41,6 +41,16 @@ Stage2 dense 空间：
 | Fill + gated | 0.7750 | 0.5650 | 0.9472 | 0.8900 | 适合作为 Top-20 证据补全 |
 | Protect10 + gated | 0.7788 | 0.5625 | 0.9476 | 0.8875 | Top-10 保守，Top-20 补证据 |
 
+Stage2D protected dense reranking：
+
+| Method | Protect | Insert | ER@10 | CR@10 | ER@20 | CR@20 | Notes |
+|---|---:|---:|---:|---:|---:|---:|---|
+| Dense fixed | 0 | 0 | 0.7788 | 0.5625 | 0.9209 | 0.8250 | dense baseline |
+| Facet insert | 5 | 2 | 0.8045 | 0.6125 | 0.9313 | 0.8425 | 当前 CR@10 最好 |
+| Gated insert | 5 | 2 | 0.8029 | 0.6100 | 0.9313 | 0.8425 | Top-10 增益接近 facet，false insert 较低 |
+| Gated insert | 5 | 4 | 0.8053 | 0.6125 | 0.9445 | 0.8725 | Top-20 更强，但 false insert 更高 |
+| Facet insert | 10 | 8 | 0.7788 | 0.5625 | 0.9525 | 0.9000 | 当前 CR@20 最好，Top-10 被保护 |
+
 当前可支撑的谨慎表述：
 
 > dense 空间里，超粒球/超边扩展不适合替代 dense fixed Top-10；但作为受保护的 Top-20 证据补全机制是有效的。
@@ -64,6 +74,7 @@ docs/      路线图与复现实验说明
 - `scripts/stage2_bootstrap_reliability.py`
 - `scripts/stage2_dense_replication.py`
 - `scripts/stage2_dense_protection_compare.py`
+- `scripts/stage2d_protected_rerank.py`
 
 注意：部分脚本目前仍使用本地绝对路径或需要显式传入 `--units`、`--queries`、`--output-prefix`、`--embedding-cache`。后续应优先完成路径参数化和一键复现实验入口。
 

@@ -36,3 +36,15 @@ python scripts/stage2_dense_protection_compare.py
 
 The comparison script currently assumes the original local report directory:
 `E:\科研\超粒球RAG_数据\reports`.
+
+Stage2D protected reranking:
+
+```powershell
+python scripts/stage2d_protected_rerank.py `
+  --units "E:\科研\超粒球RAG_数据\processed\stage1_sample400_units.jsonl" `
+  --queries "E:\科研\超粒球RAG_数据\processed\stage1_sample400_queries.jsonl" `
+  --embedding-cache "E:\科研\超粒球RAG_数据\processed\stage2_dense_allminilm_embeddings.npz" `
+  --output-dir results `
+  --report "reports\超粒球RAG_Stage2D_ProtectedDenseRerank报告.md" `
+  --expand-boundary-only
+```
