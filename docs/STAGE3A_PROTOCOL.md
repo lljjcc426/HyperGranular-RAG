@@ -94,7 +94,7 @@ If either target has fewer than 5 positive or fewer than 5 negative fitting exam
 
 ## Threshold Selection
 
-Candidate thresholds are the sorted unique utility scores on the 320-query threshold-selection partition, plus explicit expand-none and expand-all endpoints.
+Candidate finite thresholds are the sorted unique utility scores above the minimum observed score on the 320-query threshold-selection partition, applied with `utility_score >= threshold`. Explicit expand-none and expand-all endpoints are evaluated separately; this prevents the minimum finite threshold from silently duplicating expand-all.
 
 Thresholds are selected lexicographically:
 
