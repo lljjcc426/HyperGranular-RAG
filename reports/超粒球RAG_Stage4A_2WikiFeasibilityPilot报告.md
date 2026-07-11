@@ -5,10 +5,10 @@
 - Origin Skill: academic-research-suite / experiment-agent
 - Origin Mode: run
 - Origin Date: 2026-07-11
-- Verification Status: VERIFIED_BY_STAGE4A_OUTPUT_AUDIT
+- Verification Status: VERIFIED_INTERNAL_METRICS; OFFICIAL_SOURCE_MISMATCH
 - Version Label: exp_result_v1
 - Protocol: `docs/STAGE4A_PROTOCOL.md`, committed before data extraction and metrics
-- Provenance status: PROVENANCE_DOWNGRADED
+- Provenance status: OFFICIAL_MISMATCH_DETECTED
 - Gold labels used for indexing, ranking, score filtering, expansion, or threshold selection: No
 - Controller fitting: No
 - Generator used: No
@@ -51,6 +51,8 @@
 
 - Overall Stage4B development-branch decision: STOP.
 
+This is the procedural decision for the pinned mirror pilot. The post-hoc design audit found that 400 was not supported by a power or event-count analysis, so this decision must not be interpreted as evidence that the research direction is infeasible.
+
 ## Wilson Intervals
 
 - q25 gain prevalence: 0.0200, 95% Wilson [0.0102, 0.0390].
@@ -62,9 +64,20 @@
 - Paired bootstrap rows: 6; 10,000 resamples; seed 20260714.
 - Intervals are descriptive pilot estimates; no p-values or confirmatory significance claims are made.
 
+## Post-run Official Archive Reconciliation
+
+- Official archive SHA-256: `95DF2BF56FDABE034E27AEBC580E02264232203CF52552F9EFE8A919E5529EEF`.
+- Pilot IDs, questions, answers, types, evidences, and supporting facts match the official April 7 archive.
+- Context order changed for 393/400 queries; after order normalization, 7/400 still have content differences.
+- Gold-evidence text differs for 5/400 queries.
+- Candidate-unit count is 12,718 in the official archive versus 12,721 in the mirror pilot.
+- Therefore, all metrics in this report are mirror-specific and are not official April 7 retrieval results.
+- No retrieval metric was recomputed during reconciliation.
+- Full audit: `docs/STAGE4A_OFFICIAL_RECONCILIATION.json`; design correction: `docs/STAGE4A_DESIGN_AUDIT.md`.
+
 ## Interpretation Boundary
 
 - This pilot evaluates mapping, saturation, and gain-event availability only; it does not validate a controller.
 - The reserved Stage4B slice was not embedded or evaluated.
-- Results remain provenance-downgraded until reconciliation with the official archive.
+- Official reconciliation detected retrieval-content mismatches; the result is not eligible as paper-grade external evidence.
 - Stage3B remains locked and is not affected by this pilot.

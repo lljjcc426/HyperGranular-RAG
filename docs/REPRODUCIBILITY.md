@@ -288,3 +288,23 @@ Expected tracked outputs:
 - `reports/超粒球RAG_Stage4A_2WikiFeasibilityPilot报告.md`
 
 The verifier independently recomputes all query events, 15 ALL/type summary rows, Wilson intervals, and six paired-bootstrap rows with 10,000 resamples and seed `20260714`. The verified decision is `STOP`; reproduction must preserve the frozen q25 threshold and must not evaluate the reserved Stage4B slice.
+
+### Official April 7 Archive Reconciliation
+
+The official archive is supplied locally by the user and is never committed. Reconciliation is source-only and does not rerun retrieval metrics:
+
+```powershell
+& "D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe" `
+  scripts\stage4a_reconcile_official_archive.py `
+  --official-zip "C:\Users\cc\Downloads\data_ids_april7.zip" `
+  --mirror-cache "E:\科研\超粒球RAG_数据\temp\stage4a_api_cache_20260711" `
+  --pilot-unified "E:\科研\超粒球RAG_数据\processed\stage4a_2wiki_pilot400_unified.json" `
+  --output docs\STAGE4A_OFFICIAL_RECONCILIATION.json
+```
+
+Additional tracked audit outputs:
+
+- `docs/STAGE4A_OFFICIAL_RECONCILIATION.json`
+- `docs/STAGE4A_DESIGN_AUDIT.md`
+
+The expected official ZIP SHA-256 is `95DF2BF56FDABE034E27AEBC580E02264232203CF52552F9EFE8A919E5529EEF`. Reconciliation must preserve the observed 7 context-content mismatches, 5 gold-evidence text mismatches, and exact ordered reservation-ID match. These findings supersede the earlier assumption that the pinned mirror was content-equivalent to the official April 7 archive.

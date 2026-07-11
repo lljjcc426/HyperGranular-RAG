@@ -195,7 +195,9 @@ def main() -> None:
     args.report.write_text(report_text, encoding="utf-8")
 
     verification = {
-        "status": "VERIFIED",
+        "status": "VERIFIED_INTERNAL_METRICS",
+        "scope": "PINNED_MIRROR_ONLY",
+        "official_archive_reconciliation": "NOT_PART_OF_THIS_VERIFIER",
         "decision": decision,
         "gates": gates,
         "checks": checks,

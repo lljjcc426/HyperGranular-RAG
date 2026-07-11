@@ -214,5 +214,9 @@ Protocol: `docs/STAGE4A_PROTOCOL.md`. Because the official Dropbox archive is no
 - The q25 floor removed 213 candidates and therefore did not collapse to the unfiltered strategy.
 - The q25 gain prevalence was 0.0200 (95% Wilson interval [0.0102, 0.0390]); q25-versus-dense CR@20 delta was +0.0075 with descriptive paired-bootstrap interval [-0.0100, 0.0250].
 - Five promotion conditions passed. The preregistered requirement of at least 10 q25 gain events failed because only 8 were observed.
-- Verified decision: `STOP`. Do not open the reserved Stage4B slice, fit a 2Wiki selector, tune the q25 floor, or rerun this pilot after threshold modification.
-- Stage3B remains `KEEP_LOCKED`. Results remain `PROVENANCE_DOWNGRADED` until official-archive reconciliation.
+- Frozen-protocol decision: `STOP` for the mirror-specific Stage4B branch. Do not fit a selector, tune the q25 floor, or rerun this pilot after threshold modification.
+- Post-hoc design audit: 400 was a convenience size with no recorded power or event-count operating-characteristic analysis. At the observed 0.0200 gain prevalence, 400 queries have only 0.2821 probability of reaching the 10-gain gate.
+- Official archive reconciliation: IDs and non-context shared fields match, but 7/400 contexts and 5/400 gold-evidence texts differ after the April 7 sentence-segmentation corrections; official/mirror candidate units are 12,718/12,721.
+- Corrected interpretation: existing metrics are deterministic mirror results, not official April 7 results. `STOP` is not evidence that HyperGranular RAG or 2Wiki is infeasible and must not justify abandoning the direction.
+- Any repair study requires a new name, official-archive source hashes, a power/event-count-based sample size, and fresh rows excluding `[0:800)`.
+- Stage3B remains `KEEP_LOCKED`. See `docs/STAGE4A_DESIGN_AUDIT.md` and `docs/STAGE4A_OFFICIAL_RECONCILIATION.json`.

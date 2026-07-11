@@ -1,0 +1,279 @@
+{
+  "material_passport": {
+    "origin_skill": "academic-research-suite / experiment-agent",
+    "mode": "validate",
+    "verification_status": "VERIFIED_SOURCE_MISMATCH",
+    "protocol_relation": "post-run official archive reconciliation; no retrieval rerun"
+  },
+  "official_archive": {
+    "path_basename": "data_ids_april7.zip",
+    "bytes": 258968175,
+    "sha256": "95DF2BF56FDABE034E27AEBC580E02264232203CF52552F9EFE8A919E5529EEF",
+    "first_bad_crc_entry": null,
+    "entries": [
+      {
+        "name": "test.json",
+        "uncompressed_bytes": 53838398,
+        "compressed_bytes": 17992753,
+        "crc32": "15836999"
+      },
+      {
+        "name": "dev.json",
+        "uncompressed_bytes": 57614142,
+        "compressed_bytes": 19134946,
+        "crc32": "B92608C3"
+      },
+      {
+        "name": "train.json",
+        "uncompressed_bytes": 707810660,
+        "compressed_bytes": 217287204,
+        "crc32": "40A2BD83"
+      },
+      {
+        "name": "id_aliases.json",
+        "uncompressed_bytes": 17501406,
+        "compressed_bytes": 4552654,
+        "crc32": "684CEDEE"
+      }
+    ],
+    "dev_json_sha256": "79F77AE104088EA8E25B1A65DBECE768D45771194663BC5660EC9A98070DADF5",
+    "dev_rows": 12576,
+    "dev_unique_ids": 12576
+  },
+  "pilot_shared_field_comparison": {
+    "rows": 400,
+    "mismatches_by_field": {
+      "id": 0,
+      "question": 0,
+      "answer": 0,
+      "type": 0,
+      "evidences": 0,
+      "supporting_facts": 0,
+      "context": 7
+    },
+    "context_order_only_changes": 393,
+    "context_content_mismatch_queries": 7,
+    "official_canonical_sha256": "FBCC2BD7CA72DEE7A0DA3C80A1D6E589E8F56061BA55DBB8EF8B6AF6781D9665",
+    "mirror_canonical_sha256": "D20E2493D67170C408A13AB8204D9C63CF9A9DDE8A57A040ECEA0A0D40C0B881",
+    "canonical_hash_equal": false,
+    "context_differences": [
+      {
+        "row_index": 108,
+        "query_id": "844fe30c0bda11eba7f7acde48001122",
+        "question_type": "compositional",
+        "official_only_contexts": [
+          {
+            "title": "Giacomo Feo",
+            "sentence_count": 2,
+            "text_sha256": "94AD09719F5B48F12066D090FDFC76F9A4BD873DCAC0DDC3417B26153821B8D0"
+          }
+        ],
+        "mirror_only_contexts": [
+          {
+            "title": "Giacomo Feo",
+            "sentence_count": 2,
+            "text_sha256": "D39139DA0C332E828BD6D15F271E5FBB943683405E54D3144FACAE3ED3305162"
+          }
+        ],
+        "supporting_fact_titles": [
+          "Giacomo Feo",
+          "Caterina Sforza"
+        ]
+      },
+      {
+        "row_index": 141,
+        "query_id": "f491b33e0bda11eba7f7acde48001122",
+        "question_type": "compositional",
+        "official_only_contexts": [
+          {
+            "title": "The Last Night of the Barbary Coast",
+            "sentence_count": 4,
+            "text_sha256": "F14758ED8283BCC78177B99E6EBC0D499CDA0CFE6EE68CDA89F109B7018909C2"
+          }
+        ],
+        "mirror_only_contexts": [
+          {
+            "title": "The Last Night of the Barbary Coast",
+            "sentence_count": 4,
+            "text_sha256": "49338ED759A0C99E29707D12A63B492A4AE52A46DD48485C65AC215DD150E0EE"
+          }
+        ],
+        "supporting_fact_titles": [
+          "The Last Night of the Barbary Coast",
+          "Sol Lesser"
+        ]
+      },
+      {
+        "row_index": 196,
+        "query_id": "79675c6e0bd911eba7f7acde48001122",
+        "question_type": "compositional",
+        "official_only_contexts": [
+          {
+            "title": "Volker Schlöndorff",
+            "sentence_count": 3,
+            "text_sha256": "DB921F02388795E177B520DE40DF8A43D641ADC248D9E2DCB179F913F852773C"
+          }
+        ],
+        "mirror_only_contexts": [
+          {
+            "title": "Volker Schlöndorff",
+            "sentence_count": 3,
+            "text_sha256": "C20B91A3D5241CA9731DF93065466805917252A81DCD178D4F930847CA728F04"
+          }
+        ],
+        "supporting_fact_titles": [
+          "Ulzhan",
+          "Volker Schlöndorff"
+        ]
+      },
+      {
+        "row_index": 245,
+        "query_id": "e95acdbc085f11ebbd5dac1f6bf848b6",
+        "question_type": "bridge_comparison",
+        "official_only_contexts": [
+          {
+            "title": "Letter to the King",
+            "sentence_count": 1,
+            "text_sha256": "8F836EF6A8C45B09D64F72BC697D588B063939D0F3182F4EF13B777D5D6CABE3"
+          }
+        ],
+        "mirror_only_contexts": [
+          {
+            "title": "Letter to the King",
+            "sentence_count": 1,
+            "text_sha256": "1915700B2D5292C37C52D6283D6FDE7C391E6C7C31262F17C27070486A8C610E"
+          }
+        ],
+        "supporting_fact_titles": [
+          "Deuce High",
+          "The King is the Best Mayor",
+          "Richard Thorpe",
+          "Rafael Gil"
+        ]
+      },
+      {
+        "row_index": 317,
+        "query_id": "1f3ea3b00bb011ebab90acde48001122",
+        "question_type": "inference",
+        "official_only_contexts": [
+          {
+            "title": "Joan, Countess of Chiny",
+            "sentence_count": 5,
+            "text_sha256": "CE4F8AE48FBFABCAE2031140A5E6411B9A8312D5956D076D54DB4543C999FFB2"
+          },
+          {
+            "title": "Louis IV, Count of Chiny",
+            "sentence_count": 9,
+            "text_sha256": "B089C633E51D960D73EF36783194F87CC90ED59D3231BA3F97984C6210B6E2E4"
+          }
+        ],
+        "mirror_only_contexts": [
+          {
+            "title": "Louis IV, Count of Chiny",
+            "sentence_count": 10,
+            "text_sha256": "E2641C073F24F91DA097FAE9AE5FFBB6236A1D9897D7677FFBEC718ECBD40E8A"
+          },
+          {
+            "title": "Joan, Countess of Chiny",
+            "sentence_count": 6,
+            "text_sha256": "76537B591717DCBD601931923D51BD7B33028C91CE6DFF3EC158EF848CA0A7E0"
+          }
+        ],
+        "supporting_fact_titles": [
+          "Joan, Countess of Chiny",
+          "Louis IV, Count of Chiny"
+        ]
+      },
+      {
+        "row_index": 318,
+        "query_id": "253e36700bda11eba7f7acde48001122",
+        "question_type": "compositional",
+        "official_only_contexts": [
+          {
+            "title": "Prince Jacques, Duke of Orléans",
+            "sentence_count": 1,
+            "text_sha256": "5A2E85D230D4673E2A90C7417C2F8ED4AEA2B90EC9DE859B226475437DF5C549"
+          }
+        ],
+        "mirror_only_contexts": [
+          {
+            "title": "Prince Jacques, Duke of Orléans",
+            "sentence_count": 1,
+            "text_sha256": "B6CF3F65DA5FFF296F1E0609574788C7225D5A95C4A7B9D28361B61070D8FB1E"
+          }
+        ],
+        "supporting_fact_titles": [
+          "Prince Charles Louis, Duke of Chartres",
+          "Prince Jacques, Duke of Orléans"
+        ]
+      },
+      {
+        "row_index": 323,
+        "query_id": "1900f7600baf11ebab90acde48001122",
+        "question_type": "inference",
+        "official_only_contexts": [
+          {
+            "title": "Philippa de Beauchamp",
+            "sentence_count": 3,
+            "text_sha256": "F27BE0FE29D4AF594D143F9002AA8209740EFCA40504969DCB3D4507455E746A"
+          }
+        ],
+        "mirror_only_contexts": [
+          {
+            "title": "Philippa de Beauchamp",
+            "sentence_count": 4,
+            "text_sha256": "EECD688070F995D15F4C371FFDAD5F326D0EC37290DE626226FE52F8975B8127"
+          }
+        ],
+        "supporting_fact_titles": [
+          "Thomas Stafford, 3rd Earl of Stafford",
+          "Philippa de Beauchamp"
+        ]
+      }
+    ]
+  },
+  "pilot_unified_comparison": {
+    "rows": 400,
+    "mismatches_by_field": {
+      "id": 0,
+      "question": 0,
+      "answer": 0,
+      "type": 0,
+      "evidences": 0,
+      "gold_evidence": 5,
+      "context": 7
+    },
+    "gold_evidence_mismatch_query_ids": [
+      "844fe30c0bda11eba7f7acde48001122",
+      "79675c6e0bd911eba7f7acde48001122",
+      "1f3ea3b00bb011ebab90acde48001122",
+      "253e36700bda11eba7f7acde48001122",
+      "1900f7600baf11ebab90acde48001122"
+    ],
+    "official_candidate_units": 12718,
+    "mirror_candidate_units": 12721
+  },
+  "reservation_id_comparison": {
+    "rows": 400,
+    "ordered_match_official_rows_400_800": true,
+    "set_match_official_rows_400_800": true,
+    "content_embedded_or_scored": false
+  },
+  "schema_difference": {
+    "id_rename": "_id -> id",
+    "official_only_fields": [
+      "answer_id",
+      "entity_ids",
+      "evidences_id"
+    ],
+    "mirror_only_fields": []
+  },
+  "decision": {
+    "official_archive_integrity": "VERIFIED",
+    "mirror_pilot_id_alignment": "VERIFIED",
+    "retrieval_shared_content": "MISMATCH_DETECTED",
+    "stage4a_metrics_scope": "MIRROR_SPECIFIC_ONLY",
+    "paper_grade_external_evidence": "NOT_ELIGIBLE",
+    "retrieval_metrics_rerun_during_reconciliation": false
+  }
+}
