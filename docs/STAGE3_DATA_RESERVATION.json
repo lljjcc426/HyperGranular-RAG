@@ -1,0 +1,42 @@
+{
+  "reservation_version": "stage3_reservation_v1",
+  "created_at": "2026-07-11",
+  "protocol": "docs/STAGE3A_PROTOCOL.md",
+  "sources": {
+    "hotpotqa": {
+      "rows": 7405,
+      "sha256": "E3DA074DF24E8369009918AA5CDBDD254DADCDE4C63F7569D36AFD6F2268CAA8"
+    },
+    "musique": {
+      "rows": 2417,
+      "sha256": "15FA63794D18A94CE12411ACA6E2327E65B6E83B0B1490EFAB3F1962E48ABF3B"
+    }
+  },
+  "stage3a_development": {
+    "source_rows_per_dataset": "[600:1000)",
+    "queries": 800,
+    "query_id_sha256": "1EC78DE5B2215668BF4F8729C5A3AC04640770FF2C0A8E35F5F9956A46A3A5BB",
+    "fitting_queries": 480,
+    "fitting_query_id_sha256": "69324871384B5D03D35A5A222D2DF27BDE066B58C5B245B8CD2837FFDD0AE1D3",
+    "threshold_selection_queries": 320,
+    "threshold_selection_query_id_sha256": "89408299AF4422BD35CEB9DFBEE0CB349C43675A4AC7128F40675A4F16EB1A61"
+  },
+  "stage3b_frozen_test": {
+    "source_rows_per_dataset": "[1000:1400)",
+    "queries": 800,
+    "query_id_sha256": "6B09E0358361E387E35B11C2DFF48B7F5F3A011959D5D07F0FC14D019520AFEB",
+    "metrics_locked": true
+  },
+  "overlap_audit": {
+    "prior_stage_pairwise": [0, 0, 0],
+    "stage3a_vs_prior": [0, 0, 0],
+    "stage3a_vs_stage3b": 0,
+    "stage3b_vs_prior": [0, 0, 0]
+  },
+  "stage3a_corpus_audit": {
+    "queries": 800,
+    "candidate_units": 24415,
+    "gold_units": 1774,
+    "queries_missing_gold": 0
+  }
+}
