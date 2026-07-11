@@ -237,3 +237,54 @@ Expected tracked outputs:
 - `reports/超粒球RAG_Stage3C_StatisticalValidation.md`
 
 The internal audit is deterministic. The summary CSV and decision JSON must match byte-for-byte; source-linked dataset screening is separately verified against the authoritative pages recorded in `docs/STAGE3C_DATASET_SCREEN.md`.
+
+## Stage4A 2Wiki Feasibility Pilot
+
+Stage4A uses validation rows `[0:400)` for the pilot and reads rows `[400:800)` only to record reservation IDs. The PowerShell transport writes raw payloads for the pilot pages but writes no reservation questions, answers, contexts, or evidence. Use an empty cache directory:
+
+```powershell
+& .\scripts\stage4a_fetch_2wiki_pages.ps1 `
+  -CacheDir "E:\科研\超粒球RAG_数据\temp\stage4a_api_cache_fresh"
+
+& "D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe" `
+  scripts\stage4a_fetch_2wiki_pilot.py `
+  --api-cache-dir "E:\科研\超粒球RAG_数据\temp\stage4a_api_cache_fresh" `
+  --pilot-output "E:\科研\超粒球RAG_数据\processed\stage4a_2wiki_pilot400_unified.json" `
+  --source-audit docs\STAGE4A_SOURCE_AUDIT.json
+
+& "D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe" `
+  scripts\stage1_build_corpus.py `
+  --inputs "E:\科研\超粒球RAG_数据\processed\stage4a_2wiki_pilot400_unified.json" `
+  --units-output "E:\科研\超粒球RAG_数据\processed\stage4a_2wiki_pilot400_units.jsonl" `
+  --queries-output "E:\科研\超粒球RAG_数据\processed\stage4a_2wiki_pilot400_queries.jsonl" `
+  --report "E:\科研\超粒球RAG_数据\processed\stage4a_2wiki_pilot400_corpus_report.md"
+
+& "D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe" `
+  scripts\stage4a_2wiki_feasibility.py `
+  --units "E:\科研\超粒球RAG_数据\processed\stage4a_2wiki_pilot400_units.jsonl" `
+  --queries "E:\科研\超粒球RAG_数据\processed\stage4a_2wiki_pilot400_queries.jsonl" `
+  --source-audit docs\STAGE4A_SOURCE_AUDIT.json `
+  --embedding-cache "E:\科研\超粒球RAG_数据\processed\stage4a_2wiki_pilot400_minilm_embeddings.npz" `
+  --output-dir results `
+  --report "reports\超粒球RAG_Stage4A_2WikiFeasibilityPilot报告.md"
+
+& "D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe" `
+  scripts\stage4a_verify_outputs.py `
+  --query-audit results\stage4a_2wiki_query_audit.csv `
+  --summary results\stage4a_2wiki_strategy_summary.csv `
+  --bootstrap results\stage4a_2wiki_bootstrap.csv `
+  --source-audit docs\STAGE4A_SOURCE_AUDIT.json `
+  --report "reports\超粒球RAG_Stage4A_2WikiFeasibilityPilot报告.md" `
+  --output results\stage4a_2wiki_verification.json
+```
+
+Expected tracked outputs:
+
+- `docs/STAGE4A_SOURCE_AUDIT.json`
+- `results/stage4a_2wiki_query_audit.csv`
+- `results/stage4a_2wiki_strategy_summary.csv`
+- `results/stage4a_2wiki_bootstrap.csv`
+- `results/stage4a_2wiki_verification.json`
+- `reports/超粒球RAG_Stage4A_2WikiFeasibilityPilot报告.md`
+
+The verifier independently recomputes all query events, 15 ALL/type summary rows, Wilson intervals, and six paired-bootstrap rows with 10,000 resamples and seed `20260714`. The verified decision is `STOP`; reproduction must preserve the frozen q25 threshold and must not evaluate the reserved Stage4B slice.

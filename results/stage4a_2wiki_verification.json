@@ -1,0 +1,46 @@
+{
+  "checks": {
+    "bootstrap": {
+      "bootstrap_rows": 6,
+      "iterations": 10000,
+      "seed": 20260714
+    },
+    "query_audit": {
+      "query_rows": 400,
+      "question_types": {
+        "bridge_comparison": 90,
+        "comparison": 86,
+        "compositional": 174,
+        "inference": 50
+      },
+      "unique_query_ids": 400
+    },
+    "summary": {
+      "summary_rows": 15,
+      "verified_slices": [
+        "ALL",
+        "bridge_comparison",
+        "comparison",
+        "compositional",
+        "inference"
+      ]
+    }
+  },
+  "decision": "STOP",
+  "gates": {
+    "dense_not_saturated": true,
+    "mapping": true,
+    "q25_filter_active": true,
+    "q25_gain_events": false,
+    "q25_positive_net": true,
+    "q25_trigger": true
+  },
+  "sha256": {
+    "bootstrap": "25F0CEC523B698314835E24B61AA4319B7CAF71A68D9336059A7453C5779BFE0",
+    "query_audit": "5950ECBCDC54AB486EB0A50D0269A1C2AD56802350CF3F74A3D215BB743DAD34",
+    "source_audit": "F928CF66D6B45730005E470F9AC5E080DCDD266A418BCBA293AB85A83808ACC9",
+    "strategy_summary": "8465221A7AE256A16FF40AE303CB6FBD79834E55C5165E92DD7CB7CFCE0ADBA9",
+    "verified_report": "77CCC707D58BB080FE6284A41F546D397DA2DF332D9F0E1F8E6ABA103B0D1F8C"
+  },
+  "status": "VERIFIED"
+}

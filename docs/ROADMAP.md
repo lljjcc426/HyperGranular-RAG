@@ -195,7 +195,7 @@ Protocol: `docs/STAGE3C_PROTOCOL.md`. This audit reuses only observed Stage2H/St
 
 Interpretation boundary: Stage3C supports narrowing the research scope to budget-aware gain selection. It does not validate a selector or establish that 2Wiki is non-saturated.
 
-## Next Experiment: Stage4A 2WikiMultiHopQA Feasibility Pilot
+## Stage4A 2WikiMultiHopQA Feasibility Pilot
 
 1. Verify dataset archive provenance, checksum, and terms before download or extraction.
 2. Freeze a small development-only sample and a separate untouched reservation before retrieval metrics are computed.
@@ -204,3 +204,15 @@ Interpretation boundary: Stage3C supports narrowing the research scope to budget
 5. Continue only if the pilot is non-saturated and supplies enough gain events under a preregistered threshold.
 
 Protocol: `docs/STAGE4A_PROTOCOL.md`. Because the official Dropbox archive is not reachable from the experiment shell, the pilot uses a pinned schema-only Hugging Face mirror with `PROVENANCE_DOWNGRADED` status. Paper-grade use requires later reconciliation against the official archive.
+
+## Stage4A Observed Results
+
+- Source mapping: 400 queries, 982/982 supporting facts mapped, zero queries missing gold evidence.
+- Dense baseline: ER@20 = 0.8831 and CR@20 = 0.7450, so the pilot is not saturated at the preregistered threshold.
+- Unfiltered p10/i4: trigger rate = 0.5450, 9 gains, 8 harms, net completed-chain change = +1.
+- Transferred q25 p10/i4: ER@20 = 0.8902, CR@20 = 0.7525, trigger rate = 0.5050, 8 gains, 5 harms, net completed-chain change = +3.
+- The q25 floor removed 213 candidates and therefore did not collapse to the unfiltered strategy.
+- The q25 gain prevalence was 0.0200 (95% Wilson interval [0.0102, 0.0390]); q25-versus-dense CR@20 delta was +0.0075 with descriptive paired-bootstrap interval [-0.0100, 0.0250].
+- Five promotion conditions passed. The preregistered requirement of at least 10 q25 gain events failed because only 8 were observed.
+- Verified decision: `STOP`. Do not open the reserved Stage4B slice, fit a 2Wiki selector, tune the q25 floor, or rerun this pilot after threshold modification.
+- Stage3B remains `KEEP_LOCKED`. Results remain `PROVENANCE_DOWNGRADED` until official-archive reconciliation.
