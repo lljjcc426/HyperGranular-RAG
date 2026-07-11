@@ -66,3 +66,13 @@ The seven content differences are consistent with the April 7 sentence-segmentat
 7. Do not interpret an event-count gate without reporting its operating characteristics.
 
 No retrieval metrics were recomputed during this audit.
+
+## Resolution Path
+
+The previous Stage4A scientific feasibility conclusion is now `INCONCLUSIVE_PENDING_STAGE4R`. The proposed repair is documented in:
+
+- `docs/STAGE4R_DEPENDENCY_AUDIT.md`
+- `docs/STAGE4R_SAMPLE_SIZE_PLAN.json`
+- `docs/STAGE4R_PROTOCOL_DRAFT.md`
+
+No fresh official rows may be extracted until the Stage4R sample size and data boundary receive explicit user approval.

@@ -308,3 +308,25 @@ Additional tracked audit outputs:
 - `docs/STAGE4A_DESIGN_AUDIT.md`
 
 The expected official ZIP SHA-256 is `95DF2BF56FDABE034E27AEBC580E02264232203CF52552F9EFE8A919E5529EEF`. Reconciliation must preserve the observed 7 context-content mismatches, 5 gold-evidence text mismatches, and exact ordered reservation-ID match. These findings supersede the earlier assumption that the pinned mirror was content-equivalent to the official April 7 archive.
+
+## Stage4R Sample-size Planning
+
+Stage4R has not started data extraction. Its draft sample size is generated deterministically:
+
+```powershell
+& "D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe" `
+  scripts\stage4r_plan_sample_size.py `
+  --event-target 20 `
+  --minimum-prevalence 0.01 `
+  --target-probability 0.95 `
+  --round-to 100 `
+  --excluded-prefix 800 `
+  --official-dev-rows 12576 `
+  --output docs\STAGE4R_SAMPLE_SIZE_PLAN.json
+```
+
+Expected SHA-256 for `docs/STAGE4R_SAMPLE_SIZE_PLAN.json`:
+
+`A71D006BC961F17B0211D5E396B6BB1FCA82EB6090C1A989FCE7CF179BEB989E`
+
+The exact minimum is 2,784 and the proposed rounded development sample is 2,800, yielding probability 0.952994 of at least 20 gains when true prevalence is 0.01. This is a planning operating characteristic, not a confirmatory power claim. `docs/STAGE4R_PROTOCOL_DRAFT.md` must remain unexecuted until explicit user approval.

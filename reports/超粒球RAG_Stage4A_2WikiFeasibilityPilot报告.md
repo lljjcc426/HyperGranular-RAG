@@ -53,6 +53,9 @@
 
 This is the procedural decision for the pinned mirror pilot. The post-hoc design audit found that 400 was not supported by a power or event-count analysis, so this decision must not be interpreted as evidence that the research direction is infeasible.
 
+- Scientific feasibility conclusion: `INCONCLUSIVE_PENDING_STAGE4R`.
+- Research-direction status: OPEN.
+
 ## Wilson Intervals
 
 - q25 gain prevalence: 0.0200, 95% Wilson [0.0102, 0.0390].

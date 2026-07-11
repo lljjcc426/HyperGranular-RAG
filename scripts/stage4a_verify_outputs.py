@@ -199,6 +199,7 @@ def main() -> None:
         "scope": "PINNED_MIRROR_ONLY",
         "official_archive_reconciliation": "NOT_PART_OF_THIS_VERIFIER",
         "decision": decision,
+        "scientific_conclusion": "INCONCLUSIVE_PENDING_STAGE4R",
         "gates": gates,
         "checks": checks,
         "sha256": {
