@@ -3,7 +3,7 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage2H exploratory boundary-rule diagnosis completed; Stage3A development pending
+- Current stage: Stage3A utility-calibrated controller protocol frozen before development metrics
 - Data used so far: HotpotQA sample200 + MuSiQue sample200
 - Generator used: No
 - Gold labels used for indexing: No
@@ -155,3 +155,5 @@ Interpretation boundary: the current OR rule is broad because the score-margin a
 3. Predict query-level utility from label-free retrieval signals, with separate targets for chain completion, Top-20 harm, and false-insert cost.
 4. Compare the learned/calibrated controller with dense fixed, all-query q25 insertion, and the frozen Stage2G OR gate under identical budgets.
 5. Keep Stage2E-H as diagnostic history only; do not reuse their labels for fitting or threshold selection.
+
+Protocol: `docs/STAGE3A_PROTOCOL.md`. Stage3A uses source rows `[600:1000)` for development and reserves `[1000:1400)` for a later frozen Stage3B test. Stage3B metrics remain inaccessible until the Stage3A model artifact and threshold are committed.
