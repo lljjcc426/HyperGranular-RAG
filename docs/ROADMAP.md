@@ -3,7 +3,7 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage2G completed and statistically verified; current boundary rule not supported
+- Current stage: Stage2H exploratory boundary-rule diagnosis planned
 - Data used so far: HotpotQA sample200 + MuSiQue sample200
 - Generator used: No
 - Gold labels used for indexing: No
@@ -127,6 +127,8 @@ Protocol frozen in `docs/STAGE2G_PROTOCOL.md` before extracting or evaluating th
 Interpretation boundary: q25 protected insertion can still improve retrieval relative to dense fixed, but the current OR-composed boundary rule is not validated as a selective benefit predictor.
 
 ## Next Experiment: Stage2H Boundary-Rule Failure Diagnosis
+
+Diagnostic plan fixed in `docs/STAGE2H_DIAGNOSTIC_PLAN.md`; this stage is explicitly post-hoc and will not tune a replacement threshold.
 
 1. Generate per-query mechanism details for the already evaluated slices without changing Stage2G gate decisions.
 2. Decompose the OR gate into `boundary_margin`, `ball_score_margin`, and `top_ball_score` trigger components.
