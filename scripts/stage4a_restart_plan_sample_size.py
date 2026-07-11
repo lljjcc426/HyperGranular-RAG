@@ -1,4 +1,4 @@
-"""Produce the deterministic event-count sample-size plan for Stage4R."""
+"""Produce the deterministic event-count sample-size plan for restarted Stage4A."""
 
 from __future__ import annotations
 
@@ -39,13 +39,13 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     if args.event_target != 20:
-        raise ValueError("Stage4R draft aligns with the Stage3C 20-gain feasibility threshold")
+        raise ValueError("Restarted Stage4A aligns with the Stage3C 20-gain feasibility threshold")
     if not math.isclose(args.minimum_prevalence, 0.01, abs_tol=1e-15):
-        raise ValueError("Stage4R draft uses a conservative minimum gain prevalence of 0.01")
+        raise ValueError("Restarted Stage4A uses a conservative minimum gain prevalence of 0.01")
     if not math.isclose(args.target_probability, 0.95, abs_tol=1e-15):
-        raise ValueError("Stage4R draft uses a 0.95 target probability")
+        raise ValueError("Restarted Stage4A uses a 0.95 target probability")
     if args.round_to != 100 or args.excluded_prefix != 800 or args.official_dev_rows != 12576:
-        raise ValueError("Stage4R draft constants differ from the design audit")
+        raise ValueError("Restarted Stage4A constants differ from the design audit")
 
     exact_n = minimum_n(args.event_target, args.minimum_prevalence, args.target_probability)
     planned_n = math.ceil(exact_n / args.round_to) * args.round_to
@@ -54,7 +54,7 @@ def main() -> None:
     reservation_start = development_end
     reservation_end = reservation_start + planned_n
     if reservation_end > args.official_dev_rows:
-        raise ValueError("Stage4R development and reservation slices exceed official dev rows")
+        raise ValueError("Restarted Stage4A development and reservation slices exceed official dev rows")
 
     sensitivity = []
     for prevalence in (0.005, 0.01, 0.0102, 0.02):

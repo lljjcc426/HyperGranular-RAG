@@ -5,7 +5,7 @@
 - Origin Skill: academic-research-suite / experiment-agent
 - Origin Mode: run
 - Origin Date: 2026-07-11
-- Verification Status: VERIFIED_INTERNAL_METRICS; OFFICIAL_SOURCE_MISMATCH
+- Verification Status: ARCHIVED_INVALIDATED_PILOT; INTERNAL_METRICS_VERIFIED
 - Version Label: exp_result_v1
 - Protocol: `docs/STAGE4A_PROTOCOL.md`, committed before data extraction and metrics
 - Provenance status: OFFICIAL_MISMATCH_DETECTED
@@ -53,7 +53,8 @@
 
 This is the procedural decision for the pinned mirror pilot. The post-hoc design audit found that 400 was not supported by a power or event-count analysis, so this decision must not be interpreted as evidence that the research direction is infeasible.
 
-- Scientific feasibility conclusion: `INCONCLUSIVE_PENDING_STAGE4R`.
+- Scientific feasibility conclusion: `INVALIDATED_NO_OFFICIAL_FEASIBILITY_DECISION`.
+- Project rollback point: Stage3C completed; restarted Stage4A awaits approval.
 - Research-direction status: OPEN.
 
 ## Wilson Intervals

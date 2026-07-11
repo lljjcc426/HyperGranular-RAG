@@ -5,10 +5,15 @@
 - Origin Skill: academic-research-suite / experiment-agent + deep-research + huggingface-datasets
 - Origin Mode: plan + source verification
 - Origin Date: 2026-07-11
-- Verification Status: UNVERIFIED
+- Verification Status: INVALIDATED_POST_RUN
 - Version Label: code_plan_v1
-- Protocol Status: FROZEN BEFORE PILOT RETRIEVAL METRICS
+- Original Protocol Status: FROZEN BEFORE PILOT RETRIEVAL METRICS
+- Current Protocol Status: ARCHIVED_INVALIDATED_PILOT; NOT ACTIVE
 - Analysis Status: DEVELOPMENT FEASIBILITY PILOT
+
+## Post-run Scientific Status
+
+This protocol is retained only as the historical record of the invalidated mirror pilot. Its 400-query sample size had no operating-characteristic justification, and the mirror differs from the official April 7 archive in retrieval-relevant content. The project research state has rolled back to Stage3C completed. The only candidate next stage is the separately drafted restarted Stage4A protocol in `docs/STAGE4A_RESTART_PROTOCOL_DRAFT.md`.
 
 ## Experiment Overview
 
@@ -18,7 +23,7 @@
 - **Model fitting**: prohibited
 - **Stage3B status**: locked and unrelated to this pilot
 
-Stage4A is not a controller test and cannot validate cross-dataset generalization. It only decides whether a larger, separately frozen 2Wiki branch is worth developing.
+This historical Stage4A was not a controller test and cannot validate cross-dataset generalization. Its original procedural decision is not an active scientific-stage decision.
 
 ## Source And Provenance Audit
 

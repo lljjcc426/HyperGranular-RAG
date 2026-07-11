@@ -69,10 +69,10 @@ No retrieval metrics were recomputed during this audit.
 
 ## Resolution Path
 
-The previous Stage4A scientific feasibility conclusion is now `INCONCLUSIVE_PENDING_STAGE4R`. The proposed repair is documented in:
+The original Stage4A scientific feasibility conclusion is now `INVALIDATED_NO_OFFICIAL_FEASIBILITY_DECISION`. The project stage has rolled back to Stage3C completed, and the proposed restarted Stage4A is documented in:
 
-- `docs/STAGE4R_DEPENDENCY_AUDIT.md`
-- `docs/STAGE4R_SAMPLE_SIZE_PLAN.json`
-- `docs/STAGE4R_PROTOCOL_DRAFT.md`
+- `docs/STAGE4A_RESTART_DEPENDENCY_AUDIT.md`
+- `docs/STAGE4A_RESTART_SAMPLE_SIZE_PLAN.json`
+- `docs/STAGE4A_RESTART_PROTOCOL_DRAFT.md`
 
-No fresh official rows may be extracted until the Stage4R sample size and data boundary receive explicit user approval.
+No fresh official rows may be extracted until the restarted Stage4A sample size and data boundary receive explicit user approval.

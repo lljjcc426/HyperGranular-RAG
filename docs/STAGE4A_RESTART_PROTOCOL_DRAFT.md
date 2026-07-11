@@ -1,4 +1,4 @@
-# Stage4R Official-Source Feasibility Repair Protocol
+# Restarted Stage4A Official-Source Feasibility Protocol
 
 ## Material Passport
 
@@ -12,13 +12,13 @@
 
 ## Study Identity
 
-- **Name**: Stage4R official-source and event-count design repair
+- **Name**: restarted Stage4A official-source and event-count design repair
 - **Objective**: Re-estimate official 2Wiki dense saturation and frozen q25 protected-insertion gain availability after correcting the Stage4A source and sample-size defects.
 - **Type**: independent retrieval-only feasibility study
 - **Controller fitting**: prohibited
 - **Stage3B status**: locked and unrelated
 
-Stage4R is not a rerun of Stage4A and is not the stopped Stage4B branch. It uses fresh official rows and a sample size fixed from explicit event-count operating characteristics.
+The restarted Stage4A supersedes the invalidated mirror pilot and is not the stopped Stage4B branch. It uses fresh official rows and a sample size fixed from explicit event-count operating characteristics. Stage3C remains the last valid completed stage until this draft is approved and frozen.
 
 ## Source of Truth
 
@@ -27,7 +27,7 @@ Stage4R is not a rerun of Stage4A and is not the stopped Stage4B branch. It uses
 - `dev.json` SHA-256: `79F77AE104088EA8E25B1A65DBECE768D45771194663BC5660EC9A98070DADF5`
 - Official `dev.json` rows: 12,576
 - License: Apache-2.0 repository license
-- Mirror data: prohibited for Stage4R extraction, embeddings, and metrics
+- Mirror data: prohibited for restarted Stage4A extraction, embeddings, and metrics
 
 ## Sample-size Design
 
@@ -49,10 +49,10 @@ The 0.0100 prevalence is rounded below the Stage4A mirror Wilson lower bound of 
 
 | Role | Official dev rows | Queries | Access rule |
 |---|---:|---:|---|
-| Excluded prior material | `[0:800)` | 800 | Never used in Stage4R metrics |
-| Stage4R development feasibility | `[800:3600)` | 2,800 | Extract only after protocol approval and commit |
+| Excluded prior material | `[0:800)` | 800 | Never used in restarted Stage4A metrics |
+| Restarted Stage4A development feasibility | `[800:3600)` | 2,800 | Extract only after protocol approval and commit |
 | Future reservation | `[3600:6400)` | 2,800 | IDs/digest only; no embeddings or retrieval metrics |
-| Unused remainder | `[6400:12576)` | 6,176 | No Stage4R access |
+| Unused remainder | `[6400:12576)` | 6,176 | No restarted Stage4A access |
 
 Contiguous rows are proposed because the official archive has no documented random ordering guarantee that would justify stratified reshuffling without inspecting labels. Question-type distribution will be reported descriptively after extraction and will not alter the sample.
 
@@ -67,7 +67,7 @@ Contiguous rows are proposed because the official archive has no documented rand
 - Insertion budget: 4 units into ranks 11-20
 - Boundary suppression: disabled
 
-The q25 floor is transferred as a fixed independently tested policy from Stage2F. It is not claimed to be optimal for 2Wiki and must not be tuned on Stage4R labels.
+The q25 floor is transferred as a fixed independently tested policy from Stage2F. It is not claimed to be optimal for 2Wiki and must not be tuned on restarted Stage4A labels.
 
 Frozen strategies:
 
@@ -93,7 +93,7 @@ All intervals are descriptive feasibility estimates. No p-value or confirmatory 
 
 ## Proposed Decision Rules
 
-Stage4R supports a separately designed selector-development study only if all conditions hold:
+The restarted Stage4A supports a separately designed selector-development study only if all conditions hold:
 
 1. Official supporting-fact mapping rate is at least 0.99 and zero queries have missing mapped gold.
 2. Dense-fixed CR@20 is below 0.95.
@@ -116,7 +116,7 @@ Failure has bounded interpretation:
 - Strategy and question-type summary CSV
 - Paired bootstrap CSV
 - Independent verification JSON
-- Stage4R report with explicit provenance and bounded decision
+- Restarted Stage4A report with explicit provenance and bounded decision
 
 ## Approval Gate
 

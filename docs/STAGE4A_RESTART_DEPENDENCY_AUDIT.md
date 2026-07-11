@@ -1,4 +1,4 @@
-# Stage4R Dependency and Conclusion Audit
+# Restarted Stage4A Dependency and Conclusion Audit
 
 ## Material Passport
 
@@ -30,12 +30,12 @@ This audit identifies which earlier conclusions remain supported, which require 
 
 ## Resolved Dependency Rules
 
-1. Stage4R may transfer q25 p10/i4 as a fixed policy because Stage2F independently tested it; Stage4R must not claim the threshold is 2Wiki-optimal.
-2. Stage4R uses all-query expansion because Stage2G did not validate boundary suppression.
-3. Stage4R adopts the Stage3C threshold of at least 20 gain events for selector-development feasibility; the old Stage4A threshold of 10 is superseded for scientific planning.
-4. Stage4R uses the official April 7 archive only.
-5. Stage4A rows `[0:400)` and the old reservation `[400:800)` are excluded from Stage4R development and reservation data.
-6. Stage3B remains locked and is not affected by Stage4R.
+1. The restarted Stage4A may transfer q25 p10/i4 as a fixed policy because Stage2F independently tested it; the restarted Stage4A must not claim the threshold is 2Wiki-optimal.
+2. The restarted Stage4A uses all-query expansion because Stage2G did not validate boundary suppression.
+3. The restarted Stage4A adopts the Stage3C threshold of at least 20 gain events for selector-development feasibility; the invalidated Stage4A threshold of 10 is superseded for scientific planning.
+4. The restarted Stage4A uses the official April 7 archive only.
+5. Invalidated Stage4A rows `[0:400)` and its old reservation `[400:800)` are excluded from restarted Stage4A development and reservation data.
+6. Stage3B remains locked and is not affected by the restarted Stage4A.
 
 ## Current Scientific State
 
@@ -45,4 +45,4 @@ This audit identifies which earlier conclusions remain supported, which require 
 - Existing mirror metrics: REPRODUCIBLE_BUT_SOURCE_SCOPED.
 - New controller fitting: NOT AUTHORIZED.
 
-The next valid action is approval and freezing of `docs/STAGE4R_PROTOCOL_DRAFT.md`, followed by source-only extraction from the official archive. No retrieval metric should be computed before that approval.
+The project stage is rolled back to Stage3C completed. The next valid action is approval and freezing of `docs/STAGE4A_RESTART_PROTOCOL_DRAFT.md`, followed by source-only extraction from the official archive. No retrieval metric should be computed before that approval.
