@@ -57,6 +57,12 @@ def rows_url(offset: int) -> str:
 
 def fetch_page(offset: int) -> tuple[bytes, list[dict[str, Any]], dict[str, Any]]:
     payload, response = fetch_json(rows_url(offset))
+    rows = parse_page_payload(payload, offset)
+    return payload, rows, response
+
+
+def parse_page_payload(payload: bytes, offset: int) -> list[dict[str, Any]]:
+    response = json.loads(payload.decode("utf-8"))
     rows = response.get("rows", [])
     if len(rows) != PAGE_SIZE:
         raise ValueError(f"Offset {offset}: expected {PAGE_SIZE} rows, found {len(rows)}")
@@ -66,7 +72,15 @@ def fetch_page(offset: int) -> tuple[bytes, list[dict[str, Any]], dict[str, Any]
         raise ValueError(f"Offset {offset}: unexpected row indices")
     if any(item.get("truncated_cells") for item in rows):
         raise ValueError(f"Offset {offset}: Dataset Viewer returned truncated cells")
-    return payload, [item["row"] for item in rows], response
+    return [item["row"] for item in rows]
+
+
+def read_cache_payload(cache_dir: Path, name: str) -> tuple[bytes, Any]:
+    path = cache_dir / name
+    if not path.is_file():
+        raise FileNotFoundError(f"Missing Stage4A API cache file: {path}")
+    payload = path.read_bytes()
+    return payload, json.loads(payload.decode("utf-8"))
 
 
 def normalize_record(row: dict[str, Any]) -> tuple[dict[str, Any], dict[str, int]]:
@@ -152,6 +166,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--pilot-count", type=int, default=400)
     parser.add_argument("--reservation-offset", type=int, default=400)
     parser.add_argument("--reservation-count", type=int, default=400)
+    parser.add_argument(
+        "--api-cache-dir",
+        type=Path,
+        help="Read protocol-scoped API responses produced by stage4a_fetch_2wiki_pages.ps1",
+    )
     return parser.parse_args()
 
 
@@ -160,11 +179,18 @@ def main() -> None:
     if (args.pilot_offset, args.pilot_count, args.reservation_offset, args.reservation_count) != (0, 400, 400, 400):
         raise ValueError("Stage4A protocol requires pilot [0:400) and reservation [400:800)")
 
-    before_payload, before_sha = mirror_sha()
+    if args.api_cache_dir:
+        before_payload, before_metadata = read_cache_payload(args.api_cache_dir, "metadata_before.json")
+        before_sha = str(before_metadata["sha"])
+    else:
+        before_payload, before_sha = mirror_sha()
     if before_sha != EXPECTED_MIRROR_SHA:
         raise ValueError(f"Mirror SHA drift before extraction: {before_sha}")
     size_url = f"https://datasets-server.huggingface.co/size?dataset={urllib.parse.quote(DATASET, safe='')}"
-    size_payload, size_response = fetch_json(size_url)
+    if args.api_cache_dir:
+        size_payload, size_response = read_cache_payload(args.api_cache_dir, "size.json")
+    else:
+        size_payload, size_response = fetch_json(size_url)
     validation_rows = next(
         int(item["num_rows"])
         for item in size_response["size"]["splits"]
@@ -176,26 +202,67 @@ def main() -> None:
     pilot_rows: list[dict[str, Any]] = []
     reservation_ids: list[str] = []
     page_audit: list[dict[str, Any]] = []
-    for role, start, count in (
-        ("pilot", args.pilot_offset, args.pilot_count),
-        ("reservation_ids_only", args.reservation_offset, args.reservation_count),
-    ):
-        for offset in range(start, start + count, PAGE_SIZE):
+    for offset in range(args.pilot_offset, args.pilot_offset + args.pilot_count, PAGE_SIZE):
+        if args.api_cache_dir:
+            payload = (args.api_cache_dir / f"pilot_page_{offset:06d}.json").read_bytes()
+            rows = parse_page_payload(payload, offset)
+        else:
+            payload, rows, _ = fetch_page(offset)
+        page_audit.append(
+            {
+                "role": "pilot",
+                "offset": offset,
+                "rows": len(rows),
+                "response_sha256": sha256_bytes(payload),
+            }
+        )
+        pilot_rows.extend(rows)
+
+    if args.api_cache_dir:
+        _, reservation_manifest = read_cache_payload(args.api_cache_dir, "reservation_ids_manifest.json")
+        if reservation_manifest.get("reservation_content_written") is not False:
+            raise ValueError("Reservation cache does not attest that content was discarded")
+        reservation_pages = reservation_manifest.get("pages", [])
+        expected_offsets = list(
+            range(args.reservation_offset, args.reservation_offset + args.reservation_count, PAGE_SIZE)
+        )
+        if [int(page["offset"]) for page in reservation_pages] != expected_offsets:
+            raise ValueError("Reservation cache offsets do not match the Stage4A protocol")
+        for page in reservation_pages:
+            ids = [str(value) for value in page.get("ids", [])]
+            if len(ids) != PAGE_SIZE:
+                raise ValueError(f"Reservation offset {page['offset']}: expected {PAGE_SIZE} IDs")
+            page_audit.append(
+                {
+                    "role": "reservation_ids_only",
+                    "offset": int(page["offset"]),
+                    "rows": len(ids),
+                    "response_sha256": str(page["response_sha256"]),
+                }
+            )
+            reservation_ids.extend(ids)
+    else:
+        for offset in range(
+            args.reservation_offset,
+            args.reservation_offset + args.reservation_count,
+            PAGE_SIZE,
+        ):
             payload, rows, _ = fetch_page(offset)
             page_audit.append(
                 {
-                    "role": role,
+                    "role": "reservation_ids_only",
                     "offset": offset,
                     "rows": len(rows),
                     "response_sha256": sha256_bytes(payload),
                 }
             )
-            if role == "pilot":
-                pilot_rows.extend(rows)
-            else:
-                reservation_ids.extend(str(row["id"]) for row in rows)
+            reservation_ids.extend(str(row["id"]) for row in rows)
 
-    after_payload, after_sha = mirror_sha()
+    if args.api_cache_dir:
+        after_payload, after_metadata = read_cache_payload(args.api_cache_dir, "metadata_after.json")
+        after_sha = str(after_metadata["sha"])
+    else:
+        after_payload, after_sha = mirror_sha()
     if after_sha != before_sha:
         raise ValueError(f"Mirror SHA drift during extraction: before={before_sha}, after={after_sha}")
 
@@ -282,6 +349,7 @@ def main() -> None:
             "pilot_unified_file": args.pilot_output.name,
             "reservation_file": None,
         },
+        "transport": "powershell_dotnet_http_cache" if args.api_cache_dir else "python_urllib",
     }
     args.source_audit.parent.mkdir(parents=True, exist_ok=True)
     args.source_audit.write_text(
