@@ -1,0 +1,65 @@
+{
+  "protocol": "docs/STAGE3C_PROTOCOL.md",
+  "analysis_status": "EXPLORATORY_RETROSPECTIVE",
+  "input_sha256": {
+    "stage2h_query_audit": "9773436E05A875032720EB0AF75088A6DAE5D57231DE37854B18BCE195B0399F",
+    "stage3a_query_audit": "8CEBBEB91536B131FC87A46A5B8744E462F1732986723A787349074147834561",
+    "stage3a_model": "53223FC5384ECC828ED312DFDBF048E58CFE8FC071DEE894F657B8B9524403C7",
+    "stage3_reservation": "FBCD92D40F7B126F74F9370FF8A07162665FAD019327F04EAF6AF49665D65155"
+  },
+  "audit": {
+    "stage2h_rows": 1200,
+    "stage3a_rows": 800,
+    "total_rows": 2000,
+    "stage2h_stage3a_overlap": 0,
+    "partition_counts": {
+      "stage2e": 400,
+      "stage2f": 400,
+      "stage2g": 400,
+      "stage3a_fitting": 480,
+      "stage3a_threshold_selection": 320
+    },
+    "dataset_counts": {
+      "hotpotqa": 1000,
+      "musique": 1000
+    },
+    "stage3b_metrics_locked": true,
+    "stage3b_metrics_read": false,
+    "stage3b_query_id_sha256": "6B09E0358361E387E35B11C2DFF48B7F5F3A011959D5D07F0FC14D019520AFEB"
+  },
+  "stage3a_model_fallback": {
+    "gain_head": false,
+    "harm_head": true
+  },
+  "scope_decisions": {
+    "ALL": {
+      "queries": 2000,
+      "gain_events": 69,
+      "harm_events": 8,
+      "partitions_with_at_least_5_harms": [],
+      "risk_aware_event_feasible": false,
+      "budget_aware_gain_event_feasible": true,
+      "decision": "BUDGET_AWARE_GAIN_SELECTION_EVENT_FEASIBLE"
+    },
+    "hotpotqa": {
+      "queries": 1000,
+      "gain_events": 69,
+      "harm_events": 8,
+      "partitions_with_at_least_5_harms": [],
+      "risk_aware_event_feasible": false,
+      "budget_aware_gain_event_feasible": true,
+      "decision": "BUDGET_AWARE_GAIN_SELECTION_EVENT_FEASIBLE"
+    },
+    "musique": {
+      "queries": 1000,
+      "gain_events": 0,
+      "harm_events": 0,
+      "partitions_with_at_least_5_harms": [],
+      "risk_aware_event_feasible": false,
+      "budget_aware_gain_event_feasible": false,
+      "decision": "CURRENT_CONTROLLER_LEARNING_EVENT_INFEASIBLE"
+    }
+  },
+  "stage3b_action": "KEEP_LOCKED",
+  "new_model_fitted": false
+}

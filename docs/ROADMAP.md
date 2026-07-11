@@ -3,7 +3,7 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage3C target-feasibility and data-strategy audit protocol frozen; Stage3B remains locked
+- Current stage: Stage3C completed; Stage4A independent 2Wiki feasibility pilot pending; Stage3B remains locked
 - Data used so far: HotpotQA sample200 + MuSiQue sample200
 - Generator used: No
 - Gold labels used for indexing: No
@@ -171,7 +171,7 @@ Protocol: `docs/STAGE3A_PROTOCOL.md`. Stage3A uses source rows `[600:1000)` for 
 
 Interpretation boundary: Stage3A supports a development-only volume/recall trade-off on HotpotQA, not a validated risk-aware controller. MuSiQue produced no gain or harm events, and Stage3B remains locked under the frozen stop rule.
 
-## Next Experiment: Stage3C Target-Feasibility And Data-Strategy Audit
+## Completed Experiment: Stage3C Target-Feasibility And Data-Strategy Audit
 
 1. Do not inspect Stage3B retrieval metrics and do not reuse its reserved IDs for development.
 2. Quantify gain/harm event prevalence and saturation by dataset using development data only.
@@ -180,3 +180,25 @@ Interpretation boundary: Stage3A supports a development-only volume/recall trade
 5. Freeze a new data and endpoint protocol before fitting another controller branch.
 
 Protocol: `docs/STAGE3C_PROTOCOL.md`. This audit reuses only observed Stage2H/Stage3A labels, screens five predeclared datasets with primary sources, and does not download, embed, or evaluate Stage3B data.
+
+## Stage3C Observed Results
+
+- Internal audit: 2,000 pairwise-disjoint observed queries, 69 gain events, and 8 harm events.
+- Dataset split: HotpotQA contains all 69 gains and 8 harms; MuSiQue contains zero events and has dense-fixed CR@20 = 1.0000.
+- HotpotQA gain/harm prevalence = 0.069/0.008; pooled gain/harm prevalence = 0.0345/0.0040.
+- No two observed partitions contain at least 5 harms, so the frozen risk-aware event-feasibility rule fails.
+- The budget-aware gain-selection rule passes because 69 gains exceed the 20-event threshold.
+- At the pooled harm point prevalence, 5,000/12,500 queries would be expected for 20/50 harm events; this is descriptive planning, not a power guarantee.
+- External source screen: 2WikiMultiHopQA is the primary independent QA pilot candidate; HotpotQA train is same-domain expansion; MuSiQue is unsuitable for unchanged CR@20; IIRC needs access/terms remediation; HoVer changes the task to verification.
+- Reproducibility: event summary CSV and decision JSON are byte-identical on deterministic rerun.
+- Stage3B action: KEEP_LOCKED.
+
+Interpretation boundary: Stage3C supports narrowing the research scope to budget-aware gain selection. It does not validate a selector or establish that 2Wiki is non-saturated.
+
+## Next Experiment: Stage4A 2WikiMultiHopQA Feasibility Pilot
+
+1. Verify dataset archive provenance, checksum, and terms before download or extraction.
+2. Freeze a small development-only sample and a separate untouched reservation before retrieval metrics are computed.
+3. Map `context`, `supporting_facts`, and evidence paths into the existing unit/query schema and report mapping loss.
+4. Measure dense-fixed CR@20 and q25 protect-10/insert-4 gain prevalence without fitting a controller.
+5. Continue only if the pilot is non-saturated and supplies enough gain events under a preregistered threshold.

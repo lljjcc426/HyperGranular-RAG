@@ -211,3 +211,29 @@ Expected tracked outputs:
 - `reports/超粒球RAG_Stage3A_StatisticalValidation.md`
 
 The development bootstrap uses 10,000 dataset-stratified resamples with seed `20260713`. A deterministic rerun must reproduce all four core CSV/JSON artifacts byte-for-byte. Stage3A's promotion decision is `FAIL`; reproduction must preserve that decision rather than recomputing a different threshold or relaxing the sparse-target fallback gate.
+
+## Stage3C Target-Feasibility Audit
+
+Stage3C reads only tracked Stage2H and Stage3A artifacts. It does not require raw datasets, embeddings, network access, or Stage3B files.
+
+```powershell
+& "D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe" `
+  scripts/stage3c_target_feasibility_audit.py `
+  --stage2h-audit results/stage2h_boundary_query_audit.csv `
+  --stage3a-audit results/stage3a_utility_controller_query_audit.csv `
+  --stage3a-model results/stage3a_utility_controller_model.json `
+  --reservation docs/STAGE3_DATA_RESERVATION.json `
+  --summary-output results/stage3c_event_feasibility_summary.csv `
+  --decision-output results/stage3c_target_feasibility_decision.json `
+  --report "reports\超粒球RAG_Stage3C_TargetFeasibilityAudit报告.md"
+```
+
+Expected tracked outputs:
+
+- `results/stage3c_event_feasibility_summary.csv`
+- `results/stage3c_target_feasibility_decision.json`
+- `docs/STAGE3C_DATASET_SCREEN.md`
+- `reports/超粒球RAG_Stage3C_TargetFeasibilityAudit报告.md`
+- `reports/超粒球RAG_Stage3C_StatisticalValidation.md`
+
+The internal audit is deterministic. The summary CSV and decision JSON must match byte-for-byte; source-linked dataset screening is separately verified against the authoritative pages recorded in `docs/STAGE3C_DATASET_SCREEN.md`.

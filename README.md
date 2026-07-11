@@ -153,6 +153,17 @@ Stage3A 在新的 `[600:1000)` 开发切片上使用 480-query 拟合集和 320-
 - 五项晋级门槛中“不得使用稀疏目标 fallback”失败，因此 Stage3A 总决策为 `FAIL`，Stage3B 保持锁定。
 - 四个核心产物的确定性复跑 SHA-256 完全一致。
 
+## Stage3C 目标可行性与数据策略审计
+
+Stage3C 合并了互不重叠的 2,000 个已观察查询，不拟合新模型，也不读取 Stage3B 指标。
+
+- 共观察到 69 个 gain 和 8 个 harm，全部来自 HotpotQA。
+- HotpotQA gain/harm prevalence 为 0.069/0.008；MuSiQue 两者均为 0，dense-fixed CR@20 为 1.0000。
+- 没有任何两个独立分区各自达到 5 个 harm，因此风险感知 expected-utility 目标不具备事件可行性。
+- 69 个 gain 超过预注册的 20-event 门槛，预算化 gain selection 仍具备开发可行性。
+- 官方来源数据集筛选推荐 2WikiMultiHopQA 作为第一独立 pilot；HotpotQA train 只用于同域事件扩充，HoVer 仅适合检索鲁棒性任务。
+- 两个内部核心产物确定性复跑 SHA-256 完全一致，Stage3B 继续锁定。
+
 ## 下一步
 
-不进入 Stage3B。下一阶段先做目标可行性与数据策略审计：确认跨数据集的 gain/harm 事件密度，评估是否需要引入更困难且未饱和的多跳数据集，或将研究主张收缩为“预算化证据补全选择”而不是“风险感知效用控制”。
+Stage4A 冻结并运行一个小规模 2WikiMultiHopQA 可行性 pilot，只回答三个问题：数据能否无损映射为粒球知识单元、MiniLM dense CR@20 是否未饱和、q25 保护式插入是否产生足够 gain 事件。pilot 不拟合控制器，也不使用 Stage3B。
