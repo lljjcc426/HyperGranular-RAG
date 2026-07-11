@@ -178,3 +178,36 @@ Expected tracked outputs:
 - `reports/超粒球RAG_Stage2H_StatisticalValidation.md`
 
 The deterministic verification uses 10,000 stratified bootstrap iterations with seed `20260712`. All three CSV files must match byte-for-byte; the verified SHA-256 values are recorded in the statistical validation report. Timing and report paths are excluded from equality checks.
+
+## Stage3A Utility-Controller Development
+
+Stage3A uses HotpotQA and MuSiQue source rows `[600:1000)` for development. The query IDs for `[1000:1400)` are reserved in `docs/STAGE3_DATA_RESERVATION.json`; the script verifies their digest but does not embed or score those Stage3B queries.
+
+```powershell
+& "D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe" `
+  scripts/stage3a_utility_controller.py `
+  --units "E:\科研\超粒球RAG_数据\processed\stage3a_dev800_units.jsonl" `
+  --queries "E:\科研\超粒球RAG_数据\processed\stage3a_dev800_queries.jsonl" `
+  --prior-queries `
+    "E:\科研\超粒球RAG_数据\processed\stage1_sample400_queries.jsonl" `
+    "E:\科研\超粒球RAG_数据\processed\stage2f_unseen400_queries.jsonl" `
+    "E:\科研\超粒球RAG_数据\processed\stage2g_unseen400_queries.jsonl" `
+  --hotpot-source "E:\科研\超粒球RAG_数据\raw\hotpot_dev_distractor_v1.json" `
+  --musique-source "E:\科研\超粒球RAG_数据\raw\musique\data\musique_ans_v1.0_dev.jsonl" `
+  --reservation docs/STAGE3_DATA_RESERVATION.json `
+  --calibration-summary results/stage2e_insert_noise_control_summary.csv `
+  --embedding-cache "E:\科研\超粒球RAG_数据\processed\stage3a_dev800_dense_allminilm_embeddings.npz" `
+  --output-dir results `
+  --report "reports\超粒球RAG_Stage3A_UtilityController开发报告.md"
+```
+
+Expected tracked outputs:
+
+- `results/stage3a_utility_controller_query_audit.csv`
+- `results/stage3a_utility_controller_model.json`
+- `results/stage3a_utility_controller_summary.csv`
+- `results/stage3a_utility_controller_bootstrap.csv`
+- `reports/超粒球RAG_Stage3A_UtilityController开发报告.md`
+- `reports/超粒球RAG_Stage3A_StatisticalValidation.md`
+
+The development bootstrap uses 10,000 dataset-stratified resamples with seed `20260713`. A deterministic rerun must reproduce all four core CSV/JSON artifacts byte-for-byte. Stage3A's promotion decision is `FAIL`; reproduction must preserve that decision rather than recomputing a different threshold or relaxing the sparse-target fallback gate.

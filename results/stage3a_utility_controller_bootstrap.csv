@@ -1,0 +1,11 @@
+comparison_id,strategy_a,strategy_b,metric,observed_a,observed_b,observed_delta,ci_low,ci_high,iterations,seed,status
+utility_vs_allquery,utility_controller_q25_p10_i4,allquery_q25_p10_i4,chain_recall_at_20,0.90625,0.9125,-0.006249999999999978,-0.015625,0.0,10000,20260713,DESCRIPTIVE_DEVELOPMENT
+utility_vs_allquery,utility_controller_q25_p10_i4,allquery_q25_p10_i4,evidence_recall_at_20,0.9592410714285714,0.963407738095238,-0.004166666666666652,-0.009895833333333215,0.0,10000,20260713,DESCRIPTIVE_DEVELOPMENT
+utility_vs_allquery,utility_controller_q25_p10_i4,allquery_q25_p10_i4,trigger,0.2125,0.453125,-0.240625,-0.2875,-0.19687499999999997,10000,20260713,DESCRIPTIVE_DEVELOPMENT
+utility_vs_allquery,utility_controller_q25_p10_i4,allquery_q25_p10_i4,inserted_non_gold_units,0.6125,1.165625,-0.5531249999999999,-0.6781250000000001,-0.43437499999999996,10000,20260713,DESCRIPTIVE_DEVELOPMENT
+utility_vs_allquery,utility_controller_q25_p10_i4,allquery_q25_p10_i4,false_insert_rate,0.8990825688073395,0.9053398058252428,-0.006257237017903261,-0.03364939786701228,0.021117764598718152,10000,20260713,DESCRIPTIVE_DEVELOPMENT
+utility_vs_dense,utility_controller_q25_p10_i4,dense_fixed,chain_recall_at_20,0.90625,0.875,0.03125,0.012500000000000067,0.050000000000000044,10000,20260713,DESCRIPTIVE_DEVELOPMENT
+utility_vs_dense,utility_controller_q25_p10_i4,dense_fixed,evidence_recall_at_20,0.9592410714285714,0.9428348214285714,0.016406249999999956,0.007552083333333237,0.026562500000000044,10000,20260713,DESCRIPTIVE_DEVELOPMENT
+utility_vs_dense,utility_controller_q25_p10_i4,dense_fixed,trigger,0.2125,0.0,0.2125,0.175,0.25,10000,20260713,DESCRIPTIVE_DEVELOPMENT
+utility_vs_dense,utility_controller_q25_p10_i4,dense_fixed,inserted_non_gold_units,0.6125,0.0,0.6125,0.4875,0.7375,10000,20260713,DESCRIPTIVE_DEVELOPMENT
+utility_vs_dense,utility_controller_q25_p10_i4,dense_fixed,false_insert_rate,0.8990825688073395,0.0,0.8990825688073395,0.8578680203045685,0.9367843990626046,10000,20260713,DESCRIPTIVE_DEVELOPMENT

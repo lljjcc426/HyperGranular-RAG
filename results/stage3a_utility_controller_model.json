@@ -1,0 +1,220 @@
+{
+  "feature_order": [
+    "top_ball_score",
+    "ball_score_margin",
+    "top_ball_radius",
+    "query_to_top_ball_distance",
+    "boundary_margin",
+    "log1p_num_candidates",
+    "log1p_selected_edge_count",
+    "log1p_raw_candidate_count",
+    "log1p_filtered_candidate_count"
+  ],
+  "means": [
+    0.6309362324575584,
+    0.13559633460827172,
+    0.32288735094868265,
+    0.3690637675424417,
+    0.9931246337891494,
+    3.3636261797922864,
+    0.5719159374283709,
+    1.0337602681415816,
+    0.8340016799928567
+  ],
+  "scales": [
+    0.10147132588104253,
+    0.23861476996341593,
+    0.19223365887515215,
+    0.10147132588104255,
+    1.6404276711064218,
+    0.3755825553812512,
+    0.48904140151814135,
+    0.8907996239425818,
+    0.8024460970604875
+  ],
+  "zero_variance_features": [],
+  "regularization_lambda": 1.0,
+  "optimizer": "Newton",
+  "max_iterations": 100,
+  "tolerance": 1e-09,
+  "gain_head": {
+    "fallback": false,
+    "fallback_probability": null,
+    "coefficients": [
+      -5.227006039485726,
+      0.14314250239791543,
+      0.4991104091459607,
+      -0.4101189970203884,
+      -0.14314250239791698,
+      0.2801207604842524,
+      0.7685512829344352,
+      0.1279191366456031,
+      1.0433688456170818,
+      -0.2151792548906797
+    ],
+    "iterations": 10,
+    "converged": true,
+    "positives": 9,
+    "negatives": 471
+  },
+  "harm_head": {
+    "fallback": true,
+    "fallback_probability": 0.006224066390041493,
+    "coefficients": [
+      -5.073088308742806,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "iterations": 0,
+    "converged": true,
+    "positives": 2,
+    "negatives": 478
+  },
+  "selected_threshold": {
+    "threshold": 0.018174305149033447,
+    "selected_gains": 10,
+    "allquery_gains": 12,
+    "gain_retention": 0.8333333333333334,
+    "inserted_non_gold_units": 196,
+    "harm_events": 0,
+    "triggered_queries": 68,
+    "mode": "finite",
+    "development_failed": false
+  },
+  "predictive_metrics": [
+    {
+      "partition": "fitting",
+      "dataset": "ALL",
+      "head": "gain",
+      "queries": 480,
+      "positives": 9,
+      "auroc": 0.9037508846426043,
+      "average_precision": 0.2835291810901567
+    },
+    {
+      "partition": "fitting",
+      "dataset": "ALL",
+      "head": "harm",
+      "queries": 480,
+      "positives": 2,
+      "auroc": 0.5,
+      "average_precision": 0.004166666666666667
+    },
+    {
+      "partition": "fitting",
+      "dataset": "hotpotqa",
+      "head": "gain",
+      "queries": 240,
+      "positives": 9,
+      "auroc": 0.8066378066378066,
+      "average_precision": 0.28415608953158483
+    },
+    {
+      "partition": "fitting",
+      "dataset": "hotpotqa",
+      "head": "harm",
+      "queries": 240,
+      "positives": 2,
+      "auroc": 0.5,
+      "average_precision": 0.008333333333333333
+    },
+    {
+      "partition": "fitting",
+      "dataset": "musique",
+      "head": "gain",
+      "queries": 240,
+      "positives": 0,
+      "auroc": null,
+      "average_precision": null
+    },
+    {
+      "partition": "fitting",
+      "dataset": "musique",
+      "head": "harm",
+      "queries": 240,
+      "positives": 0,
+      "auroc": null,
+      "average_precision": null
+    },
+    {
+      "partition": "threshold_selection",
+      "dataset": "ALL",
+      "head": "gain",
+      "queries": 320,
+      "positives": 12,
+      "auroc": 0.8482142857142857,
+      "average_precision": 0.11255842626043457
+    },
+    {
+      "partition": "threshold_selection",
+      "dataset": "ALL",
+      "head": "harm",
+      "queries": 320,
+      "positives": 0,
+      "auroc": null,
+      "average_precision": null
+    },
+    {
+      "partition": "threshold_selection",
+      "dataset": "hotpotqa",
+      "head": "gain",
+      "queries": 160,
+      "positives": 12,
+      "auroc": 0.6863738738738738,
+      "average_precision": 0.11320545173680098
+    },
+    {
+      "partition": "threshold_selection",
+      "dataset": "hotpotqa",
+      "head": "harm",
+      "queries": 160,
+      "positives": 0,
+      "auroc": null,
+      "average_precision": null
+    },
+    {
+      "partition": "threshold_selection",
+      "dataset": "musique",
+      "head": "gain",
+      "queries": 160,
+      "positives": 0,
+      "auroc": null,
+      "average_precision": null
+    },
+    {
+      "partition": "threshold_selection",
+      "dataset": "musique",
+      "head": "harm",
+      "queries": 160,
+      "positives": 0,
+      "auroc": null,
+      "average_precision": null
+    }
+  ],
+  "promotion": {
+    "checks": {
+      "gain_retention_at_least_0_80": true,
+      "non_gold_reduction_at_least_0_20": true,
+      "cr20_gap_at_least_minus_0_01": true,
+      "positive_net_completed_chain_change": true,
+      "not_expand_all": true,
+      "no_sparse_target_fallback": false
+    },
+    "passed": false,
+    "gain_retention": 0.8333333333333334,
+    "non_gold_reduction": 0.4745308310991956,
+    "cr20_gap_vs_allquery": -0.006249999999999978,
+    "net_completed_chain_change": 10
+  },
+  "protocol": "docs/STAGE3A_PROTOCOL.md",
+  "reservation": "docs\\STAGE3_DATA_RESERVATION.json",
+  "q25_floor": 0.1957079917192459,
+  "model_name": "sentence-transformers/all-MiniLM-L6-v2"
+}

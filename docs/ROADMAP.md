@@ -3,7 +3,7 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage3A utility-calibrated controller protocol frozen before development metrics
+- Current stage: Stage3A development completed with promotion FAIL; Stage3B remains locked
 - Data used so far: HotpotQA sample200 + MuSiQue sample200
 - Generator used: No
 - Gold labels used for indexing: No
@@ -148,7 +148,7 @@ Diagnostic plan fixed in `docs/STAGE2H_DIAGNOSTIC_PLAN.md`; this stage is explic
 
 Interpretation boundary: the current OR rule is broad because the score-margin and radius conditions jointly cover most queries; score margin carries the strongest but weak signal, radius adds little selectivity, and the low-top-score branch is inert. No replacement threshold is validated.
 
-## Next Experiment: Stage3A Utility-Calibrated Controller Development
+## Completed Experiment: Stage3A Utility-Calibrated Controller Development
 
 1. Use only a new development slice, provisionally source rows `[600:1000)`, for feature selection, calibration, and threshold choice.
 2. Reserve a later, non-overlapping slice before development metrics are inspected; evaluate it once after freezing the controller.
@@ -157,3 +157,24 @@ Interpretation boundary: the current OR rule is broad because the score-margin a
 5. Keep Stage2E-H as diagnostic history only; do not reuse their labels for fitting or threshold selection.
 
 Protocol: `docs/STAGE3A_PROTOCOL.md`. Stage3A uses source rows `[600:1000)` for development and reserves `[1000:1400)` for a later frozen Stage3B test. Stage3B metrics remain inaccessible until the Stage3A model artifact and threshold are committed.
+
+## Stage3A Observed Results
+
+- Data audit: 800 development queries and 24,415 units; zero missing gold, zero overlap with Stage2E-G, and zero overlap with the reserved Stage3B IDs.
+- Fitting partition: 9 gain events and 2 harm events among 480 queries. The harm head used the predeclared sparse-target fallback.
+- Threshold-selection partition: 12 gain events and 0 harm events among 320 queries. The selected threshold retained 10 gains and triggered 68 queries.
+- Utility controller versus all-query: trigger-rate delta -0.2406, non-gold insertions/query delta -0.5531, CR@20 delta -0.00625.
+- Utility controller versus dense fixed: CR@20 delta +0.03125, descriptive 95% CI [0.01250, 0.05000].
+- False-insert-rate delta versus all-query = -0.00626, descriptive 95% CI [-0.03365, 0.02112]; fewer insertions do not establish better conditional precision.
+- Promotion gate: FAIL because the no-fallback condition failed. The other four observed conditions passed.
+- Reproducibility: query audit, model JSON, summary CSV, and bootstrap CSV are byte-identical on deterministic rerun.
+
+Interpretation boundary: Stage3A supports a development-only volume/recall trade-off on HotpotQA, not a validated risk-aware controller. MuSiQue produced no gain or harm events, and Stage3B remains locked under the frozen stop rule.
+
+## Next Experiment: Stage3C Target-Feasibility And Data-Strategy Audit
+
+1. Do not inspect Stage3B retrieval metrics and do not reuse its reserved IDs for development.
+2. Quantify gain/harm event prevalence and saturation by dataset using development data only.
+3. Audit whether another evidence-intensive multi-hop benchmark supplies enough non-saturated gain and harm events for controller learning.
+4. Compare two research scopes before new modeling: risk-aware expected utility versus budget-aware gain selection.
+5. Freeze a new data and endpoint protocol before fitting another controller branch.
