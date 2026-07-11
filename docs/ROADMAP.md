@@ -3,7 +3,7 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage3A development completed with promotion FAIL; Stage3B remains locked
+- Current stage: Stage3C target-feasibility and data-strategy audit protocol frozen; Stage3B remains locked
 - Data used so far: HotpotQA sample200 + MuSiQue sample200
 - Generator used: No
 - Gold labels used for indexing: No
@@ -178,3 +178,5 @@ Interpretation boundary: Stage3A supports a development-only volume/recall trade
 3. Audit whether another evidence-intensive multi-hop benchmark supplies enough non-saturated gain and harm events for controller learning.
 4. Compare two research scopes before new modeling: risk-aware expected utility versus budget-aware gain selection.
 5. Freeze a new data and endpoint protocol before fitting another controller branch.
+
+Protocol: `docs/STAGE3C_PROTOCOL.md`. This audit reuses only observed Stage2H/Stage3A labels, screens five predeclared datasets with primary sources, and does not download, embed, or evaluate Stage3B data.
