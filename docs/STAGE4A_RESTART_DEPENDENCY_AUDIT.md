@@ -32,7 +32,7 @@ This audit identifies which earlier conclusions remain supported, which require 
 
 1. The restarted Stage4A may transfer q25 p10/i4 as a fixed policy because Stage2F independently tested it; the restarted Stage4A must not claim the threshold is 2Wiki-optimal.
 2. The restarted Stage4A uses all-query expansion because Stage2G did not validate boundary suppression.
-3. The restarted Stage4A adopts the Stage3C threshold of at least 20 gain events for selector-development feasibility; the invalidated Stage4A threshold of 10 is superseded for scientific planning.
+3. The Stage3C threshold of at least 20 gain events is retained only as a planning heuristic. It does not establish selector-training adequacy or retrieval-effect power and cannot justify executing restarted Stage4A at `n=2,800`.
 4. The restarted Stage4A uses the official April 7 archive only.
 5. Invalidated Stage4A rows `[0:400)` and its old reservation `[400:800)` are excluded from restarted Stage4A development and reservation data.
 6. Stage3B remains locked and is not affected by the restarted Stage4A.
@@ -43,6 +43,7 @@ This audit identifies which earlier conclusions remain supported, which require 
 - Official 2Wiki dense saturation: UNRESOLVED.
 - Official 2Wiki q25 gain-event feasibility: UNRESOLVED.
 - Existing mirror metrics: REPRODUCIBLE_BUT_SOURCE_SCOPED.
+- Restarted Stage4A execution: NOT AUTHORIZED; sample-size design revision required.
 - New controller fitting: NOT AUTHORIZED.
 
-The project stage is rolled back to Stage3C completed. The next valid action is approval and freezing of `docs/STAGE4A_RESTART_PROTOCOL_DRAFT.md`, followed by source-only extraction from the official archive. No retrieval metric should be computed before that approval.
+The project stage is rolled back to Stage3C, retained as descriptive planning. The next valid action is to replace the returned Stage4A draft with an objective-specific sample-size design. No official row extraction or retrieval metric is authorized before the replacement protocol is frozen and explicitly approved.

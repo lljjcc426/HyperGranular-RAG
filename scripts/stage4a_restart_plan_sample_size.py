@@ -69,14 +69,14 @@ def main() -> None:
             )
 
     plan = {
-        "status": "DRAFT_AWAITING_USER_APPROVAL",
+        "status": "PLANNING_LOWER_BOUND_ONLY_RETURNED_FOR_DESIGN_REVISION",
         "method": "exact binomial probability of observing at least the target number of gain events",
         "design_inputs": {
             "gain_event_target": args.event_target,
             "minimum_gain_prevalence": args.minimum_prevalence,
             "target_probability": args.target_probability,
             "round_to": args.round_to,
-            "rationale": "20 gains aligns with the frozen Stage3C budget-aware event-feasibility threshold; 0.01 is below the Stage4A mirror point estimate and rounded below its 0.0102 Wilson lower bound",
+            "rationale": "20 gains aligns with a frozen Stage3C planning heuristic; 0.01 is a sensitivity assumption informed by the invalidated Stage4A mirror pilot, not an official-data lower bound",
         },
         "calculation": {
             "exact_minimum_n": exact_n,
@@ -106,8 +106,13 @@ def main() -> None:
         "interpretation": {
             "planning_only": True,
             "confirmatory_power_claim": False,
+            "retrieval_effect_power_analysis": False,
+            "controller_training_adequacy_established": False,
+            "approved_sample_size": False,
+            "design_revision_required": True,
             "event_rate_below_0.01": "The design no longer guarantees 95% probability of 20 gains",
             "approval_required_before_extraction": True,
+            "permitted_use": "Event-count lower bound only; do not execute the restarted Stage4A from this calculation",
         },
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)

@@ -309,9 +309,9 @@ Additional tracked audit outputs:
 
 The expected official ZIP SHA-256 is `95DF2BF56FDABE034E27AEBC580E02264232203CF52552F9EFE8A919E5529EEF`. Reconciliation must preserve the observed 7 context-content mismatches, 5 gold-evidence text mismatches, and exact ordered reservation-ID match. These findings supersede the earlier assumption that the pinned mirror was content-equivalent to the official April 7 archive.
 
-## Restarted Stage4A Sample-size Planning
+## Restarted Stage4A Event-count Lower Bound
 
-The restarted Stage4A has not started data extraction. Its draft sample size is generated deterministically:
+The restarted Stage4A has not started data extraction. The returned draft's event-count lower bound is generated deterministically:
 
 ```powershell
 & "D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe" `
@@ -327,6 +327,6 @@ The restarted Stage4A has not started data extraction. Its draft sample size is 
 
 Expected SHA-256 for `docs/STAGE4A_RESTART_SAMPLE_SIZE_PLAN.json`:
 
-`A71D006BC961F17B0211D5E396B6BB1FCA82EB6090C1A989FCE7CF179BEB989E`
+`92B080D66D67A6B6B3708AF03D9272F2F7564FAA719639B1FACFDDB2431DECCC`
 
-The exact minimum is 2,784 and the proposed rounded development sample is 2,800, yielding probability 0.952994 of at least 20 gains when true prevalence is 0.01. This is a planning operating characteristic, not a confirmatory power claim. `docs/STAGE4A_RESTART_PROTOCOL_DRAFT.md` must remain unexecuted until explicit user approval.
+The exact minimum is 2,784 and the rounded lower bound is 2,800, yielding probability 0.952994 of at least 20 gains when true prevalence is 0.01. The prior-stage audit established that 20 is a planning heuristic and 0.01 is a sensitivity assumption informed by the invalidated mirror pilot. This is not retrieval-effect power, prevalence-precision design, or controller-training adequacy. `docs/STAGE4A_RESTART_PROTOCOL_DRAFT.md` is returned for design revision and cannot be approved for execution in its current form.

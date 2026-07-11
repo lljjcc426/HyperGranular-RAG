@@ -5,7 +5,7 @@
 - Origin Skill: academic-research-suite / experiment-agent
 - Mode: plan
 - Date: 2026-07-11
-- Protocol Status: DRAFT_AWAITING_USER_APPROVAL
+- Protocol Status: RETURNED_FOR_DESIGN_REVISION
 - Metrics Status: NOT COMPUTED
 - Source extraction status: NOT STARTED
 - Other conversations, thread tools, and memory files used: No
@@ -18,7 +18,7 @@
 - **Controller fitting**: prohibited
 - **Stage3B status**: locked and unrelated
 
-The restarted Stage4A supersedes the invalidated mirror pilot and is not the stopped Stage4B branch. It uses fresh official rows and a sample size fixed from explicit event-count operating characteristics. Stage3C remains the last valid completed stage until this draft is approved and frozen.
+The restarted Stage4A supersedes the invalidated mirror pilot and is not the stopped Stage4B branch. Stage3C remains the last retained completed stage, with descriptive-planning evidence only. The prior-stage audit found that the event-count calculation below does not justify an executable sample size, so this protocol cannot be approved in its current form.
 
 ## Source of Truth
 
@@ -29,11 +29,11 @@ The restarted Stage4A supersedes the invalidated mirror pilot and is not the sto
 - License: Apache-2.0 repository license
 - Mirror data: prohibited for restarted Stage4A extraction, embeddings, and metrics
 
-## Sample-size Design
+## Audited Event-count Lower Bound
 
-Primary planning endpoint: observe at least 20 q25 gain events, matching the Stage3C budget-aware selector event-feasibility threshold.
+The earlier draft used observing at least 20 q25 gain events as its planning endpoint, matching the Stage3C budget-aware selector event-feasibility rule. Stage3C explicitly labels 20 as a planning rule rather than a universal sample-size law.
 
-Frozen assumptions proposed for approval:
+Historical assumptions used in the returned calculation:
 
 - Minimum scientifically relevant gain prevalence: 0.0100
 - Target probability of observing at least 20 gains when prevalence is at least 0.0100: 0.95
@@ -43,15 +43,15 @@ Frozen assumptions proposed for approval:
 - Achieved probability at `n=2,800`: 0.9530
 - Expected gains at prevalence 0.0100: 28
 
-The 0.0100 prevalence is rounded below the Stage4A mirror Wilson lower bound of 0.0102. This is a conservative planning assumption, not an official-data effect claim.
+The arithmetic is correct, but the design conclusion is not sufficient. The 0.0100 prevalence is informed by the invalidated mirror pilot and is therefore a sensitivity assumption, not an official-data lower bound. Twenty positive events do not establish retrieval-effect power, prevalence-estimation precision, harm estimation, or controller-training adequacy. `n=2,800` is retained only as an event-count lower bound.
 
-## Proposed Data Boundary
+## Withdrawn Data Boundary Proposal
 
 | Role | Official dev rows | Queries | Access rule |
 |---|---:|---:|---|
 | Excluded prior material | `[0:800)` | 800 | Never used in restarted Stage4A metrics |
-| Restarted Stage4A development feasibility | `[800:3600)` | 2,800 | Extract only after protocol approval and commit |
-| Future reservation | `[3600:6400)` | 2,800 | IDs/digest only; no embeddings or retrieval metrics |
+| Restarted Stage4A development feasibility | `[800:3600)` | 2,800 | Withdrawn pending sample-size redesign; do not extract |
+| Future reservation | `[3600:6400)` | 2,800 | Withdrawn pending sample-size redesign; do not inspect |
 | Unused remainder | `[6400:12576)` | 6,176 | No restarted Stage4A access |
 
 Contiguous rows are proposed because the official archive has no documented random ordering guarantee that would justify stratified reshuffling without inspecting labels. Question-type distribution will be reported descriptively after extraction and will not alter the sample.
@@ -91,9 +91,9 @@ Frozen strategies:
 
 All intervals are descriptive feasibility estimates. No p-value or confirmatory treatment-effect claim is permitted.
 
-## Proposed Decision Rules
+## Withdrawn Decision Rules
 
-The restarted Stage4A supports a separately designed selector-development study only if all conditions hold:
+These rules are preserved as draft history but are not executable. They must be replaced after the study objective and sample-size criterion are repaired.
 
 1. Official supporting-fact mapping rate is at least 0.99 and zero queries have missing mapped gold.
 2. Dense-fixed CR@20 is below 0.95.
@@ -108,7 +108,7 @@ Failure has bounded interpretation:
 - It does not prove that HyperGranular RAG, other thresholds, or other retrieval policies are universally infeasible.
 - No threshold may be modified and rerun on the same 2,800 labels.
 
-## Required Outputs After Approval
+## Historical Output Proposal
 
 - Official extraction audit and query-ID digests
 - Local official unified JSON, units, queries, and embeddings
@@ -118,8 +118,12 @@ Failure has bounded interpretation:
 - Independent verification JSON
 - Restarted Stage4A report with explicit provenance and bounded decision
 
-## Approval Gate
+## Redesign Gate
 
-No extraction, embedding, or retrieval command may run until the user explicitly approves:
+No extraction, embedding, or retrieval command may run from this draft. Before a new approval request, the replacement protocol must predeclare one primary objective and justify its sample size accordingly:
 
-`n=2,800; official rows [800:3600); reserve [3600:6400); 20 gains; p_min=0.01; target probability=0.95.`
+1. prevalence estimation with a target confidence-interval width;
+2. paired retrieval-effect testing with a minimum meaningful effect and power analysis; or
+3. selector development with a fixed model class, feature count, train/calibration/test split, minimum event counts in each partition, and simulation or learning-curve evidence.
+
+The exact row boundaries must be frozen only after the resulting sample size is known. See `docs/PRIOR_STAGE_METHOD_AUDIT.md`.

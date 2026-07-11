@@ -4,20 +4,25 @@
     "exact_minimum_n": 2784,
     "expected_gains_at_minimum_prevalence": 28.0,
     "planned_development_n": 2800,
-    "probability_at_stage4a_n400": 7.471133600667201e-09
+    "probability_at_stage4a_n400": 7.471133711689504e-09
   },
   "design_inputs": {
     "gain_event_target": 20,
     "minimum_gain_prevalence": 0.01,
-    "rationale": "20 gains aligns with the frozen Stage3C budget-aware event-feasibility threshold; 0.01 is below the Stage4A mirror point estimate and rounded below its 0.0102 Wilson lower bound",
+    "rationale": "20 gains aligns with a frozen Stage3C planning heuristic; 0.01 is a sensitivity assumption informed by the invalidated Stage4A mirror pilot, not an official-data lower bound",
     "round_to": 100,
     "target_probability": 0.95
   },
   "interpretation": {
     "approval_required_before_extraction": true,
+    "approved_sample_size": false,
     "confirmatory_power_claim": false,
+    "controller_training_adequacy_established": false,
+    "design_revision_required": true,
     "event_rate_below_0.01": "The design no longer guarantees 95% probability of 20 gains",
-    "planning_only": true
+    "permitted_use": "Event-count lower bound only; do not execute the restarted Stage4A from this calculation",
+    "planning_only": true,
+    "retrieval_effect_power_analysis": false
   },
   "method": "exact binomial probability of observing at least the target number of gain events",
   "official_dev_partition": {
@@ -91,5 +96,5 @@
       "target_probability": 0.95
     }
   ],
-  "status": "DRAFT_AWAITING_USER_APPROVAL"
+  "status": "PLANNING_LOWER_BOUND_ONLY_RETURNED_FOR_DESIGN_REVISION"
 }

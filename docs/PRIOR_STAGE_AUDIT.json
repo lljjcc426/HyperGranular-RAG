@@ -1,0 +1,52 @@
+{
+  "audit_date": "2026-07-11",
+  "audited_commit": "bbc7279e07b066e925074d1fd60d193876de5296",
+  "evidence_boundary": {
+    "current_conversation_only": true,
+    "memory_files_used": false,
+    "other_threads_used": false
+  },
+  "integrity": {
+    "all_scripts_compile": true,
+    "gold_selection_leakage_found": false,
+    "missing_gold_units": 0,
+    "processed_slice_overlap_found": false,
+    "stage3b_metrics_accessed": false
+  },
+  "raw_sources": {
+    "hotpotqa": {
+      "rows": 7405,
+      "sha256": "E3DA074DF24E8369009918AA5CDBDD254DADCDE4C63F7569D36AFD6F2268CAA8",
+      "provenance_status": "PINNED_MIRROR_OFFICIAL_BYTE_EQUIVALENCE_UNCERTIFIED"
+    },
+    "musique": {
+      "rows": 2417,
+      "sha256": "15FA63794D18A94CE12411ACA6E2327E65B6E83B0B1490EFAB3F1962E48ABF3B",
+      "provenance_status": "OFFICIAL_ARCHIVE"
+    }
+  },
+  "stage_decisions": {
+    "stage0": "RETAIN_WITH_SOURCE_SCOPE",
+    "stage1_to_stage2e": "RETAIN_EXPLORATORY_ONLY",
+    "stage2f": "RETAIN_NARROW_INTERNAL_EVIDENCE_PRIMARY_GATE_FAILED",
+    "stage2g": "RETAIN_VALID_NEGATIVE_RESULT_BOUNDARY_RULE_UNSUPPORTED",
+    "stage2h": "RETAIN_DIAGNOSTIC_ONLY",
+    "stage3a": "RETAIN_FAILED_DEVELOPMENT_STAGE3B_LOCKED",
+    "stage3c": "RETAIN_DESCRIPTIVE_ONLY",
+    "original_stage4a": "ARCHIVE_INVALIDATED",
+    "restarted_stage4a": "RETURN_FOR_DESIGN_REVISION"
+  },
+  "sample_size_audit": {
+    "earlier_n400": "CONVENIENCE_OR_BALANCED_SLICE_SIZE_NOT_A_PRIORI_POWERED",
+    "restarted_n2800_arithmetic": "CORRECT",
+    "restarted_n2800_scientific_status": "EVENT_COUNT_LOWER_BOUND_ONLY_NOT_APPROVED_SAMPLE_SIZE",
+    "reason": "The 20-gain target is a Stage3C planning heuristic and does not establish retrieval-effect power or controller-training adequacy"
+  },
+  "research_state": {
+    "last_completed_stage": "Stage3C",
+    "last_completed_evidence_class": "DESCRIPTIVE_PLANNING_ONLY",
+    "current_position": "BETWEEN_STAGE3C_AND_STAGE4A_DESIGN",
+    "next_experiment_authorized": false,
+    "stage3b": "KEEP_LOCKED"
+  }
+}
