@@ -3,7 +3,7 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage3C completed; Stage4A independent 2Wiki feasibility pilot pending; Stage3B remains locked
+- Current stage: Stage4A 2Wiki feasibility pilot protocol frozen before retrieval metrics; Stage3B remains locked
 - Data used so far: HotpotQA sample200 + MuSiQue sample200
 - Generator used: No
 - Gold labels used for indexing: No
@@ -202,3 +202,5 @@ Interpretation boundary: Stage3C supports narrowing the research scope to budget
 3. Map `context`, `supporting_facts`, and evidence paths into the existing unit/query schema and report mapping loss.
 4. Measure dense-fixed CR@20 and q25 protect-10/insert-4 gain prevalence without fitting a controller.
 5. Continue only if the pilot is non-saturated and supplies enough gain events under a preregistered threshold.
+
+Protocol: `docs/STAGE4A_PROTOCOL.md`. Because the official Dropbox archive is not reachable from the experiment shell, the pilot uses a pinned schema-only Hugging Face mirror with `PROVENANCE_DOWNGRADED` status. Paper-grade use requires later reconciliation against the official archive.
