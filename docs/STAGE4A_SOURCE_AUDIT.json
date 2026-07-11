@@ -1,0 +1,104 @@
+{
+  "protocol": "docs/STAGE4A_PROTOCOL.md",
+  "provenance_status": "PROVENANCE_DOWNGRADED",
+  "official": {
+    "repository": "https://github.com/Alab-NII/2wikimultihop",
+    "repository_sha": "13800e5be57df1b4040b9b1588c6c811779e69e9",
+    "license": "Apache-2.0 repository license",
+    "corrected_archive": "data_ids_april7.zip",
+    "archive_download_status": "UNREACHABLE_FROM_EXPERIMENT_SHELL",
+    "archive_checksum_status": "NOT_PUBLISHED"
+  },
+  "mirror": {
+    "dataset": "framolfese/2WikiMultihopQA",
+    "repository_sha_before": "fe713bfbd1afbca1a65246741a75890405d56a3a",
+    "repository_sha_after": "fe713bfbd1afbca1a65246741a75890405d56a3a",
+    "metadata_sha256_before": "B16F6FEC8AAC79D94DC9DDF4CC0888CA06C4BF84B69FA28359B047E686AE6B06",
+    "metadata_sha256_after": "B16F6FEC8AAC79D94DC9DDF4CC0888CA06C4BF84B69FA28359B047E686AE6B06",
+    "size_response_sha256": "F022AF5E8B074D9D419003A217A79101CBFC927FFC6C525A6699109C23EB58CA",
+    "validation_rows": 12576,
+    "validation_parquet_oid": "5db5d6e1162d08d05f2d2a72aa0d9736b70dd1c6"
+  },
+  "data_boundary": {
+    "pilot_rows": "[0:400)",
+    "pilot_queries": 400,
+    "pilot_query_id_sha256": "6E00E3FA59C930DB1ABDA099A90A919A0FA4C1F6C8FA816812ABFD51FC9CA2F4",
+    "reservation_rows": "[400:800)",
+    "reservation_queries": 400,
+    "reservation_query_id_sha256": "35749FEC85DF64587B86433011B5D94132B6A30AEA2D8A146F3D3A9124A2AC68",
+    "pilot_reservation_overlap": 0,
+    "reservation_content_written": false
+  },
+  "page_audit": [
+    {
+      "role": "pilot",
+      "offset": 0,
+      "rows": 100,
+      "response_sha256": "993A2FF4483A20F08D718E32E11FD13973E67A474E6470AEC12833B5E0C45369"
+    },
+    {
+      "role": "pilot",
+      "offset": 100,
+      "rows": 100,
+      "response_sha256": "F6973B9122EDCFC17F31C1479FB7A07FAEA7B66C092E61D0C39A721ACA094C89"
+    },
+    {
+      "role": "pilot",
+      "offset": 200,
+      "rows": 100,
+      "response_sha256": "B7606A20BA287CD91D083495C75B9820B8956CD6353BE631505F9D988E090A48"
+    },
+    {
+      "role": "pilot",
+      "offset": 300,
+      "rows": 100,
+      "response_sha256": "3A1392008F0A0C6E5DE21625BB3F0D1FDC3AE45EC589F2E4D9D56C5768453319"
+    },
+    {
+      "role": "reservation_ids_only",
+      "offset": 400,
+      "rows": 100,
+      "response_sha256": "E771958AF6454301AEF82C12DB441C9AC15D44FB3E485E19DF500A9A716E9814"
+    },
+    {
+      "role": "reservation_ids_only",
+      "offset": 500,
+      "rows": 100,
+      "response_sha256": "0D936DB0F3F4978AB3127FF8E35F5815ADBBAA814975CC4C7190F3E19BC46D99"
+    },
+    {
+      "role": "reservation_ids_only",
+      "offset": 600,
+      "rows": 100,
+      "response_sha256": "7841926D3B318FC55743A6C759C1FBCBC08317B7B67CA83319B6322B8F048C5D"
+    },
+    {
+      "role": "reservation_ids_only",
+      "offset": 700,
+      "rows": 100,
+      "response_sha256": "092C717CD9EC52EF59E295E87E4A6BAE5A7A03A250B5157474DB529E44C1596D"
+    }
+  ],
+  "mapping": {
+    "queries": 400,
+    "question_types": {
+      "bridge_comparison": 90,
+      "comparison": 86,
+      "compositional": 174,
+      "inference": 50
+    },
+    "supporting_facts": 982,
+    "mapped_supporting_facts": 982,
+    "supporting_fact_mapping_rate": 1.0,
+    "queries_missing_gold": 0,
+    "missing_support_titles": 0,
+    "out_of_range_support_sentences": 0,
+    "duplicate_supporting_fact_refs": 0,
+    "duplicate_context_titles": 10
+  },
+  "local_outputs": {
+    "pilot_unified_file": "stage4a_2wiki_pilot400_unified.json",
+    "reservation_file": null
+  },
+  "transport": "powershell_dotnet_http_cache"
+}
