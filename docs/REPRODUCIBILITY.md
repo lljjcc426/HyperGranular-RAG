@@ -144,3 +144,37 @@ Expected tracked outputs:
 - `reports/超粒球RAG_Stage2G_StatisticalValidation.md`
 
 The local Stage2G JSON/JSONL files and `stage2g_dense_allminilm_embeddings.npz` remain untracked. A deterministic rerun must produce byte-identical summary and bootstrap CSV files; timing and report paths are excluded from equality checks.
+
+## Stage2H Boundary-Rule Failure Diagnosis
+
+Stage2H reuses the already evaluated Stage2E-F-G slices only for exploratory diagnosis. It does not fit or validate a replacement threshold. Run the diagnosis with the three existing embedding caches:
+
+```powershell
+& "D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe" `
+  scripts/stage2h_boundary_failure_diagnosis.py `
+  --corpus stage2e `
+    "E:\科研\超粒球RAG_数据\processed\stage1_sample400_units.jsonl" `
+    "E:\科研\超粒球RAG_数据\processed\stage1_sample400_queries.jsonl" `
+    "E:\科研\超粒球RAG_数据\processed\stage2_dense_allminilm_embeddings.npz" `
+  --corpus stage2f `
+    "E:\科研\超粒球RAG_数据\processed\stage2f_unseen400_units.jsonl" `
+    "E:\科研\超粒球RAG_数据\processed\stage2f_unseen400_queries.jsonl" `
+    "E:\科研\超粒球RAG_数据\processed\stage2f_dense_allminilm_embeddings.npz" `
+  --corpus stage2g `
+    "E:\科研\超粒球RAG_数据\processed\stage2g_unseen400_units.jsonl" `
+    "E:\科研\超粒球RAG_数据\processed\stage2g_unseen400_queries.jsonl" `
+    "E:\科研\超粒球RAG_数据\processed\stage2g_dense_allminilm_embeddings.npz" `
+  --calibration-summary results/stage2e_insert_noise_control_summary.csv `
+  --output-dir results `
+  --report "reports\超粒球RAG_Stage2H_BoundaryFailureDiagnosis报告.md"
+```
+
+Expected tracked outputs:
+
+- `results/stage2h_boundary_query_audit.csv`
+- `results/stage2h_boundary_component_summary.csv`
+- `results/stage2h_boundary_predictive_metrics.csv`
+- `reports/超粒球RAG_Stage2H_BoundaryFailureDiagnosis报告.md`
+- `reports/超粒球RAG_Stage2H_StatisticalValidation.md`
+
+The deterministic verification uses 10,000 stratified bootstrap iterations with seed `20260712`. All three CSV files must match byte-for-byte; the verified SHA-256 values are recorded in the statistical validation report. Timing and report paths are excluded from equality checks.

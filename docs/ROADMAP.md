@@ -3,7 +3,7 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage2H exploratory boundary-rule diagnosis planned
+- Current stage: Stage2H exploratory boundary-rule diagnosis completed; Stage3A development pending
 - Data used so far: HotpotQA sample200 + MuSiQue sample200
 - Generator used: No
 - Gold labels used for indexing: No
@@ -126,7 +126,7 @@ Protocol frozen in `docs/STAGE2G_PROTOCOL.md` before extracting or evaluating th
 
 Interpretation boundary: q25 protected insertion can still improve retrieval relative to dense fixed, but the current OR-composed boundary rule is not validated as a selective benefit predictor.
 
-## Next Experiment: Stage2H Boundary-Rule Failure Diagnosis
+## Completed Experiment: Stage2H Boundary-Rule Failure Diagnosis
 
 Diagnostic plan fixed in `docs/STAGE2H_DIAGNOSTIC_PLAN.md`; this stage is explicitly post-hoc and will not tune a replacement threshold.
 
@@ -135,3 +135,23 @@ Diagnostic plan fixed in `docs/STAGE2H_DIAGNOSTIC_PLAN.md`; this stage is explic
 3. Measure each component's prevalence, overlap, completion precision, harm rate, and false-insert yield.
 4. Treat all Stage2H findings as exploratory diagnostics; do not tune and evaluate a replacement rule on the same queries.
 5. If a replacement uncertainty controller is justified, develop it on a new `[600:1000)` slice and reserve a later slice for one final frozen test.
+
+## Stage2H Observed Results
+
+- Audit population: three pairwise-disjoint Stage2E-F-G slices, 1,200 queries, with zero missing gold units.
+- Current OR-gate prevalence = 0.8083; `score_margin`/`radius`/`low_top_score` prevalence = 0.5825/0.5033/0.0008.
+- On 133 triggered baseline-incomplete opportunities with 48 successful completions, continuous AUROC is 0.5223 for negative score margin, 0.4912 for negative radius margin, and 0.3821 for negative top score.
+- Completion-precision true-minus-false contrasts are +0.1292 for score margin, -0.0976 for radius, and +0.0512 for the OR gate; every corresponding 95% CI includes zero.
+- The score-only overlap mask has the highest descriptive completion precision (0.4262), while radius-only is 0.1667; these are post-hoc subgroup estimates, not controller-selection evidence.
+- Deterministic rerun produced byte-identical query-audit, component-summary, and predictive-metrics CSV files.
+- Validation confidence: CAUTION because outcomes were previously observed, multiple diagnostics were inspected, and useful-event counts are limited.
+
+Interpretation boundary: the current OR rule is broad because the score-margin and radius conditions jointly cover most queries; score margin carries the strongest but weak signal, radius adds little selectivity, and the low-top-score branch is inert. No replacement threshold is validated.
+
+## Next Experiment: Stage3A Utility-Calibrated Controller Development
+
+1. Use only a new development slice, provisionally source rows `[600:1000)`, for feature selection, calibration, and threshold choice.
+2. Reserve a later, non-overlapping slice before development metrics are inspected; evaluate it once after freezing the controller.
+3. Predict query-level utility from label-free retrieval signals, with separate targets for chain completion, Top-20 harm, and false-insert cost.
+4. Compare the learned/calibrated controller with dense fixed, all-query q25 insertion, and the frozen Stage2G OR gate under identical budgets.
+5. Keep Stage2E-H as diagnostic history only; do not reuse their labels for fitting or threshold selection.
