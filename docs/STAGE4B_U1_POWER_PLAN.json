@@ -1,0 +1,71 @@
+{
+  "interpretation": [
+    "Power is conditional on 94 gain and 69 harm opportunities in a 4,500-query reservation.",
+    "These counts are planning anchors, not assumed reservation outcomes.",
+    "No scenario can authorize reservation access or alter the label-free controller."
+  ],
+  "planning_anchor": {
+    "gain_events": 94,
+    "harm_events": 69,
+    "restriction": "used for power planning only; never for controller fitting or threshold selection",
+    "source": "verified Stage4A-R2 development estimates"
+  },
+  "primary_testing": {
+    "alpha_per_primary": 0.025,
+    "familywise_alpha": 0.05,
+    "mechanism_test": "one-sided Fisher exact test for gain retention > harm retention",
+    "minimum_practical_cr20_delta": 0.005,
+    "minimum_practical_retention_gap": 0.15,
+    "retrieval_test": "two-sided exact McNemar for controller vs dense CR@20",
+    "success_rule": "both primary tests and both practical-effect gates must pass"
+  },
+  "reservation_n": 4500,
+  "scenarios": [
+    {
+      "expected_cr20_delta_vs_dense": 0.002777777777777778,
+      "expected_selected_gains": 47.0,
+      "expected_selected_harms": 34.5,
+      "fisher_mechanism_power": 0.01770039710469158,
+      "gain_retention": 0.5,
+      "harm_retention": 0.5,
+      "joint_primary_power": 0.01769922933997246,
+      "mcnemar_retrieval_power": 0.058334631396595775,
+      "scenario": "no_selection_enrichment_half_budget"
+    },
+    {
+      "expected_cr20_delta_vs_dense": 0.005633333333333333,
+      "expected_selected_gains": 56.4,
+      "expected_selected_harms": 31.05,
+      "fisher_mechanism_power": 0.4201758692845535,
+      "gain_retention": 0.6,
+      "harm_retention": 0.45,
+      "joint_primary_power": 0.4201756893095347,
+      "mcnemar_retrieval_power": 0.6731802075614329,
+      "scenario": "weak_enrichment"
+    },
+    {
+      "expected_cr20_delta_vs_dense": 0.008211111111111112,
+      "expected_selected_gains": 61.1,
+      "expected_selected_harms": 24.15,
+      "fisher_mechanism_power": 0.959970244163797,
+      "gain_retention": 0.65,
+      "harm_retention": 0.35,
+      "joint_primary_power": 0.9599700556643944,
+      "mcnemar_retrieval_power": 0.9903622198221975,
+      "scenario": "target_enrichment"
+    },
+    {
+      "expected_cr20_delta_vs_dense": 0.01002222222222222,
+      "expected_selected_gains": 65.8,
+      "expected_selected_harms": 20.7,
+      "fisher_mechanism_power": 0.9991201898538163,
+      "gain_retention": 0.7,
+      "harm_retention": 0.3,
+      "joint_primary_power": 0.9991201874431376,
+      "mcnemar_retrieval_power": 0.9999079937726932,
+      "scenario": "strong_enrichment"
+    }
+  ],
+  "stage": "Stage4B-U1",
+  "status": "PLANNING_ONLY_NO_RESERVATION_ACCESS"
+}

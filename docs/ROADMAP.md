@@ -297,3 +297,17 @@ Amendment extraction result: the earliest 19 replacement rows were `[9800:9819)`
 - Type net gain: bridge-comparison +15, comparison +25, compositional -3, inference -12.
 - Independent verifier passed all query, summary, inference, and bootstrap checks; deterministic rerun produced byte-identical query audit, summary, bootstrap, and inference files.
 - Controller fitting remains unauthorized. A new model-specific protocol is required before using these labels for controller development.
+
+## Draft Stage4B-U1: Label-free Boundary-Uncertainty Controller
+
+Protocol draft: `docs/STAGE4B_U1_PROTOCOL_DRAFT.md`. This branch is not yet authorized for execution.
+
+1. Project governance prohibits Gold labels from entering feature selection, model fitting, threshold selection, or retrieval decisions; therefore the prior supervised gain/harm-controller direction is not reused.
+2. U1 uses four label-free quantities fixed by the retrieval mechanism: ball-score margin, normalized ball-boundary margin, selected-hyperedge count, and insertable q25 candidate count.
+3. Feature scaling uses development empirical distributions only. The score formula has fixed equal uncertainty weights and a readiness product; its threshold is the median feasible-query score, selected solely to impose an approximately 50% feasible-query resource budget.
+4. A Gold-free policy artifact must be independently verified, committed, and pushed before any development Gold evaluation.
+5. Stage4A-R2's 94 gains and 69 harms are used only as conditional power-planning anchors and frozen-policy evaluation events, never as controller inputs.
+6. U1-D is retrospective internal development. The official `[5300:9800)` reservation remains locked unless every promotion gate passes and the user separately approves U1-R.
+7. No feature extraction, policy calibration, controller evaluation, reservation access, or Stage3B access is authorized by the draft.
+
+Power-plan generator: `scripts/stage4b_u1_plan_power.py`; artifact: `docs/STAGE4B_U1_POWER_PLAN.json`.

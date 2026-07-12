@@ -6,17 +6,19 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Stage4A-R2 已完成并验证；下一 controller 研究尚未授权 |
-| 活跃协议 | `docs/STAGE4A_R2_PROTOCOL.md` |
-| 协议状态 | 已冻结；Amendment 1 已提交并完成来源提取 |
+| 当前阶段 | Stage4A-R2 已完成并验证；Stage4B-U1 正在设计，尚未执行 |
+| 活跃协议 | `docs/STAGE4B_U1_PROTOCOL_DRAFT.md` |
+| 协议状态 | Stage4B-U1 草案待用户批准；reservation 继续锁定 |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
-| Controller 训练 | 未授权 |
+| Controller | 监督训练被项目 Gold 约束禁止；无标签 U1 草案尚未授权执行 |
 | 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
 
 第一次官方提取在预注册映射硬门处停止：基础区间 `[800:5300)` 的 11,003 个 supporting facts 中有 19 个 sentence index 越界，影响 19 条查询；该失败没有生成 gain/harm 或检索指标。Amendment 1 随后采用仅由标注完整性决定的确定性替换，从 `[9800:9819)` 补入 19 条有效记录。最终 11,015/11,015 supporting facts 完整映射，development/reservation 零重叠。
 
 Stage4A-R2 最终估计：q25 gain `94/4500 = 2.089%`，harm `69/4500 = 1.533%`，两者 Wilson 95% 区间半宽均通过 0.5 个百分点精度门。Dense/q25 CR@20 为 `0.77222/0.77778`；平均增益 `+0.00556`，exact McNemar `p=0.0598`，因此不能主张确认性平均 CR 提升。q25 false-insert rate 仍为 `0.92163`。
+
+Stage4B-U1 草案依据项目 Gold 隔离规则，将后续 controller 收窄为无标签边界不确定性策略：经验分布、分数权重和资源阈值只能由检索几何与预先规定的 50% feasible-query 预算决定；94/69 仅用于功效规划和冻结后的评估。草案批准前不提取特征、不校准阈值，也不读取 reservation。
 
 ## 研究问题
 
@@ -38,8 +40,8 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 - **高阶关系**：使用 query-aware facet hyperedge 表达跨粒球证据补全候选。
 - **强基线保护**：保留 dense Top-10，仅允许最多 4 个扩展单元进入 Top-20。
 - **冻结过滤**：迁移 Stage2E 产生并在 Stage2F 独立测试的 q25 score floor `0.1957079917192459`。
-- **当前策略**：all-query expansion；Stage2G 已表明旧 boundary-only OR rule 不具备选择性优势。
-- **当前主终点**：q25 gain/harm prevalence 及 Wilson 95% 区间。
+- **当前策略**：已验证基线为 all-query q25；Stage4B-U1 草案定义连续边界不确定性与超边 readiness 的无标签组合。
+- **当前主终点**：U1 gain/harm retention gap、相对 dense 的 CR@20 delta 与插入成本下降。
 
 ## 证据等级
 
@@ -53,6 +55,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
+| Stage4B-U1 | 协议草案 | 无标签 controller 待批准；尚无结果，reservation 未开放 |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
@@ -94,6 +97,8 @@ D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe
 - `scripts/stage4a_r2_official_estimation.py`
 - `scripts/stage4a_r2_verify_outputs.py`
 
+Stage4B-U1 当前仅有不访问 reservation 的功效规划入口：`scripts/stage4b_u1_plan_power.py`。
+
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
 ## 科研治理
@@ -113,6 +118,13 @@ D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe
 - q25 阈值来自原始两数据集，不能声称对 2Wiki 最优。
 - Stage4A-R2 使用确定性数据边界和标注完整性 QC，推断范围需按最终来源审计限定。
 - 当前没有经过验证的 query-level boundary/controller。
+- Stage4B-U1 的 50% feasible-query 预算是预声明资源约束，不是性能最优阈值。
+
+## 下一步
+
+1. 用户审阅并批准或退回 `docs/STAGE4B_U1_PROTOCOL_DRAFT.md`。
+2. 批准后先实现 Gold 隔离的策略构造、评估和独立验证代码，并在运行前提交、推送。
+3. 只执行 U1-D；reservation 与 Stage3B 继续锁定，是否进入 U1-R 由预注册晋级门和用户再次批准共同决定。
 
 ## GitHub
 
