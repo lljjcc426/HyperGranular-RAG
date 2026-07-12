@@ -406,3 +406,18 @@ Verified Stage4A-R2 SHA-256 values:
 | `results/stage4a_r2_inference.json` | `9AE75704BDC18628AD13BE29FBEF5CC42A498478D5DE02154BC5B10ECCD7A38F` |
 
 A deterministic rerun using the frozen embedding cache must reproduce all four hashes exactly. Report duration is excluded from byte-level comparison.
+
+## Stage4B-U1 Synthetic-only Implementation Verification
+
+This command uses generated fixtures under the OS temporary directory. It does not read official U1-D, reservation, or Stage3B data:
+
+```powershell
+& "D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe" `
+  scripts\stage4b_u1_run_synthetic_verification.py
+```
+
+Expected result: 7 tests, 0 failures, 0 errors, 0 skipped. Expected SHA-256 for `results/stage4b_u1_synthetic_verification.json`:
+
+`ECA7C539D5C93D6CC8DB04309474A0A7E83C23C10E705DA8BDCE0956652B53A1`
+
+The synthetic verification checks process/file Gold isolation, legacy-ranking equivalence on synthetic input, numeric boundary cases, exact ECDF behavior, the 60% cumulative planned-insert prefix, dense/q25 final-ranking identity, frozen development-ECDF reuse in reservation mode, corruption rejection, and byte-identical reruns. It is implementation evidence only and cannot authorize U1-D execution.

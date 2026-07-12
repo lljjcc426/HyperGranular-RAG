@@ -6,7 +6,7 @@
 - Mode: protocol revision
 - Revision date: 2026-07-12
 - Review source: `docs/STAGE4B_U1_PROTOCOL_REVIEW_1.md`
-- Protocol Status: `REVISION_2_DESIGN_ONLY_IMPLEMENTATION_PENDING`
+- Protocol Status: `REVISION_2_IMPLEMENTED_SYNTHETICALLY_VERIFIED_AWAITING_EXECUTION_APPROVAL`
 - Execution approval: `NOT_APPROVED`
 - Reservation metrics status: `PROHIBITED_NOT_ACCESSED`
 - Other conversations, thread tools, and global memory used: No
@@ -41,6 +41,11 @@ U1-D 与 reservation 的 ID digest 必须匹配 `docs/STAGE4A_R2_SOURCE_AUDIT.js
 3. `stage4b_u1_gold_map.json`：只供独立 evaluator 使用，按 `query_id` 保存 `gold_unit_ids`；`question_type` 可作为 evaluator-only 描述性分层字段。
 
 三者均为本地未跟踪文件并记录 SHA-256。通道准备器不得生成检索指标。
+
+通道准备器还必须写出两个彼此隔离的 manifest：
+
+1. controller audit：只含 unlabeled units/queries 的 SHA-256、数量与 query-ID digest，不得包含 Gold-map hash 或 labeled-source hash；
+2. evaluator audit：包含 Gold-map hash 与 labeled-source hash，只能由 evaluator/verifier 接收。
 
 ### Controller 进程限制
 
@@ -218,7 +223,7 @@ U1-R 只检验一个联合研究结论：U1 同时具有选择性机制证据和
 
 ## 两级批准与执行顺序
 
-当前只提交设计修订，不请求 U1-D 执行批准。
+v2 实现已通过合成验证，证据见 `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT.md` 与 `results/stage4b_u1_synthetic_verification.json`。这不构成 U1-D 执行批准；下一检查点是用户对协议与实现包的显式审批。
 
 1. 用户接受或退回 v2 设计架构；
 2. 实现 channel preparer、Gold-free controller、evaluator 和 independent verifier；

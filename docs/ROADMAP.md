@@ -325,4 +325,15 @@ Mandatory revisions recorded in `docs/STAGE4B_U1_PROTOCOL_REVIEW_1.md`:
 5. Define U1 strictly as an on/off selector between byte-identical dense and all-query q25 Top-20 rankings.
 6. Use correct zero-null statistical language and a single joint intersection-union claim with each component tested at alpha 0.05.
 
-Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. Its status is `REVISION_2_DESIGN_ONLY_IMPLEMENTATION_PENDING`; it is not an execution approval request. The next checkpoint is Gold-free implementation plus synthetic-only verification.
+Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review commit its status was `REVISION_2_DESIGN_ONLY_IMPLEMENTATION_PENDING`; the subsequent synthetic implementation checkpoint below supersedes that implementation-pending status without authorizing execution.
+
+### Stage4B-U1 Synthetic Implementation Checkpoint
+
+- Added separate channel preparer, Gold-free retrieval/controller, evaluator, independent verifier, and deterministic synthetic verification runner.
+- Controller and evaluator receive separate manifests; the controller process does not receive a Gold-map hash or labeled-source hash.
+- Seven synthetic tests pass with zero failures/errors/skips.
+- Gold-free dense, selected-edge, candidate, and q25 rankings match the legacy frozen algorithm on the same synthetic input.
+- The 60% planned-insert ordered-prefix budget, reservation ECDF reuse, ranking subset relation, corruption rejection, and byte-identical rerun are verified.
+- Evidence: `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT.md` and `results/stage4b_u1_synthetic_verification.json`.
+- No official U1-D data, reservation data, Stage3B data, or official metrics were accessed.
+- Current status: `REVISION_2_IMPLEMENTED_SYNTHETICALLY_VERIFIED_AWAITING_EXECUTION_APPROVAL`.

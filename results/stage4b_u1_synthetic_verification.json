@@ -1,0 +1,44 @@
+{
+  "errors": 0,
+  "failures": 0,
+  "implementation_hashes": {
+    "scripts/stage4b_u1_common.py": "6E4857FD75B4627DD78860A9DCB35E4204C83BA7D335A4064F19534C76687B65",
+    "scripts/stage4b_u1_evaluate.py": "7D8579B5D0FA60A982D31965BD21C55C70A38328A7CDABB2819084FB1D915D87",
+    "scripts/stage4b_u1_goldfree_controller.py": "437000B70C5EDE326F888F0B00000384CCF959960C44188B18ABF51D088900A8",
+    "scripts/stage4b_u1_goldfree_retrieval.py": "E4D486C32390162E4AFEEFE533B69C64F3A76B3BE8B56138B004D89F6975CED5",
+    "scripts/stage4b_u1_prepare_channels.py": "B4F54B005C1E2DD2374DC601A279C8E8D578D653295EE46941CA8BF4AC5F1438",
+    "scripts/stage4b_u1_run_synthetic_verification.py": "1961F903B240F6EB95B15D3CF1BD3D7A1EF964B282D8041C6AB209F1E45E9A50",
+    "scripts/stage4b_u1_verify.py": "8B30C2C571C37C4C34E07F79229B42E1CF2A744ECA3C9CEE6824D87AB023377F",
+    "tests/test_stage4b_u1_goldfree.py": "1A23C72F1532E794716CFB8A22D37AFB59247402511F8E92C6E3F9E140627C50"
+  },
+  "official_development_data_accessed": false,
+  "protocol": "docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md",
+  "reservation_data_accessed": false,
+  "skipped": 0,
+  "stage": "Stage4B-U1",
+  "stage3b_accessed": false,
+  "status": "SYNTHETIC_IMPLEMENTATION_VERIFIED",
+  "synthetic_artifacts_persisted": false,
+  "test_ids": [
+    "test_stage4b_u1_goldfree.Stage4BU1GoldFreeTests.test_budget_uses_largest_prefix_without_skipping",
+    "test_stage4b_u1_goldfree.Stage4BU1GoldFreeTests.test_channel_split_rejects_inconsistent_gold",
+    "test_stage4b_u1_goldfree.Stage4BU1GoldFreeTests.test_channel_split_removes_all_controller_labels",
+    "test_stage4b_u1_goldfree.Stage4BU1GoldFreeTests.test_controller_rejects_a_reintroduced_label_field",
+    "test_stage4b_u1_goldfree.Stage4BU1GoldFreeTests.test_goldfree_rewrite_matches_legacy_frozen_ranking_on_synthetic_input",
+    "test_stage4b_u1_goldfree.Stage4BU1GoldFreeTests.test_numeric_boundary_and_ecdf_rules",
+    "test_stage4b_u1_goldfree.Stage4BU1GoldFreeTests.test_synthetic_pipeline_is_gold_free_deterministic_and_verified"
+  ],
+  "tests_run": 7,
+  "verified_properties": [
+    "controller and evaluator channels are separate files and processes",
+    "controller channel contains no evaluation-label fields or Gold-map metadata",
+    "controller rejects reintroduced prohibited fields",
+    "single-ball, zero-radius, empty-ball, and ECDF boundary rules are deterministic",
+    "Gold-free dense, hyperedge-candidate, and q25 rankings match the legacy frozen algorithm on synthetic input",
+    "allocation is the largest score/hash prefix within 60 percent planned-insert cost",
+    "U1 ranking is exactly dense or frozen q25 according to the trigger",
+    "reservation mode reuses the frozen development ECDF references",
+    "independent verifier detects a corrupted final ranking",
+    "two complete synthetic controller runs are byte-identical"
+  ]
+}
