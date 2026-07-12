@@ -72,6 +72,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--reservation-n", type=int, default=4500)
     parser.add_argument("--excluded-prefix", type=int, default=800)
     parser.add_argument("--official-dev-rows", type=int, default=12576)
+    parser.add_argument("--expected-base-invalid", type=int, default=19)
     parser.add_argument("--mcnemar-discordance", type=float, default=0.05)
     parser.add_argument("--mcnemar-net-gain", type=float, default=0.01)
     parser.add_argument("--alpha", type=float, default=0.05)
@@ -89,6 +90,7 @@ def main() -> None:
         "reservation_n": 4500,
         "excluded_prefix": 800,
         "official_dev_rows": 12576,
+        "expected_base_invalid": 19,
         "mcnemar_discordance": 0.05,
         "mcnemar_net_gain": 0.01,
         "alpha": 0.05,
@@ -142,7 +144,7 @@ def main() -> None:
         )
 
     plan = {
-        "status": "FROZEN_APPROVED_BEFORE_OFFICIAL_ROW_EXTRACTION",
+        "status": "FROZEN_WITH_APPROVED_AMENDMENT_1_BEFORE_RETRY",
         "primary_design": {
             "estimands": ["q25_gain_prevalence", "q25_harm_prevalence"],
             "interval": "Wilson 95%",
@@ -165,12 +167,15 @@ def main() -> None:
         },
         "official_dev_partition": {
             "excluded_prior_rows": f"[0:{args.excluded_prefix})",
-            "development_rows": f"[{development_start}:{development_end})",
-            "development_queries": args.development_n,
+            "base_development_rows": f"[{development_start}:{development_end})",
+            "base_development_queries": args.development_n,
+            "expected_base_mapping_failures": args.expected_base_invalid,
+            "replacement_pool_rows": f"[{reservation_end}:{args.official_dev_rows})",
+            "replacement_rule": "earliest fully mappable rows in ascending source-row order",
+            "final_development_queries": args.development_n,
             "reservation_rows": f"[{reservation_start}:{reservation_end})",
             "reservation_queries": args.reservation_n,
-            "unused_rows": f"[{reservation_end}:{args.official_dev_rows})",
-            "unused_queries": args.official_dev_rows - reservation_end,
+            "replacement_pool_queries": args.official_dev_rows - reservation_end,
         },
         "sensitivity": sensitivity,
         "interpretation": {
@@ -178,6 +183,8 @@ def main() -> None:
             "controller_training_authorized": False,
             "threshold_tuning_authorized": False,
             "reservation_metrics_authorized": False,
+            "selection_uses_retrieval_outcomes": False,
+            "selection_basis": "official sentence-level supporting-fact mapping completeness only",
             "cross_dataset_generalization_claim": False,
         },
     }

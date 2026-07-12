@@ -4,16 +4,21 @@
     "cross_dataset_generalization_claim": false,
     "primary_objective": "official gain/harm prevalence estimation",
     "reservation_metrics_authorized": false,
+    "selection_basis": "official sentence-level supporting-fact mapping completeness only",
+    "selection_uses_retrieval_outcomes": false,
     "threshold_tuning_authorized": false
   },
   "official_dev_partition": {
-    "development_queries": 4500,
-    "development_rows": "[800:5300)",
+    "base_development_queries": 4500,
+    "base_development_rows": "[800:5300)",
     "excluded_prior_rows": "[0:800)",
+    "expected_base_mapping_failures": 19,
+    "final_development_queries": 4500,
+    "replacement_pool_queries": 2776,
+    "replacement_pool_rows": "[9800:12576)",
+    "replacement_rule": "earliest fully mappable rows in ascending source-row order",
     "reservation_queries": 4500,
-    "reservation_rows": "[5300:9800)",
-    "unused_queries": 2776,
-    "unused_rows": "[9800:12576)"
+    "reservation_rows": "[5300:9800)"
   },
   "primary_design": {
     "achieved_halfwidth_at_planning_prevalence": 0.004998094431217705,
@@ -62,5 +67,5 @@
       "prevalence": 0.04
     }
   ],
-  "status": "FROZEN_APPROVED_BEFORE_OFFICIAL_ROW_EXTRACTION"
+  "status": "FROZEN_WITH_APPROVED_AMENDMENT_1_BEFORE_RETRY"
 }

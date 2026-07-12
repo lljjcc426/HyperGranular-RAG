@@ -18,6 +18,9 @@ DEVELOPMENT_START = 800
 DEVELOPMENT_END = 5300
 RESERVATION_START = 5300
 RESERVATION_END = 9800
+REPLACEMENT_START = 9800
+REPLACEMENT_END = 12576
+EXPECTED_BASE_MAPPING_FAILURES = 19
 
 
 def sha256_bytes(payload: bytes) -> str:
@@ -111,6 +114,14 @@ def normalize_record(row: dict[str, Any]) -> tuple[dict[str, Any], dict[str, int
     }
 
 
+def fully_mappable(diagnostics: dict[str, int]) -> bool:
+    return (
+        diagnostics["mapped_supporting_facts"] == diagnostics["supporting_facts"]
+        and diagnostics["missing_support_titles"] == 0
+        and diagnostics["out_of_range_support_sentences"] == 0
+    )
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--official-zip", required=True, type=Path)
@@ -149,24 +160,84 @@ def main() -> None:
     all_ids = [str(row["_id"]) for row in rows]
     if len(set(all_ids)) != len(all_ids):
         raise ValueError("Official dev IDs are not unique")
-    development_rows = rows[DEVELOPMENT_START:DEVELOPMENT_END]
+    base_rows = rows[DEVELOPMENT_START:DEVELOPMENT_END]
     reservation_ids = [
         str(row["_id"]) for row in rows[RESERVATION_START:RESERVATION_END]
     ]
-    development_ids = [str(row["_id"]) for row in development_rows]
-    if len(development_ids) != 4500 or len(reservation_ids) != 4500:
-        raise ValueError("Stage4A-R2 development/reservation counts differ from protocol")
+    if len(base_rows) != 4500 or len(reservation_ids) != 4500:
+        raise ValueError("Stage4A-R2 base/reservation counts differ from protocol")
+
+    normalized_rows: list[dict[str, Any]] = []
+    base_failures: list[dict[str, Any]] = []
+    for source_row, row in enumerate(base_rows, start=DEVELOPMENT_START):
+        normalized, diagnostics = normalize_record(row)
+        if fully_mappable(diagnostics):
+            normalized["metadata"]["source_row"] = source_row
+            normalized["metadata"]["selection_role"] = "valid_base"
+            normalized_rows.append(normalized)
+        else:
+            base_failures.append(
+                {
+                    "source_row": source_row,
+                    "query_id": str(row["_id"]),
+                    "question_type": str(row.get("type")),
+                    "supporting_facts": diagnostics["supporting_facts"],
+                    "mapped_supporting_facts": diagnostics["mapped_supporting_facts"],
+                    "missing_support_titles": diagnostics["missing_support_titles"],
+                    "out_of_range_support_sentences": diagnostics["out_of_range_support_sentences"],
+                }
+            )
+    if len(base_failures) != EXPECTED_BASE_MAPPING_FAILURES:
+        raise ValueError(
+            f"Expected {EXPECTED_BASE_MAPPING_FAILURES} base mapping failures, found {len(base_failures)}"
+        )
+
+    replacements: list[dict[str, Any]] = []
+    replacement_failures: list[dict[str, Any]] = []
+    replacement_scan_end = REPLACEMENT_START
+    for source_row, row in enumerate(
+        rows[REPLACEMENT_START:REPLACEMENT_END],
+        start=REPLACEMENT_START,
+    ):
+        replacement_scan_end = source_row + 1
+        normalized, diagnostics = normalize_record(row)
+        if fully_mappable(diagnostics):
+            normalized["metadata"]["source_row"] = source_row
+            normalized["metadata"]["selection_role"] = "qc_replacement"
+            replacements.append(normalized)
+            if len(replacements) == EXPECTED_BASE_MAPPING_FAILURES:
+                break
+        else:
+            replacement_failures.append(
+                {
+                    "source_row": source_row,
+                    "query_id": str(row["_id"]),
+                    "question_type": str(row.get("type")),
+                    "supporting_facts": diagnostics["supporting_facts"],
+                    "mapped_supporting_facts": diagnostics["mapped_supporting_facts"],
+                    "missing_support_titles": diagnostics["missing_support_titles"],
+                    "out_of_range_support_sentences": diagnostics["out_of_range_support_sentences"],
+                }
+            )
+    if len(replacements) != EXPECTED_BASE_MAPPING_FAILURES:
+        raise ValueError(
+            f"Could not find {EXPECTED_BASE_MAPPING_FAILURES} valid replacements"
+        )
+    normalized_rows.extend(replacements)
+    development_ids = [str(row["id"]) for row in normalized_rows]
+    if len(development_ids) != 4500 or len(set(development_ids)) != 4500:
+        raise ValueError("Final Stage4A-R2 development IDs are not 4,500 unique values")
     overlap = set(development_ids) & set(reservation_ids)
     if overlap:
         raise ValueError(f"Development/reservation ID overlap: {sorted(overlap)[:5]}")
 
-    normalized_rows = []
     mapping_totals: Counter[str] = Counter()
     question_types: Counter[str] = Counter()
     missing_gold_queries = 0
-    for row in development_rows:
-        normalized, diagnostics = normalize_record(row)
-        normalized_rows.append(normalized)
+    for normalized in normalized_rows:
+        _, diagnostics = normalize_record(
+            rows[int(normalized["metadata"]["source_row"])]
+        )
         mapping_totals.update(diagnostics)
         question_types[str(normalized["metadata"].get("type"))] += 1
         if not normalized["gold_evidence"]:
@@ -200,7 +271,24 @@ def main() -> None:
         },
         "data_boundary": {
             "excluded_rows": "[0:800)",
-            "development_rows": "[800:5300)",
+            "base_development_rows": "[800:5300)",
+            "base_development_queries": 4500,
+            "base_mapping_failures": len(base_failures),
+            "base_mapping_failure_query_id_sha256": id_digest(
+                [row["query_id"] for row in base_failures]
+            ),
+            "base_mapping_failure_records": base_failures,
+            "replacement_pool_rows": "[9800:12576)",
+            "replacement_scan_rows": f"[9800:{replacement_scan_end})",
+            "replacement_scan_queries": replacement_scan_end - REPLACEMENT_START,
+            "replacement_mapping_failures": len(replacement_failures),
+            "replacement_mapping_failure_records": replacement_failures,
+            "replacement_queries": len(replacements),
+            "replacement_source_rows": [
+                int(row["metadata"]["source_row"]) for row in replacements
+            ],
+            "replacement_query_ids": [str(row["id"]) for row in replacements],
+            "development_selection": "4481 valid base rows plus 19 earliest fully mappable replacement-pool rows",
             "development_queries": len(development_ids),
             "development_query_id_sha256": id_digest(development_ids),
             "reservation_rows": "[5300:9800)",
@@ -208,7 +296,7 @@ def main() -> None:
             "reservation_query_id_sha256": id_digest(reservation_ids),
             "development_reservation_overlap": len(overlap),
             "reservation_content_written": False,
-            "unused_rows": "[9800:12576)",
+            "unscanned_replacement_pool_rows": f"[{replacement_scan_end}:12576)",
         },
         "mapping": {
             "queries": len(normalized_rows),

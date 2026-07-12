@@ -32,7 +32,7 @@ EXPECTED_QUERIES = 4500
 BOOTSTRAP_ITERATIONS = 10000
 BOOTSTRAP_SEED = 20260712
 TARGET_HALFWIDTH = 0.005
-EXPECTED_SAMPLE_PLAN_SHA256 = "5C43CA352900B559EE3A71975BFD018854B0E8E66CC98B29D7A1710C751DD73D"
+EXPECTED_SAMPLE_PLAN_SHA256 = "84C9AD227F5D75BA2D3060D9AF3D285230DCE1799D96E88D21338813E41BFA5E"
 EXPECTED_ARCHIVE_SHA256 = "95DF2BF56FDABE034E27AEBC580E02264232203CF52552F9EFE8A919E5529EEF"
 EXPECTED_DEV_SHA256 = "79F77AE104088EA8E25B1A65DBECE768D45771194663BC5660EC9A98070DADF5"
 
@@ -82,6 +82,8 @@ def preflight(
         raise ValueError("Development ID digest differs from source audit")
     if boundary["development_queries"] != EXPECTED_QUERIES:
         raise ValueError("Source audit development count differs")
+    if boundary["base_mapping_failures"] != 19 or boundary["replacement_queries"] != 19:
+        raise ValueError("Source audit Amendment 1 counts differ")
     if boundary["reservation_queries"] != EXPECTED_QUERIES:
         raise ValueError("Source audit reservation count differs")
     if boundary["development_reservation_overlap"] != 0:
@@ -422,7 +424,7 @@ def main() -> None:
     sample_plan = json.loads(args.sample_plan.read_text(encoding="utf-8"))
     if sha256_file(args.sample_plan) != EXPECTED_SAMPLE_PLAN_SHA256:
         raise ValueError("Stage4A-R2 sample-plan SHA differs from protocol")
-    if sample_plan["status"] != "FROZEN_APPROVED_BEFORE_OFFICIAL_ROW_EXTRACTION":
+    if sample_plan["status"] != "FROZEN_WITH_APPROVED_AMENDMENT_1_BEFORE_RETRY":
         raise ValueError("Stage4A-R2 sample plan is not frozen")
     if sample_plan["primary_design"]["development_n"] != EXPECTED_QUERIES:
         raise ValueError("Stage4A-R2 sample plan query count differs")

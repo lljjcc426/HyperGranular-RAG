@@ -5,9 +5,9 @@
 - Origin Skill: academic-research-suite / experiment-agent
 - Mode: plan
 - Approval date: 2026-07-12
-- Protocol Status: FROZEN_APPROVED_BEFORE_OFFICIAL_ROW_EXTRACTION
+- Protocol Status: FROZEN_WITH_APPROVED_AMENDMENT_1_BEFORE_RETRY
 - Metrics Status: NOT COMPUTED
-- Source extraction status: NOT STARTED
+- Source extraction status: FIRST_ATTEMPT_HARD_FAILED; RETRY_NOT_STARTED
 - Other conversations, thread tools, and memory files used: No
 
 ## Research Question
@@ -15,6 +15,8 @@
 On fresh rows from the official April 7 2WikiMultiHopQA development archive, what are the query-level gain and harm prevalences of the frozen all-query q25 protected-insertion policy relative to dense fixed retrieval at CR@20, and is dense fixed retrieval saturated at that depth?
 
 This stage estimates event availability on the official source. It does not fit or validate a controller, optimize the q25 threshold, revive the failed boundary-only rule, or open Stage3B.
+
+Amendment 1 (`docs/STAGE4A_R2_AMENDMENT_1.md`) supersedes the original contiguous-development clause after 19 base records failed the predeclared 100% supporting-fact mapping gate. No embeddings or retrieval metrics existed when the amendment was approved.
 
 ## Design
 
@@ -55,11 +57,11 @@ The McNemar analysis is secondary. Statistical significance cannot replace the g
 | Role | Official dev rows | Queries | Access rule |
 |---|---:|---:|---|
 | Excluded prior material | `[0:800)` | 800 | Never used in Stage4A-R2 metrics |
-| Stage4A-R2 development estimation | `[800:5300)` | 4,500 | Extract only after this protocol and execution code are committed |
+| Stage4A-R2 base pool | `[800:5300)` | 4,500 | Apply sentence-level gold-mapping QC only |
 | Future independent reservation | `[5300:9800)` | 4,500 | IDs and digest only; no content file, embeddings, retrieval, or outcomes |
-| Unused remainder | `[9800:12576)` | 2,776 | Do not access for Stage4A-R2 |
+| Deterministic replacement pool | `[9800:12576)` | up to 2,776 scanned | Use earliest fully mappable rows only until 19 replacements are found |
 
-The extractor must write only normalized development rows. Reservation questions, answers, contexts, evidence, types, embeddings, and metrics must not be persisted. Development and reservation IDs must be unique and disjoint.
+The final development set is the 4,481 fully mappable base rows plus the earliest 19 fully mappable replacement-pool rows, as frozen in Amendment 1. The extractor must write only normalized final development rows. Reservation questions, answers, contexts, evidence, types, embeddings, and metrics must not be persisted. Development and reservation IDs must be unique and disjoint.
 
 ## Frozen Mapping
 
@@ -111,18 +113,20 @@ Secondary:
 Stage4A-R2 is `ESTIMATION_COMPLETE` only if:
 
 1. official archive and `dev.json` hashes match the frozen values;
-2. exactly 4,500 unique development IDs and 4,500 unique reservation IDs are present with zero overlap;
-3. no reservation content or metric is written;
-4. supporting-fact mapping rate is 1.0 and no query lacks mapped gold;
-5. q25 gain and harm Wilson interval half-widths are each at most `0.005`.
+2. exactly 19 base mapping failures are recorded, exactly 19 eligible replacements are selected, and the final development set contains 4,500 unique IDs;
+3. exactly 4,500 unique reservation IDs are present with zero development overlap;
+4. no reservation content or metric is written;
+5. final supporting-fact mapping rate is 1.0 and no query lacks mapped gold;
+6. q25 gain and harm Wilson interval half-widths are each at most `0.005`.
 
-If condition 5 fails because prevalence exceeds the planning range, report `ESTIMATION_PRECISION_NOT_MET`; do not add rows, tune the policy, or inspect the reservation. This stage never directly authorizes controller fitting. Any next controller study requires a new model-specific protocol using the observed official event rates.
+If condition 6 fails because prevalence exceeds the planning range, report `ESTIMATION_PRECISION_NOT_MET`; do not add rows, tune the policy, or inspect the reservation. This stage never directly authorizes controller fitting. Any next controller study requires a new model-specific protocol using the observed official event rates.
 
 ## Expected Outputs
 
 Tracked:
 
 - `docs/STAGE4A_R2_SAMPLE_SIZE_PLAN.json`
+- `docs/STAGE4A_R2_AMENDMENT_1.md`
 - `docs/STAGE4A_R2_SOURCE_AUDIT.json`
 - `results/stage4a_r2_query_audit.csv`
 - `results/stage4a_r2_strategy_summary.csv`

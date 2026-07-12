@@ -279,8 +279,10 @@ def main() -> None:
     if official["sha256"] != EXPECTED_ARCHIVE_SHA256 or official["dev_json_sha256"] != EXPECTED_DEV_SHA256:
         raise ValueError("Verifier source hashes differ from protocol")
     boundary = source_audit["data_boundary"]
-    if boundary["development_rows"] != "[800:5300)" or boundary["reservation_rows"] != "[5300:9800)":
+    if boundary["base_development_rows"] != "[800:5300)" or boundary["reservation_rows"] != "[5300:9800)":
         raise ValueError("Verifier source boundary differs from protocol")
+    if boundary["base_mapping_failures"] != 19 or boundary["replacement_queries"] != 19:
+        raise ValueError("Verifier Amendment 1 replacement counts differ")
     if source_audit["data_boundary"]["reservation_content_written"] is not False:
         raise ValueError("Reservation content boundary failed")
     checks = {
@@ -299,7 +301,7 @@ def main() -> None:
     args.report.write_text(report_text, encoding="utf-8")
     verification = {
         "status": "VERIFIED_OFFICIAL_INTERNAL_METRICS",
-        "scope": "OFFICIAL_APRIL7_ROWS_800_5300_ONLY",
+        "scope": "OFFICIAL_APRIL7_AMENDMENT1_QC_SAMPLE",
         "decision": inference["decision"],
         "controller_training_authorized": False,
         "reservation_metrics_accessed": False,

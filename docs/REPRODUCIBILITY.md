@@ -322,6 +322,7 @@ The restarted Stage4A has not started data extraction. The returned draft's even
   --round-to 100 `
   --excluded-prefix 800 `
   --official-dev-rows 12576 `
+  --expected-base-invalid 19 `
   --output docs\STAGE4A_RESTART_SAMPLE_SIZE_PLAN.json
 ```
 
@@ -350,9 +351,9 @@ Generate the frozen precision and secondary paired-power design:
   --output docs\STAGE4A_R2_SAMPLE_SIZE_PLAN.json
 ```
 
-Expected SHA-256: `5C43CA352900B559EE3A71975BFD018854B0E8E66CC98B29D7A1710C751DD73D`.
+Expected SHA-256 after approved Amendment 1: `84C9AD227F5D75BA2D3060D9AF3D285230DCE1799D96E88D21338813E41BFA5E`.
 
-After the protocol and code commit, extract only official development content and reservation IDs:
+After the protocol, Amendment 1, and amended code commit, extract the 4,481 valid base rows plus 19 deterministic QC replacements; retain reservation IDs only:
 
 ```powershell
 & "D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe" scripts\stage4a_r2_extract_official.py `
