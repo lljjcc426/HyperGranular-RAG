@@ -1,0 +1,59 @@
+{
+  "checks": {
+    "bootstrap": {
+      "bootstrap_rows": 6,
+      "iterations": 10000,
+      "seed": 20260712
+    },
+    "inference": {
+      "decision": "ESTIMATION_COMPLETE",
+      "values": {
+        "cr20_delta": 0.005555555555555536,
+        "dense_cr20": 0.7722222222222223,
+        "gain_halfwidth": 0.004196613954723628,
+        "gain_high": 0.025494150799074133,
+        "gain_low": 0.017100922889626877,
+        "gain_prevalence": 0.020888888888888887,
+        "harm_halfwidth": 0.0036122854361438396,
+        "harm_high": 0.01935900522163941,
+        "harm_low": 0.012134434349351731,
+        "harm_prevalence": 0.015333333333333332,
+        "mcnemar_p": 0.059798913627112295,
+        "q25_cr20": 0.7777777777777778
+      }
+    },
+    "query_audit": {
+      "query_rows": 4500,
+      "question_types": {
+        "bridge_comparison": 1001,
+        "comparison": 1132,
+        "compositional": 1789,
+        "inference": 578
+      },
+      "unique_query_ids": 4500
+    },
+    "summary": {
+      "summary_rows": 15,
+      "verified_slices": [
+        "ALL",
+        "bridge_comparison",
+        "comparison",
+        "compositional",
+        "inference"
+      ]
+    }
+  },
+  "controller_training_authorized": false,
+  "decision": "ESTIMATION_COMPLETE",
+  "reservation_metrics_accessed": false,
+  "scope": "OFFICIAL_APRIL7_AMENDMENT1_QC_SAMPLE",
+  "sha256": {
+    "bootstrap": "FF1D47BBCDF969C7CCDFCF66FA5AAFB1F655C3393590C492C33E46C5C706F5F0",
+    "inference": "9AE75704BDC18628AD13BE29FBEF5CC42A498478D5DE02154BC5B10ECCD7A38F",
+    "query_audit": "766D7344A8093D2CBA10507B0DEE83A42575D9EDE986DD3212822BC96701034A",
+    "source_audit": "1496FF0CE08093AD38258FD5049068D6C4ED74FCEBF63E94E6E486F3478C7AEE",
+    "strategy_summary": "7BF79CC057CDD0565100B1D95F35C95BFBEAA338E9B1EF63D9E81F029BB42B12",
+    "verified_report": "B3B47FD69227CB6C187A20EBBAEFD6BD0A84BEDC01E6DF41377BB5F4FFDB5950"
+  },
+  "status": "VERIFIED_OFFICIAL_INTERNAL_METRICS"
+}

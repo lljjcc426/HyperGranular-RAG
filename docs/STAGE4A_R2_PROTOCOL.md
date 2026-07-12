@@ -6,7 +6,7 @@
 - Mode: plan
 - Approval date: 2026-07-12
 - Protocol Status: FROZEN_WITH_APPROVED_AMENDMENT_1_BEFORE_RETRY
-- Metrics Status: NOT COMPUTED
+- Metrics Status: VERIFIED; ESTIMATION_COMPLETE
 - Source extraction status: AMENDMENT_1_EXTRACTION_VERIFIED
 - Other conversations, thread tools, and memory files used: No
 
@@ -134,6 +134,7 @@ Tracked:
 - `results/stage4a_r2_inference.json`
 - `results/stage4a_r2_verification.json`
 - `reports/超粒球RAG_Stage4A_R2官方事件率估计报告.md`
+- `reports/超粒球RAG_Stage4A_R2统计验证报告.md`
 
 Local untracked:
 

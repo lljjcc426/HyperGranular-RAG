@@ -26,7 +26,7 @@ Read-only diagnosis of official rows `[800:5300)` found:
 - Affected queries: 19
 - Queries with no mapped gold at all: 0
 
-The official repository defines `sent_id` as a zero-based sentence index and describes the April 7 archive as a sentence-segmentation consistency fix. In these 19 records, `sent_id` is still at least the corrected context sentence count, so a sentence-level gold unit cannot be identified without inventing a repair or using a non-official source.
+The [official repository](https://github.com/Alab-NII/2wikimultihop) defines `sent_id` as a zero-based sentence index and describes the April 7 archive as a sentence-segmentation consistency fix. In these 19 records, `sent_id` is still at least the corrected context sentence count, so a sentence-level gold unit cannot be identified without inventing a repair or using a non-official source.
 
 ## Affected Base Rows
 

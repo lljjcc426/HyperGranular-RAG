@@ -6,15 +6,17 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Stage4A-R2 官方 2Wiki 事件率估计 |
+| 当前阶段 | Stage4A-R2 已完成并验证；下一 controller 研究尚未授权 |
 | 活跃协议 | `docs/STAGE4A_R2_PROTOCOL.md` |
 | 协议状态 | 已冻结；Amendment 1 已提交并完成来源提取 |
-| 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；尚无 embedding 或检索指标 |
+| 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller 训练 | 未授权 |
 | 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
 
-第一次官方提取在预注册映射硬门处停止：基础区间 `[800:5300)` 的 11,003 个 supporting facts 中有 19 个 sentence index 越界，影响 19 条查询。Amendment 1 采用仅由标注完整性决定的确定性替换，从 `[9800:9819)` 补入 19 条有效记录。最终 11,015/11,015 supporting facts 完整映射，development/reservation 零重叠；尚未计算 gain/harm 或检索指标。
+第一次官方提取在预注册映射硬门处停止：基础区间 `[800:5300)` 的 11,003 个 supporting facts 中有 19 个 sentence index 越界，影响 19 条查询；该失败没有生成 gain/harm 或检索指标。Amendment 1 随后采用仅由标注完整性决定的确定性替换，从 `[9800:9819)` 补入 19 条有效记录。最终 11,015/11,015 supporting facts 完整映射，development/reservation 零重叠。
+
+Stage4A-R2 最终估计：q25 gain `94/4500 = 2.089%`，harm `69/4500 = 1.533%`，两者 Wilson 95% 区间半宽均通过 0.5 个百分点精度门。Dense/q25 CR@20 为 `0.77222/0.77778`；平均增益 `+0.00556`，exact McNemar `p=0.0598`，因此不能主张确认性平均 CR 提升。q25 false-insert rate 仍为 `0.92163`。
 
 ## 研究问题
 
@@ -50,7 +52,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3A | 失败的预注册开发 | 稀疏事件触发 fallback；Stage3B 不开放 |
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
-| Stage4A-R2 | 当前进行中 | 官方事件率精度估计，尚无结果 |
+| Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 

@@ -1,0 +1,44 @@
+{
+  "controller_training_authorized": false,
+  "decision": "ESTIMATION_COMPLETE",
+  "integrity_gates": {
+    "development_queries": true,
+    "mapping_complete": true,
+    "official_provenance": true,
+    "reservation_locked": true
+  },
+  "precision_gates": {
+    "gain_halfwidth_at_most_0.005": true,
+    "harm_halfwidth_at_most_0.005": true
+  },
+  "primary": {
+    "q25_gain": {
+      "events": 94,
+      "halfwidth": 0.004196613954723628,
+      "prevalence": 0.020888888888888887,
+      "queries": 4500,
+      "wilson95_high": 0.025494150799074133,
+      "wilson95_low": 0.017100922889626877
+    },
+    "q25_harm": {
+      "events": 69,
+      "halfwidth": 0.0036122854361438396,
+      "prevalence": 0.015333333333333332,
+      "queries": 4500,
+      "wilson95_high": 0.01935900522163941,
+      "wilson95_low": 0.012134434349351731
+    }
+  },
+  "protocol": "docs/STAGE4A_R2_PROTOCOL.md",
+  "reservation_metrics_authorized": false,
+  "secondary": {
+    "alpha": 0.05,
+    "cr20_delta": 0.005555555555555536,
+    "dense_cr20": 0.7722222222222223,
+    "discordant_queries": 163,
+    "exact_conditional_mcnemar_two_sided_p": 0.059798913627112295,
+    "gain_events": 94,
+    "harm_events": 69,
+    "q25_cr20": 0.7777777777777778
+  }
+}

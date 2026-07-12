@@ -395,3 +395,14 @@ Independently verify every tracked metric:
 ```
 
 Local unified data, JSONL corpora, mapping report, and embedding cache remain untracked. The reservation contributes only an ID digest and is never embedded or scored.
+
+Verified Stage4A-R2 SHA-256 values:
+
+| Artifact | SHA-256 |
+|---|---|
+| `results/stage4a_r2_query_audit.csv` | `766D7344A8093D2CBA10507B0DEE83A42575D9EDE986DD3212822BC96701034A` |
+| `results/stage4a_r2_strategy_summary.csv` | `7BF79CC057CDD0565100B1D95F35C95BFBEAA338E9B1EF63D9E81F029BB42B12` |
+| `results/stage4a_r2_bootstrap.csv` | `FF1D47BBCDF969C7CCDFCF66FA5AAFB1F655C3393590C492C33E46C5C706F5F0` |
+| `results/stage4a_r2_inference.json` | `9AE75704BDC18628AD13BE29FBEF5CC42A498478D5DE02154BC5B10ECCD7A38F` |
+
+A deterministic rerun using the frozen embedding cache must reproduce all four hashes exactly. Report duration is excluded from byte-level comparison.

@@ -3,7 +3,7 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage4A-R2 Amendment 1 source extraction and corpus mapping verified; no embeddings or R2 metrics yet; Stage3B remains locked
+- Current stage: Stage4A-R2 official event-rate estimation completed and independently verified; next controller study not yet authorized; Stage3B remains locked
 - Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive used for source reconciliation only; no restarted Stage4A metrics
 - Generator used: No
 - Gold labels used for indexing: No
@@ -283,3 +283,17 @@ The first official extraction stopped before writing outputs because 19/11,003 s
 The approved amendment removes those 19 label-incomplete base records and selects the earliest 19 fully mappable rows from official replacement pool `[9800:12576)`. Selection uses source-label integrity only. The final sample remains 4,500; reservation `[5300:9800)` remains IDs/digest only. See `docs/STAGE4A_R2_AMENDMENT_1.md`.
 
 Amendment extraction result: the earliest 19 replacement rows were `[9800:9819)` with zero additional replacement failures. The final source audit contains 4,500 development IDs and 4,500 reservation IDs with zero overlap, 11,015/11,015 mapped supporting facts, zero missing-gold queries, and no supporting fact attached to a duplicated context title. The corpus contains 143,820 candidate units. No embeddings or retrieval metrics had been computed at this checkpoint.
+
+### Stage4A-R2 Verified Results
+
+- Primary q25 gain prevalence: 94/4,500 = 0.020889, Wilson 95% [0.017101, 0.025494], half-width 0.004197.
+- Primary q25 harm prevalence: 69/4,500 = 0.015333, Wilson 95% [0.012134, 0.019359], half-width 0.003612.
+- Precision decision: `ESTIMATION_COMPLETE`; both frozen half-width gates passed.
+- Dense/q25 CR@20: 0.77222/0.77778; delta +0.00556.
+- Secondary exact McNemar: `p=0.05980`; average CR improvement is not confirmed and is below the planned +0.01 practical target.
+- q25 vs dense ER@20 delta: +0.00407, descriptive bootstrap [0.00147, 0.00674].
+- q25 vs unfiltered CR@20 delta: +0.00578, descriptive bootstrap [0.00311, 0.00867].
+- q25 conditional false-insert rate: 0.92163; noise remains high.
+- Type net gain: bridge-comparison +15, comparison +25, compositional -3, inference -12.
+- Independent verifier passed all query, summary, inference, and bootstrap checks; deterministic rerun produced byte-identical query audit, summary, bootstrap, and inference files.
+- Controller fitting remains unauthorized. A new model-specific protocol is required before using these labels for controller development.
