@@ -1,0 +1,297 @@
+{
+  "protocol": "docs/STAGE4A_R2_PROTOCOL.md",
+  "provenance_status": "OFFICIAL_APRIL7_ARCHIVE",
+  "official_archive": {
+    "path_basename": "data_ids_april7.zip",
+    "bytes": 258968175,
+    "sha256": "95DF2BF56FDABE034E27AEBC580E02264232203CF52552F9EFE8A919E5529EEF",
+    "dev_json_sha256": "79F77AE104088EA8E25B1A65DBECE768D45771194663BC5660EC9A98070DADF5",
+    "dev_rows": 12576,
+    "dev_unique_ids": 12576,
+    "first_bad_crc_entry": null,
+    "entries": [
+      {
+        "name": "test.json",
+        "uncompressed_bytes": 53838398,
+        "compressed_bytes": 17992753,
+        "crc32": "15836999"
+      },
+      {
+        "name": "dev.json",
+        "uncompressed_bytes": 57614142,
+        "compressed_bytes": 19134946,
+        "crc32": "B92608C3"
+      },
+      {
+        "name": "train.json",
+        "uncompressed_bytes": 707810660,
+        "compressed_bytes": 217287204,
+        "crc32": "40A2BD83"
+      },
+      {
+        "name": "id_aliases.json",
+        "uncompressed_bytes": 17501406,
+        "compressed_bytes": 4552654,
+        "crc32": "684CEDEE"
+      }
+    ]
+  },
+  "data_boundary": {
+    "excluded_rows": "[0:800)",
+    "base_development_rows": "[800:5300)",
+    "base_development_queries": 4500,
+    "base_mapping_failures": 19,
+    "base_mapping_failure_query_id_sha256": "B7B0A6CCAA85970F60FD29B91840755D61E71B5D18206DF34659022895AE7333",
+    "base_mapping_failure_records": [
+      {
+        "source_row": 1123,
+        "query_id": "695689d20baf11ebab90acde48001122",
+        "question_type": "inference",
+        "supporting_facts": 2,
+        "mapped_supporting_facts": 1,
+        "missing_support_titles": 0,
+        "out_of_range_support_sentences": 1
+      },
+      {
+        "source_row": 1539,
+        "query_id": "37a4158e0bb011ebab90acde48001122",
+        "question_type": "inference",
+        "supporting_facts": 2,
+        "mapped_supporting_facts": 1,
+        "missing_support_titles": 0,
+        "out_of_range_support_sentences": 1
+      },
+      {
+        "source_row": 2196,
+        "query_id": "26af280a0bdc11eba7f7acde48001122",
+        "question_type": "compositional",
+        "supporting_facts": 2,
+        "mapped_supporting_facts": 1,
+        "missing_support_titles": 0,
+        "out_of_range_support_sentences": 1
+      },
+      {
+        "source_row": 2253,
+        "query_id": "355ac9940bb011ebab90acde48001122",
+        "question_type": "inference",
+        "supporting_facts": 2,
+        "mapped_supporting_facts": 1,
+        "missing_support_titles": 0,
+        "out_of_range_support_sentences": 1
+      },
+      {
+        "source_row": 2388,
+        "query_id": "dab62b000baf11ebab90acde48001122",
+        "question_type": "inference",
+        "supporting_facts": 2,
+        "mapped_supporting_facts": 1,
+        "missing_support_titles": 0,
+        "out_of_range_support_sentences": 1
+      },
+      {
+        "source_row": 2472,
+        "query_id": "967024260bd911eba7f7acde48001122",
+        "question_type": "compositional",
+        "supporting_facts": 2,
+        "mapped_supporting_facts": 1,
+        "missing_support_titles": 0,
+        "out_of_range_support_sentences": 1
+      },
+      {
+        "source_row": 2875,
+        "query_id": "024076580bb011ebab90acde48001122",
+        "question_type": "inference",
+        "supporting_facts": 2,
+        "mapped_supporting_facts": 1,
+        "missing_support_titles": 0,
+        "out_of_range_support_sentences": 1
+      },
+      {
+        "source_row": 3163,
+        "query_id": "dd2b76c60bda11eba7f7acde48001122",
+        "question_type": "compositional",
+        "supporting_facts": 2,
+        "mapped_supporting_facts": 1,
+        "missing_support_titles": 0,
+        "out_of_range_support_sentences": 1
+      },
+      {
+        "source_row": 3384,
+        "query_id": "617f8d060bde11eba7f7acde48001122",
+        "question_type": "compositional",
+        "supporting_facts": 2,
+        "mapped_supporting_facts": 1,
+        "missing_support_titles": 0,
+        "out_of_range_support_sentences": 1
+      },
+      {
+        "source_row": 3883,
+        "query_id": "f87c0e920bdd11eba7f7acde48001122",
+        "question_type": "compositional",
+        "supporting_facts": 2,
+        "mapped_supporting_facts": 1,
+        "missing_support_titles": 0,
+        "out_of_range_support_sentences": 1
+      },
+      {
+        "source_row": 4089,
+        "query_id": "b7a7f4ba0bda11eba7f7acde48001122",
+        "question_type": "compositional",
+        "supporting_facts": 2,
+        "mapped_supporting_facts": 1,
+        "missing_support_titles": 0,
+        "out_of_range_support_sentences": 1
+      },
+      {
+        "source_row": 4328,
+        "query_id": "618c39ce0bda11eba7f7acde48001122",
+        "question_type": "compositional",
+        "supporting_facts": 2,
+        "mapped_supporting_facts": 1,
+        "missing_support_titles": 0,
+        "out_of_range_support_sentences": 1
+      },
+      {
+        "source_row": 4514,
+        "query_id": "3f210e940baf11ebab90acde48001122",
+        "question_type": "inference",
+        "supporting_facts": 2,
+        "mapped_supporting_facts": 1,
+        "missing_support_titles": 0,
+        "out_of_range_support_sentences": 1
+      },
+      {
+        "source_row": 4676,
+        "query_id": "eb2a75220bdc11eba7f7acde48001122",
+        "question_type": "compositional",
+        "supporting_facts": 2,
+        "mapped_supporting_facts": 1,
+        "missing_support_titles": 0,
+        "out_of_range_support_sentences": 1
+      },
+      {
+        "source_row": 4935,
+        "query_id": "ef8526a60bd911eba7f7acde48001122",
+        "question_type": "compositional",
+        "supporting_facts": 2,
+        "mapped_supporting_facts": 1,
+        "missing_support_titles": 0,
+        "out_of_range_support_sentences": 1
+      },
+      {
+        "source_row": 4992,
+        "query_id": "43bc7b940bde11eba7f7acde48001122",
+        "question_type": "compositional",
+        "supporting_facts": 2,
+        "mapped_supporting_facts": 1,
+        "missing_support_titles": 0,
+        "out_of_range_support_sentences": 1
+      },
+      {
+        "source_row": 5084,
+        "query_id": "95bf64480bdd11eba7f7acde48001122",
+        "question_type": "compositional",
+        "supporting_facts": 2,
+        "mapped_supporting_facts": 1,
+        "missing_support_titles": 0,
+        "out_of_range_support_sentences": 1
+      },
+      {
+        "source_row": 5127,
+        "query_id": "595209340bb011ebab90acde48001122",
+        "question_type": "inference",
+        "supporting_facts": 2,
+        "mapped_supporting_facts": 1,
+        "missing_support_titles": 0,
+        "out_of_range_support_sentences": 1
+      },
+      {
+        "source_row": 5182,
+        "query_id": "593a648c0bb011ebab90acde48001122",
+        "question_type": "inference",
+        "supporting_facts": 2,
+        "mapped_supporting_facts": 1,
+        "missing_support_titles": 0,
+        "out_of_range_support_sentences": 1
+      }
+    ],
+    "replacement_pool_rows": "[9800:12576)",
+    "replacement_scan_rows": "[9800:9819)",
+    "replacement_scan_queries": 19,
+    "replacement_mapping_failures": 0,
+    "replacement_mapping_failure_records": [],
+    "replacement_queries": 19,
+    "replacement_source_rows": [
+      9800,
+      9801,
+      9802,
+      9803,
+      9804,
+      9805,
+      9806,
+      9807,
+      9808,
+      9809,
+      9810,
+      9811,
+      9812,
+      9813,
+      9814,
+      9815,
+      9816,
+      9817,
+      9818
+    ],
+    "replacement_query_ids": [
+      "a66836a00bdb11eba7f7acde48001122",
+      "cd791c8a0bdd11eba7f7acde48001122",
+      "9d66149d08fb11ebbdacac1f6bf848b6",
+      "addf79a0085911ebbd5bac1f6bf848b6",
+      "cf54987e0bdb11eba7f7acde48001122",
+      "f9e134740bdd11eba7f7acde48001122",
+      "3cd45771086e11ebbd62ac1f6bf848b6",
+      "78bc5f540bb011ebab90acde48001122",
+      "b9db30a8087911ebbd67ac1f6bf848b6",
+      "c10c0d5b094311ebbdaeac1f6bf848b6",
+      "18e9a16e0baf11ebab90acde48001122",
+      "90424c55085611ebbd59ac1f6bf848b6",
+      "b96bd573088e11ebbd70ac1f6bf848b6",
+      "36ba28ed089611ebbd76ac1f6bf848b6",
+      "70f829f6085e11ebbd5cac1f6bf848b6",
+      "aabdb95608c411ebbd8eac1f6bf848b6",
+      "c7a4943508bc11ebbd89ac1f6bf848b6",
+      "45be519d086e11ebbd62ac1f6bf848b6",
+      "f6e1f154094c11ebbdaeac1f6bf848b6"
+    ],
+    "development_selection": "4481 valid base rows plus 19 earliest fully mappable replacement-pool rows",
+    "development_queries": 4500,
+    "development_query_id_sha256": "6B21FD1D2EFBD6A467C8DAEE9225AA43113FC328CD114F813DD79E6A44458FB2",
+    "reservation_rows": "[5300:9800)",
+    "reservation_queries": 4500,
+    "reservation_query_id_sha256": "E54610D36F77DCEDAD651DD20DFC96FD1B8324FD65EB412ABAC757D56897B941",
+    "development_reservation_overlap": 0,
+    "reservation_content_written": false,
+    "unscanned_replacement_pool_rows": "[9819:12576)"
+  },
+  "mapping": {
+    "queries": 4500,
+    "question_types": {
+      "bridge_comparison": 1001,
+      "comparison": 1132,
+      "compositional": 1789,
+      "inference": 578
+    },
+    "supporting_facts": 11015,
+    "mapped_supporting_facts": 11015,
+    "supporting_fact_mapping_rate": 1.0,
+    "queries_missing_gold": 0,
+    "missing_support_titles": 0,
+    "out_of_range_support_sentences": 0,
+    "duplicate_supporting_fact_refs": 0,
+    "duplicate_context_titles": 199
+  },
+  "local_outputs": {
+    "development_unified_file": "stage4a_r2_official_dev4500_unified.json",
+    "reservation_file": null
+  }
+}

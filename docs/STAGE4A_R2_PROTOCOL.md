@@ -7,7 +7,7 @@
 - Approval date: 2026-07-12
 - Protocol Status: FROZEN_WITH_APPROVED_AMENDMENT_1_BEFORE_RETRY
 - Metrics Status: NOT COMPUTED
-- Source extraction status: FIRST_ATTEMPT_HARD_FAILED; RETRY_NOT_STARTED
+- Source extraction status: AMENDMENT_1_EXTRACTION_VERIFIED
 - Other conversations, thread tools, and memory files used: No
 
 ## Research Question

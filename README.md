@@ -8,13 +8,13 @@
 |---|---|
 | 当前阶段 | Stage4A-R2 官方 2Wiki 事件率估计 |
 | 活跃协议 | `docs/STAGE4A_R2_PROTOCOL.md` |
-| 协议状态 | 已冻结；Amendment 1 已获用户批准，待修订提交后重试来源提取 |
-| 当前数据状态 | 尚无 Stage4A-R2 unified data、embedding 或检索指标 |
+| 协议状态 | 已冻结；Amendment 1 已提交并完成来源提取 |
+| 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；尚无 embedding 或检索指标 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller 训练 | 未授权 |
 | 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
 
-第一次官方提取在预注册映射硬门处停止：基础区间 `[800:5300)` 的 11,003 个 supporting facts 中有 19 个 sentence index 越界，影响 19 条查询。没有生成检索结果。Amendment 1 采用仅由标注完整性决定的确定性替换，不接触 gain/harm 或检索指标。
+第一次官方提取在预注册映射硬门处停止：基础区间 `[800:5300)` 的 11,003 个 supporting facts 中有 19 个 sentence index 越界，影响 19 条查询。Amendment 1 采用仅由标注完整性决定的确定性替换，从 `[9800:9819)` 补入 19 条有效记录。最终 11,015/11,015 supporting facts 完整映射，development/reservation 零重叠；尚未计算 gain/harm 或检索指标。
 
 ## 研究问题
 
