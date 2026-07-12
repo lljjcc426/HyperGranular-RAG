@@ -5,7 +5,7 @@
 - Origin Skill: academic-research-suite / experiment-agent
 - Mode: plan
 - Date: 2026-07-11
-- Protocol Status: RETURNED_FOR_DESIGN_REVISION
+- Protocol Status: SUPERSEDED_BY_STAGE4A_R2_PROTOCOL
 - Metrics Status: NOT COMPUTED
 - Source extraction status: NOT STARTED
 - Other conversations, thread tools, and memory files used: No
@@ -18,7 +18,7 @@
 - **Controller fitting**: prohibited
 - **Stage3B status**: locked and unrelated
 
-The restarted Stage4A supersedes the invalidated mirror pilot and is not the stopped Stage4B branch. Stage3C remains the last retained completed stage, with descriptive-planning evidence only. The prior-stage audit found that the event-count calculation below does not justify an executable sample size, so this protocol cannot be approved in its current form.
+The restarted Stage4A supersedes the invalidated mirror pilot and is not the stopped Stage4B branch. Stage3C remains the last retained completed stage, with descriptive-planning evidence only. The prior-stage audit found that the event-count calculation below does not justify an executable sample size. This returned draft is now superseded by the approved precision-based protocol in `docs/STAGE4A_R2_PROTOCOL.md`.
 
 ## Source of Truth
 

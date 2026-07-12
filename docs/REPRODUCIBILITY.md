@@ -330,3 +330,67 @@ Expected SHA-256 for `docs/STAGE4A_RESTART_SAMPLE_SIZE_PLAN.json`:
 `92B080D66D67A6B6B3708AF03D9272F2F7564FAA719639B1FACFDDB2431DECCC`
 
 The exact minimum is 2,784 and the rounded lower bound is 2,800, yielding probability 0.952994 of at least 20 gains when true prevalence is 0.01. The prior-stage audit established that 20 is a planning heuristic and 0.01 is a sensitivity assumption informed by the invalidated mirror pilot. This is not retrieval-effect power, prevalence-precision design, or controller-training adequacy. `docs/STAGE4A_RESTART_PROTOCOL_DRAFT.md` is returned for design revision and cannot be approved for execution in its current form.
+
+## Stage4A-R2 Official Event-rate Estimation
+
+Generate the frozen precision and secondary paired-power design:
+
+```powershell
+& "D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe" scripts\stage4a_r2_plan_sample_size.py `
+  --planning-prevalence 0.03 `
+  --target-halfwidth 0.005 `
+  --development-n 4500 `
+  --reservation-n 4500 `
+  --excluded-prefix 800 `
+  --official-dev-rows 12576 `
+  --mcnemar-discordance 0.05 `
+  --mcnemar-net-gain 0.01 `
+  --alpha 0.05 `
+  --target-power 0.80 `
+  --output docs\STAGE4A_R2_SAMPLE_SIZE_PLAN.json
+```
+
+Expected SHA-256: `5C43CA352900B559EE3A71975BFD018854B0E8E66CC98B29D7A1710C751DD73D`.
+
+After the protocol and code commit, extract only official development content and reservation IDs:
+
+```powershell
+& "D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe" scripts\stage4a_r2_extract_official.py `
+  --official-zip "C:\Users\cc\Downloads\data_ids_april7.zip" `
+  --development-output "E:\科研\超粒球RAG_数据\processed\stage4a_r2_official_dev4500_unified.json" `
+  --source-audit docs\STAGE4A_R2_SOURCE_AUDIT.json
+
+& "D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe" scripts\stage1_build_corpus.py `
+  --inputs "E:\科研\超粒球RAG_数据\processed\stage4a_r2_official_dev4500_unified.json" `
+  --units-output "E:\科研\超粒球RAG_数据\processed\stage4a_r2_official_dev4500_units.jsonl" `
+  --queries-output "E:\科研\超粒球RAG_数据\processed\stage4a_r2_official_dev4500_queries.jsonl" `
+  --report "E:\科研\超粒球RAG_数据\processed\stage4a_r2_official_dev4500_corpus_report.md"
+```
+
+Run the frozen retrieval and inference:
+
+```powershell
+& "D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe" scripts\stage4a_r2_official_estimation.py `
+  --units "E:\科研\超粒球RAG_数据\processed\stage4a_r2_official_dev4500_units.jsonl" `
+  --queries "E:\科研\超粒球RAG_数据\processed\stage4a_r2_official_dev4500_queries.jsonl" `
+  --source-audit docs\STAGE4A_R2_SOURCE_AUDIT.json `
+  --sample-plan docs\STAGE4A_R2_SAMPLE_SIZE_PLAN.json `
+  --embedding-cache "E:\科研\超粒球RAG_数据\processed\stage4a_r2_official_dev4500_minilm_embeddings.npz" `
+  --output-dir results `
+  --report "reports\超粒球RAG_Stage4A_R2官方事件率估计报告.md"
+```
+
+Independently verify every tracked metric:
+
+```powershell
+& "D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe" scripts\stage4a_r2_verify_outputs.py `
+  --query-audit results\stage4a_r2_query_audit.csv `
+  --summary results\stage4a_r2_strategy_summary.csv `
+  --bootstrap results\stage4a_r2_bootstrap.csv `
+  --inference results\stage4a_r2_inference.json `
+  --source-audit docs\STAGE4A_R2_SOURCE_AUDIT.json `
+  --report "reports\超粒球RAG_Stage4A_R2官方事件率估计报告.md" `
+  --output results\stage4a_r2_verification.json
+```
+
+Local unified data, JSONL corpora, mapping report, and embedding cache remain untracked. The reservation contributes only an ID digest and is never embedded or scored.

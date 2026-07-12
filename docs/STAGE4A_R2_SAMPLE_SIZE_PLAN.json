@@ -1,0 +1,66 @@
+{
+  "interpretation": {
+    "controller_training_authorized": false,
+    "cross_dataset_generalization_claim": false,
+    "primary_objective": "official gain/harm prevalence estimation",
+    "reservation_metrics_authorized": false,
+    "threshold_tuning_authorized": false
+  },
+  "official_dev_partition": {
+    "development_queries": 4500,
+    "development_rows": "[800:5300)",
+    "excluded_prior_rows": "[0:800)",
+    "reservation_queries": 4500,
+    "reservation_rows": "[5300:9800)",
+    "unused_queries": 2776,
+    "unused_rows": "[9800:12576)"
+  },
+  "primary_design": {
+    "achieved_halfwidth_at_planning_prevalence": 0.004998094431217705,
+    "development_n": 4500,
+    "estimands": [
+      "q25_gain_prevalence",
+      "q25_harm_prevalence"
+    ],
+    "exact_minimum_n": 4497,
+    "interval": "Wilson 95%",
+    "planning_prevalence": 0.03,
+    "target_halfwidth": 0.005
+  },
+  "secondary_paired_design": {
+    "alpha": 0.05,
+    "minimum_net_cr20_gain": 0.01,
+    "planning_total_discordance": 0.05,
+    "power_at_development_n": 0.8379758968680544,
+    "target_power": 0.8,
+    "test": "exact conditional two-sided McNemar"
+  },
+  "sensitivity": [
+    {
+      "halfwidth_at_n4500": 0.0021027545464734083,
+      "minimum_n_for_halfwidth": 918,
+      "prevalence": 0.005
+    },
+    {
+      "halfwidth_at_n4500": 0.002935757334419786,
+      "minimum_n_for_halfwidth": 1606,
+      "prevalence": 0.01
+    },
+    {
+      "halfwidth_at_n4500": 0.004109139779411076,
+      "minimum_n_for_halfwidth": 3053,
+      "prevalence": 0.02
+    },
+    {
+      "halfwidth_at_n4500": 0.004998094431217705,
+      "minimum_n_for_halfwidth": 4497,
+      "prevalence": 0.03
+    },
+    {
+      "halfwidth_at_n4500": 0.005736412273929789,
+      "minimum_n_for_halfwidth": 5918,
+      "prevalence": 0.04
+    }
+  ],
+  "status": "FROZEN_APPROVED_BEFORE_OFFICIAL_ROW_EXTRACTION"
+}
