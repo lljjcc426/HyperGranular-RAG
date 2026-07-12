@@ -1,169 +1,119 @@
 # HyperGranular-RAG
 
-自适应粒球作为知识单元、边界不确定性驱动检索决策的 RAG 实验仓库。
+以自适应粒球为知识单元、以超边表达跨粒球高阶关系，并通过受保护插入控制检索扩展的多跳 RAG 研究仓库。
 
-本仓库用于跟进“超粒球 RAG”方向：以粒球作为可检索知识单元，以查询相关的高阶关系或超边补充跨粒球证据，并用边界不确定性控制扩展噪声。
+## 当前状态
 
-## 当前研究问题
+| 项目 | 状态 |
+|---|---|
+| 当前阶段 | Stage4A-R2 官方 2Wiki 事件率估计 |
+| 活跃协议 | `docs/STAGE4A_R2_PROTOCOL.md` |
+| 协议状态 | 已冻结；Amendment 1 已获用户批准，待修订提交后重试来源提取 |
+| 当前数据状态 | 尚无 Stage4A-R2 unified data、embedding 或检索指标 |
+| Stage3B | `KEEP_LOCKED` |
+| Controller 训练 | 未授权 |
+| 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
 
-在多跳开放域问答中，是否可以用“粒球知识单元 + 查询相关超边/边界门控”提升证据链召回，同时控制非金证据扩展？
+第一次官方提取在预注册映射硬门处停止：基础区间 `[800:5300)` 的 11,003 个 supporting facts 中有 19 个 sentence index 越界，影响 19 条查询。没有生成检索结果。Amendment 1 采用仅由标注完整性决定的确定性替换，不接触 gain/harm 或检索指标。
 
-当前实验场景：
+## 研究问题
 
-- HotpotQA sample200
-- MuSiQue sample200
-- 400 queries
-- 12,304 candidate units
-- 887 gold evidence units
+长期问题：
 
-数据文件和大体积中间结果未纳入仓库。当前本地实验数据位于：
+> 在证据密集型多跳问答中，粒球知识单元与跨粒球超边能否在保护强 dense 主干的同时，提高完整证据链召回，并用可验证的查询级决策控制扩展成本和风险？
 
-- `E:\科研\超粒球RAG_数据\processed`
-- `E:\科研\超粒球RAG_数据\reports`
+当前 Stage4A-R2 只回答：
 
-## 主要结论快照
+1. 官方 April 7 版 2WikiMultiHopQA 上 dense fixed 的 CR@20 是否饱和；
+2. 冻结 q25、protect-10、insert-4 策略的 query-level gain/harm prevalence 是多少；
+3. 这些事件率能否以预注册精度估计，为后续模型特定的 controller 设计提供依据。
 
-Stage1 TF-IDF 空间：
+Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，也不读取 Stage3B。
 
-| Method | ER@10 | CR@10 | Notes |
-|---|---:|---:|---|
-| Fixed TF-IDF | 0.6187 | 0.3125 | 固定窗口基线 |
-| Facet-aware hyperedge | 0.6345 | 0.3725 | 提升证据链召回，但扩展噪声高 |
-| Boundary gated hyperedge | 0.6335 | 0.3725 | 保持 CR@10，同时降低 false expansion |
+## 方法概览
 
-Stage2 dense 空间：
+- **知识单元**：将候选上下文句子嵌入后组织为自适应粒球。
+- **高阶关系**：使用 query-aware facet hyperedge 表达跨粒球证据补全候选。
+- **强基线保护**：保留 dense Top-10，仅允许最多 4 个扩展单元进入 Top-20。
+- **冻结过滤**：迁移 Stage2E 产生并在 Stage2F 独立测试的 q25 score floor `0.1957079917192459`。
+- **当前策略**：all-query expansion；Stage2G 已表明旧 boundary-only OR rule 不具备选择性优势。
+- **当前主终点**：q25 gain/harm prevalence 及 Wilson 95% 区间。
 
-| Method | ER@10 | CR@10 | ER@20 | CR@20 | Notes |
-|---|---:|---:|---:|---:|---|
-| Dense fixed | 0.7788 | 0.5625 | 0.9209 | 0.8250 | dense baseline 很强 |
-| Original dense gated | 0.7234 | 0.4750 | 0.7700 | 0.5625 | 不能替代 dense fixed |
-| Fill + facet | 0.7875 | 0.5925 | 0.9468 | 0.9000 | 召回最好，噪声高 |
-| Fill + gated | 0.7750 | 0.5650 | 0.9472 | 0.8900 | 适合作为 Top-20 证据补全 |
-| Protect10 + gated | 0.7788 | 0.5625 | 0.9476 | 0.8875 | Top-10 保守，Top-20 补证据 |
+## 证据等级
 
-Stage2D protected dense reranking：
+| 阶段 | 证据等级 | 保留结论 |
+|---|---|---|
+| Stage0–Stage2E | 可复现探索性开发 | 生成机制与冻结候选，不作确认性主张 |
+| Stage2F | 有限内部独立验证 | 主 CR@10 gate 失败；保留窄范围 q25/Top-20 证据 |
+| Stage2G | 有效负结果 | 当前 boundary-only 规则不受支持 |
+| Stage2H | 事后诊断 | 不产生替代阈值 |
+| Stage3A | 失败的预注册开发 | 稀疏事件触发 fallback；Stage3B 不开放 |
+| Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
+| 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
+| Stage4A-R2 | 当前进行中 | 官方事件率精度估计，尚无结果 |
 
-| Method | Protect | Insert | ER@10 | CR@10 | ER@20 | CR@20 | Notes |
-|---|---:|---:|---:|---:|---:|---:|---|
-| Dense fixed | 0 | 0 | 0.7788 | 0.5625 | 0.9209 | 0.8250 | dense baseline |
-| Facet insert | 5 | 2 | 0.8045 | 0.6125 | 0.9313 | 0.8425 | 当前 CR@10 最好 |
-| Gated insert | 5 | 2 | 0.8029 | 0.6100 | 0.9313 | 0.8425 | Top-10 增益接近 facet，false insert 较低 |
-| Gated insert | 5 | 4 | 0.8053 | 0.6125 | 0.9445 | 0.8725 | Top-20 更强，但 false insert 更高 |
-| Facet insert | 10 | 8 | 0.7788 | 0.5625 | 0.9525 | 0.9000 | 当前 CR@20 最好，Top-10 被保护 |
+完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
-当前可支撑的谨慎表述：
+## 数据与来源边界
 
-> dense 空间里，超粒球/超边扩展不适合替代 dense fixed Top-10；但作为受保护的 Top-20 证据补全机制是有效的。
+| 数据 | 用途 | 状态 |
+|---|---|---|
+| HotpotQA dev distractor | 早期开发与内部验证 | 固定镜像 SHA；官方字节等价性未认证 |
+| MuSiQue answerable dev | 早期开发与内部验证 | 官方归档 |
+| 2WikiMultiHopQA `data_ids_april7.zip` | Stage4A-R2 官方外部数据 | SHA-256 已冻结；本地数据不入 Git |
+
+Stage4A-R2 样本量为 4,500；基础区间、替换规则、保留集和未使用区由协议及 Amendment 控制。Reservation 仅允许 ID digest，不允许内容文件、embedding 或指标。
 
 ## 仓库结构
 
 ```text
-scripts/   实验、审计、汇总脚本
-reports/   阶段性 Markdown 研究报告
-results/   关键 CSV 汇总表和审计表
-docs/      路线图与复现实验说明
+AGENTS.md      项目隔离、科研和 GitHub 治理约束
+docs/          协议、审计、路线图和复现说明
+reports/       阶段性研究报告
+results/       可跟踪的汇总、query audit 和验证产物
+scripts/       数据映射、检索、统计和独立验证脚本
+README.md      当前项目入口；不承载全部历史细节
 ```
 
-## 复现入口
+Raw data、processed corpus、embedding cache 和模型文件不进入仓库。
 
-核心脚本：
+## 复现
 
-- `scripts/stage1_build_corpus.py`
-- `scripts/stage1_tfidf_baseline.py`
-- `scripts/stage1_facet_noise_gate.py`
-- `scripts/stage2_bootstrap_reliability.py`
-- `scripts/stage2_dense_replication.py`
-- `scripts/stage2_dense_protection_compare.py`
-- `scripts/stage2d_protected_rerank.py`
+验证过的实验解释器：
 
-注意：部分脚本目前仍使用本地绝对路径或需要显式传入 `--units`、`--queries`、`--output-prefix`、`--embedding-cache`。后续应优先完成路径参数化和一键复现实验入口。
+```text
+D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe
+```
 
-## 历史计划：Stage2D
+完整命令、输入输出路径和期望 SHA 见 [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md)。核心 R2 脚本：
 
-下一轮实验重点不是继续堆超边数量，而是做 dense reranking 保护策略：
+- `scripts/stage4a_r2_plan_sample_size.py`
+- `scripts/stage4a_r2_extract_official.py`
+- `scripts/stage4a_r2_official_estimation.py`
+- `scripts/stage4a_r2_verify_outputs.py`
 
-1. 固定 dense Top-5 或 Top-10 为保护区。
-2. 只允许高置信边界扩展单元进入 rank 6-20。
-3. 对 K=10/15/20 分别报告 ER、CR、context units、context tokens、false expansion。
-4. 对 HotpotQA 与 MuSiQue 分开分析，避免只看 ALL 平均值。
+默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
-详细路线见 `docs/ROADMAP.md`。
+## 科研治理
 
-## Stage2E 结果
+- 项目与其他项目会话隔离；禁止读取项目外会话或全局 Codex 记忆。
+- 协议、样本量、主要终点和执行代码必须先提交 GitHub，再读取结果。
+- Gold 标签禁止进入索引、候选选择、排序、过滤或检索决策。
+- 硬失败不得自动放宽或重跑；必须形成 Amendment 并在重跑前提交。
+- 失败、失效和负结果保留在历史中，不通过删除文件改写研究轨迹。
+- 每个结果阶段必须独立复算并进行统计解释与 11 类谬误检查。
 
-Stage2E 对 gated 超边插入候选做了无标签分位筛选。阈值只由候选的稠密相似度和 facet 分数计算，金标仅用于最终评测。
+详细约束见 [`AGENTS.md`](AGENTS.md)。
 
-| Method | Protect | Insert | ER@10 | CR@10 | ER@20 | CR@20 | False insert | Notes |
-|---|---:|---:|---:|---:|---:|---:|---:|---|
-| Dense fixed | 0 | 0 | 0.7788 | 0.5625 | 0.9209 | 0.8250 | 0.0000 | baseline |
-| Gated, unfiltered | 5 | 2 | 0.8029 | 0.6100 | 0.9313 | 0.8425 | 0.8727 | 完全复现 Stage2D 对应行 |
-| Gated, score q25 | 5 | 4 | 0.8058 | 0.6125 | 0.9441 | 0.8700 | 0.8774 | 保持最高 CR@10，同时较无筛选 insert=4 降低误插率 |
-| Gated, score q25 | 10 | 4 | 0.7788 | 0.5625 | 0.9493 | 0.8825 | 0.8733 | 当前筛选条件下最高 CR@20 |
-| Gated, score q50 | 5 | 2 | 0.7958 | 0.5950 | 0.9292 | 0.8375 | 0.8407 | 更低误插率，但召回增益收缩 |
+## 已知限制
 
-当前证据支持“轻度候选筛选可以改善保护式证据补全的精度-召回折中”，不支持“已经解决噪声”。分位阈值和评测来自同一批 400 queries，因此属于探索性结果，还需要冻结阈值后的独立测试。
+- 当前方法只评估检索，不含生成器答案质量。
+- q25 阈值来自原始两数据集，不能声称对 2Wiki 最优。
+- Stage4A-R2 使用确定性数据边界和标注完整性 QC，推断范围需按最终来源审计限定。
+- 当前没有经过验证的 query-level boundary/controller。
 
-## Stage2F 独立验证结果
+## GitHub
 
-Stage2F 在测试前提交冻结协议，并使用两个原始 dev 文件中未被 Stage2E 使用的 `[200:400)` 切片，共 400 queries。测试集与校准集 query ID 交集为 0，q25/q50 阈值没有根据测试集重估。
+仓库：<https://github.com/lljjcc426/HyperGranular-RAG>
 
-| Gate | Delta | 95% CI | Decision |
-|---|---:|---:|---|
-| q25 protect5/insert4 vs dense fixed CR@10 | +0.0175 | [-0.0125, 0.0475] | 主终点未通过 |
-| q25 protect5/insert4 vs unfiltered false insert | -0.0129 | [-0.0206, -0.0055] | 通过；CR@10 observed delta +0.0075 |
-| q25 protect10/insert4 vs dense fixed CR@20 | +0.0175 | [0.0025, 0.0350] | 通过 |
-| q50 protect5/insert2 vs unfiltered false insert | -0.0512 | [-0.0783, -0.0259] | 探索性；CR@10 delta -0.0025 |
-
-确定性复跑的两份 CSV 与首次运行 SHA256 完全一致。当前证据不支持“稳定提升 Top-10 证据链召回”，但支持较窄的结论：冻结的候选过滤能降低误插，且保护式插入能在未见 HotpotQA 查询上改善 Top-20 证据补全。MuSiQue 的 dense fixed CR@20 已为 1.0000，不能贡献 Top-20 增益。
-
-## Stage2G 边界机制审计结果
-
-Stage2G 使用两个源文件的 `[400:600)` 新切片，并在完全相同的 q25 阈值、候选构造和插入预算下比较 all-query 与 boundary-only。测试集与 Stage2E、Stage2F 均零交集。
-
-| Gate | Policy delta | 95% CI | Decision |
-|---|---:|---:|---|
-| p10/i4 boundary vs all false insert | +0.0043 | [-0.0054, 0.0150] | 未降低误插 |
-| p10/i4 boundary vs all CR@20 | -0.0075 | [-0.0200, 0.0025] | 未通过 -0.01 非劣门 |
-| p5/i4 boundary vs all false insert | -0.0011 | [-0.0105, 0.0086] | 不确定 |
-| p5/i4 boundary vs all CR@10 | -0.0075 | [-0.0200, 0.0050] | 未通过 -0.01 非劣门 |
-| Boundary vs non-boundary completion precision@20 | -0.0686 | [-0.4000, 0.2337] | 预测机制未通过 |
-
-当前 boundary rule 将 81% 的查询判为边界。它把 p10 触发率从 0.5225 降至 0.4450，但没有改善条件误插率，并损失少量召回。确定性复跑 CSV 完全一致。现有证据支持 q25 保护式证据补全，但不支持“当前边界不确定性规则能有效预测何时应扩展”。
-
-## Stage2H 边界规则失败诊断
-
-Stage2H 汇总 Stage2E-F-G 三个互不重叠切片，共 1,200 queries，对当前 OR 边界规则做探索性事后分解：
-
-- `score_margin` 是覆盖率最高且描述性关联最强的单一条件，但完成预测 AUROC 仅 0.5223，完成精度差异为 +0.1292，95% CI [-0.0517, 0.2985]。
-- `radius` 完成预测 AUROC 为 0.4912，完成精度差异为 -0.0976，95% CI [-0.2628, 0.0658]，没有显示正向筛选能力。
-- `low_top_score` 仅覆盖 1/1,200 queries，当前阈值下基本失活。
-- OR gate 覆盖 0.8083 的查询，完成精度差异为 +0.0512，95% CI [-0.1737, 0.2564]；范围过宽且区分力不足。
-- 三份主 CSV 的确定性复跑 SHA-256 完全一致。
-
-这些结果解释了 Stage2G 的失败来源，但不构成新控制器或新阈值的确认性证据。
-
-## Stage3A 效用控制器开发结果
-
-Stage3A 在新的 `[600:1000)` 开发切片上使用 480-query 拟合集和 320-query 阈值集，并提前锁定 `[1000:1400)` 为 Stage3B 测试集。
-
-- 控制器在阈值集上保留 10/12 个 all-query CR@20 增益，触发率从 0.4531 降至 0.2125。
-- 非 gold 插入由每 query 1.1656 降至 0.6125，下降 47.45%；条件 false-insert rate 仅从 0.9053 降至 0.8991，差异 CI 跨 0。
-- CR@20 为 0.90625，低于 all-query 的 0.91250，但高于 dense fixed 的 0.87500。
-- gain 头拟合集只有 9 个正例；harm 头只有 2 个正例并触发预注册 fallback，阈值集 harm 事件为 0。
-- 五项晋级门槛中“不得使用稀疏目标 fallback”失败，因此 Stage3A 总决策为 `FAIL`，Stage3B 保持锁定。
-- 四个核心产物的确定性复跑 SHA-256 完全一致。
-
-## Stage3C 目标可行性与数据策略审计
-
-Stage3C 合并了互不重叠的 2,000 个已观察查询，不拟合新模型，也不读取 Stage3B 指标。
-
-- 共观察到 69 个 gain 和 8 个 harm，全部来自 HotpotQA。
-- HotpotQA gain/harm prevalence 为 0.069/0.008；MuSiQue 两者均为 0，dense-fixed CR@20 为 1.0000。
-- 没有任何两个独立分区各自达到 5 个 harm，因此风险感知 expected-utility 目标不具备事件可行性。
-- 69 个 gain 超过预注册的 20-event 门槛，预算化 gain selection 仍具备开发可行性。
-- 官方来源数据集筛选推荐 2WikiMultiHopQA 作为第一独立 pilot；HotpotQA train 只用于同域事件扩充，HoVer 仅适合检索鲁棒性任务。
-- 两个内部核心产物确定性复跑 SHA-256 完全一致，Stage3B 继续锁定。
-
-## 下一步
-
-Stage4A 冻结并运行一个小规模 2WikiMultiHopQA 可行性 pilot，只回答三个问题：数据能否无损映射为粒球知识单元、MiniLM dense CR@20 是否未饱和、q25 保护式插入是否产生足够 gain 事件。pilot 不拟合控制器，也不使用 Stage3B。
+重要协议、失败审计、修订、验证结果和阶段状态均按里程碑同步到 `main`。
