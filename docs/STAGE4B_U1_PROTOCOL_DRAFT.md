@@ -1,5 +1,7 @@
 # Stage4B-U1 无标签边界不确定性控制器协议草案
 
+> Status: `RETURN_FOR_PROTOCOL_REVISION`. This v1 draft was returned by `docs/STAGE4B_U1_PROTOCOL_REVIEW_1.md` and is superseded for design work by `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. It does not authorize execution.
+
 ## Material Passport
 
 - Origin Skill: `academic-research-suite / experiment-agent`

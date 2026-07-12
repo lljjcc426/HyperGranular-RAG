@@ -311,3 +311,18 @@ Protocol draft: `docs/STAGE4B_U1_PROTOCOL_DRAFT.md`. This branch is not yet auth
 7. No feature extraction, policy calibration, controller evaluation, reservation access, or Stage3B access is authorized by the draft.
 
 Power-plan generator: `scripts/stage4b_u1_plan_power.py`; artifact: `docs/STAGE4B_U1_POWER_PLAN.json`.
+
+## Stage4B-U1 Protocol Review 1 And Revision 2
+
+Review decision: `RETURN_FOR_PROTOCOL_REVISION`. U1-D execution was not approved; feature extraction, policy freezing, Gold evaluation, reservation access, and Stage3B access remain prohibited.
+
+Mandatory revisions recorded in `docs/STAGE4B_U1_PROTOCOL_REVIEW_1.md`:
+
+1. Replace legacy Gold-bearing candidate/ball objects with separate unlabeled units, unlabeled queries, and evaluator-only Gold map files.
+2. Replace the ambiguous median threshold with a unique score/hash ordered-prefix rule.
+3. Allocate at most 60% of all-query q25 planned insert units, mechanically guaranteeing at least 40% insertion reduction.
+4. Freeze no-ball, one-ball, zero-radius, float, NaN/Inf, ECDF equality, and extrapolation behavior.
+5. Define U1 strictly as an on/off selector between byte-identical dense and all-query q25 Top-20 rankings.
+6. Use correct zero-null statistical language and a single joint intersection-union claim with each component tested at alpha 0.05.
+
+Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. Its status is `REVISION_2_DESIGN_ONLY_IMPLEMENTATION_PENDING`; it is not an execution approval request. The next checkpoint is Gold-free implementation plus synthetic-only verification.

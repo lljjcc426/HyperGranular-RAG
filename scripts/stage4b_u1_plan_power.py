@@ -15,15 +15,15 @@ from pathlib import Path
 RESERVATION_N = 4500
 PLANNING_GAINS = 94
 PLANNING_HARMS = 69
-ALPHA_PER_PRIMARY = 0.025
+IUT_COMPONENT_ALPHA = 0.05
 MIN_RETENTION_GAP = 0.15
 MIN_CR20_DELTA = 0.005
 
 SCENARIOS = (
-    ("no_selection_enrichment_half_budget", 0.50, 0.50),
-    ("weak_enrichment", 0.60, 0.45),
-    ("target_enrichment", 0.65, 0.35),
-    ("strong_enrichment", 0.70, 0.30),
+    ("no_event_enrichment", 0.60, 0.60),
+    ("weak_enrichment", 0.65, 0.50),
+    ("target_enrichment", 0.70, 0.40),
+    ("strong_enrichment", 0.75, 0.35),
 )
 
 
@@ -66,12 +66,12 @@ def scenario_power(gain_retention: float, harm_retention: float) -> dict[str, fl
                 and fisher_greater_pvalue(
                     selected_gains, PLANNING_GAINS, selected_harms, PLANNING_HARMS
                 )
-                <= ALPHA_PER_PRIMARY
+                <= IUT_COMPONENT_ALPHA
             )
             mcnemar_pass = (
                 cr20_delta >= MIN_CR20_DELTA
                 and exact_mcnemar_two_sided_pvalue(selected_gains, selected_harms)
-                <= ALPHA_PER_PRIMARY
+                <= IUT_COMPONENT_ALPHA
             )
             fisher_power += mass * fisher_pass
             mcnemar_power += mass * mcnemar_pass
@@ -92,6 +92,8 @@ def scenario_power(gain_retention: float, harm_retention: float) -> dict[str, fl
 def build_plan() -> dict[str, object]:
     return {
         "stage": "Stage4B-U1",
+        "protocol": "docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md",
+        "protocol_status": "REVISION_2_DESIGN_ONLY_IMPLEMENTATION_PENDING",
         "status": "PLANNING_ONLY_NO_RESERVATION_ACCESS",
         "reservation_n": RESERVATION_N,
         "planning_anchor": {
@@ -101,13 +103,15 @@ def build_plan() -> dict[str, object]:
             "restriction": "used for power planning only; never for controller fitting or threshold selection",
         },
         "primary_testing": {
-            "familywise_alpha": 0.05,
-            "alpha_per_primary": ALPHA_PER_PRIMARY,
+            "framework": "intersection-union test for one joint claim",
+            "joint_claim_alpha": 0.05,
+            "alpha_per_component": IUT_COMPONENT_ALPHA,
             "mechanism_test": "one-sided Fisher exact test for gain retention > harm retention",
             "minimum_practical_retention_gap": MIN_RETENTION_GAP,
             "retrieval_test": "two-sided exact McNemar for controller vs dense CR@20",
             "minimum_practical_cr20_delta": MIN_CR20_DELTA,
-            "success_rule": "both primary tests and both practical-effect gates must pass",
+            "success_rule": "both zero-null tests and both observed practical-effect gates must pass",
+            "claim_boundary": "practical thresholds are observed effect gates, not tested margins",
         },
         "scenarios": [
             {
@@ -121,6 +125,7 @@ def build_plan() -> dict[str, object]:
         "interpretation": [
             "Power is conditional on 94 gain and 69 harm opportunities in a 4,500-query reservation.",
             "These counts are planning anchors, not assumed reservation outcomes.",
+            "The 0.60 resource budget is defined on planned insert units, not query count.",
             "No scenario can authorize reservation access or alter the label-free controller.",
         ],
     }
