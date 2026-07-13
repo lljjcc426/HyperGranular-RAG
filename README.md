@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Amendment 5B 已退回；Amendment 5A.1 channel-input hash-binding 包等待审批 |
-| 获批执行协议 | 当前无 5A.1 实现、synthetic 或 official 授权；仅完成治理包准备 |
+| 当前阶段 | Amendment 5A.1 已批准；正在进行 channel-input hash-binding implementation/synthetic hardening |
+| 获批执行协议 | 仅限 5A.1 实现与 synthetic 验证；official diagnosis/controller/verifier/Gold 均未授权 |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `AMENDMENT_5A_1_AWAITING_APPROVAL` |
+| 协议状态 | `AMENDMENT_5A_1_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |

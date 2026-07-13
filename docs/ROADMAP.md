@@ -676,3 +676,15 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The retained 5B boundaries remain decisions-only, aggregate-only, no rankings/policy/Gold/source-audit access, no formal artifacts, and immediate stop after a future approved diagnosis.
 - Amendment 5A.1 requests implementation/synthetic-only authority for direct pre-read and post-computation/pre-audit checks of those three hashes, cleanup/no-audit failure behavior, at least six additional tests, two byte-identical complete-suite runs, and a revised implementation-bound 5B package.
 - Current status: `AMENDMENT_5A_1_AWAITING_APPROVAL`. No 5B token, official preflight/capture, code modification, or synthetic run is authorized by this package.
+
+### Stage4B-U1-D Pre-Gold Amendment 5A.1 Approval
+
+- Decision date: 2026-07-14.
+- Decision: `APPROVE_STAGE4B_U1_D_PREGOLD_AMENDMENT_5A_1_CHANNEL_INPUT_HASH_BINDING_IMPLEMENTATION_SYNTHETIC_ONLY`.
+- Bound package commit: `3137ace0328dd24908f95737ea1dcbe0c8fe045e`.
+- Authorized scope: add three required expected-SHA arguments, fail closed on three external channel-input hashes before semantic parsing/computation and again after diagnostic computation immediately before audit exclusive-create, retain cleanup/no-audit behavior, add at least six synthetic tests, and run at least 104 tests twice with byte-identical evidence.
+- Allowed implementation files are limited to the capture, diagnostic synthetic runner, and diagnostic test file registered in the 5A.1 Manifest.
+- Controller, retrieval, common, comparator, model/parameters, equivalence, ranking, endpoint, and stop rules remain frozen.
+- Official inputs, rejected 5B token/preflight/capture, controller, verifier, evaluator, Gold, reservation, and Stage3B remain prohibited.
+- Decision record: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_APPROVAL_DECISION.md`.
+- Current status: `AMENDMENT_5A_1_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY`.

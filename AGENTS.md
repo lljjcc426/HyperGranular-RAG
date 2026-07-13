@@ -41,6 +41,8 @@
 27. 后续 5A.1 及新版 5B 必须外部冻结三项 channel 输入：units SHA-256 `114D28A7C9842079BF80C292274D7DBBBC718F05CBE8F4435487C245238427FA`、queries SHA-256 `6EE942C680EAC86D0410FC25BCC302CA7312A0E253E318025A957D51A09B4B6B`、controller channel audit SHA-256 `D134CDE168C833784F238B61420B4738C1F65B9FCA995945EB04E8B99EAAB2FA`。
 28. 当前仅可组装并推送 Amendment 5A.1 审批请求和 Manifest。该 package 本身不授权代码修改、synthetic 验证或任何 official 文件访问；实现必须等待明确绑定 5A.1 package commit 的新批准。
 29. 未来 5A.1 只能修改 decisions diagnostic capture 的三 SHA 前后硬门、对应 synthetic tests/evidence 及治理绑定；controller、retrieval、comparator 语义、byte-equivalence、模型、参数、score、ECDF、预算、trigger、ranking、endpoint 和停止规则必须保持不变。完成并推送新版 5B package 后必须停止。
+30. Amendment 5A.1 implementation/synthetic-only 已获批准，严格绑定 package commit `3137ace0328dd24908f95737ea1dcbe0c8fe045e` 及其 Manifest 中七个历史提交。批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_APPROVAL_DECISION.md`。
+31. 5A.1 只允许修改 Manifest 登记的三个实现/测试文件，保留原 98 项并新增至少 6 项测试，完整 suite 至少 104 项且连续两次字节一致、零 failure/error/skip/official access。禁止读取任何 official 输入、使用已退回 5B token、运行 official capture/controller/verifier/evaluator 或接触 Gold/reservation/Stage3B；新版 5B v2 包推送后立即停止。
 
 ## GitHub 与文档
 
