@@ -6,7 +6,10 @@
 - Mode: protocol amendment / plan
 - Draft date: 2026-07-13
 - Amendment ID: `STAGE4B_U1_D_PREGOLD_AMENDMENT_1`
-- Status: `DRAFT_NOT_APPROVED_NOT_EXECUTABLE`
+- Status: `APPROVED_FOR_SINGLE_PREGOLD_RESUMPTION`
+- Approval decision: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_1_APPROVAL_DECISION.md`
+- Approval date: 2026-07-13
+- Bound amendment commit: `a7e121584d9f512bb7b4abaabdb9c93913ad560d`
 - Trigger: `HARD_FAILURE_EMBEDDING_CACHE_METADATA`
 - Failure audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_1.md`
 - Parent approval request commit: `2f6c7067c686bf1f4c13328bd1fc04ab3990f767`
@@ -111,10 +114,10 @@ max_length
 
 ## 审批要求
 
-当前草案不可执行。恢复 Stage4B-U1-D pre-Gold 的最小批准语句为：
+本修订已由用户按以下语句批准：
 
 ```text
 批准 Stage4B-U1-D Pre-Gold Amendment 1：重新生成 ID-bound embedding cache
 ```
 
-批准必须绑定本草案提交后的 Git commit。批准决定、协议状态和新的 synthetic binding evidence 均推送到 `origin/main` 后，才可重新接触 official development。
+批准绑定 commit `a7e121584d9f512bb7b4abaabdb9c93913ad560d`。批准决定、协议状态和新的 synthetic binding evidence 均推送到 `origin/main` 后，才可重新接触 official development。

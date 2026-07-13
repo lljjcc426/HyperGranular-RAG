@@ -443,4 +443,12 @@ unit_embeddings
 
 It lacked `unit_ids`, `query_ids`, and `max_length`, so it failed the v2.1 ID-bound cache gate. The failure audit is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_1.md`.
 
-Do not rerun the official channel or controller under the original approval. Do not patch, migrate, overwrite, or delete the legacy cache. The proposed fresh-cache procedure is frozen in `docs/STAGE4B_U1_PREGOLD_AMENDMENT_1_DRAFT.md`, but remains non-executable until explicit user approval is committed and pushed.
+Do not patch, migrate, overwrite, or delete the legacy cache. The fresh-cache procedure in `docs/STAGE4B_U1_PREGOLD_AMENDMENT_1_DRAFT.md` was approved on 2026-07-13, bound to amendment commit `a7e121584d9f512bb7b4abaabdb9c93913ad560d` and implementation commit `dd1f8a9893ccb1e760068ad21d48e0e8938cc7f9`.
+
+The single approved new path is:
+
+```text
+E:\科研\超粒球RAG_数据\processed\stage4b_u1_d_official_dev4500_minilm_idbound_embeddings.npz
+```
+
+Before official execution resumes, the approval governance and the post-amendment synthetic binding evidence must be committed and pushed. The new path must still be absent at the formal preflight.

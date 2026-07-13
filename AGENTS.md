@@ -19,8 +19,8 @@
 5. Stage4A-R2 已完成并独立验证；Stage4B-U1 v2 架构仅为 `ACCEPTED_IN_PRINCIPLE`。
 6. q25 阈值 `0.1957079917192459` 只能作为冻结迁移策略使用，不得声称是 2Wiki 最优阈值。
 7. 任何硬失败后的修订必须先批准、写入、提交并推送，再执行。
-8. Stage4B-U1-D v2.1 的原 pre-Gold 批准已在 `HARD_FAILURE_EMBEDDING_CACHE_METADATA` 处停止；未运行 official channel/controller，当前状态为 `PREGOLD_EXECUTION_STOPPED_HARD_FAILURE_1`。
-9. 在 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_1_DRAFT.md` 获用户批准、提交并推送前，official channel、controller、verifier、U1-D Gold evaluation、任何 U1-D 指标读取或解释、reservation 和 Stage3B 全部锁定；不得自动重跑、迁移或重建 embedding cache。
+8. Stage4B-U1-D Pre-Gold Amendment 1 已获 `APPROVE_STAGE4B_U1_D_PREGOLD_AMENDMENT_1`：仅允许在全新且执行前不存在的路径单次生成 ID-bound cache，独立核查通过后完成原批准的 channel/controller、policy/ranking/decision 和 `VERIFIED_PRE_GOLD`；推送后立即停止。
+9. 旧 Stage4A-R2 cache 必须原样保留，不覆盖、不删除、不迁移。U1-D Gold evaluation、任何 U1-D 指标读取或解释、reservation 和 Stage3B 保持锁定；任一硬门失败不得自动重跑，必须停止并重新申请审批。
 
 ## GitHub 与文档
 

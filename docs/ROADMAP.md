@@ -388,7 +388,16 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 ### Stage4B-U1-D Pre-Gold Amendment 1 Draft
 
 - Draft: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_1_DRAFT.md`.
-- Status: `DRAFT_NOT_APPROVED_NOT_EXECUTABLE`.
+- Status at draft submission: `DRAFT_NOT_APPROVED_NOT_EXECUTABLE`; superseded by the approval checkpoint below.
 - The sole requested change is a fresh, non-existing U1-D-specific ID-bound cache path created once by the unchanged approved controller.
 - Model, max length, batch size, data boundary, q25, score, ECDF, 60% budget, endpoints, implementation, Gold isolation, and stop rules remain frozen.
-- Official U1-D pre-Gold remains locked until the amendment is explicitly approved, committed, pushed, and followed by a new synthetic binding verification.
+- At draft submission, official U1-D pre-Gold remained locked pending explicit approval, governance push, and a new synthetic binding verification.
+
+### Stage4B-U1-D Pre-Gold Amendment 1 Approval
+
+- Decision: `APPROVE_STAGE4B_U1_D_PREGOLD_AMENDMENT_1` on 2026-07-13.
+- Approval decision: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_1_APPROVAL_DECISION.md`.
+- Bound commits: amendment `a7e121584d9f512bb7b4abaabdb9c93913ad560d`; implementation `dd1f8a9893ccb1e760068ad21d48e0e8938cc7f9`.
+- Authorized: preserve the legacy cache, require a new path to be absent, create one fresh ID-bound cache with the frozen encoder, independently validate it, and complete the already approved pre-Gold artifacts and `VERIFIED_PRE_GOLD`.
+- Not authorized: Gold evaluation, U1-D metrics, reservation, Stage3B, implementation or parameter changes, or automatic retry.
+- Governance and new synthetic binding evidence must be pushed before official-development execution resumes.

@@ -10,15 +10,17 @@
 - v2.1 hardening specification: `docs/STAGE4B_U1_EXECUTION_HARDENING_V2_1.md`
 - Pre-Gold approval decision: `docs/STAGE4B_U1_EXECUTION_PACKAGE_V2_1_APPROVAL_DECISION.md`
 - Pre-Gold hard-failure audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_1.md`
-- Pending amendment: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_1_DRAFT.md`
+- Approved amendment: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_1_DRAFT.md`
+- Amendment approval decision: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_1_APPROVAL_DECISION.md`
 - Protocol architecture status: `FROZEN_FOR_U1_D_PREGOLD_EXECUTION`
 - Execution review decision: `RETURN_EXECUTION_PACKAGE_FOR_HARDENING`
-- Execution package status: `PREGOLD_EXECUTION_STOPPED_HARD_FAILURE_1`
+- Execution package status: `AMENDMENT_1_APPROVED_SINGLE_PREGOLD_RESUMPTION`
 - Historical execution approval: `APPROVE_STAGE4B_U1_D_PREGOLD_EXECUTION_V2_1`
-- Current execution authorization: `STOPPED_REAPPROVAL_REQUIRED`
+- Current execution authorization: `APPROVE_STAGE4B_U1_D_PREGOLD_AMENDMENT_1`
 - Approval date: 2026-07-13
 - Approval request commit: `2f6c7067c686bf1f4c13328bd1fc04ab3990f767`
 - Bound implementation commit: `dd1f8a9893ccb1e760068ad21d48e0e8938cc7f9`
+- Bound amendment commit: `a7e121584d9f512bb7b4abaabdb9c93913ad560d`
 - Gold evaluation approval: `NOT_APPROVED`
 - Reservation metrics status: `PROHIBITED_NOT_ACCESSED`
 - Other conversations, thread tools, and global memory used: No
@@ -243,11 +245,11 @@ v2 原实现通过 7 项合成验证后，执行包审批仍因 7 项完整性�
 4. 将审批记录、硬化规格、实现、测试证据和状态更新提交并推送；
 5. 用户重新显式批准 U1-D execution package；已完成；
 6. 获批后的 preflight 命中 `HARD_FAILURE_EMBEDDING_CACHE_METADATA`，在 official channel 前停止；
-7. 只有 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_1_DRAFT.md` 获批、提交并推送后，才可恢复官方 U1-D pre-Gold；
+7. `docs/STAGE4B_U1_PREGOLD_AMENDMENT_1_DRAFT.md` 已获批准；批准状态与新 synthetic binding evidence 提交推送后才可恢复官方 U1-D pre-Gold；
 8. 策略工件先冻结、独立验证、提交并推送，之后仍须单独批准才允许一次 U1-D Gold 评估；
 9. U1-D 全部门通过且用户再次批准，才允许 U1-R。
 
-当前 `AGENTS.md` 已同步为硬失败停止状态。Amendment 1 批准前没有获批执行阶段；U1-D Gold、U1-R 与 Stage3B 继续锁定。
+当前 `AGENTS.md` 已同步为 Amendment 1 单次恢复状态；U1-D Gold、U1-R 与 Stage3B 继续锁定。
 
 ## Pre-Gold 硬失败 1
 
@@ -257,7 +259,7 @@ v2 原实现通过 7 项合成验证后，执行包审批仍因 7 项完整性�
 
 ## 当前禁止事项
 
-- Amendment 1 批准、提交并推送前，禁止任何 official U1-D channel、controller 或 verifier 执行；
+- 只允许 Amendment 1 规定的单次 official U1-D channel、fresh cache/controller、独立 cache 核查、工件冻结和 pre-Gold verifier；
 - 不连接 U1-D Gold；
 - 不创建或读取 reservation 内容、embedding、decision、ranking 或指标；
 - 不访问 Stage3B；
