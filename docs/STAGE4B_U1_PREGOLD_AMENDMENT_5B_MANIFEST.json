@@ -1,0 +1,157 @@
+{
+  "schema_version": "stage4b_u1_pregold_amendment_5b",
+  "request_id": "STAGE4B_U1_D_PREGOLD_AMENDMENT_5B_OFFICIAL_DECISIONS_ONLY_DIAGNOSTIC",
+  "assembled_date": "2026-07-13",
+  "package_status": "AWAITING_AMENDMENT_5B_APPROVAL",
+  "current_official_state": "PREGOLD_EXECUTION_STOPPED_HARD_FAILURE_4",
+  "amendment_5a_state": "AMENDMENT_5A_SYNTHETICALLY_VERIFIED",
+  "requested_mode": "SINGLE_OFFICIAL_DECISIONS_ONLY_DIAGNOSTIC",
+  "diagnostic_checkpoint": "stage4b_u1_decisions_diag_v1",
+  "controller_checkpoint_must_remain": "stage4b_u1_v2_3_1",
+  "binding_commits": {
+    "hard_failure_4": "b21852a174b537c90a848699deb4d26d6f169506",
+    "v2_3_1_implementation": "34349c70ee24b8240fd169393134d4280968b790",
+    "original_resumption_package": "e76c921454697d1784b0d76a9d9677113051f0f6",
+    "approval_governance": "53850f58e57f51b3c6067ed3108edff6b99a2dfc",
+    "synthetic_rebinding": "a963befd812658972b156d2a7a26a488ac3c4482",
+    "failed_controller_execution_head": "8e0bab13ad20c06795dffd5ca71f167a814cdfb0",
+    "amendment_5a_package": "81d8c34f1cf2539a4c0b81c6148047bc666e2f82",
+    "amendment_5a_approval_governance": "a0bf91b3a34daaf5b1ee50700d8356e1383e9a9c",
+    "amendment_5a_final_implementation_and_evidence": "9a060bd31e9c33be587f7ef5e64f86206922e59e"
+  },
+  "approval_must_also_bind_package_commit": true,
+  "amendment_5a_evidence": {
+    "path": "results/stage4b_u1_d_pregold_amendment_5a_synthetic_verification.json",
+    "sha256": "3D44C14B82E911DDD37501731772A7594D7616BF12FE278D2D4CCC103533057E",
+    "implementation_audit": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_IMPLEMENTATION_AUDIT.md",
+    "implementation_audit_sha256": "6F1C6803677406B94C58E6E4B3AC15DDC3BD349BAEA0471512C7A677F8318202",
+    "tests_run": 98,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "byte_identical_complete_reruns": true,
+    "official_path_access_attempts": 0
+  },
+  "implementation_hashes": {
+    "scripts/stage4b_u1_common.py": "CDF7EAD6007DABE389ED0BD18983496F75290C32243FE6DF84716810CDE92CE4",
+    "scripts/stage4b_u1_goldfree_retrieval.py": "3B50FAFD057E2565167ED09288D61829B3FBD044991F139F734F819955038A3B",
+    "scripts/stage4b_u1_goldfree_controller.py": "C18AD3B672649BA846C5E191D0DBBAC7644A926D4B8CCD39176127175BBA7C1F",
+    "scripts/stage4b_u1_compare_decisions.py": "FF4D623DF86FE42EB4ACDFF9D3321FCA768E03B64597C6CC88931359CEDB2DD4",
+    "scripts/stage4b_u1_capture_diagnostic_decisions.py": "1D30E8129C9E9E228EE8E1BB2C21A2E8D196C0F5B91D16E9E8061AD7B1DA0EFC",
+    "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py": "03C29EABAEB5D57CEF6D1A6B13235475FC0CCCCFC65E13A118BCD44EB60D57C4",
+    "tests/test_stage4b_u1_goldfree.py": "CA61B466C7DDF583D827FD2D99C024D646BA3962C80B9137D480C84DEA374C71",
+    "tests/test_stage4b_u1_decisions_diagnostic.py": "1105016D8128615D0DA1B9612D5CAD3FCB2B796A3B8424D27B46BDD83C1CB7D4"
+  },
+  "amendment_5a_governance_hash": {
+    "AGENTS.md": "BF7F2DE2CCCA5DD05610548F0E2CE2FF3BDB9B6EB7EFD4F112DBD6C4FFBD41B0",
+    "note": "Historical 5A evidence binding only; a future approved AGENTS update must be bound by post-approval evidence and the 5B governance-binding JSON."
+  },
+  "post_approval_synthetic_rebinding": {
+    "required": true,
+    "must_precede_official_preflight": true,
+    "suite_tests": 98,
+    "complete_runs": 2,
+    "required_result": "ALL_PASS_ZERO_FAILURE_ERROR_SKIP_BYTE_IDENTICAL_ZERO_OFFICIAL_ACCESS",
+    "evidence_output": "results/stage4b_u1_d_pregold_amendment_5b_synthetic_rebinding.json",
+    "governance_binding_output": "results/stage4b_u1_d_pregold_amendment_5b_governance_binding.json",
+    "governance_files": [
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_MANIFEST.json",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_APPROVAL_DECISION.md",
+      "AGENTS.md"
+    ]
+  },
+  "authorization_token": "APPROVE_STAGE4B_U1_D_AMENDMENT_5B_OFFICIAL_DECISIONS_ONLY_DIAGNOSTIC",
+  "permitted_inputs": {
+    "unlabeled_units": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_unlabeled_units.jsonl",
+    "unlabeled_queries": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_unlabeled_queries.jsonl",
+    "controller_channel_audit": "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_controller_channel_audit.json",
+    "embedding_cache": {
+      "path": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_minilm_idbound_embeddings.npz",
+      "sha256": "69ED39ABC0636B7B63A41639B64CB037FAE556F10CB130FCD18AFB61CBE06F7D",
+      "bytes": 210714667,
+      "mode": "REQUIRE_EXISTING_NO_BUILD_PRE_AND_POST_FINGERPRINT"
+    },
+    "reference_decisions": {
+      "path": "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_decisions.jsonl",
+      "sha256": "6FB6EB6DBFE3C6B819E65ADD268D9F94CFEA24E5761C9E4CB53CD0965C3723C7"
+    }
+  },
+  "registered_boundary": {
+    "queries": 4500,
+    "units": 143820,
+    "dataset": "2wikimultihopqa",
+    "sample_id_sha256": "6B21FD1D2EFBD6A467C8DAEE9225AA43113FC328CD114F813DD79E6A44458FB2",
+    "query_id_sha256": "8895D4D2EF2A34DE123525011C36A1DF092D27B7588E17E9816ABAB8F1A25CD6",
+    "namespace_relation": "query_id == dataset::sample_id",
+    "registered_source_audit_sha256": "1496FF0CE08093AD38258FD5049068D6C4ED74FCEBF63E94E6E486F3478C7AEE",
+    "source_audit_file_may_be_opened": false
+  },
+  "frozen_encoder": {
+    "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "max_length": 192,
+    "batch_size": 64
+  },
+  "output_registry": {
+    "machine_audit": "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_pregold_amendment_5b_official_decisions_diagnostic.json",
+    "narrative_audit": "E:\\科研\\HyperGranular-RAG\\docs\\STAGE4B_U1_PREGOLD_AMENDMENT_5B_OFFICIAL_DIAGNOSTIC_AUDIT.md",
+    "os_temp_parent": "C:\\Users\\cc\\AppData\\Local\\Temp",
+    "temporary_decisions_must_be_deleted": true,
+    "exclusive_create_outputs": true
+  },
+  "formal_outputs_that_must_remain_absent": [
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_decisions.jsonl",
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_rankings.jsonl",
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_policy.json",
+    "E:\\科研\\HyperGranular-RAG\\docs\\STAGE4B_U1_PREGOLD_V2_3_1_CONTROLLER_EXECUTION_AUDIT.md",
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_verified_pre_gold.json"
+  ],
+  "comparison_layers": [
+    "raw_file_bytes_size_sha256_and_terminal_newline",
+    "row_count_query_id_uniqueness_set_and_order",
+    "canonical_json_bytes_and_digest",
+    "schema_field_order_type_and_nested_structure",
+    "discrete_scalar_list_value_and_order",
+    "finite_float_exact_value_absolute_error_and_binary64_ulp",
+    "planned_insert_count_ordered_rank_trigger_u1_and_registered_decision_semantics"
+  ],
+  "audit_output_policy": {
+    "aggregate_counts_only": true,
+    "raw_query_ids_allowed": false,
+    "salted_query_id_hash_allowed": true,
+    "raw_decision_rows_allowed": false,
+    "question_or_text_allowed": false,
+    "ranking_content_allowed": false,
+    "policy_content_allowed": false,
+    "gold_content_allowed": false,
+    "byte_equivalence_gate_relaxed": false
+  },
+  "requested_authorization": [
+    "commit and push approval governance",
+    "run and push two byte-identical 98-test post-approval synthetic rebinding outputs",
+    "create and push a governance binding over request manifest decision final AGENTS and rebinding evidence",
+    "run one read-only exact-boundary diagnostic preflight",
+    "run one exact-command official decisions-only capture",
+    "write one machine aggregate audit and one narrative boundary audit",
+    "commit push verify GitHub and stop"
+  ],
+  "explicitly_not_authorized": [
+    "read compare or hash any official ranking",
+    "read the v2.2 reference policy",
+    "read evaluator Gold map evaluator audit or any U1-D effect metric",
+    "open the Stage4A-R2 source-audit file",
+    "generate formal decisions rankings policy controller audit or VERIFIED_PRE_GOLD",
+    "run the full controller verifier evaluator reservation or Stage3B",
+    "change code data models parameters retrieval score ECDF budget trigger ranking endpoint stop rules or equivalence",
+    "create rebuild overwrite delete or migrate any cache",
+    "overwrite delete or rewrite v2.2 or v2.3.1 failure artifacts",
+    "retry automatically after any hard failure",
+    "resume official pre-Gold execution after diagnosis"
+  ],
+  "post_diagnostic_state": [
+    "AMENDMENT_5B_OFFICIAL_DECISIONS_DIAGNOSTIC_COMPLETE_AWAITING_REVIEW",
+    "CONTROLLER_RERUN_NOT_APPROVED",
+    "VERIFIER_NOT_APPROVED",
+    "GOLD_NOT_APPROVED"
+  ]
+}

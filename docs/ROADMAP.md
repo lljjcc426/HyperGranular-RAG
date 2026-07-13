@@ -654,3 +654,12 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_IMPLEMENTATION_AUDIT.md`.
 - Current status: `AMENDMENT_5A_SYNTHETICALLY_VERIFIED`; official diagnosis, controller rerun, and verifier remain unapproved.
 - Next gate: an implementation-bound Amendment 5B approval request and Manifest must be pushed, then execution stops for independent review.
+
+### Stage4B-U1-D Pre-Gold Amendment 5B Package
+
+- Final Amendment 5A implementation/evidence binding: `9a060bd31e9c33be587f7ef5e64f86206922e59e`.
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_MANIFEST.json`.
+- Requested scope: post-approval 98-test rebinding, governance digest, one read-only preflight, one exact-path decisions-only capture, aggregate audit commit, and immediate stop.
+- Official rankings, source-audit file, policy, evaluator/Gold, full controller, verifier, reservation, Stage3B, implementation changes, and retries remain prohibited.
+- Current status: `AMENDMENT_5B_AWAITING_APPROVAL`; no 5B command has run.

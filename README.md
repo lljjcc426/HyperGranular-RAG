@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Amendment 5A decisions 诊断工具已完成 synthetic 验证；等待 5B 独立审批 |
-| 获批执行协议 | 5A 已完成；official diagnosis/controller rerun/verifier 均未批准 |
+| 当前阶段 | Amendment 5A synthetic 已验证；5B official decisions-only 诊断包等待独立审批 |
+| 获批执行协议 | 当前无 official 授权；5B package 仅为审批请求 |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `AMENDMENT_5A_SYNTHETICALLY_VERIFIED` |
+| 协议状态 | `AMENDMENT_5B_AWAITING_APPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -48,6 +48,8 @@ Amendment 4 已获 implementation/synthetic-only 批准，绑定 package `e5a0e2
 Amendment 4 实现已完成：formal controller 强制 existing-cache-only 与冻结 SHA，严格核验 cache 内容并在 OS 临时目录生成 pending outputs；cache 后指纹、v2.2 decisions/rankings bytes 和限定 policy diff 全部通过后才提升，复制或后指纹失败会回滚本次输出。runner 支持登记治理文件绑定，manifest/shared constants 的十路径逐项一致。原 33 项测试保留，新增 17 项后共 50 项全部通过；两次完整 evidence SHA-256 均为 `24F287F9B71C974ABEF9E03AA55BCCA0C4AF9809AB2ADC44705A42EC3889F657`。实现审计见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_4_IMPLEMENTATION_AUDIT.md`。
 
 Amendment 5A 已按批准边界实现，未修改 controller。新增 decisions-only 七层 comparator、synthetic allowlist 与临时 decisions capture；5B 组包前静态核查又补齐 official 精确路径、登记 source digest、OS temp、v2.2 reference SHA 与 cache 后指纹门。48 项新诊断测试与原 50 项合计 98 项全部通过。完整 evidence 连续两次输出字节一致，SHA-256 均为 `3D44C14B82E911DDD37501731772A7594D7616BF12FE278D2D4CCC103533057E`，official 路径访问尝试为 0。实现审计见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_IMPLEMENTATION_AUDIT.md`。这不授权 official 诊断、controller 重跑或 verifier。
+
+Amendment 5B 审批包已组装，绑定最终 5A implementation/evidence 提交 `9a060bd31e9c33be587f7ef5e64f86206922e59e`。请求只覆盖批准治理后的 98 项 synthetic rebinding、一次只读 preflight、一次精确路径 decisions-only capture、聚合审计提交与立即停止。请求和机器边界分别见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md`、`docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_MANIFEST.json`。在新的明确批准前不得运行。
 
 ## 研究问题
 
