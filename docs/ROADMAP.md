@@ -534,3 +534,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - No official development, source audit, official ranking, cache, Gold, reservation, or Stage3B access occurred.
 - Current status: `SYNTHETICALLY_VERIFIED_OFFICIAL_EXECUTION_NOT_AUTHORIZED`.
 - Next gate: commit and push this implementation, then create an implementation-bound v2.3 official pre-Gold resumption approval package and stop.
+
+### Stage4B-U1-D v2.3 Official Pre-Gold Resumption Request
+
+- Implementation commit: `a1d9ea0c517fcbad1ef27e78e760738d5c04d8b3`.
+- Request: `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_3_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_3_MANIFEST.json`.
+- Requested execution uses new versioned channel/controller/verifier paths and preserves all v2.2 failure artifacts.
+- The audited fresh ID-bound cache may only be reused read-only; no encoding, rebuild, overwrite, deletion, or migration is requested.
+- New decisions/rankings must be byte-identical to the frozen v2.2 outputs; policy differences are limited to registered v2.3 binding fields.
+- Gold, U1-D metrics, reservation, Stage3B, implementation changes, and automatic retries remain prohibited.
+- Current status: `AWAITING_V2_3_OFFICIAL_PREGOLD_RESUMPTION_APPROVAL`.

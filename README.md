@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Stage4B-U1-D Amendment 3 v2.3 synthetic hardening 已完成；official execution 锁定 |
-| 获批执行协议 | Amendment 3 implementation/synthetic-only 已执行完毕；等待 implementation-bound 恢复审批 |
+| 当前阶段 | Stage4B-U1-D v2.3 official pre-Gold 恢复审批中；official execution 锁定 |
+| 获批执行协议 | v2.3 implementation/synthetic 已完成；official resumption 尚未批准 |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `SYNTHETICALLY_VERIFIED_OFFICIAL_EXECUTION_NOT_AUTHORIZED` |
+| 协议状态 | `AWAITING_V2_3_OFFICIAL_PREGOLD_RESUMPTION_APPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | 单次运行工件已提交，但 verifier 未通过；现有工件 `UNVERIFIED_INVALID_FOR_GOLD` |
@@ -147,9 +147,9 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 提交并推送 v2.3 implementation、synthetic evidence 与审计。
-2. 创建并推送新的 implementation-bound official pre-Gold 恢复审批包后立即停止。
-3. 新审批明确通过前，official 数据、official 命令、Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
+1. 等待用户审批 `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_3_APPROVAL_REQUEST.md`。
+2. 新审批明确通过前，不运行 formal preflight、channel、controller、cache、verifier 或 evaluator。
+3. Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub
 

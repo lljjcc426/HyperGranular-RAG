@@ -1,0 +1,105 @@
+{
+  "schema_version": "stage4b_u1_pregold_resumption_v2_3",
+  "request_id": "STAGE4B_U1_D_V2_3_PREGOLD_RESUMPTION",
+  "assembled_date": "2026-07-13",
+  "package_status": "AWAITING_OFFICIAL_PREGOLD_RESUMPTION_APPROVAL",
+  "implementation_checkpoint": "stage4b_u1_v2_3",
+  "implementation_commit_sha": "a1d9ea0c517fcbad1ef27e78e760738d5c04d8b3",
+  "amendment_3_approval_package_commit_sha": "42747507d6f37c3d5713949de443311b35262a2d",
+  "failed_v2_2_artifact_commit_sha": "9207bd78eea44d2ea3291fe9b6748526969a3224",
+  "synthetic_evidence": {
+    "path": "results/stage4b_u1_d_pregold_amendment_3_synthetic_verification.json",
+    "sha256": "38DDA409C866AAAC6C2AEDBA0D0716DA6F483854E9A6019E9040B9B2B1FA40B5",
+    "tests_run": 33,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "byte_identical_complete_reruns": true,
+    "official_development_data_accessed": false,
+    "official_source_audit_loaded": false,
+    "official_ranking_or_cache_accessed": false,
+    "reservation_data_accessed": false,
+    "stage3b_accessed": false
+  },
+  "implementation_hashes": {
+    "AGENTS.md": "AB71999E867E5C7B5C8C3E629392F8503BBEBDC79C62152F29AB29103D86C94B",
+    "docs/STAGE4B_U1_EXECUTION_HARDENING_V2_1.md": "A85420942DC8A5DF8EAF468464B94E0DD2826AE7EBFC6318D503FDA2D40E4873",
+    "docs/STAGE4B_U1_EXECUTION_PACKAGE_REVIEW_1.md": "D7028F83B99AF171DCBD1CCCC40AA3F0A8C39849BCCCED7C262303EFC76DC28A",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_APPROVAL_DECISION.md": "3857B9F693450624095370C822CC3F71F3552880D7623FFA0D3CE14B335C9B8B",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_APPROVAL_REQUEST.md": "642A086F46DDD1B953C67EE4D42705C3B704B3D3FD993E4E568EF54BD6E88048",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_DRAFT.md": "D4D71058EA82D3CCA795F271E0A533254C8EF3585F58F6EC2C1A426AD54B2430",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_MANIFEST.json": "E382646AC91B0206CFD5A15433EBC84686C5FE8BC2B7C15D8DF034FFD5901102",
+    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_3.md": "A30D003267D87CF8604530C54480C238F5DE71FC0B9B238DC1AA3F387641B996",
+    "docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md": "AB2D4C389492D509740D6CE8F7462C44A7A0B6A5BF04B65B210123AF93EE785B",
+    "scripts/stage4b_u1_common.py": "09032D7B68194E3FB4152B103D5779496B6935B9A73EA06D33CBC8270A6D08D2",
+    "scripts/stage4b_u1_evaluate.py": "343BC9D2478042FF582DAA5DE716498124166C72A520A35DAE53F56C976F2E31",
+    "scripts/stage4b_u1_goldfree_controller.py": "713BC1DF19472EFE692A2A042A39F96DEE2DCB93187B177EE10DDB5AD7C7A752",
+    "scripts/stage4b_u1_goldfree_retrieval.py": "3B50FAFD057E2565167ED09288D61829B3FBD044991F139F734F819955038A3B",
+    "scripts/stage4b_u1_prepare_channels.py": "BF629382DCD93F9FD64F0DEB0D441DC775725040E51CE4155884023CE29FD76C",
+    "scripts/stage4b_u1_run_synthetic_verification.py": "5DD0DFFF648139C77A7B6D5AFACE837BB05D5D23706495BD606E4034A3A4A32C",
+    "scripts/stage4b_u1_verify.py": "DC134B51A07C14A553746C303EA31D83990BA0EFAD30EFC3A1722F1A141E66EC",
+    "tests/test_stage4b_u1_goldfree.py": "BA956F88E310D28C5758BB7C7E30079D81424209483B5C8D8478A0F18535876B"
+  },
+  "frozen_identity_boundary": {
+    "queries": 4500,
+    "units": 143820,
+    "dataset": "2wikimultihopqa",
+    "sample_id_sha256": "6B21FD1D2EFBD6A467C8DAEE9225AA43113FC328CD114F813DD79E6A44458FB2",
+    "query_id_sha256": "8895D4D2EF2A34DE123525011C36A1DF092D27B7588E17E9816ABAB8F1A25CD6",
+    "namespace_relation": "query_id == dataset::sample_id"
+  },
+  "frozen_retrieval": {
+    "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "max_length": 192,
+    "batch_size": 64,
+    "q25_floor": 0.1957079917192459,
+    "max_k": 20,
+    "protect_n": 10,
+    "insert_budget": 4,
+    "budget_fraction": 0.6
+  },
+  "effective_k": {
+    "retrieval_depth": "K_q = min(20, |C_q|)",
+    "protected_prefix": "P_q = min(10, K_q)",
+    "empty_candidate_pool": "HARD_FAIL"
+  },
+  "cache": {
+    "path": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_minilm_idbound_embeddings.npz",
+    "sha256": "69ED39ABC0636B7B63A41639B64CB037FAE556F10CB130FCD18AFB61CBE06F7D",
+    "mode": "REUSE_READ_ONLY_NO_ENCODING_NO_REBUILD"
+  },
+  "frozen_v2_2_output_hashes": {
+    "decisions_sha256": "6FB6EB6DBFE3C6B819E65ADD268D9F94CFEA24E5761C9E4CB53CD0965C3723C7",
+    "rankings_sha256": "ED289D234F6F4FEC58A48168CB6CA78950489CD5F5640E977068CA6A786E03CB"
+  },
+  "policy_allowed_changes_from_v2_2": [
+    "implementation_checkpoint",
+    "git_commit_sha",
+    "protocol_sha256",
+    "implementation_hashes.common_source_sha256",
+    "implementation_hashes.verifier_source_sha256",
+    "input_hashes.channel_audit"
+  ],
+  "requested_authorization": [
+    "commit and push approval governance",
+    "run one read-only v2.3 formal preflight",
+    "prepare one new versioned official U1-D separated channel",
+    "reuse the audited fresh ID-bound cache read-only and run the Gold-free controller once",
+    "require byte-identical decisions and rankings versus frozen v2.2 artifacts",
+    "require a policy structural diff limited to registered binding fields",
+    "commit and push versioned channel audit, decisions, rankings, policy, and audit",
+    "run the independent v2.3 verifier once on committed artifacts",
+    "produce, commit, and push VERIFIED_PRE_GOLD with evaluation null",
+    "stop before any Gold join"
+  ],
+  "explicitly_not_authorized": [
+    "Gold evaluation or U1-D metrics",
+    "U1-D promotion or efficacy interpretation",
+    "reservation content or artifacts",
+    "Stage3B access",
+    "implementation or parameter changes",
+    "cache encoding, creation, rebuild, overwrite, deletion, or migration",
+    "overwrite or deletion of v2.2 failure artifacts",
+    "automatic retry after a hard failure"
+  ]
+}
