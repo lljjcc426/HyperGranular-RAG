@@ -5,17 +5,43 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import subprocess
 from pathlib import Path
 from typing import Any, Iterable
 
 
 SCHEMA_VERSION = "stage4b_u1_v2"
+IMPLEMENTATION_CHECKPOINT = "stage4b_u1_v2_1"
 TIE_SALT = "stage4b_u1_v2"
 Q25_FLOOR = 0.1957079917192459
 BUDGET_FRACTION = 0.60
 PROTECT_N = 10
 INSERT_BUDGET = 4
 MAX_K = 20
+OFFICIAL_DEVELOPMENT_QUERIES = 4500
+OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256 = (
+    "6B21FD1D2EFBD6A467C8DAEE9225AA43113FC328CD114F813DD79E6A44458FB2"
+)
+STAGE4A_R2_SOURCE_AUDIT_SHA256 = (
+    "1496FF0CE08093AD38258FD5049068D6C4ED74FCEBF63E94E6E486F3478C7AEE"
+)
+STAGE4A_R2_VERIFICATION_SHA256 = (
+    "0AD9A7B218A19297070E05F2BF7C04786165378E14990C343A0B8B8EFD8CCAD0"
+)
+STAGE4A_R2_STRATEGY_SUMMARY_SHA256 = (
+    "7BF79CC057CDD0565100B1D95F35C95BFBEAA338E9B1EF63D9E81F029BB42B12"
+)
+FROZEN_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
+FROZEN_MAX_LENGTH = 192
+FROZEN_BATCH_SIZE = 64
+PROTOCOL_RELATIVE_PATH = "docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md"
+POLICY_IMPLEMENTATION_FILES = {
+    "common_source_sha256": "scripts/stage4b_u1_common.py",
+    "retrieval_source_sha256": "scripts/stage4b_u1_goldfree_retrieval.py",
+    "controller_source_sha256": "scripts/stage4b_u1_goldfree_controller.py",
+    "channel_preparer_source_sha256": "scripts/stage4b_u1_prepare_channels.py",
+    "verifier_source_sha256": "scripts/stage4b_u1_verify.py",
+}
 
 PROHIBITED_CONTROLLER_KEYS = frozenset(
     {
@@ -47,6 +73,53 @@ def sha256_file(path: Path) -> str:
 
 def sha256_bytes(payload: bytes) -> str:
     return hashlib.sha256(payload).hexdigest().upper()
+
+
+def git_head(repo_root: Path) -> str:
+    completed = subprocess.run(
+        ["git", "rev-parse", "HEAD"],
+        cwd=repo_root,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    return completed.stdout.strip()
+
+
+def git_blob_sha256(repo_root: Path, commit: str, relative_path: str) -> str:
+    completed = subprocess.run(
+        ["git", "show", f"{commit}:{relative_path}"],
+        cwd=repo_root,
+        check=True,
+        capture_output=True,
+    )
+    return sha256_bytes(completed.stdout)
+
+
+def assert_files_match_git_commit(
+    repo_root: Path, commit: str, relative_paths: Iterable[str]
+) -> None:
+    for relative_path in relative_paths:
+        tracked = subprocess.run(
+            ["git", "cat-file", "-e", f"{commit}:{relative_path}"],
+            cwd=repo_root,
+            capture_output=True,
+        )
+        unchanged = subprocess.run(
+            ["git", "diff", "--quiet", commit, "--", relative_path],
+            cwd=repo_root,
+        )
+        if tracked.returncode != 0 or unchanged.returncode != 0:
+            raise ValueError(
+                f"Working file differs from git commit {commit}: {relative_path}"
+            )
+
+
+def implementation_hashes(repo_root: Path) -> dict[str, str]:
+    return {
+        field: sha256_file(repo_root / relative_path)
+        for field, relative_path in POLICY_IMPLEMENTATION_FILES.items()
+    }
 
 
 def id_digest(ids: Iterable[str]) -> str:

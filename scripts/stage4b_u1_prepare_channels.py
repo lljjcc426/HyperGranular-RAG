@@ -7,9 +7,14 @@ from pathlib import Path
 from typing import Any
 
 from stage4b_u1_common import (
+    IMPLEMENTATION_CHECKPOINT,
+    OFFICIAL_DEVELOPMENT_QUERIES,
+    OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256,
     SCHEMA_VERSION,
+    STAGE4A_R2_SOURCE_AUDIT_SHA256,
     assert_no_prohibited_keys,
     id_digest,
+    load_json,
     load_jsonl,
     sha256_file,
     validate_unique_ids,
@@ -111,8 +116,52 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--gold-map-output", required=True, type=Path)
     parser.add_argument("--controller-audit-output", required=True, type=Path)
     parser.add_argument("--evaluator-audit-output", required=True, type=Path)
-    parser.add_argument("--expected-query-id-sha256")
+    parser.add_argument("--mode", required=True, choices=("development",))
+    parser.add_argument("--source-audit", type=Path)
+    parser.add_argument("--synthetic-test-mode", action="store_true")
     return parser.parse_args()
+
+
+def validate_execution_boundary(
+    *,
+    mode: str,
+    query_ids: list[str],
+    source_audit_path: Path | None,
+    synthetic_test_mode: bool,
+) -> dict[str, Any]:
+    query_digest = id_digest(query_ids)
+    if synthetic_test_mode:
+        return {
+            "boundary_status": "SYNTHETIC_TEST_BOUNDARY",
+            "source_audit_sha256": None,
+            "expected_queries": None,
+            "expected_query_id_sha256": None,
+        }
+    if mode != "development":
+        raise ValueError("Official Stage4B-U1-D channel mode must be development")
+    if source_audit_path is None:
+        raise ValueError("Official channel preparation requires --source-audit")
+    source_sha = sha256_file(source_audit_path)
+    if source_sha != STAGE4A_R2_SOURCE_AUDIT_SHA256:
+        raise ValueError("Stage4A-R2 source-audit SHA-256 differs from the frozen value")
+    source_audit = load_json(source_audit_path)
+    boundary = source_audit.get("data_boundary", {})
+    expected_queries = int(boundary.get("development_queries", -1))
+    expected_digest = str(boundary.get("development_query_id_sha256", "")).upper()
+    if expected_queries != OFFICIAL_DEVELOPMENT_QUERIES:
+        raise ValueError("Source audit development query count differs from 4,500")
+    if expected_digest != OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256:
+        raise ValueError("Source audit development digest differs from the frozen value")
+    if len(query_ids) != expected_queries:
+        raise ValueError("Official development channel must contain exactly 4,500 queries")
+    if query_digest != expected_digest:
+        raise ValueError("Official development query IDs differ from the source audit")
+    return {
+        "boundary_status": "OFFICIAL_DEVELOPMENT_BOUNDARY_VERIFIED",
+        "source_audit_sha256": source_sha,
+        "expected_queries": expected_queries,
+        "expected_query_id_sha256": expected_digest,
+    }
 
 
 def main() -> None:
@@ -123,15 +172,23 @@ def main() -> None:
         labeled_units, labeled_queries
     )
     query_digest = gold_map["query_id_sha256"]
-    if args.expected_query_id_sha256 and query_digest != args.expected_query_id_sha256.upper():
-        raise ValueError("Query ID digest differs from the frozen boundary")
+    boundary = validate_execution_boundary(
+        mode=args.mode,
+        query_ids=[str(row["query_id"]) for row in unlabeled_queries],
+        source_audit_path=args.source_audit,
+        synthetic_test_mode=args.synthetic_test_mode,
+    )
 
     write_jsonl(args.unlabeled_units_output, unlabeled_units)
     write_jsonl(args.unlabeled_queries_output, unlabeled_queries)
     write_json(args.gold_map_output, gold_map)
     controller_audit = {
         "schema_version": SCHEMA_VERSION,
+        "implementation_checkpoint": IMPLEMENTATION_CHECKPOINT,
         "status": "CONTROLLER_CHANNEL_PREPARED_NO_RETRIEVAL_METRICS",
+        "run_role": args.mode,
+        "synthetic_test_mode": args.synthetic_test_mode,
+        **boundary,
         "queries": len(unlabeled_queries),
         "units": len(unlabeled_units),
         "query_id_sha256": query_digest,
@@ -144,7 +201,11 @@ def main() -> None:
     }
     evaluator_audit = {
         "schema_version": SCHEMA_VERSION,
+        "implementation_checkpoint": IMPLEMENTATION_CHECKPOINT,
         "status": "EVALUATOR_CHANNEL_PREPARED_NO_RETRIEVAL_METRICS",
+        "run_role": args.mode,
+        "synthetic_test_mode": args.synthetic_test_mode,
+        **boundary,
         "queries": len(unlabeled_queries),
         "query_id_sha256": query_digest,
         "source_hashes": {

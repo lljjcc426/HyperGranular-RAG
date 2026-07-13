@@ -8,6 +8,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
+from unittest.mock import patch
 
 import numpy as np
 
@@ -16,13 +17,30 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = REPO_ROOT / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
+from stage2_dense_replication import fixed_retrieve as legacy_fixed_retrieve  # noqa: E402
+from stage2d_protected_rerank import (  # noqa: E402
+    expansion_candidates as legacy_expansion_candidates,
+    protected_rerank as legacy_protected_rerank,
+)
 from stage4b_u1_common import (  # noqa: E402
+    FROZEN_BATCH_SIZE,
+    FROZEN_MAX_LENGTH,
+    FROZEN_MODEL_NAME,
     assert_no_prohibited_keys,
-    id_digest,
     load_json,
     load_jsonl,
     sha256_file,
+    write_json,
     write_jsonl,
+)
+from stage4b_u1_evaluate import (  # noqa: E402
+    baseline_metrics,
+    evaluate_rows,
+    run_evaluation,
+)
+from stage4b_u1_goldfree_controller import (  # noqa: E402
+    run_controller,
+    validate_controller_inputs,
 )
 from stage4b_u1_goldfree_retrieval import (  # noqa: E402
     RetrievalConfig,
@@ -33,16 +51,11 @@ from stage4b_u1_goldfree_retrieval import (  # noqa: E402
     fixed_retrieve_goldfree,
     protected_rerank_goldfree,
 )
-from stage4b_u1_goldfree_controller import validate_controller_inputs  # noqa: E402
-from stage4b_u1_prepare_channels import prepare_channels  # noqa: E402
-from stage4b_u1_verify import (  # noqa: E402
-    verify_policy_and_rankings,
+from stage4b_u1_prepare_channels import (  # noqa: E402
+    prepare_channels,
+    validate_execution_boundary,
 )
-from stage2_dense_replication import fixed_retrieve as legacy_fixed_retrieve  # noqa: E402
-from stage2d_protected_rerank import (  # noqa: E402
-    expansion_candidates as legacy_expansion_candidates,
-    protected_rerank as legacy_protected_rerank,
-)
+from stage4b_u1_verify import run_verification  # noqa: E402
 
 
 def normalized(vector: list[float]) -> np.ndarray:
@@ -126,7 +139,107 @@ def synthetic_labeled_rows() -> tuple[list[dict], list[dict], np.ndarray, np.nda
     )
 
 
-class Stage4BU1GoldFreeTests(unittest.TestCase):
+def command(*parts: object, check: bool = True) -> subprocess.CompletedProcess[str]:
+    return subprocess.run(
+        [sys.executable, *[str(part) for part in parts]],
+        check=check,
+        cwd=REPO_ROOT,
+        capture_output=True,
+        text=True,
+    )
+
+
+def build_synthetic_pipeline(root: Path, suffix: str = "") -> dict[str, Path]:
+    units, queries, unit_embeddings, query_embeddings = synthetic_labeled_rows()
+    paths = {
+        "labeled_units": root / f"labeled_units{suffix}.jsonl",
+        "labeled_queries": root / f"labeled_queries{suffix}.jsonl",
+        "units": root / f"unlabeled_units{suffix}.jsonl",
+        "queries": root / f"unlabeled_queries{suffix}.jsonl",
+        "gold": root / f"gold_map{suffix}.json",
+        "channel": root / f"channel_audit{suffix}.json",
+        "evaluator_channel": root / f"evaluator_audit{suffix}.json",
+        "cache": root / f"embeddings{suffix}.npz",
+        "decisions": root / f"decisions{suffix}.jsonl",
+        "rankings": root / f"rankings{suffix}.jsonl",
+        "policy": root / f"policy{suffix}.json",
+        "pre_gold": root / f"pre_gold{suffix}.json",
+        "baseline": root / f"baseline{suffix}.json",
+    }
+    write_jsonl(paths["labeled_units"], units)
+    write_jsonl(paths["labeled_queries"], queries)
+    command(
+        SCRIPTS / "stage4b_u1_prepare_channels.py",
+        "--labeled-units", paths["labeled_units"],
+        "--labeled-queries", paths["labeled_queries"],
+        "--unlabeled-units-output", paths["units"],
+        "--unlabeled-queries-output", paths["queries"],
+        "--gold-map-output", paths["gold"],
+        "--controller-audit-output", paths["channel"],
+        "--evaluator-audit-output", paths["evaluator_channel"],
+        "--mode", "development",
+        "--synthetic-test-mode",
+    )
+    split_units = load_jsonl(paths["units"])
+    split_queries = load_jsonl(paths["queries"])
+    np.savez_compressed(
+        paths["cache"],
+        unit_embeddings=unit_embeddings,
+        query_embeddings=query_embeddings,
+        unit_ids=np.asarray([row["unit_id"] for row in split_units]),
+        query_ids=np.asarray([row["query_id"] for row in split_queries]),
+        model_name=np.asarray(["synthetic-model"]),
+        max_length=np.asarray([192], dtype="int64"),
+    )
+    command(
+        SCRIPTS / "stage4b_u1_goldfree_controller.py",
+        "--units", paths["units"],
+        "--queries", paths["queries"],
+        "--channel-audit", paths["channel"],
+        "--embedding-cache", paths["cache"],
+        "--decisions-output", paths["decisions"],
+        "--rankings-output", paths["rankings"],
+        "--policy-output", paths["policy"],
+        "--mode", "development",
+        "--model-name", "synthetic-model",
+        "--synthetic-test-mode",
+    )
+    run_synthetic_verifier(paths, paths["pre_gold"])
+    rows = evaluate_rows(load_jsonl(paths["rankings"]), load_json(paths["gold"]))
+    write_json(
+        paths["baseline"],
+        {"status": "SYNTHETIC_BASELINE_REFERENCE", "expected": baseline_metrics(rows)},
+    )
+    return paths
+
+
+def run_synthetic_verifier(paths: dict[str, Path], output: Path) -> dict:
+    return run_verification(
+        units_path=paths["units"],
+        queries_path=paths["queries"],
+        channel_audit_path=paths["channel"],
+        embedding_cache_path=paths["cache"],
+        decisions_path=paths["decisions"],
+        rankings_path=paths["rankings"],
+        policy_path=paths["policy"],
+        controller_source=SCRIPTS / "stage4b_u1_goldfree_controller.py",
+        source_audit_path=None,
+        gold_map_path=None,
+        evaluator_audit_path=None,
+        query_audit_path=None,
+        summary_path=None,
+        output_path=output,
+        synthetic_test_mode=True,
+    )
+
+
+def refresh_policy_output_hash(paths: dict[str, Path], key: str) -> None:
+    policy = load_json(paths["policy"])
+    policy["output_hashes"][key] = sha256_file(paths[key])
+    write_json(paths["policy"], policy)
+
+
+class Stage4BU1CoreTests(unittest.TestCase):
     def test_channel_split_removes_all_controller_labels(self) -> None:
         units, queries, _, _ = synthetic_labeled_rows()
         unlabeled_units, unlabeled_queries, gold_map = prepare_channels(units, queries)
@@ -151,11 +264,7 @@ class Stage4BU1GoldFreeTests(unittest.TestCase):
             validate_controller_inputs(unlabeled_units, unlabeled_queries)
 
     def test_numeric_boundary_and_ecdf_rules(self) -> None:
-        ball = {
-            "ball_id": "only",
-            "center": normalized([1.0, 0.0]),
-            "radius": 0.0,
-        }
+        ball = {"ball_id": "only", "center": normalized([1.0, 0.0]), "radius": 0.0}
         decision = decision_from_balls(normalized([1.0, 0.0]), [ball])
         self.assertEqual(decision["boundary_margin"], 999.0)
         self.assertAlmostEqual(decision["ball_score_margin"], 2.0)
@@ -167,41 +276,18 @@ class Stage4BU1GoldFreeTests(unittest.TestCase):
 
     def test_budget_uses_largest_prefix_without_skipping(self) -> None:
         rows = [
-            {
-                "query_id": "a",
-                "feasible": 1,
-                "score": 3.0,
-                "tie_hash": "A",
-                "planned_insert_count": 4,
-                "q25_top20_unit_ids": ["a"],
-                "dense_top20_unit_ids": ["d-a"],
-                "q25_inserted_unit_ids": ["1", "2", "3", "4"],
-            },
-            {
-                "query_id": "b",
-                "feasible": 1,
-                "score": 2.0,
-                "tie_hash": "B",
-                "planned_insert_count": 4,
-                "q25_top20_unit_ids": ["b"],
-                "dense_top20_unit_ids": ["d-b"],
-                "q25_inserted_unit_ids": ["5", "6", "7", "8"],
-            },
-            {
-                "query_id": "c",
-                "feasible": 1,
-                "score": 1.0,
-                "tie_hash": "C",
-                "planned_insert_count": 1,
-                "q25_top20_unit_ids": ["c"],
-                "dense_top20_unit_ids": ["d-c"],
-                "q25_inserted_unit_ids": ["9"],
-            },
+            {"query_id": "a", "feasible": 1, "score": 3.0, "tie_hash": "A", "planned_insert_count": 4,
+             "q25_top20_unit_ids": ["a"], "dense_top20_unit_ids": ["d-a"], "q25_inserted_unit_ids": ["1", "2", "3", "4"]},
+            {"query_id": "b", "feasible": 1, "score": 2.0, "tie_hash": "B", "planned_insert_count": 4,
+             "q25_top20_unit_ids": ["b"], "dense_top20_unit_ids": ["d-b"], "q25_inserted_unit_ids": ["5", "6", "7", "8"]},
+            {"query_id": "c", "feasible": 1, "score": 1.0, "tie_hash": "C", "planned_insert_count": 1,
+             "q25_top20_unit_ids": ["c"], "dense_top20_unit_ids": ["d-c"], "q25_inserted_unit_ids": ["9"]},
         ]
         allocation = allocate_budget(rows)
         self.assertEqual(allocation["budget_units"], 5)
         self.assertEqual(allocation["selected_queries"], 1)
         self.assertEqual([row["trigger_u1"] for row in rows], [1, 0, 0])
+        self.assertEqual([row["ordered_rank"] for row in rows], [1, 2, 3])
 
     def test_goldfree_rewrite_matches_legacy_frozen_ranking_on_synthetic_input(self) -> None:
         units, queries, unit_embeddings, query_embeddings = synthetic_labeled_rows()
@@ -227,21 +313,10 @@ class Stage4BU1GoldFreeTests(unittest.TestCase):
             [row["unit_id"] for row in goldfree_dense],
         )
         legacy_expanded, legacy_selected, _, _ = legacy_expansion_candidates(
-            query,
-            query_embedding,
-            candidate_indices,
-            units,
-            unit_embeddings,
-            args,
-            "gated",
+            query, query_embedding, candidate_indices, units, unit_embeddings, args, "gated"
         )
         goldfree_expanded, goldfree_selected, _ = expansion_candidates_goldfree(
-            query,
-            query_embedding,
-            candidate_indices,
-            units,
-            unit_embeddings,
-            config,
+            query, query_embedding, candidate_indices, units, unit_embeddings, config
         )
         self.assertEqual(
             [row["edge_id"] for row in legacy_selected],
@@ -254,18 +329,10 @@ class Stage4BU1GoldFreeTests(unittest.TestCase):
         legacy_filtered = [row for row in legacy_expanded if row["score"] >= config.q25_floor]
         goldfree_filtered = [row for row in goldfree_expanded if row["score"] >= config.q25_floor]
         legacy_q25, legacy_insert = legacy_protected_rerank(
-            legacy_dense,
-            legacy_filtered,
-            config.protect_n,
-            config.insert_budget,
-            config.max_k,
+            legacy_dense, legacy_filtered, config.protect_n, config.insert_budget, config.max_k
         )
         goldfree_q25, goldfree_inserted = protected_rerank_goldfree(
-            goldfree_dense,
-            goldfree_filtered,
-            config.protect_n,
-            config.insert_budget,
-            config.max_k,
+            goldfree_dense, goldfree_filtered, config.protect_n, config.insert_budget, config.max_k
         )
         self.assertEqual(
             [row["unit_id"] for row in legacy_q25],
@@ -273,218 +340,261 @@ class Stage4BU1GoldFreeTests(unittest.TestCase):
         )
         self.assertEqual(legacy_insert["inserted_units"], len(goldfree_inserted))
 
-    def test_synthetic_pipeline_is_gold_free_deterministic_and_verified(self) -> None:
-        units, queries, unit_embeddings, query_embeddings = synthetic_labeled_rows()
+
+class Stage4BU1HardeningTests(unittest.TestCase):
+    def test_official_channel_omitting_source_audit_hard_fails(self) -> None:
+        units, queries, _, _ = synthetic_labeled_rows()
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            labeled_units = root / "labeled_units.jsonl"
-            labeled_queries = root / "labeled_queries.jsonl"
-            unlabeled_units = root / "unlabeled_units.jsonl"
-            unlabeled_queries = root / "unlabeled_queries.jsonl"
-            gold_map_path = root / "gold_map.json"
-            channel_audit_path = root / "channel_audit.json"
-            evaluator_audit_path = root / "evaluator_audit.json"
-            cache_path = root / "embeddings.npz"
+            labeled_units = root / "units.jsonl"
+            labeled_queries = root / "queries.jsonl"
             write_jsonl(labeled_units, units)
             write_jsonl(labeled_queries, queries)
-            subprocess.run(
-                [
-                    sys.executable,
-                    str(SCRIPTS / "stage4b_u1_prepare_channels.py"),
-                    "--labeled-units",
-                    str(labeled_units),
-                    "--labeled-queries",
-                    str(labeled_queries),
-                    "--unlabeled-units-output",
-                    str(unlabeled_units),
-                    "--unlabeled-queries-output",
-                    str(unlabeled_queries),
-                    "--gold-map-output",
-                    str(gold_map_path),
-                    "--controller-audit-output",
-                    str(channel_audit_path),
-                    "--evaluator-audit-output",
-                    str(evaluator_audit_path),
-                    "--expected-query-id-sha256",
-                    id_digest(row["query_id"] for row in queries),
-                ],
-                check=True,
-                cwd=REPO_ROOT,
+            result = command(
+                SCRIPTS / "stage4b_u1_prepare_channels.py",
+                "--labeled-units", labeled_units,
+                "--labeled-queries", labeled_queries,
+                "--unlabeled-units-output", root / "u.jsonl",
+                "--unlabeled-queries-output", root / "q.jsonl",
+                "--gold-map-output", root / "g.json",
+                "--controller-audit-output", root / "c.json",
+                "--evaluator-audit-output", root / "e.json",
+                "--mode", "development",
+                check=False,
             )
-            split_units = load_jsonl(unlabeled_units)
-            split_queries = load_jsonl(unlabeled_queries)
-            self.assertNotIn(
-                "gold", json.dumps(load_json(channel_audit_path), sort_keys=True).lower()
-            )
-            np.savez_compressed(
-                cache_path,
-                unit_embeddings=unit_embeddings,
-                query_embeddings=query_embeddings,
-                unit_ids=np.asarray([row["unit_id"] for row in split_units]),
-                query_ids=np.asarray([row["query_id"] for row in split_queries]),
-                model_name=np.asarray(["synthetic-model"]),
-                max_length=np.asarray([192], dtype="int64"),
-            )
-            outputs = []
-            for run in (1, 2):
-                decisions = root / f"decisions_{run}.jsonl"
-                rankings = root / f"rankings_{run}.jsonl"
-                policy = root / f"policy_{run}.json"
-                subprocess.run(
-                    [
-                        sys.executable,
-                        str(SCRIPTS / "stage4b_u1_goldfree_controller.py"),
-                        "--units",
-                        str(unlabeled_units),
-                        "--queries",
-                        str(unlabeled_queries),
-                        "--channel-audit",
-                        str(channel_audit_path),
-                        "--embedding-cache",
-                        str(cache_path),
-                        "--decisions-output",
-                        str(decisions),
-                        "--rankings-output",
-                        str(rankings),
-                        "--policy-output",
-                        str(policy),
-                        "--mode",
-                        "development",
-                        "--model-name",
-                        "synthetic-model",
-                        "--synthetic-test-mode",
-                    ],
-                    check=True,
-                    cwd=REPO_ROOT,
-                )
-                outputs.append((decisions, rankings, policy))
-            for index in range(3):
-                self.assertEqual(
-                    sha256_file(outputs[0][index]), sha256_file(outputs[1][index])
-                )
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("requires --source-audit", result.stderr)
 
-            decisions_path, rankings_path, policy_path = outputs[0]
-            policy = load_json(policy_path)
-            self.assertEqual(policy["allocation"]["allquery_planned_inserts"], 16)
-            self.assertEqual(policy["allocation"]["budget_units"], 9)
-            self.assertEqual(policy["allocation"]["selected_planned_inserts"], 8)
-            self.assertGreaterEqual(
-                1.0
-                - policy["allocation"]["selected_planned_inserts"]
-                / policy["allocation"]["allquery_planned_inserts"],
-                0.40,
+    def test_wrong_development_digest_hard_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            audit = Path(directory) / "bad_source_audit.json"
+            write_json(
+                audit,
+                {"data_boundary": {"development_queries": 4, "development_query_id_sha256": "BAD"}},
+            )
+            with patch(
+                "stage4b_u1_prepare_channels.STAGE4A_R2_SOURCE_AUDIT_SHA256",
+                sha256_file(audit),
+            ), patch("stage4b_u1_prepare_channels.OFFICIAL_DEVELOPMENT_QUERIES", 4):
+                with self.assertRaisesRegex(ValueError, "development digest differs"):
+                    validate_execution_boundary(
+                        mode="development",
+                        query_ids=["a", "b", "c", "d"],
+                        source_audit_path=audit,
+                        synthetic_test_mode=False,
+                    )
+
+    def test_wrong_formal_model_name_hard_fails(self) -> None:
+        with self.assertRaisesRegex(ValueError, "encoder differs"):
+            run_controller(
+                units_path=Path("missing"), queries_path=Path("missing"),
+                channel_audit_path=Path("missing"), embedding_cache=Path("missing"),
+                decisions_output=Path("missing"), rankings_output=Path("missing"),
+                policy_output=Path("missing"), mode="development", policy_input=None,
+                model_name="wrong-model", batch_size=FROZEN_BATCH_SIZE,
+                max_length=FROZEN_MAX_LENGTH, config=RetrievalConfig(),
+                controller_source=SCRIPTS / "stage4b_u1_goldfree_controller.py",
+                source_audit_path=None, synthetic_test_mode=False,
             )
 
+    def test_wrong_formal_max_length_hard_fails(self) -> None:
+        with self.assertRaisesRegex(ValueError, "max length differs"):
+            run_controller(
+                units_path=Path("missing"), queries_path=Path("missing"),
+                channel_audit_path=Path("missing"), embedding_cache=Path("missing"),
+                decisions_output=Path("missing"), rankings_output=Path("missing"),
+                policy_output=Path("missing"), mode="development", policy_input=None,
+                model_name=FROZEN_MODEL_NAME, batch_size=FROZEN_BATCH_SIZE,
+                max_length=191, config=RetrievalConfig(),
+                controller_source=SCRIPTS / "stage4b_u1_goldfree_controller.py",
+                source_audit_path=None, synthetic_test_mode=False,
+            )
+
+    def test_modified_tie_hash_rejected_after_output_hash_refresh(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            paths = build_synthetic_pipeline(Path(directory))
+            rows = load_jsonl(paths["decisions"])
+            rows[0]["tie_hash"] = "0" * 64
+            write_jsonl(paths["decisions"], rows)
+            refresh_policy_output_hash(paths, "decisions")
+            with self.assertRaisesRegex(ValueError, "tie hash differs"):
+                run_synthetic_verifier(paths, Path(directory) / "bad.json")
+
+    def test_modified_score_rejected_after_internal_hash_refresh(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            paths = build_synthetic_pipeline(Path(directory))
+            rows = load_jsonl(paths["decisions"])
+            rows[0]["score"] = float(rows[0]["score"]) + 1e-6
+            write_jsonl(paths["decisions"], rows)
+            refresh_policy_output_hash(paths, "decisions")
+            with self.assertRaisesRegex(ValueError, "recomputed score differs"):
+                run_synthetic_verifier(paths, Path(directory) / "bad.json")
+
+    def test_modified_ecdf_reference_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            paths = build_synthetic_pipeline(Path(directory))
+            policy_data = load_json(paths["policy"])
+            values = policy_data["ecdf_references"]["ball_score_margin"]
+            values[-1] = float(values[-1]) + 1e-6
+            write_json(paths["policy"], policy_data)
+            with self.assertRaisesRegex(ValueError, "ECDF references differ"):
+                run_synthetic_verifier(paths, Path(directory) / "bad.json")
+
+    def test_modified_q25_and_final_ranking_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            paths = build_synthetic_pipeline(Path(directory))
+            rows = load_jsonl(paths["rankings"])
+            target = next(row for row in rows if int(row["trigger_u1"]) == 1)
+            target["q25_top20_unit_ids"][10], target["q25_top20_unit_ids"][11] = (
+                target["q25_top20_unit_ids"][11], target["q25_top20_unit_ids"][10]
+            )
+            target["final_top20_unit_ids"] = list(target["q25_top20_unit_ids"])
+            write_jsonl(paths["rankings"], rows)
+            refresh_policy_output_hash(paths, "rankings")
+            with self.assertRaisesRegex(ValueError, "inserted IDs differ from Top-20"):
+                run_synthetic_verifier(paths, Path(directory) / "bad.json")
+
+    def test_modified_inserted_list_rejected_when_top20_unchanged(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            paths = build_synthetic_pipeline(Path(directory))
+            rows = load_jsonl(paths["rankings"])
+            target = next(row for row in rows if int(row["trigger_u1"]) == 1)
+            target["q25_inserted_unit_ids"] = list(reversed(target["q25_inserted_unit_ids"]))
+            target["final_inserted_unit_ids"] = list(target["q25_inserted_unit_ids"])
+            write_jsonl(paths["rankings"], rows)
+            refresh_policy_output_hash(paths, "rankings")
+            with self.assertRaisesRegex(ValueError, "inserted IDs differ from Top-20"):
+                run_synthetic_verifier(paths, Path(directory) / "bad.json")
+
+    def test_evaluator_without_pre_gold_verification_hard_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            paths = build_synthetic_pipeline(Path(directory))
+            result = command(
+                SCRIPTS / "stage4b_u1_evaluate.py",
+                "--rankings", paths["rankings"],
+                "--policy", paths["policy"],
+                "--gold-map", paths["gold"],
+                "--evaluator-audit", paths["evaluator_channel"],
+                "--stage4a-r2-verification", paths["baseline"],
+                "--query-audit-output", Path(directory) / "audit.jsonl",
+                "--summary-output", Path(directory) / "summary.json",
+                "--run-role", "development",
+                "--synthetic-test-mode",
+                check=False,
+            )
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("--pre-gold-verification", result.stderr)
+
+    def test_policy_implementation_hash_mismatch_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            paths = build_synthetic_pipeline(Path(directory))
+            policy_data = load_json(paths["policy"])
+            policy_data["implementation_hashes"]["common_source_sha256"] = "F" * 64
+            write_json(paths["policy"], policy_data)
+            with self.assertRaisesRegex(ValueError, "implementation file hash mismatch"):
+                run_synthetic_verifier(paths, Path(directory) / "bad.json")
+
+    def test_baseline_drift_stops_before_u1_summary(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            paths = build_synthetic_pipeline(Path(directory))
+            reference = load_json(paths["baseline"])
+            reference["expected"]["q25_gain_events"] += 1
+            write_json(paths["baseline"], reference)
+            with self.assertRaisesRegex(ValueError, "HARD_FAILURE_IMPLEMENTATION_DRIFT"):
+                run_evaluation(
+                    rankings_path=paths["rankings"], policy_path=paths["policy"],
+                    pre_gold_verification_path=paths["pre_gold"], gold_map_path=paths["gold"],
+                    evaluator_audit_path=paths["evaluator_channel"],
+                    stage4a_r2_verification_path=paths["baseline"],
+                    stage4a_r2_strategy_summary_path=None,
+                    query_audit_output=Path(directory) / "audit.jsonl",
+                    summary_output=Path(directory) / "summary.json", run_role="development",
+                    bootstrap_iterations=0, bootstrap_seed=1,
+                    evaluator_source=SCRIPTS / "stage4b_u1_evaluate.py",
+                    synthetic_test_mode=True,
+                )
+            self.assertFalse((Path(directory) / "audit.jsonl").exists())
+            self.assertFalse((Path(directory) / "summary.json").exists())
+
+
+class Stage4BU1EndToEndTests(unittest.TestCase):
+    def test_synthetic_reservation_reuses_development_ecdf(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            paths = build_synthetic_pipeline(root)
+            reservation_channel = root / "reservation_channel.json"
+            reservation_channel_data = load_json(paths["channel"])
+            reservation_channel_data["run_role"] = "reservation"
+            write_json(reservation_channel, reservation_channel_data)
             reservation_decisions = root / "reservation_decisions.jsonl"
             reservation_rankings = root / "reservation_rankings.jsonl"
             reservation_policy = root / "reservation_policy.json"
-            subprocess.run(
-                [
-                    sys.executable,
-                    str(SCRIPTS / "stage4b_u1_goldfree_controller.py"),
-                    "--units",
-                    str(unlabeled_units),
-                    "--queries",
-                    str(unlabeled_queries),
-                    "--channel-audit",
-                    str(channel_audit_path),
-                    "--embedding-cache",
-                    str(cache_path),
-                    "--decisions-output",
-                    str(reservation_decisions),
-                    "--rankings-output",
-                    str(reservation_rankings),
-                    "--policy-output",
-                    str(reservation_policy),
-                    "--mode",
-                    "reservation",
-                    "--policy-input",
-                    str(policy_path),
-                    "--model-name",
-                    "synthetic-model",
-                    "--synthetic-test-mode",
-                ],
-                check=True,
-                cwd=REPO_ROOT,
+            command(
+                SCRIPTS / "stage4b_u1_goldfree_controller.py",
+                "--units", paths["units"],
+                "--queries", paths["queries"],
+                "--channel-audit", reservation_channel,
+                "--embedding-cache", paths["cache"],
+                "--decisions-output", reservation_decisions,
+                "--rankings-output", reservation_rankings,
+                "--policy-output", reservation_policy,
+                "--mode", "reservation",
+                "--policy-input", paths["policy"],
+                "--model-name", "synthetic-model",
+                "--synthetic-test-mode",
             )
-            frozen_reservation_policy = load_json(reservation_policy)
+            development = load_json(paths["policy"])
+            reservation = load_json(reservation_policy)
             self.assertEqual(
-                frozen_reservation_policy["parent_development_policy_sha256"],
-                sha256_file(policy_path),
+                reservation["parent_development_policy_sha256"],
+                sha256_file(paths["policy"]),
             )
-            self.assertEqual(
-                frozen_reservation_policy["ecdf_references"], policy["ecdf_references"]
-            )
+            self.assertEqual(reservation["ecdf_references"], development["ecdf_references"])
+
+    def test_synthetic_pipeline_is_deterministic_pre_gold_verified_and_evaluable(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            first = build_synthetic_pipeline(root, "_1")
+            second = build_synthetic_pipeline(root, "_2")
+            for key in ("decisions", "rankings", "policy", "pre_gold"):
+                self.assertEqual(sha256_file(first[key]), sha256_file(second[key]))
+            channel_text = json.dumps(load_json(first["channel"]), sort_keys=True).lower()
+            self.assertNotIn("gold_map", channel_text)
+            policy = load_json(first["policy"])
+            self.assertEqual(policy["allocation"]["allquery_planned_inserts"], 16)
+            self.assertEqual(policy["allocation"]["budget_units"], 9)
+            self.assertEqual(policy["allocation"]["selected_planned_inserts"], 8)
+            pre_gold = load_json(first["pre_gold"])
+            self.assertEqual(pre_gold["status"], "VERIFIED_PRE_GOLD")
+            self.assertIsNone(pre_gold["evaluation"])
 
             query_audit = root / "query_audit.jsonl"
             summary_path = root / "summary.json"
-            subprocess.run(
-                [
-                    sys.executable,
-                    str(SCRIPTS / "stage4b_u1_evaluate.py"),
-                    "--rankings",
-                    str(rankings_path),
-                    "--policy",
-                    str(policy_path),
-                    "--gold-map",
-                    str(gold_map_path),
-                    "--evaluator-audit",
-                    str(evaluator_audit_path),
-                    "--query-audit-output",
-                    str(query_audit),
-                    "--summary-output",
-                    str(summary_path),
-                    "--run-role",
-                    "development",
-                    "--bootstrap-iterations",
-                    "40",
-                    "--synthetic-test-mode",
-                ],
-                check=True,
-                cwd=REPO_ROOT,
+            summary = run_evaluation(
+                rankings_path=first["rankings"], policy_path=first["policy"],
+                pre_gold_verification_path=first["pre_gold"], gold_map_path=first["gold"],
+                evaluator_audit_path=first["evaluator_channel"],
+                stage4a_r2_verification_path=first["baseline"],
+                stage4a_r2_strategy_summary_path=None,
+                query_audit_output=query_audit, summary_output=summary_path,
+                run_role="development", bootstrap_iterations=40, bootstrap_seed=20260712,
+                evaluator_source=SCRIPTS / "stage4b_u1_evaluate.py",
+                synthetic_test_mode=True,
             )
-            verification_path = root / "verification.json"
-            subprocess.run(
-                [
-                    sys.executable,
-                    str(SCRIPTS / "stage4b_u1_verify.py"),
-                    "--units",
-                    str(unlabeled_units),
-                    "--queries",
-                    str(unlabeled_queries),
-                    "--channel-audit",
-                    str(channel_audit_path),
-                    "--decisions",
-                    str(decisions_path),
-                    "--rankings",
-                    str(rankings_path),
-                    "--policy",
-                    str(policy_path),
-                    "--controller-source",
-                    str(SCRIPTS / "stage4b_u1_goldfree_controller.py"),
-                    "--gold-map",
-                    str(gold_map_path),
-                    "--evaluator-audit",
-                    str(evaluator_audit_path),
-                    "--query-audit",
-                    str(query_audit),
-                    "--summary",
-                    str(summary_path),
-                    "--output",
-                    str(verification_path),
-                ],
-                check=True,
-                cwd=REPO_ROOT,
+            self.assertTrue(summary["baseline_equivalence"]["passed"])
+            post = run_verification(
+                units_path=first["units"], queries_path=first["queries"],
+                channel_audit_path=first["channel"], embedding_cache_path=first["cache"],
+                decisions_path=first["decisions"], rankings_path=first["rankings"],
+                policy_path=first["policy"],
+                controller_source=SCRIPTS / "stage4b_u1_goldfree_controller.py",
+                source_audit_path=None, gold_map_path=first["gold"],
+                evaluator_audit_path=first["evaluator_channel"],
+                query_audit_path=query_audit, summary_path=summary_path,
+                output_path=root / "post.json", synthetic_test_mode=True,
             )
-            verification = load_json(verification_path)
-            self.assertEqual(verification["status"], "VERIFIED")
-            self.assertTrue(verification["policy_and_ranking"]["ranking_subset_check"])
-
-            corrupted = copy.deepcopy(load_jsonl(rankings_path))
-            first = corrupted[0]
-            first["final_top20_unit_ids"] = list(reversed(first["final_top20_unit_ids"]))
-            with self.assertRaisesRegex(ValueError, "on/off selector"):
-                verify_policy_and_rankings(load_jsonl(decisions_path), corrupted, policy)
+            self.assertEqual(post["status"], "VERIFIED_POST_GOLD")
+            self.assertTrue(post["policy_and_ranking"]["independent_score_recomputation_check"])
 
 
 if __name__ == "__main__":

@@ -12,6 +12,10 @@ from stage4b_u1_common import sha256_file, write_json
 
 
 TRACKED_IMPLEMENTATION_FILES = (
+    "AGENTS.md",
+    "docs/STAGE4B_U1_EXECUTION_PACKAGE_REVIEW_1.md",
+    "docs/STAGE4B_U1_EXECUTION_HARDENING_V2_1.md",
+    "docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md",
     "scripts/stage4b_u1_common.py",
     "scripts/stage4b_u1_prepare_channels.py",
     "scripts/stage4b_u1_goldfree_retrieval.py",
@@ -50,8 +54,14 @@ def main() -> None:
     result = unittest.TextTestRunner(stream=stream, verbosity=2).run(suite)
     evidence = {
         "stage": "Stage4B-U1",
-        "protocol": "docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md",
-        "status": "SYNTHETIC_IMPLEMENTATION_VERIFIED" if result.wasSuccessful() else "FAILED",
+        "protocol_architecture": "docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md",
+        "hardening_specification": "docs/STAGE4B_U1_EXECUTION_HARDENING_V2_1.md",
+        "trigger_review": "docs/STAGE4B_U1_EXECUTION_PACKAGE_REVIEW_1.md",
+        "status": (
+            "V2_1_SYNTHETICALLY_HARDENED_AWAITING_REAPPROVAL"
+            if result.wasSuccessful()
+            else "FAILED"
+        ),
         "tests_run": result.testsRun,
         "test_ids": discovered,
         "failures": len(result.failures),
@@ -60,6 +70,7 @@ def main() -> None:
         "official_development_data_accessed": False,
         "reservation_data_accessed": False,
         "stage3b_accessed": False,
+        "official_source_audit_loaded_by_tests": False,
         "synthetic_artifacts_persisted": False,
         "implementation_hashes": {
             path: sha256_file(repo_root / path) for path in TRACKED_IMPLEMENTATION_FILES
@@ -73,7 +84,14 @@ def main() -> None:
             "allocation is the largest score/hash prefix within 60 percent planned-insert cost",
             "U1 ranking is exactly dense or frozen q25 according to the trigger",
             "reservation mode reuses the frozen development ECDF references",
-            "independent verifier detects a corrupted final ranking",
+            "official channel preparation requires the frozen Stage4A-R2 source audit and development boundary",
+            "formal model name, max length, batch size, and run role are frozen",
+            "independent verifier recomputes tie hash, ECDF values, scores, order, cutoff, and budget",
+            "Top-20 structure determines q25 and final inserted-unit IDs",
+            "policy binds the protocol, implementation files, inputs, embedding cache, source audit, and git commit",
+            "evaluator requires a VERIFIED_PRE_GOLD artifact before loading Gold",
+            "Stage4A-R2 baseline drift stops before U1 summary generation",
+            "all required corruption injections are rejected after internal hashes are refreshed where applicable",
             "two complete synthetic controller runs are byte-identical",
         ],
     }

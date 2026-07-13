@@ -605,6 +605,10 @@ def allocate_budget(
     if not feasible:
         raise ValueError("No feasible queries for budget allocation")
     ordered = sorted(feasible, key=lambda row: (-float(row["score"]), row["tie_hash"]))
+    for row in rows:
+        row["ordered_rank"] = None
+    for rank, row in enumerate(ordered, start=1):
+        row["ordered_rank"] = rank
     allquery_planned = sum(int(row["planned_insert_count"]) for row in feasible)
     budget_units = math.floor(allquery_planned * budget_fraction)
     if budget_units < 1:

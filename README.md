@@ -6,20 +6,20 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Stage4A-R2 已完成并验证；Stage4B-U1 v2 已实现并通过合成验证 |
+| 当前阶段 | Stage4A-R2 已完成并验证；Stage4B-U1 v2.1 执行硬化完成，等待重新审批 |
 | 获批执行协议 | 当前无 Stage4B 执行协议 |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | v1 已退回；v2 `AWAITING_EXECUTION_APPROVAL`，尚未冻结或执行 |
+| 协议状态 | v2 架构 `ACCEPTED_IN_PRINCIPLE`；原执行包退回；v2.1 `AWAITING_REAPPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
-| Controller | Gold-free 批量资源分配实现已通过 7 项合成测试；官方 U1-D 未授权 |
+| Controller | Gold-free 批量资源分配实现已通过 20 项 v2.1 合成硬化测试；官方 U1-D 未授权 |
 | 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
 
 第一次官方提取在预注册映射硬门处停止：基础区间 `[800:5300)` 的 11,003 个 supporting facts 中有 19 个 sentence index 越界，影响 19 条查询；该失败没有生成 gain/harm 或检索指标。Amendment 1 随后采用仅由标注完整性决定的确定性替换，从 `[9800:9819)` 补入 19 条有效记录。最终 11,015/11,015 supporting facts 完整映射，development/reservation 零重叠。
 
 Stage4A-R2 最终估计：q25 gain `94/4500 = 2.089%`，harm `69/4500 = 1.533%`，两者 Wilson 95% 区间半宽均通过 0.5 个百分点精度门。Dense/q25 CR@20 为 `0.77222/0.77778`；平均增益 `+0.00556`，exact McNemar `p=0.0598`，因此不能主张确认性平均 CR 提升。q25 false-insert rate 仍为 `0.92163`。
 
-Stage4B-U1 v1 经 Protocol Review 1 退回修改。v2 将后续方法收窄为 Gold-free 的批量启发式资源分配：经验分布与 score 只来自无标签检索几何，触发集合按确定性 score/hash 排序，并将 planned insert units 限制在 all-query q25 的 60% 以内。独立 controller/evaluator 通道与 verifier 已通过 7 项合成测试和确定性复跑；94/69 仍只用于功效规划和冻结后的评估。当前不提取官方特征、不冻结正式策略，也不读取 reservation。
+Stage4B-U1 v2 架构已获原则接受，但原执行包因 official boundary、配置冻结、独立复算、insert 推导、完整代码绑定、pre-Gold 门和 Stage4A-R2 基线等价门不足而退回。v2.1 不改变 score、q25 或 60% 预算，已通过 20 项合成测试，其中审批指定的 11 类失败注入全部被拒绝；确定性证据 SHA-256 为 `799E2AE73F24C223FA28AB104AF5C830F2E4D7678795B5CB5C8F51DC32D39AC3`。当前仍不提取官方特征、不冻结正式策略、不连接 Gold，也不读取 reservation。
 
 ## 研究问题
 
@@ -56,7 +56,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
-| Stage4B-U1 | v2 合成实现已验证 | v1 已退回；v2 等待执行审批，尚无官方结果 |
+| Stage4B-U1 | v2.1 合成执行硬化 | 架构原则接受；执行包等待重新审批，尚无官方结果 |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
@@ -100,7 +100,7 @@ D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe
 
 Stage4B-U1 当前仅有不访问 reservation 的功效规划入口：`scripts/stage4b_u1_plan_power.py`。
 
-Gold-free 实现的合成验证入口：`scripts/stage4b_u1_run_synthetic_verification.py`；审计见 `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT.md`。
+Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verification.py`；当前审计见 `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT_V2_1.md`，历史 v2 审计继续保留。
 
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
@@ -125,9 +125,9 @@ Gold-free 实现的合成验证入口：`scripts/stage4b_u1_run_synthetic_verifi
 
 ## 下一步
 
-1. 审批或退回 `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` 与合成实现证据。
-2. 获批后更新项目 `AGENTS.md`、冻结协议状态并提交推送，之后才允许运行官方 U1-D Gold-free channel 和 controller。
-3. U1-D policy 另行冻结、验证、提交后，才允许一次 Gold 评估；reservation 与 Stage3B 继续锁定。
+1. 重新审批 `docs/STAGE4B_U1_EXECUTION_HARDENING_V2_1.md`、v2.1 实现和合成证据。
+2. 只有获得显式执行批准后，才更新 U1-D 为唯一获批阶段并运行官方 Gold-free channel/controller。
+3. U1-D policy 必须另行冻结、独立验证、提交和推送，之后才允许一次 Gold 评估；reservation 与 Stage3B 继续锁定。
 
 ## GitHub
 

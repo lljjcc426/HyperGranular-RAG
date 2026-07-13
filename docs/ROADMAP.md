@@ -337,3 +337,19 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Evidence: `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT.md` and `results/stage4b_u1_synthetic_verification.json`.
 - No official U1-D data, reservation data, Stage3B data, or official metrics were accessed.
 - Current status: `REVISION_2_IMPLEMENTED_SYNTHETICALLY_VERIFIED_AWAITING_EXECUTION_APPROVAL`.
+
+### Stage4B-U1-D Execution Package Review 1 And v2.1 Hardening
+
+- Execution-package decision: `RETURN_EXECUTION_PACKAGE_FOR_HARDENING`; v2 architecture remains `ACCEPTED_IN_PRINCIPLE`.
+- Official U1-D channel preparation, U1-D Gold evaluation, reservation, and Stage3B remained unauthorized/locked.
+- Review record: `docs/STAGE4B_U1_EXECUTION_PACKAGE_REVIEW_1.md`.
+- The v2.1 hardening specification was frozen before new tests in `docs/STAGE4B_U1_EXECUTION_HARDENING_V2_1.md`.
+- Formal channel preparation now requires the verified Stage4A-R2 source-audit SHA, 4,500 development queries, and the frozen development ID digest.
+- Formal controller execution now freezes MiniLM, max length 192, batch size 64, development role, and the complete retrieval configuration.
+- Policy binding now covers Git commit, protocol, common/retrieval/controller/preparer/verifier source, unlabeled inputs, channel audit, embedding cache, and source audit.
+- The verifier independently recomputes tie hashes, four ECDF outputs, uncertainty, readiness, score, ordered rank, cutoff, budget, trigger set, and ranking/insert structure.
+- The evaluator requires a committed `VERIFIED_PRE_GOLD` artifact and derives inserted IDs from Top-20 structure.
+- A Stage4A-R2 baseline-equivalence hard gate runs before U1 summaries; drift raises `HARD_FAILURE_IMPLEMENTATION_DRIFT`.
+- Python 3.12 synthetic validation: 20 tests, 0 failures/errors/skips; all 11 required failure injections were rejected.
+- Deterministic evidence SHA-256: `799E2AE73F24C223FA28AB104AF5C830F2E4D7678795B5CB5C8F51DC32D39AC3` on two complete runs.
+- Current status: `V2_1_SYNTHETICALLY_HARDENED_AWAITING_REAPPROVAL`; this is not U1-D execution authorization.

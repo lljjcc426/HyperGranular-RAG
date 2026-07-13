@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import argparse
+import csv
+import subprocess
 from collections import Counter
 from pathlib import Path
 from typing import Any
@@ -10,9 +12,16 @@ from typing import Any
 import numpy as np
 
 from stage4b_u1_common import (
+    IMPLEMENTATION_CHECKPOINT,
+    PROTECT_N,
+    PROTOCOL_RELATIVE_PATH,
     SCHEMA_VERSION,
+    STAGE4A_R2_STRATEGY_SUMMARY_SHA256,
+    STAGE4A_R2_VERIFICATION_SHA256,
+    assert_files_match_git_commit,
     exact_mcnemar_two_sided_pvalue,
     fisher_greater_pvalue,
+    git_head,
     id_digest,
     load_json,
     load_jsonl,
@@ -28,6 +37,35 @@ def retrieval_metrics(ranking: list[str], gold: set[str]) -> tuple[float, int]:
     evidence_recall = len(retrieved) / max(len(gold), 1)
     chain_recall = int(bool(gold) and gold.issubset(retrieved))
     return evidence_recall, chain_recall
+
+
+def derive_inserted_ids(ranking: dict[str, Any]) -> tuple[list[str], list[str]]:
+    query_id = str(ranking["query_id"])
+    dense = [str(value) for value in ranking["dense_top20_unit_ids"]]
+    q25 = [str(value) for value in ranking["q25_top20_unit_ids"]]
+    final = [str(value) for value in ranking["final_top20_unit_ids"]]
+    planned = int(ranking["planned_insert_count"])
+    trigger = int(ranking["trigger_u1"])
+    if len(dense) != 20 or len(q25) != 20 or len(final) != 20:
+        raise ValueError(f"Evaluator Top-20 length differs: {query_id}")
+    if len(set(dense)) != 20 or len(set(q25)) != 20 or len(set(final)) != 20:
+        raise ValueError(f"Evaluator Top-20 IDs are not unique: {query_id}")
+    if q25[:PROTECT_N] != dense[:PROTECT_N]:
+        raise ValueError(f"Evaluator q25 violates dense Top-10 protection: {query_id}")
+    if planned < 0 or planned > 4:
+        raise ValueError(f"Evaluator planned insert count is outside [0,4]: {query_id}")
+    q25_inserted = q25[PROTECT_N : PROTECT_N + planned]
+    if [str(value) for value in ranking["q25_inserted_unit_ids"]] != q25_inserted:
+        raise ValueError(f"Evaluator q25 inserted IDs differ from Top-20: {query_id}")
+    expected_final = q25 if trigger else dense
+    final_inserted = q25_inserted if trigger else []
+    if final != expected_final:
+        raise ValueError(f"Evaluator final ranking violates on/off selection: {query_id}")
+    if [str(value) for value in ranking["final_inserted_unit_ids"]] != final_inserted:
+        raise ValueError(f"Evaluator final inserted IDs differ from derived inserts: {query_id}")
+    if any(unit_id in set(dense[:PROTECT_N]) for unit_id in q25_inserted):
+        raise ValueError(f"Evaluator inserted ID enters dense Top-10: {query_id}")
+    return q25_inserted, final_inserted
 
 
 def evaluate_rows(
@@ -51,8 +89,7 @@ def evaluate_rows(
         dense_er, dense_cr = retrieval_metrics(row["dense_top20_unit_ids"], gold)
         q25_er, q25_cr = retrieval_metrics(row["q25_top20_unit_ids"], gold)
         final_er, final_cr = retrieval_metrics(row["final_top20_unit_ids"], gold)
-        q25_inserted = [str(value) for value in row["q25_inserted_unit_ids"]]
-        final_inserted = [str(value) for value in row["final_inserted_unit_ids"]]
+        q25_inserted, final_inserted = derive_inserted_ids(row)
         q25_inserted_gold = len(set(q25_inserted) & gold)
         final_inserted_gold = len(set(final_inserted) & gold)
         output.append(
@@ -227,22 +264,164 @@ def build_decision(summary: dict[str, Any], run_role: str) -> dict[str, Any]:
     }
 
 
+def baseline_metrics(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    n = len(rows)
+    if n == 0:
+        raise ValueError("Cannot compute baseline equivalence on an empty evaluation")
+    return {
+        "queries": n,
+        "dense_er20": sum(float(row["dense_er20"]) for row in rows) / n,
+        "dense_cr20": sum(float(row["dense_cr20"]) for row in rows) / n,
+        "q25_er20": sum(float(row["q25_er20"]) for row in rows) / n,
+        "q25_cr20": sum(float(row["q25_cr20"]) for row in rows) / n,
+        "q25_gain_events": sum(int(row["q25_gain_event"]) for row in rows),
+        "q25_harm_events": sum(int(row["q25_harm_event"]) for row in rows),
+    }
+
+
+def load_official_baseline_reference(
+    verification_path: Path, strategy_summary_path: Path
+) -> dict[str, Any]:
+    if sha256_file(verification_path) != STAGE4A_R2_VERIFICATION_SHA256:
+        raise ValueError("Stage4A-R2 verification artifact SHA-256 differs")
+    if sha256_file(strategy_summary_path) != STAGE4A_R2_STRATEGY_SUMMARY_SHA256:
+        raise ValueError("Stage4A-R2 strategy-summary SHA-256 differs")
+    verification = load_json(verification_path)
+    if verification.get("status") != "VERIFIED_OFFICIAL_INTERNAL_METRICS":
+        raise ValueError("Stage4A-R2 verification status differs")
+    if (
+        verification.get("sha256", {}).get("strategy_summary")
+        != STAGE4A_R2_STRATEGY_SUMMARY_SHA256
+    ):
+        raise ValueError("Stage4A-R2 verification does not bind the strategy summary")
+    with strategy_summary_path.open("r", encoding="utf-8", newline="") as stream:
+        rows = list(csv.DictReader(stream))
+    by_strategy = {
+        str(row["strategy_id"]): row
+        for row in rows
+        if str(row["slice"]) == "ALL"
+    }
+    dense = by_strategy.get("dense_fixed")
+    q25 = by_strategy.get("allquery_q25_p10_i4")
+    if dense is None or q25 is None:
+        raise ValueError("Stage4A-R2 ALL baseline rows are missing")
+    return {
+        "queries": int(dense["queries"]),
+        "dense_er20": float(dense["evidence_recall_at_20"]),
+        "dense_cr20": float(dense["chain_recall_at_20"]),
+        "q25_er20": float(q25["evidence_recall_at_20"]),
+        "q25_cr20": float(q25["chain_recall_at_20"]),
+        "q25_gain_events": int(q25["gain_events"]),
+        "q25_harm_events": int(q25["harm_events"]),
+    }
+
+
+def verify_baseline_equivalence(
+    rows: list[dict[str, Any]],
+    reference_path: Path,
+    strategy_summary_path: Path | None,
+    synthetic_test_mode: bool,
+) -> dict[str, Any]:
+    observed = baseline_metrics(rows)
+    if synthetic_test_mode:
+        reference = load_json(reference_path)
+        if reference.get("status") != "SYNTHETIC_BASELINE_REFERENCE":
+            raise ValueError("Synthetic baseline reference status differs")
+        expected = reference.get("expected")
+    else:
+        if strategy_summary_path is None:
+            raise ValueError("Formal evaluation requires the Stage4A-R2 strategy summary")
+        expected = load_official_baseline_reference(reference_path, strategy_summary_path)
+    if observed != expected:
+        raise ValueError(
+            f"HARD_FAILURE_IMPLEMENTATION_DRIFT: Stage4A-R2 baseline differs; "
+            f"observed={observed}, expected={expected}"
+        )
+    return {
+        "status": "STAGE4A_R2_BASELINE_EQUIVALENCE",
+        "passed": True,
+        "observed": observed,
+        "reference_sha256": sha256_file(reference_path),
+        "strategy_summary_sha256": (
+            sha256_file(strategy_summary_path) if strategy_summary_path else None
+        ),
+    }
+
+
+def assert_commit_is_ancestor(repo_root: Path, commit: str) -> None:
+    completed = subprocess.run(
+        ["git", "merge-base", "--is-ancestor", commit, "HEAD"], cwd=repo_root
+    )
+    if completed.returncode != 0:
+        raise ValueError("Pre-Gold frozen commit is not an ancestor of evaluation HEAD")
+
+
+def validate_pre_gold_verification(
+    *,
+    pre_gold_path: Path,
+    policy: dict[str, Any],
+    policy_path: Path,
+    rankings_path: Path,
+    evaluator_source: Path,
+    synthetic_test_mode: bool,
+) -> dict[str, Any]:
+    pre_gold = load_json(pre_gold_path)
+    if pre_gold.get("status") != "VERIFIED_PRE_GOLD":
+        raise ValueError("Evaluator requires a VERIFIED_PRE_GOLD artifact")
+    if pre_gold.get("evaluation") is not None:
+        raise ValueError("Pre-Gold verification evaluation field must be null")
+    if bool(pre_gold.get("synthetic_test_mode")) != synthetic_test_mode:
+        raise ValueError("Pre-Gold verification/evaluator synthetic modes differ")
+    hashes = pre_gold.get("artifact_hashes", {})
+    if hashes.get("policy") != sha256_file(policy_path):
+        raise ValueError("Pre-Gold policy hash differs")
+    if hashes.get("rankings") != sha256_file(rankings_path):
+        raise ValueError("Pre-Gold ranking hash differs")
+    if hashes.get("decisions") != policy.get("output_hashes", {}).get("decisions"):
+        raise ValueError("Pre-Gold decision hash differs from policy")
+    if hashes.get("channel_audit") != policy.get("input_hashes", {}).get("channel_audit"):
+        raise ValueError("Pre-Gold channel-audit hash differs from policy")
+    if pre_gold.get("implementation_hashes") != policy.get("implementation_hashes"):
+        raise ValueError("Pre-Gold implementation hashes differ from policy")
+    frozen_commit = str(pre_gold.get("frozen_commit_sha", ""))
+    if not frozen_commit:
+        raise ValueError("Pre-Gold verification lacks frozen_commit_sha")
+    if not synthetic_test_mode:
+        repo_root = evaluator_source.resolve().parents[1]
+        assert_commit_is_ancestor(repo_root, frozen_commit)
+        head = git_head(repo_root)
+        try:
+            relative = pre_gold_path.resolve().relative_to(repo_root.resolve()).as_posix()
+        except ValueError as error:
+            raise ValueError("Formal pre-Gold verification is outside the repository") from error
+        assert_files_match_git_commit(repo_root, head, [relative, "scripts/stage4b_u1_evaluate.py"])
+    return pre_gold
+
+
 def run_evaluation(
     *,
     rankings_path: Path,
     policy_path: Path,
+    pre_gold_verification_path: Path,
     gold_map_path: Path,
     evaluator_audit_path: Path,
+    stage4a_r2_verification_path: Path,
+    stage4a_r2_strategy_summary_path: Path | None,
     query_audit_output: Path,
     summary_output: Path,
     run_role: str,
     bootstrap_iterations: int,
     bootstrap_seed: int,
+    evaluator_source: Path,
     synthetic_test_mode: bool = False,
 ) -> dict[str, Any]:
     policy = load_json(policy_path)
     if policy.get("schema_version") != SCHEMA_VERSION:
         raise ValueError("Policy schema differs")
+    if policy.get("implementation_checkpoint") != IMPLEMENTATION_CHECKPOINT:
+        raise ValueError("Policy implementation checkpoint differs")
+    if policy.get("protocol") != PROTOCOL_RELATIVE_PATH:
+        raise ValueError("Policy protocol path differs")
     if policy.get("run_role") != run_role:
         raise ValueError("Policy/evaluator run roles differ")
     if policy.get("status") == "SYNTHETIC_TEST_ONLY" and not synthetic_test_mode:
@@ -256,11 +435,23 @@ def run_evaluation(
         raise ValueError("Policy reports that evaluation labels were loaded")
     rankings = load_jsonl(rankings_path)
     validate_unique_ids(rankings, "query_id", "ranking")
+    pre_gold = validate_pre_gold_verification(
+        pre_gold_path=pre_gold_verification_path,
+        policy=policy,
+        policy_path=policy_path,
+        rankings_path=rankings_path,
+        evaluator_source=evaluator_source,
+        synthetic_test_mode=synthetic_test_mode,
+    )
     evaluator_audit = load_json(evaluator_audit_path)
     if evaluator_audit.get("status") != "EVALUATOR_CHANNEL_PREPARED_NO_RETRIEVAL_METRICS":
         raise ValueError("Evaluator channel audit status differs")
     if bool(evaluator_audit.get("retrieval_metrics_computed")):
         raise ValueError("Evaluator channel audit reports retrieval metrics")
+    if bool(evaluator_audit.get("synthetic_test_mode")) != synthetic_test_mode:
+        raise ValueError("Evaluator audit/evaluator synthetic modes differ")
+    if evaluator_audit.get("run_role") != run_role:
+        raise ValueError("Evaluator audit/evaluator run roles differ")
     if evaluator_audit.get("evaluator_channel_hashes", {}).get("gold_map") != sha256_file(
         gold_map_path
     ):
@@ -271,6 +462,12 @@ def run_evaluation(
     if gold_map.get("query_id_sha256") != id_digest(row["query_id"] for row in rankings):
         raise ValueError("Gold-map/ranking query digest differs")
     rows = evaluate_rows(rankings, gold_map)
+    baseline_equivalence = verify_baseline_equivalence(
+        rows,
+        stage4a_r2_verification_path,
+        stage4a_r2_strategy_summary_path,
+        synthetic_test_mode,
+    )
     write_jsonl(query_audit_output, rows)
     overall = summarize(rows, "ALL")
     type_summaries = [
@@ -291,13 +488,18 @@ def run_evaluation(
     ]
     summary = {
         "schema_version": SCHEMA_VERSION,
-        "protocol": "docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md",
+        "implementation_checkpoint": IMPLEMENTATION_CHECKPOINT,
+        "protocol": PROTOCOL_RELATIVE_PATH,
         "run_role": run_role,
         "policy_sha256": sha256_file(policy_path),
+        "pre_gold_verification_sha256": sha256_file(pre_gold_verification_path),
+        "pre_gold_frozen_commit_sha": pre_gold["frozen_commit_sha"],
         "ranking_sha256": ranking_sha,
         "gold_map_sha256": sha256_file(gold_map_path),
         "evaluator_audit_sha256": sha256_file(evaluator_audit_path),
         "query_audit_sha256": sha256_file(query_audit_output),
+        "evaluator_source_sha256": sha256_file(evaluator_source),
+        "baseline_equivalence": baseline_equivalence,
         "overall": overall,
         "question_types": type_summaries,
         "subgroup_caution": subgroup_caution,
@@ -313,8 +515,11 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--rankings", required=True, type=Path)
     parser.add_argument("--policy", required=True, type=Path)
+    parser.add_argument("--pre-gold-verification", required=True, type=Path)
     parser.add_argument("--gold-map", required=True, type=Path)
     parser.add_argument("--evaluator-audit", required=True, type=Path)
+    parser.add_argument("--stage4a-r2-verification", required=True, type=Path)
+    parser.add_argument("--stage4a-r2-strategy-summary", type=Path)
     parser.add_argument("--query-audit-output", required=True, type=Path)
     parser.add_argument("--summary-output", required=True, type=Path)
     parser.add_argument("--run-role", required=True, choices=("development", "reservation"))
@@ -329,13 +534,17 @@ def main() -> None:
     run_evaluation(
         rankings_path=args.rankings,
         policy_path=args.policy,
+        pre_gold_verification_path=args.pre_gold_verification,
         gold_map_path=args.gold_map,
         evaluator_audit_path=args.evaluator_audit,
+        stage4a_r2_verification_path=args.stage4a_r2_verification,
+        stage4a_r2_strategy_summary_path=args.stage4a_r2_strategy_summary,
         query_audit_output=args.query_audit_output,
         summary_output=args.summary_output,
         run_role=args.run_role,
         bootstrap_iterations=args.bootstrap_iterations,
         bootstrap_seed=args.bootstrap_seed,
+        evaluator_source=Path(__file__),
         synthetic_test_mode=args.synthetic_test_mode,
     )
 

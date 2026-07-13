@@ -9,9 +9,21 @@ from typing import Any
 import numpy as np
 
 from stage4b_u1_common import (
+    FROZEN_BATCH_SIZE,
+    FROZEN_MAX_LENGTH,
+    FROZEN_MODEL_NAME,
+    IMPLEMENTATION_CHECKPOINT,
+    OFFICIAL_DEVELOPMENT_QUERIES,
+    OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256,
+    POLICY_IMPLEMENTATION_FILES,
+    PROTOCOL_RELATIVE_PATH,
     SCHEMA_VERSION,
+    STAGE4A_R2_SOURCE_AUDIT_SHA256,
+    assert_files_match_git_commit,
     assert_no_prohibited_keys,
+    git_head,
     id_digest,
+    implementation_hashes,
     load_json,
     load_jsonl,
     sha256_file,
@@ -149,11 +161,21 @@ def validate_channel_audit(
     units_path: Path,
     queries_path: Path,
     query_ids: list[str],
+    *,
+    mode: str,
+    source_audit_path: Path | None,
+    synthetic_test_mode: bool,
 ) -> None:
     if audit.get("status") != "CONTROLLER_CHANNEL_PREPARED_NO_RETRIEVAL_METRICS":
         raise ValueError("Channel audit status differs")
     if bool(audit.get("retrieval_metrics_computed")):
         raise ValueError("Channel audit reports retrieval metrics")
+    if audit.get("implementation_checkpoint") != IMPLEMENTATION_CHECKPOINT:
+        raise ValueError("Channel audit implementation checkpoint differs")
+    if audit.get("run_role") != mode:
+        raise ValueError("Channel audit/controller run roles differ")
+    if bool(audit.get("synthetic_test_mode")) != synthetic_test_mode:
+        raise ValueError("Channel audit/controller synthetic modes differ")
     if audit.get("query_id_sha256") != id_digest(query_ids):
         raise ValueError("Channel audit query digest differs")
     hashes = audit.get("channel_hashes", {})
@@ -161,6 +183,25 @@ def validate_channel_audit(
         raise ValueError("Unlabeled-unit hash differs from channel audit")
     if hashes.get("unlabeled_queries") != sha256_file(queries_path):
         raise ValueError("Unlabeled-query hash differs from channel audit")
+    if synthetic_test_mode:
+        if audit.get("boundary_status") != "SYNTHETIC_TEST_BOUNDARY":
+            raise ValueError("Synthetic channel boundary status differs")
+        return
+    if mode != "development":
+        raise ValueError("Official Stage4B-U1-D controller mode must be development")
+    if source_audit_path is None:
+        raise ValueError("Official controller requires --source-audit")
+    source_sha = sha256_file(source_audit_path)
+    if source_sha != STAGE4A_R2_SOURCE_AUDIT_SHA256:
+        raise ValueError("Controller source-audit SHA-256 differs from the frozen value")
+    if audit.get("source_audit_sha256") != source_sha:
+        raise ValueError("Channel audit source-audit SHA-256 differs")
+    if audit.get("boundary_status") != "OFFICIAL_DEVELOPMENT_BOUNDARY_VERIFIED":
+        raise ValueError("Official development boundary was not verified by the preparer")
+    if len(query_ids) != OFFICIAL_DEVELOPMENT_QUERIES:
+        raise ValueError("Official controller requires exactly 4,500 development queries")
+    if id_digest(query_ids) != OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256:
+        raise ValueError("Official controller development digest differs")
 
 
 def run_controller(
@@ -179,16 +220,36 @@ def run_controller(
     max_length: int,
     config: RetrievalConfig,
     controller_source: Path,
+    source_audit_path: Path | None = None,
     synthetic_test_mode: bool = False,
 ) -> dict[str, Any]:
     if mode not in {"development", "reservation"}:
         raise ValueError(f"Unknown controller mode: {mode}")
-    if not synthetic_test_mode and config != RetrievalConfig():
-        raise ValueError("Official Stage4B-U1 runs must use the frozen retrieval configuration")
+    if batch_size <= 0:
+        raise ValueError("Embedding batch size must be positive")
+    if not synthetic_test_mode:
+        if mode != "development":
+            raise ValueError("Official Stage4B-U1-D controller mode must be development")
+        if model_name != FROZEN_MODEL_NAME:
+            raise ValueError("Official Stage4B-U1 encoder differs from the frozen model")
+        if max_length != FROZEN_MAX_LENGTH:
+            raise ValueError("Official Stage4B-U1 max length differs from 192")
+        if batch_size != FROZEN_BATCH_SIZE:
+            raise ValueError("Official Stage4B-U1 batch size differs from 64")
+        if config != RetrievalConfig():
+            raise ValueError("Official Stage4B-U1 runs must use the frozen retrieval configuration")
     units = load_jsonl(units_path)
     queries = load_jsonl(queries_path)
     _, query_ids = validate_controller_inputs(units, queries)
-    validate_channel_audit(load_json(channel_audit_path), units_path, queries_path, query_ids)
+    validate_channel_audit(
+        load_json(channel_audit_path),
+        units_path,
+        queries_path,
+        query_ids,
+        mode=mode,
+        source_audit_path=source_audit_path,
+        synthetic_test_mode=synthetic_test_mode,
+    )
     unit_embeddings, query_embeddings = load_or_build_embeddings(
         embedding_cache, units, queries, model_name, batch_size, max_length
     )
@@ -232,6 +293,7 @@ def run_controller(
         "readiness",
         "score",
         "tie_hash",
+        "ordered_rank",
         "trigger_u1",
     }
     decisions = [{key: row[key] for key in decision_fields} for row in rows]
@@ -254,16 +316,30 @@ def run_controller(
     assert_no_prohibited_keys(rankings, "controller.rankings")
     write_jsonl(decisions_output, decisions)
     write_jsonl(rankings_output, rankings)
+    repo_root = controller_source.resolve().parents[1]
+    commit_sha = git_head(repo_root)
+    bound_files = [*POLICY_IMPLEMENTATION_FILES.values(), PROTOCOL_RELATIVE_PATH]
+    if not synthetic_test_mode:
+        assert_files_match_git_commit(repo_root, commit_sha, bound_files)
+    source_hashes = implementation_hashes(repo_root)
+    protocol_sha = sha256_file(repo_root / PROTOCOL_RELATIVE_PATH)
+    source_audit_sha = (
+        sha256_file(source_audit_path) if source_audit_path is not None else None
+    )
     policy = {
         "schema_version": SCHEMA_VERSION,
-        "protocol": "docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md",
+        "implementation_checkpoint": IMPLEMENTATION_CHECKPOINT,
+        "protocol": PROTOCOL_RELATIVE_PATH,
+        "protocol_sha256": protocol_sha,
         "status": "SYNTHETIC_TEST_ONLY" if synthetic_test_mode else "POLICY_FROZEN_BEFORE_EVALUATION",
         "run_role": mode,
+        "git_commit_sha": commit_sha,
         "query_id_sha256": id_digest(query_ids),
         "queries": len(queries),
         "units": len(units),
         "model_name": model_name,
         "max_length": max_length,
+        "batch_size": batch_size,
         "retrieval_config": config.to_dict(),
         "ecdf_definition": "(count_less + 0.5 * count_equal) / n using exact float64 equality",
         "ecdf_references": references,
@@ -273,12 +349,14 @@ def run_controller(
             "unlabeled_queries": sha256_file(queries_path),
             "channel_audit": sha256_file(channel_audit_path),
             "embedding_cache": sha256_file(embedding_cache),
+            "source_audit": source_audit_sha,
         },
         "output_hashes": {
             "decisions": sha256_file(decisions_output),
             "rankings": sha256_file(rankings_output),
         },
-        "controller_source_sha256": sha256_file(controller_source),
+        "implementation_hashes": source_hashes,
+        "controller_source_sha256": source_hashes["controller_source_sha256"],
         "parent_development_policy_sha256": parent_policy_sha,
         "evaluation_labels_loaded": False,
     }
@@ -297,9 +375,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--policy-output", required=True, type=Path)
     parser.add_argument("--mode", required=True, choices=("development", "reservation"))
     parser.add_argument("--policy-input", type=Path)
-    parser.add_argument("--model-name", default="sentence-transformers/all-MiniLM-L6-v2")
-    parser.add_argument("--batch-size", type=int, default=64)
-    parser.add_argument("--max-length", type=int, default=192)
+    parser.add_argument("--source-audit", type=Path)
+    parser.add_argument("--model-name", default=FROZEN_MODEL_NAME)
+    parser.add_argument("--batch-size", type=int, default=FROZEN_BATCH_SIZE)
+    parser.add_argument("--max-length", type=int, default=FROZEN_MAX_LENGTH)
     parser.add_argument("--synthetic-test-mode", action="store_true")
     return parser.parse_args()
 
@@ -321,6 +400,7 @@ def main() -> None:
         max_length=args.max_length,
         config=RetrievalConfig(),
         controller_source=Path(__file__),
+        source_audit_path=args.source_audit,
         synthetic_test_mode=args.synthetic_test_mode,
     )
 

@@ -6,7 +6,11 @@
 - Mode: protocol revision
 - Revision date: 2026-07-12
 - Review source: `docs/STAGE4B_U1_PROTOCOL_REVIEW_1.md`
-- Protocol Status: `REVISION_2_IMPLEMENTED_SYNTHETICALLY_VERIFIED_AWAITING_EXECUTION_APPROVAL`
+- Execution-package review: `docs/STAGE4B_U1_EXECUTION_PACKAGE_REVIEW_1.md`
+- v2.1 hardening specification: `docs/STAGE4B_U1_EXECUTION_HARDENING_V2_1.md`
+- Protocol architecture status: `ACCEPTED_IN_PRINCIPLE`
+- Execution review decision: `RETURN_EXECUTION_PACKAGE_FOR_HARDENING`
+- Execution package status: `V2_1_SYNTHETICALLY_HARDENED_AWAITING_REAPPROVAL`
 - Execution approval: `NOT_APPROVED`
 - Reservation metrics status: `PROHIBITED_NOT_ACCESSED`
 - Other conversations, thread tools, and global memory used: No
@@ -223,15 +227,15 @@ U1-R 只检验一个联合研究结论：U1 同时具有选择性机制证据和
 
 ## 两级批准与执行顺序
 
-v2 实现已通过合成验证，证据见 `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT.md` 与 `results/stage4b_u1_synthetic_verification.json`。这不构成 U1-D 执行批准；下一检查点是用户对协议与实现包的显式审批。
+v2 原实现通过 7 项合成验证后，执行包审批仍因 7 项完整性缺口退回。v2.1 按 `docs/STAGE4B_U1_EXECUTION_HARDENING_V2_1.md` 完成 20 项合成测试，包括审批指定的 11 类失败注入和 Stage4A-R2 基线漂移硬失败。证据见 `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT_V2_1.md` 与 `results/stage4b_u1_synthetic_verification.json`。这不构成 U1-D 执行批准；下一检查点是用户重新审批 v2.1 execution package。
 
-1. 用户接受或退回 v2 设计架构；
-2. 实现 channel preparer、Gold-free controller、evaluator 和 independent verifier；
-3. 只用合成 fixture 验证 schema 隔离、预算唯一性、边界值和 ranking 子集，不运行官方 U1-D；
-4. 将协议、实现、合成测试证据提交并推送；
-5. 用户显式批准 U1-D 执行；
-6. 才允许生成官方 U1-D 通道和无标签策略；
-7. 策略工件冻结并推送后，才允许一次 U1-D Gold 评估；
+1. v2 设计架构已获原则接受；
+2. 原执行包已退回，并在运行新测试前冻结 v2.1 hardening specification；
+3. v2.1 只用合成 fixture 完成 20 项测试，不运行官方 U1-D；
+4. 将审批记录、硬化规格、实现、测试证据和状态更新提交并推送；
+5. 用户重新显式批准 U1-D execution package；
+6. 获批后才允许生成官方 U1-D 通道和无标签策略；
+7. 策略工件先冻结、独立验证、提交并推送，之后才允许一次 U1-D Gold 评估；
 8. U1-D 全部门通过且用户再次批准，才允许 U1-R。
 
 草案获批执行时同步更新项目 `AGENTS.md`：Stage4A-R2 已完成，U1-D 为唯一获批执行阶段，U1-R 与 Stage3B 继续锁定。

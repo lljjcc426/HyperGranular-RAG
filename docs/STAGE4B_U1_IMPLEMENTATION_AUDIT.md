@@ -1,5 +1,7 @@
 # Stage4B-U1 Gold-free Implementation Audit
 
+> Historical v2 checkpoint. The execution package was subsequently returned for hardening. The current audit is `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT_V2_1.md`; this file is retained without rewriting its original evidence.
+
 ## Status
 
 - Audit date: 2026-07-12
