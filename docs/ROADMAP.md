@@ -447,3 +447,12 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The final runner was byte-identical twice with SHA-256 `8B3057238D67EBE874017068C125126974062C61FAF3D79595E884F16A876D7D`.
 - No official development, official source audit, reservation, Stage3B, Gold evaluation, or official artifact was accessed or generated.
 - Current state: awaiting a new implementation-bound official pre-Gold resumption approval.
+
+### Stage4B-U1-D v2.2 Official Pre-Gold Resumption Package
+
+- Request: `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_2_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_2_MANIFEST.json`.
+- Bound implementation commit: `ca2cca332292f7bd6af12e2a429100be11da5549`.
+- Requested scope: governance rebinding, one dual-ID formal preflight, one official separated channel, one fresh ID-bound cache/controller run, independent cache audit, committed policy/ranking/decision, and committed `VERIFIED_PRE_GOLD` with `evaluation=null`.
+- Gold evaluation, U1-D metrics, reservation, Stage3B, implementation changes, parameter changes, and automatic retry remain outside the request.
+- Current status: `AWAITING_OFFICIAL_PREGOLD_RESUMPTION_APPROVAL`.

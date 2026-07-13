@@ -135,8 +135,8 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 提交推送 Amendment 2 实现审计、文件 hashes 与 deterministic evidence。
-2. 停止并提交新的 implementation-bound official pre-Gold 恢复审批。
+1. 审批 `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_2_APPROVAL_REQUEST.md`；未批准前保持停止。
+2. 获批后严格运行一次治理重绑定、dual-ID formal preflight、fresh cache/controller、独立 cache 核查和 `VERIFIED_PRE_GOLD`，推送后立即停止。
 3. Gold evaluation、reservation 与 Stage3B 继续锁定。
 
 ## GitHub
