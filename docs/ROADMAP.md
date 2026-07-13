@@ -590,3 +590,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The exact ten artifact paths, frozen cache, v2.2 decision/ranking/policy equivalence, pending-output promotion, and all stop rules are machine-registered.
 - Gold, U1-D metrics, reservation, Stage3B, implementation changes, cache writes, and automatic retries remain prohibited.
 - Current status: `AWAITING_V2_3_1_OFFICIAL_PREGOLD_RESUMPTION_APPROVAL`.
+
+### Stage4B-U1-D v2.3.1 Official Pre-Gold Resumption Approval
+
+- Decision: `APPROVE_STAGE4B_U1_D_V2_3_1_OFFICIAL_PREGOLD_RESUMPTION` on 2026-07-13.
+- Bound request-package commit: `e76c921454697d1784b0d76a9d9677113051f0f6`.
+- Bound implementation commit: `34349c70ee24b8240fd169393134d4280968b790`.
+- Decision file: `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_3_1_APPROVAL_DECISION.md`.
+- The mandatory first execution gate is two complete, byte-identical 50-test synthetic runs on committed post-approval governance bytes, followed by committed and pushed rebinding evidence and audit.
+- Only after that gate may one formal preflight, one exact-path channel, one require-existing controller, committed controller artifacts, and one independent pre-Gold verifier run in order.
+- Authorized endpoint: `VERIFIED_PRE_GOLD` with `evaluation=null`; Gold, U1-D metrics, reservation, Stage3B, cache writes, implementation changes, and automatic retries remain prohibited.
+- Current status: `APPROVED_GOVERNANCE_PENDING_SYNTHETIC_REBINDING`.

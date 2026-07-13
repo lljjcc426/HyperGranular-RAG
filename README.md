@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Stage4B-U1-D v2.3.1 official pre-Gold 恢复审批中；official 锁定 |
-| 获批执行协议 | v2.3.1 implementation/synthetic 已完成；official resumption 尚未批准 |
+| 当前阶段 | Stage4B-U1-D v2.3.1 official pre-Gold 已批准；等待批准后 synthetic rebinding |
+| 获批执行协议 | 仅授权到 `VERIFIED_PRE_GOLD` 且 `evaluation=null`；Gold 继续锁定 |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `AWAITING_V2_3_1_OFFICIAL_PREGOLD_RESUMPTION_APPROVAL` |
+| 协议状态 | `APPROVED_GOVERNANCE_PENDING_SYNTHETIC_REBINDING` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | 单次运行工件已提交，但 verifier 未通过；现有工件 `UNVERIFIED_INVALID_FOR_GOLD` |
@@ -153,8 +153,8 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 等待用户审批 `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_3_1_APPROVAL_REQUEST.md`。
-2. 新审批明确通过前，不运行 rebinding runner、formal preflight、channel、controller、cache audit、verifier 或 evaluator。
+1. 提交并推送 v2.3.1 恢复批准治理。
+2. 在 clean HEAD 上完成两次 50 项 governance-bound synthetic rebinding，提交推送 evidence 与 audit 后才能进入 formal preflight。
 3. Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub
