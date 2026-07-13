@@ -12,7 +12,7 @@
 | 协议状态 | `AMENDMENT_1_APPROVED_SINGLE_PREGOLD_RESUMPTION`；Gold evaluation 未批准 |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
-| Controller | 20 项 v2.1 合成硬化测试已通过；Amendment 批准后的新 binding verification 待完成 |
+| Controller | Amendment 1 批准后的 20 项 binding verification 已连续两次通过；official execution 待前置门 |
 | 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
 
 第一次官方提取在预注册映射硬门处停止：基础区间 `[800:5300)` 的 11,003 个 supporting facts 中有 19 个 sentence index 越界，影响 19 条查询；该失败没有生成 gain/harm 或检索指标。Amendment 1 随后采用仅由标注完整性决定的确定性替换，从 `[9800:9819)` 补入 19 条有效记录。最终 11,015/11,015 supporting facts 完整映射，development/reservation 零重叠。
@@ -21,7 +21,7 @@ Stage4A-R2 最终估计：q25 gain `94/4500 = 2.089%`，harm `69/4500 = 1.533%`�
 
 Stage4B-U1 v2 架构已获原则接受，但原执行包因 official boundary、配置冻结、独立复算、insert 推导、完整代码绑定、pre-Gold 门和 Stage4A-R2 基线等价门不足而退回。v2.1 不改变 score、q25 或 60% 预算，已通过 20 项合成测试，其中审批指定的 11 类失败注入全部被拒绝；批准现严格限于 official channel、Gold-free controller、工件冻结和 `VERIFIED_PRE_GOLD`。Gold evaluation、reservation 与 Stage3B 继续锁定。
 
-批准治理状态提交后，20 项 synthetic binding verification 再次连续两次字节一致，当前证据 SHA-256 为 `6F97EE054EFEACEC0BD50414D1A3133CB23D9B6FC57462356147C06AF804C7A5`。该复跑没有访问 official development、reservation 或 Stage3B。
+Amendment 1 批准治理状态提交后，20 项 synthetic binding verification 再次连续两次字节一致，当前证据 SHA-256 为 `9AA0D0499ECF613F7FEAED0F078BB7534CB837C22465AA1F13F29D715BBE8A6A`。该复跑没有访问 official development、official source audit、reservation 或 Stage3B。
 
 正式 preflight 随后发现旧 Stage4A-R2 embedding cache 缺少 `unit_ids`、`query_ids` 和 `max_length`，无法满足 v2.1 的 ID-bound cache 硬门，因此执行立即停止。没有生成 official channel、Gold map、decision、ranking、policy、`VERIFIED_PRE_GOLD` 或任何 U1-D 指标。失败审计见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_1.md`。Amendment 1 已批准：旧 cache 原样保留，获批后只允许在新路径单次生成并独立核查 ID-bound cache。
 

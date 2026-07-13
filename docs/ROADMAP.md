@@ -401,3 +401,11 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Authorized: preserve the legacy cache, require a new path to be absent, create one fresh ID-bound cache with the frozen encoder, independently validate it, and complete the already approved pre-Gold artifacts and `VERIFIED_PRE_GOLD`.
 - Not authorized: Gold evaluation, U1-D metrics, reservation, Stage3B, implementation or parameter changes, or automatic retry.
 - Governance and new synthetic binding evidence must be pushed before official-development execution resumes.
+
+### Stage4B-U1-D Post-Amendment Synthetic Binding
+
+- Approval governance commit `19bb733` was pushed before this rerun.
+- The unchanged 20-test runner completed twice with zero failures, errors, or skips.
+- Both complete outputs had SHA-256 `9AA0D0499ECF613F7FEAED0F078BB7534CB837C22465AA1F13F29D715BBE8A6A`.
+- The evidence reports no official-development data, official source audit, reservation, or Stage3B access.
+- The frozen runner's historical `V2_1_SYNTHETICALLY_HARDENED_AWAITING_REAPPROVAL` text is not the governance state; current authorization remains the committed Amendment 1 approval.
