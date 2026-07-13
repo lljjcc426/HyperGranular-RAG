@@ -6,20 +6,20 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Stage4A-R2 已完成并验证；Stage4B-U1 v2.1 执行硬化完成，等待重新审批 |
-| 获批执行协议 | 当前无 Stage4B 执行协议 |
+| 当前阶段 | Stage4B-U1-D v2.1 pre-Gold 执行已批准，尚未开始 official channel |
+| 获批执行协议 | 仅 U1-D channel/controller/artifact freeze/`VERIFIED_PRE_GOLD` |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | v2 架构 `ACCEPTED_IN_PRINCIPLE`；原执行包退回；v2.1 `AWAITING_REAPPROVAL` |
+| 协议状态 | `FROZEN_FOR_U1_D_PREGOLD_EXECUTION`；Gold evaluation 未批准 |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
-| Controller | Gold-free 批量资源分配实现已通过 20 项 v2.1 合成硬化测试；官方 U1-D 未授权 |
+| Controller | 20 项 v2.1 合成硬化测试已通过；官方 U1-D 仅获批运行至 `VERIFIED_PRE_GOLD` |
 | 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
 
 第一次官方提取在预注册映射硬门处停止：基础区间 `[800:5300)` 的 11,003 个 supporting facts 中有 19 个 sentence index 越界，影响 19 条查询；该失败没有生成 gain/harm 或检索指标。Amendment 1 随后采用仅由标注完整性决定的确定性替换，从 `[9800:9819)` 补入 19 条有效记录。最终 11,015/11,015 supporting facts 完整映射，development/reservation 零重叠。
 
 Stage4A-R2 最终估计：q25 gain `94/4500 = 2.089%`，harm `69/4500 = 1.533%`，两者 Wilson 95% 区间半宽均通过 0.5 个百分点精度门。Dense/q25 CR@20 为 `0.77222/0.77778`；平均增益 `+0.00556`，exact McNemar `p=0.0598`，因此不能主张确认性平均 CR 提升。q25 false-insert rate 仍为 `0.92163`。
 
-Stage4B-U1 v2 架构已获原则接受，但原执行包因 official boundary、配置冻结、独立复算、insert 推导、完整代码绑定、pre-Gold 门和 Stage4A-R2 基线等价门不足而退回。v2.1 不改变 score、q25 或 60% 预算，已通过 20 项合成测试，其中审批指定的 11 类失败注入全部被拒绝；确定性证据 SHA-256 为 `799E2AE73F24C223FA28AB104AF5C830F2E4D7678795B5CB5C8F51DC32D39AC3`。当前仍不提取官方特征、不冻结正式策略、不连接 Gold，也不读取 reservation。
+Stage4B-U1 v2 架构已获原则接受，但原执行包因 official boundary、配置冻结、独立复算、insert 推导、完整代码绑定、pre-Gold 门和 Stage4A-R2 基线等价门不足而退回。v2.1 不改变 score、q25 或 60% 预算，已通过 20 项合成测试，其中审批指定的 11 类失败注入全部被拒绝；批准现严格限于 official channel、Gold-free controller、工件冻结和 `VERIFIED_PRE_GOLD`。Gold evaluation、reservation 与 Stage3B 继续锁定。
 
 ## 研究问题
 
@@ -56,7 +56,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
-| Stage4B-U1 | v2.1 合成执行硬化 | 架构原则接受；执行包等待重新审批，尚无官方结果 |
+| Stage4B-U1 | v2.1 pre-Gold 执行批准 | 尚无官方 U1-D 指标；Gold evaluation 未授权 |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
@@ -102,7 +102,7 @@ Stage4B-U1 当前仅有不访问 reservation 的功效规划入口：`scripts/st
 
 Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verification.py`；当前审计见 `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT_V2_1.md`，历史 v2 审计继续保留。
 
-当前重新审批入口：`docs/STAGE4B_U1_EXECUTION_PACKAGE_V2_1_APPROVAL_REQUEST.md`。该请求仅覆盖官方 U1-D pre-Gold 通道、controller 与独立验证，不包含 Gold evaluation。
+当前批准决定：`docs/STAGE4B_U1_EXECUTION_PACKAGE_V2_1_APPROVAL_DECISION.md`。授权仅覆盖官方 U1-D pre-Gold 通道、controller 与独立验证，不包含 Gold evaluation。
 
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
@@ -127,9 +127,9 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 审批或退回 `docs/STAGE4B_U1_EXECUTION_PACKAGE_V2_1_APPROVAL_REQUEST.md` 所定义的 pre-Gold 执行包。
-2. 只有获得显式执行批准后，才更新 U1-D 为唯一获批阶段并运行官方 Gold-free channel/controller。
-3. U1-D policy 必须另行冻结、独立验证、提交和推送，之后才允许一次 Gold 评估；reservation 与 Stage3B 继续锁定。
+1. 提交推送批准治理状态，并在新协议字节上重跑 20 项 synthetic binding verification。
+2. 运行一次 official U1-D channel 和 Gold-free controller，提交 policy/ranking/decision 后独立生成 `VERIFIED_PRE_GOLD`。
+3. 推送 `VERIFIED_PRE_GOLD` 后立即停止；Gold evaluation、reservation 与 Stage3B 继续锁定并等待独立审批。
 
 ## GitHub
 

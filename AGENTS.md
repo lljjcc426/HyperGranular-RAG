@@ -19,8 +19,8 @@
 5. Stage4A-R2 已完成并独立验证；Stage4B-U1 v2 架构仅为 `ACCEPTED_IN_PRINCIPLE`。
 6. q25 阈值 `0.1957079917192459` 只能作为冻结迁移策略使用，不得声称是 2Wiki 最优阈值。
 7. 任何硬失败后的修订必须先批准、写入、提交并推送，再执行。
-8. Stage4B-U1-D 执行包当前为 `RETURN_EXECUTION_PACKAGE_FOR_HARDENING`；只能进行 `docs/STAGE4B_U1_EXECUTION_HARDENING_V2_1.md` 规定的合成硬化，官方 channel preparation 与 Gold evaluation 均未授权。
-9. Reservation 和 Stage3B 均保持锁定；v2.1 合成 checkpoint 通过也不自动构成官方执行授权。
+8. Stage4B-U1-D v2.1 当前仅获批 `APPROVE_STAGE4B_U1_D_PREGOLD_EXECUTION_V2_1`：允许 official channel preparation、Gold-free controller、policy/ranking/decision 冻结和独立 `VERIFIED_PRE_GOLD`；完成并推送后必须立即停止。
+9. U1-D Gold evaluation、任何 U1-D 指标读取或解释、reservation 和 Stage3B 均保持锁定；硬门失败不得自动重跑，必须停止并重新申请审批。
 
 ## GitHub 与文档
 

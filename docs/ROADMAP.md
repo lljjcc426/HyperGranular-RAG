@@ -362,3 +362,12 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Requested authorization is intentionally narrower than Gold evaluation: official channel preparation, Gold-free controller, artifact commit, and `VERIFIED_PRE_GOLD` only.
 - Required stop: pre-Gold verification committed and pushed; a separate user approval is required before evaluator/Gold join.
 - Current decision remains `NOT_APPROVED` until the user explicitly approves this package.
+
+### Stage4B-U1-D v2.1 Pre-Gold Approval
+
+- Decision: `APPROVE_STAGE4B_U1_D_PREGOLD_EXECUTION_V2_1` on 2026-07-13.
+- Approval decision: `docs/STAGE4B_U1_EXECUTION_PACKAGE_V2_1_APPROVAL_DECISION.md`.
+- Bound commits: request `2f6c7067c686bf1f4c13328bd1fc04ab3990f767`; implementation `dd1f8a9893ccb1e760068ad21d48e0e8938cc7f9`.
+- Authorized: official U1-D channel, Gold-free controller, policy/ranking/decision commit, and committed `VERIFIED_PRE_GOLD`.
+- Not authorized: evaluator/Gold join, U1-D metrics or interpretation, reservation, Stage3B, parameter changes, or automatic retry.
+- Required stop: immediately after `VERIFIED_PRE_GOLD` is committed and pushed.

@@ -8,10 +8,15 @@
 - Review source: `docs/STAGE4B_U1_PROTOCOL_REVIEW_1.md`
 - Execution-package review: `docs/STAGE4B_U1_EXECUTION_PACKAGE_REVIEW_1.md`
 - v2.1 hardening specification: `docs/STAGE4B_U1_EXECUTION_HARDENING_V2_1.md`
-- Protocol architecture status: `ACCEPTED_IN_PRINCIPLE`
+- Pre-Gold approval decision: `docs/STAGE4B_U1_EXECUTION_PACKAGE_V2_1_APPROVAL_DECISION.md`
+- Protocol architecture status: `FROZEN_FOR_U1_D_PREGOLD_EXECUTION`
 - Execution review decision: `RETURN_EXECUTION_PACKAGE_FOR_HARDENING`
-- Execution package status: `V2_1_SYNTHETICALLY_HARDENED_AWAITING_REAPPROVAL`
-- Execution approval: `NOT_APPROVED`
+- Execution package status: `V2_1_PREGOLD_EXECUTION_APPROVED`
+- Execution approval: `APPROVE_STAGE4B_U1_D_PREGOLD_EXECUTION_V2_1`
+- Approval date: 2026-07-13
+- Approval request commit: `2f6c7067c686bf1f4c13328bd1fc04ab3990f767`
+- Bound implementation commit: `dd1f8a9893ccb1e760068ad21d48e0e8938cc7f9`
+- Gold evaluation approval: `NOT_APPROVED`
 - Reservation metrics status: `PROHIBITED_NOT_ACCESSED`
 - Other conversations, thread tools, and global memory used: No
 
@@ -242,8 +247,9 @@ v2 原实现通过 7 项合成验证后，执行包审批仍因 7 项完整性�
 
 ## 当前禁止事项
 
-- 不运行官方 U1-D channel preparation、feature extraction 或 policy allocation；
+- 官方 U1-D 只允许执行已批准的 channel preparation、Gold-free policy allocation、工件冻结和 `VERIFIED_PRE_GOLD`；
 - 不连接 U1-D Gold；
 - 不创建或读取 reservation 内容、embedding、decision、ranking 或指标；
 - 不访问 Stage3B；
-- 不把本设计修订误写成执行批准。
+- 不在 pre-Gold 硬失败后自动重跑或修改参数；
+- `VERIFIED_PRE_GOLD` 提交推送后立即停止，Gold evaluation 必须另行批准。
