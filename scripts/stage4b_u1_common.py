@@ -11,7 +11,7 @@ from typing import Any, Iterable
 
 
 SCHEMA_VERSION = "stage4b_u1_v2"
-IMPLEMENTATION_CHECKPOINT = "stage4b_u1_v2_2"
+IMPLEMENTATION_CHECKPOINT = "stage4b_u1_v2_3"
 TIE_SALT = "stage4b_u1_v2"
 Q25_FLOOR = 0.1957079917192459
 BUDGET_FRACTION = 0.60

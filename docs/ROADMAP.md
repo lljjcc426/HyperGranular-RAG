@@ -522,3 +522,15 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Authorized: effective-K protocol/checkpoint/verifier/runner/test implementation, complete synthetic suite, two byte-identical evidence runs, audit, hashes, and a new official-resumption request.
 - Not authorized: any official data read, official command, failed-artifact/cache mutation, Gold, U1-D metrics, reservation, Stage3B, retrieval/controller/evaluator or parameter changes.
 - Current status: `AMENDMENT_3_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY`.
+
+### Stage4B-U1-D Pre-Gold Amendment 3 Implementation
+
+- Implementation checkpoint: `stage4b_u1_v2_3`.
+- Effective-K rules: `K_q=min(20,|C_q|)` and `P_q=min(10,K_q)`.
+- The verifier independently enforces candidate count, non-empty pools, exact effective-K lengths, per-list uniqueness, candidate membership, protected-prefix equality, insertion range/derivation, and final selector consistency.
+- The original 24 synthetic tests remain; nine effective-K/candidate-pool tests were added, for 33 total.
+- The complete 33-test evidence runner passed twice with zero failures, errors, or skips; both outputs have SHA-256 `38DDA409C866AAAC6C2AEDBA0D0716DA6F483854E9A6019E9040B9B2B1FA40B5`.
+- Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_IMPLEMENTATION_AUDIT.md`.
+- No official development, source audit, official ranking, cache, Gold, reservation, or Stage3B access occurred.
+- Current status: `SYNTHETICALLY_VERIFIED_OFFICIAL_EXECUTION_NOT_AUTHORIZED`.
+- Next gate: commit and push this implementation, then create an implementation-bound v2.3 official pre-Gold resumption approval package and stop.

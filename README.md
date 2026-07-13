@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Stage4B-U1-D Amendment 3 effective-K 实现与 synthetic hardening |
-| 获批执行协议 | 仅限 v2.3 协议/checkpoint/verifier/synthetic runner/tests；无 official execution |
+| 当前阶段 | Stage4B-U1-D Amendment 3 v2.3 synthetic hardening 已完成；official execution 锁定 |
+| 获批执行协议 | Amendment 3 implementation/synthetic-only 已执行完毕；等待 implementation-bound 恢复审批 |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `AMENDMENT_3_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY` |
+| 协议状态 | `SYNTHETICALLY_VERIFIED_OFFICIAL_EXECUTION_NOT_AUTHORIZED` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | 单次运行工件已提交，但 verifier 未通过；现有工件 `UNVERIFIED_INVALID_FOR_GOLD` |
@@ -38,6 +38,8 @@ Amendment 2 实现将 checkpoint 更新为 `stage4b_u1_v2_2`，分别冻结 samp
 independent verifier 随后在已提交工件上单次运行，并因固定要求列表长度恰好为 20 而硬失败。official development 中 628 个查询的候选池少于 20，controller 对全部 4,500 条查询都产生了长度 `min(20, num_candidate_units)` 的列表；首个失败查询候选数与列表长度均为 17。`VERIFIED_PRE_GOLD` 未生成，Gold/evaluator 参数未传入。失败审计见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_3.md`，effective-K 最小修订草案见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_DRAFT.md`。
 
 Amendment 3 已获 implementation/synthetic-only 批准，绑定审批包提交 `42747507d6f37c3d5713949de443311b35262a2d` 与失败审计提交 `8b43de72418ccda85af3015f758c39bce9d31411`。批准只允许冻结 `K_q=min(20,|C_q|)`、`P_q=min(10,K_q)`，更新 v2.3 verifier 与 synthetic tests；不授权任何 official 数据读取或命令。
+
+Amendment 3 已按批准边界实现：checkpoint 为 `stage4b_u1_v2_3`，verifier 独立检查 effective-K 长度、唯一性、候选成员、protected prefix、insertion 推导和 final selector。原 24 项测试保留，新增 9 项后共 33 项全部通过；完整 evidence runner 连续两次输出字节一致，SHA-256 均为 `38DDA409C866AAAC6C2AEDBA0D0716DA6F483854E9A6019E9040B9B2B1FA40B5`。全过程未访问 official development、source audit、official ranking、cache、Gold、reservation 或 Stage3B。实现审计见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_IMPLEMENTATION_AUDIT.md`。
 
 ## 研究问题
 
@@ -145,9 +147,9 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 仅实现 effective-K verifier 修正与 synthetic hardening，完整 suite 运行两次并要求 evidence 字节一致。
-2. 提交推送 v2.3 implementation audit 与新的 implementation-bound official 恢复审批包后立即停止。
-3. official 数据、official 命令、Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
+1. 提交并推送 v2.3 implementation、synthetic evidence 与审计。
+2. 创建并推送新的 implementation-bound official pre-Gold 恢复审批包后立即停止。
+3. 新审批明确通过前，official 数据、official 命令、Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub
 

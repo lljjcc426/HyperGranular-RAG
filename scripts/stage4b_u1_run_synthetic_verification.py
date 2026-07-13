@@ -16,6 +16,11 @@ TRACKED_IMPLEMENTATION_FILES = (
     "docs/STAGE4B_U1_EXECUTION_PACKAGE_REVIEW_1.md",
     "docs/STAGE4B_U1_EXECUTION_HARDENING_V2_1.md",
     "docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md",
+    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_3.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_DRAFT.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_APPROVAL_REQUEST.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_MANIFEST.json",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_APPROVAL_DECISION.md",
     "scripts/stage4b_u1_common.py",
     "scripts/stage4b_u1_prepare_channels.py",
     "scripts/stage4b_u1_goldfree_retrieval.py",
@@ -42,7 +47,9 @@ def main() -> None:
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("results/stage4b_u1_synthetic_verification.json"),
+        default=Path(
+            "results/stage4b_u1_d_pregold_amendment_3_synthetic_verification.json"
+        ),
     )
     args = parser.parse_args()
     repo_root = Path(__file__).resolve().parents[1]
@@ -53,12 +60,12 @@ def main() -> None:
     stream = io.StringIO()
     result = unittest.TextTestRunner(stream=stream, verbosity=2).run(suite)
     evidence = {
-        "stage": "Stage4B-U1",
+        "stage": "Stage4B-U1-D Pre-Gold Amendment 3",
         "protocol_architecture": "docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md",
         "hardening_specification": "docs/STAGE4B_U1_EXECUTION_HARDENING_V2_1.md",
         "trigger_review": "docs/STAGE4B_U1_EXECUTION_PACKAGE_REVIEW_1.md",
         "status": (
-            "AMENDMENT_2_SYNTHETICALLY_HARDENED_AWAITING_OFFICIAL_RESUMPTION_APPROVAL"
+            "AMENDMENT_3_EFFECTIVE_K_SYNTHETICALLY_HARDENED_AWAITING_OFFICIAL_RESUMPTION_APPROVAL"
             if result.wasSuccessful()
             else "FAILED"
         ),
@@ -89,7 +96,9 @@ def main() -> None:
             "preparer, controller, and verifier reject dual-ID boundary drift",
             "formal model name, max length, batch size, and run role are frozen",
             "independent verifier recomputes tie hash, ECDF values, scores, order, cutoff, and budget",
-            "Top-20 structure determines q25 and final inserted-unit IDs",
+            "effective-K is min(20, candidate pool size) and the effective protected prefix is min(10, effective-K)",
+            "effective-K verifier rejects empty pools, count drift, wrong lengths, duplicate or non-candidate IDs, protected-prefix drift, and insertion drift",
+            "effective-K structure determines q25 and final inserted-unit IDs",
             "policy binds the protocol, implementation files, inputs, embedding cache, source audit, and git commit",
             "evaluator requires a VERIFIED_PRE_GOLD artifact before loading Gold",
             "Stage4A-R2 baseline drift stops before U1 summary generation",

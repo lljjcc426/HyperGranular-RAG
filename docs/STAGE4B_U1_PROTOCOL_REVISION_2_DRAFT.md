@@ -82,7 +82,7 @@ Controller 命令行只能接收 unlabeled units、unlabeled queries、无标签
 Controller 只能写出：
 
 - `stage4b_u1_decision_audit.jsonl`：无标签特征、score、planned inserts、排序位置和 trigger；
-- `stage4b_u1_rankings.jsonl`：每个 query 的 dense Top-20、q25 Top-20 和 final Top-20 `unit_id`，不得含 `is_gold` 或 Gold 指标；
+- `stage4b_u1_rankings.jsonl`：每个 query 的 dense/q25/final effective-K（候选池不少于 20 时即 Top-20）`unit_id`，不得含 `is_gold` 或 Gold 指标；
 - `stage4b_u1_policy.json`：开发 ECDF、固定公式、预算比例、排序规则、输入与输出 digest；
 - canonical byte-level ranking SHA-256。
 
@@ -101,6 +101,25 @@ Evaluator 只能在 ranking 文件及其 digest 已冻结、独立验证并提�
 - Evaluation depth: 20
 
 q25 只是冻结迁移策略，不代表 2Wiki 最优阈值。
+
+### Effective-K 冻结规则
+
+对每个查询 `q`，independent verifier 只能从 controller-channel units 独立构造候选集合 `C_q`，并计算：
+
+```text
+K_q = min(20, |C_q|)
+P_q = min(10, K_q)
+```
+
+- dense、q25 与 final 列表长度必须严格等于 `K_q`；
+- 三个列表各自不得有重复 ID，且所有 ID 必须属于 `C_q`；
+- `q25[:P_q]` 必须逐 ID 等于 `dense[:P_q]`；
+- `planned_insert_count` 必须位于 `0..min(4, K_q-P_q)`；
+- inserted IDs 必须由 `q25[P_q:P_q+planned_insert_count]` 独立推导；
+- trigger=false 时 final 必须等于 dense，trigger=true 时 final 必须等于 q25；
+- `|C_q|=0` 继续硬失败；query schema 的 `num_candidate_units` 必须严格等于 `|C_q|`。
+
+Evaluation depth 仍为 20；候选池不足 20 时，“Top-20”表示最多 20，即 `K_q`。该定义不改变 candidate generation、retrieval、q25、score、预算、trigger 或 ranking 顺序。
 
 ## 数值与异常规则
 
@@ -126,11 +145,11 @@ F_dev(x) = (# {v in V: v < x} + 0.5 * # {v in V: v == x}) / |V|
 
 ## Feasible Gate 与四个输入
 
-先生成冻结 dense Top-20 与 all-query q25 Top-20。对每条查询：
+先生成冻结 dense effective-K 与 all-query q25 effective-K。对每条查询：
 
 ```text
-insertable_q25 = q25 candidate order 中排除 dense Top-10 unit IDs 后的候选
-planned_insert_count = min(4, len(insertable_q25))
+insertable_q25 = q25 candidate order 中排除 dense 前 P_q 个 unit IDs 后的候选
+planned_insert_count = min(4, K_q - P_q, len(insertable_q25))
 feasible = selected_edge_count > 0 and planned_insert_count > 0
 ```
 

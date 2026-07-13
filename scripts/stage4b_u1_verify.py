@@ -16,6 +16,8 @@ from stage4b_u1_common import (
     FROZEN_MAX_LENGTH,
     FROZEN_MODEL_NAME,
     IMPLEMENTATION_CHECKPOINT,
+    INSERT_BUDGET,
+    MAX_K,
     OFFICIAL_DEVELOPMENT_DATASET,
     OFFICIAL_DEVELOPMENT_QUERIES,
     OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256,
@@ -212,22 +214,69 @@ def verify_derived_decisions(
     return ordered
 
 
-def derive_q25_inserted(ranking: dict[str, Any]) -> list[str]:
+def validate_candidate_pools(
+    units: list[dict[str, Any]], queries: list[dict[str, Any]]
+) -> dict[str, set[str]]:
+    unit_ids_by_query: dict[str, set[str]] = {
+        str(query["query_id"]): set() for query in queries
+    }
+    for unit in units:
+        query_id = str(unit["query_id"])
+        if query_id not in unit_ids_by_query:
+            raise ValueError(f"Candidate unit references an unknown query: {query_id}")
+        unit_id = str(unit["unit_id"])
+        if unit_id in unit_ids_by_query[query_id]:
+            raise ValueError(f"Duplicate candidate unit ID: {query_id}::{unit_id}")
+        unit_ids_by_query[query_id].add(unit_id)
+    for query in queries:
+        query_id = str(query["query_id"])
+        expected = int(query["num_candidate_units"])
+        actual = len(unit_ids_by_query[query_id])
+        if actual == 0:
+            raise ValueError(f"Verifier candidate pool is empty: {query_id}")
+        if actual != expected:
+            raise ValueError(
+                f"Verifier candidate count differs: {query_id}: {actual} != {expected}"
+            )
+    return unit_ids_by_query
+
+
+def verify_effective_k_structure(
+    ranking: dict[str, Any], valid_unit_ids: set[str]
+) -> list[str]:
     query_id = str(ranking["query_id"])
+    if not valid_unit_ids:
+        raise ValueError(f"Verifier candidate pool is empty: {query_id}")
+    effective_k = min(MAX_K, len(valid_unit_ids))
+    effective_protect_n = min(PROTECT_N, effective_k)
     dense = [str(value) for value in ranking["dense_top20_unit_ids"]]
     q25 = [str(value) for value in ranking["q25_top20_unit_ids"]]
+    final = [str(value) for value in ranking["final_top20_unit_ids"]]
+    for label, values in (("dense", dense), ("q25", q25), ("final", final)):
+        if len(values) != effective_k:
+            raise ValueError(
+                f"{label} effective-K length differs: {query_id}: "
+                f"{len(values)} != {effective_k}"
+            )
+        if len(set(values)) != effective_k:
+            raise ValueError(f"{label} effective-K IDs are not unique: {query_id}")
+        if not set(values).issubset(valid_unit_ids):
+            raise ValueError(f"{label} references a non-candidate unit: {query_id}")
     planned = int(ranking["planned_insert_count"])
-    if len(dense) != 20 or len(q25) != 20:
-        raise ValueError(f"Top-20 length differs: {query_id}")
-    if len(set(dense)) != 20 or len(set(q25)) != 20:
-        raise ValueError(f"Top-20 IDs are not unique: {query_id}")
-    if q25[:PROTECT_N] != dense[:PROTECT_N]:
-        raise ValueError(f"q25 ranking violates dense Top-10 protection: {query_id}")
-    if planned < 0 or planned > 4:
-        raise ValueError(f"Planned insert count is outside [0,4]: {query_id}")
-    derived = q25[PROTECT_N : PROTECT_N + planned]
-    if any(unit_id in set(dense[:PROTECT_N]) for unit_id in derived):
-        raise ValueError(f"q25 inserted ID enters dense Top-10: {query_id}")
+    if q25[:effective_protect_n] != dense[:effective_protect_n]:
+        raise ValueError(f"q25 ranking violates effective protected prefix: {query_id}")
+    maximum_planned = min(INSERT_BUDGET, effective_k - effective_protect_n)
+    if planned < 0 or planned > maximum_planned:
+        raise ValueError(
+            f"Planned insert count is outside effective range [0,{maximum_planned}]: "
+            f"{query_id}"
+        )
+    derived = q25[effective_protect_n : effective_protect_n + planned]
+    if any(unit_id in set(dense[:effective_protect_n]) for unit_id in derived):
+        raise ValueError(f"q25 inserted ID enters protected prefix: {query_id}")
+    provided = [str(value) for value in ranking["q25_inserted_unit_ids"]]
+    if provided != derived:
+        raise ValueError(f"q25 inserted IDs differ from effective-K structure: {query_id}")
     return derived
 
 
@@ -235,7 +284,7 @@ def verify_policy_and_rankings(
     decisions: list[dict[str, Any]],
     rankings: list[dict[str, Any]],
     policy: dict[str, Any],
-    valid_unit_ids_by_query: dict[str, set[str]] | None = None,
+    valid_unit_ids_by_query: dict[str, set[str]],
 ) -> dict[str, Any]:
     assert_no_prohibited_keys(decisions, "verifier.decisions")
     assert_no_prohibited_keys(rankings, "verifier.rankings")
@@ -307,10 +356,11 @@ def verify_policy_and_rankings(
             raise ValueError(f"Decision/ranking trigger differs: {query_id}")
         if int(ranking["planned_insert_count"]) != int(decision["planned_insert_count"]):
             raise ValueError(f"Decision/ranking planned inserts differ: {query_id}")
-        derived_inserted = derive_q25_inserted(ranking)
-        provided_inserted = [str(value) for value in ranking["q25_inserted_unit_ids"]]
-        if provided_inserted != derived_inserted:
-            raise ValueError(f"q25 inserted IDs differ from Top-20 structure: {query_id}")
+        if query_id not in valid_unit_ids_by_query:
+            raise ValueError(f"Ranking query has no candidate pool: {query_id}")
+        derived_inserted = verify_effective_k_structure(
+            ranking, valid_unit_ids_by_query[query_id]
+        )
         trigger = int(decision["trigger_u1"])
         expected_final = (
             ranking["q25_top20_unit_ids"] if trigger else ranking["dense_top20_unit_ids"]
@@ -320,10 +370,6 @@ def verify_policy_and_rankings(
             raise ValueError(f"Final ranking violates the on/off selector: {query_id}")
         if [str(value) for value in ranking["final_inserted_unit_ids"]] != expected_final_inserted:
             raise ValueError(f"Final inserted IDs differ from derived on/off inserts: {query_id}")
-        if valid_unit_ids_by_query is not None:
-            allowed = valid_unit_ids_by_query[query_id]
-            if not set(str(value) for value in expected_final).issubset(allowed):
-                raise ValueError(f"Ranking references an unknown query unit: {query_id}")
     return {
         "queries": len(rankings),
         "n_feasible": len(ordered),
@@ -429,9 +475,7 @@ def run_verification(
             raise ValueError("Verifier query_id does not equal dataset::sample_id")
     sample_digest = id_digest(sample_ids)
     query_digest = id_digest(query_ids)
-    unit_ids_by_query: dict[str, set[str]] = {query_id: set() for query_id in query_ids}
-    for unit in units:
-        unit_ids_by_query[str(unit["query_id"])].add(str(unit["unit_id"]))
+    unit_ids_by_query = validate_candidate_pools(units, queries)
 
     channel_audit = load_json(channel_audit_path)
     assert_no_prohibited_keys(channel_audit, "verifier.controller_channel_audit")

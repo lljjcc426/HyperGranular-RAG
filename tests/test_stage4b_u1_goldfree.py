@@ -56,7 +56,11 @@ from stage4b_u1_prepare_channels import (  # noqa: E402
     prepare_channels,
     validate_execution_boundary,
 )
-from stage4b_u1_verify import run_verification  # noqa: E402
+from stage4b_u1_verify import (  # noqa: E402
+    run_verification,
+    validate_candidate_pools,
+    verify_effective_k_structure,
+)
 
 
 def normalized(vector: list[float]) -> np.ndarray:
@@ -249,7 +253,91 @@ def refresh_policy_output_hash(paths: dict[str, Path], key: str) -> None:
     write_json(paths["policy"], policy)
 
 
+def effective_k_ranking(candidate_count: int, planned: int) -> tuple[dict, set[str]]:
+    candidate_ids = [f"synthetic::short::u{index}" for index in range(candidate_count)]
+    effective_k = min(20, candidate_count)
+    protect_n = min(10, effective_k)
+    dense = candidate_ids[:effective_k]
+    q25 = list(dense)
+    if planned:
+        insertion = q25[protect_n + planned : protect_n + 2 * planned]
+        displaced = q25[protect_n : protect_n + planned]
+        q25[protect_n : protect_n + 2 * planned] = insertion + displaced
+    inserted = q25[protect_n : protect_n + planned]
+    return (
+        {
+            "query_id": "synthetic::short",
+            "planned_insert_count": planned,
+            "dense_top20_unit_ids": dense,
+            "q25_top20_unit_ids": q25,
+            "q25_inserted_unit_ids": inserted,
+            "final_top20_unit_ids": q25,
+        },
+        set(candidate_ids),
+    )
+
+
 class Stage4BU1CoreTests(unittest.TestCase):
+    def test_effective_k_17_is_accepted(self) -> None:
+        ranking, candidates = effective_k_ranking(17, 2)
+        self.assertEqual(
+            verify_effective_k_structure(ranking, candidates),
+            ranking["q25_inserted_unit_ids"],
+        )
+
+    def test_effective_k_10_is_accepted_and_insertion_is_bounded(self) -> None:
+        ranking, candidates = effective_k_ranking(10, 0)
+        self.assertEqual(verify_effective_k_structure(ranking, candidates), [])
+        ranking["planned_insert_count"] = 1
+        with self.assertRaisesRegex(ValueError, "effective range"):
+            verify_effective_k_structure(ranking, candidates)
+
+    def test_effective_k_wrong_length_is_rejected(self) -> None:
+        ranking, candidates = effective_k_ranking(17, 2)
+        ranking["dense_top20_unit_ids"].pop()
+        with self.assertRaisesRegex(ValueError, "effective-K length differs"):
+            verify_effective_k_structure(ranking, candidates)
+
+    def test_effective_k_duplicate_unit_id_is_rejected(self) -> None:
+        ranking, candidates = effective_k_ranking(17, 2)
+        ranking["q25_top20_unit_ids"][-1] = ranking["q25_top20_unit_ids"][-2]
+        with self.assertRaisesRegex(ValueError, "not unique"):
+            verify_effective_k_structure(ranking, candidates)
+
+    def test_effective_k_non_candidate_unit_id_is_rejected(self) -> None:
+        ranking, candidates = effective_k_ranking(17, 2)
+        ranking["final_top20_unit_ids"][-1] = "synthetic::outside"
+        with self.assertRaisesRegex(ValueError, "non-candidate"):
+            verify_effective_k_structure(ranking, candidates)
+
+    def test_candidate_count_drift_is_rejected(self) -> None:
+        queries = [{"query_id": "synthetic::short", "num_candidate_units": 2}]
+        units = [{"query_id": "synthetic::short", "unit_id": "u0"}]
+        with self.assertRaisesRegex(ValueError, "candidate count differs"):
+            validate_candidate_pools(units, queries)
+
+    def test_empty_candidate_pool_is_rejected(self) -> None:
+        queries = [{"query_id": "synthetic::short", "num_candidate_units": 0}]
+        with self.assertRaisesRegex(ValueError, "candidate pool is empty"):
+            validate_candidate_pools([], queries)
+
+    def test_effective_protected_prefix_drift_is_rejected(self) -> None:
+        ranking, candidates = effective_k_ranking(17, 2)
+        ranking["q25_top20_unit_ids"][0], ranking["q25_top20_unit_ids"][10] = (
+            ranking["q25_top20_unit_ids"][10],
+            ranking["q25_top20_unit_ids"][0],
+        )
+        with self.assertRaisesRegex(ValueError, "effective protected prefix"):
+            verify_effective_k_structure(ranking, candidates)
+
+    def test_effective_k_insertion_derivation_drift_is_rejected(self) -> None:
+        ranking, candidates = effective_k_ranking(17, 2)
+        ranking["q25_inserted_unit_ids"] = list(
+            reversed(ranking["q25_inserted_unit_ids"])
+        )
+        with self.assertRaisesRegex(ValueError, "effective-K structure"):
+            verify_effective_k_structure(ranking, candidates)
+
     def test_channel_split_removes_all_controller_labels(self) -> None:
         units, queries, _, _ = synthetic_labeled_rows()
         unlabeled_units, unlabeled_queries, gold_map = prepare_channels(units, queries)
@@ -589,7 +677,7 @@ class Stage4BU1HardeningTests(unittest.TestCase):
             target["final_top20_unit_ids"] = list(target["q25_top20_unit_ids"])
             write_jsonl(paths["rankings"], rows)
             refresh_policy_output_hash(paths, "rankings")
-            with self.assertRaisesRegex(ValueError, "inserted IDs differ from Top-20"):
+            with self.assertRaisesRegex(ValueError, "inserted IDs differ from effective-K structure"):
                 run_synthetic_verifier(paths, Path(directory) / "bad.json")
 
     def test_modified_inserted_list_rejected_when_top20_unchanged(self) -> None:
@@ -601,7 +689,7 @@ class Stage4BU1HardeningTests(unittest.TestCase):
             target["final_inserted_unit_ids"] = list(target["q25_inserted_unit_ids"])
             write_jsonl(paths["rankings"], rows)
             refresh_policy_output_hash(paths, "rankings")
-            with self.assertRaisesRegex(ValueError, "inserted IDs differ from Top-20"):
+            with self.assertRaisesRegex(ValueError, "inserted IDs differ from effective-K structure"):
                 run_synthetic_verifier(paths, Path(directory) / "bad.json")
 
     def test_evaluator_without_pre_gold_verification_hard_fails(self) -> None:
