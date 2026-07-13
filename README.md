@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Amendment 5A synthetic 已验证；5B official decisions-only 诊断包等待独立审批 |
-| 获批执行协议 | 当前无 official 授权；5B package 仅为审批请求 |
+| 当前阶段 | Amendment 5B 已退回；Amendment 5A.1 channel-input hash-binding 包等待审批 |
+| 获批执行协议 | 当前无 5A.1 实现、synthetic 或 official 授权；仅完成治理包准备 |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `AMENDMENT_5B_AWAITING_APPROVAL` |
+| 协议状态 | `AMENDMENT_5A_1_AWAITING_APPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -49,7 +49,9 @@ Amendment 4 实现已完成：formal controller 强制 existing-cache-only 与�
 
 Amendment 5A 已按批准边界实现，未修改 controller。新增 decisions-only 七层 comparator、synthetic allowlist 与临时 decisions capture；5B 组包前静态核查又补齐 official 精确路径、登记 source digest、OS temp、v2.2 reference SHA 与 cache 后指纹门。48 项新诊断测试与原 50 项合计 98 项全部通过。完整 evidence 连续两次输出字节一致，SHA-256 均为 `3D44C14B82E911DDD37501731772A7594D7616BF12FE278D2D4CCC103533057E`，official 路径访问尝试为 0。实现审计见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_IMPLEMENTATION_AUDIT.md`。这不授权 official 诊断、controller 重跑或 verifier。
 
-Amendment 5B 审批包已组装，绑定最终 5A implementation/evidence 提交 `9a060bd31e9c33be587f7ef5e64f86206922e59e`。请求只覆盖批准治理后的 98 项 synthetic rebinding、一次只读 preflight、一次精确路径 decisions-only capture、聚合审计提交与立即停止。请求和机器边界分别见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md`、`docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_MANIFEST.json`。在新的明确批准前不得运行。
+Amendment 5B 审批包 commit `ceb755252540cf223aa18ac721443154c29cd07a` 已退回：units、queries 和 controller channel audit 只有路径与内部自洽校验，没有由 package 外部冻结各自 SHA-256。当前禁止使用 5B token、运行 preflight/capture、重跑 controller 或运行 verifier。退回记录见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_REVIEW_1.md`。
+
+Amendment 5A.1 仅申请实现与 synthetic 验证三项 channel-input SHA 前后硬门；冻结值分别为 units `114D28A7C9842079BF80C292274D7DBBBC718F05CBE8F4435487C245238427FA`、queries `6EE942C680EAC86D0410FC25BCC302CA7312A0E253E318025A957D51A09B4B6B`、controller channel audit `D134CDE168C833784F238B61420B4738C1F65B9FCA995945EB04E8B99EAAB2FA`。请求与 Manifest 见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_APPROVAL_REQUEST.md`、`docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_MANIFEST.json`；在 package-bound 明确批准前不得修改实现或运行 synthetic。
 
 ## 研究问题
 

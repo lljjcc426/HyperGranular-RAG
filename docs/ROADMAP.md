@@ -663,3 +663,16 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Requested scope: post-approval 98-test rebinding, governance digest, one read-only preflight, one exact-path decisions-only capture, aggregate audit commit, and immediate stop.
 - Official rankings, source-audit file, policy, evaluator/Gold, full controller, verifier, reservation, Stage3B, implementation changes, and retries remain prohibited.
 - Current status: `AMENDMENT_5B_AWAITING_APPROVAL`; no 5B command has run.
+
+### Stage4B-U1-D Amendment 5B Review 1 And Amendment 5A.1 Package
+
+- Review date: 2026-07-14.
+- Reviewed 5B package commit: `ceb755252540cf223aa18ac721443154c29cd07a`.
+- Decision: `RETURN_AMENDMENT_5B_FOR_CHANNEL_INPUT_HASH_BINDING`.
+- Sole blocker: the v2.3.1 unlabeled units, unlabeled queries, and controller channel audit were registered by absolute path but not independently frozen by expected SHA-256; audit-to-input consistency was therefore not an external package binding.
+- Frozen units SHA-256: `114D28A7C9842079BF80C292274D7DBBBC718F05CBE8F4435487C245238427FA`.
+- Frozen queries SHA-256: `6EE942C680EAC86D0410FC25BCC302CA7312A0E253E318025A957D51A09B4B6B`.
+- Frozen controller channel-audit SHA-256: `D134CDE168C833784F238B61420B4738C1F65B9FCA995945EB04E8B99EAAB2FA`.
+- The retained 5B boundaries remain decisions-only, aggregate-only, no rankings/policy/Gold/source-audit access, no formal artifacts, and immediate stop after a future approved diagnosis.
+- Amendment 5A.1 requests implementation/synthetic-only authority for direct pre-read and post-computation/pre-audit checks of those three hashes, cleanup/no-audit failure behavior, at least six additional tests, two byte-identical complete-suite runs, and a revised implementation-bound 5B package.
+- Current status: `AMENDMENT_5A_1_AWAITING_APPROVAL`. No 5B token, official preflight/capture, code modification, or synthetic run is authorized by this package.

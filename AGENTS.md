@@ -37,6 +37,10 @@
 23. Amendment 5A implementation/synthetic-only 已获批准，绑定 package `81d8c34f1cf2539a4c0b81c6148047bc666e2f82` 及 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_APPROVAL_DECISION.md` 中六个历史提交。只允许 decisions comparator、synthetic-only temp capture、至少 24 项新增测试、双次 deterministic evidence、implementation audit 和 5B 审批包。
 24. 5A 禁止读取 official units/queries/source audit/cache/decisions/rankings，禁止 official comparator/capture、controller、verifier、evaluator、Gold、reservation、Stage3B 和 byte-equivalence 放宽。测试必须主动拦截这些路径与 ranking/policy 调用。
 25. 5A 完成后状态只能为 `AMENDMENT_5A_SYNTHETICALLY_VERIFIED` 且 official diagnosis/controller rerun/verifier 均未批准；5B package 推送后必须立即停止。
+26. Amendment 5B package commit `ceb755252540cf223aa18ac721443154c29cd07a` 已按 `RETURN_AMENDMENT_5B_FOR_CHANNEL_INPUT_HASH_BINDING` 退回。不得使用 5B authorization token，不得运行 5B preflight、official capture、controller、verifier 或 Gold evaluation。
+27. 后续 5A.1 及新版 5B 必须外部冻结三项 channel 输入：units SHA-256 `114D28A7C9842079BF80C292274D7DBBBC718F05CBE8F4435487C245238427FA`、queries SHA-256 `6EE942C680EAC86D0410FC25BCC302CA7312A0E253E318025A957D51A09B4B6B`、controller channel audit SHA-256 `D134CDE168C833784F238B61420B4738C1F65B9FCA995945EB04E8B99EAAB2FA`。
+28. 当前仅可组装并推送 Amendment 5A.1 审批请求和 Manifest。该 package 本身不授权代码修改、synthetic 验证或任何 official 文件访问；实现必须等待明确绑定 5A.1 package commit 的新批准。
+29. 未来 5A.1 只能修改 decisions diagnostic capture 的三 SHA 前后硬门、对应 synthetic tests/evidence 及治理绑定；controller、retrieval、comparator 语义、byte-equivalence、模型、参数、score、ECDF、预算、trigger、ranking、endpoint 和停止规则必须保持不变。完成并推送新版 5B package 后必须停止。
 
 ## GitHub 与文档
 
