@@ -455,4 +455,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Bound implementation commit: `ca2cca332292f7bd6af12e2a429100be11da5549`.
 - Requested scope: governance rebinding, one dual-ID formal preflight, one official separated channel, one fresh ID-bound cache/controller run, independent cache audit, committed policy/ranking/decision, and committed `VERIFIED_PRE_GOLD` with `evaluation=null`.
 - Gold evaluation, U1-D metrics, reservation, Stage3B, implementation changes, parameter changes, and automatic retry remain outside the request.
-- Current status: `AWAITING_OFFICIAL_PREGOLD_RESUMPTION_APPROVAL`.
+- Current status: `APPROVED`; execution is gated on a fresh governance-byte synthetic rebinding.
+
+### Stage4B-U1-D v2.2 Official Pre-Gold Resumption Approval
+
+- Decision: `APPROVE_STAGE4B_U1_D_V2_2_OFFICIAL_PREGOLD_RESUMPTION` on 2026-07-13.
+- Approval decision: `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_2_APPROVAL_DECISION.md`.
+- Bound request-package commit: `fae181564504f1a69bcebfd5d5201eea7e2d9abf`.
+- Bound implementation commit: `ca2cca332292f7bd6af12e2a429100be11da5549`.
+- Authorized sequence ends at committed and pushed `VERIFIED_PRE_GOLD` with `evaluation=null`.
+- Gold evaluation, U1-D metrics or interpretation, promotion, reservation, Stage3B, implementation changes, parameter changes, and automatic retry remain prohibited.
+- Current status: `OFFICIAL_PREGOLD_RESUMPTION_APPROVED_AWAITING_SYNTHETIC_REBINDING`.

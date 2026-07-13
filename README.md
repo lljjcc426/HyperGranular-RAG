@@ -6,13 +6,13 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Stage4B-U1-D Amendment 2 synthetic hardening 完成，等待 official 恢复审批 |
-| 获批执行协议 | 实现与 synthetic 授权已完成；当前无 official execution 授权 |
+| 当前阶段 | Stage4B-U1-D v2.2 official pre-Gold 恢复已批准，等待 synthetic rebinding |
+| 获批执行协议 | 仅限治理重绑定、formal preflight、Gold-free controller、工件冻结与 `VERIFIED_PRE_GOLD` |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `AMENDMENT_2_SYNTHETICALLY_HARDENED_AWAITING_OFFICIAL_RESUMPTION_APPROVAL` |
+| 协议状态 | `OFFICIAL_PREGOLD_RESUMPTION_APPROVED_AWAITING_SYNTHETIC_REBINDING` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
-| Controller | 双重 ID 绑定已修正，24 项 synthetic tests 通过；official execution 保持停止 |
+| Controller | 双重 ID 绑定已修正；须先完成新治理字节上的两次 synthetic rebinding 与 formal preflight |
 | 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
 
 第一次官方提取在预注册映射硬门处停止：基础区间 `[800:5300)` 的 11,003 个 supporting facts 中有 19 个 sentence index 越界，影响 19 条查询；该失败没有生成 gain/harm 或检索指标。Amendment 1 随后采用仅由标注完整性决定的确定性替换，从 `[9800:9819)` 补入 19 条有效记录。最终 11,015/11,015 supporting facts 完整映射，development/reservation 零重叠。
@@ -28,6 +28,8 @@ Amendment 1 批准治理状态提交后，20 项 synthetic binding verification 
 Amendment 1 后的正式 preflight 又在 query-ID digest 硬门停止：source audit 的 `6B21...` 绑定原始 `sample_id`，processed runtime `query_id` 是 `2wikimultihopqa::<sample_id>`，其结构性 digest 为 `8895...`；v2.1 错误地直接比较了不同 ID 表示。其余 preflight 门全部通过，未生成 channel、cache 或 official 工件。失败审计见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_2.md`，最小修订见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_2_DRAFT.md`。
 
 Amendment 2 实现将 checkpoint 更新为 `stage4b_u1_v2_2`，分别冻结 sample-ID 与 runtime query-ID digest，并在 preparer/controller/verifier 中逐条检查 `query_id == dataset::sample_id`。原 20 项测试全部保留，新增 4 项失败注入后共 24 项全部通过；最终 binding evidence 连续两次 SHA-256 均为 `8B3057238D67EBE874017068C125126974062C61FAF3D79595E884F16A876D7D`。official development、source audit、reservation 与 Stage3B 均未被测试访问。
+
+用户已批准 v2.2 official pre-Gold 恢复，绑定审批包提交 `fae181564504f1a69bcebfd5d5201eea7e2d9abf` 与实现提交 `ca2cca332292f7bd6af12e2a429100be11da5549`。批准顺序只到 `VERIFIED_PRE_GOLD` 且 `evaluation=null`；Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## 研究问题
 
@@ -110,7 +112,7 @@ Stage4B-U1 当前仅有不访问 reservation 的功效规划入口：`scripts/st
 
 Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verification.py`；当前审计见 `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT_V2_1.md`，历史 v2 审计继续保留。
 
-当前批准决定：`docs/STAGE4B_U1_EXECUTION_PACKAGE_V2_1_APPROVAL_DECISION.md`。授权仅覆盖官方 U1-D pre-Gold 通道、controller 与独立验证，不包含 Gold evaluation。
+当前批准决定：`docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_2_APPROVAL_DECISION.md`。授权仅覆盖官方 U1-D pre-Gold 通道、controller、cache 独立核查与独立验证，不包含 Gold evaluation。
 
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
@@ -135,9 +137,9 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 审批 `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_2_APPROVAL_REQUEST.md`；未批准前保持停止。
-2. 获批后严格运行一次治理重绑定、dual-ID formal preflight、fresh cache/controller、独立 cache 核查和 `VERIFIED_PRE_GOLD`，推送后立即停止。
-3. Gold evaluation、reservation 与 Stage3B 继续锁定。
+1. 提交并推送 v2.2 恢复批准治理状态，再在新治理字节上运行两次字节一致的 24 项 synthetic verification。
+2. 严格运行一次 dual-ID formal preflight、fresh cache/controller、独立 cache 核查和 `VERIFIED_PRE_GOLD`，推送后立即停止。
+3. 任一硬门失败立即停止；Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub
 

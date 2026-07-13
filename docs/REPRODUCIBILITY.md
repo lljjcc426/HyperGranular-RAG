@@ -471,3 +471,11 @@ Amendment 2 implementation and synthetic verification were approved on 2026-07-1
 The Amendment 2 implementation checkpoint is `stage4b_u1_v2_2`. The suite contains the original 20 tests plus four dual-ID boundary hardening tests. The current expected SHA is `8B3057238D67EBE874017068C125126974062C61FAF3D79595E884F16A876D7D`. Official development remains locked.
 
 The implementation-bound official pre-Gold resumption request is `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_2_APPROVAL_REQUEST.md`, with machine-readable binding in `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_2_MANIFEST.json`. These files do not authorize execution. Do not run official commands until the package commit and implementation commit `ca2cca332292f7bd6af12e2a429100be11da5549` are explicitly approved.
+
+## Stage4B-U1-D v2.2 Official Pre-Gold Resumption Approval
+
+The user approved `APPROVE_STAGE4B_U1_D_V2_2_OFFICIAL_PREGOLD_RESUMPTION` on 2026-07-13, binding request-package commit `fae181564504f1a69bcebfd5d5201eea7e2d9abf` and implementation commit `ca2cca332292f7bd6af12e2a429100be11da5549`. The approval decision is `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_2_APPROVAL_DECISION.md`.
+
+The approval first requires a committed and pushed governance state, followed by two complete 24-test synthetic binding runs whose output bytes are identical. Only after that hard gate may one dual-ID formal preflight access the registered official development inputs. The remaining authorized sequence is one channel preparation, one fresh ID-bound cache and Gold-free controller run, an independent read-only cache audit, committed channel/controller artifacts, and an independent verifier producing `VERIFIED_PRE_GOLD` with `evaluation=null`.
+
+Any formal preflight, cache audit, commit, or push hard-gate failure stops execution without automatic retry. Gold evaluation, U1-D metric access or interpretation, promotion, reservation, Stage3B, and implementation or parameter changes remain prohibited.

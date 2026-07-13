@@ -19,8 +19,9 @@
 5. Stage4A-R2 已完成并独立验证；Stage4B-U1 v2 架构仅为 `ACCEPTED_IN_PRINCIPLE`。
 6. q25 阈值 `0.1957079917192459` 只能作为冻结迁移策略使用，不得声称是 2Wiki 最优阈值。
 7. 任何硬失败后的修订必须先批准、写入、提交并推送，再执行。
-8. Stage4B-U1-D Amendment 2 双重 ID 绑定实现已完成，24 项 synthetic suite 全部通过；当前状态为 `AMENDMENT_2_SYNTHETICALLY_HARDENED_AWAITING_OFFICIAL_RESUMPTION_APPROVAL`，没有 official execution 授权。
-9. 禁止重新读取 official development 或运行 official preflight/channel/controller/cache/verifier。旧 Stage4A-R2 cache 必须原样保留；U1-D Gold evaluation、任何 U1-D 指标、reservation 和 Stage3B 全部锁定。新的实现提交必须再次获批后才能接触 official development。
+8. Stage4B-U1-D v2.2 official pre-Gold 恢复已获批准，绑定审批包提交 `fae181564504f1a69bcebfd5d5201eea7e2d9abf` 与实现提交 `ca2cca332292f7bd6af12e2a429100be11da5549`；当前状态为 `OFFICIAL_PREGOLD_RESUMPTION_APPROVED_AWAITING_SYNTHETIC_REBINDING`。
+9. 只允许按批准决定依次执行治理重绑定、两次字节一致的 24 项 synthetic verification、一次 dual-ID formal preflight、一次 channel preparation、一次 fresh cache/Gold-free controller、独立 cache 核查、工件提交推送和 independent pre-Gold verifier。任一 formal preflight、cache、commit 或 push 硬门失败立即停止且不得自动重跑。
+10. 旧 Stage4A-R2 cache 必须原样保留；U1-D Gold evaluation、任何 U1-D 指标读取或解释、U1-D 晋级、reservation 和 Stage3B 全部锁定。`VERIFIED_PRE_GOLD` 推送后立即停止。
 
 ## GitHub 与文档
 
