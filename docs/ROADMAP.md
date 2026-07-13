@@ -371,3 +371,6 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Authorized: official U1-D channel, Gold-free controller, policy/ranking/decision commit, and committed `VERIFIED_PRE_GOLD`.
 - Not authorized: evaluator/Gold join, U1-D metrics or interpretation, reservation, Stage3B, parameter changes, or automatic retry.
 - Required stop: immediately after `VERIFIED_PRE_GOLD` is committed and pushed.
+- Approval governance commit `d327193` was pushed before official data access.
+- The unchanged 20-test synthetic runner was rerun twice against the approved AGENTS/protocol bytes; both outputs had SHA-256 `6F97EE054EFEACEC0BD50414D1A3133CB23D9B6FC57462356147C06AF804C7A5`.
+- The binding rerun recorded no official-development, reservation, or Stage3B access.

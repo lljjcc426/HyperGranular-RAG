@@ -418,9 +418,11 @@ This command uses generated fixtures under the OS temporary directory. It does n
 
 Expected result: 20 tests, 0 failures, 0 errors, 0 skipped. Expected SHA-256 for `results/stage4b_u1_synthetic_verification.json`:
 
-`799E2AE73F24C223FA28AB104AF5C830F2E4D7678795B5CB5C8F51DC32D39AC3`
+`6F97EE054EFEACEC0BD50414D1A3133CB23D9B6FC57462356147C06AF804C7A5`
 
 The v2.1 runner preserves the original Gold isolation, legacy-ranking equivalence, numeric boundaries, exact ECDF behavior, 60% prefix allocation, dense/q25 identity, synthetic reservation-ECDF reuse, and byte-identical reruns. It additionally rejects all approval-required injections: missing source audit, wrong development digest, wrong model, wrong max length, modified tie hash, modified score, modified ECDF reference, q25/final ranking corruption, inserted-ID detachment, missing pre-Gold verification, and implementation-hash drift. A separate synthetic baseline-drift injection must stop before query-audit or summary output. This remains implementation evidence only and cannot authorize U1-D execution.
+
+The SHA above is the post-approval binding rerun after commit `d327193` changed only governance/protocol status. It binds the approved `AGENTS.md` and protocol bytes and reproduced byte-identically twice. The pre-approval v2.1 checkpoint SHA `799E2AE73F24C223FA28AB104AF5C830F2E4D7678795B5CB5C8F51DC32D39AC3` remains recorded in the historical hardening audit.
 
 The package-style command `python -m unittest tests.test_stage4b_u1_goldfree -v` is not valid under the pinned Python 3.12 runtime because `tests` is not a package. For direct verbose testing, use:
 
