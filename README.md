@@ -6,13 +6,13 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Stage4B-U1-D v2.1 pre-Gold 执行已批准，尚未开始 official channel |
-| 获批执行协议 | 仅 U1-D channel/controller/artifact freeze/`VERIFIED_PRE_GOLD` |
+| 当前阶段 | Stage4B-U1-D pre-Gold 在 embedding-cache 元数据硬门停止 |
+| 获批执行协议 | 原 v2.1 pre-Gold 批准已停止；恢复需批准 Amendment 1 |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `FROZEN_FOR_U1_D_PREGOLD_EXECUTION`；Gold evaluation 未批准 |
+| 协议状态 | `PREGOLD_EXECUTION_STOPPED_HARD_FAILURE_1`；Gold evaluation 未批准 |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
-| Controller | 20 项 v2.1 合成硬化测试已通过；官方 U1-D 仅获批运行至 `VERIFIED_PRE_GOLD` |
+| Controller | 20 项 v2.1 合成硬化测试已通过；official channel/controller 均未运行 |
 | 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
 
 第一次官方提取在预注册映射硬门处停止：基础区间 `[800:5300)` 的 11,003 个 supporting facts 中有 19 个 sentence index 越界，影响 19 条查询；该失败没有生成 gain/harm 或检索指标。Amendment 1 随后采用仅由标注完整性决定的确定性替换，从 `[9800:9819)` 补入 19 条有效记录。最终 11,015/11,015 supporting facts 完整映射，development/reservation 零重叠。
@@ -22,6 +22,8 @@ Stage4A-R2 最终估计：q25 gain `94/4500 = 2.089%`，harm `69/4500 = 1.533%`�
 Stage4B-U1 v2 架构已获原则接受，但原执行包因 official boundary、配置冻结、独立复算、insert 推导、完整代码绑定、pre-Gold 门和 Stage4A-R2 基线等价门不足而退回。v2.1 不改变 score、q25 或 60% 预算，已通过 20 项合成测试，其中审批指定的 11 类失败注入全部被拒绝；批准现严格限于 official channel、Gold-free controller、工件冻结和 `VERIFIED_PRE_GOLD`。Gold evaluation、reservation 与 Stage3B 继续锁定。
 
 批准治理状态提交后，20 项 synthetic binding verification 再次连续两次字节一致，当前证据 SHA-256 为 `6F97EE054EFEACEC0BD50414D1A3133CB23D9B6FC57462356147C06AF804C7A5`。该复跑没有访问 official development、reservation 或 Stage3B。
+
+正式 preflight 随后发现旧 Stage4A-R2 embedding cache 缺少 `unit_ids`、`query_ids` 和 `max_length`，无法满足 v2.1 的 ID-bound cache 硬门，因此执行立即停止。没有生成 official channel、Gold map、decision、ranking、policy、`VERIFIED_PRE_GOLD` 或任何 U1-D 指标。失败审计见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_1.md`；当前只允许审批 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_1_DRAFT.md`，不得执行或重跑。
 
 ## 研究问题
 
@@ -58,7 +60,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
-| Stage4B-U1 | v2.1 pre-Gold 执行批准 | 尚无官方 U1-D 指标；Gold evaluation 未授权 |
+| Stage4B-U1 | pre-Gold 硬失败后停止 | 尚无 official channel/controller 工件或 U1-D 指标；Gold evaluation 未授权 |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
@@ -129,8 +131,8 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 提交推送批准治理状态，并在新协议字节上重跑 20 项 synthetic binding verification。
-2. 运行一次 official U1-D channel 和 Gold-free controller，提交 policy/ranking/decision 后独立生成 `VERIFIED_PRE_GOLD`。
+1. 审批 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_1_DRAFT.md`；未批准前保持停止。
+2. 获批后先提交推送批准状态并重跑 synthetic binding verification，再按修订定义的新路径单次生成 ID-bound cache 和 official pre-Gold 工件。
 3. 推送 `VERIFIED_PRE_GOLD` 后立即停止；Gold evaluation、reservation 与 Stage3B 继续锁定并等待独立审批。
 
 ## GitHub

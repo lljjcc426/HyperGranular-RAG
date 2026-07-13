@@ -9,10 +9,13 @@
 - Execution-package review: `docs/STAGE4B_U1_EXECUTION_PACKAGE_REVIEW_1.md`
 - v2.1 hardening specification: `docs/STAGE4B_U1_EXECUTION_HARDENING_V2_1.md`
 - Pre-Gold approval decision: `docs/STAGE4B_U1_EXECUTION_PACKAGE_V2_1_APPROVAL_DECISION.md`
+- Pre-Gold hard-failure audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_1.md`
+- Pending amendment: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_1_DRAFT.md`
 - Protocol architecture status: `FROZEN_FOR_U1_D_PREGOLD_EXECUTION`
 - Execution review decision: `RETURN_EXECUTION_PACKAGE_FOR_HARDENING`
-- Execution package status: `V2_1_PREGOLD_EXECUTION_APPROVED`
-- Execution approval: `APPROVE_STAGE4B_U1_D_PREGOLD_EXECUTION_V2_1`
+- Execution package status: `PREGOLD_EXECUTION_STOPPED_HARD_FAILURE_1`
+- Historical execution approval: `APPROVE_STAGE4B_U1_D_PREGOLD_EXECUTION_V2_1`
+- Current execution authorization: `STOPPED_REAPPROVAL_REQUIRED`
 - Approval date: 2026-07-13
 - Approval request commit: `2f6c7067c686bf1f4c13328bd1fc04ab3990f767`
 - Bound implementation commit: `dd1f8a9893ccb1e760068ad21d48e0e8938cc7f9`
@@ -232,24 +235,31 @@ U1-R 只检验一个联合研究结论：U1 同时具有选择性机制证据和
 
 ## 两级批准与执行顺序
 
-v2 原实现通过 7 项合成验证后，执行包审批仍因 7 项完整性缺口退回。v2.1 按 `docs/STAGE4B_U1_EXECUTION_HARDENING_V2_1.md` 完成 20 项合成测试，包括审批指定的 11 类失败注入和 Stage4A-R2 基线漂移硬失败。证据见 `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT_V2_1.md` 与 `results/stage4b_u1_synthetic_verification.json`。这不构成 U1-D 执行批准；下一检查点是用户重新审批 v2.1 execution package。
+v2 原实现通过 7 项合成验证后，执行包审批仍因 7 项完整性缺口退回。v2.1 按 `docs/STAGE4B_U1_EXECUTION_HARDENING_V2_1.md` 完成 20 项合成测试，包括审批指定的 11 类失败注入和 Stage4A-R2 基线漂移硬失败。证据见 `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT_V2_1.md` 与 `results/stage4b_u1_synthetic_verification.json`。用户随后批准了严格限于 pre-Gold 的执行，但正式 preflight 在旧 embedding cache 缺少 ID-bound 元数据处硬失败并停止。
 
 1. v2 设计架构已获原则接受；
 2. 原执行包已退回，并在运行新测试前冻结 v2.1 hardening specification；
 3. v2.1 只用合成 fixture 完成 20 项测试，不运行官方 U1-D；
 4. 将审批记录、硬化规格、实现、测试证据和状态更新提交并推送；
-5. 用户重新显式批准 U1-D execution package；
-6. 获批后才允许生成官方 U1-D 通道和无标签策略；
-7. 策略工件先冻结、独立验证、提交并推送，之后才允许一次 U1-D Gold 评估；
-8. U1-D 全部门通过且用户再次批准，才允许 U1-R。
+5. 用户重新显式批准 U1-D execution package；已完成；
+6. 获批后的 preflight 命中 `HARD_FAILURE_EMBEDDING_CACHE_METADATA`，在 official channel 前停止；
+7. 只有 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_1_DRAFT.md` 获批、提交并推送后，才可恢复官方 U1-D pre-Gold；
+8. 策略工件先冻结、独立验证、提交并推送，之后仍须单独批准才允许一次 U1-D Gold 评估；
+9. U1-D 全部门通过且用户再次批准，才允许 U1-R。
 
-草案获批执行时同步更新项目 `AGENTS.md`：Stage4A-R2 已完成，U1-D 为唯一获批执行阶段，U1-R 与 Stage3B 继续锁定。
+当前 `AGENTS.md` 已同步为硬失败停止状态。Amendment 1 批准前没有获批执行阶段；U1-D Gold、U1-R 与 Stage3B 继续锁定。
+
+## Pre-Gold 硬失败 1
+
+旧 Stage4A-R2 cache 的 SHA-256 为 `746FC1130038C789190F2A37CB911BBFC46905CFCC138E361C1F6CF991A45F02`，实际 NPZ 成员只有 `model_name`、`query_embeddings` 和 `unit_embeddings`。它缺少 v2.1 必需的 `unit_ids`、`query_ids` 与 `max_length`，不能证明 embedding 行序与 official U1-D 输入一致。
+
+该失败发生在 official channel preparation 前。未生成 channel、Gold map、decision、ranking、policy、`VERIFIED_PRE_GOLD` 或 U1-D 指标；未访问 reservation 或 Stage3B。完整记录见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_1.md`。
 
 ## 当前禁止事项
 
-- 官方 U1-D 只允许执行已批准的 channel preparation、Gold-free policy allocation、工件冻结和 `VERIFIED_PRE_GOLD`；
+- Amendment 1 批准、提交并推送前，禁止任何 official U1-D channel、controller 或 verifier 执行；
 - 不连接 U1-D Gold；
 - 不创建或读取 reservation 内容、embedding、decision、ranking 或指标；
 - 不访问 Stage3B；
-- 不在 pre-Gold 硬失败后自动重跑或修改参数；
+- 不迁移、补写、覆盖或删除旧 embedding cache，不在 pre-Gold 硬失败后自动重跑或修改参数；
 - `VERIFIED_PRE_GOLD` 提交推送后立即停止，Gold evaluation 必须另行批准。

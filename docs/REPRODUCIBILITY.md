@@ -430,3 +430,17 @@ The package-style command `python -m unittest tests.test_stage4b_u1_goldfree -v`
 & "D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe" `
   -m unittest discover -s tests -p "test_stage4b_u1_goldfree.py" -v
 ```
+
+## Stage4B-U1-D Pre-Gold Hard Failure 1
+
+The approved official preflight stopped before channel preparation. The legacy Stage4A-R2 cache had SHA-256 `746FC1130038C789190F2A37CB911BBFC46905CFCC138E361C1F6CF991A45F02` and exposed only:
+
+```text
+model_name
+query_embeddings
+unit_embeddings
+```
+
+It lacked `unit_ids`, `query_ids`, and `max_length`, so it failed the v2.1 ID-bound cache gate. The failure audit is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_1.md`.
+
+Do not rerun the official channel or controller under the original approval. Do not patch, migrate, overwrite, or delete the legacy cache. The proposed fresh-cache procedure is frozen in `docs/STAGE4B_U1_PREGOLD_AMENDMENT_1_DRAFT.md`, but remains non-executable until explicit user approval is committed and pushed.

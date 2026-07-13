@@ -374,3 +374,21 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Approval governance commit `d327193` was pushed before official data access.
 - The unchanged 20-test synthetic runner was rerun twice against the approved AGENTS/protocol bytes; both outputs had SHA-256 `6F97EE054EFEACEC0BD50414D1A3133CB23D9B6FC57462356147C06AF804C7A5`.
 - The binding rerun recorded no official-development, reservation, or Stage3B access.
+
+### Stage4B-U1-D Pre-Gold Hard Failure 1
+
+- Failure audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_1.md`.
+- Status: `PREGOLD_EXECUTION_STOPPED_HARD_FAILURE_1` on 2026-07-13.
+- The formal preflight confirmed 143,820 unit rows, 4,500 query rows, and legacy cache SHA-256 `746FC1130038C789190F2A37CB911BBFC46905CFCC138E361C1F6CF991A45F02`.
+- The legacy Stage4A-R2 NPZ contains only `model_name`, `query_embeddings`, and `unit_embeddings`; it lacks the v2.1-required `unit_ids`, `query_ids`, and `max_length`.
+- This triggered `HARD_FAILURE_EMBEDDING_CACHE_METADATA` before official channel preparation.
+- No official channel, Gold map, controller, decision, ranking, policy, `VERIFIED_PRE_GOLD`, or U1-D metric was generated or read. Reservation and Stage3B were not accessed.
+- No cache was rebuilt, migrated, patched, overwritten, or deleted; execution did not auto-retry.
+
+### Stage4B-U1-D Pre-Gold Amendment 1 Draft
+
+- Draft: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_1_DRAFT.md`.
+- Status: `DRAFT_NOT_APPROVED_NOT_EXECUTABLE`.
+- The sole requested change is a fresh, non-existing U1-D-specific ID-bound cache path created once by the unchanged approved controller.
+- Model, max length, batch size, data boundary, q25, score, ECDF, 60% budget, endpoints, implementation, Gold isolation, and stop rules remain frozen.
+- Official U1-D pre-Gold remains locked until the amendment is explicitly approved, committed, pushed, and followed by a new synthetic binding verification.
