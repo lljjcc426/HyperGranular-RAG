@@ -465,7 +465,7 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Bound implementation commit: `ca2cca332292f7bd6af12e2a429100be11da5549`.
 - Authorized sequence ends at committed and pushed `VERIFIED_PRE_GOLD` with `evaluation=null`.
 - Gold evaluation, U1-D metrics or interpretation, promotion, reservation, Stage3B, implementation changes, parameter changes, and automatic retry remain prohibited.
-- Current status: `OFFICIAL_PREGOLD_RESUMPTION_APPROVED_AWAITING_SYNTHETIC_REBINDING`.
+- Status at approval entry: `OFFICIAL_PREGOLD_RESUMPTION_APPROVED_AWAITING_SYNTHETIC_REBINDING`.
 
 ### Stage4B-U1-D v2.2 Synthetic Rebinding
 
@@ -474,7 +474,7 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Two complete 24-test runs passed with 0 failures, errors, or skips.
 - Both complete outputs have SHA-256 `9B01C80F66096F01C763C25E44E4D079C40B681F6C52F0CC55F70492689EAAB1` and are byte-identical.
 - The tests accessed no official development, official source audit, reservation, or Stage3B data.
-- Current status: `SYNTHETIC_REBINDING_VERIFIED_READY_FOR_DUAL_ID_FORMAL_PREFLIGHT`.
+- Status after this gate: `SYNTHETIC_REBINDING_VERIFIED_READY_FOR_DUAL_ID_FORMAL_PREFLIGHT`.
 
 ### Stage4B-U1-D v2.2 Formal Preflight and Controller
 
@@ -485,4 +485,21 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The independent cache audit passed exact ID order, dual digests, metadata, dtype, shape, finite-value, normalization, byte-size, and SHA checks.
 - Audits: `docs/STAGE4B_U1_PREGOLD_V2_2_FORMAL_PREFLIGHT_AUDIT.md`, `docs/STAGE4B_U1_PREGOLD_V2_2_CONTROLLER_EXECUTION_AUDIT.md`, and `docs/STAGE4B_U1_PREGOLD_V2_2_CACHE_AUDIT.md`.
 - No Gold evaluation, U1-D metric interpretation, reservation, or Stage3B access occurred.
-- Current status: `PREGOLD_CONTROLLER_ARTIFACTS_READY_FOR_COMMIT_AND_VERIFICATION`.
+- Controller artifact commit: `9207bd78eea44d2ea3291fe9b6748526969a3224`.
+- Current status after the next gate: `PREGOLD_EXECUTION_STOPPED_HARD_FAILURE_3`.
+
+### Stage4B-U1-D Pre-Gold Hard Failure 3
+
+- Independent verifier was run once on committed artifacts without Gold/evaluator arguments.
+- It stopped at the first ranking structure check because the verifier required exactly 20 IDs while the query had only 17 candidate units.
+- Gold-free structural diagnosis found 628/4,500 queries with fewer than 20 candidates, minimum 10; all controller list lengths equal `min(20, candidate_count)`.
+- No `VERIFIED_PRE_GOLD` was written, and no Gold evaluation, U1-D effect metric, reservation, or Stage3B access occurred.
+- Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_3.md`.
+- Existing controller artifacts are retained as `UNVERIFIED_INVALID_FOR_GOLD`.
+
+### Stage4B-U1-D Pre-Gold Amendment 3 Draft
+
+- Draft: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_DRAFT.md`.
+- Proposed rule: `K_q=min(20, candidate_count_q)` with exact length, uniqueness, candidate membership, protected-prefix, insertion, and final-ranking verification.
+- First requested authorization is implementation and synthetic verification only; no official development command is requested.
+- Current status: `DRAFT_NOT_APPROVED_NOT_EXECUTABLE`.

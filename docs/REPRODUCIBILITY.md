@@ -487,3 +487,11 @@ The single dual-ID formal preflight passed and is recorded in `docs/STAGE4B_U1_P
 The channel preparer and Gold-free controller were each run once. The controller used `sentence-transformers/all-MiniLM-L6-v2`, `max_length=192`, and `batch_size=64`; it produced 4,500 decisions and rankings with policy status `POLICY_FROZEN_BEFORE_EVALUATION` and `evaluation_labels_loaded=false`. The execution audit is `docs/STAGE4B_U1_PREGOLD_V2_2_CONTROLLER_EXECUTION_AUDIT.md`.
 
 The fresh cache was independently checked without the controller cache loader. Its six members, exact ID order, dual digests, metadata, `float32` shapes, finite values, normalization, byte size, and SHA-256 all passed. The audit is `docs/STAGE4B_U1_PREGOLD_V2_2_CACHE_AUDIT.md`. The fresh cache remains untracked in the registered data directory; the legacy cache remains unchanged.
+
+## Stage4B-U1-D Pre-Gold Hard Failure 3
+
+The independent verifier was executed once on committed artifact commit `9207bd78eea44d2ea3291fe9b6748526969a3224`, without Gold or evaluator arguments. It failed before writing output because `derive_q25_inserted` required exactly 20 dense/q25 IDs for every query. The first failed query had 17 candidate units and 17 dense/q25/final IDs.
+
+A post-stop Gold-free structural scan read only `num_candidate_units` and ranking list lengths. It found 628/4,500 queries below 20 candidates, with minimum 10. Every controller ranking length was exactly `min(20, num_candidate_units)`; the effective-K mismatch count was zero. This does not validate score, allocation, ranking order, or efficacy. Full evidence and the no-retry boundary are in `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_3.md`.
+
+`VERIFIED_PRE_GOLD` was not generated. Existing artifacts remain committed but are `UNVERIFIED_INVALID_FOR_GOLD`. Amendment 3 in `docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_DRAFT.md` proposes an effective-K verifier invariant and requests implementation/synthetic authorization only. No official command may resume before a new approval and a later implementation-bound resumption approval.
