@@ -409,3 +409,20 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Both complete outputs had SHA-256 `9AA0D0499ECF613F7FEAED0F078BB7534CB837C22465AA1F13F29D715BBE8A6A`.
 - The evidence reports no official-development data, official source audit, reservation, or Stage3B access.
 - The frozen runner's historical `V2_1_SYNTHETICALLY_HARDENED_AWAITING_REAPPROVAL` text is not the governance state; current authorization remains the committed Amendment 1 approval.
+
+### Stage4B-U1-D Pre-Gold Hard Failure 2
+
+- Failure audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_2.md`.
+- Status: `PREGOLD_EXECUTION_STOPPED_HARD_FAILURE_2` on 2026-07-13.
+- The formal preflight passed Git, 143,820-unit, 4,500-query, source-audit, legacy-cache, and all-new-path-absent gates.
+- It hard-failed because the processed runtime query-ID digest was `8895D4D2EF2A34DE123525011C36A1DF092D27B7588E17E9816ABAB8F1A25CD6`, while v2.1 compared it with source audit digest `6B21FD1D2EFBD6A467C8DAEE9225AA43113FC328CD114F813DD79E6A44458FB2`.
+- Repository code review showed that `6B21...` binds raw official IDs represented as `sample_id`; runtime `query_id` is deterministically namespaced as `2wikimultihopqa::<sample_id>`.
+- No channel, Gold map, controller, new cache, decision, ranking, policy, verifier, or metric was produced. Reservation and Stage3B were not accessed.
+- Formal preflight was not automatically rerun.
+
+### Stage4B-U1-D Pre-Gold Amendment 2 Draft
+
+- Draft: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_2_DRAFT.md`.
+- Status: `DRAFT_NOT_APPROVED_NOT_EXECUTABLE`.
+- The proposal freezes both sample-ID and runtime query-ID digests and requires an exact per-row `query_id == dataset::sample_id` relation.
+- The first approval would authorize only minimal implementation changes and synthetic hardening. Official development remains locked until a new implementation commit is separately approved.

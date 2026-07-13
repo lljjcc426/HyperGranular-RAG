@@ -12,11 +12,13 @@
 - Pre-Gold hard-failure audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_1.md`
 - Approved amendment: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_1_DRAFT.md`
 - Amendment approval decision: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_1_APPROVAL_DECISION.md`
+- Pre-Gold hard-failure audit 2: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_2.md`
+- Pending amendment 2: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_2_DRAFT.md`
 - Protocol architecture status: `FROZEN_FOR_U1_D_PREGOLD_EXECUTION`
 - Execution review decision: `RETURN_EXECUTION_PACKAGE_FOR_HARDENING`
-- Execution package status: `AMENDMENT_1_APPROVED_SINGLE_PREGOLD_RESUMPTION`
+- Execution package status: `PREGOLD_EXECUTION_STOPPED_HARD_FAILURE_2`
 - Historical execution approval: `APPROVE_STAGE4B_U1_D_PREGOLD_EXECUTION_V2_1`
-- Current execution authorization: `APPROVE_STAGE4B_U1_D_PREGOLD_AMENDMENT_1`
+- Current execution authorization: `STOPPED_REAPPROVAL_REQUIRED`
 - Approval date: 2026-07-13
 - Approval request commit: `2f6c7067c686bf1f4c13328bd1fc04ab3990f767`
 - Bound implementation commit: `dd1f8a9893ccb1e760068ad21d48e0e8938cc7f9`
@@ -257,9 +259,15 @@ v2 原实现通过 7 项合成验证后，执行包审批仍因 7 项完整性�
 
 该失败发生在 official channel preparation 前。未生成 channel、Gold map、decision、ranking、policy、`VERIFIED_PRE_GOLD` 或 U1-D 指标；未访问 reservation 或 Stage3B。完整记录见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_1.md`。
 
+## Pre-Gold 硬失败 2
+
+Amendment 1 批准后的 preflight 发现 source audit 的 `6B21...` digest 对应 processed `sample_id`，而 Stage4B 运行时 `query_id` 是 `dataset::sample_id`，实际 digest 为 `8895...`。现有 v2.1 在 formal preparer/controller/verifier 中错误地把两种表示直接比较。
+
+该失败发生在 official channel preparation 和新 cache 创建前；其余 source SHA、计数、旧 cache、新路径不存在及 Git hard gates 均通过。未生成 official 工件或指标。完整记录见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_2.md`。
+
 ## 当前禁止事项
 
-- 只允许 Amendment 1 规定的单次 official U1-D channel、fresh cache/controller、独立 cache 核查、工件冻结和 pre-Gold verifier；
+- Amendment 2 批准前禁止 official U1-D preflight、channel、controller、cache 或 verifier；
 - 不连接 U1-D Gold；
 - 不创建或读取 reservation 内容、embedding、decision、ranking 或指标；
 - 不访问 Stage3B；

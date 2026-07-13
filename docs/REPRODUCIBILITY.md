@@ -451,4 +451,17 @@ The single approved new path is:
 E:\科研\超粒球RAG_数据\processed\stage4b_u1_d_official_dev4500_minilm_idbound_embeddings.npz
 ```
 
-Before official execution resumes, the approval governance and the post-amendment synthetic binding evidence must be committed and pushed. The new path must still be absent at the formal preflight.
+Amendment 1 required approval governance and post-amendment synthetic binding evidence to be pushed before formal preflight; both were completed. That preflight then stopped at Hard Failure 2 below. The new cache path remained absent.
+
+## Stage4B-U1-D Pre-Gold Hard Failure 2
+
+The Amendment 1 formal preflight stopped before channel preparation because two ID representations were compared as if they were identical:
+
+| ID representation | SHA-256 |
+|---|---|
+| official `_id` / processed `sample_id` | `6B21FD1D2EFBD6A467C8DAEE9225AA43113FC328CD114F813DD79E6A44458FB2` |
+| processed `query_id = 2wikimultihopqa::<sample_id>` | `8895D4D2EF2A34DE123525011C36A1DF092D27B7588E17E9816ABAB8F1A25CD6` |
+
+The full failure record is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_2.md`. No channel, cache, controller artifact, verifier artifact, or metric was generated. Do not rerun official preflight under Amendment 1.
+
+`docs/STAGE4B_U1_PREGOLD_AMENDMENT_2_DRAFT.md` freezes a dual-ID boundary correction. Its first approval would authorize implementation and synthetic verification only; official development remains locked pending a later implementation-bound approval.
