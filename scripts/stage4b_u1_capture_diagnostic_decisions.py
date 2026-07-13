@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import tempfile
 from pathlib import Path
 from typing import Any
@@ -11,6 +12,16 @@ from stage4b_u1_common import (
     FROZEN_BATCH_SIZE,
     FROZEN_MAX_LENGTH,
     FROZEN_MODEL_NAME,
+    IMPLEMENTATION_CHECKPOINT,
+    OFFICIAL_DEVELOPMENT_DATASET,
+    OFFICIAL_DEVELOPMENT_QUERIES,
+    OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256,
+    OFFICIAL_DEVELOPMENT_SAMPLE_ID_SHA256,
+    OFFICIAL_ID_BOUND_CACHE_PATH,
+    OFFICIAL_ID_BOUND_CACHE_SHA256,
+    OFFICIAL_V2_3_1_ARTIFACT_PATHS,
+    STAGE4A_R2_SOURCE_AUDIT_SHA256,
+    V2_2_DECISIONS_SHA256,
     assert_no_prohibited_keys,
     load_json,
     load_jsonl,
@@ -24,6 +35,7 @@ from stage4b_u1_compare_decisions import (
 )
 from stage4b_u1_goldfree_controller import (
     load_or_build_embeddings,
+    query_identity_digests,
     validate_channel_audit,
     validate_controller_inputs,
 )
@@ -38,6 +50,15 @@ from stage4b_u1_goldfree_retrieval import (
 
 OFFICIAL_5B_AUTHORIZATION_TOKEN = (
     "APPROVE_STAGE4B_U1_D_AMENDMENT_5B_OFFICIAL_DECISIONS_ONLY_DIAGNOSTIC"
+)
+REPO_ROOT = Path(__file__).resolve().parents[1]
+FROZEN_V2_2_DECISIONS_PATH = (
+    REPO_ROOT / "results" / "stage4b_u1_d_official_dev4500_decisions.jsonl"
+)
+OFFICIAL_DIAGNOSTIC_AUDIT_PATH = (
+    REPO_ROOT
+    / "results"
+    / "stage4b_u1_d_pregold_amendment_5b_official_decisions_diagnostic.json"
 )
 DECISION_FIELDS = {
     "query_id",
@@ -73,6 +94,98 @@ def validate_synthetic_path_allowlist(paths: dict[str, Path], root: Path) -> Non
         raise ValueError("Synthetic allowlist root must exist")
     for label, path in paths.items():
         _assert_under_root(path, root, label)
+
+
+def _assert_exact_path(actual: Path, expected: Path | str, label: str) -> None:
+    if actual.resolve() != Path(expected).resolve():
+        raise ValueError(f"Official diagnostic {label} path differs from the frozen path")
+
+
+def validate_official_diagnostic_input_paths(
+    *,
+    units_path: Path,
+    queries_path: Path,
+    channel_audit_path: Path,
+    embedding_cache_path: Path,
+    expected_embedding_cache_sha256: str,
+) -> None:
+    _assert_exact_path(
+        units_path, OFFICIAL_V2_3_1_ARTIFACT_PATHS["unlabeled_units"], "units"
+    )
+    _assert_exact_path(
+        queries_path,
+        OFFICIAL_V2_3_1_ARTIFACT_PATHS["unlabeled_queries"],
+        "queries",
+    )
+    _assert_exact_path(
+        channel_audit_path,
+        OFFICIAL_V2_3_1_ARTIFACT_PATHS["controller_channel_audit"],
+        "channel audit",
+    )
+    _assert_exact_path(
+        embedding_cache_path, OFFICIAL_ID_BOUND_CACHE_PATH, "embedding cache"
+    )
+    if expected_embedding_cache_sha256.upper() != OFFICIAL_ID_BOUND_CACHE_SHA256:
+        raise ValueError("Official diagnostic cache SHA-256 differs from the frozen value")
+
+
+def validate_official_diagnostic_output_paths(
+    *,
+    reference_decisions_path: Path,
+    audit_output_path: Path,
+    temp_parent: Path,
+) -> None:
+    _assert_exact_path(
+        reference_decisions_path, FROZEN_V2_2_DECISIONS_PATH, "reference decisions"
+    )
+    _assert_exact_path(
+        audit_output_path, OFFICIAL_DIAGNOSTIC_AUDIT_PATH, "audit output"
+    )
+    _assert_exact_path(temp_parent, Path(tempfile.gettempdir()), "OS temp parent")
+    if audit_output_path.exists():
+        raise FileExistsError("Official diagnostic audit output already exists")
+
+
+def validate_official_diagnostic_channel_audit(
+    audit: dict[str, Any],
+    units_path: Path,
+    queries_path: Path,
+    queries: list[dict[str, Any]],
+) -> None:
+    sample_digest, query_digest = query_identity_digests(queries)
+    if audit.get("status") != "CONTROLLER_CHANNEL_PREPARED_NO_RETRIEVAL_METRICS":
+        raise ValueError("Official diagnostic channel audit status differs")
+    if bool(audit.get("retrieval_metrics_computed")):
+        raise ValueError("Official diagnostic channel audit reports retrieval metrics")
+    if audit.get("implementation_checkpoint") != IMPLEMENTATION_CHECKPOINT:
+        raise ValueError("Official diagnostic channel checkpoint differs")
+    if audit.get("run_role") != "development" or bool(audit.get("synthetic_test_mode")):
+        raise ValueError("Official diagnostic channel role or synthetic mode differs")
+    if audit.get("sample_id_sha256") != sample_digest:
+        raise ValueError("Official diagnostic channel sample digest differs")
+    if audit.get("query_id_sha256") != query_digest:
+        raise ValueError("Official diagnostic channel query digest differs")
+    hashes = audit.get("channel_hashes", {})
+    if hashes.get("unlabeled_units") != sha256_file(units_path):
+        raise ValueError("Official diagnostic unlabeled-unit hash differs")
+    if hashes.get("unlabeled_queries") != sha256_file(queries_path):
+        raise ValueError("Official diagnostic unlabeled-query hash differs")
+    if audit.get("source_audit_sha256") != STAGE4A_R2_SOURCE_AUDIT_SHA256:
+        raise ValueError("Official diagnostic registered source-audit digest differs")
+    if audit.get("boundary_status") != "OFFICIAL_DEVELOPMENT_BOUNDARY_VERIFIED":
+        raise ValueError("Official diagnostic development boundary differs")
+    if len(queries) != OFFICIAL_DEVELOPMENT_QUERIES:
+        raise ValueError("Official diagnostic query count differs")
+    if {str(row["dataset"]) for row in queries} != {OFFICIAL_DEVELOPMENT_DATASET}:
+        raise ValueError("Official diagnostic dataset differs")
+    if sample_digest != OFFICIAL_DEVELOPMENT_SAMPLE_ID_SHA256:
+        raise ValueError("Official diagnostic sample-ID digest differs")
+    if query_digest != OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256:
+        raise ValueError("Official diagnostic runtime query-ID digest differs")
+    if audit.get("expected_sample_id_sha256") != OFFICIAL_DEVELOPMENT_SAMPLE_ID_SHA256:
+        raise ValueError("Official diagnostic expected sample-ID digest differs")
+    if audit.get("expected_query_id_sha256") != OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256:
+        raise ValueError("Official diagnostic expected query-ID digest differs")
 
 
 def compute_decisions_only(
@@ -124,6 +237,14 @@ def generate_decisions_only_from_inputs(
         raise PermissionError(
             "Official decisions diagnostic capture is locked pending Amendment 5B"
         )
+    else:
+        validate_official_diagnostic_input_paths(
+            units_path=units_path,
+            queries_path=queries_path,
+            channel_audit_path=channel_audit_path,
+            embedding_cache_path=embedding_cache_path,
+            expected_embedding_cache_sha256=expected_embedding_cache_sha256,
+        )
     if batch_size <= 0:
         raise ValueError("Embedding batch size must be positive")
     if not synthetic_test_mode:
@@ -135,15 +256,21 @@ def generate_decisions_only_from_inputs(
     units = load_jsonl(units_path)
     queries = load_jsonl(queries_path)
     validate_controller_inputs(units, queries)
-    validate_channel_audit(
-        load_json(channel_audit_path),
-        units_path,
-        queries_path,
-        queries,
-        mode="development",
-        source_audit_path=None,
-        synthetic_test_mode=synthetic_test_mode,
-    )
+    channel_audit = load_json(channel_audit_path)
+    if synthetic_test_mode:
+        validate_channel_audit(
+            channel_audit,
+            units_path,
+            queries_path,
+            queries,
+            mode="development",
+            source_audit_path=None,
+            synthetic_test_mode=True,
+        )
+    else:
+        validate_official_diagnostic_channel_audit(
+            channel_audit, units_path, queries_path, queries
+        )
     unit_embeddings, query_embeddings, _ = load_or_build_embeddings(
         embedding_cache_path,
         units,
@@ -155,13 +282,16 @@ def generate_decisions_only_from_inputs(
         expected_sha256=expected_embedding_cache_sha256,
         synthetic_test_mode=synthetic_test_mode,
     )
-    return compute_decisions_only(
+    decisions = compute_decisions_only(
         units,
         queries,
         unit_embeddings,
         query_embeddings,
         RetrievalConfig(),
     )
+    if sha256_file(embedding_cache_path) != expected_embedding_cache_sha256.upper():
+        raise ValueError("Embedding cache changed during diagnostic decisions computation")
+    return decisions
 
 
 def run_diagnostic_capture(
@@ -196,6 +326,14 @@ def run_diagnostic_capture(
         raise PermissionError(
             "Official decisions diagnostic capture is locked pending Amendment 5B"
         )
+    else:
+        validate_official_diagnostic_output_paths(
+            reference_decisions_path=reference_decisions_path,
+            audit_output_path=audit_output_path,
+            temp_parent=temp_parent,
+        )
+        if sha256_file(reference_decisions_path) != V2_2_DECISIONS_SHA256:
+            raise ValueError("Frozen v2.2 reference decisions SHA-256 differs")
 
     captured_path: Path | None = None
     with tempfile.TemporaryDirectory(
@@ -233,7 +371,12 @@ def run_diagnostic_capture(
     if captured_path is None or captured_path.exists():
         raise RuntimeError("Temporary diagnostic decisions were not cleaned")
     report["temporary_decisions_cleaned"] = True
-    write_json(audit_output_path, report)
+    if synthetic_test_mode:
+        write_json(audit_output_path, report)
+    else:
+        with audit_output_path.open("x", encoding="utf-8", newline="\n") as stream:
+            json.dump(report, stream, ensure_ascii=False, indent=2, sort_keys=True)
+            stream.write("\n")
     return report
 
 

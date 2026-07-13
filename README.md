@@ -47,7 +47,7 @@ Amendment 4 已获 implementation/synthetic-only 批准，绑定 package `e5a0e2
 
 Amendment 4 实现已完成：formal controller 强制 existing-cache-only 与冻结 SHA，严格核验 cache 内容并在 OS 临时目录生成 pending outputs；cache 后指纹、v2.2 decisions/rankings bytes 和限定 policy diff 全部通过后才提升，复制或后指纹失败会回滚本次输出。runner 支持登记治理文件绑定，manifest/shared constants 的十路径逐项一致。原 33 项测试保留，新增 17 项后共 50 项全部通过；两次完整 evidence SHA-256 均为 `24F287F9B71C974ABEF9E03AA55BCCA0C4AF9809AB2ADC44705A42EC3889F657`。实现审计见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_4_IMPLEMENTATION_AUDIT.md`。
 
-Amendment 5A 已按批准边界实现，未修改 controller。新增 decisions-only 七层 comparator、synthetic allowlist 与临时 decisions capture，并新增 44 项诊断测试；与原 50 项合计 94 项全部通过。完整 evidence 连续两次输出字节一致，SHA-256 均为 `BD8C00D54C25F9341D40151B6057CF339FDEB075A5EA6375DAC2AA886DE14DC0`，official 路径访问尝试为 0。实现审计见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_IMPLEMENTATION_AUDIT.md`。这不授权 official 诊断、controller 重跑或 verifier。
+Amendment 5A 已按批准边界实现，未修改 controller。新增 decisions-only 七层 comparator、synthetic allowlist 与临时 decisions capture；5B 组包前静态核查又补齐 official 精确路径、登记 source digest、OS temp、v2.2 reference SHA 与 cache 后指纹门。48 项新诊断测试与原 50 项合计 98 项全部通过。完整 evidence 连续两次输出字节一致，SHA-256 均为 `3D44C14B82E911DDD37501731772A7594D7616BF12FE278D2D4CCC103533057E`，official 路径访问尝试为 0。实现审计见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_IMPLEMENTATION_AUDIT.md`。这不授权 official 诊断、controller 重跑或 verifier。
 
 ## 研究问题
 

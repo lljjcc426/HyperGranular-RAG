@@ -27,6 +27,9 @@ from stage4b_u1_capture_diagnostic_decisions import (  # noqa: E402
     compute_decisions_only,
     generate_decisions_only_from_inputs,
     run_diagnostic_capture,
+    validate_official_diagnostic_channel_audit,
+    validate_official_diagnostic_input_paths,
+    validate_official_diagnostic_output_paths,
     validate_synthetic_path_allowlist,
 )
 from stage4b_u1_common import (  # noqa: E402
@@ -599,6 +602,133 @@ class Stage4BU1DiagnosticCaptureTests(unittest.TestCase):
                     synthetic_test_mode=False,
                     synthetic_root=None,
                 )
+
+    def test_official_mode_with_token_rejects_nonfrozen_paths_before_open(self) -> None:
+        bogus = Path("never-opened-nonfrozen-input.jsonl")
+        with patch("builtins.open", side_effect=AssertionError("path was opened")):
+            with self.assertRaisesRegex(ValueError, "path differs from the frozen path"):
+                generate_decisions_only_from_inputs(
+                    units_path=bogus,
+                    queries_path=bogus,
+                    channel_audit_path=bogus,
+                    embedding_cache_path=bogus,
+                    model_name="synthetic-model",
+                    batch_size=64,
+                    max_length=192,
+                    expected_embedding_cache_sha256="0" * 64,
+                    synthetic_test_mode=False,
+                    synthetic_root=None,
+                    official_authorization_token=capture_module.OFFICIAL_5B_AUTHORIZATION_TOKEN,
+                )
+
+    def test_official_diagnostic_paths_are_exact_and_audit_is_new(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            units = root / "units.jsonl"
+            queries = root / "queries.jsonl"
+            channel = root / "channel.json"
+            cache = root / "cache.npz"
+            reference = root / "reference.jsonl"
+            audit = root / "audit.json"
+            with patch.dict(
+                capture_module.OFFICIAL_V2_3_1_ARTIFACT_PATHS,
+                {
+                    "unlabeled_units": str(units),
+                    "unlabeled_queries": str(queries),
+                    "controller_channel_audit": str(channel),
+                },
+            ), patch.object(
+                capture_module, "OFFICIAL_ID_BOUND_CACHE_PATH", str(cache)
+            ), patch.object(
+                capture_module, "FROZEN_V2_2_DECISIONS_PATH", reference
+            ), patch.object(
+                capture_module, "OFFICIAL_DIAGNOSTIC_AUDIT_PATH", audit
+            ), patch.object(
+                capture_module.tempfile, "gettempdir", return_value=str(root)
+            ):
+                validate_official_diagnostic_input_paths(
+                    units_path=units,
+                    queries_path=queries,
+                    channel_audit_path=channel,
+                    embedding_cache_path=cache,
+                    expected_embedding_cache_sha256=capture_module.OFFICIAL_ID_BOUND_CACHE_SHA256,
+                )
+                validate_official_diagnostic_output_paths(
+                    reference_decisions_path=reference,
+                    audit_output_path=audit,
+                    temp_parent=root,
+                )
+                audit.write_text("occupied", encoding="utf-8")
+                with self.assertRaisesRegex(FileExistsError, "already exists"):
+                    validate_official_diagnostic_output_paths(
+                        reference_decisions_path=reference,
+                        audit_output_path=audit,
+                        temp_parent=root,
+                    )
+
+    def test_official_channel_validation_uses_registered_source_digest_only(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            paths = build_capture_fixture(root)
+            queries = capture_module.load_jsonl(paths["queries"])
+            audit = capture_module.load_json(paths["channel"])
+            sample_digest = id_digest(row["sample_id"] for row in queries)
+            query_digest = id_digest(row["query_id"] for row in queries)
+            audit.update(
+                {
+                    "synthetic_test_mode": False,
+                    "boundary_status": "OFFICIAL_DEVELOPMENT_BOUNDARY_VERIFIED",
+                    "source_audit_sha256": "SYNTHETIC_SOURCE_DIGEST",
+                    "expected_sample_id_sha256": sample_digest,
+                    "expected_query_id_sha256": query_digest,
+                }
+            )
+            with patch.object(
+                capture_module, "OFFICIAL_DEVELOPMENT_QUERIES", len(queries)
+            ), patch.object(
+                capture_module,
+                "OFFICIAL_DEVELOPMENT_DATASET",
+                str(queries[0]["dataset"]),
+            ), patch.object(
+                capture_module, "OFFICIAL_DEVELOPMENT_SAMPLE_ID_SHA256", sample_digest
+            ), patch.object(
+                capture_module, "OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256", query_digest
+            ), patch.object(
+                capture_module,
+                "STAGE4A_R2_SOURCE_AUDIT_SHA256",
+                "SYNTHETIC_SOURCE_DIGEST",
+            ):
+                validate_official_diagnostic_channel_audit(
+                    audit, paths["units"], paths["queries"], queries
+                )
+
+    def test_cache_drift_after_decisions_computation_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            paths = build_capture_fixture(root)
+
+            def mutate_cache(*args: object, **kwargs: object) -> list[dict]:
+                paths["cache"].write_bytes(b"synthetic drift")
+                return []
+
+            with patch.object(
+                capture_module, "compute_decisions_only", side_effect=mutate_cache
+            ):
+                with self.assertRaisesRegex(ValueError, "changed during diagnostic"):
+                    generate_decisions_only_from_inputs(
+                        units_path=paths["units"],
+                        queries_path=paths["queries"],
+                        channel_audit_path=paths["channel"],
+                        embedding_cache_path=paths["cache"],
+                        model_name="synthetic-model",
+                        batch_size=64,
+                        max_length=192,
+                        expected_embedding_cache_sha256=capture_kwargs(paths, root)[
+                            "expected_embedding_cache_sha256"
+                        ],
+                        synthetic_test_mode=True,
+                        synthetic_root=root,
+                    )
 
     def test_capture_does_not_call_controller_rankings_or_policy(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

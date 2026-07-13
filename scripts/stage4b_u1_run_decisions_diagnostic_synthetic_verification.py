@@ -34,6 +34,7 @@ REQUIRED_ACTIVE_PROOF_SUFFIXES = (
     "test_temporary_decisions_removed_after_success",
     "test_temporary_decisions_removed_after_exception",
     "test_official_mode_without_5b_token_fails_before_open",
+    "test_official_mode_with_token_rejects_nonfrozen_paths_before_open",
 )
 
 
@@ -165,6 +166,9 @@ def main() -> None:
             "temporary decisions are removed after successful and exceptional exits",
             "capture does not access or generate rankings and does not call a policy builder",
             "official paths are guarded process-wide and synthetic allowlists reject outside paths before file reads",
+            "future official capture requires exact registered paths an absent audit output and the OS temp parent",
+            "official channel validation uses the registered source-audit digest without opening the source-audit file",
+            "the embedding cache fingerprint is rechecked after decisions computation",
             "the original Stage4B-U1 50-test suite remains passing",
         ],
     }

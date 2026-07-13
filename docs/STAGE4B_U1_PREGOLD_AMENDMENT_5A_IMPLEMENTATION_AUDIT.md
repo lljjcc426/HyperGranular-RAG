@@ -13,11 +13,13 @@
 
 ## Scope Audit
 
-Amendment 5A added a decisions-only JSONL comparator, a synthetic capture path that writes decisions only inside a managed temporary directory, a deterministic synthetic verification runner, and 44 diagnostic hardening tests. `scripts/stage4b_u1_goldfree_controller.py` was not modified. No retrieval, controller, evaluator, model, score, ECDF, budget, trigger, ranking, policy, endpoint, or byte-equivalence rule changed.
+Amendment 5A added a decisions-only JSONL comparator, a synthetic capture path that writes decisions only inside a managed temporary directory, a deterministic synthetic verification runner, and 48 diagnostic hardening tests. `scripts/stage4b_u1_goldfree_controller.py` was not modified. No retrieval, controller, evaluator, model, score, ECDF, budget, trigger, ranking, policy, endpoint, or byte-equivalence rule changed.
 
 The comparator keeps raw byte equality as the controlling equivalence result. Canonical and semantic comparisons are diagnostic layers only. It rejects invalid JSON, duplicate object keys, missing or duplicate query IDs, non-finite values, unsupported value types, and heterogeneous within-file schemas. The CLI exits nonzero and does not create an output report for an incomparable input schema.
 
-The capture reuses the existing controller validators and existing-cache-only loader but does not call the full controller. Synthetic paths are constrained to an explicit temporary-root allowlist. Official mode remains locked unless a future Amendment 5B authorization token is supplied. Tests patch the full controller and file access, while the complete runner installs a process-wide audit hook over the registered official paths.
+The capture reuses the existing controller input validator and existing-cache-only loader but does not call the full controller. Synthetic paths are constrained to an explicit temporary-root allowlist. Official mode remains locked unless a future Amendment 5B authorization token is supplied. Even with that token, exact registered input/output paths, the OS temp parent, an absent audit output, the frozen v2.2 decisions SHA, the registered channel source-audit digest, and the cache post-computation fingerprint must pass. The diagnostic validator does not open the Stage4A-R2 source-audit file. Tests patch the full controller and file access, while the complete runner installs a process-wide audit hook over the registered official paths.
+
+After implementation/evidence commit `739c14a51475190948e511eee00804b490d94aab` was pushed, static 5B package assembly found that the first capture version passed `source_audit_path=None` to the official controller channel validator. That would have made a future authorized diagnostic fail before comparison. Before creating any 5B package or reading any official input, the independent capture module was hardened with a diagnostic-specific registered-digest validator and exact-path gates. Four synthetic tests were added, and the complete deterministic evidence was regenerated twice. Commit `739c14a...` remains in history as the transparently superseded intermediate implementation.
 
 ## Binary64 ULP Rule
 
@@ -37,7 +39,7 @@ This explicitly uses IEEE-754 binary64 with big-endian byte order, orders negati
 
 ## Synthetic Verification
 
-The first targeted development run executed 43 new tests and reported one error plus one failure. The error came from a test fixture that serialized indented multi-line JSON into a JSONL file; it was corrected to a single-line whitespace-only difference. The failure came from a reference fixture that bypassed the existing cache loader's normalization step; it was corrected to apply the same `normalize_matrix` path. No official input was accessed. The corrected 43-test run passed, and the later incomparable-schema hardening increased the new suite to 44 tests.
+The first targeted development run executed 43 new tests and reported one error plus one failure. The error came from a test fixture that serialized indented multi-line JSON into a JSONL file; it was corrected to a single-line whitespace-only difference. The failure came from a reference fixture that bypassed the existing cache loader's normalization step; it was corrected to apply the same `normalize_matrix` path. No official input was accessed. The corrected 43-test run passed, the incomparable-schema hardening increased the new suite to 44 tests, and the pre-5B exact-path/source-digest/cache-fingerprint hardening increased it to 48 tests.
 
 Final checks on unchanged implementation bytes were:
 
@@ -45,12 +47,12 @@ Final checks on unchanged implementation bytes were:
 |---|---|
 | Python compilation | pass |
 | Original Stage4B-U1 suite | 50/50 pass |
-| New Amendment 5A suite | 44/44 pass |
-| Complete discovery | 94/94 pass, 0 failure, 0 error, 0 skip |
+| New Amendment 5A suite | 48/48 pass |
+| Complete discovery | 98/98 pass, 0 failure, 0 error, 0 skip |
 | Deterministic evidence run 1 | pass |
 | Deterministic evidence run 2 | pass, byte-identical to run 1 |
-| Evidence bytes | `15299` |
-| Evidence SHA-256 | `BD8C00D54C25F9341D40151B6057CF339FDEB075A5EA6375DAC2AA886DE14DC0` |
+| Evidence bytes | `16389` |
+| Evidence SHA-256 | `3D44C14B82E911DDD37501731772A7594D7616BF12FE278D2D4CCC103533057E` |
 | Official path blocked/attempted accesses | `0` |
 
 The local Python environment emitted the existing optional-dependency warning that a NumPy 1.x-built `numexpr` module is incompatible with NumPy 2.4.6, ending in the captured text `AttributeError: _ARRAY_API not found`. The warning arose through the pre-existing transformers/sklearn/pandas import chain. Every listed test command exited zero, and both complete evidence files remained byte-identical.
@@ -69,11 +71,11 @@ The local Python environment emitted the existing optional-dependency warning th
 | `scripts/stage4b_u1_goldfree_retrieval.py` | `3B50FAFD057E2565167ED09288D61829B3FBD044991F139F734F819955038A3B` |
 | `scripts/stage4b_u1_goldfree_controller.py` | `C18AD3B672649BA846C5E191D0DBBAC7644A926D4B8CCD39176127175BBA7C1F` |
 | `scripts/stage4b_u1_compare_decisions.py` | `FF4D623DF86FE42EB4ACDFF9D3321FCA768E03B64597C6CC88931359CEDB2DD4` |
-| `scripts/stage4b_u1_capture_diagnostic_decisions.py` | `E782E10C9C8F01E14CEFDA3B831AB2B47A6B468606010F4A591992CF9604D8A8` |
-| `scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py` | `DC1FA23EEFB84D18284643ECBB6F67E1A144F2F81193AE4EFAA23A2BEBAB8840` |
+| `scripts/stage4b_u1_capture_diagnostic_decisions.py` | `1D30E8129C9E9E228EE8E1BB2C21A2E8D196C0F5B91D16E9E8061AD7B1DA0EFC` |
+| `scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py` | `03C29EABAEB5D57CEF6D1A6B13235475FC0CCCCFC65E13A118BCD44EB60D57C4` |
 | `tests/test_stage4b_u1_goldfree.py` | `CA61B466C7DDF583D827FD2D99C024D646BA3962C80B9137D480C84DEA374C71` |
-| `tests/test_stage4b_u1_decisions_diagnostic.py` | `C3FD282F2304FD09288F063647F5332B2B4BB94948F30371ECEEFC33B78291C0` |
-| `results/stage4b_u1_d_pregold_amendment_5a_synthetic_verification.json` | `BD8C00D54C25F9341D40151B6057CF339FDEB075A5EA6375DAC2AA886DE14DC0` |
+| `tests/test_stage4b_u1_decisions_diagnostic.py` | `1105016D8128615D0DA1B9612D5CAD3FCB2B796A3B8424D27B46BDD83C1CB7D4` |
+| `results/stage4b_u1_d_pregold_amendment_5a_synthetic_verification.json` | `3D44C14B82E911DDD37501731772A7594D7616BF12FE278D2D4CCC103533057E` |
 
 ## Boundary And Status
 
