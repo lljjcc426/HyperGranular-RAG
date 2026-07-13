@@ -7,7 +7,10 @@
 - Amendment ID: `STAGE4B_U1_D_PREGOLD_AMENDMENT_3`
 - Trigger: `STAGE4B_U1_D_PREGOLD_HARD_FAILURE_3`
 - Trigger audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_3.md`
-- Status: `DRAFT_NOT_APPROVED_NOT_EXECUTABLE`
+- Status: `APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY`
+- Approval decision: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_APPROVAL_DECISION.md`
+- Bound approval-package commit: `42747507d6f37c3d5713949de443311b35262a2d`
+- Bound failure-audit commit: `8b43de72418ccda85af3015f758c39bce9d31411`
 - Requested first authorization: implementation and synthetic verification only
 - Official development execution: `NOT_REQUESTED`
 - Gold evaluation: `NOT_REQUESTED`
@@ -67,4 +70,4 @@ P_q = min(PROTECT_N, K_q)
 
 第一阶段完成后仍需新的 implementation-bound 批准。后续请求应使用新的 versioned channel/controller 工件路径，保留 v2.2 失败工件；允许复用且只读加载 SHA 已核验的 fresh ID-bound cache，不重新编码。新的 controller decision/ranking 必须与 v2.2 失败工件逐字节一致，否则硬停止；新 policy 仅允许因 checkpoint、commit 和实现 hash 绑定发生预期变化。随后才可再次运行 independent verifier。
 
-本草案本身不授权任何实现或执行。
+本修订已获 implementation/synthetic-only 批准；仍不授权任何 official 数据访问或 official execution。

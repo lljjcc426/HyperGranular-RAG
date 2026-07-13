@@ -511,4 +511,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Bound failure/audit commit: `8b43de72418ccda85af3015f758c39bce9d31411`.
 - Requested scope is effective-K protocol/verifier implementation and synthetic hardening only.
 - Official development, source audit, controller/verifier reruns, Gold, U1-D metrics, reservation, Stage3B, and cache changes remain prohibited.
-- Current status: `AWAITING_AMENDMENT_3_IMPLEMENTATION_SYNTHETIC_APPROVAL`.
+- Status at request entry: `AWAITING_AMENDMENT_3_IMPLEMENTATION_SYNTHETIC_APPROVAL`.
+
+### Stage4B-U1-D Pre-Gold Amendment 3 Approval
+
+- Decision: `APPROVE_STAGE4B_U1_D_PREGOLD_AMENDMENT_3_IMPLEMENTATION_SYNTHETIC_ONLY` on 2026-07-13.
+- Approval decision: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_APPROVAL_DECISION.md`.
+- Bound approval-package commit: `42747507d6f37c3d5713949de443311b35262a2d`.
+- Bound failure-audit commit: `8b43de72418ccda85af3015f758c39bce9d31411`.
+- Authorized: effective-K protocol/checkpoint/verifier/runner/test implementation, complete synthetic suite, two byte-identical evidence runs, audit, hashes, and a new official-resumption request.
+- Not authorized: any official data read, official command, failed-artifact/cache mutation, Gold, U1-D metrics, reservation, Stage3B, retrieval/controller/evaluator or parameter changes.
+- Current status: `AMENDMENT_3_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY`.

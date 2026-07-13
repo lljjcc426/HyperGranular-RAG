@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Stage4B-U1-D v2.2 independent verifier 硬失败，执行已停止 |
-| 获批执行协议 | v2.2 pre-Gold 授权已因 Hard Failure 3 消耗；当前无执行授权 |
+| 当前阶段 | Stage4B-U1-D Amendment 3 effective-K 实现与 synthetic hardening |
+| 获批执行协议 | 仅限 v2.3 协议/checkpoint/verifier/synthetic runner/tests；无 official execution |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `PREGOLD_EXECUTION_STOPPED_HARD_FAILURE_3` |
+| 协议状态 | `AMENDMENT_3_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | 单次运行工件已提交，但 verifier 未通过；现有工件 `UNVERIFIED_INVALID_FOR_GOLD` |
@@ -36,6 +36,8 @@ Amendment 2 实现将 checkpoint 更新为 `stage4b_u1_v2_2`，分别冻结 samp
 一次 dual-ID formal preflight 与一次 official channel preparation 均通过。随后单次 Gold-free controller 以冻结 MiniLM `192/64` 生成 4,500 条 decisions/rankings 和 fresh ID-bound cache；policy 报告 `evaluation_labels_loaded=false`。独立只读 cache 核查确认成员、ID 同序、双 digest、形状、dtype、有限值、归一化、bytes 与 SHA 全部门通过。该时点尚未运行 independent verifier，也未进行 Gold evaluation 或指标解释。
 
 independent verifier 随后在已提交工件上单次运行，并因固定要求列表长度恰好为 20 而硬失败。official development 中 628 个查询的候选池少于 20，controller 对全部 4,500 条查询都产生了长度 `min(20, num_candidate_units)` 的列表；首个失败查询候选数与列表长度均为 17。`VERIFIED_PRE_GOLD` 未生成，Gold/evaluator 参数未传入。失败审计见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_3.md`，effective-K 最小修订草案见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_DRAFT.md`。
+
+Amendment 3 已获 implementation/synthetic-only 批准，绑定审批包提交 `42747507d6f37c3d5713949de443311b35262a2d` 与失败审计提交 `8b43de72418ccda85af3015f758c39bce9d31411`。批准只允许冻结 `K_q=min(20,|C_q|)`、`P_q=min(10,K_q)`，更新 v2.3 verifier 与 synthetic tests；不授权任何 official 数据读取或命令。
 
 ## 研究问题
 
@@ -143,10 +145,9 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 审批 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_APPROVAL_REQUEST.md` 的 implementation/synthetic-only 修订；未批准前保持停止。
-2. 获批后仅实现 effective-K verifier 修正与 synthetic hardening，形成新的 implementation-bound official 恢复审批包后再次停止。
-3. Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
-3. 任一硬门失败立即停止；Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
+1. 仅实现 effective-K verifier 修正与 synthetic hardening，完整 suite 运行两次并要求 evidence 字节一致。
+2. 提交推送 v2.3 implementation audit 与新的 implementation-bound official 恢复审批包后立即停止。
+3. official 数据、official 命令、Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub
 

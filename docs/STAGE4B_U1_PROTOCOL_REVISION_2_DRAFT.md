@@ -20,11 +20,12 @@
 - v2.2 official pre-Gold approval decision: `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_2_APPROVAL_DECISION.md`
 - Pre-Gold hard-failure audit 3: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_3.md`
 - Amendment 3 draft: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_DRAFT.md`
+- Amendment 3 approval decision: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_APPROVAL_DECISION.md`
 - Protocol architecture status: `FROZEN_FOR_U1_D_PREGOLD_EXECUTION`
 - Execution review decision: `RETURN_EXECUTION_PACKAGE_FOR_HARDENING`
-- Execution package status: `PREGOLD_EXECUTION_STOPPED_HARD_FAILURE_3`
+- Execution package status: `AMENDMENT_3_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY`
 - Historical execution approval: `APPROVE_STAGE4B_U1_D_PREGOLD_EXECUTION_V2_1`
-- Current execution authorization: `SUSPENDED_AFTER_HARD_FAILURE_3`
+- Current execution authorization: `IMPLEMENTATION_SYNTHETIC_ONLY_NO_OFFICIAL_ACCESS`
 - Approval date: 2026-07-13
 - Approval request commit: `2f6c7067c686bf1f4c13328bd1fc04ab3990f767`
 - Bound implementation commit: `dd1f8a9893ccb1e760068ad21d48e0e8938cc7f9`
@@ -278,7 +279,8 @@ Amendment 1 批准后的 preflight 发现 source audit 的 `6B21...` digest 对�
 
 - v2.2 independent verifier 已命中 `HARD_FAILURE_VERIFIER_FIXED_TOP20_ASSUMPTION`；全部 official execution 立即停止，不自动重跑；
 - commit `9207bd78eea44d2ea3291fe9b6748526969a3224` 的工件为 `UNVERIFIED_INVALID_FOR_GOLD`，不得覆盖、删除或用于评价；
-- Amendment 3 是未批准草案；批准前不得修改实现、运行 synthetic 或恢复 official execution；
+- Amendment 3 已获 implementation/synthetic-only 批准；只允许 effective-K 协议、checkpoint、verifier、synthetic runner 绑定与测试修订；
+- 禁止读取 official development/source audit/official ranking，禁止 official preflight/channel/controller/cache/verifier/evaluator；
 - 不连接 U1-D Gold；
 - 不创建或读取 reservation 内容、embedding、decision、ranking 或指标；
 - 不访问 Stage3B；
@@ -289,4 +291,4 @@ Amendment 1 批准后的 preflight 发现 source audit 的 `6B21...` digest 对�
 
 已提交工件上的 independent verifier 单次运行在 `derive_q25_inserted` 的固定长度 20 检查处失败。official Gold-free 候选池有 628 个查询少于 20 个单元，最小为 10；全部 controller 列表长度均等于 `min(20, num_candidate_units)`。verifier 尚未完成 score、预算和 ranking 独立验证，也没有生成 `VERIFIED_PRE_GOLD`。完整记录见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_3.md`。
 
-`docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_DRAFT.md` 提议将“Top-20”形式化为候选池不足时的 effective-K，并先仅授权实现与 synthetic hardening。该草案不授权任何命令。
+`docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_DRAFT.md` 将“Top-20”形式化为候选池不足时的 effective-K。该修订现仅获 implementation/synthetic-only 批准；完成并推送后仍须新的 implementation-bound official pre-Gold 恢复批准。
