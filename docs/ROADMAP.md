@@ -475,3 +475,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Both complete outputs have SHA-256 `9B01C80F66096F01C763C25E44E4D079C40B681F6C52F0CC55F70492689EAAB1` and are byte-identical.
 - The tests accessed no official development, official source audit, reservation, or Stage3B data.
 - Current status: `SYNTHETIC_REBINDING_VERIFIED_READY_FOR_DUAL_ID_FORMAL_PREFLIGHT`.
+
+### Stage4B-U1-D v2.2 Formal Preflight and Controller
+
+- One read-only dual-ID formal preflight passed all Git, count, source-audit, dual-digest, namespace, legacy-cache, and new-path gates.
+- One official channel preparation produced separated controller/evaluator channels with no retrieval metrics.
+- One Gold-free controller run produced a frozen policy and 4,500 decision/ranking rows with `evaluation_labels_loaded=false`.
+- Fresh ID-bound cache SHA-256: `69ED39ABC0636B7B63A41639B64CB037FAE556F10CB130FCD18AFB61CBE06F7D`.
+- The independent cache audit passed exact ID order, dual digests, metadata, dtype, shape, finite-value, normalization, byte-size, and SHA checks.
+- Audits: `docs/STAGE4B_U1_PREGOLD_V2_2_FORMAL_PREFLIGHT_AUDIT.md`, `docs/STAGE4B_U1_PREGOLD_V2_2_CONTROLLER_EXECUTION_AUDIT.md`, and `docs/STAGE4B_U1_PREGOLD_V2_2_CACHE_AUDIT.md`.
+- No Gold evaluation, U1-D metric interpretation, reservation, or Stage3B access occurred.
+- Current status: `PREGOLD_CONTROLLER_ARTIFACTS_READY_FOR_COMMIT_AND_VERIFICATION`.
