@@ -688,3 +688,16 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Official inputs, rejected 5B token/preflight/capture, controller, verifier, evaluator, Gold, reservation, and Stage3B remain prohibited.
 - Decision record: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_APPROVAL_DECISION.md`.
 - Current status: `AMENDMENT_5A_1_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY`.
+
+### Stage4B-U1-D Pre-Gold Amendment 5A.1 Implementation And Synthetic Verification
+
+- The capture now requires three expected channel-input SHA arguments and validates regular-file status, frozen official expected values, and actual bytes before semantic parsing/cache loading/computation.
+- The three channel-input SHA values are rechecked after diagnostic computation and temporary-decisions comparison/cleanup, immediately before audit creation; drift leaves no audit and temporary decisions remain cleaned.
+- The controller, retrieval, common, and comparator files remain byte-unchanged; controller checkpoint remains `stage4b_u1_v2_3_1` and raw byte equivalence remains controlling.
+- The original 98 tests remain and nine tests were added, for 107 total. Targeted capture tests passed 22/22 and the preliminary complete suite passed 107/107.
+- Two final complete runner executions each passed 107/107 with zero failures/errors/skips and zero official-path access attempts.
+- Both final evidence outputs were 20,495 bytes with SHA-256 `81A8A5960395F729B643A42505E7F947962B338CD97ADD0506636D3AA2020A67`; byte comparison was exact.
+- The existing NumPy 2.4.6/`numexpr` ABI warning remained visible, but every test and evidence command exited zero.
+- Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_IMPLEMENTATION_AUDIT.md`.
+- Current status: `AMENDMENT_5A_1_SYNTHETICALLY_VERIFIED`; official diagnosis, controller rerun, verifier, and Gold remain unapproved.
+- Next gate: push this implementation/evidence commit, then create and push an implementation-bound 5B v2 package and stop.

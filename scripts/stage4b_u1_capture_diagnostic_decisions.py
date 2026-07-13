@@ -60,6 +60,15 @@ OFFICIAL_DIAGNOSTIC_AUDIT_PATH = (
     / "results"
     / "stage4b_u1_d_pregold_amendment_5b_official_decisions_diagnostic.json"
 )
+OFFICIAL_UNLABELED_UNITS_SHA256 = (
+    "114D28A7C9842079BF80C292274D7DBBBC718F05CBE8F4435487C245238427FA"
+)
+OFFICIAL_UNLABELED_QUERIES_SHA256 = (
+    "6EE942C680EAC86D0410FC25BCC302CA7312A0E253E318025A957D51A09B4B6B"
+)
+OFFICIAL_CONTROLLER_CHANNEL_AUDIT_SHA256 = (
+    "D134CDE168C833784F238B61420B4738C1F65B9FCA995945EB04E8B99EAAB2FA"
+)
 DECISION_FIELDS = {
     "query_id",
     "dataset",
@@ -80,6 +89,45 @@ DECISION_FIELDS = {
     "ordered_rank",
     "trigger_u1",
 }
+
+
+def _normalize_sha256(value: str, label: str) -> str:
+    normalized = value.upper()
+    if len(normalized) != 64 or any(
+        character not in "0123456789ABCDEF" for character in normalized
+    ):
+        raise ValueError(f"{label} must be a 64-character hexadecimal SHA-256")
+    return normalized
+
+
+def validate_channel_input_hashes(
+    *,
+    units_path: Path,
+    queries_path: Path,
+    channel_audit_path: Path,
+    expected_units_sha256: str,
+    expected_queries_sha256: str,
+    expected_channel_audit_sha256: str,
+    phase: str,
+) -> dict[str, str]:
+    inputs = {
+        "unlabeled_units": (units_path, expected_units_sha256),
+        "unlabeled_queries": (queries_path, expected_queries_sha256),
+        "controller_channel_audit": (
+            channel_audit_path,
+            expected_channel_audit_sha256,
+        ),
+    }
+    actual_hashes: dict[str, str] = {}
+    for label, (path, expected) in inputs.items():
+        if path.is_symlink() or not path.is_file():
+            raise ValueError(f"{label} must be an existing regular file during {phase}")
+        normalized_expected = _normalize_sha256(expected, f"Expected {label} SHA-256")
+        actual = sha256_file(path)
+        if actual != normalized_expected:
+            raise ValueError(f"{label} SHA-256 differs during {phase}")
+        actual_hashes[label] = actual
+    return actual_hashes
 
 
 def _assert_under_root(path: Path, root: Path, label: str) -> None:
@@ -107,6 +155,9 @@ def validate_official_diagnostic_input_paths(
     queries_path: Path,
     channel_audit_path: Path,
     embedding_cache_path: Path,
+    expected_units_sha256: str,
+    expected_queries_sha256: str,
+    expected_channel_audit_sha256: str,
     expected_embedding_cache_sha256: str,
 ) -> None:
     _assert_exact_path(
@@ -125,7 +176,25 @@ def validate_official_diagnostic_input_paths(
     _assert_exact_path(
         embedding_cache_path, OFFICIAL_ID_BOUND_CACHE_PATH, "embedding cache"
     )
-    if expected_embedding_cache_sha256.upper() != OFFICIAL_ID_BOUND_CACHE_SHA256:
+    expected_hashes = {
+        "units": (expected_units_sha256, OFFICIAL_UNLABELED_UNITS_SHA256),
+        "queries": (expected_queries_sha256, OFFICIAL_UNLABELED_QUERIES_SHA256),
+        "channel audit": (
+            expected_channel_audit_sha256,
+            OFFICIAL_CONTROLLER_CHANNEL_AUDIT_SHA256,
+        ),
+    }
+    for label, (actual, frozen) in expected_hashes.items():
+        if _normalize_sha256(actual, f"Expected {label} SHA-256") != frozen:
+            raise ValueError(
+                f"Official diagnostic expected {label} SHA-256 differs from the frozen value"
+            )
+    if (
+        _normalize_sha256(
+            expected_embedding_cache_sha256, "Expected embedding cache SHA-256"
+        )
+        != OFFICIAL_ID_BOUND_CACHE_SHA256
+    ):
         raise ValueError("Official diagnostic cache SHA-256 differs from the frozen value")
 
 
@@ -216,6 +285,9 @@ def generate_decisions_only_from_inputs(
     model_name: str,
     batch_size: int,
     max_length: int,
+    expected_units_sha256: str,
+    expected_queries_sha256: str,
+    expected_channel_audit_sha256: str,
     expected_embedding_cache_sha256: str,
     synthetic_test_mode: bool,
     synthetic_root: Path | None,
@@ -243,6 +315,9 @@ def generate_decisions_only_from_inputs(
             queries_path=queries_path,
             channel_audit_path=channel_audit_path,
             embedding_cache_path=embedding_cache_path,
+            expected_units_sha256=expected_units_sha256,
+            expected_queries_sha256=expected_queries_sha256,
+            expected_channel_audit_sha256=expected_channel_audit_sha256,
             expected_embedding_cache_sha256=expected_embedding_cache_sha256,
         )
     if batch_size <= 0:
@@ -252,6 +327,16 @@ def generate_decisions_only_from_inputs(
             raise ValueError("Official diagnostic model differs")
         if batch_size != FROZEN_BATCH_SIZE or max_length != FROZEN_MAX_LENGTH:
             raise ValueError("Official diagnostic encoder configuration differs")
+
+    validate_channel_input_hashes(
+        units_path=units_path,
+        queries_path=queries_path,
+        channel_audit_path=channel_audit_path,
+        expected_units_sha256=expected_units_sha256,
+        expected_queries_sha256=expected_queries_sha256,
+        expected_channel_audit_sha256=expected_channel_audit_sha256,
+        phase="pre-computation",
+    )
 
     units = load_jsonl(units_path)
     queries = load_jsonl(queries_path)
@@ -306,6 +391,9 @@ def run_diagnostic_capture(
     model_name: str,
     batch_size: int,
     max_length: int,
+    expected_units_sha256: str,
+    expected_queries_sha256: str,
+    expected_channel_audit_sha256: str,
     expected_embedding_cache_sha256: str,
     synthetic_test_mode: bool,
     synthetic_root: Path | None,
@@ -332,8 +420,6 @@ def run_diagnostic_capture(
             audit_output_path=audit_output_path,
             temp_parent=temp_parent,
         )
-        if sha256_file(reference_decisions_path) != V2_2_DECISIONS_SHA256:
-            raise ValueError("Frozen v2.2 reference decisions SHA-256 differs")
 
     captured_path: Path | None = None
     with tempfile.TemporaryDirectory(
@@ -348,11 +434,19 @@ def run_diagnostic_capture(
             model_name=model_name,
             batch_size=batch_size,
             max_length=max_length,
+            expected_units_sha256=expected_units_sha256,
+            expected_queries_sha256=expected_queries_sha256,
+            expected_channel_audit_sha256=expected_channel_audit_sha256,
             expected_embedding_cache_sha256=expected_embedding_cache_sha256,
             synthetic_test_mode=synthetic_test_mode,
             synthetic_root=synthetic_root,
             official_authorization_token=official_authorization_token,
         )
+        if (
+            not synthetic_test_mode
+            and sha256_file(reference_decisions_path) != V2_2_DECISIONS_SHA256
+        ):
+            raise ValueError("Frozen v2.2 reference decisions SHA-256 differs")
         write_jsonl(captured_path, decisions)
         report = compare_decisions_files(reference_decisions_path, captured_path)
         report.update(
@@ -371,6 +465,18 @@ def run_diagnostic_capture(
     if captured_path is None or captured_path.exists():
         raise RuntimeError("Temporary diagnostic decisions were not cleaned")
     report["temporary_decisions_cleaned"] = True
+    post_hashes = validate_channel_input_hashes(
+        units_path=units_path,
+        queries_path=queries_path,
+        channel_audit_path=channel_audit_path,
+        expected_units_sha256=expected_units_sha256,
+        expected_queries_sha256=expected_queries_sha256,
+        expected_channel_audit_sha256=expected_channel_audit_sha256,
+        phase="post-computation pre-audit",
+    )
+    report["channel_input_precheck_passed"] = True
+    report["channel_input_postcheck_passed"] = True
+    report["channel_input_sha256"] = post_hashes
     if synthetic_test_mode:
         write_json(audit_output_path, report)
     else:
@@ -392,6 +498,9 @@ def main() -> None:
     parser.add_argument("--model-name", required=True)
     parser.add_argument("--batch-size", required=True, type=int)
     parser.add_argument("--max-length", required=True, type=int)
+    parser.add_argument("--expected-units-sha256", required=True)
+    parser.add_argument("--expected-queries-sha256", required=True)
+    parser.add_argument("--expected-channel-audit-sha256", required=True)
     parser.add_argument("--expected-embedding-cache-sha256", required=True)
     parser.add_argument("--synthetic-test-mode", action="store_true")
     parser.add_argument("--synthetic-root", type=Path)
@@ -408,6 +517,9 @@ def main() -> None:
         model_name=args.model_name,
         batch_size=args.batch_size,
         max_length=args.max_length,
+        expected_units_sha256=args.expected_units_sha256,
+        expected_queries_sha256=args.expected_queries_sha256,
+        expected_channel_audit_sha256=args.expected_channel_audit_sha256,
         expected_embedding_cache_sha256=args.expected_embedding_cache_sha256,
         synthetic_test_mode=args.synthetic_test_mode,
         synthetic_root=args.synthetic_root,

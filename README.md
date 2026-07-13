@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Amendment 5A.1 已批准；正在进行 channel-input hash-binding implementation/synthetic hardening |
-| 获批执行协议 | 仅限 5A.1 实现与 synthetic 验证；official diagnosis/controller/verifier/Gold 均未授权 |
+| 当前阶段 | Amendment 5A.1 implementation/synthetic 已验证；准备 implementation-bound 5B v2 审批包 |
+| 获批执行协议 | 5A.1 已执行完毕；official diagnosis/controller/verifier/Gold 仍未授权 |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `AMENDMENT_5A_1_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY` |
+| 协议状态 | `AMENDMENT_5A_1_SYNTHETICALLY_VERIFIED` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -52,6 +52,8 @@ Amendment 5A 已按批准边界实现，未修改 controller。新增 decisions-
 Amendment 5B 审批包 commit `ceb755252540cf223aa18ac721443154c29cd07a` 已退回：units、queries 和 controller channel audit 只有路径与内部自洽校验，没有由 package 外部冻结各自 SHA-256。当前禁止使用 5B token、运行 preflight/capture、重跑 controller 或运行 verifier。退回记录见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_REVIEW_1.md`。
 
 Amendment 5A.1 仅申请实现与 synthetic 验证三项 channel-input SHA 前后硬门；冻结值分别为 units `114D28A7C9842079BF80C292274D7DBBBC718F05CBE8F4435487C245238427FA`、queries `6EE942C680EAC86D0410FC25BCC302CA7312A0E253E318025A957D51A09B4B6B`、controller channel audit `D134CDE168C833784F238B61420B4738C1F65B9FCA995945EB04E8B99EAAB2FA`。请求与 Manifest 见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_APPROVAL_REQUEST.md`、`docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_MANIFEST.json`；在 package-bound 明确批准前不得修改实现或运行 synthetic。
+
+Amendment 5A.1 已按批准范围实现：capture 要求三个 expected-SHA 参数，official 路径在语义解析/cache/计算前逐项核验普通文件、外部冻结值和实际 SHA，并在临时 decisions 比较与清理后、audit exclusive-create 前再次核验。原 98 项测试全部保留，新增 9 项后完整 suite 为 107 项；两次最终 evidence 均为 107/107、零 failure/error/skip/official access，20,495 bytes 且 SHA-256 均为 `81A8A5960395F729B643A42505E7F947962B338CD97ADD0506636D3AA2020A67`。审计见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_IMPLEMENTATION_AUDIT.md`。这不授权 official 诊断或恢复 Hard Failure 4。
 
 ## 研究问题
 

@@ -27,6 +27,7 @@ from stage4b_u1_capture_diagnostic_decisions import (  # noqa: E402
     compute_decisions_only,
     generate_decisions_only_from_inputs,
     run_diagnostic_capture,
+    validate_channel_input_hashes,
     validate_official_diagnostic_channel_audit,
     validate_official_diagnostic_input_paths,
     validate_official_diagnostic_output_paths,
@@ -225,6 +226,9 @@ def capture_kwargs(paths: dict[str, Path], root: Path) -> dict:
         "model_name": "synthetic-model",
         "batch_size": 64,
         "max_length": 192,
+        "expected_units_sha256": sha256_file(paths["units"]),
+        "expected_queries_sha256": sha256_file(paths["queries"]),
+        "expected_channel_audit_sha256": sha256_file(paths["channel"]),
         "expected_embedding_cache_sha256": sha256_file(paths["cache"]),
         "synthetic_test_mode": True,
         "synthetic_root": root,
@@ -581,6 +585,9 @@ class Stage4BU1DiagnosticCaptureTests(unittest.TestCase):
                         model_name="synthetic-model",
                         batch_size=64,
                         max_length=192,
+                        expected_units_sha256="0" * 64,
+                        expected_queries_sha256="0" * 64,
+                        expected_channel_audit_sha256="0" * 64,
                         expected_embedding_cache_sha256="0" * 64,
                         synthetic_test_mode=True,
                         synthetic_root=root,
@@ -598,27 +605,27 @@ class Stage4BU1DiagnosticCaptureTests(unittest.TestCase):
                     model_name="synthetic-model",
                     batch_size=64,
                     max_length=192,
+                    expected_units_sha256="0" * 64,
+                    expected_queries_sha256="0" * 64,
+                    expected_channel_audit_sha256="0" * 64,
                     expected_embedding_cache_sha256="0" * 64,
                     synthetic_test_mode=False,
                     synthetic_root=None,
                 )
 
-    def test_official_mode_with_token_rejects_nonfrozen_paths_before_open(self) -> None:
+    def test_official_frozen_path_validation_rejects_nonfrozen_paths_before_open(self) -> None:
         bogus = Path("never-opened-nonfrozen-input.jsonl")
         with patch("builtins.open", side_effect=AssertionError("path was opened")):
             with self.assertRaisesRegex(ValueError, "path differs from the frozen path"):
-                generate_decisions_only_from_inputs(
+                validate_official_diagnostic_input_paths(
                     units_path=bogus,
                     queries_path=bogus,
                     channel_audit_path=bogus,
                     embedding_cache_path=bogus,
-                    model_name="synthetic-model",
-                    batch_size=64,
-                    max_length=192,
-                    expected_embedding_cache_sha256="0" * 64,
-                    synthetic_test_mode=False,
-                    synthetic_root=None,
-                    official_authorization_token=capture_module.OFFICIAL_5B_AUTHORIZATION_TOKEN,
+                    expected_units_sha256=capture_module.OFFICIAL_UNLABELED_UNITS_SHA256,
+                    expected_queries_sha256=capture_module.OFFICIAL_UNLABELED_QUERIES_SHA256,
+                    expected_channel_audit_sha256=capture_module.OFFICIAL_CONTROLLER_CHANNEL_AUDIT_SHA256,
+                    expected_embedding_cache_sha256=capture_module.OFFICIAL_ID_BOUND_CACHE_SHA256,
                 )
 
     def test_official_diagnostic_paths_are_exact_and_audit_is_new(self) -> None:
@@ -651,6 +658,9 @@ class Stage4BU1DiagnosticCaptureTests(unittest.TestCase):
                     queries_path=queries,
                     channel_audit_path=channel,
                     embedding_cache_path=cache,
+                    expected_units_sha256=capture_module.OFFICIAL_UNLABELED_UNITS_SHA256,
+                    expected_queries_sha256=capture_module.OFFICIAL_UNLABELED_QUERIES_SHA256,
+                    expected_channel_audit_sha256=capture_module.OFFICIAL_CONTROLLER_CHANNEL_AUDIT_SHA256,
                     expected_embedding_cache_sha256=capture_module.OFFICIAL_ID_BOUND_CACHE_SHA256,
                 )
                 validate_official_diagnostic_output_paths(
@@ -664,6 +674,37 @@ class Stage4BU1DiagnosticCaptureTests(unittest.TestCase):
                         reference_decisions_path=reference,
                         audit_output_path=audit,
                         temp_parent=root,
+                    )
+
+    def test_official_expected_channel_sha_must_match_frozen_value(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            units = root / "units.jsonl"
+            queries = root / "queries.jsonl"
+            channel = root / "channel.json"
+            cache = root / "cache.npz"
+            with patch.dict(
+                capture_module.OFFICIAL_V2_3_1_ARTIFACT_PATHS,
+                {
+                    "unlabeled_units": str(units),
+                    "unlabeled_queries": str(queries),
+                    "controller_channel_audit": str(channel),
+                },
+            ), patch.object(
+                capture_module, "OFFICIAL_ID_BOUND_CACHE_PATH", str(cache)
+            ), patch("builtins.open", side_effect=AssertionError("path was opened")):
+                with self.assertRaisesRegex(
+                    ValueError, "expected units SHA-256 differs from the frozen value"
+                ):
+                    validate_official_diagnostic_input_paths(
+                        units_path=units,
+                        queries_path=queries,
+                        channel_audit_path=channel,
+                        embedding_cache_path=cache,
+                        expected_units_sha256="0" * 64,
+                        expected_queries_sha256=capture_module.OFFICIAL_UNLABELED_QUERIES_SHA256,
+                        expected_channel_audit_sha256=capture_module.OFFICIAL_CONTROLLER_CHANNEL_AUDIT_SHA256,
+                        expected_embedding_cache_sha256=capture_module.OFFICIAL_ID_BOUND_CACHE_SHA256,
                     )
 
     def test_official_channel_validation_uses_registered_source_digest_only(self) -> None:
@@ -723,12 +764,124 @@ class Stage4BU1DiagnosticCaptureTests(unittest.TestCase):
                         model_name="synthetic-model",
                         batch_size=64,
                         max_length=192,
+                        expected_units_sha256=sha256_file(paths["units"]),
+                        expected_queries_sha256=sha256_file(paths["queries"]),
+                        expected_channel_audit_sha256=sha256_file(paths["channel"]),
                         expected_embedding_cache_sha256=capture_kwargs(paths, root)[
                             "expected_embedding_cache_sha256"
                         ],
                         synthetic_test_mode=True,
                         synthetic_root=root,
                     )
+
+    def test_units_expected_sha_mismatch_rejected_before_semantic_parse(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            paths = build_capture_fixture(root)
+            kwargs = capture_kwargs(paths, root)
+            kwargs["expected_units_sha256"] = "0" * 64
+            with patch.object(
+                capture_module,
+                "load_jsonl",
+                side_effect=AssertionError("semantic parsing was reached"),
+            ):
+                with self.assertRaisesRegex(ValueError, "unlabeled_units SHA-256"):
+                    run_diagnostic_capture(**kwargs)
+            self.assertFalse(paths["audit"].exists())
+            self.assertEqual(list(paths["temp_parent"].iterdir()), [])
+
+    def test_queries_expected_sha_mismatch_rejected_before_semantic_parse(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            paths = build_capture_fixture(root)
+            kwargs = capture_kwargs(paths, root)
+            kwargs["expected_queries_sha256"] = "0" * 64
+            with patch.object(
+                capture_module,
+                "load_jsonl",
+                side_effect=AssertionError("semantic parsing was reached"),
+            ):
+                with self.assertRaisesRegex(ValueError, "unlabeled_queries SHA-256"):
+                    run_diagnostic_capture(**kwargs)
+            self.assertFalse(paths["audit"].exists())
+            self.assertEqual(list(paths["temp_parent"].iterdir()), [])
+
+    def test_channel_audit_expected_sha_mismatch_rejected_before_semantic_parse(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            paths = build_capture_fixture(root)
+            kwargs = capture_kwargs(paths, root)
+            kwargs["expected_channel_audit_sha256"] = "0" * 64
+            with patch.object(
+                capture_module,
+                "load_jsonl",
+                side_effect=AssertionError("semantic parsing was reached"),
+            ):
+                with self.assertRaisesRegex(
+                    ValueError, "controller_channel_audit SHA-256"
+                ):
+                    run_diagnostic_capture(**kwargs)
+            self.assertFalse(paths["audit"].exists())
+            self.assertEqual(list(paths["temp_parent"].iterdir()), [])
+
+    def test_channel_input_must_be_regular_file_before_semantic_parse(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            units = root / "units"
+            units.mkdir()
+            with patch("builtins.open", side_effect=AssertionError("path was opened")):
+                with self.assertRaisesRegex(ValueError, "existing regular file"):
+                    validate_channel_input_hashes(
+                        units_path=units,
+                        queries_path=root / "queries.jsonl",
+                        channel_audit_path=root / "audit.json",
+                        expected_units_sha256="0" * 64,
+                        expected_queries_sha256="0" * 64,
+                        expected_channel_audit_sha256="0" * 64,
+                        phase="synthetic pre-computation",
+                    )
+
+    def test_correct_three_channel_hashes_pass_with_synthetic_fixture(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            paths = build_capture_fixture(root)
+            report = run_diagnostic_capture(**capture_kwargs(paths, root))
+            self.assertTrue(report["channel_input_precheck_passed"])
+            self.assertTrue(report["channel_input_postcheck_passed"])
+            self.assertEqual(
+                report["channel_input_sha256"]["unlabeled_units"],
+                sha256_file(paths["units"]),
+            )
+
+    def _assert_postcompute_channel_drift_rejected(self, target: str) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            paths = build_capture_fixture(root)
+            original_compare = capture_module.compare_decisions_files
+
+            def compare_then_drift(*args: object, **kwargs: object) -> dict:
+                report = original_compare(*args, **kwargs)
+                paths[target].write_bytes(b"synthetic channel drift")
+                return report
+
+            with patch.object(
+                capture_module,
+                "compare_decisions_files",
+                side_effect=compare_then_drift,
+            ):
+                with self.assertRaisesRegex(ValueError, "post-computation pre-audit"):
+                    run_diagnostic_capture(**capture_kwargs(paths, root))
+            self.assertFalse(paths["audit"].exists())
+            self.assertEqual(list(paths["temp_parent"].iterdir()), [])
+
+    def test_units_drift_after_computation_leaves_no_audit_and_cleans_temp(self) -> None:
+        self._assert_postcompute_channel_drift_rejected("units")
+
+    def test_queries_drift_after_computation_leaves_no_audit_and_cleans_temp(self) -> None:
+        self._assert_postcompute_channel_drift_rejected("queries")
+
+    def test_channel_audit_drift_after_computation_leaves_no_audit_and_cleans_temp(self) -> None:
+        self._assert_postcompute_channel_drift_rejected("channel")
 
     def test_capture_does_not_call_controller_rankings_or_policy(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

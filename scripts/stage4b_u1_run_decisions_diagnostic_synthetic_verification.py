@@ -1,4 +1,4 @@
-"""Run the complete Stage4B-U1 plus Amendment 5A synthetic suite."""
+"""Run the complete Stage4B-U1 plus Amendment 5A.1 synthetic suite."""
 
 from __future__ import annotations
 
@@ -19,6 +19,10 @@ TRACKED_IMPLEMENTATION_FILES = (
     "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_APPROVAL_REQUEST.md",
     "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_MANIFEST.json",
     "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_APPROVAL_DECISION.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_REVIEW_1.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_APPROVAL_REQUEST.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_MANIFEST.json",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_APPROVAL_DECISION.md",
     "scripts/stage4b_u1_common.py",
     "scripts/stage4b_u1_goldfree_retrieval.py",
     "scripts/stage4b_u1_goldfree_controller.py",
@@ -34,7 +38,15 @@ REQUIRED_ACTIVE_PROOF_SUFFIXES = (
     "test_temporary_decisions_removed_after_success",
     "test_temporary_decisions_removed_after_exception",
     "test_official_mode_without_5b_token_fails_before_open",
-    "test_official_mode_with_token_rejects_nonfrozen_paths_before_open",
+    "test_official_frozen_path_validation_rejects_nonfrozen_paths_before_open",
+    "test_official_expected_channel_sha_must_match_frozen_value",
+    "test_units_expected_sha_mismatch_rejected_before_semantic_parse",
+    "test_queries_expected_sha_mismatch_rejected_before_semantic_parse",
+    "test_channel_audit_expected_sha_mismatch_rejected_before_semantic_parse",
+    "test_units_drift_after_computation_leaves_no_audit_and_cleans_temp",
+    "test_queries_drift_after_computation_leaves_no_audit_and_cleans_temp",
+    "test_channel_audit_drift_after_computation_leaves_no_audit_and_cleans_temp",
+    "test_correct_three_channel_hashes_pass_with_synthetic_fixture",
 )
 
 
@@ -59,6 +71,13 @@ def forbidden_official_paths(repo_root: Path) -> set[Path]:
             encoding="utf-8"
         )
     )
+    amendment_5a_1 = json.loads(
+        (
+            repo_root
+            / "docs"
+            / "STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_MANIFEST.json"
+        ).read_text(encoding="utf-8")
+    )
     cache = Path(resumption["frozen_cache"]["path"])
     data_root = cache.parent
     values = {
@@ -72,8 +91,14 @@ def forbidden_official_paths(repo_root: Path) -> set[Path]:
         Path(resumption["frozen_v2_2_equivalence"]["reference_policy_path"]),
     }
     values.update(Path(path) for path in resumption["artifact_registry"].values())
+    values.update(
+        Path(item["path"])
+        for item in amendment_5a_1["frozen_channel_inputs"].values()
+    )
     if manifest["current_execution_state"] != "PREGOLD_EXECUTION_STOPPED_HARD_FAILURE_4":
         raise ValueError("Amendment 5A manifest state drifted")
+    if amendment_5a_1["package_status"] != "AWAITING_AMENDMENT_5A_1_APPROVAL":
+        raise ValueError("Amendment 5A.1 package bytes drifted")
     return {path.resolve() for path in values}
 
 
@@ -83,7 +108,7 @@ def main() -> None:
         "--output",
         type=Path,
         default=Path(
-            "results/stage4b_u1_d_pregold_amendment_5a_synthetic_verification.json"
+            "results/stage4b_u1_d_pregold_amendment_5a_1_synthetic_verification.json"
         ),
     )
     args = parser.parse_args()
@@ -118,18 +143,18 @@ def main() -> None:
         raise ValueError("Required active access/cleanup proof test is missing or duplicated")
     stream = io.StringIO()
     result = unittest.TextTestRunner(stream=stream, verbosity=2).run(suite)
-    count_gate = result.testsRun >= 74 and len(discovered) >= 74
+    count_gate = result.testsRun >= 104 and len(discovered) >= 104
     evidence = {
-        "stage": "Stage4B-U1-D Pre-Gold Amendment 5A",
+        "stage": "Stage4B-U1-D Pre-Gold Amendment 5A.1",
         "diagnostic_checkpoint": "stage4b_u1_decisions_diag_v1",
         "controller_checkpoint_unchanged": "stage4b_u1_v2_3_1",
         "status": (
-            "AMENDMENT_5A_SYNTHETICALLY_VERIFIED"
+            "AMENDMENT_5A_1_SYNTHETICALLY_VERIFIED"
             if result.wasSuccessful() and count_gate and not attempted
             else "FAILED"
         ),
         "tests_run": result.testsRun,
-        "minimum_tests_required": 74,
+        "minimum_tests_required": 104,
         "test_ids": discovered,
         "failures": len(result.failures),
         "errors": len(result.errors),
@@ -169,6 +194,10 @@ def main() -> None:
             "future official capture requires exact registered paths an absent audit output and the OS temp parent",
             "official channel validation uses the registered source-audit digest without opening the source-audit file",
             "the embedding cache fingerprint is rechecked after decisions computation",
+            "all three channel inputs are regular files and match caller-provided SHA-256 values before semantic parsing",
+            "official expected channel-input SHA-256 values must equal the three externally frozen values",
+            "all three channel-input SHA-256 values are rechecked after temporary-decisions cleanup and before audit creation",
+            "pre-gate or post-gate channel drift leaves no audit and cleans temporary decisions",
             "the original Stage4B-U1 50-test suite remains passing",
         ],
     }
