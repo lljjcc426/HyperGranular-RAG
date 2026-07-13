@@ -26,6 +26,8 @@ from stage4b_u1_common import (  # noqa: E402
     FROZEN_BATCH_SIZE,
     FROZEN_MAX_LENGTH,
     FROZEN_MODEL_NAME,
+    IMPLEMENTATION_CHECKPOINT,
+    OFFICIAL_V2_3_1_ARTIFACT_PATHS,
     assert_no_prohibited_keys,
     id_digest,
     load_json,
@@ -40,9 +42,12 @@ from stage4b_u1_evaluate import (  # noqa: E402
     run_evaluation,
 )
 from stage4b_u1_goldfree_controller import (  # noqa: E402
+    promote_pending_outputs,
     run_controller,
     validate_controller_inputs,
+    validate_policy_equivalence,
 )
+import stage4b_u1_goldfree_controller as controller_module  # noqa: E402
 from stage4b_u1_goldfree_retrieval import (  # noqa: E402
     RetrievalConfig,
     allocate_budget,
@@ -60,6 +65,9 @@ from stage4b_u1_verify import (  # noqa: E402
     run_verification,
     validate_candidate_pools,
     verify_effective_k_structure,
+)
+from stage4b_u1_run_synthetic_verification import (  # noqa: E402
+    validate_governance_bindings,
 )
 
 
@@ -253,6 +261,59 @@ def refresh_policy_output_hash(paths: dict[str, Path], key: str) -> None:
     write_json(paths["policy"], policy)
 
 
+def cache_payload(path: Path) -> dict[str, np.ndarray]:
+    with np.load(path, allow_pickle=False) as cache:
+        return {name: np.asarray(cache[name]) for name in cache.files}
+
+
+def write_cache_payload(path: Path, payload: dict[str, np.ndarray]) -> None:
+    np.savez_compressed(path, **payload)
+
+
+def require_existing_output_paths(output_root: Path, suffix: str = "") -> dict[str, Path]:
+    return {
+        "decisions": output_root / f"require-decisions{suffix}.jsonl",
+        "rankings": output_root / f"require-rankings{suffix}.jsonl",
+        "policy": output_root / f"require-policy{suffix}.json",
+    }
+
+
+def run_require_existing_synthetic_controller(
+    paths: dict[str, Path],
+    output_root: Path,
+    *,
+    cache_path: Path | None = None,
+    expected_sha256: str | None = None,
+    suffix: str = "",
+) -> dict[str, Path]:
+    selected_cache = cache_path or paths["cache"]
+    outputs = require_existing_output_paths(output_root, suffix)
+    run_controller(
+        units_path=paths["units"],
+        queries_path=paths["queries"],
+        channel_audit_path=paths["channel"],
+        embedding_cache=selected_cache,
+        decisions_output=outputs["decisions"],
+        rankings_output=outputs["rankings"],
+        policy_output=outputs["policy"],
+        mode="development",
+        policy_input=None,
+        model_name="synthetic-model",
+        batch_size=FROZEN_BATCH_SIZE,
+        max_length=FROZEN_MAX_LENGTH,
+        config=RetrievalConfig(),
+        controller_source=SCRIPTS / "stage4b_u1_goldfree_controller.py",
+        source_audit_path=None,
+        synthetic_test_mode=True,
+        embedding_cache_mode="require-existing",
+        expected_embedding_cache_sha256=(
+            expected_sha256 or sha256_file(selected_cache)
+        ),
+        reference_policy_path=None,
+    )
+    return outputs
+
+
 def effective_k_ranking(candidate_count: int, planned: int) -> tuple[dict, set[str]]:
     candidate_ids = [f"synthetic::short::u{index}" for index in range(candidate_count)]
     effective_k = min(20, candidate_count)
@@ -437,6 +498,338 @@ class Stage4BU1CoreTests(unittest.TestCase):
             [row["unit_id"] for row in goldfree_q25],
         )
         self.assertEqual(legacy_insert["inserted_units"], len(goldfree_inserted))
+
+
+class Stage4BU1CacheFailClosedTests(unittest.TestCase):
+    def test_require_existing_valid_cache_passes_without_build_or_mkdir(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            paths = build_synthetic_pipeline(root)
+            with patch(
+                "stage4b_u1_goldfree_controller.embed_texts",
+                side_effect=AssertionError("embed_texts must not run"),
+            ) as embed_mock, patch(
+                "stage4b_u1_goldfree_controller.np.savez_compressed",
+                side_effect=AssertionError("cache writes must not run"),
+            ) as save_mock, patch.object(
+                Path,
+                "mkdir",
+                side_effect=AssertionError("Path.mkdir must not run"),
+            ) as mkdir_mock:
+                outputs = run_require_existing_synthetic_controller(
+                    paths, root, suffix="-valid"
+                )
+            embed_mock.assert_not_called()
+            save_mock.assert_not_called()
+            mkdir_mock.assert_not_called()
+            self.assertTrue(all(path.is_file() for path in outputs.values()))
+            self.assertEqual(
+                load_json(outputs["policy"])["implementation_checkpoint"],
+                IMPLEMENTATION_CHECKPOINT,
+            )
+
+    def test_require_existing_missing_cache_fails_before_outputs_or_embedding(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            paths = build_synthetic_pipeline(root)
+            missing = root / "missing-cache.npz"
+            outputs = require_existing_output_paths(root, "-missing")
+            with patch(
+                "stage4b_u1_goldfree_controller.embed_texts",
+                side_effect=AssertionError("embed_texts must not run"),
+            ) as embed_mock, self.assertRaisesRegex(ValueError, "not a regular file"):
+                run_require_existing_synthetic_controller(
+                    paths,
+                    root,
+                    cache_path=missing,
+                    expected_sha256="0" * 64,
+                    suffix="-missing",
+                )
+            embed_mock.assert_not_called()
+            self.assertFalse(any(path.exists() for path in outputs.values()))
+
+    def test_require_existing_wrong_sha_fails_before_outputs(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            paths = build_synthetic_pipeline(root)
+            outputs = require_existing_output_paths(root, "-sha")
+            with self.assertRaisesRegex(ValueError, "SHA-256 differs"):
+                run_require_existing_synthetic_controller(
+                    paths, root, expected_sha256="0" * 64, suffix="-sha"
+                )
+            self.assertFalse(any(path.exists() for path in outputs.values()))
+
+    def test_require_existing_member_drift_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            paths = build_synthetic_pipeline(root)
+            changed_cache = root / "member-drift.npz"
+            payload = cache_payload(paths["cache"])
+            payload["unexpected"] = np.asarray([1], dtype="int64")
+            write_cache_payload(changed_cache, payload)
+            with self.assertRaisesRegex(ValueError, "exact frozen six"):
+                run_require_existing_synthetic_controller(
+                    paths, root, cache_path=changed_cache, suffix="-members"
+                )
+
+    def test_require_existing_id_order_drift_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            paths = build_synthetic_pipeline(root)
+            original = cache_payload(paths["cache"])
+            for field, message in (
+                ("unit_ids", "unit order differs"),
+                ("query_ids", "query order differs"),
+            ):
+                with self.subTest(field=field):
+                    changed_cache = root / f"{field}-order-drift.npz"
+                    payload = {
+                        key: np.array(value, copy=True)
+                        for key, value in original.items()
+                    }
+                    payload[field] = payload[field][::-1]
+                    write_cache_payload(changed_cache, payload)
+                    with self.assertRaisesRegex(ValueError, message):
+                        run_require_existing_synthetic_controller(
+                            paths,
+                            root,
+                            cache_path=changed_cache,
+                            suffix=f"-{field}",
+                        )
+
+    def test_require_existing_metadata_and_array_drift_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            paths = build_synthetic_pipeline(root)
+            original = cache_payload(paths["cache"])
+            cases = (
+                "model",
+                "max_length",
+                "dtype",
+                "shape",
+                "nonfinite",
+                "normalization",
+            )
+            for case in cases:
+                with self.subTest(case=case):
+                    payload = {
+                        key: np.array(value, copy=True) for key, value in original.items()
+                    }
+                    if case == "model":
+                        payload["model_name"] = np.asarray(["wrong-model"])
+                    elif case == "max_length":
+                        payload["max_length"] = np.asarray([191], dtype="int64")
+                    elif case == "dtype":
+                        payload["unit_embeddings"] = payload["unit_embeddings"].astype(
+                            "float64"
+                        )
+                    elif case == "shape":
+                        payload["unit_embeddings"] = payload["unit_embeddings"][:-1]
+                    elif case == "nonfinite":
+                        payload["unit_embeddings"][0, 0] = np.nan
+                    elif case == "normalization":
+                        payload["unit_embeddings"][0] *= 2.0
+                    changed_cache = root / f"{case}-drift.npz"
+                    write_cache_payload(changed_cache, payload)
+                    with self.assertRaises(ValueError):
+                        run_require_existing_synthetic_controller(
+                            paths,
+                            root,
+                            cache_path=changed_cache,
+                            suffix=f"-{case}",
+                        )
+
+    def test_require_existing_byte_drift_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            paths = build_synthetic_pipeline(root)
+            changed_cache = root / "byte-drift.npz"
+            changed_cache.write_bytes(paths["cache"].read_bytes() + b"drift")
+            outputs = require_existing_output_paths(root, "-bytes")
+            with self.assertRaises(ValueError):
+                run_require_existing_synthetic_controller(
+                    paths,
+                    root,
+                    cache_path=changed_cache,
+                    expected_sha256=sha256_file(paths["cache"]),
+                    suffix="-bytes",
+                )
+            self.assertFalse(any(path.exists() for path in outputs.values()))
+
+    def test_post_fingerprint_drift_prevents_output_promotion(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            paths = build_synthetic_pipeline(root)
+            outputs = require_existing_output_paths(root, "-post")
+            original_builder = controller_module.build_query_decisions
+
+            def mutate_cache_after_computation(*args: object, **kwargs: object) -> list[dict]:
+                rows = original_builder(*args, **kwargs)
+                with paths["cache"].open("ab") as stream:
+                    stream.write(b"post-fingerprint-drift")
+                return rows
+
+            with patch(
+                "stage4b_u1_goldfree_controller.build_query_decisions",
+                side_effect=mutate_cache_after_computation,
+            ), patch(
+                "stage4b_u1_goldfree_controller.embed_texts",
+                side_effect=AssertionError("embed_texts must not run"),
+            ) as embed_mock, self.assertRaises(ValueError):
+                run_require_existing_synthetic_controller(
+                    paths, root, suffix="-post"
+                )
+            embed_mock.assert_not_called()
+            self.assertFalse(any(path.exists() for path in outputs.values()))
+
+    def test_formal_controller_rejects_load_or_build_mode_before_input_reads(self) -> None:
+        with self.assertRaisesRegex(ValueError, "existing-cache-only mode"):
+            run_controller(
+                units_path=Path("missing-units"),
+                queries_path=Path("missing-queries"),
+                channel_audit_path=Path("missing-audit"),
+                embedding_cache=Path("missing-cache"),
+                decisions_output=Path("missing-decisions"),
+                rankings_output=Path("missing-rankings"),
+                policy_output=Path("missing-policy"),
+                mode="development",
+                policy_input=None,
+                model_name=FROZEN_MODEL_NAME,
+                batch_size=FROZEN_BATCH_SIZE,
+                max_length=FROZEN_MAX_LENGTH,
+                config=RetrievalConfig(),
+                controller_source=SCRIPTS / "stage4b_u1_goldfree_controller.py",
+                source_audit_path=None,
+                synthetic_test_mode=False,
+            )
+
+    def test_policy_equivalence_allows_only_registered_binding_drift(self) -> None:
+        reference = {
+            "implementation_checkpoint": "old",
+            "git_commit_sha": "old-commit",
+            "protocol_sha256": "old-protocol",
+            "implementation_hashes": {
+                "common_source_sha256": "old-common",
+                "controller_source_sha256": "old-controller",
+                "verifier_source_sha256": "old-verifier",
+                "retrieval_source_sha256": "same-retrieval",
+            },
+            "controller_source_sha256": "old-controller",
+            "input_hashes": {
+                "channel_audit": "old-channel",
+                "embedding_cache": "same-cache",
+            },
+            "stable": {"score": "same"},
+        }
+        current = copy.deepcopy(reference)
+        current["implementation_checkpoint"] = "new"
+        current["git_commit_sha"] = "new-commit"
+        current["protocol_sha256"] = "new-protocol"
+        current["implementation_hashes"]["common_source_sha256"] = "new-common"
+        current["implementation_hashes"]["controller_source_sha256"] = "new-controller"
+        current["implementation_hashes"]["verifier_source_sha256"] = "new-verifier"
+        current["controller_source_sha256"] = "new-controller"
+        current["input_hashes"]["channel_audit"] = "new-channel"
+        validate_policy_equivalence(current, reference)
+        current["stable"]["score"] = "changed"
+        with self.assertRaisesRegex(ValueError, "outside the registered"):
+            validate_policy_equivalence(current, reference)
+
+    def test_partial_promotion_failure_rolls_back_current_output(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            pending = root / "pending.json"
+            target = root / "target.json"
+            pending.write_bytes(b"complete-pending-output")
+
+            def fail_after_partial_copy(
+                source: object, destination: object, length: int
+            ) -> None:
+                del length
+                destination.write(source.read(4))
+                raise OSError("synthetic copy failure")
+
+            with patch(
+                "stage4b_u1_goldfree_controller.shutil.copyfileobj",
+                side_effect=fail_after_partial_copy,
+            ), self.assertRaisesRegex(OSError, "synthetic copy failure"):
+                promote_pending_outputs([(pending, target)])
+            self.assertFalse(target.exists())
+
+    def test_registered_governance_binding_is_hashed(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            allowed = root / "docs" / "allowed.md"
+            allowed.parent.mkdir()
+            allowed.write_text("approved\n", encoding="utf-8")
+            result = validate_governance_bindings(
+                root,
+                ["docs/allowed.md"],
+                allowed_paths=frozenset({"docs/allowed.md"}),
+                require_committed=False,
+            )
+            self.assertEqual(result, {"docs/allowed.md": sha256_file(allowed)})
+
+    def test_missing_governance_binding_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            with self.assertRaisesRegex(ValueError, "is missing"):
+                validate_governance_bindings(
+                    Path(directory),
+                    ["docs/missing.md"],
+                    allowed_paths=frozenset({"docs/missing.md"}),
+                    require_committed=False,
+                )
+
+    def test_outside_repository_governance_binding_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "repo"
+            root.mkdir()
+            outside = Path(directory) / "outside.md"
+            outside.write_text("outside\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "outside the repository"):
+                validate_governance_bindings(
+                    root,
+                    ["../outside.md"],
+                    allowed_paths=frozenset({"../outside.md"}),
+                    require_committed=False,
+                )
+
+    def test_duplicate_governance_binding_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            allowed = root / "docs" / "allowed.md"
+            allowed.parent.mkdir()
+            allowed.write_text("approved\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "Duplicate governance binding"):
+                validate_governance_bindings(
+                    root,
+                    ["docs/allowed.md", "docs/allowed.md"],
+                    allowed_paths=frozenset({"docs/allowed.md"}),
+                    require_committed=False,
+                )
+
+    def test_unregistered_governance_binding_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            unregistered = root / "docs" / "unregistered.md"
+            unregistered.parent.mkdir()
+            unregistered.write_text("not registered\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "Unregistered governance binding"):
+                validate_governance_bindings(
+                    root,
+                    ["docs/unregistered.md"],
+                    allowed_paths=frozenset({"docs/allowed.md"}),
+                    require_committed=False,
+                )
+
+    def test_manifest_artifact_registry_matches_shared_constants(self) -> None:
+        manifest = load_json(
+            REPO_ROOT / "docs" / "STAGE4B_U1_PREGOLD_AMENDMENT_4_MANIFEST.json"
+        )
+        self.assertEqual(len(manifest["artifact_registry"]), 10)
+        self.assertEqual(
+            manifest["artifact_registry"], OFFICIAL_V2_3_1_ARTIFACT_PATHS
+        )
 
 
 class Stage4BU1HardeningTests(unittest.TestCase):

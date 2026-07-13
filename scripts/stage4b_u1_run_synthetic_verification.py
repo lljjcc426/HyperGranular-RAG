@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import io
+import subprocess
 import sys
 import unittest
 from pathlib import Path
@@ -21,6 +22,11 @@ TRACKED_IMPLEMENTATION_FILES = (
     "docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_APPROVAL_REQUEST.md",
     "docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_MANIFEST.json",
     "docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_APPROVAL_DECISION.md",
+    "docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_3_REVIEW_1.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_4_CACHE_FAIL_CLOSED_DRAFT.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_4_APPROVAL_REQUEST.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_4_MANIFEST.json",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_4_APPROVAL_DECISION.md",
     "scripts/stage4b_u1_common.py",
     "scripts/stage4b_u1_prepare_channels.py",
     "scripts/stage4b_u1_goldfree_retrieval.py",
@@ -29,6 +35,13 @@ TRACKED_IMPLEMENTATION_FILES = (
     "scripts/stage4b_u1_verify.py",
     "scripts/stage4b_u1_run_synthetic_verification.py",
     "tests/test_stage4b_u1_goldfree.py",
+)
+ALLOWED_GOVERNANCE_BINDINGS = frozenset(
+    {
+        "docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_3_1_APPROVAL_REQUEST.md",
+        "docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_3_1_MANIFEST.json",
+        "docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_3_1_APPROVAL_DECISION.md",
+    }
 )
 
 
@@ -42,17 +55,72 @@ def test_ids(suite: unittest.TestSuite) -> list[str]:
     return ids
 
 
+def validate_governance_bindings(
+    repo_root: Path,
+    values: list[str],
+    *,
+    allowed_paths: frozenset[str] = ALLOWED_GOVERNANCE_BINDINGS,
+    require_committed: bool = True,
+) -> dict[str, str]:
+    root = repo_root.resolve()
+    normalized: list[str] = []
+    seen: set[str] = set()
+    for value in values:
+        supplied = Path(value)
+        if supplied.is_absolute():
+            raise ValueError(f"Governance binding must be repo-relative: {value}")
+        candidate = (root / supplied).resolve()
+        try:
+            relative = candidate.relative_to(root).as_posix()
+        except ValueError as exc:
+            raise ValueError(f"Governance binding is outside the repository: {value}") from exc
+        if relative in seen:
+            raise ValueError(f"Duplicate governance binding: {relative}")
+        seen.add(relative)
+        if relative not in allowed_paths:
+            raise ValueError(f"Unregistered governance binding: {relative}")
+        if not candidate.is_file():
+            raise ValueError(f"Governance binding file is missing: {relative}")
+        if require_committed:
+            tracked = subprocess.run(
+                ["git", "cat-file", "-e", f"HEAD:{relative}"],
+                cwd=root,
+                capture_output=True,
+            )
+            unchanged = subprocess.run(
+                ["git", "diff", "--quiet", "HEAD", "--", relative],
+                cwd=root,
+            )
+            if tracked.returncode != 0 or unchanged.returncode != 0:
+                raise ValueError(
+                    f"Governance binding is not committed at current HEAD: {relative}"
+                )
+        normalized.append(relative)
+    return {
+        relative: sha256_file(root / relative) for relative in sorted(normalized)
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--output",
         type=Path,
         default=Path(
-            "results/stage4b_u1_d_pregold_amendment_3_synthetic_verification.json"
+            "results/stage4b_u1_d_pregold_amendment_4_synthetic_verification.json"
         ),
+    )
+    parser.add_argument(
+        "--governance-binding",
+        action="append",
+        default=[],
+        help="Registered repo-relative governance file to bind into evidence",
     )
     args = parser.parse_args()
     repo_root = Path(__file__).resolve().parents[1]
+    governance_bindings = validate_governance_bindings(
+        repo_root, args.governance_binding
+    )
     suite = unittest.defaultTestLoader.discover(
         str(repo_root / "tests"), pattern="test_stage4b_u1_goldfree.py"
     )
@@ -60,12 +128,12 @@ def main() -> None:
     stream = io.StringIO()
     result = unittest.TextTestRunner(stream=stream, verbosity=2).run(suite)
     evidence = {
-        "stage": "Stage4B-U1-D Pre-Gold Amendment 3",
+        "stage": "Stage4B-U1-D Pre-Gold Amendment 4",
         "protocol_architecture": "docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md",
         "hardening_specification": "docs/STAGE4B_U1_EXECUTION_HARDENING_V2_1.md",
         "trigger_review": "docs/STAGE4B_U1_EXECUTION_PACKAGE_REVIEW_1.md",
         "status": (
-            "AMENDMENT_3_EFFECTIVE_K_SYNTHETICALLY_HARDENED_AWAITING_OFFICIAL_RESUMPTION_APPROVAL"
+            "AMENDMENT_4_CACHE_FAIL_CLOSED_SYNTHETICALLY_HARDENED_AWAITING_OFFICIAL_RESUMPTION_APPROVAL"
             if result.wasSuccessful()
             else "FAILED"
         ),
@@ -82,6 +150,7 @@ def main() -> None:
         "implementation_hashes": {
             path: sha256_file(repo_root / path) for path in TRACKED_IMPLEMENTATION_FILES
         },
+        "governance_binding_hashes": governance_bindings,
         "verified_properties": [
             "controller and evaluator channels are separate files and processes",
             "controller channel contains no evaluation-label fields or Gold-map metadata",
@@ -99,6 +168,10 @@ def main() -> None:
             "effective-K is min(20, candidate pool size) and the effective protected prefix is min(10, effective-K)",
             "effective-K verifier rejects empty pools, count drift, wrong lengths, duplicate or non-candidate IDs, protected-prefix drift, and insertion drift",
             "effective-K structure determines q25 and final inserted-unit IDs",
+            "require-existing cache mode rejects missing, altered, malformed, non-finite, non-normalized, or misbound caches without embedding or cache writes",
+            "controller outputs remain pending in an OS temporary directory until cache post-fingerprint and equivalence gates pass",
+            "registered governance bindings are repo-relative, committed, unique, present, and hashed into evidence",
+            "the ten v2.3.1 official artifact paths are frozen before any official resumption request",
             "policy binds the protocol, implementation files, inputs, embedding cache, source audit, and git commit",
             "evaluator requires a VERIFIED_PRE_GOLD artifact before loading Gold",
             "Stage4A-R2 baseline drift stops before U1 summary generation",

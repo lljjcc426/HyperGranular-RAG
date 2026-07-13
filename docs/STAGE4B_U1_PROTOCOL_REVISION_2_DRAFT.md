@@ -298,8 +298,9 @@ Amendment 1 批准后的 preflight 发现 source audit 的 `6B21...` digest 对�
 
 - v2.2 independent verifier 已命中 `HARD_FAILURE_VERIFIER_FIXED_TOP20_ASSUMPTION`；全部 official execution 立即停止，不自动重跑；
 - commit `9207bd78eea44d2ea3291fe9b6748526969a3224` 的工件为 `UNVERIFIED_INVALID_FOR_GOLD`，不得覆盖、删除或用于评价；
-- Amendment 3 已获 implementation/synthetic-only 批准；只允许 effective-K 协议、checkpoint、verifier、synthetic runner 绑定与测试修订；
-- 禁止读取 official development/source audit/official ranking，禁止 official preflight/channel/controller/cache/verifier/evaluator；
+- Amendment 3 effective-K 实现已完成；v2.3 official-resumption package `dbb4e057...` 已退回；
+- Amendment 4 已获 implementation/synthetic-only 批准，仅允许 checkpoint、cache fail-closed、pending outputs、runner governance binding、十路径 registry 与 synthetic tests；
+- 禁止读取 official development/source audit/official ranking/official cache，禁止 official preflight/channel/controller/cache audit/verifier/evaluator；
 - 不连接 U1-D Gold；
 - 不创建或读取 reservation 内容、embedding、decision、ranking 或指标；
 - 不访问 Stage3B；
@@ -311,3 +312,65 @@ Amendment 1 批准后的 preflight 发现 source audit 的 `6B21...` digest 对�
 已提交工件上的 independent verifier 单次运行在 `derive_q25_inserted` 的固定长度 20 检查处失败。official Gold-free 候选池有 628 个查询少于 20 个单元，最小为 10；全部 controller 列表长度均等于 `min(20, num_candidate_units)`。verifier 尚未完成 score、预算和 ranking 独立验证，也没有生成 `VERIFIED_PRE_GOLD`。完整记录见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_3.md`。
 
 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_DRAFT.md` 将“Top-20”形式化为候选池不足时的 effective-K。该修订现仅获 implementation/synthetic-only 批准；完成并推送后仍须新的 implementation-bound official pre-Gold 恢复批准。
+
+## Amendment 4：Cache Fail-Closed 与恢复协议硬化
+
+### Implementation Checkpoint
+
+```text
+stage4b_u1_v2_3_1
+```
+
+该 checkpoint 不改变 retrieval、effective-K、q25、score、ECDF、预算、trigger、ranking 或 endpoint。
+
+### Existing-Cache-Only
+
+future formal controller 必须显式接收：
+
+```text
+--embedding-cache-mode require-existing
+--expected-embedding-cache-sha256 69ED39ABC0636B7B63A41639B64CB037FAE556F10CB130FCD18AFB61CBE06F7D
+```
+
+冻结 cache：
+
+```text
+path = E:\科研\超粒球RAG_数据\processed\stage4b_u1_d_official_dev4500_minilm_idbound_embeddings.npz
+SHA-256 = 69ED39ABC0636B7B63A41639B64CB037FAE556F10CB130FCD18AFB61CBE06F7D
+bytes = 210714667
+unit shape = (143820, 384)
+query shape = (4500, 384)
+dtype = float32
+model / max_length = sentence-transformers/all-MiniLM-L6-v2 / 192
+normalization max error <= 1e-6
+```
+
+NPZ members 必须严格等于 `unit_embeddings`、`query_embeddings`、`unit_ids`、`query_ids`、`model_name`、`max_length`。require-existing 模式在任何模型加载、编码或正式输出前核验 path、SHA、bytes、members、ID 同序、模型元数据、dtype、shape、finite 和 normalization；不得调用 `embed_texts`、cache-parent `mkdir` 或 `np.savez_compressed`。
+
+controller 计算后、等价门后和正式输出提升后均复算 cache fingerprint。任一漂移必须硬失败；本次创建的正式 outputs 必须回滚，不得留下部分 decisions/rankings/policy。
+
+### Pending Outputs 与等价门
+
+require-existing controller 只能先在 OS temporary directory 写 pending decisions/rankings/policy。正式 development 还必须满足：
+
+```text
+decisions SHA-256 = 6FB6EB6DBFE3C6B819E65ADD268D9F94CFEA24E5761C9E4CB53CD0965C3723C7
+rankings SHA-256 = ED289D234F6F4FEC58A48168CB6CA78950489CD5F5640E977068CA6A786E03CB
+reference v2.2 policy SHA-256 = 829E8A0DB7E4108C4D23F2D0CE3DD0C227F329E9EDF77BB4ED49C20544EC07DC
+```
+
+policy 结构化差分只允许 checkpoint、git commit、protocol hash、common/controller/verifier implementation hash、top-level controller source hash 和 channel-audit input hash 变化。其余字段必须等价。全部门通过后以 exclusive-create 提升三个正式 outputs；提升失败或提升后 cache 漂移时，回滚本次创建的 outputs。
+
+### 冻结十路径 Registry
+
+十个绝对路径由 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_4_MANIFEST.json` 的 `artifact_registry` 唯一登记，path tag 为 `v2_3_1`。future formal preflight 必须逐项证明十路径均不存在；controller 还必须独立核对 units、queries、channel audit、decisions、rankings 与 policy 六个输入/输出路径。不得另行命名或覆盖 v2.2 工件。
+
+### Post-Approval Synthetic Rebinding
+
+future implementation-bound official-resumption 获批后，必须先提交推送批准治理，并通过 runner 的显式 governance binding 参数绑定该次 approval request、manifest 和 approval decision；`AGENTS.md` 继续作为固定 implementation/governance hash。完整 synthetic suite 必须在最终批准治理字节上运行两次，全部通过、零 failure/error/skip 且 evidence 字节一致。rebinding evidence/audit 提交推送后，formal preflight 才可开始。
+
+runner 必须拒绝缺失、repo 外、重复、未登记或未提交到当前 HEAD 的 governance binding path。
+
+### 当前停止门
+
+Amendment 4 只授权 implementation/synthetic hardening。测试不得读取真实 official cache。implementation/evidence 与新的 implementation-bound resumption package 推送后必须停止；新的明确批准前，不得运行任何 official 命令。

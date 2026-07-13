@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Stage4B-U1-D Amendment 4 cache fail-closed 实现与 synthetic hardening |
-| 获批执行协议 | 仅限 v2.3.1 cache/runner/protocol/tests；无 official execution |
+| 当前阶段 | Stage4B-U1-D Amendment 4 v2.3.1 synthetic hardening 已完成；official 锁定 |
+| 获批执行协议 | Amendment 4 implementation/synthetic 已完成；等待新的 implementation-bound 恢复审批 |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `AMENDMENT_4_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY` |
+| 协议状态 | `SYNTHETICALLY_VERIFIED_OFFICIAL_EXECUTION_NOT_AUTHORIZED` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | 单次运行工件已提交，但 verifier 未通过；现有工件 `UNVERIFIED_INVALID_FOR_GOLD` |
@@ -44,6 +44,8 @@ Amendment 3 已按批准边界实现：checkpoint 为 `stage4b_u1_v2_3`，verifi
 v2.3 official-resumption 包 `dbb4e057...` 经审查退回：缺少批准治理后的 synthetic rebinding、十项新工件准确路径，以及 controller 内 cache require-existing/no-build 与前后 SHA 门。代码核查确认当前 cache 缺失会进入编码写入分支，因此不能仅靠文字 preflight 修复。审查见 `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_3_REVIEW_1.md`；新的 Amendment 4 仅申请 cache fail-closed 与恢复协议 hardening 的 implementation/synthetic 授权，不申请 official execution。
 
 Amendment 4 已获 implementation/synthetic-only 批准，绑定 package `e5a0e218...`、returned package `dbb4e057...` 和 baseline implementation `a1d9ea0c...`。批准只允许 checkpoint `stage4b_u1_v2_3_1`、existing-cache-only、前后指纹、pending outputs、governance rebinding、十路径 registry 和 synthetic tests；official 数据、真实 cache 和全部 official 命令继续锁定。
+
+Amendment 4 实现已完成：formal controller 强制 existing-cache-only 与冻结 SHA，严格核验 cache 内容并在 OS 临时目录生成 pending outputs；cache 后指纹、v2.2 decisions/rankings bytes 和限定 policy diff 全部通过后才提升，复制或后指纹失败会回滚本次输出。runner 支持登记治理文件绑定，manifest/shared constants 的十路径逐项一致。原 33 项测试保留，新增 17 项后共 50 项全部通过；两次完整 evidence SHA-256 均为 `24F287F9B71C974ABEF9E03AA55BCCA0C4AF9809AB2ADC44705A42EC3889F657`。实现审计见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_4_IMPLEMENTATION_AUDIT.md`。
 
 ## 研究问题
 
@@ -151,8 +153,8 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 按批准范围实现 cache fail-closed、pending outputs、runner governance binding 和 synthetic hardening。
-2. 两次完整 evidence 字节一致后提交 implementation audit，并创建新的 implementation-bound 恢复审批包。
+1. 提交并推送 v2.3.1 implementation、synthetic evidence 与审计。
+2. 创建并推送新的 implementation-bound official pre-Gold 恢复审批包后立即停止。
 3. Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub

@@ -11,7 +11,7 @@ from typing import Any, Iterable
 
 
 SCHEMA_VERSION = "stage4b_u1_v2"
-IMPLEMENTATION_CHECKPOINT = "stage4b_u1_v2_3"
+IMPLEMENTATION_CHECKPOINT = "stage4b_u1_v2_3_1"
 TIE_SALT = "stage4b_u1_v2"
 Q25_FLOOR = 0.1957079917192459
 BUDGET_FRACTION = 0.60
@@ -38,6 +38,83 @@ STAGE4A_R2_STRATEGY_SUMMARY_SHA256 = (
 FROZEN_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 FROZEN_MAX_LENGTH = 192
 FROZEN_BATCH_SIZE = 64
+OFFICIAL_ID_BOUND_CACHE_PATH = (
+    "E:\\科研\\超粒球RAG_数据\\processed\\"
+    "stage4b_u1_d_official_dev4500_minilm_idbound_embeddings.npz"
+)
+OFFICIAL_ID_BOUND_CACHE_SHA256 = (
+    "69ED39ABC0636B7B63A41639B64CB037FAE556F10CB130FCD18AFB61CBE06F7D"
+)
+OFFICIAL_ID_BOUND_CACHE_BYTES = 210_714_667
+OFFICIAL_UNIT_EMBEDDING_SHAPE = (143_820, 384)
+OFFICIAL_QUERY_EMBEDDING_SHAPE = (4_500, 384)
+OFFICIAL_EMBEDDING_DTYPE = "float32"
+OFFICIAL_CACHE_MEMBERS = frozenset(
+    {
+        "unit_embeddings",
+        "query_embeddings",
+        "unit_ids",
+        "query_ids",
+        "model_name",
+        "max_length",
+    }
+)
+OFFICIAL_EMBEDDING_NORM_TOLERANCE = 1e-6
+V2_2_DECISIONS_SHA256 = (
+    "6FB6EB6DBFE3C6B819E65ADD268D9F94CFEA24E5761C9E4CB53CD0965C3723C7"
+)
+V2_2_RANKINGS_SHA256 = (
+    "ED289D234F6F4FEC58A48168CB6CA78950489CD5F5640E977068CA6A786E03CB"
+)
+V2_2_POLICY_SHA256 = (
+    "829E8A0DB7E4108C4D23F2D0CE3DD0C227F329E9EDF77BB4ED49C20544EC07DC"
+)
+V2_2_POLICY_PATH = (
+    "E:\\科研\\HyperGranular-RAG\\results\\"
+    "stage4b_u1_d_official_dev4500_policy.json"
+)
+OFFICIAL_V2_3_1_ARTIFACT_PATHS = {
+    "unlabeled_units": (
+        "E:\\科研\\超粒球RAG_数据\\processed\\"
+        "stage4b_u1_d_official_dev4500_v2_3_1_unlabeled_units.jsonl"
+    ),
+    "unlabeled_queries": (
+        "E:\\科研\\超粒球RAG_数据\\processed\\"
+        "stage4b_u1_d_official_dev4500_v2_3_1_unlabeled_queries.jsonl"
+    ),
+    "controller_channel_audit": (
+        "E:\\科研\\HyperGranular-RAG\\results\\"
+        "stage4b_u1_d_official_dev4500_v2_3_1_controller_channel_audit.json"
+    ),
+    "evaluator_gold_map": (
+        "E:\\科研\\超粒球RAG_数据\\processed\\"
+        "stage4b_u1_d_official_dev4500_v2_3_1_gold_map.json"
+    ),
+    "evaluator_audit": (
+        "E:\\科研\\超粒球RAG_数据\\processed\\"
+        "stage4b_u1_d_official_dev4500_v2_3_1_evaluator_channel_audit.json"
+    ),
+    "decisions": (
+        "E:\\科研\\HyperGranular-RAG\\results\\"
+        "stage4b_u1_d_official_dev4500_v2_3_1_decisions.jsonl"
+    ),
+    "rankings": (
+        "E:\\科研\\HyperGranular-RAG\\results\\"
+        "stage4b_u1_d_official_dev4500_v2_3_1_rankings.jsonl"
+    ),
+    "policy": (
+        "E:\\科研\\HyperGranular-RAG\\results\\"
+        "stage4b_u1_d_official_dev4500_v2_3_1_policy.json"
+    ),
+    "controller_execution_audit": (
+        "E:\\科研\\HyperGranular-RAG\\docs\\"
+        "STAGE4B_U1_PREGOLD_V2_3_1_CONTROLLER_EXECUTION_AUDIT.md"
+    ),
+    "verified_pre_gold": (
+        "E:\\科研\\HyperGranular-RAG\\results\\"
+        "stage4b_u1_d_official_dev4500_v2_3_1_verified_pre_gold.json"
+    ),
+}
 PROTOCOL_RELATIVE_PATH = "docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md"
 POLICY_IMPLEMENTATION_FILES = {
     "common_source_sha256": "scripts/stage4b_u1_common.py",

@@ -567,3 +567,16 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Bound package commit: `e5a0e2187e770c9d7b9e9a85a6b8e91067ed2af1`.
 - Decision: `APPROVE_CACHE_FAIL_CLOSED_IMPLEMENTATION_SYNTHETIC_ONLY`.
 - Current status: `AMENDMENT_4_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY`.
+
+### Stage4B-U1-D Pre-Gold Amendment 4 Implementation
+
+- Implementation checkpoint: `stage4b_u1_v2_3_1`.
+- Formal controller now requires an existing frozen cache, performs strict pre/post fingerprints, writes pending outputs only in an OS temporary directory, enforces v2.2 decision/ranking bytes and registered policy drift, and rolls back partial promotions.
+- Synthetic runner supports registered, committed, repo-relative governance bindings and rejects missing, outside-repo, duplicate, or unregistered paths.
+- The ten v2.3.1 artifact paths are identical between shared constants and the Amendment 4 manifest.
+- The original 33 tests remain; 17 cache/governance hardening tests were added, for 50 total.
+- Two complete 50-test evidence runs passed with zero failures, errors, or skips and identical SHA-256 `24F287F9B71C974ABEF9E03AA55BCCA0C4AF9809AB2ADC44705A42EC3889F657`.
+- Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_4_IMPLEMENTATION_AUDIT.md`.
+- No official data, ranking, cache, Gold, reservation, or Stage3B access occurred.
+- Current status: `SYNTHETICALLY_VERIFIED_OFFICIAL_EXECUTION_NOT_AUTHORIZED`.
+- Next gate: commit/push implementation and evidence, then create a new implementation-bound resumption package and stop.
