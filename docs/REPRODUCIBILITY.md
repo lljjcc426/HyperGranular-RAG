@@ -599,3 +599,11 @@ The controller, retrieval, common, and comparator files retained their prior SHA
 The deterministic runner then executed the complete suite twice on unchanged tracked bytes. Each run passed 107/107 with zero failures, errors, skips, or official-path access attempts. Both complete evidence outputs were 20,495 bytes and had SHA-256 `81A8A5960395F729B643A42505E7F947962B338CD97ADD0506636D3AA2020A67`; direct byte comparison returned true. The evidence is `results/stage4b_u1_d_pregold_amendment_5a_1_synthetic_verification.json` and the full audit is `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_IMPLEMENTATION_AUDIT.md`.
 
 The previously observed NumPy 2.4.6/`numexpr` ABI warning was emitted by the existing optional import chain in each run, but all commands exited zero. No official input, cache, decisions, rankings, policy, evaluator/Gold, reservation, or Stage3B path was opened. This verification does not authorize official diagnosis or controller resumption.
+
+## Stage4B-U1-D Pre-Gold Amendment 5B v2 Package
+
+The revised request and machine-readable scope are `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md` and `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_MANIFEST.json`. They bind implementation/evidence commit `e566eb861ec6028ca89a40c9aca7d06737f1eb8e`, the 5A.1 audit and evidence hashes, all frozen implementation hashes, and the exact external SHA-256 values for units, queries, and controller channel audit.
+
+The requested execution remains diagnosis-only: approval governance and two byte-identical 107-test rebinding runs must be pushed before one read-only preflight; the preflight must externally hash all three channel inputs, cache, and reference decisions before one exact capture. The capture rechecks the channel inputs after temporary-decisions cleanup and before exclusive audit creation. Only aggregate comparison evidence may be committed, followed by immediate stop.
+
+The existing CLI token string is inert without a future decision that explicitly binds the 5B v2 package commit. It was not passed during 5A.1. No post-approval rebinding, preflight, official capture, controller, verifier, evaluator, Gold, reservation, or Stage3B command is authorized by the package itself. Current status is `AMENDMENT_5B_V2_AWAITING_APPROVAL`.

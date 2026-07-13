@@ -701,3 +701,15 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_IMPLEMENTATION_AUDIT.md`.
 - Current status: `AMENDMENT_5A_1_SYNTHETICALLY_VERIFIED`; official diagnosis, controller rerun, verifier, and Gold remain unapproved.
 - Next gate: push this implementation/evidence commit, then create and push an implementation-bound 5B v2 package and stop.
+
+### Stage4B-U1-D Pre-Gold Amendment 5B v2 Package
+
+- Bound 5A.1 implementation/evidence commit: `e566eb861ec6028ca89a40c9aca7d06737f1eb8e`.
+- Bound evidence: 20,495 bytes, SHA-256 `81A8A5960395F729B643A42505E7F947962B338CD97ADD0506636D3AA2020A67`, 107/107, zero failure/error/skip/official access.
+- The units, queries, and controller channel-audit exact paths and external SHA-256 values are registered independently from channel-audit content.
+- Requested sequence: approval governance commit/push, two 107-test post-approval rebinding runs, governance-binding commit/push, one read-only preflight, one exact decisions-only capture, aggregate audit commit/push, and immediate stop.
+- Existing implementation token remains inert unless a future decision explicitly binds and approves this v2 package.
+- Official rankings, policy, source-audit file, evaluator/Gold, full controller, verifier, reservation, Stage3B, code changes, cache mutation, equivalence relaxation, and retries remain prohibited.
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_MANIFEST.json`.
+- Current status: `AMENDMENT_5B_V2_AWAITING_APPROVAL`; no v2 command has run.

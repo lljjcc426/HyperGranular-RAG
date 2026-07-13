@@ -43,6 +43,9 @@
 29. 未来 5A.1 只能修改 decisions diagnostic capture 的三 SHA 前后硬门、对应 synthetic tests/evidence 及治理绑定；controller、retrieval、comparator 语义、byte-equivalence、模型、参数、score、ECDF、预算、trigger、ranking、endpoint 和停止规则必须保持不变。完成并推送新版 5B package 后必须停止。
 30. Amendment 5A.1 implementation/synthetic-only 已获批准，严格绑定 package commit `3137ace0328dd24908f95737ea1dcbe0c8fe045e` 及其 Manifest 中七个历史提交。批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_APPROVAL_DECISION.md`。
 31. 5A.1 只允许修改 Manifest 登记的三个实现/测试文件，保留原 98 项并新增至少 6 项测试，完整 suite 至少 104 项且连续两次字节一致、零 failure/error/skip/official access。禁止读取任何 official 输入、使用已退回 5B token、运行 official capture/controller/verifier/evaluator 或接触 Gold/reservation/Stage3B；新版 5B v2 包推送后立即停止。
+32. Amendment 5A.1 已完成并通过 synthetic 验证，implementation/evidence commit 为 `e566eb861ec6028ca89a40c9aca7d06737f1eb8e`。原 98 项全部保留，新增 9 项后共 107 项；两次最终 evidence 均为 20,495 bytes、SHA-256 `81A8A5960395F729B643A42505E7F947962B338CD97ADD0506636D3AA2020A67`，且零 failure/error/skip/official access。
+33. 新版 Amendment 5B v2 仅为审批请求，文件为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md` 与 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_MANIFEST.json`。在明确绑定其 package commit 的新批准前，不得运行 post-approval rebinding、preflight、official capture、controller、verifier、evaluator 或 Gold。
+34. capture 中现有 `APPROVE_STAGE4B_U1_D_AMENDMENT_5B_OFFICIAL_DECISIONS_ONLY_DIAGNOSTIC` 仅是实现参数，不是自足授权；5A.1 中未使用。只有未来 package-bound 5B v2 批准明确激活后才可传入，且仍须逐项匹配三项外部冻结 SHA、cache/reference SHA、精确路径和一次性停止边界。
 
 ## GitHub 与文档
 

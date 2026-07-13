@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Amendment 5A.1 implementation/synthetic 已验证；准备 implementation-bound 5B v2 审批包 |
+| 当前阶段 | Amendment 5A.1 synthetic 已验证；implementation-bound 5B v2 包等待独立审批 |
 | 获批执行协议 | 5A.1 已执行完毕；official diagnosis/controller/verifier/Gold 仍未授权 |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `AMENDMENT_5A_1_SYNTHETICALLY_VERIFIED` |
+| 协议状态 | `AMENDMENT_5B_V2_AWAITING_APPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -54,6 +54,8 @@ Amendment 5B 审批包 commit `ceb755252540cf223aa18ac721443154c29cd07a` 已退�
 Amendment 5A.1 仅申请实现与 synthetic 验证三项 channel-input SHA 前后硬门；冻结值分别为 units `114D28A7C9842079BF80C292274D7DBBBC718F05CBE8F4435487C245238427FA`、queries `6EE942C680EAC86D0410FC25BCC302CA7312A0E253E318025A957D51A09B4B6B`、controller channel audit `D134CDE168C833784F238B61420B4738C1F65B9FCA995945EB04E8B99EAAB2FA`。请求与 Manifest 见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_APPROVAL_REQUEST.md`、`docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_MANIFEST.json`；在 package-bound 明确批准前不得修改实现或运行 synthetic。
 
 Amendment 5A.1 已按批准范围实现：capture 要求三个 expected-SHA 参数，official 路径在语义解析/cache/计算前逐项核验普通文件、外部冻结值和实际 SHA，并在临时 decisions 比较与清理后、audit exclusive-create 前再次核验。原 98 项测试全部保留，新增 9 项后完整 suite 为 107 项；两次最终 evidence 均为 107/107、零 failure/error/skip/official access，20,495 bytes 且 SHA-256 均为 `81A8A5960395F729B643A42505E7F947962B338CD97ADD0506636D3AA2020A67`。审计见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_IMPLEMENTATION_AUDIT.md`。这不授权 official 诊断或恢复 Hard Failure 4。
+
+新版 Amendment 5B v2 包已组装，严格绑定 5A.1 implementation/evidence commit `e566eb861ec6028ca89a40c9aca7d06737f1eb8e`、evidence SHA 和三项 channel-input 外部 SHA。请求仅覆盖批准治理后的 107 项双次 rebinding、一次只读 preflight、一次 decisions-only capture、聚合审计提交与立即停止。请求与机器边界见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md`、`docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_MANIFEST.json`；在明确绑定 v2 package commit 的批准前不得运行。
 
 ## 研究问题
 
