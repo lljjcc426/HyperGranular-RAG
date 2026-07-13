@@ -49,6 +49,9 @@
 35. Amendment 5B v2 单次 official decisions-only 诊断已获批准，严格绑定 package commit `f43e22ef079701139d4437849be8ad57654f80d7` 及其七个历史提交。批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_APPROVAL_DECISION.md`。
 36. 唯一允许顺序为：批准治理提交推送 -> 两次 107 项 post-approval rebinding -> governance-binding 与 rebinding audit 提交推送 -> 唯一一次只读 preflight -> 通过后唯一一次 exact-command capture -> 聚合边界核验与 machine/narrative audit 提交推送 -> 立即停止。任一硬失败不得自动重试。
 37. 本批准不授权完整 controller、official ranking/reference policy、source-audit 文件、verifier、evaluator/Gold、reservation、Stage3B、代码/参数/等价门修改、cache 写入或正式 decisions/rankings/policy 提升。capture token 只有在 rebinding 和 preflight 全部通过后才可在获批 exact command 中传入一次。
+38. 5B v2 批准治理 commit `2ddf6e044c27e47385a558bdaca80cb6c31c4ffe` 与 rebinding/governance commit `4c10ad942a75af42b910b860fd4897b672160d5d` 已推送；两次 107 项 rebinding 均全通过且 evidence SHA-256 为 `7D9C3527480ECDFFA87C943589538BCEFEFA3610A6D415719429CDE5D222D12E`。唯一一次只读 preflight 全部通过。
+39. 唯一一次 official capture 在 comparator 读取冻结 v2.2 reference decisions 时触发 `HARD_FAILURE_5_INCOMPARABLE_HETEROGENEOUS_REFERENCE_DECISIONS_SCHEMA`，错误边界为 `Incomparable heterogeneous decisions schema at line 2`。当前状态为 `AMENDMENT_5B_V2_OFFICIAL_DIAGNOSTIC_STOPPED_HARD_FAILURE_5`，不得重跑 capture 或继续读取 official decisions 内容。
+40. Hard Failure 5 未生成 machine/narrative audit，temporary decisions 已清理，三项 channel/cache/reference SHA 与 cache bytes 未变化，五项正式输出仍不存在。后续任何 schema-only 诊断、comparator 修改、reference normalization 或 capture/controller 重跑均须新的 package-bound Amendment 批准。
 
 ## GitHub 与文档
 

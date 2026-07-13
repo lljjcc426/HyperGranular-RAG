@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Amendment 5B v2 批准后 rebinding 已验证；唯一一次只读 preflight 已获顺序授权 |
-| 获批执行协议 | 仅限双次 rebinding、一次 preflight、一次 decisions-only capture 与聚合审计 |
+| 当前阶段 | Amendment 5B v2 唯一一次 capture 已触发 Hard Failure 5 并停止 |
+| 获批执行协议 | 5B v2 单次授权已耗尽；不允许重跑、修复或继续 official 诊断 |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `AMENDMENT_5B_V2_REBINDING_VERIFIED_PREFLIGHT_AUTHORIZED` |
+| 协议状态 | `AMENDMENT_5B_V2_OFFICIAL_DIAGNOSTIC_STOPPED_HARD_FAILURE_5` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -56,6 +56,8 @@ Amendment 5A.1 仅申请实现与 synthetic 验证三项 channel-input SHA 前�
 Amendment 5A.1 已按批准范围实现：capture 要求三个 expected-SHA 参数，official 路径在语义解析/cache/计算前逐项核验普通文件、外部冻结值和实际 SHA，并在临时 decisions 比较与清理后、audit exclusive-create 前再次核验。原 98 项测试全部保留，新增 9 项后完整 suite 为 107 项；两次最终 evidence 均为 107/107、零 failure/error/skip/official access，20,495 bytes 且 SHA-256 均为 `81A8A5960395F729B643A42505E7F947962B338CD97ADD0506636D3AA2020A67`。审计见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_IMPLEMENTATION_AUDIT.md`。这不授权 official 诊断或恢复 Hard Failure 4。
 
 新版 Amendment 5B v2 包已组装，严格绑定 5A.1 implementation/evidence commit `e566eb861ec6028ca89a40c9aca7d06737f1eb8e`、evidence SHA 和三项 channel-input 外部 SHA。请求仅覆盖批准治理后的 107 项双次 rebinding、一次只读 preflight、一次 decisions-only capture、聚合审计提交与立即停止。请求与机器边界见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md`、`docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_MANIFEST.json`；在明确绑定 v2 package commit 的批准前不得运行。
+
+5B v2 获批后，两次 107 项 rebinding 与唯一一次只读 preflight 全部通过。唯一一次 exact-command capture 随后在 comparator 读取冻结 v2.2 reference decisions 时因 `Incomparable heterogeneous decisions schema at line 2` 硬失败；没有产生聚合 machine audit，不能判断 byte/canonical/semantic 差异。临时 decisions 已清理，channel/cache/reference hash 与 cache bytes 不变，正式 outputs 仍不存在。失败审计见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_5.md`；任何后续 schema 诊断或重跑必须另行批准。
 
 ## 研究问题
 

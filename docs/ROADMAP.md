@@ -736,3 +736,15 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Governance binding: `results/stage4b_u1_d_pregold_amendment_5b_v2_governance_binding.json`.
 - Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_SYNTHETIC_REBINDING_AUDIT.md`.
 - Current status after this evidence is committed and pushed: `AMENDMENT_5B_V2_REBINDING_VERIFIED_PREFLIGHT_AUTHORIZED`.
+
+### Stage4B-U1-D Pre-Gold Hard Failure 5
+
+- The only approved read-only preflight ran once on HEAD `4c10ad942a75af42b910b860fd4897b672160d5d` and passed every Git, governance, implementation, channel/cache/reference hash, count, dual-ID, namespace, source-digest, and output-absence gate.
+- The only approved exact-command capture then generated decisions under an OS temporary directory and reached the decisions comparator.
+- The comparator stopped while loading the frozen v2.2 reference decisions with `Incomparable heterogeneous decisions schema at line 2`.
+- Failure code: `HARD_FAILURE_5_INCOMPARABLE_HETEROGENEOUS_REFERENCE_DECISIONS_SCHEMA`.
+- No aggregate machine audit or narrative diagnostic audit was created, so no byte/canonical/schema/value/semantic difference classification is available.
+- Post-failure checks confirmed zero temporary diagnostic entries, unchanged three channel hashes, unchanged cache SHA/210,714,667 bytes, unchanged reference-decisions SHA, and zero formal-output files.
+- No ranking, policy, source-audit file, verifier, evaluator/Gold, reservation, or Stage3B access occurred.
+- Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_5.md`.
+- Current status: `AMENDMENT_5B_V2_OFFICIAL_DIAGNOSTIC_STOPPED_HARD_FAILURE_5`; capture may not be retried without a new package-bound Amendment.

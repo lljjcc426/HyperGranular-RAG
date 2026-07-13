@@ -623,3 +623,11 @@ Approval governance commit `2ddf6e044c27e47385a558bdaca80cb6c31c4ffe` was pushed
 The governance-binding JSON independently hashes the v2 request, Manifest, approval decision, final approved `AGENTS.md`, and the rebinding evidence, and records implementation commit `e566eb861ec6028ca89a40c9aca7d06737f1eb8e`. The evidence and binding are `results/stage4b_u1_d_pregold_amendment_5b_v2_synthetic_rebinding.json` and `results/stage4b_u1_d_pregold_amendment_5b_v2_governance_binding.json`; the narrative record is `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_SYNTHETIC_REBINDING_AUDIT.md`.
 
 The existing NumPy 2.4.6/`numexpr` ABI warning remained visible, but both runs exited zero. No official input was opened. After these artifacts are committed and pushed, the next and only authorized action is one read-only preflight; capture remains blocked unless that preflight passes every gate.
+
+## Stage4B-U1-D Pre-Gold Hard Failure 5
+
+One read-only preflight ran on synchronized HEAD `4c10ad942a75af42b910b860fd4897b672160d5d`. It passed all governance, implementation, GitHub, five-input regular-file, three external channel SHA, cache SHA/bytes, reference-decisions SHA, 4,500-query/143,820-unit, dual-ID, namespace, channel-audit, source-digest, and output-absence checks. It did not open rankings, policy, source audit, Gold, reservation, or Stage3B.
+
+The exact approved capture command then ran once. It completed channel pre-gates, loaded the require-existing cache, computed temporary decisions, and stopped in the comparator while loading the frozen v2.2 reference decisions. The observed exception was `DecisionsDiagnosticError: Incomparable heterogeneous decisions schema at line 2`. Because comparison did not complete, no machine aggregate audit was exclusive-created and no byte/canonical/semantic classification is available.
+
+Independent read-only post-failure checks found no remaining `stage4b_u1_decisions_diag_*` temporary entry, no machine/narrative audit, and no formal v2.3.1 decisions/rankings/policy/controller-audit/`VERIFIED_PRE_GOLD` output. The three channel SHA values, cache SHA and 210,714,667-byte size, and reference-decisions SHA remained exactly frozen. No retry occurred. Full evidence is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_5.md`; current status is `AMENDMENT_5B_V2_OFFICIAL_DIAGNOSTIC_STOPPED_HARD_FAILURE_5`.
