@@ -621,3 +621,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - No retrieval/Gold metric was read or computed; reservation and Stage3B were not accessed.
 - Audit: `docs/STAGE4B_U1_PREGOLD_V2_3_1_FORMAL_PREFLIGHT_AUDIT.md`.
 - Current status: `PASS_V2_3_1_FORMAL_PREFLIGHT_CHANNEL_AUTHORIZED`.
+
+### Stage4B-U1-D v2.3.1 Channel And Hard Failure 4
+
+- One exact-path channel preparation passed; unlabeled units/queries are byte-identical to v2.2 and contain no prohibited controller keys.
+- Channel audit: `docs/STAGE4B_U1_PREGOLD_V2_3_1_CHANNEL_PREPARATION_AUDIT.md`.
+- The single require-existing controller run passed its post-computation cache fingerprint, then stopped before promotion because pending decisions differed from frozen v2.2 bytes.
+- Failure code: `HARD_FAILURE_V2_3_1_DECISIONS_EQUIVALENCE`.
+- No decisions, rankings, policy, controller execution audit, or `VERIFIED_PRE_GOLD` was created; fresh/legacy cache and all v2.2 reference hashes remain unchanged.
+- Failure audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_4.md`.
+- No verifier, evaluator, Gold metric, reservation, or Stage3B access occurred.
+- Current status: `PREGOLD_EXECUTION_STOPPED_HARD_FAILURE_4`; diagnosis or rerun requires a new approved review/Amendment.

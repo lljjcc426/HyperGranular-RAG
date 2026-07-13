@@ -32,6 +32,8 @@
 18. Stage4B-U1-D v2.3.1 official pre-Gold 恢复已获批准，严格绑定恢复审批包提交 `e76c921454697d1784b0d76a9d9677113051f0f6` 与实现提交 `34349c70ee24b8240fd169393134d4280968b790`。批准决定为 `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_3_1_APPROVAL_DECISION.md`。
 19. 唯一允许顺序为：批准治理提交推送 -> 两次 50 项 governance-bound synthetic rebinding 并提交推送 -> 一次 formal preflight -> 一次 versioned channel -> 一次 require-existing controller -> 工件提交推送 -> 一次 independent verifier -> 推送 `VERIFIED_PRE_GOLD` 后立即停止。任一硬失败不得自动重跑。
 20. 本批准不授权 Gold evaluation、U1-D 指标读取或解释、U1-D 结论、reservation、Stage3B、实现/参数变更、cache 写入或 v2.2 失败工件改写。
+21. v2.3.1 唯一一次 formal preflight 与唯一一次 channel preparation 均通过；唯一一次 require-existing controller 在 pending decisions 的 v2.2 字节等价门触发 `HARD_FAILURE_V2_3_1_DECISIONS_EQUIVALENCE`。当前状态为 `PREGOLD_EXECUTION_STOPPED_HARD_FAILURE_4`。
+22. Hard Failure 4 未提升 decisions/rankings/policy，未生成 controller execution audit 或 `VERIFIED_PRE_GOLD`，fresh/legacy cache 与 v2.2 工件 hash 均未变化。禁止自动重跑、运行 verifier 或诊断 official ranking 内容；后续必须先形成并批准新的审查/Amendment。
 
 ## GitHub 与文档
 

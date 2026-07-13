@@ -6,13 +6,13 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Stage4B-U1-D v2.3.1 唯一一次 formal preflight 已通过；channel preparation 已解锁 |
+| 当前阶段 | Stage4B-U1-D v2.3.1 controller 等价门硬失败；official execution 已停止 |
 | 获批执行协议 | 仅授权到 `VERIFIED_PRE_GOLD` 且 `evaluation=null`；Gold 继续锁定 |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `PASS_V2_3_1_FORMAL_PREFLIGHT_CHANNEL_AUTHORIZED` |
+| 协议状态 | `PREGOLD_EXECUTION_STOPPED_HARD_FAILURE_4` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
-| Controller | 单次运行工件已提交，但 verifier 未通过；现有工件 `UNVERIFIED_INVALID_FOR_GOLD` |
+| Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
 | 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
 
 第一次官方提取在预注册映射硬门处停止：基础区间 `[800:5300)` 的 11,003 个 supporting facts 中有 19 个 sentence index 越界，影响 19 条查询；该失败没有生成 gain/harm 或检索指标。Amendment 1 随后采用仅由标注完整性决定的确定性替换，从 `[9800:9819)` 补入 19 条有效记录。最终 11,015/11,015 supporting facts 完整映射，development/reservation 零重叠。
@@ -153,8 +153,8 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 提交推送唯一一次 formal preflight 审计。
-2. 使用 manifest 十路径运行获批的唯一一次 versioned channel preparation；不得运行 evaluator。
+1. 提交推送一次 channel preparation 审计和 Hard Failure 4 证据。
+2. 在新的审查/Amendment 获批前，不诊断 official ranking 内容、不重跑 controller、不运行 verifier。
 3. Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub
