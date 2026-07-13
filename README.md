@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Stage4B-U1-D v2.3.1 批准后 synthetic rebinding 已通过并同步；formal preflight 已解锁 |
+| 当前阶段 | Stage4B-U1-D v2.3.1 唯一一次 formal preflight 已通过；channel preparation 已解锁 |
 | 获批执行协议 | 仅授权到 `VERIFIED_PRE_GOLD` 且 `evaluation=null`；Gold 继续锁定 |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `SYNTHETIC_REBINDING_VERIFIED_FORMAL_PREFLIGHT_AUTHORIZED` |
+| 协议状态 | `PASS_V2_3_1_FORMAL_PREFLIGHT_CHANNEL_AUTHORIZED` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | 单次运行工件已提交，但 verifier 未通过；现有工件 `UNVERIFIED_INVALID_FOR_GOLD` |
@@ -153,8 +153,8 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 核对 rebinding evidence、audit 与 GitHub `main` 同步。
-2. 运行获批的唯一一次只读 formal preflight；任一硬门失败立即停止。
+1. 提交推送唯一一次 formal preflight 审计。
+2. 使用 manifest 十路径运行获批的唯一一次 versioned channel preparation；不得运行 evaluator。
 3. Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub

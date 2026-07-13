@@ -611,3 +611,13 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - No official development, source audit, official ranking/cache, Gold, reservation, or Stage3B access occurred.
 - Audit: `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_3_1_SYNTHETIC_REBINDING_AUDIT.md`.
 - Current status after this evidence commit is pushed: `SYNTHETIC_REBINDING_VERIFIED_FORMAL_PREFLIGHT_AUTHORIZED`.
+
+### Stage4B-U1-D v2.3.1 Formal Preflight
+
+- Execution count: one.
+- Execution HEAD: `a963befd812658972b156d2a7a26a488ac3c4482`.
+- All Git, 22 implementation-hash, three governance-hash, 4,500/143,820 dual-ID, source-audit, fresh/legacy cache, v2.2 equivalence, and ten-path absence gates passed.
+- Fresh cache SHA before and after remained `69ED39ABC0636B7B63A41639B64CB037FAE556F10CB130FCD18AFB61CBE06F7D`.
+- No retrieval/Gold metric was read or computed; reservation and Stage3B were not accessed.
+- Audit: `docs/STAGE4B_U1_PREGOLD_V2_3_1_FORMAL_PREFLIGHT_AUDIT.md`.
+- Current status: `PASS_V2_3_1_FORMAL_PREFLIGHT_CHANNEL_AUTHORIZED`.
