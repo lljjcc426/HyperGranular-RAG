@@ -1,0 +1,43 @@
+{
+  "schema_version": "stage4b_u1_pregold_amendment_5b_v2_governance_binding",
+  "stage": "Stage4B-U1-D Pre-Gold Amendment 5B v2",
+  "status": "POST_APPROVAL_SYNTHETIC_REBINDING_VERIFIED_PREFLIGHT_AUTHORIZED",
+  "approval_package_commit": "f43e22ef079701139d4437849be8ad57654f80d7",
+  "approval_governance_commit": "2ddf6e044c27e47385a558bdaca80cb6c31c4ffe",
+  "implementation_and_evidence_commit": "e566eb861ec6028ca89a40c9aca7d06737f1eb8e",
+  "governance_files": {
+    "AGENTS.md": "FC77EF6C76EDC19F06E55C9D7E32CDAD81C98A53D8083B5458BD3CCA6EF45853",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_APPROVAL_DECISION.md": "EE91A6B0F1D66A1F487D54DE8BF5C907D70811C0619463EC6F2EE291B631D8B8",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_MANIFEST.json": "96989FB3A585E5FA6229958C3A34D6E0ED58D9595E5DF30327C5419C367CB592",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md": "4BD6BA49AAC4DB7A1C38356FAF1936639C5CF6D2BFCDC7E206CBC3BA37158D14"
+  },
+  "post_approval_synthetic_rebinding": {
+    "path": "results/stage4b_u1_d_pregold_amendment_5b_v2_synthetic_rebinding.json",
+    "sha256": "7D9C3527480ECDFFA87C943589538BCEFEFA3610A6D415719429CDE5D222D12E",
+    "bytes": 20495,
+    "complete_runs": 2,
+    "byte_identical": true,
+    "tests_run_each": 107,
+    "failures_each": 0,
+    "errors_each": 0,
+    "skipped_each": 0,
+    "official_path_access_attempts_each": 0
+  },
+  "implementation_binding": {
+    "manifest_implementation_hashes_match_current_files": true,
+    "controller_checkpoint": "stage4b_u1_v2_3_1",
+    "raw_byte_equivalence_remains_controlling": true,
+    "code_changed_after_package_commit": false
+  },
+  "execution_state": {
+    "official_preflight_runs": 0,
+    "official_capture_runs": 0,
+    "controller_reruns": 0,
+    "verifier_runs": 0,
+    "evaluator_runs": 0,
+    "gold_accessed": false,
+    "reservation_accessed": false,
+    "stage3b_accessed": false
+  },
+  "next_gate": "ONE_READ_ONLY_PREFLIGHT_AFTER_THIS_BINDING_AND_AUDIT_ARE_COMMITTED_AND_PUSHED"
+}

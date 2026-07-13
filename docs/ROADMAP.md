@@ -724,3 +724,15 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Full controller, rankings, policy, source-audit file, verifier, evaluator/Gold, reservation, Stage3B, implementation changes, cache mutation, retries, and automatic resumption remain prohibited.
 - Approval decision: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_APPROVAL_DECISION.md`.
 - Current status: `AMENDMENT_5B_V2_APPROVED_REBINDING_REQUIRED`; no rebinding, preflight, or capture has run under this approval.
+
+### Stage4B-U1-D Pre-Gold Amendment 5B v2 Post-Approval Rebinding
+
+- Approval governance commit: `2ddf6e044c27e47385a558bdaca80cb6c31c4ffe`.
+- The complete 107-test suite ran twice on the approved governance bytes; both runs passed 107/107 with zero failures/errors/skips and zero official-path access attempts.
+- Both outputs were 20,495 bytes with SHA-256 `7D9C3527480ECDFFA87C943589538BCEFEFA3610A6D415719429CDE5D222D12E`; direct byte comparison passed.
+- Governance binding covers the v2 request, Manifest, approval decision, final approved `AGENTS.md`, implementation commit `e566eb8...`, and rebinding evidence.
+- The existing NumPy 2.4.6/`numexpr` ABI warning was emitted, but both commands exited zero.
+- Evidence: `results/stage4b_u1_d_pregold_amendment_5b_v2_synthetic_rebinding.json`.
+- Governance binding: `results/stage4b_u1_d_pregold_amendment_5b_v2_governance_binding.json`.
+- Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_SYNTHETIC_REBINDING_AUDIT.md`.
+- Current status after this evidence is committed and pushed: `AMENDMENT_5B_V2_REBINDING_VERIFIED_PREFLIGHT_AUTHORIZED`.

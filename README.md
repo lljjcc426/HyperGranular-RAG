@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Amendment 5B v2 已批准；批准治理后 synthetic rebinding 待执行 |
+| 当前阶段 | Amendment 5B v2 批准后 rebinding 已验证；唯一一次只读 preflight 已获顺序授权 |
 | 获批执行协议 | 仅限双次 rebinding、一次 preflight、一次 decisions-only capture 与聚合审计 |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `AMENDMENT_5B_V2_APPROVED_REBINDING_REQUIRED` |
+| 协议状态 | `AMENDMENT_5B_V2_REBINDING_VERIFIED_PREFLIGHT_AUTHORIZED` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |

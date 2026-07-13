@@ -615,3 +615,11 @@ The user approved one official decisions-only diagnosis on 2026-07-14, strictly 
 Execution remains gated on a pushed approval-governance state, two complete 107-test rebinding runs with byte-identical evidence and zero official access, and a pushed governance-binding JSON/audit. Only then may one read-only preflight examine the five permitted inputs. Capture is authorized once only if that preflight passes every frozen path, SHA, bytes, boundary, implementation, output-absence, and Git gate.
 
 The endpoint remains a diagnosis-only aggregate audit. No full controller, ranking/reference-policy/source-audit read, verifier, evaluator/Gold, reservation, Stage3B, implementation/equivalence change, cache mutation, retry, or automatic pre-Gold resumption is authorized. Current status is `AMENDMENT_5B_V2_APPROVED_REBINDING_REQUIRED`.
+
+## Stage4B-U1-D Pre-Gold Amendment 5B v2 Post-Approval Rebinding
+
+Approval governance commit `2ddf6e044c27e47385a558bdaca80cb6c31c4ffe` was pushed before synthetic execution. On those governance bytes, the complete 107-test runner executed twice. Both runs passed 107/107 with zero failures, errors, skips, or official-path access attempts. Both complete outputs were 20,495 bytes with SHA-256 `7D9C3527480ECDFFA87C943589538BCEFEFA3610A6D415719429CDE5D222D12E`; direct byte comparison was true.
+
+The governance-binding JSON independently hashes the v2 request, Manifest, approval decision, final approved `AGENTS.md`, and the rebinding evidence, and records implementation commit `e566eb861ec6028ca89a40c9aca7d06737f1eb8e`. The evidence and binding are `results/stage4b_u1_d_pregold_amendment_5b_v2_synthetic_rebinding.json` and `results/stage4b_u1_d_pregold_amendment_5b_v2_governance_binding.json`; the narrative record is `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_SYNTHETIC_REBINDING_AUDIT.md`.
+
+The existing NumPy 2.4.6/`numexpr` ABI warning remained visible, but both runs exited zero. No official input was opened. After these artifacts are committed and pushed, the next and only authorized action is one read-only preflight; capture remains blocked unless that preflight passes every gate.
