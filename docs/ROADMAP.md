@@ -466,3 +466,12 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Authorized sequence ends at committed and pushed `VERIFIED_PRE_GOLD` with `evaluation=null`.
 - Gold evaluation, U1-D metrics or interpretation, promotion, reservation, Stage3B, implementation changes, parameter changes, and automatic retry remain prohibited.
 - Current status: `OFFICIAL_PREGOLD_RESUMPTION_APPROVED_AWAITING_SYNTHETIC_REBINDING`.
+
+### Stage4B-U1-D v2.2 Synthetic Rebinding
+
+- Approval governance commit: `c13be1f`.
+- Audit: `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_2_SYNTHETIC_REBINDING_AUDIT.md`.
+- Two complete 24-test runs passed with 0 failures, errors, or skips.
+- Both complete outputs have SHA-256 `9B01C80F66096F01C763C25E44E4D079C40B681F6C52F0CC55F70492689EAAB1` and are byte-identical.
+- The tests accessed no official development, official source audit, reservation, or Stage3B data.
+- Current status: `SYNTHETIC_REBINDING_VERIFIED_READY_FOR_DUAL_ID_FORMAL_PREFLIGHT`.

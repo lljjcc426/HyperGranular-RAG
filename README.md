@@ -6,13 +6,13 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Stage4B-U1-D v2.2 official pre-Gold 恢复已批准，等待 synthetic rebinding |
+| 当前阶段 | Stage4B-U1-D v2.2 synthetic rebinding 已通过，等待一次 dual-ID formal preflight |
 | 获批执行协议 | 仅限治理重绑定、formal preflight、Gold-free controller、工件冻结与 `VERIFIED_PRE_GOLD` |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `OFFICIAL_PREGOLD_RESUMPTION_APPROVED_AWAITING_SYNTHETIC_REBINDING` |
+| 协议状态 | `SYNTHETIC_REBINDING_VERIFIED_READY_FOR_DUAL_ID_FORMAL_PREFLIGHT` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
-| Controller | 双重 ID 绑定已修正；须先完成新治理字节上的两次 synthetic rebinding 与 formal preflight |
+| Controller | 双重 ID 绑定已修正；新治理字节 synthetic rebinding 已通过，尚未运行 formal controller |
 | 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
 
 第一次官方提取在预注册映射硬门处停止：基础区间 `[800:5300)` 的 11,003 个 supporting facts 中有 19 个 sentence index 越界，影响 19 条查询；该失败没有生成 gain/harm 或检索指标。Amendment 1 随后采用仅由标注完整性决定的确定性替换，从 `[9800:9819)` 补入 19 条有效记录。最终 11,015/11,015 supporting facts 完整映射，development/reservation 零重叠。
@@ -30,6 +30,8 @@ Amendment 1 后的正式 preflight 又在 query-ID digest 硬门停止：source 
 Amendment 2 实现将 checkpoint 更新为 `stage4b_u1_v2_2`，分别冻结 sample-ID 与 runtime query-ID digest，并在 preparer/controller/verifier 中逐条检查 `query_id == dataset::sample_id`。原 20 项测试全部保留，新增 4 项失败注入后共 24 项全部通过；最终 binding evidence 连续两次 SHA-256 均为 `8B3057238D67EBE874017068C125126974062C61FAF3D79595E884F16A876D7D`。official development、source audit、reservation 与 Stage3B 均未被测试访问。
 
 用户已批准 v2.2 official pre-Gold 恢复，绑定审批包提交 `fae181564504f1a69bcebfd5d5201eea7e2d9abf` 与实现提交 `ca2cca332292f7bd6af12e2a429100be11da5549`。批准顺序只到 `VERIFIED_PRE_GOLD` 且 `evaluation=null`；Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
+
+批准治理提交 `c13be1f` 推送后，24 项 synthetic binding verification 在新治理字节上完整运行两次，两次均为 24/24 且输出 SHA-256 均为 `9B01C80F66096F01C763C25E44E4D079C40B681F6C52F0CC55F70492689EAAB1`。两次运行均未访问 official development、official source audit、reservation 或 Stage3B。审计见 `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_2_SYNTHETIC_REBINDING_AUDIT.md`。
 
 ## 研究问题
 
@@ -137,8 +139,8 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 提交并推送 v2.2 恢复批准治理状态，再在新治理字节上运行两次字节一致的 24 项 synthetic verification。
-2. 严格运行一次 dual-ID formal preflight、fresh cache/controller、独立 cache 核查和 `VERIFIED_PRE_GOLD`，推送后立即停止。
+1. 严格运行一次 dual-ID formal preflight；任一门失败立即停止。
+2. preflight 全部通过后，依次运行一次 channel、fresh cache/controller、独立 cache 核查和 `VERIFIED_PRE_GOLD`，推送后立即停止。
 3. 任一硬门失败立即停止；Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub
