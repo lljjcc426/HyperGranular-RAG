@@ -6,7 +6,10 @@
 - Mode: protocol amendment / implementation plan
 - Draft date: 2026-07-13
 - Amendment ID: `STAGE4B_U1_D_PREGOLD_AMENDMENT_2`
-- Status: `DRAFT_NOT_APPROVED_NOT_EXECUTABLE`
+- Status: `APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY`
+- Approval decision: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_2_APPROVAL_DECISION.md`
+- Approval date: 2026-07-13
+- Bound amendment commit: `dde5a28fec476fddd0ac82ebad39d9eeab0bea1e`
 - Trigger: `HARD_FAILURE_QUERY_ID_REPRESENTATION_MISMATCH`
 - Failure audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_2.md`
 - Parent Amendment 1 commit: `a7e121584d9f512bb7b4abaabdb9c93913ad560d`
@@ -92,10 +95,10 @@ Stage4A source audit 的 development digest 绑定官方原始 `_id`，在 proce
 
 ## 审批要求
 
-当前草案不可执行。第一阶段最小批准语句为：
+第一阶段已由用户按以下语句批准：
 
 ```text
 批准 Stage4B-U1-D Pre-Gold Amendment 2：修正 sample_id/query_id 双重边界绑定，仅授权实现与合成验证
 ```
 
-批准必须绑定本草案所在 Git commit。实现与 synthetic evidence 推送后，项目将再次停止并提交 official pre-Gold 恢复审批，不会自动接触 official development。
+批准绑定 commit `dde5a28fec476fddd0ac82ebad39d9eeab0bea1e`。实现与 synthetic evidence 推送后，项目将再次停止并提交 official pre-Gold 恢复审批，不会自动接触 official development。

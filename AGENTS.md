@@ -19,8 +19,8 @@
 5. Stage4A-R2 已完成并独立验证；Stage4B-U1 v2 架构仅为 `ACCEPTED_IN_PRINCIPLE`。
 6. q25 阈值 `0.1957079917192459` 只能作为冻结迁移策略使用，不得声称是 2Wiki 最优阈值。
 7. 任何硬失败后的修订必须先批准、写入、提交并推送，再执行。
-8. Stage4B-U1-D pre-Gold 已在 `HARD_FAILURE_QUERY_ID_REPRESENTATION_MISMATCH` 处再次停止；未运行 official channel/controller，未创建新 cache，当前状态为 `PREGOLD_EXECUTION_STOPPED_HARD_FAILURE_2`。
-9. Amendment 2 获批前禁止修改实现或重新读取 official development。旧 Stage4A-R2 cache 必须原样保留；official channel/controller/cache/verifier、U1-D Gold evaluation、任何 U1-D 指标、reservation 和 Stage3B 全部锁定；不得自动重跑。
+8. Stage4B-U1-D Amendment 2 当前仅获批 `APPROVE_STAGE4B_U1_D_PREGOLD_AMENDMENT_2_IMPLEMENTATION_SYNTHETIC_ONLY`：允许修正 sample-ID/runtime-query-ID 双重绑定、增加对应失败注入并运行 synthetic suite；实现 evidence 推送后必须停止。
+9. 禁止重新读取 official development 或运行 official preflight/channel/controller/cache/verifier。旧 Stage4A-R2 cache 必须原样保留；U1-D Gold evaluation、任何 U1-D 指标、reservation 和 Stage3B 全部锁定。新的实现提交必须再次获批后才能接触 official development。
 
 ## GitHub 与文档
 

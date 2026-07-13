@@ -465,3 +465,5 @@ The Amendment 1 formal preflight stopped before channel preparation because two 
 The full failure record is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_2.md`. No channel, cache, controller artifact, verifier artifact, or metric was generated. Do not rerun official preflight under Amendment 1.
 
 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_2_DRAFT.md` freezes a dual-ID boundary correction. Its first approval would authorize implementation and synthetic verification only; official development remains locked pending a later implementation-bound approval.
+
+Amendment 2 implementation and synthetic verification were approved on 2026-07-13, bound to commit `dde5a28fec476fddd0ac82ebad39d9eeab0bea1e`. This approval does not permit reading official development or running any official Stage4B-U1 command. After implementation, the complete synthetic suite and deterministic evidence must be committed and pushed before a new official-resumption approval is requested.

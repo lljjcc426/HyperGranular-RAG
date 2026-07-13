@@ -426,3 +426,12 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Status: `DRAFT_NOT_APPROVED_NOT_EXECUTABLE`.
 - The proposal freezes both sample-ID and runtime query-ID digests and requires an exact per-row `query_id == dataset::sample_id` relation.
 - The first approval would authorize only minimal implementation changes and synthetic hardening. Official development remains locked until a new implementation commit is separately approved.
+
+### Stage4B-U1-D Pre-Gold Amendment 2 Approval
+
+- Decision: `APPROVE_STAGE4B_U1_D_PREGOLD_AMENDMENT_2_IMPLEMENTATION_SYNTHETIC_ONLY` on 2026-07-13.
+- Approval decision: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_2_APPROVAL_DECISION.md`.
+- Bound amendment commit: `dde5a28fec476fddd0ac82ebad39d9eeab0bea1e`.
+- Authorized: dual sample-ID/runtime-query-ID binding implementation, per-row namespace validation, corresponding failure injections, complete synthetic suite, deterministic evidence, audit, commit, and push.
+- Not authorized: official development, preflight, channel, controller, cache, formal verifier, Gold evaluation, metrics, reservation, or Stage3B.
+- Required stop: after the implementation and synthetic evidence are pushed; official execution requires a new implementation-bound approval.

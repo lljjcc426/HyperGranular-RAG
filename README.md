@@ -6,13 +6,13 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Stage4B-U1-D pre-Gold 在 query-ID 表示硬门再次停止 |
-| 获批执行协议 | 当前无 official execution 授权；Amendment 2 待审批 |
+| 当前阶段 | Stage4B-U1-D Amendment 2 实现与 synthetic hardening 已批准 |
+| 获批执行协议 | 仅双重 ID 绑定实现、测试和 synthetic evidence；official execution 未授权 |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `PREGOLD_EXECUTION_STOPPED_HARD_FAILURE_2`；Gold evaluation 未批准 |
+| 协议状态 | `AMENDMENT_2_IMPLEMENTATION_SYNTHETIC_APPROVED`；Gold evaluation 未批准 |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
-| Controller | Amendment 1 binding tests 已通过；现有实现混淆 sample-ID 与 runtime query-ID digest，official execution 已停止 |
+| Controller | 正在修正 sample-ID/runtime-query-ID 双重绑定；official execution 保持停止 |
 | 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
 
 第一次官方提取在预注册映射硬门处停止：基础区间 `[800:5300)` 的 11,003 个 supporting facts 中有 19 个 sentence index 越界，影响 19 条查询；该失败没有生成 gain/harm 或检索指标。Amendment 1 随后采用仅由标注完整性决定的确定性替换，从 `[9800:9819)` 补入 19 条有效记录。最终 11,015/11,015 supporting facts 完整映射，development/reservation 零重叠。
@@ -133,8 +133,8 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 审批 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_2_DRAFT.md`；未批准前保持停止。
-2. 获批后仅修正 sample-ID/query-ID 双重边界绑定并完成 synthetic hardening，再提交新的 official pre-Gold 恢复审批。
+1. 完成 Amendment 2 最小实现修正、失败注入和 synthetic deterministic evidence。
+2. 提交推送实现审计与 evidence 后停止，再提交新的 implementation-bound official pre-Gold 恢复审批。
 3. Gold evaluation、reservation 与 Stage3B 继续锁定。
 
 ## GitHub
