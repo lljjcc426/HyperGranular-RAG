@@ -1,0 +1,64 @@
+{
+  "schema_version": "stage4b_u1_execution_package_v2_1",
+  "request_id": "STAGE4B_U1_D_V2_1_PREGOLD",
+  "assembled_date": "2026-07-13",
+  "package_status": "READY_FOR_PREGOLD_EXECUTION_REAPPROVAL",
+  "package_commit_sha": "dd1f8a9893ccb1e760068ad21d48e0e8938cc7f9",
+  "package_commit_pushed_to_origin_main": true,
+  "package_worktree_clean_at_assembly": true,
+  "protocol_architecture_status": "ACCEPTED_IN_PRINCIPLE",
+  "execution_approval_status": "NOT_APPROVED",
+  "artifact_sha256": {
+    "project_agents": "9C55C14307C830946E77C5FC1230B3AE199B3383C908D75DE6BF2EF613B84739",
+    "protocol": "4660134D238545AE6E8A4754A20F8B08226E7E40CE59CCA322F5A06669443AC8",
+    "returned_review": "D7028F83B99AF171DCBD1CCCC40AA3F0A8C39849BCCCED7C262303EFC76DC28A",
+    "hardening_specification": "A85420942DC8A5DF8EAF468464B94E0DD2826AE7EBFC6318D503FDA2D40E4873",
+    "implementation_audit": "673E337231AD5B4E4E2D370731C0100825D05301A96C7C3310F80C7EF9FED233",
+    "synthetic_verification": "799E2AE73F24C223FA28AB104AF5C830F2E4D7678795B5CB5C8F51DC32D39AC3",
+    "stage4a_r2_source_audit": "1496FF0CE08093AD38258FD5049068D6C4ED74FCEBF63E94E6E486F3478C7AEE",
+    "stage4a_r2_verification": "0AD9A7B218A19297070E05F2BF7C04786165378E14990C343A0B8B8EFD8CCAD0",
+    "stage4a_r2_strategy_summary": "7BF79CC057CDD0565100B1D95F35C95BFBEAA338E9B1EF63D9E81F029BB42B12"
+  },
+  "synthetic_verification": {
+    "runtime": "Python 3.12.0",
+    "tests_run": 20,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "deterministic_runner_hash_match": true,
+    "required_failure_injections_rejected": 11,
+    "baseline_drift_injection_rejected_before_summary": true,
+    "official_development_content_accessed": false,
+    "reservation_accessed": false,
+    "stage3b_accessed": false
+  },
+  "frozen_official_boundary": {
+    "run_role": "development",
+    "queries": 4500,
+    "query_id_sha256": "6B21FD1D2EFBD6A467C8DAEE9225AA43113FC328CD114F813DD79E6A44458FB2",
+    "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "max_length": 192,
+    "batch_size": 64,
+    "q25_floor": 0.1957079917192459,
+    "protect_n": 10,
+    "insert_budget": 4,
+    "budget_fraction": 0.6
+  },
+  "requested_authorization": [
+    "freeze approved pre-Gold governance and rerun synthetic binding verification",
+    "prepare the official U1-D controller and evaluator channels",
+    "run the official U1-D Gold-free controller without loading evaluation labels",
+    "commit and push channel audit, decisions, rankings, and policy",
+    "produce, commit, and push VERIFIED_PRE_GOLD independent verification",
+    "stop and report before any Gold join"
+  ],
+  "explicitly_not_authorized": [
+    "U1-D Gold evaluation or retrieval metrics",
+    "U1-D promotion decision",
+    "reservation content, embeddings, decisions, rankings, or metrics",
+    "Stage3B access",
+    "threshold, score, feature, budget, endpoint, or stop-rule changes",
+    "automatic retry after a hard failure"
+  ],
+  "required_stop_after_authorized_work": "VERIFIED_PRE_GOLD_COMMITTED_AND_PUSHED"
+}

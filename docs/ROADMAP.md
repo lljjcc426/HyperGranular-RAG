@@ -353,3 +353,12 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Python 3.12 synthetic validation: 20 tests, 0 failures/errors/skips; all 11 required failure injections were rejected.
 - Deterministic evidence SHA-256: `799E2AE73F24C223FA28AB104AF5C830F2E4D7678795B5CB5C8F51DC32D39AC3` on two complete runs.
 - Current status: `V2_1_SYNTHETICALLY_HARDENED_AWAITING_REAPPROVAL`; this is not U1-D execution authorization.
+
+### Stage4B-U1-D v2.1 Pre-Gold Reapproval Package
+
+- Approval request: `docs/STAGE4B_U1_EXECUTION_PACKAGE_V2_1_APPROVAL_REQUEST.md`.
+- Machine-readable package binding: `docs/STAGE4B_U1_EXECUTION_PACKAGE_V2_1_MANIFEST.json`.
+- Bound implementation commit: `dd1f8a9893ccb1e760068ad21d48e0e8938cc7f9`.
+- Requested authorization is intentionally narrower than Gold evaluation: official channel preparation, Gold-free controller, artifact commit, and `VERIFIED_PRE_GOLD` only.
+- Required stop: pre-Gold verification committed and pushed; a separate user approval is required before evaluator/Gold join.
+- Current decision remains `NOT_APPROVED` until the user explicitly approves this package.

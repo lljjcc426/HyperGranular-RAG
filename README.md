@@ -102,6 +102,8 @@ Stage4B-U1 当前仅有不访问 reservation 的功效规划入口：`scripts/st
 
 Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verification.py`；当前审计见 `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT_V2_1.md`，历史 v2 审计继续保留。
 
+当前重新审批入口：`docs/STAGE4B_U1_EXECUTION_PACKAGE_V2_1_APPROVAL_REQUEST.md`。该请求仅覆盖官方 U1-D pre-Gold 通道、controller 与独立验证，不包含 Gold evaluation。
+
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
 ## 科研治理
@@ -125,7 +127,7 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 重新审批 `docs/STAGE4B_U1_EXECUTION_HARDENING_V2_1.md`、v2.1 实现和合成证据。
+1. 审批或退回 `docs/STAGE4B_U1_EXECUTION_PACKAGE_V2_1_APPROVAL_REQUEST.md` 所定义的 pre-Gold 执行包。
 2. 只有获得显式执行批准后，才更新 U1-D 为唯一获批阶段并运行官方 Gold-free channel/controller。
 3. U1-D policy 必须另行冻结、独立验证、提交和推送，之后才允许一次 Gold 评估；reservation 与 Stage3B 继续锁定。
 
