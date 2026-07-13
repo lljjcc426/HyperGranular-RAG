@@ -143,7 +143,7 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 审批 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_DRAFT.md` 的 implementation/synthetic-only 修订；未批准前保持停止。
+1. 审批 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_APPROVAL_REQUEST.md` 的 implementation/synthetic-only 修订；未批准前保持停止。
 2. 获批后仅实现 effective-K verifier 修正与 synthetic hardening，形成新的 implementation-bound official 恢复审批包后再次停止。
 3. Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
 3. 任一硬门失败立即停止；Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。

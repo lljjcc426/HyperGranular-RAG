@@ -1,0 +1,59 @@
+{
+  "schema_version": "stage4b_u1_pregold_amendment_3_request_v1",
+  "request_id": "STAGE4B_U1_D_PREGOLD_AMENDMENT_3_IMPLEMENTATION_SYNTHETIC",
+  "assembled_date": "2026-07-13",
+  "package_status": "AWAITING_AMENDMENT_3_IMPLEMENTATION_SYNTHETIC_APPROVAL",
+  "bound_failure_audit_commit_sha": "8b43de72418ccda85af3015f758c39bce9d31411",
+  "failed_controller_artifact_commit_sha": "9207bd78eea44d2ea3291fe9b6748526969a3224",
+  "failure": {
+    "id": "STAGE4B_U1_D_PREGOLD_HARD_FAILURE_3",
+    "code": "HARD_FAILURE_VERIFIER_FIXED_TOP20_ASSUMPTION",
+    "verifier_runs": 1,
+    "verified_pre_gold_generated": false,
+    "gold_or_evaluator_arguments_passed": false,
+    "queries": 4500,
+    "queries_below_20_candidates": 628,
+    "minimum_candidate_count": 10,
+    "effective_k_length_mismatches": 0,
+    "gold_effect_metrics_accessed": false,
+    "reservation_accessed": false,
+    "stage3b_accessed": false
+  },
+  "frozen_amendment_rule": {
+    "effective_k": "min(20, candidate_unit_count)",
+    "effective_protected_prefix": "min(10, effective_k)",
+    "insert_budget": 4,
+    "empty_candidate_pool": "HARD_FAILURE",
+    "evaluation_depth": 20
+  },
+  "baseline_hashes": {
+    "docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md": "E8F258E3B5462FD9D252BE0A055AB031929035CE0205C8AA36C5BB0E6CE2DBE7",
+    "scripts/stage4b_u1_common.py": "EE4394086A96424CC4663BADE8030DF959950413DB7F09A17076C70A3DE5C627",
+    "scripts/stage4b_u1_prepare_channels.py": "BF629382DCD93F9FD64F0DEB0D441DC775725040E51CE4155884023CE29FD76C",
+    "scripts/stage4b_u1_goldfree_retrieval.py": "3B50FAFD057E2565167ED09288D61829B3FBD044991F139F734F819955038A3B",
+    "scripts/stage4b_u1_goldfree_controller.py": "713BC1DF19472EFE692A2A042A39F96DEE2DCB93187B177EE10DDB5AD7C7A752",
+    "scripts/stage4b_u1_evaluate.py": "343BC9D2478042FF582DAA5DE716498124166C72A520A35DAE53F56C976F2E31",
+    "scripts/stage4b_u1_verify.py": "889F4E1F5D5E70E3169E4A856C5A86294F8FA28996910AE51BCC4EF1F076A180",
+    "scripts/stage4b_u1_run_synthetic_verification.py": "DA8FB1D6E898E4417EC172FFAAC81CD3DB688FAF51930F826A1B25BCB139EA6E",
+    "tests/test_stage4b_u1_goldfree.py": "8388F6DAB255BBB5419DC2C3DAE099AC427709CC20466758D125FA1D5165EFAB"
+  },
+  "requested_authorization": [
+    "freeze the effective-K protocol invariant",
+    "update the implementation checkpoint to stage4b_u1_v2_3",
+    "modify only protocol, shared checkpoint, verifier, synthetic evidence binding, and tests as necessary",
+    "retain the existing 24 synthetic tests and add short-pool hardening",
+    "run the complete synthetic suite and require two byte-identical evidence outputs",
+    "produce and push implementation audit and a new official-resumption approval package",
+    "stop after the new approval package is pushed"
+  ],
+  "explicitly_not_authorized": [
+    "official development or source-audit access",
+    "official preflight, channel, controller, cache, or verifier execution",
+    "Gold evaluation or U1-D metric access or interpretation",
+    "modification or deletion of failed v2.2 artifacts",
+    "fresh or legacy cache rebuild, overwrite, migration, or deletion",
+    "reservation or Stage3B access",
+    "retrieval, controller, evaluator, model, score, ECDF, budget, ranking, endpoint, or stop-rule changes",
+    "automatic official resumption"
+  ]
+}

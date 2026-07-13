@@ -503,3 +503,12 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Proposed rule: `K_q=min(20, candidate_count_q)` with exact length, uniqueness, candidate membership, protected-prefix, insertion, and final-ranking verification.
 - First requested authorization is implementation and synthetic verification only; no official development command is requested.
 - Current status: `DRAFT_NOT_APPROVED_NOT_EXECUTABLE`.
+
+### Stage4B-U1-D Pre-Gold Amendment 3 Approval Request
+
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_MANIFEST.json`.
+- Bound failure/audit commit: `8b43de72418ccda85af3015f758c39bce9d31411`.
+- Requested scope is effective-K protocol/verifier implementation and synthetic hardening only.
+- Official development, source audit, controller/verifier reruns, Gold, U1-D metrics, reservation, Stage3B, and cache changes remain prohibited.
+- Current status: `AWAITING_AMENDMENT_3_IMPLEMENTATION_SYNTHETIC_APPROVAL`.
