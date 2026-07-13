@@ -601,3 +601,13 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Only after that gate may one formal preflight, one exact-path channel, one require-existing controller, committed controller artifacts, and one independent pre-Gold verifier run in order.
 - Authorized endpoint: `VERIFIED_PRE_GOLD` with `evaluation=null`; Gold, U1-D metrics, reservation, Stage3B, cache writes, implementation changes, and automatic retries remain prohibited.
 - Current status: `APPROVED_GOVERNANCE_PENDING_SYNTHETIC_REBINDING`.
+
+### Stage4B-U1-D v2.3.1 Post-Approval Synthetic Rebinding
+
+- Approval-governance commit: `53850f58e57f51b3c6067ed3108edff6b99a2dfc`.
+- Two complete runs each passed 50/50 with zero failures, errors, or skips.
+- Both complete evidence outputs are 11,640 bytes with SHA-256 `9D40C0B9B0C8F03CBC5545CA8F2390CCE9EABDC3B08B041B092FB3A76492FF34`.
+- Evidence binds 22 implementation files, including final approved `AGENTS.md`, plus the committed request, manifest, and approval decision.
+- No official development, source audit, official ranking/cache, Gold, reservation, or Stage3B access occurred.
+- Audit: `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_3_1_SYNTHETIC_REBINDING_AUDIT.md`.
+- Current status after this evidence commit is pushed: `SYNTHETIC_REBINDING_VERIFIED_FORMAL_PREFLIGHT_AUTHORIZED`.
