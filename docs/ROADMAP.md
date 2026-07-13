@@ -545,3 +545,22 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - New decisions/rankings must be byte-identical to the frozen v2.2 outputs; policy differences are limited to registered v2.3 binding fields.
 - Gold, U1-D metrics, reservation, Stage3B, implementation changes, and automatic retries remain prohibited.
 - Current status: `AWAITING_V2_3_OFFICIAL_PREGOLD_RESUMPTION_APPROVAL`.
+
+### Stage4B-U1-D v2.3 Resumption Review 1
+
+- Reviewed package commit: `dbb4e057405069aceda5a7c5d88d9d39a4d14775`.
+- Review: `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_3_REVIEW_1.md`.
+- Decision: `RETURN_FOR_PROTOCOL_AND_CACHE_FAIL_CLOSED_REVISION`.
+- Blocking gates: post-approval synthetic rebinding, exact ten-path artifact registry, and controller-enforced require-existing/no-build cache reuse with pre/post fingerprint checks.
+- Code inspection confirmed the current controller builds and writes a cache when the path is absent; package-only wording cannot make this fail-closed.
+- No official data, ranking, cache, Gold, reservation, or Stage3B access occurred.
+
+### Stage4B-U1-D Pre-Gold Amendment 4 Request
+
+- Draft: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_4_CACHE_FAIL_CLOSED_DRAFT.md`.
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_4_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_4_MANIFEST.json`.
+- Proposed checkpoint: `stage4b_u1_v2_3_1`.
+- Requested scope: controller cache fail-closed mode, governance rebinding support, exact artifact registry, tests, deterministic evidence, and implementation audit only.
+- Official execution, official data/cache access, Gold, reservation, and Stage3B remain prohibited.
+- Current status: `AWAITING_AMENDMENT_4_IMPLEMENTATION_SYNTHETIC_APPROVAL`.

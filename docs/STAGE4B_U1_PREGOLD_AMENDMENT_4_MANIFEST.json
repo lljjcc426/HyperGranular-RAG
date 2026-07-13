@@ -1,0 +1,80 @@
+{
+  "schema_version": "stage4b_u1_pregold_amendment_4",
+  "request_id": "STAGE4B_U1_D_PREGOLD_AMENDMENT_4",
+  "assembled_date": "2026-07-13",
+  "package_status": "AWAITING_AMENDMENT_4_IMPLEMENTATION_SYNTHETIC_APPROVAL",
+  "returned_resumption_package_commit_sha": "dbb4e057405069aceda5a7c5d88d9d39a4d14775",
+  "baseline_implementation_commit_sha": "a1d9ea0c517fcbad1ef27e78e760738d5c04d8b3",
+  "proposed_implementation_checkpoint": "stage4b_u1_v2_3_1",
+  "trigger_review": "docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_3_REVIEW_1.md",
+  "frozen_cache": {
+    "path": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_minilm_idbound_embeddings.npz",
+    "sha256": "69ED39ABC0636B7B63A41639B64CB037FAE556F10CB130FCD18AFB61CBE06F7D",
+    "bytes": 210714667,
+    "members": [
+      "unit_embeddings",
+      "query_embeddings",
+      "unit_ids",
+      "query_ids",
+      "model_name",
+      "max_length"
+    ],
+    "unit_shape": [143820, 384],
+    "query_shape": [4500, 384],
+    "dtype": "float32",
+    "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "max_length": 192,
+    "mode": "REQUIRE_EXISTING_NO_BUILD_PRE_AND_POST_FINGERPRINT"
+  },
+  "artifact_registry": {
+    "unlabeled_units": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_unlabeled_units.jsonl",
+    "unlabeled_queries": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_unlabeled_queries.jsonl",
+    "controller_channel_audit": "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_controller_channel_audit.json",
+    "evaluator_gold_map": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_gold_map.json",
+    "evaluator_audit": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_evaluator_channel_audit.json",
+    "decisions": "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_decisions.jsonl",
+    "rankings": "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_rankings.jsonl",
+    "policy": "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_policy.json",
+    "controller_execution_audit": "E:\\科研\\HyperGranular-RAG\\docs\\STAGE4B_U1_PREGOLD_V2_3_1_CONTROLLER_EXECUTION_AUDIT.md",
+    "verified_pre_gold": "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_verified_pre_gold.json"
+  },
+  "post_approval_synthetic_rebinding": {
+    "required": true,
+    "complete_runs": 2,
+    "required_result": "ALL_PASS_ZERO_FAILURE_ERROR_SKIP_BYTE_IDENTICAL",
+    "must_precede_formal_preflight": true,
+    "required_governance_bindings": [
+      "AGENTS.md",
+      "official-resumption approval request",
+      "official-resumption manifest",
+      "official-resumption approval decision"
+    ]
+  },
+  "minimum_new_synthetic_coverage": [
+    "valid exact existing cache passes without calling embed_texts",
+    "missing cache hard-fails before outputs and without calling embed_texts",
+    "wrong cache SHA hard-fails",
+    "NPZ member drift hard-fails",
+    "unit or query ID order drift hard-fails",
+    "metadata dtype shape finite normalization or byte drift hard-fails",
+    "post-run cache fingerprint drift prevents final output promotion",
+    "governance binding accepts registered files and rejects missing outside-repo or duplicate paths"
+  ],
+  "authorized_changes": [
+    "protocol and governance documents",
+    "implementation checkpoint and necessary shared constants",
+    "controller cache loading mode and fail-closed validation only",
+    "synthetic runner governance binding",
+    "corresponding synthetic tests and evidence"
+  ],
+  "explicitly_not_authorized": [
+    "official development source audit ranking or cache access",
+    "official preflight channel controller cache audit verifier or evaluator execution",
+    "Gold evaluation or U1-D metrics",
+    "reservation or Stage3B access",
+    "retrieval effective-K q25 score ECDF budget trigger ranking or endpoint changes",
+    "official cache creation rebuild overwrite deletion or migration",
+    "v2.2 failure artifact overwrite deletion or rewrite",
+    "automatic official resumption after synthetic hardening"
+  ]
+}
