@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Stage4B-U1-D Amendment 4 cache fail-closed implementation/synthetic 审批中 |
-| 获批执行协议 | 无；`dbb4e057...` 恢复包已退回，Amendment 4 尚未批准 |
+| 当前阶段 | Stage4B-U1-D Amendment 4 cache fail-closed 实现与 synthetic hardening |
+| 获批执行协议 | 仅限 v2.3.1 cache/runner/protocol/tests；无 official execution |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `AWAITING_AMENDMENT_4_IMPLEMENTATION_SYNTHETIC_APPROVAL` |
+| 协议状态 | `AMENDMENT_4_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | 单次运行工件已提交，但 verifier 未通过；现有工件 `UNVERIFIED_INVALID_FOR_GOLD` |
@@ -42,6 +42,8 @@ Amendment 3 已获 implementation/synthetic-only 批准，绑定审批包提交 
 Amendment 3 已按批准边界实现：checkpoint 为 `stage4b_u1_v2_3`，verifier 独立检查 effective-K 长度、唯一性、候选成员、protected prefix、insertion 推导和 final selector。原 24 项测试保留，新增 9 项后共 33 项全部通过；完整 evidence runner 连续两次输出字节一致，SHA-256 均为 `38DDA409C866AAAC6C2AEDBA0D0716DA6F483854E9A6019E9040B9B2B1FA40B5`。全过程未访问 official development、source audit、official ranking、cache、Gold、reservation 或 Stage3B。实现审计见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_3_IMPLEMENTATION_AUDIT.md`。
 
 v2.3 official-resumption 包 `dbb4e057...` 经审查退回：缺少批准治理后的 synthetic rebinding、十项新工件准确路径，以及 controller 内 cache require-existing/no-build 与前后 SHA 门。代码核查确认当前 cache 缺失会进入编码写入分支，因此不能仅靠文字 preflight 修复。审查见 `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_3_REVIEW_1.md`；新的 Amendment 4 仅申请 cache fail-closed 与恢复协议 hardening 的 implementation/synthetic 授权，不申请 official execution。
+
+Amendment 4 已获 implementation/synthetic-only 批准，绑定 package `e5a0e218...`、returned package `dbb4e057...` 和 baseline implementation `a1d9ea0c...`。批准只允许 checkpoint `stage4b_u1_v2_3_1`、existing-cache-only、前后指纹、pending outputs、governance rebinding、十路径 registry 和 synthetic tests；official 数据、真实 cache 和全部 official 命令继续锁定。
 
 ## 研究问题
 
@@ -124,7 +126,7 @@ Stage4B-U1 当前仅有不访问 reservation 的功效规划入口：`scripts/st
 
 Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verification.py`；当前审计见 `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT_V2_1.md`，历史 v2 审计继续保留。
 
-当前没有有效的 official execution 批准。v2.2 批准已因 Hard Failure 3 停止，v2.3 恢复包已退回；Amendment 4 仍在 implementation/synthetic-only 审批门前。
+当前没有有效的 official execution 批准。v2.2 批准已因 Hard Failure 3 停止，v2.3 恢复包已退回；Amendment 4 只授权 implementation/synthetic hardening。
 
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
@@ -149,8 +151,8 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 等待用户审批 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_4_APPROVAL_REQUEST.md`。
-2. 新审批明确通过前，不修改 controller/common/runner/tests，也不运行任何 official 命令。
+1. 按批准范围实现 cache fail-closed、pending outputs、runner governance binding 和 synthetic hardening。
+2. 两次完整 evidence 字节一致后提交 implementation audit，并创建新的 implementation-bound 恢复审批包。
 3. Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub

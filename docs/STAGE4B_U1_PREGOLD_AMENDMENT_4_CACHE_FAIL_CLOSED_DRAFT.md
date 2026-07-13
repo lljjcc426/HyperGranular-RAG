@@ -10,7 +10,9 @@
 - Returned package commit: `dbb4e057405069aceda5a7c5d88d9d39a4d14775`
 - Baseline implementation commit: `a1d9ea0c517fcbad1ef27e78e760738d5c04d8b3`
 - Proposed implementation checkpoint: `stage4b_u1_v2_3_1`
-- Status: `DRAFT_NOT_APPROVED_NOT_EXECUTABLE`
+- Status: `APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY`
+- Approval decision: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_4_APPROVAL_DECISION.md`
+- Bound Amendment 4 package commit: `e5a0e2187e770c9d7b9e9a85a6b8e91067ed2af1`
 - Requested first authorization: implementation and synthetic verification only
 - Official development/source audit/ranking/cache access: `NOT_REQUESTED`
 - Gold evaluation: `NOT_REQUESTED`
@@ -110,3 +112,5 @@ formal preflight 必须对上述十个路径逐项执行 `Test-Path == false`；
 - 不访问 reservation 或 Stage3B；
 - 不修改 retrieval/controller 决策算法、effective-K、模型或任何冻结参数；
 - 不在 synthetic hardening 后自动恢复 official execution。
+
+本 Amendment 已获 implementation/synthetic-only 批准；上述禁止项和 official execution 锁定保持不变。

@@ -24,9 +24,10 @@
 10. Amendment 3 已获 implementation/synthetic-only 批准，绑定审批包提交 `42747507d6f37c3d5713949de443311b35262a2d` 与失败审计提交 `8b43de72418ccda85af3015f758c39bce9d31411`。仅允许 effective-K 协议、checkpoint、verifier、synthetic runner 绑定和测试修订。
 11. Amendment 3 implementation baseline 为 `stage4b_u1_v2_3`；independent verifier 必须使用 `K_q=min(20,|C_q|)`、`P_q=min(10,K_q)` 并执行候选池、长度、唯一性、成员、前缀、插入与 final selector 硬门。synthetic suite 为原 24 项加 9 项 effective-K hardening，共 33 项。
 12. v2.3 official-resumption package commit `dbb4e057405069aceda5a7c5d88d9d39a4d14775` 已被审查退回，状态为 `RETURN_FOR_PROTOCOL_AND_CACHE_FAIL_CLOSED_REVISION`，不得据此执行 official preflight 或后续命令。
-13. Amendment 4 当前仅为未批准草案，请求 cache require-existing/no-build、批准后 synthetic rebinding 与十项 versioned path registry 的 implementation/synthetic-only 授权；用户批准前不得修改实现。
-14. 禁止读取 official development/source audit/official ranking/cache，禁止重跑 official preflight/channel/controller/cache/verifier/evaluator。
+13. Amendment 4 已获 implementation/synthetic-only 批准，绑定 package `e5a0e2187e770c9d7b9e9a85a6b8e91067ed2af1`、returned package `dbb4e057405069aceda5a7c5d88d9d39a4d14775` 与 baseline implementation `a1d9ea0c517fcbad1ef27e78e760738d5c04d8b3`。仅允许 checkpoint、cache fail-closed、pending outputs、runner governance binding、十路径 registry、测试和 evidence 修订。
+14. Amendment 4 测试只能使用 synthetic cache；禁止读取 official development/source audit/official ranking/official cache，禁止运行 official preflight/channel/controller/cache audit/verifier/evaluator。
 15. fresh ID-bound cache 与旧 Stage4A-R2 cache 必须原样保留；U1-D Gold evaluation、任何 U1-D 指标读取或解释、U1-D 晋级、reservation 和 Stage3B 全部锁定。
+16. Amendment 4 implementation/evidence 与新恢复审批包推送后必须停止；新的 implementation-bound official approval 前不得恢复执行。
 
 ## GitHub 与文档
 

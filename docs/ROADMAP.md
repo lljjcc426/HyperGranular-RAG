@@ -563,4 +563,7 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Proposed checkpoint: `stage4b_u1_v2_3_1`.
 - Requested scope: controller cache fail-closed mode, governance rebinding support, exact artifact registry, tests, deterministic evidence, and implementation audit only.
 - Official execution, official data/cache access, Gold, reservation, and Stage3B remain prohibited.
-- Current status: `AWAITING_AMENDMENT_4_IMPLEMENTATION_SYNTHETIC_APPROVAL`.
+- Approval decision: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_4_APPROVAL_DECISION.md`.
+- Bound package commit: `e5a0e2187e770c9d7b9e9a85a6b8e91067ed2af1`.
+- Decision: `APPROVE_CACHE_FAIL_CLOSED_IMPLEMENTATION_SYNTHETIC_ONLY`.
+- Current status: `AMENDMENT_4_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY`.

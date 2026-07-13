@@ -10,7 +10,9 @@
 - Baseline implementation commit: `a1d9ea0c517fcbad1ef27e78e760738d5c04d8b3`
 - Draft: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_4_CACHE_FAIL_CLOSED_DRAFT.md`
 - Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_4_MANIFEST.json`
-- Current approval: `NOT_APPROVED`
+- Current approval: `APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY`
+- Approval decision: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_4_APPROVAL_DECISION.md`
+- Bound package commit: `e5a0e2187e770c9d7b9e9a85a6b8e91067ed2af1`
 - Requested scope: implementation and synthetic verification only
 - Official execution: `NOT_REQUESTED`
 - Gold/reservation/Stage3B: `KEEP_LOCKED`
@@ -54,4 +56,4 @@ APPROVE_STAGE4B_U1_D_PREGOLD_AMENDMENT_4_CACHE_FAIL_CLOSED_IMPLEMENTATION_SYNTHE
 批准 Stage4B-U1-D Pre-Gold Amendment 4：cache fail-closed 与恢复协议硬化，仅授权实现与 synthetic 验证
 ```
 
-在该批准明确给出前，任何实现或 official execution 均保持 `NOT_APPROVED`。
+implementation/synthetic-only 批准已明确给出；official execution 仍保持 `NOT_APPROVED`。
