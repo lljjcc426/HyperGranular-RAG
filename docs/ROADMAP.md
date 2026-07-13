@@ -642,3 +642,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Official units/queries/source audit/cache/decisions/rankings, controller rerun, verifier, evaluator, Gold, reservation, and Stage3B remain prohibited.
 - Controller modification is permitted only as a necessary mechanical extraction with unchanged checkpoint/CLI/formal/cache/pending/retrieval/ranking/policy behavior and explicit regression proof.
 - Current status: `AMENDMENT_5A_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY`.
+
+### Stage4B-U1-D Pre-Gold Amendment 5A Implementation And Synthetic Verification
+
+- The controller remained byte-unchanged at checkpoint `stage4b_u1_v2_3_1`.
+- Added a decisions-only seven-layer comparator, synthetic temporary capture, and a process-wide official-path guard.
+- Added 44 diagnostic tests while retaining the original 50 tests; the complete suite passed 94/94 with zero failures, errors, or skips.
+- Two complete evidence runs on unchanged tracked bytes were byte-identical with SHA-256 `BD8C00D54C25F9341D40151B6057CF339FDEB075A5EA6375DAC2AA886DE14DC0`.
+- The official-path guard recorded zero blocked or attempted accesses. No official comparator/capture, controller, verifier, evaluator, Gold, reservation, or Stage3B action occurred.
+- Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_IMPLEMENTATION_AUDIT.md`.
+- Current status: `AMENDMENT_5A_SYNTHETICALLY_VERIFIED`; official diagnosis, controller rerun, and verifier remain unapproved.
+- Next gate: an implementation-bound Amendment 5B approval request and Manifest must be pushed, then execution stops for independent review.

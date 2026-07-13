@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Amendment 5A decisions 诊断工具 implementation/synthetic 已批准；official execution 仍停止 |
-| 获批执行协议 | 仅限 5A 工具实现与 synthetic 验证；official diagnosis/controller/verifier 未批准 |
+| 当前阶段 | Amendment 5A decisions 诊断工具已完成 synthetic 验证；等待 5B 独立审批 |
+| 获批执行协议 | 5A 已完成；official diagnosis/controller rerun/verifier 均未批准 |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `AMENDMENT_5A_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY` |
+| 协议状态 | `AMENDMENT_5A_SYNTHETICALLY_VERIFIED` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -47,6 +47,8 @@ Amendment 4 已获 implementation/synthetic-only 批准，绑定 package `e5a0e2
 
 Amendment 4 实现已完成：formal controller 强制 existing-cache-only 与冻结 SHA，严格核验 cache 内容并在 OS 临时目录生成 pending outputs；cache 后指纹、v2.2 decisions/rankings bytes 和限定 policy diff 全部通过后才提升，复制或后指纹失败会回滚本次输出。runner 支持登记治理文件绑定，manifest/shared constants 的十路径逐项一致。原 33 项测试保留，新增 17 项后共 50 项全部通过；两次完整 evidence SHA-256 均为 `24F287F9B71C974ABEF9E03AA55BCCA0C4AF9809AB2ADC44705A42EC3889F657`。实现审计见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_4_IMPLEMENTATION_AUDIT.md`。
 
+Amendment 5A 已按批准边界实现，未修改 controller。新增 decisions-only 七层 comparator、synthetic allowlist 与临时 decisions capture，并新增 44 项诊断测试；与原 50 项合计 94 项全部通过。完整 evidence 连续两次输出字节一致，SHA-256 均为 `BD8C00D54C25F9341D40151B6057CF339FDEB075A5EA6375DAC2AA886DE14DC0`，official 路径访问尝试为 0。实现审计见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_IMPLEMENTATION_AUDIT.md`。这不授权 official 诊断、controller 重跑或 verifier。
+
 ## 研究问题
 
 长期问题：
@@ -82,7 +84,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
-| Stage4B-U1 | hard failure 2 后停止 | 尚无 official channel/controller 工件或 U1-D 指标；Gold evaluation 未授权 |
+| Stage4B-U1 | Hard Failure 4 后停止；5A synthetic 已验证 | 尚未解释 decisions 差异；official 诊断、controller 重跑、verifier 与 Gold 均未授权 |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
