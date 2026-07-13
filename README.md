@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Stage4B-U1-D v2.3.1 controller 等价门硬失败；official execution 已停止 |
-| 获批执行协议 | 仅授权到 `VERIFIED_PRE_GOLD` 且 `evaluation=null`；Gold 继续锁定 |
+| 当前阶段 | Amendment 5A decisions 诊断工具 implementation/synthetic 已批准；official execution 仍停止 |
+| 获批执行协议 | 仅限 5A 工具实现与 synthetic 验证；official diagnosis/controller/verifier 未批准 |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `PREGOLD_EXECUTION_STOPPED_HARD_FAILURE_4` |
+| 协议状态 | `AMENDMENT_5A_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -153,8 +153,8 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 提交推送一次 channel preparation 审计和 Hard Failure 4 证据。
-2. 在新的审查/Amendment 获批前，不诊断 official ranking 内容、不重跑 controller、不运行 verifier。
+1. 实现 decisions-only comparator 与 synthetic-only OS-temp capture；原则上不修改 controller。
+2. 保留原 50 项并新增至少 24 项诊断测试，完整 suite 连续运行两次并形成字节一致 evidence。
 3. Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub

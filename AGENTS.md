@@ -34,6 +34,9 @@
 20. 本批准不授权 Gold evaluation、U1-D 指标读取或解释、U1-D 结论、reservation、Stage3B、实现/参数变更、cache 写入或 v2.2 失败工件改写。
 21. v2.3.1 唯一一次 formal preflight 与唯一一次 channel preparation 均通过；唯一一次 require-existing controller 在 pending decisions 的 v2.2 字节等价门触发 `HARD_FAILURE_V2_3_1_DECISIONS_EQUIVALENCE`。当前状态为 `PREGOLD_EXECUTION_STOPPED_HARD_FAILURE_4`。
 22. Hard Failure 4 未提升 decisions/rankings/policy，未生成 controller execution audit 或 `VERIFIED_PRE_GOLD`，fresh/legacy cache 与 v2.2 工件 hash 均未变化。禁止自动重跑、运行 verifier 或诊断 official ranking 内容；后续必须先形成并批准新的审查/Amendment。
+23. Amendment 5A implementation/synthetic-only 已获批准，绑定 package `81d8c34f1cf2539a4c0b81c6148047bc666e2f82` 及 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_APPROVAL_DECISION.md` 中六个历史提交。只允许 decisions comparator、synthetic-only temp capture、至少 24 项新增测试、双次 deterministic evidence、implementation audit 和 5B 审批包。
+24. 5A 禁止读取 official units/queries/source audit/cache/decisions/rankings，禁止 official comparator/capture、controller、verifier、evaluator、Gold、reservation、Stage3B 和 byte-equivalence 放宽。测试必须主动拦截这些路径与 ranking/policy 调用。
+25. 5A 完成后状态只能为 `AMENDMENT_5A_SYNTHETICALLY_VERIFIED` 且 official diagnosis/controller rerun/verifier 均未批准；5B package 推送后必须立即停止。
 
 ## GitHub 与文档
 

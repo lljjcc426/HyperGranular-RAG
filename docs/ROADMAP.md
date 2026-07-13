@@ -632,3 +632,13 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Failure audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_4.md`.
 - No verifier, evaluator, Gold metric, reservation, or Stage3B access occurred.
 - Current status: `PREGOLD_EXECUTION_STOPPED_HARD_FAILURE_4`; diagnosis or rerun requires a new approved review/Amendment.
+
+### Stage4B-U1-D Pre-Gold Amendment 5A Approval
+
+- Decision: `APPROVE_STAGE4B_U1_D_PREGOLD_AMENDMENT_5A_IMPLEMENTATION_SYNTHETIC_ONLY` on 2026-07-13.
+- Package commit: `81d8c34f1cf2539a4c0b81c6148047bc666e2f82`.
+- Scope: decisions-only comparator, synthetic-only OS-temp capture, seven comparison layers, at least 24 new diagnostic tests, two byte-identical complete-suite runs, implementation audit/evidence, and an implementation-bound 5B package.
+- Existing 50 tests must remain, so the complete suite must contain at least 74 tests.
+- Official units/queries/source audit/cache/decisions/rankings, controller rerun, verifier, evaluator, Gold, reservation, and Stage3B remain prohibited.
+- Controller modification is permitted only as a necessary mechanical extraction with unchanged checkpoint/CLI/formal/cache/pending/retrieval/ranking/policy behavior and explicit regression proof.
+- Current status: `AMENDMENT_5A_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY`.
