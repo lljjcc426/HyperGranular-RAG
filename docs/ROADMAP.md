@@ -580,3 +580,13 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - No official data, ranking, cache, Gold, reservation, or Stage3B access occurred.
 - Current status: `SYNTHETICALLY_VERIFIED_OFFICIAL_EXECUTION_NOT_AUTHORIZED`.
 - Next gate: commit/push implementation and evidence, then create a new implementation-bound resumption package and stop.
+
+### Stage4B-U1-D v2.3.1 Official Pre-Gold Resumption Request
+
+- Implementation commit: `34349c70ee24b8240fd169393134d4280968b790`.
+- Request: `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_3_1_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_3_1_MANIFEST.json`.
+- Approval must first be committed and pushed, followed by two byte-identical 50-test synthetic runs binding the request, manifest, decision, and final `AGENTS.md`; formal preflight is blocked until rebinding evidence is pushed.
+- The exact ten artifact paths, frozen cache, v2.2 decision/ranking/policy equivalence, pending-output promotion, and all stop rules are machine-registered.
+- Gold, U1-D metrics, reservation, Stage3B, implementation changes, cache writes, and automatic retries remain prohibited.
+- Current status: `AWAITING_V2_3_1_OFFICIAL_PREGOLD_RESUMPTION_APPROVAL`.
