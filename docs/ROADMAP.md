@@ -713,3 +713,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md`.
 - Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_MANIFEST.json`.
 - Current status: `AMENDMENT_5B_V2_AWAITING_APPROVAL`; no v2 command has run.
+
+### Stage4B-U1-D Pre-Gold Amendment 5B v2 Approval
+
+- Decision date: 2026-07-14.
+- Decision: `APPROVE_STAGE4B_U1_D_PREGOLD_AMENDMENT_5B_V2_SINGLE_OFFICIAL_DECISIONS_ONLY_DIAGNOSTIC`.
+- Bound package commit: `f43e22ef079701139d4437849be8ad57654f80d7`.
+- Required order: approval governance push, two byte-identical 107-test rebinding runs, governance-binding/audit push, one read-only preflight, one exact decisions-only capture, aggregate audit push, and immediate stop.
+- The three channel-input SHA values, cache SHA/bytes, and v2.2 reference-decisions SHA remain externally frozen.
+- Full controller, rankings, policy, source-audit file, verifier, evaluator/Gold, reservation, Stage3B, implementation changes, cache mutation, retries, and automatic resumption remain prohibited.
+- Approval decision: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_APPROVAL_DECISION.md`.
+- Current status: `AMENDMENT_5B_V2_APPROVED_REBINDING_REQUIRED`; no rebinding, preflight, or capture has run under this approval.

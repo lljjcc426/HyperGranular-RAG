@@ -46,6 +46,9 @@
 32. Amendment 5A.1 已完成并通过 synthetic 验证，implementation/evidence commit 为 `e566eb861ec6028ca89a40c9aca7d06737f1eb8e`。原 98 项全部保留，新增 9 项后共 107 项；两次最终 evidence 均为 20,495 bytes、SHA-256 `81A8A5960395F729B643A42505E7F947962B338CD97ADD0506636D3AA2020A67`，且零 failure/error/skip/official access。
 33. 新版 Amendment 5B v2 仅为审批请求，文件为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md` 与 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_MANIFEST.json`。在明确绑定其 package commit 的新批准前，不得运行 post-approval rebinding、preflight、official capture、controller、verifier、evaluator 或 Gold。
 34. capture 中现有 `APPROVE_STAGE4B_U1_D_AMENDMENT_5B_OFFICIAL_DECISIONS_ONLY_DIAGNOSTIC` 仅是实现参数，不是自足授权；5A.1 中未使用。只有未来 package-bound 5B v2 批准明确激活后才可传入，且仍须逐项匹配三项外部冻结 SHA、cache/reference SHA、精确路径和一次性停止边界。
+35. Amendment 5B v2 单次 official decisions-only 诊断已获批准，严格绑定 package commit `f43e22ef079701139d4437849be8ad57654f80d7` 及其七个历史提交。批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_APPROVAL_DECISION.md`。
+36. 唯一允许顺序为：批准治理提交推送 -> 两次 107 项 post-approval rebinding -> governance-binding 与 rebinding audit 提交推送 -> 唯一一次只读 preflight -> 通过后唯一一次 exact-command capture -> 聚合边界核验与 machine/narrative audit 提交推送 -> 立即停止。任一硬失败不得自动重试。
+37. 本批准不授权完整 controller、official ranking/reference policy、source-audit 文件、verifier、evaluator/Gold、reservation、Stage3B、代码/参数/等价门修改、cache 写入或正式 decisions/rankings/policy 提升。capture token 只有在 rebinding 和 preflight 全部通过后才可在获批 exact command 中传入一次。
 
 ## GitHub 与文档
 

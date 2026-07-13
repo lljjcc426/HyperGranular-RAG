@@ -607,3 +607,11 @@ The revised request and machine-readable scope are `docs/STAGE4B_U1_PREGOLD_AMEN
 The requested execution remains diagnosis-only: approval governance and two byte-identical 107-test rebinding runs must be pushed before one read-only preflight; the preflight must externally hash all three channel inputs, cache, and reference decisions before one exact capture. The capture rechecks the channel inputs after temporary-decisions cleanup and before exclusive audit creation. Only aggregate comparison evidence may be committed, followed by immediate stop.
 
 The existing CLI token string is inert without a future decision that explicitly binds the 5B v2 package commit. It was not passed during 5A.1. No post-approval rebinding, preflight, official capture, controller, verifier, evaluator, Gold, reservation, or Stage3B command is authorized by the package itself. Current status is `AMENDMENT_5B_V2_AWAITING_APPROVAL`.
+
+## Stage4B-U1-D Pre-Gold Amendment 5B v2 Approval
+
+The user approved one official decisions-only diagnosis on 2026-07-14, strictly binding package commit `f43e22ef079701139d4437849be8ad57654f80d7` and the seven historical commits registered in its Manifest. The decision is `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_V2_APPROVAL_DECISION.md`.
+
+Execution remains gated on a pushed approval-governance state, two complete 107-test rebinding runs with byte-identical evidence and zero official access, and a pushed governance-binding JSON/audit. Only then may one read-only preflight examine the five permitted inputs. Capture is authorized once only if that preflight passes every frozen path, SHA, bytes, boundary, implementation, output-absence, and Git gate.
+
+The endpoint remains a diagnosis-only aggregate audit. No full controller, ranking/reference-policy/source-audit read, verifier, evaluator/Gold, reservation, Stage3B, implementation/equivalence change, cache mutation, retry, or automatic pre-Gold resumption is authorized. Current status is `AMENDMENT_5B_V2_APPROVED_REBINDING_REQUIRED`.
