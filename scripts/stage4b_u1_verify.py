@@ -16,8 +16,10 @@ from stage4b_u1_common import (
     FROZEN_MAX_LENGTH,
     FROZEN_MODEL_NAME,
     IMPLEMENTATION_CHECKPOINT,
+    OFFICIAL_DEVELOPMENT_DATASET,
     OFFICIAL_DEVELOPMENT_QUERIES,
     OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256,
+    OFFICIAL_DEVELOPMENT_SAMPLE_ID_SHA256,
     POLICY_IMPLEMENTATION_FILES,
     PROTOCOL_RELATIVE_PATH,
     PROTECT_N,
@@ -416,6 +418,17 @@ def run_verification(
     assert_no_prohibited_keys(units, "verifier.units")
     assert_no_prohibited_keys(queries, "verifier.queries")
     query_ids = [str(row["query_id"]) for row in queries]
+    sample_ids = [str(row["sample_id"]) for row in queries]
+    datasets = [str(row["dataset"]) for row in queries]
+    if len(query_ids) != len(set(query_ids)):
+        raise ValueError("Verifier runtime query IDs are not unique")
+    if len(sample_ids) != len(set(sample_ids)):
+        raise ValueError("Verifier sample IDs are not unique")
+    for query_id, sample_id, dataset in zip(query_ids, sample_ids, datasets, strict=True):
+        if query_id != f"{dataset}::{sample_id}":
+            raise ValueError("Verifier query_id does not equal dataset::sample_id")
+    sample_digest = id_digest(sample_ids)
+    query_digest = id_digest(query_ids)
     unit_ids_by_query: dict[str, set[str]] = {query_id: set() for query_id in query_ids}
     for unit in units:
         unit_ids_by_query[str(unit["query_id"])].add(str(unit["unit_id"]))
@@ -430,7 +443,9 @@ def run_verification(
         raise ValueError("Verifier unlabeled-unit hash differs")
     if channel_audit["channel_hashes"]["unlabeled_queries"] != sha256_file(queries_path):
         raise ValueError("Verifier unlabeled-query hash differs")
-    if channel_audit["query_id_sha256"] != id_digest(query_ids):
+    if channel_audit["sample_id_sha256"] != sample_digest:
+        raise ValueError("Verifier channel sample digest differs")
+    if channel_audit["query_id_sha256"] != query_digest:
         raise ValueError("Verifier channel query digest differs")
 
     decisions = load_jsonl(decisions_path)
@@ -439,6 +454,10 @@ def run_verification(
     expected_status = "SYNTHETIC_TEST_ONLY" if synthetic_test_mode else "POLICY_FROZEN_BEFORE_EVALUATION"
     if policy.get("status") != expected_status:
         raise ValueError("Policy status differs from verifier mode")
+    if policy.get("sample_id_sha256") != sample_digest:
+        raise ValueError("Policy sample-ID digest differs")
+    if policy.get("query_id_sha256") != query_digest:
+        raise ValueError("Policy runtime query-ID digest differs")
     if policy.get("output_hashes", {}).get("decisions") != sha256_file(decisions_path):
         raise ValueError("Verifier decision hash differs from policy")
     if policy.get("output_hashes", {}).get("rankings") != sha256_file(rankings_path):
@@ -468,10 +487,32 @@ def run_verification(
     if not synthetic_test_mode:
         if policy.get("run_role") != "development":
             raise ValueError("Formal verifier currently permits only U1-D development")
-        if len(query_ids) != OFFICIAL_DEVELOPMENT_QUERIES or id_digest(query_ids) != OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256:
+        if len(query_ids) != OFFICIAL_DEVELOPMENT_QUERIES:
             raise ValueError("Formal verifier development boundary differs")
         if source_audit_path is None or sha256_file(source_audit_path) != STAGE4A_R2_SOURCE_AUDIT_SHA256:
             raise ValueError("Formal verifier source-audit binding differs")
+        source_boundary = load_json(source_audit_path).get("data_boundary", {})
+        if (
+            str(source_boundary.get("development_query_id_sha256", "")).upper()
+            != OFFICIAL_DEVELOPMENT_SAMPLE_ID_SHA256
+        ):
+            raise ValueError("Formal verifier source-audit sample-ID digest differs")
+        if set(datasets) != {OFFICIAL_DEVELOPMENT_DATASET}:
+            raise ValueError("Formal verifier development dataset differs")
+        if sample_digest != OFFICIAL_DEVELOPMENT_SAMPLE_ID_SHA256:
+            raise ValueError("Formal verifier development sample-ID digest differs")
+        if query_digest != OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256:
+            raise ValueError("Formal verifier development runtime query-ID digest differs")
+        if (
+            channel_audit.get("expected_sample_id_sha256")
+            != OFFICIAL_DEVELOPMENT_SAMPLE_ID_SHA256
+        ):
+            raise ValueError("Formal verifier channel expected sample-ID digest differs")
+        if (
+            channel_audit.get("expected_query_id_sha256")
+            != OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256
+        ):
+            raise ValueError("Formal verifier channel expected runtime query-ID digest differs")
         if (
             policy.get("model_name") != FROZEN_MODEL_NAME
             or int(policy.get("max_length", -1)) != FROZEN_MAX_LENGTH
@@ -524,6 +565,12 @@ def run_verification(
         "frozen_commit_sha": frozen_commit_sha,
         "static_controller_boundary": static,
         "implementation_hashes": current_hashes,
+        "identity_boundary": {
+            "queries": len(query_ids),
+            "sample_id_sha256": sample_digest,
+            "query_id_sha256": query_digest,
+            "namespace_relation_check": True,
+        },
         "policy_and_ranking": policy_checks,
         "evaluation": evaluation_checks,
         "artifact_hashes": {

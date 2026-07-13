@@ -58,7 +58,7 @@ def main() -> None:
         "hardening_specification": "docs/STAGE4B_U1_EXECUTION_HARDENING_V2_1.md",
         "trigger_review": "docs/STAGE4B_U1_EXECUTION_PACKAGE_REVIEW_1.md",
         "status": (
-            "V2_1_SYNTHETICALLY_HARDENED_AWAITING_REAPPROVAL"
+            "AMENDMENT_2_SYNTHETICALLY_HARDENED_AWAITING_OFFICIAL_RESUMPTION_APPROVAL"
             if result.wasSuccessful()
             else "FAILED"
         ),
@@ -85,6 +85,8 @@ def main() -> None:
             "U1 ranking is exactly dense or frozen q25 according to the trigger",
             "reservation mode reuses the frozen development ECDF references",
             "official channel preparation requires the frozen Stage4A-R2 source audit and development boundary",
+            "sample IDs and namespaced runtime query IDs have separate frozen digests and an exact per-row relation",
+            "preparer, controller, and verifier reject dual-ID boundary drift",
             "formal model name, max length, batch size, and run role are frozen",
             "independent verifier recomputes tie hash, ECDF values, scores, order, cutoff, and budget",
             "Top-20 structure determines q25 and final inserted-unit IDs",

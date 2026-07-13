@@ -13,8 +13,10 @@ from stage4b_u1_common import (
     FROZEN_MAX_LENGTH,
     FROZEN_MODEL_NAME,
     IMPLEMENTATION_CHECKPOINT,
+    OFFICIAL_DEVELOPMENT_DATASET,
     OFFICIAL_DEVELOPMENT_QUERIES,
     OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256,
+    OFFICIAL_DEVELOPMENT_SAMPLE_ID_SHA256,
     POLICY_IMPLEMENTATION_FILES,
     PROTOCOL_RELATIVE_PATH,
     SCHEMA_VERSION,
@@ -62,6 +64,18 @@ QUERY_KEYS = {
 }
 
 
+def query_identity_digests(queries: list[dict[str, Any]]) -> tuple[str, str]:
+    query_ids = [str(row["query_id"]) for row in queries]
+    sample_ids = [str(row["sample_id"]) for row in queries]
+    if len(sample_ids) != len(set(sample_ids)):
+        raise ValueError("Unlabeled sample IDs are not unique")
+    for row, query_id, sample_id in zip(queries, query_ids, sample_ids, strict=True):
+        dataset = str(row["dataset"])
+        if query_id != f"{dataset}::{sample_id}":
+            raise ValueError("Unlabeled query_id does not equal dataset::sample_id")
+    return id_digest(sample_ids), id_digest(query_ids)
+
+
 def validate_controller_inputs(
     units: list[dict[str, Any]], queries: list[dict[str, Any]]
 ) -> tuple[list[str], list[str]]:
@@ -75,6 +89,7 @@ def validate_controller_inputs(
             raise ValueError(f"Unlabeled query schema differs: {sorted(set(row) ^ QUERY_KEYS)}")
     unit_ids = validate_unique_ids(units, "unit_id", "unlabeled unit")
     query_ids = validate_unique_ids(queries, "query_id", "unlabeled query")
+    query_identity_digests(queries)
     query_set = set(query_ids)
     if {str(row["query_id"]) for row in units} != query_set:
         raise ValueError("Unlabeled unit/query ID sets differ")
@@ -160,12 +175,14 @@ def validate_channel_audit(
     audit: dict[str, Any],
     units_path: Path,
     queries_path: Path,
-    query_ids: list[str],
+    queries: list[dict[str, Any]],
     *,
     mode: str,
     source_audit_path: Path | None,
     synthetic_test_mode: bool,
 ) -> None:
+    query_ids = [str(row["query_id"]) for row in queries]
+    sample_digest, query_digest = query_identity_digests(queries)
     if audit.get("status") != "CONTROLLER_CHANNEL_PREPARED_NO_RETRIEVAL_METRICS":
         raise ValueError("Channel audit status differs")
     if bool(audit.get("retrieval_metrics_computed")):
@@ -176,7 +193,9 @@ def validate_channel_audit(
         raise ValueError("Channel audit/controller run roles differ")
     if bool(audit.get("synthetic_test_mode")) != synthetic_test_mode:
         raise ValueError("Channel audit/controller synthetic modes differ")
-    if audit.get("query_id_sha256") != id_digest(query_ids):
+    if audit.get("sample_id_sha256") != sample_digest:
+        raise ValueError("Channel audit sample digest differs")
+    if audit.get("query_id_sha256") != query_digest:
         raise ValueError("Channel audit query digest differs")
     hashes = audit.get("channel_hashes", {})
     if hashes.get("unlabeled_units") != sha256_file(units_path):
@@ -200,8 +219,16 @@ def validate_channel_audit(
         raise ValueError("Official development boundary was not verified by the preparer")
     if len(query_ids) != OFFICIAL_DEVELOPMENT_QUERIES:
         raise ValueError("Official controller requires exactly 4,500 development queries")
-    if id_digest(query_ids) != OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256:
-        raise ValueError("Official controller development digest differs")
+    if {str(row["dataset"]) for row in queries} != {OFFICIAL_DEVELOPMENT_DATASET}:
+        raise ValueError("Official controller dataset differs")
+    if sample_digest != OFFICIAL_DEVELOPMENT_SAMPLE_ID_SHA256:
+        raise ValueError("Official controller development sample-ID digest differs")
+    if query_digest != OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256:
+        raise ValueError("Official controller development runtime query-ID digest differs")
+    if audit.get("expected_sample_id_sha256") != OFFICIAL_DEVELOPMENT_SAMPLE_ID_SHA256:
+        raise ValueError("Channel audit expected sample-ID digest differs")
+    if audit.get("expected_query_id_sha256") != OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256:
+        raise ValueError("Channel audit expected runtime query-ID digest differs")
 
 
 def run_controller(
@@ -245,7 +272,7 @@ def run_controller(
         load_json(channel_audit_path),
         units_path,
         queries_path,
-        query_ids,
+        queries,
         mode=mode,
         source_audit_path=source_audit_path,
         synthetic_test_mode=synthetic_test_mode,
@@ -334,6 +361,7 @@ def run_controller(
         "status": "SYNTHETIC_TEST_ONLY" if synthetic_test_mode else "POLICY_FROZEN_BEFORE_EVALUATION",
         "run_role": mode,
         "git_commit_sha": commit_sha,
+        "sample_id_sha256": id_digest(str(row["sample_id"]) for row in queries),
         "query_id_sha256": id_digest(query_ids),
         "queries": len(queries),
         "units": len(units),

@@ -8,8 +8,10 @@ from typing import Any
 
 from stage4b_u1_common import (
     IMPLEMENTATION_CHECKPOINT,
+    OFFICIAL_DEVELOPMENT_DATASET,
     OFFICIAL_DEVELOPMENT_QUERIES,
     OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256,
+    OFFICIAL_DEVELOPMENT_SAMPLE_ID_SHA256,
     SCHEMA_VERSION,
     STAGE4A_R2_SOURCE_AUDIT_SHA256,
     assert_no_prohibited_keys,
@@ -125,16 +127,28 @@ def parse_args() -> argparse.Namespace:
 def validate_execution_boundary(
     *,
     mode: str,
-    query_ids: list[str],
+    queries: list[dict[str, Any]],
     source_audit_path: Path | None,
     synthetic_test_mode: bool,
 ) -> dict[str, Any]:
+    query_ids = [str(row["query_id"]) for row in queries]
+    sample_ids = [str(row["sample_id"]) for row in queries]
+    datasets = [str(row["dataset"]) for row in queries]
+    if len(query_ids) != len(set(query_ids)):
+        raise ValueError("Development runtime query IDs are not unique")
+    if len(sample_ids) != len(set(sample_ids)):
+        raise ValueError("Development sample IDs are not unique")
+    for query_id, sample_id, dataset in zip(query_ids, sample_ids, datasets, strict=True):
+        if query_id != f"{dataset}::{sample_id}":
+            raise ValueError("Development query_id does not equal dataset::sample_id")
     query_digest = id_digest(query_ids)
+    sample_digest = id_digest(sample_ids)
     if synthetic_test_mode:
         return {
             "boundary_status": "SYNTHETIC_TEST_BOUNDARY",
             "source_audit_sha256": None,
             "expected_queries": None,
+            "expected_sample_id_sha256": None,
             "expected_query_id_sha256": None,
         }
     if mode != "development":
@@ -147,20 +161,25 @@ def validate_execution_boundary(
     source_audit = load_json(source_audit_path)
     boundary = source_audit.get("data_boundary", {})
     expected_queries = int(boundary.get("development_queries", -1))
-    expected_digest = str(boundary.get("development_query_id_sha256", "")).upper()
+    expected_sample_digest = str(boundary.get("development_query_id_sha256", "")).upper()
     if expected_queries != OFFICIAL_DEVELOPMENT_QUERIES:
         raise ValueError("Source audit development query count differs from 4,500")
-    if expected_digest != OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256:
-        raise ValueError("Source audit development digest differs from the frozen value")
+    if expected_sample_digest != OFFICIAL_DEVELOPMENT_SAMPLE_ID_SHA256:
+        raise ValueError("Source audit development sample-ID digest differs from the frozen value")
     if len(query_ids) != expected_queries:
         raise ValueError("Official development channel must contain exactly 4,500 queries")
-    if query_digest != expected_digest:
-        raise ValueError("Official development query IDs differ from the source audit")
+    if set(datasets) != {OFFICIAL_DEVELOPMENT_DATASET}:
+        raise ValueError("Official development dataset differs from 2wikimultihopqa")
+    if sample_digest != expected_sample_digest:
+        raise ValueError("Official development sample IDs differ from the source audit")
+    if query_digest != OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256:
+        raise ValueError("Official development runtime query-ID digest differs")
     return {
         "boundary_status": "OFFICIAL_DEVELOPMENT_BOUNDARY_VERIFIED",
         "source_audit_sha256": source_sha,
         "expected_queries": expected_queries,
-        "expected_query_id_sha256": expected_digest,
+        "expected_sample_id_sha256": expected_sample_digest,
+        "expected_query_id_sha256": OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256,
     }
 
 
@@ -172,9 +191,10 @@ def main() -> None:
         labeled_units, labeled_queries
     )
     query_digest = gold_map["query_id_sha256"]
+    sample_digest = id_digest(str(row["sample_id"]) for row in unlabeled_queries)
     boundary = validate_execution_boundary(
         mode=args.mode,
-        query_ids=[str(row["query_id"]) for row in unlabeled_queries],
+        queries=unlabeled_queries,
         source_audit_path=args.source_audit,
         synthetic_test_mode=args.synthetic_test_mode,
     )
@@ -191,6 +211,7 @@ def main() -> None:
         **boundary,
         "queries": len(unlabeled_queries),
         "units": len(unlabeled_units),
+        "sample_id_sha256": sample_digest,
         "query_id_sha256": query_digest,
         "channel_hashes": {
             "unlabeled_units": sha256_file(args.unlabeled_units_output),
@@ -207,6 +228,7 @@ def main() -> None:
         "synthetic_test_mode": args.synthetic_test_mode,
         **boundary,
         "queries": len(unlabeled_queries),
+        "sample_id_sha256": sample_digest,
         "query_id_sha256": query_digest,
         "source_hashes": {
             "labeled_units": sha256_file(args.labeled_units),

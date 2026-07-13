@@ -27,6 +27,7 @@ from stage4b_u1_common import (  # noqa: E402
     FROZEN_MAX_LENGTH,
     FROZEN_MODEL_NAME,
     assert_no_prohibited_keys,
+    id_digest,
     load_json,
     load_jsonl,
     sha256_file,
@@ -137,6 +138,15 @@ def synthetic_labeled_rows() -> tuple[list[dict], list[dict], np.ndarray, np.nda
         np.vstack(embeddings).astype("float32"),
         np.vstack(query_embeddings).astype("float32"),
     )
+
+
+def formal_query_rows() -> list[dict]:
+    _, queries, _, _ = synthetic_labeled_rows()
+    formal = copy.deepcopy(queries)
+    for row in formal:
+        row["dataset"] = "2wikimultihopqa"
+        row["query_id"] = f"2wikimultihopqa::{row['sample_id']}"
+    return formal
 
 
 def command(*parts: object, check: bool = True) -> subprocess.CompletedProcess[str]:
@@ -367,6 +377,9 @@ class Stage4BU1HardeningTests(unittest.TestCase):
 
     def test_wrong_development_digest_hard_fails(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
+            queries = formal_query_rows()
+            sample_digest = id_digest(str(row["sample_id"]) for row in queries)
+            query_digest = id_digest(str(row["query_id"]) for row in queries)
             audit = Path(directory) / "bad_source_audit.json"
             write_json(
                 audit,
@@ -375,14 +388,139 @@ class Stage4BU1HardeningTests(unittest.TestCase):
             with patch(
                 "stage4b_u1_prepare_channels.STAGE4A_R2_SOURCE_AUDIT_SHA256",
                 sha256_file(audit),
-            ), patch("stage4b_u1_prepare_channels.OFFICIAL_DEVELOPMENT_QUERIES", 4):
-                with self.assertRaisesRegex(ValueError, "development digest differs"):
+            ), patch(
+                "stage4b_u1_prepare_channels.OFFICIAL_DEVELOPMENT_QUERIES", 4
+            ), patch(
+                "stage4b_u1_prepare_channels.OFFICIAL_DEVELOPMENT_SAMPLE_ID_SHA256",
+                sample_digest,
+            ), patch(
+                "stage4b_u1_prepare_channels.OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256",
+                query_digest,
+            ):
+                with self.assertRaisesRegex(ValueError, "sample-ID digest differs"):
                     validate_execution_boundary(
                         mode="development",
-                        query_ids=["a", "b", "c", "d"],
+                        queries=queries,
                         source_audit_path=audit,
                         synthetic_test_mode=False,
                     )
+
+    def test_wrong_formal_sample_id_digest_hard_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            queries = formal_query_rows()
+            sample_digest = id_digest(str(row["sample_id"]) for row in queries)
+            query_digest = id_digest(str(row["query_id"]) for row in queries)
+            audit = Path(directory) / "source_audit.json"
+            write_json(
+                audit,
+                {
+                    "data_boundary": {
+                        "development_queries": 4,
+                        "development_query_id_sha256": sample_digest,
+                    }
+                },
+            )
+            changed = copy.deepcopy(queries)
+            changed[0]["sample_id"] = "changed-sample"
+            changed[0]["query_id"] = "2wikimultihopqa::changed-sample"
+            with patch(
+                "stage4b_u1_prepare_channels.STAGE4A_R2_SOURCE_AUDIT_SHA256",
+                sha256_file(audit),
+            ), patch(
+                "stage4b_u1_prepare_channels.OFFICIAL_DEVELOPMENT_QUERIES", 4
+            ), patch(
+                "stage4b_u1_prepare_channels.OFFICIAL_DEVELOPMENT_SAMPLE_ID_SHA256",
+                sample_digest,
+            ), patch(
+                "stage4b_u1_prepare_channels.OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256",
+                query_digest,
+            ):
+                with self.assertRaisesRegex(ValueError, "sample IDs differ"):
+                    validate_execution_boundary(
+                        mode="development",
+                        queries=changed,
+                        source_audit_path=audit,
+                        synthetic_test_mode=False,
+                    )
+
+    def test_wrong_formal_runtime_query_id_digest_hard_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            queries = formal_query_rows()
+            sample_digest = id_digest(str(row["sample_id"]) for row in queries)
+            audit = Path(directory) / "source_audit.json"
+            write_json(
+                audit,
+                {
+                    "data_boundary": {
+                        "development_queries": 4,
+                        "development_query_id_sha256": sample_digest,
+                    }
+                },
+            )
+            with patch(
+                "stage4b_u1_prepare_channels.STAGE4A_R2_SOURCE_AUDIT_SHA256",
+                sha256_file(audit),
+            ), patch(
+                "stage4b_u1_prepare_channels.OFFICIAL_DEVELOPMENT_QUERIES", 4
+            ), patch(
+                "stage4b_u1_prepare_channels.OFFICIAL_DEVELOPMENT_SAMPLE_ID_SHA256",
+                sample_digest,
+            ), patch(
+                "stage4b_u1_prepare_channels.OFFICIAL_DEVELOPMENT_QUERY_ID_SHA256",
+                "F" * 64,
+            ):
+                with self.assertRaisesRegex(ValueError, "runtime query-ID digest differs"):
+                    validate_execution_boundary(
+                        mode="development",
+                        queries=queries,
+                        source_audit_path=audit,
+                        synthetic_test_mode=False,
+                    )
+
+    def test_malformed_query_namespace_relation_hard_fails(self) -> None:
+        queries = formal_query_rows()
+        queries[0]["query_id"] = "wrong-namespace::q0"
+        with self.assertRaisesRegex(ValueError, "does not equal dataset::sample_id"):
+            validate_execution_boundary(
+                mode="development",
+                queries=queries,
+                source_audit_path=Path("not-reached"),
+                synthetic_test_mode=False,
+            )
+
+    def test_controller_audit_dual_digest_drift_hard_fails(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            paths = build_synthetic_pipeline(Path(directory))
+            original = load_json(paths["channel"])
+            for field, message in (
+                ("sample_id_sha256", "sample digest differs"),
+                ("query_id_sha256", "query digest differs"),
+            ):
+                changed = copy.deepcopy(original)
+                changed[field] = "0" * 64
+                write_json(paths["channel"], changed)
+                with self.assertRaisesRegex(ValueError, message):
+                    run_controller(
+                        units_path=paths["units"],
+                        queries_path=paths["queries"],
+                        channel_audit_path=paths["channel"],
+                        embedding_cache=paths["cache"],
+                        decisions_output=Path(directory) / f"controller-{field}.jsonl",
+                        rankings_output=Path(directory) / f"rankings-{field}.jsonl",
+                        policy_output=Path(directory) / f"policy-{field}.json",
+                        mode="development",
+                        policy_input=None,
+                        model_name="synthetic-model",
+                        batch_size=FROZEN_BATCH_SIZE,
+                        max_length=FROZEN_MAX_LENGTH,
+                        config=RetrievalConfig(),
+                        controller_source=SCRIPTS / "stage4b_u1_goldfree_controller.py",
+                        source_audit_path=None,
+                        synthetic_test_mode=True,
+                    )
+                with self.assertRaisesRegex(ValueError, message):
+                    run_synthetic_verifier(paths, Path(directory) / f"bad-{field}.json")
+            write_json(paths["channel"], original)
 
     def test_wrong_formal_model_name_hard_fails(self) -> None:
         with self.assertRaisesRegex(ValueError, "encoder differs"):

@@ -15,11 +15,12 @@
 - Pre-Gold hard-failure audit 2: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_2.md`
 - Approved amendment 2: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_2_DRAFT.md`
 - Amendment 2 approval decision: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_2_APPROVAL_DECISION.md`
+- Amendment 2 implementation audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_2_IMPLEMENTATION_AUDIT.md`
 - Protocol architecture status: `FROZEN_FOR_U1_D_PREGOLD_EXECUTION`
 - Execution review decision: `RETURN_EXECUTION_PACKAGE_FOR_HARDENING`
-- Execution package status: `AMENDMENT_2_IMPLEMENTATION_SYNTHETIC_APPROVED`
+- Execution package status: `AMENDMENT_2_SYNTHETICALLY_HARDENED_AWAITING_OFFICIAL_RESUMPTION_APPROVAL`
 - Historical execution approval: `APPROVE_STAGE4B_U1_D_PREGOLD_EXECUTION_V2_1`
-- Current execution authorization: `APPROVE_STAGE4B_U1_D_PREGOLD_AMENDMENT_2_IMPLEMENTATION_SYNTHETIC_ONLY`
+- Current execution authorization: `NOT_APPROVED`
 - Approval date: 2026-07-13
 - Approval request commit: `2f6c7067c686bf1f4c13328bd1fc04ab3990f767`
 - Bound implementation commit: `dd1f8a9893ccb1e760068ad21d48e0e8938cc7f9`
@@ -269,7 +270,7 @@ Amendment 1 批准后的 preflight 发现 source audit 的 `6B21...` digest 对�
 
 ## 当前禁止事项
 
-- Amendment 2 仅允许双重 ID 绑定实现与 synthetic verification；禁止 official U1-D preflight、channel、controller、cache 或 verifier；
+- Amendment 2 实现与 synthetic verification 已完成；禁止 official U1-D preflight、channel、controller、cache 或 verifier，直至新的实现提交获得批准；
 - 不连接 U1-D Gold；
 - 不创建或读取 reservation 内容、embedding、decision、ranking 或指标；
 - 不访问 Stage3B；

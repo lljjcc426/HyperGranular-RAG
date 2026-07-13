@@ -407,7 +407,7 @@ Verified Stage4A-R2 SHA-256 values:
 
 A deterministic rerun using the frozen embedding cache must reproduce all four hashes exactly. Report duration is excluded from byte-level comparison.
 
-## Stage4B-U1 v2.1 Synthetic-only Execution Hardening
+## Stage4B-U1 v2.2 Synthetic-only Execution Hardening
 
 This command uses generated fixtures under the OS temporary directory. It does not read official U1-D, reservation, or Stage3B data:
 
@@ -416,13 +416,13 @@ This command uses generated fixtures under the OS temporary directory. It does n
   scripts\stage4b_u1_run_synthetic_verification.py
 ```
 
-Expected result: 20 tests, 0 failures, 0 errors, 0 skipped. Expected SHA-256 for `results/stage4b_u1_synthetic_verification.json`:
+Expected result: 24 tests, 0 failures, 0 errors, 0 skipped. Expected SHA-256 for `results/stage4b_u1_synthetic_verification.json`:
 
-`9AA0D0499ECF613F7FEAED0F078BB7534CB837C22465AA1F13F29D715BBE8A6A`
+`8B3057238D67EBE874017068C125126974062C61FAF3D79595E884F16A876D7D`
 
-The v2.1 runner preserves the original Gold isolation, legacy-ranking equivalence, numeric boundaries, exact ECDF behavior, 60% prefix allocation, dense/q25 identity, synthetic reservation-ECDF reuse, and byte-identical reruns. It additionally rejects all approval-required injections: missing source audit, wrong development digest, wrong model, wrong max length, modified tie hash, modified score, modified ECDF reference, q25/final ranking corruption, inserted-ID detachment, missing pre-Gold verification, and implementation-hash drift. A separate synthetic baseline-drift injection must stop before query-audit or summary output. This remains implementation evidence only and cannot authorize U1-D execution.
+The v2.2 runner preserves the v2.1 Gold isolation, legacy-ranking equivalence, numeric boundaries, exact ECDF behavior, 60% prefix allocation, dense/q25 identity, synthetic reservation-ECDF reuse, and all prior failure injections. Four additional tests reject formal sample-ID drift, runtime query-ID drift, malformed `query_id == dataset::sample_id`, and controller-audit dual-digest drift. This remains implementation evidence only and cannot authorize U1-D execution.
 
-The SHA above is the post-Amendment-1-approval binding rerun after governance commit `19bb733`. It binds the approved `AGENTS.md` and protocol bytes and reproduced byte-identically twice. The evidence reports 20 tests, zero failures/errors/skips, and no official-development, official-source-audit, reservation, or Stage3B access. The prior post-v2.1-approval SHA `6F97EE054EFEACEC0BD50414D1A3133CB23D9B6FC57462356147C06AF804C7A5` and pre-approval hardening SHA `799E2AE73F24C223FA28AB104AF5C830F2E4D7678795B5CB5C8F51DC32D39AC3` remain historical records.
+The SHA above is the final post-Amendment-2 implementation binding rerun after governance commit `437b35e`. It binds the final `AGENTS.md`, protocol, implementation, runner, and 24-test suite bytes and reproduced byte-identically twice. The evidence reports no official-development, official-source-audit, reservation, or Stage3B access. Historical SHAs `9AA0D0499ECF613F7FEAED0F078BB7534CB837C22465AA1F13F29D715BBE8A6A`, `6F97EE054EFEACEC0BD50414D1A3133CB23D9B6FC57462356147C06AF804C7A5`, and `799E2AE73F24C223FA28AB104AF5C830F2E4D7678795B5CB5C8F51DC32D39AC3` remain recorded in prior checkpoints.
 
 The package-style command `python -m unittest tests.test_stage4b_u1_goldfree -v` is not valid under the pinned Python 3.12 runtime because `tests` is not a package. For direct verbose testing, use:
 
@@ -467,3 +467,5 @@ The full failure record is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_2.md`. No chann
 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_2_DRAFT.md` freezes a dual-ID boundary correction. Its first approval would authorize implementation and synthetic verification only; official development remains locked pending a later implementation-bound approval.
 
 Amendment 2 implementation and synthetic verification were approved on 2026-07-13, bound to commit `dde5a28fec476fddd0ac82ebad39d9eeab0bea1e`. This approval does not permit reading official development or running any official Stage4B-U1 command. After implementation, the complete synthetic suite and deterministic evidence must be committed and pushed before a new official-resumption approval is requested.
+
+The Amendment 2 implementation checkpoint is `stage4b_u1_v2_2`. The suite contains the original 20 tests plus four dual-ID boundary hardening tests. The current expected SHA is `8B3057238D67EBE874017068C125126974062C61FAF3D79595E884F16A876D7D`. Official development remains locked.

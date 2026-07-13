@@ -435,3 +435,15 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Authorized: dual sample-ID/runtime-query-ID binding implementation, per-row namespace validation, corresponding failure injections, complete synthetic suite, deterministic evidence, audit, commit, and push.
 - Not authorized: official development, preflight, channel, controller, cache, formal verifier, Gold evaluation, metrics, reservation, or Stage3B.
 - Required stop: after the implementation and synthetic evidence are pushed; official execution requires a new implementation-bound approval.
+
+### Stage4B-U1-D Amendment 2 Synthetic Implementation
+
+- Implementation checkpoint: `stage4b_u1_v2_2`.
+- Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_2_IMPLEMENTATION_AUDIT.md`.
+- The frozen official sample-ID digest remains `6B21FD1D2EFBD6A467C8DAEE9225AA43113FC328CD114F813DD79E6A44458FB2`.
+- The namespaced runtime query-ID digest is separately frozen as `8895D4D2EF2A34DE123525011C36A1DF092D27B7588E17E9816ABAB8F1A25CD6`.
+- Preparer, controller, and independent verifier require exact per-row `query_id == dataset::sample_id` and bind both digests.
+- The original 20 tests remain, with four additional dual-ID failure injections; all 24 pass.
+- The final runner was byte-identical twice with SHA-256 `8B3057238D67EBE874017068C125126974062C61FAF3D79595E884F16A876D7D`.
+- No official development, official source audit, reservation, Stage3B, Gold evaluation, or official artifact was accessed or generated.
+- Current state: awaiting a new implementation-bound official pre-Gold resumption approval.

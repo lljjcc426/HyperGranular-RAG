@@ -6,13 +6,13 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Stage4B-U1-D Amendment 2 实现与 synthetic hardening 已批准 |
-| 获批执行协议 | 仅双重 ID 绑定实现、测试和 synthetic evidence；official execution 未授权 |
+| 当前阶段 | Stage4B-U1-D Amendment 2 synthetic hardening 完成，等待 official 恢复审批 |
+| 获批执行协议 | 实现与 synthetic 授权已完成；当前无 official execution 授权 |
 | 设计文件 | `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` |
-| 协议状态 | `AMENDMENT_2_IMPLEMENTATION_SYNTHETIC_APPROVED`；Gold evaluation 未批准 |
+| 协议状态 | `AMENDMENT_2_SYNTHETICALLY_HARDENED_AWAITING_OFFICIAL_RESUMPTION_APPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
-| Controller | 正在修正 sample-ID/runtime-query-ID 双重绑定；official execution 保持停止 |
+| Controller | 双重 ID 绑定已修正，24 项 synthetic tests 通过；official execution 保持停止 |
 | 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
 
 第一次官方提取在预注册映射硬门处停止：基础区间 `[800:5300)` 的 11,003 个 supporting facts 中有 19 个 sentence index 越界，影响 19 条查询；该失败没有生成 gain/harm 或检索指标。Amendment 1 随后采用仅由标注完整性决定的确定性替换，从 `[9800:9819)` 补入 19 条有效记录。最终 11,015/11,015 supporting facts 完整映射，development/reservation 零重叠。
@@ -21,11 +21,13 @@ Stage4A-R2 最终估计：q25 gain `94/4500 = 2.089%`，harm `69/4500 = 1.533%`�
 
 Stage4B-U1 v2 架构已获原则接受，但原执行包因 official boundary、配置冻结、独立复算、insert 推导、完整代码绑定、pre-Gold 门和 Stage4A-R2 基线等价门不足而退回。v2.1 不改变 score、q25 或 60% 预算，已通过 20 项合成测试，其中审批指定的 11 类失败注入全部被拒绝；批准现严格限于 official channel、Gold-free controller、工件冻结和 `VERIFIED_PRE_GOLD`。Gold evaluation、reservation 与 Stage3B 继续锁定。
 
-Amendment 1 批准治理状态提交后，20 项 synthetic binding verification 再次连续两次字节一致，当前证据 SHA-256 为 `9AA0D0499ECF613F7FEAED0F078BB7534CB837C22465AA1F13F29D715BBE8A6A`。该复跑没有访问 official development、official source audit、reservation 或 Stage3B。
+Amendment 1 批准治理状态提交后，20 项 synthetic binding verification 连续两次字节一致，历史 checkpoint SHA-256 为 `9AA0D0499ECF613F7FEAED0F078BB7534CB837C22465AA1F13F29D715BBE8A6A`。该复跑没有访问 official development、official source audit、reservation 或 Stage3B。
 
 正式 preflight 随后发现旧 Stage4A-R2 embedding cache 缺少 `unit_ids`、`query_ids` 和 `max_length`，无法满足 v2.1 的 ID-bound cache 硬门，因此执行立即停止。没有生成 official channel、Gold map、decision、ranking、policy、`VERIFIED_PRE_GOLD` 或任何 U1-D 指标。失败审计见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_1.md`。Amendment 1 已批准：旧 cache 原样保留，获批后只允许在新路径单次生成并独立核查 ID-bound cache。
 
 Amendment 1 后的正式 preflight 又在 query-ID digest 硬门停止：source audit 的 `6B21...` 绑定原始 `sample_id`，processed runtime `query_id` 是 `2wikimultihopqa::<sample_id>`，其结构性 digest 为 `8895...`；v2.1 错误地直接比较了不同 ID 表示。其余 preflight 门全部通过，未生成 channel、cache 或 official 工件。失败审计见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_2.md`，最小修订见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_2_DRAFT.md`。
+
+Amendment 2 实现将 checkpoint 更新为 `stage4b_u1_v2_2`，分别冻结 sample-ID 与 runtime query-ID digest，并在 preparer/controller/verifier 中逐条检查 `query_id == dataset::sample_id`。原 20 项测试全部保留，新增 4 项失败注入后共 24 项全部通过；最终 binding evidence 连续两次 SHA-256 均为 `8B3057238D67EBE874017068C125126974062C61FAF3D79595E884F16A876D7D`。official development、source audit、reservation 与 Stage3B 均未被测试访问。
 
 ## 研究问题
 
@@ -133,8 +135,8 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 完成 Amendment 2 最小实现修正、失败注入和 synthetic deterministic evidence。
-2. 提交推送实现审计与 evidence 后停止，再提交新的 implementation-bound official pre-Gold 恢复审批。
+1. 提交推送 Amendment 2 实现审计、文件 hashes 与 deterministic evidence。
+2. 停止并提交新的 implementation-bound official pre-Gold 恢复审批。
 3. Gold evaluation、reservation 与 Stage3B 继续锁定。
 
 ## GitHub
