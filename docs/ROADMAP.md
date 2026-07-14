@@ -961,3 +961,15 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The 161-test 5E-B rebinding is the baseline. A future approved implementation must add at least 16 tests and run a complete suite of at least 177 tests twice with byte-identical evidence and zero official access/path-helper official invocation/preflight/token/capture.
 - A future 5F-A implementation/evidence push must stop for independent review. A 5F-B package may be assembled only after that review explicitly accepts 5F-A.
 - Current status: `AMENDMENT_5F_A_AWAITING_APPROVAL`. This package authorizes no implementation, synthetic execution, official access, helper official-boundary check, preflight, token, capture, controller, verifier, evaluator, or Gold action.
+
+### Stage4B-U1-D Pre-Gold Amendment 5F-A Implementation
+
+- Approval governance commit: `273341960858930246ae0c1441440aede0403a65`.
+- Added a standard-library typed capture-argument policy helper and 44 synthetic tests; modified only the approved deterministic runner among existing implementation/test files.
+- Exact argv equality remains controlling. The helper fixes 32 elements and 15 ordered flags, applies typed/per-role exact binding, accepts the frozen `pregold` output spelling, explicitly rejects prohibited roles, and has no raw `gold` value-substring denylist.
+- Targeted tests passed 44/44. Two final complete runs passed 205/205 with zero failure/error/skip/official access/path-helper official invocation/preflight/token/capture.
+- Both final outputs were 51,922 bytes with SHA-256 `A5B97077AD9A0C62EBFCAE9D70FC8B5BFAD19CCB32FF3A53E1FCF4BDB216D189`; direct byte comparison passed. Tracked-byte digest: `B58E85239F001B532B5CF378998B804B1202C5D6FF148311EF939DC4B3B4EA34`.
+- All 17 Manifest frozen files retained their exact SHA. Exact argv, token, scientific parameters and raw-byte equivalence remained unchanged.
+- Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_IMPLEMENTATION_AUDIT.md`.
+- Evidence: `results/stage4b_u1_d_pregold_amendment_5f_a_synthetic_verification.json`.
+- Current status: `AMENDMENT_5F_A_SYNTHETICALLY_VERIFIED`, awaiting independent review. 5F-B package assembly and all official execution remain unapproved.

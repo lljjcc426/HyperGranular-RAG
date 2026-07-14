@@ -1,8 +1,9 @@
-"""Run the complete Stage4B-U1 plus Amendment 5E-A synthetic suite."""
+"""Run the complete Stage4B-U1 plus Amendment 5F-A synthetic suite."""
 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import io
 import json
 import ntpath
@@ -16,18 +17,62 @@ from stage4b_u1_common import sha256_file, write_json
 
 GOVERNANCE_FILES = (
     "AGENTS.md",
-    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_APPROVAL_REQUEST.md",
-    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_MANIFEST.json",
-    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_APPROVAL_DECISION.md",
-    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_6.md",
-    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_6_REVIEW_1.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_APPROVAL_REQUEST.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_MANIFEST.json",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_APPROVAL_DECISION.md",
+    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_7.md",
+    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_7_REVIEW_1.md",
 )
 ALLOWED_IMPLEMENTATION_FILES = (
-    "scripts/stage4b_u1_preflight_path_equivalence.py",
+    "scripts/stage4b_u1_preflight_argument_policy.py",
     "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py",
-    "tests/test_stage4b_u1_preflight_path_equivalence.py",
+    "tests/test_stage4b_u1_preflight_argument_policy.py",
 )
 REQUIRED_ACTIVE_PROOF_SUFFIXES = (
+    "test_exact_approved_argv_is_accepted",
+    "test_pregold_audit_output_is_accepted",
+    "test_gold_in_ordinary_value_is_not_role_denied",
+    "test_validation_metadata_is_value_free",
+    "test_unknown_flag_is_rejected",
+    "test_duplicate_flag_is_rejected",
+    "test_missing_flag_value_is_rejected",
+    "test_missing_value_is_rejected",
+    "test_extra_positional_argument_is_rejected",
+    "test_argument_order_drift_is_rejected",
+    "test_executable_drift_is_rejected",
+    "test_capture_script_drift_is_rejected",
+    "test_units_path_drift_is_rejected",
+    "test_queries_path_drift_is_rejected",
+    "test_channel_audit_path_drift_is_rejected",
+    "test_embedding_cache_path_drift_is_rejected",
+    "test_reference_decisions_path_drift_is_rejected",
+    "test_audit_output_path_drift_is_rejected",
+    "test_temp_parent_path_drift_is_rejected",
+    "test_relative_windows_path_is_rejected",
+    "test_model_value_drift_is_rejected",
+    "test_token_drift_is_rejected",
+    "test_zero_batch_size_is_rejected",
+    "test_leading_zero_batch_size_is_rejected",
+    "test_non_decimal_max_length_is_rejected",
+    "test_lowercase_units_sha_is_rejected",
+    "test_short_queries_sha_is_rejected",
+    "test_nonhex_channel_sha_is_rejected",
+    "test_spaced_cache_sha_is_rejected",
+    "test_rankings_role_is_rejected",
+    "test_policy_role_is_rejected",
+    "test_gold_map_role_is_rejected",
+    "test_source_audit_role_is_rejected",
+    "test_evaluator_role_is_rejected",
+    "test_reservation_role_is_rejected",
+    "test_stage3b_role_is_rejected",
+    "test_nonsequence_argv_is_rejected",
+    "test_nontext_argv_item_is_rejected",
+    "test_argument_policy_uses_only_python_standard_library",
+    "test_argument_policy_has_no_filesystem_hash_or_execution_calls",
+    "test_argument_policy_has_no_capture_or_path_helper_import",
+    "test_argument_policy_has_no_raw_gold_value_substring_denylist",
+    "test_runtime_validation_does_not_use_filesystem_hash_or_subprocess",
+    "test_runtime_validation_does_not_call_capture_or_path_helper",
     "test_same_absolute_directory_is_accepted",
     "test_trailing_separator_is_accepted",
     "test_windows_case_variant_is_accepted",
@@ -153,22 +198,22 @@ def main() -> None:
         "--output",
         type=Path,
         default=Path(
-            "results/stage4b_u1_d_pregold_amendment_5e_a_synthetic_verification.json"
+            "results/stage4b_u1_d_pregold_amendment_5f_a_synthetic_verification.json"
         ),
     )
     args = parser.parse_args()
     repo_root = Path(__file__).resolve().parents[1]
-    amendment_5e_a = json.loads(
+    amendment_5f_a = json.loads(
         (
             repo_root
             / "docs"
-            / "STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_MANIFEST.json"
+            / "STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_MANIFEST.json"
         ).read_text(encoding="utf-8")
     )
-    frozen_files = amendment_5e_a["frozen_files"]
+    frozen_files = amendment_5f_a["frozen_files"]
     frozen_hashes = {path: sha256_file(repo_root / path) for path in frozen_files}
     if frozen_hashes != frozen_files:
-        raise ValueError("An Amendment 5E-A frozen file drifted before verification")
+        raise ValueError("An Amendment 5F-A frozen file drifted before verification")
     forbidden = forbidden_official_paths(repo_root)
     attempted: list[str] = []
 
@@ -184,13 +229,18 @@ def main() -> None:
             return
         if candidate in forbidden:
             attempted.append(str(candidate))
-            raise PermissionError(f"Amendment 5E-A blocked official path access: {candidate}")
+            raise PermissionError(f"Amendment 5F-A blocked official path access: {candidate}")
 
     sys.addaudithook(audit_hook)
     suite = unittest.defaultTestLoader.discover(
         str(repo_root / "tests"), pattern="test_stage4b_u1*.py"
     )
     discovered = sorted(test_ids(suite))
+    argument_policy_tests = [
+        test_id
+        for test_id in discovered
+        if test_id.startswith("test_stage4b_u1_preflight_argument_policy.")
+    ]
     active_proofs = {
         suffix: [test_id for test_id in discovered if test_id.endswith(suffix)]
         for suffix in REQUIRED_ACTIVE_PROOF_SUFFIXES
@@ -201,7 +251,9 @@ def main() -> None:
     result = unittest.TextTestRunner(stream=stream, verbosity=2).run(suite)
     count_gate = (
         result.testsRun == len(discovered)
-        and result.testsRun >= amendment_5e_a["synthetic_verification"]["minimum_complete_tests"]
+        and result.testsRun >= amendment_5f_a["synthetic_verification"]["minimum_complete_tests"]
+        and len(argument_policy_tests)
+        >= amendment_5f_a["synthetic_verification"]["minimum_new_tests"]
     )
     tracked_files = tuple(
         dict.fromkeys(
@@ -211,23 +263,35 @@ def main() -> None:
     implementation_hashes = {
         path: sha256_file(repo_root / path) for path in tracked_files
     }
+    tracked_byte_digest = hashlib.sha256(
+        json.dumps(
+            implementation_hashes,
+            ensure_ascii=True,
+            sort_keys=True,
+            separators=(",", ":"),
+        ).encode("ascii")
+    ).hexdigest().upper()
     if {path: implementation_hashes[path] for path in frozen_files} != frozen_files:
-        raise ValueError("An Amendment 5E-A frozen file changed during verification")
+        raise ValueError("An Amendment 5F-A frozen file changed during verification")
     all_pass = result.wasSuccessful() and count_gate and not attempted
     evidence = {
-        "stage": "Stage4B-U1-D Pre-Gold Amendment 5E-A",
+        "stage": "Stage4B-U1-D Pre-Gold Amendment 5F-A",
         "diagnostic_checkpoint": "stage4b_u1_decisions_diag_v2",
         "controller_checkpoint_unchanged": "stage4b_u1_v2_3_1",
-        "status": "AMENDMENT_5E_A_SYNTHETICALLY_VERIFIED" if all_pass else "FAILED",
+        "status": "AMENDMENT_5F_A_SYNTHETICALLY_VERIFIED" if all_pass else "FAILED",
         "tests_run": result.testsRun,
-        "baseline_tests_required": 143,
-        "minimum_new_tests": 12,
-        "minimum_tests_required": 155,
+        "baseline_tests_required": 161,
+        "minimum_new_tests": 16,
+        "minimum_tests_required": 177,
+        "argument_policy_tests": len(argument_policy_tests),
         "test_ids": discovered,
         "failures": len(result.failures),
         "errors": len(result.errors),
         "skipped": len(result.skipped),
         "implementation_hashes": implementation_hashes,
+        "tracked_file_count": len(tracked_files),
+        "tracked_byte_digest_sha256": tracked_byte_digest,
+        "frozen_file_count": len(frozen_files),
         "frozen_files_verified": True,
         "active_proof_tests": active_proofs,
         "official_path_access_guard": {
@@ -240,6 +304,12 @@ def main() -> None:
         "authorization_token_uses": 0,
         "official_capture_invocations": 0,
         "path_equivalence_helper_executed_by_synthetic_tests": True,
+        "path_equivalence_helper_official_invocations": 0,
+        "typed_argument_policy_helper_executed_by_synthetic_tests": True,
+        "typed_argument_policy_filesystem_or_hash_calls": 0,
+        "typed_argument_policy_subprocess_or_capture_calls": 0,
+        "typed_argument_policy_authorization_token_uses": 0,
+        "typed_argument_policy_raw_gold_value_substring_denylist": False,
         "exact_capture_command_unchanged": True,
         "raw_byte_equivalence_unchanged": True,
         "rankings_accessed": False,
@@ -275,6 +345,14 @@ def main() -> None:
             "trailing separators case separator spelling and terminal dot segments normalize only for comparison",
             "parent child unrelated and string-prefix collision directories remain unequal",
             "the helper uses only the Python standard library and has no command token or execution logic",
+            "typed capture arguments require exact argv equality before any acceptance is possible",
+            "typed capture arguments require the fixed executable script 32-element shape and 15 ordered flags",
+            "unknown duplicate missing reordered extra and prohibited roles fail closed",
+            "all seven path roles require absolute Windows syntax and exact approved-value binding",
+            "model integer SHA-256 and token roles retain distinct typed validation and exact binding",
+            "the approved pregold audit-output spelling and ordinary gold value substrings are not role denylists",
+            "argument-policy source and runtime proofs exclude filesystem hashing subprocess capture token use and path-helper calls",
+            "argument-policy source contains no raw gold value-substring denylist",
             "synthetic capture writes decisions only under an OS temporary directory",
             "temporary decisions are removed after successful and exceptional exits",
             "capture does not access or generate rankings and does not call a policy builder",
@@ -286,7 +364,7 @@ def main() -> None:
             "official expected channel-input SHA-256 values must equal the three externally frozen values",
             "all three channel-input SHA-256 values are rechecked after temporary-decisions cleanup and before audit creation",
             "pre-gate or post-gate channel drift leaves no audit and cleans temporary decisions",
-            "the accepted 143-test Stage4B-U1 baseline remains passing with at least 12 new tests",
+            "the accepted 161-test Stage4B-U1 baseline remains passing with at least 16 new tests",
         ],
     }
     write_json(args.output, evidence)

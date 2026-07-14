@@ -821,3 +821,15 @@ The requested helper must validate the unchanged capture argv through exact equa
 The verified baseline is the 161-test 5E-B rebinding evidence at `results/stage4b_u1_d_pregold_amendment_5e_b_synthetic_rebinding.json`, 36,518 bytes, SHA-256 `BF4C668C76C4B8545882C894F241038765AFD8DD263B4195D9E2D654B7B9FC1A`. A future approved 5F-A implementation must add at least 16 tests and produce two byte-identical complete runs of at least 177 tests with zero failure/error/skip/official access/path-helper official invocation/preflight/token/capture. Its implementation/evidence push must then stop for independent review; a 5F-B package cannot be assembled until that review explicitly accepts 5F-A.
 
 This package itself authorizes no implementation or command. A future approval must explicitly bind the commit containing the request, Manifest, Hard Failure 7 audit, Review 1, and final governance bytes.
+
+## Stage4B-U1-D Pre-Gold Amendment 5F-A Implementation
+
+Approval governance was committed and pushed at `273341960858930246ae0c1441440aede0403a65` before implementation. Changes to implementation/tests were limited to the new typed argument-policy helper, new 44-test module, and the approved deterministic runner. All 17 frozen file hashes remained unchanged.
+
+`validate_capture_argv(actual_argv, approved_argv)` performs no Manifest or filesystem read. Exact argv equality is controlling; fixed executable/script, 32-element shape, 15 ordered flags, typed values, seven exact path-role bindings, exact token binding and explicit prohibited-role rejection are then enforced fail-closed. AST and runtime tests prove no filesystem/hash/subprocess/capture/token/path-helper call and no raw `gold` value-substring denylist.
+
+The first module-style targeted command failed before discovery because `tests` is not a Python package. The corrected discovery command passed 44/44. One preliminary complete run passed 205/205 and its OS-temp evidence was deleted. The first final wrapper attempt failed at PowerShell parse time before either runner invocation because its generic `SequenceEqual[byte]` syntax was unsupported.
+
+The corrected final wrapper ran the complete suite twice on 26 identical tracked files. Both runs passed 205/205 with zero failure/error/skip/official access/path-helper official invocation/preflight/token/capture. Tracked-byte digest was `B58E85239F001B532B5CF378998B804B1202C5D6FF148311EF939DC4B3B4EA34`. Both evidence files were 51,922 bytes with SHA-256 `A5B97077AD9A0C62EBFCAE9D70FC8B5BFAD19CCB32FF3A53E1FCF4BDB216D189`, and direct byte comparison passed. The first-run OS-temp evidence was then deleted; final evidence is `results/stage4b_u1_d_pregold_amendment_5f_a_synthetic_verification.json`.
+
+No official input metadata/content, real OS-temp helper check, formal preflight, authorization token, official capture/comparator, controller, verifier, evaluator/Gold, reservation or Stage3B was accessed or run. The implementation/evidence push must stop for independent review; 5F-B cannot be assembled under this approval.

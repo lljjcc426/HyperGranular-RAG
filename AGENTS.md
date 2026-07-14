@@ -116,6 +116,9 @@
 102. typed helper 必须执行 exact argv equality、15-flag typed allowlist、per-role exact binding 和 explicit prohibited-role rejection；必须接受冻结 `pregold` 输出路径，禁止任何裸 `gold` value-substring denylist，且不得访问文件系统、hash、subprocess、capture、token 或 path helper。
 103. 最终完整 suite 必须不少于 177 项并在相同 tracked bytes 上连续运行两次；两次均须零 failure/error/skip/official access/path-helper official invocation/preflight/token/capture 且完整 evidence 字节一致。
 104. 5F-A completion 只允许 implementation/evidence 与必要治理状态提交推送，随后立即停止等待独立审核。本批准不授权 5F-B 组包、real OS-temp helper check、formal preflight、official capture、controller、verifier、evaluator/Gold、reservation 或 Stage3B。
+105. 5F-A implementation baseline 仅包含新 typed argument-policy helper、新 test module 与 Manifest 限定的 deterministic runner 更新；新增 test module 共 44 项。首次 module-name 定向命令因 `tests` 非 Python package 而在 discovery 前失败，修正为 `unittest discover` 后定向测试 44/44 通过。
+106. preliminary complete suite 为 205/205、零 failure/error/skip/official access，preliminary OS-temp evidence 已在检查后删除。该结果不是最终 evidence；最终完成状态只在本条及全部治理/实现/冻结字节稳定后连续两轮完整 suite 均为 205/205、零访问/调用且 evidence 字节一致时成立。
+107. 5F-A 最终 evidence 必须记录 path-helper official invocation、formal preflight、authorization token、official capture 均为 0，并证明 typed helper 无 filesystem/hash/subprocess/capture/token/path-helper 调用及无裸 `gold` value-substring denylist。implementation/evidence 推送后必须停止等待独立审核，不得组装 5F-B。
 
 ## GitHub 与文档
 
