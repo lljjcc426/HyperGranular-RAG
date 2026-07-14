@@ -728,3 +728,15 @@ Both runs passed 143/143 with zero failures, errors, skips, or official-path acc
 The runner hashes the request, Manifest, approval decision, 5C-B review/audit, final `AGENTS.md`, all three allowed files, and all 13 frozen files. It blocks the 5C-B machine inventory and registered official paths. The accepted baseline still contains synthetic capture fixture unit tests under OS temporary directories, but no official capture command/path was used. Full commands, the one test-only regex failure, the pre-run command syntax failure, exact hashes, and boundaries are in `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_IMPLEMENTATION_AUDIT.md`.
 
 This evidence authorizes no official action. Hard Failure 4 remains unclassified; 5D-B requires a new implementation-bound package and explicit approval.
+
+## Stage4B-U1-D Pre-Gold Amendment 5D-B Package
+
+The implementation-bound request is `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md`, and the machine-readable registry is `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_B_MANIFEST.json`. Both bind 5D-A implementation/evidence commit `02f46447e4cd69a15d2af14ee1fc62f9eb4f8bb9`, the 29,643-byte evidence SHA-256 `08695B4305D9919049DFE86870772B9E9F66751DA6D2FF4D43CEF2A912A62008`, all evidence-bound implementation hashes, and the full 5C-B/Hard-Failure history.
+
+The package requests no immediate command. A future package-bound approval must first be committed and pushed. The complete 143-test suite must then run twice on final approved governance bytes, with both outputs byte-identical and each reporting 143/143, zero failure/error/skip, and zero official-path access. A separate governance-binding JSON must hash the request, Manifest, approval decision, final `AGENTS.md`, 5D-A implementation/evidence, and the post-approval rebinding evidence before any preflight.
+
+Only one read-only preflight and one exact official capture are requested. The exact five-input boundary, SHA-256 values, cache bytes, dual-ID digests, model settings, output absences, authorization-token semantics, and command are frozen in the request and Manifest. The unchanged capture requires its historical `results/stage4b_u1_d_pregold_amendment_5b_official_decisions_diagnostic.json` output path; because Hard Failure 5 created no machine audit, preflight must require that path to remain absent and capture must use exclusive create.
+
+The diagnostic may report aggregate byte/canonical/query-order/schema/discrete/float/ULP/semantic differences only. Raw byte equality remains the controlling gate, nullable values are not normalized, and no raw ID/row/value, ranking, policy, source-audit content, 5C-B machine inventory, Gold, or U1-D effect metric may enter the audit. After an approved successful diagnosis, the process must push the aggregate evidence and stop; controller rerun, verifier, evaluator/Gold, reservation, and Stage3B remain unapproved.
+
+Current status is `AMENDMENT_5D_B_AWAITING_APPROVAL`. No 5D-B rebinding, preflight, or official capture has run.

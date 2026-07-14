@@ -872,3 +872,15 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The known NumPy 2.4.6/`numexpr` ABI warning remained visible, but all accepted test commands exited zero.
 - Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_IMPLEMENTATION_AUDIT.md`.
 - Current status: `AMENDMENT_5D_A_SYNTHETICALLY_VERIFIED`; Hard Failure 4 remains unclassified and all official execution remains unapproved.
+
+### Stage4B-U1-D Pre-Gold Amendment 5D-B Package
+
+- Bound implementation/evidence commit: `02f46447e4cd69a15d2af14ee1fc62f9eb4f8bb9`.
+- Bound 5D-A evidence: 29,643 bytes, SHA-256 `08695B4305D9919049DFE86870772B9E9F66751DA6D2FF4D43CEF2A912A62008`, 143/143 with zero failure/error/skip/official access and byte-identical final reruns.
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_B_MANIFEST.json`.
+- Requested sequence: package-bound approval governance, two 143-test post-approval rebinding runs, governance-binding push, one read-only preflight, one exact-command official decisions-only capture, aggregate audit push, and immediate stop.
+- The five permitted inputs retain the externally frozen channel, cache, and v2.2 reference-decisions fingerprints. Rankings, policy, source audit, 5C-B machine inventory, evaluator/Gold, reservation, and Stage3B remain outside the read boundary.
+- The unchanged capture enforces the historical `stage4b_u1_d_pregold_amendment_5b_official_decisions_diagnostic.json` machine-output path. Hard Failure 5 left it absent; 5D-B preflight must hard-fail if it exists, and no overwrite or rename is requested.
+- Raw byte equality remains controlling. Comparator v2 may only provide aggregate classification of any difference; no normalization or equivalence relaxation is requested.
+- Current status: `AMENDMENT_5D_B_AWAITING_APPROVAL`. The package authorizes no synthetic rebinding, official preflight, capture, controller, verifier, evaluator, or Gold action.
