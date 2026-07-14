@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Amendment 5C-A schema inventory 已完成 deterministic synthetic 验证 |
-| 获批执行协议 | 5C-A implementation/synthetic 已完成；official schema scan 未批准 |
-| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_IMPLEMENTATION_AUDIT.md` |
-| 协议状态 | `AMENDMENT_5C_A_SYNTHETICALLY_VERIFIED` |
+| 当前阶段 | Amendment 5C-A 已验证；implementation-bound 5C-B 包等待审批 |
+| 获批执行协议 | 无 official 执行授权；5C-B package 本身不授权 preflight/scan |
+| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_OFFICIAL_SCHEMA_SCAN_APPROVAL_REQUEST.md` |
+| 协议状态 | `AMENDMENT_5C_B_AWAITING_APPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -64,6 +64,8 @@ Hard Failure 5 的独立审查已退回 schema 诊断执行请求：当前只允
 Amendment 5C-A 现已获 implementation/synthetic-only 批准，绑定 package commit `a8caa2a3b26ae13d0b149e4995e3a017e8edb2e7`。授权仅覆盖三个全新独立文件、至少 119 项完整 suite 的两次 deterministic 验证、implementation audit/evidence 和未来 5C-B 组包。Official reference、既有 comparator/capture/controller、Gold、reservation 与 Stage3B 继续锁定。批准决定见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_APPROVAL_DECISION.md`。
 
 5C-A 已按批准边界实现：新增独立 value-free schema inventory、deterministic runner 和 24 项 tests，现有 107 项全部保留，完整 suite 共 131 项。最终治理绑定的两次完整运行均为 131/131、零 failure/error/skip/official access；两份 evidence 均为 22,234 bytes、SHA-256 `0D13392B5C96BAD7EC4D67C22A7515B4A6D211C8EFBB3A4486F9BA5531A1EF7C`，逐字节一致。所有冻结实现/测试 SHA 未变化，official reference 未打开。实现审计见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_IMPLEMENTATION_AUDIT.md`。
+
+Implementation-bound Amendment 5C-B 包已组装，请求仅在新批准后依次执行批准治理、双次 131 项 synthetic rebinding、governance binding、一次 SHA-only preflight、一次 exact-command value-free reference schema scan、聚合审计提交和立即停止。唯一输入冻结为 v2.2 reference decisions 及 SHA `6FB6...23C7`；其他 official 文件、字段值/ID、comparator/capture/controller/verifier/Gold 全部禁止。Request/Manifest 分别为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_OFFICIAL_SCHEMA_SCAN_APPROVAL_REQUEST.md` 与 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_MANIFEST.json`。
 
 ## 研究问题
 
@@ -171,8 +173,8 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 提交并推送 5C-A implementation audit/evidence，形成可绑定的 implementation commit。
-2. 仅组装 implementation-bound 5C-B schema-only official scan request/Manifest，推送后立即停止等待独立审批。
+1. 独立审核 implementation-bound 5C-B request/Manifest；未批准前不得传入 token、运行 rebinding/preflight 或读取 reference decisions。
+2. 如获 package-bound 批准，只能按冻结顺序执行单次 value-free schema scan 并推送聚合审计后立即停止。
 3. Official scan、comparator 修改、capture/controller 重跑、verifier、Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub

@@ -791,3 +791,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Evidence: `results/stage4b_u1_d_pregold_amendment_5c_a_synthetic_verification.json`.
 - Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_IMPLEMENTATION_AUDIT.md`.
 - Current status: `AMENDMENT_5C_A_SYNTHETICALLY_VERIFIED`; official schema scan and all comparator/capture/controller/verifier/Gold actions remain unapproved.
+
+### Stage4B-U1-D Pre-Gold Amendment 5C-B Package
+
+- Bound implementation/evidence commit: `492a59b2f4daccd3e123f2b6cc49cd896d5009d1`.
+- Bound 5C-A evidence: 22,234 bytes, SHA-256 `0D13392B5C96BAD7EC4D67C22A7515B4A6D211C8EFBB3A4486F9BA5531A1EF7C`, 131/131 with 24 inventory tests and zero failure/error/skip/official access.
+- Requested sequence: package-bound approval governance, two 131-test post-approval rebinding runs, governance-binding push, one SHA-only preflight, one exact-command value-free official schema scan, aggregate audit push, and immediate stop.
+- The sole requested official input is the frozen v2.2 reference decisions file with SHA-256 `6FB6EB6DBFE3C6B819E65ADD268D9F94CFEA24E5761C9E4CB53CD0965C3723C7`.
+- Machine output is restricted to schema names/types/nesting/signatures, aggregate counts/line ranges/differences, and pre/post SHA/cleanup gates. Values, raw/salted IDs, rows, rankings, policy, Gold, and new decisions are prohibited.
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_OFFICIAL_SCHEMA_SCAN_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_MANIFEST.json`.
+- Current status: `AMENDMENT_5C_B_AWAITING_APPROVAL`; no 5C-B command has run.
