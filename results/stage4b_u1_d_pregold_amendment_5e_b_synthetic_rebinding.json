@@ -1,0 +1,413 @@
+{
+  "active_proof_tests": {
+    "test_both_files_same_nullable_types_are_identical": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_both_files_same_nullable_types_are_identical"
+    ],
+    "test_capture_does_not_call_controller_rankings_or_policy": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_capture_does_not_call_controller_rankings_or_policy"
+    ],
+    "test_channel_audit_drift_after_computation_leaves_no_audit_and_cleans_temp": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_channel_audit_drift_after_computation_leaves_no_audit_and_cleans_temp"
+    ],
+    "test_channel_audit_expected_sha_mismatch_rejected_before_semantic_parse": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_channel_audit_expected_sha_mismatch_rejected_before_semantic_parse"
+    ],
+    "test_child_directory_is_rejected": [
+      "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_child_directory_is_rejected"
+    ],
+    "test_correct_three_channel_hashes_pass_with_synthetic_fixture": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_correct_three_channel_hashes_pass_with_synthetic_fixture"
+    ],
+    "test_duplicate_query_id_rejected": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_duplicate_query_id_rejected"
+    ],
+    "test_exact_comparison_has_no_prefix_acceptance_call": [
+      "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_exact_comparison_has_no_prefix_acceptance_call"
+    ],
+    "test_file_path_is_rejected": [
+      "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_file_path_is_rejected"
+    ],
+    "test_forward_slash_variant_is_accepted": [
+      "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_forward_slash_variant_is_accepted"
+    ],
+    "test_helper_has_no_command_token_or_execution_logic": [
+      "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_helper_has_no_command_token_or_execution_logic"
+    ],
+    "test_helper_uses_only_python_standard_library": [
+      "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_helper_uses_only_python_standard_library"
+    ],
+    "test_heterogeneous_file_schema_is_accepted_by_cli": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_heterogeneous_file_schema_is_accepted_by_cli"
+    ],
+    "test_heterogeneous_files_preserve_field_order_difference": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_heterogeneous_files_preserve_field_order_difference"
+    ],
+    "test_heterogeneous_files_preserve_field_set_difference": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_heterogeneous_files_preserve_field_set_difference"
+    ],
+    "test_heterogeneous_files_preserve_nested_structure_difference": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_heterogeneous_files_preserve_nested_structure_difference"
+    ],
+    "test_heterogeneous_files_still_reject_invalid_second_row": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_heterogeneous_files_still_reject_invalid_second_row"
+    ],
+    "test_heterogeneous_files_still_reject_nested_duplicate_key": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_heterogeneous_files_still_reject_nested_duplicate_key"
+    ],
+    "test_heterogeneous_report_preserves_raw_gate_and_no_leakage": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_heterogeneous_report_preserves_raw_gate_and_no_leakage"
+    ],
+    "test_invalid_non_text_path_is_rejected": [
+      "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_invalid_non_text_path_is_rejected"
+    ],
+    "test_leaf_probes_are_limited_to_supplied_synthetic_paths": [
+      "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_leaf_probes_are_limited_to_supplied_synthetic_paths"
+    ],
+    "test_leaf_reparse_point_is_rejected_without_skip": [
+      "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_leaf_reparse_point_is_rejected_without_skip"
+    ],
+    "test_left_file_nullable_heterogeneity_is_compared": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_left_file_nullable_heterogeneity_is_compared"
+    ],
+    "test_missing_query_id_rejected": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_missing_query_id_rejected"
+    ],
+    "test_nan_rejected": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_nan_rejected"
+    ],
+    "test_negative_infinity_rejected": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_negative_infinity_rejected"
+    ],
+    "test_nonexistent_path_is_rejected": [
+      "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_nonexistent_path_is_rejected"
+    ],
+    "test_null_float_is_schema_and_discrete_not_float_difference": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_null_float_is_schema_and_discrete_not_float_difference"
+    ],
+    "test_null_integer_is_schema_discrete_and_semantic_difference": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_null_integer_is_schema_discrete_and_semantic_difference"
+    ],
+    "test_nullable_rows_are_not_normalized_to_numeric_values": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_nullable_rows_are_not_normalized_to_numeric_values"
+    ],
+    "test_official_expected_channel_sha_must_match_frozen_value": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_official_expected_channel_sha_must_match_frozen_value"
+    ],
+    "test_official_frozen_path_validation_rejects_nonfrozen_paths_before_open": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_official_frozen_path_validation_rejects_nonfrozen_paths_before_open"
+    ],
+    "test_official_mode_without_5b_token_fails_before_open": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_official_mode_without_5b_token_fails_before_open"
+    ],
+    "test_parent_directory_is_rejected": [
+      "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_parent_directory_is_rejected"
+    ],
+    "test_positive_infinity_rejected": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_positive_infinity_rejected"
+    ],
+    "test_prefix_collision_directory_is_rejected": [
+      "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_prefix_collision_directory_is_rejected"
+    ],
+    "test_queries_drift_after_computation_leaves_no_audit_and_cleans_temp": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_queries_drift_after_computation_leaves_no_audit_and_cleans_temp"
+    ],
+    "test_queries_expected_sha_mismatch_rejected_before_semantic_parse": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_queries_expected_sha_mismatch_rejected_before_semantic_parse"
+    ],
+    "test_relative_path_is_rejected_before_normalization": [
+      "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_relative_path_is_rejected_before_normalization"
+    ],
+    "test_right_file_nullable_heterogeneity_is_compared": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_right_file_nullable_heterogeneity_is_compared"
+    ],
+    "test_same_absolute_directory_is_accepted": [
+      "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_same_absolute_directory_is_accepted"
+    ],
+    "test_synthetic_allowlist_rejects_official_path_before_open": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_synthetic_allowlist_rejects_official_path_before_open"
+    ],
+    "test_temporary_decisions_removed_after_exception": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_temporary_decisions_removed_after_exception"
+    ],
+    "test_temporary_decisions_removed_after_success": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_temporary_decisions_removed_after_success"
+    ],
+    "test_terminal_dot_segment_is_accepted": [
+      "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_terminal_dot_segment_is_accepted"
+    ],
+    "test_trailing_separator_is_accepted": [
+      "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_trailing_separator_is_accepted"
+    ],
+    "test_units_drift_after_computation_leaves_no_audit_and_cleans_temp": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_units_drift_after_computation_leaves_no_audit_and_cleans_temp"
+    ],
+    "test_units_expected_sha_mismatch_rejected_before_semantic_parse": [
+      "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_units_expected_sha_mismatch_rejected_before_semantic_parse"
+    ],
+    "test_unrelated_directory_is_rejected": [
+      "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_unrelated_directory_is_rejected"
+    ],
+    "test_windows_case_variant_is_accepted": [
+      "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_windows_case_variant_is_accepted"
+    ]
+  },
+  "amendment_5c_b_machine_inventory_accessed": false,
+  "authorization_token_uses": 0,
+  "baseline_tests_required": 143,
+  "controller_checkpoint_unchanged": "stage4b_u1_v2_3_1",
+  "controller_rerun": false,
+  "diagnostic_checkpoint": "stage4b_u1_decisions_diag_v2",
+  "errors": 0,
+  "exact_capture_command_unchanged": true,
+  "failures": 0,
+  "formal_preflight_invocations": 0,
+  "frozen_files_verified": true,
+  "gold_accessed": false,
+  "implementation_hashes": {
+    "AGENTS.md": "8A8B0CDDD2F8930ABCCA9D6200375D5935C1C10FDF7A30982C59B959736C2D90",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_APPROVAL_DECISION.md": "FB06E5BB414725FFF58BACEF7430C5F56777999A83D49420A7AECB923EBB6DA9",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_APPROVAL_REQUEST.md": "BA5666571B8678F98353D8BB9801DB095EC93B4DD69DF7D2B1BD2C19C579963C",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_MANIFEST.json": "A4344A0F5DC3EE5BDB032A4B4B007ECACA8D84137110FD3BDC709C93EDADBC71",
+    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_6.md": "276ADA6E425762C04CF727C6023E06FDCA44464CB80BC53A89522155D4CFD698",
+    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_6_REVIEW_1.md": "0E763D513E7D47AC37AE10A1AA752A8EFCEF8213FC0C1B5F91BF6294EE1EDC22",
+    "scripts/stage4b_u1_capture_diagnostic_decisions.py": "7C7B159911384B436FDCC1B20D26F2F545F2DC55EAD1F7B2B134B273110ED40A",
+    "scripts/stage4b_u1_common.py": "CDF7EAD6007DABE389ED0BD18983496F75290C32243FE6DF84716810CDE92CE4",
+    "scripts/stage4b_u1_compare_decisions.py": "42FA3F74679672B0595CC76B519D59C03CB193415DD03F56E37260A961D94014",
+    "scripts/stage4b_u1_evaluate.py": "343BC9D2478042FF582DAA5DE716498124166C72A520A35DAE53F56C976F2E31",
+    "scripts/stage4b_u1_goldfree_controller.py": "C18AD3B672649BA846C5E191D0DBBAC7644A926D4B8CCD39176127175BBA7C1F",
+    "scripts/stage4b_u1_goldfree_retrieval.py": "3B50FAFD057E2565167ED09288D61829B3FBD044991F139F734F819955038A3B",
+    "scripts/stage4b_u1_inventory_decision_schemas.py": "CC48C73306AB48D14E021AE69740A59F2F0218C241E47EE283ECD21E1C81F176",
+    "scripts/stage4b_u1_plan_power.py": "B6BC76E13D597F06AA6494F9E41D5FFD622F9534E55406DC65AB117971900843",
+    "scripts/stage4b_u1_preflight_path_equivalence.py": "1A17C0E750F91CEF2F638A0B0C6FD381110692E6B2D467C1F5243ADF3F35B3FF",
+    "scripts/stage4b_u1_prepare_channels.py": "BF629382DCD93F9FD64F0DEB0D441DC775725040E51CE4155884023CE29FD76C",
+    "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py": "C4D11EFA0E89D03159A282A3295469609973A907CAFAA16C9DC5706CFF8A4AAC",
+    "scripts/stage4b_u1_run_schema_inventory_synthetic_verification.py": "01B84D359B49AC00BD7B52100D3157A5D0BA1DA78B7D5FF3D0ABCBBE7708E7FA",
+    "scripts/stage4b_u1_run_synthetic_verification.py": "3C7DE76E0CC54102E47017A2114C0E3206D03BE8E81F916E806E4E6AECE72026",
+    "scripts/stage4b_u1_verify.py": "DC134B51A07C14A553746C303EA31D83990BA0EFAD30EFC3A1722F1A141E66EC",
+    "tests/test_stage4b_u1_decision_schema_inventory.py": "89881A70EBE12F49E63B08EE8846F78985B98710412C63EDA67CF8A695332E30",
+    "tests/test_stage4b_u1_decisions_diagnostic.py": "0CADDB98209AE3091CF7CEDE99B612AF35A0F02793D5BBFC41F157971E96A579",
+    "tests/test_stage4b_u1_goldfree.py": "CA61B466C7DDF583D827FD2D99C024D646BA3962C80B9137D480C84DEA374C71",
+    "tests/test_stage4b_u1_preflight_path_equivalence.py": "1A601A06F44C959A1885CE17A1F224DE491589B161B0A6899C1EBB7028DBA7F2"
+  },
+  "minimum_new_tests": 12,
+  "minimum_tests_required": 155,
+  "official_capture_executed": false,
+  "official_capture_invocations": 0,
+  "official_comparator_executed": false,
+  "official_diagnostic_executed": false,
+  "official_path_access_guard": {
+    "blocked_or_attempted_access_count": 0,
+    "forbidden_path_count": 19,
+    "installed": true,
+    "metadata_or_content_access_attempts": 0
+  },
+  "path_equivalence_helper_executed_by_synthetic_tests": true,
+  "policy_builder_called_by_capture": false,
+  "policy_generated_by_capture": false,
+  "rankings_accessed": false,
+  "rankings_generated_by_capture": false,
+  "raw_byte_equivalence_unchanged": true,
+  "reservation_accessed": false,
+  "skipped": 0,
+  "stage": "Stage4B-U1-D Pre-Gold Amendment 5E-A",
+  "stage3b_accessed": false,
+  "status": "AMENDMENT_5E_A_SYNTHETICALLY_VERIFIED",
+  "synthetic_capture_fixture_tests_executed": true,
+  "test_ids": [
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_array_ignores_values_order_multiplicity_and_length",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_blank_line_rejected",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_bool_integer_and_finite_number_are_distinct",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_deterministic_inventory_bytes",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_duplicate_nested_key_rejected",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_duplicate_top_level_key_rejected",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_empty_array_has_separate_marker",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_existing_output_rejected_before_input_open",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_field_additions_and_removals",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_field_order_only_difference",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_homogeneous_flat_schema",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_input_hash_drift_leaves_no_output",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_invalid_json_rejected",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_invalid_utf8_rejected",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_inventory_has_no_prohibited_import_or_call",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_main_schema_count_and_lexicographic_tie_break",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_nested_object_and_array_element_structure",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_non_object_row_rejected",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_nonfinite_constants_rejected",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_official_reference_path_blocked_before_open",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_overflow_float_rejected",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_success_cleans_staging_file_and_writes_exclusive_output",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_value_and_id_content_not_leaked",
+    "test_stage4b_u1_decision_schema_inventory.DecisionSchemaInventoryTests.test_write_failure_cleans_staging_and_partial_output",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_bool_and_int_are_distinct",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_both_files_same_nullable_types_are_identical",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_canonical_json_is_deterministic",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_cross_sign_ulp_order_is_monotonic",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_discrete_scalar_difference",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_duplicate_json_key_rejected",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_duplicate_query_id_rejected",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_float_absolute_difference",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_float_exact_equality",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_float_ulp_distance",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_heterogeneous_file_schema_is_accepted_by_cli",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_heterogeneous_files_preserve_field_order_difference",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_heterogeneous_files_preserve_field_set_difference",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_heterogeneous_files_preserve_nested_structure_difference",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_heterogeneous_files_still_reject_invalid_second_row",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_heterogeneous_files_still_reject_nested_duplicate_key",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_heterogeneous_report_preserves_raw_gate_and_no_leakage",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_id_list_element_difference",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_id_list_order_difference",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_identical_raw_bytes",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_int_and_float_are_distinct",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_invalid_json_rejected",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_json_field_order_only_difference",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_left_file_nullable_heterogeneity_is_compared",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_missing_query_id_rejected",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_nan_rejected",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_negative_infinity_rejected",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_null_float_is_schema_and_discrete_not_float_difference",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_null_integer_is_schema_discrete_and_semantic_difference",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_nullable_rows_are_not_normalized_to_numeric_values",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_ordered_rank_semantic_difference",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_planned_insert_count_semantic_difference",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_positive_infinity_rejected",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_query_id_missing_or_extra",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_query_id_order_difference",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_report_does_not_emit_raw_query_ids_or_rows",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_right_file_nullable_heterogeneity_is_compared",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_row_count_difference",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_schema_extra_field",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_schema_missing_field",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_signed_zero_binary64_is_distinct",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_signed_zero_is_reported",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_terminal_newline_only_difference",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_trigger_u1_semantic_difference",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_unknown_value_type_rejected",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DecisionsComparatorTests.test_whitespace_only_difference",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_allowlist_rejects_missing_root",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_cache_drift_after_decisions_computation_is_rejected",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_capture_audit_contains_no_ranking_policy_or_gold_content",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_capture_does_not_call_controller_rankings_or_policy",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_capture_is_byte_identical_to_reference",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_capture_requires_positive_batch_size",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_channel_audit_drift_after_computation_leaves_no_audit_and_cleans_temp",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_channel_audit_expected_sha_mismatch_rejected_before_semantic_parse",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_channel_input_must_be_regular_file_before_semantic_parse",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_correct_three_channel_hashes_pass_with_synthetic_fixture",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_extracted_decisions_match_legacy_inline_canonical_bytes_and_fields",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_official_channel_validation_uses_registered_source_digest_only",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_official_diagnostic_paths_are_exact_and_audit_is_new",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_official_expected_channel_sha_must_match_frozen_value",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_official_frozen_path_validation_rejects_nonfrozen_paths_before_open",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_official_mode_without_5b_token_fails_before_open",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_queries_drift_after_computation_leaves_no_audit_and_cleans_temp",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_queries_expected_sha_mismatch_rejected_before_semantic_parse",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_synthetic_allowlist_rejects_official_path_before_open",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_temporary_decisions_removed_after_exception",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_temporary_decisions_removed_after_success",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_units_drift_after_computation_leaves_no_audit_and_cleans_temp",
+    "test_stage4b_u1_decisions_diagnostic.Stage4BU1DiagnosticCaptureTests.test_units_expected_sha_mismatch_rejected_before_semantic_parse",
+    "test_stage4b_u1_goldfree.Stage4BU1CacheFailClosedTests.test_duplicate_governance_binding_is_rejected",
+    "test_stage4b_u1_goldfree.Stage4BU1CacheFailClosedTests.test_formal_controller_rejects_load_or_build_mode_before_input_reads",
+    "test_stage4b_u1_goldfree.Stage4BU1CacheFailClosedTests.test_manifest_artifact_registry_matches_shared_constants",
+    "test_stage4b_u1_goldfree.Stage4BU1CacheFailClosedTests.test_missing_governance_binding_is_rejected",
+    "test_stage4b_u1_goldfree.Stage4BU1CacheFailClosedTests.test_outside_repository_governance_binding_is_rejected",
+    "test_stage4b_u1_goldfree.Stage4BU1CacheFailClosedTests.test_partial_promotion_failure_rolls_back_current_output",
+    "test_stage4b_u1_goldfree.Stage4BU1CacheFailClosedTests.test_policy_equivalence_allows_only_registered_binding_drift",
+    "test_stage4b_u1_goldfree.Stage4BU1CacheFailClosedTests.test_post_fingerprint_drift_prevents_output_promotion",
+    "test_stage4b_u1_goldfree.Stage4BU1CacheFailClosedTests.test_registered_governance_binding_is_hashed",
+    "test_stage4b_u1_goldfree.Stage4BU1CacheFailClosedTests.test_require_existing_byte_drift_is_rejected",
+    "test_stage4b_u1_goldfree.Stage4BU1CacheFailClosedTests.test_require_existing_id_order_drift_is_rejected",
+    "test_stage4b_u1_goldfree.Stage4BU1CacheFailClosedTests.test_require_existing_member_drift_is_rejected",
+    "test_stage4b_u1_goldfree.Stage4BU1CacheFailClosedTests.test_require_existing_metadata_and_array_drift_is_rejected",
+    "test_stage4b_u1_goldfree.Stage4BU1CacheFailClosedTests.test_require_existing_missing_cache_fails_before_outputs_or_embedding",
+    "test_stage4b_u1_goldfree.Stage4BU1CacheFailClosedTests.test_require_existing_valid_cache_passes_without_build_or_mkdir",
+    "test_stage4b_u1_goldfree.Stage4BU1CacheFailClosedTests.test_require_existing_wrong_sha_fails_before_outputs",
+    "test_stage4b_u1_goldfree.Stage4BU1CacheFailClosedTests.test_unregistered_governance_binding_is_rejected",
+    "test_stage4b_u1_goldfree.Stage4BU1CoreTests.test_budget_uses_largest_prefix_without_skipping",
+    "test_stage4b_u1_goldfree.Stage4BU1CoreTests.test_candidate_count_drift_is_rejected",
+    "test_stage4b_u1_goldfree.Stage4BU1CoreTests.test_channel_split_rejects_inconsistent_gold",
+    "test_stage4b_u1_goldfree.Stage4BU1CoreTests.test_channel_split_removes_all_controller_labels",
+    "test_stage4b_u1_goldfree.Stage4BU1CoreTests.test_controller_rejects_a_reintroduced_label_field",
+    "test_stage4b_u1_goldfree.Stage4BU1CoreTests.test_effective_k_10_is_accepted_and_insertion_is_bounded",
+    "test_stage4b_u1_goldfree.Stage4BU1CoreTests.test_effective_k_17_is_accepted",
+    "test_stage4b_u1_goldfree.Stage4BU1CoreTests.test_effective_k_duplicate_unit_id_is_rejected",
+    "test_stage4b_u1_goldfree.Stage4BU1CoreTests.test_effective_k_insertion_derivation_drift_is_rejected",
+    "test_stage4b_u1_goldfree.Stage4BU1CoreTests.test_effective_k_non_candidate_unit_id_is_rejected",
+    "test_stage4b_u1_goldfree.Stage4BU1CoreTests.test_effective_k_wrong_length_is_rejected",
+    "test_stage4b_u1_goldfree.Stage4BU1CoreTests.test_effective_protected_prefix_drift_is_rejected",
+    "test_stage4b_u1_goldfree.Stage4BU1CoreTests.test_empty_candidate_pool_is_rejected",
+    "test_stage4b_u1_goldfree.Stage4BU1CoreTests.test_goldfree_rewrite_matches_legacy_frozen_ranking_on_synthetic_input",
+    "test_stage4b_u1_goldfree.Stage4BU1CoreTests.test_numeric_boundary_and_ecdf_rules",
+    "test_stage4b_u1_goldfree.Stage4BU1EndToEndTests.test_synthetic_pipeline_is_deterministic_pre_gold_verified_and_evaluable",
+    "test_stage4b_u1_goldfree.Stage4BU1EndToEndTests.test_synthetic_reservation_reuses_development_ecdf",
+    "test_stage4b_u1_goldfree.Stage4BU1HardeningTests.test_baseline_drift_stops_before_u1_summary",
+    "test_stage4b_u1_goldfree.Stage4BU1HardeningTests.test_controller_audit_dual_digest_drift_hard_fails",
+    "test_stage4b_u1_goldfree.Stage4BU1HardeningTests.test_evaluator_without_pre_gold_verification_hard_fails",
+    "test_stage4b_u1_goldfree.Stage4BU1HardeningTests.test_malformed_query_namespace_relation_hard_fails",
+    "test_stage4b_u1_goldfree.Stage4BU1HardeningTests.test_modified_ecdf_reference_rejected",
+    "test_stage4b_u1_goldfree.Stage4BU1HardeningTests.test_modified_inserted_list_rejected_when_top20_unchanged",
+    "test_stage4b_u1_goldfree.Stage4BU1HardeningTests.test_modified_q25_and_final_ranking_rejected",
+    "test_stage4b_u1_goldfree.Stage4BU1HardeningTests.test_modified_score_rejected_after_internal_hash_refresh",
+    "test_stage4b_u1_goldfree.Stage4BU1HardeningTests.test_modified_tie_hash_rejected_after_output_hash_refresh",
+    "test_stage4b_u1_goldfree.Stage4BU1HardeningTests.test_official_channel_omitting_source_audit_hard_fails",
+    "test_stage4b_u1_goldfree.Stage4BU1HardeningTests.test_policy_implementation_hash_mismatch_rejected",
+    "test_stage4b_u1_goldfree.Stage4BU1HardeningTests.test_wrong_development_digest_hard_fails",
+    "test_stage4b_u1_goldfree.Stage4BU1HardeningTests.test_wrong_formal_max_length_hard_fails",
+    "test_stage4b_u1_goldfree.Stage4BU1HardeningTests.test_wrong_formal_model_name_hard_fails",
+    "test_stage4b_u1_goldfree.Stage4BU1HardeningTests.test_wrong_formal_runtime_query_id_digest_hard_fails",
+    "test_stage4b_u1_goldfree.Stage4BU1HardeningTests.test_wrong_formal_sample_id_digest_hard_fails",
+    "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_child_directory_is_rejected",
+    "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_exact_comparison_has_no_prefix_acceptance_call",
+    "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_file_path_is_rejected",
+    "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_forward_slash_variant_is_accepted",
+    "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_helper_has_no_command_token_or_execution_logic",
+    "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_helper_uses_only_python_standard_library",
+    "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_invalid_non_text_path_is_rejected",
+    "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_leaf_probes_are_limited_to_supplied_synthetic_paths",
+    "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_leaf_reparse_point_is_rejected_without_skip",
+    "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_nonexistent_path_is_rejected",
+    "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_parent_directory_is_rejected",
+    "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_prefix_collision_directory_is_rejected",
+    "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_relative_path_is_rejected_before_normalization",
+    "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_same_absolute_directory_is_accepted",
+    "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_terminal_dot_segment_is_accepted",
+    "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_trailing_separator_is_accepted",
+    "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_unrelated_directory_is_rejected",
+    "test_stage4b_u1_preflight_path_equivalence.Stage4BU1PreflightPathEquivalenceTests.test_windows_case_variant_is_accepted"
+  ],
+  "tests_run": 161,
+  "verified_properties": [
+    "raw bytes size SHA-256 and terminal-newline differences are separated from canonical JSON equality",
+    "query-ID count uniqueness set and order are compared fail-closed",
+    "JSON duplicate keys invalid syntax and non-finite constants are rejected",
+    "bool int and float types remain distinct",
+    "binary64 uses explicit big-endian bits and a sign-aware monotonic unsigned ordering",
+    "positive and negative zero remain bit-distinct and cross-sign ULP distances are deterministic",
+    "heterogeneous within-file schemas are accepted without changing per-query comparison",
+    "null versus integer or finite float is classified as schema and discrete difference",
+    "ordered-rank null versus integer also remains a decision-semantic difference",
+    "null values do not enter finite-float absolute-error or ULP aggregation",
+    "nullable values are not imputed coerced cast or normalized",
+    "schema field set order nested type discrete list float and decision-semantic differences remain classified",
+    "raw byte equality remains the only controlling equivalence gate",
+    "the Windows path-equivalence helper rejects relative missing file and reparse-point leaves fail-closed",
+    "the helper accepts only exact canonical directory equality under ordinal case-insensitive comparison",
+    "trailing separators case separator spelling and terminal dot segments normalize only for comparison",
+    "parent child unrelated and string-prefix collision directories remain unequal",
+    "the helper uses only the Python standard library and has no command token or execution logic",
+    "synthetic capture writes decisions only under an OS temporary directory",
+    "temporary decisions are removed after successful and exceptional exits",
+    "capture does not access or generate rankings and does not call a policy builder",
+    "official paths are guarded process-wide and synthetic allowlists reject outside paths before file reads",
+    "future official capture requires exact registered paths an absent audit output and the OS temp parent",
+    "official channel validation uses the registered source-audit digest without opening the source-audit file",
+    "the embedding cache fingerprint is rechecked after decisions computation",
+    "all three channel inputs are regular files and match caller-provided SHA-256 values before semantic parsing",
+    "official expected channel-input SHA-256 values must equal the three externally frozen values",
+    "all three channel-input SHA-256 values are rechecked after temporary-decisions cleanup and before audit creation",
+    "pre-gate or post-gate channel drift leaves no audit and cleans temporary decisions",
+    "the accepted 143-test Stage4B-U1 baseline remains passing with at least 12 new tests"
+  ],
+  "verifier_executed": false
+}

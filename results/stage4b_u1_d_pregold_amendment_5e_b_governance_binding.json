@@ -1,0 +1,79 @@
+{
+  "schema_version": "stage4b_u1_pregold_amendment_5e_b_governance_binding",
+  "created_date": "2026-07-14",
+  "status": "AMENDMENT_5E_B_POST_APPROVAL_SYNTHETIC_REBINDING_VERIFIED",
+  "binding_commits": {
+    "amendment_5e_b_package": "e387d2707ede9024571249face71bf7ca3afd4e0",
+    "amendment_5e_b_approval_governance": "f2f2e249e4e7a52fcc44b61a2245d8d50d79106d",
+    "amendment_5e_a_implementation_and_evidence": "a8b064a4a2133aea27cbe9b85978237fc3dae661"
+  },
+  "governance_files": {
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md": {
+      "bytes": 12443,
+      "sha256": "8EBC5DD6AE50215F5337C335A44AD851C6E34FFE925807323390CF78C6E28F6D"
+    },
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_B_MANIFEST.json": {
+      "bytes": 17286,
+      "sha256": "EC83E0EABF0286420E03C2A55C9E5559041C392FB0FED9B48F9A614E9720E854"
+    },
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_B_APPROVAL_DECISION.md": {
+      "bytes": 6015,
+      "sha256": "2E33250477820912B0293A73780646C16CF94FCF1C5F02B21AFFE20E6C06F06A"
+    },
+    "AGENTS.md": {
+      "bytes": 28341,
+      "sha256": "8A8B0CDDD2F8930ABCCA9D6200375D5935C1C10FDF7A30982C59B959736C2D90"
+    },
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_IMPLEMENTATION_AUDIT.md": {
+      "bytes": 10030,
+      "sha256": "AC33D652837589DE17FD7EB90DEED1DE53DAEF6F98A61D8ADB1A6798348439BF"
+    },
+    "results/stage4b_u1_d_pregold_amendment_5e_a_synthetic_verification.json": {
+      "bytes": 36518,
+      "sha256": "84C58CBA9801A6EB8DFAF4ED6688BB5FCBD5777729FD833083E16CB630FFED83"
+    },
+    "results/stage4b_u1_d_pregold_amendment_5e_b_synthetic_rebinding.json": {
+      "bytes": 36518,
+      "sha256": "BF4C668C76C4B8545882C894F241038765AFD8DD263B4195D9E2D654B7B9FC1A"
+    }
+  },
+  "synthetic_rebinding": {
+    "runner": "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py",
+    "runner_sha256": "C4D11EFA0E89D03159A282A3295469609973A907CAFAA16C9DC5706CFF8A4AAC",
+    "complete_runs": 2,
+    "tests_per_run": 161,
+    "failures_per_run": 0,
+    "errors_per_run": 0,
+    "skipped_per_run": 0,
+    "official_metadata_or_content_access_attempts_per_run": 0,
+    "formal_preflight_invocations_per_run": 0,
+    "authorization_token_uses_per_run": 0,
+    "official_capture_invocations_per_run": 0,
+    "evidence_bytes_per_run": 36518,
+    "evidence_sha256_per_run": "BF4C668C76C4B8545882C894F241038765AFD8DD263B4195D9E2D654B7B9FC1A",
+    "complete_evidence_byte_identical": true,
+    "same_runner_bound_bytes": true,
+    "known_numpy_numexpr_warning_only": true
+  },
+  "path_equivalence_helper": {
+    "path": "scripts/stage4b_u1_preflight_path_equivalence.py",
+    "bytes": 3543,
+    "sha256": "1A17C0E750F91CEF2F638A0B0C6FD381110692E6B2D467C1F5243ADF3F35B3FF",
+    "formal_preflight_must_hash_before_import": true,
+    "formal_preflight_must_directly_import_and_call": "windows_directories_equivalent",
+    "official_input_access_before_helper_success": false
+  },
+  "execution_state": {
+    "formal_preflight_invocations": 0,
+    "authorization_token_uses": 0,
+    "official_capture_invocations": 0,
+    "official_inputs_accessed": false,
+    "controller_rerun": false,
+    "verifier_executed": false,
+    "evaluator_or_gold_accessed": false,
+    "reservation_accessed": false,
+    "stage3b_accessed": false
+  },
+  "next_authorized_action_after_commit_and_push": "ONE_HELPER_BOUND_READ_ONLY_FORMAL_PREFLIGHT",
+  "automatic_retry": false
+}
