@@ -159,6 +159,11 @@
 145. 未来 5G-A.1 如获 package-bound 批准，只允许重命名两个冲突的新测试、同步两个 execution-head suffix、确保通用 path-helper suffix 只登记一次、在 discovery 前增加 suffix tuple 自身唯一性门，并把完整门冻结为精确 246 tests、41 execution-head tests、44 typed-policy tests。Helper SHA `517C5C4DB22A82B4CBCA3D8BB751AAE60C0DCC5B5948CC8419D8770A9CC3D174` 不得改变。
 146. 未来执行顺序必须是 approval governance 推送、一次 source-only active-proof inventory、一次 41/41 定向测试、最终稳定 tracked bytes 上两轮精确 246/246、evidence 字节比较、audit/commit/push、立即停止。禁止 preliminary complete runner；任一门失败不得修正后重跑。
 147. 当前状态为 `AMENDMENT_5G_A_1_AWAITING_APPROVAL`。在新的明确批准前，测试名、runner、synthetic、official execution 和 5G-B 全部锁定。
+148. Amendment 5G-A.1 已获 package-bound minimal-repair/synthetic-retry 批准，严格绑定 package commit `d02b19dfd5a527d0159b930662f5a868c8235d35` 及批准决定登记的历史提交。批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_APPROVAL_DECISION.md`。
+149. 只允许对新 execution-head test module 做两个函数名 token 替换，并对 runner 同步两个 suffix、移除重复通用 suffix、增加 pre-discovery tuple 唯一性门和精确 246/41/44 计数门。Helper 与其他文件不得修改。
+150. 批准治理推送后，必须先完成精确两文件修复，再运行一次 source-only inventory 和一次 41/41 定向测试；全部通过后才允许运行两次最终 246/246。禁止 preliminary complete runner，任一失败立即停止且不得第三次运行。
+151. 两次最终 runner 必须使用完全相同 tracked bytes，第一轮写唯一 OS-temp、第二轮写正式 evidence；只有两轮全门通过且 evidence 字节一致后才可删除第一轮临时文件。
+152. 当前状态为 `AMENDMENT_5G_A_1_APPROVED_AWAITING_MINIMAL_REPAIR`。本批准不授权 real execution-head check、preflight、official input、token、capture、controller、verifier、Gold 或 5G-B。
 
 ## GitHub 与文档
 
