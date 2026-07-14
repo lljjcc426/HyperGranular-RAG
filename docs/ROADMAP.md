@@ -778,3 +778,16 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Existing implementation/tests, official inputs/artifacts, prior evidence/failures, comparator/capture/controller, verifier/evaluator/Gold, reservation, and Stage3B remain frozen.
 - Approval decision: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_APPROVAL_DECISION.md`.
 - Current status: `AMENDMENT_5C_A_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY`.
+
+### Stage4B-U1-D Pre-Gold Amendment 5C-A Implementation And Synthetic Verification
+
+- Added only the approved inventory, deterministic runner, and isolated test files; no existing implementation/test or official/historical artifact was modified or deleted.
+- The inventory is value-free, detects nested duplicate keys and non-finite JSON, distinguishes all frozen JSON types, recursively represents object/array element schemas, separates ordered/structural signatures, and deterministically selects the main ordered schema.
+- The original 107 tests remain and 24 inventory tests were added, for 131 total.
+- One preliminary complete run initially failed only because the new runner matched required proof-test suffixes globally and found an older duplicate suffix. The runner-only matcher was scoped to the new test module; no evidence was written and no official path was accessed on the failed command.
+- The final governance-bound complete suite ran twice on unchanged implementation bytes. Both runs passed 131/131 with zero failures/errors/skips and zero official-path access attempts.
+- Both final evidence outputs were 22,234 bytes with SHA-256 `0D13392B5C96BAD7EC4D67C22A7515B4A6D211C8EFBB3A4486F9BA5531A1EF7C`; direct byte comparison passed.
+- The known NumPy 2.4.6/`numexpr` 1.x ABI warning remained visible through the unchanged legacy import chain, but every accepted run exited zero.
+- Evidence: `results/stage4b_u1_d_pregold_amendment_5c_a_synthetic_verification.json`.
+- Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_IMPLEMENTATION_AUDIT.md`.
+- Current status: `AMENDMENT_5C_A_SYNTHETICALLY_VERIFIED`; official schema scan and all comparator/capture/controller/verifier/Gold actions remain unapproved.

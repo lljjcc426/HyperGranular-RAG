@@ -59,6 +59,7 @@
 45. Amendment 5C-A implementation/synthetic-only 已获批准，严格绑定 package commit `a8caa2a3b26ae13d0b149e4995e3a017e8edb2e7` 及其 Manifest 中八个历史提交。批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_APPROVAL_DECISION.md`。
 46. 5C-A 只允许新增 Manifest 登记的 schema inventory、deterministic runner 与 tests 三个文件，以及批准/审计/evidence/未来 5C-B package 和必要治理同步。任何现有实现、测试、official artifact、历史 evidence 或 failure record 不得修改或删除；official reference 与全部 official 输入不得打开。
 47. 5C-A 必须保留 107 项并至少新增 12 项，完整 suite 不少于 119 项；相同 tracked bytes 上连续两次全通过、零 failure/error/skip/official access 且完整 evidence 字节一致。完成后状态仅为 `AMENDMENT_5C_A_SYNTHETICALLY_VERIFIED`，5C-B official scan、comparator/capture/controller/verifier/Gold 仍须另行批准。
+48. 5C-A implementation baseline 仅包含三个获批新文件，并新增 24 项 inventory tests，使完整 suite 为 131 项。最终完成状态只在 `results/stage4b_u1_d_pregold_amendment_5c_a_synthetic_verification.json` 对本条及全部绑定实现字节连续两次验证均为 131/131、零 failure/error/skip/official access 且 evidence 字节一致时成立；详细 hash 和失败命令记录以 implementation audit 为准。
 
 ## GitHub 与文档
 

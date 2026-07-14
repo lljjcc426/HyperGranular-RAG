@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Amendment 5C-A schema inventory implementation/synthetic-only 已批准 |
-| 获批执行协议 | 仅新增独立 inventory/runner/tests 并完成双次 deterministic synthetic 验证 |
-| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_APPROVAL_REQUEST.md` |
-| 协议状态 | `AMENDMENT_5C_A_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY` |
+| 当前阶段 | Amendment 5C-A schema inventory 已完成 deterministic synthetic 验证 |
+| 获批执行协议 | 5C-A implementation/synthetic 已完成；official schema scan 未批准 |
+| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_IMPLEMENTATION_AUDIT.md` |
+| 协议状态 | `AMENDMENT_5C_A_SYNTHETICALLY_VERIFIED` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -62,6 +62,8 @@ Amendment 5A.1 已按批准范围实现：capture 要求三个 expected-SHA 参�
 Hard Failure 5 的独立审查已退回 schema 诊断执行请求：当前只允许准备 Amendment 5C-A 治理包。该包申请新增独立、只读、value-free 的 JSONL schema inventory 工具和 synthetic 验证；现有 comparator/capture/controller 全部冻结。原 107 项测试必须保留，至少新增 12 项后完整 suite 不少于 119 项并连续两次字节一致。审查和申请分别见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_5_REVIEW_1.md` 与 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_APPROVAL_REQUEST.md`；在明确绑定 5C-A package commit 的批准前不得实现或运行。
 
 Amendment 5C-A 现已获 implementation/synthetic-only 批准，绑定 package commit `a8caa2a3b26ae13d0b149e4995e3a017e8edb2e7`。授权仅覆盖三个全新独立文件、至少 119 项完整 suite 的两次 deterministic 验证、implementation audit/evidence 和未来 5C-B 组包。Official reference、既有 comparator/capture/controller、Gold、reservation 与 Stage3B 继续锁定。批准决定见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_APPROVAL_DECISION.md`。
+
+5C-A 已按批准边界实现：新增独立 value-free schema inventory、deterministic runner 和 24 项 tests，现有 107 项全部保留，完整 suite 共 131 项。最终治理绑定的两次完整运行均为 131/131、零 failure/error/skip/official access；两份 evidence 均为 22,234 bytes、SHA-256 `0D13392B5C96BAD7EC4D67C22A7515B4A6D211C8EFBB3A4486F9BA5531A1EF7C`，逐字节一致。所有冻结实现/测试 SHA 未变化，official reference 未打开。实现审计见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_IMPLEMENTATION_AUDIT.md`。
 
 ## 研究问题
 
@@ -169,9 +171,9 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 按 Amendment 5C-A 批准边界仅新增独立 schema inventory、runner 与 tests，不修改任何既有实现/测试。
-2. 保留原 107 项并至少新增 12 项测试，完整 suite 连续运行两次并形成字节一致 evidence；推送 implementation audit/evidence 后组装 5C-B 包并停止。
-3. Comparator 修改、capture/controller 重跑、verifier、Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
+1. 提交并推送 5C-A implementation audit/evidence，形成可绑定的 implementation commit。
+2. 仅组装 implementation-bound 5C-B schema-only official scan request/Manifest，推送后立即停止等待独立审批。
+3. Official scan、comparator 修改、capture/controller 重跑、verifier、Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub
 
