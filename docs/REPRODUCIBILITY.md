@@ -740,3 +740,15 @@ Only one read-only preflight and one exact official capture are requested. The e
 The diagnostic may report aggregate byte/canonical/query-order/schema/discrete/float/ULP/semantic differences only. Raw byte equality remains the controlling gate, nullable values are not normalized, and no raw ID/row/value, ranking, policy, source-audit content, 5C-B machine inventory, Gold, or U1-D effect metric may enter the audit. After an approved successful diagnosis, the process must push the aggregate evidence and stop; controller rerun, verifier, evaluator/Gold, reservation, and Stage3B remain unapproved.
 
 Current status is `AMENDMENT_5D_B_AWAITING_APPROVAL`. No 5D-B rebinding, preflight, or official capture has run.
+
+## Stage4B-U1-D Pre-Gold Amendment 5D-B Approval And Rebinding
+
+The package-bound approval is `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_B_APPROVAL_DECISION.md`. The approval decision and final approved `AGENTS.md` were pushed at final governance HEAD `1c46dc1b69f8381598aacb9f3b1e27561c7f9ee2` before synthetic execution.
+
+The frozen 143-test command then ran twice. Each invocation exited zero and produced a 29,643-byte evidence file with SHA-256 `264200C2EBEDA1D0B214F824B77C89FC5BBE82D3BE0836FAAB9486EACAACF368`. Both reported 143/143, zero failure/error/skip, zero official-path access, comparator checkpoint `stage4b_u1_decisions_diag_v2`, and no official capture/controller/verifier/evaluator/Gold/reservation/Stage3B action. Direct byte comparison was true.
+
+The known NumPy 2.4.6 versus old `numexpr` ABI warning remained visible on stderr, but both accepted commands exited zero and the complete evidence passed every approved hard gate. The temporary first-run comparison copy was deleted after equality verification; no project file or historical artifact was deleted.
+
+The final evidence is `results/stage4b_u1_d_pregold_amendment_5d_b_synthetic_rebinding.json`. The governance-binding JSON and narrative audit are `results/stage4b_u1_d_pregold_amendment_5d_b_governance_binding.json` and `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_B_SYNTHETIC_REBINDING_AUDIT.md`.
+
+No official input has been opened. After these artifacts are committed and pushed, the only next authorized action is one read-only formal preflight. Capture remains blocked unless every preflight gate passes.

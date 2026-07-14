@@ -108,7 +108,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
-| Stage4B-U1 | 5D-B 审批包待审 | Comparator v2 的 143-test synthetic 证据已推送；单次 official decisions-only 诊断尚未获批，Hard Failure 4 仍未分类 |
+| Stage4B-U1 | 5D-B rebinding 已验证 | 5D-B 已获批；两轮 143-test rebinding 字节一致且零 official access，唯一一次 formal preflight 尚未运行 |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
@@ -154,7 +154,7 @@ Stage4B-U1 当前仅有不访问 reservation 的功效规划入口：`scripts/st
 
 Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verification.py`；当前审计见 `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT_V2_1.md`，历史 v2 审计继续保留。
 
-5C-B 的单次 scan 与 5D-A implementation/synthetic 授权均已消费。5D-A implementation/evidence commit 为 `02f46447e4cd69a15d2af14ee1fc62f9eb4f8bb9`。5D-B request/Manifest 只申请一次受控 official decisions-only 诊断，审批包本身不授权任何 official 读取或执行。
+5D-B 已严格绑定 package `f67061e753b03a5cf46d7a7c92b5a95fc79b0ef8` 获批。最终批准治理上的两轮 143-test rebinding 均为零 failure/error/skip/official access，29,643-byte evidence SHA-256 均为 `264200C2EBEDA1D0B214F824B77C89FC5BBE82D3BE0836FAAB9486EACAACF368` 且逐字节一致。Official capture 仍取决于唯一一次 formal preflight 全部门通过。
 
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
@@ -179,8 +179,8 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 独立审核 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md` 与对应 Manifest。
-2. 未获绑定 5D-B package commit 的明确批准前，不得运行 synthetic rebinding、preflight 或 official capture。
+1. 在 rebinding/governance binding 提交并推送后运行唯一一次只读 formal preflight。
+2. 仅在 preflight 全部门通过时运行唯一一次 exact-command official decisions-only capture；任一失败立即停止且不得重试。
 3. Controller、verifier、Gold、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub

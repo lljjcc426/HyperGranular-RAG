@@ -1,0 +1,80 @@
+{
+  "schema_version": "stage4b_u1_pregold_amendment_5d_b_governance_binding",
+  "stage": "Stage4B-U1-D Pre-Gold Amendment 5D-B",
+  "status": "POST_APPROVAL_SYNTHETIC_REBINDING_VERIFIED",
+  "created_date": "2026-07-14",
+  "package_commit": "f67061e753b03a5cf46d7a7c92b5a95fc79b0ef8",
+  "implementation_and_evidence_commit": "02f46447e4cd69a15d2af14ee1fc62f9eb4f8bb9",
+  "approval_governance_commits": [
+    "b4dec0bade12f16e6a13e3245bd67ce53496e2a2",
+    "1c46dc1b69f8381598aacb9f3b1e27561c7f9ee2"
+  ],
+  "bound_files": {
+    "approval_request": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md",
+      "sha256": "655AB508B4D5D838E781DCD3A88A68A345111E189F2F8A4EA0FDAA74D22F92B6",
+      "bytes": 14873
+    },
+    "manifest": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_B_MANIFEST.json",
+      "sha256": "AB0FBD463B1E10F141F8E18B981F1E1B2E7740B230EE3DBAAAC96AEF6CC12F16",
+      "bytes": 15577
+    },
+    "approval_decision": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_B_APPROVAL_DECISION.md",
+      "sha256": "424587F6DE4112AE8A1D009DC84A1D0B4A3A7EAB99696B15585D2F5DEE2B7CFB",
+      "bytes": 10136
+    },
+    "final_agents": {
+      "path": "AGENTS.md",
+      "sha256": "95BD32C540D63DF4CB79C624F0C38D59658FE4D36325E28DDCBD27E865537AEE",
+      "bytes": 21553
+    },
+    "amendment_5d_a_implementation_audit": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_IMPLEMENTATION_AUDIT.md",
+      "sha256": "D5468E8D57C0E52361D52B0EB7BF54C87DA91D453A2FACBE2AEA57F766CE3794",
+      "bytes": 7959
+    },
+    "amendment_5d_a_evidence": {
+      "path": "results/stage4b_u1_d_pregold_amendment_5d_a_synthetic_verification.json",
+      "sha256": "08695B4305D9919049DFE86870772B9E9F66751DA6D2FF4D43CEF2A912A62008",
+      "bytes": 29643
+    },
+    "post_approval_rebinding_evidence": {
+      "path": "results/stage4b_u1_d_pregold_amendment_5d_b_synthetic_rebinding.json",
+      "sha256": "264200C2EBEDA1D0B214F824B77C89FC5BBE82D3BE0836FAAB9486EACAACF368",
+      "bytes": 29643
+    }
+  },
+  "post_approval_rebinding": {
+    "command": "python scripts\\stage4b_u1_run_decisions_diagnostic_synthetic_verification.py --output results\\stage4b_u1_d_pregold_amendment_5d_b_synthetic_rebinding.json",
+    "complete_runs": 2,
+    "tests_per_run": 143,
+    "failures_per_run": 0,
+    "errors_per_run": 0,
+    "skipped_per_run": 0,
+    "official_path_access_attempts_per_run": 0,
+    "diagnostic_checkpoint": "stage4b_u1_decisions_diag_v2",
+    "evidence_sha256_per_run": "264200C2EBEDA1D0B214F824B77C89FC5BBE82D3BE0836FAAB9486EACAACF368",
+    "evidence_bytes_per_run": 29643,
+    "complete_evidence_byte_identical": true,
+    "official_capture_executed": false,
+    "official_comparator_executed": false,
+    "controller_rerun": false,
+    "verifier_executed": false,
+    "evaluator_or_gold_accessed": false,
+    "reservation_accessed": false,
+    "stage3b_accessed": false,
+    "known_numpy_numexpr_abi_warning_observed": true,
+    "accepted_commands_exit_code": 0,
+    "temporary_run1_comparison_copy_removed": true
+  },
+  "official_execution": {
+    "formal_preflight_invocations": 0,
+    "official_capture_invocations": 0,
+    "five_official_inputs_opened": false,
+    "authorization_token_consumed_under_amendment_5d_b": false
+  },
+  "next_gate": "SINGLE_READ_ONLY_FORMAL_PREFLIGHT",
+  "automatic_retry_allowed": false
+}

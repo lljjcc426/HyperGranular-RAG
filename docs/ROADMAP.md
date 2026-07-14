@@ -884,3 +884,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The unchanged capture enforces the historical `stage4b_u1_d_pregold_amendment_5b_official_decisions_diagnostic.json` machine-output path. Hard Failure 5 left it absent; 5D-B preflight must hard-fail if it exists, and no overwrite or rename is requested.
 - Raw byte equality remains controlling. Comparator v2 may only provide aggregate classification of any difference; no normalization or equivalence relaxation is requested.
 - Current status: `AMENDMENT_5D_B_AWAITING_APPROVAL`. The package authorizes no synthetic rebinding, official preflight, capture, controller, verifier, evaluator, or Gold action.
+
+### Stage4B-U1-D Pre-Gold Amendment 5D-B Approval And Rebinding
+
+- Approval binds package `f67061e753b03a5cf46d7a7c92b5a95fc79b0ef8` and implementation/evidence `02f46447e4cd69a15d2af14ee1fc62f9eb4f8bb9`.
+- Final approval-governance HEAD before rebinding: `1c46dc1b69f8381598aacb9f3b1e27561c7f9ee2`.
+- The complete 143-test suite ran twice on the final approved governance bytes. Both runs passed 143/143 with zero failure/error/skip/official access.
+- Both complete outputs were 29,643 bytes with SHA-256 `264200C2EBEDA1D0B214F824B77C89FC5BBE82D3BE0836FAAB9486EACAACF368`; direct byte comparison passed.
+- The known NumPy 2.4.6/old `numexpr` ABI warning remained visible, but both commands exited zero.
+- Governance binding: `results/stage4b_u1_d_pregold_amendment_5d_b_governance_binding.json`.
+- Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_B_SYNTHETIC_REBINDING_AUDIT.md`.
+- Current status: `AMENDMENT_5D_B_APPROVED_REBINDING_VERIFIED_PREFLIGHT_PENDING`. No official input has been opened and the single formal preflight has not run.
