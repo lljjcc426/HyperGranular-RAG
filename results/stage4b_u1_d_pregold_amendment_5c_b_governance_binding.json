@@ -1,0 +1,48 @@
+{
+  "schema_version": "stage4b_u1_pregold_amendment_5c_b_governance_binding_v1",
+  "status": "AMENDMENT_5C_B_POST_APPROVAL_SYNTHETIC_REBINDING_VERIFIED",
+  "package_commit": "e5a6c5479dbd125ebb58b95e9594fadde6b6719d",
+  "approval_governance_commit": "fce67da87d155b1026cbe0670f606201ede0ac4b",
+  "amendment_5c_a_implementation_and_evidence_commit": "492a59b2f4daccd3e123f2b6cc49cd896d5009d1",
+  "binding_files": {
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_OFFICIAL_SCHEMA_SCAN_APPROVAL_REQUEST.md": {
+      "bytes": 8610,
+      "sha256": "7A37E470204FA2634F9340B5FC261F19BE80061617B0FA10D71D24824BE3797A"
+    },
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_MANIFEST.json": {
+      "bytes": 10111,
+      "sha256": "E20AE058B3487897C4180580B4B694779469A3B83F3BD59F1E22D5B3A455D723"
+    },
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_APPROVAL_DECISION.md": {
+      "bytes": 5119,
+      "sha256": "1581B023B8F2052E114701DD6FA82A01432A5102859659115230CC37529312E2"
+    },
+    "AGENTS.md": {
+      "bytes": 16484,
+      "sha256": "D587C36E79DC3F39F79C1DD2131080EB04367CA914659D5D438ED8D6409B4965"
+    },
+    "results/stage4b_u1_d_pregold_amendment_5c_a_synthetic_verification.json": {
+      "bytes": 22234,
+      "sha256": "0D13392B5C96BAD7EC4D67C22A7515B4A6D211C8EFBB3A4486F9BA5531A1EF7C"
+    },
+    "results/stage4b_u1_d_pregold_amendment_5c_b_synthetic_rebinding.json": {
+      "bytes": 22234,
+      "sha256": "F16C91BF170ABDFC6784F368D6247E0AA8CDC9ECFB6671C71DFA9BD35CCF297C"
+    }
+  },
+  "post_approval_synthetic_rebinding": {
+    "complete_runs": 2,
+    "tests_run_each": 131,
+    "inventory_tests_run_each": 24,
+    "failures_each": 0,
+    "errors_each": 0,
+    "skipped_each": 0,
+    "official_path_access_attempts_each": 0,
+    "evidence_byte_identical": true,
+    "evidence_bytes": 22234,
+    "evidence_sha256": "F16C91BF170ABDFC6784F368D6247E0AA8CDC9ECFB6671C71DFA9BD35CCF297C"
+  },
+  "official_reference_accessed": false,
+  "official_schema_scan_executed": false,
+  "next_gate": "ONE_READ_ONLY_FORMAL_PREFLIGHT"
+}
