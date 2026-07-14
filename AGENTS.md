@@ -56,6 +56,9 @@
 42. 当前唯一允许动作是组装并推送 Amendment 5C-A 审批请求与机器可读 Manifest。该 package 本身不授权实现、synthetic 执行或任何 official 文件读取；任何批准必须显式绑定 package commit。
 43. 未来 5C-A 如获批准，只能新增独立 schema inventory、独立 deterministic runner 与独立 tests；现有 comparator、capture、controller、retrieval、common、现有 runner/tests、byte-equivalence 和全部科研参数必须保持不变。原 107 项测试必须保留，至少新增 12 项后完整 suite 不少于 119 项，并连续两次全通过、零 official access、evidence 字节一致。
 44. 未来 5C-B 必须另行组包和批准，且最多只允许对冻结路径/SHA 的 v2.2 reference decisions 做一次 schema-only scan。5C-A 完成不得自动读取 official reference、修改 comparator、normalization、重跑 capture/controller、运行 verifier 或接触 Gold/reservation/Stage3B。
+45. Amendment 5C-A implementation/synthetic-only 已获批准，严格绑定 package commit `a8caa2a3b26ae13d0b149e4995e3a017e8edb2e7` 及其 Manifest 中八个历史提交。批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_APPROVAL_DECISION.md`。
+46. 5C-A 只允许新增 Manifest 登记的 schema inventory、deterministic runner 与 tests 三个文件，以及批准/审计/evidence/未来 5C-B package 和必要治理同步。任何现有实现、测试、official artifact、历史 evidence 或 failure record 不得修改或删除；official reference 与全部 official 输入不得打开。
+47. 5C-A 必须保留 107 项并至少新增 12 项，完整 suite 不少于 119 项；相同 tracked bytes 上连续两次全通过、零 failure/error/skip/official access 且完整 evidence 字节一致。完成后状态仅为 `AMENDMENT_5C_A_SYNTHETICALLY_VERIFIED`，5C-B official scan、comparator/capture/controller/verifier/Gold 仍须另行批准。
 
 ## GitHub 与文档
 

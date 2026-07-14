@@ -767,3 +767,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The existing 107 tests must remain; at least 12 new tests make the complete-suite minimum 119. Two unchanged-byte runs must be all-pass with zero failure/error/skip/official access and byte-identical evidence.
 - No official file read, schema scan, comparator/capture/controller execution, verifier, evaluator/Gold, reservation, or Stage3B access is requested.
 - Current status: `AMENDMENT_5C_A_AWAITING_APPROVAL`. The package itself authorizes no implementation or test command.
+
+### Stage4B-U1-D Pre-Gold Amendment 5C-A Approval
+
+- Decision date: 2026-07-14.
+- Decision: `APPROVE_STAGE4B_U1_D_PREGOLD_AMENDMENT_5C_A_REFERENCE_SCHEMA_INVENTORY_IMPLEMENTATION_SYNTHETIC_ONLY`.
+- Bound package commit: `a8caa2a3b26ae13d0b149e4995e3a017e8edb2e7` plus the eight historical commits registered in its Manifest.
+- Authorized scope is limited to three new independent files for value-free schema inventory, deterministic complete-suite verification, and isolated tests, plus approval/audit/evidence/future 5C-B governance outputs.
+- Existing 107 tests must remain; at least 12 additions make the complete-suite minimum 119. Two unchanged-byte runs must pass with zero failures/errors/skips/official access and byte-identical evidence.
+- Existing implementation/tests, official inputs/artifacts, prior evidence/failures, comparator/capture/controller, verifier/evaluator/Gold, reservation, and Stage3B remain frozen.
+- Approval decision: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_APPROVAL_DECISION.md`.
+- Current status: `AMENDMENT_5C_A_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY`.

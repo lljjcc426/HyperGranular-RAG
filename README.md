@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Hard Failure 5 已审查；Amendment 5C-A schema inventory 包等待批准 |
-| 获批执行协议 | 无；5B v2 单次授权已耗尽，5C-A 包本身不授权实现或运行 |
+| 当前阶段 | Amendment 5C-A schema inventory implementation/synthetic-only 已批准 |
+| 获批执行协议 | 仅新增独立 inventory/runner/tests 并完成双次 deterministic synthetic 验证 |
 | 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_APPROVAL_REQUEST.md` |
-| 协议状态 | `AMENDMENT_5C_A_AWAITING_APPROVAL` |
+| 协议状态 | `AMENDMENT_5C_A_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -60,6 +60,8 @@ Amendment 5A.1 已按批准范围实现：capture 要求三个 expected-SHA 参�
 5B v2 获批后，两次 107 项 rebinding 与唯一一次只读 preflight 全部通过。唯一一次 exact-command capture 随后在 comparator 读取冻结 v2.2 reference decisions 时因 `Incomparable heterogeneous decisions schema at line 2` 硬失败；没有产生聚合 machine audit，不能判断 byte/canonical/semantic 差异。临时 decisions 已清理，channel/cache/reference hash 与 cache bytes 不变，正式 outputs 仍不存在。失败审计见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_5.md`；任何后续 schema 诊断或重跑必须另行批准。
 
 Hard Failure 5 的独立审查已退回 schema 诊断执行请求：当前只允许准备 Amendment 5C-A 治理包。该包申请新增独立、只读、value-free 的 JSONL schema inventory 工具和 synthetic 验证；现有 comparator/capture/controller 全部冻结。原 107 项测试必须保留，至少新增 12 项后完整 suite 不少于 119 项并连续两次字节一致。审查和申请分别见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_5_REVIEW_1.md` 与 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_APPROVAL_REQUEST.md`；在明确绑定 5C-A package commit 的批准前不得实现或运行。
+
+Amendment 5C-A 现已获 implementation/synthetic-only 批准，绑定 package commit `a8caa2a3b26ae13d0b149e4995e3a017e8edb2e7`。授权仅覆盖三个全新独立文件、至少 119 项完整 suite 的两次 deterministic 验证、implementation audit/evidence 和未来 5C-B 组包。Official reference、既有 comparator/capture/controller、Gold、reservation 与 Stage3B 继续锁定。批准决定见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_APPROVAL_DECISION.md`。
 
 ## 研究问题
 
@@ -167,8 +169,8 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 对 Amendment 5C-A request/Manifest 进行独立审批；未批准前不修改代码、不运行 synthetic、不读取 official reference decisions。
-2. 仅在 package-bound 批准后实现独立 schema inventory，保留原 107 项并至少新增 12 项测试，完整 suite 连续运行两次并形成字节一致 evidence，然后组装 5C-B 包并停止。
+1. 按 Amendment 5C-A 批准边界仅新增独立 schema inventory、runner 与 tests，不修改任何既有实现/测试。
+2. 保留原 107 项并至少新增 12 项测试，完整 suite 连续运行两次并形成字节一致 evidence；推送 implementation audit/evidence 后组装 5C-B 包并停止。
 3. Comparator 修改、capture/controller 重跑、verifier、Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub
