@@ -895,3 +895,13 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Governance binding: `results/stage4b_u1_d_pregold_amendment_5d_b_governance_binding.json`.
 - Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_B_SYNTHETIC_REBINDING_AUDIT.md`.
 - Current status: `AMENDMENT_5D_B_APPROVED_REBINDING_VERIFIED_PREFLIGHT_PENDING`. No official input has been opened and the single formal preflight has not run.
+
+### Stage4B-U1-D Pre-Gold Hard Failure 6
+
+- The only formal preflight ran once on synchronized clean HEAD `2447ad234c160c6e615d81b33dc4ede7ecaa18da`.
+- Git, ancestry, implementation, governance binding, final `AGENTS.md`, exact command, output absence, and temp-residue gates passed.
+- The preflight then failed at the OS temp parent equality expression because the comparison did not normalize a trailing directory separator before string equality.
+- Failure occurred before regular-file checks, SHA reads, or semantic parsing of any of the five official inputs. The capture token was not passed and capture invocation count remains zero.
+- Post-failure metadata confirmed no machine/narrative audit, no formal output, and no diagnostic temporary residue.
+- Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_6.md`.
+- Current status: `AMENDMENT_5D_B_OFFICIAL_DIAGNOSTIC_STOPPED_HARD_FAILURE_6`; the 5D-B preflight authorization is consumed and Hard Failure 4 remains unclassified.

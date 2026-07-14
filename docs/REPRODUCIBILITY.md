@@ -752,3 +752,20 @@ The known NumPy 2.4.6 versus old `numexpr` ABI warning remained visible on stder
 The final evidence is `results/stage4b_u1_d_pregold_amendment_5d_b_synthetic_rebinding.json`. The governance-binding JSON and narrative audit are `results/stage4b_u1_d_pregold_amendment_5d_b_governance_binding.json` and `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_B_SYNTHETIC_REBINDING_AUDIT.md`.
 
 No official input has been opened. After these artifacts are committed and pushed, the only next authorized action is one read-only formal preflight. Capture remains blocked unless every preflight gate passes.
+
+## Stage4B-U1-D Pre-Gold Hard Failure 6
+
+The single authorized formal preflight ran once on clean synchronized HEAD `2447ad234c160c6e615d81b33dc4ede7ecaa18da`. It passed Git/GitHub, ancestry, Manifest implementation hashes, seven governance-bound hashes/byte counts, final `AGENTS.md`, frozen command/configuration, output absence, and diagnostic-temp absence gates.
+
+It then stopped at this expression before any official input file check or read:
+
+```powershell
+[System.IO.Path]::GetFullPath($tempParent) -eq
+  [System.IO.Path]::GetFullPath([System.IO.Path]::GetTempPath())
+```
+
+The observed exception was `OS temp parent differs`. The comparison retained the trailing-separator difference between the Manifest path and `.NET GetTempPath()`. Because the formal preflight failed, its one authorized invocation is consumed even though both strings may resolve to the same directory.
+
+The failure preceded regular-file checks, SHA reads, units/queries parsing, and channel-audit parsing. No official input, source audit, 5C-B machine inventory, ranking, policy, Gold, reservation, or Stage3B file was opened. The authorization token was not passed and official capture did not run.
+
+A metadata-only post-failure check found no machine/narrative audit, zero of five formal outputs, and no `stage4b_u1_decisions_diag_*` residue. Full evidence is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_6.md`. Current status is `AMENDMENT_5D_B_OFFICIAL_DIAGNOSTIC_STOPPED_HARD_FAILURE_6`; no second preflight or capture is authorized.

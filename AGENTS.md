@@ -82,6 +82,9 @@
 68. 5D-B official 读取边界仅为 Manifest 冻结的 units、queries、controller channel audit、existing cache 和 v2.2 reference decisions 五项。Stage4A-R2 source-audit 文件、5C-B machine inventory、official rankings、reference policy、evaluator/Gold、reservation 和 Stage3B 均不得打开；source-audit 仅可核验 channel 中已登记 digest。
 69. Capture/comparator hash、双 ID、query/unit 数、模型、`max_length=192`、`batch_size=64`、controller/diagnostic checkpoint、raw-byte 控制门和 no-normalization 全部冻结。历史 5B token 仅在本批准 exact command 中重新授权一次；禁止第二次 preflight/capture、完整 controller、verifier、正式输出提升、cache 变更或诊断后自动恢复。
 70. 成功完成后状态只能为 `AMENDMENT_5D_B_OFFICIAL_DECISIONS_DIAGNOSTIC_COMPLETE_AWAITING_REVIEW` 与 `HARD_FAILURE_4_DIAGNOSIS_COMPLETE_AWAITING_REVIEW`，controller rerun、verifier 和 Gold 继续未批准；任何诊断分类均不得自动产生有效性或晋级结论。
+71. Amendment 5D-B 唯一一次 formal preflight 已在同步 clean HEAD `2447ad234c160c6e615d81b33dc4ede7ecaa18da` 消耗，并因 OS temp parent 字符串比较门触发 `HARD_FAILURE_6_FORMAL_PREFLIGHT_OS_TEMP_PATH_COMPARISON`。失败审计为 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_6.md`。
+72. Hard Failure 6 发生在五项 official 输入普通文件检查、SHA 读取和语义解析之前；official capture 未运行、token 未传入，machine/narrative audit 与五项正式输出均不存在，diagnostic temp 残留为 0。Hard Failure 4 diagnosis 继续 incomplete。
+73. 5D-B preflight 次数已经耗尽；禁止第二次 preflight、capture、controller、verifier、Gold、reservation 或 Stage3B。任何修正 trailing-separator/path-equivalence 检查或恢复 official diagnostic 的动作必须形成新的 package-bound Amendment 并获得明确批准。
 
 ## GitHub 与文档
 
