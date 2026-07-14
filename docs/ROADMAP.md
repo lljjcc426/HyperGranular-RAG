@@ -939,3 +939,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The requested capture command, five-input read boundary, model/parameters, token string, comparator semantics and raw-byte gate are unchanged from 5D-B.
 - A future approval must first require two byte-identical 161-test post-approval rebinding runs and governance binding.
 - Current status: `AMENDMENT_5E_B_AWAITING_APPROVAL`. This package authorizes no rebinding, preflight, token, capture, controller, verifier, evaluator or Gold action.
+
+### Stage4B-U1-D Pre-Gold Hard Failure 7
+
+- Approval governance commit: `f2f2e249e4e7a52fcc44b61a2245d8d50d79106d`.
+- Post-approval rebinding/governance commit: `3185c3bd4ffd3eb2bc61b52fdf18a3367b9dca76`.
+- Two 161-test rebinding runs passed with byte-identical 36,518-byte evidence SHA-256 `BF4C668C76C4B8545882C894F241038765AFD8DD263B4195D9E2D654B7B9FC1A`.
+- The only formal preflight passed A, then failed in B because a raw `gold` substring denylist matched the approved `pregold` machine-audit output path.
+- The failure preceded helper import/call and every official input metadata/content operation. Helper, official access, token and capture counts remained zero.
+- Post-failure checks found no machine/narrative audit, no formal output and no diagnostic residue.
+- Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_7.md`.
+- Current status: `AMENDMENT_5E_B_FORMAL_PREFLIGHT_STOPPED_HARD_FAILURE_7`; Hard Failure 4 remains unclassified and 5E-B cannot be retried.

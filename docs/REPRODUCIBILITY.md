@@ -799,3 +799,13 @@ The implementation-bound request and machine-readable scope are `docs/STAGE4B_U1
 The package asks only for a future sequence of approval governance, two 161-test deterministic rebinding runs, governance binding, one helper-bound formal preflight, and conditionally one unchanged exact decisions-only capture. The preflight must verify helper bytes/SHA and directly import/call `windows_directories_equivalent()` on the raw runtime `GetTempPath()` string and exact registered expected directory before any official input metadata/content operation.
 
 The five-input read boundary, cache/reference fingerprints, model, max length, batch size, controller/comparator checkpoints, token string, output path, exact capture command, aggregate-only output policy and raw-byte control gate remain unchanged. The package itself authorizes no command; a future approval must bind the package commit explicitly.
+
+## Stage4B-U1-D Pre-Gold Hard Failure 7
+
+5E-B approval governance was pushed at `f2f2e249e4e7a52fcc44b61a2245d8d50d79106d`. Two post-approval 161-test rebinding runs passed with zero failure/error/skip/official access/formal-preflight/token/capture and byte-identical 36,518-byte evidence SHA-256 `BF4C668C76C4B8545882C894F241038765AFD8DD263B4195D9E2D654B7B9FC1A`. Rebinding/governance artifacts were pushed at `3185c3bd4ffd3eb2bc61b52fdf18a3367b9dca76`.
+
+The single authorized formal preflight passed its project/governance A gate. In B, after confirming all output and temporary-residue absence, a raw case-insensitive substring denylist treated `gold` inside the approved path segment `pregold` as a prohibited Gold input. It raised `Prohibited argument supplied: gold` and stopped.
+
+The helper gate C and official-input gate D were never reached. No official input metadata/content was accessed, no token was used and capture did not run. A corrected metadata-only post-failure check found no machine/narrative audit, no formal output and no diagnostic residue. Full evidence is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_7.md`.
+
+The 5E-B preflight authorization is consumed. The raw-substring check cannot be corrected and rerun under 5E-B; a new package-bound Amendment is required before any helper official-boundary check, preflight or diagnostic capture.

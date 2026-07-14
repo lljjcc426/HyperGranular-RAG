@@ -108,7 +108,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
-| Stage4B-U1 | 5E-B 审批包待审 | 5E-A helper 已通过 161 项双轮确定性验证；5E-B 仅申请一次 helper-bound preflight 与条件式单次 decisions-only capture |
+| Stage4B-U1 | Hard Failure 7 停止 | 5E-B 唯一 preflight 在 B 参数分类门误将 `pregold` 识别为 Gold 后停止；helper/official/capture 均未运行 |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
@@ -154,7 +154,7 @@ Stage4B-U1 当前仅有不访问 reservation 的功效规划入口：`scripts/st
 
 Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verification.py`；当前审计见 `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT_V2_1.md`，历史 v2 审计继续保留。
 
-5E-A 已新增 fail-closed Windows directory-equivalence helper、18 项 synthetic tests 和 deterministic runner 绑定。最终两轮完整 suite 均为 161/161，零 failure/error/skip/official access/formal-preflight/token/capture，36,518-byte evidence 逐字节一致。5E-B request/Manifest 已组装，但 package 本身不授权 rebinding、preflight 或 capture。
+5E-A helper 与 5E-B post-approval rebinding 均通过 161 项双轮确定性验证。5E-B 唯一 formal preflight 的 A 门通过，但 B 门使用裸 `gold` 子串扫描，误命中冻结 machine audit 路径中的 `pregold` 并触发 Hard Failure 7；C helper、D official inputs、token 与 capture 均未运行。
 
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
@@ -179,9 +179,9 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 独立审核 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md` 与对应 Manifest。
-2. 未获绑定 5E-B package commit 的明确批准前，不得运行 rebinding、helper official-boundary check、preflight、token 或 capture。
-3. Controller、verifier、Gold、U1-D 指标、reservation 与 Stage3B 继续锁定。
+1. 独立审核 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_7.md`；5E-B preflight 次数已耗尽。
+2. 任何参数分类修正或 official diagnostic 恢复必须先建立新的 package-bound Amendment。
+3. Helper official-boundary check、preflight、capture、controller、verifier、Gold、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub
 

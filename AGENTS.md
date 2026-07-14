@@ -103,6 +103,10 @@
 89. Preflight 必须在任何 official input metadata/content 操作前完成治理门、输出/残留缺失门和 helper hash/direct-call 门。Helper 必须保持 3,543 bytes、SHA-256 `1A17C0E750F91CEF2F638A0B0C6FD381110692E6B2D467C1F5243ADF3F35B3FF`，runtime 参数必须是未经改写的 `.NET GetTempPath()` 原始值，禁止重新内联路径比较。
 90. 只有 helper gate 通过后才允许检查五项冻结 official inputs；只有唯一 preflight 全通过后才允许一次原 exact capture。Post-run 不得重新解析 reference decisions，只可使用 machine audit 与字节 fingerprint；五项 formal outputs 必须继续不存在。
 91. 本批准不授权第二次 preflight/capture、full controller、verifier、evaluator/Gold、rankings/reference policy、source-audit 文件、5C-B inventory、reservation、Stage3B、formal output promotion、equivalence/数据/模型/参数修改或诊断后自动恢复。
+92. 5E-B 唯一 formal preflight 已在 clean synchronized HEAD `3185c3bd4ffd3eb2bc61b52fdf18a3367b9dca76` 消耗。A 项目/治理门通过；B 的 raw-substring prohibited-argument 检查以 `gold` 误匹配获批 machine audit 路径中的 `pregold`，触发 `HARD_FAILURE_7_FORMAL_PREFLIGHT_PROHIBITED_ARGUMENT_SUBSTRING_FALSE_POSITIVE`。
+93. Hard Failure 7 发生在 helper hash/direct-call 和五项 official input metadata/content 门之前。Helper、official input access、token、capture、controller、verifier、evaluator/Gold 调用均为 0；Hard Failure 4 diagnosis 继续 incomplete。
+94. 失败后 metadata-only 核验确认 machine/narrative audit 不存在、五项 formal outputs 为 0、diagnostic temp residue 为 0。没有仓库或 official artifact 被删除、覆盖或修改；详细审计为 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_7.md`。
+95. 5E-B preflight 授权已耗尽；禁止第二次 preflight、helper official-boundary check、token 或 capture。任何替代 raw-substring argument classification 或恢复 official diagnostic 的动作必须形成新的 package-bound Amendment 并获得明确批准。
 
 ## GitHub 与文档
 
