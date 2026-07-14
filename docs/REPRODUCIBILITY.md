@@ -809,3 +809,15 @@ The single authorized formal preflight passed its project/governance A gate. In 
 The helper gate C and official-input gate D were never reached. No official input metadata/content was accessed, no token was used and capture did not run. A corrected metadata-only post-failure check found no machine/narrative audit, no formal output and no diagnostic residue. Full evidence is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_7.md`.
 
 The 5E-B preflight authorization is consumed. The raw-substring check cannot be corrected and rerun under 5E-B; a new package-bound Amendment is required before any helper official-boundary check, preflight or diagnostic capture.
+
+## Stage4B-U1-D Pre-Gold Amendment 5F-A Package
+
+Hard Failure 7 Review 1 accepts the stop and audit at `f18d551b17f1bbed645ac159ebe52b7d6b9d8e54`. It confirms that the 5E-B preflight is consumed and that helper, official-input access, token, and capture counts remained zero.
+
+The implementation/synthetic-only request and machine-readable scope are `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_APPROVAL_REQUEST.md` and `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_MANIFEST.json`. The package binds the confirmed chain `e387d2707ede9024571249face71bf7ca3afd4e0` -> `f2f2e249e4e7a52fcc44b61a2245d8d50d79106d` -> `3185c3bd4ffd3eb2bc61b52fdf18a3367b9dca76` -> `f18d551b17f1bbed645ac159ebe52b7d6b9d8e54` and the 5E-A implementation/evidence baseline.
+
+The requested helper must validate the unchanged capture argv through exact equality, a fixed ordered flag/value structure, typed values, seven externally frozen path roles, exact token binding, and explicit prohibited-role rejection. It must accept the exact `pregold` audit-output path and must not classify arbitrary values with a raw `gold` substring rule. The helper is standard-library-only and may not access files, hash paths, call the path helper, execute subprocesses, use the token, or invoke capture.
+
+The verified baseline is the 161-test 5E-B rebinding evidence at `results/stage4b_u1_d_pregold_amendment_5e_b_synthetic_rebinding.json`, 36,518 bytes, SHA-256 `BF4C668C76C4B8545882C894F241038765AFD8DD263B4195D9E2D654B7B9FC1A`. A future approved 5F-A implementation must add at least 16 tests and produce two byte-identical complete runs of at least 177 tests with zero failure/error/skip/official access/path-helper official invocation/preflight/token/capture. Its implementation/evidence push must then stop for independent review; a 5F-B package cannot be assembled until that review explicitly accepts 5F-A.
+
+This package itself authorizes no implementation or command. A future approval must explicitly bind the commit containing the request, Manifest, Hard Failure 7 audit, Review 1, and final governance bytes.

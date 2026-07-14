@@ -107,6 +107,10 @@
 93. Hard Failure 7 发生在 helper hash/direct-call 和五项 official input metadata/content 门之前。Helper、official input access、token、capture、controller、verifier、evaluator/Gold 调用均为 0；Hard Failure 4 diagnosis 继续 incomplete。
 94. 失败后 metadata-only 核验确认 machine/narrative audit 不存在、五项 formal outputs 为 0、diagnostic temp residue 为 0。没有仓库或 official artifact 被删除、覆盖或修改；详细审计为 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_7.md`。
 95. 5E-B preflight 授权已耗尽；禁止第二次 preflight、helper official-boundary check、token 或 capture。任何替代 raw-substring argument classification 或恢复 official diagnostic 的动作必须形成新的 package-bound Amendment 并获得明确批准。
+96. Hard Failure 7 Review 1 已接受失败审计并决定 `RETURN_FOR_AMENDMENT_5F_A_PACKAGE`，记录于 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_7_REVIEW_1.md`。当前 argument-policy fix、formal preflight retry、helper official-boundary check、capture、controller、verifier 与 Gold 均未批准。
+97. Amendment 5F-A request/Manifest 仅为 typed capture-argument policy helper implementation/synthetic-only 审批包。包本身不授权 helper/runner/tests 修改、synthetic 执行、official metadata/content 访问、real OS-temp helper check、preflight、token 或 capture；必须等待明确绑定未来 package commit 的批准。
+98. 未来 5F-A 如获批准，只能新增 `scripts/stage4b_u1_preflight_argument_policy.py`、新增 `tests/test_stage4b_u1_preflight_argument_policy.py` 并按 Manifest 限定修改 diagnostic deterministic runner。现有 path-equivalence helper、capture、comparator、common、controller、retrieval、数据、参数和 raw-byte equivalence 必须保持冻结。
+99. 5F-A 必须以 161 项为基线，新增至少 16 项后完整 suite 不少于 177 项；相同 tracked bytes 上连续两次全通过、零 failure/error/skip/official access/path-helper official invocation/preflight/token/capture 且 evidence 字节一致。implementation/evidence 推送后必须停止等待独立审核；只有该审核明确接受后才能另行组装 5F-B package。
 
 ## GitHub 与文档
 

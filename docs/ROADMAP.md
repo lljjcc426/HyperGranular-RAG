@@ -950,3 +950,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Post-failure checks found no machine/narrative audit, no formal output and no diagnostic residue.
 - Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_7.md`.
 - Current status: `AMENDMENT_5E_B_FORMAL_PREFLIGHT_STOPPED_HARD_FAILURE_7`; Hard Failure 4 remains unclassified and 5E-B cannot be retried.
+
+### Stage4B-U1-D Pre-Gold Amendment 5F-A Package
+
+- Hard Failure 7 Review 1 accepts commit `f18d551b17f1bbed645ac159ebe52b7d6b9d8e54` and returns the project for an implementation/synthetic-only Amendment.
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_MANIFEST.json`.
+- Requested implementation scope is limited to one new typed argument-policy helper, one new synthetic test module, and governance/evidence-only updates to the existing diagnostic deterministic runner.
+- The helper contract freezes exact argv equality, an ordered typed flag allowlist, per-role exact value binding, explicit prohibited-role rejection, and no raw `gold` value-substring denylist.
+- The 161-test 5E-B rebinding is the baseline. A future approved implementation must add at least 16 tests and run a complete suite of at least 177 tests twice with byte-identical evidence and zero official access/path-helper official invocation/preflight/token/capture.
+- A future 5F-A implementation/evidence push must stop for independent review. A 5F-B package may be assembled only after that review explicitly accepts 5F-A.
+- Current status: `AMENDMENT_5F_A_AWAITING_APPROVAL`. This package authorizes no implementation, synthetic execution, official access, helper official-boundary check, preflight, token, capture, controller, verifier, evaluator, or Gold action.
