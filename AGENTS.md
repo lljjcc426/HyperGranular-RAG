@@ -126,6 +126,15 @@
 112. 只有 B 通过后，C 门才可核验 path helper SHA `1A17C0E750F91CEF2F638A0B0C6FD381110692E6B2D467C1F5243ADF3F35B3FF`，并直接调用 `windows_directories_equivalent` 比较未改写的 `.NET GetTempPath()` 与冻结目录。只有 B/C 均通过后，D 门才可访问 Manifest 登记的五项 official inputs。
 113. 5F-B exact capture command 必须与 hash-bound 5E-B Manifest 的 32 个 argv 元素逐项完全一致；raw-byte equality 继续为首要冻结门。不得修改代码、测试、数据、模型、参数、equivalence 或 stop rules，不得读取 rankings、reference policy、source-audit 文件、5C-B inventory、Gold、reservation 或 Stage3B。
 114. 当前状态为 `AMENDMENT_5F_B_AWAITING_APPROVAL`。5F-B package 组装提交推送后必须停止等待独立审批；formal preflight retry、path-helper official-boundary check、authorization token、official capture、controller rerun、verifier 和 Gold 均未批准。
+115. Amendment 5F-B 已获 package-bound 批准，严格绑定 package commit `f33ee70233ea4098b2d7a17cfde3d266081ee693` 及批准决定登记的历史提交。批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_B_APPROVAL_DECISION.md`。
+116. 唯一执行顺序冻结为：批准治理提交推送；最终治理字节上两轮 205/205 synthetic rebinding；rebinding evidence/governance binding/audit 提交推送；唯一一次 A→B→C→D preflight；全部通过后一次 unchanged exact capture；聚合审计提交推送后立即停止。任一硬失败不得重试。
+117. Rebinding evidence 必须绑定当前 26 项实现/治理字节；governance-binding JSON 必须额外绑定 5F-B request、Manifest、approval decision 与 rebinding evidence。不得声称 runner 自身直接包含全部 5F-B package 文件。
+118. Preflight A 只能读取项目治理文件与输出路径 metadata，不得访问五项 official inputs。A 必须核验同步 clean Git、提交祖先、历史 `e7b688d...:AGENTS.md`、当前其余 25 项 accepted hashes、post-approval 全部 26 项 current hashes、helpers/capture/comparator/runner/tests hashes，以及 machine/narrative audit、五项 formal outputs和 OS-temp residue 不存在。
+119. Preflight B 只允许运行一次：核验 typed helper 与 5E-B Manifest bytes/SHA，从 hash-bound 5F-B/5E-B Manifest 读取 actual/approved argv，并直接调用 `validate_capture_argv`。必须 exact equality、32 elements、15 flags、7 path roles、0 prohibited roles；禁止内联、fallback 或关键词扫描，且不得访问 argv 所指文件的 metadata/content。
+120. 只有 B 通过后，Preflight C 才可核验并直接调用冻结 path helper，比对未改写的 `.NET GetTempPath()` 与精确目录 `C:\Users\cc\AppData\Local\Temp`。只有 B/C 均通过后，D 才可访问五项 official inputs并核验 Manifest 冻结的路径、SHA、计数、dual-ID 与 cache 完整性。
+121. 只有 A/B/C/D 全部通过后，才允许一次 Manifest unchanged 32-element exact capture。Post-run 不得再次语义解析 reference/temporary decisions，只可核验 aggregate machine audit、input/cache fingerprints、cleanup 和 formal-output absence。
+122. 本批准不授权任何代码/测试/科研参数/equivalence 修改、第二次 preflight/helper/capture、full controller、verifier、evaluator/Gold、formal output、rankings、reference policy、source-audit 文件、5C-B inventory、reservation、Stage3B、cache/历史工件修改删除或诊断后自动继续。
+123. 当前进入 `AMENDMENT_5F_B_APPROVED_AWAITING_POST_APPROVAL_REBINDING`。批准治理提交推送前不得运行 synthetic；rebinding/governance 提交推送前不得运行 preflight。
 
 ## GitHub 与文档
 
