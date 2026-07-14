@@ -1,0 +1,742 @@
+{
+  "distinct_ordered_schema_signatures": 2,
+  "distinct_structural_schema_signatures": 2,
+  "main_ordered_signature": "27F687A132A253BB9388AC7241F32C701161A24E99749535148FDE2A1C815A60",
+  "main_schema_selection": "MAX_ROW_COUNT_OVER_ORDERED_SIGNATURE_THEN_LEXICOGRAPHIC_ORDERED_SIGNATURE",
+  "output_integrity": {
+    "exclusive_create": true,
+    "temporary_staging_cleaned": true
+  },
+  "schema_inventory_version": "stage4b_u1_reference_schema_inventory_v1",
+  "schemas": [
+    {
+      "differences_from_main": {
+        "added_fields": [],
+        "nesting_changed_fields": [],
+        "order_only_fields": [],
+        "removed_fields": [],
+        "type_changed_fields": []
+      },
+      "field_name_set": [
+        "ball_score_margin",
+        "boundary_margin",
+        "dataset",
+        "feasible",
+        "ordered_rank",
+        "planned_insert_count",
+        "query_id",
+        "r_candidate",
+        "r_edge",
+        "readiness",
+        "sample_id",
+        "score",
+        "selected_edge_count",
+        "tie_hash",
+        "trigger_u1",
+        "u_boundary",
+        "u_margin",
+        "uncertainty"
+      ],
+      "field_names": [
+        "ball_score_margin",
+        "boundary_margin",
+        "dataset",
+        "feasible",
+        "ordered_rank",
+        "planned_insert_count",
+        "query_id",
+        "r_candidate",
+        "r_edge",
+        "readiness",
+        "sample_id",
+        "score",
+        "selected_edge_count",
+        "tie_hash",
+        "trigger_u1",
+        "u_boundary",
+        "u_margin",
+        "uncertainty"
+      ],
+      "field_schemas": {
+        "ball_score_margin": {
+          "type": "finite_number"
+        },
+        "boundary_margin": {
+          "type": "finite_number"
+        },
+        "dataset": {
+          "type": "string"
+        },
+        "feasible": {
+          "type": "integer"
+        },
+        "ordered_rank": {
+          "type": "integer"
+        },
+        "planned_insert_count": {
+          "type": "integer"
+        },
+        "query_id": {
+          "type": "string"
+        },
+        "r_candidate": {
+          "type": "finite_number"
+        },
+        "r_edge": {
+          "type": "finite_number"
+        },
+        "readiness": {
+          "type": "finite_number"
+        },
+        "sample_id": {
+          "type": "string"
+        },
+        "score": {
+          "type": "finite_number"
+        },
+        "selected_edge_count": {
+          "type": "integer"
+        },
+        "tie_hash": {
+          "type": "string"
+        },
+        "trigger_u1": {
+          "type": "integer"
+        },
+        "u_boundary": {
+          "type": "finite_number"
+        },
+        "u_margin": {
+          "type": "finite_number"
+        },
+        "uncertainty": {
+          "type": "finite_number"
+        }
+      },
+      "field_types": {
+        "ball_score_margin": "finite_number",
+        "boundary_margin": "finite_number",
+        "dataset": "string",
+        "feasible": "integer",
+        "ordered_rank": "integer",
+        "planned_insert_count": "integer",
+        "query_id": "string",
+        "r_candidate": "finite_number",
+        "r_edge": "finite_number",
+        "readiness": "finite_number",
+        "sample_id": "string",
+        "score": "finite_number",
+        "selected_edge_count": "integer",
+        "tie_hash": "string",
+        "trigger_u1": "integer",
+        "u_boundary": "finite_number",
+        "u_margin": "finite_number",
+        "uncertainty": "finite_number"
+      },
+      "first_line": 1,
+      "last_line": 4500,
+      "ordered_schema": {
+        "fields": [
+          {
+            "name": "ball_score_margin",
+            "schema": {
+              "type": "finite_number"
+            }
+          },
+          {
+            "name": "boundary_margin",
+            "schema": {
+              "type": "finite_number"
+            }
+          },
+          {
+            "name": "dataset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "feasible",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "ordered_rank",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "planned_insert_count",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "query_id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "r_candidate",
+            "schema": {
+              "type": "finite_number"
+            }
+          },
+          {
+            "name": "r_edge",
+            "schema": {
+              "type": "finite_number"
+            }
+          },
+          {
+            "name": "readiness",
+            "schema": {
+              "type": "finite_number"
+            }
+          },
+          {
+            "name": "sample_id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "score",
+            "schema": {
+              "type": "finite_number"
+            }
+          },
+          {
+            "name": "selected_edge_count",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "tie_hash",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "trigger_u1",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "u_boundary",
+            "schema": {
+              "type": "finite_number"
+            }
+          },
+          {
+            "name": "u_margin",
+            "schema": {
+              "type": "finite_number"
+            }
+          },
+          {
+            "name": "uncertainty",
+            "schema": {
+              "type": "finite_number"
+            }
+          }
+        ],
+        "type": "object"
+      },
+      "ordered_signature": "27F687A132A253BB9388AC7241F32C701161A24E99749535148FDE2A1C815A60",
+      "row_count": 2446,
+      "structural_schema": {
+        "fields": [
+          {
+            "name": "ball_score_margin",
+            "schema": {
+              "type": "finite_number"
+            }
+          },
+          {
+            "name": "boundary_margin",
+            "schema": {
+              "type": "finite_number"
+            }
+          },
+          {
+            "name": "dataset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "feasible",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "ordered_rank",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "planned_insert_count",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "query_id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "r_candidate",
+            "schema": {
+              "type": "finite_number"
+            }
+          },
+          {
+            "name": "r_edge",
+            "schema": {
+              "type": "finite_number"
+            }
+          },
+          {
+            "name": "readiness",
+            "schema": {
+              "type": "finite_number"
+            }
+          },
+          {
+            "name": "sample_id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "score",
+            "schema": {
+              "type": "finite_number"
+            }
+          },
+          {
+            "name": "selected_edge_count",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "tie_hash",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "trigger_u1",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "u_boundary",
+            "schema": {
+              "type": "finite_number"
+            }
+          },
+          {
+            "name": "u_margin",
+            "schema": {
+              "type": "finite_number"
+            }
+          },
+          {
+            "name": "uncertainty",
+            "schema": {
+              "type": "finite_number"
+            }
+          }
+        ],
+        "type": "object"
+      },
+      "structural_signature": "27F687A132A253BB9388AC7241F32C701161A24E99749535148FDE2A1C815A60"
+    },
+    {
+      "differences_from_main": {
+        "added_fields": [],
+        "nesting_changed_fields": [],
+        "order_only_fields": [],
+        "removed_fields": [],
+        "type_changed_fields": [
+          "$/ordered_rank",
+          "$/r_candidate",
+          "$/r_edge",
+          "$/readiness",
+          "$/score",
+          "$/u_boundary",
+          "$/u_margin",
+          "$/uncertainty"
+        ]
+      },
+      "field_name_set": [
+        "ball_score_margin",
+        "boundary_margin",
+        "dataset",
+        "feasible",
+        "ordered_rank",
+        "planned_insert_count",
+        "query_id",
+        "r_candidate",
+        "r_edge",
+        "readiness",
+        "sample_id",
+        "score",
+        "selected_edge_count",
+        "tie_hash",
+        "trigger_u1",
+        "u_boundary",
+        "u_margin",
+        "uncertainty"
+      ],
+      "field_names": [
+        "ball_score_margin",
+        "boundary_margin",
+        "dataset",
+        "feasible",
+        "ordered_rank",
+        "planned_insert_count",
+        "query_id",
+        "r_candidate",
+        "r_edge",
+        "readiness",
+        "sample_id",
+        "score",
+        "selected_edge_count",
+        "tie_hash",
+        "trigger_u1",
+        "u_boundary",
+        "u_margin",
+        "uncertainty"
+      ],
+      "field_schemas": {
+        "ball_score_margin": {
+          "type": "finite_number"
+        },
+        "boundary_margin": {
+          "type": "finite_number"
+        },
+        "dataset": {
+          "type": "string"
+        },
+        "feasible": {
+          "type": "integer"
+        },
+        "ordered_rank": {
+          "type": "null"
+        },
+        "planned_insert_count": {
+          "type": "integer"
+        },
+        "query_id": {
+          "type": "string"
+        },
+        "r_candidate": {
+          "type": "null"
+        },
+        "r_edge": {
+          "type": "null"
+        },
+        "readiness": {
+          "type": "null"
+        },
+        "sample_id": {
+          "type": "string"
+        },
+        "score": {
+          "type": "null"
+        },
+        "selected_edge_count": {
+          "type": "integer"
+        },
+        "tie_hash": {
+          "type": "string"
+        },
+        "trigger_u1": {
+          "type": "integer"
+        },
+        "u_boundary": {
+          "type": "null"
+        },
+        "u_margin": {
+          "type": "null"
+        },
+        "uncertainty": {
+          "type": "null"
+        }
+      },
+      "field_types": {
+        "ball_score_margin": "finite_number",
+        "boundary_margin": "finite_number",
+        "dataset": "string",
+        "feasible": "integer",
+        "ordered_rank": "null",
+        "planned_insert_count": "integer",
+        "query_id": "string",
+        "r_candidate": "null",
+        "r_edge": "null",
+        "readiness": "null",
+        "sample_id": "string",
+        "score": "null",
+        "selected_edge_count": "integer",
+        "tie_hash": "string",
+        "trigger_u1": "integer",
+        "u_boundary": "null",
+        "u_margin": "null",
+        "uncertainty": "null"
+      },
+      "first_line": 2,
+      "last_line": 4498,
+      "ordered_schema": {
+        "fields": [
+          {
+            "name": "ball_score_margin",
+            "schema": {
+              "type": "finite_number"
+            }
+          },
+          {
+            "name": "boundary_margin",
+            "schema": {
+              "type": "finite_number"
+            }
+          },
+          {
+            "name": "dataset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "feasible",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "ordered_rank",
+            "schema": {
+              "type": "null"
+            }
+          },
+          {
+            "name": "planned_insert_count",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "query_id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "r_candidate",
+            "schema": {
+              "type": "null"
+            }
+          },
+          {
+            "name": "r_edge",
+            "schema": {
+              "type": "null"
+            }
+          },
+          {
+            "name": "readiness",
+            "schema": {
+              "type": "null"
+            }
+          },
+          {
+            "name": "sample_id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "score",
+            "schema": {
+              "type": "null"
+            }
+          },
+          {
+            "name": "selected_edge_count",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "tie_hash",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "trigger_u1",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "u_boundary",
+            "schema": {
+              "type": "null"
+            }
+          },
+          {
+            "name": "u_margin",
+            "schema": {
+              "type": "null"
+            }
+          },
+          {
+            "name": "uncertainty",
+            "schema": {
+              "type": "null"
+            }
+          }
+        ],
+        "type": "object"
+      },
+      "ordered_signature": "D0E34B90FB69B4F765209FEEEE044B8729F706B8C4665E219E914A40E7D8BB71",
+      "row_count": 2054,
+      "structural_schema": {
+        "fields": [
+          {
+            "name": "ball_score_margin",
+            "schema": {
+              "type": "finite_number"
+            }
+          },
+          {
+            "name": "boundary_margin",
+            "schema": {
+              "type": "finite_number"
+            }
+          },
+          {
+            "name": "dataset",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "feasible",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "ordered_rank",
+            "schema": {
+              "type": "null"
+            }
+          },
+          {
+            "name": "planned_insert_count",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "query_id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "r_candidate",
+            "schema": {
+              "type": "null"
+            }
+          },
+          {
+            "name": "r_edge",
+            "schema": {
+              "type": "null"
+            }
+          },
+          {
+            "name": "readiness",
+            "schema": {
+              "type": "null"
+            }
+          },
+          {
+            "name": "sample_id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "score",
+            "schema": {
+              "type": "null"
+            }
+          },
+          {
+            "name": "selected_edge_count",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "tie_hash",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "trigger_u1",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "u_boundary",
+            "schema": {
+              "type": "null"
+            }
+          },
+          {
+            "name": "u_margin",
+            "schema": {
+              "type": "null"
+            }
+          },
+          {
+            "name": "uncertainty",
+            "schema": {
+              "type": "null"
+            }
+          }
+        ],
+        "type": "object"
+      },
+      "structural_signature": "D0E34B90FB69B4F765209FEEEE044B8729F706B8C4665E219E914A40E7D8BB71"
+    }
+  ],
+  "source_integrity": {
+    "sha256_after": "6FB6EB6DBFE3C6B819E65ADD268D9F94CFEA24E5761C9E4CB53CD0965C3723C7",
+    "sha256_before": "6FB6EB6DBFE3C6B819E65ADD268D9F94CFEA24E5761C9E4CB53CD0965C3723C7",
+    "unchanged": true
+  },
+  "status": "SCHEMA_INVENTORY_COMPLETE",
+  "total_rows": 4500,
+  "value_free_schema_metadata": true
+}

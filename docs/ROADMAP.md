@@ -802,3 +802,27 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_OFFICIAL_SCHEMA_SCAN_APPROVAL_REQUEST.md`.
 - Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_MANIFEST.json`.
 - Current status: `AMENDMENT_5C_B_AWAITING_APPROVAL`; no 5C-B command has run.
+
+### Stage4B-U1-D Pre-Gold Amendment 5C-B Approval And Rebinding
+
+- Decision date: 2026-07-14.
+- Decision: `APPROVE_STAGE4B_U1_D_AMENDMENT_5C_B_SINGLE_REFERENCE_SCHEMA_SCAN`.
+- Bound package commit: `e5a6c5479dbd125ebb58b95e9594fadde6b6719d` plus the eight historical commits registered in the approval decision.
+- Approval governance commit: `fce67da87d155b1026cbe0670f606201ede0ac4b`.
+- The complete 131-test suite ran twice on the final approved governance bytes; both runs passed 131/131 with 24 inventory tests and zero failure/error/skip/official access.
+- Both rebinding outputs were 22,234 bytes with SHA-256 `F16C91BF170ABDFC6784F368D6247E0AA8CDC9ECFB6671C71DFA9BD35CCF297C`; direct byte comparison passed.
+- Rebinding/governance commit: `b09668f47cd31df2be73446cadacf84d996418f9`.
+- The known NumPy 2.4.6/`numexpr` ABI warning remained visible, but both commands exited zero.
+
+### Stage4B-U1-D Pre-Gold Amendment 5C-B Official Schema Scan
+
+- The only read-only formal preflight passed on synchronized HEAD `b09668f47cd31df2be73446cadacf84d996418f9`.
+- Preflight verified 17 implementation blobs, eight current frozen files, six governance-bound files, the exact command and five absent formal outputs. It read the frozen reference only as bytes for SHA-256 and did not parse JSONL.
+- The only exact-command official schema scan exited zero without retry.
+- The 4,500 rows contain two ordered and two structural schemas: 2,446 rows in the main schema and 2,054 rows in the second schema.
+- The schemas have the same field set and order. The second schema differs only at eight field paths: `ordered_rank` is `null` instead of `integer`, and seven numeric controller fields are `null` instead of `finite_number`.
+- Added, removed, nesting-changed, and order-only path counts are all zero.
+- Machine inventory: 17,229 bytes, SHA-256 `FA56AC3CB78EE746BF71AF0CEF40606E56B9D13C120F10A2A87400EA42CE3A5E`.
+- Independent validation passed the exact whitelist, recursive value-free schema, digest/count/main-selection, source-integrity, exclusive-create/cleanup, and five-formal-output absence gates without reopening the reference.
+- Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_OFFICIAL_SCHEMA_SCAN_AUDIT.md`.
+- Current status: `REFERENCE_DECISIONS_SCHEMA_DIAGNOSTIC_COMPLETE_AWAITING_REVIEW`. Comparator change, capture/controller rerun, verifier, and Gold remain unapproved.

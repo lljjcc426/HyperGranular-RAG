@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Amendment 5C-A 已验证；implementation-bound 5C-B 包等待审批 |
-| 获批执行协议 | 无 official 执行授权；5C-B package 本身不授权 preflight/scan |
-| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_OFFICIAL_SCHEMA_SCAN_APPROVAL_REQUEST.md` |
-| 协议状态 | `AMENDMENT_5C_B_AWAITING_APPROVAL` |
+| 当前阶段 | Amendment 5C-B 单次 reference-decisions schema-only 诊断已完成，等待独立审核 |
+| 获批执行协议 | 5C-B 单次授权已消费；无 capture/controller/verifier/Gold 执行授权 |
+| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_OFFICIAL_SCHEMA_SCAN_AUDIT.md` |
+| 协议状态 | `REFERENCE_DECISIONS_SCHEMA_DIAGNOSTIC_COMPLETE_AWAITING_REVIEW` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -67,6 +67,8 @@ Amendment 5C-A 现已获 implementation/synthetic-only 批准，绑定 package c
 
 Implementation-bound Amendment 5C-B 包已组装，请求仅在新批准后依次执行批准治理、双次 131 项 synthetic rebinding、governance binding、一次 SHA-only preflight、一次 exact-command value-free reference schema scan、聚合审计提交和立即停止。唯一输入冻结为 v2.2 reference decisions 及 SHA `6FB6...23C7`；其他 official 文件、字段值/ID、comparator/capture/controller/verifier/Gold 全部禁止。Request/Manifest 分别为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_OFFICIAL_SCHEMA_SCAN_APPROVAL_REQUEST.md` 与 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_MANIFEST.json`。
 
+5C-B 获批后，两次 131 项 post-approval rebinding 均全通过且 evidence 字节一致；唯一一次 SHA-only preflight 全部门通过。唯一一次 exact-command scan 对 4,500 行 reference decisions 生成 value-free schema inventory：共有 2 个 ordered/structural schemas，行数分别为 2,446 与 2,054；字段集合、顺序和嵌套无差异，异质性集中在 8 个字段的 `integer/finite_number` 与 `null` 类型差异。Machine inventory SHA-256 为 `FA56AC3CB78EE746BF71AF0CEF40606E56B9D13C120F10A2A87400EA42CE3A5E`。审计见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_OFFICIAL_SCHEMA_SCAN_AUDIT.md`；这不授权 normalization、capture/controller 重跑、verifier 或 Gold。
+
 ## 研究问题
 
 长期问题：
@@ -102,7 +104,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
-| Stage4B-U1 | Hard Failure 4 后停止；5A synthetic 已验证 | 尚未解释 decisions 差异；official 诊断、controller 重跑、verifier 与 Gold 均未授权 |
+| Stage4B-U1 | Hard Failure 5 后完成 5C-B schema-only 诊断 | 已定位为两个 schema、8 个字段的 null/type 异质性；尚未授权 comparator 修改、capture/controller 重跑、verifier 或 Gold |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
@@ -148,7 +150,7 @@ Stage4B-U1 当前仅有不访问 reservation 的功效规划入口：`scripts/st
 
 Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verification.py`；当前审计见 `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT_V2_1.md`，历史 v2 审计继续保留。
 
-当前没有有效的 official execution 批准。v2.2 批准已因 Hard Failure 3 停止，v2.3 恢复包已退回；Amendment 4 只授权 implementation/synthetic hardening。
+5C-B 的单次 SHA-only preflight 与单次 schema-only scan 授权均已消费。当前没有有效的 capture、controller、verifier 或 Gold official execution 批准；不得重跑本命令。
 
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
@@ -173,9 +175,9 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 独立审核 implementation-bound 5C-B request/Manifest；未批准前不得传入 token、运行 rebinding/preflight 或读取 reference decisions。
-2. 如获 package-bound 批准，只能按冻结顺序执行单次 value-free schema scan 并推送聚合审计后立即停止。
-3. Official scan、comparator 修改、capture/controller 重跑、verifier、Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
+1. 独立审核 5C-B machine/narrative audit，确认两个 schema 与 8 个类型差异是否足以解释 Hard Failure 5 的 comparator 前置拒绝。
+2. 如需 comparator schema 接受规则、normalization 或 5B capture 重试，必须分别形成新的 implementation/synthetic 与 official-execution Amendment，先批准再执行。
+3. Comparator 修改、capture/controller 重跑、verifier、Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub
 

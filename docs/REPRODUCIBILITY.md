@@ -667,3 +667,25 @@ The implementation-bound request and machine-readable scope are `docs/STAGE4B_U1
 The package requests no immediate read. A future package-bound approval must first be committed and pushed, followed by two byte-identical 131-test rebinding runs with zero official access and a governance binding over the request, Manifest, decision, final `AGENTS.md`, implementation evidence, and rebinding evidence. Only after those artifacts are pushed may one byte-only SHA preflight examine the reference file. One semantic JSONL schema scan is requested only if preflight passes.
 
 The exact scan uses the frozen standard-library inventory and a currently inert token. Output is restricted to value-free schema metadata, aggregate counts/line ranges/differences, and pre/post SHA/cleanup gates. No raw/salted ID, row, field or float value, question/text, ranking, policy, Gold, or generated decision is permitted. Other official inputs, comparator/capture/controller/verifier/evaluator, U1-D metrics, reservation, Stage3B, retries, and automatic resumption remain prohibited. Current status is `AMENDMENT_5C_B_AWAITING_APPROVAL`.
+
+## Stage4B-U1-D Pre-Gold Amendment 5C-B Completed Diagnostic
+
+The package-bound approval is `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_APPROVAL_DECISION.md`. Approval governance commit `fce67da87d155b1026cbe0670f606201ede0ac4b` was pushed before execution. The complete 131-test suite then ran twice on the final governance bytes; both runs passed 131/131 with 24 inventory tests and zero failures/errors/skips/official-path accesses. The two 22,234-byte evidence outputs were byte-identical with SHA-256 `F16C91BF170ABDFC6784F368D6247E0AA8CDC9ECFB6671C71DFA9BD35CCF297C`. Rebinding and governance binding were pushed in commit `b09668f47cd31df2be73446cadacf84d996418f9`.
+
+One formal preflight ran on that synchronized commit. It verified all registered Git/governance/implementation/output-absence gates and read the reference decisions only as bytes for SHA-256. The file was 2,684,401 bytes and matched `6FB6EB6DBFE3C6B819E65ADD268D9F94CFEA24E5761C9E4CB53CD0965C3723C7`; no JSONL schema parse occurred in preflight.
+
+The following exact command then ran once and must **not** be rerun under the consumed authorization:
+
+```powershell
+python scripts\stage4b_u1_inventory_decision_schemas.py `
+  --input "E:\科研\HyperGranular-RAG\results\stage4b_u1_d_official_dev4500_decisions.jsonl" `
+  --output "E:\科研\HyperGranular-RAG\results\stage4b_u1_d_pregold_amendment_5c_b_reference_schema_inventory.json" `
+  --expected-input-sha256 6FB6EB6DBFE3C6B819E65ADD268D9F94CFEA24E5761C9E4CB53CD0965C3723C7 `
+  --official-authorization-token APPROVE_STAGE4B_U1_D_AMENDMENT_5C_B_SINGLE_REFERENCE_SCHEMA_SCAN
+```
+
+It exited zero and created a 17,229-byte machine inventory with SHA-256 `FA56AC3CB78EE746BF71AF0CEF40606E56B9D13C120F10A2A87400EA42CE3A5E`. Independent validation read only this output, recomputed schema digests/counts/main selection, enforced the exact recursive value-free whitelist, checked the pre/post source-SHA declarations, and confirmed exclusive-create cleanup and continued absence of all five formal outputs.
+
+The aggregate result is two ordered/structural schemas over 4,500 rows, with row counts 2,446 and 2,054. Field set/order/nesting are identical; eight field paths differ only by `integer/finite_number` versus `null` type. Full value-free evidence is in `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_OFFICIAL_SCHEMA_SCAN_AUDIT.md` and `results/stage4b_u1_d_pregold_amendment_5c_b_reference_schema_inventory.json`.
+
+Current state is `REFERENCE_DECISIONS_SCHEMA_DIAGNOSTIC_COMPLETE_AWAITING_REVIEW`. Comparator changes, normalization, official capture retry, controller rerun, verifier, and Gold require new separately approved Amendments.
