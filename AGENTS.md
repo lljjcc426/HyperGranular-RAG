@@ -77,6 +77,11 @@
 63. 5D-A 完整 suite 必须保留 131 项并至少新增 12 项达到不少于 143 项；最终两次运行必须相同 tracked bytes、全通过、零 failure/error/skip/official access 且 evidence 字节一致。本批准不授权任何 official 输入、official comparator/capture、controller/verifier/evaluator/Gold、reservation、Stage3B 或 5D-B 执行。
 64. 5D-A implementation baseline 已限定为 comparator 的 v2 version/checkpoint 更新与 `file_schema` 同构拒绝块删除、runner 的 5D-A governance/frozen-hash/143-test 门，以及 diagnostic tests 的 12 项净新增。Comparator 其余逐 query 算法、capture/controller 与 Manifest 冻结文件保持不变。
 65. 5D-A 完成状态只在 `results/stage4b_u1_d_pregold_amendment_5d_a_synthetic_verification.json` 对本条及全部 runner 绑定字节连续两次验证均不少于 143/143、零 failure/error/skip/official access 且 evidence 字节一致时成立。完成后只可形成 implementation audit/evidence commit 与 5D-B package，随后停止等待审批。
+66. Amendment 5D-B 单次 official decisions-only diagnostic 已获批准，严格绑定 package commit `f67061e753b03a5cf46d7a7c92b5a95fc79b0ef8`、5D-A implementation/evidence commit `02f46447e4cd69a15d2af14ee1fc62f9eb4f8bb9` 及批准决定登记的历史提交。批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_B_APPROVAL_DECISION.md`。
+67. 唯一允许顺序为：批准治理提交推送 -> 最终治理字节上两次 143 项 post-approval rebinding -> governance-binding 与 narrative rebinding audit 提交推送 -> 唯一一次只读 formal preflight -> 通过后唯一一次 exact-command capture -> 一次仅字节哈希/元数据 post-run 核验 -> aggregate machine/narrative audit 提交推送 -> 立即停止。任一硬失败不得重试。
+68. 5D-B official 读取边界仅为 Manifest 冻结的 units、queries、controller channel audit、existing cache 和 v2.2 reference decisions 五项。Stage4A-R2 source-audit 文件、5C-B machine inventory、official rankings、reference policy、evaluator/Gold、reservation 和 Stage3B 均不得打开；source-audit 仅可核验 channel 中已登记 digest。
+69. Capture/comparator hash、双 ID、query/unit 数、模型、`max_length=192`、`batch_size=64`、controller/diagnostic checkpoint、raw-byte 控制门和 no-normalization 全部冻结。历史 5B token 仅在本批准 exact command 中重新授权一次；禁止第二次 preflight/capture、完整 controller、verifier、正式输出提升、cache 变更或诊断后自动恢复。
+70. 成功完成后状态只能为 `AMENDMENT_5D_B_OFFICIAL_DECISIONS_DIAGNOSTIC_COMPLETE_AWAITING_REVIEW` 与 `HARD_FAILURE_4_DIAGNOSIS_COMPLETE_AWAITING_REVIEW`，controller rerun、verifier 和 Gold 继续未批准；任何诊断分类均不得自动产生有效性或晋级结论。
 
 ## GitHub 与文档
 
