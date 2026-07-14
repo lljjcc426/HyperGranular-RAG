@@ -1,4 +1,4 @@
-"""Run the complete Stage4B-U1 plus Amendment 5F-A synthetic suite."""
+"""Run the complete Stage4B-U1 plus Amendment 5G-A synthetic suite."""
 
 from __future__ import annotations
 
@@ -17,18 +17,59 @@ from stage4b_u1_common import sha256_file, write_json
 
 GOVERNANCE_FILES = (
     "AGENTS.md",
-    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_APPROVAL_REQUEST.md",
-    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_MANIFEST.json",
-    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_APPROVAL_DECISION.md",
-    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_7.md",
-    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_7_REVIEW_1.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_APPROVAL_REQUEST.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_MANIFEST.json",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_APPROVAL_DECISION.md",
+    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_8.md",
+    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_8_REVIEW_1.md",
 )
 ALLOWED_IMPLEMENTATION_FILES = (
-    "scripts/stage4b_u1_preflight_argument_policy.py",
+    "scripts/stage4b_u1_preflight_execution_head_binding.py",
     "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py",
-    "tests/test_stage4b_u1_preflight_argument_policy.py",
+    "tests/test_stage4b_u1_preflight_execution_head_binding.py",
 )
 REQUIRED_ACTIVE_PROOF_SUFFIXES = (
+    "test_identical_full_local_origin_github_sha_values_pass",
+    "test_local_head_drift_is_rejected",
+    "test_origin_main_drift_is_rejected",
+    "test_github_main_drift_is_rejected",
+    "test_shared_short_prefix_with_different_full_sha_is_rejected",
+    "test_39_character_sha_is_rejected",
+    "test_41_character_sha_is_rejected",
+    "test_uppercase_sha_is_rejected",
+    "test_nonhex_sha_is_rejected",
+    "test_empty_sha_is_rejected",
+    "test_nontext_sha_is_rejected",
+    "test_parent_mismatch_is_rejected",
+    "test_extra_intermediate_commit_is_rejected_by_direct_parent_gate",
+    "test_exact_changed_path_set_passes_independent_of_order",
+    "test_missing_changed_path_is_rejected",
+    "test_extra_changed_path_is_rejected",
+    "test_duplicate_changed_path_is_rejected",
+    "test_duplicate_allowed_path_is_rejected",
+    "test_absolute_path_is_rejected",
+    "test_parent_traversal_path_is_rejected",
+    "test_code_path_is_rejected_when_not_governance_allowed",
+    "test_existing_test_path_is_rejected_when_not_governance_allowed",
+    "test_result_path_is_rejected_when_not_governance_allowed",
+    "test_cache_path_is_rejected_when_not_governance_allowed",
+    "test_experiment_path_is_rejected_when_not_governance_allowed",
+    "test_missing_required_ancestor_is_rejected",
+    "test_duplicate_required_ancestor_is_rejected",
+    "test_dirty_worktree_is_rejected",
+    "test_nonboolean_clean_fact_is_rejected",
+    "test_governance_package_mismatch_is_rejected",
+    "test_governance_approval_mismatch_is_rejected",
+    "test_missing_governance_binding_is_rejected",
+    "test_missing_rebinding_evidence_is_rejected",
+    "test_missing_governance_binding_artifact_is_rejected",
+    "test_missing_rebinding_audit_is_rejected",
+    "test_public_api_has_no_pretranscribed_execution_head_parameter",
+    "test_helper_source_has_no_fixed_future_rebinding_sha",
+    "test_helper_uses_only_python_standard_library",
+    "test_helper_has_no_filesystem_git_subprocess_or_helper_calls",
+    "test_runtime_validation_performs_no_io_or_execution",
+    "test_output_is_value_free_except_required_validated_head",
     "test_exact_approved_argv_is_accepted",
     "test_pregold_audit_output_is_accepted",
     "test_gold_in_ordinary_value_is_not_role_denied",
@@ -198,22 +239,22 @@ def main() -> None:
         "--output",
         type=Path,
         default=Path(
-            "results/stage4b_u1_d_pregold_amendment_5f_a_synthetic_verification.json"
+            "results/stage4b_u1_d_pregold_amendment_5g_a_synthetic_verification.json"
         ),
     )
     args = parser.parse_args()
     repo_root = Path(__file__).resolve().parents[1]
-    amendment_5f_a = json.loads(
+    amendment_5g_a = json.loads(
         (
             repo_root
             / "docs"
-            / "STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_MANIFEST.json"
+            / "STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_MANIFEST.json"
         ).read_text(encoding="utf-8")
     )
-    frozen_files = amendment_5f_a["frozen_files"]
+    frozen_files = amendment_5g_a["frozen_existing_hashes"]
     frozen_hashes = {path: sha256_file(repo_root / path) for path in frozen_files}
     if frozen_hashes != frozen_files:
-        raise ValueError("An Amendment 5F-A frozen file drifted before verification")
+        raise ValueError("An Amendment 5G-A frozen file drifted before verification")
     forbidden = forbidden_official_paths(repo_root)
     attempted: list[str] = []
 
@@ -229,7 +270,7 @@ def main() -> None:
             return
         if candidate in forbidden:
             attempted.append(str(candidate))
-            raise PermissionError(f"Amendment 5F-A blocked official path access: {candidate}")
+            raise PermissionError(f"Amendment 5G-A blocked official path access: {candidate}")
 
     sys.addaudithook(audit_hook)
     suite = unittest.defaultTestLoader.discover(
@@ -241,6 +282,13 @@ def main() -> None:
         for test_id in discovered
         if test_id.startswith("test_stage4b_u1_preflight_argument_policy.")
     ]
+    execution_head_binding_tests = [
+        test_id
+        for test_id in discovered
+        if test_id.startswith(
+            "test_stage4b_u1_preflight_execution_head_binding."
+        )
+    ]
     active_proofs = {
         suffix: [test_id for test_id in discovered if test_id.endswith(suffix)]
         for suffix in REQUIRED_ACTIVE_PROOF_SUFFIXES
@@ -251,9 +299,13 @@ def main() -> None:
     result = unittest.TextTestRunner(stream=stream, verbosity=2).run(suite)
     count_gate = (
         result.testsRun == len(discovered)
-        and result.testsRun >= amendment_5f_a["synthetic_verification"]["minimum_complete_tests"]
-        and len(argument_policy_tests)
-        >= amendment_5f_a["synthetic_verification"]["minimum_new_tests"]
+        and result.testsRun
+        >= amendment_5g_a["synthetic_verification"]["minimum_complete_tests"]
+        and len(argument_policy_tests) >= 44
+        and len(execution_head_binding_tests)
+        >= amendment_5g_a["synthetic_verification"][
+            "minimum_new_execution_head_tests"
+        ]
     )
     tracked_files = tuple(
         dict.fromkeys(
@@ -272,18 +324,19 @@ def main() -> None:
         ).encode("ascii")
     ).hexdigest().upper()
     if {path: implementation_hashes[path] for path in frozen_files} != frozen_files:
-        raise ValueError("An Amendment 5F-A frozen file changed during verification")
+        raise ValueError("An Amendment 5G-A frozen file changed during verification")
     all_pass = result.wasSuccessful() and count_gate and not attempted
     evidence = {
-        "stage": "Stage4B-U1-D Pre-Gold Amendment 5F-A",
+        "stage": "Stage4B-U1-D Pre-Gold Amendment 5G-A",
         "diagnostic_checkpoint": "stage4b_u1_decisions_diag_v2",
         "controller_checkpoint_unchanged": "stage4b_u1_v2_3_1",
-        "status": "AMENDMENT_5F_A_SYNTHETICALLY_VERIFIED" if all_pass else "FAILED",
+        "status": "AMENDMENT_5G_A_SYNTHETICALLY_VERIFIED" if all_pass else "FAILED",
         "tests_run": result.testsRun,
-        "baseline_tests_required": 161,
+        "baseline_tests_required": 205,
         "minimum_new_tests": 16,
-        "minimum_tests_required": 177,
+        "minimum_tests_required": 221,
         "argument_policy_tests": len(argument_policy_tests),
+        "execution_head_binding_tests": len(execution_head_binding_tests),
         "test_ids": discovered,
         "failures": len(result.failures),
         "errors": len(result.errors),
@@ -306,10 +359,20 @@ def main() -> None:
         "path_equivalence_helper_executed_by_synthetic_tests": True,
         "path_equivalence_helper_official_invocations": 0,
         "typed_argument_policy_helper_executed_by_synthetic_tests": True,
+        "typed_argument_policy_helper_official_invocations": 0,
         "typed_argument_policy_filesystem_or_hash_calls": 0,
         "typed_argument_policy_subprocess_or_capture_calls": 0,
         "typed_argument_policy_authorization_token_uses": 0,
         "typed_argument_policy_raw_gold_value_substring_denylist": False,
+        "execution_head_binding_helper_executed_by_synthetic_tests": True,
+        "execution_head_binding_helper_filesystem_git_or_subprocess_calls": 0,
+        "execution_head_binding_helper_other_helper_calls": 0,
+        "execution_head_binding_helper_official_path_accesses": 0,
+        "execution_head_binding_helper_authorization_token_uses": 0,
+        "execution_head_binding_helper_capture_or_comparator_calls": 0,
+        "execution_head_binding_helper_accepts_pretranscribed_current_head": False,
+        "execution_head_binding_helper_contains_fixed_future_rebinding_sha": False,
+        "execution_head_binding_helper_output_value_free": True,
         "exact_capture_command_unchanged": True,
         "raw_byte_equivalence_unchanged": True,
         "rankings_accessed": False,
@@ -353,6 +416,14 @@ def main() -> None:
             "the approved pregold audit-output spelling and ordinary gold value substrings are not role denylists",
             "argument-policy source and runtime proofs exclude filesystem hashing subprocess capture token use and path-helper calls",
             "argument-policy source contains no raw gold value-substring denylist",
+            "execution-head binding derives the synchronized full current HEAD from three caller-supplied sources",
+            "execution-head binding requires full lowercase 40-character hexadecimal commit values",
+            "execution-head binding requires direct approval parentage exact changed paths required ancestry and a clean worktree fact",
+            "execution-head binding requires exact package and approval metadata plus all required governance artifacts",
+            "execution-head binding rejects duplicate absolute parent-traversal missing and extra paths fail closed",
+            "execution-head helper has no pre-transcribed current HEAD input and no fixed future rebinding SHA",
+            "execution-head source and runtime proofs exclude filesystem Git subprocess official helper token capture and comparator operations",
+            "execution-head output returns only value-free validation metadata and the required validated current HEAD",
             "synthetic capture writes decisions only under an OS temporary directory",
             "temporary decisions are removed after successful and exceptional exits",
             "capture does not access or generate rankings and does not call a policy builder",
@@ -364,7 +435,7 @@ def main() -> None:
             "official expected channel-input SHA-256 values must equal the three externally frozen values",
             "all three channel-input SHA-256 values are rechecked after temporary-decisions cleanup and before audit creation",
             "pre-gate or post-gate channel drift leaves no audit and cleans temporary decisions",
-            "the accepted 161-test Stage4B-U1 baseline remains passing with at least 16 new tests",
+            "the accepted 205-test Stage4B-U1 baseline remains passing with at least 16 new execution-head tests",
         ],
     }
     write_json(args.output, evidence)

@@ -150,6 +150,10 @@
 136. 5G-A 只允许新增 execution-head pure-value helper、新增对应 test module，并按 Manifest 限定更新 deterministic runner。全部既有 tests 和 24 个 frozen files 必须保持原 SHA；不得运行 real Git/GitHub execution-head validation 或任何 official 动作。
 137. 完整 suite 必须在最终稳定的 tracked bytes 上连续运行两次，均不少于 221 项且 execution-head tests 不少于 16，零 failure/error/skip/official access/typed-helper official invocation/path-helper official invocation/preflight/token/capture，并且 evidence 字节一致。
 138. 5G-A implementation/evidence/audit 提交推送后必须立即停止等待独立审核；5G-B 组包、第二次 formal preflight、official input、token、capture、controller、verifier 和 Gold 均未批准。当前状态为 `AMENDMENT_5G_A_APPROVED_AWAITING_IMPLEMENTATION`。
+139. 5G-A 新 helper 定向测试唯一一次运行通过 41/41；随后唯一一次 preliminary complete runner 在测试执行前的 active-proof 唯一性门触发 `HARD_FAILURE_9_5G_A_ACTIVE_PROOF_SUFFIX_COLLISION` 并停止，未生成 evidence。
+140. Hard Failure 9 直接原因是两个新 test suffix 与既有测试全局重名，其中 `test_helper_uses_only_python_standard_library` 还在 runner active-proof tuple 中重复登记。完整 suite 实际运行数为 0，OS-temp output 从未创建，24 个 frozen hashes 保持 24/24。
+141. Hard Failure 9 后不得改名、调整 runner 或重跑 synthetic。当前失败 checkpoint 只包含 5G-A 批准的三个实现/测试路径；详细审计为 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_9.md`。
+142. 当前状态为 `AMENDMENT_5G_A_SYNTHETIC_VERIFICATION_STOPPED_HARD_FAILURE_9`。任何最小修正必须先形成新的 package-bound Amendment 并获明确批准；synthetic retry、5G-B、第二次 preflight、official input、token、capture、controller、verifier 和 Gold 均未批准。
 
 ## GitHub 与文档
 

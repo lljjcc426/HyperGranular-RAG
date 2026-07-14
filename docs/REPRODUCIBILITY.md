@@ -873,3 +873,15 @@ The implementation/synthetic-only request and machine-readable scope are `docs/S
 A future package-bound approval would permit only a pure caller-fact execution-head validator, its synthetic tests and deterministic evidence binding. The validator must require complete lowercase 40-character SHAs, local/origin/GitHub equality, direct approval parentage, exact changed-path set, required ancestors, clean-worktree and governance/evidence presence. It must not read the filesystem, run Git/subprocess, access official paths, call existing helpers, use a token, invoke capture, accept a pre-transcribed future expected HEAD or contain a fixed future rebinding SHA.
 
 The verified baseline is 205 tests. A future approved 5G-A implementation must add at least 16 tests and produce two byte-identical complete runs of at least 221 tests on identical tracked bytes, with zero failure/error/skip/official access/helper official invocation/preflight/token/capture. The package itself authorizes no implementation or command and does not authorize 5G-B assembly. Current status is `AMENDMENT_5G_A_AWAITING_APPROVAL`.
+
+## Stage4B-U1-D Pre-Gold Hard Failure 9
+
+5G-A approval governance was committed and pushed at `fd50bc30f5acbf4955e3a051fbee70062e6e168c` before implementation. The helper, new tests and runner changes were limited to the three approved paths, and all 24 Manifest-frozen hashes remained unchanged.
+
+In-memory syntax compilation passed. The only targeted command passed 41/41 execution-head tests with zero failure/error/skip. The only preliminary complete-runner invocation then exited 1 before `unittest.TextTestRunner.run()` with `ValueError: Required active access/cleanup proof test is missing or duplicated`.
+
+Read-only source comparison confirmed two global test-name collisions: `test_missing_governance_binding_is_rejected` matched the new module and an existing goldfree test; `test_helper_uses_only_python_standard_library` matched the new module and the existing path-equivalence module and also appeared twice in the runner tuple. Therefore the active-proof uniqueness gate correctly failed closed.
+
+The preliminary OS-temp path was never created, complete-suite tests run was 0, and no evidence file was produced or deleted. No official input, helper official boundary, real execution-head check, preflight, token, capture, controller, verifier, evaluator/Gold, reservation or Stage3B action occurred. The failed runner was not retried and the names/suffixes were not corrected.
+
+Full evidence is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_9.md`. Current status is `AMENDMENT_5G_A_SYNTHETIC_VERIFICATION_STOPPED_HARD_FAILURE_9`; a new package-bound Amendment is required before any correction or synthetic retry.

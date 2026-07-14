@@ -1015,3 +1015,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The proposed helper accepts caller-supplied Git/governance facts only. It must validate full lowercase 40-character SHAs, three-way head equality, direct approval parentage, exact changed paths, required ancestry, clean-worktree and governance/evidence presence without filesystem, Git, subprocess, official-path, helper, token or capture access.
 - The accepted baseline is 205 tests. A future approved implementation must add at least 16 tests and run at least 221 tests twice on identical tracked bytes, with byte-identical evidence and all execution/access counters at zero.
 - Current status: `AMENDMENT_5G_A_AWAITING_APPROVAL`. This package authorizes no implementation, synthetic execution, real Git/GitHub check, second preflight, helper official call, official input access, token, capture, controller, verifier, Gold or 5G-B assembly.
+
+### Stage4B-U1-D Pre-Gold Hard Failure 9
+
+- 5G-A approval governance was committed and pushed at `fd50bc30f5acbf4955e3a051fbee70062e6e168c` before implementation.
+- The new pure-value helper, new test module and runner update remained within the three approved paths; all 24 frozen hashes remained unchanged.
+- The only targeted execution-head test invocation passed 41/41 with zero failure/error/skip.
+- The only preliminary complete-runner invocation stopped before test execution because required active-proof suffixes were not globally unique.
+- `test_missing_governance_binding_is_rejected` collided with an existing goldfree test; `test_helper_uses_only_python_standard_library` collided with the existing path-equivalence test and was also registered twice in the runner tuple.
+- No evidence path was created, complete-suite tests run was 0, and official/helper/preflight/token/capture counters remained zero.
+- Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_9.md`.
+- Current status: `AMENDMENT_5G_A_SYNTHETIC_VERIFICATION_STOPPED_HARD_FAILURE_9`. No correction or synthetic retry is allowed without a new package-bound Amendment.
