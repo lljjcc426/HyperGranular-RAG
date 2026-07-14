@@ -1,0 +1,185 @@
+{
+  "schema_version": "stage4b_u1_pregold_amendment_5c_a",
+  "request_id": "STAGE4B_U1_D_PREGOLD_AMENDMENT_5C_A_REFERENCE_SCHEMA_INVENTORY",
+  "assembled_date": "2026-07-14",
+  "package_status": "AWAITING_AMENDMENT_5C_A_APPROVAL",
+  "current_official_state": "AMENDMENT_5B_V2_OFFICIAL_DIAGNOSTIC_STOPPED_HARD_FAILURE_5",
+  "official_diagnosis_state": "OFFICIAL_DIAGNOSIS_INCOMPLETE",
+  "review_decision": "RETURN_FOR_REFERENCE_DECISIONS_SCHEMA_DIAGNOSTIC_AMENDMENT_PACKAGE",
+  "requested_mode": "IMPLEMENTATION_AND_SYNTHETIC_VERIFICATION_ONLY",
+  "binding_commits": {
+    "hard_failure_5_audit_and_status": "deccd203059d05dc27ba80aca1ddb1e2ea8f616f",
+    "amendment_5b_v2_rebinding_and_governance": "4c10ad942a75af42b910b860fd4897b672160d5d",
+    "amendment_5b_v2_approval_governance": "2ddf6e044c27e47385a558bdaca80cb6c31c4ffe",
+    "amendment_5b_v2_package": "f43e22ef079701139d4437849be8ad57654f80d7",
+    "amendment_5a_1_implementation_and_evidence": "e566eb861ec6028ca89a40c9aca7d06737f1eb8e",
+    "hard_failure_4": "b21852a174b537c90a848699deb4d26d6f169506",
+    "failed_controller_execution_head": "8e0bab13ad20c06795dffd5ca71f167a814cdfb0",
+    "v2_3_1_implementation": "34349c70ee24b8240fd169393134d4280968b790"
+  },
+  "approval_must_also_bind_package_commit": true,
+  "hard_failure_5_boundary": {
+    "approved_capture_count": 1,
+    "capture_count_consumed": 1,
+    "capture_retry_count": 0,
+    "terminal_error": "Incomparable heterogeneous decisions schema at line 2",
+    "comparison_completed": false,
+    "machine_audit_created": false,
+    "narrative_audit_created": false,
+    "temporary_decisions_cleaned": true,
+    "formal_outputs_created": 0,
+    "comparator_changed": false,
+    "byte_equivalence_relaxed": false
+  },
+  "requested_new_files": [
+    "scripts/stage4b_u1_inventory_decision_schemas.py",
+    "scripts/stage4b_u1_run_schema_inventory_synthetic_verification.py",
+    "tests/test_stage4b_u1_decision_schema_inventory.py"
+  ],
+  "allowed_governance_and_evidence_files_after_future_approval": [
+    "AGENTS.md",
+    "README.md",
+    "docs/ROADMAP.md",
+    "docs/REPRODUCIBILITY.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_APPROVAL_DECISION.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_IMPLEMENTATION_AUDIT.md",
+    "results/stage4b_u1_d_pregold_amendment_5c_a_synthetic_verification.json",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_OFFICIAL_SCHEMA_SCAN_APPROVAL_REQUEST.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_MANIFEST.json"
+  ],
+  "must_remain_unchanged": [
+    "scripts/stage4b_u1_compare_decisions.py",
+    "scripts/stage4b_u1_capture_diagnostic_decisions.py",
+    "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py",
+    "scripts/stage4b_u1_goldfree_controller.py",
+    "scripts/stage4b_u1_goldfree_retrieval.py",
+    "scripts/stage4b_u1_common.py",
+    "tests/test_stage4b_u1_decisions_diagnostic.py",
+    "tests/test_stage4b_u1_goldfree.py",
+    "raw byte-equivalence gate",
+    "model max_length batch_size effective-K q25 score ECDF budget trigger ranking endpoint and stop rules",
+    "all official cache result evidence and failure artifacts"
+  ],
+  "schema_inventory_contract": {
+    "input_format": "UTF-8 JSONL with one non-empty JSON object per line",
+    "duplicate_keys": "REJECT_AT_ALL_OBJECT_NESTING_LEVELS",
+    "invalid_json_blank_or_non_object_row": "HARD_FAIL",
+    "non_finite_numbers": "REJECT_NAN_POSITIVE_INFINITY_NEGATIVE_INFINITY",
+    "json_types": [
+      "null",
+      "bool",
+      "integer",
+      "finite_number",
+      "string",
+      "array",
+      "object"
+    ],
+    "bool_integer_and_number_are_distinct": true,
+    "nested_schema_representation": "RECURSIVE_VALUE_FREE_OBJECT_STRUCTURE_AND_SORTED_DISTINCT_ARRAY_ELEMENT_SCHEMA_SET_WITH_EMPTY_MARKER",
+    "array_element_values_order_multiplicity_and_length_excluded": true,
+    "canonical_schema_encoding": "UTF8_JSON_ENSURE_ASCII_TRUE_SORT_KEYS_TRUE_COMPACT_SEPARATORS_ALLOW_NAN_FALSE",
+    "ordered_signature": "SHA256_UTF8_CANONICAL_ORDERED_SCHEMA",
+    "structural_signature": "SHA256_UTF8_CANONICAL_ORDER_INSENSITIVE_SCHEMA",
+    "field_order_only_difference_is_separate": true,
+    "main_schema_selection": "MAX_ROW_COUNT_OVER_ORDERED_SIGNATURE_THEN_LEXICOGRAPHIC_ORDERED_SIGNATURE",
+    "relative_differences": [
+      "added_fields",
+      "removed_fields",
+      "type_changed_fields",
+      "nesting_changed_fields",
+      "order_only_fields"
+    ],
+    "field_values_retained_or_emitted": false,
+    "query_ids_or_salted_hashes_emitted": false,
+    "existing_comparator_called": false
+  },
+  "synthetic_verification": {
+    "existing_tests_must_remain": 107,
+    "minimum_new_tests": 12,
+    "minimum_complete_tests": 119,
+    "minimum_basis": "nine review-required parser/schema categories plus no-value leakage official-path interception and deterministic cleanup/output",
+    "complete_runs": 2,
+    "required_result": "ALL_PASS_ZERO_FAILURE_ERROR_SKIP_BYTE_IDENTICAL_ZERO_OFFICIAL_ACCESS",
+    "required_coverage": [
+      "homogeneous flat schema",
+      "field-set addition and removal",
+      "field-order-only difference",
+      "bool integer and finite-number type difference",
+      "nested object and array element-structure difference",
+      "top-level and nested duplicate-key rejection",
+      "invalid JSON blank and non-object row rejection",
+      "NaN Infinity and -Infinity rejection",
+      "schema-only output with no fixture value or ID leakage",
+      "deterministic main-schema selection and tie-break",
+      "temporary synthetic input and output cleanup after success and failure",
+      "official paths blocked and unopened",
+      "comparator capture controller ranking policy verifier evaluator Gold reservation and Stage3B not invoked"
+    ],
+    "evidence_output": "results/stage4b_u1_d_pregold_amendment_5c_a_synthetic_verification.json",
+    "implementation_audit": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_IMPLEMENTATION_AUDIT.md"
+  },
+  "official_access_during_5c_a": {
+    "allowed": false,
+    "reference_decisions_may_be_opened": false,
+    "units_queries_channel_audit_source_audit_or_cache_may_be_opened": false,
+    "rankings_policy_evaluator_gold_reservation_or_stage3b_may_be_opened": false
+  },
+  "frozen_future_5c_b_reference": {
+    "path": "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_decisions.jsonl",
+    "sha256": "6FB6EB6DBFE3C6B819E65ADD268D9F94CFEA24E5761C9E4CB53CD0965C3723C7",
+    "may_be_opened_under_5c_a": false,
+    "future_5c_b_requires_separate_package_bound_approval": true,
+    "future_preconditions": [
+      "regular non-symlink exact path",
+      "expected SHA-256 match before JSONL parsing",
+      "unchanged SHA-256 immediately before exclusive audit create",
+      "single scan only and no retry"
+    ]
+  },
+  "future_5c_b_output_boundary": {
+    "allowed": [
+      "total row count",
+      "distinct schema signature count",
+      "per-schema row count",
+      "per-schema first and last line number",
+      "field-name set and field order",
+      "JSON type and nesting signature",
+      "added removed type-changed nesting-changed and order-only fields relative to main schema",
+      "pre and post reference SHA equality"
+    ],
+    "prohibited": [
+      "raw query ID",
+      "salted query-ID hash",
+      "raw decision row",
+      "field value",
+      "float value",
+      "question or text",
+      "ranking",
+      "policy",
+      "Gold",
+      "newly generated decision"
+    ]
+  },
+  "explicitly_not_authorized": [
+    "implement or run Amendment 5C-A before package-bound approval",
+    "read any official reference decisions units queries channel audit source audit cache rankings policy evaluator or Gold file",
+    "run official schema inventory comparator capture controller verifier evaluator reservation or Stage3B",
+    "modify comparator capture controller retrieval common or existing tests and runners",
+    "change schema acceptance or normalization in comparator or capture",
+    "relax raw byte equivalence",
+    "generate decisions rankings policy diagnostic audit controller audit or VERIFIED_PRE_GOLD",
+    "change data model max_length batch_size effective-K q25 score ECDF budget trigger ranking endpoint or stop rule",
+    "create rebuild overwrite delete or migrate any cache official artifact evidence or failure record",
+    "read U1-D effect metrics",
+    "retry 5B v2 capture or automatically resume Hard Failure 5"
+  ],
+  "post_completion_state_after_future_approval": [
+    "AMENDMENT_5C_A_SYNTHETICALLY_VERIFIED",
+    "OFFICIAL_SCHEMA_SCAN_NOT_APPROVED",
+    "COMPARATOR_CHANGE_NOT_APPROVED",
+    "OFFICIAL_CAPTURE_RETRY_NOT_APPROVED",
+    "CONTROLLER_RERUN_NOT_APPROVED",
+    "VERIFIER_NOT_APPROVED",
+    "GOLD_NOT_APPROVED"
+  ]
+}

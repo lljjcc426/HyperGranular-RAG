@@ -52,6 +52,10 @@
 38. 5B v2 批准治理 commit `2ddf6e044c27e47385a558bdaca80cb6c31c4ffe` 与 rebinding/governance commit `4c10ad942a75af42b910b860fd4897b672160d5d` 已推送；两次 107 项 rebinding 均全通过且 evidence SHA-256 为 `7D9C3527480ECDFFA87C943589538BCEFEFA3610A6D415719429CDE5D222D12E`。唯一一次只读 preflight 全部通过。
 39. 唯一一次 official capture 在 comparator 读取冻结 v2.2 reference decisions 时触发 `HARD_FAILURE_5_INCOMPARABLE_HETEROGENEOUS_REFERENCE_DECISIONS_SCHEMA`，错误边界为 `Incomparable heterogeneous decisions schema at line 2`。当前状态为 `AMENDMENT_5B_V2_OFFICIAL_DIAGNOSTIC_STOPPED_HARD_FAILURE_5`，不得重跑 capture 或继续读取 official decisions 内容。
 40. Hard Failure 5 未生成 machine/narrative audit，temporary decisions 已清理，三项 channel/cache/reference SHA 与 cache bytes 未变化，五项正式输出仍不存在。后续任何 schema-only 诊断、comparator 修改、reference normalization 或 capture/controller 重跑均须新的 package-bound Amendment 批准。
+41. Hard Failure 5 审查决定为 `RETURN_FOR_REFERENCE_DECISIONS_SCHEMA_DIAGNOSTIC_AMENDMENT_PACKAGE`。schema diagnostic、comparator change、official capture retry、controller rerun、verifier 与 Gold 均未批准；当前 official diagnosis 仍为 incomplete。
+42. 当前唯一允许动作是组装并推送 Amendment 5C-A 审批请求与机器可读 Manifest。该 package 本身不授权实现、synthetic 执行或任何 official 文件读取；任何批准必须显式绑定 package commit。
+43. 未来 5C-A 如获批准，只能新增独立 schema inventory、独立 deterministic runner 与独立 tests；现有 comparator、capture、controller、retrieval、common、现有 runner/tests、byte-equivalence 和全部科研参数必须保持不变。原 107 项测试必须保留，至少新增 12 项后完整 suite 不少于 119 项，并连续两次全通过、零 official access、evidence 字节一致。
+44. 未来 5C-B 必须另行组包和批准，且最多只允许对冻结路径/SHA 的 v2.2 reference decisions 做一次 schema-only scan。5C-A 完成不得自动读取 official reference、修改 comparator、normalization、重跑 capture/controller、运行 verifier 或接触 Gold/reservation/Stage3B。
 
 ## GitHub 与文档
 

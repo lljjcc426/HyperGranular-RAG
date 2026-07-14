@@ -748,3 +748,22 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - No ranking, policy, source-audit file, verifier, evaluator/Gold, reservation, or Stage3B access occurred.
 - Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_5.md`.
 - Current status: `AMENDMENT_5B_V2_OFFICIAL_DIAGNOSTIC_STOPPED_HARD_FAILURE_5`; capture may not be retried without a new package-bound Amendment.
+
+### Stage4B-U1-D Hard Failure 5 Review 1
+
+- Review date: 2026-07-14.
+- Reviewed commit: `deccd203059d05dc27ba80aca1ddb1e2ea8f616f`.
+- Decision: `RETURN_FOR_REFERENCE_DECISIONS_SCHEMA_DIAGNOSTIC_AMENDMENT_PACKAGE`.
+- Schema diagnostic execution, comparator change, official capture retry, controller rerun, verifier, and Gold remain unapproved.
+- The review preserves the strict observed boundary: line-2 within-file schema rejection occurred before any byte/canonical/value/semantic comparison; it does not identify fields or justify normalization.
+- The next work must be split into 5C-A implementation/synthetic authority and a later separately approved 5C-B single official schema-only scan.
+- Review: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_5_REVIEW_1.md`.
+
+### Stage4B-U1-D Pre-Gold Amendment 5C-A Package
+
+- The request and machine-readable boundary are `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_APPROVAL_REQUEST.md` and `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_A_MANIFEST.json`.
+- Requested implementation is isolated to one value-free JSONL schema inventory tool, one deterministic runner, and one new test file; existing comparator, capture, controller, retrieval, common, runners/tests, equivalence, and parameters remain frozen.
+- The schema contract distinguishes null/bool/integer/finite-number/string/array/object, recursively inventories value-free nested structure, rejects duplicate keys/invalid or non-finite JSON, separates order-only differences, and selects the modal ordered signature with a lexicographic ordered-signature tie-break.
+- The existing 107 tests must remain; at least 12 new tests make the complete-suite minimum 119. Two unchanged-byte runs must be all-pass with zero failure/error/skip/official access and byte-identical evidence.
+- No official file read, schema scan, comparator/capture/controller execution, verifier, evaluator/Gold, reservation, or Stage3B access is requested.
+- Current status: `AMENDMENT_5C_A_AWAITING_APPROVAL`. The package itself authorizes no implementation or test command.
