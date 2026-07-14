@@ -1,0 +1,364 @@
+{
+  "schema_version": "stage4b_u1_pregold_amendment_5f_b",
+  "request_id": "STAGE4B_U1_D_PREGOLD_AMENDMENT_5F_B_TYPED_HELPER_BOUND_SINGLE_PREFLIGHT_AND_OFFICIAL_DECISIONS_ONLY_DIAGNOSTIC",
+  "assembled_date": "2026-07-14",
+  "package_status": "AWAITING_AMENDMENT_5F_B_APPROVAL",
+  "current_state": [
+    "AMENDMENT_5F_A_IMPLEMENTATION_AND_EVIDENCE_ACCEPTED",
+    "AMENDMENT_5F_B_PACKAGE_ASSEMBLY_ALLOWED",
+    "HARD_FAILURE_7_DIRECT_CAUSE_CONFIRMED",
+    "HARD_FAILURE_4_DIAGNOSIS_INCOMPLETE",
+    "FORMAL_PREFLIGHT_RETRY_NOT_APPROVED",
+    "PATH_HELPER_OFFICIAL_BOUNDARY_CHECK_NOT_APPROVED",
+    "AUTHORIZATION_TOKEN_USE_NOT_APPROVED",
+    "OFFICIAL_CAPTURE_NOT_APPROVED",
+    "CONTROLLER_RERUN_NOT_APPROVED",
+    "VERIFIER_NOT_APPROVED",
+    "GOLD_NOT_APPROVED"
+  ],
+  "requested_mode": "SINGLE_TYPED_AND_PATH_HELPER_BOUND_PREFLIGHT_THEN_SINGLE_UNCHANGED_OFFICIAL_DECISIONS_ONLY_DIAGNOSTIC",
+  "approval_must_also_bind_package_commit": true,
+  "package_authorizes_rebinding_helper_preflight_token_capture_or_execution": false,
+  "binding_commits": {
+    "amendment_5f_a_package": "2b82ba3f0ac9756091d74567f4aed8df5cdf626d",
+    "amendment_5f_a_approval_governance": "273341960858930246ae0c1441440aede0403a65",
+    "amendment_5f_a_implementation_and_evidence": "e7b688d4b67db596df1d447e2cf70f12f0ea5d0b",
+    "hard_failure_7": "f18d551b17f1bbed645ac159ebe52b7d6b9d8e54",
+    "amendment_5e_b_rebinding_and_governance": "3185c3bd4ffd3eb2bc61b52fdf18a3367b9dca76",
+    "amendment_5e_b_approval_governance": "f2f2e249e4e7a52fcc44b61a2245d8d50d79106d",
+    "amendment_5e_b_package": "e387d2707ede9024571249face71bf7ca3afd4e0",
+    "amendment_5e_a_implementation_and_evidence": "a8b064a4a2133aea27cbe9b85978237fc3dae661",
+    "hard_failure_6": "bebfeb5664f26795b8d3472f3729ca1bb9abf889",
+    "hard_failure_4": "b21852a174b537c90a848699deb4d26d6f169506",
+    "v2_3_1_implementation": "34349c70ee24b8240fd169393134d4280968b790"
+  },
+  "amendment_5f_a_review": {
+    "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_REVIEW_1.md",
+    "sha256": "EEC6D861C9A4A13B1D50D8BB66D10349597BCC79D164F8B8A04F9762B561DB74",
+    "bytes": 4121,
+    "decision": "ACCEPT_AMENDMENT_5F_A_IMPLEMENTATION_AND_SYNTHETIC_EVIDENCE",
+    "next_authorization": "AUTHORIZE_AMENDMENT_5F_B_PACKAGE_ASSEMBLY_ONLY"
+  },
+  "accepted_5f_a_governance": {
+    "request": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_APPROVAL_REQUEST.md",
+      "sha256": "DA26B9B9C7C480E0E954913322A21AF0DA52C3EEF9FEC972CC56C6D0B7651886",
+      "bytes": 10681
+    },
+    "manifest": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_MANIFEST.json",
+      "sha256": "148FD144722784AC8512DC922543D6B98309AC539EB00D196102F9FFC15EDFBA",
+      "bytes": 15168
+    },
+    "approval_decision": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_APPROVAL_DECISION.md",
+      "sha256": "24A198C0DC115511B344E616589697CEFC489F1829588275A7329B5923A987B4",
+      "bytes": 5812
+    },
+    "final_agents_at_implementation": {
+      "path": "AGENTS.md",
+      "sha256": "E399FA202F8292060255D5FEFFFDE580BFD8AB370B2F286F63B7AF4BC6047102",
+      "bytes": 33321,
+      "future_5f_b_approval_may_update": true
+    }
+  },
+  "accepted_5f_a_implementation_and_evidence": {
+    "implementation_audit": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_IMPLEMENTATION_AUDIT.md",
+      "sha256": "EFC3BDF154EC7C2CF3F0B6FE2ECEF41C973C05672072FB1EE412A65DF2535EC3",
+      "bytes": 11645
+    },
+    "deterministic_evidence": {
+      "path": "results/stage4b_u1_d_pregold_amendment_5f_a_synthetic_verification.json",
+      "sha256": "A5B97077AD9A0C62EBFCAE9D70FC8B5BFAD19CCB32FF3A53E1FCF4BDB216D189",
+      "bytes": 51922,
+      "tests": 205,
+      "typed_policy_tests": 44,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "tracked_file_count": 26,
+      "tracked_byte_digest_sha256": "B58E85239F001B532B5CF378998B804B1202C5D6FF148311EF939DC4B3B4EA34",
+      "official_metadata_or_content_access": 0,
+      "path_helper_official_invocations": 0,
+      "formal_preflight_invocations": 0,
+      "authorization_token_uses": 0,
+      "official_capture_invocations": 0,
+      "byte_identical_complete_runs": true
+    },
+    "accepted_evidence_hash_validation": {
+      "historical_agents_path": "AGENTS.md",
+      "historical_agents_commit": "e7b688d4b67db596df1d447e2cf70f12f0ea5d0b",
+      "historical_agents_sha256": "E399FA202F8292060255D5FEFFFDE580BFD8AB370B2F286F63B7AF4BC6047102",
+      "historical_agents_must_be_verified_from_git_blob": true,
+      "current_tree_must_recompute_other_25_hashes": true,
+      "final_governance_agents_must_not_be_compared_to_historical_hash": true
+    },
+    "future_preflight_must_recompute_all_26_current_post_approval_evidence_hashes": true
+  },
+  "typed_argument_policy_helper": {
+    "path": "scripts/stage4b_u1_preflight_argument_policy.py",
+    "sha256": "CCDC70D2E66E9D69CD64899676EA5150FEE0381E74F4C9DEED2A0FFB5EE436F4",
+    "bytes": 7082,
+    "module": "stage4b_u1_preflight_argument_policy",
+    "function": "validate_capture_argv",
+    "must_be_hash_verified_before_import": true,
+    "inline_reimplementation_or_fallback_forbidden": true,
+    "filesystem_hash_subprocess_capture_token_or_path_helper_calls": 0,
+    "raw_gold_value_substring_denylist": false
+  },
+  "path_equivalence_helper": {
+    "path": "scripts/stage4b_u1_preflight_path_equivalence.py",
+    "sha256": "1A17C0E750F91CEF2F638A0B0C6FD381110692E6B2D467C1F5243ADF3F35B3FF",
+    "bytes": 3543,
+    "module": "stage4b_u1_preflight_path_equivalence",
+    "function": "windows_directories_equivalent",
+    "must_be_hash_verified_before_import": true,
+    "inline_reimplementation_or_fallback_forbidden": true,
+    "expected_directory": "C:\\Users\\cc\\AppData\\Local\\Temp",
+    "runtime_directory_source": "System.IO.Path.GetTempPath()",
+    "runtime_value_must_not_be_trimmed_rewritten_or_replaced": true
+  },
+  "capture_and_comparator": {
+    "capture_path": "scripts/stage4b_u1_capture_diagnostic_decisions.py",
+    "capture_sha256": "7C7B159911384B436FDCC1B20D26F2F545F2DC55EAD1F7B2B134B273110ED40A",
+    "capture_bytes": 20221,
+    "comparator_path": "scripts/stage4b_u1_compare_decisions.py",
+    "comparator_sha256": "42FA3F74679672B0595CC76B519D59C03CB193415DD03F56E37260A961D94014",
+    "comparator_bytes": 12854,
+    "diagnostic_checkpoint": "stage4b_u1_decisions_diag_v2",
+    "raw_byte_equality_is_controlling": true
+  },
+  "post_approval_synthetic_rebinding": {
+    "required": true,
+    "must_precede_formal_preflight": true,
+    "runner": "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py",
+    "runner_sha256": "31F2233CA9ACF7F156C24B6CD2F0268F7816CC3DE745E783711C2E58E7459D7F",
+    "runner_bytes": 18120,
+    "suite_tests": 205,
+    "typed_policy_tests": 44,
+    "complete_runs": 2,
+    "current_implementation_hash_count": 26,
+    "must_bind_final_approved_agents_bytes": true,
+    "required_result": "ALL_PASS_ZERO_FAILURE_ERROR_SKIP_OFFICIAL_ACCESS_PATH_HELPER_OFFICIAL_INVOCATION_PREFLIGHT_TOKEN_CAPTURE_AND_BYTE_IDENTICAL",
+    "evidence_output": "results/stage4b_u1_d_pregold_amendment_5f_b_synthetic_rebinding.json",
+    "governance_binding_output": "results/stage4b_u1_d_pregold_amendment_5f_b_governance_binding.json",
+    "narrative_audit": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_B_SYNTHETIC_REBINDING_AUDIT.md",
+    "governance_files": [
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_B_MANIFEST.json",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_B_APPROVAL_DECISION.md",
+      "AGENTS.md",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_REVIEW_1.md",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_IMPLEMENTATION_AUDIT.md",
+      "results/stage4b_u1_d_pregold_amendment_5f_a_synthetic_verification.json",
+      "results/stage4b_u1_d_pregold_amendment_5f_b_synthetic_rebinding.json"
+    ]
+  },
+  "external_approved_argv_binding": {
+    "manifest_path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_B_MANIFEST.json",
+    "manifest_sha256": "EC83E0EABF0286420E03C2A55C9E5559041C392FB0FED9B48F9A614E9720E854",
+    "manifest_bytes": 17286,
+    "manifest_commit": "e387d2707ede9024571249face71bf7ca3afd4e0",
+    "json_member": "exact_capture_command",
+    "argv_elements": 32,
+    "flag_count": 15,
+    "future_b_gate_must_compare_this_manifest_exact_command_to_5f_b_exact_command": true
+  },
+  "frozen_channel_inputs": {
+    "unlabeled_units": {
+      "path": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_unlabeled_units.jsonl",
+      "sha256": "114D28A7C9842079BF80C292274D7DBBBC718F05CBE8F4435487C245238427FA"
+    },
+    "unlabeled_queries": {
+      "path": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_unlabeled_queries.jsonl",
+      "sha256": "6EE942C680EAC86D0410FC25BCC302CA7312A0E253E318025A957D51A09B4B6B"
+    },
+    "controller_channel_audit": {
+      "path": "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_controller_channel_audit.json",
+      "sha256": "D134CDE168C833784F238B61420B4738C1F65B9FCA995945EB04E8B99EAAB2FA"
+    }
+  },
+  "embedding_cache": {
+    "path": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_minilm_idbound_embeddings.npz",
+    "sha256": "69ED39ABC0636B7B63A41639B64CB037FAE556F10CB130FCD18AFB61CBE06F7D",
+    "bytes": 210714667,
+    "members": [
+      "unit_embeddings",
+      "query_embeddings",
+      "unit_ids",
+      "query_ids",
+      "model_name",
+      "max_length"
+    ],
+    "unit_shape": [143820, 384],
+    "query_shape": [4500, 384],
+    "dtype": "float32",
+    "finite_values_required": true,
+    "unit_norm_required": 1.0,
+    "query_norm_required": 1.0,
+    "norm_tolerance": 0.000001,
+    "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "max_length": 192,
+    "mode": "REQUIRE_EXISTING_NO_BUILD_PRE_AND_POST_FINGERPRINT"
+  },
+  "reference_decisions": {
+    "path": "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_decisions.jsonl",
+    "sha256": "6FB6EB6DBFE3C6B819E65ADD268D9F94CFEA24E5761C9E4CB53CD0965C3723C7",
+    "pre_and_post_fingerprint_required": true
+  },
+  "registered_boundary": {
+    "queries": 4500,
+    "units": 143820,
+    "dataset": "2wikimultihopqa",
+    "sample_id_sha256": "6B21FD1D2EFBD6A467C8DAEE9225AA43113FC328CD114F813DD79E6A44458FB2",
+    "query_id_sha256": "8895D4D2EF2A34DE123525011C36A1DF092D27B7588E17E9816ABAB8F1A25CD6",
+    "namespace_relation": "query_id == dataset::sample_id",
+    "registered_source_audit_sha256": "1496FF0CE08093AD38258FD5049068D6C4ED74FCEBF63E94E6E486F3478C7AEE",
+    "source_audit_file_may_be_opened": false
+  },
+  "frozen_runtime": {
+    "controller_checkpoint": "stage4b_u1_v2_3_1",
+    "diagnostic_checkpoint": "stage4b_u1_decisions_diag_v2",
+    "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "max_length": 192,
+    "batch_size": 64
+  },
+  "authorization_token": {
+    "value": "APPROVE_STAGE4B_U1_D_AMENDMENT_5B_OFFICIAL_DECISIONS_ONLY_DIAGNOSTIC",
+    "implementation_gate_only": true,
+    "string_alone_is_not_authorization": true,
+    "all_prior_authorizations_consumed": true,
+    "requires_new_5f_b_package_bound_approval": true,
+    "maximum_future_invocations_requested": 1
+  },
+  "output_registry": {
+    "machine_audit": "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_pregold_amendment_5b_official_decisions_diagnostic.json",
+    "machine_audit_path_frozen_by_unchanged_capture": true,
+    "machine_audit_must_be_absent_before_capture": true,
+    "machine_audit_exclusive_create": true,
+    "narrative_audit": "E:\\科研\\HyperGranular-RAG\\docs\\STAGE4B_U1_PREGOLD_AMENDMENT_5F_B_OFFICIAL_DIAGNOSTIC_AUDIT.md",
+    "narrative_audit_must_be_absent_before_preflight": true,
+    "os_temp_parent_exact_capture_argument": "C:\\Users\\cc\\AppData\\Local\\Temp",
+    "temporary_decisions_glob": "stage4b_u1_decisions_diag_*",
+    "temporary_decisions_must_be_absent_before_preflight": true,
+    "temporary_decisions_must_be_deleted_after_capture": true
+  },
+  "formal_outputs_that_must_remain_absent": [
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_decisions.jsonl",
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_rankings.jsonl",
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_policy.json",
+    "E:\\科研\\HyperGranular-RAG\\docs\\STAGE4B_U1_PREGOLD_V2_3_1_CONTROLLER_EXECUTION_AUDIT.md",
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_verified_pre_gold.json"
+  ],
+  "additional_prohibited_official_inputs": [
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_pregold_amendment_5c_b_reference_schema_inventory.json",
+    "Stage4A-R2 source-audit file",
+    "official rankings",
+    "reference policy",
+    "evaluator files or Gold",
+    "reservation",
+    "Stage3B"
+  ],
+  "required_formal_preflight_order": {
+    "A": "GIT_GOVERNANCE_HISTORICAL_AGENTS_BLOB_CURRENT_OTHER_25_ACCEPTED_HASHES_ALL_26_POST_APPROVAL_CURRENT_HASHES_HELPER_HASHES_AND_OUTPUT_ABSENCE_WITHOUT_OFFICIAL_INPUT_ACCESS",
+    "B": "HASH_BIND_AND_DIRECTLY_CALL_TYPED_ARGUMENT_POLICY_HELPER_ON_5F_B_ACTUAL_AND_HASH_BOUND_5E_B_APPROVED_ARGV",
+    "C": "HASH_BIND_AND_DIRECTLY_CALL_EXISTING_WINDOWS_PATH_EQUIVALENCE_HELPER_ON_RAW_RUNTIME_TEMP_AND_EXACT_EXPECTED_DIRECTORY",
+    "D": "ONLY_AFTER_B_AND_C_PASS_INSPECT_THE_FIVE_PERMITTED_OFFICIAL_INPUTS",
+    "E": "ONLY_AFTER_COMPLETE_PREFLIGHT_PASS_RUN_ONE_UNCHANGED_EXACT_CAPTURE"
+  },
+  "exact_capture_command": [
+    "python",
+    "scripts/stage4b_u1_capture_diagnostic_decisions.py",
+    "--units",
+    "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_unlabeled_units.jsonl",
+    "--queries",
+    "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_unlabeled_queries.jsonl",
+    "--channel-audit",
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_controller_channel_audit.json",
+    "--embedding-cache",
+    "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_minilm_idbound_embeddings.npz",
+    "--reference-decisions",
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_decisions.jsonl",
+    "--audit-output",
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_pregold_amendment_5b_official_decisions_diagnostic.json",
+    "--temp-parent",
+    "C:\\Users\\cc\\AppData\\Local\\Temp",
+    "--model-name",
+    "sentence-transformers/all-MiniLM-L6-v2",
+    "--batch-size",
+    "64",
+    "--max-length",
+    "192",
+    "--expected-units-sha256",
+    "114D28A7C9842079BF80C292274D7DBBBC718F05CBE8F4435487C245238427FA",
+    "--expected-queries-sha256",
+    "6EE942C680EAC86D0410FC25BCC302CA7312A0E253E318025A957D51A09B4B6B",
+    "--expected-channel-audit-sha256",
+    "D134CDE168C833784F238B61420B4738C1F65B9FCA995945EB04E8B99EAAB2FA",
+    "--expected-embedding-cache-sha256",
+    "69ED39ABC0636B7B63A41639B64CB037FAE556F10CB130FCD18AFB61CBE06F7D",
+    "--official-authorization-token",
+    "APPROVE_STAGE4B_U1_D_AMENDMENT_5B_OFFICIAL_DECISIONS_ONLY_DIAGNOSTIC"
+  ],
+  "execution_limits": {
+    "post_approval_complete_synthetic_runs": 2,
+    "formal_preflight_invocations": 1,
+    "typed_helper_official_boundary_invocations": 1,
+    "path_helper_official_boundary_invocations": 1,
+    "official_capture_invocations": 1,
+    "automatic_retry": false,
+    "full_controller_rerun": false,
+    "formal_output_promotion": false,
+    "verifier": false,
+    "evaluator_or_gold": false
+  },
+  "audit_output_policy": {
+    "aggregate_counts_only": true,
+    "raw_byte_equality_is_controlling_gate": true,
+    "canonical_or_semantic_equality_may_replace_raw_bytes": false,
+    "null_normalization_or_imputation": false,
+    "channel_cache_reference_pre_and_post_hash_status_required": true,
+    "temporary_cleanup_status_required": true,
+    "raw_query_ids_allowed": false,
+    "maximum_salted_query_id_hashes": 1,
+    "raw_decision_rows_allowed": false,
+    "field_values_allowed": false,
+    "question_or_text_allowed": false,
+    "ranking_content_allowed": false,
+    "policy_content_allowed": false,
+    "gold_content_allowed": false
+  },
+  "requested_authorization": [
+    "commit and push package-bound 5F-B approval governance",
+    "run and push two byte-identical 205-test post-approval synthetic rebinding outputs",
+    "create and push governance binding over 5F-B request Manifest decision final AGENTS 5F-A review implementation evidence and rebinding evidence",
+    "run one A/B/C/D formal preflight in the frozen order",
+    "run one unchanged exact-command official decisions-only capture only after all preflight gates pass",
+    "validate aggregate-only output fingerprints formal-output absence and temporary cleanup",
+    "write one 5F-B narrative audit",
+    "commit push verify GitHub and stop"
+  ],
+  "explicitly_not_authorized": [
+    "run any package command before a 5F-B package-bound approval",
+    "run post-approval synthetic rebinding before approval",
+    "call either helper against the future official boundary before approval",
+    "run more than one preflight helper call or capture or retry after failure",
+    "modify inline-reimplement or bypass either helper",
+    "modify the exact capture command token string paths model parameters SHA values temp-parent or output path",
+    "read compare or hash official rankings reference policy source-audit file or 5C-B inventory",
+    "read evaluator Gold U1-D effect metrics reservation or Stage3B",
+    "generate or promote formal decisions rankings policy controller audit or VERIFIED_PRE_GOLD",
+    "run full controller verifier or evaluator",
+    "modify code tests data model parameters effective-K q25 score ECDF budget trigger ranking endpoint equivalence or stop rules",
+    "create rebuild overwrite delete or migrate cache official artifacts historical evidence or failure records",
+    "resume official pre-Gold execution after diagnosis"
+  ],
+  "post_diagnostic_state": [
+    "AMENDMENT_5F_B_OFFICIAL_DECISIONS_DIAGNOSTIC_COMPLETE_AWAITING_REVIEW",
+    "HARD_FAILURE_4_DIAGNOSIS_COMPLETE_AWAITING_REVIEW",
+    "CONTROLLER_RERUN_NOT_APPROVED",
+    "VERIFIER_NOT_APPROVED",
+    "GOLD_NOT_APPROVED"
+  ]
+}

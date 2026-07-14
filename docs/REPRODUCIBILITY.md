@@ -833,3 +833,19 @@ The first module-style targeted command failed before discovery because `tests` 
 The corrected final wrapper ran the complete suite twice on 26 identical tracked files. Both runs passed 205/205 with zero failure/error/skip/official access/path-helper official invocation/preflight/token/capture. Tracked-byte digest was `B58E85239F001B532B5CF378998B804B1202C5D6FF148311EF939DC4B3B4EA34`. Both evidence files were 51,922 bytes with SHA-256 `A5B97077AD9A0C62EBFCAE9D70FC8B5BFAD19CCB32FF3A53E1FCF4BDB216D189`, and direct byte comparison passed. The first-run OS-temp evidence was then deleted; final evidence is `results/stage4b_u1_d_pregold_amendment_5f_a_synthetic_verification.json`.
 
 No official input metadata/content, real OS-temp helper check, formal preflight, authorization token, official capture/comparator, controller, verifier, evaluator/Gold, reservation or Stage3B was accessed or run. The implementation/evidence push must stop for independent review; 5F-B cannot be assembled under this approval.
+
+## Stage4B-U1-D Pre-Gold Amendment 5F-A Review 1
+
+Independent review accepts the 5F-A implementation/evidence commit `e7b688d4b67db596df1d447e2cf70f12f0ea5d0b`. It preserves the accepted 205/205 dual-run evidence, 51,922-byte output, SHA-256 `A5B97077AD9A0C62EBFCAE9D70FC8B5BFAD19CCB32FF3A53E1FCF4BDB216D189`, tracked-byte digest `B58E85239F001B532B5CF378998B804B1202C5D6FF148311EF939DC4B3B4EA34`, and zero official access/path-helper official invocation/preflight/token/capture counters.
+
+The review authorizes only assembly of an implementation-bound 5F-B request and Manifest. It does not authorize a new synthetic run, helper call, preflight, token use, official input access, capture, controller, verifier or Gold. The review record is `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_REVIEW_1.md`.
+
+## Stage4B-U1-D Pre-Gold Amendment 5F-B Package
+
+The request and machine-readable scope are `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md` and `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_B_MANIFEST.json`. The package binds the 5F-A package, approval governance, accepted implementation/evidence, Hard Failure 7 chain, frozen helper bytes, five official input fingerprints and the unchanged capture boundary. For accepted 5F-A hashes, the implementation-time `AGENTS.md` is verified from the `e7b688d...` Git blob while the other 25 files are recomputed against the current tree; post-approval evidence must separately bind and support recomputation of all 26 current hashes including final governance `AGENTS.md`.
+
+The Manifest's `exact_capture_command` was parsed successfully and compared element by element with the hash-bound 5E-B Manifest command: both contain exactly 32 elements and 15 ordered flags and are identical. This comparison reads only tracked governance files; it does not access official input paths or execute either helper.
+
+A future package-bound approval is requested for exactly: approval governance; two complete 205-test rebinding runs on final governance bytes with byte-identical evidence; governance binding and audit push; one A/B/C/D formal preflight; conditionally one unchanged exact capture; aggregate-only audit push and immediate stop. Gate B must hash-bind and directly call `validate_capture_argv`; gate C must hash-bind and directly call `windows_directories_equivalent`; gate D is the first point at which the five Manifest-registered official inputs may be inspected.
+
+The package itself authorizes no command. Until a new approval explicitly binds the 5F-B package commit, post-approval rebinding, helper invocation, formal preflight, token use, official input metadata/content access, capture, controller, verifier, evaluator/Gold, reservation and Stage3B remain prohibited.

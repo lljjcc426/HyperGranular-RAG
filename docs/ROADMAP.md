@@ -973,3 +973,19 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_IMPLEMENTATION_AUDIT.md`.
 - Evidence: `results/stage4b_u1_d_pregold_amendment_5f_a_synthetic_verification.json`.
 - Current status: `AMENDMENT_5F_A_SYNTHETICALLY_VERIFIED`, awaiting independent review. 5F-B package assembly and all official execution remain unapproved.
+
+### Stage4B-U1-D Pre-Gold Amendment 5F-A Review 1
+
+- Independent review accepts the implementation/evidence commit `e7b688d4b67db596df1d447e2cf70f12f0ea5d0b` and the two byte-identical 205-test runs.
+- Accepted evidence remains 51,922 bytes, SHA-256 `A5B97077AD9A0C62EBFCAE9D70FC8B5BFAD19CCB32FF3A53E1FCF4BDB216D189`, with zero official access/path-helper official invocation/preflight/token/capture.
+- The review authorizes only assembly of an implementation-bound 5F-B package. It does not authorize rebinding, helper calls, preflight, token, capture, controller, verifier or Gold.
+- Review: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_REVIEW_1.md`.
+
+### Stage4B-U1-D Pre-Gold Amendment 5F-B Package
+
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_B_MANIFEST.json`.
+- The package binds the accepted 5F-A implementation/evidence and freezes the typed helper, existing path helper, 25 unchanged current-tree hashes plus the historical implementation-time `AGENTS.md` Git blob, five official inputs, unchanged 32-element capture argv and aggregate-only output boundary. Post-approval evidence must separately bind all 26 current hashes including final governance `AGENTS.md`.
+- A future approval is requested for approval governance, two byte-identical 205-test rebinding runs, governance binding, one A/B/C/D preflight, conditionally one unchanged capture, aggregate audit push and immediate stop.
+- Preflight order is fixed: A Git/governance/hashes/output absence; B hash-bind and directly call the typed helper; C hash-bind and directly call the path helper; D only then access five official inputs. Capture is conditional on all gates passing.
+- Current status: `AMENDMENT_5F_B_AWAITING_APPROVAL`. The package authorizes no rebinding, helper invocation, preflight, token, official access, capture, controller, verifier, evaluator or Gold action.

@@ -119,6 +119,13 @@
 105. 5F-A implementation baseline 仅包含新 typed argument-policy helper、新 test module 与 Manifest 限定的 deterministic runner 更新；新增 test module 共 44 项。首次 module-name 定向命令因 `tests` 非 Python package 而在 discovery 前失败，修正为 `unittest discover` 后定向测试 44/44 通过。
 106. preliminary complete suite 为 205/205、零 failure/error/skip/official access，preliminary OS-temp evidence 已在检查后删除。该结果不是最终 evidence；最终完成状态只在本条及全部治理/实现/冻结字节稳定后连续两轮完整 suite 均为 205/205、零访问/调用且 evidence 字节一致时成立。
 107. 5F-A 最终 evidence 必须记录 path-helper official invocation、formal preflight、authorization token、official capture 均为 0，并证明 typed helper 无 filesystem/hash/subprocess/capture/token/path-helper 调用及无裸 `gold` value-substring denylist。implementation/evidence 推送后必须停止等待独立审核，不得组装 5F-B。
+108. 5F-A 独立审核现已接受 implementation/evidence commit `e7b688d4b67db596df1d447e2cf70f12f0ea5d0b`，并仅授权组装 implementation-bound 5F-B 审批包；审核记录为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_REVIEW_1.md`。
+109. 5F-B request/Manifest 本身不授权 post-approval synthetic rebinding、governance binding、typed helper official-command 调用、real OS-temp path helper、formal preflight、official input metadata/content、token、capture、controller、verifier 或 Gold。任何执行必须等待明确绑定未来 5F-B package commit 的新批准。
+110. 未来 5F-B 如获批准，唯一顺序必须为：批准治理提交推送；相同最终治理字节上连续两轮 205/205 synthetic rebinding 且 evidence 字节一致；governance binding 与审计提交推送；一次 A/B/C/D formal preflight；全部通过后条件性运行一次 unchanged exact capture；聚合审计提交推送后立即停止。任一硬失败不得重试。
+111. 5F-B formal preflight 的 A 门只检查 Git/治理/hash/输出与残留不存在，不得访问五项 official inputs。A 必须从 `e7b688d...` Git blob 核验历史 `AGENTS.md` hash、对当前树复算其余 25 项 accepted hashes，并对 post-approval evidence 复算含最终 `AGENTS.md` 的全部 26 项 current hashes；不得把最终治理 `AGENTS.md` 与历史 hash 直接比较。B 门必须先核验 typed helper SHA `CCDC70D2E66E9D69CD64899676EA5150FEE0381E74F4C9DEED2A0FFB5EE436F4` 和 5E-B Manifest SHA，再直接调用 `validate_capture_argv` 比较两份 Manifest 的 exact argv；禁止内联或 fallback，禁止裸字符串关键词扫描。
+112. 只有 B 通过后，C 门才可核验 path helper SHA `1A17C0E750F91CEF2F638A0B0C6FD381110692E6B2D467C1F5243ADF3F35B3FF`，并直接调用 `windows_directories_equivalent` 比较未改写的 `.NET GetTempPath()` 与冻结目录。只有 B/C 均通过后，D 门才可访问 Manifest 登记的五项 official inputs。
+113. 5F-B exact capture command 必须与 hash-bound 5E-B Manifest 的 32 个 argv 元素逐项完全一致；raw-byte equality 继续为首要冻结门。不得修改代码、测试、数据、模型、参数、equivalence 或 stop rules，不得读取 rankings、reference policy、source-audit 文件、5C-B inventory、Gold、reservation 或 Stage3B。
+114. 当前状态为 `AMENDMENT_5F_B_AWAITING_APPROVAL`。5F-B package 组装提交推送后必须停止等待独立审批；formal preflight retry、path-helper official-boundary check、authorization token、official capture、controller rerun、verifier 和 Gold 均未批准。
 
 ## GitHub 与文档
 
