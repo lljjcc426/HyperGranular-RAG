@@ -989,3 +989,19 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - A future approval is requested for approval governance, two byte-identical 205-test rebinding runs, governance binding, one A/B/C/D preflight, conditionally one unchanged capture, aggregate audit push and immediate stop.
 - Preflight order is fixed: A Git/governance/hashes/output absence; B hash-bind and directly call the typed helper; C hash-bind and directly call the path helper; D only then access five official inputs. Capture is conditional on all gates passing.
 - Current status: `AMENDMENT_5F_B_AWAITING_APPROVAL`. The package authorizes no rebinding, helper invocation, preflight, token, official access, capture, controller, verifier, evaluator or Gold action.
+
+### Stage4B-U1-D Pre-Gold Amendment 5F-B Approval And Rebinding
+
+- Approval governance commit: `84d39707dee15729dc0c35c85a16f4e31dac89e4`.
+- Two post-approval complete suites passed 205/205 with 44 typed-policy tests and zero failure/error/skip/official access/path-helper official invocation/preflight/token/capture.
+- Both outputs were 51,922 bytes with SHA-256 `829289F10B1C7B39BBE6B37ACF51DCB265764FD10A8DA55892F60D50F6D2CB09`; direct byte comparison passed.
+- Rebinding/governance commit: `052e8ecc04f566b75666d5cc96df74d2ed5061e4`.
+
+### Stage4B-U1-D Pre-Gold Hard Failure 8
+
+- The single formal preflight stopped at the first A-gate comparison.
+- Local HEAD, origin/main and GitHub main were all correctly synchronized at `052e8ecc04f566b75666d5cc96df74d2ed5061e4`.
+- The wrapper incorrectly asserted `052e8ece1839ff253f8aeb84d5f828377be74829`; both values share the short prefix `052e8ec`.
+- B/C/D, both helpers, all five official inputs, token and capture were not reached. Post-failure output/residue metadata checks were all clear.
+- Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_8.md`.
+- Current status: `AMENDMENT_5F_B_FORMAL_PREFLIGHT_STOPPED_HARD_FAILURE_8`. The preflight authorization is consumed and no retry is allowed without a new package-bound Amendment.

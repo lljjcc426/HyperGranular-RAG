@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Amendment 5F-A implementation/evidence 已获独立审核接受；5F-B 审批包待审核 |
-| 获批执行协议 | 仅 5F-B package assembly 已消费；无 official execution 授权 |
-| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md` |
-| 协议状态 | `AMENDMENT_5F_B_AWAITING_APPROVAL` |
+| 当前阶段 | Amendment 5F-B 唯一 formal preflight 在 A 门停止于 Hard Failure 8 |
+| 获批执行协议 | 5F-B preflight 授权已消费失败；无重试或 official capture 授权 |
+| 设计文件 | `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_8.md` |
+| 协议状态 | `AMENDMENT_5F_B_FORMAL_PREFLIGHT_STOPPED_HARD_FAILURE_8` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -108,7 +108,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
-| Stage4B-U1 | 5F-B package 待独立审批 | 5F-A 已获审核接受；当前仅完成 request/Manifest 组装，official execution 仍为 0 |
+| Stage4B-U1 | 5F-B formal preflight 已停止于 Hard Failure 8 | 两轮 rebinding 已通过；唯一 preflight 在 A 门失败，helper/official input/token/capture 均为 0 |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
@@ -154,7 +154,7 @@ Stage4B-U1 当前仅有不访问 reservation 的功效规划入口：`scripts/st
 
 Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verification.py`；当前审计见 `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT_V2_1.md`，历史 v2 审计继续保留。
 
-5E-A helper 与 5E-B post-approval rebinding 均通过 161 项双轮确定性验证。5E-B 唯一 formal preflight 的 A 门通过，但 B 门使用裸 `gold` 子串扫描，误命中冻结 machine audit 路径中的 `pregold` 并触发 Hard Failure 7。5F-A 新增 typed argument-policy helper 与 44 项测试；最终两轮完整 suite 均为 205/205，51,922-byte evidence 逐字节一致，零 official access/path-helper official invocation/preflight/token/capture。独立审核现已接受 5F-A implementation/evidence，并仅授权组装 5F-B 审批包；该包本身不授权任何执行。
+5F-B 获批后，两轮 post-approval suite 均为 205/205、51,922-byte evidence 逐字节一致，全部 official/helper/preflight/token/capture 计数为 0。唯一 formal preflight 随后在 A 门第一项停止：Git 三方实际同步到 `052e8ecc...`，但 wrapper 误写了同短前缀的另一完整提交字面量。B/C/D、helper、official input、token 和 capture 均未运行；失败审计见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_8.md`。
 
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
@@ -179,8 +179,8 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 独立审核 5F-B request、Manifest、5F-A Review 1 与本次 package commit。
-2. 新的 package-bound 批准前，不得运行 post-approval rebinding、typed/path helper、formal preflight、token 或 capture。
+1. 独立审核 Hard Failure 8 审计及停止边界。
+2. 新的 package-bound Amendment 明确批准前，不得运行第二次 preflight、typed/path helper、official input access、token 或 capture。
 3. Controller、verifier、Gold、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub

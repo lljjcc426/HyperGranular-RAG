@@ -135,6 +135,12 @@
 121. 只有 A/B/C/D 全部通过后，才允许一次 Manifest unchanged 32-element exact capture。Post-run 不得再次语义解析 reference/temporary decisions，只可核验 aggregate machine audit、input/cache fingerprints、cleanup 和 formal-output absence。
 122. 本批准不授权任何代码/测试/科研参数/equivalence 修改、第二次 preflight/helper/capture、full controller、verifier、evaluator/Gold、formal output、rankings、reference policy、source-audit 文件、5C-B inventory、reservation、Stage3B、cache/历史工件修改删除或诊断后自动继续。
 123. 当前进入 `AMENDMENT_5F_B_APPROVED_AWAITING_POST_APPROVAL_REBINDING`。批准治理提交推送前不得运行 synthetic；rebinding/governance 提交推送前不得运行 preflight。
+124. 5F-B 批准治理已提交 `84d39707dee15729dc0c35c85a16f4e31dac89e4`；同一最终治理字节上的两轮 205/205 rebinding 均为零 failure/error/skip/official access/helper official invocation/preflight/token/capture，51,922-byte evidence SHA-256 均为 `829289F10B1C7B39BBE6B37ACF51DCB265764FD10A8DA55892F60D50F6D2CB09` 且逐字节一致。
+125. Rebinding evidence、governance binding 与审计已提交推送为 `052e8ecc04f566b75666d5cc96df74d2ed5061e4`；runner evidence 绑定当前 26 项字节，governance JSON 额外绑定 5F-B request/Manifest/approval/evidence，职责分离成立。
+126. 5F-B 唯一 formal preflight 在 A 门首项硬失败：local HEAD、origin/main 与 GitHub main 实际均为 `052e8ecc04f566b75666d5cc96df74d2ed5061e4`，但执行 wrapper 错误断言了同短前缀的完整字面量 `052e8ece1839ff253f8aeb84d5f828377be74829`，触发 `HARD_FAILURE_8_FORMAL_PREFLIGHT_A_GATE_EXPECTED_HEAD_LITERAL_MISMATCH`。
+127. Hard Failure 8 发生在后续 A hash/output checks、B/C/D 之前；typed helper、path helper、official input access、token、capture、controller、verifier、evaluator/Gold 调用均为 0。失败后 metadata-only 核验确认 machine/narrative audit 不存在、五项 formal outputs 为 0、diagnostic temp residue 为 0。
+128. 详细审计为 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_8.md`。该失败是 preflight command 完整提交字面量转录错误，不是网络、GitHub 漂移、helper、OS-temp、official input、cache 或 capture 失败。
+129. 5F-B formal preflight 授权已耗尽；禁止第二次 preflight、typed/path helper official call、official input access、token 或 capture。任何修正和恢复必须形成新的 package-bound Amendment 并获得明确批准；当前状态为 `AMENDMENT_5F_B_FORMAL_PREFLIGHT_STOPPED_HARD_FAILURE_8`。
 
 ## GitHub 与文档
 

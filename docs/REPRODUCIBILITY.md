@@ -849,3 +849,17 @@ The Manifest's `exact_capture_command` was parsed successfully and compared elem
 A future package-bound approval is requested for exactly: approval governance; two complete 205-test rebinding runs on final governance bytes with byte-identical evidence; governance binding and audit push; one A/B/C/D formal preflight; conditionally one unchanged exact capture; aggregate-only audit push and immediate stop. Gate B must hash-bind and directly call `validate_capture_argv`; gate C must hash-bind and directly call `windows_directories_equivalent`; gate D is the first point at which the five Manifest-registered official inputs may be inspected.
 
 The package itself authorizes no command. Until a new approval explicitly binds the 5F-B package commit, post-approval rebinding, helper invocation, formal preflight, token use, official input metadata/content access, capture, controller, verifier, evaluator/Gold, reservation and Stage3B remain prohibited.
+
+## Stage4B-U1-D Pre-Gold Amendment 5F-B Approval And Rebinding
+
+Approval governance was committed and pushed at `84d39707dee15729dc0c35c85a16f4e31dac89e4`. On those final governance bytes, the frozen runner completed exactly two runs. Each run passed 205/205 tests including 44 typed-policy tests, with zero failure/error/skip/official access/path-helper official invocation/formal preflight/token/capture.
+
+The two complete evidence files were byte-identical at 51,922 bytes and SHA-256 `829289F10B1C7B39BBE6B37ACF51DCB265764FD10A8DA55892F60D50F6D2CB09`. The first OS-temp snapshot was deleted only after direct comparison. The formal evidence, governance binding and audit were committed and pushed at `052e8ecc04f566b75666d5cc96df74d2ed5061e4`.
+
+## Stage4B-U1-D Pre-Gold Hard Failure 8
+
+The single authorized formal preflight failed at the first A-gate assertion. The command read local HEAD, origin/main and GitHub main as the same correct value `052e8ecc04f566b75666d5cc96df74d2ed5061e4`, but compared them to the incorrectly transcribed literal `052e8ece1839ff253f8aeb84d5f828377be74829`. The two values share only the short prefix `052e8ec`.
+
+The failure occurred before the remaining A checks and before B/C/D. Typed helper calls, path-helper calls, official input metadata/content access, token use and capture invocation all remained zero. A post-failure metadata-only check found no machine/narrative audit, no formal output and no diagnostic temp residue.
+
+This is a wrapper commit-literal construction defect, not network drift, GitHub divergence, helper failure, path-equivalence failure, official-input drift, cache failure or capture failure. The one formal-preflight authorization is consumed; correcting the literal and rerunning requires a new package-bound Amendment. Full evidence is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_8.md`.
