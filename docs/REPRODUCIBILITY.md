@@ -701,3 +701,11 @@ The next implementation/synthetic-only request is `docs/STAGE4B_U1_PREGOLD_AMEND
 If separately approved, 5D-A would modify only the comparator, its diagnostic synthetic runner, and diagnostic tests. The comparator may stop enforcing file-level complete-schema homogeneity, but must preserve strict row parsing, unique query IDs, per-query field/type/discrete/float/ULP/semantic comparison, aggregate no-raw-value output, and raw byte equality as the controlling gate. Null values may not be normalized or imputed.
 
 The complete-suite baseline is the verified 131 tests. At least 12 new tests make the minimum 143. Final evidence requires two executions on identical tracked bytes, each with zero failures/errors/skips/official-path accesses and byte-identical outputs. Official inputs, capture/controller/verifier/evaluator, Gold, reservation, and Stage3B remain prohibited. A future 5D-B official diagnostic requires a separate implementation-bound package and approval.
+
+## Stage4B-U1-D Pre-Gold Amendment 5D-A Approval
+
+The user approved implementation and synthetic verification on 2026-07-14, strictly binding package commit `33ce115f78840956fcc7bda0c3f4e172579350e7` and the historical commits registered in its Manifest. The decision is `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_APPROVAL_DECISION.md`.
+
+Only `scripts/stage4b_u1_compare_decisions.py`, `scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py`, and `tests/test_stage4b_u1_decisions_diagnostic.py` may change. The comparator may bump to v2 and remove only the file-level complete-schema homogeneity rejection. Strict parsing, unique query IDs, all per-query comparison layers, aggregate output keys, raw-byte control, and the absence of nullable normalization remain mandatory.
+
+The complete suite must retain the 131-test baseline, add at least 12 heterogeneous-schema tests, and finish with at least 143 tests. Final evidence requires two runs on identical tracked bytes with zero failure/error/skip/official-path access and byte-identical outputs. No official input, official comparator/capture, controller, verifier, evaluator, Gold, reservation, or Stage3B action is authorized.

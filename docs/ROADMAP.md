@@ -847,3 +847,15 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Per-query field set/order/type/discrete/float/ULP/semantic comparison, aggregate output, raw-byte controlling gate, no-normalization, capture/controller, all parameters, and all official boundaries remain frozen.
 - The current 131 tests are the traceable baseline. At least 12 heterogeneous-schema additions require a complete-suite minimum of 143, followed by two byte-identical all-pass runs with zero official access.
 - Current status: `AMENDMENT_5D_A_AWAITING_APPROVAL`. The package authorizes no implementation, synthetic execution, or official read.
+
+### Stage4B-U1-D Pre-Gold Amendment 5D-A Approval
+
+- Decision date: 2026-07-14.
+- Decision: `APPROVE_STAGE4B_U1_D_PREGOLD_AMENDMENT_5D_A_HETEROGENEOUS_SCHEMA_COMPARATOR_IMPLEMENTATION_SYNTHETIC_ONLY`.
+- Bound package commit: `33ce115f78840956fcc7bda0c3f4e172579350e7` plus the twelve historical commits registered in its Manifest.
+- Allowed implementation is limited to the comparator, diagnostic synthetic runner, and diagnostic tests.
+- Comparator changes are limited to version/checkpoint v2 and removal of the loader's file-level complete-schema homogeneity rejection.
+- Per-query comparison, aggregate keys, raw-byte controlling gate, no-normalization, capture/controller and all scientific parameters remain frozen.
+- The 131-test baseline must remain; at least 12 additions require a minimum complete suite of 143 and two byte-identical all-pass runs with zero official access.
+- Approval decision: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_APPROVAL_DECISION.md`.
+- Current status: `AMENDMENT_5D_A_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY`.

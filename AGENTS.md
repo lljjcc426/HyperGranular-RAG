@@ -72,6 +72,9 @@
 58. Amendment 5D-A request/Manifest 仅为 heterogeneous-schema comparator implementation/synthetic-only 审批包。包本身不授权 comparator 修改、测试执行或任何 official 文件访问；必须等待明确绑定未来 5D-A package commit 的批准。
 59. 未来 5D-A 如获批准，只能修改 comparator、decisions diagnostic synthetic runner 与对应 diagnostic tests 三个 Manifest 登记文件。允许的语义变化仅为移除全文件 complete-type-signature 同构拒绝并更新 comparator version/checkpoint；逐 query 比较、aggregate output、raw-byte 主门、no-normalization 与全部科研参数必须保持不变。
 60. 5D-A 必须保留现有 131 项，至少新增 12 项 heterogeneous-schema hardening 后完整 suite 不少于 143 项，并在相同 tracked bytes 上连续两次全通过、零 failure/error/skip/official access、evidence 字节一致。5D-A 不授权 capture/controller/verifier/evaluator/Gold；未来 5D-B 必须另行组包、审批且不得自动执行。
+61. Amendment 5D-A implementation/synthetic-only 已获批准，严格绑定 package commit `33ce115f78840956fcc7bda0c3f4e172579350e7` 及其 Manifest 中十二个历史提交。批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_APPROVAL_DECISION.md`。
+62. 5D-A 只允许修改 Manifest 登记的 comparator、decisions diagnostic synthetic runner 和 diagnostic tests。Comparator 仅可更新至 `stage4b_u1_decisions_diagnostic_v2` / `stage4b_u1_decisions_diag_v2` 并移除 loader 的全文件同构 schema 拒绝；其余逐 query 算法、aggregate keys、raw-byte 主门与 no-normalization 全部冻结。
+63. 5D-A 完整 suite 必须保留 131 项并至少新增 12 项达到不少于 143 项；最终两次运行必须相同 tracked bytes、全通过、零 failure/error/skip/official access 且 evidence 字节一致。本批准不授权任何 official 输入、official comparator/capture、controller/verifier/evaluator/Gold、reservation、Stage3B 或 5D-B 执行。
 
 ## GitHub 与文档
 

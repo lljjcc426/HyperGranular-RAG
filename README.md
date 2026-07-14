@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Amendment 5C-B 审核已接受；5D-A implementation/synthetic-only 包等待审批 |
-| 获批执行协议 | 无 comparator 修改或 official 执行授权；5D-A package 本身不授权实现/测试 |
-| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_APPROVAL_REQUEST.md` |
-| 协议状态 | `AMENDMENT_5D_A_AWAITING_APPROVAL` |
+| 当前阶段 | Amendment 5D-A 已获 implementation/synthetic-only 批准，等待实现与验证 |
+| 获批执行协议 | 仅 comparator/runner/tests 三文件；无 official execution 授权 |
+| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_APPROVAL_DECISION.md` |
+| 协议状态 | `AMENDMENT_5D_A_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
