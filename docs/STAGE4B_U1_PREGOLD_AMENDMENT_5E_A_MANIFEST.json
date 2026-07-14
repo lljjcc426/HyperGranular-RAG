@@ -1,0 +1,202 @@
+{
+  "schema_version": "stage4b_u1_pregold_amendment_5e_a",
+  "request_id": "STAGE4B_U1_D_PREGOLD_AMENDMENT_5E_A_WINDOWS_TEMP_PATH_EQUIVALENCE_IMPLEMENTATION_SYNTHETIC_ONLY",
+  "assembled_date": "2026-07-14",
+  "package_status": "AWAITING_AMENDMENT_5E_A_APPROVAL",
+  "current_state": [
+    "HARD_FAILURE_6_AUDIT_ACCEPTED",
+    "AMENDMENT_5D_B_OFFICIAL_DIAGNOSTIC_STOPPED_HARD_FAILURE_6",
+    "HARD_FAILURE_4_DIAGNOSIS_INCOMPLETE",
+    "PATH_EQUIVALENCE_FIX_NOT_APPROVED",
+    "FORMAL_PREFLIGHT_RETRY_NOT_APPROVED",
+    "OFFICIAL_CAPTURE_NOT_APPROVED",
+    "CONTROLLER_RERUN_NOT_APPROVED",
+    "VERIFIER_NOT_APPROVED",
+    "GOLD_NOT_APPROVED"
+  ],
+  "requested_mode": "IMPLEMENTATION_AND_SYNTHETIC_ONLY",
+  "binding_commits": {
+    "hard_failure_6_audit_and_status": "bebfeb5664f26795b8d3472f3729ca1bb9abf889",
+    "amendment_5d_b_rebinding_and_governance": "2447ad234c160c6e615d81b33dc4ede7ecaa18da",
+    "amendment_5d_b_final_approval_governance": "1c46dc1b69f8381598aacb9f3b1e27561c7f9ee2",
+    "amendment_5d_b_package": "f67061e753b03a5cf46d7a7c92b5a95fc79b0ef8",
+    "amendment_5d_a_implementation_and_evidence": "02f46447e4cd69a15d2af14ee1fc62f9eb4f8bb9",
+    "amendment_5d_a_package": "33ce115f78840956fcc7bda0c3f4e172579350e7",
+    "amendment_5d_a_approval_governance": "7f879a628fc313e24e805d9bdc5a81b06c37304a",
+    "amendment_5c_b_final_diagnostic_and_audit": "e5f28f664449c02b12a129aaa2a011bad84dab91",
+    "hard_failure_5": "deccd203059d05dc27ba80aca1ddb1e2ea8f616f",
+    "hard_failure_4": "b21852a174b537c90a848699deb4d26d6f169506",
+    "v2_3_1_implementation": "34349c70ee24b8240fd169393134d4280968b790"
+  },
+  "approval_must_also_bind_package_commit": true,
+  "package_authorizes_implementation_or_execution": false,
+  "hard_failure_6_review": {
+    "path": "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_6_REVIEW_1.md",
+    "sha256": "0E763D513E7D47AC37AE10A1AA752A8EFCEF8213FC0C1B5F91BF6294EE1EDC22",
+    "bytes": 3699,
+    "decision": "ACCEPT_HARD_FAILURE_6_AUDIT",
+    "next_gate": "RETURN_FOR_AMENDMENT_5E_A_PACKAGE"
+  },
+  "hard_failure_6_audit": {
+    "path": "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_6.md",
+    "sha256": "276ADA6E425762C04CF727C6023E06FDCA44464CB80BC53A89522155D4CFD698",
+    "bytes": 5373,
+    "formal_preflight_invocations": 1,
+    "formal_preflight_retries": 0,
+    "official_capture_invocations": 0,
+    "five_official_inputs_opened": false,
+    "direct_cause": "TRAILING_DIRECTORY_SEPARATOR_NOT_NORMALIZED_BEFORE_STRING_EQUALITY"
+  },
+  "baseline_complete_suite": {
+    "tests": 143,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "official_path_access_attempts": 0,
+    "evidence_path": "results/stage4b_u1_d_pregold_amendment_5d_b_synthetic_rebinding.json",
+    "evidence_sha256": "264200C2EBEDA1D0B214F824B77C89FC5BBE82D3BE0836FAAB9486EACAACF368",
+    "evidence_bytes": 29643,
+    "byte_identical_complete_runs": true,
+    "governance_binding_path": "results/stage4b_u1_d_pregold_amendment_5d_b_governance_binding.json",
+    "governance_binding_sha256": "77FB4A2F7109B0CE98E50AA4A78C4852274A9DA0772AF03C28D81BB7BEEC5E16",
+    "rebinding_audit_path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_B_SYNTHETIC_REBINDING_AUDIT.md",
+    "rebinding_audit_sha256": "97CECC49DEB657B3CC0E7AEDEA2FACB8B18B948E95E56E194C4D1EFFA4130153"
+  },
+  "allowed_implementation_files": {
+    "scripts/stage4b_u1_preflight_path_equivalence.py": {
+      "must_not_exist_before_implementation": true,
+      "allowed_change": "ADD_STANDARD_LIBRARY_ONLY_FAIL_CLOSED_WINDOWS_DIRECTORY_EQUIVALENCE_HELPER"
+    },
+    "tests/test_stage4b_u1_preflight_path_equivalence.py": {
+      "must_not_exist_before_implementation": true,
+      "allowed_change": "ADD_SYNTHETIC_ONLY_PATH_EQUIVALENCE_AND_ACCESS_BOUNDARY_TESTS"
+    },
+    "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py": {
+      "baseline_sha256": "3F97A26169D1056EF76176EE03D7EC938497B3D6EC06D9DAF737B9CC89F1946E",
+      "baseline_bytes": 12061,
+      "allowed_change": "BIND_5E_A_GOVERNANCE_HELPER_TESTS_ACTIVE_PROOFS_MINIMUM_155_AND_EVIDENCE_ONLY"
+    }
+  },
+  "helper_contract": {
+    "standard_library_only": true,
+    "both_inputs_must_be_absolute_before_normalization": true,
+    "both_paths_must_exist": true,
+    "both_paths_must_be_directories": true,
+    "leaf_symlink_junction_or_reparse_point_rejected": true,
+    "full_path_normalization_required": true,
+    "dot_segments_collapsed": true,
+    "separator_spelling_normalized": true,
+    "ending_directory_separators_trimmed_for_comparison_only": true,
+    "windows_comparison": "ORDINAL_IGNORE_CASE",
+    "exact_normalized_directory_equality_required": true,
+    "prefix_parent_child_or_sibling_acceptance": false,
+    "startswith_or_string_prefix_acceptance": false,
+    "exact_capture_command_mutation": false,
+    "official_input_read_or_metadata_access": false,
+    "authorization_token_embedded_or_used": false
+  },
+  "required_synthetic_test_categories": [
+    "accept exact existing temp directory",
+    "accept trailing directory separator",
+    "accept Windows case variant",
+    "accept forward slash separator variant",
+    "accept dot segment variant",
+    "reject parent directory",
+    "reject child directory",
+    "reject sibling or prefix collision such as Temp2",
+    "reject unrelated directory",
+    "reject relative path before normalization",
+    "reject nonexistent path",
+    "reject file path",
+    "reject symlink junction or reparse point without skip",
+    "prove exact equality does not use prefix matching",
+    "prove helper does not mutate exact capture command or use token",
+    "prove deterministic metadata and no official path access"
+  ],
+  "synthetic_verification": {
+    "runner": "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py",
+    "evidence_output": "results/stage4b_u1_d_pregold_amendment_5e_a_synthetic_verification.json",
+    "baseline_tests_required": 143,
+    "minimum_new_tests": 12,
+    "minimum_complete_tests": 155,
+    "complete_runs": 2,
+    "required_result": "ALL_PASS_ZERO_FAILURE_ERROR_SKIP_OFFICIAL_ACCESS_BYTE_IDENTICAL_NO_PREFLIGHT_TOKEN_OR_CAPTURE",
+    "required_governance_bindings": [
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_APPROVAL_REQUEST.md",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_MANIFEST.json",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_APPROVAL_DECISION.md",
+      "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_6.md",
+      "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_6_REVIEW_1.md",
+      "AGENTS.md"
+    ],
+    "proof_fields": {
+      "formal_preflight_invocations": 0,
+      "authorization_token_uses": 0,
+      "official_capture_invocations": 0,
+      "controller_rerun": false,
+      "verifier_executed": false,
+      "evaluator_or_gold_accessed": false,
+      "reservation_accessed": false,
+      "stage3b_accessed": false
+    }
+  },
+  "frozen_files": {
+    "scripts/stage4b_u1_capture_diagnostic_decisions.py": "7C7B159911384B436FDCC1B20D26F2F545F2DC55EAD1F7B2B134B273110ED40A",
+    "scripts/stage4b_u1_compare_decisions.py": "42FA3F74679672B0595CC76B519D59C03CB193415DD03F56E37260A961D94014",
+    "scripts/stage4b_u1_common.py": "CDF7EAD6007DABE389ED0BD18983496F75290C32243FE6DF84716810CDE92CE4",
+    "scripts/stage4b_u1_evaluate.py": "343BC9D2478042FF582DAA5DE716498124166C72A520A35DAE53F56C976F2E31",
+    "scripts/stage4b_u1_goldfree_controller.py": "C18AD3B672649BA846C5E191D0DBBAC7644A926D4B8CCD39176127175BBA7C1F",
+    "scripts/stage4b_u1_goldfree_retrieval.py": "3B50FAFD057E2565167ED09288D61829B3FBD044991F139F734F819955038A3B",
+    "scripts/stage4b_u1_inventory_decision_schemas.py": "CC48C73306AB48D14E021AE69740A59F2F0218C241E47EE283ECD21E1C81F176",
+    "scripts/stage4b_u1_plan_power.py": "B6BC76E13D597F06AA6494F9E41D5FFD622F9534E55406DC65AB117971900843",
+    "scripts/stage4b_u1_prepare_channels.py": "BF629382DCD93F9FD64F0DEB0D441DC775725040E51CE4155884023CE29FD76C",
+    "scripts/stage4b_u1_run_schema_inventory_synthetic_verification.py": "01B84D359B49AC00BD7B52100D3157A5D0BA1DA78B7D5FF3D0ABCBBE7708E7FA",
+    "scripts/stage4b_u1_run_synthetic_verification.py": "3C7DE76E0CC54102E47017A2114C0E3206D03BE8E81F916E806E4E6AECE72026",
+    "scripts/stage4b_u1_verify.py": "DC134B51A07C14A553746C303EA31D83990BA0EFAD30EFC3A1722F1A141E66EC",
+    "tests/test_stage4b_u1_decision_schema_inventory.py": "89881A70EBE12F49E63B08EE8846F78985B98710412C63EDA67CF8A695332E30",
+    "tests/test_stage4b_u1_decisions_diagnostic.py": "0CADDB98209AE3091CF7CEDE99B612AF35A0F02793D5BBFC41F157971E96A579",
+    "tests/test_stage4b_u1_goldfree.py": "CA61B466C7DDF583D827FD2D99C024D646BA3962C80B9137D480C84DEA374C71"
+  },
+  "implementation_audit_requirements": [
+    "record exact helper runner and test diffs",
+    "record hashes for all allowed and frozen files",
+    "record every targeted and complete command including failed commands",
+    "prove two complete runs use identical tracked bytes and produce byte-identical evidence",
+    "prove no official path metadata or content access and no formal preflight token capture controller verifier evaluator Gold reservation or Stage3B action",
+    "prove capture comparator controller retrieval common and all scientific parameters remain unchanged",
+    "prove exact capture command and raw byte equivalence remain unchanged"
+  ],
+  "future_5e_b_boundary": {
+    "package_may_be_created_after_5e_a_verification": true,
+    "must_bind_5e_a_package_approval_implementation_and_evidence": true,
+    "new_preflight_must_call_hash_bound_tested_helper": true,
+    "formal_preflight_retry_authorized_by_5e_a": false,
+    "official_capture_authorized_by_5e_a": false,
+    "controller_rerun_authorized": false,
+    "verifier_authorized": false,
+    "gold_authorized": false
+  },
+  "explicitly_not_authorized": [
+    "implement any file before a package-bound 5E-A approval",
+    "read hash parse or perform metadata checks on any official input",
+    "run formal preflight against the real official boundary",
+    "pass embed or use the capture authorization token",
+    "run official capture comparator controller verifier or evaluator",
+    "generate temporary or formal official decisions rankings policy controller audit or VERIFIED_PRE_GOLD",
+    "read rankings reference policy source audit 5C-B machine inventory evaluator Gold reservation or Stage3B",
+    "modify capture comparator controller retrieval common prepare evaluator verifier model parameters effective-K q25 score ECDF budget trigger ranking endpoint raw byte equivalence or stop rules",
+    "create rebuild overwrite delete or migrate cache official artifacts historical evidence or failure records",
+    "retry 5D-B preflight or capture",
+    "automatically run or approve Amendment 5E-B"
+  ],
+  "requested_completion_state": [
+    "AMENDMENT_5E_A_SYNTHETICALLY_VERIFIED",
+    "HARD_FAILURE_6_DIRECT_CAUSE_CONFIRMED",
+    "HARD_FAILURE_4_DIAGNOSIS_INCOMPLETE",
+    "FORMAL_PREFLIGHT_RETRY_NOT_APPROVED",
+    "OFFICIAL_CAPTURE_NOT_APPROVED",
+    "CONTROLLER_RERUN_NOT_APPROVED",
+    "VERIFIER_NOT_APPROVED",
+    "GOLD_NOT_APPROVED"
+  ]
+}

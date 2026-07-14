@@ -905,3 +905,15 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Post-failure metadata confirmed no machine/narrative audit, no formal output, and no diagnostic temporary residue.
 - Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_6.md`.
 - Current status: `AMENDMENT_5D_B_OFFICIAL_DIAGNOSTIC_STOPPED_HARD_FAILURE_6`; the 5D-B preflight authorization is consumed and Hard Failure 4 remains unclassified.
+
+### Stage4B-U1-D Hard Failure 6 Review And Amendment 5E-A Package
+
+- Review: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_6_REVIEW_1.md`.
+- Decision: `ACCEPT_HARD_FAILURE_6_AUDIT` and `RETURN_FOR_AMENDMENT_5E_A_PACKAGE`.
+- The failure is classified as an untested preflight path-equivalence implementation defect: trailing directory separators were not normalized before string equality. It is not evidence of official input, cache, comparator, capture, or controller drift.
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_MANIFEST.json`.
+- Requested implementation is limited to one new standard-library Windows directory-equivalence helper, one new synthetic test module, and deterministic-runner governance/count/evidence binding.
+- The verified 143-test 5D-B rebinding evidence is the baseline. At least 12 additions require a complete-suite minimum of 155, two byte-identical all-pass runs, zero official access, and zero formal-preflight/token/capture invocation.
+- Capture, comparator, controller, retrieval, common, scientific parameters, exact capture command and raw-byte gate remain frozen.
+- Current status: `AMENDMENT_5E_A_AWAITING_APPROVAL`. The package authorizes no implementation, synthetic execution, official access, formal preflight, token use, or capture.

@@ -85,6 +85,10 @@
 71. Amendment 5D-B 唯一一次 formal preflight 已在同步 clean HEAD `2447ad234c160c6e615d81b33dc4ede7ecaa18da` 消耗，并因 OS temp parent 字符串比较门触发 `HARD_FAILURE_6_FORMAL_PREFLIGHT_OS_TEMP_PATH_COMPARISON`。失败审计为 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_6.md`。
 72. Hard Failure 6 发生在五项 official 输入普通文件检查、SHA 读取和语义解析之前；official capture 未运行、token 未传入，machine/narrative audit 与五项正式输出均不存在，diagnostic temp 残留为 0。Hard Failure 4 diagnosis 继续 incomplete。
 73. 5D-B preflight 次数已经耗尽；禁止第二次 preflight、capture、controller、verifier、Gold、reservation 或 Stage3B。任何修正 trailing-separator/path-equivalence 检查或恢复 official diagnostic 的动作必须形成新的 package-bound Amendment 并获得明确批准。
+74. Hard Failure 6 Review 1 已接受失败审计并决定 `RETURN_FOR_AMENDMENT_5E_A_PACKAGE`，记录于 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_6_REVIEW_1.md`。当前 path-equivalence fix、formal preflight retry、capture、controller、verifier 与 Gold 均未批准。
+75. Amendment 5E-A request/Manifest 仅为 Windows OS-temp path-equivalence helper implementation/synthetic-only 审批包。包本身不授权 helper/runner/tests 修改、synthetic 执行、official metadata/content 访问、formal preflight、token 或 capture；必须等待明确绑定未来 package commit 的批准。
+76. 未来 5E-A 如获批准，只能新增 `scripts/stage4b_u1_preflight_path_equivalence.py`、新增 `tests/test_stage4b_u1_preflight_path_equivalence.py` 并按 Manifest 限定修改 diagnostic deterministic runner。Capture、comparator、controller、retrieval、common 及全部科研数据/参数/等价门必须保持冻结。
+77. 5E-A 必须以 143 项为基线，新增至少 12 项后完整 suite 不少于 155 项；相同 tracked bytes 上连续两次全通过、零 failure/error/skip/official access，且 formal preflight/token/capture 次数均为 0、完整 evidence 字节一致。完成后只能组装新的 5E-B package 并停止等待审批。
 
 ## GitHub 与文档
 

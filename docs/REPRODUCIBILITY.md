@@ -769,3 +769,13 @@ The observed exception was `OS temp parent differs`. The comparison retained the
 The failure preceded regular-file checks, SHA reads, units/queries parsing, and channel-audit parsing. No official input, source audit, 5C-B machine inventory, ranking, policy, Gold, reservation, or Stage3B file was opened. The authorization token was not passed and official capture did not run.
 
 A metadata-only post-failure check found no machine/narrative audit, zero of five formal outputs, and no `stage4b_u1_decisions_diag_*` residue. Full evidence is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_6.md`. Current status is `AMENDMENT_5D_B_OFFICIAL_DIAGNOSTIC_STOPPED_HARD_FAILURE_6`; no second preflight or capture is authorized.
+
+## Stage4B-U1-D Hard Failure 6 Review And Amendment 5E-A Package
+
+Review 1 at `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_6_REVIEW_1.md` accepts the Hard Failure 6 audit and returns the project for a new implementation/synthetic-only Amendment. It confirms that 5D-B preflight authorization is consumed and that no official input was opened before the path-comparison failure.
+
+The 5E-A request and machine-readable scope are `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_APPROVAL_REQUEST.md` and `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_MANIFEST.json`. They request only a tracked standard-library Windows directory-equivalence helper, a new synthetic test module, and deterministic-runner binding. The helper must require absolute existing non-reparse directories, canonicalize/trim separators for comparison only, use ordinal case-insensitive exact equality, and reject parent/child/prefix/unrelated/relative/missing/file/reparse paths.
+
+The existing 143 tests and 29,643-byte evidence SHA-256 `264200C2EBEDA1D0B214F824B77C89FC5BBE82D3BE0836FAAB9486EACAACF368` form the traceable baseline. At least 12 additions require a complete suite of at least 155 tests. Final evidence would require two runs on identical tracked bytes with zero failure/error/skip/official access, zero formal preflight/token/capture use, and byte-identical outputs.
+
+The package itself authorizes no implementation or command. Capture, comparator, controller, retrieval, common, data, model, parameters, exact capture command, raw-byte equivalence, formal preflight, official access, verifier/evaluator/Gold, reservation and Stage3B remain locked pending a future package-bound 5E-A approval.
