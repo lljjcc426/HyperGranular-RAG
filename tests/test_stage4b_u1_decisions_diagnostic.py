@@ -85,6 +85,25 @@ def decision(query_id: str = "synthetic::q0") -> dict:
     }
 
 
+NULLABLE_DECISION_FIELDS = (
+    "ordered_rank",
+    "r_candidate",
+    "r_edge",
+    "readiness",
+    "score",
+    "u_boundary",
+    "u_margin",
+    "uncertainty",
+)
+
+
+def nullable_decision(query_id: str = "synthetic::q0") -> dict:
+    row = decision(query_id)
+    for field in NULLABLE_DECISION_FIELDS:
+        row[field] = None
+    return row
+
+
 def write_rows(
     path: Path,
     rows: list[dict],
@@ -348,7 +367,7 @@ class Stage4BU1DecisionsComparatorTests(unittest.TestCase):
             1,
         )
 
-    def test_incomparable_heterogeneous_file_schema_rejected(self) -> None:
+    def test_heterogeneous_file_schema_is_accepted_by_cli(self) -> None:
         first = decision("synthetic::q0")
         second = decision("synthetic::q1")
         second["score"] = "not-a-float"
@@ -374,9 +393,174 @@ class Stage4BU1DecisionsComparatorTests(unittest.TestCase):
                 text=True,
                 check=False,
             )
-            self.assertNotEqual(completed.returncode, 0)
-            self.assertFalse(output.exists())
-            self.assertIn("Incomparable heterogeneous decisions schema", completed.stderr)
+            self.assertEqual(completed.returncode, 0, completed.stderr)
+            self.assertTrue(output.exists())
+            report = json.loads(output.read_text(encoding="utf-8"))
+            self.assertEqual(report["schema_version"], "stage4b_u1_decisions_diagnostic_v2")
+            self.assertEqual(report["diagnostic_checkpoint"], "stage4b_u1_decisions_diag_v2")
+            self.assertEqual(report["status"], "IDENTICAL_BYTES")
+
+    def test_left_file_nullable_heterogeneity_is_compared(self) -> None:
+        left = [decision("synthetic::q0"), nullable_decision("synthetic::q1")]
+        right = [decision("synthetic::q0"), decision("synthetic::q1")]
+        with tempfile.TemporaryDirectory() as directory:
+            report = compare_pair(Path(directory), left, right)
+        self.assertEqual(
+            report["comparison_layers"]["schema"]["type_or_structure_difference_query_count"],
+            1,
+        )
+        for field in NULLABLE_DECISION_FIELDS:
+            self.assertEqual(report["comparison_layers"]["discrete_values"][field], 1)
+
+    def test_right_file_nullable_heterogeneity_is_compared(self) -> None:
+        left = [decision("synthetic::q0"), decision("synthetic::q1")]
+        right = [decision("synthetic::q0"), nullable_decision("synthetic::q1")]
+        with tempfile.TemporaryDirectory() as directory:
+            report = compare_pair(Path(directory), left, right)
+        self.assertEqual(
+            report["comparison_layers"]["schema"]["type_or_structure_difference_query_count"],
+            1,
+        )
+        self.assertEqual(report["comparison_layers"]["discrete_values"]["score"], 1)
+
+    def test_both_files_same_nullable_types_are_identical(self) -> None:
+        rows = [decision("synthetic::q0"), nullable_decision("synthetic::q1")]
+        with tempfile.TemporaryDirectory() as directory:
+            report = compare_pair(Path(directory), rows, copy.deepcopy(rows))
+        self.assertEqual(report["status"], "IDENTICAL_BYTES")
+        self.assertTrue(report["byte_equivalent"])
+        self.assertEqual(
+            report["comparison_layers"]["schema"]["type_or_structure_difference_query_count"],
+            0,
+        )
+
+    def test_null_integer_is_schema_discrete_and_semantic_difference(self) -> None:
+        left_second = decision("synthetic::q1")
+        left_second["ordered_rank"] = None
+        left = [decision("synthetic::q0"), left_second]
+        right = [decision("synthetic::q0"), decision("synthetic::q1")]
+        with tempfile.TemporaryDirectory() as directory:
+            report = compare_pair(Path(directory), left, right)
+        self.assertEqual(
+            report["comparison_layers"]["schema"]["type_or_structure_difference_query_count"],
+            1,
+        )
+        self.assertEqual(report["comparison_layers"]["discrete_values"]["ordered_rank"], 1)
+        self.assertEqual(report["comparison_layers"]["decision_semantics"]["ordered_rank"], 1)
+
+    def test_null_float_is_schema_and_discrete_not_float_difference(self) -> None:
+        left_second = decision("synthetic::q1")
+        left_second["score"] = None
+        left = [decision("synthetic::q0"), left_second]
+        right = [decision("synthetic::q0"), decision("synthetic::q1")]
+        with tempfile.TemporaryDirectory() as directory:
+            report = compare_pair(Path(directory), left, right)
+        self.assertEqual(
+            report["comparison_layers"]["schema"]["type_or_structure_difference_query_count"],
+            1,
+        )
+        self.assertEqual(report["comparison_layers"]["discrete_values"]["score"], 1)
+        self.assertNotIn("score", report["comparison_layers"]["finite_float"])
+
+    def test_nullable_rows_are_not_normalized_to_numeric_values(self) -> None:
+        left = [decision("synthetic::q0"), nullable_decision("synthetic::q1")]
+        right = [decision("synthetic::q0"), decision("synthetic::q1")]
+        original = copy.deepcopy(left)
+        with tempfile.TemporaryDirectory() as directory:
+            report = compare_pair(Path(directory), left, right)
+        self.assertEqual(left, original)
+        self.assertEqual(
+            set(report["comparison_layers"]["discrete_values"]),
+            set(NULLABLE_DECISION_FIELDS),
+        )
+        self.assertTrue(
+            set(NULLABLE_DECISION_FIELDS).isdisjoint(
+                report["comparison_layers"]["finite_float"]
+            )
+        )
+
+    def test_heterogeneous_files_preserve_field_set_difference(self) -> None:
+        left = [decision("synthetic::q0"), nullable_decision("synthetic::q1")]
+        right = copy.deepcopy(left)
+        right[1]["synthetic_extra"] = None
+        with tempfile.TemporaryDirectory() as directory:
+            report = compare_pair(Path(directory), left, right)
+        self.assertEqual(
+            report["comparison_layers"]["schema"]["field_set_difference_query_count"],
+            1,
+        )
+
+    def test_heterogeneous_files_preserve_field_order_difference(self) -> None:
+        left = [decision("synthetic::q0"), nullable_decision("synthetic::q1")]
+        right = [copy.deepcopy(left[0]), dict(reversed(list(left[1].items())))]
+        with tempfile.TemporaryDirectory() as directory:
+            report = compare_pair(Path(directory), left, right)
+        self.assertEqual(
+            report["comparison_layers"]["schema"]["field_order_difference_query_count"],
+            1,
+        )
+        self.assertTrue(report["canonical_equal"])
+        self.assertFalse(report["byte_equivalent"])
+
+    def test_heterogeneous_files_preserve_nested_structure_difference(self) -> None:
+        left = [decision("synthetic::q0"), nullable_decision("synthetic::q1")]
+        right = copy.deepcopy(left)
+        left[0]["synthetic_nested"] = {"value": 1}
+        left[1]["synthetic_nested"] = {"value": 1}
+        right[0]["synthetic_nested"] = {"value": 1}
+        right[1]["synthetic_nested"] = {"value": "1"}
+        with tempfile.TemporaryDirectory() as directory:
+            report = compare_pair(Path(directory), left, right)
+        self.assertEqual(
+            report["comparison_layers"]["schema"]["type_or_structure_difference_query_count"],
+            1,
+        )
+        self.assertEqual(
+            report["comparison_layers"]["discrete_values"]["synthetic_nested"],
+            1,
+        )
+
+    def test_heterogeneous_files_still_reject_invalid_second_row(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            left = root / "left.jsonl"
+            right = root / "right.jsonl"
+            left.write_text(
+                json.dumps(decision("synthetic::q0")) + "\n" + '{"query_id":\n',
+                encoding="utf-8",
+                newline="\n",
+            )
+            write_rows(right, [decision("synthetic::q0")])
+            with self.assertRaisesRegex(DecisionsDiagnosticError, "Invalid decisions JSON"):
+                compare_decisions_files(left, right)
+
+    def test_heterogeneous_files_still_reject_nested_duplicate_key(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            left = root / "left.jsonl"
+            right = root / "right.jsonl"
+            left.write_text(
+                json.dumps(decision("synthetic::q0"))
+                + "\n"
+                + '{"query_id":"synthetic::q1","nested":{"x":1,"x":2}}\n',
+                encoding="utf-8",
+                newline="\n",
+            )
+            write_rows(right, [decision("synthetic::q0")])
+            with self.assertRaisesRegex(DecisionsDiagnosticError, "Duplicate JSON object key"):
+                compare_decisions_files(left, right)
+
+    def test_heterogeneous_report_preserves_raw_gate_and_no_leakage(self) -> None:
+        rows = [decision("synthetic::q0"), nullable_decision("synthetic::q1")]
+        with tempfile.TemporaryDirectory() as directory:
+            report = compare_pair(Path(directory), rows, copy.deepcopy(rows), spaced=True)
+        self.assertEqual(report["status"], "CANONICAL_EQUAL_RAW_DIFFERENT")
+        self.assertFalse(report["byte_equivalent"])
+        self.assertTrue(report["canonical_equal"])
+        serialized = json.dumps(report, sort_keys=True)
+        self.assertNotIn("synthetic::q0", serialized)
+        self.assertNotIn("synthetic::q1", serialized)
+        self.assertFalse(report["byte_equivalence_gate_relaxed"])
 
     def test_bool_and_int_are_distinct(self) -> None:
         right = decision()

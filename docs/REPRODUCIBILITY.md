@@ -709,3 +709,22 @@ The user approved implementation and synthetic verification on 2026-07-14, stric
 Only `scripts/stage4b_u1_compare_decisions.py`, `scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py`, and `tests/test_stage4b_u1_decisions_diagnostic.py` may change. The comparator may bump to v2 and remove only the file-level complete-schema homogeneity rejection. Strict parsing, unique query IDs, all per-query comparison layers, aggregate output keys, raw-byte control, and the absence of nullable normalization remain mandatory.
 
 The complete suite must retain the 131-test baseline, add at least 12 heterogeneous-schema tests, and finish with at least 143 tests. Final evidence requires two runs on identical tracked bytes with zero failure/error/skip/official-path access and byte-identical outputs. No official input, official comparator/capture, controller, verifier, evaluator, Gold, reservation, or Stage3B action is authorized.
+
+## Stage4B-U1-D Pre-Gold Amendment 5D-A Synthetic Verification
+
+The comparator now reports `stage4b_u1_decisions_diagnostic_v2` / `stage4b_u1_decisions_diag_v2`. Its only behavioral code change removes the loader's file-level full-type-signature homogeneity rejection. Strict row parsing, duplicate/non-finite rejection, unique query IDs, all per-query comparison layers, aggregate output keys, no-raw-ID/row output, and the raw-byte controlling gate remain unchanged.
+
+The diagnostic tests add 12 cases for legal nullable heterogeneity, null/integer and null/float classification, float/ULP exclusion, semantic differences, field set/order/nesting preservation, strict invalid-row rejection, no normalization, no leakage, and raw-byte control. The complete suite increased from 131 to 143 tests.
+
+The final deterministic runner command was executed twice on identical runner-bound bytes:
+
+```powershell
+python scripts\stage4b_u1_run_decisions_diagnostic_synthetic_verification.py `
+  --output results\stage4b_u1_d_pregold_amendment_5d_a_synthetic_verification.json
+```
+
+Both runs passed 143/143 with zero failures, errors, skips, or official-path accesses. Both outputs were 29,643 bytes with SHA-256 `08695B4305D9919049DFE86870772B9E9F66751DA6D2FF4D43CEF2A912A62008`; direct byte comparison was true.
+
+The runner hashes the request, Manifest, approval decision, 5C-B review/audit, final `AGENTS.md`, all three allowed files, and all 13 frozen files. It blocks the 5C-B machine inventory and registered official paths. The accepted baseline still contains synthetic capture fixture unit tests under OS temporary directories, but no official capture command/path was used. Full commands, the one test-only regex failure, the pre-run command syntax failure, exact hashes, and boundaries are in `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_IMPLEMENTATION_AUDIT.md`.
+
+This evidence authorizes no official action. Hard Failure 4 remains unclassified; 5D-B requires a new implementation-bound package and explicit approval.

@@ -11,8 +11,8 @@ from pathlib import Path
 from typing import Any
 
 
-SCHEMA_VERSION = "stage4b_u1_decisions_diagnostic_v1"
-DIAGNOSTIC_CHECKPOINT = "stage4b_u1_decisions_diag_v1"
+SCHEMA_VERSION = "stage4b_u1_decisions_diagnostic_v2"
+DIAGNOSTIC_CHECKPOINT = "stage4b_u1_decisions_diag_v2"
 QUERY_HASH_SALT = "stage4b-u1-decisions-diagnostic-v1"
 SEMANTIC_FIELDS = ("planned_insert_count", "ordered_rank", "trigger_u1")
 UINT64_MASK = (1 << 64) - 1
@@ -167,7 +167,6 @@ def load_decisions_jsonl(path: Path) -> dict[str, Any]:
     rows: list[dict[str, Any]] = []
     query_ids: list[str] = []
     by_query: dict[str, dict[str, Any]] = {}
-    file_schema: Any | None = None
     for line_number, line in enumerate(physical_lines, start=1):
         if not line.strip():
             raise DecisionsDiagnosticError(f"Blank JSONL row at line {line_number}")
@@ -179,13 +178,6 @@ def load_decisions_jsonl(path: Path) -> dict[str, Any]:
             raise DecisionsDiagnosticError(f"query_id must be a non-empty string at line {line_number}")
         if query_id in by_query:
             raise DecisionsDiagnosticError(f"Duplicate query_id at line {line_number}")
-        row_schema = _schema_signature(row, preserve_order=False)
-        if file_schema is None:
-            file_schema = row_schema
-        elif row_schema != file_schema:
-            raise DecisionsDiagnosticError(
-                f"Incomparable heterogeneous decisions schema at line {line_number}"
-            )
         rows.append(row)
         query_ids.append(query_id)
         by_query[query_id] = row

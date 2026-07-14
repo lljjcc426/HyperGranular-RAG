@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Amendment 5D-A 已获 implementation/synthetic-only 批准，等待实现与验证 |
-| 获批执行协议 | 仅 comparator/runner/tests 三文件；无 official execution 授权 |
-| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_APPROVAL_DECISION.md` |
-| 协议状态 | `AMENDMENT_5D_A_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY` |
+| 当前阶段 | Amendment 5D-A 已完成 synthetic 验证；implementation/evidence 等待提交 |
+| 获批执行协议 | 5D-A implementation/synthetic 范围已消费；无 official execution 授权 |
+| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_IMPLEMENTATION_AUDIT.md` |
+| 协议状态 | `AMENDMENT_5D_A_SYNTHETICALLY_VERIFIED` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -71,6 +71,8 @@ Implementation-bound Amendment 5C-B 包已组装，请求仅在新批准后依�
 
 5C-B 独立审核已接受并确认 Hard Failure 5 的直接原因：comparator 在文件加载阶段要求所有行完整 JSON 类型签名同构，而 nullable schema 首次出现于第 2 行，精确触发 line-2 拒绝。Hard Failure 4 仍未分类，因为 5C-B 未生成或比较 temporary decisions。新的 5D-A 包只申请移除该全文件同构前置拒绝、保持逐 query 比较与 raw-byte 主门，并以至少 143 项 synthetic suite 验证；在 package-bound 批准前不得修改 comparator 或运行测试。
 
+5D-A 已按批准范围实现：comparator 只更新至 v2 并删除 loader 的 `file_schema` 同构拒绝，逐 query 比较代码未修改；runner 增加 5D-A governance/frozen-hash/official-path 门；diagnostic tests 净新增 12 项。最终完整 suite 连续两次均为 143/143、零 failure/error/skip/official access，29,643 bytes，SHA-256 `08695B4305D9919049DFE86870772B9E9F66751DA6D2FF4D43CEF2A912A62008`，逐字节一致。这不完成 Hard Failure 4 诊断，也不授权 5D-B、capture/controller、verifier 或 Gold。
+
 ## 研究问题
 
 长期问题：
@@ -106,7 +108,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
-| Stage4B-U1 | 5C-B 审核接受；5D-A 等待审批 | Hard Failure 5 直接原因已确认，Hard Failure 4 仍未分类；comparator 修改、capture/controller 重跑、verifier 与 Gold 均未授权 |
+| Stage4B-U1 | 5D-A synthetic 已验证 | Comparator v2 已支持合法 heterogeneous rows；Hard Failure 4 仍未分类，official capture/controller/verifier/Gold 均未授权 |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
@@ -152,7 +154,7 @@ Stage4B-U1 当前仅有不访问 reservation 的功效规划入口：`scripts/st
 
 Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verification.py`；当前审计见 `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT_V2_1.md`，历史 v2 审计继续保留。
 
-5C-B 的单次 SHA-only preflight 与单次 schema-only scan 授权均已消费。5D-A 当前仅为审批包，没有 comparator implementation、synthetic test、capture、controller、verifier 或 Gold 执行授权。
+5C-B 的单次 scan 与 5D-A implementation/synthetic 授权均已消费。当前没有 official capture、controller、verifier 或 Gold 执行授权；5D-B 必须另行组包和审批。
 
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
@@ -177,9 +179,9 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 独立审核 implementation/synthetic-only 5D-A request/Manifest；未获 package-bound 批准前不得修改 comparator 或运行 synthetic suite。
-2. 5D-A 如获批准，只能移除文件级同构 schema 拒绝、保留逐 query 比较与 raw-byte 主门，并完成至少 143 项双次 deterministic verification。
-3. Official capture retry 必须等待 5D-A 完成后另行组装和批准 5D-B；controller、verifier、Gold、U1-D 指标、reservation 与 Stage3B 继续锁定。
+1. 提交并推送 5D-A implementation/evidence commit，核对 GitHub 同步。
+2. 以该 implementation commit 组装 5D-B 单次 official decisions-only diagnostic request/Manifest，然后停止等待独立审批。
+3. 未获 5D-B package-bound 批准前，不得运行 official capture；controller、verifier、Gold、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub
 

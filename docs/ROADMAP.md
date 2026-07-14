@@ -859,3 +859,16 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The 131-test baseline must remain; at least 12 additions require a minimum complete suite of 143 and two byte-identical all-pass runs with zero official access.
 - Approval decision: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_APPROVAL_DECISION.md`.
 - Current status: `AMENDMENT_5D_A_APPROVED_IMPLEMENTATION_SYNTHETIC_ONLY`.
+
+### Stage4B-U1-D Pre-Gold Amendment 5D-A Implementation And Synthetic Verification
+
+- Comparator schema/checkpoint are now `stage4b_u1_decisions_diagnostic_v2` / `stage4b_u1_decisions_diag_v2`.
+- The comparator diff only updates those identifiers and removes the loader's file-level complete-schema homogeneity rejection; per-query comparison code and output keys remain unchanged.
+- Twelve heterogeneous-schema tests were added to the accepted 131-test baseline, producing 143 complete tests.
+- Comparator targeted verification passed 46/46 after one test-only regex correction recorded in the audit.
+- One preliminary complete run and both final complete runs passed 143/143 with zero failures/errors/skips and zero official-path access attempts.
+- Both final evidence outputs were 29,643 bytes with SHA-256 `08695B4305D9919049DFE86870772B9E9F66751DA6D2FF4D43CEF2A912A62008`; direct byte comparison passed.
+- All 13 Manifest frozen files retained their exact hashes. The 5C-B machine inventory was explicitly blocked and not used as a fixture.
+- The known NumPy 2.4.6/`numexpr` ABI warning remained visible, but all accepted test commands exited zero.
+- Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_IMPLEMENTATION_AUDIT.md`.
+- Current status: `AMENDMENT_5D_A_SYNTHETICALLY_VERIFIED`; Hard Failure 4 remains unclassified and all official execution remains unapproved.

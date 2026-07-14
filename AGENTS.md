@@ -75,6 +75,8 @@
 61. Amendment 5D-A implementation/synthetic-only 已获批准，严格绑定 package commit `33ce115f78840956fcc7bda0c3f4e172579350e7` 及其 Manifest 中十二个历史提交。批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_APPROVAL_DECISION.md`。
 62. 5D-A 只允许修改 Manifest 登记的 comparator、decisions diagnostic synthetic runner 和 diagnostic tests。Comparator 仅可更新至 `stage4b_u1_decisions_diagnostic_v2` / `stage4b_u1_decisions_diag_v2` 并移除 loader 的全文件同构 schema 拒绝；其余逐 query 算法、aggregate keys、raw-byte 主门与 no-normalization 全部冻结。
 63. 5D-A 完整 suite 必须保留 131 项并至少新增 12 项达到不少于 143 项；最终两次运行必须相同 tracked bytes、全通过、零 failure/error/skip/official access 且 evidence 字节一致。本批准不授权任何 official 输入、official comparator/capture、controller/verifier/evaluator/Gold、reservation、Stage3B 或 5D-B 执行。
+64. 5D-A implementation baseline 已限定为 comparator 的 v2 version/checkpoint 更新与 `file_schema` 同构拒绝块删除、runner 的 5D-A governance/frozen-hash/143-test 门，以及 diagnostic tests 的 12 项净新增。Comparator 其余逐 query 算法、capture/controller 与 Manifest 冻结文件保持不变。
+65. 5D-A 完成状态只在 `results/stage4b_u1_d_pregold_amendment_5d_a_synthetic_verification.json` 对本条及全部 runner 绑定字节连续两次验证均不少于 143/143、零 failure/error/skip/official access 且 evidence 字节一致时成立。完成后只可形成 implementation audit/evidence commit 与 5D-B package，随后停止等待审批。
 
 ## GitHub 与文档
 

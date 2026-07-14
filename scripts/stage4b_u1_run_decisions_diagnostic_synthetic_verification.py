@@ -1,4 +1,4 @@
-"""Run the complete Stage4B-U1 plus Amendment 5A.1 synthetic suite."""
+"""Run the complete Stage4B-U1 plus Amendment 5D-A synthetic suite."""
 
 from __future__ import annotations
 
@@ -12,27 +12,38 @@ from pathlib import Path
 from stage4b_u1_common import sha256_file, write_json
 
 
-TRACKED_IMPLEMENTATION_FILES = (
+GOVERNANCE_FILES = (
     "AGENTS.md",
-    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_4.md",
-    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_DECISIONS_DIAGNOSTIC_DRAFT.md",
-    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_APPROVAL_REQUEST.md",
-    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_MANIFEST.json",
-    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_APPROVAL_DECISION.md",
-    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5B_REVIEW_1.md",
-    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_APPROVAL_REQUEST.md",
-    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_MANIFEST.json",
-    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_APPROVAL_DECISION.md",
-    "scripts/stage4b_u1_common.py",
-    "scripts/stage4b_u1_goldfree_retrieval.py",
-    "scripts/stage4b_u1_goldfree_controller.py",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_APPROVAL_REQUEST.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_MANIFEST.json",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_APPROVAL_DECISION.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_REVIEW_1.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_OFFICIAL_SCHEMA_SCAN_AUDIT.md",
+)
+ALLOWED_IMPLEMENTATION_FILES = (
     "scripts/stage4b_u1_compare_decisions.py",
-    "scripts/stage4b_u1_capture_diagnostic_decisions.py",
     "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py",
-    "tests/test_stage4b_u1_goldfree.py",
     "tests/test_stage4b_u1_decisions_diagnostic.py",
 )
 REQUIRED_ACTIVE_PROOF_SUFFIXES = (
+    "test_heterogeneous_file_schema_is_accepted_by_cli",
+    "test_left_file_nullable_heterogeneity_is_compared",
+    "test_right_file_nullable_heterogeneity_is_compared",
+    "test_both_files_same_nullable_types_are_identical",
+    "test_null_integer_is_schema_discrete_and_semantic_difference",
+    "test_null_float_is_schema_and_discrete_not_float_difference",
+    "test_nullable_rows_are_not_normalized_to_numeric_values",
+    "test_heterogeneous_files_preserve_field_set_difference",
+    "test_heterogeneous_files_preserve_field_order_difference",
+    "test_heterogeneous_files_preserve_nested_structure_difference",
+    "test_heterogeneous_files_still_reject_invalid_second_row",
+    "test_heterogeneous_files_still_reject_nested_duplicate_key",
+    "test_heterogeneous_report_preserves_raw_gate_and_no_leakage",
+    "test_nan_rejected",
+    "test_positive_infinity_rejected",
+    "test_negative_infinity_rejected",
+    "test_duplicate_query_id_rejected",
+    "test_missing_query_id_rejected",
     "test_synthetic_allowlist_rejects_official_path_before_open",
     "test_capture_does_not_call_controller_rankings_or_policy",
     "test_temporary_decisions_removed_after_success",
@@ -78,6 +89,13 @@ def forbidden_official_paths(repo_root: Path) -> set[Path]:
             / "STAGE4B_U1_PREGOLD_AMENDMENT_5A_1_MANIFEST.json"
         ).read_text(encoding="utf-8")
     )
+    amendment_5d_a = json.loads(
+        (
+            repo_root
+            / "docs"
+            / "STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_MANIFEST.json"
+        ).read_text(encoding="utf-8")
+    )
     cache = Path(resumption["frozen_cache"]["path"])
     data_root = cache.parent
     values = {
@@ -95,6 +113,7 @@ def forbidden_official_paths(repo_root: Path) -> set[Path]:
         Path(item["path"])
         for item in amendment_5a_1["frozen_channel_inputs"].values()
     )
+    values.add(repo_root / amendment_5d_a["amendment_5c_b_evidence"]["machine_inventory_path"])
     if manifest["current_execution_state"] != "PREGOLD_EXECUTION_STOPPED_HARD_FAILURE_4":
         raise ValueError("Amendment 5A manifest state drifted")
     if amendment_5a_1["package_status"] != "AWAITING_AMENDMENT_5A_1_APPROVAL":
@@ -108,11 +127,22 @@ def main() -> None:
         "--output",
         type=Path,
         default=Path(
-            "results/stage4b_u1_d_pregold_amendment_5a_1_synthetic_verification.json"
+            "results/stage4b_u1_d_pregold_amendment_5d_a_synthetic_verification.json"
         ),
     )
     args = parser.parse_args()
     repo_root = Path(__file__).resolve().parents[1]
+    amendment_5d_a = json.loads(
+        (
+            repo_root
+            / "docs"
+            / "STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_MANIFEST.json"
+        ).read_text(encoding="utf-8")
+    )
+    frozen_files = amendment_5d_a["frozen_files"]
+    frozen_hashes = {path: sha256_file(repo_root / path) for path in frozen_files}
+    if frozen_hashes != frozen_files:
+        raise ValueError("An Amendment 5D-A frozen file drifted before verification")
     forbidden = forbidden_official_paths(repo_root)
     attempted: list[str] = []
 
@@ -128,7 +158,7 @@ def main() -> None:
             return
         if candidate in forbidden:
             attempted.append(str(candidate))
-            raise PermissionError(f"Amendment 5A blocked official path access: {candidate}")
+            raise PermissionError(f"Amendment 5D-A blocked official path access: {candidate}")
 
     sys.addaudithook(audit_hook)
     suite = unittest.defaultTestLoader.discover(
@@ -143,25 +173,36 @@ def main() -> None:
         raise ValueError("Required active access/cleanup proof test is missing or duplicated")
     stream = io.StringIO()
     result = unittest.TextTestRunner(stream=stream, verbosity=2).run(suite)
-    count_gate = result.testsRun >= 104 and len(discovered) >= 104
+    count_gate = (
+        result.testsRun == len(discovered)
+        and result.testsRun >= amendment_5d_a["synthetic_verification"]["minimum_complete_tests"]
+    )
+    tracked_files = tuple(
+        dict.fromkeys(
+            (*GOVERNANCE_FILES, *ALLOWED_IMPLEMENTATION_FILES, *frozen_files.keys())
+        )
+    )
+    implementation_hashes = {
+        path: sha256_file(repo_root / path) for path in tracked_files
+    }
+    if {path: implementation_hashes[path] for path in frozen_files} != frozen_files:
+        raise ValueError("An Amendment 5D-A frozen file changed during verification")
+    all_pass = result.wasSuccessful() and count_gate and not attempted
     evidence = {
-        "stage": "Stage4B-U1-D Pre-Gold Amendment 5A.1",
-        "diagnostic_checkpoint": "stage4b_u1_decisions_diag_v1",
+        "stage": "Stage4B-U1-D Pre-Gold Amendment 5D-A",
+        "diagnostic_checkpoint": "stage4b_u1_decisions_diag_v2",
         "controller_checkpoint_unchanged": "stage4b_u1_v2_3_1",
-        "status": (
-            "AMENDMENT_5A_1_SYNTHETICALLY_VERIFIED"
-            if result.wasSuccessful() and count_gate and not attempted
-            else "FAILED"
-        ),
+        "status": "AMENDMENT_5D_A_SYNTHETICALLY_VERIFIED" if all_pass else "FAILED",
         "tests_run": result.testsRun,
-        "minimum_tests_required": 104,
+        "baseline_tests_required": 131,
+        "minimum_new_tests": 12,
+        "minimum_tests_required": 143,
         "test_ids": discovered,
         "failures": len(result.failures),
         "errors": len(result.errors),
         "skipped": len(result.skipped),
-        "implementation_hashes": {
-            path: sha256_file(repo_root / path) for path in TRACKED_IMPLEMENTATION_FILES
-        },
+        "implementation_hashes": implementation_hashes,
+        "frozen_files_verified": True,
         "active_proof_tests": active_proofs,
         "official_path_access_guard": {
             "installed": True,
@@ -176,6 +217,10 @@ def main() -> None:
         "reservation_accessed": False,
         "stage3b_accessed": False,
         "official_diagnostic_executed": False,
+        "official_comparator_executed": False,
+        "official_capture_executed": False,
+        "amendment_5c_b_machine_inventory_accessed": False,
+        "synthetic_capture_fixture_tests_executed": True,
         "controller_rerun": False,
         "verifier_executed": False,
         "verified_properties": [
@@ -185,8 +230,13 @@ def main() -> None:
             "bool int and float types remain distinct",
             "binary64 uses explicit big-endian bits and a sign-aware monotonic unsigned ordering",
             "positive and negative zero remain bit-distinct and cross-sign ULP distances are deterministic",
-            "schema field order nested type discrete list float and decision-semantic differences are classified",
-            "heterogeneous within-file schemas fail closed and the comparator CLI returns nonzero",
+            "heterogeneous within-file schemas are accepted without changing per-query comparison",
+            "null versus integer or finite float is classified as schema and discrete difference",
+            "ordered-rank null versus integer also remains a decision-semantic difference",
+            "null values do not enter finite-float absolute-error or ULP aggregation",
+            "nullable values are not imputed coerced cast or normalized",
+            "schema field set order nested type discrete list float and decision-semantic differences remain classified",
+            "raw byte equality remains the only controlling equivalence gate",
             "synthetic capture writes decisions only under an OS temporary directory",
             "temporary decisions are removed after successful and exceptional exits",
             "capture does not access or generate rankings and does not call a policy builder",
@@ -198,11 +248,11 @@ def main() -> None:
             "official expected channel-input SHA-256 values must equal the three externally frozen values",
             "all three channel-input SHA-256 values are rechecked after temporary-decisions cleanup and before audit creation",
             "pre-gate or post-gate channel drift leaves no audit and cleans temporary decisions",
-            "the original Stage4B-U1 50-test suite remains passing",
+            "the accepted 131-test Stage4B-U1 baseline remains passing with at least 12 new tests",
         ],
     }
     write_json(args.output, evidence)
-    if not result.wasSuccessful() or not count_gate or attempted:
+    if not all_pass:
         sys.stderr.write(stream.getvalue())
         raise SystemExit(1)
 
