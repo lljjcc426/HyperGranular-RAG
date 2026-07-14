@@ -98,6 +98,11 @@
 84. Amendment 5E-B request/Manifest 仅为一次 helper-bound formal preflight 与条件式单次原 exact-command decisions-only capture 的审批包。包本身不授权 post-approval rebinding、preflight、helper official-boundary check、token、capture、controller、verifier 或 Gold；必须等待明确绑定未来 5E-B package commit 的批准。
 85. 未来 5E-B 如获批准，必须先在最终批准治理字节上完成两轮 161 项 byte-identical rebinding 与 governance binding；随后唯一 preflight 必须先核验 helper SHA/bytes 并直接 import/call `windows_directories_equivalent()`，在 helper gate 通过前不得检查任何 official 输入 metadata/content，禁止复制内联 PowerShell path-equivalence 算法。
 86. 5E-B 请求中的五项 official read boundary、capture/comparator/controller checkpoints、模型/参数、raw-byte 控制门、token string 与 exact capture command 全部继承 5D-B 冻结值。任何 hard gate 失败必须停止且不得重试；成功诊断后也必须停止等待独立审核，不得自动恢复 controller、verifier 或 Gold。
+87. Amendment 5E-B 已获批准，严格绑定 package commit `e387d2707ede9024571249face71bf7ca3afd4e0`、5E-A implementation/evidence `a8b064a4a2133aea27cbe9b85978237fc3dae661` 及批准决定登记的治理历史。批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_B_APPROVAL_DECISION.md`。
+88. 唯一顺序为：批准治理推送 -> 最终治理字节上两轮 161 项 rebinding -> governance binding 与 narrative audit 推送 -> 一次 A/B/C/D formal preflight -> 全部门通过后一次 unchanged exact capture -> post-run 核验与 aggregate audit 推送 -> 立即停止。任一 hard gate 失败不得重试。
+89. Preflight 必须在任何 official input metadata/content 操作前完成治理门、输出/残留缺失门和 helper hash/direct-call 门。Helper 必须保持 3,543 bytes、SHA-256 `1A17C0E750F91CEF2F638A0B0C6FD381110692E6B2D467C1F5243ADF3F35B3FF`，runtime 参数必须是未经改写的 `.NET GetTempPath()` 原始值，禁止重新内联路径比较。
+90. 只有 helper gate 通过后才允许检查五项冻结 official inputs；只有唯一 preflight 全通过后才允许一次原 exact capture。Post-run 不得重新解析 reference decisions，只可使用 machine audit 与字节 fingerprint；五项 formal outputs 必须继续不存在。
+91. 本批准不授权第二次 preflight/capture、full controller、verifier、evaluator/Gold、rankings/reference policy、source-audit 文件、5C-B inventory、reservation、Stage3B、formal output promotion、equivalence/数据/模型/参数修改或诊断后自动恢复。
 
 ## GitHub 与文档
 
