@@ -108,7 +108,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
-| Stage4B-U1 | 5E-A 审批包待审 | Hard Failure 6 审计已接受；当前只申请 Windows temp path-equivalence helper 的实现与 synthetic 验证，official 仍锁定 |
+| Stage4B-U1 | 5E-A synthetic verified | Windows temp path-equivalence helper 已通过 161 项双轮确定性验证；Hard Failure 4 仍未分类，5E-B 与 official 执行均未批准 |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
@@ -154,7 +154,7 @@ Stage4B-U1 当前仅有不访问 reservation 的功效规划入口：`scripts/st
 
 Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verification.py`；当前审计见 `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT_V2_1.md`，历史 v2 审计继续保留。
 
-Hard Failure 6 的停止处理已由 Review 1 接受。5E-A request/Manifest 只申请新增 fail-closed Windows directory-equivalence helper、对应 synthetic tests 和 deterministic runner 绑定；审批包本身不授权实现、测试、official path metadata/content 访问、formal preflight 或 capture。
+5E-A 已新增 fail-closed Windows directory-equivalence helper、18 项 synthetic tests 和 deterministic runner 绑定。最终两轮完整 suite 均为 161/161，零 failure/error/skip/official access/formal-preflight/token/capture，36,518-byte evidence 逐字节一致；official 执行继续锁定。
 
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
@@ -179,8 +179,8 @@ Hard Failure 6 的停止处理已由 Review 1 接受。5E-A request/Manifest 只
 
 ## 下一步
 
-1. 独立审核 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_APPROVAL_REQUEST.md` 与对应 Manifest。
-2. 未获绑定 5E-A package commit 的明确批准前，不得实现 helper、修改 runner 或运行 synthetic suite。
+1. 提交并推送 5E-A implementation audit 与 deterministic evidence。
+2. 组装 implementation-bound 5E-B request/Manifest，随后停止等待独立审批。
 3. Formal preflight、capture、controller、verifier、Gold、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub

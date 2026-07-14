@@ -917,3 +917,15 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The verified 143-test 5D-B rebinding evidence is the baseline. At least 12 additions require a complete-suite minimum of 155, two byte-identical all-pass runs, zero official access, and zero formal-preflight/token/capture invocation.
 - Capture, comparator, controller, retrieval, common, scientific parameters, exact capture command and raw-byte gate remain frozen.
 - Current status: `AMENDMENT_5E_A_AWAITING_APPROVAL`. The package authorizes no implementation, synthetic execution, official access, formal preflight, token use, or capture.
+
+### Stage4B-U1-D Pre-Gold Amendment 5E-A Implementation And Synthetic Verification
+
+- Approval binds package `19f16f559f0b1f3b59ef24a04e368f99ae3635e3`; approval governance commit is `461939434206764555b917c5971956e6951ff4dd`.
+- Added a standard-library fail-closed Windows directory-equivalence helper and 18 synthetic tests; only the approved deterministic runner was modified.
+- The helper accepts exact canonical ordinal-ignore-case directory equality and rejects relative, missing, file, reparse, parent, child, unrelated, and prefix-collision paths.
+- The complete suite increased from 143 to 161 tests. Both final runs passed 161/161 with zero failure/error/skip/official access and zero formal-preflight/token/capture invocation.
+- Both evidence files were 36,518 bytes with SHA-256 `84C58CBA9801A6EB8DFAF4ED6688BB5FCBD5777729FD833083E16CB630FFED83`; direct byte comparison passed.
+- All 15 Manifest frozen files retained their registered SHA. Exact capture command and raw-byte equivalence remained unchanged.
+- Evidence: `results/stage4b_u1_d_pregold_amendment_5e_a_synthetic_verification.json`.
+- Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_IMPLEMENTATION_AUDIT.md`.
+- Current status: `AMENDMENT_5E_A_SYNTHETICALLY_VERIFIED`. Hard Failure 4 remains incomplete; 5E-B preflight/capture, controller, verifier and Gold are not approved.

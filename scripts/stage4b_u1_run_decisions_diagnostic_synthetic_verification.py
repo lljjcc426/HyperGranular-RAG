@@ -1,10 +1,12 @@
-"""Run the complete Stage4B-U1 plus Amendment 5D-A synthetic suite."""
+"""Run the complete Stage4B-U1 plus Amendment 5E-A synthetic suite."""
 
 from __future__ import annotations
 
 import argparse
 import io
 import json
+import ntpath
+import os
 import sys
 import unittest
 from pathlib import Path
@@ -14,18 +16,36 @@ from stage4b_u1_common import sha256_file, write_json
 
 GOVERNANCE_FILES = (
     "AGENTS.md",
-    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_APPROVAL_REQUEST.md",
-    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_MANIFEST.json",
-    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_APPROVAL_DECISION.md",
-    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_REVIEW_1.md",
-    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_OFFICIAL_SCHEMA_SCAN_AUDIT.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_APPROVAL_REQUEST.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_MANIFEST.json",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_APPROVAL_DECISION.md",
+    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_6.md",
+    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_6_REVIEW_1.md",
 )
 ALLOWED_IMPLEMENTATION_FILES = (
-    "scripts/stage4b_u1_compare_decisions.py",
+    "scripts/stage4b_u1_preflight_path_equivalence.py",
     "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py",
-    "tests/test_stage4b_u1_decisions_diagnostic.py",
+    "tests/test_stage4b_u1_preflight_path_equivalence.py",
 )
 REQUIRED_ACTIVE_PROOF_SUFFIXES = (
+    "test_same_absolute_directory_is_accepted",
+    "test_trailing_separator_is_accepted",
+    "test_windows_case_variant_is_accepted",
+    "test_forward_slash_variant_is_accepted",
+    "test_terminal_dot_segment_is_accepted",
+    "test_parent_directory_is_rejected",
+    "test_child_directory_is_rejected",
+    "test_prefix_collision_directory_is_rejected",
+    "test_unrelated_directory_is_rejected",
+    "test_relative_path_is_rejected_before_normalization",
+    "test_nonexistent_path_is_rejected",
+    "test_file_path_is_rejected",
+    "test_leaf_reparse_point_is_rejected_without_skip",
+    "test_exact_comparison_has_no_prefix_acceptance_call",
+    "test_helper_uses_only_python_standard_library",
+    "test_helper_has_no_command_token_or_execution_logic",
+    "test_leaf_probes_are_limited_to_supplied_synthetic_paths",
+    "test_invalid_non_text_path_is_rejected",
     "test_heterogeneous_file_schema_is_accepted_by_cli",
     "test_left_file_nullable_heterogeneity_is_compared",
     "test_right_file_nullable_heterogeneity_is_compared",
@@ -71,7 +91,13 @@ def test_ids(suite: unittest.TestSuite) -> list[str]:
     return ids
 
 
-def forbidden_official_paths(repo_root: Path) -> set[Path]:
+def lexical_windows_path(path: str | os.PathLike[str]) -> str:
+    """Normalize path spelling without querying filesystem metadata."""
+
+    return ntpath.normcase(ntpath.abspath(os.fspath(path)))
+
+
+def forbidden_official_paths(repo_root: Path) -> set[str]:
     manifest = json.loads(
         (repo_root / "docs" / "STAGE4B_U1_PREGOLD_AMENDMENT_5A_MANIFEST.json").read_text(
             encoding="utf-8"
@@ -118,7 +144,7 @@ def forbidden_official_paths(repo_root: Path) -> set[Path]:
         raise ValueError("Amendment 5A manifest state drifted")
     if amendment_5a_1["package_status"] != "AWAITING_AMENDMENT_5A_1_APPROVAL":
         raise ValueError("Amendment 5A.1 package bytes drifted")
-    return {path.resolve() for path in values}
+    return {lexical_windows_path(path) for path in values}
 
 
 def main() -> None:
@@ -127,22 +153,22 @@ def main() -> None:
         "--output",
         type=Path,
         default=Path(
-            "results/stage4b_u1_d_pregold_amendment_5d_a_synthetic_verification.json"
+            "results/stage4b_u1_d_pregold_amendment_5e_a_synthetic_verification.json"
         ),
     )
     args = parser.parse_args()
     repo_root = Path(__file__).resolve().parents[1]
-    amendment_5d_a = json.loads(
+    amendment_5e_a = json.loads(
         (
             repo_root
             / "docs"
-            / "STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_MANIFEST.json"
+            / "STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_MANIFEST.json"
         ).read_text(encoding="utf-8")
     )
-    frozen_files = amendment_5d_a["frozen_files"]
+    frozen_files = amendment_5e_a["frozen_files"]
     frozen_hashes = {path: sha256_file(repo_root / path) for path in frozen_files}
     if frozen_hashes != frozen_files:
-        raise ValueError("An Amendment 5D-A frozen file drifted before verification")
+        raise ValueError("An Amendment 5E-A frozen file drifted before verification")
     forbidden = forbidden_official_paths(repo_root)
     attempted: list[str] = []
 
@@ -153,12 +179,12 @@ def main() -> None:
         if not isinstance(supplied, (str, bytes)):
             return
         try:
-            candidate = Path(supplied).resolve()
+            candidate = lexical_windows_path(os.fsdecode(supplied))
         except (OSError, TypeError, ValueError):
             return
         if candidate in forbidden:
             attempted.append(str(candidate))
-            raise PermissionError(f"Amendment 5D-A blocked official path access: {candidate}")
+            raise PermissionError(f"Amendment 5E-A blocked official path access: {candidate}")
 
     sys.addaudithook(audit_hook)
     suite = unittest.defaultTestLoader.discover(
@@ -175,7 +201,7 @@ def main() -> None:
     result = unittest.TextTestRunner(stream=stream, verbosity=2).run(suite)
     count_gate = (
         result.testsRun == len(discovered)
-        and result.testsRun >= amendment_5d_a["synthetic_verification"]["minimum_complete_tests"]
+        and result.testsRun >= amendment_5e_a["synthetic_verification"]["minimum_complete_tests"]
     )
     tracked_files = tuple(
         dict.fromkeys(
@@ -186,17 +212,17 @@ def main() -> None:
         path: sha256_file(repo_root / path) for path in tracked_files
     }
     if {path: implementation_hashes[path] for path in frozen_files} != frozen_files:
-        raise ValueError("An Amendment 5D-A frozen file changed during verification")
+        raise ValueError("An Amendment 5E-A frozen file changed during verification")
     all_pass = result.wasSuccessful() and count_gate and not attempted
     evidence = {
-        "stage": "Stage4B-U1-D Pre-Gold Amendment 5D-A",
+        "stage": "Stage4B-U1-D Pre-Gold Amendment 5E-A",
         "diagnostic_checkpoint": "stage4b_u1_decisions_diag_v2",
         "controller_checkpoint_unchanged": "stage4b_u1_v2_3_1",
-        "status": "AMENDMENT_5D_A_SYNTHETICALLY_VERIFIED" if all_pass else "FAILED",
+        "status": "AMENDMENT_5E_A_SYNTHETICALLY_VERIFIED" if all_pass else "FAILED",
         "tests_run": result.testsRun,
-        "baseline_tests_required": 131,
+        "baseline_tests_required": 143,
         "minimum_new_tests": 12,
-        "minimum_tests_required": 143,
+        "minimum_tests_required": 155,
         "test_ids": discovered,
         "failures": len(result.failures),
         "errors": len(result.errors),
@@ -208,7 +234,14 @@ def main() -> None:
             "installed": True,
             "forbidden_path_count": len(forbidden),
             "blocked_or_attempted_access_count": len(attempted),
+            "metadata_or_content_access_attempts": len(attempted),
         },
+        "formal_preflight_invocations": 0,
+        "authorization_token_uses": 0,
+        "official_capture_invocations": 0,
+        "path_equivalence_helper_executed_by_synthetic_tests": True,
+        "exact_capture_command_unchanged": True,
+        "raw_byte_equivalence_unchanged": True,
         "rankings_accessed": False,
         "rankings_generated_by_capture": False,
         "policy_builder_called_by_capture": False,
@@ -237,6 +270,11 @@ def main() -> None:
             "nullable values are not imputed coerced cast or normalized",
             "schema field set order nested type discrete list float and decision-semantic differences remain classified",
             "raw byte equality remains the only controlling equivalence gate",
+            "the Windows path-equivalence helper rejects relative missing file and reparse-point leaves fail-closed",
+            "the helper accepts only exact canonical directory equality under ordinal case-insensitive comparison",
+            "trailing separators case separator spelling and terminal dot segments normalize only for comparison",
+            "parent child unrelated and string-prefix collision directories remain unequal",
+            "the helper uses only the Python standard library and has no command token or execution logic",
             "synthetic capture writes decisions only under an OS temporary directory",
             "temporary decisions are removed after successful and exceptional exits",
             "capture does not access or generate rankings and does not call a policy builder",
@@ -248,7 +286,7 @@ def main() -> None:
             "official expected channel-input SHA-256 values must equal the three externally frozen values",
             "all three channel-input SHA-256 values are rechecked after temporary-decisions cleanup and before audit creation",
             "pre-gate or post-gate channel drift leaves no audit and cleans temporary decisions",
-            "the accepted 131-test Stage4B-U1 baseline remains passing with at least 12 new tests",
+            "the accepted 143-test Stage4B-U1 baseline remains passing with at least 12 new tests",
         ],
     }
     write_json(args.output, evidence)

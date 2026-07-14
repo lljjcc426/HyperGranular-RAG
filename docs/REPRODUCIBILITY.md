@@ -779,3 +779,15 @@ The 5E-A request and machine-readable scope are `docs/STAGE4B_U1_PREGOLD_AMENDME
 The existing 143 tests and 29,643-byte evidence SHA-256 `264200C2EBEDA1D0B214F824B77C89FC5BBE82D3BE0836FAAB9486EACAACF368` form the traceable baseline. At least 12 additions require a complete suite of at least 155 tests. Final evidence would require two runs on identical tracked bytes with zero failure/error/skip/official access, zero formal preflight/token/capture use, and byte-identical outputs.
 
 The package itself authorizes no implementation or command. Capture, comparator, controller, retrieval, common, data, model, parameters, exact capture command, raw-byte equivalence, formal preflight, official access, verifier/evaluator/Gold, reservation and Stage3B remain locked pending a future package-bound 5E-A approval.
+
+## Stage4B-U1-D Pre-Gold Amendment 5E-A Implementation
+
+Approval governance is commit `461939434206764555b917c5971956e6951ff4dd`, binding package `19f16f559f0b1f3b59ef24a04e368f99ae3635e3`. Implementation added `scripts/stage4b_u1_preflight_path_equivalence.py`, added `tests/test_stage4b_u1_preflight_path_equivalence.py`, and updated only the approved decisions-diagnostic synthetic runner.
+
+The helper uses `os.lstat`, Windows path canonicalization, trailing-separator trimming for comparison only, and `CompareStringOrdinal` with case-insensitive exact equality. It does not contain command, token or capture logic and does not normalize the future exact command argument.
+
+The new test module contributes 18 tests. A targeted run passed 18/18. A preliminary complete run passed 161/161 and its temporary evidence was deleted after inspection. The final static gate bound 24 files with digest `68E0F934E171F763793942F7B1CEC78638A3F31FF185AAE3A5321E35C1AD541C` and verified all 15 frozen hashes.
+
+Two consecutive final runs on identical bound bytes both passed 161/161 with zero failure/error/skip, zero official metadata/content access, and zero formal-preflight/token/capture invocation. Both outputs were 36,518 bytes with SHA-256 `84C58CBA9801A6EB8DFAF4ED6688BB5FCBD5777729FD833083E16CB630FFED83`; direct byte comparison passed. Final evidence is `results/stage4b_u1_d_pregold_amendment_5e_a_synthetic_verification.json`.
+
+The environment continued to emit the known NumPy 2.4.6/old `numexpr` ABI warning during complete-suite imports, but all runner commands exited zero. No official input or effect metric was accessed. The only next permitted action after implementation/evidence push is assembly of an implementation-bound 5E-B request/Manifest; 5E-B execution requires separate approval.

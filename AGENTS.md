@@ -92,6 +92,8 @@
 78. Amendment 5E-A implementation/synthetic-only 已获批准，严格绑定 package commit `19f16f559f0b1f3b59ef24a04e368f99ae3635e3` 及 Manifest 登记的治理历史。批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_APPROVAL_DECISION.md`。
 79. 5E-A 只允许新增 fail-closed Windows OS-temp path-equivalence helper、新增对应 synthetic tests，并按 Manifest 限定修改 diagnostic deterministic runner。比较可规范化，但 exact capture command 与原始 `--temp-parent` 字符串、capture/comparator/controller/retrieval/common、科研参数和 raw-byte equivalence 必须保持不变。
 80. 5E-A 完整 suite 必须以 143 项为基线、至少新增 12 项达到不少于 155 项；最终相同 tracked bytes 上连续两次全通过、零 failure/error/skip/official access、零 formal-preflight/token/capture 调用且 evidence 字节一致。5E-A 不授权任何 official 读取或执行，未来 5E-B 必须另行组包和审批。
+81. 5E-A implementation baseline 仅包含新 helper、新 test module 和 Manifest 限定的 deterministic runner 更新；当前新增 18 项 synthetic tests，preliminary 完整 suite 为 161/161。最终状态只能由绑定本条及全部获批/冻结字节的两轮 byte-identical evidence 确认。
+82. 5E-A 完成后只允许提交 implementation audit/evidence、组装 implementation-bound 5E-B request/Manifest 并停止。5E-B 必须要求新的 formal preflight 直接 import/call 已测试且哈希绑定的 helper，不得复制新的内联路径比较逻辑；在 5E-B 获批前 formal preflight、capture、controller、verifier 与 Gold 继续锁定。
 
 ## GitHub 与文档
 
