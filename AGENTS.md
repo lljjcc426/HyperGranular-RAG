@@ -146,6 +146,10 @@
 132. 未来 5G-A 如获 package-bound 批准，只允许新增纯值校验 helper `scripts/stage4b_u1_preflight_execution_head_binding.py`、新增对应 synthetic test，并在限定范围内更新 deterministic runner。Helper 必须由 caller 提供 local/origin/GitHub、parent、changed paths、ancestry、clean-worktree 与 governance facts，不得访问 filesystem、Git、subprocess、official path、现有 helpers、token 或 capture。
 133. 未来 execution-head helper 必须要求完整小写 40 位 SHA，拒绝短前缀、大小写/长度/非十六进制漂移；要求 local/origin/GitHub 完整相等、HEAD parent 等于 approval commit、changed-path set 与获批集合精确相等、所需 ancestors/治理绑定/evidence presence/clean-worktree 全部门通过，并返回经验证的当前 HEAD。禁止接受预先转录的未来 expected HEAD 或在源码中固定未来 rebinding SHA。
 134. 5G-A synthetic 必须以 205 项为基线，新增至少 16 项后完整 suite 不少于 221 项；在相同 tracked bytes 上连续两次全通过、零 failure/error/skip/official access/helper official invocation/preflight/token/capture 且 evidence 字节一致。实现与 evidence 推送后必须停止等待独立审核，任何 official recovery 仍需新的 5G-B package-bound 审批。
+135. Amendment 5G-A 已获 package-bound implementation/synthetic-only 批准，严格绑定 package commit `86ae4a83d55e61653f3cce9260a00852b4aaebda` 及批准决定登记的历史提交。批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_APPROVAL_DECISION.md`。
+136. 5G-A 只允许新增 execution-head pure-value helper、新增对应 test module，并按 Manifest 限定更新 deterministic runner。全部既有 tests 和 24 个 frozen files 必须保持原 SHA；不得运行 real Git/GitHub execution-head validation 或任何 official 动作。
+137. 完整 suite 必须在最终稳定的 tracked bytes 上连续运行两次，均不少于 221 项且 execution-head tests 不少于 16，零 failure/error/skip/official access/typed-helper official invocation/path-helper official invocation/preflight/token/capture，并且 evidence 字节一致。
+138. 5G-A implementation/evidence/audit 提交推送后必须立即停止等待独立审核；5G-B 组包、第二次 formal preflight、official input、token、capture、controller、verifier 和 Gold 均未批准。当前状态为 `AMENDMENT_5G_A_APPROVED_AWAITING_IMPLEMENTATION`。
 
 ## GitHub 与文档
 
