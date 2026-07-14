@@ -826,3 +826,24 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Independent validation passed the exact whitelist, recursive value-free schema, digest/count/main-selection, source-integrity, exclusive-create/cleanup, and five-formal-output absence gates without reopening the reference.
 - Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_OFFICIAL_SCHEMA_SCAN_AUDIT.md`.
 - Current status: `REFERENCE_DECISIONS_SCHEMA_DIAGNOSTIC_COMPLETE_AWAITING_REVIEW`. Comparator change, capture/controller rerun, verifier, and Gold remain unapproved.
+
+### Stage4B-U1-D Pre-Gold Amendment 5C-B Review 1
+
+- Review date: 2026-07-14.
+- Reviewed final commit: `e5f28f664449c02b12a129aaa2a011bad84dab91`.
+- Decision: `ACCEPT_AMENDMENT_5C_B_REFERENCE_SCHEMA_DIAGNOSTIC`.
+- Hard Failure 5 direct cause is confirmed: the comparator's file-level complete-schema homogeneity assumption rejects the legal nullable schema that first appears on line 2.
+- The evidence excludes corruption, missing fields, field-order drift, or nesting drift as the direct line-2 cause.
+- Hard Failure 4 remains unclassified because no new v2.3.1 temporary decisions were generated or compared.
+- Comparator change, capture/controller rerun, verifier, and Gold remain unapproved.
+- Review: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_REVIEW_1.md`.
+
+### Stage4B-U1-D Pre-Gold Amendment 5D-A Package
+
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_MANIFEST.json`.
+- Requested implementation is limited to the comparator, diagnostic synthetic runner, and diagnostic tests.
+- The only allowed comparator semantic delta is removing the file-level homogeneous complete-type-signature rejection and bumping the diagnostic version/checkpoint.
+- Per-query field set/order/type/discrete/float/ULP/semantic comparison, aggregate output, raw-byte controlling gate, no-normalization, capture/controller, all parameters, and all official boundaries remain frozen.
+- The current 131 tests are the traceable baseline. At least 12 heterogeneous-schema additions require a complete-suite minimum of 143, followed by two byte-identical all-pass runs with zero official access.
+- Current status: `AMENDMENT_5D_A_AWAITING_APPROVAL`. The package authorizes no implementation, synthetic execution, or official read.

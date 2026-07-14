@@ -1,0 +1,199 @@
+{
+  "schema_version": "stage4b_u1_pregold_amendment_5d_a",
+  "request_id": "STAGE4B_U1_D_PREGOLD_AMENDMENT_5D_A_HETEROGENEOUS_SCHEMA_COMPARATOR_IMPLEMENTATION_SYNTHETIC_ONLY",
+  "assembled_date": "2026-07-14",
+  "package_status": "AWAITING_AMENDMENT_5D_A_APPROVAL",
+  "current_state": [
+    "AMENDMENT_5C_B_REVIEW_ACCEPTED",
+    "HARD_FAILURE_5_DIRECT_CAUSE_CONFIRMED",
+    "HARD_FAILURE_4_DIAGNOSIS_STILL_INCOMPLETE",
+    "COMPARATOR_CHANGE_NOT_APPROVED",
+    "OFFICIAL_CAPTURE_RETRY_NOT_APPROVED",
+    "CONTROLLER_RERUN_NOT_APPROVED",
+    "VERIFIER_NOT_APPROVED",
+    "GOLD_NOT_APPROVED"
+  ],
+  "requested_mode": "IMPLEMENTATION_AND_SYNTHETIC_ONLY",
+  "binding_commits": {
+    "amendment_5c_b_final_diagnostic_and_audit": "e5f28f664449c02b12a129aaa2a011bad84dab91",
+    "amendment_5c_b_package": "e5a6c5479dbd125ebb58b95e9594fadde6b6719d",
+    "amendment_5c_b_approval_governance": "fce67da87d155b1026cbe0670f606201ede0ac4b",
+    "amendment_5c_b_rebinding_and_governance": "b09668f47cd31df2be73446cadacf84d996418f9",
+    "amendment_5c_a_implementation_and_evidence": "492a59b2f4daccd3e123f2b6cc49cd896d5009d1",
+    "hard_failure_5": "deccd203059d05dc27ba80aca1ddb1e2ea8f616f",
+    "amendment_5b_v2_package": "f43e22ef079701139d4437849be8ad57654f80d7",
+    "amendment_5b_v2_approval_governance": "2ddf6e044c27e47385a558bdaca80cb6c31c4ffe",
+    "amendment_5b_v2_rebinding_and_governance": "4c10ad942a75af42b910b860fd4897b672160d5d",
+    "hard_failure_4": "b21852a174b537c90a848699deb4d26d6f169506",
+    "failed_controller_execution_head": "8e0bab13ad20c06795dffd5ca71f167a814cdfb0",
+    "v2_3_1_implementation": "34349c70ee24b8240fd169393134d4280968b790"
+  },
+  "approval_must_also_bind_package_commit": true,
+  "review_decision": {
+    "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_REVIEW_1.md",
+    "decision": "ACCEPT_AMENDMENT_5C_B_REFERENCE_SCHEMA_DIAGNOSTIC",
+    "hard_failure_5_direct_cause": "FILE_LEVEL_HOMOGENEOUS_SCHEMA_ASSUMPTION_REJECTS_LEGAL_NULLABLE_ROWS",
+    "hard_failure_4_diagnosis": "STILL_INCOMPLETE"
+  },
+  "amendment_5c_b_evidence": {
+    "machine_inventory_path": "results/stage4b_u1_d_pregold_amendment_5c_b_reference_schema_inventory.json",
+    "machine_inventory_sha256": "FA56AC3CB78EE746BF71AF0CEF40606E56B9D13C120F10A2A87400EA42CE3A5E",
+    "machine_inventory_bytes": 17229,
+    "total_rows": 4500,
+    "ordered_schema_count": 2,
+    "structural_schema_count": 2,
+    "main_schema_rows": 2446,
+    "nullable_schema_rows": 2054,
+    "added_removed_nesting_order_differences": 0,
+    "type_changed_field_paths": [
+      "$/ordered_rank",
+      "$/r_candidate",
+      "$/r_edge",
+      "$/readiness",
+      "$/score",
+      "$/u_boundary",
+      "$/u_margin",
+      "$/uncertainty"
+    ]
+  },
+  "baseline_complete_suite": {
+    "tests": 131,
+    "inventory_tests": 24,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "official_path_access_attempts": 0,
+    "post_approval_rebinding_evidence_path": "results/stage4b_u1_d_pregold_amendment_5c_b_synthetic_rebinding.json",
+    "post_approval_rebinding_evidence_sha256": "F16C91BF170ABDFC6784F368D6247E0AA8CDC9ECFB6671C71DFA9BD35CCF297C"
+  },
+  "allowed_implementation_files": {
+    "scripts/stage4b_u1_compare_decisions.py": {
+      "baseline_sha256": "FF4D623DF86FE42EB4ACDFF9D3321FCA768E03B64597C6CC88931359CEDB2DD4",
+      "baseline_bytes": 13207,
+      "allowed_change": "REMOVE_FILE_LEVEL_HOMOGENEOUS_SCHEMA_REJECTION_AND_BUMP_DIAGNOSTIC_VERSION_ONLY"
+    },
+    "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py": {
+      "baseline_sha256": "776AAF0DF8884E79647B144A88416EFAFFFA51AFDA43520203FB7FC745A88989",
+      "baseline_bytes": 9590,
+      "allowed_change": "BIND_5D_A_GOVERNANCE_UPDATE_CHECKPOINT_COUNTS_ACTIVE_PROOFS_AND_EVIDENCE_ONLY"
+    },
+    "tests/test_stage4b_u1_decisions_diagnostic.py": {
+      "baseline_sha256": "C1A7B25D1F69E58812E994B0F8ECA7BAAE38EF50DE8BFA9246F4DF1EBF038D1C",
+      "baseline_bytes": 40874,
+      "allowed_change": "REPLACE_OBSOLETE_HOMOGENEITY_REJECTION_EXPECTATION_AND_ADD_HETEROGENEOUS_SCHEMA_HARDENING_TESTS"
+    }
+  },
+  "required_comparator_contract": {
+    "schema_version": "stage4b_u1_decisions_diagnostic_v2",
+    "diagnostic_checkpoint": "stage4b_u1_decisions_diag_v2",
+    "file_level_complete_type_signature_homogeneity_required": false,
+    "per_row_strict_json_object_required": true,
+    "duplicate_key_rejected": true,
+    "nonfinite_number_rejected": true,
+    "unique_nonempty_string_query_id_required": true,
+    "per_query_field_set_comparison": true,
+    "per_query_field_order_comparison": true,
+    "per_query_recursive_type_structure_comparison": true,
+    "per_query_discrete_value_comparison": true,
+    "finite_float_binary64_exact_absolute_error_and_ulp_comparison": true,
+    "semantic_fields": [
+      "planned_insert_count",
+      "ordered_rank",
+      "trigger_u1"
+    ],
+    "null_numeric_imputation_or_normalization": false,
+    "null_numeric_difference_layers": [
+      "schema_type",
+      "discrete_value",
+      "decision_semantics_when_applicable"
+    ],
+    "raw_byte_equivalence_remains_controlling": true,
+    "canonical_or_semantic_equality_cannot_replace_raw_bytes": true,
+    "aggregate_output_keys_unchanged_except_versions": true,
+    "raw_query_ids_or_rows_emitted": false
+  },
+  "frozen_files": {
+    "scripts/stage4b_u1_capture_diagnostic_decisions.py": "7C7B159911384B436FDCC1B20D26F2F545F2DC55EAD1F7B2B134B273110ED40A",
+    "scripts/stage4b_u1_common.py": "CDF7EAD6007DABE389ED0BD18983496F75290C32243FE6DF84716810CDE92CE4",
+    "scripts/stage4b_u1_evaluate.py": "343BC9D2478042FF582DAA5DE716498124166C72A520A35DAE53F56C976F2E31",
+    "scripts/stage4b_u1_goldfree_controller.py": "C18AD3B672649BA846C5E191D0DBBAC7644A926D4B8CCD39176127175BBA7C1F",
+    "scripts/stage4b_u1_goldfree_retrieval.py": "3B50FAFD057E2565167ED09288D61829B3FBD044991F139F734F819955038A3B",
+    "scripts/stage4b_u1_inventory_decision_schemas.py": "CC48C73306AB48D14E021AE69740A59F2F0218C241E47EE283ECD21E1C81F176",
+    "scripts/stage4b_u1_plan_power.py": "B6BC76E13D597F06AA6494F9E41D5FFD622F9534E55406DC65AB117971900843",
+    "scripts/stage4b_u1_prepare_channels.py": "BF629382DCD93F9FD64F0DEB0D441DC775725040E51CE4155884023CE29FD76C",
+    "scripts/stage4b_u1_run_schema_inventory_synthetic_verification.py": "01B84D359B49AC00BD7B52100D3157A5D0BA1DA78B7D5FF3D0ABCBBE7708E7FA",
+    "scripts/stage4b_u1_run_synthetic_verification.py": "3C7DE76E0CC54102E47017A2114C0E3206D03BE8E81F916E806E4E6AECE72026",
+    "scripts/stage4b_u1_verify.py": "DC134B51A07C14A553746C303EA31D83990BA0EFAD30EFC3A1722F1A141E66EC",
+    "tests/test_stage4b_u1_decision_schema_inventory.py": "89881A70EBE12F49E63B08EE8846F78985B98710412C63EDA67CF8A695332E30",
+    "tests/test_stage4b_u1_goldfree.py": "CA61B466C7DDF583D827FD2D99C024D646BA3962C80B9137D480C84DEA374C71"
+  },
+  "synthetic_verification": {
+    "runner": "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py",
+    "evidence_output": "results/stage4b_u1_d_pregold_amendment_5d_a_synthetic_verification.json",
+    "baseline_tests_required": 131,
+    "minimum_new_tests": 12,
+    "minimum_complete_tests": 143,
+    "complete_runs": 2,
+    "required_result": "ALL_PASS_ZERO_FAILURE_ERROR_SKIP_OFFICIAL_ACCESS_AND_BYTE_IDENTICAL",
+    "required_governance_bindings": [
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_APPROVAL_REQUEST.md",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_MANIFEST.json",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_APPROVAL_DECISION.md",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_REVIEW_1.md",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_OFFICIAL_SCHEMA_SCAN_AUDIT.md",
+      "AGENTS.md"
+    ],
+    "required_new_test_categories": [
+      "legal heterogeneous nullable rows in left file",
+      "legal heterogeneous nullable rows in right file",
+      "same per-query nullable types across two heterogeneous files",
+      "null versus integer schema and discrete classification",
+      "null versus finite float schema and discrete classification",
+      "null excluded from finite-float absolute-error and ULP aggregation",
+      "ordered_rank null versus integer semantic classification",
+      "field-set differences preserved under heterogeneous files",
+      "field-order differences preserved under heterogeneous files",
+      "nested type-structure differences preserved under heterogeneous files",
+      "strict invalid duplicate nonfinite missing-ID duplicate-ID rejection remains",
+      "raw-byte gate no-normalization no-leakage and official-path blocking remain"
+    ]
+  },
+  "implementation_audit_requirements": [
+    "record exact comparator diff and prove only the file-level homogeneity assumption changed",
+    "record hashes for all allowed and frozen files",
+    "record targeted and complete commands including every failed command",
+    "prove no official path access and no comparator capture controller verifier evaluator execution",
+    "prove raw byte equivalence remains controlling and no null normalization exists",
+    "run the final complete suite twice on identical tracked bytes and compare full evidence bytes"
+  ],
+  "future_5d_b_boundary": {
+    "package_may_be_created_after_5d_a_verification": true,
+    "official_execution_authorized_by_5d_a": false,
+    "capture_retry_authorized": false,
+    "controller_rerun_authorized": false,
+    "verifier_authorized": false,
+    "gold_authorized": false
+  },
+  "explicitly_not_authorized": [
+    "read any official unit query channel audit source audit cache decision ranking policy evaluator or Gold file",
+    "read the 5C-B machine inventory as implementation input or fixture data",
+    "run official comparator capture controller verifier or evaluator",
+    "generate official or temporary decisions",
+    "modify any file outside the three allowed implementation test files and governance audit evidence package outputs",
+    "normalize impute coerce or cast null values",
+    "relax or replace the raw byte equivalence gate",
+    "modify model max_length batch size effective-K q25 score ECDF budget trigger ranking endpoint or stop rules",
+    "create rebuild overwrite migrate or delete cache official artifacts historical evidence or failure records",
+    "access U1-D effect metrics reservation or Stage3B",
+    "automatically run or approve Amendment 5D-B"
+  ],
+  "requested_completion_state": [
+    "AMENDMENT_5D_A_SYNTHETICALLY_VERIFIED",
+    "HARD_FAILURE_5_DIRECT_CAUSE_CONFIRMED",
+    "HARD_FAILURE_4_DIAGNOSIS_STILL_INCOMPLETE",
+    "OFFICIAL_CAPTURE_RETRY_NOT_APPROVED",
+    "CONTROLLER_RERUN_NOT_APPROVED",
+    "VERIFIER_NOT_APPROVED",
+    "GOLD_NOT_APPROVED"
+  ]
+}

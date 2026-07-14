@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Amendment 5C-B 单次 reference-decisions schema-only 诊断已完成，等待独立审核 |
-| 获批执行协议 | 5C-B 单次授权已消费；无 capture/controller/verifier/Gold 执行授权 |
-| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_OFFICIAL_SCHEMA_SCAN_AUDIT.md` |
-| 协议状态 | `REFERENCE_DECISIONS_SCHEMA_DIAGNOSTIC_COMPLETE_AWAITING_REVIEW` |
+| 当前阶段 | Amendment 5C-B 审核已接受；5D-A implementation/synthetic-only 包等待审批 |
+| 获批执行协议 | 无 comparator 修改或 official 执行授权；5D-A package 本身不授权实现/测试 |
+| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_APPROVAL_REQUEST.md` |
+| 协议状态 | `AMENDMENT_5D_A_AWAITING_APPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -69,6 +69,8 @@ Implementation-bound Amendment 5C-B 包已组装，请求仅在新批准后依�
 
 5C-B 获批后，两次 131 项 post-approval rebinding 均全通过且 evidence 字节一致；唯一一次 SHA-only preflight 全部门通过。唯一一次 exact-command scan 对 4,500 行 reference decisions 生成 value-free schema inventory：共有 2 个 ordered/structural schemas，行数分别为 2,446 与 2,054；字段集合、顺序和嵌套无差异，异质性集中在 8 个字段的 `integer/finite_number` 与 `null` 类型差异。Machine inventory SHA-256 为 `FA56AC3CB78EE746BF71AF0CEF40606E56B9D13C120F10A2A87400EA42CE3A5E`。审计见 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_OFFICIAL_SCHEMA_SCAN_AUDIT.md`；这不授权 normalization、capture/controller 重跑、verifier 或 Gold。
 
+5C-B 独立审核已接受并确认 Hard Failure 5 的直接原因：comparator 在文件加载阶段要求所有行完整 JSON 类型签名同构，而 nullable schema 首次出现于第 2 行，精确触发 line-2 拒绝。Hard Failure 4 仍未分类，因为 5C-B 未生成或比较 temporary decisions。新的 5D-A 包只申请移除该全文件同构前置拒绝、保持逐 query 比较与 raw-byte 主门，并以至少 143 项 synthetic suite 验证；在 package-bound 批准前不得修改 comparator 或运行测试。
+
 ## 研究问题
 
 长期问题：
@@ -104,7 +106,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
-| Stage4B-U1 | Hard Failure 5 后完成 5C-B schema-only 诊断 | 已定位为两个 schema、8 个字段的 null/type 异质性；尚未授权 comparator 修改、capture/controller 重跑、verifier 或 Gold |
+| Stage4B-U1 | 5C-B 审核接受；5D-A 等待审批 | Hard Failure 5 直接原因已确认，Hard Failure 4 仍未分类；comparator 修改、capture/controller 重跑、verifier 与 Gold 均未授权 |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
@@ -150,7 +152,7 @@ Stage4B-U1 当前仅有不访问 reservation 的功效规划入口：`scripts/st
 
 Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verification.py`；当前审计见 `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT_V2_1.md`，历史 v2 审计继续保留。
 
-5C-B 的单次 SHA-only preflight 与单次 schema-only scan 授权均已消费。当前没有有效的 capture、controller、verifier 或 Gold official execution 批准；不得重跑本命令。
+5C-B 的单次 SHA-only preflight 与单次 schema-only scan 授权均已消费。5D-A 当前仅为审批包，没有 comparator implementation、synthetic test、capture、controller、verifier 或 Gold 执行授权。
 
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
@@ -175,9 +177,9 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 独立审核 5C-B machine/narrative audit，确认两个 schema 与 8 个类型差异是否足以解释 Hard Failure 5 的 comparator 前置拒绝。
-2. 如需 comparator schema 接受规则、normalization 或 5B capture 重试，必须分别形成新的 implementation/synthetic 与 official-execution Amendment，先批准再执行。
-3. Comparator 修改、capture/controller 重跑、verifier、Gold evaluation、U1-D 指标、reservation 与 Stage3B 继续锁定。
+1. 独立审核 implementation/synthetic-only 5D-A request/Manifest；未获 package-bound 批准前不得修改 comparator 或运行 synthetic suite。
+2. 5D-A 如获批准，只能移除文件级同构 schema 拒绝、保留逐 query 比较与 raw-byte 主门，并完成至少 143 项双次 deterministic verification。
+3. Official capture retry 必须等待 5D-A 完成后另行组装和批准 5D-B；controller、verifier、Gold、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub
 

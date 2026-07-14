@@ -67,6 +67,11 @@
 53. 唯一允许顺序为：批准治理提交推送 -> 在最终批准治理字节上两次 131 项 post-approval rebinding -> governance-binding 与 rebinding audit 提交推送 -> 唯一一次 SHA-only formal preflight -> 唯一一次 exact-command schema-only scan -> machine/narrative audit 提交推送 -> 立即停止。任一 rebinding、binding、preflight、scan、validation、commit 或 push 硬门失败均不得重试。
 54. 5C-B 唯一 official 输入为 `results/stage4b_u1_d_official_dev4500_decisions.jsonl`，冻结 SHA-256 为 `6FB6EB6DBFE3C6B819E65ADD268D9F94CFEA24E5761C9E4CB53CD0965C3723C7`。Preflight 只能按字节计算 SHA；scan 只允许一次 value-free schema parse，输出严格限于 Manifest 白名单中的聚合 schema metadata。
 55. 5C-B 不授权任何其他 official 文件、字段值/ID、comparator/capture/controller/verifier/evaluator、new decisions/rankings/policy、Gold/U1-D 指标、reservation、Stage3B、cache/历史工件改写或自动恢复。完成状态只能是 `REFERENCE_DECISIONS_SCHEMA_DIAGNOSTIC_COMPLETE_AWAITING_REVIEW`，其余 capture retry、comparator change、controller rerun、verifier 与 Gold 继续锁定。
+56. Amendment 5C-B 审核已接受，严格绑定最终提交 `e5f28f664449c02b12a129aaa2a011bad84dab91`。当前状态为 `AMENDMENT_5C_B_REVIEW_ACCEPTED`；Hard Failure 5 的直接原因已确认为 comparator 的文件级同构 schema 假设与合法 nullable rows 不兼容。
+57. 5C-B 只确认 reference decisions 内有 2 个 schema、8 个 numeric/null 类型差异；它未生成或比较 v2.3.1 temporary decisions，因此 Hard Failure 4 diagnosis 仍为 incomplete，不得据此主张 byte/semantic 等价或恢复 controller、verifier、Gold。
+58. Amendment 5D-A request/Manifest 仅为 heterogeneous-schema comparator implementation/synthetic-only 审批包。包本身不授权 comparator 修改、测试执行或任何 official 文件访问；必须等待明确绑定未来 5D-A package commit 的批准。
+59. 未来 5D-A 如获批准，只能修改 comparator、decisions diagnostic synthetic runner 与对应 diagnostic tests 三个 Manifest 登记文件。允许的语义变化仅为移除全文件 complete-type-signature 同构拒绝并更新 comparator version/checkpoint；逐 query 比较、aggregate output、raw-byte 主门、no-normalization 与全部科研参数必须保持不变。
+60. 5D-A 必须保留现有 131 项，至少新增 12 项 heterogeneous-schema hardening 后完整 suite 不少于 143 项，并在相同 tracked bytes 上连续两次全通过、零 failure/error/skip/official access、evidence 字节一致。5D-A 不授权 capture/controller/verifier/evaluator/Gold；未来 5D-B 必须另行组包、审批且不得自动执行。
 
 ## GitHub 与文档
 

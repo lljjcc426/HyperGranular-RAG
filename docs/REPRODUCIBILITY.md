@@ -689,3 +689,15 @@ It exited zero and created a 17,229-byte machine inventory with SHA-256 `FA56AC3
 The aggregate result is two ordered/structural schemas over 4,500 rows, with row counts 2,446 and 2,054. Field set/order/nesting are identical; eight field paths differ only by `integer/finite_number` versus `null` type. Full value-free evidence is in `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_OFFICIAL_SCHEMA_SCAN_AUDIT.md` and `results/stage4b_u1_d_pregold_amendment_5c_b_reference_schema_inventory.json`.
 
 Current state is `REFERENCE_DECISIONS_SCHEMA_DIAGNOSTIC_COMPLETE_AWAITING_REVIEW`. Comparator changes, normalization, official capture retry, controller rerun, verifier, and Gold require new separately approved Amendments.
+
+## Stage4B-U1-D Pre-Gold Amendment 5C-B Review And Amendment 5D-A Package
+
+The independent review at `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_REVIEW_1.md` accepts the 5C-B diagnostic and binds final commit `e5f28f664449c02b12a129aaa2a011bad84dab91`. It confirms Hard Failure 5's direct cause: the reference's legal nullable schema begins on physical line 2, while `load_decisions_jsonl()` freezes the first row's full type signature and rejects any later row schema change before per-query comparison.
+
+The scan did not create or compare v2.3.1 temporary decisions, so Hard Failure 4 remains unclassified. No byte, canonical, query-order, nullable/numeric, float/ULP, discrete, or semantic equivalence conclusion follows from 5C-B.
+
+The next implementation/synthetic-only request is `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_APPROVAL_REQUEST.md`, with machine-readable scope in `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5D_A_MANIFEST.json`. It permits no action by itself.
+
+If separately approved, 5D-A would modify only the comparator, its diagnostic synthetic runner, and diagnostic tests. The comparator may stop enforcing file-level complete-schema homogeneity, but must preserve strict row parsing, unique query IDs, per-query field/type/discrete/float/ULP/semantic comparison, aggregate no-raw-value output, and raw byte equality as the controlling gate. Null values may not be normalized or imputed.
+
+The complete-suite baseline is the verified 131 tests. At least 12 new tests make the minimum 143. Final evidence requires two executions on identical tracked bytes, each with zero failures/errors/skips/official-path accesses and byte-identical outputs. Official inputs, capture/controller/verifier/evaluator, Gold, reservation, and Stage3B remain prohibited. A future 5D-B official diagnostic requires a separate implementation-bound package and approval.
