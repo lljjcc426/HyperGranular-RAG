@@ -1005,3 +1005,13 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - B/C/D, both helpers, all five official inputs, token and capture were not reached. Post-failure output/residue metadata checks were all clear.
 - Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_8.md`.
 - Current status: `AMENDMENT_5F_B_FORMAL_PREFLIGHT_STOPPED_HARD_FAILURE_8`. The preflight authorization is consumed and no retry is allowed without a new package-bound Amendment.
+
+### Stage4B-U1-D Hard Failure 8 Review And Amendment 5G-A Package
+
+- Independent review accepts the Hard Failure 8 audit and the 5F-B post-approval rebinding evidence. Review: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_8_REVIEW_1.md`.
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_MANIFEST.json`.
+- The requested implementation is limited to one pure execution-head binding validator, one new synthetic test module, and governance/evidence-only deterministic-runner changes.
+- The proposed helper accepts caller-supplied Git/governance facts only. It must validate full lowercase 40-character SHAs, three-way head equality, direct approval parentage, exact changed paths, required ancestry, clean-worktree and governance/evidence presence without filesystem, Git, subprocess, official-path, helper, token or capture access.
+- The accepted baseline is 205 tests. A future approved implementation must add at least 16 tests and run at least 221 tests twice on identical tracked bytes, with byte-identical evidence and all execution/access counters at zero.
+- Current status: `AMENDMENT_5G_A_AWAITING_APPROVAL`. This package authorizes no implementation, synthetic execution, real Git/GitHub check, second preflight, helper official call, official input access, token, capture, controller, verifier, Gold or 5G-B assembly.

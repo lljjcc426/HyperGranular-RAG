@@ -141,6 +141,11 @@
 127. Hard Failure 8 发生在后续 A hash/output checks、B/C/D 之前；typed helper、path helper、official input access、token、capture、controller、verifier、evaluator/Gold 调用均为 0。失败后 metadata-only 核验确认 machine/narrative audit 不存在、五项 formal outputs 为 0、diagnostic temp residue 为 0。
 128. 详细审计为 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_8.md`。该失败是 preflight command 完整提交字面量转录错误，不是网络、GitHub 漂移、helper、OS-temp、official input、cache 或 capture 失败。
 129. 5F-B formal preflight 授权已耗尽；禁止第二次 preflight、typed/path helper official call、official input access、token 或 capture。任何修正和恢复必须形成新的 package-bound Amendment 并获得明确批准；当前状态为 `AMENDMENT_5F_B_FORMAL_PREFLIGHT_STOPPED_HARD_FAILURE_8`。
+130. Hard Failure 8 独立审核已接受失败审计与 5F-B post-approval rebinding evidence，并仅授权组装 Amendment 5G-A implementation/synthetic-only 审批包。审核记录为 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_8_REVIEW_1.md`。
+131. 5G-A request/Manifest 本身不授权实现、synthetic、real Git/GitHub execution-head check、第二次 formal preflight、typed/path helper official call、official input metadata/content、token、capture、controller、verifier 或 Gold；也不授权组装 5G-B。当前状态为 `AMENDMENT_5G_A_AWAITING_APPROVAL`。
+132. 未来 5G-A 如获 package-bound 批准，只允许新增纯值校验 helper `scripts/stage4b_u1_preflight_execution_head_binding.py`、新增对应 synthetic test，并在限定范围内更新 deterministic runner。Helper 必须由 caller 提供 local/origin/GitHub、parent、changed paths、ancestry、clean-worktree 与 governance facts，不得访问 filesystem、Git、subprocess、official path、现有 helpers、token 或 capture。
+133. 未来 execution-head helper 必须要求完整小写 40 位 SHA，拒绝短前缀、大小写/长度/非十六进制漂移；要求 local/origin/GitHub 完整相等、HEAD parent 等于 approval commit、changed-path set 与获批集合精确相等、所需 ancestors/治理绑定/evidence presence/clean-worktree 全部门通过，并返回经验证的当前 HEAD。禁止接受预先转录的未来 expected HEAD 或在源码中固定未来 rebinding SHA。
+134. 5G-A synthetic 必须以 205 项为基线，新增至少 16 项后完整 suite 不少于 221 项；在相同 tracked bytes 上连续两次全通过、零 failure/error/skip/official access/helper official invocation/preflight/token/capture 且 evidence 字节一致。实现与 evidence 推送后必须停止等待独立审核，任何 official recovery 仍需新的 5G-B package-bound 审批。
 
 ## GitHub 与文档
 

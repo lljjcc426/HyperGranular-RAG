@@ -6,8 +6,8 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Amendment 5F-B 唯一 formal preflight 在 A 门停止于 Hard Failure 8 |
-| 获批执行协议 | 5F-B preflight 授权已消费失败；无重试或 official capture 授权 |
+| 当前阶段 | Hard Failure 8 审核已接受；Amendment 5G-A implementation/synthetic-only 包待审批 |
+| 获批执行协议 | 当前仅完成 5G-A 治理组包；实现、synthetic、preflight 与 official capture 均未获批 |
 | 设计文件 | `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_8.md` |
 | 协议状态 | `AMENDMENT_5F_B_FORMAL_PREFLIGHT_STOPPED_HARD_FAILURE_8` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
@@ -108,7 +108,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
-| Stage4B-U1 | 5F-B formal preflight 已停止于 Hard Failure 8 | 两轮 rebinding 已通过；唯一 preflight 在 A 门失败，helper/official input/token/capture 均为 0 |
+| Stage4B-U1 | `AMENDMENT_5G_A_AWAITING_APPROVAL` | Hard Failure 8 与 5F-B rebinding 已获独立审核接受；5G-A 包不构成执行授权 |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
@@ -154,7 +154,7 @@ Stage4B-U1 当前仅有不访问 reservation 的功效规划入口：`scripts/st
 
 Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verification.py`；当前审计见 `docs/STAGE4B_U1_IMPLEMENTATION_AUDIT_V2_1.md`，历史 v2 审计继续保留。
 
-5F-B 获批后，两轮 post-approval suite 均为 205/205、51,922-byte evidence 逐字节一致，全部 official/helper/preflight/token/capture 计数为 0。唯一 formal preflight 随后在 A 门第一项停止：Git 三方实际同步到 `052e8ecc...`，但 wrapper 误写了同短前缀的另一完整提交字面量。B/C/D、helper、official input、token 和 capture 均未运行；失败审计见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_8.md`。
+5F-B 获批后，两轮 post-approval suite 均为 205/205、51,922-byte evidence 逐字节一致，全部 official/helper/preflight/token/capture 计数为 0。唯一 formal preflight 随后在 A 门第一项停止：Git 三方实际同步到 `052e8ecc...`，但 wrapper 误写了同短前缀的另一完整提交字面量。B/C/D、helper、official input、token 和 capture 均未运行；失败审计见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_8.md`。独立审核已接受该审计与 rebinding evidence，仅允许提交 5G-A implementation/synthetic-only 审批包。
 
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
@@ -179,9 +179,9 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 ## 下一步
 
-1. 独立审核 Hard Failure 8 审计及停止边界。
-2. 新的 package-bound Amendment 明确批准前，不得运行第二次 preflight、typed/path helper、official input access、token 或 capture。
-3. Controller、verifier、Gold、U1-D 指标、reservation 与 Stage3B 继续锁定。
+1. 等待独立审批明确绑定 Amendment 5G-A package commit。
+2. 获批前不得实现 execution-head helper、运行 synthetic、检查 real Git/GitHub execution head、组装 5G-B 或运行第二次 preflight。
+3. Typed/path helper official call、official input access、token、capture、controller、verifier、Gold、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub
 
