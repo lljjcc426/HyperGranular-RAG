@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "stage": "Stage4B-U1-D Pre-Gold Amendment 5F-B",
+  "status": "AMENDMENT_5F_B_POST_APPROVAL_SYNTHETIC_REBINDING_VERIFIED",
+  "package_commit": "f33ee70233ea4098b2d7a17cfde3d266081ee693",
+  "approval_governance_commit": "84d39707dee15729dc0c35c85a16f4e31dac89e4",
+  "responsibility_separation": {
+    "synthetic_rebinding_evidence": "binds the current 26 runner-tracked implementation and governance files",
+    "governance_binding": "additionally binds the 5F-B request, Manifest, approval decision, final AGENTS.md, 5F-A review and implementation evidence, and 5F-B rebinding evidence",
+    "runner_claims_to_directly_include_all_5f_b_package_files": false
+  },
+  "synthetic_rebinding": {
+    "complete_runs": 2,
+    "tests_each_run": 205,
+    "typed_policy_tests_each_run": 44,
+    "failures_each_run": 0,
+    "errors_each_run": 0,
+    "skipped_each_run": 0,
+    "official_access_each_run": 0,
+    "path_helper_official_invocations_each_run": 0,
+    "formal_preflight_invocations_each_run": 0,
+    "authorization_token_uses_each_run": 0,
+    "official_capture_invocations_each_run": 0,
+    "evidence_byte_identical": true,
+    "tracked_file_count": 26,
+    "tracked_byte_digest_sha256": "0BA07EC11A82125DE5B11C12ED618096106E3802FA7E897CAB302508AC739DD5",
+    "evidence_bytes": 51922,
+    "evidence_sha256": "829289F10B1C7B39BBE6B37ACF51DCB265764FD10A8DA55892F60D50F6D2CB09",
+    "run_1_os_temp_snapshot_deleted_after_comparison": true
+  },
+  "frozen_runner": {
+    "path": "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py",
+    "bytes": 18120,
+    "sha256": "31F2233CA9ACF7F156C24B6CD2F0268F7816CC3DE745E783711C2E58E7459D7F"
+  },
+  "bound_files": {
+    "5f_b_request": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md",
+      "bytes": 11923,
+      "sha256": "0E14645C56C266E58D7287FEEA9D5ED909E587770E25AD4D238998C6C50C8483"
+    },
+    "5f_b_manifest": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_B_MANIFEST.json",
+      "bytes": 18293,
+      "sha256": "FB9A565986E255090D11EEC90DB9CEE8C759F281695640E641D2E6A365C66A5F"
+    },
+    "5f_b_approval_decision": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_B_APPROVAL_DECISION.md",
+      "bytes": 6716,
+      "sha256": "5B3F69BA3CF1FB1C11013D37513D980A5FD5E7509807990351B874A93E6B68D5"
+    },
+    "final_approved_agents": {
+      "path": "AGENTS.md",
+      "bytes": 38671,
+      "sha256": "D33DBCBFC8607D49F703722233E2662CBE87A456DC642B9CED10E0DBDCD2BF15"
+    },
+    "5f_a_review_1": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_REVIEW_1.md",
+      "bytes": 4121,
+      "sha256": "EEC6D861C9A4A13B1D50D8BB66D10349597BCC79D164F8B8A04F9762B561DB74"
+    },
+    "5f_a_implementation_audit": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_IMPLEMENTATION_AUDIT.md",
+      "bytes": 11645,
+      "sha256": "EFC3BDF154EC7C2CF3F0B6FE2ECEF41C973C05672072FB1EE412A65DF2535EC3"
+    },
+    "5f_a_deterministic_evidence": {
+      "path": "results/stage4b_u1_d_pregold_amendment_5f_a_synthetic_verification.json",
+      "bytes": 51922,
+      "sha256": "A5B97077AD9A0C62EBFCAE9D70FC8B5BFAD19CCB32FF3A53E1FCF4BDB216D189"
+    },
+    "5f_b_synthetic_rebinding_evidence": {
+      "path": "results/stage4b_u1_d_pregold_amendment_5f_b_synthetic_rebinding.json",
+      "bytes": 51922,
+      "sha256": "829289F10B1C7B39BBE6B37ACF51DCB265764FD10A8DA55892F60D50F6D2CB09"
+    }
+  },
+  "formal_preflight_invocations": 0,
+  "typed_helper_official_invocations": 0,
+  "path_helper_official_invocations": 0,
+  "authorization_token_uses": 0,
+  "official_capture_invocations": 0,
+  "official_input_metadata_or_content_access": 0,
+  "next_gate": "ONE_A_B_C_D_FORMAL_PREFLIGHT_AFTER_THIS_BINDING_IS_COMMITTED_AND_PUSHED"
+}
