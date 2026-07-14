@@ -1036,3 +1036,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - A future approved repair is limited to two execution-head test-name tokens, their corresponding runner suffixes, a pre-discovery tuple-uniqueness gate and exact 246/41/44 count gates.
 - The requested sequence has no preliminary runner: approval governance, one source-only inventory, one 41/41 targeted run, two final 246/246 runs, byte comparison, audit/push and stop.
 - Current status: `AMENDMENT_5G_A_1_AWAITING_APPROVAL`. This package authorizes no repair, inventory, test, synthetic retry or official action.
+
+### Stage4B-U1-D Amendment 5G-A.1 Minimal Repair And Synthetic Verification
+
+- Approval governance commit: `3d818cee86e1faca16c2bdab3baf4fd5411cff75`.
+- The only test changes were two execution-head-specific function-name tokens; the runner changed only the corresponding suffixes, tuple uniqueness gate and exact 246/41/44 counts.
+- The helper remained 6,318 bytes with SHA-256 `517C5C4DB22A82B4CBCA3D8BB751AAE60C0DCC5B5948CC8419D8770A9CC3D174`; all 24 frozen hashes remained unchanged.
+- One source-only inventory passed with 246 definitions and 135/135 globally unique required suffixes. The only targeted run passed 41/41.
+- No preliminary runner was used. Both final complete runs passed exactly 246/246 with 41 execution-head and 44 typed-policy tests.
+- Both evidence files were 69,144 bytes with SHA-256 `A6285498FCFE767297D7156B87CA6034A993B2DFBB167EF7DFA813E9ADD55292`; direct byte comparison passed.
+- Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_IMPLEMENTATION_AUDIT.md`.
+- Current status: `AMENDMENT_5G_A_1_SYNTHETICALLY_VERIFIED`, awaiting independent review. Official execution and 5G-B remain unapproved.

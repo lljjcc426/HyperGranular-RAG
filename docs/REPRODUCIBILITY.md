@@ -897,3 +897,15 @@ The helper is frozen at 6,318 bytes and SHA-256 `517C5C4DB22A82B4CBCA3D8BB751AAE
 The requested future sequence explicitly excludes a preliminary complete runner. It requires one source-only inventory, one 41/41 targeted run and exactly two final 246/246 complete runs on stable tracked bytes, followed by direct evidence comparison, audit/push and immediate stop. Any failed gate stops without repair or retry.
 
 Current status is `AMENDMENT_5G_A_1_AWAITING_APPROVAL`. The package itself authorizes no code/test change, inventory, synthetic execution, real execution-head check, preflight, official input, token, capture, controller, verifier, Gold or 5G-B assembly.
+
+## Stage4B-U1-D Amendment 5G-A.1 Minimal Repair And Synthetic Verification
+
+Approval governance was committed and pushed at `3d818cee86e1faca16c2bdab3baf4fd5411cff75` before repair. Relative to Hard Failure 9 checkpoint `d1c7cf9d78563e30a1e0fe0d6812b36d15b95a9a`, only the approved execution-head test module and deterministic runner changed.
+
+The test diff was exactly two function-name token replacements. The runner diff was limited to the corresponding suffixes, retaining the generic path-helper suffix once, adding a pre-discovery tuple uniqueness gate, and requiring exact 246 total, 41 execution-head and 44 typed-policy tests. The helper and all 24 frozen hashes remained unchanged.
+
+One source-only AST inventory scanned six test files and found 246 definitions, 135 unique required suffixes and 135/135 exact global matches without importing or running tests. The execution-head targeted module then ran once and passed 41/41.
+
+No preliminary complete runner was invoked. Two final runs on the same 33 tracked files each passed exactly 246/246 with zero failure/error/skip and zero official/helper/preflight/token/capture counts. Both tracked digests were `88338760CE2EC767D7F93279F4F3B82E916B0CBE4882257B8CF9133591EA8AE0`. Both evidence files were 69,144 bytes with SHA-256 `A6285498FCFE767297D7156B87CA6034A993B2DFBB167EF7DFA813E9ADD55292`; direct comparison was true. The run-1 OS-temp evidence was deleted only after equality passed.
+
+Formal evidence is `results/stage4b_u1_d_pregold_amendment_5g_a_synthetic_verification.json`; full recovery evidence is `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_IMPLEMENTATION_AUDIT.md`. Current status is `AMENDMENT_5G_A_1_SYNTHETICALLY_VERIFIED`, awaiting independent review. No 5G-B, preflight or official action is authorized.

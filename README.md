@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Hard Failure 9 审核已接受；Amendment 5G-A.1 package 待审批 |
-| 获批执行协议 | 当前仅完成 5G-A.1 治理组包；修正、synthetic 与 official execution 均未获批 |
-| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_APPROVAL_REQUEST.md` |
-| 协议状态 | `AMENDMENT_5G_A_1_AWAITING_APPROVAL` |
+| 当前阶段 | Amendment 5G-A.1 最小修复与 synthetic verification 已完成，等待独立审核 |
+| 获批执行协议 | 5G-A.1 只完成 source inventory、一次定向和两次最终 synthetic；official execution 继续锁定 |
+| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_IMPLEMENTATION_AUDIT.md` |
+| 协议状态 | `AMENDMENT_5G_A_1_SYNTHETICALLY_VERIFIED` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -108,7 +108,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
-| Stage4B-U1 | `AMENDMENT_5G_A_1_AWAITING_APPROVAL` | Hard Failure 9 审核已接受，失败 checkpoint 已冻结；5G-A.1 包不构成修正或重跑授权 |
+| Stage4B-U1 | `AMENDMENT_5G_A_1_SYNTHETICALLY_VERIFIED` | 两次最终 suite 均精确 246/246，evidence 字节一致；official execution 未授权 |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
@@ -160,6 +160,8 @@ Gold-free v2.1 合成验证入口：`scripts/stage4b_u1_run_synthetic_verificati
 
 Hard Failure 9 独立审核已接受并冻结提交 `d1c7cf9...`。5G-A.1 仅申请两个测试名及对应 runner suffix 的最小修正、tuple 自身唯一性门，以及一次 source-only inventory、一次 41/41 定向测试和两轮精确 246/246；当前 package 本身不授权修改或执行。
 
+5G-A.1 获批后，source-only inventory 唯一一次通过，两个专属 execution-head 名称和通用 path-helper 名称均全局唯一；定向测试唯一一次为 41/41。两次最终 complete suite 均精确 246/246，33 个 tracked files digest 均为 `88338760...`，69,144-byte evidence SHA-256 均为 `A6285498...` 且逐字节相同。没有 preliminary runner、official access、preflight、token 或 capture。
+
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
 ## 科研治理
@@ -183,8 +185,8 @@ Hard Failure 9 独立审核已接受并冻结提交 `d1c7cf9...`。5G-A.1 仅申
 
 ## 下一步
 
-1. 等待独立审批明确绑定 Amendment 5G-A.1 package commit。
-2. 获批前不得修正测试名/runner suffix、运行 inventory 或 synthetic，也不得组装 5G-B。
+1. 独立审核 5G-A.1 implementation、recovery audit 与 deterministic evidence。
+2. 审核明确接受前不得组装 5G-B、运行 preflight 或执行 official capture。
 3. Typed/path helper official call、official input access、token、capture、controller、verifier、Gold、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub

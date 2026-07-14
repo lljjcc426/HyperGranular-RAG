@@ -164,6 +164,9 @@
 150. 批准治理推送后，必须先完成精确两文件修复，再运行一次 source-only inventory 和一次 41/41 定向测试；全部通过后才允许运行两次最终 246/246。禁止 preliminary complete runner，任一失败立即停止且不得第三次运行。
 151. 两次最终 runner 必须使用完全相同 tracked bytes，第一轮写唯一 OS-temp、第二轮写正式 evidence；只有两轮全门通过且 evidence 字节一致后才可删除第一轮临时文件。
 152. 当前状态为 `AMENDMENT_5G_A_1_APPROVED_AWAITING_MINIMAL_REPAIR`。本批准不授权 real execution-head check、preflight、official input、token、capture、controller、verifier、Gold 或 5G-B。
+153. 5G-A.1 精确两文件修复已完成；source-only inventory 唯一一次通过，扫描 6 个测试文件、246 个 test definitions，135/135 required suffix 精确唯一，测试 import/execution 为 0。Execution-head 定向测试唯一一次运行通过 41/41、零 failure/error/skip。
+154. 最终 tracked bytes 自本条起冻结。仅当后续两次 complete runner 均精确 246/246、41 execution-head、44 typed-policy、全部访问/调用计数为 0，且 tracked digest 与 evidence bytes 完全一致时，状态才可记为 `AMENDMENT_5G_A_1_SYNTHETICALLY_VERIFIED`；否则必须记录新的 Hard Failure。
+155. 正式 evidence `results/stage4b_u1_d_pregold_amendment_5g_a_synthetic_verification.json` 与 recovery audit 是最终状态 authority。Evidence 提交推送后必须停止等待独立审核，不得组装 5G-B。
 
 ## GitHub 与文档
 

@@ -60,13 +60,13 @@ REQUIRED_ACTIVE_PROOF_SUFFIXES = (
     "test_nonboolean_clean_fact_is_rejected",
     "test_governance_package_mismatch_is_rejected",
     "test_governance_approval_mismatch_is_rejected",
-    "test_missing_governance_binding_is_rejected",
+    "test_execution_head_missing_governance_binding_is_rejected",
     "test_missing_rebinding_evidence_is_rejected",
     "test_missing_governance_binding_artifact_is_rejected",
     "test_missing_rebinding_audit_is_rejected",
     "test_public_api_has_no_pretranscribed_execution_head_parameter",
     "test_helper_source_has_no_fixed_future_rebinding_sha",
-    "test_helper_uses_only_python_standard_library",
+    "test_execution_head_helper_uses_only_python_standard_library",
     "test_helper_has_no_filesystem_git_subprocess_or_helper_calls",
     "test_runtime_validation_performs_no_io_or_execution",
     "test_output_is_value_free_except_required_validated_head",
@@ -234,6 +234,12 @@ def forbidden_official_paths(repo_root: Path) -> set[str]:
 
 
 def main() -> None:
+    if len(REQUIRED_ACTIVE_PROOF_SUFFIXES) != len(
+        set(REQUIRED_ACTIVE_PROOF_SUFFIXES)
+    ):
+        raise ValueError(
+            "Required active-proof suffix registry contains duplicates"
+        )
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--output",
@@ -299,13 +305,9 @@ def main() -> None:
     result = unittest.TextTestRunner(stream=stream, verbosity=2).run(suite)
     count_gate = (
         result.testsRun == len(discovered)
-        and result.testsRun
-        >= amendment_5g_a["synthetic_verification"]["minimum_complete_tests"]
-        and len(argument_policy_tests) >= 44
-        and len(execution_head_binding_tests)
-        >= amendment_5g_a["synthetic_verification"][
-            "minimum_new_execution_head_tests"
-        ]
+        and result.testsRun == 246
+        and len(execution_head_binding_tests) == 41
+        and len(argument_policy_tests) == 44
     )
     tracked_files = tuple(
         dict.fromkeys(

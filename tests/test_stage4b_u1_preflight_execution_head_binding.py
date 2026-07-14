@@ -179,7 +179,7 @@ class Stage4BU1PreflightExecutionHeadBindingTests(unittest.TestCase):
         binding["approval_commit"] = "e" * 40
         self.assert_rejected(governance_binding=binding)
 
-    def test_missing_governance_binding_is_rejected(self) -> None:
+    def test_execution_head_missing_governance_binding_is_rejected(self) -> None:
         self.assert_rejected(governance_binding=None)
 
     def test_missing_rebinding_evidence_is_rejected(self) -> None:
@@ -220,7 +220,7 @@ class Stage4BU1PreflightExecutionHeadBindingTests(unittest.TestCase):
             any(re.fullmatch(r"[0-9a-f]{40}", value) for value in literals)
         )
 
-    def test_helper_uses_only_python_standard_library(self) -> None:
+    def test_execution_head_helper_uses_only_python_standard_library(self) -> None:
         tree = ast.parse(inspect.getsource(head_binding))
         imports = {
             node.module.split(".")[0]
