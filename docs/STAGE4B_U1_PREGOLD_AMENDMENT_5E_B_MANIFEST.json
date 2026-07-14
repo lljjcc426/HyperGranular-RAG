@@ -1,0 +1,291 @@
+{
+  "schema_version": "stage4b_u1_pregold_amendment_5e_b",
+  "request_id": "STAGE4B_U1_D_PREGOLD_AMENDMENT_5E_B_SINGLE_PREFLIGHT_AND_OFFICIAL_DECISIONS_ONLY_DIAGNOSTIC",
+  "assembled_date": "2026-07-14",
+  "package_status": "AWAITING_AMENDMENT_5E_B_APPROVAL",
+  "current_state": [
+    "AMENDMENT_5E_A_SYNTHETICALLY_VERIFIED",
+    "HARD_FAILURE_6_DIRECT_CAUSE_CONFIRMED",
+    "HARD_FAILURE_4_DIAGNOSIS_INCOMPLETE",
+    "FORMAL_PREFLIGHT_RETRY_NOT_APPROVED",
+    "OFFICIAL_CAPTURE_NOT_APPROVED",
+    "CONTROLLER_RERUN_NOT_APPROVED",
+    "VERIFIER_NOT_APPROVED",
+    "GOLD_NOT_APPROVED"
+  ],
+  "requested_mode": "SINGLE_HELPER_BOUND_PREFLIGHT_THEN_SINGLE_OFFICIAL_DECISIONS_ONLY_DIAGNOSTIC",
+  "approval_must_also_bind_package_commit": true,
+  "package_authorizes_rebinding_preflight_token_capture_or_execution": false,
+  "binding_commits": {
+    "amendment_5e_a_implementation_and_evidence": "a8b064a4a2133aea27cbe9b85978237fc3dae661",
+    "amendment_5e_a_approval_governance": "461939434206764555b917c5971956e6951ff4dd",
+    "amendment_5e_a_package": "19f16f559f0b1f3b59ef24a04e368f99ae3635e3",
+    "hard_failure_6_audit_and_status": "bebfeb5664f26795b8d3472f3729ca1bb9abf889",
+    "amendment_5d_b_rebinding_and_governance": "2447ad234c160c6e615d81b33dc4ede7ecaa18da",
+    "amendment_5d_b_approval_governance": "1c46dc1b69f8381598aacb9f3b1e27561c7f9ee2",
+    "amendment_5d_b_package": "f67061e753b03a5cf46d7a7c92b5a95fc79b0ef8",
+    "amendment_5d_a_implementation_and_evidence": "02f46447e4cd69a15d2af14ee1fc62f9eb4f8bb9",
+    "hard_failure_5": "deccd203059d05dc27ba80aca1ddb1e2ea8f616f",
+    "hard_failure_4": "b21852a174b537c90a848699deb4d26d6f169506",
+    "v2_3_1_implementation": "34349c70ee24b8240fd169393134d4280968b790"
+  },
+  "amendment_5e_a_evidence": {
+    "path": "results/stage4b_u1_d_pregold_amendment_5e_a_synthetic_verification.json",
+    "sha256": "84C58CBA9801A6EB8DFAF4ED6688BB5FCBD5777729FD833083E16CB630FFED83",
+    "bytes": 36518,
+    "tests_run": 161,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "official_metadata_or_content_access_attempts": 0,
+    "formal_preflight_invocations": 0,
+    "authorization_token_uses": 0,
+    "official_capture_invocations": 0,
+    "byte_identical_complete_runs": true,
+    "implementation_audit": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_IMPLEMENTATION_AUDIT.md",
+    "implementation_audit_sha256": "AC33D652837589DE17FD7EB90DEED1DE53DAEF6F98A61D8ADB1A6798348439BF",
+    "implementation_audit_bytes": 10030,
+    "tracked_agents_sha256": "BA18F59165F90A0DBCB6509404C74545683D74391658474BB6572446690143CB"
+  },
+  "path_equivalence_helper": {
+    "path": "scripts/stage4b_u1_preflight_path_equivalence.py",
+    "sha256": "1A17C0E750F91CEF2F638A0B0C6FD381110692E6B2D467C1F5243ADF3F35B3FF",
+    "bytes": 3543,
+    "module": "stage4b_u1_preflight_path_equivalence",
+    "function": "windows_directories_equivalent",
+    "standard_library_only": true,
+    "must_be_hash_verified_before_import": true,
+    "must_be_called_before_any_official_input_metadata_or_content_access": true,
+    "inline_reimplementation_forbidden": true,
+    "expected_directory": "C:\\Users\\cc\\AppData\\Local\\Temp",
+    "runtime_directory_source": "System.IO.Path.GetTempPath()",
+    "runtime_value_must_not_be_pretrimmed_or_rewritten": true,
+    "comparison_contract": "ABSOLUTE_EXISTING_NON_REPARSE_DIRECTORIES_CANONICAL_TRIM_ENDING_SEPARATOR_ORDINAL_IGNORE_CASE_EXACT_EQUALITY"
+  },
+  "preflight_helper_call": {
+    "powershell_setup": [
+      "$runtimeTemp = [System.IO.Path]::GetTempPath()",
+      "$env:PYTHONPATH = \"E:\\科研\\HyperGranular-RAG\\scripts\""
+    ],
+    "argv": [
+      "python",
+      "-c",
+      "import sys; from stage4b_u1_preflight_path_equivalence import windows_directories_equivalent; raise SystemExit(0 if windows_directories_equivalent(sys.argv[1], sys.argv[2]) else 1)",
+      "$runtimeTemp",
+      "C:\\Users\\cc\\AppData\\Local\\Temp"
+    ],
+    "success_exit_code": 0,
+    "false_exception_or_nonzero_is_hard_failure": true,
+    "capture_command_or_temp_parent_mutation": false
+  },
+  "implementation_hashes": {
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_APPROVAL_REQUEST.md": "BA5666571B8678F98353D8BB9801DB095EC93B4DD69DF7D2B1BD2C19C579963C",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_MANIFEST.json": "A4344A0F5DC3EE5BDB032A4B4B007ECACA8D84137110FD3BDC709C93EDADBC71",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_APPROVAL_DECISION.md": "FB06E5BB414725FFF58BACEF7430C5F56777999A83D49420A7AECB923EBB6DA9",
+    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_6.md": "276ADA6E425762C04CF727C6023E06FDCA44464CB80BC53A89522155D4CFD698",
+    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_6_REVIEW_1.md": "0E763D513E7D47AC37AE10A1AA752A8EFCEF8213FC0C1B5F91BF6294EE1EDC22",
+    "scripts/stage4b_u1_preflight_path_equivalence.py": "1A17C0E750F91CEF2F638A0B0C6FD381110692E6B2D467C1F5243ADF3F35B3FF",
+    "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py": "C4D11EFA0E89D03159A282A3295469609973A907CAFAA16C9DC5706CFF8A4AAC",
+    "tests/test_stage4b_u1_preflight_path_equivalence.py": "1A601A06F44C959A1885CE17A1F224DE491589B161B0A6899C1EBB7028DBA7F2",
+    "scripts/stage4b_u1_capture_diagnostic_decisions.py": "7C7B159911384B436FDCC1B20D26F2F545F2DC55EAD1F7B2B134B273110ED40A",
+    "scripts/stage4b_u1_compare_decisions.py": "42FA3F74679672B0595CC76B519D59C03CB193415DD03F56E37260A961D94014",
+    "scripts/stage4b_u1_common.py": "CDF7EAD6007DABE389ED0BD18983496F75290C32243FE6DF84716810CDE92CE4",
+    "scripts/stage4b_u1_evaluate.py": "343BC9D2478042FF582DAA5DE716498124166C72A520A35DAE53F56C976F2E31",
+    "scripts/stage4b_u1_goldfree_controller.py": "C18AD3B672649BA846C5E191D0DBBAC7644A926D4B8CCD39176127175BBA7C1F",
+    "scripts/stage4b_u1_goldfree_retrieval.py": "3B50FAFD057E2565167ED09288D61829B3FBD044991F139F734F819955038A3B",
+    "scripts/stage4b_u1_inventory_decision_schemas.py": "CC48C73306AB48D14E021AE69740A59F2F0218C241E47EE283ECD21E1C81F176",
+    "scripts/stage4b_u1_plan_power.py": "B6BC76E13D597F06AA6494F9E41D5FFD622F9534E55406DC65AB117971900843",
+    "scripts/stage4b_u1_prepare_channels.py": "BF629382DCD93F9FD64F0DEB0D441DC775725040E51CE4155884023CE29FD76C",
+    "scripts/stage4b_u1_run_schema_inventory_synthetic_verification.py": "01B84D359B49AC00BD7B52100D3157A5D0BA1DA78B7D5FF3D0ABCBBE7708E7FA",
+    "scripts/stage4b_u1_run_synthetic_verification.py": "3C7DE76E0CC54102E47017A2114C0E3206D03BE8E81F916E806E4E6AECE72026",
+    "scripts/stage4b_u1_verify.py": "DC134B51A07C14A553746C303EA31D83990BA0EFAD30EFC3A1722F1A141E66EC",
+    "tests/test_stage4b_u1_decision_schema_inventory.py": "89881A70EBE12F49E63B08EE8846F78985B98710412C63EDA67CF8A695332E30",
+    "tests/test_stage4b_u1_decisions_diagnostic.py": "0CADDB98209AE3091CF7CEDE99B612AF35A0F02793D5BBFC41F157971E96A579",
+    "tests/test_stage4b_u1_goldfree.py": "CA61B466C7DDF583D827FD2D99C024D646BA3962C80B9137D480C84DEA374C71"
+  },
+  "historical_5e_a_governance_binding": {
+    "AGENTS.md": "BA18F59165F90A0DBCB6509404C74545683D74391658474BB6572446690143CB",
+    "future_5e_b_approval_may_update_agents": true,
+    "future_final_agents_must_be_bound_by_post_approval_evidence_and_governance_binding": true,
+    "must_not_rewrite_5e_a_evidence": true
+  },
+  "post_approval_synthetic_rebinding": {
+    "required": true,
+    "must_precede_formal_preflight": true,
+    "suite_tests": 161,
+    "complete_runs": 2,
+    "required_result": "ALL_PASS_ZERO_FAILURE_ERROR_SKIP_OFFICIAL_ACCESS_FORMAL_PREFLIGHT_TOKEN_CAPTURE_BYTE_IDENTICAL",
+    "runner": "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py",
+    "runner_sha256": "C4D11EFA0E89D03159A282A3295469609973A907CAFAA16C9DC5706CFF8A4AAC",
+    "evidence_output": "results/stage4b_u1_d_pregold_amendment_5e_b_synthetic_rebinding.json",
+    "governance_binding_output": "results/stage4b_u1_d_pregold_amendment_5e_b_governance_binding.json",
+    "narrative_audit": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_B_SYNTHETIC_REBINDING_AUDIT.md",
+    "governance_files": [
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_B_MANIFEST.json",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_B_APPROVAL_DECISION.md",
+      "AGENTS.md",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_IMPLEMENTATION_AUDIT.md",
+      "results/stage4b_u1_d_pregold_amendment_5e_a_synthetic_verification.json",
+      "results/stage4b_u1_d_pregold_amendment_5e_b_synthetic_rebinding.json"
+    ]
+  },
+  "frozen_channel_inputs": {
+    "unlabeled_units": {
+      "path": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_unlabeled_units.jsonl",
+      "sha256": "114D28A7C9842079BF80C292274D7DBBBC718F05CBE8F4435487C245238427FA"
+    },
+    "unlabeled_queries": {
+      "path": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_unlabeled_queries.jsonl",
+      "sha256": "6EE942C680EAC86D0410FC25BCC302CA7312A0E253E318025A957D51A09B4B6B"
+    },
+    "controller_channel_audit": {
+      "path": "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_controller_channel_audit.json",
+      "sha256": "D134CDE168C833784F238B61420B4738C1F65B9FCA995945EB04E8B99EAAB2FA"
+    }
+  },
+  "embedding_cache": {
+    "path": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_minilm_idbound_embeddings.npz",
+    "sha256": "69ED39ABC0636B7B63A41639B64CB037FAE556F10CB130FCD18AFB61CBE06F7D",
+    "bytes": 210714667,
+    "mode": "REQUIRE_EXISTING_NO_BUILD_PRE_AND_POST_FINGERPRINT"
+  },
+  "reference_decisions": {
+    "path": "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_decisions.jsonl",
+    "sha256": "6FB6EB6DBFE3C6B819E65ADD268D9F94CFEA24E5761C9E4CB53CD0965C3723C7",
+    "pre_and_post_fingerprint_required": true
+  },
+  "registered_boundary": {
+    "queries": 4500,
+    "units": 143820,
+    "dataset": "2wikimultihopqa",
+    "sample_id_sha256": "6B21FD1D2EFBD6A467C8DAEE9225AA43113FC328CD114F813DD79E6A44458FB2",
+    "query_id_sha256": "8895D4D2EF2A34DE123525011C36A1DF092D27B7588E17E9816ABAB8F1A25CD6",
+    "namespace_relation": "query_id == dataset::sample_id",
+    "registered_source_audit_sha256": "1496FF0CE08093AD38258FD5049068D6C4ED74FCEBF63E94E6E486F3478C7AEE",
+    "source_audit_file_may_be_opened": false
+  },
+  "frozen_runtime": {
+    "controller_checkpoint": "stage4b_u1_v2_3_1",
+    "diagnostic_checkpoint": "stage4b_u1_decisions_diag_v2",
+    "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "max_length": 192,
+    "batch_size": 64
+  },
+  "authorization_token": {
+    "value": "APPROVE_STAGE4B_U1_D_AMENDMENT_5B_OFFICIAL_DECISIONS_ONLY_DIAGNOSTIC",
+    "implementation_gate_only": true,
+    "all_prior_authorizations_consumed": true,
+    "requires_new_5e_b_package_bound_approval": true,
+    "maximum_future_invocations_requested": 1
+  },
+  "output_registry": {
+    "machine_audit": "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_pregold_amendment_5b_official_decisions_diagnostic.json",
+    "machine_audit_path_frozen_by_unchanged_capture": true,
+    "machine_audit_must_be_absent_before_capture": true,
+    "machine_audit_exclusive_create": true,
+    "narrative_audit": "E:\\科研\\HyperGranular-RAG\\docs\\STAGE4B_U1_PREGOLD_AMENDMENT_5E_B_OFFICIAL_DIAGNOSTIC_AUDIT.md",
+    "os_temp_parent_exact_capture_argument": "C:\\Users\\cc\\AppData\\Local\\Temp",
+    "temporary_decisions_must_be_deleted": true
+  },
+  "formal_outputs_that_must_remain_absent": [
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_decisions.jsonl",
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_rankings.jsonl",
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_policy.json",
+    "E:\\科研\\HyperGranular-RAG\\docs\\STAGE4B_U1_PREGOLD_V2_3_1_CONTROLLER_EXECUTION_AUDIT.md",
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_verified_pre_gold.json"
+  ],
+  "additional_prohibited_official_inputs": [
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_pregold_amendment_5c_b_reference_schema_inventory.json",
+    "Stage4A-R2 source-audit file",
+    "official rankings",
+    "reference policy",
+    "evaluator files or Gold",
+    "reservation",
+    "Stage3B"
+  ],
+  "required_formal_preflight_order": [
+    "clean synchronized GitHub HEAD with package implementation approval rebinding and governance binding ancestors",
+    "all implementation and governance hashes match",
+    "helper regular-file bytes and SHA-256 match before import",
+    "directly import and call helper on raw runtime GetTempPath and exact registered expected directory",
+    "only after helper success inspect five permitted official input metadata hashes and frozen semantic boundary",
+    "confirm machine narrative and five formal outputs absent",
+    "confirm no prohibited input supplied"
+  ],
+  "exact_capture_command": [
+    "python",
+    "scripts/stage4b_u1_capture_diagnostic_decisions.py",
+    "--units", "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_unlabeled_units.jsonl",
+    "--queries", "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_unlabeled_queries.jsonl",
+    "--channel-audit", "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_controller_channel_audit.json",
+    "--embedding-cache", "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_minilm_idbound_embeddings.npz",
+    "--reference-decisions", "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_decisions.jsonl",
+    "--audit-output", "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_pregold_amendment_5b_official_decisions_diagnostic.json",
+    "--temp-parent", "C:\\Users\\cc\\AppData\\Local\\Temp",
+    "--model-name", "sentence-transformers/all-MiniLM-L6-v2",
+    "--batch-size", "64",
+    "--max-length", "192",
+    "--expected-units-sha256", "114D28A7C9842079BF80C292274D7DBBBC718F05CBE8F4435487C245238427FA",
+    "--expected-queries-sha256", "6EE942C680EAC86D0410FC25BCC302CA7312A0E253E318025A957D51A09B4B6B",
+    "--expected-channel-audit-sha256", "D134CDE168C833784F238B61420B4738C1F65B9FCA995945EB04E8B99EAAB2FA",
+    "--expected-embedding-cache-sha256", "69ED39ABC0636B7B63A41639B64CB037FAE556F10CB130FCD18AFB61CBE06F7D",
+    "--official-authorization-token", "APPROVE_STAGE4B_U1_D_AMENDMENT_5B_OFFICIAL_DECISIONS_ONLY_DIAGNOSTIC"
+  ],
+  "execution_limits": {
+    "formal_preflight_invocations": 1,
+    "official_capture_invocations": 1,
+    "automatic_retry": false,
+    "full_controller_rerun": false,
+    "formal_output_promotion": false,
+    "verifier": false,
+    "evaluator_or_gold": false
+  },
+  "audit_output_policy": {
+    "aggregate_counts_only": true,
+    "raw_byte_equality_is_controlling_gate": true,
+    "canonical_or_semantic_equality_may_replace_raw_bytes": false,
+    "null_normalization_or_imputation": false,
+    "channel_cache_reference_pre_and_post_hash_status_required": true,
+    "temporary_cleanup_status_required": true,
+    "raw_query_ids_allowed": false,
+    "maximum_salted_query_id_hashes": 1,
+    "raw_decision_rows_allowed": false,
+    "field_values_allowed": false,
+    "question_or_text_allowed": false,
+    "ranking_content_allowed": false,
+    "policy_content_allowed": false,
+    "gold_content_allowed": false
+  },
+  "requested_authorization": [
+    "commit and push package-bound 5E-B approval governance",
+    "run and push two byte-identical 161-test post-approval synthetic rebinding outputs",
+    "create and push governance binding over request Manifest decision final AGENTS 5E-A implementation evidence and rebinding evidence",
+    "run one helper-bound read-only formal preflight",
+    "run one unchanged exact-command official decisions-only capture only after all preflight gates pass",
+    "validate aggregate-only output fingerprints and temporary cleanup",
+    "write one 5E-B narrative audit",
+    "commit push verify GitHub and stop"
+  ],
+  "explicitly_not_authorized": [
+    "run any package command before a 5E-B package-bound approval",
+    "run post-approval synthetic rebinding before approval",
+    "run more than one preflight or capture or retry after failure",
+    "modify or inline-reimplement the path-equivalence helper",
+    "modify the exact capture command token string or temp-parent argument",
+    "read compare or hash official rankings reference policy source-audit file or 5C-B inventory",
+    "read evaluator Gold or U1-D effect metrics",
+    "generate or promote formal decisions rankings policy controller audit or VERIFIED_PRE_GOLD",
+    "run full controller verifier evaluator reservation or Stage3B",
+    "modify code data model parameters effective-K q25 score ECDF budget trigger ranking endpoint stop rules comparator semantics or equivalence",
+    "create rebuild overwrite delete or migrate any cache official artifact historical evidence or failure record",
+    "resume official pre-Gold execution after diagnosis"
+  ],
+  "post_diagnostic_state": [
+    "AMENDMENT_5E_B_OFFICIAL_DECISIONS_DIAGNOSTIC_COMPLETE_AWAITING_REVIEW",
+    "HARD_FAILURE_4_DIAGNOSIS_COMPLETE_AWAITING_REVIEW",
+    "CONTROLLER_RERUN_NOT_APPROVED",
+    "VERIFIER_NOT_APPROVED",
+    "GOLD_NOT_APPROVED"
+  ]
+}

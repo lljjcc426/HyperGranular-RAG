@@ -791,3 +791,11 @@ The new test module contributes 18 tests. A targeted run passed 18/18. A prelimi
 Two consecutive final runs on identical bound bytes both passed 161/161 with zero failure/error/skip, zero official metadata/content access, and zero formal-preflight/token/capture invocation. Both outputs were 36,518 bytes with SHA-256 `84C58CBA9801A6EB8DFAF4ED6688BB5FCBD5777729FD833083E16CB630FFED83`; direct byte comparison passed. Final evidence is `results/stage4b_u1_d_pregold_amendment_5e_a_synthetic_verification.json`.
 
 The environment continued to emit the known NumPy 2.4.6/old `numexpr` ABI warning during complete-suite imports, but all runner commands exited zero. No official input or effect metric was accessed. The only next permitted action after implementation/evidence push is assembly of an implementation-bound 5E-B request/Manifest; 5E-B execution requires separate approval.
+
+## Stage4B-U1-D Pre-Gold Amendment 5E-B Package
+
+The implementation-bound request and machine-readable scope are `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md` and `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_B_MANIFEST.json`. They bind 5E-A implementation/evidence commit `a8b064a4a2133aea27cbe9b85978237fc3dae661` and preserve the historical 5E-A `AGENTS.md` hash separately from any future approval-governance hash.
+
+The package asks only for a future sequence of approval governance, two 161-test deterministic rebinding runs, governance binding, one helper-bound formal preflight, and conditionally one unchanged exact decisions-only capture. The preflight must verify helper bytes/SHA and directly import/call `windows_directories_equivalent()` on the raw runtime `GetTempPath()` string and exact registered expected directory before any official input metadata/content operation.
+
+The five-input read boundary, cache/reference fingerprints, model, max length, batch size, controller/comparator checkpoints, token string, output path, exact capture command, aggregate-only output policy and raw-byte control gate remain unchanged. The package itself authorizes no command; a future approval must bind the package commit explicitly.

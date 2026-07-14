@@ -94,6 +94,10 @@
 80. 5E-A 完整 suite 必须以 143 项为基线、至少新增 12 项达到不少于 155 项；最终相同 tracked bytes 上连续两次全通过、零 failure/error/skip/official access、零 formal-preflight/token/capture 调用且 evidence 字节一致。5E-A 不授权任何 official 读取或执行，未来 5E-B 必须另行组包和审批。
 81. 5E-A implementation baseline 仅包含新 helper、新 test module 和 Manifest 限定的 deterministic runner 更新；当前新增 18 项 synthetic tests，preliminary 完整 suite 为 161/161。最终状态只能由绑定本条及全部获批/冻结字节的两轮 byte-identical evidence 确认。
 82. 5E-A 完成后只允许提交 implementation audit/evidence、组装 implementation-bound 5E-B request/Manifest 并停止。5E-B 必须要求新的 formal preflight 直接 import/call 已测试且哈希绑定的 helper，不得复制新的内联路径比较逻辑；在 5E-B 获批前 formal preflight、capture、controller、verifier 与 Gold 继续锁定。
+83. Amendment 5E-A implementation/evidence commit 为 `a8b064a4a2133aea27cbe9b85978237fc3dae661`。最终两轮均为 161/161、零 failure/error/skip/official access/formal-preflight/token/capture；evidence 为 36,518 bytes、SHA-256 `84C58CBA9801A6EB8DFAF4ED6688BB5FCBD5777729FD833083E16CB630FFED83` 且逐字节一致。
+84. Amendment 5E-B request/Manifest 仅为一次 helper-bound formal preflight 与条件式单次原 exact-command decisions-only capture 的审批包。包本身不授权 post-approval rebinding、preflight、helper official-boundary check、token、capture、controller、verifier 或 Gold；必须等待明确绑定未来 5E-B package commit 的批准。
+85. 未来 5E-B 如获批准，必须先在最终批准治理字节上完成两轮 161 项 byte-identical rebinding 与 governance binding；随后唯一 preflight 必须先核验 helper SHA/bytes 并直接 import/call `windows_directories_equivalent()`，在 helper gate 通过前不得检查任何 official 输入 metadata/content，禁止复制内联 PowerShell path-equivalence 算法。
+86. 5E-B 请求中的五项 official read boundary、capture/comparator/controller checkpoints、模型/参数、raw-byte 控制门、token string 与 exact capture command 全部继承 5D-B 冻结值。任何 hard gate 失败必须停止且不得重试；成功诊断后也必须停止等待独立审核，不得自动恢复 controller、verifier 或 Gold。
 
 ## GitHub 与文档
 

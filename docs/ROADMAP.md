@@ -929,3 +929,13 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Evidence: `results/stage4b_u1_d_pregold_amendment_5e_a_synthetic_verification.json`.
 - Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_A_IMPLEMENTATION_AUDIT.md`.
 - Current status: `AMENDMENT_5E_A_SYNTHETICALLY_VERIFIED`. Hard Failure 4 remains incomplete; 5E-B preflight/capture, controller, verifier and Gold are not approved.
+
+### Stage4B-U1-D Pre-Gold Amendment 5E-B Package
+
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5E_B_MANIFEST.json`.
+- The package binds 5E-A implementation/evidence commit `a8b064a4a2133aea27cbe9b85978237fc3dae661` and the Hard Failure 6/5D-B history.
+- A future approved preflight must hash-check and directly import/call the tested helper before any permitted official input metadata/content check; copied inline path-equivalence logic is prohibited.
+- The requested capture command, five-input read boundary, model/parameters, token string, comparator semantics and raw-byte gate are unchanged from 5D-B.
+- A future approval must first require two byte-identical 161-test post-approval rebinding runs and governance binding.
+- Current status: `AMENDMENT_5E_B_AWAITING_APPROVAL`. This package authorizes no rebinding, preflight, token, capture, controller, verifier, evaluator or Gold action.
