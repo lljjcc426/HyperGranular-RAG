@@ -885,3 +885,15 @@ Read-only source comparison confirmed two global test-name collisions: `test_mis
 The preliminary OS-temp path was never created, complete-suite tests run was 0, and no evidence file was produced or deleted. No official input, helper official boundary, real execution-head check, preflight, token, capture, controller, verifier, evaluator/Gold, reservation or Stage3B action occurred. The failed runner was not retried and the names/suffixes were not corrected.
 
 Full evidence is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_9.md`. Current status is `AMENDMENT_5G_A_SYNTHETIC_VERIFICATION_STOPPED_HARD_FAILURE_9`; a new package-bound Amendment is required before any correction or synthetic retry.
+
+## Stage4B-U1-D Hard Failure 9 Review And Amendment 5G-A.1 Package
+
+Independent review accepts the Hard Failure 9 audit and freezes failed checkpoint `d1c7cf9d78563e30a1e0fe0d6812b36d15b95a9a` for minimal repair. The review record is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_9_REVIEW_1.md`.
+
+The implementation/synthetic-retry-only request and machine-readable scope are `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_APPROVAL_REQUEST.md` and `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_MANIFEST.json`. They bind the 5G-A package, approval governance, Hard Failure 9 checkpoint, Hard Failure 8 and 5F-B rebinding/governance, plus the exact audit/review and failed helper/test/runner bytes and SHA-256 values.
+
+The helper is frozen at 6,318 bytes and SHA-256 `517C5C4DB22A82B4CBCA3D8BB751AAE60C0DCC5B5948CC8419D8770A9CC3D174`. A future package-bound approval may permit only two execution-head test-name token changes, corresponding runner suffix changes, one pre-discovery suffix-tuple uniqueness gate and exact count gates of 246 total, 41 execution-head and 44 typed-policy tests. Test bodies, existing tests, evidence schema/output path and all scientific/official behavior remain unchanged.
+
+The requested future sequence explicitly excludes a preliminary complete runner. It requires one source-only inventory, one 41/41 targeted run and exactly two final 246/246 complete runs on stable tracked bytes, followed by direct evidence comparison, audit/push and immediate stop. Any failed gate stops without repair or retry.
+
+Current status is `AMENDMENT_5G_A_1_AWAITING_APPROVAL`. The package itself authorizes no code/test change, inventory, synthetic execution, real execution-head check, preflight, official input, token, capture, controller, verifier, Gold or 5G-B assembly.

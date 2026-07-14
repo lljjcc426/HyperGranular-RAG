@@ -1026,3 +1026,13 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - No evidence path was created, complete-suite tests run was 0, and official/helper/preflight/token/capture counters remained zero.
 - Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_9.md`.
 - Current status: `AMENDMENT_5G_A_SYNTHETIC_VERIFICATION_STOPPED_HARD_FAILURE_9`. No correction or synthetic retry is allowed without a new package-bound Amendment.
+
+### Stage4B-U1-D Hard Failure 9 Review And Amendment 5G-A.1 Package
+
+- Independent review accepts the Hard Failure 9 audit and freezes checkpoint `d1c7cf9d78563e30a1e0fe0d6812b36d15b95a9a`. Review: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_9_REVIEW_1.md`.
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_MANIFEST.json`.
+- The helper remains frozen at 6,318 bytes and SHA-256 `517C5C4DB22A82B4CBCA3D8BB751AAE60C0DCC5B5948CC8419D8770A9CC3D174`.
+- A future approved repair is limited to two execution-head test-name tokens, their corresponding runner suffixes, a pre-discovery tuple-uniqueness gate and exact 246/41/44 count gates.
+- The requested sequence has no preliminary runner: approval governance, one source-only inventory, one 41/41 targeted run, two final 246/246 runs, byte comparison, audit/push and stop.
+- Current status: `AMENDMENT_5G_A_1_AWAITING_APPROVAL`. This package authorizes no repair, inventory, test, synthetic retry or official action.

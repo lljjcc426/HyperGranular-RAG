@@ -1,0 +1,176 @@
+{
+  "schema_version": "1.0",
+  "request_id": "STAGE4B_U1_D_PREGOLD_AMENDMENT_5G_A_1_ACTIVE_PROOF_GLOBAL_UNIQUENESS_REPAIR_AND_SYNTHETIC_RETRY_ONLY",
+  "assembled_date": "2026-07-14",
+  "package_status": "AWAITING_AMENDMENT_5G_A_1_APPROVAL",
+  "current_state": [
+    "HARD_FAILURE_9_AUDIT_ACCEPTED",
+    "5G_A_FAILED_CHECKPOINT_FROZEN",
+    "RETURN_FOR_AMENDMENT_5G_A_1_PACKAGE",
+    "HARD_FAILURE_4_DIAGNOSIS_INCOMPLETE"
+  ],
+  "package_authorizes_modification_or_execution": false,
+  "approval_must_bind_future_package_commit": true,
+  "binding_commits": {
+    "amendment_5g_a_package": "86ae4a83d55e61653f3cce9260a00852b4aaebda",
+    "amendment_5g_a_approval_governance": "fd50bc30f5acbf4955e3a051fbee70062e6e168c",
+    "hard_failure_9_checkpoint": "d1c7cf9d78563e30a1e0fe0d6812b36d15b95a9a",
+    "hard_failure_8": "0f35ec895c756348e8a10803c6dd961a37344fb0",
+    "amendment_5f_b_rebinding_and_governance": "052e8ecc04f566b75666d5cc96df74d2ed5061e4",
+    "amendment_5f_b_approval_governance": "84d39707dee15729dc0c35c85a16f4e31dac89e4",
+    "amendment_5f_b_package": "f33ee70233ea4098b2d7a17cfde3d266081ee693",
+    "hard_failure_4": "b21852a174b537c90a848699deb4d26d6f169506",
+    "v2_3_1_implementation": "34349c70ee24b8240fd169393134d4280968b790"
+  },
+  "hard_failure_9_audit": {
+    "path": "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_9.md",
+    "bytes": 5778,
+    "sha256": "91EDCBB01CC119EE72EB79108BC89C36F88FCAA03BD059ED9BCF7589B99D6643",
+    "targeted_tests": 41,
+    "targeted_failures": 0,
+    "targeted_errors": 0,
+    "targeted_skipped": 0,
+    "preliminary_runner_invocations": 1,
+    "preliminary_complete_tests_run": 0,
+    "preliminary_evidence_created": false,
+    "synthetic_retries_after_failure": 0
+  },
+  "hard_failure_9_review": {
+    "path": "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_9_REVIEW_1.md",
+    "bytes": 4292,
+    "sha256": "2330EEF8C641C67313D96F59679C503AFC360D9626D8CA6E9B9376BDC3536F61",
+    "decision": "RETURN_FOR_AMENDMENT_5G_A_1_PACKAGE"
+  },
+  "failed_checkpoint_files": {
+    "scripts/stage4b_u1_preflight_execution_head_binding.py": {
+      "bytes": 6318,
+      "sha256": "517C5C4DB22A82B4CBCA3D8BB751AAE60C0DCC5B5948CC8419D8770A9CC3D174",
+      "future_status": "FROZEN_NO_MODIFICATION"
+    },
+    "tests/test_stage4b_u1_preflight_execution_head_binding.py": {
+      "bytes": 11550,
+      "sha256": "52C0983E623D126F8A8E631DE7C8F08F14F04DA26484763CA6939B84236EC747",
+      "future_status": "ONLY_TWO_FUNCTION_NAME_TOKENS_MAY_CHANGE"
+    },
+    "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py": {
+      "bytes": 22351,
+      "sha256": "EBCCA245F2B4D07CCF061DDD88D70E83C76563F4F4D547EEFF711307F92B0BB1",
+      "future_status": "ONLY_TWO_SUFFIXES_DUPLICATE_TUPLE_GATE_AND_EXACT_COUNTS_MAY_CHANGE"
+    }
+  },
+  "allowed_future_changes": {
+    "tests/test_stage4b_u1_preflight_execution_head_binding.py": {
+      "rename_only": {
+        "test_missing_governance_binding_is_rejected": "test_execution_head_missing_governance_binding_is_rejected",
+        "test_helper_uses_only_python_standard_library": "test_execution_head_helper_uses_only_python_standard_library"
+      },
+      "test_bodies_assertions_fixtures_inputs_and_count_unchanged": true
+    },
+    "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py": {
+      "update_only_corresponding_execution_head_suffixes": true,
+      "generic_path_helper_suffix_occurrences_required": 1,
+      "add_pre_discovery_tuple_uniqueness_gate": true,
+      "duplicate_suffix_error_must_be_dedicated": true,
+      "require_exact_total_tests": 246,
+      "require_exact_execution_head_tests": 41,
+      "require_exact_typed_policy_tests": 44,
+      "test_discovery_pattern_unchanged": true,
+      "evidence_schema_unchanged": true,
+      "evidence_output_path_unchanged": true
+    }
+  },
+  "future_execution_sequence": [
+    "commit and push package-bound 5G-A.1 approval governance",
+    "run one source-only active-proof inventory before test import or execution",
+    "require suffix tuple uniqueness and one global definition per required suffix",
+    "run execution-head targeted module exactly once and require 41 of 41",
+    "run complete suite exactly twice on final stable tracked bytes",
+    "require each complete run to be exactly 246 of 246 with 41 execution-head and 44 typed-policy tests",
+    "compare complete evidence files byte for byte",
+    "write audit commit push and stop"
+  ],
+  "preliminary_complete_runner_authorized": false,
+  "stop_on_any_inventory_targeted_or_final_gate_failure": true,
+  "final_synthetic_gates": {
+    "complete_runs": 2,
+    "exact_tests": 246,
+    "exact_execution_head_tests": 41,
+    "exact_typed_policy_tests": 44,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "official_access": 0,
+    "typed_helper_official_invocations": 0,
+    "path_helper_official_invocations": 0,
+    "real_git_or_github_execution_head_validations": 0,
+    "formal_preflight_invocations": 0,
+    "authorization_token_uses": 0,
+    "official_capture_invocations": 0,
+    "tracked_bytes_identical": true,
+    "evidence_byte_identical": true,
+    "formal_evidence_path": "results/stage4b_u1_d_pregold_amendment_5g_a_synthetic_verification.json"
+  },
+  "frozen_helper": {
+    "path": "scripts/stage4b_u1_preflight_execution_head_binding.py",
+    "bytes": 6318,
+    "sha256": "517C5C4DB22A82B4CBCA3D8BB751AAE60C0DCC5B5948CC8419D8770A9CC3D174"
+  },
+  "frozen_existing_hashes": {
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_APPROVAL_DECISION.md": "24A198C0DC115511B344E616589697CEFC489F1829588275A7329B5923A987B4",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_APPROVAL_REQUEST.md": "DA26B9B9C7C480E0E954913322A21AF0DA52C3EEF9FEC972CC56C6D0B7651886",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_MANIFEST.json": "148FD144722784AC8512DC922543D6B98309AC539EB00D196102F9FFC15EDFBA",
+    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_7.md": "2CE74234D5F42D6B90AAF543A7511019DFDF3D115E31F5204B4AC5550DB418AF",
+    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_7_REVIEW_1.md": "BCAE465EB61D77E221C401F8203B205F559B4ED9C94C80BD00FDAA31272F6E14",
+    "scripts/stage4b_u1_capture_diagnostic_decisions.py": "7C7B159911384B436FDCC1B20D26F2F545F2DC55EAD1F7B2B134B273110ED40A",
+    "scripts/stage4b_u1_common.py": "CDF7EAD6007DABE389ED0BD18983496F75290C32243FE6DF84716810CDE92CE4",
+    "scripts/stage4b_u1_compare_decisions.py": "42FA3F74679672B0595CC76B519D59C03CB193415DD03F56E37260A961D94014",
+    "scripts/stage4b_u1_evaluate.py": "343BC9D2478042FF582DAA5DE716498124166C72A520A35DAE53F56C976F2E31",
+    "scripts/stage4b_u1_goldfree_controller.py": "C18AD3B672649BA846C5E191D0DBBAC7644A926D4B8CCD39176127175BBA7C1F",
+    "scripts/stage4b_u1_goldfree_retrieval.py": "3B50FAFD057E2565167ED09288D61829B3FBD044991F139F734F819955038A3B",
+    "scripts/stage4b_u1_inventory_decision_schemas.py": "CC48C73306AB48D14E021AE69740A59F2F0218C241E47EE283ECD21E1C81F176",
+    "scripts/stage4b_u1_plan_power.py": "B6BC76E13D597F06AA6494F9E41D5FFD622F9534E55406DC65AB117971900843",
+    "scripts/stage4b_u1_preflight_argument_policy.py": "CCDC70D2E66E9D69CD64899676EA5150FEE0381E74F4C9DEED2A0FFB5EE436F4",
+    "scripts/stage4b_u1_preflight_path_equivalence.py": "1A17C0E750F91CEF2F638A0B0C6FD381110692E6B2D467C1F5243ADF3F35B3FF",
+    "scripts/stage4b_u1_prepare_channels.py": "BF629382DCD93F9FD64F0DEB0D441DC775725040E51CE4155884023CE29FD76C",
+    "scripts/stage4b_u1_run_schema_inventory_synthetic_verification.py": "01B84D359B49AC00BD7B52100D3157A5D0BA1DA78B7D5FF3D0ABCBBE7708E7FA",
+    "scripts/stage4b_u1_run_synthetic_verification.py": "3C7DE76E0CC54102E47017A2114C0E3206D03BE8E81F916E806E4E6AECE72026",
+    "scripts/stage4b_u1_verify.py": "DC134B51A07C14A553746C303EA31D83990BA0EFAD30EFC3A1722F1A141E66EC",
+    "tests/test_stage4b_u1_decision_schema_inventory.py": "89881A70EBE12F49E63B08EE8846F78985B98710412C63EDA67CF8A695332E30",
+    "tests/test_stage4b_u1_decisions_diagnostic.py": "0CADDB98209AE3091CF7CEDE99B612AF35A0F02793D5BBFC41F157971E96A579",
+    "tests/test_stage4b_u1_goldfree.py": "CA61B466C7DDF583D827FD2D99C024D646BA3962C80B9137D480C84DEA374C71",
+    "tests/test_stage4b_u1_preflight_argument_policy.py": "9B338292E1A8CCAED0EFD114999999B1C884B7CC8861EBCB9BA8029D4D1498E2",
+    "tests/test_stage4b_u1_preflight_path_equivalence.py": "1A601A06F44C959A1885CE17A1F224DE491589B161B0A6899C1EBB7028DBA7F2"
+  },
+  "frozen_behavior": {
+    "exact_capture_command_source": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_B_MANIFEST.json",
+    "exact_capture_command_elements": 32,
+    "raw_byte_equality_is_controlling": true,
+    "scientific_parameters_unchanged": true,
+    "controller_checkpoint": "stage4b_u1_v2_3_1",
+    "diagnostic_checkpoint": "stage4b_u1_decisions_diag_v2"
+  },
+  "explicitly_not_authorized": [
+    "test rename before package-bound approval",
+    "runner repair before package-bound approval",
+    "synthetic retry before package-bound approval",
+    "execution-head helper modification",
+    "preliminary complete runner",
+    "real Git or GitHub execution-head validation",
+    "second formal preflight",
+    "typed or path helper official call",
+    "official input metadata or content access",
+    "authorization token use or capture",
+    "controller verifier evaluator or Gold",
+    "reservation or Stage3B",
+    "5G-B package assembly",
+    "automatic recovery of Hard Failure 9"
+  ],
+  "requested_completion_state": [
+    "AMENDMENT_5G_A_1_SYNTHETICALLY_VERIFIED",
+    "HARD_FAILURE_9_DIRECT_CAUSE_CONFIRMED",
+    "HARD_FAILURE_8_DIRECT_CAUSE_CONFIRMED",
+    "HARD_FAILURE_4_DIAGNOSIS_INCOMPLETE",
+    "SECOND_FORMAL_PREFLIGHT_NOT_APPROVED",
+    "OFFICIAL_CAPTURE_NOT_APPROVED"
+  ]
+}

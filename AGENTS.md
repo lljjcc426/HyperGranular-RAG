@@ -154,6 +154,11 @@
 140. Hard Failure 9 直接原因是两个新 test suffix 与既有测试全局重名，其中 `test_helper_uses_only_python_standard_library` 还在 runner active-proof tuple 中重复登记。完整 suite 实际运行数为 0，OS-temp output 从未创建，24 个 frozen hashes 保持 24/24。
 141. Hard Failure 9 后不得改名、调整 runner 或重跑 synthetic。当前失败 checkpoint 只包含 5G-A 批准的三个实现/测试路径；详细审计为 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_9.md`。
 142. 当前状态为 `AMENDMENT_5G_A_SYNTHETIC_VERIFICATION_STOPPED_HARD_FAILURE_9`。任何最小修正必须先形成新的 package-bound Amendment 并获明确批准；synthetic retry、5G-B、第二次 preflight、official input、token、capture、controller、verifier 和 Gold 均未批准。
+143. Hard Failure 9 独立审核已接受审计并冻结失败 checkpoint `d1c7cf9d78563e30a1e0fe0d6812b36d15b95a9a`，当前仅授权组装 Amendment 5G-A.1 package。审核记录为 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_9_REVIEW_1.md`。
+144. 5G-A.1 request/Manifest 本身不授权 test rename、runner repair、synthetic retry、helper 修改、real Git/GitHub execution-head check、preflight、official input、token、capture、controller、verifier、Gold 或 5G-B。
+145. 未来 5G-A.1 如获 package-bound 批准，只允许重命名两个冲突的新测试、同步两个 execution-head suffix、确保通用 path-helper suffix 只登记一次、在 discovery 前增加 suffix tuple 自身唯一性门，并把完整门冻结为精确 246 tests、41 execution-head tests、44 typed-policy tests。Helper SHA `517C5C4DB22A82B4CBCA3D8BB751AAE60C0DCC5B5948CC8419D8770A9CC3D174` 不得改变。
+146. 未来执行顺序必须是 approval governance 推送、一次 source-only active-proof inventory、一次 41/41 定向测试、最终稳定 tracked bytes 上两轮精确 246/246、evidence 字节比较、audit/commit/push、立即停止。禁止 preliminary complete runner；任一门失败不得修正后重跑。
+147. 当前状态为 `AMENDMENT_5G_A_1_AWAITING_APPROVAL`。在新的明确批准前，测试名、runner、synthetic、official execution 和 5G-B 全部锁定。
 
 ## GitHub 与文档
 
