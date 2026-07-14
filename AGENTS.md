@@ -63,6 +63,10 @@
 49. Amendment 5C-A implementation/evidence commit 为 `492a59b2f4daccd3e123f2b6cc49cd896d5009d1`。最终两次 evidence 均为 22,234 bytes、SHA-256 `0D13392B5C96BAD7EC4D67C22A7515B4A6D211C8EFBB3A4486F9BA5531A1EF7C`；131/131、24 项 inventory tests、零 failure/error/skip/official access，八个冻结文件 hash 未变化。
 50. Amendment 5C-B request/Manifest 仅为单次 reference-decisions schema-only official scan 审批包。包本身不授权 token、post-approval rebinding、preflight 或 scan；必须等待明确绑定 5C-B package commit 的新批准。
 51. 未来 5C-B 如获批准，顺序只能为批准治理推送 -> 两次 131 项 rebinding 与 governance binding 推送 -> 一次 SHA-only preflight -> 一次 exact-command value-free schema scan -> machine/narrative audit 推送 -> 立即停止。不得读取其他 official 文件、输出任何字段值/ID、修改 comparator/normalization、重跑 capture/controller、运行 verifier/evaluator 或接触 Gold/reservation/Stage3B。
+52. Amendment 5C-B 单次 official reference-decisions value-free schema-only scan 已获批准，严格绑定 package commit `e5a6c5479dbd125ebb58b95e9594fadde6b6719d` 及批准决定登记的八个历史提交。批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5C_B_APPROVAL_DECISION.md`。
+53. 唯一允许顺序为：批准治理提交推送 -> 在最终批准治理字节上两次 131 项 post-approval rebinding -> governance-binding 与 rebinding audit 提交推送 -> 唯一一次 SHA-only formal preflight -> 唯一一次 exact-command schema-only scan -> machine/narrative audit 提交推送 -> 立即停止。任一 rebinding、binding、preflight、scan、validation、commit 或 push 硬门失败均不得重试。
+54. 5C-B 唯一 official 输入为 `results/stage4b_u1_d_official_dev4500_decisions.jsonl`，冻结 SHA-256 为 `6FB6EB6DBFE3C6B819E65ADD268D9F94CFEA24E5761C9E4CB53CD0965C3723C7`。Preflight 只能按字节计算 SHA；scan 只允许一次 value-free schema parse，输出严格限于 Manifest 白名单中的聚合 schema metadata。
+55. 5C-B 不授权任何其他 official 文件、字段值/ID、comparator/capture/controller/verifier/evaluator、new decisions/rankings/policy、Gold/U1-D 指标、reservation、Stage3B、cache/历史工件改写或自动恢复。完成状态只能是 `REFERENCE_DECISIONS_SCHEMA_DIAGNOSTIC_COMPLETE_AWAITING_REVIEW`，其余 capture retry、comparator change、controller rerun、verifier 与 Gold 继续锁定。
 
 ## GitHub 与文档
 
