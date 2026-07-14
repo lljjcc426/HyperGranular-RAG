@@ -111,6 +111,11 @@
 97. Amendment 5F-A request/Manifest 仅为 typed capture-argument policy helper implementation/synthetic-only 审批包。包本身不授权 helper/runner/tests 修改、synthetic 执行、official metadata/content 访问、real OS-temp helper check、preflight、token 或 capture；必须等待明确绑定未来 package commit 的批准。
 98. 未来 5F-A 如获批准，只能新增 `scripts/stage4b_u1_preflight_argument_policy.py`、新增 `tests/test_stage4b_u1_preflight_argument_policy.py` 并按 Manifest 限定修改 diagnostic deterministic runner。现有 path-equivalence helper、capture、comparator、common、controller、retrieval、数据、参数和 raw-byte equivalence 必须保持冻结。
 99. 5F-A 必须以 161 项为基线，新增至少 16 项后完整 suite 不少于 177 项；相同 tracked bytes 上连续两次全通过、零 failure/error/skip/official access/path-helper official invocation/preflight/token/capture 且 evidence 字节一致。implementation/evidence 推送后必须停止等待独立审核；只有该审核明确接受后才能另行组装 5F-B package。
+100. Amendment 5F-A implementation/synthetic-only 已获批准，严格绑定 package commit `2b82ba3f0ac9756091d74567f4aed8df5cdf626d` 及批准决定登记的历史提交；批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_A_APPROVAL_DECISION.md`。
+101. 5F-A 只允许新增 typed argument-policy helper、新增对应 synthetic test，并按 Manifest 限定修改 diagnostic deterministic runner。Manifest 登记的 17 个冻结文件、exact argv、token、科研参数和 raw-byte equivalence 必须保持不变。
+102. typed helper 必须执行 exact argv equality、15-flag typed allowlist、per-role exact binding 和 explicit prohibited-role rejection；必须接受冻结 `pregold` 输出路径，禁止任何裸 `gold` value-substring denylist，且不得访问文件系统、hash、subprocess、capture、token 或 path helper。
+103. 最终完整 suite 必须不少于 177 项并在相同 tracked bytes 上连续运行两次；两次均须零 failure/error/skip/official access/path-helper official invocation/preflight/token/capture 且完整 evidence 字节一致。
+104. 5F-A completion 只允许 implementation/evidence 与必要治理状态提交推送，随后立即停止等待独立审核。本批准不授权 5F-B 组包、real OS-temp helper check、formal preflight、official capture、controller、verifier、evaluator/Gold、reservation 或 Stage3B。
 
 ## GitHub 与文档
 
