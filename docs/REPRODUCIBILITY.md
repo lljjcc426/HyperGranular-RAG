@@ -1213,3 +1213,27 @@ The first `System.Diagnostics.Process.Start()` call then threw `System.Component
 No shorter command, temporary `.ps1`, alternate runtime, source change, fallback or retry was used. All historical machine files remain unchanged and all six future paths remain absent. Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_16.md`.
 
 Current status is `AMENDMENT_5G_B_1_1_1_1_2_PRE_RUNNER_START_STOPPED_HARD_FAILURE_16`. Independent review and a new package-bound Amendment are required before any transport change or new attempt. Semantics, post-sync, final verifier, synthetic, real validator, formal preflight and official/Gold operations remain locked.
+
+## Hard Failure 16 Review 1 And Amendment 5G-B.1.1.1.1.3 Package
+
+Independent Review 1 accepts checkpoint `f28fc526faf74f80fdefb96ca189769dbcf1e5e4`, the valid approval-governance commit, the successful static reconstruction, the one consumed start attempt, zero created processes and the fail-closed stop. Microsoft documents the `CreateProcessW` command-line limit as 32,767 characters including the terminating null. The frozen 38,599-character arguments therefore establish `ENCODED_COMMAND_COMMAND_LINE_OVERFLOW`; the old transport is not reusable.
+
+Amendment 5G-B.1.1.1.1.3 freezes three target-specific raw-stdin loaders:
+
+| Loader | Source | Complete arguments | Modeled full command line |
+|---|---|---|---|
+| Pre/semantics | 44 lines / 2,727 bytes / `87B30CA9...C5049` | 7,323 chars / `5C0A0101...8B7F` | 7,384 chars / `DA89A4F1...8323` |
+| Post-sync | 44 lines / 2,719 bytes / `9184297C...C5BB4` | 7,303 chars / `6D87AA8C...E360` | 7,364 chars / `27354A8B...35E8` |
+| Final verifier | 44 lines / 2,724 bytes / `F965E9B1...EA0C6` | 7,315 chars / `6DF16FFC...8131` | 7,376 chars / `C3685BD8...4C1A` |
+
+The modeled full command line is quoted executable + space + arguments + terminating null. Margins to the documented limit are 25,383, 25,403 and 25,391 characters.
+
+For each transport, the parent starts the short loader, immediately starts concurrent raw stdout/stderr drains, writes the exact ASCII Base64 payload through `StandardInput.BaseStream`, flushes/closes stdin and waits for all three activities. The loader reads raw bytes to EOF, requires exact ASCII byte/SHA identity, strict Base64 and UTF-16LE identities, exact target line/UTF-8/SHA identities and zero parser errors, then creates and invokes one target ScriptBlock in the same process. It emits no loader stdout.
+
+The pre/post outer target sources remain byte-for-byte unchanged. The final verifier is rebound only to the new Manifest and Decision path and is frozen as 164 lines / 12,955 bytes / `AAF4B1C0...07AA0`; its fixed 195-byte success output is unchanged. The revised final host is 92 lines / 7,373 bytes / `F3AE0903...3CDC9`; its own modeled command line is 19,752 characters and it validates the child loader's full modeled command line before start.
+
+All seven source designs statically parse with zero errors. Three fixture groups test command-line bounds, exact payload acceptance and nine mutation/error cases; all 30/30 pass under an independent in-memory validator. No loader, target ScriptBlock, PowerShell/Git/Python child, evidence or official operation ran during package assembly. The Manifest also preserves four zero-write read-only helper failures: a malformed `throw` statement before the final-validation body, an access-denied `rg.exe` start after a successful `Select-String`, an unusable PowerShell-only search caused by an invalid trailing-backslash exclusion regex, and a complete-validator identity assertion that expected a short revision label instead of the frozen descriptive revision and stopped before source reconstruction. None created a child process or invoked frozen source.
+
+Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_APPROVAL_REQUEST.md`. Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_MANIFEST.json` (203,974 bytes; SHA-256 `DF088593BA620CE235419B2B759247914771FCFCE63B49A099A788AD29D5FC1C`).
+
+Current status is `AMENDMENT_5G_B_1_1_1_1_3_BOUNDED_STDIN_TRANSPORT_PACKAGE_AWAITING_APPROVAL`. No loader execution, target invocation, evidence creation, synthetic, real validator, formal preflight or official/Gold operation is authorized.

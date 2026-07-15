@@ -1258,3 +1258,16 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - No retry, shorter command, temporary script, runtime switch, source modification or cleanup occurred. Historical evidence remains unchanged and all six future paths remain absent.
 - Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_16.md`.
 - Current status: `AMENDMENT_5G_B_1_1_1_1_2_PRE_RUNNER_START_STOPPED_HARD_FAILURE_16`. Independent review and a new package-bound Amendment are required for any transport recovery.
+
+### Hard Failure 16 Review 1 And Amendment 5G-B.1.1.1.1.3 Package
+
+- Independent Review 1 accepts Hard Failure 16 checkpoint `f28fc526faf74f80fdefb96ca189769dbcf1e5e4`, the valid approval governance, the one static reconstruction, the consumed start attempt, zero created processes/evidence and the fail-closed stop.
+- The root cause is frozen as `ENCODED_COMMAND_COMMAND_LINE_OVERFLOW`: 38,599-character arguments exceed the Microsoft-documented 32,767-character `CreateProcessW` command-line limit including the terminating null.
+- The new package freezes three 44-line target-specific loaders. Their modeled full command lines are 7,384, 7,364 and 7,376 characters, with margins greater than 25,000 characters.
+- Large target sources are transported as exact ASCII Base64 through raw stdin. The loader validates raw bytes, decoded UTF-16LE, source identities and parser state before one in-process ScriptBlock invocation; it adds no stdout.
+- Pre/post target sources remain unchanged. The final verifier is rebound to the new governance files, and the 92-line revised final host launches it through the final stdin loader while retaining the terminal Git/schema/artifact gates.
+- Three static fixture groups pass 30/30. Package assembly executed zero loader/target/process and created zero evidence. Four read-only helper failures (malformed `throw`, denied `rg.exe` start, invalid PowerShell exclusion regex and an incorrect revision-label assertion before source reconstruction) are recorded with zero writes, zero created child processes and zero frozen-source invocations.
+- Review: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_16_REVIEW_1.md`.
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_MANIFEST.json` (203,974 bytes; SHA-256 `DF088593BA620CE235419B2B759247914771FCFCE63B49A099A788AD29D5FC1C`).
+- Current status: `AMENDMENT_5G_B_1_1_1_1_3_BOUNDED_STDIN_TRANSPORT_PACKAGE_AWAITING_APPROVAL`; no execution is authorized.
