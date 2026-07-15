@@ -1248,3 +1248,13 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Second corrected Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_APPROVAL_REQUEST.md`.
 - Second corrected Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_MANIFEST.json` (227,242 bytes; SHA-256 `69CA3DAD8664F12213933A603D0AE0955C8AC17E483E5DC433859839AD49086E`).
 - Current status: `SECOND_CORRECTED_AMENDMENT_5G_B_1_1_1_1_2_PACKAGE_AWAITING_APPROVAL`; no execution is authorized before a new package-bound approval.
+
+### Stage4B-U1-D Pre-Gold Hard Failure 16
+
+- Second corrected package `945f655b95cfee9e55ad2d20e7bd5018f9aee1e2` received package-bound approval. Exact-two-path approval governance was committed and pushed at `72783071c17f6e3cab347823a8da080171c1a883` before any source reconstruction.
+- The post-push gate confirmed local/fetched/direct GitHub main equality, clean worktree, unchanged historical evidence and six absent semantics/post-sync paths.
+- The only pre/semantics outer-runner reconstruction passed its 194-line / 14,491-byte source SHA, zero parser errors, 38,599-character complete-arguments SHA and 170-byte expected-stdout identity.
+- The first `Process.Start()` attempt failed before process creation with `Win32Exception: The filename or extension is too long`. No PID, exit code, stdout or stderr exists; runner and all nested process counts are zero.
+- No retry, shorter command, temporary script, runtime switch, source modification or cleanup occurred. Historical evidence remains unchanged and all six future paths remain absent.
+- Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_16.md`.
+- Current status: `AMENDMENT_5G_B_1_1_1_1_2_PRE_RUNNER_START_STOPPED_HARD_FAILURE_16`. Independent review and a new package-bound Amendment are required for any transport recovery.

@@ -1196,3 +1196,20 @@ Final success requires local HEAD, fetched `origin/main` and direct GitHub main 
 The second corrected Manifest is 227,242 bytes with SHA-256 `69CA3DAD8664F12213933A603D0AE0955C8AC17E483E5DC433859839AD49086E`. All eight sources and complete transports independently recompute to their registered fingerprints and statically parse with zero errors. Package assembly invoked zero frozen sources and created zero evidence. The Manifest also records five zero-write read-only helper failures: the first four started no process, while the bounded diff preview used four read-only Git processes before its consumer closed the stream; none executed a frozen source.
 
 Current status is `SECOND_CORRECTED_AMENDMENT_5G_B_1_1_1_1_2_PACKAGE_AWAITING_APPROVAL`. No approval governance, frozen-source execution, evidence creation, synthetic, real validator, formal preflight or official/Gold operation is authorized.
+
+## Stage4B-U1-D Pre-Gold Hard Failure 16
+
+Second corrected package `945f655b95cfee9e55ad2d20e7bd5018f9aee1e2` received package-bound approval. The exact-two-path approval-governance commit `72783071c17f6e3cab347823a8da080171c1a883` was created and pushed before source reconstruction. Local HEAD, fetched `origin/main` and direct GitHub main then matched; the worktree was clean, historical evidence was unchanged and all six future semantics/post-sync paths were absent.
+
+The single authorized pre/semantics outer-runner reconstruction passed every frozen identity gate:
+
+    source: 194 lines / 14491 bytes / 6B24A6F2...CE124
+    static parser errors: 0
+    complete arguments: 38599 chars / 53D27DD1...498753
+    expected stdout: 170 bytes / E9AF80CB...8F29
+
+The first `System.Diagnostics.Process.Start()` call then threw `System.ComponentModel.Win32Exception` with `The filename or extension is too long` before creating the PowerShell process. Accurate counts are one source reconstruction, one start attempt, zero runner processes, zero child processes, zero evidence creations and zero retries. PID, exit code, stdout and stderr are unavailable because no process was created.
+
+No shorter command, temporary `.ps1`, alternate runtime, source change, fallback or retry was used. All historical machine files remain unchanged and all six future paths remain absent. Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_16.md`.
+
+Current status is `AMENDMENT_5G_B_1_1_1_1_2_PRE_RUNNER_START_STOPPED_HARD_FAILURE_16`. Independent review and a new package-bound Amendment are required before any transport change or new attempt. Semantics, post-sync, final verifier, synthetic, real validator, formal preflight and official/Gold operations remain locked.
