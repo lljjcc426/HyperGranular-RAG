@@ -986,3 +986,15 @@ No source hash mismatch was observed. Python hash equality, PowerShell line/byte
 The frozen wrapper was not part of the failed command. Wrapper invocations and Python processes remained 0. The machine evidence and narrative audit remained absent, and no synthetic, real validator, direct-child, helper, preflight, official input, token, capture or downstream action occurred.
 
 Full evidence is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_12.md`. Current status is `AMENDMENT_5G_B_1_1_SOURCE_HASH_VERIFICATION_STOPPED_HARD_FAILURE_12`; recovery requires a new package-bound approval.
+
+## Stage4B-U1-D Amendment 5G-B.1.1.1 Reproducibility Boundary
+
+The accepted review is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_12_REVIEW_1.md`. It confirms a Windows PowerShell 5.1 API compatibility failure before wrapper execution and explicitly does not classify the failure as source drift.
+
+The recovery Request and Manifest freeze a complete source verifier as 59 LF-joined lines with no trailing newline, 3,512 UTF-8 bytes and SHA-256 `1A30DC70AD0C01CDACBC3279F1CFD707EA4DAB457BE9C6C30A5C6D6495FA81BF`. Its runtime is exactly Windows PowerShell 5.1 Desktop; `pwsh.exe` is rejected. SHA formatting uses `System.Security.Cryptography.SHA256`, `System.BitConverter` and hyphen removal.
+
+The verifier's only readable file is `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_MANIFEST.json`, frozen at 24,248 bytes and SHA-256 `B5953058270B4A8C715D38D5CF92CC65DCB7F90C6149EA1DC5B3E02C14B1A68E`. It checks the unchanged Python 46/2,284/`D0D3D6...`, PowerShell 122/7,890/`DFA95A...`, embedded-byte equality and expected stdout 789/`EDBD46...` gates.
+
+Exact compatible-verifier success stdout is 190 bytes with SHA-256 `D05B3B2A147C51FB3A9FFFC3BEB802439E01AEFC34B708FE14C298978F2BFBB3`. Static PowerShell syntax parsing passed during package assembly, but the verifier was not invoked.
+
+The future versioned evidence paths use the `5g_b_1_1_1` namespace. Both old ungenerated `5g_b_1_1` paths and both new paths must remain absent until a new approval binds the package commit. Current status is `AMENDMENT_5G_B_1_1_1_PACKAGE_AWAITING_APPROVAL`; no execution is authorized.

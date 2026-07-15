@@ -212,6 +212,11 @@
 198. 本失败是 source-verification command 的 runtime compatibility defect，不是已观察到的 source hash mismatch，也不证明 frozen wrapper、内嵌 Python 或真实 precommit validator 有缺陷。不得现场替换 hex conversion 后继续。
 199. Frozen wrapper 未进入失败命令，wrapper invocation 与 Python process 均为 0；machine evidence、narrative audit、synthetic、真实 validator、fresh direct-child、helper、preflight、official input、token 与 capture 均未发生。两个 success-only evidence 路径仍不存在。
 200. 当前状态为 `AMENDMENT_5G_B_1_1_SOURCE_HASH_VERIFICATION_STOPPED_HARD_FAILURE_12`。当前批准不得复用；source verification retry、semantics wrapper 及全部后续动作必须等待新的独立审核和 package-bound recovery Amendment。
+201. Hard Failure 12 独立审核已接受审计，确认 approval-governance gate 通过、失败发生在 wrapper 前、未观察到 source hash mismatch；直接原因为 Windows PowerShell 5.1 不提供 `System.Convert.ToHexString`。checkpoint `8002dac6fa37e0009f0e0bc78858b467bbff675e` 继续冻结。
+202. Amendment 5G-B.1.1.1 仅为 source-verification compatibility recovery 审批包；新增兼容 verifier 冻结为 Windows PowerShell 5.1 Desktop、59 行、3,512 bytes、SHA-256 `1A30DC70AD0C01CDACBC3279F1CFD707EA4DAB457BE9C6C30A5C6D6495FA81BF`，使用 SHA256 + BitConverter，不得使用 `Convert.ToHexString` 或 `pwsh.exe`。
+203. 兼容 verifier 仅可读取旧 5G-B.1.1 Manifest，其冻结身份为 24,248 bytes、SHA-256 `B5953058270B4A8C715D38D5CF92CC65DCB7F90C6149EA1DC5B3E02C14B1A68E`；成功 stdout 冻结为 190 bytes、SHA-256 `D05B3B2A147C51FB3A9FFFC3BEB802439E01AEFC34B708FE14C298978F2BFBB3`。
+204. 原 PowerShell semantics wrapper 122 行/7,890 bytes/`DFA95A...`、embedded Python 46 行/2,284 bytes/`D0D3D6...`、789-byte expected stdout/`EDBD46...` 与 real precommit validator 195 行/15,966 bytes/`0F0663...` 全部保持冻结，本 recovery package 不得修改或执行它们。
+205. 当前状态为 `AMENDMENT_5G_B_1_1_1_PACKAGE_AWAITING_APPROVAL`。本 package 只新增 Review/Request/Manifest 并同步治理文档，不授权 compatible verifier、semantics wrapper、Python、evidence、synthetic、real validator、fresh direct-child、helper、preflight、official input、token、capture、controller、verifier 或 Gold；未来批准必须显式绑定本 package commit。
 
 ## GitHub 与文档
 

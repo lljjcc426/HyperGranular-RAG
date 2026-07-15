@@ -1114,3 +1114,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The frozen wrapper was not invoked; Python processes, synthetic runs, real-validator calls, evidence paths, preflight, official access, token and capture all remained zero.
 - Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_12.md`.
 - Current status: `AMENDMENT_5G_B_1_1_SOURCE_HASH_VERIFICATION_STOPPED_HARD_FAILURE_12`. Source verification and semantics execution require a new independent review and package-bound recovery Amendment.
+
+### Stage4B-U1-D Hard Failure 12 Review And Amendment 5G-B.1.1.1 Package
+
+- Independent review accepts Hard Failure 12 and confirms that approval governance passed, the failure occurred before wrapper execution and no source hash mismatch was observed.
+- Review: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_12_REVIEW_1.md`.
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_MANIFEST.json`.
+- The recovery verifier is frozen for Windows PowerShell 5.1 Desktop at 59 lines, 3,512 bytes and SHA-256 `1A30DC70AD0C01CDACBC3279F1CFD707EA4DAB457BE9C6C30A5C6D6495FA81BF`.
+- It may read only the prior 24,248-byte 5G-B.1.1 Manifest with SHA-256 `B5953058270B4A8C715D38D5CF92CC65DCB7F90C6149EA1DC5B3E02C14B1A68E`; its exact success stdout is 190 bytes with SHA-256 `D05B3B2A147C51FB3A9FFFC3BEB802439E01AEFC34B708FE14C298978F2BFBB3`.
+- The original semantics wrapper, embedded Python, fixtures, 789-byte output and real precommit validator remain unchanged and unexecuted.
+- Current status: `AMENDMENT_5G_B_1_1_1_PACKAGE_AWAITING_APPROVAL`. The package itself authorizes no source verification, wrapper, Python process, evidence or official execution.

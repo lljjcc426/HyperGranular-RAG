@@ -1,0 +1,249 @@
+{
+  "schema_version": "1.0",
+  "request_id": "STAGE4B_U1_D_PREGOLD_AMENDMENT_5G_B_1_1_1",
+  "assembled_date": "2026-07-15",
+  "package_status": "AWAITING_AMENDMENT_5G_B_1_1_1_APPROVAL",
+  "requested_mode": "WINDOWS_POWERSHELL_5_1_SOURCE_VERIFICATION_RECOVERY_AND_FROZEN_SEMANTICS_HARNESS_ONLY",
+  "package_authorizes_implementation_or_execution": false,
+  "approval_must_bind_package_commit": true,
+  "current_state": [
+    "HARD_FAILURE_12_AUDIT_ACCEPTED",
+    "HARD_FAILURE_12_CHECKPOINT_FROZEN",
+    "APPROVAL_GOVERNANCE_GATE_PASSED",
+    "SOURCE_VERIFICATION_ATTEMPT_CONSUMED",
+    "WRAPPER_NOT_STARTED",
+    "PYTHON_NOT_STARTED",
+    "WINDOWS_POWERSHELL_5_1_HEX_API_COMPATIBILITY_FAILURE",
+    "NO_SOURCE_HASH_MISMATCH_OBSERVED",
+    "RETURN_FOR_AMENDMENT_5G_B_1_1_1_PACKAGE",
+    "CURRENT_5G_B_1_1_APPROVAL_CONSUMED",
+    "SOURCE_VERIFICATION_RETRY_NOT_APPROVED",
+    "VALIDATOR_SEMANTICS_WRAPPER_NOT_APPROVED",
+    "FORMAL_PREFLIGHT_NOT_APPROVED",
+    "OFFICIAL_INPUT_ACCESS_NOT_APPROVED",
+    "AUTHORIZATION_TOKEN_USE_NOT_APPROVED",
+    "OFFICIAL_CAPTURE_NOT_APPROVED",
+    "CONTROLLER_RERUN_NOT_APPROVED",
+    "VERIFIER_NOT_APPROVED",
+    "GOLD_NOT_APPROVED"
+  ],
+  "package_files": {
+    "request": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_APPROVAL_REQUEST.md",
+      "bytes": 9187,
+      "sha256": "A79D1851599394853DE38413DD63002C98CBB18EB5EB2BE8D86F21D3803D79E8"
+    },
+    "manifest": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_MANIFEST.json",
+    "hard_failure_12_review_1": {
+      "path": "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_12_REVIEW_1.md",
+      "bytes": 4165,
+      "sha256": "F1A235EE95ADC8EC2AE398E85789CE5D8A892FB2D491D22B91B6837D103EF17A"
+    },
+    "future_approval_decision": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_APPROVAL_DECISION.md"
+  },
+  "binding_commits": {
+    "amendment_5g_b_1_1_package": "c4101cfafbc08d518cd4b56e5d199f9d5937294b",
+    "amendment_5g_b_1_1_approval_governance": "e18dcb13b64e8a50d764fc9eacbabcdea7c5393f",
+    "hard_failure_12_checkpoint": "8002dac6fa37e0009f0e0bc78858b467bbff675e",
+    "hard_failure_11_checkpoint": "d2aadb2f03f4388d71ddf70fcfb116c92fe4b008",
+    "frozen_semantics_implementation": "48a9c1438166eaf895104358b2d8cd8c9b043020"
+  },
+  "frozen_prior_manifest": {
+    "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_MANIFEST.json",
+    "absolute_path": "E:\\科研\\HyperGranular-RAG\\docs\\STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_MANIFEST.json",
+    "bytes": 24248,
+    "sha256": "B5953058270B4A8C715D38D5CF92CC65DCB7F90C6149EA1DC5B3E02C14B1A68E",
+    "only_runtime_read_allowed": true
+  },
+  "frozen_unchanged_artifacts": {
+    "powershell_semantics_wrapper": {
+      "lines": 122,
+      "bytes": 7890,
+      "sha256": "DFA95A904CE371F283B8DBA8BB4D98CC048F345F536C0E7D0D6DB8073DF9E16C",
+      "modification_allowed": false
+    },
+    "embedded_python": {
+      "lines": 46,
+      "bytes": 2284,
+      "sha256": "D0D3D6FC37AD0C2649A7A7F88EFA944C357033E3F0E956BE0E27C4374653D602",
+      "modification_allowed": false
+    },
+    "expected_wrapper_stdout": {
+      "bytes": 789,
+      "sha256": "EDBD4614B790256E314F4A8963128A5FB5A190FAC197437FB349D4C33C606135",
+      "modification_allowed": false
+    },
+    "real_precommit_validator": {
+      "lines": 195,
+      "bytes": 15966,
+      "sha256": "0F066387B8523B0EA387444076A1113913082D283C28C2DE3FFB33872D558249",
+      "modification_allowed": false,
+      "execution_requested": false
+    }
+  },
+  "compatible_source_verifier": {
+    "runtime": {
+      "executable": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "ps_edition": "Desktop",
+      "major": 5,
+      "minor": 1,
+      "pwsh_allowed": false
+    },
+    "join_source_lines_with": "LF",
+    "trailing_newline": false,
+    "source_lines_count": 59,
+    "source_bytes": 3512,
+    "source_sha256": "1A30DC70AD0C01CDACBC3279F1CFD707EA4DAB457BE9C6C30A5C6D6495FA81BF",
+    "source_lines": [
+      "Set-StrictMode -Version Latest",
+      "$ErrorActionPreference = 'Stop'",
+      "if (",
+      "    $PSVersionTable.PSEdition -cne 'Desktop' -or",
+      "    $PSVersionTable.PSVersion.Major -ne 5 -or",
+      "    $PSVersionTable.PSVersion.Minor -ne 1",
+      ") {",
+      "    throw 'Windows PowerShell 5.1 runtime required'",
+      "}",
+      "$ManifestPath = 'E:\\科研\\HyperGranular-RAG\\docs\\STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_MANIFEST.json'",
+      "$ExpectedManifestBytes = 24248",
+      "$ExpectedManifestSha256 = 'B5953058270B4A8C715D38D5CF92CC65DCB7F90C6149EA1DC5B3E02C14B1A68E'",
+      "$Utf8 = [System.Text.UTF8Encoding]::new($false, $true)",
+      "function Get-Sha256Hex([byte[]]$Bytes) {",
+      "    $sha256 = [System.Security.Cryptography.SHA256]::Create()",
+      "    try {",
+      "        $digest = $sha256.ComputeHash($Bytes)",
+      "        return ([System.BitConverter]::ToString($digest)).Replace('-', '')",
+      "    }",
+      "    finally {",
+      "        $sha256.Dispose()",
+      "    }",
+      "}",
+      "function Assert-FrozenSource {",
+      "    param(",
+      "        [object[]]$Lines,",
+      "        [int]$ExpectedLines,",
+      "        [int]$ExpectedBytes,",
+      "        [string]$ExpectedSha256,",
+      "        [string]$Label,",
+      "        [System.Text.Encoding]$Encoding",
+      "    )",
+      "    if ($Lines.Count -ne $ExpectedLines) { throw ($Label + ' line count mismatch') }",
+      "    $source = [string]::Join(\"`n\", [string[]]$Lines)",
+      "    $bytes = $Encoding.GetBytes($source)",
+      "    if ($bytes.Length -ne $ExpectedBytes) { throw ($Label + ' byte count mismatch') }",
+      "    if ((Get-Sha256Hex $bytes) -cne $ExpectedSha256) { throw ($Label + ' SHA-256 mismatch') }",
+      "    return $source",
+      "}",
+      "if (-not [System.IO.File]::Exists($ManifestPath)) { throw 'Frozen Manifest is missing' }",
+      "$manifestBytes = [System.IO.File]::ReadAllBytes($ManifestPath)",
+      "if ($manifestBytes.Length -ne $ExpectedManifestBytes) { throw 'Frozen Manifest byte count mismatch' }",
+      "if ((Get-Sha256Hex $manifestBytes) -cne $ExpectedManifestSha256) { throw 'Frozen Manifest SHA-256 mismatch' }",
+      "$manifestText = $Utf8.GetString($manifestBytes)",
+      "$manifest = ConvertFrom-Json -InputObject $manifestText",
+      "$pythonLines = @($manifest.semantics_harness.embedded_python.source_lines)",
+      "$powershellLines = @($manifest.semantics_harness.powershell_wrapper.source_lines)",
+      "$pythonSource = Assert-FrozenSource -Lines $pythonLines -ExpectedLines 46 -ExpectedBytes 2284 -ExpectedSha256 'D0D3D6FC37AD0C2649A7A7F88EFA944C357033E3F0E956BE0E27C4374653D602' -Label 'Python source' -Encoding $Utf8",
+      "$powershellSource = Assert-FrozenSource -Lines $powershellLines -ExpectedLines 122 -ExpectedBytes 7890 -ExpectedSha256 'DFA95A904CE371F283B8DBA8BB4D98CC048F345F536C0E7D0D6DB8073DF9E16C' -Label 'PowerShell source' -Encoding $Utf8",
+      "$embeddedBlock = '$PythonSource = @''' + \"`n\" + $pythonSource + \"`n'@\"",
+      "$firstEmbedded = $powershellSource.IndexOf($embeddedBlock, [System.StringComparison]::Ordinal)",
+      "$lastEmbedded = $powershellSource.LastIndexOf($embeddedBlock, [System.StringComparison]::Ordinal)",
+      "if ($firstEmbedded -lt 0 -or $firstEmbedded -ne $lastEmbedded) { throw 'Embedded Python byte equality failed' }",
+      "$expectedStdout = [string]$manifest.semantics_harness.powershell_wrapper.expected_stdout",
+      "$expectedStdoutBytes = $Utf8.GetBytes($expectedStdout)",
+      "if ($expectedStdoutBytes.Length -ne 789) { throw 'Expected stdout byte count mismatch' }",
+      "if ((Get-Sha256Hex $expectedStdoutBytes) -cne 'EDBD4614B790256E314F4A8963128A5FB5A190FAC197437FB349D4C33C606135') { throw 'Expected stdout SHA-256 mismatch' }",
+      "$output = '{\"status\":\"SOURCE_VERIFICATION_PASSED\",\"powershell_lines\":122,\"powershell_bytes\":7890,\"python_lines\":46,\"python_bytes\":2284,\"embedded_python_byte_identical\":true,\"expected_stdout_bytes\":789}'",
+      "[Console]::Out.Write($output)"
+    ],
+    "expected_stdout": "{\"status\":\"SOURCE_VERIFICATION_PASSED\",\"powershell_lines\":122,\"powershell_bytes\":7890,\"python_lines\":46,\"python_bytes\":2284,\"embedded_python_byte_identical\":true,\"expected_stdout_bytes\":789}",
+    "expected_stdout_bytes": 190,
+    "expected_stdout_sha256": "D05B3B2A147C51FB3A9FFFC3BEB802439E01AEFC34B708FE14C298978F2BFBB3",
+    "expected_stderr_bytes": 0,
+    "expected_exit_code": 0,
+    "invocations_requested_after_future_approval": 1,
+    "filesystem_read_allowlist": [
+      "E:\\科研\\HyperGranular-RAG\\docs\\STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_MANIFEST.json"
+    ],
+    "project_helper_calls": 0,
+    "official_path_access": 0
+  },
+  "future_approval_governance": {
+    "required_before_execution": true,
+    "allowed_changed_paths_exact_set": [
+      "AGENTS.md",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_APPROVAL_DECISION.md"
+    ],
+    "must_be_direct_child_of_package_commit": true,
+    "must_be_committed_pushed_and_three_way_synchronized": true,
+    "clean_worktree_required": true
+  },
+  "fresh_output_paths": {
+    "machine_evidence": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_validator_semantics.json",
+    "narrative_audit": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_VALIDATOR_SEMANTICS_AUDIT.md",
+    "old_5g_b_1_1_paths_must_remain_absent": [
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_validator_semantics.json",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_VALIDATOR_SEMANTICS_AUDIT.md"
+    ],
+    "all_four_paths_must_be_absent_before_execution": true,
+    "exclusive_create_required": true,
+    "future_commit_changed_paths_exact_set": [
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_VALIDATOR_SEMANTICS_AUDIT.md",
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_validator_semantics.json"
+    ],
+    "future_commit_must_be_direct_child_of_approval_governance": true,
+    "push_three_way_sync_clean_and_stop": true
+  },
+  "future_execution_limits": {
+    "approval_governance_commits": 1,
+    "compatible_source_verifier_invocations": 1,
+    "semantics_wrapper_invocations": 1,
+    "python_processes": 1,
+    "semantics_evidence_commits": 1,
+    "complete_synthetic_runs": 0,
+    "real_precommit_validator_invocations": 0,
+    "fresh_three_path_direct_child_commits": 0,
+    "derived_execution_head_helper_calls": 0,
+    "formal_preflight_invocations": 0,
+    "official_input_access": 0,
+    "authorization_token_uses": 0,
+    "official_capture_invocations": 0,
+    "automatic_retry": false
+  },
+  "required_future_order": [
+    "package-bound approval governance commit and push",
+    "three-way synchronization clean-worktree and four-path absence verification",
+    "reconstruct and hash-check the compatible source verifier without executing it",
+    "invoke the compatible source verifier exactly once under Windows PowerShell 5.1 Desktop",
+    "require exact source-verifier stdout empty stderr and exit zero",
+    "only then reconstruct and invoke the unchanged semantics wrapper exactly once with one Python process",
+    "require nine of nine exact 789-byte semantics success and all zero-access counters",
+    "exclusive-create the two new versioned semantics evidence paths",
+    "one exact-two-path direct-child commit and push",
+    "three-way synchronization clean-worktree verification and immediate stop"
+  ],
+  "explicitly_not_authorized": [
+    "execute the compatible source verifier or semantics wrapper before a package-bound approval",
+    "reuse the consumed 5G-B.1.1 approval or its ungenerated output paths",
+    "modify the frozen PowerShell wrapper embedded Python expected stdout or real precommit validator",
+    "modify scripts tests results historical failures or historical 5G-B artifacts during package assembly",
+    "run complete synthetic rebinding real precommit validator fresh three-path direct-child or execution-head helper",
+    "run formal preflight typed or path helper official call official input token capture controller verifier evaluator or Gold",
+    "access rankings policy source audit 5C-B inventory reservation or Stage3B",
+    "retry repair reset rebase force-push or automatically continue after evidence commit"
+  ],
+  "requested_completion_state": [
+    "AMENDMENT_5G_B_1_1_1_VALIDATOR_SEMANTICS_VERIFIED_AWAITING_REVIEW",
+    "HARD_FAILURE_12_AUDIT_ACCEPTED",
+    "REAL_PRECOMMIT_VALIDATOR_REMAINS_FROZEN",
+    "FRESH_SYNTHETIC_REBINDING_NOT_APPROVED",
+    "FRESH_THREE_PATH_DIRECT_CHILD_NOT_APPROVED",
+    "DERIVED_EXECUTION_HEAD_VALIDATION_NOT_APPROVED",
+    "FORMAL_PREFLIGHT_NOT_APPROVED",
+    "OFFICIAL_INPUT_ACCESS_NOT_APPROVED",
+    "AUTHORIZATION_TOKEN_USE_NOT_APPROVED",
+    "OFFICIAL_CAPTURE_NOT_APPROVED",
+    "CONTROLLER_RERUN_NOT_APPROVED",
+    "VERIFIER_NOT_APPROVED",
+    "GOLD_NOT_APPROVED"
+  ]
+}
