@@ -6,14 +6,16 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Hard Failure 14 审计已接受；raw-stream diagnostic package 等待独立审批 |
-| 获批执行协议 | 无；corrected 5G-B.1.1.1.1 授权已消费，新 package 本身不授权执行 |
-| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_1_APPROVAL_REQUEST.md` 与 Manifest |
-| 协议状态 | `AMENDMENT_5G_B_1_1_1_1_1_RAW_STREAM_DIAGNOSTIC_PACKAGE_AWAITING_APPROVAL` |
+| 当前阶段 | Hard Failure 15；raw-stream diagnostic 在 launcher stderr 硬门停止 |
+| 获批执行协议 | 已消费；禁止重跑、修复、替换或进入下游 |
+| 设计文件 | `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_15.md` 与已冻结 5G-B.1.1.1.1.1 package |
+| 协议状态 | `AMENDMENT_5G_B_1_1_1_1_1_RAW_STREAM_DIAGNOSTIC_STOPPED_HARD_FAILURE_15` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
 | 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
+
+Amendment 5G-B.1.1.1.1.1 approval governance 已作为 package `d6d8a76...` 的精确两路径直接子提交 `ee84988...` 推送。唯一 launcher 静态重建全部通过，唯一 launcher 及唯一原 pre verifier 均已运行；launcher exit 0、stdout 为冻结的 exact 122 bytes，但 launcher stderr 为 382 bytes，违反必须为空的硬门并形成 Hard Failure 15。三条 machine 文件已在失败前以 `CreateNew` 保存并原样保留，获批 narrative 未创建，四条 semantics 路径仍不存在。原授权已消费，没有重试或下游执行；完整审计见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_15.md`。
 
 Corrected package 获批后，approval governance 已按精确两路径提交推送。74 行 pre-execution verifier 的 source/transport 指纹全部通过，并启动唯一一次获批进程；该进程 exit code 为 0，但外层 stderr 必须为空的硬门失败。由于 stdout/stderr 仅在内存捕获且命令在摘要输出前停止，exact stderr 内容和 stdout 指纹不可恢复，不能把 exit 0 解释为同步验证通过。没有重试；bootstrap、harness、wrapper、Python、evidence 和 post verifier 均未启动。完整审计见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_14.md`。
 

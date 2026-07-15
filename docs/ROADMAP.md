@@ -1198,3 +1198,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - A future approved launcher would concurrently drain the unchanged original verifier's raw stdout/stderr streams, persist both with `FileMode.CreateNew` before comparison, then persist value-free metadata. Internal Git-child count remains unconfirmed pending independent review.
 - The four diagnostic evidence paths are new and the four semantics paths must remain absent. Bootstrap, semantics, post verifier, synthetic and all official operations remain unauthorized.
 - Current status: `AMENDMENT_5G_B_1_1_1_1_1_RAW_STREAM_DIAGNOSTIC_PACKAGE_AWAITING_APPROVAL`.
+
+### Stage4B-U1-D Pre-Gold Hard Failure 15
+
+- Package `d6d8a76abcb903b74307ed68f5ceabc42d8be8e3` received package-bound approval, and exact-two-path approval governance was committed and pushed at `ee84988fa6ccf5e7f3524bc2c2a5f94065abf918`.
+- The single static launcher reconstruction passed every frozen Manifest, source, parser, UTF-16LE/Base64, complete-arguments and fixed-stdout fingerprint.
+- Exactly one launcher process started exactly one unchanged original pre verifier. The launcher returned exit code 0 and exact frozen 122-byte stdout, but its stderr contained 382 bytes with SHA-256 `4F2B6B3ED9201CA459DB2DD042E0A137C4E58BFE8E15A068E45AD8535FA5B1EF`; the empty-stderr hard gate failed.
+- The frozen launcher had already created raw stdout, raw stderr and value-free metadata. Their byte counts are 122, 382 and 944; their SHA-256 values are `BCDF0010...C0F09`, `4F2B6B3E...5B1EF` and `F4022C8B...B101B`. All three are preserved byte-for-byte.
+- The approved narrative success audit was not created. All four semantics paths remain absent; no success evidence commit, retry, bootstrap, semantics, post verifier, synthetic, real validator or official action occurred.
+- Metadata keeps the internal Git-child count null/unconfirmed and accepted three-way synchronization successes at zero. No raw payload interpretation or synchronization acceptance is made.
+- Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_15.md`.
+- Current status: `AMENDMENT_5G_B_1_1_1_1_1_RAW_STREAM_DIAGNOSTIC_STOPPED_HARD_FAILURE_15`. Independent review and a new package-bound Amendment are required for any further action.

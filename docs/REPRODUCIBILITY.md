@@ -1088,3 +1088,31 @@ The proposed narrative path is:
     docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_14_PRE_SYNC_DIAGNOSTIC_AUDIT.md
 
 Package assembly invoked neither the launcher nor the original verifier and created none of these paths. The package does not authorize execution. Current status is `AMENDMENT_5G_B_1_1_1_1_1_RAW_STREAM_DIAGNOSTIC_PACKAGE_AWAITING_APPROVAL`; bootstrap, semantics, post verifier and all official operations remain locked.
+
+## Stage4B-U1-D Pre-Gold Hard Failure 15
+
+Package `d6d8a76abcb903b74307ed68f5ceabc42d8be8e3` received package-bound approval. Approval-governance commit `ee84988fa6ccf5e7f3524bc2c2a5f94065abf918` is its exact two-path direct child and was pushed before execution.
+
+The host reconstructed the frozen launcher exactly once. Its 161-line source, 9,684 UTF-8 bytes, source SHA-256, static parse, UTF-16LE/Base64 transport, complete arguments and expected 122-byte stdout all matched the package Manifest. Exactly one launcher process was then started, and it started exactly one unchanged original pre verifier.
+
+The launcher exit code was zero and its stdout was the exact frozen 122 bytes with SHA-256 `4B7803B9C64F467F42356292B015BE1866156F2F22111E6393B913B1CEF8B80C`. Its stderr was not empty: 382 bytes, SHA-256 `4F2B6B3ED9201CA459DB2DD042E0A137C4E58BFE8E15A068E45AD8535FA5B1EF`. The empty-stderr hard gate therefore failed and consumed the authorization.
+
+Before that outer gate, the frozen launcher exclusive-created and persisted:
+
+    results/stage4b_u1_d_pregold_hard_failure_14_pre_sync_stdout.bin
+      bytes: 122
+      SHA-256: BCDF0010147E5952AD0372ADF39EDA0A18D349B02107C340DEF05BAFE18C0F09
+
+    results/stage4b_u1_d_pregold_hard_failure_14_pre_sync_stderr.bin
+      bytes: 382
+      SHA-256: 4F2B6B3ED9201CA459DB2DD042E0A137C4E58BFE8E15A068E45AD8535FA5B1EF
+
+    results/stage4b_u1_d_pregold_hard_failure_14_pre_sync_diagnostic.json
+      bytes: 944
+      SHA-256: F4022C8B4DF507D9A63085698B846358FF6D33F2A67B55B0C54EB871E8EB101B
+
+These files are preserved byte-for-byte. The approved narrative success audit was not created. Metadata records one original pre-verifier process with exit zero, exact stdout true, stderr empty false, internal Git-child count null/unconfirmed, accepted three-way synchronization successes zero and all downstream counts zero.
+
+No raw payload was decoded or interpreted for the failure checkpoint. No retry, repair, replacement, bootstrap, semantics process, success evidence commit, post verifier, synthetic run, real validator, formal preflight or official operation occurred. Full audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_15.md`.
+
+Current status is `AMENDMENT_5G_B_1_1_1_1_1_RAW_STREAM_DIAGNOSTIC_STOPPED_HARD_FAILURE_15`. Any further diagnostic or recovery action requires independent review and a new package-bound Amendment.
