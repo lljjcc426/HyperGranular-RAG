@@ -167,6 +167,11 @@
 153. 5G-A.1 精确两文件修复已完成；source-only inventory 唯一一次通过，扫描 6 个测试文件、246 个 test definitions，135/135 required suffix 精确唯一，测试 import/execution 为 0。Execution-head 定向测试唯一一次运行通过 41/41、零 failure/error/skip。
 154. 最终 tracked bytes 自本条起冻结。仅当后续两次 complete runner 均精确 246/246、41 execution-head、44 typed-policy、全部访问/调用计数为 0，且 tracked digest 与 evidence bytes 完全一致时，状态才可记为 `AMENDMENT_5G_A_1_SYNTHETICALLY_VERIFIED`；否则必须记录新的 Hard Failure。
 155. 正式 evidence `results/stage4b_u1_d_pregold_amendment_5g_a_synthetic_verification.json` 与 recovery audit 是最终状态 authority。Evidence 提交推送后必须停止等待独立审核，不得组装 5G-B。
+156. 5G-A.1 implementation/evidence 独立审核已接受提交 `c21f3f58b2b1d4ccf235daba9c85937daedf4e3b`，当前只授权组装并推送 5G-B Request/Manifest，不授权运行其中任何步骤。
+157. 5G-B package 必须冻结：未来 approval governance 只改 `AGENTS.md` 与 5G-B approval decision；其唯一 rebinding/governance direct-child 只新增 Manifest 登记的三项 evidence/binding/audit，且该提交的直接 parent 必须是 approval governance commit。
+158. Future execution HEAD 禁止预先手抄字面量。只有 package-bound 批准、两轮 246/246 post-approval rebinding 及三路径 direct-child 提交推送后，才能从实际 local/origin/GitHub HEAD、parent、changed paths、ancestors、clean worktree 与 committed governance binding 推导，并通过冻结 helper 单次验证。
+159. 只有 derived execution-HEAD validation 通过后才可依次运行一次 A/B/C/D formal preflight；只有全部门通过后才可运行一次 Manifest 中完全不变的 32-element decisions-only capture。任一失败立即停止，不得重试。
+160. 当前状态为 `AMENDMENT_5G_B_AWAITING_APPROVAL`。新的 package-bound 批准前，post-approval rebinding、real execution-head check、preflight、helper official call、official input、token、capture、controller、verifier 与 Gold 全部锁定。
 
 ## GitHub 与文档
 

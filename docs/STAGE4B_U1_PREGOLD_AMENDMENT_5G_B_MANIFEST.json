@@ -1,0 +1,470 @@
+{
+  "schema_version": "1.0",
+  "request_id": "STAGE4B_U1_D_PREGOLD_AMENDMENT_5G_B_DERIVED_EXECUTION_HEAD_BOUND_SINGLE_PREFLIGHT_AND_OFFICIAL_DECISIONS_ONLY_DIAGNOSTIC",
+  "assembled_date": "2026-07-15",
+  "package_status": "AWAITING_AMENDMENT_5G_B_APPROVAL",
+  "current_state": [
+    "AMENDMENT_5G_A_1_IMPLEMENTATION_AND_EVIDENCE_ACCEPTED",
+    "AMENDMENT_5G_B_PACKAGE_ASSEMBLY_ALLOWED",
+    "HARD_FAILURE_9_DIRECT_CAUSE_CONFIRMED",
+    "HARD_FAILURE_8_DIRECT_CAUSE_CONFIRMED",
+    "HARD_FAILURE_4_DIAGNOSIS_INCOMPLETE",
+    "POST_APPROVAL_REBINDING_NOT_APPROVED",
+    "REAL_EXECUTION_HEAD_CHECK_NOT_APPROVED",
+    "SECOND_FORMAL_PREFLIGHT_NOT_APPROVED",
+    "OFFICIAL_INPUT_ACCESS_NOT_APPROVED",
+    "AUTHORIZATION_TOKEN_USE_NOT_APPROVED",
+    "OFFICIAL_CAPTURE_NOT_APPROVED",
+    "CONTROLLER_RERUN_NOT_APPROVED",
+    "VERIFIER_NOT_APPROVED",
+    "GOLD_NOT_APPROVED"
+  ],
+  "requested_mode": "PACKAGE_BOUND_APPROVAL_THEN_DERIVED_EXECUTION_HEAD_BOUND_SINGLE_PREFLIGHT_AND_SINGLE_UNCHANGED_OFFICIAL_DECISIONS_ONLY_DIAGNOSTIC",
+  "approval_must_also_bind_package_commit": true,
+  "package_authorizes_any_execution": false,
+  "package_files": {
+    "request": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md",
+      "bytes": 10316,
+      "sha256": "7EC6120EF92967D3B882723D97A723B3C580D24042E503089A3CC9667CD73ED6"
+    },
+    "manifest": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_MANIFEST.json",
+    "future_approval_decision": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_APPROVAL_DECISION.md"
+  },
+  "binding_commits": {
+    "amendment_5g_a_1_package": "d02b19dfd5a527d0159b930662f5a868c8235d35",
+    "amendment_5g_a_1_approval_governance": "3d818cee86e1faca16c2bdab3baf4fd5411cff75",
+    "amendment_5g_a_1_implementation_and_evidence": "c21f3f58b2b1d4ccf235daba9c85937daedf4e3b",
+    "hard_failure_9": "d1c7cf9d78563e30a1e0fe0d6812b36d15b95a9a",
+    "hard_failure_8": "0f35ec895c756348e8a10803c6dd961a37344fb0",
+    "amendment_5f_b_rebinding_and_governance": "052e8ecc04f566b75666d5cc96df74d2ed5061e4",
+    "amendment_5f_b_approval_governance": "84d39707dee15729dc0c35c85a16f4e31dac89e4",
+    "amendment_5f_b_package": "f33ee70233ea4098b2d7a17cfde3d266081ee693",
+    "hard_failure_4": "b21852a174b537c90a848699deb4d26d6f169506",
+    "v2_3_1_implementation": "34349c70ee24b8240fd169393134d4280968b790"
+  },
+  "amendment_5g_a_1_review": {
+    "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_REVIEW_1.md",
+    "bytes": 5013,
+    "sha256": "424FD678048A8867D27950E0B3BB527EF914395613EB9B18D60C669F9E7D0D82",
+    "decision": "ACCEPT_AMENDMENT_5G_A_1_IMPLEMENTATION_AND_SYNTHETIC_EVIDENCE",
+    "next_authorization": "AUTHORIZE_AMENDMENT_5G_B_PACKAGE_ASSEMBLY_ONLY"
+  },
+  "accepted_5g_a_1_governance_and_audit": {
+    "request": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_APPROVAL_REQUEST.md",
+      "bytes": 8156,
+      "sha256": "D3D57B7C5B1C9BDEFAF8DEA5F2FEE3FCDAB86EE80AFD0172CB08ECBC41806795"
+    },
+    "manifest": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_MANIFEST.json",
+      "bytes": 9619,
+      "sha256": "9F3A09446F5AA40A8A6D0815DB8A23D74212DE88E46EBB2A364E6A4ADC4AE78F"
+    },
+    "approval_decision": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_APPROVAL_DECISION.md",
+      "bytes": 5614,
+      "sha256": "985050EC000756CD53B1619C2C99B919D1F6BF4518010814A2ED25CEAC249F90"
+    },
+    "implementation_audit": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_IMPLEMENTATION_AUDIT.md",
+      "bytes": 10400,
+      "sha256": "12B01BC868A9676D681F41F99BA90CE6BBC34F57768C2E622B8C642CFD523718"
+    }
+  },
+  "accepted_5g_a_1_implementation_and_evidence": {
+    "execution_head_helper": {
+      "path": "scripts/stage4b_u1_preflight_execution_head_binding.py",
+      "bytes": 6318,
+      "sha256": "517C5C4DB22A82B4CBCA3D8BB751AAE60C0DCC5B5948CC8419D8770A9CC3D174"
+    },
+    "deterministic_runner": {
+      "path": "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py",
+      "bytes": 22416,
+      "sha256": "83816A962EDC8F06B53B5826E3F7519BD72D2CA0DF91C46751A9B12215867F28"
+    },
+    "execution_head_tests": {
+      "path": "tests/test_stage4b_u1_preflight_execution_head_binding.py",
+      "bytes": 11580,
+      "sha256": "EA39A9ECEBA36FE2BAA108B2C4B1C98981C8A5E3FE241F59F22F5D49458E02B8"
+    },
+    "deterministic_evidence": {
+      "path": "results/stage4b_u1_d_pregold_amendment_5g_a_synthetic_verification.json",
+      "bytes": 69144,
+      "sha256": "A6285498FCFE767297D7156B87CA6034A993B2DFBB167EF7DFA813E9ADD55292",
+      "tests": 246,
+      "execution_head_tests": 41,
+      "typed_policy_tests": 44,
+      "failures_errors_skips": [0, 0, 0],
+      "tracked_file_count": 33,
+      "tracked_byte_digest_sha256": "88338760CE2EC767D7F93279F4F3B82E916B0CBE4882257B8CF9133591EA8AE0",
+      "all_official_helper_preflight_token_capture_counts_zero": true,
+      "byte_identical_complete_runs": true
+    },
+    "historical_evidence_validation": {
+      "historical_agents_path": "AGENTS.md",
+      "historical_agents_commit": "c21f3f58b2b1d4ccf235daba9c85937daedf4e3b",
+      "historical_agents_sha256": "60EEFD995F2939EBC2EEDC606096D537CA814570288F625A23D45158DE014308",
+      "historical_agents_must_be_verified_from_git_blob": true,
+      "current_tree_must_recompute_other_32_evidence_hashes": true,
+      "final_governance_agents_must_not_be_compared_to_historical_hash": true
+    }
+  },
+  "frozen_helpers": {
+    "execution_head_binding": {
+      "path": "scripts/stage4b_u1_preflight_execution_head_binding.py",
+      "bytes": 6318,
+      "sha256": "517C5C4DB22A82B4CBCA3D8BB751AAE60C0DCC5B5948CC8419D8770A9CC3D174",
+      "module": "stage4b_u1_preflight_execution_head_binding",
+      "function": "validate_execution_head_binding",
+      "must_be_hash_verified_before_import": true,
+      "inline_reimplementation_or_fallback_forbidden": true,
+      "pretranscribed_expected_execution_head_forbidden": true
+    },
+    "typed_argument_policy": {
+      "path": "scripts/stage4b_u1_preflight_argument_policy.py",
+      "bytes": 7082,
+      "sha256": "CCDC70D2E66E9D69CD64899676EA5150FEE0381E74F4C9DEED2A0FFB5EE436F4",
+      "module": "stage4b_u1_preflight_argument_policy",
+      "function": "validate_capture_argv",
+      "must_be_hash_verified_before_import": true,
+      "inline_reimplementation_or_fallback_forbidden": true
+    },
+    "path_equivalence": {
+      "path": "scripts/stage4b_u1_preflight_path_equivalence.py",
+      "bytes": 3543,
+      "sha256": "1A17C0E750F91CEF2F638A0B0C6FD381110692E6B2D467C1F5243ADF3F35B3FF",
+      "module": "stage4b_u1_preflight_path_equivalence",
+      "function": "windows_directories_equivalent",
+      "must_be_hash_verified_before_import": true,
+      "inline_reimplementation_or_fallback_forbidden": true,
+      "expected_directory": "C:\\Users\\cc\\AppData\\Local\\Temp",
+      "runtime_directory_source": "System.IO.Path.GetTempPath()",
+      "runtime_value_must_not_be_trimmed_rewritten_or_replaced": true
+    }
+  },
+  "capture_and_comparator": {
+    "capture_path": "scripts/stage4b_u1_capture_diagnostic_decisions.py",
+    "capture_sha256": "7C7B159911384B436FDCC1B20D26F2F545F2DC55EAD1F7B2B134B273110ED40A",
+    "capture_bytes": 20221,
+    "comparator_path": "scripts/stage4b_u1_compare_decisions.py",
+    "comparator_sha256": "42FA3F74679672B0595CC76B519D59C03CB193415DD03F56E37260A961D94014",
+    "comparator_bytes": 12854,
+    "diagnostic_checkpoint": "stage4b_u1_decisions_diag_v2",
+    "raw_byte_equality_is_controlling": true
+  },
+  "future_approval_governance": {
+    "must_be_committed_and_pushed_before_any_rebinding_or_execution": true,
+    "allowed_changed_paths_exact_set": [
+      "AGENTS.md",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_APPROVAL_DECISION.md"
+    ],
+    "approval_must_bind_future_5g_b_package_commit_and_all_manifest_commits": true
+  },
+  "post_approval_synthetic_rebinding": {
+    "must_precede_execution_head_validation_and_formal_preflight": true,
+    "runner": "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py",
+    "runner_sha256": "83816A962EDC8F06B53B5826E3F7519BD72D2CA0DF91C46751A9B12215867F28",
+    "complete_runs": 2,
+    "preliminary_complete_runs": 0,
+    "targeted_runs": 0,
+    "exact_tests_each_run": 246,
+    "exact_execution_head_tests_each_run": 41,
+    "exact_typed_policy_tests_each_run": 44,
+    "failures_errors_skips_each_run": [0, 0, 0],
+    "all_official_helper_preflight_token_capture_counts_each_run": 0,
+    "tracked_files_each_run": 33,
+    "tracked_bytes_identical_required": true,
+    "evidence_byte_identical_required": true,
+    "run_1_output_must_be_unique_os_temp": true,
+    "run_1_output_delete_only_after_complete_equality": true,
+    "run_2_evidence_output": "results/stage4b_u1_d_pregold_amendment_5g_b_synthetic_rebinding.json",
+    "governance_binding_output": "results/stage4b_u1_d_pregold_amendment_5g_b_governance_binding.json",
+    "narrative_audit": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_SYNTHETIC_REBINDING_AUDIT.md",
+    "allowed_rebinding_governance_changed_paths_exact_set": [
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_SYNTHETIC_REBINDING_AUDIT.md",
+      "results/stage4b_u1_d_pregold_amendment_5g_b_governance_binding.json",
+      "results/stage4b_u1_d_pregold_amendment_5g_b_synthetic_rebinding.json"
+    ],
+    "rebinding_governance_commit_must_be_single_direct_child_of_approval_governance": true,
+    "no_other_changed_paths_in_direct_child": true,
+    "automatic_retry": false
+  },
+  "future_governance_binding_contract": {
+    "must_be_read_from_committed_execution_head": true,
+    "worktree_bytes_must_equal_execution_head_blob": true,
+    "required_top_level_fields": [
+      "package_commit",
+      "approval_commit",
+      "artifacts_present",
+      "bound_files"
+    ],
+    "required_artifacts_present": {
+      "rebinding_evidence": true,
+      "governance_binding": true,
+      "rebinding_audit": true
+    },
+    "bound_files_required": [
+      "5g_b_request",
+      "5g_b_manifest",
+      "5g_b_approval_decision",
+      "final_approved_agents",
+      "5g_a_1_review_1",
+      "5g_a_1_request",
+      "5g_a_1_manifest",
+      "5g_a_1_approval_decision",
+      "5g_a_1_implementation_audit",
+      "5g_a_1_deterministic_evidence",
+      "5g_b_synthetic_rebinding_evidence"
+    ],
+    "bound_file_path_bytes_and_sha256_required": true,
+    "self_hash_in_governance_binding_forbidden": true,
+    "execution_head_commit_is_external_content_binding": true
+  },
+  "derived_execution_head_validation": {
+    "required_before_formal_preflight": true,
+    "helper_official_boundary_invocations": 1,
+    "automatic_retry": false,
+    "independently_collect": [
+      "local_head",
+      "origin_main",
+      "github_main",
+      "head_parent",
+      "changed_paths",
+      "observed_ancestor_commits",
+      "worktree_clean",
+      "governance_binding"
+    ],
+    "required_relations": {
+      "local_origin_github_equal": true,
+      "head_parent_equals_approval_governance_commit": true,
+      "changed_paths_exactly_equal_manifest_allowed_set": true,
+      "required_ancestors_present": true,
+      "worktree_clean": true,
+      "governance_package_and_approval_match": true,
+      "three_required_artifacts_present": true
+    },
+    "known_required_ancestor_commits": [
+      "d02b19dfd5a527d0159b930662f5a868c8235d35",
+      "3d818cee86e1faca16c2bdab3baf4fd5411cff75",
+      "c21f3f58b2b1d4ccf235daba9c85937daedf4e3b",
+      "d1c7cf9d78563e30a1e0fe0d6812b36d15b95a9a",
+      "0f35ec895c756348e8a10803c6dd961a37344fb0",
+      "052e8ecc04f566b75666d5cc96df74d2ed5061e4",
+      "84d39707dee15729dc0c35c85a16f4e31dac89e4",
+      "f33ee70233ea4098b2d7a17cfde3d266081ee693",
+      "b21852a174b537c90a848699deb4d26d6f169506",
+      "34349c70ee24b8240fd169393134d4280968b790"
+    ],
+    "future_dynamic_required_ancestors": [
+      "approved_5g_b_package_commit",
+      "5g_b_approval_governance_commit"
+    ],
+    "pretranscribed_future_execution_head_literal_forbidden": true,
+    "expected_result_status": "VALIDATED_EXECUTION_HEAD_BINDING",
+    "failure_stops_before_formal_preflight": true
+  },
+  "external_approved_argv_binding": {
+    "manifest_path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5F_B_MANIFEST.json",
+    "manifest_sha256": "FB9A565986E255090D11EEC90DB9CEE8C759F281695640E641D2E6A365C66A5F",
+    "manifest_bytes": 18293,
+    "manifest_commit": "f33ee70233ea4098b2d7a17cfde3d266081ee693",
+    "json_member": "exact_capture_command",
+    "argv_elements": 32,
+    "flag_count": 15,
+    "future_typed_gate_must_compare_5g_b_exact_command_to_hash_bound_5f_b_exact_command": true
+  },
+  "frozen_channel_inputs": {
+    "unlabeled_units": {
+      "path": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_unlabeled_units.jsonl",
+      "sha256": "114D28A7C9842079BF80C292274D7DBBBC718F05CBE8F4435487C245238427FA"
+    },
+    "unlabeled_queries": {
+      "path": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_unlabeled_queries.jsonl",
+      "sha256": "6EE942C680EAC86D0410FC25BCC302CA7312A0E253E318025A957D51A09B4B6B"
+    },
+    "controller_channel_audit": {
+      "path": "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_controller_channel_audit.json",
+      "sha256": "D134CDE168C833784F238B61420B4738C1F65B9FCA995945EB04E8B99EAAB2FA"
+    }
+  },
+  "embedding_cache": {
+    "path": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_minilm_idbound_embeddings.npz",
+    "sha256": "69ED39ABC0636B7B63A41639B64CB037FAE556F10CB130FCD18AFB61CBE06F7D",
+    "bytes": 210714667,
+    "members": [
+      "unit_embeddings",
+      "query_embeddings",
+      "unit_ids",
+      "query_ids",
+      "model_name",
+      "max_length"
+    ],
+    "unit_shape": [143820, 384],
+    "query_shape": [4500, 384],
+    "dtype": "float32",
+    "finite_values_required": true,
+    "normalization_required": true,
+    "norm_tolerance": 0.000001,
+    "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "max_length": 192,
+    "mode": "REQUIRE_EXISTING_NO_BUILD_PRE_AND_POST_FINGERPRINT"
+  },
+  "reference_decisions": {
+    "path": "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_decisions.jsonl",
+    "sha256": "6FB6EB6DBFE3C6B819E65ADD268D9F94CFEA24E5761C9E4CB53CD0965C3723C7",
+    "pre_and_post_fingerprint_required": true
+  },
+  "registered_boundary": {
+    "queries": 4500,
+    "units": 143820,
+    "dataset": "2wikimultihopqa",
+    "sample_id_sha256": "6B21FD1D2EFBD6A467C8DAEE9225AA43113FC328CD114F813DD79E6A44458FB2",
+    "query_id_sha256": "8895D4D2EF2A34DE123525011C36A1DF092D27B7588E17E9816ABAB8F1A25CD6",
+    "namespace_relation": "query_id == dataset::sample_id",
+    "registered_source_audit_sha256": "1496FF0CE08093AD38258FD5049068D6C4ED74FCEBF63E94E6E486F3478C7AEE",
+    "source_audit_file_may_be_opened": false
+  },
+  "frozen_runtime": {
+    "controller_checkpoint": "stage4b_u1_v2_3_1",
+    "diagnostic_checkpoint": "stage4b_u1_decisions_diag_v2",
+    "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "max_length": 192,
+    "batch_size": 64
+  },
+  "authorization_token": {
+    "value": "APPROVE_STAGE4B_U1_D_AMENDMENT_5B_OFFICIAL_DECISIONS_ONLY_DIAGNOSTIC",
+    "string_alone_is_not_authorization": true,
+    "all_prior_authorizations_consumed": true,
+    "requires_new_5g_b_package_bound_approval": true,
+    "maximum_future_invocations_requested": 1
+  },
+  "output_registry": {
+    "machine_audit": "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_pregold_amendment_5b_official_decisions_diagnostic.json",
+    "machine_audit_must_be_absent_and_exclusive_create": true,
+    "narrative_audit": "E:\\科研\\HyperGranular-RAG\\docs\\STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_OFFICIAL_DIAGNOSTIC_AUDIT.md",
+    "narrative_audit_must_be_absent_before_preflight": true,
+    "os_temp_parent_exact_capture_argument": "C:\\Users\\cc\\AppData\\Local\\Temp",
+    "temporary_decisions_glob": "stage4b_u1_decisions_diag_*",
+    "temporary_decisions_must_be_absent_before_preflight_and_deleted_after_capture": true
+  },
+  "formal_outputs_that_must_remain_absent": [
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_decisions.jsonl",
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_rankings.jsonl",
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_policy.json",
+    "E:\\科研\\HyperGranular-RAG\\docs\\STAGE4B_U1_PREGOLD_V2_3_1_CONTROLLER_EXECUTION_AUDIT.md",
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_verified_pre_gold.json"
+  ],
+  "additional_prohibited_official_inputs": [
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_pregold_amendment_5c_b_reference_schema_inventory.json",
+    "Stage4A-R2 source-audit file",
+    "official rankings",
+    "reference policy",
+    "evaluator files or Gold",
+    "reservation",
+    "Stage3B"
+  ],
+  "required_future_execution_order": {
+    "1": "PACKAGE_BOUND_APPROVAL_GOVERNANCE_COMMIT_AND_PUSH",
+    "2": "TWO_EXACT_POST_APPROVAL_SYNTHETIC_REBINDING_RUNS_AND_BYTE_COMPARISON",
+    "3": "SINGLE_DIRECT_CHILD_REBINDING_GOVERNANCE_COMMIT_AND_PUSH_WITH_EXACT_THREE_PATH_SET",
+    "4": "ONE_DERIVED_EXECUTION_HEAD_VALIDATION_FROM_ACTUAL_FACTS",
+    "5A": "GIT_GOVERNANCE_HISTORICAL_AGENTS_CURRENT_OTHER_32_POST_APPROVAL_ALL_33_HASHES_HELPERS_AND_OUTPUT_ABSENCE_WITHOUT_OFFICIAL_INPUT_ACCESS",
+    "5B": "HASH_BIND_AND_DIRECTLY_CALL_TYPED_ARGUMENT_POLICY_HELPER_ON_5G_B_ACTUAL_AND_HASH_BOUND_5F_B_APPROVED_ARGV",
+    "5C": "HASH_BIND_AND_DIRECTLY_CALL_WINDOWS_PATH_EQUIVALENCE_HELPER_ON_RAW_RUNTIME_TEMP_AND_EXACT_EXPECTED_DIRECTORY",
+    "5D": "ONLY_AFTER_A_B_C_PASS_INSPECT_THE_FIVE_PERMITTED_OFFICIAL_INPUTS",
+    "6": "ONLY_AFTER_ALL_PRIOR_GATES_PASS_RUN_ONE_UNCHANGED_EXACT_CAPTURE",
+    "7": "AUDIT_COMMIT_PUSH_VERIFY_GITHUB_AND_STOP"
+  },
+  "exact_capture_command": [
+    "python",
+    "scripts/stage4b_u1_capture_diagnostic_decisions.py",
+    "--units",
+    "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_unlabeled_units.jsonl",
+    "--queries",
+    "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_unlabeled_queries.jsonl",
+    "--channel-audit",
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_v2_3_1_controller_channel_audit.json",
+    "--embedding-cache",
+    "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_minilm_idbound_embeddings.npz",
+    "--reference-decisions",
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_official_dev4500_decisions.jsonl",
+    "--audit-output",
+    "E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_pregold_amendment_5b_official_decisions_diagnostic.json",
+    "--temp-parent",
+    "C:\\Users\\cc\\AppData\\Local\\Temp",
+    "--model-name",
+    "sentence-transformers/all-MiniLM-L6-v2",
+    "--batch-size",
+    "64",
+    "--max-length",
+    "192",
+    "--expected-units-sha256",
+    "114D28A7C9842079BF80C292274D7DBBBC718F05CBE8F4435487C245238427FA",
+    "--expected-queries-sha256",
+    "6EE942C680EAC86D0410FC25BCC302CA7312A0E253E318025A957D51A09B4B6B",
+    "--expected-channel-audit-sha256",
+    "D134CDE168C833784F238B61420B4738C1F65B9FCA995945EB04E8B99EAAB2FA",
+    "--expected-embedding-cache-sha256",
+    "69ED39ABC0636B7B63A41639B64CB037FAE556F10CB130FCD18AFB61CBE06F7D",
+    "--official-authorization-token",
+    "APPROVE_STAGE4B_U1_D_AMENDMENT_5B_OFFICIAL_DECISIONS_ONLY_DIAGNOSTIC"
+  ],
+  "execution_limits": {
+    "post_approval_complete_synthetic_runs": 2,
+    "preliminary_complete_synthetic_runs": 0,
+    "derived_execution_head_helper_official_boundary_invocations": 1,
+    "formal_preflight_invocations": 1,
+    "typed_helper_official_boundary_invocations": 1,
+    "path_helper_official_boundary_invocations": 1,
+    "official_capture_invocations": 1,
+    "automatic_retry": false,
+    "full_controller_rerun": false,
+    "formal_output_promotion": false,
+    "verifier": false,
+    "evaluator_or_gold": false
+  },
+  "audit_output_policy": {
+    "aggregate_counts_only": true,
+    "raw_byte_equality_is_controlling_gate": true,
+    "canonical_or_semantic_equality_may_replace_raw_bytes": false,
+    "null_normalization_or_imputation": false,
+    "channel_cache_reference_pre_and_post_hash_status_required": true,
+    "temporary_cleanup_status_required": true,
+    "raw_query_ids_allowed": false,
+    "maximum_salted_query_id_hashes": 1,
+    "raw_decision_rows_or_field_values_allowed": false,
+    "question_text_ranking_policy_or_gold_content_allowed": false
+  },
+  "requested_authorization": [
+    "commit and push package-bound 5G-B approval governance",
+    "run exactly two byte-identical 246-test post-approval synthetic rebinding outputs",
+    "create and push one exact-three-path rebinding governance direct-child commit",
+    "derive and validate the actual synchronized execution HEAD through the frozen helper exactly once",
+    "run one A/B/C/D formal preflight in the frozen order",
+    "run one unchanged 32-element official decisions-only capture only after every prior gate passes",
+    "write one aggregate audit commit push verify GitHub and stop"
+  ],
+  "explicitly_not_authorized": [
+    "run any package command before a 5G-B package-bound approval",
+    "run post-approval rebinding execution-head validation preflight helper official call input access token or capture now",
+    "run more than one derived execution-head helper call preflight helper call or capture",
+    "retry any failed gate under the same approval",
+    "modify inline-reimplement or bypass any helper",
+    "pretranscribe or manually compare a future expected execution-head SHA",
+    "modify the exact capture command token paths model parameters hashes temp-parent or output path",
+    "read official rankings reference policy source-audit file 5C-B inventory evaluator Gold reservation or Stage3B",
+    "generate or promote formal decisions rankings policy controller audit or VERIFIED_PRE_GOLD",
+    "run full controller verifier or evaluator",
+    "modify code tests data model parameters effective-K q25 score ECDF budget trigger ranking endpoint equivalence or stop rules",
+    "create rebuild overwrite delete or migrate cache official artifacts historical evidence or failure records",
+    "resume official pre-Gold execution after diagnosis"
+  ],
+  "post_diagnostic_state": [
+    "AMENDMENT_5G_B_OFFICIAL_DECISIONS_DIAGNOSTIC_COMPLETE_AWAITING_REVIEW",
+    "HARD_FAILURE_4_DIAGNOSIS_COMPLETE_AWAITING_REVIEW",
+    "CONTROLLER_RERUN_NOT_APPROVED",
+    "VERIFIER_NOT_APPROVED",
+    "GOLD_NOT_APPROVED"
+  ]
+}

@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Amendment 5G-A.1 最小修复与 synthetic verification 已完成，等待独立审核 |
-| 获批执行协议 | 5G-A.1 只完成 source inventory、一次定向和两次最终 synthetic；official execution 继续锁定 |
-| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_IMPLEMENTATION_AUDIT.md` |
-| 协议状态 | `AMENDMENT_5G_A_1_SYNTHETICALLY_VERIFIED` |
+| 当前阶段 | Amendment 5G-A.1 独立审核通过；5G-B official diagnostic 审批包已组装，等待审批 |
+| 获批执行协议 | 当前仅获准组装 5G-B package；rebinding、execution-HEAD check、preflight 与 official execution 均未获批 |
+| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md` |
+| 协议状态 | `AMENDMENT_5G_B_AWAITING_APPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -162,6 +162,8 @@ Hard Failure 9 独立审核已接受并冻结提交 `d1c7cf9...`。5G-A.1 仅申
 
 5G-A.1 获批后，source-only inventory 唯一一次通过，两个专属 execution-head 名称和通用 path-helper 名称均全局唯一；定向测试唯一一次为 41/41。两次最终 complete suite 均精确 246/246，33 个 tracked files digest 均为 `88338760...`，69,144-byte evidence SHA-256 均为 `A6285498...` 且逐字节相同。没有 preliminary runner、official access、preflight、token 或 capture。
 
+5G-A.1 独立审核已接受提交 `c21f3f5...`，并仅授权组装 5G-B 审批包。5G-B 预冻结批准后两轮 246/246 rebinding、唯一三路径 governance direct-child、由实际 Git/GitHub 事实推导的 execution HEAD、一次 A/B/C/D preflight 与条件性单次 unchanged capture；package 本身不授权执行这些步骤。
+
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
 ## 科研治理
@@ -185,8 +187,8 @@ Hard Failure 9 独立审核已接受并冻结提交 `d1c7cf9...`。5G-A.1 仅申
 
 ## 下一步
 
-1. 独立审核 5G-A.1 implementation、recovery audit 与 deterministic evidence。
-2. 审核明确接受前不得组装 5G-B、运行 preflight 或执行 official capture。
+1. 独立审批 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md` 与 Manifest。
+2. 新的 package-bound 批准明确落盘并推送前，不得运行 rebinding、execution-HEAD check、preflight 或 official capture。
 3. Typed/path helper official call、official input access、token、capture、controller、verifier、Gold、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub

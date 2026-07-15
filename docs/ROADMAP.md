@@ -1047,3 +1047,12 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Both evidence files were 69,144 bytes with SHA-256 `A6285498FCFE767297D7156B87CA6034A993B2DFBB167EF7DFA813E9ADD55292`; direct byte comparison passed.
 - Audit: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_IMPLEMENTATION_AUDIT.md`.
 - Current status: `AMENDMENT_5G_A_1_SYNTHETICALLY_VERIFIED`, awaiting independent review. Official execution and 5G-B remain unapproved.
+
+### Stage4B-U1-D Amendment 5G-A.1 Review And Amendment 5G-B Package
+
+- Independent review accepts implementation/evidence commit `c21f3f58b2b1d4ccf235daba9c85937daedf4e3b`; review: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_REVIEW_1.md`.
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_MANIFEST.json`.
+- The package freezes the accepted helper/runner/test/evidence hashes, unchanged 32-element capture command, future approval changed paths and exact three-path rebinding/governance direct-child set.
+- A future approval may authorize two exact 246-test rebinding runs, one derived actual execution-HEAD validation, one ordered A/B/C/D preflight and one unchanged capture only if every earlier gate passes.
+- Current status: `AMENDMENT_5G_B_AWAITING_APPROVAL`. The package itself authorizes no rebinding, real execution-head check, preflight, official input access, token, capture, controller, verifier or Gold.

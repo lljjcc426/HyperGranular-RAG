@@ -909,3 +909,13 @@ One source-only AST inventory scanned six test files and found 246 definitions, 
 No preliminary complete runner was invoked. Two final runs on the same 33 tracked files each passed exactly 246/246 with zero failure/error/skip and zero official/helper/preflight/token/capture counts. Both tracked digests were `88338760CE2EC767D7F93279F4F3B82E916B0CBE4882257B8CF9133591EA8AE0`. Both evidence files were 69,144 bytes with SHA-256 `A6285498FCFE767297D7156B87CA6034A993B2DFBB167EF7DFA813E9ADD55292`; direct comparison was true. The run-1 OS-temp evidence was deleted only after equality passed.
 
 Formal evidence is `results/stage4b_u1_d_pregold_amendment_5g_a_synthetic_verification.json`; full recovery evidence is `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_IMPLEMENTATION_AUDIT.md`. Current status is `AMENDMENT_5G_A_1_SYNTHETICALLY_VERIFIED`, awaiting independent review. No 5G-B, preflight or official action is authorized.
+
+## Stage4B-U1-D Amendment 5G-A.1 Review And Amendment 5G-B Package
+
+Independent review accepts final implementation/evidence commit `c21f3f58b2b1d4ccf235daba9c85937daedf4e3b`. The review record is `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_REVIEW_1.md`; it authorizes only assembly of a new 5G-B approval package.
+
+The new request and machine-readable protocol are `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md` and `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_MANIFEST.json`. They bind 5G-A.1 package/approval/implementation, Hard Failures 9 and 8, 5F-B rebinding/governance, the accepted 6,318-byte execution-head helper, final runner/tests and 69,144-byte deterministic evidence.
+
+The future approval protocol freezes exactly two approval-governance changed paths and exactly three rebinding/governance direct-child changed paths. The actual local/origin/GitHub execution HEAD must be derived after that direct-child commit from independently collected Git facts and validated through the hash-bound pure-value helper; a manually transcribed future expected HEAD is forbidden.
+
+Only after derived HEAD validation may one ordered A/B/C/D preflight run. Only after every gate passes may the unchanged 32-element decisions-only capture run once. Any failure stops without retry. Current status is `AMENDMENT_5G_B_AWAITING_APPROVAL`; this package authorizes no rebinding, real execution-head check, preflight, official input access, token, capture, controller, verifier or Gold.
