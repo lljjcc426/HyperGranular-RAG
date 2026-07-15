@@ -259,6 +259,12 @@
 245. 未来如获 package-bound 批准，launcher 只允许启动一次未修改的 74-line pre verifier，并发排空 `StandardOutput.BaseStream` 与 `StandardError.BaseStream`；必须在任何解释、比较或 payload gate 前依次用 `FileMode.CreateNew` 持久化 raw stdout、raw stderr，再写 value-free metadata。内部 Git-child count 必须保持 `null/UNCONFIRMED_PENDING_INDEPENDENT_REVIEW`，diagnostic completion 不等于 synchronization success。
 246. 未来 diagnostic evidence 只允许四个新路径，且必须作为 approval-governance 的精确四路径直接子提交推送后立即停止。四个 semantics evidence 路径必须继续不存在；bootstrap、harness、compatible verifier、wrapper、Python、post verifier、formal preflight、official input/token/capture、controller、verifier、Gold、reservation 与 Stage3B 全部为 0 且未授权。
 247. 当前状态为 `AMENDMENT_5G_B_1_1_1_1_1_RAW_STREAM_DIAGNOSTIC_PACKAGE_AWAITING_APPROVAL`。在新的 package-bound 批准前，不得静态重建 future launcher transport、运行 launcher 或原 pre verifier，也不得创建任何 diagnostic evidence。
+248. Amendment 5G-B.1.1.1.1.1 frozen pre-sync raw-stream diagnostic 已获 package-bound 批准，严格绑定 package commit `d6d8a76abcb903b74307ed68f5ceabc42d8be8e3`、23,126-byte package Manifest SHA-256 `F745AB5C5B07B7DD836A5039DD726625A9D855DEDFF7A2E8CC9F1861178C3A36` 与 Hard Failure 14 checkpoint `e12b0961492897d1940cf0cf2ce45fa45abb99b8`。
+249. 本 approval-governance commit 必须以 package 为直接 parent，changed paths 精确为 `AGENTS.md` 与批准决定；推送后且 worktree clean、四个 diagnostic 路径和四个 semantics 路径均不存在，才可进行唯一一次 launcher 静态重建。
+250. 获批 launcher 继续冻结为 161 行、9,684 bytes、source SHA-256 `4FA9DABF8701F67554F6D0D100EFD72DF78477F80F600057F5C26A9886471DD6`、complete-arguments SHA-256 `86E326DBB39ED099A5AA4BD8CA46002656D2766768C731A88F15C784F88946C1` 与 fixed 122-byte stdout SHA-256 `4B7803B9C64F467F42356292B015BE1866156F2F22111E6393B913B1CEF8B80C`。任一静态指纹失败不得启动进程。
+251. 唯一 launcher 可启动一次未修改的 74-line pre verifier 和最多五个原 Git children；必须并发排空 raw stdout/stderr，依次 `CreateNew` stdout、stderr、value-free metadata，再要求 launcher exit 0、stderr 0、exact stdout。任何失败均保留已创建文件并停止，不得清理、覆盖或重试。
+252. Launcher exact success 后，host 只可 exclusive-create narrative audit，并创建 approval-governance 的精确四路径 direct-child evidence commit；推送后立即停止。Diagnostic completion 只表示 raw evidence 已保全，不等于三方同步通过或任何 recovery 获批。
+253. 当前状态为 `AMENDMENT_5G_B_1_1_1_1_1_APPROVED_AWAITING_APPROVAL_GOVERNANCE_SYNC`。Bootstrap、harness、compatible verifier、wrapper、Python、semantics evidence、post verifier、synthetic、real validator、formal preflight、official input/token/capture、controller、verifier、Gold、reservation 与 Stage3B 全部为 0 且未授权。
 
 ## GitHub 与文档
 
