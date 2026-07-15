@@ -1237,3 +1237,33 @@ All seven source designs statically parse with zero errors. Three fixture groups
 Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_APPROVAL_REQUEST.md`. Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_MANIFEST.json` (203,974 bytes; SHA-256 `DF088593BA620CE235419B2B759247914771FCFCE63B49A099A788AD29D5FC1C`).
 
 Current status is `AMENDMENT_5G_B_1_1_1_1_3_BOUNDED_STDIN_TRANSPORT_PACKAGE_AWAITING_APPROVAL`. No loader execution, target invocation, evidence creation, synthetic, real validator, formal preflight or official/Gold operation is authorized.
+
+## Amendment 5G-B.1.1.1.1.3 Package Review 1 And Corrected Package
+
+Package Review 1 binds rejected package `97a8b169835c06330a6781ab63c59a482889c6bb` and its 203,974-byte Manifest SHA-256 `DF088593BA620CE235419B2B759247914771FCFCE63B49A099A788AD29D5FC1C`. It accepts Hard Failure 16 Review 1, the seven-path scope, all three loader/payload designs, bounded command-line identities, revised final host and 30/30 loader fixtures, but rejects the package for three blocking causes: unfrozen pre/post parent hosts, stale success evidence that attests rejected long EncodedCommand transports, and missing terminal gates for the current transport attestation.
+
+The corrected package uses the review's option A and preserves the existing two semantics plus two post-sync evidence paths. Pre/post targets now load the corrected Manifest and write package/approval/semantics bindings plus current parent-host, loader, modeled-command-line, payload and decoded-target identities into their existing versioned narratives. The rejected pre `53D27DD1...498753` and post `D55D3A04...0ABC` fingerprints are prohibited from success evidence.
+
+Nine source designs are frozen:
+
+| Source | Lines / UTF-8 bytes | SHA-256 |
+|---|---|---|
+| Pre target | 209 / 16,383 | `B46C57D8...03B71` |
+| Pre stdin loader | 44 / 2,727 | `E96B049E...D1AA8` |
+| Pre parent host | 96 / 7,922 | `8F11033C...858A7` |
+| Post target | 180 / 13,884 | `597AA12B...01FC4` |
+| Post stdin loader | 44 / 2,719 | `79F2F61B...6B33C` |
+| Post parent host | 99 / 8,588 | `DC0234BE...C12DB` |
+| Final verifier | 228 / 21,120 | `6C2A6033...7BCCF` |
+| Final stdin loader | 44 / 2,724 | `6BC6A432...6B032` |
+| Final parent host | 92 / 7,377 | `48E4907A...6F185` |
+
+The six loader/parent EncodedCommand full modeled command lines are 7,384, 21,176, 7,364, 22,928, 7,376 and 19,764 characters including terminal null; all are below 32,767. Both new parent hosts freeze loader/target reconstruction, parser gates, process-scoped commit bindings, concurrent raw drains, `StandardInput.BaseStream` write/flush/close and exit/stdout/stderr ordering.
+
+The extended final verifier recomputes all six registered envelopes and three payloads before its eleven Git operations. It requires exact current transport lines in both narratives, validates the final parent/loader identities and rejects the two stale long-EncodedCommand success fingerprints.
+
+Independent in-memory validation passes 9/9 source identities/parsers, 6/6 encoded envelopes, 3/3 raw-stdin payloads, 62/62 static/negative fixtures and 6/6 absent future paths. Package assembly ran zero frozen sources, child processes, evidence creations and official operations. Three zero-write read-only helper failures are preserved: a PowerShell 5.1 `-File` UTF-8 path decoding failure before project-file read, a strict-mode literal `$GitExe` expansion failure before Manifest/Request write, and a final-validation `H` function-name collision with the `Get-History` alias before source reconstruction.
+
+Review: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_REVIEW_1.md`. Corrected Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_APPROVAL_REQUEST.md`. Corrected Manifest: 321,442 bytes with SHA-256 `C1A11B789FD18D703AA6831BA5B513FC9ACB9767EC8A75016802030E0A0C1123`.
+
+Current status is `CORRECTED_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_AWAITING_APPROVAL`. No parent host, loader, target, evidence, final verifier, synthetic, real validator, preflight or official/Gold operation is authorized.

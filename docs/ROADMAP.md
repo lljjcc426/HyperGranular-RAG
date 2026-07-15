@@ -1271,3 +1271,16 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_APPROVAL_REQUEST.md`.
 - Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_MANIFEST.json` (203,974 bytes; SHA-256 `DF088593BA620CE235419B2B759247914771FCFCE63B49A099A788AD29D5FC1C`).
 - Current status: `AMENDMENT_5G_B_1_1_1_1_3_BOUNDED_STDIN_TRANSPORT_PACKAGE_AWAITING_APPROVAL`; no execution is authorized.
+
+### Amendment 5G-B.1.1.1.1.3 Package Review 1 And Corrected Package
+
+- Package Review 1 binds and rejects package `97a8b169835c06330a6781ab63c59a482889c6bb` / 203,974-byte Manifest `DF088593...5FC1C`, while accepting Hard Failure 16 Review 1, three loader/payload designs, bounded command lines, revised final host and 30/30 loader fixtures.
+- Blocking causes are two unfrozen pre/post parent hosts, success narratives that still attest rejected long EncodedCommand fingerprints, and a terminal verifier that does not reject the stale evidence.
+- The corrected package selects the existing-narrative closure: revised pre/post targets write current package bindings, parent, loader, modeled command line, payload and decoded target identities. No evidence path or exact-path commit scope is added.
+- Nine source designs are frozen. Newly added pre/post parent hosts are 96 / 99 lines and their modeled full command lines are 21,176 / 22,928 characters. All six loader/parent envelopes remain below 32,767.
+- The 228-line final verifier recomputes six envelopes and three payloads, requires exact current pre/post transport lines and rejects the two stale long-transport hashes before its eleven Git children.
+- Static validation passes 9/9 sources, 6/6 envelopes, 3/3 payloads, 62/62 fixtures and 6/6 absent future paths. Assembly execution/evidence/official counts are zero; three zero-write read-only helper failures are preserved.
+- Review: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_REVIEW_1.md`.
+- Corrected Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_APPROVAL_REQUEST.md`.
+- Corrected Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_MANIFEST.json` (321,442 bytes; SHA-256 `C1A11B789FD18D703AA6831BA5B513FC9ACB9767EC8A75016802030E0A0C1123`).
+- Current status: `CORRECTED_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_AWAITING_APPROVAL`; no execution is authorized.
