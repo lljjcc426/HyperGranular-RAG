@@ -303,6 +303,9 @@
 289. `b9081b3c...` 仍以 `REJECT_CORRECTED_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_AS_CURRENTLY_WRITTEN` 退回，唯一阻塞项是 Request 将 `f28fc526...` Hard Failure 16 checkpoint 误记为 corrected package 的 direct parent。实际链为 `f28fc526... -> 97a8b169... -> b9081b3c...`。
 290. Second-corrected package 必须是 `b9081b3c...` 的单一直接子提交，并分别登记 direct parent `b9081b3c...`、superseded original bounded-stdin package `97a8b169...`、Hard Failure 16 checkpoint ancestor `f28fc526...`。该更正仅限 lineage；9 source、6 envelope、3 payload、evidence schema、final verifier、62 fixtures、六条 future path、计数和一次性顺序不得改变。
 291. 当前状态为 `SECOND_CORRECTED_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_AWAITING_APPROVAL`。新的 second-corrected-package-bound approval 前，approval governance、parent host、loader、target ScriptBlock、semantics/post evidence、final verifier、synthetic、real validator、formal preflight、official、Gold、reservation 与 Stage3B 全部未授权。
+292. Second-corrected Amendment 5G-B.1.1.1.1.3 已获 package-bound 独立批准，严格绑定 package `ef87f0379f4f31c54881c4a0e23a3f7ad8c8c35b` 与 Manifest 323,607 bytes / `804B4F8607532D6CE17EDE043D5A9511C7E855F4EB444C25F461381B6EDDA73D`；批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_APPROVAL_DECISION.md`。被退回的 `97a8b169...` 与 `b9081b3c...` 继续不可执行、不可复用。
+293. 本批准只允许一次有序 closed-transport attestation chain：精确两路径 approval-governance 提交并推送；一次 PRE parent/loader/target 与冻结 semantics sequence；精确两路径 semantics evidence 提交并推送；一次 POST parent/loader/target 与冻结 post-sync sequence；精确两路径 post audit 提交并推送；一次 FINAL parent/loader/verifier 与 11 个 Git children；最终成功后零文件、零提交并立即停止。任一失败消费对应授权，禁止 retry、fallback、临时 `.ps1`、`-File`、StreamWriter、source/runtime 替换、partial evidence 清理、reset、rebase 或 force-push。
+294. 本批准不授权 synthetic rebinding、real precommit validator、formal preflight、official input/token/capture、controller/verifier/Gold、reservation 或 Stage3B。成功状态只能是 `AMENDMENT_5G_B_1_1_1_1_3_CLOSED_TRANSPORT_ATTESTATION_CHAIN_AWAITING_REVIEW`，下一步仅可提交执行结果供独立审核，不得自动进入 Fresh Synthetic Rebinding。
 
 ## GitHub 与文档
 
