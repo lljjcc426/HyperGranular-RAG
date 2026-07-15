@@ -227,6 +227,11 @@
 213. 获批一次性顺序为：静态派生 bootstrap/三个 child transport -> bootstrap 1 -> harness PowerShell 1 -> compatible-verifier PowerShell 1 -> exact 190-byte success -> semantics-wrapper PowerShell 1 -> Python 1 -> exact 9/9 与 789-byte success -> bootstrap `CreateNew` machine evidence -> narrative audit -> 精确两路径 direct-child -> 推送同步后立即停止。
 214. 所有 PowerShell process 强制使用 Windows PowerShell 5.1、`-NoLogo -NoProfile -NonInteractive -EncodedCommand <UTF-16LE Base64>`、固定 ProcessStartInfo redirects/no-window/UTF-8 decode；任一 fingerprint、start、exit、stderr、stdout、count、path 或 evidence 门失败均立即停止且不得重试。
 215. 当前状态为 `CORRECTED_AMENDMENT_5G_B_1_1_1_APPROVED_AWAITING_APPROVAL_GOVERNANCE_SYNC`。Complete synthetic、real validator、fresh three-path、execution-head helper、preflight、official input、token、capture、controller、verifier 与 Gold 继续锁定。
+216. Approval-governance commit `f46afbf565beca5672ef443bccb67c33ebd26876` 已作为 corrected package `e37400707a65d11c9f038d13e7be0ec2a19d27a4` 的精确两路径直接子提交创建并成功 push；随后 `git fetch origin main` 成功，本地 HEAD 与 fetched `origin/main` 均为该提交。
+217. 独立 GitHub-main 核验命令因当前环境不存在 `gh` 可执行文件而触发 `CommandNotFoundException`，形成 Hard Failure 13。这是本地 verification-tool availability failure，不是网络失败，也不是 GitHub 缺失提交的证据；但三方门未完整闭合，不能记为通过。
+218. 失败后未替换为 `git ls-remote`、其他 API client 或浏览器检查，也未重试三方门。Static source reconstruction、bootstrap、harness、compatible verifier、semantics wrapper 与 Python 的计数均为 0，四个旧/新 evidence 路径继续不存在。
+219. 本失败未修改或删除 scripts、tests、data、cache、official artifacts、historical evidence 或既有 failure record；synthetic、real validator、helper、preflight、official input、token、capture、controller、verifier 与 Gold 均未发生。
+220. 当前状态为 `CORRECTED_AMENDMENT_5G_B_1_1_1_APPROVAL_GOVERNANCE_SYNC_VERIFICATION_STOPPED_HARD_FAILURE_13`。当前批准不得复用；三方同步核验、source reconstruction、bootstrap 及全部后续动作必须等待新的独立审核与 package-bound recovery Amendment。
 
 ## GitHub 与文档
 

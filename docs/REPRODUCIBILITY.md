@@ -1010,3 +1010,13 @@ The bootstrap trust root is 58 lines, 3,909 bytes, SHA-256 `F8A452CEBEC06326E1D8
 All child invocations use `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`, `-NoLogo -NoProfile -NonInteractive -EncodedCommand`, UTF-16LE Base64 source, redirected stdin/stdout/stderr, no window and no temporary `.ps1`. The bootstrap reads the corrected Manifest as its governance trust root, hash-checks the harness, captures its exact output and writes the raw 789 bytes directly to machine evidence with `FileMode.CreateNew` only after every nested gate succeeds.
 
 Static source reconstruction, fingerprint checks and PowerShell syntax parsing are package-assembly checks only; none of the three frozen sources has been invoked. Current status is `CORRECTED_AMENDMENT_5G_B_1_1_1_PACKAGE_AWAITING_APPROVAL`.
+
+## Stage4B-U1-D Pre-Gold Hard Failure 13
+
+The corrected package-bound approval was recorded in `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_APPROVAL_DECISION.md`. Approval-governance commit `f46afbf565beca5672ef443bccb67c33ebd26876` is the exact two-path direct child of package `e37400707a65d11c9f038d13e7be0ec2a19d27a4`.
+
+`git push origin main` succeeded and the following fetch succeeded. Local HEAD and fetched `origin/main` were both `f46afbf565beca5672ef443bccb67c33ebd26876`. The separate GitHub-main API check then failed because the current environment has no `gh` executable. This is a local verification-tool availability failure, not a network failure or proof of remote-branch drift, but it leaves the approved three-way gate incomplete.
+
+No alternative API client or remote check was substituted, and the gate was not retried. Static source reconstruction, transport fingerprinting, bootstrap, harness, compatible verifier, wrapper and Python all remained unstarted. All four old/new semantics evidence paths remained absent.
+
+Full evidence is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_13.md`. Current status is `CORRECTED_AMENDMENT_5G_B_1_1_1_APPROVAL_GOVERNANCE_SYNC_VERIFICATION_STOPPED_HARD_FAILURE_13`; recovery requires a new independent review and package-bound approval.

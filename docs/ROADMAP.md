@@ -1137,3 +1137,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The bootstrap validates the harness, the harness validates and runs one verifier child and then one unchanged wrapper child, and the wrapper may run one Python process. Every layer requires exit 0 and empty stderr.
 - Exact wrapper stdout is carried unchanged through harness and bootstrap; bootstrap writes its captured 789 bytes directly to the versioned machine evidence with `FileMode.CreateNew`.
 - Current status: `CORRECTED_AMENDMENT_5G_B_1_1_1_PACKAGE_AWAITING_APPROVAL`. No bootstrap, verifier, wrapper or official execution is authorized by the package itself.
+
+### Stage4B-U1-D Pre-Gold Hard Failure 13
+
+- Corrected Amendment 5G-B.1.1.1 approval governance was committed at `f46afbf565beca5672ef443bccb67c33ebd26876` as the exact two-path direct child of package `e37400707a65d11c9f038d13e7be0ec2a19d27a4`.
+- The push to GitHub and following `git fetch origin main` succeeded; local HEAD and fetched `origin/main` both equal the approval-governance commit.
+- The separately required GitHub-main API check failed before source reconstruction because the environment does not provide the `gh` executable.
+- This is a local verification-tool availability failure, not a network failure and not evidence of remote drift. The approved three-way synchronization gate nevertheless remains incomplete.
+- No replacement API client, `git ls-remote` or browser verification was used, and no retry occurred.
+- Static source reconstruction, bootstrap, all nested PowerShell/Python processes, semantics evidence, synthetic, real validator, preflight, official input, token and capture remained at zero.
+- Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_13.md`.
+- Current status: `CORRECTED_AMENDMENT_5G_B_1_1_1_APPROVAL_GOVERNANCE_SYNC_VERIFICATION_STOPPED_HARD_FAILURE_13`. Recovery requires a new independent review and package-bound Amendment.
