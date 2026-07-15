@@ -1116,3 +1116,33 @@ These files are preserved byte-for-byte. The approved narrative success audit wa
 No raw payload was decoded or interpreted for the failure checkpoint. No retry, repair, replacement, bootstrap, semantics process, success evidence commit, post verifier, synthetic run, real validator, formal preflight or official operation occurred. Full audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_15.md`.
 
 Current status is `AMENDMENT_5G_B_1_1_1_1_1_RAW_STREAM_DIAGNOSTIC_STOPPED_HARD_FAILURE_15`. Any further diagnostic or recovery action requires independent review and a new package-bound Amendment.
+
+## Hard Failure 15 Review And Amendment 5G-B.1.1.1.1.2
+
+Independent Review 1 accepts Hard Failure 15 and all three preserved machine files. The 382-byte stderr is a Windows PowerShell startup progress CLIXML record, not Git stderr or a verifier exception. Its exact identity is SHA-256 `4F2B6B3ED9201CA459DB2DD042E0A137C4E58BFE8E15A068E45AD8535FA5B1EF`, strict UTF-8 invalid, 512 Base64 characters and Base64 SHA-256 `1A3D87C52A5EB3036EE762D586A05D21A3080106A0E38AE3B75DC0C44BC8700B`.
+
+The preserved stdout is the exact frozen 122-byte core-success JSON. Because the unchanged 74-line verifier can emit it only after all five Git children pass with empty Git stderr, the review accepts five completed Git children, three-way SHA equality, a clean worktree and four absent semantics paths for `ee84988fa6ccf5e7f3524bc2c2a5f94065abf918`. This does not repair the old outer launcher: its zero-byte stderr contract failed and its approval is consumed.
+
+Amendment 5G-B.1.1.1.1.2 freezes an exact classifier. A PowerShell child passes only with zero stderr bytes or byte-for-byte equality with the frozen 382-byte payload. The classifier rejects truncation, append, duplicate payload and same-length mutation fixtures. Git, Python and every non-PowerShell child continue to require zero stderr.
+
+The unchanged sources remain:
+
+    pre verifier: 74 lines / 4114 bytes / 4A5A4BBE...26EB66
+    post verifier: 107 lines / 7130 bytes / 8877E18F...35A67
+    compatible verifier: 59 lines / 3512 bytes / 1A30DC70...A81BF
+    semantics wrapper: 122 lines / 7890 bytes / DFA95A90...9E16C
+    embedded Python: 46 lines / 2284 bytes / D0D3D6FC...3D602
+    real validator: 195 lines / 15966 bytes / 0F066387...8249
+
+The package adds only frozen parent-envelope definitions in its Manifest:
+
+    pre host: 96 lines / 6787 bytes / 0E028228...E0672
+    revised bootstrap: 98 lines / 7146 bytes / E3458CE9...8317B
+    revised harness: 91 lines / 7654 bytes / 12315561...9CDA
+    post host: 86 lines / 6347 bytes / 4757F3C8...A5F0
+
+All four static parsers report zero errors. Their source, UTF-16LE/Base64, complete arguments, raw BaseStream capture, exact stdout and child-count contracts are registered in `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_MANIFEST.json`. Package assembly did not invoke any of them.
+
+A future approval must bind the package commit, create a new exact-two-path approval-governance child, rerun pre synchronization for that new HEAD, execute the revised semantics chain, commit the exact two evidence paths, run post synchronization and stop. Historical synchronization for `ee84988...` cannot replace this future gate.
+
+Current status is `AMENDMENT_5G_B_1_1_1_1_2_TRANSPORT_RECOVERY_PACKAGE_AWAITING_APPROVAL`. No transport process, bootstrap, semantics evidence, post verifier, synthetic, formal preflight or official operation is authorized by the package itself.

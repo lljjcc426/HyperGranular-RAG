@@ -1209,3 +1209,17 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Metadata keeps the internal Git-child count null/unconfirmed and accepted three-way synchronization successes at zero. No raw payload interpretation or synchronization acceptance is made.
 - Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_15.md`.
 - Current status: `AMENDMENT_5G_B_1_1_1_1_1_RAW_STREAM_DIAGNOSTIC_STOPPED_HARD_FAILURE_15`. Independent review and a new package-bound Amendment are required for any further action.
+
+### Hard Failure 15 Review And Amendment 5G-B.1.1.1.1.2 Package
+
+- Hard Failure 15 Review 1 accepts checkpoint `95f68e7b2afdf6ed46c4eebe604d13744b26760a` and the three preserved raw machine files.
+- The 382-byte stderr is established as Windows PowerShell startup progress CLIXML. Its SHA-256 is `4F2B6B3E...5B1EF`; its 512-character Base64 SHA-256 is `1A3D87C5...8700B`.
+- Exact 122-byte pre-verifier stdout proves five strict-zero-stderr Git children, three-way SHA equality, a clean worktree and four absent semantics paths for historical commit `ee84988...`. The old outer zero-stderr contract remains failed and consumed.
+- The new classifier accepts only exact zero bytes or byte-for-byte equality with the frozen payload at PowerShell boundaries. Git, Python and every non-PowerShell child retain strict zero stderr.
+- Unchanged sources remain 74-line pre verifier, 107-line post verifier, 59-line compatible verifier, 122-line wrapper, 46-line Python and 195-line real validator.
+- New/revised sources are a 96-line pre host, 98-line bootstrap, 91-line harness and 86-line post host. All four static parsers report zero errors; all source, UTF-16LE/Base64 and complete-arguments fingerprints are frozen in the Manifest.
+- Package assembly invoked no frozen source and created no semantics evidence. A future approval must bind the new package commit and rerun synchronization against its new approval-governance child; historical `ee84988...` synchronization cannot be reused.
+- Review: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_15_REVIEW_1.md`.
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_MANIFEST.json`.
+- Current status: `AMENDMENT_5G_B_1_1_1_1_2_TRANSPORT_RECOVERY_PACKAGE_AWAITING_APPROVAL`.
