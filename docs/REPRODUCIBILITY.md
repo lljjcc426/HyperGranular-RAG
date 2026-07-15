@@ -1146,3 +1146,31 @@ All four static parsers report zero errors. Their source, UTF-16LE/Base64, compl
 A future approval must bind the package commit, create a new exact-two-path approval-governance child, rerun pre synchronization for that new HEAD, execute the revised semantics chain, commit the exact two evidence paths, run post synchronization and stop. Historical synchronization for `ee84988...` cannot replace this future gate.
 
 Current status is `AMENDMENT_5G_B_1_1_1_1_2_TRANSPORT_RECOVERY_PACKAGE_AWAITING_APPROVAL`. No transport process, bootstrap, semantics evidence, post verifier, synthetic, formal preflight or official operation is authorized by the package itself.
+
+## Amendment 5G-B.1.1.1.1.2 Package Review 1 And Corrected Package
+
+Independent Package Review 1 accepts the Hard Failure 15 checkpoint, preserved raw evidence, exact 382-byte classifier, 6/6 classifier fixtures, seven-path package scope and four inner envelope designs as static content. It rejects package `7f92c000bb3c22337c83dc28e32779f4eb9cfdf8`: no top-level source froze the actual launch/capture/classify operations; inner PowerShell stderr classes were reduced to Boolean acceptance; and the required narrative was committed before the post-host and post-verifier classes could exist.
+
+The corrected package supersedes that unapproved commit and freezes six complete sources:
+
+    pre host: 96 lines / 6816 bytes / 61EA2A37...5E50FB
+    revised harness: 91 lines / 7857 bytes / DD11F1E6...73931
+    revised bootstrap: 109 lines / 8325 bytes / 84D6868A...1FEB7
+    post host: 86 lines / 6377 bytes / 430C0F64...E8853D
+    pre/semantics outer runner: 194 lines / 14491 bytes / 6B24A6F2...CE124
+    post-sync outer runner: 166 lines / 12149 bytes / 0BC1EDF0...DD35A
+
+Every source uses LF joining with no trailing newline and has a frozen UTF-16LE/Base64 transport, complete-arguments fingerprint and zero static parser errors. The two outer runners contain the complete child ProcessStartInfo, concurrent raw BaseStream capture, exact stdout-variant gate, exact stderr classifier, exit order, process counts and post approval-governance environment assignment. Package assembly invoked zero frozen sources and created zero evidence.
+
+The class-attestation channel is independent of the final semantics machine file. The pre host has two exact stdout variants; the revised harness has four exact envelopes carrying two classes plus the exact 789-byte semantics Base64; the bootstrap accepts only those raw bytes, writes the unchanged 789-byte evidence and has eight exact class variants; the post host has two exact variants. All complete variants and hashes are registered in the corrected Manifest. Only `EMPTY` and `EXACT_FROZEN_382_BYTE_STARTUP_CLIXML` are allowed.
+
+The evidence order is now executable. The original two semantics paths remain the exact-two-path direct child of approval governance. Their narrative records only the six pre/semantics boundaries that already exist. After that evidence commit is pushed, the post-sync outer runner performs the post gate and then exclusive-creates:
+
+    results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_post_sync_transport_attestation.json
+    docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_POST_SYNC_TRANSPORT_AUDIT.md
+
+Those two paths form a separate exact-two-path direct child of the semantics evidence commit and are pushed before the final stop. This package requests one approval-governance commit, one semantics evidence commit and one post-sync audit commit; any failure consumes the ordered authorization and forbids retry or cleanup.
+
+The first temporary generator invocation stopped before any Manifest write because Windows PowerShell 5.1 decoded a UTF-8 no-BOM package-assembly script path as ANSI. The corrective invocation explicitly read strict UTF-8 bytes into a ScriptBlock. No frozen source or child process was invoked in either attempt; the event is recorded in the Manifest.
+
+Current status is `CORRECTED_AMENDMENT_5G_B_1_1_1_1_2_PACKAGE_AWAITING_APPROVAL`. Approval governance, top-level runner reconstruction/execution, semantics evidence, post-sync audit, synthetic, real validator, formal preflight and every official/Gold action remain unapproved.

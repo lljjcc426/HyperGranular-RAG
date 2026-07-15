@@ -6,16 +6,18 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Hard Failure 15 审核已接受；5G-B.1.1.1.1.2 transport-recovery package 等待审批 |
-| 获批执行协议 | 无；Hard Failure 15 旧授权已消费，新 package 本身不授权执行 |
+| 当前阶段 | Hard Failure 15 审核已接受；原 5G-B.1.1.1.1.2 package 被退回，corrected package 等待审批 |
+| 获批执行协议 | 无；Hard Failure 15 旧授权已消费，corrected package 本身不授权执行 |
 | 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_APPROVAL_REQUEST.md` 与 Manifest |
-| 协议状态 | `AMENDMENT_5G_B_1_1_1_1_2_TRANSPORT_RECOVERY_PACKAGE_AWAITING_APPROVAL` |
+| 协议状态 | `CORRECTED_AMENDMENT_5G_B_1_1_1_1_2_PACKAGE_AWAITING_APPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
 | 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
 
-Hard Failure 15 Review 1 接受三份 raw machine evidence，并将 382-byte stderr 精确定性为 Windows PowerShell 首次模块准备 progress CLIXML；exact 122-byte pre-verifier stdout 同时证明历史 `ee84988...` 的五个 Git children、三方 SHA 相等与 clean worktree，但旧 launcher 的 stderr-zero 合同仍然失败。新的 5G-B.1.1.1.1.2 package 仅申请完整 PowerShell transport 修复：PowerShell child stderr 只能为空或逐字节等于冻结 382-byte payload，Git/Python 与其他非 PowerShell stderr 仍严格为零。四个新/修订 envelope 静态 parser 均为 0 error，组包阶段未执行任何源码；新 package-bound 批准前不得运行。
+Hard Failure 15 Review 1 接受三份 raw machine evidence，并将 382-byte stderr 精确定性为 Windows PowerShell 首次模块准备 progress CLIXML；exact 122-byte pre-verifier stdout 同时证明历史 `ee84988...` 的五个 Git children、三方 SHA 相等与 clean worktree，但旧 launcher 的 stderr-zero 合同仍然失败。Package Review 1 接受 exact classifier 和四个内层 envelope 的静态设计，但因顶层 runner 未冻结、内层 class 不可持久化以及 post class 与 narrative 提交顺序矛盾，明确拒绝 package `7f92c000...`。
+
+Corrected 5G-B.1.1.1.1.2 package 已静态冻结六份 source：四个修订 envelope、194-line pre/semantics outer runner 与 166-line post-sync outer runner；全部 parser 为 0 error，组包阶段执行次数为 0。Class 仅能通过注册的 canonical stdout variants 取 `EMPTY` 或 exact frozen 382-byte 值，789-byte semantics machine evidence 不变；pre/semantics narrative 与 post-sync machine/narrative audit 分阶段创建，并分别形成精确两路径提交。新的 package-bound 批准前不得重建或运行任何 source。
 
 Amendment 5G-B.1.1.1.1.1 approval governance 已作为 package `d6d8a76...` 的精确两路径直接子提交 `ee84988...` 推送。唯一 launcher 静态重建全部通过，唯一 launcher 及唯一原 pre verifier 均已运行；launcher exit 0、stdout 为冻结的 exact 122 bytes，但 launcher stderr 为 382 bytes，违反必须为空的硬门并形成 Hard Failure 15。三条 machine 文件已在失败前以 `CreateNew` 保存并原样保留，获批 narrative 未创建，四条 semantics 路径仍不存在。原授权已消费，没有重试或下游执行；完整审计见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_15.md`。
 

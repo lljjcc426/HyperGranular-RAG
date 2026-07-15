@@ -1223,3 +1223,16 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_APPROVAL_REQUEST.md`.
 - Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_MANIFEST.json`.
 - Current status: `AMENDMENT_5G_B_1_1_1_1_2_TRANSPORT_RECOVERY_PACKAGE_AWAITING_APPROVAL`.
+
+### Amendment 5G-B.1.1.1.1.2 Package Review 1 And Corrected Package
+
+- Package Review 1 accepts Hard Failure 15, the three raw machine files, the exact 382-byte classifier, 6/6 classifier fixtures, package commit scope and four inner envelope designs as static content.
+- It rejects package `7f92c000bb3c22337c83dc28e32779f4eb9cfdf8` because the top-level runner was not frozen, inner stderr classes were not exposed or persisted, and post classes could exist only after the narrative had already been committed.
+- The corrected package freezes six sources with zero static parser errors: 96-line pre host, 91-line revised harness, 109-line revised bootstrap, 86-line post host, 194-line pre/semantics outer runner and 166-line post-sync outer runner. All source, UTF-16LE/Base64, complete arguments, raw BaseStream, classifier, exact stdout and count contracts are in the corrected Manifest.
+- Exact canonical stdout variants carry only `EMPTY` or `EXACT_FROZEN_382_BYTE_STARTUP_CLIXML`. The harness carries the unchanged 789-byte semantics payload as exact Base64; the bootstrap writes the original 789 bytes unchanged. Git, Python and non-PowerShell stderr remain strict zero.
+- The semantics commit remains exactly the machine evidence plus a pre/semantics-only narrative. Post success then creates a separate machine attestation and narrative audit, followed by a separate exact-two-path audit commit whose parent is the semantics evidence commit.
+- Corrected package assembly invoked no frozen source and created no evidence. The first temporary generator attempt stopped before Manifest write on a Windows PowerShell 5.1 UTF-8 no-BOM path-decoding error; the strict-UTF8 corrective invocation and zero-execution boundary are recorded.
+- Package Review: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_PACKAGE_REVIEW_1.md`.
+- Corrected Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_APPROVAL_REQUEST.md`.
+- Corrected Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_MANIFEST.json`.
+- Current status: `CORRECTED_AMENDMENT_5G_B_1_1_1_1_2_PACKAGE_AWAITING_APPROVAL`; no execution is authorized before a new package-bound approval.
