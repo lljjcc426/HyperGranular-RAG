@@ -201,6 +201,12 @@
 187. Amendment 5G-B.1.1 只申请一次隔离的 validator-semantics harness 执行及其 evidence/audit 提交。PowerShell wrapper 冻结为 122 行、7,890 bytes、SHA-256 `DFA95A904CE371F283B8DBA8BB4D98CC048F345F536C0E7D0D6DB8073DF9E16C`；内嵌 Python source 冻结为 46 行、2,284 bytes、SHA-256 `D0D3D6FC37AD0C2649A7A7F88EFA944C357033E3F0E956BE0E27C4374653D602`。
 188. 未来获批的唯一 harness 必须使用 `System.Diagnostics.Process` 隔离并重定向 native stdout/stderr；成功输出必须精确为 789 bytes、SHA-256 `EDBD4614B790256E314F4A8963128A5FB5A190FAC197437FB349D4C33C606135`，且 wrapper/Python 进程均为 1、PowerShell fixtures 7/7、raw-JSON fixtures 2/2、总计 9/9、exit 0、stderr 0，全部 filesystem/Git/GitHub/helper/official/token/capture 计数为 0。
 189. 当前状态为 `AMENDMENT_5G_B_1_1_PACKAGE_AWAITING_APPROVAL`。本 package 只含审核记录、Request、Manifest 与治理状态同步，不授权 semantics harness、synthetic runner、真实 validator、fresh artifact、direct-child、execution-head helper、preflight、official input、token、capture、controller、verifier 或 Gold；新的 package-bound 批准前不得运行。
+190. Amendment 5G-B.1.1 frozen validator-semantics harness 已获 package-bound 批准，严格绑定 package commit `c4101cfafbc08d518cd4b56e5d199f9d5937294b`。批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_APPROVAL_DECISION.md`。
+191. 本 approval-governance commit 必须以 `c4101cfafbc08d518cd4b56e5d199f9d5937294b` 为直接 parent，changed paths 精确为 `AGENTS.md` 与批准决定；推送并确认 local/origin/GitHub 三方一致、worktree clean、两个 fresh evidence 路径不存在前不得运行 harness。
+192. 获批 source 继续冻结为：PowerShell 122 行、7,890 bytes、SHA-256 `DFA95A904CE371F283B8DBA8BB4D98CC048F345F536C0E7D0D6DB8073DF9E16C`；内嵌 Python 46 行、2,284 bytes、SHA-256 `D0D3D6FC37AD0C2649A7A7F88EFA944C357033E3F0E956BE0E27C4374653D602`；expected stdout 789 bytes、SHA-256 `EDBD4614B790256E314F4A8963128A5FB5A190FAC197437FB349D4C33C606135`。
+193. 三方同步后只允许运行一次 frozen wrapper 和一个 Python process；成功必须为 PowerShell 7/7、raw JSON 2/2、总计 9/9、exit 0、stderr 0、stdout 精确匹配，且 filesystem/Git/GitHub/helper/official/token/capture 计数均为 0。不得增加临时 try/catch、重定向、诊断、wrapper 表达式或额外 parser call，不得重试。
+194. 成功后只允许 exclusive-create Manifest 登记的 machine evidence 与 narrative audit，并以 approval-governance commit 为 parent 提交精确两路径、推送、三方同步后立即停止。complete synthetic、真实 validator、fresh 三路径 direct-child、execution-head helper、preflight、official input、token、capture、controller、verifier 与 Gold 全部不获批。
+195. 当前状态为 `AMENDMENT_5G_B_1_1_APPROVED_AWAITING_APPROVAL_GOVERNANCE_SYNC`。在本两路径 approval-governance commit 推送同步完成前，一次性 semantics 授权不得使用。
 
 ## GitHub 与文档
 
