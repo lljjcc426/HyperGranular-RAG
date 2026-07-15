@@ -242,6 +242,12 @@
 228. Post-evidence verifier 冻结为 107 LF 行、7,130 UTF-8 bytes、SHA-256 `8877E18F75A94EE6DA326B09C3791E6641B6B9B32D42744BA23E033A20735A67`，complete arguments SHA-256 `17327F58C123664224B95FABD85E7553B3E32F4F86659D9A17D13C68AD9FEB02`，194-byte stdout SHA-256 `2ED3F942961C4DA1F7A9D71C3B8A50E6E00275DBBE4038C594B8834B7499AB0F`；组包静态解析 0 error，未执行。
 229. Post-evidence verifier 固定 `1 PowerShell + 7 Git children`，并通过 process-scoped `HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT` 绑定 evidence commit parent；同时核验三方 SHA、clean、精确两 changed paths、target regular files、789-byte machine SHA、narrative non-empty/stable 与两个旧路径不存在。任一门失败不得 fallback 或 retry。
 230. 当前状态为 `CORRECTED_AMENDMENT_5G_B_1_1_1_1_PACKAGE_AWAITING_APPROVAL`。原 bootstrap/harness/verifier/wrapper/Python/real-validator 指纹不变且均未执行；pre/post synchronization、static reconstruction、semantics、evidence 与全部 official action 必须等待新的 corrected-package-bound 批准。
+231. Corrected Amendment 5G-B.1.1.1.1 已获 package-bound 批准，严格绑定 corrected package `3d37c8a65888c2093403a71375bfa94dd51bac2e`；被退回 package `93cc76ae97043077d2d3dae93e2569833ea3ab59` 保持不可批准、不可执行、不可复用。批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_APPROVAL_DECISION.md`。
+232. 本 approval-governance commit 必须以 corrected package 为直接 parent，changed paths 精确为 `AGENTS.md` 与批准决定；提交推送后方可静态重建并启动 pre-execution verifier。
+233. 获批 pre-execution gate 为冻结 74-line source、1 个 Windows PowerShell process 与 5 个固定 Git children；必须得到 exact 122-byte stdout、三方 SHA 相等、clean 与四路径不存在，失败不得 fallback 或 retry。
+234. Pre gate 通过后只允许原冻结的 58-line bootstrap -> 77-line harness -> 59-line compatible verifier -> 122-line wrapper -> 46-line Python 链，各 process 恰好 1；要求 exact 190-byte verifier stdout、9/9 与 789-byte semantics stdout，real validator 继续禁止。
+235. 成功 evidence commit 必须为 approval-governance 的直接子提交且只含两个 evidence 路径。推送后只允许冻结 107-line post-evidence verifier、1 个 PowerShell 与 7 个 Git children；`HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT` 仅在该 child process 中绑定本轮 approval commit，要求 exact 194-byte success 后立即停止。
+236. 当前状态为 `CORRECTED_AMENDMENT_5G_B_1_1_1_1_APPROVED_AWAITING_APPROVAL_GOVERNANCE_SYNC`。Synthetic、real validator、fresh three-path、helper、preflight、official input、token、capture、controller、verifier 与 Gold 继续锁定。
 
 ## GitHub 与文档
 
