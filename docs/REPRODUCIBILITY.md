@@ -1044,3 +1044,15 @@ Post-evidence success stdout is fixed at 194 bytes with SHA-256 `2ED3F942961C4DA
 Static PowerShell parsing and all source/transport/stdout fingerprint recomputations passed for both verifiers. Neither verifier was invoked. Counts are now unambiguous: pre-execution `1+5`, post-evidence `1+7`.
 
 Current status is `CORRECTED_AMENDMENT_5G_B_1_1_1_1_PACKAGE_AWAITING_APPROVAL`. No synchronization verifier, bootstrap, semantics source, evidence path or official operation is authorized by the package itself.
+
+## Stage4B-U1-D Pre-Gold Hard Failure 14
+
+Corrected package `3d37c8a65888c2093403a71375bfa94dd51bac2e` received package-bound approval. Approval-governance commit `ba50d75e41f6046c2b0380462c3d7480542e15c4` is its exact two-path direct child and was pushed successfully.
+
+The 74-line pre-execution verifier source, UTF-16LE/Base64 transport, complete arguments and expected 122-byte stdout identities all passed static reconstruction before process start. Exactly one verifier PowerShell process was then launched.
+
+The process exit code was zero. The next host gate detected non-empty stderr and stopped before stdout length, SHA and exact-byte comparisons. The captured streams were not persisted, and the command threw before emitting its summary, so exact stderr content/length, stdout content/length and the internal Git-child completion count cannot be recovered or accepted. No retry or fallback occurred.
+
+The worktree remained clean at approval commit `ba50d75...`, and all four old/target evidence paths remained absent. Static bootstrap reconstruction, bootstrap, harness, compatible verifier, wrapper, Python, evidence commit and post-evidence verifier all remained unstarted.
+
+Full audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_14.md`. Current status is `CORRECTED_AMENDMENT_5G_B_1_1_1_1_PRE_EXECUTION_SYNC_STOPPED_HARD_FAILURE_14`; recovery requires a new independent review and package-bound Amendment.

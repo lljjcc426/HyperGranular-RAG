@@ -248,6 +248,11 @@
 234. Pre gate 通过后只允许原冻结的 58-line bootstrap -> 77-line harness -> 59-line compatible verifier -> 122-line wrapper -> 46-line Python 链，各 process 恰好 1；要求 exact 190-byte verifier stdout、9/9 与 789-byte semantics stdout，real validator 继续禁止。
 235. 成功 evidence commit 必须为 approval-governance 的直接子提交且只含两个 evidence 路径。推送后只允许冻结 107-line post-evidence verifier、1 个 PowerShell 与 7 个 Git children；`HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT` 仅在该 child process 中绑定本轮 approval commit，要求 exact 194-byte success 后立即停止。
 236. 当前状态为 `CORRECTED_AMENDMENT_5G_B_1_1_1_1_APPROVED_AWAITING_APPROVAL_GOVERNANCE_SYNC`。Synthetic、real validator、fresh three-path、helper、preflight、official input、token、capture、controller、verifier 与 Gold 继续锁定。
+237. Approval-governance commit `ba50d75e41f6046c2b0380462c3d7480542e15c4` 已按精确两路径创建并成功推送，直接 parent 为 corrected package `3d37c8a65888c2093403a71375bfa94dd51bac2e`。
+238. Pre-execution verifier 的 74-line source、UTF-16LE/Base64 transport、complete arguments 与 expected 122-byte stdout 全部在启动前通过冻结指纹核验；随后唯一一次 verifier PowerShell process 已启动并消费授权。
+239. Verifier process exit code 为 0，但外层下一硬门发现 stderr 非空，形成 Hard Failure 14。外层命令未持久化 stdout/stderr 且在摘要输出前抛错，因此 exact stderr 内容/bytes、stdout bytes/SHA 与内部 5 Git children 完成数均不可恢复或宣称通过；不得重跑取得缺失证据。
+240. Static bootstrap reconstruction、bootstrap、harness、compatible verifier、wrapper、Python、machine/narrative evidence、evidence commit 与 post verifier 全部为 0；四个 evidence 路径继续不存在，worktree clean。
+241. 当前状态为 `CORRECTED_AMENDMENT_5G_B_1_1_1_1_PRE_EXECUTION_SYNC_STOPPED_HARD_FAILURE_14`。当前批准已消费；pre-sync diagnostic/retry、static reconstruction、bootstrap、evidence、post-sync 及全部 official action 必须等待新的独立审核与 package-bound Amendment。
 
 ## GitHub 与文档
 

@@ -1174,3 +1174,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Pre/post counts are separately frozen as `1 PowerShell + 5 Git` and `1 PowerShell + 7 Git`. Both static parsers and all fingerprint checks passed; neither source was invoked.
 - Original bootstrap, harness, compatible verifier, wrapper, Python and real-validator fingerprints remain unchanged.
 - Current status: `CORRECTED_AMENDMENT_5G_B_1_1_1_1_PACKAGE_AWAITING_APPROVAL`. No execution is authorized by the corrected package itself.
+
+### Stage4B-U1-D Pre-Gold Hard Failure 14
+
+- Corrected package `3d37c8a65888c2093403a71375bfa94dd51bac2e` was approved, and exact-two-path approval governance was committed and pushed at `ba50d75e41f6046c2b0380462c3d7480542e15c4`.
+- Static reconstruction passed every frozen pre-execution source, transport, complete-arguments and expected-stdout fingerprint before process start.
+- The single authorized pre-execution verifier PowerShell process started and returned exit code 0, but the host then detected non-empty stderr and fail-closed.
+- Exact stderr and stdout bytes were captured only in memory and were not persisted before the outer command threw. Their content and the internal Git-child completion count cannot be recovered or reported as passed.
+- No retry, runtime switch, `gh`, REST, browser or extra Git fallback was used.
+- Static bootstrap reconstruction, bootstrap, harness, compatible verifier, wrapper, Python, evidence creation/commit and post-evidence verifier all remained zero. Four evidence paths remain absent and the worktree remains clean.
+- Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_14.md`.
+- Current status: `CORRECTED_AMENDMENT_5G_B_1_1_1_1_PRE_EXECUTION_SYNC_STOPPED_HARD_FAILURE_14`. A new independent review must define any diagnostic or recovery scope.
