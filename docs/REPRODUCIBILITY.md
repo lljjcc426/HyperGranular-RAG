@@ -1056,3 +1056,35 @@ The process exit code was zero. The next host gate detected non-empty stderr and
 The worktree remained clean at approval commit `ba50d75...`, and all four old/target evidence paths remained absent. Static bootstrap reconstruction, bootstrap, harness, compatible verifier, wrapper, Python, evidence commit and post-evidence verifier all remained unstarted.
 
 Full audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_14.md`. Current status is `CORRECTED_AMENDMENT_5G_B_1_1_1_1_PRE_EXECUTION_SYNC_STOPPED_HARD_FAILURE_14`; recovery requires a new independent review and package-bound Amendment.
+
+## Amendment 5G-B.1.1.1.1.1 Raw-Stream Diagnostic Package
+
+Hard Failure 14 Review 1 accepts the checkpoint and confirms that the original pre-verifier process exited zero but failed the outer non-empty-stderr gate before stdout validation. Raw stream payloads are unrecoverable, the internal Git-child count is unconfirmed, accepted exact success count is zero and synchronization remains unverified.
+
+The new package freezes, but does not run, a Windows PowerShell 5.1 diagnostic launcher:
+
+    source lines: 161
+    source UTF-8 bytes: 9684
+    source SHA-256: 4FA9DABF8701F67554F6D0D100EFD72DF78477F80F600057F5C26A9886471DD6
+    UTF-16LE bytes: 19288
+    Base64 characters: 25720
+    Base64 SHA-256: F8095A51A5A4C550383112D13A335EB44B9B06E7F8655D5DA6441D201A1C97D5
+    complete arguments characters: 25771
+    complete arguments SHA-256: 86E326DBB39ED099A5AA4BD8CA46002656D2766768C731A88F15C784F88946C1
+    fixed launcher stdout bytes: 122
+    fixed launcher stdout SHA-256: 4B7803B9C64F467F42356292B015BE1866156F2F22111E6393B913B1CEF8B80C
+    static parser errors: 0
+
+The launcher revalidates the frozen corrected Manifest and original 74-line verifier transport before process start. A future approved invocation would start one unchanged pre verifier, concurrently drain `StandardOutput.BaseStream` and `StandardError.BaseStream`, then exclusive-create raw stdout and raw stderr before computing or writing metadata. It does not decode or reserialize either raw payload for storage.
+
+The proposed machine paths are:
+
+    results/stage4b_u1_d_pregold_hard_failure_14_pre_sync_stdout.bin
+    results/stage4b_u1_d_pregold_hard_failure_14_pre_sync_stderr.bin
+    results/stage4b_u1_d_pregold_hard_failure_14_pre_sync_diagnostic.json
+
+The proposed narrative path is:
+
+    docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_14_PRE_SYNC_DIAGNOSTIC_AUDIT.md
+
+Package assembly invoked neither the launcher nor the original verifier and created none of these paths. The package does not authorize execution. Current status is `AMENDMENT_5G_B_1_1_1_1_1_RAW_STREAM_DIAGNOSTIC_PACKAGE_AWAITING_APPROVAL`; bootstrap, semantics, post verifier and all official operations remain locked.

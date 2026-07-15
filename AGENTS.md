@@ -253,6 +253,12 @@
 239. Verifier process exit code 为 0，但外层下一硬门发现 stderr 非空，形成 Hard Failure 14。外层命令未持久化 stdout/stderr 且在摘要输出前抛错，因此 exact stderr 内容/bytes、stdout bytes/SHA 与内部 5 Git children 完成数均不可恢复或宣称通过；不得重跑取得缺失证据。
 240. Static bootstrap reconstruction、bootstrap、harness、compatible verifier、wrapper、Python、machine/narrative evidence、evidence commit 与 post verifier 全部为 0；四个 evidence 路径继续不存在，worktree clean。
 241. 当前状态为 `CORRECTED_AMENDMENT_5G_B_1_1_1_1_PRE_EXECUTION_SYNC_STOPPED_HARD_FAILURE_14`。当前批准已消费；pre-sync diagnostic/retry、static reconstruction、bootstrap、evidence、post-sync 及全部 official action 必须等待新的独立审核与 package-bound Amendment。
+242. Hard Failure 14 Review 1 已接受失败审计并冻结 checkpoint `e12b0961492897d1940cf0cf2ce45fa45abb99b8`。准确边界为一个原 pre-verifier process、exit 0、stderr non-empty、raw stdout/stderr 不可恢复、内部 Git-child count 未确认且 accepted 122-byte success 为 0；根因未建立，pre-execution synchronization 仍未验证。
+243. Amendment 5G-B.1.1.1.1.1 Request/Manifest 仅为 future raw-stream diagnostic 审批包。包本身不授权 launcher、原 pre verifier、Git child、raw evidence、bootstrap、semantics、post verifier、synthetic 或 official action；任何批准必须显式绑定未来 package commit。
+244. Future diagnostic launcher 冻结为 Windows PowerShell 5.1、161 LF 行、9,684 UTF-8 bytes、SHA-256 `4FA9DABF8701F67554F6D0D100EFD72DF78477F80F600057F5C26A9886471DD6`；其 UTF-16LE EncodedCommand complete-arguments SHA-256 为 `86E326DBB39ED099A5AA4BD8CA46002656D2766768C731A88F15C784F88946C1`。静态 parser 为 0 error，组包阶段 launcher 与原 pre verifier 执行次数均为 0。
+245. 未来如获 package-bound 批准，launcher 只允许启动一次未修改的 74-line pre verifier，并发排空 `StandardOutput.BaseStream` 与 `StandardError.BaseStream`；必须在任何解释、比较或 payload gate 前依次用 `FileMode.CreateNew` 持久化 raw stdout、raw stderr，再写 value-free metadata。内部 Git-child count 必须保持 `null/UNCONFIRMED_PENDING_INDEPENDENT_REVIEW`，diagnostic completion 不等于 synchronization success。
+246. 未来 diagnostic evidence 只允许四个新路径，且必须作为 approval-governance 的精确四路径直接子提交推送后立即停止。四个 semantics evidence 路径必须继续不存在；bootstrap、harness、compatible verifier、wrapper、Python、post verifier、formal preflight、official input/token/capture、controller、verifier、Gold、reservation 与 Stage3B 全部为 0 且未授权。
+247. 当前状态为 `AMENDMENT_5G_B_1_1_1_1_1_RAW_STREAM_DIAGNOSTIC_PACKAGE_AWAITING_APPROVAL`。在新的 package-bound 批准前，不得静态重建 future launcher transport、运行 launcher 或原 pre verifier，也不得创建任何 diagnostic evidence。
 
 ## GitHub 与文档
 

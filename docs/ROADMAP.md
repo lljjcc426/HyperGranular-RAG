@@ -1185,3 +1185,16 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Static bootstrap reconstruction, bootstrap, harness, compatible verifier, wrapper, Python, evidence creation/commit and post-evidence verifier all remained zero. Four evidence paths remain absent and the worktree remains clean.
 - Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_14.md`.
 - Current status: `CORRECTED_AMENDMENT_5G_B_1_1_1_1_PRE_EXECUTION_SYNC_STOPPED_HARD_FAILURE_14`. A new independent review must define any diagnostic or recovery scope.
+
+### Stage4B-U1-D Pre-Gold Hard Failure 14 Review And Amendment 5G-B.1.1.1.1.1 Package
+
+- Hard Failure 14 Review 1 accepts checkpoint `e12b0961492897d1940cf0cf2ce45fa45abb99b8`, the valid approval-governance commit and the fail-closed stop.
+- The accepted evidence boundary is one original pre-verifier process with exit code 0 and non-empty stderr. Raw stdout/stderr are unrecoverable, the internal Git-child count is unconfirmed, accepted 122-byte successes remain zero and root cause is not established.
+- Review: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_14_REVIEW_1.md`.
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_1_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_1_MANIFEST.json`.
+- The package freezes a 161-line, 9,684-byte Windows PowerShell 5.1 raw-stream launcher with source SHA-256 `4FA9DABF8701F67554F6D0D100EFD72DF78477F80F600057F5C26A9886471DD6` and complete-arguments SHA-256 `86E326DBB39ED099A5AA4BD8CA46002656D2766768C731A88F15C784F88946C1`.
+- The launcher statically parses with zero errors. It and the original pre verifier were not invoked during package assembly.
+- A future approved launcher would concurrently drain the unchanged original verifier's raw stdout/stderr streams, persist both with `FileMode.CreateNew` before comparison, then persist value-free metadata. Internal Git-child count remains unconfirmed pending independent review.
+- The four diagnostic evidence paths are new and the four semantics paths must remain absent. Bootstrap, semantics, post verifier, synthetic and all official operations remain unauthorized.
+- Current status: `AMENDMENT_5G_B_1_1_1_1_1_RAW_STREAM_DIAGNOSTIC_PACKAGE_AWAITING_APPROVAL`.

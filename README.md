@@ -6,16 +6,18 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Hard Failure 14：唯一 pre-execution verifier 在 stderr 非空硬门停止 |
-| 获批执行协议 | corrected 5G-B.1.1.1.1 授权已消费；bootstrap 与全部下游进程未启动 |
-| 设计文件 | `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_14.md` |
-| 协议状态 | `CORRECTED_AMENDMENT_5G_B_1_1_1_1_PRE_EXECUTION_SYNC_STOPPED_HARD_FAILURE_14` |
+| 当前阶段 | Hard Failure 14 审计已接受；raw-stream diagnostic package 等待独立审批 |
+| 获批执行协议 | 无；corrected 5G-B.1.1.1.1 授权已消费，新 package 本身不授权执行 |
+| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_1_APPROVAL_REQUEST.md` 与 Manifest |
+| 协议状态 | `AMENDMENT_5G_B_1_1_1_1_1_RAW_STREAM_DIAGNOSTIC_PACKAGE_AWAITING_APPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
 | 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
 
 Corrected package 获批后，approval governance 已按精确两路径提交推送。74 行 pre-execution verifier 的 source/transport 指纹全部通过，并启动唯一一次获批进程；该进程 exit code 为 0，但外层 stderr 必须为空的硬门失败。由于 stdout/stderr 仅在内存捕获且命令在摘要输出前停止，exact stderr 内容和 stdout 指纹不可恢复，不能把 exit 0 解释为同步验证通过。没有重试；bootstrap、harness、wrapper、Python、evidence 和 post verifier 均未启动。完整审计见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_14.md`。
+
+Hard Failure 14 Review 1 已接受该证据边界并确认根因尚未建立。新的 5G-B.1.1.1.1.1 package 只申请未来一次受控 raw-stream diagnostic：launcher 冻结为 161 行、9,684 bytes、SHA-256 `4FA9DABF...71DD6`，将并发读取原 verifier 的两个 raw `BaseStream`，先以 `CreateNew` 保存 stdout/stderr，再写 value-free metadata。组包阶段没有执行 launcher 或原 verifier；新批准前不得运行诊断，诊断成功也不等于同步验证通过。
 
 第一次官方提取在预注册映射硬门处停止：基础区间 `[800:5300)` 的 11,003 个 supporting facts 中有 19 个 sentence index 越界，影响 19 条查询；该失败没有生成 gain/harm 或检索指标。Amendment 1 随后采用仅由标注完整性决定的确定性替换，从 `[9800:9819)` 补入 19 条有效记录。最终 11,015/11,015 supporting facts 完整映射，development/reservation 零重叠。
 
@@ -193,9 +195,9 @@ Hard Failure 10 独立审核接受审计及两轮结果，但只将旧三项工�
 
 ## 下一步
 
-1. 独立审批 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_APPROVAL_REQUEST.md` 与 Manifest。
-2. 新的 package-bound 批准前，不得运行 validator semantics check、fresh rebinding 或创建 5G-B.1 direct-child。
-3. Typed/path helper official call、official input access、token、capture、controller、verifier、Gold、U1-D 指标、reservation 与 Stage3B 继续锁定。
+1. 独立审批 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_1_APPROVAL_REQUEST.md` 与 Manifest，并明确绑定其 package commit。
+2. 新的 package-bound 批准前，不得重建或运行 raw-stream diagnostic launcher，不得重跑 pre verifier，也不得创建四项 diagnostic evidence。
+3. Bootstrap、semantics、post verifier、synthetic、formal preflight、official input/token/capture、controller、verifier、Gold、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub
 
