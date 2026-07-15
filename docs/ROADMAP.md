@@ -1056,3 +1056,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The package freezes the accepted helper/runner/test/evidence hashes, unchanged 32-element capture command, future approval changed paths and exact three-path rebinding/governance direct-child set.
 - A future approval may authorize two exact 246-test rebinding runs, one derived actual execution-HEAD validation, one ordered A/B/C/D preflight and one unchanged capture only if every earlier gate passes.
 - Current status: `AMENDMENT_5G_B_AWAITING_APPROVAL`. The package itself authorizes no rebinding, real execution-head check, preflight, official input access, token, capture, controller, verifier or Gold.
+
+### Stage4B-U1-D Pre-Gold Hard Failure 10
+
+- Approval governance was committed and pushed at `79e69eab874f669d79d433fa965f5f5f48659332` with the exact approved two-path set.
+- The complete runner was invoked exactly twice. Both runs passed 246/246 with 41 execution-head tests, 44 typed-policy tests, zero failure/error/skip and zero official/helper/preflight/token/capture counters.
+- Both 69,144-byte evidence files had SHA-256 `00281BED7BC0DF10D47382CC47D0884BFCD331F0CB92EFC0B51F0FF176827A2A`; direct byte equality passed.
+- Before the authorized three-path commit, governance validation failed because `$g.bound_files.psobject.Properties.Count` returned an 11-element array of per-property counts rather than scalar collection cardinality.
+- Read-only diagnosis confirmed the governance object actually contains the 11 required bound-file properties. The validation was not corrected or rerun.
+- No authorized three-path direct child, derived execution-HEAD call, preflight, official input access, token or capture occurred.
+- Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_10.md`.
+- Current status: `AMENDMENT_5G_B_REBINDING_GOVERNANCE_STOPPED_HARD_FAILURE_10`. A new independent review and package-bound recovery Amendment are required.

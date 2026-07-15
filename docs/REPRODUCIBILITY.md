@@ -919,3 +919,15 @@ The new request and machine-readable protocol are `docs/STAGE4B_U1_PREGOLD_AMEND
 The future approval protocol freezes exactly two approval-governance changed paths and exactly three rebinding/governance direct-child changed paths. The actual local/origin/GitHub execution HEAD must be derived after that direct-child commit from independently collected Git facts and validated through the hash-bound pure-value helper; a manually transcribed future expected HEAD is forbidden.
 
 Only after derived HEAD validation may one ordered A/B/C/D preflight run. Only after every gate passes may the unchanged 32-element decisions-only capture run once. Any failure stops without retry. Current status is `AMENDMENT_5G_B_AWAITING_APPROVAL`; this package authorizes no rebinding, real execution-head check, preflight, official input access, token, capture, controller, verifier or Gold.
+
+## Stage4B-U1-D Pre-Gold Hard Failure 10
+
+The package-bound approval-governance commit `79e69eab874f669d79d433fa965f5f5f48659332` changed exactly `AGENTS.md` and the 5G-B approval decision and was synchronized across local, origin and GitHub before synthetic execution.
+
+The frozen complete runner then ran exactly twice with no preliminary, targeted, repair or retry invocation. Both runs passed 246/246, including 41 execution-head and 44 typed-policy tests, with 33 tracked files, tracked digest `50D3BCDDAE42961ECCDDC30ADE683D6180F9CDFC319D085BEC762B8985A17041`, and zero failure/error/skip/official/helper/preflight/token/capture counts. Both 69,144-byte evidence files had SHA-256 `00281BED7BC0DF10D47382CC47D0884BFCD331F0CB92EFC0B51F0FF176827A2A` and were byte-identical.
+
+The precommit governance-validation wrapper then evaluated `$g.bound_files.psobject.Properties.Count -ne 11`. PowerShell member enumeration returned an 11-element `System.Object[]` containing one `1` per property instead of scalar collection cardinality. The nonempty comparison result triggered `bound file count failed`. Read-only diagnosis confirmed `@($g.bound_files.psobject.Properties).Count` is 11 and listed exactly the 11 Manifest-required bound-file keys.
+
+The failed validation was not corrected or rerun. The authorized three-path direct child was not created, and derived execution-HEAD validation, formal preflight, official input access, helper calls, token and capture remained at zero. The generated rebinding evidence, governance binding and narrative audit are preserved unchanged in the failure checkpoint. Full evidence is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_10.md`.
+
+Current status is `AMENDMENT_5G_B_REBINDING_GOVERNANCE_STOPPED_HARD_FAILURE_10`. The current approval is consumed; any recovery requires independent review and a new package-bound Amendment.

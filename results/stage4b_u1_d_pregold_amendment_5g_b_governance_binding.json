@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.0",
+  "stage": "Stage4B-U1-D Pre-Gold Amendment 5G-B",
+  "status": "AMENDMENT_5G_B_POST_APPROVAL_SYNTHETIC_REBINDING_VERIFIED",
+  "package_commit": "f281864b424c406b42718c4ec58d7266ecafd9a3",
+  "approval_commit": "79e69eab874f669d79d433fa965f5f5f48659332",
+  "artifacts_present": {
+    "rebinding_evidence": true,
+    "governance_binding": true,
+    "rebinding_audit": true
+  },
+  "responsibility_separation": {
+    "synthetic_rebinding_evidence": "binds the current 33 runner-tracked implementation and governance files",
+    "governance_binding": "binds the 5G-B request Manifest approval decision final AGENTS 5G-A.1 review request Manifest approval implementation audit and evidence plus the 5G-B rebinding evidence",
+    "execution_head_commit": "externally binds this governance-binding file and the exact three-path direct-child content",
+    "self_sha256_registered": false
+  },
+  "synthetic_rebinding": {
+    "complete_runs": 2,
+    "preliminary_complete_runs": 0,
+    "targeted_runs": 0,
+    "tests_each_run": 246,
+    "execution_head_tests_each_run": 41,
+    "typed_policy_tests_each_run": 44,
+    "failures_each_run": 0,
+    "errors_each_run": 0,
+    "skipped_each_run": 0,
+    "official_access_each_run": 0,
+    "typed_helper_official_invocations_each_run": 0,
+    "path_helper_official_invocations_each_run": 0,
+    "execution_head_filesystem_git_or_subprocess_calls_each_run": 0,
+    "formal_preflight_invocations_each_run": 0,
+    "authorization_token_uses_each_run": 0,
+    "official_capture_invocations_each_run": 0,
+    "evidence_byte_identical": true,
+    "tracked_file_count": 33,
+    "tracked_byte_digest_sha256": "50D3BCDDAE42961ECCDDC30ADE683D6180F9CDFC319D085BEC762B8985A17041",
+    "evidence_bytes": 69144,
+    "evidence_sha256": "00281BED7BC0DF10D47382CC47D0884BFCD331F0CB92EFC0B51F0FF176827A2A",
+    "run_1_os_temp_snapshot_deleted_after_complete_equality": true
+  },
+  "frozen_runner": {
+    "path": "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py",
+    "bytes": 22416,
+    "sha256": "83816A962EDC8F06B53B5826E3F7519BD72D2CA0DF91C46751A9B12215867F28"
+  },
+  "bound_files": {
+    "5g_b_request": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md",
+      "bytes": 10316,
+      "sha256": "7EC6120EF92967D3B882723D97A723B3C580D24042E503089A3CC9667CD73ED6"
+    },
+    "5g_b_manifest": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_MANIFEST.json",
+      "bytes": 22622,
+      "sha256": "DE5CB3486CBE4A7D3F9884472C258B267AE6BBD8CE8A477D54ACB9109A8B059F"
+    },
+    "5g_b_approval_decision": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_APPROVAL_DECISION.md",
+      "bytes": 8955,
+      "sha256": "0E4BBD6BBF07ACEA6A0ED6A535F9AC3698692EB4E65D77EF9450255470FEC8B3"
+    },
+    "final_approved_agents": {
+      "path": "AGENTS.md",
+      "bytes": 50991,
+      "sha256": "286F7AE029FBF9961282DD4982A3D2E79348BD10AA830D25ED7142571654823E"
+    },
+    "5g_a_1_review_1": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_REVIEW_1.md",
+      "bytes": 5013,
+      "sha256": "424FD678048A8867D27950E0B3BB527EF914395613EB9B18D60C669F9E7D0D82"
+    },
+    "5g_a_1_request": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_APPROVAL_REQUEST.md",
+      "bytes": 8156,
+      "sha256": "D3D57B7C5B1C9BDEFAF8DEA5F2FEE3FCDAB86EE80AFD0172CB08ECBC41806795"
+    },
+    "5g_a_1_manifest": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_MANIFEST.json",
+      "bytes": 9619,
+      "sha256": "9F3A09446F5AA40A8A6D0815DB8A23D74212DE88E46EBB2A364E6A4ADC4AE78F"
+    },
+    "5g_a_1_approval_decision": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_APPROVAL_DECISION.md",
+      "bytes": 5614,
+      "sha256": "985050EC000756CD53B1619C2C99B919D1F6BF4518010814A2ED25CEAC249F90"
+    },
+    "5g_a_1_implementation_audit": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_A_1_IMPLEMENTATION_AUDIT.md",
+      "bytes": 10400,
+      "sha256": "12B01BC868A9676D681F41F99BA90CE6BBC34F57768C2E622B8C642CFD523718"
+    },
+    "5g_a_1_deterministic_evidence": {
+      "path": "results/stage4b_u1_d_pregold_amendment_5g_a_synthetic_verification.json",
+      "bytes": 69144,
+      "sha256": "A6285498FCFE767297D7156B87CA6034A993B2DFBB167EF7DFA813E9ADD55292"
+    },
+    "5g_b_synthetic_rebinding_evidence": {
+      "path": "results/stage4b_u1_d_pregold_amendment_5g_b_synthetic_rebinding.json",
+      "bytes": 69144,
+      "sha256": "00281BED7BC0DF10D47382CC47D0884BFCD331F0CB92EFC0B51F0FF176827A2A"
+    }
+  },
+  "direct_child_contract": {
+    "required_parent": "79e69eab874f669d79d433fa965f5f5f48659332",
+    "changed_paths_exact_set": [
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_SYNTHETIC_REBINDING_AUDIT.md",
+      "results/stage4b_u1_d_pregold_amendment_5g_b_governance_binding.json",
+      "results/stage4b_u1_d_pregold_amendment_5g_b_synthetic_rebinding.json"
+    ]
+  },
+  "formal_preflight_invocations": 0,
+  "typed_helper_official_invocations": 0,
+  "path_helper_official_invocations": 0,
+  "execution_head_official_invocations": 0,
+  "authorization_token_uses": 0,
+  "official_capture_invocations": 0,
+  "official_input_metadata_or_content_access": 0,
+  "next_gate": "ONE_DERIVED_EXECUTION_HEAD_VALIDATION_AFTER_THIS_DIRECT_CHILD_IS_COMMITTED_PUSHED_AND_SYNCHRONIZED"
+}

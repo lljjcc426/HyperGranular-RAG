@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Amendment 5G-A.1 独立审核通过；5G-B official diagnostic 审批包已组装，等待审批 |
-| 获批执行协议 | 当前仅获准组装 5G-B package；rebinding、execution-HEAD check、preflight 与 official execution 均未获批 |
-| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md` |
-| 协议状态 | `AMENDMENT_5G_B_AWAITING_APPROVAL` |
+| 当前阶段 | 5G-B post-approval rebinding 后的 governance validation 触发 Hard Failure 10，等待独立审核 |
+| 获批执行协议 | 原 5G-B 一次性授权已在 precommit governance gate 消耗；后续 execution-HEAD/preflight/official execution 重新锁定 |
+| 设计文件 | `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_10.md` |
+| 协议状态 | `AMENDMENT_5G_B_REBINDING_GOVERNANCE_STOPPED_HARD_FAILURE_10` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -164,6 +164,8 @@ Hard Failure 9 独立审核已接受并冻结提交 `d1c7cf9...`。5G-A.1 仅申
 
 5G-A.1 独立审核已接受提交 `c21f3f5...`，并仅授权组装 5G-B 审批包。5G-B 预冻结批准后两轮 246/246 rebinding、唯一三路径 governance direct-child、由实际 Git/GitHub 事实推导的 execution HEAD、一次 A/B/C/D preflight 与条件性单次 unchanged capture；package 本身不授权执行这些步骤。
 
+5G-B 获批后，approval-governance commit `79e69ea...` 按精确两路径推送；两轮 post-approval suite 均为 246/246，69,144-byte evidence SHA 均为 `00281BED...` 且逐字节一致。随后三路径提交前的 governance validation 因 PowerShell collection-count 表达式返回 11 个 `1` 而非 scalar 11，触发 Hard Failure 10。实际 bound files 为 11 项，但一次性 gate 已消耗；未创建三路径 direct-child，也未运行 derived HEAD helper、preflight 或 official capture。
+
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
 ## 科研治理
@@ -187,8 +189,8 @@ Hard Failure 9 独立审核已接受并冻结提交 `d1c7cf9...`。5G-A.1 仅申
 
 ## 下一步
 
-1. 独立审批 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_OFFICIAL_DIAGNOSTIC_APPROVAL_REQUEST.md` 与 Manifest。
-2. 新的 package-bound 批准明确落盘并推送前，不得运行 rebinding、execution-HEAD check、preflight 或 official capture。
+1. 独立审核 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_10.md` 及保留的 rebinding/governance 工件。
+2. 新的 package-bound Amendment 明确批准前，不得创建 recovery direct-child、运行 execution-HEAD check、preflight 或 official capture。
 3. Typed/path helper official call、official input access、token、capture、controller、verifier、Gold、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub

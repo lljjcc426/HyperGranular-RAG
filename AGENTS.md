@@ -178,6 +178,11 @@
 164. 两轮通过后只允许一个 approval-governance 的直接子提交，且 changed paths 精确为 Manifest 登记的 rebinding evidence、governance binding 与 narrative audit 三项。该提交推送同步后才可单次 derived execution-HEAD validation。
 165. Derived HEAD helper、formal preflight、typed helper、path helper 与 capture 均为一次性授权；任一 gate 失败立即消耗授权并停止，不得现场修改或重试。只有 derived HEAD 与 A/B/C/D 全通过后才可运行一次 unchanged decisions-only capture。
 166. 成功后的最终诊断提交只允许 machine audit 与 5G-B narrative audit 两个路径；不得同时更新治理状态文件。提交推送并确认 GitHub 后立即停止，controller、verifier 与 Gold 继续锁定。
+167. 5G-B approval-governance commit `79e69eab874f669d79d433fa965f5f5f48659332` 已按精确两路径提交推送，local/origin/GitHub 三方一致后才开始 post-approval synthetic。
+168. 两次获批 complete runner 均精确通过 246/246、41 execution-head、44 typed-policy，33 个 tracked files digest 为 `50D3BCDD...`，两份 69,144-byte evidence SHA 均为 `00281BED...` 且逐字节一致；run-1 临时文件仅在全部比较通过后删除。
+169. 三路径提交前 governance validation 在 `bound file count failed` 处触发 Hard Failure 10。直接原因是 PowerShell 对 `$g.bound_files.psobject.Properties.Count` 进行成员枚举并返回 11 个 `1`，而非集合 cardinality 11；实际 bound-file property 数为 11。
+170. 失败后未修正或重跑 validation，未创建获批三路径 direct-child，也未运行 derived execution-HEAD helper、preflight、official input、token 或 capture。已生成的 rebinding evidence、governance binding 与 narrative audit 原样保留。
+171. 当前状态为 `AMENDMENT_5G_B_REBINDING_GOVERNANCE_STOPPED_HARD_FAILURE_10`。现有 5G-B 授权已消耗；任何 direct-child recovery、helper、preflight 或 official action 必须经过新的独立审核与 package-bound Amendment。
 
 ## GitHub 与文档
 
