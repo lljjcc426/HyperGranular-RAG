@@ -931,3 +931,15 @@ The precommit governance-validation wrapper then evaluated `$g.bound_files.psobj
 The failed validation was not corrected or rerun. The authorized three-path direct child was not created, and derived execution-HEAD validation, formal preflight, official input access, helper calls, token and capture remained at zero. The generated rebinding evidence, governance binding and narrative audit are preserved unchanged in the failure checkpoint. Full evidence is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_10.md`.
 
 Current status is `AMENDMENT_5G_B_REBINDING_GOVERNANCE_STOPPED_HARD_FAILURE_10`. The current approval is consumed; any recovery requires independent review and a new package-bound Amendment.
+
+## Stage4B-U1-D Hard Failure 10 Review And Amendment 5G-B.1 Package
+
+Independent review accepts the Hard Failure 10 audit and freezes checkpoint `aab591b92804fd1226a62751c38d056918f71b41`. It accepts the old two-run rebinding evidence only as deterministic evidence within the failed checkpoint. The three old 5G-B artifacts must remain byte-identical and cannot be reused as an active execution binding.
+
+The review is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_10_REVIEW_1.md`. The recovery request and machine-readable protocol are `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_APPROVAL_REQUEST.md` and `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_MANIFEST.json`.
+
+The corrected validator contract materializes actual and expected names with `@(...)`, rejects duplicate names on both sides, and requires zero `Compare-Object` delta. It also requires all bound-file path/bytes/SHA values and the exact fresh three-path worktree set. Cardinality-only acceptance is forbidden.
+
+A future package-bound approval may authorize one pure in-memory semantics check, exactly two fresh complete rebinding runs on final approval-governance bytes, one real corrected precommit validation, one fresh exact-three-path direct-child commit, GitHub synchronization and immediate stop. Fresh paths use the `5g_b_1` namespace and may not overwrite the historical 5G-B files.
+
+Current status is `AMENDMENT_5G_B_1_AWAITING_APPROVAL`. Execution-head helper calls, formal preflight, official inputs, token, capture, controller, verifier and Gold remain unapproved.

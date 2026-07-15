@@ -1067,3 +1067,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - No authorized three-path direct child, derived execution-HEAD call, preflight, official input access, token or capture occurred.
 - Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_10.md`.
 - Current status: `AMENDMENT_5G_B_REBINDING_GOVERNANCE_STOPPED_HARD_FAILURE_10`. A new independent review and package-bound recovery Amendment are required.
+
+### Stage4B-U1-D Hard Failure 10 Review And Amendment 5G-B.1 Package
+
+- Independent review accepts the Hard Failure 10 audit and freezes checkpoint `aab591b92804fd1226a62751c38d056918f71b41`.
+- The two 246/246 runs and SHA `00281BED...` are accepted only as historical failure evidence, not as an active execution binding.
+- Review: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_10_REVIEW_1.md`.
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_MANIFEST.json`.
+- The package freezes an explicit-array, duplicate-rejecting, exact-key-set validator contract and requires new non-overlapping artifact paths.
+- A future approval may authorize one in-memory semantics check, exactly two fresh 246-test runs, one corrected real precommit validation and one exact-three-path direct-child, followed by immediate stop.
+- Current status: `AMENDMENT_5G_B_1_AWAITING_APPROVAL`. No validator execution, synthetic run, direct-child, execution-head helper, preflight or official action is authorized by the package itself.

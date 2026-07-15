@@ -183,6 +183,12 @@
 169. 三路径提交前 governance validation 在 `bound file count failed` 处触发 Hard Failure 10。直接原因是 PowerShell 对 `$g.bound_files.psobject.Properties.Count` 进行成员枚举并返回 11 个 `1`，而非集合 cardinality 11；实际 bound-file property 数为 11。
 170. 失败后未修正或重跑 validation，未创建获批三路径 direct-child，也未运行 derived execution-HEAD helper、preflight、official input、token 或 capture。已生成的 rebinding evidence、governance binding 与 narrative audit 原样保留。
 171. 当前状态为 `AMENDMENT_5G_B_REBINDING_GOVERNANCE_STOPPED_HARD_FAILURE_10`。现有 5G-B 授权已消耗；任何 direct-child recovery、helper、preflight 或 official action 必须经过新的独立审核与 package-bound Amendment。
+172. Hard Failure 10 独立审核已接受审计并冻结 checkpoint `aab591b92804fd1226a62751c38d056918f71b41`；旧两轮 `00281BED...` evidence 仅作为历史失败证据，不得作为新的 execution binding。
+173. 旧 5G-B rebinding audit、governance binding 与 synthetic evidence 必须保持原 SHA，禁止覆盖、修改、删除、迁移、重提或通过 reset/force-push 制造旧 approval 的三路径 direct-child。
+174. 当前只授权组装 5G-B.1 package。Request/Manifest 本身不授权 validator 修正或执行、semantics check、synthetic、fresh direct-child、helper、preflight、official input、token、capture、controller、verifier 或 Gold。
+175. 未来 5G-B.1 如获 package-bound 批准，validator 必须用 `@(...)` 显式物化 actual/expected key arrays，分别拒绝重复，并以 `Compare-Object` 零 delta 验证 exact key set；只比较 cardinality 不得接受。
+176. 未来恢复顺序必须隔离为：新 approval governance、一次纯内存 semantics check、两次 fresh 246/246、三项新工件、一次 corrected real precommit validation、精确三路径 direct-child、同步 GitHub、立即停止。任一失败不得修正或重跑。
+177. 当前状态为 `AMENDMENT_5G_B_1_AWAITING_APPROVAL`。本阶段不申请 derived execution-HEAD helper、formal preflight 或 official diagnostic；这些必须等待 fresh direct-child 独立审核后另行组包。
 
 ## GitHub 与文档
 

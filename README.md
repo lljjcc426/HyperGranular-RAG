@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | 5G-B post-approval rebinding 后的 governance validation 触发 Hard Failure 10，等待独立审核 |
-| 获批执行协议 | 原 5G-B 一次性授权已在 precommit governance gate 消耗；后续 execution-HEAD/preflight/official execution 重新锁定 |
-| 设计文件 | `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_10.md` |
-| 协议状态 | `AMENDMENT_5G_B_REBINDING_GOVERNANCE_STOPPED_HARD_FAILURE_10` |
+| 当前阶段 | Hard Failure 10 独立审核通过；5G-B.1 fresh rebinding direct-child 审批包已组装，等待审批 |
+| 获批执行协议 | 当前仅获准组装 5G-B.1 package；validator check、synthetic、direct-child 与 official execution 均未获批 |
+| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_APPROVAL_REQUEST.md` |
+| 协议状态 | `AMENDMENT_5G_B_1_AWAITING_APPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -166,6 +166,8 @@ Hard Failure 9 独立审核已接受并冻结提交 `d1c7cf9...`。5G-A.1 仅申
 
 5G-B 获批后，approval-governance commit `79e69ea...` 按精确两路径推送；两轮 post-approval suite 均为 246/246，69,144-byte evidence SHA 均为 `00281BED...` 且逐字节一致。随后三路径提交前的 governance validation 因 PowerShell collection-count 表达式返回 11 个 `1` 而非 scalar 11，触发 Hard Failure 10。实际 bound files 为 11 项，但一次性 gate 已消耗；未创建三路径 direct-child，也未运行 derived HEAD helper、preflight 或 official capture。
 
+Hard Failure 10 独立审核接受审计及两轮结果，但只将旧三项工件视为冻结的历史失败证据。5G-B.1 package 申请在新 approval bytes 上运行一次纯内存 exact-key-set semantics check、两次 fresh 246/246 rebinding、一次 corrected real precommit validation，并以全新路径创建精确三路径 direct-child 后停止；不申请 execution-HEAD helper、preflight 或 official capture。
+
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
 ## 科研治理
@@ -189,8 +191,8 @@ Hard Failure 9 独立审核已接受并冻结提交 `d1c7cf9...`。5G-A.1 仅申
 
 ## 下一步
 
-1. 独立审核 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_10.md` 及保留的 rebinding/governance 工件。
-2. 新的 package-bound Amendment 明确批准前，不得创建 recovery direct-child、运行 execution-HEAD check、preflight 或 official capture。
+1. 独立审批 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_APPROVAL_REQUEST.md` 与 Manifest。
+2. 新的 package-bound 批准前，不得运行 validator semantics check、fresh rebinding 或创建 5G-B.1 direct-child。
 3. Typed/path helper official call、official input access、token、capture、controller、verifier、Gold、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub

@@ -1,0 +1,318 @@
+{
+  "schema_version": "1.0",
+  "request_id": "STAGE4B_U1_D_PREGOLD_AMENDMENT_5G_B_1_GOVERNANCE_KEYSET_VALIDATION_REPAIR_AND_FRESH_REBINDING_DIRECT_CHILD_ONLY",
+  "assembled_date": "2026-07-15",
+  "package_status": "AWAITING_AMENDMENT_5G_B_1_APPROVAL",
+  "current_state": [
+    "HARD_FAILURE_10_AUDIT_ACCEPTED",
+    "5G_B_REBINDING_EVIDENCE_ACCEPTED_AS_HISTORICAL_ONLY",
+    "HARD_FAILURE_10_CHECKPOINT_FROZEN",
+    "RETURN_FOR_AMENDMENT_5G_B_1_PACKAGE",
+    "CURRENT_5G_B_APPROVAL_CONSUMED",
+    "CURRENT_REBINDING_EVIDENCE_NOT_ACTIVE",
+    "AUTHORIZED_THREE_PATH_DIRECT_CHILD_NOT_CREATED",
+    "DERIVED_EXECUTION_HEAD_VALIDATION_NOT_APPROVED",
+    "FORMAL_PREFLIGHT_NOT_APPROVED",
+    "OFFICIAL_INPUT_ACCESS_NOT_APPROVED",
+    "AUTHORIZATION_TOKEN_USE_NOT_APPROVED",
+    "OFFICIAL_CAPTURE_NOT_APPROVED",
+    "CONTROLLER_RERUN_NOT_APPROVED",
+    "VERIFIER_NOT_APPROVED",
+    "GOLD_NOT_APPROVED"
+  ],
+  "requested_mode": "GOVERNANCE_VALIDATOR_SEMANTICS_CHECK_AND_FRESH_REBINDING_DIRECT_CHILD_ONLY",
+  "approval_must_also_bind_package_commit": true,
+  "package_authorizes_validator_correction_semantics_check_synthetic_or_execution": false,
+  "package_files": {
+    "request": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_APPROVAL_REQUEST.md",
+      "bytes": 9847,
+      "sha256": "9677E15D28DBC9D2F57DA958ABB760E20E682040383E786D873918B49A32DE51"
+    },
+    "manifest": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_MANIFEST.json",
+    "future_approval_decision": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_APPROVAL_DECISION.md"
+  },
+  "binding_commits": {
+    "amendment_5g_b_package": "f281864b424c406b42718c4ec58d7266ecafd9a3",
+    "amendment_5g_b_approval_governance": "79e69eab874f669d79d433fa965f5f5f48659332",
+    "hard_failure_10_checkpoint": "aab591b92804fd1226a62751c38d056918f71b41",
+    "amendment_5g_a_1_implementation_and_evidence": "c21f3f58b2b1d4ccf235daba9c85937daedf4e3b",
+    "hard_failure_9": "d1c7cf9d78563e30a1e0fe0d6812b36d15b95a9a",
+    "hard_failure_8": "0f35ec895c756348e8a10803c6dd961a37344fb0"
+  },
+  "hard_failure_10_review": {
+    "path": "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_10_REVIEW_1.md",
+    "bytes": 5764,
+    "sha256": "4ED048300BFBDFE2A66AB581F5DC4C0E5122423A73B3E94E930B2E3AE5BC8B68",
+    "decision": "ACCEPT_HARD_FAILURE_10_AUDIT",
+    "historical_evidence_decision": "ACCEPT_5G_B_TWO_RUN_REBINDING_AS_HISTORICAL_FAILURE_EVIDENCE_ONLY",
+    "next_action": "RETURN_FOR_AMENDMENT_5G_B_1_PACKAGE"
+  },
+  "hard_failure_10_audit": {
+    "path": "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_10.md",
+    "bytes": 6207,
+    "sha256": "1B92A16EE4B9D14BA09C3345337A9E5026DAA2C577B4E123870C0C8895EE8497",
+    "direct_cause": "POWERSHELL_MEMBER_ENUMERATION_RETURNED_PER_PROPERTY_COUNT_ARRAY_INSTEAD_OF_COLLECTION_CARDINALITY",
+    "authorized_three_path_direct_child_created": false,
+    "execution_head_helper_official_calls": 0,
+    "formal_preflight_invocations": 0,
+    "official_input_access": 0,
+    "authorization_token_uses": 0,
+    "official_capture_invocations": 0
+  },
+  "preserved_historical_5g_b_artifacts": {
+    "rebinding_audit": {
+      "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_SYNTHETIC_REBINDING_AUDIT.md",
+      "bytes": 3973,
+      "sha256": "50D125193CDD49B2A33ADF4EFC3A5F4A0F74A4029EE640AA032B4FEE990B3054"
+    },
+    "governance_binding": {
+      "path": "results/stage4b_u1_d_pregold_amendment_5g_b_governance_binding.json",
+      "bytes": 5317,
+      "sha256": "12BF30F3EF70D0420237DCF0A6C6D5D06C05990DDF637EA4CF31B7C3C7655730"
+    },
+    "synthetic_rebinding_evidence": {
+      "path": "results/stage4b_u1_d_pregold_amendment_5g_b_synthetic_rebinding.json",
+      "bytes": 69144,
+      "sha256": "00281BED7BC0DF10D47382CC47D0884BFCD331F0CB92EFC0B51F0FF176827A2A",
+      "complete_runs": 2,
+      "tests_each_run": 246,
+      "execution_head_tests_each_run": 41,
+      "typed_policy_tests_each_run": 44,
+      "failures_errors_skips_each_run": [0, 0, 0],
+      "tracked_file_count": 33,
+      "tracked_byte_digest_sha256": "50D3BCDDAE42961ECCDDC30ADE683D6180F9CDFC319D085BEC762B8985A17041",
+      "all_official_helper_preflight_token_capture_counts_zero": true,
+      "evidence_byte_identical": true,
+      "active_execution_binding": false
+    },
+    "must_remain_byte_identical_before_between_and_after_all_future_steps": true,
+    "overwrite_modify_delete_migrate_or_reuse_as_active_binding_forbidden": true
+  },
+  "frozen_implementation": {
+    "deterministic_runner": {
+      "path": "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py",
+      "bytes": 22416,
+      "sha256": "83816A962EDC8F06B53B5826E3F7519BD72D2CA0DF91C46751A9B12215867F28"
+    },
+    "execution_head_helper": {
+      "path": "scripts/stage4b_u1_preflight_execution_head_binding.py",
+      "bytes": 6318,
+      "sha256": "517C5C4DB22A82B4CBCA3D8BB751AAE60C0DCC5B5948CC8419D8770A9CC3D174"
+    },
+    "typed_argument_helper": {
+      "path": "scripts/stage4b_u1_preflight_argument_policy.py",
+      "bytes": 7082,
+      "sha256": "CCDC70D2E66E9D69CD64899676EA5150FEE0381E74F4C9DEED2A0FFB5EE436F4"
+    },
+    "path_equivalence_helper": {
+      "path": "scripts/stage4b_u1_preflight_path_equivalence.py",
+      "bytes": 3543,
+      "sha256": "1A17C0E750F91CEF2F638A0B0C6FD381110692E6B2D467C1F5243ADF3F35B3FF"
+    },
+    "capture": {
+      "path": "scripts/stage4b_u1_capture_diagnostic_decisions.py",
+      "bytes": 20221,
+      "sha256": "7C7B159911384B436FDCC1B20D26F2F545F2DC55EAD1F7B2B134B273110ED40A"
+    },
+    "comparator": {
+      "path": "scripts/stage4b_u1_compare_decisions.py",
+      "bytes": 12854,
+      "sha256": "42FA3F74679672B0595CC76B519D59C03CB193415DD03F56E37260A961D94014"
+    },
+    "code_or_test_modification_allowed": false
+  },
+  "future_approval_governance": {
+    "required_before_any_semantics_check_or_synthetic_execution": true,
+    "allowed_changed_paths_exact_set": [
+      "AGENTS.md",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_APPROVAL_DECISION.md"
+    ],
+    "must_be_committed_pushed_and_three_way_synchronized": true,
+    "clean_worktree_required": true,
+    "approval_must_bind_future_package_commit_and_all_manifest_history": true
+  },
+  "corrected_validator_contract": {
+    "validator_id": "stage4b_u1_governance_bound_file_exact_keyset_v1",
+    "language": "PowerShell",
+    "actual_names_expression": "@($governance.bound_files.PSObject.Properties | ForEach-Object { [string]$_.Name })",
+    "expected_names_expression": "@($manifest.future_governance_binding_contract.bound_files_required | ForEach-Object { [string]$_ })",
+    "member_enumeration_count_expression_forbidden": "$governance.bound_files.PSObject.Properties.Count",
+    "required_checks_in_order": [
+      "materialize actual names as an explicit array",
+      "materialize Manifest expected names as an explicit array",
+      "require scalar actual and expected Count equality",
+      "sort unique actual and expected arrays",
+      "reject duplicate actual names",
+      "reject duplicate expected names",
+      "Compare-Object expected versus actual",
+      "require zero delta"
+    ],
+    "failure_messages": {
+      "count": "bound file count failed",
+      "duplicate_actual": "duplicate actual bound file name",
+      "duplicate_expected": "duplicate expected bound file name",
+      "delta": "bound file exact key set failed"
+    },
+    "cardinality_only_acceptance_forbidden": true,
+    "exact_key_set_required": true,
+    "normalization_aliasing_or_unknown_keys_forbidden": true
+  },
+  "one_in_memory_semantics_check": {
+    "future_invocations": 1,
+    "must_follow_approval_synchronization": true,
+    "must_precede_synthetic_execution": true,
+    "fixtures": [
+      "exact expected key set passes",
+      "one missing key fails",
+      "one extra key fails",
+      "duplicate actual key fails",
+      "duplicate expected key fails"
+    ],
+    "filesystem_git_github_subprocess_helper_token_capture_or_official_access": 0,
+    "automatic_retry": false,
+    "failure_stops_before_synthetic": true
+  },
+  "fresh_paths": {
+    "rebinding_audit": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_SYNTHETIC_REBINDING_AUDIT.md",
+    "governance_binding": "results/stage4b_u1_d_pregold_amendment_5g_b_1_governance_binding.json",
+    "synthetic_rebinding_evidence": "results/stage4b_u1_d_pregold_amendment_5g_b_1_synthetic_rebinding.json",
+    "all_must_be_absent_before_execution": true,
+    "exclusive_create_required": true
+  },
+  "post_approval_fresh_rebinding": {
+    "runner": "scripts/stage4b_u1_run_decisions_diagnostic_synthetic_verification.py",
+    "runner_sha256": "83816A962EDC8F06B53B5826E3F7519BD72D2CA0DF91C46751A9B12215867F28",
+    "complete_runs": 2,
+    "preliminary_complete_runs": 0,
+    "targeted_runs": 0,
+    "repair_or_retry_runs": 0,
+    "exact_tests_each_run": 246,
+    "exact_execution_head_tests_each_run": 41,
+    "exact_typed_policy_tests_each_run": 44,
+    "failures_errors_skips_each_run": [0, 0, 0],
+    "tracked_file_count_each_run": 33,
+    "all_official_helper_preflight_token_capture_counts_each_run": 0,
+    "tracked_bytes_identical_required": true,
+    "evidence_byte_identical_required": true,
+    "run_1_output_must_be_unique_os_temp": true,
+    "run_1_delete_only_after_all_gates_and_direct_byte_equality": true,
+    "run_2_output": "results/stage4b_u1_d_pregold_amendment_5g_b_1_synthetic_rebinding.json",
+    "automatic_retry": false
+  },
+  "future_governance_binding_contract": {
+    "required_top_level_fields": [
+      "package_commit",
+      "approval_commit",
+      "artifacts_present",
+      "bound_files"
+    ],
+    "required_artifacts_present": {
+      "rebinding_evidence": true,
+      "governance_binding": true,
+      "rebinding_audit": true
+    },
+    "bound_files_required": [
+      "5g_b_1_request",
+      "5g_b_1_manifest",
+      "5g_b_1_approval_decision",
+      "final_approved_agents",
+      "hard_failure_10_review_1",
+      "hard_failure_10_audit",
+      "historical_5g_b_rebinding_audit",
+      "historical_5g_b_governance_binding",
+      "historical_5g_b_synthetic_rebinding_evidence",
+      "5g_b_request",
+      "5g_b_manifest",
+      "5g_b_approval_decision",
+      "5g_a_1_implementation_audit",
+      "5g_a_1_deterministic_evidence",
+      "5g_b_1_synthetic_rebinding_evidence"
+    ],
+    "exact_key_set_required": true,
+    "bound_file_path_bytes_and_sha256_required": true,
+    "self_sha256_registration_forbidden": true,
+    "future_direct_child_commit_is_external_content_binding": true
+  },
+  "single_real_precommit_validation": {
+    "future_invocations": 1,
+    "must_follow_two_fresh_runs_and_three_fresh_artifact_generation": true,
+    "must_use_corrected_validator_contract": true,
+    "required_checks": [
+      "package and approval commit match",
+      "three required artifact-presence values are true",
+      "actual bound-file names exactly equal the unique Manifest key set",
+      "all bound-file path bytes and SHA-256 values match",
+      "fresh evidence satisfies all 246 41 44 zero-counter and equality gates",
+      "three historical artifact bytes and hashes remain frozen",
+      "worktree changed paths are exactly the three fresh paths",
+      "no unregistered path is modified or untracked"
+    ],
+    "official_input_or_helper_access": 0,
+    "automatic_retry": false,
+    "failure_stops_before_commit": true
+  },
+  "fresh_direct_child": {
+    "future_commits": 1,
+    "must_be_direct_child_of_future_approval_governance": true,
+    "changed_paths_exact_set": [
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_SYNTHETIC_REBINDING_AUDIT.md",
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_governance_binding.json",
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_synthetic_rebinding.json"
+    ],
+    "must_be_committed_pushed_and_three_way_synchronized": true,
+    "clean_worktree_required_after_push": true,
+    "stop_immediately_after_verification": true
+  },
+  "execution_limits": {
+    "in_memory_validator_semantics_checks": 1,
+    "post_approval_complete_synthetic_runs": 2,
+    "real_corrected_precommit_validations": 1,
+    "fresh_direct_child_commits": 1,
+    "derived_execution_head_helper_calls": 0,
+    "formal_preflight_invocations": 0,
+    "typed_helper_official_calls": 0,
+    "path_helper_official_calls": 0,
+    "official_input_access": 0,
+    "authorization_token_uses": 0,
+    "official_capture_invocations": 0,
+    "automatic_retry": false
+  },
+  "required_future_order": [
+    "package-bound approval governance commit and push",
+    "three-way HEAD synchronization and clean-worktree verification",
+    "one pure in-memory corrected-validator semantics check",
+    "exactly two fresh complete rebinding runs and direct byte comparison",
+    "fresh three-artifact generation",
+    "one corrected real precommit validation",
+    "one exact-three-path direct-child commit and push",
+    "three-way synchronization and clean-worktree verification",
+    "immediate stop for independent review"
+  ],
+  "explicitly_not_authorized": [
+    "run any package command before a 5G-B.1 package-bound approval",
+    "modify code tests data cache model parameters equivalence or stop rules",
+    "reuse overwrite modify delete or migrate historical 5G-B artifacts",
+    "run preliminary targeted repair retry or third synthetic invocation",
+    "run a second semantics check or second real precommit validation",
+    "create any commit containing paths outside the fresh exact-three-path set",
+    "run execution-head helper formal preflight typed or path helper official call",
+    "access official inputs rankings policy source audit 5C-B inventory evaluator Gold reservation or Stage3B",
+    "use authorization token or run capture controller verifier or evaluator",
+    "rewrite reset or force-push history",
+    "continue automatically after the fresh direct-child"
+  ],
+  "requested_completion_state": [
+    "AMENDMENT_5G_B_1_FRESH_REBINDING_DIRECT_CHILD_COMPLETE_AWAITING_REVIEW",
+    "HARD_FAILURE_10_DIRECT_CAUSE_CONFIRMED",
+    "HISTORICAL_5G_B_ARTIFACTS_FROZEN",
+    "DERIVED_EXECUTION_HEAD_VALIDATION_NOT_APPROVED",
+    "FORMAL_PREFLIGHT_NOT_APPROVED",
+    "OFFICIAL_INPUT_ACCESS_NOT_APPROVED",
+    "AUTHORIZATION_TOKEN_USE_NOT_APPROVED",
+    "OFFICIAL_CAPTURE_NOT_APPROVED",
+    "CONTROLLER_RERUN_NOT_APPROVED",
+    "VERIFIER_NOT_APPROVED",
+    "GOLD_NOT_APPROVED"
+  ]
+}
