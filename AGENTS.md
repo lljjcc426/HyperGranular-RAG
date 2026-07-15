@@ -172,6 +172,12 @@
 158. Future execution HEAD 禁止预先手抄字面量。只有 package-bound 批准、两轮 246/246 post-approval rebinding 及三路径 direct-child 提交推送后，才能从实际 local/origin/GitHub HEAD、parent、changed paths、ancestors、clean worktree 与 committed governance binding 推导，并通过冻结 helper 单次验证。
 159. 只有 derived execution-HEAD validation 通过后才可依次运行一次 A/B/C/D formal preflight；只有全部门通过后才可运行一次 Manifest 中完全不变的 32-element decisions-only capture。任一失败立即停止，不得重试。
 160. 当前状态为 `AMENDMENT_5G_B_AWAITING_APPROVAL`。新的 package-bound 批准前，post-approval rebinding、real execution-head check、preflight、helper official call、official input、token、capture、controller、verifier 与 Gold 全部锁定。
+161. Amendment 5G-B 已获 package-bound 批准，严格绑定 package commit `f281864b424c406b42718c4ec58d7266ecafd9a3`、Request/Manifest 及批准决定登记的历史提交。批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_APPROVAL_DECISION.md`。
+162. 本 approval-governance commit 只允许修改 `AGENTS.md` 并新增 5G-B approval decision；推送并确认 local/origin/GitHub 三方一致前不得运行 synthetic、helper、preflight、official input、token 或 capture。
+163. 推送确认后只允许运行恰好两次最终 246/246 complete runner；不得 preliminary、targeted、修复性或第三次运行。两轮必须 41 execution-head、44 typed-policy、全部访问/调用计数为 0、tracked bytes 与 evidence bytes 完全一致。
+164. 两轮通过后只允许一个 approval-governance 的直接子提交，且 changed paths 精确为 Manifest 登记的 rebinding evidence、governance binding 与 narrative audit 三项。该提交推送同步后才可单次 derived execution-HEAD validation。
+165. Derived HEAD helper、formal preflight、typed helper、path helper 与 capture 均为一次性授权；任一 gate 失败立即消耗授权并停止，不得现场修改或重试。只有 derived HEAD 与 A/B/C/D 全通过后才可运行一次 unchanged decisions-only capture。
+166. 成功后的最终诊断提交只允许 machine audit 与 5G-B narrative audit 两个路径；不得同时更新治理状态文件。提交推送并确认 GitHub 后立即停止，controller、verifier 与 Gold 继续锁定。
 
 ## GitHub 与文档
 
