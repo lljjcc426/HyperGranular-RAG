@@ -1,0 +1,565 @@
+{
+  "schema_version": "1.0",
+  "request_id": "STAGE4B_U1_D_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4",
+  "package_revision": "FROZEN_TOP_LEVEL_PARENT_HOST_ORCHESTRATION_ADAPTERS_AFTER_HARD_FAILURE_17",
+  "assembled_date": "2026-07-16",
+  "package_status": "AWAITING_PACKAGE_BOUND_APPROVAL",
+  "requested_mode": "frozen_tracked_top_level_parent_host_orchestration_adapters_and_manifest_schema_semantics_binding_only",
+  "package_authorizes_execution": false,
+  "approval_must_bind_package_commit": true,
+  "binding_commits": {
+    "hard_failure_17_checkpoint": "6c741c251dce55236b06dc5c06fd834b7649f8b2",
+    "consumed_approval_governance": "1afdd8075169e70d385e617ade480880cf3eb718",
+    "approved_base_package": "ef87f0379f4f31c54881c4a0e23a3f7ad8c8c35b",
+    "rejected_corrected_package": "b9081b3c28c0c03e8bece797f5e05a74401f397b",
+    "rejected_original_bounded_stdin_package": "97a8b169835c06330a6781ab63c59a482889c6bb",
+    "hard_failure_16_checkpoint_ancestor": "f28fc526faf74f80fdefb96ca189769dbcf1e5e4"
+  },
+  "base_manifest": {
+    "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_MANIFEST.json",
+    "bytes": 323607,
+    "sha256": "804B4F8607532D6CE17EDE043D5A9511C7E855F4EB444C25F461381B6EDDA73D",
+    "mutation_allowed": false,
+    "role": "UNCHANGED_NINE_SOURCE_SIX_ENVELOPE_THREE_PAYLOAD_TECHNICAL_REGISTRY"
+  },
+  "hard_failure_17_review": {
+    "decision": "ACCEPT_HARD_FAILURE_17_AUDIT",
+    "root_cause": "ORCHESTRATOR_SCHEMA_DESCRIPTOR_MISINTERPRETATION",
+    "package_source_defect_established": false,
+    "package_bounded_transport_defect_established": false,
+    "approved_pre_static_reconstructions": 1,
+    "process_start_attempts": 0,
+    "runtime_processes": 0,
+    "evidence_creations": 0,
+    "current_approval_consumed": true,
+    "retry_under_current_approval": false,
+    "pre_governance_inspection_disposition": "DISCLOSED_PRE_GOVERNANCE_READ_ONLY_INSPECTION_NOT_AN_APPROVED_PRE_RECONSTRUCTION_ZERO_PROCESS_ZERO_WRITE",
+    "recovery": "RETURN_FOR_AMENDMENT_5G_B_1_1_1_1_4_FROZEN_TOP_LEVEL_PARENT_HOST_ORCHESTRATION_ADAPTER_AND_SCHEMA_SEMANTICS_BINDING_ONLY"
+  },
+  "package_changed_paths_exact": [
+    "AGENTS.md",
+    "README.md",
+    "docs/REPRODUCIBILITY.md",
+    "docs/ROADMAP.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4_APPROVAL_REQUEST.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4_MANIFEST.json",
+    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_17_REVIEW_1.md",
+    "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_final_parent_start_orchestrator.ps1",
+    "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_post_parent_start_orchestrator.ps1",
+    "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_pre_parent_start_orchestrator.ps1"
+  ],
+  "inherited_technical_content": {
+    "source_design_changes": 0,
+    "parent_host_changes": 0,
+    "loader_changes": 0,
+    "payload_changes": 0,
+    "evidence_schema_changes": 0,
+    "final_verifier_changes": 0,
+    "inherited_static_fixture_changes": 0,
+    "source_identities": [
+      {
+        "name": "PRE_TARGET",
+        "lines": 209,
+        "utf8_bytes": 16383,
+        "sha256": "B46C57D8B2198307A78412FB002EB9D326DF9CA6427E25047548B9F6C6303B71"
+      },
+      {
+        "name": "PRE_STDIN_LOADER",
+        "lines": 44,
+        "utf8_bytes": 2727,
+        "sha256": "E96B049EC651AED51D36741DF8C270A79C6AD3D2A2E1AC448F1C3D933B7D1AA8"
+      },
+      {
+        "name": "PRE_PARENT_HOST",
+        "lines": 96,
+        "utf8_bytes": 7922,
+        "sha256": "8F11033CD306D118C4211109EACF8F0C1E9A90BCAEA8E19F99C933DC1C0858A7"
+      },
+      {
+        "name": "POST_TARGET",
+        "lines": 180,
+        "utf8_bytes": 13884,
+        "sha256": "597AA12B964FAD400841F5113636758D6B6298E870F61CBB10B5DDB6D7A01FC4"
+      },
+      {
+        "name": "POST_STDIN_LOADER",
+        "lines": 44,
+        "utf8_bytes": 2719,
+        "sha256": "79F2F61B6578FFB929815ED9E0C74695CACAF8950E027F06006CC6BAB126B33C"
+      },
+      {
+        "name": "POST_PARENT_HOST",
+        "lines": 99,
+        "utf8_bytes": 8588,
+        "sha256": "DC0234BE67CFCC4DDF18A135D65DC96222973F2B8736CBA487161869587C12DB"
+      },
+      {
+        "name": "FINAL_VERIFIER",
+        "lines": 228,
+        "utf8_bytes": 21120,
+        "sha256": "6C2A6033E33E0F20839A2DC7D713DA49FEB69564AA3CC47B30EB495D0307BCCF"
+      },
+      {
+        "name": "FINAL_STDIN_LOADER",
+        "lines": 44,
+        "utf8_bytes": 2724,
+        "sha256": "6BC6A432344A6D2EB5C0E4C21BEE2E7C792A999CE5AEA4C562510EB57546B032"
+      },
+      {
+        "name": "FINAL_PARENT_HOST",
+        "lines": 92,
+        "utf8_bytes": 7377,
+        "sha256": "48E4907AC8E02E3506FAE183534B356E1E647B1F62FC44610A421CF7C366F185"
+      }
+    ],
+    "bounded_encoded_command_envelopes": [
+      {
+        "name": "PRE_STDIN_LOADER",
+        "arguments_characters": 7323,
+        "arguments_sha256": "7303F8B804ADE8AC0F0B2C9F31DC921F2018EAA96D832D997051992D617D57A4",
+        "modeled_characters_including_terminal_null": 7384,
+        "modeled_sha256_including_terminal_null": "4E7455516368C4D806363FD14C83BFA5D61947C6F7EA2DB3E9184B7D97084FC0"
+      },
+      {
+        "name": "PRE_PARENT_HOST",
+        "arguments_characters": 21115,
+        "arguments_sha256": "00B201AA16F7A1CF106ADACADBE35DDF44FF67E08FE4A2A8434A8912F4106E67",
+        "modeled_characters_including_terminal_null": 21176,
+        "modeled_sha256_including_terminal_null": "E8247D1AF7D1CC5F6FEBF32F9102D49A37076FA19602906D7C9121E45EC808F0"
+      },
+      {
+        "name": "POST_STDIN_LOADER",
+        "arguments_characters": 7303,
+        "arguments_sha256": "799B50D27B408E4F07B39C1347AC9EC2AA902B0EB0C55AAFC2EC34B6EF2DDD61",
+        "modeled_characters_including_terminal_null": 7364,
+        "modeled_sha256_including_terminal_null": "0695E3B6D4F8B7B2197540D30335293CCAFB630FA5FCA3BE897E65F0CD95C8E1"
+      },
+      {
+        "name": "POST_PARENT_HOST",
+        "arguments_characters": 22867,
+        "arguments_sha256": "C069968B0E33D043EBEBCB7046144A07BD72D3E05770C59D0F798C3EBF95F2DC",
+        "modeled_characters_including_terminal_null": 22928,
+        "modeled_sha256_including_terminal_null": "8791A392570A25CE2E46300EC5D05EA58A7AC4D2A27DCA38BAA106B6F87E7DA8"
+      },
+      {
+        "name": "FINAL_STDIN_LOADER",
+        "arguments_characters": 7315,
+        "arguments_sha256": "D23BC265A2620316F471681A6EC4A05855540DE9FDF804BBCD92AA00133726B6",
+        "modeled_characters_including_terminal_null": 7376,
+        "modeled_sha256_including_terminal_null": "70ACA41557795DABA37889E8A438610F47A342A2E0D75553C830BC319301B2DA"
+      },
+      {
+        "name": "FINAL_PARENT_HOST",
+        "arguments_characters": 19703,
+        "arguments_sha256": "0F124C3E07DF9CE51247F99A1B9245AB9AF1BA64C274245C30E4B2177CF8EC8C",
+        "modeled_characters_including_terminal_null": 19764,
+        "modeled_sha256_including_terminal_null": "D621A0C6935D21D27E03784B252020814307D95BE9F9B85A432B2F06C4FA88AA"
+      }
+    ],
+    "raw_stdin_payloads": [
+      {
+        "name": "PRE",
+        "ascii_bytes": 43592,
+        "ascii_sha256": "B172DA89759250B2319D8DF12607D02EE3862C46B32A7F23C4BCF9B8D40544C0",
+        "decoded_target_sha256": "B46C57D8B2198307A78412FB002EB9D326DF9CA6427E25047548B9F6C6303B71"
+      },
+      {
+        "name": "POST",
+        "ascii_bytes": 36908,
+        "ascii_sha256": "AD88B737B5D83C51412B9EB0FFB5B802507BF7E272857B4741A2855B815E359D",
+        "decoded_target_sha256": "597AA12B964FAD400841F5113636758D6B6298E870F61CBB10B5DDB6D7A01FC4"
+      },
+      {
+        "name": "FINAL",
+        "ascii_bytes": 56224,
+        "ascii_sha256": "DD4F32A40B4E267BD6D2C97774D06EC4D64A9382266F851C1E95160A80075B19",
+        "decoded_target_sha256": "6C2A6033E33E0F20839A2DC7D713DA49FEB69564AA3CC47B30EB495D0307BCCF"
+      }
+    ],
+    "canonical_parent_stdout_variants": [
+      {
+        "name": "PRE_EMPTY",
+        "bytes": 208,
+        "sha256": "4087DA57DCBA3981FB2218AFE1B4E0B317ED0CEF49AB46F33FB9E0493353AB07"
+      },
+      {
+        "name": "PRE_EXACT_CLIXML",
+        "bytes": 239,
+        "sha256": "A6158C08886D53B9DB5D595C4846DED39598E03EC0DB98ACD6CADC2202D559E7"
+      },
+      {
+        "name": "POST_EMPTY",
+        "bytes": 200,
+        "sha256": "1468C25C122E627AF6990E5BBD5C79163CCA836E17F301E3C7F71A7B496E69C6"
+      },
+      {
+        "name": "POST_EXACT_CLIXML",
+        "bytes": 231,
+        "sha256": "09CA120A1E73ECE9AF52BE630C3D80DD8E1A7204717075AC09046BE9255968E7"
+      },
+      {
+        "name": "FINAL_EMPTY",
+        "bytes": 187,
+        "sha256": "731D29698B85F99FC2612219DE22F836935E4566918B7109C3407B85D2672716"
+      },
+      {
+        "name": "FINAL_EXACT_CLIXML",
+        "bytes": 218,
+        "sha256": "E63603112054AD24A55CE81ABDFEF95D25DD95AEEDF0AA879734999F86E194A9"
+      }
+    ],
+    "frozen_powershell_startup_stderr": {
+      "allowed_states": [
+        "EMPTY_EXACT_ZERO_BYTES",
+        "EXACT_FROZEN_382_BYTE_STARTUP_CLIXML"
+      ],
+      "bytes": 382,
+      "sha256": "4F2B6B3ED9201CA459DB2DD042E0A137C4E58BFE8E15A068E45AD8535FA5B1EF",
+      "comparison": "BYTE_FOR_BYTE_LOOP_EQUALITY"
+    },
+    "inherited_static_fixtures": {
+      "passed": 62,
+      "total": 62,
+      "execution_count": 0
+    }
+  },
+  "schema_semantics_contract": {
+    "required_descriptor": "QUOTED_FILE_NAME_SPACE_ARGUMENTS_TERMINAL_NULL",
+    "descriptor_is_structure_not_command_text": true,
+    "executable_path_source_only": "process_start_info_contract.file_name",
+    "required_executable_path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "forbidden_executable_path_sources": [
+      "runtime",
+      "host_name",
+      "transport_role"
+    ],
+    "unique_formula": "DOUBLE_QUOTE + FILE_NAME + DOUBLE_QUOTE + SINGLE_SPACE + COMPLETE_ARGUMENTS + TERMINAL_NULL",
+    "character_count_includes_terminal_null": true,
+    "sha256_encoding": "STRICT_ASCII",
+    "gate_order": [
+      "DESCRIPTOR_EXACT_GATE",
+      "FILE_NAME_EXACT_GATE",
+      "FORBIDDEN_LABEL_SOURCE_GATE",
+      "WORKING_DIRECTORY_AND_REDIRECT_CONTRACT_GATE",
+      "PARENT_SOURCE_IDENTITY_AND_PARSER_GATE",
+      "COMPLETE_ARGUMENTS_IDENTITY_GATE",
+      "MODELED_COMMAND_LINE_CHARACTER_COUNT_GATE",
+      "MODELED_COMMAND_LINE_SHA256_GATE",
+      "CREATE_PROCESS_START_INFO",
+      "START_EXACTLY_ONE_PARENT_PROCESS",
+      "CAPTURE_RAW_PARENT_STDOUT_AND_STDERR",
+      "PARENT_EXIT_GATE",
+      "PARENT_EXACT_STDOUT_GATE",
+      "PARENT_EXACT_POWERSHELL_STDERR_GATE"
+    ]
+  },
+  "adapter_invocation_contract": {
+    "source_of_truth": "TRACKED_ASCII_PS1_FILE_BYTES_NOT_MANIFEST_SOURCE_LINES",
+    "file_name": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "working_directory": "E:\\科研\\HyperGranular-RAG",
+    "use_shell_execute": false,
+    "redirect_standard_input": false,
+    "redirect_standard_output": true,
+    "redirect_standard_error": true,
+    "create_no_window": true,
+    "modeled_command_descriptor": "QUOTED_FILE_NAME_SPACE_ARGUMENTS_TERMINAL_NULL",
+    "adapter_stderr_allowed_states": [
+      "EMPTY_EXACT_ZERO_BYTES",
+      "EXACT_FROZEN_382_BYTE_STARTUP_CLIXML"
+    ]
+  },
+  "pre_parent_start_orchestrator": {
+    "trust_root_role": "FROZEN_TOP_LEVEL_LIMITED_GOVERNANCE_TRUST_ROOT",
+    "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_pre_parent_start_orchestrator.ps1",
+    "source_encoding": "US_ASCII_SUBSET_OF_UTF8_NO_BOM",
+    "source_content_lines": 135,
+    "trailing_lf": true,
+    "source_bytes": 8118,
+    "source_sha256": "4EDC7E67056E12E7FA59A8BE436A12C565BBF3B1011C33C5431F06CFA1AC0C7E",
+    "static_parse_errors": 0,
+    "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_pre_parent_start_orchestrator.ps1\"",
+    "complete_arguments_characters": 154,
+    "complete_arguments_ascii_sha256": "B01B7C9EC04B0D8D7953FD7FA9AF0CD85BAD69E3F0FCF5F39E761B1C39550726",
+    "modeled_command_characters_including_terminal_null": 215,
+    "modeled_command_ascii_sha256_including_terminal_null": "34C461A85DA49F993A9461A5D016A5B7C424116C7E167EA098586EAEF7CFCF3C",
+    "expected_environment_bindings": [
+      "HGRAG_EXPECTED_PACKAGE_COMMIT",
+      "HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT"
+    ],
+    "target_parent": "pre_and_semantics_stdin_transport_host",
+    "target_parent_source_sha256": "8F11033CD306D118C4211109EACF8F0C1E9A90BCAEA8E19F99C933DC1C0858A7",
+    "target_parent_arguments_sha256": "00B201AA16F7A1CF106ADACADBE35DDF44FF67E08FE4A2A8434A8912F4106E67",
+    "target_parent_modeled_sha256": "E8247D1AF7D1CC5F6FEBF32F9102D49A37076FA19602906D7C9121E45EC808F0",
+    "fixed_success_stdout": "{\"status\":\"PRE_PARENT_START_ORCHESTRATOR_VERIFIED\",\"parent_processes\":1,\"parent_stdout_registered\":true,\"parent_stderr_registered\":true,\"schema_semantics_bound\":true}",
+    "fixed_success_stdout_bytes": 166,
+    "fixed_success_stdout_sha256": "E8C388E960E3E4CF83D1DDBFDDA26B3BB52B63A01A0AD4B33C190CD4F89257BB",
+    "package_assembly_executions": 0
+  },
+  "post_parent_start_orchestrator": {
+    "trust_root_role": "FROZEN_TOP_LEVEL_LIMITED_GOVERNANCE_TRUST_ROOT",
+    "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_post_parent_start_orchestrator.ps1",
+    "source_encoding": "US_ASCII_SUBSET_OF_UTF8_NO_BOM",
+    "source_content_lines": 137,
+    "trailing_lf": true,
+    "source_bytes": 8405,
+    "source_sha256": "D32FC6E8DCC9B0393166EFCB11DC1D12BF766A5B0B6EAF06EE868F836F904569",
+    "static_parse_errors": 0,
+    "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_post_parent_start_orchestrator.ps1\"",
+    "complete_arguments_characters": 155,
+    "complete_arguments_ascii_sha256": "548F8440860C4B072672CFCAA65D39832EDABF2E1D9873FF80AEFAEF0099BB49",
+    "modeled_command_characters_including_terminal_null": 216,
+    "modeled_command_ascii_sha256_including_terminal_null": "A178835B70993A7C35022BF0E6FA7C3B029070CE124DCC89AAA64265C296783F",
+    "expected_environment_bindings": [
+      "HGRAG_EXPECTED_PACKAGE_COMMIT",
+      "HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT",
+      "HGRAG_EXPECTED_SEMANTICS_EVIDENCE_COMMIT"
+    ],
+    "target_parent": "post_sync_stdin_transport_host",
+    "target_parent_source_sha256": "DC0234BE67CFCC4DDF18A135D65DC96222973F2B8736CBA487161869587C12DB",
+    "target_parent_arguments_sha256": "C069968B0E33D043EBEBCB7046144A07BD72D3E05770C59D0F798C3EBF95F2DC",
+    "target_parent_modeled_sha256": "8791A392570A25CE2E46300EC5D05EA58A7AC4D2A27DCA38BAA106B6F87E7DA8",
+    "fixed_success_stdout": "{\"status\":\"POST_PARENT_START_ORCHESTRATOR_VERIFIED\",\"parent_processes\":1,\"parent_stdout_registered\":true,\"parent_stderr_registered\":true,\"schema_semantics_bound\":true}",
+    "fixed_success_stdout_bytes": 167,
+    "fixed_success_stdout_sha256": "5EEE5BFD19DBEF9DF050FC2A1E3BF3155BEF6389BF2B2F3758C70DC5A269E0B0",
+    "package_assembly_executions": 0
+  },
+  "final_parent_start_orchestrator": {
+    "trust_root_role": "FROZEN_TOP_LEVEL_LIMITED_GOVERNANCE_TRUST_ROOT",
+    "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_final_parent_start_orchestrator.ps1",
+    "source_encoding": "US_ASCII_SUBSET_OF_UTF8_NO_BOM",
+    "source_content_lines": 137,
+    "trailing_lf": true,
+    "source_bytes": 8421,
+    "source_sha256": "203DCA76C39873E833EBD0753EFDCB755C2B0F6BD44778E7F9632E77988734EC",
+    "static_parse_errors": 0,
+    "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_final_parent_start_orchestrator.ps1\"",
+    "complete_arguments_characters": 156,
+    "complete_arguments_ascii_sha256": "D8187DD2B190C6282D9D357A3FF0D33434F4AA77ACE68516DF6836C578F28C88",
+    "modeled_command_characters_including_terminal_null": 217,
+    "modeled_command_ascii_sha256_including_terminal_null": "117BA16CE3ABB3205966F1B81866E8057A0CC410390CD9C488FFB85E65571F9D",
+    "expected_environment_bindings": [
+      "HGRAG_EXPECTED_PACKAGE_COMMIT",
+      "HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT",
+      "HGRAG_EXPECTED_SEMANTICS_EVIDENCE_COMMIT"
+    ],
+    "target_parent": "revised_final_verifier_host",
+    "target_parent_source_sha256": "48E4907AC8E02E3506FAE183534B356E1E647B1F62FC44610A421CF7C366F185",
+    "target_parent_arguments_sha256": "0F124C3E07DF9CE51247F99A1B9245AB9AF1BA64C274245C30E4B2177CF8EC8C",
+    "target_parent_modeled_sha256": "D621A0C6935D21D27E03784B252020814307D95BE9F9B85A432B2F06C4FA88AA",
+    "fixed_success_stdout": "{\"status\":\"FINAL_PARENT_START_ORCHESTRATOR_VERIFIED\",\"parent_processes\":1,\"parent_stdout_registered\":true,\"parent_stderr_registered\":true,\"schema_semantics_bound\":true}",
+    "fixed_success_stdout_bytes": 168,
+    "fixed_success_stdout_sha256": "24AA47532AAC8BD9477A186E7FC6854858857DED082C0D8014956B8F9F2C19F0",
+    "package_assembly_executions": 0
+  },
+  "schema_semantics_negative_fixtures": {
+    "categories": [
+      {
+        "id": "runtime_label_used_as_executable_path",
+        "expected": "REJECT"
+      },
+      {
+        "id": "schema_descriptor_used_as_literal_command_text",
+        "expected": "REJECT"
+      },
+      {
+        "id": "wrong_descriptor",
+        "expected": "REJECT"
+      },
+      {
+        "id": "wrong_executable_path",
+        "expected": "REJECT"
+      },
+      {
+        "id": "missing_executable_quotes",
+        "expected": "REJECT"
+      },
+      {
+        "id": "missing_single_separator_space",
+        "expected": "REJECT"
+      },
+      {
+        "id": "missing_terminal_null",
+        "expected": "REJECT"
+      },
+      {
+        "id": "appended_character",
+        "expected": "REJECT"
+      },
+      {
+        "id": "same_length_mutation",
+        "expected": "REJECT"
+      },
+      {
+        "id": "correct_formula",
+        "expected": "ACCEPT"
+      }
+    ],
+    "stage_results": [
+      {
+        "stage": "PRE",
+        "passed": 10,
+        "total": 10,
+        "orchestrator_executions": 0,
+        "parent_executions": 0
+      },
+      {
+        "stage": "POST",
+        "passed": 10,
+        "total": 10,
+        "orchestrator_executions": 0,
+        "parent_executions": 0
+      },
+      {
+        "stage": "FINAL",
+        "passed": 10,
+        "total": 10,
+        "orchestrator_executions": 0,
+        "parent_executions": 0
+      }
+    ],
+    "total_passed": 30,
+    "total_fixtures": 30
+  },
+  "preapproval_inspection_rule": {
+    "before_package_bound_approval_governance_push_allowed": [
+      "VERIFY_PACKAGE_COMMIT_IDENTITY",
+      "VERIFY_MANIFEST_FILE_BYTES_AND_SHA256",
+      "VERIFY_WORKTREE_CLEAN",
+      "VERIFY_REQUIRED_AND_FUTURE_PATH_EXISTENCE_OR_ABSENCE",
+      "VERIFY_LOCAL_ORIGIN_DIRECT_MAIN_EQUALITY"
+    ],
+    "before_package_bound_approval_governance_push_forbidden": [
+      "JOIN_ANY_FROZEN_SOURCE_LINES",
+      "PARSE_ANY_FROZEN_SOURCE_LINES",
+      "RECONSTRUCT_ANY_FROZEN_SOURCE",
+      "RECONSTRUCT_ANY_FROZEN_COMPLETE_ARGUMENTS",
+      "RECONSTRUCT_ANY_MODELED_COMMAND_LINE",
+      "CREATE_ANY_PROCESS_START_INFO",
+      "START_ANY_ORCHESTRATOR_OR_PARENT_PROCESS"
+    ],
+    "approval_governance_must_be_pushed_before_any_frozen_source_or_command_reconstruction": true
+  },
+  "future_approval_governance": {
+    "old_approval_governance_reusable": false,
+    "must_bind_future_package_commit": true,
+    "exact_changed_paths": [
+      "AGENTS.md",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4_APPROVAL_DECISION.md"
+    ],
+    "push_required_before_reconstruction": true
+  },
+  "future_environment_bindings": [
+    "HGRAG_EXPECTED_PACKAGE_COMMIT",
+    "HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT",
+    "HGRAG_EXPECTED_SEMANTICS_EVIDENCE_COMMIT"
+  ],
+  "semantics_evidence_paths": {
+    "target_machine": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_validator_semantics.json",
+    "target_narrative": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_VALIDATOR_SEMANTICS_AUDIT.md",
+    "older_machine_must_remain_absent": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_validator_semantics.json",
+    "older_narrative_must_remain_absent": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_VALIDATOR_SEMANTICS_AUDIT.md"
+  },
+  "post_sync_audit_paths": {
+    "target_machine": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_post_sync_transport_attestation.json",
+    "target_narrative": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_POST_SYNC_TRANSPORT_AUDIT.md"
+  },
+  "future_execution_counts": {
+    "approval_governance_commits": 1,
+    "pre_top_level_orchestrator_processes": 1,
+    "pre_parent_processes": 1,
+    "pre_loader_processes": 1,
+    "pre_target_scriptblock_invocations": 1,
+    "pre_host_processes": 1,
+    "pre_verifier_processes": 1,
+    "pre_verifier_git_children": 5,
+    "bootstrap_processes": 1,
+    "harness_processes": 1,
+    "compatible_verifier_processes": 1,
+    "semantics_wrapper_processes": 1,
+    "embedded_python_processes": 1,
+    "semantics_machine_creations": 1,
+    "semantics_narrative_creations": 1,
+    "semantics_evidence_commits": 1,
+    "post_top_level_orchestrator_processes": 1,
+    "post_parent_processes": 1,
+    "post_loader_processes": 1,
+    "post_target_scriptblock_invocations": 1,
+    "post_host_processes": 1,
+    "post_verifier_processes": 1,
+    "post_verifier_git_children": 7,
+    "post_machine_creations": 1,
+    "post_narrative_creations": 1,
+    "post_audit_commits": 1,
+    "final_top_level_orchestrator_processes": 1,
+    "final_parent_processes": 1,
+    "final_loader_processes": 1,
+    "final_verifier_scriptblock_invocations": 1,
+    "final_verifier_git_children": 11,
+    "files_or_commits_after_final_success": 0,
+    "preapproval_source_joins_or_parses": 0,
+    "automatic_retries": 0,
+    "synthetic_rebinding": 0,
+    "real_precommit_validator": 0,
+    "formal_preflight": 0,
+    "official_input_accesses": 0,
+    "authorization_token_uses": 0,
+    "official_captures": 0,
+    "controller_verifier_gold_operations": 0
+  },
+  "required_future_order": [
+    "exact two-path package-bound approval-governance commit and push",
+    "only after approval push verify and load frozen PRE tracked-file orchestrator",
+    "single PRE top-level orchestrator process",
+    "single PRE parent loader target and semantics sequence",
+    "exact two-path semantics evidence commit and push",
+    "single POST top-level orchestrator process",
+    "single POST parent loader target and post-sync sequence",
+    "exact two-path post-sync audit commit and push",
+    "single FINAL top-level orchestrator process",
+    "single FINAL parent loader verifier sequence",
+    "exact terminal success then immediate stop with zero further files or commits"
+  ],
+  "package_assembly_audit": {
+    "tracked_orchestrator_sources": 3,
+    "tracked_orchestrator_source_identity_passed": 3,
+    "tracked_orchestrator_static_parser_errors": 0,
+    "schema_semantics_fixtures_passed": 30,
+    "schema_semantics_fixtures_total": 30,
+    "orchestrator_processes": 0,
+    "parent_processes": 0,
+    "loader_processes": 0,
+    "target_scriptblock_invocations": 0,
+    "git_child_processes_from_frozen_sources": 0,
+    "python_processes": 0,
+    "evidence_creations": 0,
+    "synthetic_runs": 0,
+    "official_operations": 0,
+    "read_only_helper_failures": [
+      {
+        "label": "CONTENT_LINE_COUNT_HELPER_POWERSHELL_IF_SYNTAX_ERROR",
+        "project_writes": 0,
+        "orchestrator_processes": 0,
+        "parent_processes": 0,
+        "evidence_creations": 0
+      },
+      {
+        "label": "FIRST_MANIFEST_VALIDATOR_MISSING_METHOD_CALL_PARENTHESIS",
+        "project_writes": 0,
+        "orchestrator_processes": 0,
+        "parent_processes": 0,
+        "evidence_creations": 0
+      }
+    ]
+  },
+  "explicitly_not_authorized": [
+    "approval governance before future package-bound approval",
+    "execution of any PRE POST or FINAL top-level orchestrator",
+    "execution of any parent host loader target ScriptBlock inner verifier bootstrap harness wrapper or Python",
+    "semantics or post-sync evidence creation or commit",
+    "synthetic rebinding",
+    "real precommit validator",
+    "formal preflight",
+    "official input token capture controller verifier Gold reservation or Stage3B"
+  ],
+  "requested_completion_state": "AMENDMENT_5G_B_1_1_1_1_4_FROZEN_TOP_LEVEL_ORCHESTRATION_ADAPTER_PACKAGE_AWAITING_APPROVAL"
+}

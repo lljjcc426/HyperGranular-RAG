@@ -1305,3 +1305,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Read-only post-stop recomputation with the registered executable path produced the exact frozen 21,176 characters / `E8247D1AF7D1CC5F6FEBF32F9102D49A37076FA19602906D7C9121E45EC808F0`; no package transport defect is established by this run.
 - `Process.Start()` attempts and actual PRE parent/loader/target processes are 0. Semantics/POST/FINAL evidence and processes are 0; all six future paths remain absent and historical machine evidence remains unchanged.
 - No retry, fallback, cleanup or downstream action occurred. Current state: `AMENDMENT_5G_B_1_1_1_1_3_PRE_PARENT_MODELED_COMMAND_GATE_STOPPED_HARD_FAILURE_17`; independent review and new approval are required.
+
+### Hard Failure 17 Review 1 And Amendment 5G-B.1.1.1.1.4
+
+- Review 1 accepts Hard Failure 17 checkpoint `6c741c251dce55236b06dc5c06fd834b7649f8b2`, valid approval governance `1afdd807...`, zero Process.Start/runtime/evidence boundary, preserved historical evidence, and six absent future paths.
+- Root cause is `ORCHESTRATOR_SCHEMA_DESCRIPTOR_MISINTERPRETATION`; current evidence establishes neither package source nor bounded parent transport defect. The old approval is consumed and cannot be reused.
+- The new package preserves all 9 source identities, 6 bounded envelopes, 3 raw-stdin payloads, parent/loader/evidence/final-verifier logic, and inherited 62/62 fixtures.
+- Three tracked ASCII-only top-level trust roots are added: PRE 135 lines / 8,118 bytes / `4EDC7E67...AC0C7E`; POST 137 / 8,405 / `D32FC6E8...F904569`; FINAL 137 / 8,421 / `203DCA76...8734EC`. Parser errors are 0/0/0 and assembly executions are 0.
+- Each adapter binds the descriptor as schema, obtains the executable only from `process_start_info_contract.file_name`, uses the unique quoted-file/single-space/arguments/NUL formula, validates count/SHA before `ProcessStartInfo`, and applies exact raw parent stdout/stderr gates.
+- New schema-semantics fixtures pass 30/30 across PRE/POST/FINAL. Package assembly ran no orchestrator, parent, loader, target, Git child, Python, evidence, synthetic, or official operation.
+- Before future approval-governance push, frozen source-line join/parser/reconstruction is prohibited; only commit/Manifest/worktree/path/remote identity checks are allowed.
+- Manifest is 24,293 bytes / `921B7BB63B0CF8E7B51CC6ED51A74C98A915E6C8E5FB2211E8235D7A378DE928`. Current state: `AMENDMENT_5G_B_1_1_1_1_4_FROZEN_TOP_LEVEL_ORCHESTRATION_ADAPTER_PACKAGE_AWAITING_APPROVAL`; execution remains unauthorized.
