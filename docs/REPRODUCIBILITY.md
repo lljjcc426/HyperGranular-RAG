@@ -1020,3 +1020,15 @@ The corrected package-bound approval was recorded in `docs/STAGE4B_U1_PREGOLD_AM
 No alternative API client or remote check was substituted, and the gate was not retried. Static source reconstruction, transport fingerprinting, bootstrap, harness, compatible verifier, wrapper and Python all remained unstarted. All four old/new semantics evidence paths remained absent.
 
 Full evidence is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_13.md`. Current status is `CORRECTED_AMENDMENT_5G_B_1_1_1_APPROVAL_GOVERNANCE_SYNC_VERIFICATION_STOPPED_HARD_FAILURE_13`; recovery requires a new independent review and package-bound approval.
+
+## Amendment 5G-B.1.1.1.1 Synchronization Recovery Package
+
+Hard Failure 13 Review 1 accepts the checkpoint and confirms that retrospective GitHub history proves the approval commit was pushed but cannot replace the failed runtime gate. The consumed corrected 5G-B.1.1.1 approval remains unusable.
+
+The recovery package freezes a 74-line, 4,114-byte Windows PowerShell 5.1 synchronization verifier with SHA-256 `4A5A4BBE08661D588673C4B4A1A7ABAB88FEB2999699658CBC91E8081266EB66`. Its UTF-16LE EncodedCommand transport is 8,188 bytes and 10,920 Base64 characters; complete-arguments SHA-256 is `1ED8A00D773578DD5EBCE903CE8FF4E2413E18D9FA7E82DB4D2268A0CE62C4C5`. Static parser errors were zero, and the verifier was not invoked during assembly.
+
+The verifier starts exactly five `C:\Program Files\Git\cmd\git.exe` children through fixed ProcessStartInfo fields: fetch, local revision, fetched-origin revision, direct `ls-remote`, and porcelain status. It requires zero exits, empty stderr, exact single-line SHA grammars, three-way equality, clean worktree and absence of all four old/target evidence paths. Its fixed success stdout is 122 bytes with SHA-256 `BCDF0010147E5952AD0372ADF39EDA0A18D349B02107C340DEF05BAFE18C0F09`.
+
+The corrected 5G-B.1.1.1 Manifest is externally rebound at 30,174 bytes and SHA-256 `A5AA1E9B4CB022AFCCF401E9C2193FC06FD45830151154E049DC7B59BB77E6AE`. The 58-line bootstrap and all downstream frozen sources remain unchanged and unexecuted.
+
+Request, Manifest and review are governance materials only. Current status is `AMENDMENT_5G_B_1_1_1_1_PACKAGE_AWAITING_APPROVAL`; synchronization verification, source reconstruction, bootstrap, evidence and all official actions remain unapproved.

@@ -1148,3 +1148,17 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Static source reconstruction, bootstrap, all nested PowerShell/Python processes, semantics evidence, synthetic, real validator, preflight, official input, token and capture remained at zero.
 - Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_13.md`.
 - Current status: `CORRECTED_AMENDMENT_5G_B_1_1_1_APPROVAL_GOVERNANCE_SYNC_VERIFICATION_STOPPED_HARD_FAILURE_13`. Recovery requires a new independent review and package-bound Amendment.
+
+### Stage4B-U1-D Pre-Gold Amendment 5G-B.1.1.1.1 Package
+
+- Hard Failure 13 Review 1 accepts the failure audit and freezes checkpoint `e159558b621f516598dc4fd2aede151c84472950`.
+- The package adds no script, test, result or experiment implementation. It freezes a pre-reconstruction synchronization verifier inside the Request and Manifest.
+- The verifier source is 74 LF lines, 4,114 UTF-8 bytes and SHA-256 `4A5A4BBE08661D588673C4B4A1A7ABAB88FEB2999699658CBC91E8081266EB66`; static PowerShell parsing found zero errors, and no execution occurred.
+- It uses the environment-confirmed `C:\Program Files\Git\cmd\git.exe` and exactly five child commands: fetch, local rev-parse, fetched-origin rev-parse, direct `ls-remote`, and porcelain status.
+- Success requires exact output grammar, five zero exits, empty stderr, local/origin/direct-remote SHA equality, clean worktree and all four evidence paths absent. `gh`, REST, browser, fallback and automatic retry are forbidden.
+- The fixed 122-byte success stdout has SHA-256 `BCDF0010147E5952AD0372ADF39EDA0A18D349B02107C340DEF05BAFE18C0F09`.
+- The corrected Manifest is rebound at 30,174 bytes and SHA-256 `A5AA1E9B4CB022AFCCF401E9C2193FC06FD45830151154E049DC7B59BB77E6AE`; bootstrap and all downstream semantics fingerprints remain unchanged.
+- Review: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_13_REVIEW_1.md`.
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_MANIFEST.json`.
+- Current status: `AMENDMENT_5G_B_1_1_1_1_PACKAGE_AWAITING_APPROVAL`. No verifier, bootstrap, semantics or official execution is authorized by the package itself.

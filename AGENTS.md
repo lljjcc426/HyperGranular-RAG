@@ -232,6 +232,11 @@
 218. 失败后未替换为 `git ls-remote`、其他 API client 或浏览器检查，也未重试三方门。Static source reconstruction、bootstrap、harness、compatible verifier、semantics wrapper 与 Python 的计数均为 0，四个旧/新 evidence 路径继续不存在。
 219. 本失败未修改或删除 scripts、tests、data、cache、official artifacts、historical evidence 或既有 failure record；synthetic、real validator、helper、preflight、official input、token、capture、controller、verifier 与 Gold 均未发生。
 220. 当前状态为 `CORRECTED_AMENDMENT_5G_B_1_1_1_APPROVAL_GOVERNANCE_SYNC_VERIFICATION_STOPPED_HARD_FAILURE_13`。当前批准不得复用；三方同步核验、source reconstruction、bootstrap 及全部后续动作必须等待新的独立审核与 package-bound recovery Amendment。
+221. Hard Failure 13 Review 1 已接受失败审计、approval-governance commit 与零执行边界，并确认事后 GitHub 历史只能证明 push 成功，不能替代运行时必经的三方同步门。当前 corrected 5G-B.1.1.1 批准保持已消费且不可复用。
+222. Amendment 5G-B.1.1.1.1 只冻结 pre-reconstruction synchronization verifier 与 unchanged bootstrap semantics sequence。Verifier source 为 74 LF 行、4,114 UTF-8 bytes、SHA-256 `4A5A4BBE08661D588673C4B4A1A7ABAB88FEB2999699658CBC91E8081266EB66`；静态 PowerShell 解析为 0 error，组包阶段未执行。
+223. Synchronization verifier 固定使用 `C:\Program Files\Git\cmd\git.exe` 与工作目录 `E:\科研\HyperGranular-RAG`，依次启动且只启动五个 ProcessStartInfo child：fetch、local rev-parse、origin rev-parse、direct `ls-remote` 与 porcelain status。所有 exit/stderr/stdout grammar、三方 SHA 相等、clean 与四路径不存在均 fail-closed；`gh`、REST、browser、fallback 与 retry 禁止。
+224. 原 58-line bootstrap、77-line harness、59-line compatible verifier、122-line wrapper、46-line Python 与 195-line real validator 全部保持原 SHA，不修改、不执行。未来仅在新 package-bound 批准后允许一次 synchronization verifier 与五个 Git child，然后才能进入原冻结 bootstrap 链。
+225. 当前状态为 `AMENDMENT_5G_B_1_1_1_1_PACKAGE_AWAITING_APPROVAL`。本 package 只含治理材料，不授权 synchronization verifier、static reconstruction、bootstrap、wrapper、Python、evidence、synthetic、preflight、official input、token、capture、controller、verifier 或 Gold。
 
 ## GitHub 与文档
 

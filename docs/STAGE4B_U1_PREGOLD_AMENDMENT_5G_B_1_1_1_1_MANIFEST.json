@@ -1,0 +1,352 @@
+{
+  "schema_version": "1.0",
+  "request_id": "stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1",
+  "assembled_date": "2026-07-15",
+  "package_status": "AMENDMENT_5G_B_1_1_1_1_PACKAGE_AWAITING_APPROVAL",
+  "requested_mode": "frozen_github_main_sync_verification_recovery_and_unchanged_bootstrap_semantics_only",
+  "package_authorizes_implementation_or_execution": false,
+  "approval_must_bind_package_commit": true,
+  "current_state": {
+    "hard_failure_13_audit": "ACCEPTED",
+    "approval_governance_commit": "VALID_AND_RETROSPECTIVELY_CONFIRMED_ON_GITHUB",
+    "runtime_three_way_gate": "NOT_COMPLETED",
+    "prior_approval": "CONSUMED_AND_NOT_REUSABLE",
+    "static_reconstruction": "NOT_STARTED",
+    "bootstrap": "NOT_STARTED",
+    "official_execution": "NOT_APPROVED"
+  },
+  "package_files": [
+    "AGENTS.md",
+    "README.md",
+    "docs/REPRODUCIBILITY.md",
+    "docs/ROADMAP.md",
+    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_13_REVIEW_1.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_APPROVAL_REQUEST.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_MANIFEST.json"
+  ],
+  "binding_commits": {
+    "corrected_5g_b_1_1_1_package": "e37400707a65d11c9f038d13e7be0ec2a19d27a4",
+    "corrected_5g_b_1_1_1_approval_governance": "f46afbf565beca5672ef443bccb67c33ebd26876",
+    "hard_failure_13_checkpoint": "e159558b621f516598dc4fd2aede151c84472950",
+    "frozen_semantics_implementation": "48a9c1438166eaf895104358b2d8cd8c9b043020"
+  },
+  "frozen_corrected_manifest": {
+    "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_MANIFEST.json",
+    "absolute_path": "E:\\科研\\HyperGranular-RAG\\docs\\STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_MANIFEST.json",
+    "bytes": 30174,
+    "sha256": "A5AA1E9B4CB022AFCCF401E9C2193FC06FD45830151154E049DC7B59BB77E6AE",
+    "mutation_allowed": false
+  },
+  "synchronization_verifier": {
+    "runtime": {
+      "executable": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "ps_edition": "Desktop",
+      "major": 5,
+      "minor": 1
+    },
+    "source_join": "LF",
+    "trailing_newline": false,
+    "source_lines": [
+      "$ErrorActionPreference = 'Stop'",
+      "Set-StrictMode -Version Latest",
+      "$utf8 = New-Object System.Text.UTF8Encoding($false)",
+      "[Console]::OutputEncoding = $utf8",
+      "[Console]::InputEncoding = $utf8",
+      "if ($PSVersionTable.PSEdition -ne 'Desktop' -or $PSVersionTable.PSVersion.Major -ne 5 -or $PSVersionTable.PSVersion.Minor -ne 1) { throw 'Windows PowerShell 5.1 Desktop is required' }",
+      "$gitExecutable = 'C:\\Program Files\\Git\\cmd\\git.exe'",
+      "$workingDirectory = 'E:\\科研\\HyperGranular-RAG'",
+      "if (-not [IO.File]::Exists($gitExecutable)) { throw 'Frozen git executable is missing' }",
+      "if (-not [IO.Directory]::Exists($workingDirectory)) { throw 'Frozen working directory is missing' }",
+      "$evidencePaths = @(",
+      "    'E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_pregold_amendment_5g_b_1_1_1_validator_semantics.json',",
+      "    'E:\\科研\\HyperGranular-RAG\\docs\\STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_VALIDATOR_SEMANTICS_AUDIT.md',",
+      "    'E:\\科研\\HyperGranular-RAG\\results\\stage4b_u1_d_pregold_amendment_5g_b_1_1_validator_semantics.json',",
+      "    'E:\\科研\\HyperGranular-RAG\\docs\\STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_VALIDATOR_SEMANTICS_AUDIT.md'",
+      ")",
+      "function Assert-EvidencePathsAbsent {",
+      "    foreach ($path in $evidencePaths) {",
+      "        if ([IO.File]::Exists($path) -or [IO.Directory]::Exists($path)) { throw \"Evidence path collision: $path\" }",
+      "    }",
+      "}",
+      "$script:GitProcessCount = 0",
+      "function Invoke-FrozenGit {",
+      "    param([Parameter(Mandatory = $true)][string]$Arguments)",
+      "    $startInfo = New-Object System.Diagnostics.ProcessStartInfo",
+      "    $startInfo.FileName = $gitExecutable",
+      "    $startInfo.Arguments = $Arguments",
+      "    $startInfo.WorkingDirectory = $workingDirectory",
+      "    $startInfo.UseShellExecute = $false",
+      "    $startInfo.RedirectStandardInput = $true",
+      "    $startInfo.RedirectStandardOutput = $true",
+      "    $startInfo.RedirectStandardError = $true",
+      "    $startInfo.CreateNoWindow = $true",
+      "    $startInfo.StandardOutputEncoding = $utf8",
+      "    $startInfo.StandardErrorEncoding = $utf8",
+      "    $process = New-Object System.Diagnostics.Process",
+      "    $process.StartInfo = $startInfo",
+      "    try {",
+      "        if (-not $process.Start()) { throw \"Failed to start frozen git command: $Arguments\" }",
+      "        $script:GitProcessCount += 1",
+      "        $process.StandardInput.Close()",
+      "        $stdout = $process.StandardOutput.ReadToEnd()",
+      "        $stderr = $process.StandardError.ReadToEnd()",
+      "        $process.WaitForExit()",
+      "        $exitCode = $process.ExitCode",
+      "    } finally {",
+      "        $process.Dispose()",
+      "    }",
+      "    if ($exitCode -ne 0) { throw \"Frozen git command failed: $Arguments\" }",
+      "    if ($stderr.Length -ne 0) { throw \"Frozen git command wrote stderr: $Arguments\" }",
+      "    return [pscustomobject]@{ stdout = $stdout; exit_code = $exitCode }",
+      "}",
+      "function ConvertFrom-RevisionOutput {",
+      "    param([Parameter(Mandatory = $true)][string]$Value, [Parameter(Mandatory = $true)][string]$Role)",
+      "    if ($Value -cnotmatch '\\A([0-9a-f]{40})\\r?\\n\\z') { throw \"Invalid revision output: $Role\" }",
+      "    return $Matches[1]",
+      "}",
+      "Assert-EvidencePathsAbsent",
+      "$fetch = Invoke-FrozenGit -Arguments 'fetch origin main --quiet'",
+      "if ($fetch.stdout.Length -ne 0) { throw 'Fetch stdout must be empty' }",
+      "$local = Invoke-FrozenGit -Arguments 'rev-parse HEAD'",
+      "$localSha = ConvertFrom-RevisionOutput -Value $local.stdout -Role 'local HEAD'",
+      "$origin = Invoke-FrozenGit -Arguments 'rev-parse refs/remotes/origin/main'",
+      "$originSha = ConvertFrom-RevisionOutput -Value $origin.stdout -Role 'fetched origin/main'",
+      "$remote = Invoke-FrozenGit -Arguments 'ls-remote --exit-code origin refs/heads/main'",
+      "if ($remote.stdout -cnotmatch '\\A([0-9a-f]{40})\\trefs/heads/main\\r?\\n\\z') { throw 'Invalid direct GitHub remote output' }",
+      "$remoteSha = $Matches[1]",
+      "$status = Invoke-FrozenGit -Arguments 'status --porcelain=v1'",
+      "if ($status.stdout.Length -ne 0) { throw 'Worktree is not clean' }",
+      "if ($script:GitProcessCount -ne 5) { throw 'Unexpected git process count' }",
+      "if ($localSha -cne $originSha -or $localSha -cne $remoteSha) { throw 'Three-way Git revision mismatch' }",
+      "Assert-EvidencePathsAbsent",
+      "$success = '{\"status\":\"THREE_WAY_SYNC_VERIFIED\",\"git_processes\":5,\"all_equal\":true,\"worktree_clean\":true,\"evidence_paths_absent\":true}'",
+      "[Console]::Out.Write($success)"
+    ],
+    "source_line_count": 74,
+    "source_utf8_bytes": 4114,
+    "source_sha256": "4A5A4BBE08661D588673C4B4A1A7ABAB88FEB2999699658CBC91E8081266EB66",
+    "static_parse": {
+      "performed_during_package_assembly": true,
+      "syntax_error_count": 0,
+      "source_invoked": false
+    },
+    "parent_process_contract": {
+      "arguments_prefix": "-NoLogo -NoProfile -NonInteractive -EncodedCommand ",
+      "source_encoding": "UTF-16LE",
+      "utf16le_source_bytes": 8188,
+      "base64_characters": 10920,
+      "base64_ascii_sha256": "3A70D85BDB66451877CD7000C1B7278D84E9A8952D61330D3CC8973956660F5D",
+      "complete_arguments_characters": 10971,
+      "complete_arguments_ascii_sha256": "1ED8A00D773578DD5EBCE903CE8FF4E2413E18D9FA7E82DB4D2268A0CE62C4C5",
+      "use_shell_execute": false,
+      "redirect_standard_input": true,
+      "redirect_standard_output": true,
+      "redirect_standard_error": true,
+      "create_no_window": true,
+      "stdout_encoding": "UTF-8",
+      "stderr_encoding": "UTF-8",
+      "close_standard_input_immediately": true,
+      "temporary_ps1_allowed": false
+    },
+    "git_child_contract": {
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "working_directory": "E:\\科研\\HyperGranular-RAG",
+      "process_start_info": {
+        "use_shell_execute": false,
+        "redirect_standard_input": true,
+        "redirect_standard_output": true,
+        "redirect_standard_error": true,
+        "create_no_window": true,
+        "stdout_encoding": "UTF-8",
+        "stderr_encoding": "UTF-8",
+        "close_standard_input_immediately": true
+      },
+      "commands_in_order": [
+        "fetch origin main --quiet",
+        "rev-parse HEAD",
+        "rev-parse refs/remotes/origin/main",
+        "ls-remote --exit-code origin refs/heads/main",
+        "status --porcelain=v1"
+      ],
+      "process_count_per_verifier_invocation": 5,
+      "all_exit_codes": 0,
+      "all_stderr_bytes": 0,
+      "fetch_stdout_bytes": 0,
+      "status_stdout_bytes": 0
+    },
+    "output_grammar": {
+      "revision_regex": "\\A([0-9a-f]{40})\\r?\\n\\z",
+      "direct_remote_regex": "\\A([0-9a-f]{40})\\trefs/heads/main\\r?\\n\\z",
+      "multiline_allowed": false,
+      "extra_refs_allowed": false,
+      "uppercase_sha_allowed": false,
+      "substring_match_allowed": false
+    },
+    "success_contract": {
+      "stdout": "{\"status\":\"THREE_WAY_SYNC_VERIFIED\",\"git_processes\":5,\"all_equal\":true,\"worktree_clean\":true,\"evidence_paths_absent\":true}",
+      "stdout_bytes": 122,
+      "stdout_sha256": "BCDF0010147E5952AD0372ADF39EDA0A18D349B02107C340DEF05BAFE18C0F09",
+      "stderr_bytes": 0,
+      "exit_code": 0,
+      "local_equals_fetched_origin": true,
+      "local_equals_direct_remote": true,
+      "worktree_clean": true,
+      "evidence_paths_absent_before_and_after": true
+    },
+    "forbidden_dependencies_or_fallbacks": [
+      "gh",
+      "REST API",
+      "browser",
+      "git command outside commands_in_order",
+      "automatic retry"
+    ]
+  },
+  "unchanged_execution_chain": {
+    "bootstrap": {
+      "lines": 58,
+      "bytes": 3909,
+      "sha256": "F8A452CEBEC06326E1D8BA4DEB4FC8915210F3FF9BBF53DA2D22B9675773C81D",
+      "complete_arguments_sha256": "5EF7120B1005A027D408CF7DCAB525768376F2DAD213D91E69D73E1326D6F05D"
+    },
+    "recovery_harness": {
+      "lines": 77,
+      "bytes": 6246,
+      "sha256": "B34E7AE012AC0314AD44590603575194C8881CE58C17E6C8ED6568A5FA373048",
+      "complete_arguments_sha256": "19842E8DAB9CD94C4404DAC97989388B614462DDDC098A4590DA38D31F6B127B"
+    },
+    "compatible_verifier": {
+      "lines": 59,
+      "bytes": 3512,
+      "sha256": "1A30DC70AD0C01CDACBC3279F1CFD707EA4DAB457BE9C6C30A5C6D6495FA81BF",
+      "complete_arguments_sha256": "DD57FC57342776A74FF4563D39BBD56AD64AFDB76B980202285ACECBB9E82026",
+      "success_stdout_bytes": 190,
+      "success_stdout_sha256": "D05B3B2A147C51FB3A9FFFC3BEB802439E01AEFC34B708FE14C298978F2BFBB3"
+    },
+    "semantics_wrapper": {
+      "lines": 122,
+      "bytes": 7890,
+      "sha256": "DFA95A904CE371F283B8DBA8BB4D98CC048F345F536C0E7D0D6DB8073DF9E16C",
+      "complete_arguments_sha256": "0E1CCE9C1DE11C964356F4A508F330C169F255E3CCEA460D65417D3E923D42D5"
+    },
+    "embedded_python": {
+      "lines": 46,
+      "bytes": 2284,
+      "sha256": "D0D3D6FC37AD0C2649A7A7F88EFA944C357033E3F0E956BE0E27C4374653D602"
+    },
+    "semantics_success_stdout": {
+      "bytes": 789,
+      "sha256": "EDBD4614B790256E314F4A8963128A5FB5A190FAC197437FB349D4C33C606135"
+    },
+    "real_precommit_validator": {
+      "lines": 195,
+      "bytes": 15966,
+      "sha256": "0F066387B8523B0EA387444076A1113913082D283C28C2DE3FFB33872D558249",
+      "execution_requested": false
+    },
+    "mutation_allowed": false
+  },
+  "future_approval_governance": {
+    "direct_parent": "future_package_commit",
+    "exact_changed_paths": [
+      "AGENTS.md",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_APPROVAL_DECISION.md"
+    ],
+    "push_required_before_verifier": true,
+    "host_preconditions": [
+      "approval commit direct parent equals package commit",
+      "approval commit changed paths equal exact_changed_paths",
+      "synchronization verifier source and transport match Manifest"
+    ]
+  },
+  "evidence_paths": {
+    "target_machine": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_validator_semantics.json",
+    "target_narrative": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_VALIDATOR_SEMANTICS_AUDIT.md",
+    "older_machine_must_remain_absent": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_validator_semantics.json",
+    "older_narrative_must_remain_absent": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_VALIDATOR_SEMANTICS_AUDIT.md",
+    "exclusive_create_required": true,
+    "evidence_commit_exact_paths": [
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_VALIDATOR_SEMANTICS_AUDIT.md",
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_validator_semantics.json"
+    ]
+  },
+  "future_execution_limits": {
+    "approval_governance_commits": 1,
+    "synchronization_verifier_powershell_processes": 1,
+    "synchronization_verifier_git_child_processes": 5,
+    "static_bootstrap_reconstruction_attempts": 1,
+    "bootstrap_powershell_processes": 1,
+    "recovery_harness_powershell_processes": 1,
+    "compatible_verifier_powershell_processes": 1,
+    "semantics_wrapper_powershell_processes": 1,
+    "python_processes": 1,
+    "evidence_commits": 1,
+    "complete_synthetic_runs": 0,
+    "real_precommit_validator_invocations": 0,
+    "formal_preflight_invocations": 0,
+    "official_input_accesses": 0,
+    "authorization_token_uses": 0,
+    "capture_invocations": 0,
+    "automatic_retry": false
+  },
+  "required_future_order": [
+    "exact-two-path approval-governance direct child",
+    "push approval-governance commit",
+    "static synchronization-verifier source and transport verification",
+    "first synchronization-verifier PowerShell process",
+    "first five frozen Git child processes",
+    "exact synchronization success and four absent evidence paths",
+    "static unchanged bootstrap and downstream transport verification",
+    "one unchanged bootstrap PowerShell process",
+    "one recovery-harness PowerShell process",
+    "one compatible-verifier PowerShell process and exact 190-byte success",
+    "one unchanged semantics-wrapper PowerShell process",
+    "one Python process and exact 789-byte 9-of-9 success",
+    "bootstrap exclusive-create target machine evidence",
+    "exclusive-create narrative audit",
+    "exact-two-path evidence commit as direct child of approval governance",
+    "push evidence commit",
+    "approval-specified final synchronization and clean-worktree gate",
+    "stop immediately"
+  ],
+  "package_assembly_audit": {
+    "initial_ancestry_check": "FALSE_NEGATIVE_STOPPED_BEFORE_STAGING",
+    "direct_cause": "PowerShell treated empty successful git merge-base stdout as a Boolean instead of checking the Git exit code",
+    "paths_staged_before_stop": 0,
+    "commits_created_before_stop": 0,
+    "pushes_before_stop": 0,
+    "synchronization_verifier_invocations": 0,
+    "frozen_semantics_invocations": 0,
+    "corrective_check": "evaluate git merge-base --is-ancestor through LASTEXITCODE"
+  },
+  "explicitly_not_authorized": [
+    "package-assembly synchronization-verifier execution",
+    "package-assembly frozen semantics execution",
+    "gh installation or use",
+    "REST or browser remote verification",
+    "remote-verification fallback",
+    "reuse of consumed 5G-B.1.1.1 approval",
+    "bootstrap, harness, verifier, wrapper, Python, fixture or expected-output modification",
+    "script or test modification",
+    "result or historical-artifact modification",
+    "complete synthetic rebinding",
+    "real precommit validator",
+    "fresh three-path direct-child",
+    "formal preflight",
+    "official input",
+    "authorization token",
+    "official capture",
+    "controller",
+    "verifier or evaluator/Gold",
+    "rankings or policy",
+    "source audit or 5C-B inventory",
+    "reservation or Stage3B",
+    "retry, reset, rebase or force-push"
+  ],
+  "requested_completion_state": {
+    "primary": "AMENDMENT_5G_B_1_1_1_1_VALIDATOR_SEMANTICS_VERIFIED_AWAITING_REVIEW",
+    "hard_failure_13_audit": "ACCEPTED",
+    "three_way_github_main_synchronization": "VERIFIED",
+    "real_precommit_validator": "REMAINS_FROZEN",
+    "official_execution": "NOT_APPROVED"
+  }
+}
