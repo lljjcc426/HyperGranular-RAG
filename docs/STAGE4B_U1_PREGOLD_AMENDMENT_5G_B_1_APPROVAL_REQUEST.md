@@ -6,7 +6,7 @@
 - Request date: 2026-07-15
 - Request ID: `STAGE4B_U1_D_PREGOLD_AMENDMENT_5G_B_1_GOVERNANCE_KEYSET_VALIDATION_REPAIR_AND_FRESH_REBINDING_DIRECT_CHILD_ONLY`
 - Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_MANIFEST.json`
-- Current state: `RETURN_FOR_AMENDMENT_5G_B_1_PACKAGE`
+- Current state: `RETURN_FOR_CORRECTED_AMENDMENT_5G_B_1_PACKAGE`
 - Requested mode: `GOVERNANCE_VALIDATOR_SEMANTICS_CHECK_AND_FRESH_REBINDING_DIRECT_CHILD_ONLY`
 - Package itself authorizes correction or execution: No
 - Official execution: `NOT_APPROVED`
@@ -35,6 +35,14 @@ Hard Failure 8:
 ```
 
 Any future approval must explicitly bind the package commit containing this Request and its Manifest. An approval omitting that package commit is invalid.
+
+The first 5G-B.1 package commit:
+
+```text
+9536ffb4ce845aeff9db3552f890612ca6e9e2a3
+```
+
+is explicitly superseded and is not approvable. Its validator used case-insensitive sort/comparison, could not reject duplicate keys in raw governance JSON before object materialization, and did not freeze the complete real precommit validator. Package Review 1 records that decision at `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_PACKAGE_REVIEW_1.md` (2,835 bytes; SHA-256 `975D67C0A54FE919C81E60569F8C3096E1AC0F2464BECE40A478117B47E856C7`).
 
 ## Accepted Failure Evidence And Frozen History
 
@@ -90,14 +98,20 @@ docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_APPROVAL_DECISION.md
 
 No semantics check or synthetic command may run before local HEAD, `origin/main` and GitHub `main` are confirmed equal at that approval commit with a clean worktree.
 
-## Frozen Corrected Key-Set Validator
+## Frozen Corrected Validator Contract
 
-The validator must materialize both name sequences as arrays, reject duplicate actual or expected names, and require exact set equality:
+The corrected validator uses three fail-closed layers in this order:
+
+1. Read the governance binding once as strict UTF-8 bytes.
+2. Pass those bytes on stdin to the Manifest-embedded Python 3.12 standard-library parser. Its `object_pairs_hook` rejects exact duplicate raw keys before object materialization at every JSON level, and it separately rejects case-fold collisions inside `bound_files`.
+3. Materialize the parser's bound-file name report and the Manifest expected names as arrays, reject duplicates on either side, and require case-sensitive exact-set equality.
+
+The key-set operation is frozen as:
 
 ```powershell
 $actualNames = @(
-    $governance.bound_files.PSObject.Properties |
-    ForEach-Object { [string]$_.Name }
+    $inspection.bound_file_entries |
+    ForEach-Object { [string]$_.name }
 )
 
 $expectedNames = @(
@@ -109,8 +123,15 @@ if ($actualNames.Count -ne $expectedNames.Count) {
     throw 'bound file count failed'
 }
 
-$uniqueActual = @($actualNames | Sort-Object -Unique)
-$uniqueExpected = @($expectedNames | Sort-Object -Unique)
+$uniqueActual = @(
+    $actualNames |
+    Sort-Object -CaseSensitive -Unique
+)
+
+$uniqueExpected = @(
+    $expectedNames |
+    Sort-Object -CaseSensitive -Unique
+)
 
 if ($uniqueActual.Count -ne $actualNames.Count) {
     throw 'duplicate actual bound file name'
@@ -123,7 +144,8 @@ if ($uniqueExpected.Count -ne $expectedNames.Count) {
 $delta = @(
     Compare-Object `
         -ReferenceObject $uniqueExpected `
-        -DifferenceObject $uniqueActual
+        -DifferenceObject $uniqueActual `
+        -CaseSensitive
 )
 
 if ($delta.Count -ne 0) {
@@ -131,18 +153,51 @@ if ($delta.Count -ne 0) {
 }
 ```
 
-The full precommit validator must additionally verify package/approval metadata, three artifact-presence values, every registered bound-file path/bytes/SHA, exact fresh changed-path set, preserved historical hashes, fresh evidence gates and absence of unregistered paths. It must not access official inputs or call any helper.
+Case-insensitive sorting, comparison, normalization, aliasing and cardinality-only acceptance are forbidden.
+
+## Complete Real Precommit Validator Freeze
+
+The complete Windows PowerShell 5.1 command is frozen verbatim in the Manifest as a 195-line `source_lines` array joined by LF with no trailing newline:
+
+```text
+source bytes:
+15966
+
+source SHA-256:
+0F066387B8523B0EA387444076A1113913082D283C28C2DE3FFB33872D558249
+```
+
+The future approval decision must contain the corrected package commit, the exact decimal source byte token `15966`, and source SHA-256 `0F066387B8523B0EA387444076A1113913082D283C28C2DE3FFB33872D558249`. The frozen validator checks all three bindings. No post-approval wrapper expression, source extension or replacement validator is allowed. Before execution, the source must be reconstructed exactly from the Manifest and its bytes/SHA rechecked.
+
+The frozen command covers:
+
+- raw JSON duplicate-key rejection before `ConvertFrom-Json`;
+- raw `bound_files` case-only collision rejection;
+- case-sensitive exact key sets for governance records, the 15-name path registry, approval changed paths and the fresh worktree;
+- package commit as the approval commit's actual parent, approval commit as actual synchronized HEAD, and governance metadata equality;
+- strict-boolean artifact presence;
+- all 15 bound-file paths, byte counts and SHA-256 values;
+- the three historical 5G-B artifact fingerprints;
+- fresh evidence `246/41/44`, 33 tracked files, failure/error/skip zeros, all official/helper/preflight/token/capture zeros, and two-run byte equality metadata;
+- the exact three untracked fresh paths and absence of every extra modified or untracked path.
+
+The command accesses no official input and calls no project helper. Its only external processes are `git` for repository metadata/worktree status and the exact frozen Python executable for stdin-only standard-library JSON parsing.
 
 ## One Pure In-Memory Semantics Check
 
-After approval synchronization and before synthetic execution, the exact key-set validator may be exercised once against in-memory synthetic fixtures. That single invocation must prove:
+After approval synchronization and before synthetic execution, the corrected validator semantics may be exercised once against in-memory synthetic fixtures. That single wrapper invocation must prove:
 
 - the exact expected key set passes;
 - one missing key fails;
 - one extra key fails;
 - duplicate actual names fail;
 - duplicate expected names fail;
-- no filesystem, Git, GitHub, subprocess, helper, token, capture or official path is used.
+- case-only actual-key drift fails;
+- case-only expected-key collision fails;
+- raw JSON duplicate `bound_files` keys fail before object materialization;
+- raw JSON case-only key collisions fail.
+
+The wrapper may invoke exactly one frozen Python 3.12 standard-library parser process, with all raw fixtures supplied in one in-memory stdin payload. It may not use any other subprocess, filesystem, Git, GitHub, helper, token, capture or official path.
 
 Failure consumes the semantics-check authorization and stops without synthetic execution or retry.
 
@@ -183,7 +238,7 @@ It must not register its own SHA. The future exact-three-path direct-child commi
 
 ## Single Corrected Real Precommit Validation
 
-After both fresh runs and all three fresh artifacts are generated, run the frozen corrected precommit validator exactly once against the real new governance binding and Manifest. It must validate the exact key set and all registered content/scope gates.
+After both fresh runs and all three fresh artifacts are generated, reconstruct the frozen 15,966-byte command from the Manifest, verify SHA-256 `0F066387B8523B0EA387444076A1113913082D283C28C2DE3FFB33872D558249`, and run it exactly once against the real new governance binding and Manifest. It must validate every frozen content and scope gate without additional expressions.
 
 Failure stops without correction, second validation or commit.
 
@@ -229,6 +284,25 @@ AMENDMENT_5G_B_1_FRESH_REBINDING_DIRECT_CHILD_COMPLETE_AWAITING_REVIEW
 HARD_FAILURE_10_DIRECT_CAUSE_CONFIRMED
 HISTORICAL_5G_B_ARTIFACTS_FROZEN
 
+DERIVED_EXECUTION_HEAD_VALIDATION_NOT_APPROVED
+FORMAL_PREFLIGHT_NOT_APPROVED
+OFFICIAL_INPUT_ACCESS_NOT_APPROVED
+AUTHORIZATION_TOKEN_USE_NOT_APPROVED
+OFFICIAL_CAPTURE_NOT_APPROVED
+CONTROLLER_RERUN_NOT_APPROVED
+VERIFIER_NOT_APPROVED
+GOLD_NOT_APPROVED
+```
+
+Until a new approval explicitly binds the corrected package commit, the effective state remains:
+
+```text
+CORRECTED_AMENDMENT_5G_B_1_PACKAGE_AWAITING_APPROVAL
+SUPERSEDED_PACKAGE_9536FFB_NOT_APPROVABLE
+
+VALIDATOR_SEMANTICS_CHECK_NOT_APPROVED
+FRESH_SYNTHETIC_REBINDING_NOT_APPROVED
+FRESH_THREE_PATH_DIRECT_CHILD_NOT_APPROVED
 DERIVED_EXECUTION_HEAD_VALIDATION_NOT_APPROVED
 FORMAL_PREFLIGHT_NOT_APPROVED
 OFFICIAL_INPUT_ACCESS_NOT_APPROVED

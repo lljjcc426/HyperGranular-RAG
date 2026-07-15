@@ -185,10 +185,12 @@
 171. 当前状态为 `AMENDMENT_5G_B_REBINDING_GOVERNANCE_STOPPED_HARD_FAILURE_10`。现有 5G-B 授权已消耗；任何 direct-child recovery、helper、preflight 或 official action 必须经过新的独立审核与 package-bound Amendment。
 172. Hard Failure 10 独立审核已接受审计并冻结 checkpoint `aab591b92804fd1226a62751c38d056918f71b41`；旧两轮 `00281BED...` evidence 仅作为历史失败证据，不得作为新的 execution binding。
 173. 旧 5G-B rebinding audit、governance binding 与 synthetic evidence 必须保持原 SHA，禁止覆盖、修改、删除、迁移、重提或通过 reset/force-push 制造旧 approval 的三路径 direct-child。
-174. 当前只授权组装 5G-B.1 package。Request/Manifest 本身不授权 validator 修正或执行、semantics check、synthetic、fresh direct-child、helper、preflight、official input、token、capture、controller、verifier 或 Gold。
-175. 未来 5G-B.1 如获 package-bound 批准，validator 必须用 `@(...)` 显式物化 actual/expected key arrays，分别拒绝重复，并以 `Compare-Object` 零 delta 验证 exact key set；只比较 cardinality 不得接受。
-176. 未来恢复顺序必须隔离为：新 approval governance、一次纯内存 semantics check、两次 fresh 246/246、三项新工件、一次 corrected real precommit validation、精确三路径 direct-child、同步 GitHub、立即停止。任一失败不得修正或重跑。
-177. 当前状态为 `AMENDMENT_5G_B_1_AWAITING_APPROVAL`。本阶段不申请 derived execution-HEAD helper、formal preflight 或 official diagnostic；这些必须等待 fresh direct-child 独立审核后另行组包。
+174. 5G-B.1 原 package commit `9536ffb4ce845aeff9db3552f890612ca6e9e2a3` 已因 validator 大小写不敏感、raw JSON 重复键门不完整和完整 real precommit validator 未冻结而退回；该提交不得作为未来批准所绑定的 package。
+175. 当前只授权组装 corrected 5G-B.1 package。Request/Manifest 本身不授权 validator semantics、synthetic、fresh direct-child、helper、preflight、official input、token、capture、controller、verifier 或 Gold。
+176. corrected validator 必须在对象物化前以冻结的 Python 3.12 标准库 raw-JSON gate 拒绝所有重复键，并拒绝 `bound_files` 大小写折叠冲突；其后必须用 `Sort-Object -CaseSensitive -Unique` 与 `Compare-Object -CaseSensitive` 验证精确 key set。
+177. 完整 real precommit validator 以 Manifest 中 195 行 LF-joined source 冻结：15,966 bytes，SHA-256 `0F066387B8523B0EA387444076A1113913082D283C28C2DE3FFB33872D558249`；它还会核验未来批准决定显式包含 corrected package commit、十进制 bytes token 与该 SHA。任何批准后新增 wrapper 表达式、替换命令或未登记检查均禁止。
+178. 未来恢复顺序保持：新 approval governance、一次内存 semantics wrapper、两次 fresh 246/246、三项新工件、一次 frozen real precommit validation、精确三路径 direct-child、同步 GitHub、立即停止。任一失败不得修正或重跑。
+179. 当前状态为 `CORRECTED_AMENDMENT_5G_B_1_PACKAGE_AWAITING_APPROVAL`。本阶段不申请 derived execution-HEAD helper、formal preflight 或 official diagnostic；这些必须等待 fresh direct-child 独立审核后另行组包。
 
 ## GitHub 与文档
 

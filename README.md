@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Hard Failure 10 独立审核通过；5G-B.1 fresh rebinding direct-child 审批包已组装，等待审批 |
-| 获批执行协议 | 当前仅获准组装 5G-B.1 package；validator check、synthetic、direct-child 与 official execution 均未获批 |
+| 当前阶段 | 5G-B.1 原包因 validator 三项缺口退回；corrected 5G-B.1 package 已组装，等待审批 |
+| 获批执行协议 | 当前仅获准修订治理包；validator semantics、synthetic、direct-child 与 official execution 均未获批 |
 | 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_APPROVAL_REQUEST.md` |
-| 协议状态 | `AMENDMENT_5G_B_1_AWAITING_APPROVAL` |
+| 协议状态 | `CORRECTED_AMENDMENT_5G_B_1_PACKAGE_AWAITING_APPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |

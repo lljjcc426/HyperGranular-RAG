@@ -1075,6 +1075,9 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Review: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_10_REVIEW_1.md`.
 - Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_APPROVAL_REQUEST.md`.
 - Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_MANIFEST.json`.
-- The package freezes an explicit-array, duplicate-rejecting, exact-key-set validator contract and requires new non-overlapping artifact paths.
-- A future approval may authorize one in-memory semantics check, exactly two fresh 246-test runs, one corrected real precommit validation and one exact-three-path direct-child, followed by immediate stop.
-- Current status: `AMENDMENT_5G_B_1_AWAITING_APPROVAL`. No validator execution, synthetic run, direct-child, execution-head helper, preflight or official action is authorized by the package itself.
+- The first package commit `9536ffb4ce845aeff9db3552f890612ca6e9e2a3` was independently rejected: its sort/comparison was case-insensitive, parsed `PSObject.Properties` could not prove raw JSON duplicate-key absence, and the complete real precommit command was not frozen. It is not approvable.
+- Package Review 1: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_PACKAGE_REVIEW_1.md`.
+- The corrected package freezes strict UTF-8 raw ingestion, Python `object_pairs_hook` duplicate rejection before object materialization, bound-file case-fold collision rejection, and PowerShell `Sort-Object -CaseSensitive -Unique` plus `Compare-Object -CaseSensitive`.
+- The complete 195-line real validator is frozen at 15,966 bytes and SHA-256 `0F066387B8523B0EA387444076A1113913082D283C28C2DE3FFB33872D558249`; future approval must contain the package commit, decimal byte token and exact SHA, and may not add a wrapper expression.
+- A future corrected-package-bound approval may authorize one in-memory semantics wrapper, exactly two fresh 246-test runs, one frozen real precommit validation and one exact-three-path direct-child, followed by immediate stop.
+- Current status: `CORRECTED_AMENDMENT_5G_B_1_PACKAGE_AWAITING_APPROVAL`. No validator semantics, synthetic run, direct-child, execution-head helper, preflight or official action is authorized by the package itself.
