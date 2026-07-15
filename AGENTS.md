@@ -207,6 +207,11 @@
 193. 三方同步后只允许运行一次 frozen wrapper 和一个 Python process；成功必须为 PowerShell 7/7、raw JSON 2/2、总计 9/9、exit 0、stderr 0、stdout 精确匹配，且 filesystem/Git/GitHub/helper/official/token/capture 计数均为 0。不得增加临时 try/catch、重定向、诊断、wrapper 表达式或额外 parser call，不得重试。
 194. 成功后只允许 exclusive-create Manifest 登记的 machine evidence 与 narrative audit，并以 approval-governance commit 为 parent 提交精确两路径、推送、三方同步后立即停止。complete synthetic、真实 validator、fresh 三路径 direct-child、execution-head helper、preflight、official input、token、capture、controller、verifier 与 Gold 全部不获批。
 195. 当前状态为 `AMENDMENT_5G_B_1_1_APPROVED_AWAITING_APPROVAL_GOVERNANCE_SYNC`。在本两路径 approval-governance commit 推送同步完成前，一次性 semantics 授权不得使用。
+196. Approval-governance commit `e18dcb13b64e8a50d764fc9eacbabcdea7c5393f` 已按精确两路径提交推送，直接 parent 为 package `c4101cfafbc08d518cd4b56e5d199f9d5937294b`；source verification 前 local/origin/GitHub 三方一致、worktree clean、两个 fresh evidence 路径不存在。
+197. 必需的 pre-execution source-hash gate 在 Windows PowerShell 5.1 调用 `[System.Convert]::ToHexString(...)` 时触发 `MethodNotFound`，形成 Hard Failure 12。该门此前已确认 Python source 为 46 行、2,284 UTF-8 bytes，但 Python SHA equality 及其后的 PowerShell/embedded/stdout 门均未完成。
+198. 本失败是 source-verification command 的 runtime compatibility defect，不是已观察到的 source hash mismatch，也不证明 frozen wrapper、内嵌 Python 或真实 precommit validator 有缺陷。不得现场替换 hex conversion 后继续。
+199. Frozen wrapper 未进入失败命令，wrapper invocation 与 Python process 均为 0；machine evidence、narrative audit、synthetic、真实 validator、fresh direct-child、helper、preflight、official input、token 与 capture 均未发生。两个 success-only evidence 路径仍不存在。
+200. 当前状态为 `AMENDMENT_5G_B_1_1_SOURCE_HASH_VERIFICATION_STOPPED_HARD_FAILURE_12`。当前批准不得复用；source verification retry、semantics wrapper 及全部后续动作必须等待新的独立审核和 package-bound recovery Amendment。
 
 ## GitHub 与文档
 

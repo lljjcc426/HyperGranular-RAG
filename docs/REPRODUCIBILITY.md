@@ -974,3 +974,15 @@ The wrapper uses one `System.Diagnostics.Process` with redirected stdout/stderr 
 At package assembly time the harness is not executed. The fresh result paths `results/stage4b_u1_d_pregold_amendment_5g_b_1_1_validator_semantics.json` and `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_VALIDATOR_SEMANTICS_AUDIT.md` must remain absent until a new approval explicitly binds the package commit and authorizes the single invocation.
 
 Current status is `AMENDMENT_5G_B_1_1_PACKAGE_AWAITING_APPROVAL`. No synthetic, real validator, direct-child, execution-head, preflight or official action is authorized.
+
+## Stage4B-U1-D Pre-Gold Hard Failure 12
+
+The package-bound approval was recorded in `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_APPROVAL_DECISION.md`. Approval-governance commit `e18dcb13b64e8a50d764fc9eacbabcdea7c5393f` is the exact two-path direct child of package `c4101cfafbc08d518cd4b56e5d199f9d5937294b` and was synchronized across local, origin and GitHub before the pre-execution source gate.
+
+The source gate used Windows PowerShell only and did not invoke Python. It reconstructed the Manifest sources with LF/no trailing newline and confirmed the Python source has 46 lines and 2,284 UTF-8 bytes. It then computed the SHA-256 byte array but failed when converting it with `[System.Convert]::ToHexString()`, which is unavailable in Windows PowerShell 5.1. The observed exception was `MethodNotFound`.
+
+No source hash mismatch was observed. Python hash equality, PowerShell line/byte/hash equality, embedded-source equality and expected-stdout equality were not reached. No compatible conversion was substituted, and the gate was not retried.
+
+The frozen wrapper was not part of the failed command. Wrapper invocations and Python processes remained 0. The machine evidence and narrative audit remained absent, and no synthetic, real validator, direct-child, helper, preflight, official input, token, capture or downstream action occurred.
+
+Full evidence is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_12.md`. Current status is `AMENDMENT_5G_B_1_1_SOURCE_HASH_VERIFICATION_STOPPED_HARD_FAILURE_12`; recovery requires a new package-bound approval.

@@ -1103,3 +1103,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The package separately freezes a 122-line, 7,890-byte PowerShell semantics wrapper with SHA-256 `DFA95A904CE371F283B8DBA8BB4D98CC048F345F536C0E7D0D6DB8073DF9E16C` and a byte-identical embedded 46-line, 2,284-byte Python source with SHA-256 `D0D3D6FC37AD0C2649A7A7F88EFA944C357033E3F0E956BE0E27C4374653D602`.
 - A future package-bound approval may authorize one isolated wrapper invocation only. Success requires wrapper 1, Python process 1, PowerShell 7/7, raw JSON 2/2, total 9/9, exit 0, stderr 0 and exact 789-byte stdout with SHA-256 `EDBD4614B790256E314F4A8963128A5FB5A190FAC197437FB349D4C33C606135`.
 - Current status: `AMENDMENT_5G_B_1_1_PACKAGE_AWAITING_APPROVAL`. The package authorizes no semantics, synthetic, real validator, direct-child, helper, preflight or official execution.
+
+### Stage4B-U1-D Pre-Gold Hard Failure 12
+
+- Amendment 5G-B.1.1 approval governance was committed and pushed at `e18dcb13b64e8a50d764fc9eacbabcdea7c5393f` as the exact two-path direct child of package `c4101cfafbc08d518cd4b56e5d199f9d5937294b`.
+- Three-way HEAD synchronization, clean worktree and absence of both future evidence paths passed before source verification.
+- The required read-only source gate reconstructed the registered sources and confirmed the Python source count of 46 lines and 2,284 UTF-8 bytes.
+- The gate then failed because Windows PowerShell 5.1 does not provide `[System.Convert]::ToHexString()`. Python SHA equality and all later source/output checks were not reached.
+- This is a verification-command runtime compatibility failure, not an observed frozen-source hash mismatch.
+- The frozen wrapper was not invoked; Python processes, synthetic runs, real-validator calls, evidence paths, preflight, official access, token and capture all remained zero.
+- Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_12.md`.
+- Current status: `AMENDMENT_5G_B_1_1_SOURCE_HASH_VERIFICATION_STOPPED_HARD_FAILURE_12`. Source verification and semantics execution require a new independent review and package-bound recovery Amendment.

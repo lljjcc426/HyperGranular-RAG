@@ -6,16 +6,16 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Hard Failure 11 独立审核已接受；Amendment 5G-B.1.1 semantics-harness 审批包待批 |
-| 获批执行协议 | 当前无执行授权；仅完成 Review、Request、Manifest 与治理状态组包 |
-| 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_APPROVAL_REQUEST.md` |
-| 协议状态 | `AMENDMENT_5G_B_1_1_PACKAGE_AWAITING_APPROVAL` |
+| 当前阶段 | Hard Failure 12：pre-execution source-hash gate 在 PowerShell 5.1 hex conversion 处停止 |
+| 获批执行协议 | 5G-B.1.1 批准已在必需前置门失败后停止；wrapper 与 Python 均未启动，当前批准不得复用 |
+| 设计文件 | `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_12.md` |
+| 协议状态 | `AMENDMENT_5G_B_1_1_SOURCE_HASH_VERIFICATION_STOPPED_HARD_FAILURE_12` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
 | 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
 
-Hard Failure 11 审核接受一次性 semantics 门的 fail-closed 停止。行位证据高置信指向 negative raw-JSON fixture 的预期拒绝以未处理 Python 异常逃逸，但缺少完整 traceback，因此不把更深 parser 根因写成已完全证明。5G-B.1.1 包冻结了通过 `System.Diagnostics.Process` 隔离 stderr 的 122 行 PowerShell wrapper、46 行内嵌 Python source 与 9/9 确定性输出契约；本包不授权执行 harness、synthetic、真实 validator、preflight 或任何 official 操作。
+Hard Failure 11 审核后，5G-B.1.1 semantics-only 包获得批准并完成两路径 approval governance。随后必需的 source-hash 验证在 Windows PowerShell 5.1 缺少 `[System.Convert]::ToHexString()` 时 fail-closed 停止，尚未完成 SHA equality。冻结 wrapper 未调用、Python process 为 0，两个 success-only evidence 路径不存在；这不是 source mismatch 证据，且不得在当前批准下改用另一种转换后继续。完整审计见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_12.md`。
 
 第一次官方提取在预注册映射硬门处停止：基础区间 `[800:5300)` 的 11,003 个 supporting facts 中有 19 个 sentence index 越界，影响 19 条查询；该失败没有生成 gain/harm 或检索指标。Amendment 1 随后采用仅由标注完整性决定的确定性替换，从 `[9800:9819)` 补入 19 条有效记录。最终 11,015/11,015 supporting facts 完整映射，development/reservation 零重叠。
 
