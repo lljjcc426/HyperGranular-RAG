@@ -1174,3 +1174,25 @@ Those two paths form a separate exact-two-path direct child of the semantics evi
 The first temporary generator invocation stopped before any Manifest write because Windows PowerShell 5.1 decoded a UTF-8 no-BOM package-assembly script path as ANSI. The corrective invocation explicitly read strict UTF-8 bytes into a ScriptBlock. No frozen source or child process was invoked in either attempt; the event is recorded in the Manifest.
 
 Current status is `CORRECTED_AMENDMENT_5G_B_1_1_1_1_2_PACKAGE_AWAITING_APPROVAL`. Approval governance, top-level runner reconstruction/execution, semantics evidence, post-sync audit, synthetic, real validator, formal preflight and every official/Gold action remain unapproved.
+
+## Amendment 5G-B.1.1.1.1.2 Package Review 2 And Second Corrected Package
+
+Independent Package Review 2 accepts first corrected commit `44e56ab955dfe5fe89cc8ec4343870b59d008c9a` and its seven-path scope, Hard Failure 15/raw evidence binding, exact classifier, six source designs, canonical class channel and pre/post audit separation. It rejects that package as written because the final post-sync audit commit was created and pushed after the last frozen synchronization verifier; local/fetched/direct GitHub main, final parent/path scope and final artifact stability therefore had no frozen terminal verifier.
+
+The second corrected Manifest retains the accepted six sources and adds:
+
+    final post-sync audit commit verifier: 164 lines / 12934 bytes / C0D96FD1...D2B2B
+    complete arguments: 34447 chars / FB42C188...AF5B2
+    fixed stdout: 195 bytes / 3EFE3ED5...6DE5
+
+    final verifier host: 81 lines / 6024 bytes / C843B63E...91131
+    complete arguments: 16095 chars / 74D0EB12...E6272
+    canonical host stdout variants: 187 bytes / 731D2969...2716 and 218 bytes / E6360311...4A9
+
+The final host binds the future package, approval-governance and semantics-evidence commits through three process-scoped environment variables and starts exactly one final verifier. The verifier launches exactly eleven frozen Git children: fetch; local, tracking and direct-remote revision reads; porcelain status; three ancestor reads; and three changed-path reads. Every Git stderr is strict zero and every stdout follows a command-specific exact grammar.
+
+Final success requires local HEAD, fetched `origin/main` and direct GitHub main equality; `HEAD^/HEAD^^/HEAD^^^` equality with the bound semantics/approval/package commits; exact registered two-path sets for the final, semantics and approval commits; canonical post machine schema and matching narrative classes/approval binding; exact historical evidence; exact 789-byte semantics machine evidence; and before/after stability for all historical, semantics and post artifacts. After exact host success, no file or commit may be created.
+
+The second corrected Manifest is 227,242 bytes with SHA-256 `69CA3DAD8664F12213933A603D0AE0955C8AC17E483E5DC433859839AD49086E`. All eight sources and complete transports independently recompute to their registered fingerprints and statically parse with zero errors. Package assembly invoked zero frozen sources and created zero evidence. The Manifest also records five zero-write read-only helper failures: the first four started no process, while the bounded diff preview used four read-only Git processes before its consumer closed the stream; none executed a frozen source.
+
+Current status is `SECOND_CORRECTED_AMENDMENT_5G_B_1_1_1_1_2_PACKAGE_AWAITING_APPROVAL`. No approval governance, frozen-source execution, evidence creation, synthetic, real validator, formal preflight or official/Gold operation is authorized.

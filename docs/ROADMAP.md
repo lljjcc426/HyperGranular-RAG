@@ -1236,3 +1236,15 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Corrected Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_APPROVAL_REQUEST.md`.
 - Corrected Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_MANIFEST.json`.
 - Current status: `CORRECTED_AMENDMENT_5G_B_1_1_1_1_2_PACKAGE_AWAITING_APPROVAL`; no execution is authorized before a new package-bound approval.
+
+### Amendment 5G-B.1.1.1.1.2 Package Review 2 And Second Corrected Package
+
+- Package Review 2 accepts first corrected commit `44e56ab955dfe5fe89cc8ec4343870b59d008c9a`, its seven-path scope, Hard Failure 15/raw evidence binding, exact classifier, six source designs, canonical class channel and pre/post audit separation.
+- It rejects that package as written because no frozen verifier runs after the final exact-two-path post-sync audit commit is pushed; final three-way GitHub main, parent/path semantics and artifact stability were therefore unverified.
+- The second corrected Manifest preserves those six sources and adds a 164-line / 12,934-byte final verifier (`C0D96FD1...D2B2B`) plus an 81-line / 6,024-byte final host (`C843B63E...91131`). All eight static parsers report zero errors and no frozen source was executed during assembly.
+- The final verifier freezes eleven Git children and verifies local/fetched/direct GitHub main equality, the package -> approval -> semantics -> final ancestry, three exact two-path commit scopes, canonical post machine/narrative agreement and before/after stability of historical, semantics and post artifacts.
+- The final host freezes raw BaseStream capture, exact child stdout, exact PowerShell stderr classification and two canonical host stdout variants. Exact success is terminal: no file, status document or commit may be created afterward.
+- Review: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_PACKAGE_REVIEW_2.md`.
+- Second corrected Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_APPROVAL_REQUEST.md`.
+- Second corrected Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_MANIFEST.json` (227,242 bytes; SHA-256 `69CA3DAD8664F12213933A603D0AE0955C8AC17E483E5DC433859839AD49086E`).
+- Current status: `SECOND_CORRECTED_AMENDMENT_5G_B_1_1_1_1_2_PACKAGE_AWAITING_APPROVAL`; no execution is authorized before a new package-bound approval.

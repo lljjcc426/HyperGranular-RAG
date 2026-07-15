@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Hard Failure 15 审核已接受；原 5G-B.1.1.1.1.2 package 被退回，corrected package 等待审批 |
-| 获批执行协议 | 无；Hard Failure 15 旧授权已消费，corrected package 本身不授权执行 |
+| 当前阶段 | Package Review 2 已接受 first corrected 静态设计但拒绝其最终验证缺口；second corrected package 等待审批 |
+| 获批执行协议 | 无；既有授权均已消费，second corrected package 本身不授权执行 |
 | 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_APPROVAL_REQUEST.md` 与 Manifest |
-| 协议状态 | `CORRECTED_AMENDMENT_5G_B_1_1_1_1_2_PACKAGE_AWAITING_APPROVAL` |
+| 协议状态 | `SECOND_CORRECTED_AMENDMENT_5G_B_1_1_1_1_2_PACKAGE_AWAITING_APPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -18,6 +18,8 @@
 Hard Failure 15 Review 1 接受三份 raw machine evidence，并将 382-byte stderr 精确定性为 Windows PowerShell 首次模块准备 progress CLIXML；exact 122-byte pre-verifier stdout 同时证明历史 `ee84988...` 的五个 Git children、三方 SHA 相等与 clean worktree，但旧 launcher 的 stderr-zero 合同仍然失败。Package Review 1 接受 exact classifier 和四个内层 envelope 的静态设计，但因顶层 runner 未冻结、内层 class 不可持久化以及 post class 与 narrative 提交顺序矛盾，明确拒绝 package `7f92c000...`。
 
 Corrected 5G-B.1.1.1.1.2 package 已静态冻结六份 source：四个修订 envelope、194-line pre/semantics outer runner 与 166-line post-sync outer runner；全部 parser 为 0 error，组包阶段执行次数为 0。Class 仅能通过注册的 canonical stdout variants 取 `EMPTY` 或 exact frozen 382-byte 值，789-byte semantics machine evidence 不变；pre/semantics narrative 与 post-sync machine/narrative audit 分阶段创建，并分别形成精确两路径提交。新的 package-bound 批准前不得重建或运行任何 source。
+
+Package Review 2 接受上述六份 source、七路径 scope、canonical class channel 与 pre/post audit 分离，但指出 final post-sync audit commit push 后缺少冻结 verifier，因而拒绝 first corrected commit `44e56ab...`。Second corrected package 新增 164-line final verifier 与 81-line host，冻结十一条 Git child 命令，闭合 final local/origin/direct GitHub main、完整 parent chain、三个精确两路径提交、post schema/narrative agreement 与全部证据稳定性；八份 source 静态 parser 均为 0，组包执行数为 0。
 
 Amendment 5G-B.1.1.1.1.1 approval governance 已作为 package `d6d8a76...` 的精确两路径直接子提交 `ee84988...` 推送。唯一 launcher 静态重建全部通过，唯一 launcher 及唯一原 pre verifier 均已运行；launcher exit 0、stdout 为冻结的 exact 122 bytes，但 launcher stderr 为 382 bytes，违反必须为空的硬门并形成 Hard Failure 15。三条 machine 文件已在失败前以 `CreateNew` 保存并原样保留，获批 narrative 未创建，四条 semantics 路径仍不存在。原授权已消费，没有重试或下游执行；完整审计见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_15.md`。
 
@@ -201,9 +203,9 @@ Hard Failure 10 独立审核接受审计及两轮结果，但只将旧三项工�
 
 ## 下一步
 
-1. 独立审批 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_1_APPROVAL_REQUEST.md` 与 Manifest，并明确绑定其 package commit。
-2. 新的 package-bound 批准前，不得重建或运行 raw-stream diagnostic launcher，不得重跑 pre verifier，也不得创建四项 diagnostic evidence。
-3. Bootstrap、semantics、post verifier、synthetic、formal preflight、official input/token/capture、controller、verifier、Gold、U1-D 指标、reservation 与 Stage3B 继续锁定。
+1. 独立审批 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_APPROVAL_REQUEST.md` 与 Manifest，并明确绑定未来 second corrected package commit。
+2. 新批准前，不得创建 approval-governance commit，不得重建或运行八份冻结 source，也不得创建 semantics/post-sync evidence。
+3. Synthetic、real validator、formal preflight、official input/token/capture、controller、verifier、Gold、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub
 

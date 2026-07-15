@@ -1,13 +1,14 @@
-# Stage4B-U1-D Pre-Gold Amendment 5G-B.1.1.1.1.2 Corrected Approval Request
+# Stage4B-U1-D Pre-Gold Amendment 5G-B.1.1.1.1.2 Second Corrected Approval Request
 
 ## Material Passport
 
 - Origin Skill: academic-research-suite / experiment-agent
 - Request date: 2026-07-15
-- Requested decision: APPROVE_CORRECTED_STAGE4B_U1_D_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_FROZEN_TOP_LEVEL_TRANSPORT_RUNNERS_AND_VERSIONED_BOUNDARY_ATTESTATION_ONLY
-- Current checkpoint: 7f92c000bb3c22337c83dc28e32779f4eb9cfdf8
+- Requested decision: APPROVE_SECOND_CORRECTED_STAGE4B_U1_D_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_FROZEN_EIGHT_SOURCE_TRANSPORT_RECOVERY_AND_FINAL_POST_SYNC_AUDIT_COMMIT_VERIFICATION_ONLY
+- Current checkpoint: 44e56ab955dfe5fe89cc8ec4343870b59d008c9a
 - Superseded unapproved package: 7f92c000bb3c22337c83dc28e32779f4eb9cfdf8
-- Package execution authority: NONE UNTIL A NEW APPROVAL BINDS THE FUTURE CORRECTED PACKAGE COMMIT
+- Superseded first corrected package: 44e56ab955dfe5fe89cc8ec4343870b59d008c9a
+- Package execution authority: NONE UNTIL A NEW APPROVAL BINDS THE FUTURE SECOND CORRECTED PACKAGE COMMIT
 - Official execution: NOT_REQUESTED
 - Other project conversations, thread tools, and global memory used: No
 
@@ -17,7 +18,9 @@ Hard Failure 15 Review 1 accepts checkpoint `95f68e7b2afdf6ed46c4eebe604d13744b2
 
 Package Review 1 accepts the exact classifier logic, the six classifier fixtures, the package commit's seven-path scope and the four inner envelope designs as static content. It rejects package `7f92c000bb3c22337c83dc28e32779f4eb9cfdf8` because the top-level execution runner was not frozen, inner stderr classes were not exposed or persisted, and the narrative was required to contain post classes before the post host could run.
 
-This corrected package supersedes that unapproved commit. It freezes two finite top-level runners, canonical class-attestation stdout envelopes, a pre/semantics-only narrative and a separate post-sync machine/narrative audit plus final audit commit. The unchanged 789-byte semantics machine evidence is preserved.
+The first corrected package at `44e56ab955dfe5fe89cc8ec4343870b59d008c9a` superseded the original unapproved package. Package Review 2 accepts its seven-path scope, six source designs, classifier and versioned pre/post audit separation, but rejects it as written because it has no frozen verifier for the final post-sync audit commit after that commit is pushed.
+
+This second corrected package supersedes `44e56ab955dfe5fe89cc8ec4343870b59d008c9a`. It retains the six accepted source designs and adds a finite final verifier plus its finite transport host. The new final pair verifies final direct GitHub main synchronization, the complete package -> approval -> semantics -> final parent chain, all three exact two-path commit scopes, strict post artifacts, historical and semantics evidence stability, and then stops with no further file or commit creation.
 
 ## Bound Commits And Files
 
@@ -33,12 +36,15 @@ This corrected package supersedes that unapproved commit. It freezes two finite 
     superseded unapproved transport package:
     7f92c000bb3c22337c83dc28e32779f4eb9cfdf8
 
-    corrected Manifest:
-    docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_MANIFEST.json
-    174351 bytes
-    2F596881DA5406EB1AACFA6F9261EDBC1B60450C1898561E065C5F099B618EAC
+    superseded first corrected package:
+    44e56ab955dfe5fe89cc8ec4343870b59d008c9a
 
-Any approval that does not explicitly bind the future corrected package commit containing this Request and Manifest is invalid.
+    second corrected Manifest:
+    docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_MANIFEST.json
+    227242 bytes
+    69CA3DAD8664F12213933A603D0AE0955C8AC17E483E5DC433859839AD49086E
+
+Any approval that does not explicitly bind the future second corrected package commit containing this Request and Manifest is invalid.
 
 ## Frozen Historical Evidence
 
@@ -63,9 +69,9 @@ Only two classes pass:
 
 Each classifier compares exact byte count and then every byte. Hash-only, length-only, substring, decoded-text, similar CLIXML, appended bytes, duplicate payloads and same-length mutations are rejected. Git, Python and every non-PowerShell stderr gate remain strict zero.
 
-## Frozen Corrected Sources
+## Frozen Second Corrected Sources
 
-All sources are stored as complete LF-joined `source_lines` with no trailing newline. The four inner sources expose actual class values without modifying the final 789-byte machine evidence. The two top-level sources are the finite governance trust roots that launch, capture and classify those children.
+All sources are stored as complete LF-joined `source_lines` with no trailing newline. The four inner sources expose actual class values without modifying the final 789-byte machine evidence. The two phase runners launch, capture and classify those children. The final verifier and its host close the post-commit state that Package Review 2 identified as unverified.
 
 | Source | Lines | UTF-8 bytes | Source SHA-256 | Complete arguments chars | Complete arguments SHA-256 |
 |---|---:|---:|---|---:|---|
@@ -75,8 +81,10 @@ All sources are stored as complete LF-joined `source_lines` with no trailing new
 | Post host/classifier | 86 | 6,377 | `430C0F64ECD940BDDA7CDE098E156629F914027023EE6306ED9084AB72E8853D` | 17,003 | `0180906B8EF51BC45BA4303FC545E9591A5E51529D27E7309A0B6BAF403BC5A3` |
 | Pre/semantics outer runner | 194 | 14,491 | `6B24A6F25B5ABF4212A14D16E58EB569015C1D41EEB5587E70C9CD6C5E3CE124` | 38,599 | `53D27DD17FC3D4E6E8708E970C2BEFA4932AAE511A99D6EDF4A0BDFA9B498753` |
 | Post-sync outer runner | 166 | 12,149 | `0BC1EDF07495CEAF01502EBF0FCEAA2C77E08A857A2B91AE4AA2E0DB451DD35A` | 32,331 | `D55D3A04713814348752C5081F91B4FB41C52E68936657CC77905B5F9FC20ABC` |
+| Final post-sync audit commit verifier | 164 | 12,934 | `C0D96FD117FF3387497FF622524F1D9A0C025FB8502BBBD83F0CC32DD96D2B2B` | 34,447 | `FB42C1883064B15FEEEB2FAE98D3A9680FA573644A29B0B586562EF8A8BAF5B2` |
+| Final verifier host | 81 | 6,024 | `C843B63E79EED1882E7A47EB063268A3DBCEE2CC1621E7C790F5830A7A691131` | 16,095 | `74D0EB12BAA4B23C46314130084F88678C24A2C073ECE075FE8A60CA20FE6272` |
 
-The corresponding UTF-16LE byte counts, Base64 lengths and Base64 SHA-256 values are frozen in the Manifest. Windows PowerShell 5.1 static parsing reports zero errors for all six sources. Package assembly invoked none of them.
+The corresponding UTF-16LE byte counts, Base64 lengths and Base64 SHA-256 values are frozen in the Manifest. Windows PowerShell 5.1 static parsing reports zero errors for all eight sources. Package assembly invoked none of them.
 
 For each source the Manifest also freezes the exact exit/stdout/stderr gate order. The inner pre/post hosts gate exit zero, exact stdout and then the child class; the harness gates each child's exit, exact stdout and class; the bootstrap gates child exit, child class, an exact canonical envelope and then `CreateNew`; each top-level runner gates direct-child exit, direct-child class and exact canonical stdout before its artifact-creation phase.
 
@@ -165,9 +173,39 @@ They must remain absent through post-verifier success, then be created once by t
 
 The two older 5G-B.1.1 semantics paths remain absent throughout.
 
+## Frozen Final Post-Sync Audit Commit Verifier
+
+The 164-line final verifier runs only after the exact-two-path post-sync audit commit has been pushed. Its host passes three process-scoped lowercase 40-character bindings:
+
+    HGRAG_EXPECTED_PACKAGE_COMMIT
+    HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT
+    HGRAG_EXPECTED_SEMANTICS_EVIDENCE_COMMIT
+
+The verifier launches exactly eleven Git children, in this exact order and with strict-zero Git stderr:
+
+    git fetch origin main --quiet
+    git rev-parse HEAD
+    git rev-parse refs/remotes/origin/main
+    git ls-remote --exit-code origin refs/heads/main
+    git status --porcelain=v1
+    git rev-parse HEAD^
+    git rev-parse HEAD^^
+    git rev-parse HEAD^^^
+    git diff-tree --no-commit-id --name-only -r HEAD
+    git diff-tree --no-commit-id --name-only -r HEAD^
+    git diff-tree --no-commit-id --name-only -r HEAD^^
+
+It requires local HEAD, fetched `origin/main` and direct `ls-remote` GitHub main to be the same final commit. It requires `HEAD^` to be the bound semantics commit, `HEAD^^` to be the bound approval-governance commit and `HEAD^^^` to be the bound second corrected package commit. Changed paths must be exactly the registered post audit pair, semantics pair and approval-governance pair at those three levels.
+
+Before Git operations it snapshots all three Hard Failure 15 machine files, the exact 789-byte / `EDBD4614...C606135` semantics machine evidence, its non-empty narrative and both post-sync audit files. The post machine file must be one of four exact canonical schemas composed from the two registered PowerShell classes, process counts `1/1/7` and `official_accesses:0`. The post narrative must contain exactly one approval-governance binding line and exactly one row for each of the same two machine classes. Every snapshot must retain its regular-file identity, byte length and SHA after all Git operations.
+
+The final verifier's fixed stdout is 195 bytes with SHA-256 `3EFE3ED534AB9DFE39DA5C8DA3297C7AB43C513D4032B061DF09C474E9946DE5`. The 81-line host reconstructs the verifier from the Manifest, verifies its source and transport fingerprints, launches it once with concurrent raw BaseStream capture, requires exit zero and exact fixed stdout, and classifies only `EMPTY` or exact frozen 382-byte child stderr. Its two canonical success stdout variants are 187 bytes / `731D29698B85F99FC2612219DE22F836935E4566918B7109C3407B85D2672716` and 218 bytes / `E63603112054AD24A55CE81ABDFEF95D25DD95AEEDF0AA879734999F86E194A9`.
+
+Neither final source creates or modifies a file or commit. After exact final-host success, no file, status document or commit may be created and execution stops immediately.
+
 ## Requested Approval-Governance Commit
 
-If approved, the first future commit must be the direct child of the future corrected package commit and change exactly:
+If approved, the first future commit must be the direct child of the future second corrected package commit and change exactly:
 
     AGENTS.md
     docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_2_APPROVAL_DECISION.md
@@ -176,7 +214,7 @@ It must be pushed before any runner source is reconstructed or any process start
 
 ## Requested One-Time Order
 
-1. Create and push the exact-two-path approval-governance direct child of the corrected package.
+1. Create and push the exact-two-path approval-governance direct child of the second corrected package.
 2. Require a clean worktree, frozen historical evidence, four absent semantics paths and two absent post-sync audit paths.
 3. Statically reconstruct the pre/semantics outer runner and its exact Windows PowerShell transport once.
 4. Launch one pre/semantics outer runner.
@@ -188,8 +226,11 @@ It must be pushed before any runner source is reconstructed or any process start
 10. Launch one post-sync outer runner, one post host, one unchanged post verifier and exactly seven Git children; require every frozen gate.
 11. Exclusive-create the two post-sync audit paths.
 12. Commit exactly those two post-sync paths as the direct child of the semantics evidence commit and push.
-13. Require a clean worktree and local HEAD equal to `origin/main`.
-14. Stop immediately.
+13. Statically reconstruct the final verifier host once with the package, approval-governance and semantics-evidence bindings.
+14. Launch one final verifier host, one final verifier and exactly eleven Git children.
+15. Require exact final three-way GitHub-main equality, the complete three-level parent chain, all three exact two-path scopes, strict post artifacts and before/after stability of all registered evidence.
+16. Require final child exit zero, exact fixed child stdout, exact child stderr class and one exact final-host stdout variant.
+17. Create no file or commit after final verification and stop immediately.
 
 Any fingerprint, path, source, transport, classifier, stdout, stderr, exit, count, CreateNew, commit-parent, changed-path or push failure consumes the ordered authorization. No cleanup, overwrite, repair, replacement, fallback or retry is allowed. Partial new evidence must remain preserved and be handled only by a later independent review and package-bound amendment.
 
@@ -215,6 +256,10 @@ Any fingerprint, path, source, transport, classifier, stdout, stderr, exit, coun
     post-sync machine-attestation creations: 1
     post-sync narrative-audit creations: 1
     post-sync audit commits: 1
+    final-verifier-host PowerShell processes: 1
+    final-verifier PowerShell processes: 1
+    final-verifier Git children: 11
+    file or commit creations after final verification: 0
 
     complete synthetic runs: 0
     real precommit validator invocations: 0
@@ -231,14 +276,17 @@ The first temporary corrected-package generator invocation was run directly as a
 
 The corrective package-assembly invocation reads the generator bytes with strict UTF-8, parses them into a ScriptBlock and performs only in-memory source construction, fingerprinting, static parser checks and Manifest serialization. This correction does not execute any frozen runner or child source. The failed command and correction are recorded in the Manifest.
 
-Three later read-only validation helpers also stopped before completing their validation bodies: the first used `$p:` without braces in a diagnostic string and failed at PowerShell parsing; the second named a helper `H`, which resolved to the `Get-History` alias at the initial Manifest-hash expression; the third omitted one closing parenthesis in the Request-read expression and failed at parsing. All three had zero file writes and zero child-process invocations. The corrected helpers used explicit `${p}` interpolation, a non-conflicting `Get-Hex` name and the corrected expression, then passed the deep and final static consistency gates. These stops are also registered in the Manifest.
+Five read-only validation helpers also stopped before completing their intended inspection: the first used `$p:` without braces in a diagnostic string and failed at PowerShell parsing; the second named a helper `H`, which resolved to the `Get-History` alias at the initial Manifest-hash expression; the third omitted one closing parenthesis in the Request-read expression and failed at parsing; the fourth constructed a nested document-range array without isolating `$lines.Count - 1`, producing an array precedence error during read-only range inspection; the fifth piped a full `git diff` into a bounded preview consumer, which closed the stream early and caused the inspection script to return nonzero. The first four had zero process invocations; the fifth used four read-only Git diff processes. All five had zero file writes and zero frozen-source invocations. Corrected helpers passed the deep and final static consistency gates. These stops are also registered in the Manifest.
+
+Package Review 2 was recorded without executing any frozen source. The second corrective package-assembly helper was itself read as strict UTF-8 and statically parsed with zero errors before it serialized the revised Manifest. It added only the two frozen final source definitions and their governance metadata.
 
 The final static assembly results are:
 
-    corrected sources: 6
+    second corrected sources: 8
     total static parser errors: 0
     classifier fixtures: 6/6
-    canonical stdout variants: 2 pre + 4 harness + 8 bootstrap + 2 post
+    canonical stdout variants: 2 pre + 4 harness + 8 bootstrap + 2 post + 2 final host
+    final verifier fixed stdout variants: 1
     frozen source invocations: 0
     top-level runner invocations: 0
     PowerShell/Git/Python children: 0
@@ -248,9 +296,10 @@ The final static assembly results are:
 
 ## Explicitly Not Requested
 
-- approval-governance creation before a new approval binds the corrected package commit;
+- approval-governance creation before a new approval binds the second corrected package commit;
 - reuse of the consumed 5G-B.1.1.1.1.1 approval or historical `ee84988...` synchronization proof;
 - package-assembly execution of any frozen runner or child source;
+- any ad hoc final `ls-remote`, `diff-tree`, ancestry or artifact check outside the frozen final host/verifier;
 - modification of the unchanged pre/post verifier, compatible verifier, wrapper, embedded Python or real validator;
 - generic CLIXML acceptance, decoded-message matching, hash-only matching or non-PowerShell stderr relaxation;
 - deletion, renaming, overwrite or replacement of Hard Failure 15 evidence;
@@ -260,16 +309,18 @@ The final static assembly results are:
 
 ## Current Stop State
 
-This corrected Request and Manifest are governance materials only. Until an independent approval explicitly binds their future corrected package commit:
+This second corrected Request and Manifest are governance materials only. Until an independent approval explicitly binds their future second corrected package commit:
 
     HARD_FAILURE_15_AUDIT_ACCEPTED
     RAW_MACHINE_EVIDENCE_FROZEN
     ROOT_CAUSE_ESTABLISHED
     EXACT_382_BYTE_CLASSIFIER_LOGIC_ACCEPTED
     PACKAGE_REVIEW_1_REJECTION_RECORDED
+    PACKAGE_REVIEW_2_REJECTION_RECORDED
     SUPERSEDED_PACKAGE_7F92C000_NOT_APPROVED
+    SUPERSEDED_FIRST_CORRECTED_PACKAGE_44E56AB_NOT_APPROVED
 
-    CORRECTED_AMENDMENT_5G_B_1_1_1_1_2_PACKAGE_AWAITING_APPROVAL
+    SECOND_CORRECTED_AMENDMENT_5G_B_1_1_1_1_2_PACKAGE_AWAITING_APPROVAL
     APPROVAL_GOVERNANCE_NOT_APPROVED
     TOP_LEVEL_RUNNER_EXECUTION_NOT_APPROVED
     PRE_SYNC_RERUN_NOT_APPROVED
@@ -278,6 +329,8 @@ This corrected Request and Manifest are governance materials only. Until an inde
     SEMANTICS_EVIDENCE_NOT_APPROVED
     POST_EVIDENCE_SYNC_NOT_APPROVED
     POST_SYNC_AUDIT_NOT_APPROVED
+    FINAL_VERIFIER_HOST_NOT_APPROVED
+    FINAL_POST_SYNC_AUDIT_COMMIT_VERIFIER_NOT_APPROVED
     SYNTHETIC_NOT_APPROVED
     FORMAL_PREFLIGHT_NOT_APPROVED
     OFFICIAL_EXECUTION_NOT_APPROVED
