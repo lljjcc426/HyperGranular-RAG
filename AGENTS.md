@@ -237,6 +237,11 @@
 223. Synchronization verifier 固定使用 `C:\Program Files\Git\cmd\git.exe` 与工作目录 `E:\科研\HyperGranular-RAG`，依次启动且只启动五个 ProcessStartInfo child：fetch、local rev-parse、origin rev-parse、direct `ls-remote` 与 porcelain status。所有 exit/stderr/stdout grammar、三方 SHA 相等、clean 与四路径不存在均 fail-closed；`gh`、REST、browser、fallback 与 retry 禁止。
 224. 原 58-line bootstrap、77-line harness、59-line compatible verifier、122-line wrapper、46-line Python 与 195-line real validator 全部保持原 SHA，不修改、不执行。未来仅在新 package-bound 批准后允许一次 synchronization verifier 与五个 Git child，然后才能进入原冻结 bootstrap 链。
 225. 当前状态为 `AMENDMENT_5G_B_1_1_1_1_PACKAGE_AWAITING_APPROVAL`。本 package 只含治理材料，不授权 synchronization verifier、static reconstruction、bootstrap、wrapper、Python、evidence、synthetic、preflight、official input、token、capture、controller、verifier 或 Gold。
+226. Package Review 1 接受提交 `93cc76ae97043077d2d3dae93e2569833ea3ab59` 的 changed-path scope、Hard Failure 13 Review 与 74-line pre-execution verifier，但因 post-evidence sync gate 未冻结且 invocation wording/count 矛盾而退回；该 package 不可批准、不可执行。
+227. Corrected Amendment 5G-B.1.1.1.1 保留 pre-execution verifier 原字节与 `1 PowerShell + 5 Git children` 契约，并新增独立 post-evidence verifier；两者不是同一 source 的两种模式，不共享 evidence absence/presence 规则或 invocation counter。
+228. Post-evidence verifier 冻结为 107 LF 行、7,130 UTF-8 bytes、SHA-256 `8877E18F75A94EE6DA326B09C3791E6641B6B9B32D42744BA23E033A20735A67`，complete arguments SHA-256 `17327F58C123664224B95FABD85E7553B3E32F4F86659D9A17D13C68AD9FEB02`，194-byte stdout SHA-256 `2ED3F942961C4DA1F7A9D71C3B8A50E6E00275DBBE4038C594B8834B7499AB0F`；组包静态解析 0 error，未执行。
+229. Post-evidence verifier 固定 `1 PowerShell + 7 Git children`，并通过 process-scoped `HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT` 绑定 evidence commit parent；同时核验三方 SHA、clean、精确两 changed paths、target regular files、789-byte machine SHA、narrative non-empty/stable 与两个旧路径不存在。任一门失败不得 fallback 或 retry。
+230. 当前状态为 `CORRECTED_AMENDMENT_5G_B_1_1_1_1_PACKAGE_AWAITING_APPROVAL`。原 bootstrap/harness/verifier/wrapper/Python/real-validator 指纹不变且均未执行；pre/post synchronization、static reconstruction、semantics、evidence 与全部 official action 必须等待新的 corrected-package-bound 批准。
 
 ## GitHub 与文档
 

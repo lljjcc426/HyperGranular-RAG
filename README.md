@@ -6,16 +6,16 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Hard Failure 13 审核已接受；Amendment 5G-B.1.1.1.1 同步核验恢复包待批 |
-| 获批执行协议 | 当前无执行授权；新包仅冻结 GitHub-main verifier 与原 bootstrap semantics 链 |
+| 当前阶段 | 首版 5G-B.1.1.1.1 因 final sync gate 未冻结被退回；corrected package 待批 |
+| 获批执行协议 | 当前无执行授权；corrected package 分别冻结 pre-execution 与 post-evidence sync verifier |
 | 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_APPROVAL_REQUEST.md` |
-| 协议状态 | `AMENDMENT_5G_B_1_1_1_1_PACKAGE_AWAITING_APPROVAL` |
+| 协议状态 | `CORRECTED_AMENDMENT_5G_B_1_1_1_1_PACKAGE_AWAITING_APPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
 | 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
 
-Hard Failure 13 独立审核确认停止正确，并事后确认 approval-governance commit 已到达 GitHub，但运行时三方门仍不能倒推为通过。5G-B.1.1.1.1 recovery package 冻结了不依赖 `gh` 的 74 行 Windows PowerShell verifier：它只通过固定 `git.exe` 启动五个子进程，严格比较 local、fetched origin 与 direct `ls-remote` SHA，并验证 clean 与四个 evidence 路径不存在。原 bootstrap、harness、compatible verifier、wrapper、Python 和 real validator 全部不变；当前 package 本身不授权执行。
+首版 5G-B.1.1.1.1 package 的 74 行 pre-execution verifier 已获静态接受，但最终 evidence commit 后的同步门未冻结，且计数文字暗示两次 invocation、实际只登记一次，因此 package 被退回。Corrected package 保留原 74 行 verifier，并新增独立 107 行 post-evidence verifier：后者固定七个 Git 子进程、approval-parent 环境绑定、精确 evidence changed paths、789-byte machine SHA、target 文件稳定性、clean 与三方 SHA。两套 verifier 均只完成静态重建，未执行；原 bootstrap semantics 链继续保持不变。
 
 第一次官方提取在预注册映射硬门处停止：基础区间 `[800:5300)` 的 11,003 个 supporting facts 中有 19 个 sentence index 越界，影响 19 条查询；该失败没有生成 gain/harm 或检索指标。Amendment 1 随后采用仅由标注完整性决定的确定性替换，从 `[9800:9819)` 补入 19 条有效记录。最终 11,015/11,015 supporting facts 完整映射，development/reservation 零重叠。
 

@@ -4,8 +4,8 @@
 
 - Origin Skill: academic-research-suite / experiment-agent
 - Request date: 2026-07-15
-- Requested decision: APPROVE_STAGE4B_U1_D_PREGOLD_AMENDMENT_5G_B_1_1_1_1_FROZEN_GITHUB_MAIN_SYNC_VERIFICATION_RECOVERY_AND_UNCHANGED_BOOTSTRAP_SEMANTICS_ONLY
-- Current checkpoint: e159558b621f516598dc4fd2aede151c84472950
+- Requested decision: APPROVE_CORRECTED_STAGE4B_U1_D_PREGOLD_AMENDMENT_5G_B_1_1_1_1_FROZEN_PRE_AND_POST_SYNCHRONIZATION_RECOVERY_AND_UNCHANGED_BOOTSTRAP_SEMANTICS_ONLY
+- Current checkpoint: 93cc76ae97043077d2d3dae93e2569833ea3ab59
 - Package execution authority: NONE UNTIL A NEW APPROVAL BINDS THE FUTURE PACKAGE COMMIT
 - Official execution: NOT_REQUESTED
 - Other project conversations, thread tools, and global memory used: No
@@ -15,6 +15,8 @@
 Hard Failure 13 Review 1 accepts the fail-closed stop and confirms that the corrected 5G-B.1.1.1 approval-governance commit is valid and was retrospectively observed on GitHub. Runtime three-way verification nevertheless did not pass because its separate GitHub-main command depended on unavailable `gh`.
 
 The prior ordered approval is consumed. This request does not reuse it and does not treat retrospective GitHub evidence as a runtime gate result.
+
+Package Review 1 accepts the original package scope and the complete 74-line pre-execution verifier, but rejects package `93cc76ae97043077d2d3dae93e2569833ea3ab59` because the required post-evidence synchronization gate was not frozen and the invocation-count wording was inconsistent. This corrected package supersedes that unapproved commit and adds only a separately frozen post-evidence verifier plus governance updates.
 
 ## Bound Commits
 
@@ -28,6 +30,9 @@ This request binds:
 
     Hard Failure 13 checkpoint:
     e159558b621f516598dc4fd2aede151c84472950
+
+    superseded unapproved 5G-B.1.1.1.1 package:
+    93cc76ae97043077d2d3dae93e2569833ea3ab59
 
     frozen semantics implementation:
     48a9c1438166eaf895104358b2d8cd8c9b043020
@@ -50,7 +55,7 @@ Its externally frozen identity is:
 
 The new synchronization verifier does not modify or execute any source from this Manifest. The future bootstrap continues to read this exact corrected Manifest after synchronization succeeds.
 
-## Frozen Synchronization Verifier
+## Frozen Pre-Execution Synchronization Verifier
 
 The complete pre-reconstruction verifier is frozen in the new Manifest by LF-joined source lines with no trailing newline:
 
@@ -74,7 +79,9 @@ Its PowerShell transport is also frozen:
     C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
 
     arguments prefix:
-    -NoLogo -NoProfile -NonInteractive -EncodedCommand 
+    -NoLogo -NoProfile -NonInteractive -EncodedCommand
+
+The registered arguments prefix includes one trailing U+0020 space after `-EncodedCommand`; the Markdown display line above omits that trailing whitespace.
 
     UTF-16LE source bytes:
     8188
@@ -139,6 +146,89 @@ Its identity is:
 
 No `gh`, REST API, browser, remote fallback, extra Git command or automatic retry is allowed.
 
+## Frozen Post-Evidence Synchronization Verifier
+
+The corrected package separately freezes a post-evidence verifier by LF-joined source lines with no trailing newline:
+
+    runtime:
+    Windows PowerShell 5.1 Desktop
+
+    source lines:
+    107
+
+    source UTF-8 bytes:
+    7130
+
+    source SHA-256:
+    8877E18F75A94EE6DA326B09C3791E6641B6B9B32D42744BA23E033A20735A67
+
+Static PowerShell parsing reports zero syntax errors. The source has not been invoked.
+
+Its parent transport is frozen as:
+
+    executable:
+    C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+
+    arguments prefix:
+    -NoLogo -NoProfile -NonInteractive -EncodedCommand
+
+The post-evidence registered arguments prefix also includes one trailing U+0020 space after `-EncodedCommand`; the Markdown display line above omits that trailing whitespace.
+
+    UTF-16LE source bytes:
+    14220
+
+    Base64 characters:
+    18960
+
+    Base64 ASCII SHA-256:
+    89F51EC73B762A7E8E9E661D0D2B81CAF6EB330A3C4C4789B375E72F2930DDE1
+
+    complete arguments characters:
+    19011
+
+    complete arguments ASCII SHA-256:
+    17327F58C123664224B95FABD85E7553B3E32F4F86659D9A17D13C68AD9FEB02
+
+The parent ProcessStartInfo must set the process-scoped environment variable `HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT` to the exact newly created approval-governance commit SHA. The value must be lowercase 40-character hexadecimal. The verifier rejects a missing or malformed value and requires `git rev-parse HEAD^` to equal it exactly.
+
+The verifier starts exactly seven Git children in this order:
+
+| Order | Arguments |
+|---:|---|
+| 1 | `fetch origin main --quiet` |
+| 2 | `rev-parse HEAD` |
+| 3 | `rev-parse refs/remotes/origin/main` |
+| 4 | `ls-remote --exit-code origin refs/heads/main` |
+| 5 | `status --porcelain=v1` |
+| 6 | `rev-parse HEAD^` |
+| 7 | `diff-tree --no-commit-id --name-only -r HEAD` |
+
+All seven use `C:\Program Files\Git\cmd\git.exe`, working directory `E:\科研\HyperGranular-RAG`, the same frozen redirected/no-window UTF-8 ProcessStartInfo fields, immediate stdin close, exit 0 and empty stderr.
+
+Before and after Git execution, the verifier requires the two target evidence paths to exist as regular files and both older 5G-B.1.1 paths to remain absent. Machine evidence must remain exactly 789 bytes with SHA-256 `EDBD4614B790256E314F4A8963128A5FB5A190FAC197437FB349D4C33C606135`; narrative audit must be non-empty. Pre/post byte count and SHA must remain identical for both files.
+
+The evidence commit changed-path output must contain exactly the target narrative and machine paths, in either of their two possible complete two-line orders, with no additional path. Local HEAD, fetched origin and direct remote SHA must match exactly, and worktree status must be empty.
+
+The fixed success stdout is:
+
+    {"status":"POST_EVIDENCE_SYNC_VERIFIED","git_processes":7,"all_equal":true,"worktree_clean":true,"evidence_commit_parent_bound":true,"evidence_paths_exact":true,"machine_evidence_verified":true}
+
+Its identity is:
+
+    stdout bytes:
+    194
+
+    stdout SHA-256:
+    2ED3F942961C4DA1F7A9D71C3B8A50E6E00275DBBE4038C594B8834B7499AB0F
+
+    stderr bytes:
+    0
+
+    exit code:
+    0
+
+No pre-execution path-absence rule is reused after evidence creation. The post-evidence verifier has its own source, fingerprint, process count and evidence-presence contract.
+
 ## Unchanged Bootstrap And Semantics Chain
 
 No source in the existing chain changes:
@@ -175,21 +265,26 @@ It must be pushed before the synchronization verifier is invoked. Before the pro
 Only the following future sequence is requested:
 
 1. Create and push the exact-two-path approval-governance direct child.
-2. Statically reconstruct and fingerprint the 74-line synchronization verifier and its complete transport without starting a process.
-3. Launch exactly one synchronization-verifier Windows PowerShell process.
+2. Statically reconstruct and fingerprint the 74-line pre-execution synchronization verifier and its complete transport without starting a process.
+3. Launch exactly one pre-execution synchronization-verifier Windows PowerShell process.
 4. Allow exactly five registered Git children and require exact success stdout, empty stderr, exit 0, three-way SHA equality, clean worktree and four absent evidence paths.
 5. Statically reconstruct and verify the unchanged bootstrap plus all registered downstream transports from the corrected Manifest.
 6. Launch the unchanged bootstrap exactly once.
 7. Continue through exactly one recovery-harness PowerShell, one compatible-verifier PowerShell, one semantics-wrapper PowerShell and one Python process.
 8. Require exact 190-byte source-verifier success and exact 789-byte 9/9 semantics success, with empty stderr and exit 0 at every layer.
 9. Let the unchanged bootstrap exclusive-create the target machine evidence directly from captured raw stdout; then exclusive-create the narrative audit.
-10. Commit exactly the two evidence paths as the direct child of approval governance, push, complete the approval-specified final synchronization and clean-worktree gate, and stop immediately.
+10. Commit exactly the two evidence paths as the direct child of approval governance and push.
+11. Statically reconstruct the 107-line post-evidence verifier, set its one frozen process-scoped approval-parent environment binding, and launch exactly one post-evidence verifier PowerShell process.
+12. Allow exactly seven registered post-evidence Git children and require exact fixed success stdout, empty stderr, exit 0, three-way SHA equality, clean worktree, exact evidence parent/path set, target-file stability and exact machine evidence fingerprint.
+13. Stop immediately.
 
 One-time limits:
 
     approval-governance commits: 1
-    synchronization-verifier PowerShell processes: 1
-    synchronization-verifier Git child processes: 5
+    pre-execution synchronization-verifier PowerShell processes: 1
+    pre-execution synchronization-verifier Git child processes: 5
+    post-evidence synchronization-verifier PowerShell processes: 1
+    post-evidence synchronization-verifier Git child processes: 7
     static bootstrap reconstruction attempts: 1
     bootstrap PowerShell processes: 1
     recovery-harness PowerShell processes: 1
@@ -205,7 +300,7 @@ One-time limits:
     capture invocations: 0
     automatic retries: 0
 
-Any failure stops the sequence. A failed first or second synchronization-verifier invocation consumes that position and the ordered approval. Runtime substitution, repair or retry is forbidden.
+Any failure stops the sequence. A failed pre-execution verifier consumes the pre-execution position and the ordered approval; a failed post-evidence verifier consumes the post-evidence position and the ordered approval. The two sources and counters are independent. Runtime substitution, repair or retry is forbidden.
 
 ## Evidence Boundary
 
@@ -221,6 +316,8 @@ The two older 5G-B.1.1 paths must also remain absent. This recovery requests new
 The first pre-commit ancestry-check command incorrectly treated the empty stdout of successful `git merge-base --is-ancestor` as a PowerShell Boolean and raised `Corrected package ancestry mismatch`. The command stopped before `git add`; no path was staged, committed or pushed, and no synchronization verifier or frozen semantics source was invoked.
 
 This was a package-assembly check defect, not Git ancestry evidence. The corrective read-only check uses the Git process exit code directly. It does not alter the frozen verifier source, transport, Git child contract or requested execution counts.
+
+During corrected-package assembly, two full consistency commands stopped at `git diff --check` on the same unresolved post-evidence Markdown trailing-space line. The first corrective patch matched the earlier pre-execution display occurrence because its context was not unique, so the post-evidence line remained and the second command stopped at the same gate. A direct all-line trailing-whitespace scan then identified exactly that one remaining line. No later check, staging, commit, push or verifier invocation occurred in either command. Both display lines now omit trailing whitespace; the required U+0020 remains machine-frozen in both Manifest `arguments_prefix` values, and no source or transport fingerprint changed.
 
 ## Explicitly Not Requested
 
@@ -238,7 +335,8 @@ This was a package-assembly check defect, not Git ancestry evidence. The correct
 
     AMENDMENT_5G_B_1_1_1_1_VALIDATOR_SEMANTICS_VERIFIED_AWAITING_REVIEW
     HARD_FAILURE_13_AUDIT_ACCEPTED
-    THREE_WAY_GITHUB_MAIN_SYNCHRONIZATION_VERIFIED
+    PRE_EXECUTION_THREE_WAY_GITHUB_MAIN_SYNCHRONIZATION_VERIFIED
+    POST_EVIDENCE_THREE_WAY_GITHUB_MAIN_SYNCHRONIZATION_VERIFIED
     REAL_PRECOMMIT_VALIDATOR_REMAINS_FROZEN
 
     FRESH_SYNTHETIC_REBINDING_NOT_APPROVED
@@ -256,8 +354,9 @@ This was a package-assembly check defect, not Git ancestry evidence. The correct
 
 This Request and Manifest are governance materials only. Until an independent approval explicitly binds their future package commit:
 
-    AMENDMENT_5G_B_1_1_1_1_PACKAGE_AWAITING_APPROVAL
-    THREE_WAY_SYNC_VERIFICATION_NOT_APPROVED
+    CORRECTED_AMENDMENT_5G_B_1_1_1_1_PACKAGE_AWAITING_APPROVAL
+    PRE_EXECUTION_SYNC_VERIFICATION_NOT_APPROVED
+    POST_EVIDENCE_SYNC_VERIFICATION_NOT_APPROVED
     STATIC_SOURCE_RECONSTRUCTION_NOT_APPROVED
     BOOTSTRAP_NOT_APPROVED
     VALIDATOR_SEMANTICS_WRAPPER_NOT_APPROVED

@@ -1032,3 +1032,15 @@ The verifier starts exactly five `C:\Program Files\Git\cmd\git.exe` children thr
 The corrected 5G-B.1.1.1 Manifest is externally rebound at 30,174 bytes and SHA-256 `A5AA1E9B4CB022AFCCF401E9C2193FC06FD45830151154E049DC7B59BB77E6AE`. The 58-line bootstrap and all downstream frozen sources remain unchanged and unexecuted.
 
 Request, Manifest and review are governance materials only. Current status is `AMENDMENT_5G_B_1_1_1_1_PACKAGE_AWAITING_APPROVAL`; synchronization verification, source reconstruction, bootstrap, evidence and all official actions remain unapproved.
+
+## Corrected Amendment 5G-B.1.1.1.1 Package
+
+Package Review 1 accepts the original seven-path package scope and the 74-line pre-execution verifier but rejects commit `93cc76ae97043077d2d3dae93e2569833ea3ab59`. Its required final synchronization gate had no frozen source or process contract, and its text referred to first/second invocations while limits authorized only one verifier and five Git children.
+
+The corrected package preserves the accepted pre-execution verifier byte-for-byte and separately freezes a 107-line post-evidence verifier. The new source is 7,130 UTF-8 bytes with SHA-256 `8877E18F75A94EE6DA326B09C3791E6641B6B9B32D42744BA23E033A20735A67`. Its UTF-16LE source is 14,220 bytes; EncodedCommand Base64 is 18,960 characters with SHA-256 `89F51EC73B762A7E8E9E661D0D2B81CAF6EB330A3C4C4789B375E72F2930DDE1`; complete arguments SHA-256 is `17327F58C123664224B95FABD85E7553B3E32F4F86659D9A17D13C68AD9FEB02`.
+
+Post-evidence success stdout is fixed at 194 bytes with SHA-256 `2ED3F942961C4DA1F7A9D71C3B8A50E6E00275DBBE4038C594B8834B7499AB0F`. The verifier uses seven exact Git children and a process-scoped `HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT` binding. It requires local/origin/direct-remote equality, clean worktree, evidence-commit parent equality, exact two-path diff, both target regular files, unchanged pre/post file fingerprints, exact 789-byte machine evidence SHA, non-empty narrative audit and continued absence of both old paths.
+
+Static PowerShell parsing and all source/transport/stdout fingerprint recomputations passed for both verifiers. Neither verifier was invoked. Counts are now unambiguous: pre-execution `1+5`, post-evidence `1+7`.
+
+Current status is `CORRECTED_AMENDMENT_5G_B_1_1_1_1_PACKAGE_AWAITING_APPROVAL`. No synchronization verifier, bootstrap, semantics source, evidence path or official operation is authorized by the package itself.

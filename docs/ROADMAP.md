@@ -1162,3 +1162,15 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_APPROVAL_REQUEST.md`.
 - Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_MANIFEST.json`.
 - Current status: `AMENDMENT_5G_B_1_1_1_1_PACKAGE_AWAITING_APPROVAL`. No verifier, bootstrap, semantics or official execution is authorized by the package itself.
+
+### Corrected Stage4B-U1-D Pre-Gold Amendment 5G-B.1.1.1.1 Package
+
+- Package Review 1 accepts the seven-path scope and the 74-line pre-execution verifier but rejects package `93cc76ae97043077d2d3dae93e2569833ea3ab59` because its final synchronization gate was unfrozen and its invocation wording contradicted its one-time counts.
+- Review: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_PACKAGE_REVIEW_1.md`.
+- The corrected package supersedes that commit while preserving the accepted pre-execution verifier byte-for-byte.
+- A separate post-evidence verifier is frozen at 107 LF lines, 7,130 UTF-8 bytes and SHA-256 `8877E18F75A94EE6DA326B09C3791E6641B6B9B32D42744BA23E033A20735A67`.
+- Its fixed transport complete-arguments SHA-256 is `17327F58C123664224B95FABD85E7553B3E32F4F86659D9A17D13C68AD9FEB02`; fixed 194-byte success stdout SHA-256 is `2ED3F942961C4DA1F7A9D71C3B8A50E6E00275DBBE4038C594B8834B7499AB0F`.
+- It starts exactly seven Git children and requires three-way SHA equality, clean worktree, exact approval parent and evidence path set, target regular files, exact machine evidence fingerprint, narrative stability and old-path absence.
+- Pre/post counts are separately frozen as `1 PowerShell + 5 Git` and `1 PowerShell + 7 Git`. Both static parsers and all fingerprint checks passed; neither source was invoked.
+- Original bootstrap, harness, compatible verifier, wrapper, Python and real-validator fingerprints remain unchanged.
+- Current status: `CORRECTED_AMENDMENT_5G_B_1_1_1_1_PACKAGE_AWAITING_APPROVAL`. No execution is authorized by the corrected package itself.
