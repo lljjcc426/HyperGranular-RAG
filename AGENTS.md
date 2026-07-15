@@ -222,6 +222,11 @@
 208. Frozen bootstrap 作为治理递归终点，冻结为 58 行、3,909 bytes、SHA-256 `F8A452CEBEC06326E1D8BA4DEB4FC8915210F3FF9BBF53DA2D22B9675773C81D`。其 UTF-16LE EncodedCommand 为 7,770 source bytes/10,360 Base64 chars，Base64 SHA-256 `06CD60CDBD63E5AB9B017487285077C68581829D4309DC1AD6C964F22B9236C2`；完整 arguments SHA-256 为 `5EF7120B1005A027D408CF7DCAB525768376F2DAD213D91E69D73E1326D6F05D`。
 209. 所有 PowerShell child 必须使用 `powershell.exe -NoLogo -NoProfile -NonInteractive -EncodedCommand <UTF-16LE Base64>`，固定 `UseShellExecute=false`、stdin/stdout/stderr redirect、no window、UTF-8 decode、零临时 `.ps1`。Bootstrap 只在 exact 789-byte success 后用 `FileMode.CreateNew` 将实际捕获 stdout 直接写入新 machine evidence。
 210. 当前状态为 `CORRECTED_AMENDMENT_5G_B_1_1_1_PACKAGE_AWAITING_APPROVAL`。Corrected package 本身仍不授权 bootstrap、harness、compatible verifier、semantics wrapper、Python、evidence、synthetic、real validator、fresh direct-child、preflight 或 official action；未来批准必须显式绑定 corrected package commit。
+211. Corrected Amendment 5G-B.1.1.1 已获 package-bound 批准，严格绑定 corrected package `e37400707a65d11c9f038d13e7be0ec2a19d27a4`；首版 `d1876bd9ccc198285808795f7f1809c4d1a48e1c` 保持不可批准、不可执行、不可复用。批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_APPROVAL_DECISION.md`。
+212. 本 approval-governance commit 必须以 corrected package 为直接 parent，changed paths 精确为 `AGENTS.md` 与批准决定；推送三方同步、worktree clean、四个旧/新 evidence 路径不存在前不得重建 source 或启动进程。
+213. 获批一次性顺序为：静态派生 bootstrap/三个 child transport -> bootstrap 1 -> harness PowerShell 1 -> compatible-verifier PowerShell 1 -> exact 190-byte success -> semantics-wrapper PowerShell 1 -> Python 1 -> exact 9/9 与 789-byte success -> bootstrap `CreateNew` machine evidence -> narrative audit -> 精确两路径 direct-child -> 推送同步后立即停止。
+214. 所有 PowerShell process 强制使用 Windows PowerShell 5.1、`-NoLogo -NoProfile -NonInteractive -EncodedCommand <UTF-16LE Base64>`、固定 ProcessStartInfo redirects/no-window/UTF-8 decode；任一 fingerprint、start、exit、stderr、stdout、count、path 或 evidence 门失败均立即停止且不得重试。
+215. 当前状态为 `CORRECTED_AMENDMENT_5G_B_1_1_1_APPROVED_AWAITING_APPROVAL_GOVERNANCE_SYNC`。Complete synthetic、real validator、fresh three-path、execution-head helper、preflight、official input、token、capture、controller、verifier 与 Gold 继续锁定。
 
 ## GitHub 与文档
 
