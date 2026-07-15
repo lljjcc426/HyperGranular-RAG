@@ -957,3 +957,20 @@ The one-time in-memory semantics wrapper was invoked exactly once. Its seven Pow
 No correction or retry occurred. Python process count remained one; complete synthetic runs, fresh artifact creation, frozen real-validator invocations and fresh direct-child commits remained zero. The three fresh paths were absent after failure, and all three historical 5G-B artifacts matched their frozen bytes and SHA values. Full evidence is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_11.md`.
 
 Current status is `AMENDMENT_5G_B_1_VALIDATOR_SEMANTICS_STOPPED_HARD_FAILURE_11`. The consumed approval cannot authorize any further semantics, synthetic, direct-child, execution-head, preflight or official action.
+
+## Stage4B-U1-D Amendment 5G-B.1.1 Reproducibility Boundary
+
+The accepted Hard Failure 11 review is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_11_REVIEW_1.md`. It treats the line-6 negative-fixture escape as a high-confidence diagnosis rather than a fully proven parser root cause because the complete Python traceback was not preserved.
+
+The approval request and Manifest freeze the future semantics harness as source bytes rather than an editable command sketch:
+
+- PowerShell wrapper: 122 LF-joined lines, no trailing newline, 7,890 bytes, SHA-256 `DFA95A904CE371F283B8DBA8BB4D98CC048F345F536C0E7D0D6DB8073DF9E16C`.
+- Embedded Python: 46 LF-joined lines, no trailing newline, 2,284 bytes, SHA-256 `D0D3D6FC37AD0C2649A7A7F88EFA944C357033E3F0E956BE0E27C4374653D602`.
+- Exact success stdout: 789 bytes, SHA-256 `EDBD4614B790256E314F4A8963128A5FB5A190FAC197437FB349D4C33C606135`, no trailing newline.
+- Frozen real precommit validator remains unchanged at 195 lines, 15,966 bytes and SHA-256 `0F066387B8523B0EA387444076A1113913082D283C28C2DE3FFB33872D558249`.
+
+The wrapper uses one `System.Diagnostics.Process` with redirected stdout/stderr and an environment-bound embedded source. Expected negative fixtures are caught inside Python and represented as deterministic pass/fail records rather than native stderr. The required success counts are wrapper 1, Python process 1, PowerShell 7/7, raw JSON 2/2 and total 9/9, with exit 0, stderr 0 and all filesystem/Git/GitHub/helper/official/token/capture counters at 0.
+
+At package assembly time the harness is not executed. The fresh result paths `results/stage4b_u1_d_pregold_amendment_5g_b_1_1_validator_semantics.json` and `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_VALIDATOR_SEMANTICS_AUDIT.md` must remain absent until a new approval explicitly binds the package commit and authorizes the single invocation.
+
+Current status is `AMENDMENT_5G_B_1_1_PACKAGE_AWAITING_APPROVAL`. No synthetic, real validator, direct-child, execution-head, preflight or official action is authorized.

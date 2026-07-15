@@ -196,6 +196,11 @@
 182. 唯一一次内存 semantics wrapper 已消费：七项 PowerShell fixture 执行到 Python 启动阶段，唯一 Python parser 进程随后在 `<string>` line 6 输出 stderr，并被 PowerShell 作为 `NativeCommandError` 终止；未产生九项完整成功摘要。
 183. 该 wrapper 未修正或重跑，第二个 Python 进程、synthetic runner、fresh 三工件、frozen real validator 与 direct-child 均未发生；三项 fresh 路径仍不存在，历史 5G-B 三工件 SHA 未变。
 184. 当前状态为 `AMENDMENT_5G_B_1_VALIDATOR_SEMANTICS_STOPPED_HARD_FAILURE_11`。当前批准已消耗；后续 semantics、synthetic、direct-child、helper、preflight 或 official action 均须新的独立审核和 package-bound Amendment。
+185. Hard Failure 11 独立审核已接受停止审计并确认一次性 semantics 门已消费；checkpoint 为 `d2aadb2f03f4388d71ddf70fcfb116c92fe4b008`。`<string>` line 6 与 stderr/`NativeCommandError` 的行位对应支持“预期 negative raw-JSON rejection 以未处理异常逃逸”为高置信原因，但因完整 traceback 未被保留，不得把更深 parser 根因表述为已完全证明。
+186. 真实 precommit validator 继续冻结为 195 行、15,966 bytes、SHA-256 `0F066387B8523B0EA387444076A1113913082D283C28C2DE3FFB33872D558249`；本次 package 不得修改、执行或替代该 validator。
+187. Amendment 5G-B.1.1 只申请一次隔离的 validator-semantics harness 执行及其 evidence/audit 提交。PowerShell wrapper 冻结为 122 行、7,890 bytes、SHA-256 `DFA95A904CE371F283B8DBA8BB4D98CC048F345F536C0E7D0D6DB8073DF9E16C`；内嵌 Python source 冻结为 46 行、2,284 bytes、SHA-256 `D0D3D6FC37AD0C2649A7A7F88EFA944C357033E3F0E956BE0E27C4374653D602`。
+188. 未来获批的唯一 harness 必须使用 `System.Diagnostics.Process` 隔离并重定向 native stdout/stderr；成功输出必须精确为 789 bytes、SHA-256 `EDBD4614B790256E314F4A8963128A5FB5A190FAC197437FB349D4C33C606135`，且 wrapper/Python 进程均为 1、PowerShell fixtures 7/7、raw-JSON fixtures 2/2、总计 9/9、exit 0、stderr 0，全部 filesystem/Git/GitHub/helper/official/token/capture 计数为 0。
+189. 当前状态为 `AMENDMENT_5G_B_1_1_PACKAGE_AWAITING_APPROVAL`。本 package 只含审核记录、Request、Manifest 与治理状态同步，不授权 semantics harness、synthetic runner、真实 validator、fresh artifact、direct-child、execution-head helper、preflight、official input、token、capture、controller、verifier 或 Gold；新的 package-bound 批准前不得运行。
 
 ## GitHub 与文档
 

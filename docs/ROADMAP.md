@@ -1091,3 +1091,15 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - All three fresh paths remained absent. The three historical 5G-B artifacts retained their frozen bytes and SHA values.
 - Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_11.md`.
 - Current status: `AMENDMENT_5G_B_1_VALIDATOR_SEMANTICS_STOPPED_HARD_FAILURE_11`. A new independent review and package-bound Amendment are required.
+
+### Stage4B-U1-D Hard Failure 11 Review And Amendment 5G-B.1.1 Package
+
+- Independent review accepts the Hard Failure 11 audit and confirms that the one-time semantics gate was consumed correctly.
+- The line-aligned evidence supports, but does not fully prove without the missing traceback, that an expected negative raw-JSON rejection escaped as an unhandled Python exception and reached PowerShell as native stderr.
+- Review: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_11_REVIEW_1.md`.
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_MANIFEST.json`.
+- The real 195-line precommit validator remains frozen at 15,966 bytes and SHA-256 `0F066387B8523B0EA387444076A1113913082D283C28C2DE3FFB33872D558249`.
+- The package separately freezes a 122-line, 7,890-byte PowerShell semantics wrapper with SHA-256 `DFA95A904CE371F283B8DBA8BB4D98CC048F345F536C0E7D0D6DB8073DF9E16C` and a byte-identical embedded 46-line, 2,284-byte Python source with SHA-256 `D0D3D6FC37AD0C2649A7A7F88EFA944C357033E3F0E956BE0E27C4374653D602`.
+- A future package-bound approval may authorize one isolated wrapper invocation only. Success requires wrapper 1, Python process 1, PowerShell 7/7, raw JSON 2/2, total 9/9, exit 0, stderr 0 and exact 789-byte stdout with SHA-256 `EDBD4614B790256E314F4A8963128A5FB5A190FAC197437FB349D4C33C606135`.
+- Current status: `AMENDMENT_5G_B_1_1_PACKAGE_AWAITING_APPROVAL`. The package authorizes no semantics, synthetic, real validator, direct-child, helper, preflight or official execution.
