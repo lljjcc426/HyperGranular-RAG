@@ -1295,3 +1295,13 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_APPROVAL_REQUEST.md`.
 - Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_MANIFEST.json` (323,607 bytes; SHA-256 `804B4F8607532D6CE17EDE043D5A9511C7E855F4EB444C25F461381B6EDDA73D`).
 - Current status: `SECOND_CORRECTED_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_AWAITING_APPROVAL`; no execution is authorized.
+
+### Hard Failure 17: Pre Parent Modeled-command Static Gate
+
+- Independent approval bound second-corrected package `ef87f0379f4f31c54881c4a0e23a3f7ad8c8c35b` and its 323,607-byte Manifest SHA-256 `804B4F8607532D6CE17EDE043D5A9511C7E855F4EB444C25F461381B6EDDA73D`.
+- Exact two-path approval governance `1afdd8075169e70d385e617ade480880cf3eb718` was committed and pushed as the package's direct child. Remote triplet, clean-worktree, six-absent-future-path and three-stable-historical-file gates passed.
+- The approved PRE static reconstruction passed source, parser and 21,115-character arguments identities, then stopped before `Process.Start()` at `PRE_PARENT_MODELED_COMMAND_TEXT_MISMATCH`.
+- Root cause is frozen as `ORCHESTRATOR_SCHEMA_DESCRIPTOR_MISINTERPRETATION`: the helper treated `QUOTED_FILE_NAME_SPACE_ARGUMENTS_TERMINAL_NULL` as literal command text and used the runtime label instead of `process_start_info_contract.file_name`.
+- Read-only post-stop recomputation with the registered executable path produced the exact frozen 21,176 characters / `E8247D1AF7D1CC5F6FEBF32F9102D49A37076FA19602906D7C9121E45EC808F0`; no package transport defect is established by this run.
+- `Process.Start()` attempts and actual PRE parent/loader/target processes are 0. Semantics/POST/FINAL evidence and processes are 0; all six future paths remain absent and historical machine evidence remains unchanged.
+- No retry, fallback, cleanup or downstream action occurred. Current state: `AMENDMENT_5G_B_1_1_1_1_3_PRE_PARENT_MODELED_COMMAND_GATE_STOPPED_HARD_FAILURE_17`; independent review and new approval are required.

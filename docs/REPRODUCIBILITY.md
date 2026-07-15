@@ -1279,3 +1279,15 @@ The second correction changes only governance lineage metadata. It records direc
 Review: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_REVIEW_2.md`. Second-corrected Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_APPROVAL_REQUEST.md`. Manifest: 323,607 bytes with SHA-256 `804B4F8607532D6CE17EDE043D5A9511C7E855F4EB444C25F461381B6EDDA73D`.
 
 Current status is `SECOND_CORRECTED_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_AWAITING_APPROVAL`. No execution is authorized.
+
+## Hard Failure 17: Pre Parent Modeled-command Static Gate
+
+Independent approval bound package `ef87f0379f4f31c54881c4a0e23a3f7ad8c8c35b` and Manifest 323,607 bytes / `804B4F8607532D6CE17EDE043D5A9511C7E855F4EB444C25F461381B6EDDA73D`. Exact two-path approval-governance commit `1afdd8075169e70d385e617ade480880cf3eb718` is its direct child and was pushed before the approved PRE command reconstruction. Local HEAD, tracked origin and direct GitHub main all equaled that commit; the worktree was clean, six future evidence paths were absent, and three historical machine-evidence files were stable.
+
+The approved PRE reconstruction passed the 96-line / 7,922-byte source identity `8F11033CD306D118C4211109EACF8F0C1E9A90BCAEA8E19F99C933DC1C0858A7`, zero parser errors, and 21,115-character arguments identity `00B201AA16F7A1CF106ADACADBE35DDF44FF67E08FE4A2A8434A8912F4106E67`. It then failed before `Process.Start()` with `PRE_PARENT_MODELED_COMMAND_TEXT_MISMATCH`.
+
+The failure was caused by the orchestration helper, not by a demonstrated package defect. It interpreted Manifest field `modeled_createprocess_command_line = QUOTED_FILE_NAME_SPACE_ARGUMENTS_TERMINAL_NULL` as literal command text and used `runtime = Windows PowerShell 5.1 Desktop` as an executable path label. A post-stop read-only diagnostic used `process_start_info_contract.file_name = C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe` with the registered arguments and recomputed the exact registered 21,176-character modeled command line and SHA-256 `E8247D1AF7D1CC5F6FEBF32F9102D49A37076FA19602906D7C9121E45EC808F0`.
+
+No `Process.Start()` call occurred. PRE parent, loader, target ScriptBlock, semantics chain, POST and FINAL process counts are all zero. No evidence path was created, all six future paths remain absent, all three historical machine files remain unchanged, and no retry, fallback, cleanup, source change, runtime switch, reset, rebase or force-push occurred. Earlier read-only package-inspection and precondition helpers that stopped on path lookup, unavailable `rg`, and PowerShell strict-mode empty-collection handling performed no frozen process start and no write; the pre-governance source-line/parser inspection is preserved as a sequencing limitation rather than omitted.
+
+Current status is `AMENDMENT_5G_B_1_1_1_1_3_PRE_PARENT_MODELED_COMMAND_GATE_STOPPED_HARD_FAILURE_17`. The ordered PRE/POST/FINAL authorization is consumed and independent review plus a new package-bound approval is required before any further reconstruction or execution.
