@@ -947,3 +947,13 @@ The complete real precommit validator is frozen inside the Manifest as 195 LF-jo
 A future corrected-package-bound approval may authorize one in-memory semantics wrapper covering exact/missing/extra/duplicate/case-only/raw-duplicate fixtures, exactly two fresh complete rebinding runs on final approval-governance bytes, one frozen real precommit validation, one fresh exact-three-path direct-child commit, GitHub synchronization and immediate stop. Fresh paths use the `5g_b_1` namespace and may not overwrite the historical 5G-B files.
 
 Current status is `CORRECTED_AMENDMENT_5G_B_1_PACKAGE_AWAITING_APPROVAL`. Validator semantics, synthetic execution, direct-child creation, execution-head helper calls, formal preflight, official inputs, token, capture, controller, verifier and Gold remain unapproved.
+
+## Stage4B-U1-D Pre-Gold Hard Failure 11
+
+Corrected package `48a9c1438166eaf895104358b2d8cd8c9b043020` received package-bound approval. Approval-governance commit `0e28fba6647bfd98634ebb8d1565e862dcf16920` was its direct child, changed exactly `AGENTS.md` and the approval decision, and was synchronized across local, origin and GitHub with a clean worktree before semantics execution.
+
+The one-time in-memory semantics wrapper was invoked exactly once. Its seven PowerShell fixture calls reached the raw-parser stage, then the only Python parser process emitted stderr beginning at its string-source line 6. With the wrapper's fail-closed error policy, PowerShell terminated it as `NativeCommandError` before a nine-fixture success summary was produced. The captured output did not include the remaining Python diagnostic, so this checkpoint does not claim a deeper parser root cause.
+
+No correction or retry occurred. Python process count remained one; complete synthetic runs, fresh artifact creation, frozen real-validator invocations and fresh direct-child commits remained zero. The three fresh paths were absent after failure, and all three historical 5G-B artifacts matched their frozen bytes and SHA values. Full evidence is `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_11.md`.
+
+Current status is `AMENDMENT_5G_B_1_VALIDATOR_SEMANTICS_STOPPED_HARD_FAILURE_11`. The consumed approval cannot authorize any further semantics, synthetic, direct-child, execution-head, preflight or official action.

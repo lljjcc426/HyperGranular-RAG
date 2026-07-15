@@ -1081,3 +1081,13 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The complete 195-line real validator is frozen at 15,966 bytes and SHA-256 `0F066387B8523B0EA387444076A1113913082D283C28C2DE3FFB33872D558249`; future approval must contain the package commit, decimal byte token and exact SHA, and may not add a wrapper expression.
 - A future corrected-package-bound approval may authorize one in-memory semantics wrapper, exactly two fresh 246-test runs, one frozen real precommit validation and one exact-three-path direct-child, followed by immediate stop.
 - Current status: `CORRECTED_AMENDMENT_5G_B_1_PACKAGE_AWAITING_APPROVAL`. No validator semantics, synthetic run, direct-child, execution-head helper, preflight or official action is authorized by the package itself.
+
+### Stage4B-U1-D Pre-Gold Hard Failure 11
+
+- Corrected package `48a9c143...` was approved, and approval-governance commit `0e28fba6647bfd98634ebb8d1565e862dcf16920` was pushed as its exact two-path direct child.
+- Local HEAD, origin/main and GitHub main matched and the worktree was clean before the one-time semantics wrapper.
+- The wrapper was invoked exactly once and started exactly one Python parser process. That process emitted stderr at its string-source line 6; PowerShell terminated the wrapper as `NativeCommandError`, so no nine-fixture success summary was produced.
+- The wrapper was not corrected or rerun. Complete synthetic runs, fresh artifacts, real validator invocations and fresh direct-child commits all remained zero.
+- All three fresh paths remained absent. The three historical 5G-B artifacts retained their frozen bytes and SHA values.
+- Audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_11.md`.
+- Current status: `AMENDMENT_5G_B_1_VALIDATOR_SEMANTICS_STOPPED_HARD_FAILURE_11`. A new independent review and package-bound Amendment are required.

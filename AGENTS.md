@@ -192,6 +192,10 @@
 178. 获批执行顺序严格为：本两路径 approval governance 提交推送并三方同步、一次九项内存 semantics wrapper、两次 fresh 246/246、三项新工件、一次 frozen real precommit validation、精确三路径 direct-child、同步 GitHub、立即停止。任一失败不得修正或重跑。
 179. 当前状态为 `AMENDMENT_5G_B_1_APPROVED_AWAITING_APPROVAL_GOVERNANCE_SYNC`。本批准不授权 derived execution-HEAD helper、formal preflight 或 official diagnostic；这些必须等待 fresh direct-child 独立审核后另行组包。
 180. 本批准边界内 execution-head helper、formal preflight、official input、token、capture、controller、verifier 与 Gold 计数必须保持 0；三路径 direct-child 完成后不得自动继续。
+181. Approval-governance commit `0e28fba6647bfd98634ebb8d1565e862dcf16920` 已按精确两路径提交推送，且在 semantics 前确认 local/origin/GitHub 三方一致、worktree clean。
+182. 唯一一次内存 semantics wrapper 已消费：七项 PowerShell fixture 执行到 Python 启动阶段，唯一 Python parser 进程随后在 `<string>` line 6 输出 stderr，并被 PowerShell 作为 `NativeCommandError` 终止；未产生九项完整成功摘要。
+183. 该 wrapper 未修正或重跑，第二个 Python 进程、synthetic runner、fresh 三工件、frozen real validator 与 direct-child 均未发生；三项 fresh 路径仍不存在，历史 5G-B 三工件 SHA 未变。
+184. 当前状态为 `AMENDMENT_5G_B_1_VALIDATOR_SEMANTICS_STOPPED_HARD_FAILURE_11`。当前批准已消耗；后续 semantics、synthetic、direct-child、helper、preflight 或 official action 均须新的独立审核和 package-bound Amendment。
 
 ## GitHub 与文档
 
