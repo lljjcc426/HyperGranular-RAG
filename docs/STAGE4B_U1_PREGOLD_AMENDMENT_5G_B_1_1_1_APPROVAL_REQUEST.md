@@ -4,7 +4,7 @@
 
 - Origin Skill: academic-research-suite / experiment-agent
 - Request date: 2026-07-15
-- Requested decision: APPROVE_STAGE4B_U1_D_PREGOLD_AMENDMENT_5G_B_1_1_1_WINDOWS_POWERSHELL_5_1_SOURCE_VERIFICATION_RECOVERY_AND_FROZEN_SEMANTICS_HARNESS_ONLY
+- Requested decision: APPROVE_CORRECTED_STAGE4B_U1_D_PREGOLD_AMENDMENT_5G_B_1_1_1_FROZEN_BOOTSTRAP_RECOVERY_EXECUTION_HARNESS_SOURCE_VERIFICATION_AND_SEMANTICS_ONLY
 - Current checkpoint: 8002dac6fa37e0009f0e0bc78858b467bbff675e
 - Package execution authority: NONE UNTIL A NEW APPROVAL BINDS THE FUTURE PACKAGE COMMIT
 - Official execution: NOT_REQUESTED
@@ -27,6 +27,12 @@ It is not evidence of:
     real precommit validator defect
 
 The prior ordered approval is consumed even though wrapper and Python counts remain zero. It must not be reused.
+
+## Package Review 1 And Supersession
+
+Package commit `d1876bd9ccc198285808795f7f1809c4d1a48e1c` is not approvable because it froze the 59-line verifier but not the verifier bootstrap, child-process transport or raw stdout-to-evidence path. This corrected package explicitly supersedes that commit while retaining its statically accepted verifier content.
+
+Package Review 1 is `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_PACKAGE_REVIEW_1.md`. The corrected package adds no script, test or result implementation. It freezes the previously missing execution envelope entirely inside the Request and Manifest.
 
 ## Bound Commits
 
@@ -137,6 +143,61 @@ This recovery does not modify the semantics wrapper, embedded Python, fixtures o
 
 The real precommit validator also remains frozen and unexecuted at 195 lines, 15,966 bytes and SHA-256 `0F066387B8523B0EA387444076A1113913082D283C28C2DE3FFB33872D558249`.
 
+## Frozen Recovery Execution Harness
+
+The complete recovery harness is frozen in the corrected Manifest:
+
+    source lines: 77
+    source bytes: 6246
+    source SHA-256: B34E7AE012AC0314AD44590603575194C8881CE58C17E6C8ED6568A5FA373048
+
+The harness runs under Windows PowerShell 5.1 Desktop. It reads only the corrected governance Manifest and frozen prior Manifest. It reconstructs and verifies the accepted 59-line compatible verifier, starts it once in a child Windows PowerShell process, and requires exact 190-byte stdout, empty stderr and exit 0.
+
+Only after that success does it reconstruct and verify the unchanged 122-line semantics wrapper, start it once in a second Windows PowerShell child and require the exact 789-byte output and all nine fixture/zero-access counters. The wrapper child may start exactly one Python process.
+
+Both child processes use exactly:
+
+    executable: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+    arguments prefix: "-NoLogo -NoProfile -NonInteractive -EncodedCommand "
+    source transport: UTF-16LE then Base64
+    UseShellExecute = false
+    RedirectStandardInput = true
+    RedirectStandardOutput = true
+    RedirectStandardError = true
+    CreateNoWindow = true
+    StandardOutputEncoding = UTF-8
+    StandardErrorEncoding = UTF-8
+
+No temporary `.ps1` file is allowed. Standard input is closed immediately after process start. The harness itself emits the validated raw 789-byte wrapper stdout without reserialization or a trailing newline.
+
+The exact derived child transports are also frozen:
+
+| Child source | UTF-16LE bytes | Base64 chars | Base64 SHA-256 | Complete arguments SHA-256 |
+|---|---:|---:|---|---|
+| Recovery harness | 12,468 | 16,624 | D43444B6F7C4FFB5EF73548FB72F1A80C83FA663680197B99758BBF125EC567D | 19842E8DAB9CD94C4404DAC97989388B614462DDDC098A4590DA38D31F6B127B |
+| Compatible verifier | 7,016 | 9,356 | A448D02B3E04A5D73F0E46F091496A2220A290A85C043538F7DB12739C91353F | DD57FC57342776A74FF4563D39BBD56AD64AFDB76B980202285ACECBB9E82026 |
+| Semantics wrapper | 15,780 | 21,040 | 15E3C4B219109715BCAD0EE4510C1F19F219D2032BCC2AF08DC0BE3AD64FA888 | 0E1CCE9C1DE11C964356F4A508F330C169F255E3CCEA460D65417D3E923D42D5 |
+
+## Frozen Bootstrap And Trust Root
+
+The complete bootstrap is frozen as:
+
+    source lines: 58
+    source bytes: 3909
+    source SHA-256: F8A452CEBEC06326E1D8BA4DEB4FC8915210F3FF9BBF53DA2D22B9675773C81D
+
+The corrected package commit, Manifest and frozen bootstrap source are the explicit recursion terminus. The bootstrap is not subjected to another dynamically generated verifier. It uses the compatible SHA256 + BitConverter method to reconstruct and hash-check the recovery harness, then starts exactly one harness child with the same fixed ProcessStartInfo contract.
+
+Bootstrap transport is independently frozen:
+
+    bootstrap UTF-16LE source bytes: 7770
+    EncodedCommand Base64 characters: 10360
+    EncodedCommand ASCII SHA-256: 06CD60CDBD63E5AB9B017487285077C68581829D4309DC1AD6C964F22B9236C2
+    complete arguments characters: 10411
+    complete arguments ASCII SHA-256: 5EF7120B1005A027D408CF7DCAB525768376F2DAD213D91E69D73E1326D6F05D
+
+The bootstrap separately captures harness stdout/stderr and exit code. After exact 789-byte success, it exclusive-creates the versioned machine evidence directly from the captured bytes using `FileMode.CreateNew`; this closes the raw-output-to-evidence identity chain. It then writes the same bytes to its own stdout.
+
 ## Requested Approval-Governance Commit
 
 If approved, the first commit must be the direct child of the future package commit and change exactly:
@@ -152,20 +213,25 @@ Only the following future sequence is requested:
 
 1. Create and push the exact two-path approval-governance direct child.
 2. Confirm local/origin/GitHub equality, clean worktree and absence of all four old/new semantics evidence paths.
-3. Reconstruct the compatible source verifier from this Manifest and hash-check its 59 lines, 3,512 bytes and SHA-256 without executing it.
-4. Invoke that verifier exactly once under Windows PowerShell 5.1 Desktop.
-5. Require exit 0, stderr 0 and exact 190-byte stdout with SHA-256 `D05B3B2A147C51FB3A9FFFC3BEB802439E01AEFC34B708FE14C298978F2BFBB3`.
-6. Only after verifier success, reconstruct and invoke the unchanged frozen semantics wrapper exactly once.
-7. Allow exactly one Python process and require PowerShell 7/7, raw JSON 2/2, total 9/9, passed 9, Python exit 0, stderr 0 and exact 789-byte stdout.
-8. Require zero semantics-harness counters for filesystem, Git/GitHub, helper, official path, token and capture access.
-9. Exclusive-create only the two new versioned evidence paths.
-10. Commit exactly those two paths as the direct child of approval governance, push, confirm three-way synchronization and clean worktree, then stop immediately.
+3. Reconstruct the 58-line frozen bootstrap and derive its UTF-16LE Base64 EncodedCommand; verify the registered source, Base64 and complete-arguments fingerprints without invoking it.
+4. Launch the bootstrap exactly once through the registered no-profile ProcessStartInfo contract.
+5. The bootstrap reconstructs and hash-checks the 77-line recovery harness, then launches exactly one harness PowerShell child.
+6. The harness reconstructs and hash-checks the compatible verifier, launches exactly one verifier PowerShell child, and requires exit 0, stderr 0 and exact 190-byte stdout.
+7. Only after verifier success, the harness reconstructs and launches the unchanged semantics wrapper in exactly one second PowerShell child.
+8. Allow exactly one Python process and require PowerShell 7/7, raw JSON 2/2, total 9/9, passed 9, Python exit 0, stderr 0, exact 789-byte stdout and all zero-access counters.
+9. Require empty stderr and exit 0 at verifier, wrapper, harness and bootstrap layers.
+10. The bootstrap exclusive-creates the versioned machine evidence directly from its captured 789 raw bytes; after bootstrap success, exclusive-create the narrative audit.
+11. Commit exactly those two paths as the direct child of approval governance, push, confirm three-way synchronization and clean worktree, then stop immediately.
 
 One-time limits:
 
     approval-governance commits = 1
+    bootstrap invocations = 1
+    recovery-harness PowerShell processes = 1
     compatible source-verifier invocations = 1
+    compatible-verifier PowerShell processes = 1
     semantics wrapper invocations = 1
+    semantics-wrapper PowerShell processes = 1
     Python processes = 1
     evidence commits = 1
     complete synthetic runs = 0
@@ -186,7 +252,7 @@ Only the following fresh paths are requested:
     results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_validator_semantics.json
     docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_VALIDATOR_SEMANTICS_AUDIT.md
 
-The ungenerated 5G-B.1.1 paths must remain absent and must not be reused. The machine evidence must be byte-identical to the unchanged 789-byte semantics-wrapper stdout; the narrative audit must record both verifier and wrapper fingerprints, exact outputs, invocation counts and zero-access counters without raw fixture payloads or traceback content.
+The ungenerated 5G-B.1.1 paths must remain absent and must not be reused. The bootstrap writes the machine evidence itself from captured harness stdout through `FileMode.CreateNew`, so the committed file must be byte-identical to the unchanged 789-byte semantics-wrapper stdout. The narrative audit must record bootstrap, harness, verifier and wrapper fingerprints, exact process arguments, outputs, invocation counts and zero-access counters without raw fixture payloads or traceback content.
 
 ## Explicitly Not Requested
 
@@ -222,7 +288,7 @@ The ungenerated 5G-B.1.1 paths must remain absent and must not be reused. The ma
 
 This Request and Manifest are governance materials only. Until an independent approval explicitly binds their future package commit:
 
-    AMENDMENT_5G_B_1_1_1_PACKAGE_AWAITING_APPROVAL
+    CORRECTED_AMENDMENT_5G_B_1_1_1_PACKAGE_AWAITING_APPROVAL
     SOURCE_VERIFICATION_RETRY_NOT_APPROVED
     VALIDATOR_SEMANTICS_WRAPPER_NOT_APPROVED
     OFFICIAL_EXECUTION_NOT_APPROVED

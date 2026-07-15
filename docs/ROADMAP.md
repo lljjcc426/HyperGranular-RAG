@@ -1125,3 +1125,15 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - It may read only the prior 24,248-byte 5G-B.1.1 Manifest with SHA-256 `B5953058270B4A8C715D38D5CF92CC65DCB7F90C6149EA1DC5B3E02C14B1A68E`; its exact success stdout is 190 bytes with SHA-256 `D05B3B2A147C51FB3A9FFFC3BEB802439E01AEFC34B708FE14C298978F2BFBB3`.
 - The original semantics wrapper, embedded Python, fixtures, 789-byte output and real precommit validator remain unchanged and unexecuted.
 - Current status: `AMENDMENT_5G_B_1_1_1_PACKAGE_AWAITING_APPROVAL`. The package itself authorizes no source verification, wrapper, Python process, evidence or official execution.
+
+### Stage4B-U1-D Corrected Amendment 5G-B.1.1.1 Package
+
+- Package Review 1 rejects commit `d1876bd9ccc198285808795f7f1809c4d1a48e1c` because its accepted 59-line verifier lacked a frozen bootstrap, child-process transport and raw-output evidence path.
+- Review: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_PACKAGE_REVIEW_1.md`.
+- The corrected Request and Manifest supersede that unapproved package without changing scripts, tests, results or frozen semantics content.
+- The recovery harness is frozen at 77 lines, 6,246 bytes and SHA-256 `B34E7AE012AC0314AD44590603575194C8881CE58C17E6C8ED6568A5FA373048`.
+- The bootstrap trust root is frozen at 58 lines, 3,909 bytes and SHA-256 `F8A452CEBEC06326E1D8BA4DEB4FC8915210F3FF9BBF53DA2D22B9675773C81D`.
+- Child transport is Windows PowerShell 5.1 with `-NoLogo -NoProfile -NonInteractive -EncodedCommand`, UTF-16LE Base64, redirected stdin/stdout/stderr and no temporary script.
+- The bootstrap validates the harness, the harness validates and runs one verifier child and then one unchanged wrapper child, and the wrapper may run one Python process. Every layer requires exit 0 and empty stderr.
+- Exact wrapper stdout is carried unchanged through harness and bootstrap; bootstrap writes its captured 789 bytes directly to the versioned machine evidence with `FileMode.CreateNew`.
+- Current status: `CORRECTED_AMENDMENT_5G_B_1_1_1_PACKAGE_AWAITING_APPROVAL`. No bootstrap, verifier, wrapper or official execution is authorized by the package itself.

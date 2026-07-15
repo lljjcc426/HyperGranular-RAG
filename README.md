@@ -6,16 +6,16 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Hard Failure 12 审核已接受；Amendment 5G-B.1.1.1 compatibility-recovery 审批包待批 |
-| 获批执行协议 | 当前无执行授权；仅组装 Windows PowerShell 5.1 source-verifier recovery package |
+| 当前阶段 | 首版 5G-B.1.1.1 被退回；包含冻结 bootstrap/process envelope 的 corrected package 待批 |
+| 获批执行协议 | 当前无执行授权；bootstrap、harness、source verifier 与 wrapper 均未运行 |
 | 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_APPROVAL_REQUEST.md` |
-| 协议状态 | `AMENDMENT_5G_B_1_1_1_PACKAGE_AWAITING_APPROVAL` |
+| 协议状态 | `CORRECTED_AMENDMENT_5G_B_1_1_1_PACKAGE_AWAITING_APPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
 | 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
 
-Hard Failure 12 独立审核确认停止正确、未观察到 source mismatch，直接原因是 Windows PowerShell 5.1 缺少 `Convert.ToHexString`。5G-B.1.1.1 recovery package 冻结了只读旧 Manifest、使用 SHA256 + BitConverter 的 59 行兼容 verifier；原 122 行 semantics wrapper、46 行 Python、九项 fixtures、789-byte stdout 与 195 行 real validator 均不变。本包不授权运行 verifier 或 wrapper，必须等待新的 package-bound 批准。
+Hard Failure 12 独立审核确认停止正确、未观察到 source mismatch。首版 5G-B.1.1.1 package 的 59 行兼容 verifier 内容可接受，但因未冻结 bootstrap 与子进程 capture 被退回。Corrected package 新增 58 行治理 trust-root bootstrap 和 77 行 recovery harness，固定 Windows PowerShell 5.1 `-NoProfile`/UTF-16LE Base64/redirect envelope，并由 bootstrap 将实际捕获的 789 bytes 直接 exclusive-create 为 machine evidence。原 wrapper、Python、fixtures 与 real validator 全部不变；当前仍无执行授权。
 
 第一次官方提取在预注册映射硬门处停止：基础区间 `[800:5300)` 的 11,003 个 supporting facts 中有 19 个 sentence index 越界，影响 19 条查询；该失败没有生成 gain/harm 或检索指标。Amendment 1 随后采用仅由标注完整性决定的确定性替换，从 `[9800:9819)` 补入 19 条有效记录。最终 11,015/11,015 supporting facts 完整映射，development/reservation 零重叠。
 

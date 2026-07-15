@@ -998,3 +998,15 @@ The verifier's only readable file is `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1
 Exact compatible-verifier success stdout is 190 bytes with SHA-256 `D05B3B2A147C51FB3A9FFFC3BEB802439E01AEFC34B708FE14C298978F2BFBB3`. Static PowerShell syntax parsing passed during package assembly, but the verifier was not invoked.
 
 The future versioned evidence paths use the `5g_b_1_1_1` namespace. Both old ungenerated `5g_b_1_1` paths and both new paths must remain absent until a new approval binds the package commit. Current status is `AMENDMENT_5G_B_1_1_1_PACKAGE_AWAITING_APPROVAL`; no execution is authorized.
+
+## Corrected 5G-B.1.1.1 Execution Envelope
+
+Package Review 1 accepts the 59-line verifier but rejects package `d1876bd9ccc198285808795f7f1809c4d1a48e1c` because the verifier bootstrap and process transport were not frozen. The corrected package supersedes it.
+
+The recovery harness is 77 LF-joined lines, 6,246 UTF-8 bytes, SHA-256 `B34E7AE012AC0314AD44590603575194C8881CE58C17E6C8ED6568A5FA373048`. It starts exactly one compatible-verifier and one unchanged semantics-wrapper Windows PowerShell child, each through the same ProcessStartInfo contract. The wrapper may start exactly one Python process.
+
+The bootstrap trust root is 58 lines, 3,909 bytes, SHA-256 `F8A452CEBEC06326E1D8BA4DEB4FC8915210F3FF9BBF53DA2D22B9675773C81D`. Its source-to-command transport is frozen as 7,770 UTF-16LE bytes, 10,360 Base64 characters, Base64 SHA-256 `06CD60CDBD63E5AB9B017487285077C68581829D4309DC1AD6C964F22B9236C2`, and complete-arguments SHA-256 `5EF7120B1005A027D408CF7DCAB525768376F2DAD213D91E69D73E1326D6F05D`.
+
+All child invocations use `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`, `-NoLogo -NoProfile -NonInteractive -EncodedCommand`, UTF-16LE Base64 source, redirected stdin/stdout/stderr, no window and no temporary `.ps1`. The bootstrap reads the corrected Manifest as its governance trust root, hash-checks the harness, captures its exact output and writes the raw 789 bytes directly to machine evidence with `FileMode.CreateNew` only after every nested gate succeeds.
+
+Static source reconstruction, fingerprint checks and PowerShell syntax parsing are package-assembly checks only; none of the three frozen sources has been invoked. Current status is `CORRECTED_AMENDMENT_5G_B_1_1_1_PACKAGE_AWAITING_APPROVAL`.

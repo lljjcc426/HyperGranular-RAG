@@ -217,6 +217,11 @@
 203. 兼容 verifier 仅可读取旧 5G-B.1.1 Manifest，其冻结身份为 24,248 bytes、SHA-256 `B5953058270B4A8C715D38D5CF92CC65DCB7F90C6149EA1DC5B3E02C14B1A68E`；成功 stdout 冻结为 190 bytes、SHA-256 `D05B3B2A147C51FB3A9FFFC3BEB802439E01AEFC34B708FE14C298978F2BFBB3`。
 204. 原 PowerShell semantics wrapper 122 行/7,890 bytes/`DFA95A...`、embedded Python 46 行/2,284 bytes/`D0D3D6...`、789-byte expected stdout/`EDBD46...` 与 real precommit validator 195 行/15,966 bytes/`0F0663...` 全部保持冻结，本 recovery package 不得修改或执行它们。
 205. 当前状态为 `AMENDMENT_5G_B_1_1_1_PACKAGE_AWAITING_APPROVAL`。本 package 只新增 Review/Request/Manifest 并同步治理文档，不授权 compatible verifier、semantics wrapper、Python、evidence、synthetic、real validator、fresh direct-child、helper、preflight、official input、token、capture、controller、verifier 或 Gold；未来批准必须显式绑定本 package commit。
+206. 首版 5G-B.1.1.1 package commit `d1876bd9ccc198285808795f7f1809c4d1a48e1c` 已被独立审核退回：兼容 verifier 内容静态可接受，但 verifier bootstrap、PowerShell child transport 及 stdout/stderr/exit/evidence 捕获未冻结。该 package 不得批准或执行，由 corrected package supersede。
+207. Corrected 5G-B.1.1.1 recovery execution harness 冻结为 77 行、6,246 bytes、SHA-256 `B34E7AE012AC0314AD44590603575194C8881CE58C17E6C8ED6568A5FA373048`；它只在兼容 verifier 190-byte exact success 后启动原 semantics wrapper，并要求两层 child 均 exit 0、stderr 0。
+208. Frozen bootstrap 作为治理递归终点，冻结为 58 行、3,909 bytes、SHA-256 `F8A452CEBEC06326E1D8BA4DEB4FC8915210F3FF9BBF53DA2D22B9675773C81D`。其 UTF-16LE EncodedCommand 为 7,770 source bytes/10,360 Base64 chars，Base64 SHA-256 `06CD60CDBD63E5AB9B017487285077C68581829D4309DC1AD6C964F22B9236C2`；完整 arguments SHA-256 为 `5EF7120B1005A027D408CF7DCAB525768376F2DAD213D91E69D73E1326D6F05D`。
+209. 所有 PowerShell child 必须使用 `powershell.exe -NoLogo -NoProfile -NonInteractive -EncodedCommand <UTF-16LE Base64>`，固定 `UseShellExecute=false`、stdin/stdout/stderr redirect、no window、UTF-8 decode、零临时 `.ps1`。Bootstrap 只在 exact 789-byte success 后用 `FileMode.CreateNew` 将实际捕获 stdout 直接写入新 machine evidence。
+210. 当前状态为 `CORRECTED_AMENDMENT_5G_B_1_1_1_PACKAGE_AWAITING_APPROVAL`。Corrected package 本身仍不授权 bootstrap、harness、compatible verifier、semantics wrapper、Python、evidence、synthetic、real validator、fresh direct-child、preflight 或 official action；未来批准必须显式绑定 corrected package commit。
 
 ## GitHub 与文档
 
