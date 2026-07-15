@@ -1,29 +1,31 @@
-# Stage4B-U1-D Pre-Gold Corrected Amendment 5G-B.1.1.1.1.3 Approval Request
+# Stage4B-U1-D Pre-Gold Second Corrected Amendment 5G-B.1.1.1.1.3 Approval Request
 
 ## Material Passport
 
 - Origin Skill: academic-research-suite / experiment-agent
 - Package date: 2026-07-16
-- Supersedes rejected package: 97a8b169835c06330a6781ab63c59a482889c6bb
-- Direct parent / Hard Failure 16 checkpoint: f28fc526faf74f80fdefb96ca189769dbcf1e5e4
+- Direct parent / rejected corrected package: b9081b3c28c0c03e8bece797f5e05a74401f397b
+- Superseded original bounded-stdin package: 97a8b169835c06330a6781ab63c59a482889c6bb
+- Hard Failure 16 checkpoint ancestor: f28fc526faf74f80fdefb96ca189769dbcf1e5e4
 - Package revision: CORRECTED_AFTER_HARD_FAILURE_16_PACKAGE_REVIEW_1
+- Lineage revision: SECOND_CORRECTED_AFTER_PACKAGE_REVIEW_2
 - Current status: AWAITING_PACKAGE_BOUND_APPROVAL
 - Execution authorized by this package: No
 - Other project conversations, thread tools, and global memory used: No
 
 ## Independent Review Disposition
 
-The package accepts ACCEPT_HARD_FAILURE_16_REVIEW_1, the seven-path scope, the three loader designs, bounded command lines, raw-stdin payload identities, revised final host and 30/30 loader fixtures. It also accepts the rejection of package 97a8b169... for three blocking causes: missing pre/post parent hosts, stale success evidence that attested rejected long EncodedCommand transports, and a terminal verifier that did not reject that stale evidence.
+Package Review 2 accepts Package Review 1, commit `b9081b3c...` and its seven-path scope, all nine frozen source designs, six bounded envelopes, three raw-stdin payloads, both parent hosts, current-transport evidence contract, extended final verifier, stale-transport rejection logic and 62/62 fixtures. It rejects `b9081b3c...` only because this Request misidentified its direct parent as the Hard Failure 16 checkpoint.
 
-This corrected package uses review option A. Pre/post target sources are revised to load this Manifest and write the current parent-host, loader, modeled command-line and stdin-payload identities into their existing versioned narratives. No new evidence path is added.
+This second correction is lineage-only. The actual chain is Hard Failure 16 checkpoint `f28fc526...` -> original rejected package `97a8b169...` -> rejected corrected package `b9081b3c...` -> this future second-corrected package. All source, transport, payload, evidence-schema, final-verifier, fixture, future-path, count and one-pass-order designs remain byte-for-byte unchanged from `b9081b3c...`.
 
 ## Corrected Manifest Identity
 
     docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_MANIFEST.json
-    321442 bytes
-    C1A11B789FD18D703AA6831BA5B513FC9ACB9767EC8A75016802030E0A0C1123
+    323607 bytes
+    804B4F8607532D6CE17EDE043D5A9511C7E855F4EB444C25F461381B6EDDA73D
 
-Any approval must explicitly bind the future corrected package commit containing this Request and Manifest. The rejected package 97a8b169... is not approved and cannot be reused.
+Any approval must explicitly bind the future second-corrected package commit containing this Request and Manifest. Neither `97a8b169...` nor `b9081b3c...` is approved or reusable.
 
 ## Nine Frozen Source Designs
 
@@ -85,12 +87,12 @@ The Manifest preserves three corrected-package read-only helper failures. The fi
 
 ## Requested Approval-Governance Commit
 
-A future approval-governance commit must be the single direct child of the corrected package commit and must change exactly:
+A future approval-governance commit must be the single direct child of the second-corrected package commit and must change exactly:
 
 1. AGENTS.md;
 2. docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_APPROVAL_DECISION.md.
 
-The Decision must bind the corrected package commit, this Manifest byte count/SHA, all nine source identities, all six bounded envelopes, all three payloads, exact future counts and the one-pass order. It must explicitly authorize the sequence before any command is reconstructed or invoked.
+The Decision must bind the second-corrected package commit, this Manifest byte count/SHA, all nine unchanged source identities, all six unchanged bounded envelopes, all three unchanged payloads, exact future counts and the one-pass order. It must explicitly authorize the sequence before any command is reconstructed or invoked.
 
 ## Explicit Non-Authorization
 
@@ -102,6 +104,8 @@ This Request does not authorize approval governance, either pre/post parent host
     HARD_FAILURE_16_CHECKPOINT_FROZEN
     ROOT_CAUSE_ESTABLISHED_ENCODED_COMMAND_COMMAND_LINE_OVERFLOW
     REJECTED_PACKAGE_97A8B169_REVIEWED
+    REJECTED_CORRECTED_PACKAGE_B9081B3C_REVIEWED
+    ONLY_BLOCKING_CAUSE_WAS_DIRECT_PARENT_PASSPORT_CONTRADICTION
 
     PRE_AND_POST_PARENT_HOSTS_FROZEN
     CURRENT_TRANSPORT_IDENTITIES_REQUIRED_IN_SUCCESS_EVIDENCE
@@ -110,5 +114,5 @@ This Request does not authorize approval governance, either pre/post parent host
     NINE_SOURCE_DESIGNS_STATICALLY_FROZEN
     62_OF_62_STATIC_FIXTURES_PASS
 
-    CORRECTED_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_AWAITING_APPROVAL
+    SECOND_CORRECTED_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_AWAITING_APPROVAL
     EXECUTION_NOT_AUTHORIZED

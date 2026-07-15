@@ -1284,3 +1284,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Corrected Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_APPROVAL_REQUEST.md`.
 - Corrected Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_MANIFEST.json` (321,442 bytes; SHA-256 `C1A11B789FD18D703AA6831BA5B513FC9ACB9767EC8A75016802030E0A0C1123`).
 - Current status: `CORRECTED_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_AWAITING_APPROVAL`; no execution is authorized.
+
+### Amendment 5G-B.1.1.1.1.3 Package Review 2 And Second Correction
+
+- Package Review 2 accepts corrected package `b9081b3c28c0c03e8bece797f5e05a74401f397b` technical content: 9 sources, 6 bounded envelopes, 3 payloads, both parent hosts, current evidence schema, extended final verifier, stale-transport rejection and 62/62 fixtures.
+- The only blocking cause is lineage: `b9081b3c...` directly descends from `97a8b169...`, while `f28fc526...` is the Hard Failure 16 ancestor. The corrected Request had mislabeled the ancestor as direct parent.
+- The second correction separately records direct parent `b9081b3c...`, superseded original package `97a8b169...` and checkpoint ancestor `f28fc526...`.
+- No frozen source, transport, payload, evidence schema, verifier, fixture, future path, count or one-pass order changes.
+- Review: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_REVIEW_2.md`.
+- Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_APPROVAL_REQUEST.md`.
+- Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_MANIFEST.json` (323,607 bytes; SHA-256 `804B4F8607532D6CE17EDE043D5A9511C7E855F4EB444C25F461381B6EDDA73D`).
+- Current status: `SECOND_CORRECTED_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_AWAITING_APPROVAL`; no execution is authorized.

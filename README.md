@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | 5G-B.1.1.1.1.3 Package Review 1 已退回原包；corrected closed-attestation package 等待审批 |
+| 当前阶段 | Package Review 2 接受全部技术设计；lineage-only second-corrected package 等待审批 |
 | 获批执行协议 | 无；旧 approval 已消费，新 package 本身不授权执行 |
 | 设计文件 | `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_APPROVAL_REQUEST.md` 与 Manifest |
-| 协议状态 | `CORRECTED_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_AWAITING_APPROVAL` |
+| 协议状态 | `SECOND_CORRECTED_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_AWAITING_APPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -26,6 +26,8 @@ Second corrected package `945f655...` 获批后，精确两路径 approval-gover
 Hard Failure 16 Review 1 接受该失败边界，并依据 Microsoft `CreateProcessW` 32,767-character 上限确认 EncodedCommand command-line overflow。原 5G-B.1.1.1.1.3 package 的三个 loader、payload、bounded command line、revised final host 与 30/30 fixtures 获静态接受，但 Package Review 1 退回 package `97a8b169...`：pre/post 父级 host 未冻结、成功 narrative 仍认证旧 long-EncodedCommand、final verifier 未拒绝陈旧 transport attestation。
 
 Corrected package 采用现有 narrative 内闭合方案，冻结 revised pre target/loader/parent host、revised post target/loader/parent host 与 extended final verifier/final loader/final parent host，共 9 份 source。6 个 EncodedCommand envelope 的 modeled full command line 均低于 32,767；pre/post narrative 改为登记当前 parent/loader/payload 身份，final verifier 在 Git 门前重建这些身份并拒绝旧 pre/post transport SHA。62/62 static fixtures 通过，组包未运行任何冻结 source 或证据流程。
+
+Package Review 2 接受上述全部技术设计和 canonical parent-host stdout，但发现 corrected Request 将 Hard Failure 16 checkpoint `f28fc526...` 错写为 `b9081b3c...` 的直接父提交；实际链为 `f28fc526... -> 97a8b169... -> b9081b3c...`。Second correction 只修正 lineage Material Passport，不改 9 source、6 envelope、3 payload、evidence schema、final verifier、62 fixtures、未来路径、计数或顺序。
 
 Amendment 5G-B.1.1.1.1.1 approval governance 已作为 package `d6d8a76...` 的精确两路径直接子提交 `ee84988...` 推送。唯一 launcher 静态重建全部通过，唯一 launcher 及唯一原 pre verifier 均已运行；launcher exit 0、stdout 为冻结的 exact 122 bytes，但 launcher stderr 为 382 bytes，违反必须为空的硬门并形成 Hard Failure 15。三条 machine 文件已在失败前以 `CreateNew` 保存并原样保留，获批 narrative 未创建，四条 semantics 路径仍不存在。原授权已消费，没有重试或下游执行；完整审计见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_15.md`。
 
@@ -209,7 +211,7 @@ Hard Failure 10 独立审核接受审计及两轮结果，但只将旧三项工�
 
 ## 下一步
 
-1. 独立审批 corrected `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_APPROVAL_REQUEST.md` 与 321,442-byte Manifest，并显式绑定未来 corrected package commit。
+1. 独立审批 second-corrected `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_APPROVAL_REQUEST.md` 与 323,607-byte Manifest，并显式绑定未来 second-corrected package commit。
 2. 新批准前不得重建或运行 parent host/loader/target/final verifier，不得创建 approval governance 或任何 semantics/post-sync evidence。
 3. Synthetic、real validator、formal preflight、official input/token/capture、controller、Gold、U1-D 指标、reservation 与 Stage3B 继续锁定。
 

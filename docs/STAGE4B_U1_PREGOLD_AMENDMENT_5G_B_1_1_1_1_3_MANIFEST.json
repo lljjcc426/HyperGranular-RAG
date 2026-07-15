@@ -11,8 +11,20 @@
                             "approved_second_corrected_package":  "945f655b95cfee9e55ad2d20e7bd5018f9aee1e2",
                             "consumed_approval_governance":  "72783071c17f6e3cab347823a8da080171c1a883",
                             "hard_failure_16_checkpoint":  "f28fc526faf74f80fdefb96ca189769dbcf1e5e4",
-                            "rejected_bounded_stdin_package":  "97a8b169835c06330a6781ab63c59a482889c6bb"
+                            "rejected_bounded_stdin_package":  "97a8b169835c06330a6781ab63c59a482889c6bb",
+                            "rejected_corrected_package":  "b9081b3c28c0c03e8bece797f5e05a74401f397b"
                         },
+    "second_corrected_package_lineage":  {
+                                               "direct_parent_rejected_corrected_package":  "b9081b3c28c0c03e8bece797f5e05a74401f397b",
+                                               "superseded_original_bounded_stdin_package":  "97a8b169835c06330a6781ab63c59a482889c6bb",
+                                               "hard_failure_16_checkpoint_ancestor":  "f28fc526faf74f80fdefb96ca189769dbcf1e5e4",
+                                               "lineage_only_correction":  true,
+                                               "frozen_source_design_changes":  0,
+                                               "transport_changes":  0,
+                                               "payload_changes":  0,
+                                               "evidence_schema_changes":  0,
+                                               "final_verifier_changes":  0
+                                           },
     "authoritative_transport_sources":  [
                                             {
                                                 "title":  "CreateProcessW function",
@@ -1443,7 +1455,7 @@
                                       "revised final host or final verifier execution",
                                       "synthetic rebinding real validator formal preflight official input token capture controller verifier Gold reservation or Stage3B"
                                   ],
-    "requested_completion_state":  "CORRECTED_AMENDMENT_5G_B_1_1_1_1_3_CLOSED_TRANSPORT_ATTESTATION_CHAIN_AWAITING_REVIEW",
+    "requested_completion_state":  "SECOND_CORRECTED_AMENDMENT_5G_B_1_1_1_1_3_LINEAGE_FIXED_AWAITING_REVIEW",
     "package_review_1":  {
                              "decision":  "REJECT_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_AS_CURRENTLY_WRITTEN",
                              "recovery":  "RETURN_FOR_CORRECTED_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE",
@@ -1455,6 +1467,20 @@
                                                      "SUCCESS_EVIDENCE_STILL_ATTESTS_REJECTED_LONG_ENCODED_COMMAND_TRANSPORT",
                                                      "FINAL_VERIFIER_DOES_NOT_VALIDATE_NEW_STDIN_TRANSPORT_ATTESTATION"
                                                  ],
+                             "execution_authorized":  false
+                         },
+    "package_review_2":  {
+                             "decision":  "REJECT_CORRECTED_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_AS_CURRENTLY_WRITTEN",
+                             "recovery":  "RETURN_FOR_SECOND_CORRECTED_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE",
+                             "reviewed_commit":  "b9081b3c28c0c03e8bece797f5e05a74401f397b",
+                             "reviewed_direct_parent":  "97a8b169835c06330a6781ab63c59a482889c6bb",
+                             "reviewed_manifest_bytes":  321442,
+                             "reviewed_manifest_sha256":  "C1A11B789FD18D703AA6831BA5B513FC9ACB9767EC8A75016802030E0A0C1123",
+                             "only_blocking_cause":  "APPROVAL_REQUEST_MATERIAL_PASSPORT_MISSTATES_THE_PACKAGE_DIRECT_PARENT",
+                             "no_source_design_defect_found":  true,
+                             "no_transport_defect_found":  true,
+                             "no_evidence_schema_defect_found":  true,
+                             "no_final_verifier_defect_found":  true,
                              "execution_authorized":  false
                          },
     "pre_and_semantics_stdin_transport_host":  {

@@ -1267,3 +1267,15 @@ Independent in-memory validation passes 9/9 source identities/parsers, 6/6 encod
 Review: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_REVIEW_1.md`. Corrected Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_APPROVAL_REQUEST.md`. Corrected Manifest: 321,442 bytes with SHA-256 `C1A11B789FD18D703AA6831BA5B513FC9ACB9767EC8A75016802030E0A0C1123`.
 
 Current status is `CORRECTED_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_AWAITING_APPROVAL`. No parent host, loader, target, evidence, final verifier, synthetic, real validator, preflight or official/Gold operation is authorized.
+
+## Amendment 5G-B.1.1.1.1.3 Package Review 2 And Second Correction
+
+Package Review 2 binds corrected package `b9081b3c28c0c03e8bece797f5e05a74401f397b`, its actual parent `97a8b169835c06330a6781ab63c59a482889c6bb`, Hard Failure 16 ancestor `f28fc526faf74f80fdefb96ca189769dbcf1e5e4`, and 321,442-byte Manifest SHA-256 `C1A11B789FD18D703AA6831BA5B513FC9ACB9767EC8A75016802030E0A0C1123`.
+
+The review accepts all nine source designs, six bounded envelopes, three raw-stdin payloads, both parent hosts, current-transport evidence schema, extended final verifier, stale long-transport rejection, 62/62 fixtures and four canonical parent-host stdout variants. It identifies no technical defect. Its only blocking cause is the corrected Request's statement that `f28fc526...` was the package direct parent; the actual chain is `f28fc526... -> 97a8b169... -> b9081b3c...`.
+
+The second correction changes only governance lineage metadata. It records direct parent `b9081b3c...`, superseded original package `97a8b169...` and checkpoint ancestor `f28fc526...` separately. The nine `source_lines` arrays and every registered source SHA, complete-arguments SHA, modeled command-line SHA, payload identity, evidence-schema gate, fixture, future path, process count and one-pass order remain unchanged.
+
+Review: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_REVIEW_2.md`. Second-corrected Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_APPROVAL_REQUEST.md`. Manifest: 323,607 bytes with SHA-256 `804B4F8607532D6CE17EDE043D5A9511C7E855F4EB444C25F461381B6EDDA73D`.
+
+Current status is `SECOND_CORRECTED_AMENDMENT_5G_B_1_1_1_1_3_PACKAGE_AWAITING_APPROVAL`. No execution is authorized.
