@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Package Review 2 已退回 corrected 1.1.4；stage-commit-anchored canonical-byte attestation second correction 等待审批 |
-| 获批执行协议 | 无；second-corrected package 只供审批，不授权 canonical builder、capture host、PRE/POST/FINAL、terminal verifier 或任何实验运行 |
-| 设计文件 | Second-corrected Amendment 5G-B.1.1.1.1.4 Request、Manifest、Package Review 2、canonical builder、三份 adapter、capture host 与 terminal verifier |
-| 协议状态 | `SECOND_CORRECTED_AMENDMENT_5G_B_1_1_1_1_4_STAGE_ANCHORED_CANONICAL_BYTE_ADAPTER_PACKAGE_AWAITING_APPROVAL` |
+| 当前阶段 | Amendment 5G-B.1.1.1.1.4 approval 已落盘；唯一 PRE capture 的外层 raw-result 核验不可恢复，形成 Hard Failure 18 |
+| 获批执行协议 | 原 stage-anchored attestation chain 授权已在唯一 PRE capture-host process 后消费；禁止 retry、POST、FINAL、TERMINAL 或下游实验 |
+| 设计文件 | Second-corrected Request、Manifest、Package Review 2、Approval Decision、canonical builder、三份 adapter、capture host、terminal verifier 与 Hard Failure 18 audit |
+| 协议状态 | `AMENDMENT_5G_B_1_1_1_1_4_PRE_CAPTURE_OBSERVATION_UNRECOVERABLE_HARD_FAILURE_18` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -30,6 +30,8 @@ Corrected package 采用现有 narrative 内闭合方案，冻结 revised pre ta
 Package Review 2 接受上述全部技术设计和 canonical parent-host stdout，但发现 corrected Request 将 Hard Failure 16 checkpoint `f28fc526...` 错写为 `b9081b3c...` 的直接父提交；实际链为 `f28fc526... -> 97a8b169... -> b9081b3c...`。Second correction 只修正 lineage Material Passport，不改 9 source、6 envelope、3 payload、evidence schema、final verifier、62 fixtures、未来路径、计数或顺序。
 
 Second-corrected package `ef87f037...` 的独立批准已通过精确两路径治理提交 `1afdd807...` 落盘并推送，local/origin/direct GitHub main、clean worktree、六条 future path 和三份历史 machine evidence 前置门均通过。获批 PRE 静态重建在 `Process.Start()` 前触发 `PRE_PARENT_MODELED_COMMAND_TEXT_MISMATCH`：执行器把 Manifest 的 schema descriptor 当成 literal command line，并把 runtime label 当成 executable path。正确使用 `process_start_info_contract.file_name` 复算仍得到冻结的 21,176 characters / `E8247D1A...808F0`，所以当前证据不支持 package transport defect；实际 parent/loader/target process 均为 0，未创建 evidence，未重试，形成 Hard Failure 17。
+
+Second-corrected 1.1.4 package `683d17bd...` 获批后，精确两路径 approval-governance commit `677df53f...` 已推送；其后三方 main、clean worktree 与七路径不存在门通过，6 份 source 及 8 个 invocation 的 106/106 静态门通过。唯一 PRE capture-host process 已启动并完成等待，两个 raw BaseStream copy task 也已完成，但外层核验脚本将辅助函数名 `H` 解析为 PowerShell `Get-History` alias，在输出 exit/stdout/stderr 分类前中止。子进程 exit 与 raw streams 未持久、不可恢复，三个 PRE evidence 路径及四个 POST/FINAL 路径均不存在，工作树仍干净；因此授权已消费且链在 Hard Failure 18 停止，没有 retry、semantics commit、POST、FINAL 或 TERMINAL。
 
 Hard Failure 17 Review 1 接受上述审计、有效 approval governance、PRE source/parser/arguments 门与零进程/零 evidence 边界，并将根因冻结为 `ORCHESTRATOR_SCHEMA_DESCRIPTOR_MISINTERPRETATION`。Amendment 5G-B.1.1.1.1.4 不改变原 9 source、6 bounded envelope、3 payload、parent/loader/evidence/final-verifier 设计或 62 fixtures；它只新增三份 tracked ASCII PowerShell 顶层适配器，分别冻结 PRE/POST/FINAL 的 descriptor、唯一 executable-path 来源、modeled-command 公式、ProcessStartInfo 和 parent stdout/stderr 门。三份 source parser 均为 0，新增 schema 语义负向 fixtures 为 30/30，组包执行与 evidence/official 计数均为 0。
 

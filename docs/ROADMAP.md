@@ -1344,3 +1344,15 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Second-corrected Request: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4_APPROVAL_REQUEST.md`.
 - Second-corrected Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4_MANIFEST.json` (48,629 bytes; SHA-256 `E764A188AB11F49152B272F041CAC8FAC9477929C30475576D6349791E67373B`).
 - Current status: `SECOND_CORRECTED_AMENDMENT_5G_B_1_1_1_1_4_STAGE_ANCHORED_CANONICAL_BYTE_ADAPTER_PACKAGE_AWAITING_APPROVAL`; approval governance and all execution remain unauthorized.
+
+### Hard Failure 18: PRE Capture Result Observation Was Not Recoverable
+
+- Independent approval bound package `683d17bd70cc32dca2e495836bb6b16160a79f79` and Manifest 48,629 bytes / `E764A188AB11F49152B272F041CAC8FAC9477929C30475576D6349791E67373B`.
+- Exact two-path approval governance `677df53f014ab194e08042e4f605b5f879b9fa32` was committed and pushed as the package's direct child. The local/tracking/direct remote triplet, clean worktree, and seven absent future paths passed.
+- Post-governance static validation passed 106/106 checks across six tracked source byte/SHA/LF/ASCII/parser identities, three adapter invocations, three capture-host invocations, two verifier-mode invocations, and all registered success stdout identities.
+- The one authorized PRE capture-host process started. `WaitForExit()` returned and both raw `BaseStream.CopyToAsync()` tasks completed.
+- Before the outer observer could persist or print the child exit code and raw stdout/stderr identities, its helper command `H $errBytes` resolved to the built-in `Get-History` alias and raised `Cannot locate the history for Id 65`.
+- The child exit code, exact stdout bytes, and exact stderr bytes/class were therefore not preserved and cannot be reconstructed. No package or capture-host runtime result is claimed.
+- All three PRE evidence paths and all four POST/FINAL paths remained absent; the worktree stayed clean at `677df53f...`. PRE adapter/parent/loader/target/semantics counts are unconfirmed rather than inferred from absence.
+- No retry, fallback, evidence cleanup, semantics commit, POST, FINAL, TERMINAL, synthetic, real-validator, preflight, official, Gold, reservation, or Stage3B action occurred.
+- Current state: `AMENDMENT_5G_B_1_1_1_1_4_PRE_CAPTURE_OBSERVATION_UNRECOVERABLE_HARD_FAILURE_18`. The one-pass authorization is consumed; independent review and a new amendment/package-bound approval are required before any further frozen-source execution.

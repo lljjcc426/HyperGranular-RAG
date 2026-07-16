@@ -336,6 +336,11 @@
 320. Package、approval-governance、semantics、post-sync 与 final-attestation commit binding 必须使用本轮实际已创建并推送的 full SHA；禁止预填、推断、复用旧 SHA。每个 stage commit 必须是上一层的直接子提交，路径集合分别精确为 `2/3/3/1`，最终 Git 链必须为 package → approval → semantics → post → final。
 321. 任一 source/arguments/modeled-command/parser mismatch、实际 capture-host command-line mismatch、Process.Start failure、非零 exit、未登记 stdout/stderr、CreateNew collision、canonical-byte mismatch、commit parent/path mismatch、push failure、Git chain/remote/worktree/snapshot-stability failure，均立即消费对应授权并停止；禁止 retry、fallback、临时脚本、alternate adapter、source/runtime substitution、覆盖或清理 evidence、reset、rebase及 force-push。
 322. 本批准不授权 synthetic rebinding、real precommit validator、formal preflight、official input/token/capture、controller/verifier/Gold、reservation 或 Stage3B。完整链成功后的唯一状态为 `AMENDMENT_5G_B_1_1_1_1_4_STAGE_ANCHORED_CANONICAL_BYTE_CHAIN_AWAITING_RESULT_REVIEW`，下一步只能提交完整执行结果供独立审核，不得自动进入 Fresh Synthetic Rebinding。
+323. Amendment 5G-B.1.1.1.1.4 approval governance 已作为 package `683d17bd...` 的精确两路径直接子提交 `677df53f014ab194e08042e4f605b5f879b9fa32` 创建并推送；其后 local/origin/direct main 三方相等、worktree clean、七条 future path 不存在。六份 source 与八个 invocation 的 bytes/SHA/LF/ASCII/parser/arguments/modeled/stdout 静态门为 106/106。
+324. 唯一获批 PRE capture-host process 已启动，`WaitForExit()` 返回且 stdout/stderr `BaseStream.CopyToAsync()` 均完成；外层 observer 随后用辅助名 `H` 计算 raw hash 时被 PowerShell alias precedence 解析为 `Get-History`，在打印或持久化 child exit、raw stdout 与 raw stderr 前报错 `Cannot locate the history for Id 65`。
+325. 该 child exit code 与两条 raw stream 已不可恢复，禁止把它们推断为空、登记 class、成功或 package failure；capture host 的具体运行结果及 PRE adapter/parent/loader/target/semantics process counts均为 `UNCONFIRMED`。三个 PRE evidence 路径与四个 POST/FINAL 路径均未创建，工作树保持 clean。
+326. PRE 一次性授权已消费。未进行 retry、fallback、临时脚本、source/runtime substitution、evidence 清理、semantics commit、POST、FINAL 或 TERMINAL；synthetic、real validator、formal preflight、official、Gold、reservation 与 Stage3B 继续为 0。
+327. 当前状态为 `AMENDMENT_5G_B_1_1_1_1_4_PRE_CAPTURE_OBSERVATION_UNRECOVERABLE_HARD_FAILURE_18`。任何进一步冻结 source/command 执行必须等待 Hard Failure 18 独立审核、新 Amendment 与新的 package-bound approval；现有 `677df53f...` approval 不可复用。
 
 ## GitHub 与文档
 
