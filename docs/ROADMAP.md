@@ -1368,3 +1368,15 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Static package validation passes 34/34 source/invocation/stdout checks and 43/43 observer fixtures. Two zero-write/zero-process helper attempts stopped on compact PowerShell syntax/name-resolution issues before corrected split helpers passed.
 - Manifest: 37,645 bytes / `303A347368E4BFBF4CEBBB71DFE07E244328A60BC4DBE996A0444A5C56E45BF9`.
 - Current state: `AMENDMENT_5G_B_1_1_1_1_5_FROZEN_OUTER_OBSERVER_DURABLE_RAW_CAPTURE_PACKAGE_AWAITING_APPROVAL`; no execution is authorized.
+
+### Hard Failure 19: PRE Capture Host Reported Adapter Nonzero Exit
+
+- Independent approval was committed and pushed in exact two-path governance commit `950b56e83de8a87b7afe75eb3f021819e19516c8`, directly after package `f634a1ca766cc2885017f63f94ef9b87cab9a765`.
+- Before PRE, local/origin/direct GitHub main were equal, the worktree was clean, all eleven future paths were absent, and the approved post-governance gates passed `34/34 + 43/43` with zero process starts/writes.
+- The single PRE observer execution returned exit 1 with zero stdout and 492 stderr bytes after its child returned nonzero. It was not retried.
+- The observer first completed the registered PRE `HGRAGO15` raw record: 520 bytes / `4ABEB26000DDC77E8293DB1616682E6748E2290A9608959A2A040B1CD2780A70`.
+- The fixed header is complete and records child exit 1, zero stdout and 472 stderr bytes. Persisted stderr SHA-256 is `9E8393DD9738C73FCA928BD28E0031A6B8EABF4FABE9147FA0F101ED969D56EB` and reports `Adapter nonzero exit: 1`.
+- The deeper adapter/parent/loader/target cause and counts remain `UNCONFIRMED`. No package-source or transport defect is inferred from the generic nonzero boundary.
+- Ten other future paths remained absent. No PRE attestation, semantics success commit, POST, FINAL, PRE_ATTESTATION, TERMINAL or downstream experimental action occurred.
+- Two read-only diagnostic helpers failed without writes/external processes; final explicit decoding passed and the raw SHA remained unchanged.
+- Current state: `AMENDMENT_5G_B_1_1_1_1_5_PRE_CAPTURE_HOST_CHILD_NONZERO_STOPPED_HARD_FAILURE_19`. The approval is consumed; the raw is immutable failure evidence and independent review plus a new Amendment are required.

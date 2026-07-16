@@ -1367,3 +1367,19 @@ The dual-mode verifier validates PRE/POST raw records during PRE_ATTESTATION and
 Static validation covered seven source identities, twelve invocation envelopes, registered stdout identities and 43 observer fixtures. Results were 34/34 identity checks and `12/12 + 16/16 + 15/15 = 43/43` fixtures. No tracked source was dot-sourced or run, and no evidence or experiment artifact was created.
 
 Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_5_MANIFEST.json`, 37,645 bytes, SHA-256 `303A347368E4BFBF4CEBBB71DFE07E244328A60BC4DBE996A0444A5C56E45BF9`. Current status is `AMENDMENT_5G_B_1_1_1_1_5_FROZEN_OUTER_OBSERVER_DURABLE_RAW_CAPTURE_PACKAGE_AWAITING_APPROVAL`; approval governance and all execution remain unauthorized.
+
+## Hard Failure 19: PRE Capture Host Returned Adapter Exit 1
+
+Independent approval was recorded in exact two-path commit `950b56e83de8a87b7afe75eb3f021819e19516c8`, the direct child of package `f634a1ca766cc2885017f63f94ef9b87cab9a765`, and pushed before frozen-source execution. The local/tracking/direct GitHub triplet, clean worktree and eleven absent future paths passed. Post-governance static gates then passed 34/34 source/invocation/stdout identities and all 43/43 observer fixtures with zero static-stage process starts or writes.
+
+The PRE observer was executed exactly once with only the frozen package and approval bindings. It returned exit code 1, zero stdout bytes and 492 stderr bytes after reporting `Observed child nonzero exit: 1`. No observer or child was retried.
+
+Before applying that success gate, the observer created and flushed `results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_pre_capture_outer_observation.bin`. The file is 520 bytes with SHA-256 `4ABEB26000DDC77E8293DB1616682E6748E2290A9608959A2A040B1CD2780A70`. Its fixed header decodes to `HGRAGO15`, version 1, header length 48, PRE mode code 1, completion flags 15, child exit 1, reserved zero, stdout length zero and stderr length 472. Total length equals `48 + 0 + 472`, so the durable record is structurally complete.
+
+The persisted capture-host stderr has SHA-256 `9E8393DD9738C73FCA928BD28E0031A6B8EABF4FABE9147FA0F101ED969D56EB` and reports `Adapter nonzero exit: 1`. This establishes the capture-host/adapter nonzero boundary but not the adapter's deeper error, parent stdout/stderr, loader/target/semantics result or inner process counts. Those remain `UNCONFIRMED`; no package-source or transport defect is inferred.
+
+Two read-only post-failure helpers failed on a temporary `H`/`Get-History` alias collision and an ambiguous zero-byte `ComputeHash` overload. Both had zero writes and zero external child starts. The final explicit decoder succeeded, and repeated raw fingerprinting remained unchanged.
+
+Only the PRE raw path existed. The PRE adapter attestation and semantics narrative/machine paths, all POST paths, both FINAL paths and the TERMINAL path remained absent. No four-path semantics success commit, POST, FINAL, PRE_ATTESTATION, TERMINAL, synthetic, real validator, formal preflight, official, Gold, reservation or Stage3B action followed.
+
+Current status is `AMENDMENT_5G_B_1_1_1_1_5_PRE_CAPTURE_HOST_CHILD_NONZERO_STOPPED_HARD_FAILURE_19`. The raw record is failure evidence only and cannot be overwritten, deleted, retried, reused or represented as successful PRE evidence. Independent review and a new package-bound Amendment are required before further execution. See `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_19.md`.
