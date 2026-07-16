@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Hard Failure 17 审核已接受；Amendment 5G-B.1.1.1.1.4 冻结顶层编排适配器 package 等待审批 |
-| 获批执行协议 | 无；新 package 只供审批，不授权 PRE/POST/FINAL 或任何实验运行 |
-| 设计文件 | Amendment 5G-B.1.1.1.1.4 Approval Request、Manifest 与三份 tracked orchestrator |
-| 协议状态 | `AMENDMENT_5G_B_1_1_1_1_4_FROZEN_TOP_LEVEL_ORCHESTRATION_ADAPTER_PACKAGE_AWAITING_APPROVAL` |
+| 当前阶段 | Package Review 1 已退回原 1.1.4；class-bearing adapter、持久 attestation 与 terminal verifier 更正包等待审批 |
+| 获批执行协议 | 无；更正包只供审批，不授权 capture host、PRE/POST/FINAL、terminal verifier 或任何实验运行 |
+| 设计文件 | Corrected Amendment 5G-B.1.1.1.1.4 Request、Manifest、Package Review 1、三份 adapter、capture host 与 terminal verifier |
+| 协议状态 | `CORRECTED_AMENDMENT_5G_B_1_1_1_1_4_PACKAGE_AWAITING_APPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -32,6 +32,8 @@ Package Review 2 接受上述全部技术设计和 canonical parent-host stdout�
 Second-corrected package `ef87f037...` 的独立批准已通过精确两路径治理提交 `1afdd807...` 落盘并推送，local/origin/direct GitHub main、clean worktree、六条 future path 和三份历史 machine evidence 前置门均通过。获批 PRE 静态重建在 `Process.Start()` 前触发 `PRE_PARENT_MODELED_COMMAND_TEXT_MISMATCH`：执行器把 Manifest 的 schema descriptor 当成 literal command line，并把 runtime label 当成 executable path。正确使用 `process_start_info_contract.file_name` 复算仍得到冻结的 21,176 characters / `E8247D1A...808F0`，所以当前证据不支持 package transport defect；实际 parent/loader/target process 均为 0，未创建 evidence，未重试，形成 Hard Failure 17。
 
 Hard Failure 17 Review 1 接受上述审计、有效 approval governance、PRE source/parser/arguments 门与零进程/零 evidence 边界，并将根因冻结为 `ORCHESTRATOR_SCHEMA_DESCRIPTOR_MISINTERPRETATION`。Amendment 5G-B.1.1.1.1.4 不改变原 9 source、6 bounded envelope、3 payload、parent/loader/evidence/final-verifier 设计或 62 fixtures；它只新增三份 tracked ASCII PowerShell 顶层适配器，分别冻结 PRE/POST/FINAL 的 descriptor、唯一 executable-path 来源、modeled-command 公式、ProcessStartInfo 和 parent stdout/stderr 门。三份 source parser 均为 0，新增 schema 语义负向 fixtures 为 30/30，组包执行与 evidence/official 计数均为 0。
+
+Package Review 1 接受上述静态设计、三个 `-File` envelope、30/30 fixtures 与零执行边界，但拒绝 package `7d2dcd5f...`：实际 adapter-to-parent stderr class 被压缩为布尔值，adapter 执行未形成持久证据，原 final verifier 不识别 adapter，且 FINAL 返回后的 attestation 顺序未闭合。更正包将三个 adapter 改为共六个 class-bearing stdout variants，新增 tracked capture-attestation host、三条 versioned adapter evidence、精确三路径 final-attestation commit 和 dual-mode read-only verifier；其 `PRE_ATTESTATION` 模式同时修复继承 verifier 硬编码旧 1.1.3 Approval Decision 路径的不兼容，`TERMINAL` 模式在最终提交后核验 adapter 证据。组包仍未执行任何冻结脚本。
 
 Amendment 5G-B.1.1.1.1.1 approval governance 已作为 package `d6d8a76...` 的精确两路径直接子提交 `ee84988...` 推送。唯一 launcher 静态重建全部通过，唯一 launcher 及唯一原 pre verifier 均已运行；launcher exit 0、stdout 为冻结的 exact 122 bytes，但 launcher stderr 为 382 bytes，违反必须为空的硬门并形成 Hard Failure 15。三条 machine 文件已在失败前以 `CreateNew` 保存并原样保留，获批 narrative 未创建，四条 semantics 路径仍不存在。原授权已消费，没有重试或下游执行；完整审计见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_15.md`。
 
@@ -215,8 +217,8 @@ Hard Failure 10 独立审核接受审计及两轮结果，但只将旧三项工�
 
 ## 下一步
 
-1. 独立审批 second-corrected `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_APPROVAL_REQUEST.md` 与 323,607-byte Manifest，并显式绑定未来 second-corrected package commit。
-2. 新批准前不得重建或运行 parent host/loader/target/final verifier，不得创建 approval governance 或任何 semantics/post-sync evidence。
+1. 独立审批 corrected `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4_APPROVAL_REQUEST.md` 与其 Manifest，并显式绑定未来 corrected-package commit。
+2. 新批准推送前只允许核验 package/Manifest/worktree/path/remote 身份；不得 join、parse、重建或运行 capture host、adapter、parent、loader、target 或 verifier，也不得创建任何 approval/evidence。
 3. Synthetic、real validator、formal preflight、official input/token/capture、controller、Gold、U1-D 指标、reservation 与 Stage3B 继续锁定。
 
 ## GitHub

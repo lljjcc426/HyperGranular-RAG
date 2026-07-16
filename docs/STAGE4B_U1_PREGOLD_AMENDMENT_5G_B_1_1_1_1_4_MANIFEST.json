@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "request_id": "STAGE4B_U1_D_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4",
-  "package_revision": "FROZEN_TOP_LEVEL_PARENT_HOST_ORCHESTRATION_ADAPTERS_AFTER_HARD_FAILURE_17",
+  "package_revision": "CORRECTED_AFTER_PACKAGE_REVIEW_1",
   "assembled_date": "2026-07-16",
   "package_status": "AWAITING_PACKAGE_BOUND_APPROVAL",
-  "requested_mode": "frozen_tracked_top_level_parent_host_orchestration_adapters_and_manifest_schema_semantics_binding_only",
+  "requested_mode": "class_bearing_tracked_adapters_durable_execution_attestations_and_terminal_commit_verification_only",
   "package_authorizes_execution": false,
   "approval_must_bind_package_commit": true,
   "binding_commits": {
@@ -14,6 +14,13 @@
     "rejected_corrected_package": "b9081b3c28c0c03e8bece797f5e05a74401f397b",
     "rejected_original_bounded_stdin_package": "97a8b169835c06330a6781ab63c59a482889c6bb",
     "hard_failure_16_checkpoint_ancestor": "f28fc526faf74f80fdefb96ca189769dbcf1e5e4"
+  },
+  "rejected_package": {
+    "commit": "7d2dcd5fe525c86ab2b91e7ed2dfb17b1e6228ac",
+    "direct_parent_hard_failure_17_checkpoint": "6c741c251dce55236b06dc5c06fd834b7649f8b2",
+    "manifest_bytes": 24293,
+    "manifest_sha256": "921B7BB63B0CF8E7B51CC6ED51A74C98A915E6C8E5FB2211E8235D7A378DE928",
+    "disposition": "REJECT_AMENDMENT_5G_B_1_1_1_1_4_PACKAGE_AS_CURRENTLY_WRITTEN"
   },
   "base_manifest": {
     "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_MANIFEST.json",
@@ -36,6 +43,29 @@
     "pre_governance_inspection_disposition": "DISCLOSED_PRE_GOVERNANCE_READ_ONLY_INSPECTION_NOT_AN_APPROVED_PRE_RECONSTRUCTION_ZERO_PROCESS_ZERO_WRITE",
     "recovery": "RETURN_FOR_AMENDMENT_5G_B_1_1_1_1_4_FROZEN_TOP_LEVEL_PARENT_HOST_ORCHESTRATION_ADAPTER_AND_SCHEMA_SEMANTICS_BINDING_ONLY"
   },
+  "package_review_1": {
+    "decision": "REJECT_AMENDMENT_5G_B_1_1_1_1_4_PACKAGE_AS_CURRENTLY_WRITTEN",
+    "accepted": [
+      "HARD_FAILURE_17_REVIEW_1",
+      "PACKAGE_COMMIT_AND_EXACT_TEN_PATH_SCOPE",
+      "THREE_TRACKED_ASCII_ADAPTER_STATIC_DESIGNS",
+      "SCHEMA_DESCRIPTOR_AND_EXECUTABLE_PATH_BINDING",
+      "UNIQUE_MODELED_COMMAND_FORMULA",
+      "THREE_ADAPTER_INVOCATION_ENVELOPES",
+      "30_OF_30_SCHEMA_SEMANTICS_FIXTURE_REPORT",
+      "ZERO_PACKAGE_ASSEMBLY_EXECUTION_BOUNDARY"
+    ],
+    "blocking_causes": [
+      "ADAPTER_TO_PARENT_ACTUAL_STDERR_CLASS_NOT_EXPOSED",
+      "MANDATORY_ADAPTER_EXECUTION_NOT_DURABLY_ATTESTED",
+      "FINAL_VERIFIER_DOES_NOT_BIND_OR_VALIDATE_5G_B_1_1_1_1_4_ADAPTERS",
+      "UNCHANGED_EVIDENCE_SCHEMA_CANNOT_PROVE_ADAPTER_MEDIATED_EXECUTION",
+      "FINAL_ADAPTER_ATTESTATION_ORDER_NOT_CLOSED"
+    ],
+    "recovery": "RETURN_FOR_CORRECTED_AMENDMENT_5G_B_1_1_1_1_4_PACKAGE",
+    "approval_governance_approved": false,
+    "execution_approved": false
+  },
   "package_changed_paths_exact": [
     "AGENTS.md",
     "README.md",
@@ -43,18 +73,20 @@
     "docs/ROADMAP.md",
     "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4_APPROVAL_REQUEST.md",
     "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4_MANIFEST.json",
-    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_17_REVIEW_1.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4_PACKAGE_REVIEW_1.md",
+    "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_adapter_capture_attestation_host.ps1",
     "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_final_parent_start_orchestrator.ps1",
     "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_post_parent_start_orchestrator.ps1",
-    "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_pre_parent_start_orchestrator.ps1"
+    "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_pre_parent_start_orchestrator.ps1",
+    "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_terminal_adapter_attestation_commit_verifier.ps1"
   ],
   "inherited_technical_content": {
-    "source_design_changes": 0,
+    "source_design_changes": 5,
     "parent_host_changes": 0,
     "loader_changes": 0,
     "payload_changes": 0,
-    "evidence_schema_changes": 0,
-    "final_verifier_changes": 0,
+    "evidence_schema_changes": 1,
+    "final_verifier_changes": 1,
     "inherited_static_fixture_changes": 0,
     "source_identities": [
       {
@@ -272,10 +304,10 @@
     "trust_root_role": "FROZEN_TOP_LEVEL_LIMITED_GOVERNANCE_TRUST_ROOT",
     "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_pre_parent_start_orchestrator.ps1",
     "source_encoding": "US_ASCII_SUBSET_OF_UTF8_NO_BOM",
-    "source_content_lines": 135,
+    "source_content_lines": 136,
     "trailing_lf": true,
-    "source_bytes": 8118,
-    "source_sha256": "4EDC7E67056E12E7FA59A8BE436A12C565BBF3B1011C33C5431F06CFA1AC0C7E",
+    "source_bytes": 8222,
+    "source_sha256": "6D9466FD227E8DA1ADB6A24CFC170BF9880C87718CB6244CC5847774BEBB8A02",
     "static_parse_errors": 0,
     "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_pre_parent_start_orchestrator.ps1\"",
     "complete_arguments_characters": 154,
@@ -290,19 +322,32 @@
     "target_parent_source_sha256": "8F11033CD306D118C4211109EACF8F0C1E9A90BCAEA8E19F99C933DC1C0858A7",
     "target_parent_arguments_sha256": "00B201AA16F7A1CF106ADACADBE35DDF44FF67E08FE4A2A8434A8912F4106E67",
     "target_parent_modeled_sha256": "E8247D1AF7D1CC5F6FEBF32F9102D49A37076FA19602906D7C9121E45EC808F0",
-    "fixed_success_stdout": "{\"status\":\"PRE_PARENT_START_ORCHESTRATOR_VERIFIED\",\"parent_processes\":1,\"parent_stdout_registered\":true,\"parent_stderr_registered\":true,\"schema_semantics_bound\":true}",
-    "fixed_success_stdout_bytes": 166,
-    "fixed_success_stdout_sha256": "E8C388E960E3E4CF83D1DDBFDDA26B3BB52B63A01A0AD4B33C190CD4F89257BB",
+    "success_stdout_variants": [
+      {
+        "id": "PRE_PARENT_STDERR_EMPTY",
+        "parent_stderr_class": "EMPTY",
+        "stdout": "{\"status\":\"PRE_PARENT_START_ORCHESTRATOR_VERIFIED\",\"parent_processes\":1,\"parent_stdout_registered\":true,\"parent_stderr_class\":\"EMPTY\",\"schema_semantics_bound\":true}",
+        "stdout_bytes": 164,
+        "stdout_sha256": "7283CBBF86826C94E7E6DD19E1DF1270FF7C4F8E78E66B0F2C23D27645984371"
+      },
+      {
+        "id": "PRE_PARENT_STDERR_EXACT_FROZEN_382_BYTE_STARTUP_CLIXML",
+        "parent_stderr_class": "EXACT_FROZEN_382_BYTE_STARTUP_CLIXML",
+        "stdout": "{\"status\":\"PRE_PARENT_START_ORCHESTRATOR_VERIFIED\",\"parent_processes\":1,\"parent_stdout_registered\":true,\"parent_stderr_class\":\"EXACT_FROZEN_382_BYTE_STARTUP_CLIXML\",\"schema_semantics_bound\":true}",
+        "stdout_bytes": 195,
+        "stdout_sha256": "820EDC7F9527298055FE2D9402096E764F0BF7F3537311919A3BF3E8C537168B"
+      }
+    ],
     "package_assembly_executions": 0
   },
   "post_parent_start_orchestrator": {
     "trust_root_role": "FROZEN_TOP_LEVEL_LIMITED_GOVERNANCE_TRUST_ROOT",
     "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_post_parent_start_orchestrator.ps1",
     "source_encoding": "US_ASCII_SUBSET_OF_UTF8_NO_BOM",
-    "source_content_lines": 137,
+    "source_content_lines": 138,
     "trailing_lf": true,
-    "source_bytes": 8405,
-    "source_sha256": "D32FC6E8DCC9B0393166EFCB11DC1D12BF766A5B0B6EAF06EE868F836F904569",
+    "source_bytes": 8509,
+    "source_sha256": "89828EB855B64DACF98A76CFB2CAB956FEA29D2B6B80B187AE3BDA3A33EF9CC5",
     "static_parse_errors": 0,
     "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_post_parent_start_orchestrator.ps1\"",
     "complete_arguments_characters": 155,
@@ -318,19 +363,32 @@
     "target_parent_source_sha256": "DC0234BE67CFCC4DDF18A135D65DC96222973F2B8736CBA487161869587C12DB",
     "target_parent_arguments_sha256": "C069968B0E33D043EBEBCB7046144A07BD72D3E05770C59D0F798C3EBF95F2DC",
     "target_parent_modeled_sha256": "8791A392570A25CE2E46300EC5D05EA58A7AC4D2A27DCA38BAA106B6F87E7DA8",
-    "fixed_success_stdout": "{\"status\":\"POST_PARENT_START_ORCHESTRATOR_VERIFIED\",\"parent_processes\":1,\"parent_stdout_registered\":true,\"parent_stderr_registered\":true,\"schema_semantics_bound\":true}",
-    "fixed_success_stdout_bytes": 167,
-    "fixed_success_stdout_sha256": "5EEE5BFD19DBEF9DF050FC2A1E3BF3155BEF6389BF2B2F3758C70DC5A269E0B0",
+    "success_stdout_variants": [
+      {
+        "id": "POST_PARENT_STDERR_EMPTY",
+        "parent_stderr_class": "EMPTY",
+        "stdout": "{\"status\":\"POST_PARENT_START_ORCHESTRATOR_VERIFIED\",\"parent_processes\":1,\"parent_stdout_registered\":true,\"parent_stderr_class\":\"EMPTY\",\"schema_semantics_bound\":true}",
+        "stdout_bytes": 165,
+        "stdout_sha256": "BCAA66EBD85F334FE144B5AC5E22F360CFEF0AA6F88A63E4279EEDE20D565E78"
+      },
+      {
+        "id": "POST_PARENT_STDERR_EXACT_FROZEN_382_BYTE_STARTUP_CLIXML",
+        "parent_stderr_class": "EXACT_FROZEN_382_BYTE_STARTUP_CLIXML",
+        "stdout": "{\"status\":\"POST_PARENT_START_ORCHESTRATOR_VERIFIED\",\"parent_processes\":1,\"parent_stdout_registered\":true,\"parent_stderr_class\":\"EXACT_FROZEN_382_BYTE_STARTUP_CLIXML\",\"schema_semantics_bound\":true}",
+        "stdout_bytes": 196,
+        "stdout_sha256": "364D3838EF30B7744220DB5ABEE6C8E539CE61A37042834A2399A22F679F73C2"
+      }
+    ],
     "package_assembly_executions": 0
   },
   "final_parent_start_orchestrator": {
     "trust_root_role": "FROZEN_TOP_LEVEL_LIMITED_GOVERNANCE_TRUST_ROOT",
     "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_final_parent_start_orchestrator.ps1",
     "source_encoding": "US_ASCII_SUBSET_OF_UTF8_NO_BOM",
-    "source_content_lines": 137,
+    "source_content_lines": 125,
     "trailing_lf": true,
-    "source_bytes": 8421,
-    "source_sha256": "203DCA76C39873E833EBD0753EFDCB755C2B0F6BD44778E7F9632E77988734EC",
+    "source_bytes": 8247,
+    "source_sha256": "364473BA69831ABA30780414390D13446AC618F73C21FF0C8DB87552C2F1AC8E",
     "static_parse_errors": 0,
     "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_final_parent_start_orchestrator.ps1\"",
     "complete_arguments_characters": 156,
@@ -340,15 +398,181 @@
     "expected_environment_bindings": [
       "HGRAG_EXPECTED_PACKAGE_COMMIT",
       "HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT",
-      "HGRAG_EXPECTED_SEMANTICS_EVIDENCE_COMMIT"
+      "HGRAG_EXPECTED_SEMANTICS_EVIDENCE_COMMIT",
+      "HGRAG_EXPECTED_POST_SYNC_AUDIT_COMMIT"
     ],
-    "target_parent": "revised_final_verifier_host",
-    "target_parent_source_sha256": "48E4907AC8E02E3506FAE183534B356E1E647B1F62FC44610A421CF7C366F185",
-    "target_parent_arguments_sha256": "0F124C3E07DF9CE51247F99A1B9245AB9AF1BA64C274245C30E4B2177CF8EC8C",
-    "target_parent_modeled_sha256": "D621A0C6935D21D27E03784B252020814307D95BE9F9B85A432B2F06C4FA88AA",
-    "fixed_success_stdout": "{\"status\":\"FINAL_PARENT_START_ORCHESTRATOR_VERIFIED\",\"parent_processes\":1,\"parent_stdout_registered\":true,\"parent_stderr_registered\":true,\"schema_semantics_bound\":true}",
-    "fixed_success_stdout_bytes": 168,
-    "fixed_success_stdout_sha256": "24AA47532AAC8BD9477A186E7FC6854858857DED082C0D8014956B8F9F2C19F0",
+    "target_parent": "dual_mode_final_verifier_pre_attestation_mode",
+    "target_parent_source_sha256": "75A62A892D5059B6E540275860F72D4E80BDD4E9489378245F50A38FC70A222D",
+    "target_parent_arguments_sha256": "A52FEF2C5FEB9B5FC8AEBB9E500FC4D2471D7D1B75C914A8F9375523A4B83DA8",
+    "target_parent_modeled_sha256": "791D41E767A42DA66792689C919D9B63FC04E2E463B88F3F6EFD84B1DC5F0B70",
+    "success_stdout_variants": [
+      {
+        "id": "FINAL_PARENT_STDERR_EMPTY",
+        "parent_stderr_class": "EMPTY",
+        "stdout": "{\"status\":\"FINAL_PARENT_START_ORCHESTRATOR_VERIFIED\",\"parent_processes\":1,\"parent_stdout_registered\":true,\"parent_stderr_class\":\"EMPTY\",\"schema_semantics_bound\":true}",
+        "stdout_bytes": 166,
+        "stdout_sha256": "EB17E3E3766359A64B558DAB8B9255E71A8E4060C68872AFEBE2D74E06D47101"
+      },
+      {
+        "id": "FINAL_PARENT_STDERR_EXACT_FROZEN_382_BYTE_STARTUP_CLIXML",
+        "parent_stderr_class": "EXACT_FROZEN_382_BYTE_STARTUP_CLIXML",
+        "stdout": "{\"status\":\"FINAL_PARENT_START_ORCHESTRATOR_VERIFIED\",\"parent_processes\":1,\"parent_stdout_registered\":true,\"parent_stderr_class\":\"EXACT_FROZEN_382_BYTE_STARTUP_CLIXML\",\"schema_semantics_bound\":true}",
+        "stdout_bytes": 197,
+        "stdout_sha256": "BBF6A971E601F4DC757F916F35B12998B7FF6B404B3F45168E043030C6843CFE"
+      }
+    ],
+    "package_assembly_executions": 0
+  },
+  "adapter_capture_attestation_host": {
+    "trust_root_role": "FROZEN_ADAPTER_EXECUTION_AND_RAW_STREAM_CAPTURE_HOST",
+    "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_adapter_capture_attestation_host.ps1",
+    "source_encoding": "US_ASCII_SUBSET_OF_UTF8_NO_BOM",
+    "source_content_lines": 216,
+    "trailing_lf": true,
+    "source_bytes": 14152,
+    "source_sha256": "589134A5993BEBBCCBC6B50F5B331240103641AE8C7AC9687EA51BAB4D45D0CA",
+    "static_parse_errors": 0,
+    "invocation_variants": [
+      {
+        "stage": "PRE",
+        "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_adapter_capture_attestation_host.ps1\" -Stage PRE",
+        "complete_arguments_characters": 168,
+        "complete_arguments_ascii_sha256": "7E0C1B58AABB4DFAB04CD1E44E5382D8596440E90C5965FD94C74210589428EE",
+        "modeled_command_characters_including_terminal_null": 229,
+        "modeled_command_ascii_sha256_including_terminal_null": "5B596C77D5CBC4BD74D817C8CDCF79E01C09DC6BA1B79F41EA36C434F8EAD684",
+        "fixed_success_stdout": "{\"status\":\"PRE_ADAPTER_ATTESTATION_PENDING_CREATED\",\"adapter_processes\":1,\"pending_attestations_created\":1,\"repository_attestations_created\":0}",
+        "fixed_success_stdout_bytes": 143,
+        "fixed_success_stdout_sha256": "E1BAE9772B4B7C8BA06AE1E0E35C40F9CC357DAEB023ADFB06E03F033CDF4E97"
+      },
+      {
+        "stage": "POST",
+        "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_adapter_capture_attestation_host.ps1\" -Stage POST",
+        "complete_arguments_characters": 169,
+        "complete_arguments_ascii_sha256": "9BB4F5A4901C1F272336DC0658FCC76B8144682B85372730C28E8BF71C9A7004",
+        "modeled_command_characters_including_terminal_null": 230,
+        "modeled_command_ascii_sha256_including_terminal_null": "A74364D9D5D24128B1FDB93AA0433DE2A51D882AE224E6817BCB066D788507C0",
+        "fixed_success_stdout": "{\"status\":\"POST_ADAPTER_ATTESTATION_PENDING_CREATED\",\"adapter_processes\":1,\"pending_attestations_created\":1,\"repository_attestations_created\":0}",
+        "fixed_success_stdout_bytes": 144,
+        "fixed_success_stdout_sha256": "029C7A07E3355DBFA0B1D8BAB9B4D82B43DE8F4A1A3032FD2F495185A8F5FFC6"
+      },
+      {
+        "stage": "FINAL",
+        "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_adapter_capture_attestation_host.ps1\" -Stage FINAL",
+        "complete_arguments_characters": 170,
+        "complete_arguments_ascii_sha256": "4E3FCAEFF4E4696252B0786F2993587BD269717C76E61AE1C36E1AA32EFF85B5",
+        "modeled_command_characters_including_terminal_null": 231,
+        "modeled_command_ascii_sha256_including_terminal_null": "803A476D94C89406C86BE2AF56C22238F3222F0A33159FE1F4FADCBD7C8640C6",
+        "fixed_success_stdout": "{\"status\":\"FINAL_ADAPTER_ATTESTATIONS_PROMOTED\",\"adapter_processes\":1,\"pending_attestations_verified\":3,\"repository_attestations_created\":3}",
+        "fixed_success_stdout_bytes": 140,
+        "fixed_success_stdout_sha256": "080117F5EDFD8F96050D5F23D4FC7AC38F6849C032A7E8D20055D326FF7F6702"
+      }
+    ],
+    "allowed_outer_stderr_states": [
+      "EMPTY_EXACT_ZERO_BYTES",
+      "EXACT_FROZEN_382_BYTE_STARTUP_CLIXML"
+    ],
+    "package_assembly_executions": 0
+  },
+  "adapter_execution_attestation_contract": {
+    "schema_version": "1.0",
+    "creation_mode": "CREATE_NEW_ONLY",
+    "pending_location": "OS_TEMP_OUTSIDE_REPOSITORY",
+    "pending_root_directory_name": "HyperGranular-RAG_stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_corrected",
+    "pending_files_are_not_success_evidence": true,
+    "final_stage_validates_and_promotes_all_three": true,
+    "required_fields": [
+      "request_id",
+      "stage",
+      "package_commit",
+      "approval_governance_commit",
+      "semantics_evidence_commit",
+      "post_sync_audit_commit",
+      "capture_host_path",
+      "capture_host_source_bytes",
+      "capture_host_source_sha256",
+      "adapter_path",
+      "adapter_source_bytes",
+      "adapter_source_sha256",
+      "adapter_arguments_characters",
+      "adapter_arguments_sha256",
+      "adapter_modeled_characters_including_terminal_null",
+      "adapter_modeled_sha256_including_terminal_null",
+      "adapter_stdout_variant",
+      "adapter_stdout_bytes",
+      "adapter_stdout_sha256",
+      "adapter_stderr_bytes",
+      "adapter_stderr_sha256",
+      "adapter_stderr_class",
+      "adapter_to_parent_stderr_class",
+      "adapter_processes",
+      "parent_processes"
+    ],
+    "stages": [
+      {
+        "stage": "PRE",
+        "adapter_registry_key": "pre_parent_start_orchestrator",
+        "pending_file_name": "pre_adapter_execution_attestation.json",
+        "repository_path": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_pre_adapter_execution_attestation.json"
+      },
+      {
+        "stage": "POST",
+        "adapter_registry_key": "post_parent_start_orchestrator",
+        "pending_file_name": "post_adapter_execution_attestation.json",
+        "repository_path": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_post_adapter_execution_attestation.json"
+      },
+      {
+        "stage": "FINAL",
+        "adapter_registry_key": "final_parent_start_orchestrator",
+        "pending_file_name": "final_adapter_execution_attestation.json",
+        "repository_path": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_final_adapter_execution_attestation.json"
+      }
+    ],
+    "actual_runtime_classes_persisted": 6,
+    "direct_parent_bypass_is_success": false,
+    "package_assembly_evidence_creations": 0
+  },
+  "terminal_adapter_attestation_commit_verifier": {
+    "trust_root_role": "FROZEN_DUAL_MODE_PRE_ATTESTATION_AND_TERMINAL_COMMIT_VERIFIER",
+    "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_terminal_adapter_attestation_commit_verifier.ps1",
+    "source_encoding": "US_ASCII_SUBSET_OF_UTF8_NO_BOM",
+    "source_content_lines": 362,
+    "trailing_lf": true,
+    "source_bytes": 30827,
+    "source_sha256": "75A62A892D5059B6E540275860F72D4E80BDD4E9489378245F50A38FC70A222D",
+    "static_parse_errors": 0,
+    "pre_attestation_invocation": {
+      "mode": "PRE_ATTESTATION",
+      "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_terminal_adapter_attestation_commit_verifier.ps1\" -Mode PRE_ATTESTATION",
+      "complete_arguments_characters": 191,
+      "complete_arguments_ascii_sha256": "A52FEF2C5FEB9B5FC8AEBB9E500FC4D2471D7D1B75C914A8F9375523A4B83DA8",
+      "modeled_command_characters_including_terminal_null": 252,
+      "modeled_command_ascii_sha256_including_terminal_null": "791D41E767A42DA66792689C919D9B63FC04E2E463B88F3F6EFD84B1DC5F0B70",
+      "fixed_success_stdout": "{\"status\":\"FINAL_PRE_ATTESTATION_COMMIT_VERIFIED\",\"inherited_envelopes\":6,\"inherited_payloads\":3,\"evidence_artifacts\":7,\"git_processes\":12,\"four_layer_chain\":true,\"worktree_clean\":true,\"remote_triplet_equal\":true}",
+      "fixed_success_stdout_bytes": 213,
+      "fixed_success_stdout_sha256": "06D4289C833E04D4D427D990DCAC133F6F78EA19420BFE761CCC08CDC811582D",
+      "git_child_processes": 12
+    },
+    "terminal_invocation": {
+      "mode": "TERMINAL",
+      "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_terminal_adapter_attestation_commit_verifier.ps1\" -Mode TERMINAL",
+      "complete_arguments_characters": 184,
+      "complete_arguments_ascii_sha256": "4803299461BFE530339695C0BB4B2C728763EE05A5E366160D9B319221169130",
+      "modeled_command_characters_including_terminal_null": 245,
+      "modeled_command_ascii_sha256_including_terminal_null": "B4F55D2EAF7D7835552DA584C05301E56CD1F359D6CC181D2C0F2D4E6689564E",
+      "fixed_success_stdout": "{\"status\":\"FINAL_ADAPTER_ATTESTATION_COMMIT_VERIFIED\",\"adapter_attestations\":3,\"actual_stderr_classes\":6,\"mandatory_adapter_mediation_verified\":true,\"git_processes\":14,\"worktree_clean\":true,\"remote_triplet_equal\":true}",
+      "fixed_success_stdout_bytes": 218,
+      "fixed_success_stdout_sha256": "EA938BA60458DA3C6F7092AAACF97DA20E9FA76CC24712235E686B338A087B29",
+      "git_child_processes": 14
+    },
+    "validates_inherited_bounded_envelopes": 6,
+    "validates_inherited_raw_stdin_payloads": 3,
+    "validates_original_evidence_artifacts": 7,
+    "validates_tracked_adapters": 3,
+    "validates_adapter_invocation_envelopes": 3,
+    "validates_adapter_execution_attestations": 3,
+    "validates_actual_stderr_classes": 6,
+    "validates_pre_attestation_four_layer_commit_chain": true,
+    "validates_terminal_five_layer_commit_chain": true,
     "package_assembly_executions": 0
   },
   "schema_semantics_negative_fixtures": {
@@ -451,7 +675,9 @@
   "future_environment_bindings": [
     "HGRAG_EXPECTED_PACKAGE_COMMIT",
     "HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT",
-    "HGRAG_EXPECTED_SEMANTICS_EVIDENCE_COMMIT"
+    "HGRAG_EXPECTED_SEMANTICS_EVIDENCE_COMMIT",
+    "HGRAG_EXPECTED_POST_SYNC_AUDIT_COMMIT",
+    "HGRAG_EXPECTED_FINAL_ADAPTER_ATTESTATION_COMMIT"
   ],
   "semantics_evidence_paths": {
     "target_machine": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_validator_semantics.json",
@@ -463,8 +689,36 @@
     "target_machine": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_post_sync_transport_attestation.json",
     "target_narrative": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_POST_SYNC_TRANSPORT_AUDIT.md"
   },
+  "semantics_evidence_commit": {
+    "exact_changed_paths": [
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_VALIDATOR_SEMANTICS_AUDIT.md",
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_validator_semantics.json"
+    ],
+    "direct_parent": "FUTURE_APPROVAL_GOVERNANCE_COMMIT",
+    "push_required_before_post_capture_host": true
+  },
+  "post_sync_audit_commit": {
+    "exact_changed_paths": [
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_POST_SYNC_TRANSPORT_AUDIT.md",
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_post_sync_transport_attestation.json"
+    ],
+    "direct_parent": "SEMANTICS_EVIDENCE_COMMIT",
+    "push_required_before_final_capture_host": true
+  },
+  "final_adapter_attestation_commit": {
+    "exact_changed_paths": [
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_final_adapter_execution_attestation.json",
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_post_adapter_execution_attestation.json",
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_pre_adapter_execution_attestation.json"
+    ],
+    "direct_parent": "POST_SYNC_AUDIT_COMMIT",
+    "push_required_before_terminal_verifier": true,
+    "terminal_verifier_is_read_only": true
+  },
   "future_execution_counts": {
     "approval_governance_commits": 1,
+    "pre_capture_attestation_host_processes": 1,
+    "pre_adapter_processes": 1,
     "pre_top_level_orchestrator_processes": 1,
     "pre_parent_processes": 1,
     "pre_loader_processes": 1,
@@ -480,6 +734,8 @@
     "semantics_machine_creations": 1,
     "semantics_narrative_creations": 1,
     "semantics_evidence_commits": 1,
+    "post_capture_attestation_host_processes": 1,
+    "post_adapter_processes": 1,
     "post_top_level_orchestrator_processes": 1,
     "post_parent_processes": 1,
     "post_loader_processes": 1,
@@ -490,12 +746,22 @@
     "post_machine_creations": 1,
     "post_narrative_creations": 1,
     "post_audit_commits": 1,
+    "final_capture_attestation_host_processes": 1,
+    "final_adapter_processes": 1,
     "final_top_level_orchestrator_processes": 1,
     "final_parent_processes": 1,
-    "final_loader_processes": 1,
-    "final_verifier_scriptblock_invocations": 1,
-    "final_verifier_git_children": 11,
-    "files_or_commits_after_final_success": 0,
+    "final_loader_processes": 0,
+    "final_verifier_scriptblock_invocations": 0,
+    "final_pre_attestation_verifier_processes": 1,
+    "final_pre_attestation_verifier_git_children": 12,
+    "pending_adapter_attestation_creations": 3,
+    "repository_adapter_attestation_creations": 3,
+    "final_adapter_attestation_commits": 1,
+    "terminal_adapter_attestation_verifier_processes": 1,
+    "terminal_adapter_attestation_verifier_git_children": 14,
+    "files_after_original_final_verifier_success": 3,
+    "commits_after_original_final_verifier_success": 1,
+    "files_or_commits_after_terminal_success": 0,
     "preapproval_source_joins_or_parses": 0,
     "automatic_retries": 0,
     "synthetic_rebinding": 0,
@@ -508,23 +774,31 @@
   },
   "required_future_order": [
     "exact two-path package-bound approval-governance commit and push",
-    "only after approval push verify and load frozen PRE tracked-file orchestrator",
-    "single PRE top-level orchestrator process",
+    "only after approval push verify and load frozen PRE capture-attestation host and tracked-file adapter",
+    "single PRE capture-attestation host invokes exactly one PRE tracked adapter",
     "single PRE parent loader target and semantics sequence",
+    "PRE capture-attestation host creates exactly one pending PRE adapter attestation outside the repository",
     "exact two-path semantics evidence commit and push",
-    "single POST top-level orchestrator process",
+    "single POST capture-attestation host invokes exactly one POST tracked adapter",
     "single POST parent loader target and post-sync sequence",
+    "POST capture-attestation host creates exactly one pending POST adapter attestation outside the repository",
     "exact two-path post-sync audit commit and push",
-    "single FINAL top-level orchestrator process",
-    "single FINAL parent loader verifier sequence",
+    "single FINAL capture-attestation host invokes exactly one FINAL tracked adapter",
+    "single FINAL adapter starts the tracked dual-mode verifier in PRE_ATTESTATION mode and validates its exact stdout and actual stderr class",
+    "PRE_ATTESTATION mode validates six inherited envelopes three payloads seven evidence artifacts and the corrected four-layer Git chain",
+    "FINAL capture-attestation host creates pending FINAL then validates and promotes exactly three versioned repository attestations",
+    "exact three-path final adapter-attestation commit and push",
+    "single read-only dual-mode verifier in TERMINAL mode validates five-layer Git chain three adapters three invocation envelopes three attestations six actual stderr classes and inherited evidence",
     "exact terminal success then immediate stop with zero further files or commits"
   ],
   "package_assembly_audit": {
-    "tracked_orchestrator_sources": 3,
-    "tracked_orchestrator_source_identity_passed": 3,
+    "tracked_orchestrator_sources": 5,
+    "tracked_orchestrator_source_identity_passed": 5,
     "tracked_orchestrator_static_parser_errors": 0,
     "schema_semantics_fixtures_passed": 30,
     "schema_semantics_fixtures_total": 30,
+    "corrected_package_static_fixtures_passed": 32,
+    "corrected_package_static_fixtures_total": 32,
     "orchestrator_processes": 0,
     "parent_processes": 0,
     "loader_processes": 0,
@@ -534,6 +808,10 @@
     "evidence_creations": 0,
     "synthetic_runs": 0,
     "official_operations": 0,
+    "working_tree_source_line_endings_verified_lf": true,
+    "repository_core_autocrlf": true,
+    "repository_gitattributes_present": false,
+    "future_tracked_source_identity_gate_is_fail_closed": true,
     "read_only_helper_failures": [
       {
         "label": "CONTENT_LINE_COUNT_HELPER_POWERSHELL_IF_SYNTAX_ERROR",
@@ -548,14 +826,57 @@
         "orchestrator_processes": 0,
         "parent_processes": 0,
         "evidence_creations": 0
+      },
+      {
+        "label": "CORRECTED_PACKAGE_RG_ACCESS_DENIED",
+        "project_writes": 0,
+        "orchestrator_processes": 0,
+        "parent_processes": 0,
+        "evidence_creations": 0
+      },
+      {
+        "label": "CORRECTED_PACKAGE_NONEXISTENT_GUESSED_HARD_FAILURE_17_REVIEW_PATH",
+        "project_writes": 0,
+        "orchestrator_processes": 0,
+        "parent_processes": 0,
+        "evidence_creations": 0
+      },
+      {
+        "label": "CORRECTED_PACKAGE_GIT_ATTRIBUTE_HELPER_MISSING_IF_PARENTHESIS",
+        "project_writes": 0,
+        "orchestrator_processes": 0,
+        "parent_processes": 0,
+        "evidence_creations": 0
+      },
+      {
+        "label": "CORRECTED_PACKAGE_STATIC_FIXTURE_HASH_FUNCTION_H_RESOLVED_AS_GET_HISTORY_ALIAS",
+        "project_writes": 0,
+        "orchestrator_processes": 0,
+        "parent_processes": 0,
+        "evidence_creations": 0
+      },
+      {
+        "label": "CORRECTED_PACKAGE_STATIC_FIXTURE_THROW_VARIABLE_MISSING_SEPARATOR",
+        "project_writes": 0,
+        "orchestrator_processes": 0,
+        "parent_processes": 0,
+        "evidence_creations": 0
+      },
+      {
+        "label": "CORRECTED_PACKAGE_STATIC_FIXTURE_STRICT_MODE_EMPTY_COLLECTION_COUNT_WITHOUT_ARRAY_WRAPPER",
+        "project_writes": 0,
+        "orchestrator_processes": 0,
+        "parent_processes": 0,
+        "evidence_creations": 0
       }
     ]
   },
   "explicitly_not_authorized": [
     "approval governance before future package-bound approval",
     "execution of any PRE POST or FINAL top-level orchestrator",
+    "execution of any adapter capture-attestation host or terminal adapter-attestation verifier",
     "execution of any parent host loader target ScriptBlock inner verifier bootstrap harness wrapper or Python",
-    "semantics or post-sync evidence creation or commit",
+    "semantics post-sync or adapter-attestation evidence creation or commit",
     "synthetic rebinding",
     "real precommit validator",
     "formal preflight",

@@ -1316,3 +1316,18 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - New schema-semantics fixtures pass 30/30 across PRE/POST/FINAL. Package assembly ran no orchestrator, parent, loader, target, Git child, Python, evidence, synthetic, or official operation.
 - Before future approval-governance push, frozen source-line join/parser/reconstruction is prohibited; only commit/Manifest/worktree/path/remote identity checks are allowed.
 - Manifest is 24,293 bytes / `921B7BB63B0CF8E7B51CC6ED51A74C98A915E6C8E5FB2211E8235D7A378DE928`. Current state: `AMENDMENT_5G_B_1_1_1_1_4_FROZEN_TOP_LEVEL_ORCHESTRATION_ADAPTER_PACKAGE_AWAITING_APPROVAL`; execution remains unauthorized.
+
+### Amendment 5G-B.1.1.1.1.4 Package Review 1 And Correction
+
+- Package Review 1 binds package `7d2dcd5fe525c86ab2b91e7ed2dfb17b1e6228ac`, direct parent `6c741c251dce55236b06dc5c06fd834b7649f8b2`, and Manifest 24,293 bytes / `921B7BB6...DE928`.
+- It accepts the exact ten-path scope, all three tracked ASCII adapter designs, schema/executable binding, unique modeled-command formula, all three `-File` invocation envelopes, 30/30 schema fixtures, and the zero-execution assembly boundary.
+- It rejects the package because actual parent stderr class was not emitted, adapter execution was not durable evidence, the inherited final verifier did not validate adapters, the old evidence schema could not prove mediation, and FINAL attestation order was not closed.
+- Corrected PRE/POST/FINAL adapters are 136/138/125 lines, 8,222/8,509/8,247 bytes, with SHA-256 `6D9466FD...B8A02`, `89828EB8...F9CC5`, and `364473BA...1AC8E`; each freezes exact `EMPTY` and `EXACT_FROZEN_382_BYTE_STARTUP_CLIXML` stdout variants.
+- A new tracked 216-line / 14,152-byte capture-attestation host (`589134A5...D0CA`) validates and invokes exactly one stage adapter, captures raw streams, and uses `CreateNew` pending records outside the repository. FINAL validates and promotes all three records to versioned repository paths.
+- The three adapter attestations must be committed and pushed in an exact three-path commit after the exact two-path post audit.
+- Compatibility inspection found that the inherited final verifier hard-coded the 1.1.3 Approval Decision path. The FINAL adapter now starts a tracked dual-mode verifier in `PRE_ATTESTATION` mode, which validates the inherited six envelopes, three payloads, seven evidence artifacts and corrected four-layer chain with 12 Git children.
+- The same 362-line / 30,827-byte dual-mode verifier (`75A62A89...A222D`) later runs in `TERMINAL` mode and validates three adapters, three invocation envelopes, three execution attestations, six actual stderr classes, mandatory mediation, the five-layer Git chain, exact changed paths, artifact stability, clean worktree and local/origin/direct main with 14 Git children.
+- The original 9 sources, 6 bounded envelopes, 3 payloads, parent/loader/target sources, semantics/post evidence, inherited final-verifier source, and 62 fixtures remain unchanged. Schema fixtures remain 30/30; corrected-package static fixtures are 32/32.
+- Package assembly ran zero capture host, adapter, verifier mode, parent, loader, target, Git child from frozen source, Python, evidence, synthetic, or official operations. Six corrected-package read-only helper failures produced zero writes and are disclosed. Current source bytes are LF; exact source gates fail closed if Git rewrites them under the repository's `core.autocrlf=true` configuration.
+- Corrected Manifest is 41,597 bytes / `E0C0E8B329720C8B99130598E820E244E80707BAA628C1063688E209D067121A`.
+- Current state: `CORRECTED_AMENDMENT_5G_B_1_1_1_1_4_PACKAGE_AWAITING_APPROVAL`; approval governance and all execution remain unauthorized.

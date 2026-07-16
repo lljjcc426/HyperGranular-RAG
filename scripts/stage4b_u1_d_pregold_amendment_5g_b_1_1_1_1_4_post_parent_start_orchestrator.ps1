@@ -41,11 +41,11 @@ function Test-RegisteredStdout([byte[]]$Actual, $Variants) {
     return $false
 }
 
-function Test-RegisteredPowerShellStderr([byte[]]$Actual, $Frozen) {
-    if ($Actual.Length -eq 0) { return $true }
-    if ($Actual.Length -ne [int]$Frozen.bytes -or (Get-Sha256Hex $Actual) -cne [string]$Frozen.sha256) { return $false }
+function Get-RegisteredPowerShellStderrClass([byte[]]$Actual, $Frozen) {
+    if ($Actual.Length -eq 0) { return 'EMPTY' }
+    if ($Actual.Length -ne [int]$Frozen.bytes -or (Get-Sha256Hex $Actual) -cne [string]$Frozen.sha256) { return $null }
     Assert-ExactBytes $Actual ([Convert]::FromBase64String([string]$Frozen.base64)) 'Parent stderr'
-    return $true
+    return 'EXACT_FROZEN_382_BYTE_STARTUP_CLIXML'
 }
 
 $ExpectedPackageCommit = [Environment]::GetEnvironmentVariable('HGRAG_EXPECTED_PACKAGE_COMMIT', [EnvironmentVariableTarget]::Process)
@@ -128,9 +128,10 @@ $stdoutBuffer.Dispose()
 $stderrBuffer.Dispose()
 if ($exitCode -ne 0) { throw ('POST parent nonzero exit: ' + $exitCode) }
 if (-not (Test-RegisteredStdout $stdoutBytes $parent.success_stdout_variants)) { throw 'POST parent stdout is not registered' }
-if (-not (Test-RegisteredPowerShellStderr $stderrBytes $manifest.frozen_powershell_startup_stderr)) { throw 'POST parent stderr is not registered' }
+$parentStderrClass = Get-RegisteredPowerShellStderrClass $stderrBytes $manifest.frozen_powershell_startup_stderr
+if ($null -eq $parentStderrClass) { throw 'POST parent stderr is not registered' }
 
-$success = '{"status":"POST_PARENT_START_ORCHESTRATOR_VERIFIED","parent_processes":1,"parent_stdout_registered":true,"parent_stderr_registered":true,"schema_semantics_bound":true}'
+$success = '{"status":"POST_PARENT_START_ORCHESTRATOR_VERIFIED","parent_processes":1,"parent_stdout_registered":true,"parent_stderr_class":"' + $parentStderrClass + '","schema_semantics_bound":true}'
 $successBytes = $Utf8.GetBytes($success)
 $standardOutput = [Console]::OpenStandardOutput()
 $standardOutput.Write($successBytes, 0, $successBytes.Length)
