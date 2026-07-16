@@ -8,7 +8,7 @@ $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
 $ExpectedRequestId = 'STAGE4B_U1_D_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4'
-$ExpectedPackageRevision = 'CORRECTED_AFTER_PACKAGE_REVIEW_1'
+$ExpectedPackageRevision = 'SECOND_CORRECTED_AFTER_PACKAGE_REVIEW_2'
 $ManifestRelativePath = 'docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4_MANIFEST.json'
 $ApprovalDecisionRelativePath = 'docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4_APPROVAL_DECISION.md'
 $GitExe = 'C:\Program Files\Git\cmd\git.exe'
@@ -93,6 +93,13 @@ function Get-StageContract($Manifest, [string]$Stage) {
         if ([string]$candidate.stage -ceq $Stage) { return $candidate }
     }
     throw ('Stage contract is missing: ' + $Stage)
+}
+
+function Get-CaptureInvocation($CaptureHost, [string]$Stage) {
+    foreach ($candidate in $CaptureHost.invocation_variants) {
+        if ([string]$candidate.stage -ceq $Stage) { return $candidate }
+    }
+    throw ('Capture-host invocation is missing: ' + $Stage)
 }
 
 function Assert-TrackedSource($Registry, [string]$Label) {
@@ -223,7 +230,7 @@ function Assert-OriginalEvidence($StableSnapshots) {
 function Assert-Attestation($Contract, $Adapter, [string]$ExpectedStage) {
     $snapshot = Get-Snapshot (Join-Path $RepositoryRoot ([string]$Contract.repository_path)) ($ExpectedStage + ' adapter attestation')
     $record = ConvertFrom-Json -InputObject ($Utf8.GetString([byte[]]$snapshot.Bytes))
-    if ([string]$record.schema_version -cne '1.0' -or [string]$record.request_id -cne $ExpectedRequestId -or [string]$record.stage -cne $ExpectedStage) { throw ($ExpectedStage + ' attestation schema mismatch') }
+    if ([string]$record.schema_version -cne '2.0' -or [string]$record.request_id -cne $ExpectedRequestId -or [string]$record.stage -cne $ExpectedStage) { throw ($ExpectedStage + ' attestation schema mismatch') }
     if ([string]$record.package_commit -cne $ExpectedPackageCommit -or [string]$record.approval_governance_commit -cne $ExpectedApprovalGovernance) { throw ($ExpectedStage + ' attestation package binding mismatch') }
     if ($ExpectedStage -ceq 'PRE') {
         if ($null -ne $record.semantics_evidence_commit -or $null -ne $record.post_sync_audit_commit) { throw 'PRE attestation has premature commit bindings' }
@@ -234,7 +241,13 @@ function Assert-Attestation($Contract, $Adapter, [string]$ExpectedStage) {
     else {
         if ([string]$record.semantics_evidence_commit -cne $ExpectedSemanticsEvidence -or [string]$record.post_sync_audit_commit -cne $ExpectedPostSyncAudit) { throw 'FINAL attestation commit binding mismatch' }
     }
+    if ([string]$record.canonical_builder_path -cne [string]$manifest.adapter_attestation_canonical_builder.path -or [int]$record.canonical_builder_source_bytes -ne [int]$manifest.adapter_attestation_canonical_builder.source_bytes -or [string]$record.canonical_builder_source_sha256 -cne [string]$manifest.adapter_attestation_canonical_builder.source_sha256) { throw ($ExpectedStage + ' canonical-builder attestation mismatch') }
     if ([string]$record.capture_host_path -cne [string]$manifest.adapter_capture_attestation_host.path -or [int]$record.capture_host_source_bytes -ne [int]$manifest.adapter_capture_attestation_host.source_bytes -or [string]$record.capture_host_source_sha256 -cne [string]$manifest.adapter_capture_attestation_host.source_sha256) { throw ($ExpectedStage + ' capture-host attestation mismatch') }
+    $captureInvocation = Get-CaptureInvocation $manifest.adapter_capture_attestation_host $ExpectedStage
+    if ([string]$Contract.capture_host_invocation_id -cne [string]$captureInvocation.id) { throw ($ExpectedStage + ' stage-contract capture-host invocation mismatch') }
+    if ([string]$record.capture_host_invocation_variant -cne [string]$captureInvocation.id) { throw ($ExpectedStage + ' capture-host invocation variant mismatch') }
+    if ([int]$record.capture_host_arguments_characters -ne [int]$captureInvocation.complete_arguments_characters -or [string]$record.capture_host_arguments_sha256 -cne [string]$captureInvocation.complete_arguments_ascii_sha256) { throw ($ExpectedStage + ' capture-host arguments attestation mismatch') }
+    if ([int]$record.capture_host_modeled_characters_including_terminal_null -ne [int]$captureInvocation.modeled_command_characters_including_terminal_null -or [string]$record.capture_host_modeled_sha256_including_terminal_null -cne [string]$captureInvocation.modeled_command_ascii_sha256_including_terminal_null) { throw ($ExpectedStage + ' capture-host modeled-command attestation mismatch') }
     if ([string]$record.adapter_path -cne [string]$Adapter.path -or [int]$record.adapter_source_bytes -ne [int]$Adapter.source_bytes -or [string]$record.adapter_source_sha256 -cne [string]$Adapter.source_sha256) { throw ($ExpectedStage + ' adapter source attestation mismatch') }
     if ([int]$record.adapter_arguments_characters -ne [int]$Adapter.complete_arguments_characters -or [string]$record.adapter_arguments_sha256 -cne [string]$Adapter.complete_arguments_ascii_sha256) { throw ($ExpectedStage + ' adapter arguments attestation mismatch') }
     if ([int]$record.adapter_modeled_characters_including_terminal_null -ne [int]$Adapter.modeled_command_characters_including_terminal_null -or [string]$record.adapter_modeled_sha256_including_terminal_null -cne [string]$Adapter.modeled_command_ascii_sha256_including_terminal_null) { throw ($ExpectedStage + ' adapter modeled-command attestation mismatch') }
@@ -251,6 +264,8 @@ function Assert-Attestation($Contract, $Adapter, [string]$ExpectedStage) {
     else { throw ($ExpectedStage + ' adapter stderr class is unregistered') }
     if ([string]$record.adapter_to_parent_stderr_class -notin @('EMPTY', 'EXACT_FROZEN_382_BYTE_STARTUP_CLIXML')) { throw ($ExpectedStage + ' parent stderr class is unregistered') }
     if ([int]$record.adapter_processes -ne 1 -or [int]$record.parent_processes -ne 1) { throw ($ExpectedStage + ' mandatory adapter mediation process counts mismatch') }
+    [byte[]]$canonicalBytes = Build-CanonicalAdapterAttestationBytes $record
+    Assert-ExactBytes ([byte[]]$snapshot.Bytes) $canonicalBytes ($ExpectedStage + ' canonical attestation bytes')
     return $snapshot
 }
 
@@ -263,17 +278,22 @@ foreach ($binding in @($ExpectedPackageCommit, $ExpectedApprovalGovernance, $Exp
 if ($Mode -ceq 'TERMINAL') { Assert-Binding $ExpectedFinalAttestationCommit 'Expected final adapter-attestation commit' }
 
 $RepositoryRoot = (Resolve-Path -LiteralPath '.').Path
-$manifestSnapshot = Get-Snapshot (Join-Path $RepositoryRoot $ManifestRelativePath) 'Corrected Manifest'
+$manifestSnapshot = Get-Snapshot (Join-Path $RepositoryRoot $ManifestRelativePath) 'Second-corrected Manifest'
 $manifest = ConvertFrom-Json -InputObject ($Utf8.GetString([byte[]]$manifestSnapshot.Bytes))
-if ([string]$manifest.request_id -cne $ExpectedRequestId -or [string]$manifest.package_revision -cne $ExpectedPackageRevision) { throw 'Corrected Manifest request identity mismatch' }
+if ([string]$manifest.request_id -cne $ExpectedRequestId -or [string]$manifest.package_revision -cne $ExpectedPackageRevision) { throw 'Second-corrected Manifest request identity mismatch' }
 $baseSnapshot = Get-Snapshot (Join-Path $RepositoryRoot ([string]$manifest.base_manifest.path)) 'Base Manifest'
 if ($baseSnapshot.Length -ne [int]$manifest.base_manifest.bytes -or $baseSnapshot.Sha256 -cne [string]$manifest.base_manifest.sha256) { throw 'Base Manifest identity mismatch' }
 $baseManifest = ConvertFrom-Json -InputObject ($Utf8.GetString([byte[]]$baseSnapshot.Bytes))
+$builderPath = Join-Path $RepositoryRoot ([string]$manifest.adapter_attestation_canonical_builder.path)
+Assert-TrackedSource $manifest.adapter_attestation_canonical_builder 'Canonical attestation builder'
+. $builderPath
+if ($null -eq (Get-Command Build-CanonicalAdapterAttestationBytes -CommandType Function -ErrorAction SilentlyContinue)) { throw 'Canonical-builder function is unavailable' }
 
 $stableSnapshots = New-Object Collections.Generic.List[object]
 $stableSnapshots.Add($manifestSnapshot)
 $stableSnapshots.Add($baseSnapshot)
 $stableSnapshots.Add((Get-Snapshot (Join-Path $RepositoryRoot $ApprovalDecisionRelativePath) 'Approval Decision'))
+$stableSnapshots.Add((Get-Snapshot $builderPath 'Canonical attestation builder'))
 
 $stagePairs = @(
     @('PRE', $manifest.pre_parent_start_orchestrator),
@@ -291,6 +311,9 @@ $stableSnapshots.Add((Get-Snapshot (Join-Path $RepositoryRoot ([string]$manifest
 $stableSnapshots.Add((Get-Snapshot (Join-Path $RepositoryRoot ([string]$manifest.terminal_adapter_attestation_commit_verifier.path)) 'Dual-mode final verifier'))
 Assert-ModeInvocation $manifest.terminal_adapter_attestation_commit_verifier.pre_attestation_invocation 'Pre-attestation final verifier'
 Assert-ModeInvocation $manifest.terminal_adapter_attestation_commit_verifier.terminal_invocation 'Terminal adapter-attestation verifier'
+foreach ($captureInvocation in $manifest.adapter_capture_attestation_host.invocation_variants) {
+    Assert-ModeInvocation $captureInvocation ([string]$captureInvocation.stage + ' capture-host invocation')
+}
 
 foreach ($entry in @(
     $baseManifest.pre_and_semantics_stdin_transport_host,
@@ -306,10 +329,13 @@ Assert-RegisteredPayload $baseManifest.final_post_sync_audit_commit_verifier 'In
 Assert-OriginalEvidence $stableSnapshots
 
 if ($Mode -ceq 'PRE_ATTESTATION') {
-    foreach ($contract in $manifest.adapter_execution_attestation_contract.stages) {
-        $path = Join-Path $RepositoryRoot ([string]$contract.repository_path)
-        if ([IO.File]::Exists($path) -or [IO.Directory]::Exists($path)) { throw 'Adapter attestation exists before FINAL promotion' }
-    }
+    $preContract = Get-StageContract $manifest 'PRE'
+    $postContract = Get-StageContract $manifest 'POST'
+    $finalContract = Get-StageContract $manifest 'FINAL'
+    $stableSnapshots.Add((Assert-Attestation $preContract $manifest.pre_parent_start_orchestrator 'PRE'))
+    $stableSnapshots.Add((Assert-Attestation $postContract $manifest.post_parent_start_orchestrator 'POST'))
+    $finalPath = Join-Path $RepositoryRoot ([string]$finalContract.repository_path)
+    if ([IO.File]::Exists($finalPath) -or [IO.Directory]::Exists($finalPath)) { throw 'FINAL adapter attestation exists before FINAL capture' }
     $head = Get-GitText 'rev-parse HEAD' 'Git post HEAD'
     $semanticsCommit = Get-GitText 'rev-parse HEAD^' 'Git semantics commit'
     $approvalCommit = Get-GitText 'rev-parse HEAD^^' 'Git approval commit'
@@ -318,7 +344,7 @@ if ($Mode -ceq 'PRE_ATTESTATION') {
     Assert-ExactPathText (Get-GitText ('diff-tree --no-commit-id --name-only -r ' + $head) 'Git post paths') ([string[]]$manifest.post_sync_audit_commit.exact_changed_paths) 'Post-sync audit commit'
     Assert-ExactPathText (Get-GitText ('diff-tree --no-commit-id --name-only -r ' + $semanticsCommit) 'Git semantics paths') ([string[]]$manifest.semantics_evidence_commit.exact_changed_paths) 'Semantics evidence commit'
     Assert-ExactPathText (Get-GitText ('diff-tree --no-commit-id --name-only -r ' + $approvalCommit) 'Git approval paths') ([string[]]$manifest.future_approval_governance.exact_changed_paths) 'Approval-governance commit'
-    Assert-ExactPathText (Get-GitText ('diff-tree --no-commit-id --name-only -r ' + $packageCommit) 'Git package paths') ([string[]]$manifest.package_changed_paths_exact) 'Corrected package commit'
+    Assert-ExactPathText (Get-GitText ('diff-tree --no-commit-id --name-only -r ' + $packageCommit) 'Git package paths') ([string[]]$manifest.package_changed_paths_exact) 'Second-corrected package commit'
     $expectedGitProcesses = 12
     $success = [string]$manifest.terminal_adapter_attestation_commit_verifier.pre_attestation_invocation.fixed_success_stdout
 }
@@ -340,7 +366,7 @@ else {
     Assert-ExactPathText (Get-GitText ('diff-tree --no-commit-id --name-only -r ' + $postCommit) 'Git post paths') ([string[]]$manifest.post_sync_audit_commit.exact_changed_paths) 'Post-sync audit commit'
     Assert-ExactPathText (Get-GitText ('diff-tree --no-commit-id --name-only -r ' + $semanticsCommit) 'Git semantics paths') ([string[]]$manifest.semantics_evidence_commit.exact_changed_paths) 'Semantics evidence commit'
     Assert-ExactPathText (Get-GitText ('diff-tree --no-commit-id --name-only -r ' + $approvalCommit) 'Git approval paths') ([string[]]$manifest.future_approval_governance.exact_changed_paths) 'Approval-governance commit'
-    Assert-ExactPathText (Get-GitText ('diff-tree --no-commit-id --name-only -r ' + $packageCommit) 'Git package paths') ([string[]]$manifest.package_changed_paths_exact) 'Corrected package commit'
+    Assert-ExactPathText (Get-GitText ('diff-tree --no-commit-id --name-only -r ' + $packageCommit) 'Git package paths') ([string[]]$manifest.package_changed_paths_exact) 'Second-corrected package commit'
     $expectedGitProcesses = 14
     $success = [string]$manifest.terminal_adapter_attestation_commit_verifier.terminal_invocation.fixed_success_stdout
 }

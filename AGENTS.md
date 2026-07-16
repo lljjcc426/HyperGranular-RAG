@@ -321,6 +321,12 @@
 307. Corrected package 的直接父提交必须为被拒 package `7d2dcd5f...`，精确变更十二路径且不删除文件。原 9 source、6 bounded envelope、3 payload、parent/loader/target source、原 semantics/post evidence、继承 final-verifier source 与 62 fixtures 保持不变；新增 corrected static fixtures 为 32/32，组包阶段所有 capture/adapter/verifier mode/parent/loader/target/Git/Python/evidence/synthetic/official 运行计数均为 0。
 308. 当前状态为 `CORRECTED_AMENDMENT_5G_B_1_1_1_1_4_PACKAGE_AWAITING_APPROVAL`。新的 corrected-package-bound approval-governance 推送前只允许 corrected package/Manifest/worktree/path/remote 身份核验；不得 join/parse/reconstruct 或执行任一冻结 source/arguments/modeled command，不得创建 pending/repository attestation 或其他 evidence。Synthetic、real validator、formal preflight、official、Gold、reservation 与 Stage3B 继续锁定。
 
+309. 独立 Package Review 2 接受 corrected package `61cfce1d3c11891ad0d8c2953fd855c2c3d0f9a8` 的十二路径范围、六个 class-bearing stdout、capture host 与 dual-mode verifier 静态设计、1.1.4 Approval Decision 路径修复、四/五层 Git chain、30/30 inherited fixtures、reported 32/32 corrected fixtures 与零执行组包边界，但因 PRE/POST attestation 未及时进入 stage commit、pending 可变、canonical bytes 未验证及 capture-host invocation 未持久化/终端核验而拒绝该 package。`61cfce1d...` 不得批准、执行或复用。
+310. Second-corrected Amendment 5G-B.1.1.1.1.4 采用审核推荐 Scheme A：PRE attestation 必须由 capture host 直接 `CreateNew` 到仓库并作为 semantics commit 的第三条精确路径；POST attestation 同理作为 post-sync commit 的第三条精确路径；FINAL attestation 单独形成一条精确路径的 final-attestation commit。禁止 pending、promotion 或延迟到 FINAL 才锚定 PRE/POST。
+311. Capture host 与 terminal verifier 必须共同加载并核验同一 tracked canonical builder；schema 2.0 的完整字段集、顺序、escaping、null/integer 表示、UTF-8 no-BOM 与无尾随换行均固定。Verifier 必须重建 canonical bytes 并逐字节比较，拒绝额外/缺失字段、重排、空白、不同 escaping、duplicate key、尾随 LF、语义等价不同字节和 same-length mutation。
+312. Capture host 必须在任何 child execution 前要求实际 `[Environment]::CommandLine + NUL` 与 stage modeled command 精确相等；每份 stage attestation 必须持久化对应 PRE/POST/FINAL capture-host invocation variant、arguments characters/SHA 与 modeled-command characters/SHA，terminal verifier 必须核验三份 capture-host envelope。PRE_ATTESTATION 模式还必须验证已提交的 PRE/POST canonical attestations、FINAL 不存在及四层链；TERMINAL 模式必须验证三份 canonical attestation 及五层链。
+313. 当前状态为 `SECOND_CORRECTED_AMENDMENT_5G_B_1_1_1_1_4_STAGE_ANCHORED_CANONICAL_BYTE_ADAPTER_PACKAGE_AWAITING_APPROVAL`。新 second-corrected-package-bound approval-governance 推送前，不得运行 canonical builder、capture host、adapter、parent、loader、target 或 verifier，不得创建/提交任何 stage attestation、semantics/post evidence。Synthetic、real validator、formal preflight、official、Gold、reservation 与 Stage3B 继续锁定。
+
 ## GitHub 与文档
 
 - 协议/代码提交必须先于数据提取和指标读取。

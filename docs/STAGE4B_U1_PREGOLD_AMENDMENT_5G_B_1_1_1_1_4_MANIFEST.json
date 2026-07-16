@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "request_id": "STAGE4B_U1_D_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4",
-  "package_revision": "CORRECTED_AFTER_PACKAGE_REVIEW_1",
+  "package_revision": "SECOND_CORRECTED_AFTER_PACKAGE_REVIEW_2",
   "assembled_date": "2026-07-16",
   "package_status": "AWAITING_PACKAGE_BOUND_APPROVAL",
-  "requested_mode": "class_bearing_tracked_adapters_durable_execution_attestations_and_terminal_commit_verification_only",
+  "requested_mode": "stage_commit_anchored_canonical_byte_adapter_attestations_with_persisted_capture_host_invocations_only",
   "package_authorizes_execution": false,
   "approval_must_bind_package_commit": true,
   "binding_commits": {
@@ -21,6 +21,13 @@
     "manifest_bytes": 24293,
     "manifest_sha256": "921B7BB63B0CF8E7B51CC6ED51A74C98A915E6C8E5FB2211E8235D7A378DE928",
     "disposition": "REJECT_AMENDMENT_5G_B_1_1_1_1_4_PACKAGE_AS_CURRENTLY_WRITTEN"
+  },
+  "rejected_corrected_package": {
+    "commit": "61cfce1d3c11891ad0d8c2953fd855c2c3d0f9a8",
+    "direct_parent_rejected_package": "7d2dcd5fe525c86ab2b91e7ed2dfb17b1e6228ac",
+    "manifest_bytes": 41597,
+    "manifest_sha256": "E0C0E8B329720C8B99130598E820E244E80707BAA628C1063688E209D067121A",
+    "disposition": "REJECT_CORRECTED_AMENDMENT_5G_B_1_1_1_1_4_PACKAGE_AS_CURRENTLY_WRITTEN"
   },
   "base_manifest": {
     "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_MANIFEST.json",
@@ -66,6 +73,33 @@
     "approval_governance_approved": false,
     "execution_approved": false
   },
+  "package_review_2": {
+    "decision": "REJECT_CORRECTED_AMENDMENT_5G_B_1_1_1_1_4_PACKAGE_AS_CURRENTLY_WRITTEN",
+    "accepted": [
+      "PACKAGE_REVIEW_1",
+      "CORRECTED_PACKAGE_COMMIT_AND_EXACT_TWELVE_PATH_SCOPE",
+      "SIX_CLASS_BEARING_ADAPTER_STDOUT_VARIANTS",
+      "ADAPTER_CAPTURE_ATTESTATION_HOST_STATIC_DESIGN",
+      "DUAL_MODE_PRE_ATTESTATION_AND_TERMINAL_VERIFIER_STATIC_DESIGN",
+      "CORRECTED_1_1_4_APPROVAL_DECISION_PATH_COMPATIBILITY_FIX",
+      "FOUR_AND_FIVE_LAYER_GIT_CHAIN_DESIGNS",
+      "30_OF_30_INHERITED_SCHEMA_FIXTURES",
+      "REPORTED_32_OF_32_CORRECTED_STATIC_FIXTURES",
+      "ZERO_EXECUTION_PACKAGE_ASSEMBLY_BOUNDARY"
+    ],
+    "blocking_causes": [
+      "PRE_AND_POST_RUNTIME_ATTESTATIONS_REMAIN_UNANCHORED_UNTIL_FINAL",
+      "PENDING_TEMP_ATTESTATIONS_ARE_MUTABLE_AND_NOT_STAGE_COMMIT_BOUND",
+      "ATTESTATION_JSON_CANONICAL_BYTES_NOT_ENFORCED",
+      "SEMANTICALLY_EQUIVALENT_OR_EXTENDED_JSON_CAN_PASS_TERMINAL_VERIFIER",
+      "CAPTURE_HOST_STAGE_INVOCATION_IDENTITY_NOT_PERSISTED",
+      "CAPTURE_HOST_INVOCATION_VARIANTS_NOT_TERMINALLY_VALIDATED"
+    ],
+    "selected_recovery": "SCHEME_A_STAGE_ATTESTATION_IMMEDIATELY_INCLUDED_IN_CORRESPONDING_COMMIT",
+    "recovery": "RETURN_FOR_SECOND_CORRECTED_AMENDMENT_5G_B_1_1_1_1_4_PACKAGE",
+    "approval_governance_approved": false,
+    "execution_approved": false
+  },
   "package_changed_paths_exact": [
     "AGENTS.md",
     "README.md",
@@ -73,19 +107,18 @@
     "docs/ROADMAP.md",
     "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4_APPROVAL_REQUEST.md",
     "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4_MANIFEST.json",
-    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4_PACKAGE_REVIEW_1.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4_PACKAGE_REVIEW_2.md",
+    "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_adapter_attestation_canonical_builder.ps1",
     "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_adapter_capture_attestation_host.ps1",
     "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_final_parent_start_orchestrator.ps1",
-    "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_post_parent_start_orchestrator.ps1",
-    "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_pre_parent_start_orchestrator.ps1",
     "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_terminal_adapter_attestation_commit_verifier.ps1"
   ],
   "inherited_technical_content": {
-    "source_design_changes": 5,
+    "source_design_changes": 4,
     "parent_host_changes": 0,
     "loader_changes": 0,
     "payload_changes": 0,
-    "evidence_schema_changes": 1,
+    "evidence_schema_changes": 2,
     "final_verifier_changes": 1,
     "inherited_static_fixture_changes": 0,
     "source_identities": [
@@ -387,8 +420,8 @@
     "source_encoding": "US_ASCII_SUBSET_OF_UTF8_NO_BOM",
     "source_content_lines": 125,
     "trailing_lf": true,
-    "source_bytes": 8247,
-    "source_sha256": "364473BA69831ABA30780414390D13446AC618F73C21FF0C8DB87552C2F1AC8E",
+    "source_bytes": 8254,
+    "source_sha256": "3974D559EB41815E3E833AC15267A15A6F88AC289FA586148198211AAD246817",
     "static_parse_errors": 0,
     "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_final_parent_start_orchestrator.ps1\"",
     "complete_arguments_characters": 156,
@@ -402,7 +435,7 @@
       "HGRAG_EXPECTED_POST_SYNC_AUDIT_COMMIT"
     ],
     "target_parent": "dual_mode_final_verifier_pre_attestation_mode",
-    "target_parent_source_sha256": "75A62A892D5059B6E540275860F72D4E80BDD4E9489378245F50A38FC70A222D",
+    "target_parent_source_sha256": "8D7BDF3224197C65CFB9A486DAA8E048AA0C86C88A87F75019036BF4A9D313D5",
     "target_parent_arguments_sha256": "A52FEF2C5FEB9B5FC8AEBB9E500FC4D2471D7D1B75C914A8F9375523A4B83DA8",
     "target_parent_modeled_sha256": "791D41E767A42DA66792689C919D9B63FC04E2E463B88F3F6EFD84B1DC5F0B70",
     "success_stdout_variants": [
@@ -423,48 +456,66 @@
     ],
     "package_assembly_executions": 0
   },
+  "adapter_attestation_canonical_builder": {
+    "trust_root_role": "FROZEN_SHARED_CANONICAL_ADAPTER_ATTESTATION_BYTE_BUILDER",
+    "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_adapter_attestation_canonical_builder.ps1",
+    "source_encoding": "US_ASCII_SUBSET_OF_UTF8_NO_BOM",
+    "source_content_lines": 50,
+    "trailing_lf": true,
+    "source_bytes": 4361,
+    "source_sha256": "4409E8AFF4EFECE2A69404F42ED39C355CACE0BE2DFD2ACB6033D045142AF55D",
+    "static_parse_errors": 0,
+    "exported_function": "Build-CanonicalAdapterAttestationBytes",
+    "canonical_schema_version": "2.0",
+    "canonical_encoding": "STRICT_UTF8_NO_BOM_NO_TRAILING_NEWLINE",
+    "package_assembly_executions": 0
+  },
   "adapter_capture_attestation_host": {
     "trust_root_role": "FROZEN_ADAPTER_EXECUTION_AND_RAW_STREAM_CAPTURE_HOST",
     "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_adapter_capture_attestation_host.ps1",
     "source_encoding": "US_ASCII_SUBSET_OF_UTF8_NO_BOM",
-    "source_content_lines": 216,
+    "source_content_lines": 211,
     "trailing_lf": true,
-    "source_bytes": 14152,
-    "source_sha256": "589134A5993BEBBCCBC6B50F5B331240103641AE8C7AC9687EA51BAB4D45D0CA",
+    "source_bytes": 13697,
+    "source_sha256": "74E5155D9488CC06C035E285E1D4B5715AFD0608350FD11E8021199441DA7A0C",
     "static_parse_errors": 0,
+    "validates_actual_stage_process_command_line": true,
     "invocation_variants": [
       {
         "stage": "PRE",
+        "id": "PRE_CAPTURE_HOST_STAGE_INVOCATION",
         "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_adapter_capture_attestation_host.ps1\" -Stage PRE",
         "complete_arguments_characters": 168,
         "complete_arguments_ascii_sha256": "7E0C1B58AABB4DFAB04CD1E44E5382D8596440E90C5965FD94C74210589428EE",
         "modeled_command_characters_including_terminal_null": 229,
         "modeled_command_ascii_sha256_including_terminal_null": "5B596C77D5CBC4BD74D817C8CDCF79E01C09DC6BA1B79F41EA36C434F8EAD684",
-        "fixed_success_stdout": "{\"status\":\"PRE_ADAPTER_ATTESTATION_PENDING_CREATED\",\"adapter_processes\":1,\"pending_attestations_created\":1,\"repository_attestations_created\":0}",
-        "fixed_success_stdout_bytes": 143,
-        "fixed_success_stdout_sha256": "E1BAE9772B4B7C8BA06AE1E0E35C40F9CC357DAEB023ADFB06E03F033CDF4E97"
+        "fixed_success_stdout": "{\"status\":\"PRE_ADAPTER_ATTESTATION_REPOSITORY_CREATED\",\"adapter_processes\":1,\"repository_attestations_created\":1}",
+        "fixed_success_stdout_bytes": 113,
+        "fixed_success_stdout_sha256": "C27FCA7A1D97D471F4797A897795541986FF78DEABAB63B934319176748FA7A6"
       },
       {
         "stage": "POST",
+        "id": "POST_CAPTURE_HOST_STAGE_INVOCATION",
         "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_adapter_capture_attestation_host.ps1\" -Stage POST",
         "complete_arguments_characters": 169,
         "complete_arguments_ascii_sha256": "9BB4F5A4901C1F272336DC0658FCC76B8144682B85372730C28E8BF71C9A7004",
         "modeled_command_characters_including_terminal_null": 230,
         "modeled_command_ascii_sha256_including_terminal_null": "A74364D9D5D24128B1FDB93AA0433DE2A51D882AE224E6817BCB066D788507C0",
-        "fixed_success_stdout": "{\"status\":\"POST_ADAPTER_ATTESTATION_PENDING_CREATED\",\"adapter_processes\":1,\"pending_attestations_created\":1,\"repository_attestations_created\":0}",
-        "fixed_success_stdout_bytes": 144,
-        "fixed_success_stdout_sha256": "029C7A07E3355DBFA0B1D8BAB9B4D82B43DE8F4A1A3032FD2F495185A8F5FFC6"
+        "fixed_success_stdout": "{\"status\":\"POST_ADAPTER_ATTESTATION_REPOSITORY_CREATED\",\"adapter_processes\":1,\"repository_attestations_created\":1}",
+        "fixed_success_stdout_bytes": 114,
+        "fixed_success_stdout_sha256": "BBDF43E3376C0214F0A5781AF9AE6F0F464D22808BEB8D49F23A4123866C4757"
       },
       {
         "stage": "FINAL",
+        "id": "FINAL_CAPTURE_HOST_STAGE_INVOCATION",
         "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_adapter_capture_attestation_host.ps1\" -Stage FINAL",
         "complete_arguments_characters": 170,
         "complete_arguments_ascii_sha256": "4E3FCAEFF4E4696252B0786F2993587BD269717C76E61AE1C36E1AA32EFF85B5",
         "modeled_command_characters_including_terminal_null": 231,
         "modeled_command_ascii_sha256_including_terminal_null": "803A476D94C89406C86BE2AF56C22238F3222F0A33159FE1F4FADCBD7C8640C6",
-        "fixed_success_stdout": "{\"status\":\"FINAL_ADAPTER_ATTESTATIONS_PROMOTED\",\"adapter_processes\":1,\"pending_attestations_verified\":3,\"repository_attestations_created\":3}",
-        "fixed_success_stdout_bytes": 140,
-        "fixed_success_stdout_sha256": "080117F5EDFD8F96050D5F23D4FC7AC38F6849C032A7E8D20055D326FF7F6702"
+        "fixed_success_stdout": "{\"status\":\"FINAL_ADAPTER_ATTESTATION_REPOSITORY_CREATED\",\"adapter_processes\":1,\"repository_attestations_created\":1}",
+        "fixed_success_stdout_bytes": 115,
+        "fixed_success_stdout_sha256": "9A5FE24E095D1B03F69A028377946158703CC957BB10F175478E0A813D3468EB"
       }
     ],
     "allowed_outer_stderr_states": [
@@ -474,22 +525,36 @@
     "package_assembly_executions": 0
   },
   "adapter_execution_attestation_contract": {
-    "schema_version": "1.0",
-    "creation_mode": "CREATE_NEW_ONLY",
-    "pending_location": "OS_TEMP_OUTSIDE_REPOSITORY",
-    "pending_root_directory_name": "HyperGranular-RAG_stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_corrected",
-    "pending_files_are_not_success_evidence": true,
-    "final_stage_validates_and_promotes_all_three": true,
+    "schema_version": "2.0",
+    "creation_mode": "DIRECT_REPOSITORY_CREATE_NEW_ONLY",
+    "canonical_builder_registry_key": "adapter_attestation_canonical_builder",
+    "canonical_encoding": "STRICT_UTF8_NO_BOM_NO_TRAILING_NEWLINE",
+    "canonical_byte_comparison": "BYTE_FOR_BYTE_LOOP_EQUALITY",
+    "capture_host_actual_process_command_line_comparison": "ENVIRONMENT_COMMAND_LINE_PLUS_TERMINAL_NULL_EXACT_EQUALITY",
+    "semantic_equivalence_is_not_success": true,
+    "extra_missing_reordered_whitespace_reescaped_duplicate_or_mutated_json_is_rejected": true,
+    "pending_files_created": 0,
+    "pending_files_used": false,
+    "each_stage_attestation_is_committed_with_its_corresponding_stage": true,
     "required_fields": [
+      "schema_version",
       "request_id",
       "stage",
       "package_commit",
       "approval_governance_commit",
       "semantics_evidence_commit",
       "post_sync_audit_commit",
+      "canonical_builder_path",
+      "canonical_builder_source_bytes",
+      "canonical_builder_source_sha256",
       "capture_host_path",
       "capture_host_source_bytes",
       "capture_host_source_sha256",
+      "capture_host_invocation_variant",
+      "capture_host_arguments_characters",
+      "capture_host_arguments_sha256",
+      "capture_host_modeled_characters_including_terminal_null",
+      "capture_host_modeled_sha256_including_terminal_null",
       "adapter_path",
       "adapter_source_bytes",
       "adapter_source_sha256",
@@ -511,20 +576,26 @@
       {
         "stage": "PRE",
         "adapter_registry_key": "pre_parent_start_orchestrator",
-        "pending_file_name": "pre_adapter_execution_attestation.json",
-        "repository_path": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_pre_adapter_execution_attestation.json"
+        "capture_host_invocation_id": "PRE_CAPTURE_HOST_STAGE_INVOCATION",
+        "repository_path": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_pre_adapter_execution_attestation.json",
+        "stage_commit_role": "SEMANTICS_EVIDENCE_COMMIT",
+        "stage_commit_exact_path_member": true
       },
       {
         "stage": "POST",
         "adapter_registry_key": "post_parent_start_orchestrator",
-        "pending_file_name": "post_adapter_execution_attestation.json",
-        "repository_path": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_post_adapter_execution_attestation.json"
+        "capture_host_invocation_id": "POST_CAPTURE_HOST_STAGE_INVOCATION",
+        "repository_path": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_post_adapter_execution_attestation.json",
+        "stage_commit_role": "POST_SYNC_AUDIT_COMMIT",
+        "stage_commit_exact_path_member": true
       },
       {
         "stage": "FINAL",
         "adapter_registry_key": "final_parent_start_orchestrator",
-        "pending_file_name": "final_adapter_execution_attestation.json",
-        "repository_path": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_final_adapter_execution_attestation.json"
+        "capture_host_invocation_id": "FINAL_CAPTURE_HOST_STAGE_INVOCATION",
+        "repository_path": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_final_adapter_execution_attestation.json",
+        "stage_commit_role": "FINAL_ADAPTER_ATTESTATION_COMMIT",
+        "stage_commit_exact_path_member": true
       }
     ],
     "actual_runtime_classes_persisted": 6,
@@ -532,13 +603,13 @@
     "package_assembly_evidence_creations": 0
   },
   "terminal_adapter_attestation_commit_verifier": {
-    "trust_root_role": "FROZEN_DUAL_MODE_PRE_ATTESTATION_AND_TERMINAL_COMMIT_VERIFIER",
+    "trust_root_role": "FROZEN_DUAL_MODE_STAGE_ANCHORED_CANONICAL_BYTE_ATTESTATION_COMMIT_VERIFIER",
     "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_terminal_adapter_attestation_commit_verifier.ps1",
     "source_encoding": "US_ASCII_SUBSET_OF_UTF8_NO_BOM",
-    "source_content_lines": 362,
+    "source_content_lines": 388,
     "trailing_lf": true,
-    "source_bytes": 30827,
-    "source_sha256": "75A62A892D5059B6E540275860F72D4E80BDD4E9489378245F50A38FC70A222D",
+    "source_bytes": 33878,
+    "source_sha256": "8D7BDF3224197C65CFB9A486DAA8E048AA0C86C88A87F75019036BF4A9D313D5",
     "static_parse_errors": 0,
     "pre_attestation_invocation": {
       "mode": "PRE_ATTESTATION",
@@ -547,9 +618,9 @@
       "complete_arguments_ascii_sha256": "A52FEF2C5FEB9B5FC8AEBB9E500FC4D2471D7D1B75C914A8F9375523A4B83DA8",
       "modeled_command_characters_including_terminal_null": 252,
       "modeled_command_ascii_sha256_including_terminal_null": "791D41E767A42DA66792689C919D9B63FC04E2E463B88F3F6EFD84B1DC5F0B70",
-      "fixed_success_stdout": "{\"status\":\"FINAL_PRE_ATTESTATION_COMMIT_VERIFIED\",\"inherited_envelopes\":6,\"inherited_payloads\":3,\"evidence_artifacts\":7,\"git_processes\":12,\"four_layer_chain\":true,\"worktree_clean\":true,\"remote_triplet_equal\":true}",
-      "fixed_success_stdout_bytes": 213,
-      "fixed_success_stdout_sha256": "06D4289C833E04D4D427D990DCAC133F6F78EA19420BFE761CCC08CDC811582D",
+      "fixed_success_stdout": "{\"status\":\"FINAL_PRE_ATTESTATION_COMMIT_VERIFIED\",\"inherited_envelopes\":6,\"inherited_payloads\":3,\"evidence_artifacts\":7,\"stage_attestations\":2,\"capture_host_invocations\":3,\"git_processes\":12,\"four_layer_chain\":true,\"worktree_clean\":true,\"remote_triplet_equal\":true}",
+      "fixed_success_stdout_bytes": 265,
+      "fixed_success_stdout_sha256": "020A4546EE06325BBEE7EB78487DB0DF5DB0063CED2F7C0D16BE1393553A2F43",
       "git_child_processes": 12
     },
     "terminal_invocation": {
@@ -559,9 +630,9 @@
       "complete_arguments_ascii_sha256": "4803299461BFE530339695C0BB4B2C728763EE05A5E366160D9B319221169130",
       "modeled_command_characters_including_terminal_null": 245,
       "modeled_command_ascii_sha256_including_terminal_null": "B4F55D2EAF7D7835552DA584C05301E56CD1F359D6CC181D2C0F2D4E6689564E",
-      "fixed_success_stdout": "{\"status\":\"FINAL_ADAPTER_ATTESTATION_COMMIT_VERIFIED\",\"adapter_attestations\":3,\"actual_stderr_classes\":6,\"mandatory_adapter_mediation_verified\":true,\"git_processes\":14,\"worktree_clean\":true,\"remote_triplet_equal\":true}",
-      "fixed_success_stdout_bytes": 218,
-      "fixed_success_stdout_sha256": "EA938BA60458DA3C6F7092AAACF97DA20E9FA76CC24712235E686B338A087B29",
+      "fixed_success_stdout": "{\"status\":\"FINAL_ADAPTER_ATTESTATION_COMMIT_VERIFIED\",\"adapter_attestations\":3,\"capture_host_invocations\":3,\"actual_stderr_classes\":6,\"mandatory_adapter_mediation_verified\":true,\"canonical_bytes_verified\":true,\"git_processes\":14,\"worktree_clean\":true,\"remote_triplet_equal\":true}",
+      "fixed_success_stdout_bytes": 279,
+      "fixed_success_stdout_sha256": "A27C36DDDE01616C351A169292A61362D2D20F0277969183325DAFA4154F1220",
       "git_child_processes": 14
     },
     "validates_inherited_bounded_envelopes": 6,
@@ -569,7 +640,11 @@
     "validates_original_evidence_artifacts": 7,
     "validates_tracked_adapters": 3,
     "validates_adapter_invocation_envelopes": 3,
+    "validates_capture_host_invocation_envelopes": 3,
     "validates_adapter_execution_attestations": 3,
+    "validates_pre_attestations_in_pre_attestation_mode": 2,
+    "validates_canonical_attestation_bytes": true,
+    "rejects_semantically_equivalent_noncanonical_json": true,
     "validates_actual_stderr_classes": 6,
     "validates_pre_attestation_four_layer_commit_chain": true,
     "validates_terminal_five_layer_commit_chain": true,
@@ -644,6 +719,37 @@
     "total_passed": 30,
     "total_fixtures": 30
   },
+  "second_corrected_static_fixtures": {
+    "canonical_byte_cases": [
+      "exact_canonical_accept",
+      "extra_field_reject",
+      "missing_field_reject",
+      "reordered_field_reject",
+      "whitespace_reject",
+      "alternate_escape_reject",
+      "duplicate_key_reject",
+      "trailing_lf_reject",
+      "same_length_mutation_reject",
+      "wrong_capture_variant_reject",
+      "wrong_capture_arguments_sha_reject",
+      "wrong_schema_reject"
+    ],
+    "capture_invocation_cases": [
+      "pre_capture_invocation_identity_accept",
+      "post_capture_invocation_identity_accept",
+      "final_capture_invocation_identity_accept"
+    ],
+    "stage_commit_anchor_cases": [
+      "pre_stage_commit_anchor_accept",
+      "post_stage_commit_anchor_accept",
+      "final_stage_commit_anchor_accept"
+    ],
+    "passed": 18,
+    "total": 18,
+    "tracked_source_executions": 0,
+    "evidence_creations": 0,
+    "validation_method": "IN_MEMORY_INDEPENDENT_CANONICAL_RECONSTRUCTION_PLUS_STATIC_SOURCE_MARKERS_NO_DOT_SOURCE_NO_PROCESS_START"
+  },
   "preapproval_inspection_rule": {
     "before_package_bound_approval_governance_push_allowed": [
       "VERIFY_PACKAGE_COMMIT_IDENTITY",
@@ -692,26 +798,29 @@
   "semantics_evidence_commit": {
     "exact_changed_paths": [
       "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_VALIDATOR_SEMANTICS_AUDIT.md",
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_pre_adapter_execution_attestation.json",
       "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_validator_semantics.json"
     ],
     "direct_parent": "FUTURE_APPROVAL_GOVERNANCE_COMMIT",
+    "anchors_stage_attestation": "PRE",
     "push_required_before_post_capture_host": true
   },
   "post_sync_audit_commit": {
     "exact_changed_paths": [
       "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_POST_SYNC_TRANSPORT_AUDIT.md",
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_post_adapter_execution_attestation.json",
       "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_post_sync_transport_attestation.json"
     ],
     "direct_parent": "SEMANTICS_EVIDENCE_COMMIT",
+    "anchors_stage_attestation": "POST",
     "push_required_before_final_capture_host": true
   },
   "final_adapter_attestation_commit": {
     "exact_changed_paths": [
-      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_final_adapter_execution_attestation.json",
-      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_post_adapter_execution_attestation.json",
-      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_pre_adapter_execution_attestation.json"
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_final_adapter_execution_attestation.json"
     ],
     "direct_parent": "POST_SYNC_AUDIT_COMMIT",
+    "anchors_stage_attestation": "FINAL",
     "push_required_before_terminal_verifier": true,
     "terminal_verifier_is_read_only": true
   },
@@ -733,6 +842,7 @@
     "embedded_python_processes": 1,
     "semantics_machine_creations": 1,
     "semantics_narrative_creations": 1,
+    "pre_repository_adapter_attestation_creations": 1,
     "semantics_evidence_commits": 1,
     "post_capture_attestation_host_processes": 1,
     "post_adapter_processes": 1,
@@ -745,6 +855,7 @@
     "post_verifier_git_children": 7,
     "post_machine_creations": 1,
     "post_narrative_creations": 1,
+    "post_repository_adapter_attestation_creations": 1,
     "post_audit_commits": 1,
     "final_capture_attestation_host_processes": 1,
     "final_adapter_processes": 1,
@@ -754,12 +865,13 @@
     "final_verifier_scriptblock_invocations": 0,
     "final_pre_attestation_verifier_processes": 1,
     "final_pre_attestation_verifier_git_children": 12,
-    "pending_adapter_attestation_creations": 3,
+    "pending_adapter_attestation_creations": 0,
+    "final_repository_adapter_attestation_creations": 1,
     "repository_adapter_attestation_creations": 3,
     "final_adapter_attestation_commits": 1,
     "terminal_adapter_attestation_verifier_processes": 1,
     "terminal_adapter_attestation_verifier_git_children": 14,
-    "files_after_original_final_verifier_success": 3,
+    "files_after_original_final_verifier_success": 1,
     "commits_after_original_final_verifier_success": 1,
     "files_or_commits_after_terminal_success": 0,
     "preapproval_source_joins_or_parses": 0,
@@ -777,28 +889,33 @@
     "only after approval push verify and load frozen PRE capture-attestation host and tracked-file adapter",
     "single PRE capture-attestation host invokes exactly one PRE tracked adapter",
     "single PRE parent loader target and semantics sequence",
-    "PRE capture-attestation host creates exactly one pending PRE adapter attestation outside the repository",
-    "exact two-path semantics evidence commit and push",
+    "PRE capture-attestation host directly creates exactly one canonical PRE repository attestation by CreateNew",
+    "exact three-path semantics evidence commit anchors the PRE attestation and push",
     "single POST capture-attestation host invokes exactly one POST tracked adapter",
     "single POST parent loader target and post-sync sequence",
-    "POST capture-attestation host creates exactly one pending POST adapter attestation outside the repository",
-    "exact two-path post-sync audit commit and push",
-    "single FINAL capture-attestation host invokes exactly one FINAL tracked adapter",
+    "POST capture-attestation host directly creates exactly one canonical POST repository attestation by CreateNew",
+    "exact three-path post-sync audit commit anchors the POST attestation and push",
+    "single FINAL capture-attestation host starts and invokes exactly one FINAL tracked adapter",
     "single FINAL adapter starts the tracked dual-mode verifier in PRE_ATTESTATION mode and validates its exact stdout and actual stderr class",
-    "PRE_ATTESTATION mode validates six inherited envelopes three payloads seven evidence artifacts and the corrected four-layer Git chain",
-    "FINAL capture-attestation host creates pending FINAL then validates and promotes exactly three versioned repository attestations",
-    "exact three-path final adapter-attestation commit and push",
-    "single read-only dual-mode verifier in TERMINAL mode validates five-layer Git chain three adapters three invocation envelopes three attestations six actual stderr classes and inherited evidence",
+    "PRE_ATTESTATION mode validates six inherited envelopes three payloads seven evidence artifacts PRE and POST canonical attestations three capture-host invocation envelopes and the corrected four-layer Git chain",
+    "FINAL capture-attestation host directly creates exactly one canonical FINAL repository attestation by CreateNew",
+    "exact one-path final adapter-attestation commit anchors the FINAL attestation and push",
+    "single read-only dual-mode verifier in TERMINAL mode validates five-layer Git chain three adapters three adapter invocation envelopes three capture-host invocation envelopes three canonical attestations six actual stderr classes and inherited evidence",
     "exact terminal success then immediate stop with zero further files or commits"
   ],
   "package_assembly_audit": {
-    "tracked_orchestrator_sources": 5,
-    "tracked_orchestrator_source_identity_passed": 5,
+    "tracked_orchestrator_sources": 6,
+    "tracked_orchestrator_source_identity_passed": 6,
     "tracked_orchestrator_static_parser_errors": 0,
     "schema_semantics_fixtures_passed": 30,
     "schema_semantics_fixtures_total": 30,
     "corrected_package_static_fixtures_passed": 32,
     "corrected_package_static_fixtures_total": 32,
+    "second_corrected_package_static_fixtures_passed": 18,
+    "second_corrected_package_static_fixtures_total": 18,
+    "second_corrected_canonical_byte_fixtures_passed": 12,
+    "second_corrected_capture_invocation_fixtures_passed": 3,
+    "second_corrected_stage_anchor_fixtures_passed": 3,
     "orchestrator_processes": 0,
     "parent_processes": 0,
     "loader_processes": 0,
@@ -868,6 +985,43 @@
         "orchestrator_processes": 0,
         "parent_processes": 0,
         "evidence_creations": 0
+      },
+      {
+        "label": "SECOND_CORRECTED_PACKAGE_RG_ACCESS_DENIED",
+        "project_writes": 0,
+        "orchestrator_processes": 0,
+        "parent_processes": 0,
+        "evidence_creations": 0
+      },
+      {
+        "label": "SECOND_CORRECTED_SOURCE_IDENTITY_HELPER_EMPTY_PIPE_ELEMENT",
+        "occurrences": 2,
+        "project_writes": 0,
+        "orchestrator_processes": 0,
+        "parent_processes": 0,
+        "evidence_creations": 0
+      },
+      {
+        "label": "SECOND_CORRECTED_STATIC_FIXTURE_COMPACT_FOREACH_MISSING_WHITESPACE",
+        "occurrences": 2,
+        "project_writes": 0,
+        "orchestrator_processes": 0,
+        "parent_processes": 0,
+        "evidence_creations": 0
+      },
+      {
+        "label": "SECOND_CORRECTED_STATIC_FIXTURE_HASH_FUNCTION_H_RESOLVED_AS_GET_HISTORY_ALIAS",
+        "project_writes": 0,
+        "orchestrator_processes": 0,
+        "parent_processes": 0,
+        "evidence_creations": 0
+      },
+      {
+        "label": "SECOND_CORRECTED_MANIFEST_REFERENCE_HELPER_INLINE_TRY_NOT_EXPRESSION",
+        "project_writes": 0,
+        "orchestrator_processes": 0,
+        "parent_processes": 0,
+        "evidence_creations": 0
       }
     ]
   },
@@ -882,5 +1036,5 @@
     "formal preflight",
     "official input token capture controller verifier Gold reservation or Stage3B"
   ],
-  "requested_completion_state": "AMENDMENT_5G_B_1_1_1_1_4_FROZEN_TOP_LEVEL_ORCHESTRATION_ADAPTER_PACKAGE_AWAITING_APPROVAL"
+  "requested_completion_state": "SECOND_CORRECTED_AMENDMENT_5G_B_1_1_1_1_4_STAGE_ANCHORED_CANONICAL_BYTE_ADAPTER_PACKAGE_AWAITING_APPROVAL"
 }

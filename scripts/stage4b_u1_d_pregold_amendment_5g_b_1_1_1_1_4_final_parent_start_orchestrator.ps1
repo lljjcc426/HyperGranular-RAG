@@ -3,7 +3,7 @@ Set-StrictMode -Version Latest
 
 $CorrectedManifestRelativePath = 'docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4_MANIFEST.json'
 $ExpectedRequestId = 'STAGE4B_U1_D_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4'
-$ExpectedPackageRevision = 'CORRECTED_AFTER_PACKAGE_REVIEW_1'
+$ExpectedPackageRevision = 'SECOND_CORRECTED_AFTER_PACKAGE_REVIEW_2'
 $ExpectedDescriptor = 'QUOTED_FILE_NAME_SPACE_ARGUMENTS_TERMINAL_NULL'
 $Utf8 = New-Object Text.UTF8Encoding($false, $true)
 $Ascii = New-Object Text.ASCIIEncoding
