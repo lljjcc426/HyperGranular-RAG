@@ -1,0 +1,733 @@
+{
+  "schema_version": "1.0",
+  "request_id": "STAGE4B_U1_D_PREGOLD_AMENDMENT_5G_B_1_1_1_1_5",
+  "package_revision": "FROZEN_OUTER_OBSERVER_DURABLE_RAW_RECOVERY",
+  "assembled_date": "2026-07-16",
+  "package_status": "AMENDMENT_5G_B_1_1_1_1_5_FROZEN_OUTER_OBSERVER_DURABLE_RAW_CAPTURE_PACKAGE_AWAITING_APPROVAL",
+  "requested_mode": "ONE_NEW_PACKAGE_BOUND_APPROVAL_THEN_ONE_ORDERED_PRE_POST_FINAL_TERMINAL_OBSERVER_CHAIN_ONLY",
+  "package_authorizes_execution": false,
+  "approval_must_bind_package_commit": "FUTURE_AMENDMENT_5G_B_1_1_1_1_5_PACKAGE_COMMIT",
+  "binding_commits": {
+    "hard_failure_18_checkpoint": "a3812d000b8af07196ea3a824988703a3ff132d3",
+    "consumed_approval_governance": "677df53f014ab194e08042e4f605b5f879b9fa32",
+    "approved_1_1_1_1_4_package": "683d17bd70cc32dca2e495836bb6b16160a79f79",
+    "package_direct_parent": "a3812d000b8af07196ea3a824988703a3ff132d3",
+    "future_package_commit": "FUTURE_PACKAGE_COMMIT"
+  },
+  "hard_failure_18_review": {
+    "status": "ACCEPT_HARD_FAILURE_18_AUDIT",
+    "review_bytes": 11408,
+    "review_sha256": "591C38AB7904AF8EA841F29B9B4884D8F1450448D1A83D36345ABF7D554AFF65",
+    "root_cause": "OUTER_OBSERVER_H_ALIAS_RESOLVED_TO_GET_HISTORY",
+    "package_source_defect_established": false,
+    "capture_host_runtime_defect_established": false,
+    "capture_host_success_established": false,
+    "pre_downstream_process_counts": "UNCONFIRMED",
+    "current_pre_authorization_consumed": true,
+    "current_approval_reusable": false,
+    "returned_for": "AMENDMENT_5G_B_1_1_1_1_5_FROZEN_OUTER_RESULT_OBSERVER_AND_DURABLE_RAW_CAPTURE_RECOVERY_ONLY"
+  },
+  "base_manifest": {
+    "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_MANIFEST.json",
+    "bytes": 323607,
+    "sha256": "804B4F8607532D6CE17EDE043D5A9511C7E855F4EB444C25F461381B6EDDA73D",
+    "mutation_allowed": false,
+    "role": "UNCHANGED_NINE_SOURCE_SIX_ENVELOPE_THREE_PAYLOAD_TECHNICAL_REGISTRY"
+  },
+  "inherited_1_1_1_1_4_contract": {
+    "package_commit": "683d17bd70cc32dca2e495836bb6b16160a79f79",
+    "manifest_path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_4_MANIFEST.json",
+    "manifest_bytes": 48629,
+    "manifest_sha256": "E764A188AB11F49152B272F041CAC8FAC9477929C30475576D6349791E67373B",
+    "canonical_builder_unchanged": true,
+    "pre_adapter_unchanged": true,
+    "post_adapter_unchanged": true,
+    "parent_loader_target_transport_unchanged": true,
+    "canonical_schema_2_0_unchanged": true,
+    "six_class_bearing_stdout_variants_unchanged": true,
+    "correction_scope": "OUTER_OBSERVER_DURABLE_RAW_RECOVERY_AND_NEW_GIT_CHAIN_COMPATIBILITY_ONLY"
+  },
+  "package_changed_paths_exact": [
+    "AGENTS.md",
+    "README.md",
+    "docs/REPRODUCIBILITY.md",
+    "docs/ROADMAP.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_5_APPROVAL_REQUEST.md",
+    "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_5_MANIFEST.json",
+    "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_18_REVIEW_1.md",
+    "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_adapter_capture_attestation_host.ps1",
+    "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_execution_observer.ps1",
+    "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_final_parent_start_orchestrator.ps1",
+    "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_terminal_adapter_attestation_commit_verifier.ps1"
+  ],
+  "adapter_invocation_contract": {
+    "source_of_truth": "TRACKED_ASCII_PS1_FILE_BYTES_NOT_MANIFEST_SOURCE_LINES",
+    "file_name": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "working_directory": "E:\\科研\\HyperGranular-RAG",
+    "use_shell_execute": false,
+    "redirect_standard_input": false,
+    "redirect_standard_output": true,
+    "redirect_standard_error": true,
+    "create_no_window": true,
+    "modeled_command_descriptor": "QUOTED_FILE_NAME_SPACE_ARGUMENTS_TERMINAL_NULL",
+    "adapter_stderr_allowed_states": [
+      "EMPTY_EXACT_ZERO_BYTES",
+      "EXACT_FROZEN_382_BYTE_STARTUP_CLIXML"
+    ]
+  },
+  "pre_parent_start_orchestrator": {
+    "trust_root_role": "FROZEN_TOP_LEVEL_LIMITED_GOVERNANCE_TRUST_ROOT",
+    "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_pre_parent_start_orchestrator.ps1",
+    "source_encoding": "US_ASCII_SUBSET_OF_UTF8_NO_BOM",
+    "source_content_lines": 136,
+    "trailing_lf": true,
+    "source_bytes": 8222,
+    "source_sha256": "6D9466FD227E8DA1ADB6A24CFC170BF9880C87718CB6244CC5847774BEBB8A02",
+    "static_parse_errors": 0,
+    "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_pre_parent_start_orchestrator.ps1\"",
+    "complete_arguments_characters": 154,
+    "complete_arguments_ascii_sha256": "B01B7C9EC04B0D8D7953FD7FA9AF0CD85BAD69E3F0FCF5F39E761B1C39550726",
+    "modeled_command_characters_including_terminal_null": 215,
+    "modeled_command_ascii_sha256_including_terminal_null": "34C461A85DA49F993A9461A5D016A5B7C424116C7E167EA098586EAEF7CFCF3C",
+    "expected_environment_bindings": [
+      "HGRAG_EXPECTED_PACKAGE_COMMIT",
+      "HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT"
+    ],
+    "target_parent": "pre_and_semantics_stdin_transport_host",
+    "target_parent_source_sha256": "8F11033CD306D118C4211109EACF8F0C1E9A90BCAEA8E19F99C933DC1C0858A7",
+    "target_parent_arguments_sha256": "00B201AA16F7A1CF106ADACADBE35DDF44FF67E08FE4A2A8434A8912F4106E67",
+    "target_parent_modeled_sha256": "E8247D1AF7D1CC5F6FEBF32F9102D49A37076FA19602906D7C9121E45EC808F0",
+    "success_stdout_variants": [
+      {
+        "id": "PRE_PARENT_STDERR_EMPTY",
+        "parent_stderr_class": "EMPTY",
+        "stdout": "{\"status\":\"PRE_PARENT_START_ORCHESTRATOR_VERIFIED\",\"parent_processes\":1,\"parent_stdout_registered\":true,\"parent_stderr_class\":\"EMPTY\",\"schema_semantics_bound\":true}",
+        "stdout_bytes": 164,
+        "stdout_sha256": "7283CBBF86826C94E7E6DD19E1DF1270FF7C4F8E78E66B0F2C23D27645984371"
+      },
+      {
+        "id": "PRE_PARENT_STDERR_EXACT_FROZEN_382_BYTE_STARTUP_CLIXML",
+        "parent_stderr_class": "EXACT_FROZEN_382_BYTE_STARTUP_CLIXML",
+        "stdout": "{\"status\":\"PRE_PARENT_START_ORCHESTRATOR_VERIFIED\",\"parent_processes\":1,\"parent_stdout_registered\":true,\"parent_stderr_class\":\"EXACT_FROZEN_382_BYTE_STARTUP_CLIXML\",\"schema_semantics_bound\":true}",
+        "stdout_bytes": 195,
+        "stdout_sha256": "820EDC7F9527298055FE2D9402096E764F0BF7F3537311919A3BF3E8C537168B"
+      }
+    ],
+    "package_assembly_executions": 0
+  },
+  "post_parent_start_orchestrator": {
+    "trust_root_role": "FROZEN_TOP_LEVEL_LIMITED_GOVERNANCE_TRUST_ROOT",
+    "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_post_parent_start_orchestrator.ps1",
+    "source_encoding": "US_ASCII_SUBSET_OF_UTF8_NO_BOM",
+    "source_content_lines": 138,
+    "trailing_lf": true,
+    "source_bytes": 8509,
+    "source_sha256": "89828EB855B64DACF98A76CFB2CAB956FEA29D2B6B80B187AE3BDA3A33EF9CC5",
+    "static_parse_errors": 0,
+    "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_post_parent_start_orchestrator.ps1\"",
+    "complete_arguments_characters": 155,
+    "complete_arguments_ascii_sha256": "548F8440860C4B072672CFCAA65D39832EDABF2E1D9873FF80AEFAEF0099BB49",
+    "modeled_command_characters_including_terminal_null": 216,
+    "modeled_command_ascii_sha256_including_terminal_null": "A178835B70993A7C35022BF0E6FA7C3B029070CE124DCC89AAA64265C296783F",
+    "expected_environment_bindings": [
+      "HGRAG_EXPECTED_PACKAGE_COMMIT",
+      "HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT",
+      "HGRAG_EXPECTED_SEMANTICS_EVIDENCE_COMMIT"
+    ],
+    "target_parent": "post_sync_stdin_transport_host",
+    "target_parent_source_sha256": "DC0234BE67CFCC4DDF18A135D65DC96222973F2B8736CBA487161869587C12DB",
+    "target_parent_arguments_sha256": "C069968B0E33D043EBEBCB7046144A07BD72D3E05770C59D0F798C3EBF95F2DC",
+    "target_parent_modeled_sha256": "8791A392570A25CE2E46300EC5D05EA58A7AC4D2A27DCA38BAA106B6F87E7DA8",
+    "success_stdout_variants": [
+      {
+        "id": "POST_PARENT_STDERR_EMPTY",
+        "parent_stderr_class": "EMPTY",
+        "stdout": "{\"status\":\"POST_PARENT_START_ORCHESTRATOR_VERIFIED\",\"parent_processes\":1,\"parent_stdout_registered\":true,\"parent_stderr_class\":\"EMPTY\",\"schema_semantics_bound\":true}",
+        "stdout_bytes": 165,
+        "stdout_sha256": "BCAA66EBD85F334FE144B5AC5E22F360CFEF0AA6F88A63E4279EEDE20D565E78"
+      },
+      {
+        "id": "POST_PARENT_STDERR_EXACT_FROZEN_382_BYTE_STARTUP_CLIXML",
+        "parent_stderr_class": "EXACT_FROZEN_382_BYTE_STARTUP_CLIXML",
+        "stdout": "{\"status\":\"POST_PARENT_START_ORCHESTRATOR_VERIFIED\",\"parent_processes\":1,\"parent_stdout_registered\":true,\"parent_stderr_class\":\"EXACT_FROZEN_382_BYTE_STARTUP_CLIXML\",\"schema_semantics_bound\":true}",
+        "stdout_bytes": 196,
+        "stdout_sha256": "364D3838EF30B7744220DB5ABEE6C8E539CE61A37042834A2399A22F679F73C2"
+      }
+    ],
+    "package_assembly_executions": 0
+  },
+  "final_parent_start_orchestrator": {
+    "trust_root_role": "FROZEN_TOP_LEVEL_LIMITED_GOVERNANCE_TRUST_ROOT_1_1_1_1_5",
+    "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_final_parent_start_orchestrator.ps1",
+    "source_encoding": "US_ASCII_SUBSET_OF_UTF8_NO_BOM",
+    "source_content_lines": 125,
+    "trailing_lf": true,
+    "source_bytes": 8257,
+    "source_sha256": "487FFF96B6C51A9F9EE56A3AB7A6A480F5C8380A984B0889D90342D3A573CE0A",
+    "static_parse_errors": 0,
+    "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_final_parent_start_orchestrator.ps1\"",
+    "complete_arguments_characters": 156,
+    "complete_arguments_ascii_sha256": "8FC02B374459404E88E057B8950A590E3C1130DFE74E153228D65DECAD5A3918",
+    "modeled_command_characters_including_terminal_null": 217,
+    "modeled_command_ascii_sha256_including_terminal_null": "82F2BDF5284BFF996A3449821CB3332BACABBF116A1086CF1A53B739949CA5DC",
+    "expected_environment_bindings": [
+      "HGRAG_EXPECTED_PACKAGE_COMMIT",
+      "HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT",
+      "HGRAG_EXPECTED_SEMANTICS_EVIDENCE_COMMIT",
+      "HGRAG_EXPECTED_POST_SYNC_AUDIT_COMMIT"
+    ],
+    "target_parent": "dual_mode_outer_observation_and_canonical_attestation_verifier_pre_attestation_mode",
+    "target_parent_source_sha256": "1A1D500B03F65DCAB754C5B18C108DBD58D03E88D24BF465FF74A30FB34FBC1A",
+    "target_parent_arguments_sha256": "BCC0C178110C35B85A90A4C0E7DC478BC3A2C60F04B4E9C3F7FABE638AA0BCAE",
+    "target_parent_modeled_sha256": "E7C2FCB00B532489070C45CA44546737FE58E209D88612605C1AB927665303D0",
+    "success_stdout_variants": [
+      {
+        "id": "FINAL_PARENT_STDERR_EMPTY",
+        "parent_stderr_class": "EMPTY",
+        "stdout": "{\"status\":\"FINAL_PARENT_START_ORCHESTRATOR_VERIFIED\",\"parent_processes\":1,\"parent_stdout_registered\":true,\"parent_stderr_class\":\"EMPTY\",\"schema_semantics_bound\":true}",
+        "stdout_bytes": 166,
+        "stdout_sha256": "EB17E3E3766359A64B558DAB8B9255E71A8E4060C68872AFEBE2D74E06D47101"
+      },
+      {
+        "id": "FINAL_PARENT_STDERR_EXACT_FROZEN_382_BYTE_STARTUP_CLIXML",
+        "parent_stderr_class": "EXACT_FROZEN_382_BYTE_STARTUP_CLIXML",
+        "stdout": "{\"status\":\"FINAL_PARENT_START_ORCHESTRATOR_VERIFIED\",\"parent_processes\":1,\"parent_stdout_registered\":true,\"parent_stderr_class\":\"EXACT_FROZEN_382_BYTE_STARTUP_CLIXML\",\"schema_semantics_bound\":true}",
+        "stdout_bytes": 197,
+        "stdout_sha256": "BBF6A971E601F4DC757F916F35B12998B7FF6B404B3F45168E043030C6843CFE"
+      }
+    ],
+    "package_assembly_executions": 0
+  },
+  "adapter_attestation_canonical_builder": {
+    "trust_root_role": "FROZEN_SHARED_CANONICAL_ADAPTER_ATTESTATION_BYTE_BUILDER",
+    "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_4_adapter_attestation_canonical_builder.ps1",
+    "source_encoding": "US_ASCII_SUBSET_OF_UTF8_NO_BOM",
+    "source_content_lines": 50,
+    "trailing_lf": true,
+    "source_bytes": 4361,
+    "source_sha256": "4409E8AFF4EFECE2A69404F42ED39C355CACE0BE2DFD2ACB6033D045142AF55D",
+    "static_parse_errors": 0,
+    "exported_function": "Build-CanonicalAdapterAttestationBytes",
+    "canonical_schema_version": "2.0",
+    "canonical_encoding": "STRICT_UTF8_NO_BOM_NO_TRAILING_NEWLINE",
+    "package_assembly_executions": 0
+  },
+  "adapter_capture_attestation_host": {
+    "trust_root_role": "FROZEN_ADAPTER_EXECUTION_AND_RAW_STREAM_CAPTURE_HOST_1_1_1_1_5",
+    "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_adapter_capture_attestation_host.ps1",
+    "source_encoding": "US_ASCII_SUBSET_OF_UTF8_NO_BOM",
+    "source_content_lines": 211,
+    "trailing_lf": true,
+    "source_bytes": 13700,
+    "source_sha256": "A65692BEB36A53BB907D4380618250BE95E2CB98900B4CC055EEAA9C26B9ADF4",
+    "static_parse_errors": 0,
+    "validates_actual_stage_process_command_line": true,
+    "invocation_variants": [
+      {
+        "stage": "PRE",
+        "id": "PRE_CAPTURE_HOST_STAGE_INVOCATION",
+        "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_adapter_capture_attestation_host.ps1\" -Stage PRE",
+        "complete_arguments_characters": 168,
+        "complete_arguments_ascii_sha256": "D15BA5EF4B7B27BFD9694334C1B8748DDA7804A5FB68685432CE906138073047",
+        "modeled_command_characters_including_terminal_null": 229,
+        "modeled_command_ascii_sha256_including_terminal_null": "17BE04AC24140D34478A60386FC17244A302E80F7DD6799BEEE50226FD4863CE",
+        "fixed_success_stdout": "{\"status\":\"PRE_ADAPTER_ATTESTATION_REPOSITORY_CREATED\",\"adapter_processes\":1,\"repository_attestations_created\":1}",
+        "fixed_success_stdout_bytes": 113,
+        "fixed_success_stdout_sha256": "C27FCA7A1D97D471F4797A897795541986FF78DEABAB63B934319176748FA7A6"
+      },
+      {
+        "stage": "POST",
+        "id": "POST_CAPTURE_HOST_STAGE_INVOCATION",
+        "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_adapter_capture_attestation_host.ps1\" -Stage POST",
+        "complete_arguments_characters": 169,
+        "complete_arguments_ascii_sha256": "B895C2205DC3F448E8A26155E221763F2085E6C9230163003B1B6795FA5B0AB5",
+        "modeled_command_characters_including_terminal_null": 230,
+        "modeled_command_ascii_sha256_including_terminal_null": "3BDE1E5847446FB2EE8773E63A81553590F07D1B0D14D7FC2617B8BFA4DA041C",
+        "fixed_success_stdout": "{\"status\":\"POST_ADAPTER_ATTESTATION_REPOSITORY_CREATED\",\"adapter_processes\":1,\"repository_attestations_created\":1}",
+        "fixed_success_stdout_bytes": 114,
+        "fixed_success_stdout_sha256": "BBDF43E3376C0214F0A5781AF9AE6F0F464D22808BEB8D49F23A4123866C4757"
+      },
+      {
+        "stage": "FINAL",
+        "id": "FINAL_CAPTURE_HOST_STAGE_INVOCATION",
+        "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_adapter_capture_attestation_host.ps1\" -Stage FINAL",
+        "complete_arguments_characters": 170,
+        "complete_arguments_ascii_sha256": "C473FE9607EA4A53B1713C363F71818B1A0D32EA4AB85E3087DC9BFBC8F1B844",
+        "modeled_command_characters_including_terminal_null": 231,
+        "modeled_command_ascii_sha256_including_terminal_null": "313D555FAAA08E96EADF382AE04FE4557724828A44AF5CED1323409C850EBB68",
+        "fixed_success_stdout": "{\"status\":\"FINAL_ADAPTER_ATTESTATION_REPOSITORY_CREATED\",\"adapter_processes\":1,\"repository_attestations_created\":1}",
+        "fixed_success_stdout_bytes": 115,
+        "fixed_success_stdout_sha256": "9A5FE24E095D1B03F69A028377946158703CC957BB10F175478E0A813D3468EB"
+      }
+    ],
+    "allowed_outer_stderr_states": [
+      "EMPTY_EXACT_ZERO_BYTES",
+      "EXACT_FROZEN_382_BYTE_STARTUP_CLIXML"
+    ],
+    "package_assembly_executions": 0
+  },
+  "adapter_execution_attestation_contract": {
+    "schema_version": "2.0",
+    "write_mode": "CREATE_NEW",
+    "pending_files_used": false,
+    "stages": [
+      {
+        "stage": "PRE",
+        "adapter_registry_key": "pre_parent_start_orchestrator",
+        "capture_host_invocation_id": "PRE_CAPTURE_HOST_STAGE_INVOCATION",
+        "repository_path": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_pre_adapter_execution_attestation.json",
+        "stage_commit": "SEMANTICS_EVIDENCE_COMMIT"
+      },
+      {
+        "stage": "POST",
+        "adapter_registry_key": "post_parent_start_orchestrator",
+        "capture_host_invocation_id": "POST_CAPTURE_HOST_STAGE_INVOCATION",
+        "repository_path": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_post_adapter_execution_attestation.json",
+        "stage_commit": "POST_SYNC_AUDIT_COMMIT"
+      },
+      {
+        "stage": "FINAL",
+        "adapter_registry_key": "final_parent_start_orchestrator",
+        "capture_host_invocation_id": "FINAL_CAPTURE_HOST_STAGE_INVOCATION",
+        "repository_path": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_final_adapter_execution_attestation.json",
+        "stage_commit": "FINAL_ATTESTATION_COMMIT"
+      }
+    ]
+  },
+  "terminal_adapter_attestation_commit_verifier": {
+    "trust_root_role": "FROZEN_DUAL_MODE_OUTER_OBSERVATION_AND_CANONICAL_ATTESTATION_COMMIT_VERIFIER",
+    "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_terminal_adapter_attestation_commit_verifier.ps1",
+    "source_encoding": "US_ASCII_SUBSET_OF_UTF8_NO_BOM",
+    "source_content_lines": 460,
+    "trailing_lf": true,
+    "source_bytes": 40389,
+    "source_sha256": "1A1D500B03F65DCAB754C5B18C108DBD58D03E88D24BF465FF74A30FB34FBC1A",
+    "static_parse_errors": 0,
+    "pre_attestation_invocation": {
+      "mode": "PRE_ATTESTATION",
+      "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_terminal_adapter_attestation_commit_verifier.ps1\" -Mode PRE_ATTESTATION",
+      "complete_arguments_characters": 191,
+      "complete_arguments_ascii_sha256": "BCC0C178110C35B85A90A4C0E7DC478BC3A2C60F04B4E9C3F7FABE638AA0BCAE",
+      "modeled_command_characters_including_terminal_null": 252,
+      "modeled_command_ascii_sha256_including_terminal_null": "E7C2FCB00B532489070C45CA44546737FE58E209D88612605C1AB927665303D0",
+      "fixed_success_stdout": "{\"status\":\"FINAL_PRE_ATTESTATION_COMMIT_VERIFIED\",\"inherited_envelopes\":6,\"inherited_payloads\":3,\"evidence_artifacts\":7,\"stage_attestations\":2,\"outer_observations\":2,\"capture_host_invocations\":3,\"git_processes\":12,\"four_layer_chain\":true,\"worktree_clean\":true,\"remote_triplet_equal\":true}",
+      "fixed_success_stdout_bytes": 288,
+      "fixed_success_stdout_sha256": "6200026BD1307BAD32E81DF4EB274B3DCEBA221BA4B8E42AC14D44B45F2E14F8",
+      "git_child_processes": 12
+    },
+    "terminal_invocation": {
+      "mode": "TERMINAL",
+      "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_terminal_adapter_attestation_commit_verifier.ps1\" -Mode TERMINAL",
+      "complete_arguments_characters": 184,
+      "complete_arguments_ascii_sha256": "1EF8877867737861E4A74A67F6C2820CCE110420AE062F7F5389F257B48A948F",
+      "modeled_command_characters_including_terminal_null": 245,
+      "modeled_command_ascii_sha256_including_terminal_null": "2BC2E8C90421E9B56F9D9E2AC7FA4F7B6023A00A59C10BA81F1694E5813853BD",
+      "fixed_success_stdout": "{\"status\":\"FINAL_ADAPTER_ATTESTATION_COMMIT_VERIFIED\",\"adapter_attestations\":3,\"outer_observations\":3,\"capture_host_invocations\":3,\"actual_stderr_classes\":6,\"mandatory_adapter_mediation_verified\":true,\"canonical_bytes_verified\":true,\"git_processes\":14,\"worktree_clean\":true,\"remote_triplet_equal\":true}",
+      "fixed_success_stdout_bytes": 302,
+      "fixed_success_stdout_sha256": "2E8086DC7196E3BE0A1A99A9D216CDD3B05F047411B54D5141B3242D31381FF5",
+      "git_child_processes": 14
+    },
+    "validates_inherited_bounded_envelopes": 6,
+    "validates_inherited_raw_stdin_payloads": 3,
+    "validates_original_evidence_artifacts": 7,
+    "validates_tracked_adapters": 3,
+    "validates_adapter_invocation_envelopes": 3,
+    "validates_capture_host_invocation_envelopes": 3,
+    "validates_adapter_execution_attestations": 3,
+    "validates_pre_attestations_in_pre_attestation_mode": 2,
+    "validates_canonical_attestation_bytes": true,
+    "rejects_semantically_equivalent_noncanonical_json": true,
+    "validates_actual_stderr_classes": 6,
+    "validates_outer_observations_pre_attestation_mode": 2,
+    "validates_outer_observations_terminal_mode": 3,
+    "requires_terminal_observation_absent_during_terminal_child": true,
+    "validates_pre_attestation_four_layer_commit_chain": true,
+    "validates_terminal_five_layer_commit_chain": true,
+    "package_assembly_executions": 0
+  },
+  "execution_observer": {
+    "trust_root_role": "FROZEN_TOP_LEVEL_OUTER_RESULT_OBSERVER_AND_DURABLE_RAW_PRESERVATION_ROOT",
+    "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_execution_observer.ps1",
+    "source_encoding": "US_ASCII_SUBSET_OF_UTF8_NO_BOM",
+    "source_content_lines": 203,
+    "trailing_lf": true,
+    "source_bytes": 13186,
+    "source_sha256": "67DCCD6B2AFD10164924CB98DCC99B93BD2150FB77DC9438496440373D0FF325",
+    "static_parse_errors": 0,
+    "supported_modes": [
+      "PRE",
+      "POST",
+      "FINAL",
+      "TERMINAL"
+    ],
+    "actual_process_command_line_gate": true,
+    "alias_sensitive_single_character_helpers_forbidden": [
+      "H",
+      "G",
+      "S",
+      "F"
+    ],
+    "sha_helper_name": "Get-ExactSha256Hex",
+    "sha_helper_command_type_gate": "FUNCTION",
+    "raw_preservation_precedes_hash_classification_and_success_gate": true,
+    "modes": [
+      {
+        "mode": "PRE",
+        "binary_mode_code": 1,
+        "child_kind": "CAPTURE_HOST",
+        "child_stage": "PRE",
+        "child_registry_key": "adapter_capture_attestation_host",
+        "required_environment_bindings": [
+          "HGRAG_EXPECTED_PACKAGE_COMMIT",
+          "HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT"
+        ],
+        "repository_observation_path": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_pre_capture_outer_observation.bin",
+        "observer_complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_execution_observer.ps1\" -Mode PRE",
+        "observer_complete_arguments_characters": 153,
+        "observer_complete_arguments_ascii_sha256": "A6B61CDD94757CF51928FC5CD3C036EAC72F1F0C93E25BBF39D690BEFE4BB18A",
+        "observer_modeled_characters_including_terminal_null": 214,
+        "observer_modeled_ascii_sha256_including_terminal_null": "A4ADCE73BAB8CF5549A67D31D5B291A7C4FD8BDC8C2A12E142713CFC6BCB7AC0",
+        "fixed_success_stdout": "{\"status\":\"PRE_OUTER_OBSERVATION_PRESERVED_AND_CHILD_VERIFIED\",\"child_processes\":1,\"outer_observations_created\":1}",
+        "fixed_success_stdout_bytes": 114,
+        "fixed_success_stdout_sha256": "79836E6F06FCBF8579FC4AC59E4F08D87556478500A616522802E7D0FC9B360C",
+        "observer_processes": 1,
+        "child_processes": 1,
+        "outer_observations_created": 1
+      },
+      {
+        "mode": "POST",
+        "binary_mode_code": 2,
+        "child_kind": "CAPTURE_HOST",
+        "child_stage": "POST",
+        "child_registry_key": "adapter_capture_attestation_host",
+        "required_environment_bindings": [
+          "HGRAG_EXPECTED_PACKAGE_COMMIT",
+          "HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT",
+          "HGRAG_EXPECTED_SEMANTICS_EVIDENCE_COMMIT"
+        ],
+        "repository_observation_path": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_post_capture_outer_observation.bin",
+        "observer_complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_execution_observer.ps1\" -Mode POST",
+        "observer_complete_arguments_characters": 154,
+        "observer_complete_arguments_ascii_sha256": "9CE8FE00B385D7B27645DF02C859E61D4039675359931F1D289DAB38E2966901",
+        "observer_modeled_characters_including_terminal_null": 215,
+        "observer_modeled_ascii_sha256_including_terminal_null": "78FB121C4C08520DE829F9643C46B19150963F770315C0DFB07400308B362702",
+        "fixed_success_stdout": "{\"status\":\"POST_OUTER_OBSERVATION_PRESERVED_AND_CHILD_VERIFIED\",\"child_processes\":1,\"outer_observations_created\":1}",
+        "fixed_success_stdout_bytes": 115,
+        "fixed_success_stdout_sha256": "1E06F6BAC497F641EB045DEF8B408EAB12B47A44EFC07F1F4B6B27856C03063B",
+        "observer_processes": 1,
+        "child_processes": 1,
+        "outer_observations_created": 1
+      },
+      {
+        "mode": "FINAL",
+        "binary_mode_code": 3,
+        "child_kind": "CAPTURE_HOST",
+        "child_stage": "FINAL",
+        "child_registry_key": "adapter_capture_attestation_host",
+        "required_environment_bindings": [
+          "HGRAG_EXPECTED_PACKAGE_COMMIT",
+          "HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT",
+          "HGRAG_EXPECTED_SEMANTICS_EVIDENCE_COMMIT",
+          "HGRAG_EXPECTED_POST_SYNC_AUDIT_COMMIT"
+        ],
+        "repository_observation_path": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_final_capture_outer_observation.bin",
+        "observer_complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_execution_observer.ps1\" -Mode FINAL",
+        "observer_complete_arguments_characters": 155,
+        "observer_complete_arguments_ascii_sha256": "1530FB234404A833A7DA32B2BDEDE58AB53A4420C01EACA401BA2C8A3324A4D1",
+        "observer_modeled_characters_including_terminal_null": 216,
+        "observer_modeled_ascii_sha256_including_terminal_null": "893130C0A2BA0D50C398E625B84453CD1C3857E41ADFE9D9CFFAB7F3AF20F306",
+        "fixed_success_stdout": "{\"status\":\"FINAL_OUTER_OBSERVATION_PRESERVED_AND_CHILD_VERIFIED\",\"child_processes\":1,\"outer_observations_created\":1}",
+        "fixed_success_stdout_bytes": 116,
+        "fixed_success_stdout_sha256": "68903497343804DEBE67BC93B3CEC88DD5D143D9EA0ECB515C3ACD13D7D1DADB",
+        "observer_processes": 1,
+        "child_processes": 1,
+        "outer_observations_created": 1
+      },
+      {
+        "mode": "TERMINAL",
+        "binary_mode_code": 4,
+        "child_kind": "TERMINAL_VERIFIER",
+        "child_stage": null,
+        "child_registry_key": "terminal_adapter_attestation_commit_verifier",
+        "required_environment_bindings": [
+          "HGRAG_EXPECTED_PACKAGE_COMMIT",
+          "HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT",
+          "HGRAG_EXPECTED_SEMANTICS_EVIDENCE_COMMIT",
+          "HGRAG_EXPECTED_POST_SYNC_AUDIT_COMMIT",
+          "HGRAG_EXPECTED_FINAL_ADAPTER_ATTESTATION_COMMIT"
+        ],
+        "repository_observation_path": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_terminal_verifier_outer_observation.bin",
+        "observer_complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_execution_observer.ps1\" -Mode TERMINAL",
+        "observer_complete_arguments_characters": 158,
+        "observer_complete_arguments_ascii_sha256": "F03D2F58393951C9EC5F307D3AECCC463572F7AF108CD6C4E6B94AA4CAECBC3D",
+        "observer_modeled_characters_including_terminal_null": 219,
+        "observer_modeled_ascii_sha256_including_terminal_null": "96A1CD6A2ABB81DB71AB6EBB541C5852224B388F3F091572C88CD95F58B24A1F",
+        "fixed_success_stdout": "{\"status\":\"TERMINAL_OUTER_OBSERVATION_PRESERVED_AND_CHILD_VERIFIED\",\"child_processes\":1,\"outer_observations_created\":1}",
+        "fixed_success_stdout_bytes": 119,
+        "fixed_success_stdout_sha256": "914D22184BF04AF3F22389CAF69B4488E8A0DEF739DBC1EA4AE571ACC2AC97EC",
+        "observer_processes": 1,
+        "child_processes": 1,
+        "outer_observations_created": 1
+      }
+    ],
+    "package_assembly_executions": 0
+  },
+  "outer_observation_binary_format": {
+    "magic_ascii": "HGRAGO15",
+    "magic_bytes": 8,
+    "version_uint32_le": 1,
+    "header_bytes_uint32_le": 48,
+    "fields_in_order": [
+      "magic[8]",
+      "version_uint32_le",
+      "header_bytes_uint32_le",
+      "mode_code_uint32_le",
+      "completion_flags_uint32_le",
+      "child_exit_code_int32_le",
+      "reserved_uint32_le",
+      "stdout_length_uint64_le",
+      "stderr_length_uint64_le",
+      "raw_stdout",
+      "raw_stderr"
+    ],
+    "completion_flags_value": 15,
+    "completion_flag_bits": {
+      "process_started": 1,
+      "wait_completed": 2,
+      "stdout_drain_completed": 4,
+      "stderr_drain_completed": 8
+    },
+    "reserved_value": 0,
+    "serializer": "NONE_FIXED_BINARY",
+    "write_mode": "CREATE_NEW",
+    "flush_to_disk": true,
+    "partial_write_policy": "PRESERVE_NEVER_CLEAN",
+    "hash_before_write_allowed": false,
+    "classification_before_write_allowed": false
+  },
+  "semantics_evidence_paths": {
+    "source_machine": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_validator_semantics.json",
+    "source_narrative": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_VALIDATOR_SEMANTICS_AUDIT.md",
+    "target_machine": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_validator_semantics.json",
+    "target_narrative": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_VALIDATOR_SEMANTICS_AUDIT.md"
+  },
+  "post_sync_audit_paths": {
+    "target_machine": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_post_sync_transport_attestation.json",
+    "target_narrative": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_POST_SYNC_TRANSPORT_AUDIT.md"
+  },
+  "future_approval_governance": {
+    "direct_parent": "FUTURE_AMENDMENT_5G_B_1_1_1_1_5_PACKAGE_COMMIT",
+    "exact_changed_paths": [
+      "AGENTS.md",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_5_APPROVAL_DECISION.md"
+    ],
+    "push_required_before_source_or_invocation_reconstruction": true
+  },
+  "semantics_evidence_commit": {
+    "direct_parent": "FUTURE_APPROVAL_GOVERNANCE_COMMIT",
+    "exact_changed_paths": [
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_VALIDATOR_SEMANTICS_AUDIT.md",
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_pre_adapter_execution_attestation.json",
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_pre_capture_outer_observation.bin",
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_validator_semantics.json"
+    ],
+    "anchors_stage_attestation": "PRE",
+    "anchors_outer_observation": "PRE",
+    "push_required_before_post_observer": true
+  },
+  "post_sync_audit_commit": {
+    "direct_parent": "SEMANTICS_EVIDENCE_COMMIT",
+    "exact_changed_paths": [
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_POST_SYNC_TRANSPORT_AUDIT.md",
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_post_adapter_execution_attestation.json",
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_post_capture_outer_observation.bin",
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_post_sync_transport_attestation.json"
+    ],
+    "anchors_stage_attestation": "POST",
+    "anchors_outer_observation": "POST",
+    "push_required_before_final_observer": true
+  },
+  "final_adapter_attestation_commit": {
+    "direct_parent": "POST_SYNC_AUDIT_COMMIT",
+    "exact_changed_paths": [
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_final_adapter_execution_attestation.json",
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_final_capture_outer_observation.bin"
+    ],
+    "anchors_stage_attestation": "FINAL",
+    "anchors_outer_observation": "FINAL",
+    "push_required_before_terminal_observer": true,
+    "terminal_verifier_is_read_only": true
+  },
+  "terminal_outer_observation_commit": {
+    "direct_parent": "FINAL_ADAPTER_ATTESTATION_COMMIT",
+    "exact_changed_paths": [
+      "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_terminal_verifier_outer_observation.bin"
+    ],
+    "anchors_outer_observation": "TERMINAL",
+    "verifier_runs_before_record_creation": true,
+    "push_required_before_immediate_stop": true,
+    "further_verifier_runs_after_commit": 0
+  },
+  "future_environment_bindings": [
+    "HGRAG_EXPECTED_PACKAGE_COMMIT",
+    "HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT",
+    "HGRAG_EXPECTED_SEMANTICS_EVIDENCE_COMMIT",
+    "HGRAG_EXPECTED_POST_SYNC_AUDIT_COMMIT",
+    "HGRAG_EXPECTED_FINAL_ADAPTER_ATTESTATION_COMMIT"
+  ],
+  "required_future_order": [
+    "NEW_PACKAGE_BOUND_APPROVAL_GOVERNANCE_COMMIT_AND_PUSH",
+    "PRE_OBSERVER_ONCE_THEN_EXACT_FOUR_PATH_SEMANTICS_COMMIT_AND_PUSH",
+    "POST_OBSERVER_ONCE_THEN_EXACT_FOUR_PATH_POST_SYNC_COMMIT_AND_PUSH",
+    "FINAL_OBSERVER_ONCE_WITH_PRE_ATTESTATION_THEN_EXACT_TWO_PATH_FINAL_COMMIT_AND_PUSH",
+    "TERMINAL_OBSERVER_ONCE_THEN_EXACT_ONE_PATH_TERMINAL_OBSERVATION_COMMIT_AND_PUSH",
+    "VERIFY_REMOTE_TRIPLET_AND_STOP_WITH_ZERO_FURTHER_FILES_OR_COMMITS"
+  ],
+  "future_execution_counts": {
+    "execution_observer": {
+      "PRE": 1,
+      "POST": 1,
+      "FINAL": 1,
+      "TERMINAL": 1
+    },
+    "capture_host": {
+      "PRE": 1,
+      "POST": 1,
+      "FINAL": 1
+    },
+    "adapter": {
+      "PRE": 1,
+      "POST": 1,
+      "FINAL": 1
+    },
+    "parent": {
+      "PRE": 1,
+      "POST": 1,
+      "FINAL": 1
+    },
+    "loader": {
+      "PRE": 1,
+      "POST": 1
+    },
+    "target_scriptblock": {
+      "PRE": 1,
+      "POST": 1
+    },
+    "pre_attestation_verifier_processes": 1,
+    "pre_attestation_git_children": 12,
+    "terminal_verifier_processes": 1,
+    "terminal_git_children": 14,
+    "outer_observation_create_new": {
+      "PRE": 1,
+      "POST": 1,
+      "FINAL": 1,
+      "TERMINAL": 1
+    },
+    "automatic_retries": 0
+  },
+  "outer_observer_static_fixtures": {
+    "source_identity_cases": 7,
+    "alias_resolution_cases": [
+      "H_RESOLVES_TO_GET_HISTORY_REJECT",
+      "ALIAS_SHADOWS_FUNCTION_REJECT",
+      "FUNCTION_MISSING_REJECT",
+      "WRONG_COMMAND_TYPE_REJECT",
+      "DIRECT_EXPLICIT_SHA_IMPLEMENTATION_ACCEPT"
+    ],
+    "binary_format_cases": [
+      "EXACT_RECORD_ACCEPT",
+      "WRONG_MAGIC_REJECT",
+      "WRONG_VERSION_REJECT",
+      "WRONG_HEADER_LENGTH_REJECT",
+      "WRONG_MODE_CODE_REJECT",
+      "WRONG_COMPLETION_FLAGS_REJECT",
+      "NONZERO_EXIT_REJECT",
+      "NONZERO_RESERVED_REJECT",
+      "STDOUT_LENGTH_UNDERFLOW_REJECT",
+      "STDOUT_LENGTH_OVERFLOW_REJECT",
+      "STDERR_LENGTH_UNDERFLOW_REJECT",
+      "STDERR_LENGTH_OVERFLOW_REJECT",
+      "TRUNCATION_REJECT",
+      "TRAILING_BYTE_REJECT",
+      "STDOUT_MUTATION_REJECT",
+      "STDERR_MUTATION_REJECT"
+    ],
+    "observer_invocation_cases": 4,
+    "observer_success_stdout_cases": 4,
+    "stage_commit_anchor_cases": 4,
+    "verifier_outer_observation_integration_cases": 3,
+    "passed": 43,
+    "total": 43,
+    "validation_method": "IN_MEMORY_BINARY_RECONSTRUCTION_PLUS_STATIC_SOURCE_AND_INVOCATION_MARKERS_NO_DOT_SOURCE_NO_PROCESS_START",
+    "tracked_source_executions": 0,
+    "evidence_creations": 0
+  },
+  "preapproval_inspection_rule": {
+    "allowed_before_new_approval_governance_push": [
+      "PACKAGE_COMMIT_IDENTITY",
+      "MANIFEST_FILE_IDENTITY",
+      "WORKTREE_STATUS",
+      "FUTURE_PATH_ABSENCE",
+      "LOCAL_ORIGIN_DIRECT_MAIN_EQUALITY"
+    ],
+    "forbidden_before_new_approval_governance_push": [
+      "JOIN_OR_PARSE_FROZEN_SOURCE",
+      "RECONSTRUCT_ARGUMENTS_OR_MODELED_COMMANDS",
+      "RUN_OBSERVER_OR_ANY_CHILD",
+      "CREATE_OUTER_OBSERVATION_OR_OTHER_EVIDENCE"
+    ]
+  },
+  "package_assembly_audit": {
+    "tracked_sources_inspected": 7,
+    "tracked_source_parser_errors": 0,
+    "static_validation_helper_failed_attempts": 5,
+    "static_validation_helper_failures": [
+      "COMPACT_FOREACH_PARSER_ERROR",
+      "RETURN_FALSE_COMMAND_RESOLUTION_ERROR",
+      "MODELED_COMMAND_QUOTE_CONSTRUCTION_ERROR_22_OF_34",
+      "POWERSHELL_AUTOMATIC_ARGS_VARIABLE_COLLISION_22_OF_34",
+      "DIAGNOSTIC_REPLACE_NEWCHAR_ARGUMENT_ERROR"
+    ],
+    "static_validation_helper_failure_file_writes": 0,
+    "static_validation_helper_failure_process_starts": 0,
+    "corrected_static_identity_checks_passed": 34,
+    "corrected_static_identity_checks_total": 34,
+    "corrected_observer_fixtures_passed": 43,
+    "corrected_observer_fixtures_total": 43,
+    "observer_processes": 0,
+    "capture_host_processes": 0,
+    "adapter_processes": 0,
+    "parent_processes": 0,
+    "loader_processes": 0,
+    "target_scriptblock_invocations": 0,
+    "verifier_mode_processes": 0,
+    "git_children_from_frozen_sources": 0,
+    "python_processes": 0,
+    "evidence_creations": 0,
+    "synthetic_executions": 0,
+    "real_validator_executions": 0,
+    "formal_preflight_executions": 0,
+    "official_accesses": 0,
+    "gold_accesses": 0,
+    "reservation_accesses": 0,
+    "stage3b_accesses": 0
+  },
+  "explicitly_not_authorized": [
+    "APPROVAL_GOVERNANCE_BEFORE_NEW_PACKAGE_BOUND_APPROVAL",
+    "EXECUTION_OBSERVER",
+    "CAPTURE_HOST",
+    "PRE",
+    "POST",
+    "FINAL",
+    "TERMINAL",
+    "SYNTHETIC_REBINDING",
+    "REAL_PRECOMMIT_VALIDATOR",
+    "FORMAL_PREFLIGHT",
+    "OFFICIAL_INPUT_OR_TOKEN_ACCESS",
+    "OFFICIAL_CAPTURE",
+    "CONTROLLER_OR_VERIFIER_GOLD",
+    "RESERVATION",
+    "STAGE3B"
+  ],
+  "requested_completion_state": "AMENDMENT_5G_B_1_1_1_1_5_OUTER_OBSERVED_DURABLE_RAW_CHAIN_AWAITING_RESULT_REVIEW"
+}

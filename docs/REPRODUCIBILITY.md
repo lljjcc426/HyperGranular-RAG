@@ -1353,3 +1353,17 @@ Those in-memory raw bytes and the child exit code are no longer recoverable. The
 After the stop, all seven future paths were confirmed absent and the repository remained clean at `677df53f...`. The capture was not retried. No semantics commit, POST capture, FINAL capture, verifier mode, evidence cleanup, synthetic rebinding, real validator, formal preflight, official access, Gold, reservation, or Stage3B operation followed.
 
 Current status: `AMENDMENT_5G_B_1_1_1_1_4_PRE_CAPTURE_OBSERVATION_UNRECOVERABLE_HARD_FAILURE_18`. See `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_18.md` for the full preservation boundary.
+
+## Hard Failure 18 Review 1 And Frozen Outer Observer Package
+
+Independent Review 1 accepts the Hard Failure 18 checkpoint and freezes the root cause as PowerShell resolving the outer helper name `H` to the `Get-History` alias after the one PRE capture-host process and both raw stream drains completed. The review does not infer child exit/stdout/stderr, capture-host success/failure, or PRE downstream process counts. The original authorization is consumed.
+
+Amendment 5G-B.1.1.1.1.5 adds a tracked 203-line / 13,186-byte observer with SHA-256 `67DCCD6B2AFD10164924CB98DCC99B93BD2150FB77DC9438496440373D0FF325`. It supports PRE, POST, FINAL and TERMINAL and freezes each observer invocation, actual command-line gate, required dynamic bindings, child source/invocation, fixed child output, fixed observer output and process counts.
+
+The observer reads ExitCode and materializes raw stdout/stderr immediately after WaitForExit and both drain tasks. Before any hash, classification, helper dispatch or serialization, it writes a `CreateNew` binary record and flushes it. The header is exactly 48 little-endian bytes: `HGRAGO15`, version 1, header length 48, mode code, completion flags 15, child exit, reserved zero, stdout length and stderr length. Raw stdout and stderr follow without a serializer. Any partial file is preserved.
+
+The dual-mode verifier validates PRE/POST raw records during PRE_ATTESTATION and PRE/POST/FINAL raw records during TERMINAL, including exact header, total length, child exit, fixed stdout and registered empty/382-byte stderr. The terminal record is necessarily created after the terminal verifier exits and forms a one-path sixth-layer commit; no circular self-verification is claimed.
+
+Static validation covered seven source identities, twelve invocation envelopes, registered stdout identities and 43 observer fixtures. Results were 34/34 identity checks and `12/12 + 16/16 + 15/15 = 43/43` fixtures. No tracked source was dot-sourced or run, and no evidence or experiment artifact was created.
+
+Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_5_MANIFEST.json`, 37,645 bytes, SHA-256 `303A347368E4BFBF4CEBBB71DFE07E244328A60BC4DBE996A0444A5C56E45BF9`. Current status is `AMENDMENT_5G_B_1_1_1_1_5_FROZEN_OUTER_OBSERVER_DURABLE_RAW_CAPTURE_PACKAGE_AWAITING_APPROVAL`; approval governance and all execution remain unauthorized.

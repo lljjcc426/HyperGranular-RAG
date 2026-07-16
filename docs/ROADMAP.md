@@ -1356,3 +1356,15 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - All three PRE evidence paths and all four POST/FINAL paths remained absent; the worktree stayed clean at `677df53f...`. PRE adapter/parent/loader/target/semantics counts are unconfirmed rather than inferred from absence.
 - No retry, fallback, evidence cleanup, semantics commit, POST, FINAL, TERMINAL, synthetic, real-validator, preflight, official, Gold, reservation, or Stage3B action occurred.
 - Current state: `AMENDMENT_5G_B_1_1_1_1_4_PRE_CAPTURE_OBSERVATION_UNRECOVERABLE_HARD_FAILURE_18`. The one-pass authorization is consumed; independent review and a new amendment/package-bound approval are required before any further frozen-source execution.
+
+### Hard Failure 18 Review 1 And Amendment 5G-B.1.1.1.1.5
+
+- Review 1 accepts checkpoint `a3812d000b8af07196ea3a824988703a3ff132d3`, valid approval governance, 106/106 static checks, one PRE capture-host start/await, both completed BaseStream drains, seven absent future paths and fail-closed stop.
+- Root cause is `OUTER_OBSERVER_H_ALIAS_RESOLVED_TO_GET_HISTORY`. Neither a 1.1.4 package-source/capture-host defect nor capture-host success is established; PRE downstream counts remain `UNCONFIRMED` and the old approval is non-reusable.
+- Amendment 1.1.1.1.5 freezes a 203-line / 13,186-byte tracked observer (`67DCCD6B...F325`) with PRE/POST/FINAL/TERMINAL modes, explicit helper-name resolution gate, exact source/invocation/ProcessStartInfo/environment contracts, and one-child process counts.
+- After WaitForExit/WaitAll and raw-array materialization, the observer writes a no-serializer `HGRAGO15` binary through `CreateNew` before hash/classification. The 48-byte header records version, mode, completion flags, exit code and both stream lengths; raw stdout/stderr follow. Partial files are preserved.
+- Every successful mode uses a repository raw artifact. Stage path scopes are `4/4/2/1`; the terminal verifier checks the five-layer chain before the terminal observer creates its record, then that record forms a sixth one-path commit for later independent review.
+- PRE/POST adapters and the canonical builder are unchanged. Versioned capture host, FINAL adapter and dual-mode verifier only bind the 1.1.5 Manifest/new path sets and validate outer records.
+- Static package validation passes 34/34 source/invocation/stdout checks and 43/43 observer fixtures. Two zero-write/zero-process helper attempts stopped on compact PowerShell syntax/name-resolution issues before corrected split helpers passed.
+- Manifest: 37,645 bytes / `303A347368E4BFBF4CEBBB71DFE07E244328A60BC4DBE996A0444A5C56E45BF9`.
+- Current state: `AMENDMENT_5G_B_1_1_1_1_5_FROZEN_OUTER_OBSERVER_DURABLE_RAW_CAPTURE_PACKAGE_AWAITING_APPROVAL`; no execution is authorized.
