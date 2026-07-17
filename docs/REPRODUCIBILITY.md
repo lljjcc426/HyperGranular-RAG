@@ -1497,3 +1497,19 @@ The direct-query attempt/success/retry counts are 1/0/0. PowerShell parser invoc
 Independent review later observed remote main at `f5a9ce38...` through a separate connector. This does not retroactively satisfy the failed ordered gate. The observer process quota was not exercised, but the current approval chain is terminated and non-reusable.
 
 Full audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_21.md`. Current status is `AMENDMENT_5G_B_1_1_1_1_7_POST_GOVERNANCE_DIRECT_GITHUB_QUERY_STOPPED_HARD_FAILURE_21`. A future bounded remote-verification transport strategy requires a separately reviewed package-bound Amendment; all parser, observer, nested PRE, official, Gold, reservation, and Stage3B actions remain locked.
+
+## Amendment 5G-B.1.1.1.1.8 Bounded Remote Transport Package
+
+Hard Failure 21 Review 1 accepts checkpoint `c4ac4b90ea57c18502766b5cba288f67cc46e60b` and returns the project only for a bounded remote-verification transport policy. The old `f5a9ce38...` approval chain remains terminated and non-reusable.
+
+The new helper is `scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_8_bounded_remote_gate.py`: 294 LF lines, 9,964 ASCII bytes, SHA-256 `7EBC6F40C58D479774B6C083157E5ECB429E02ED0B261FCECF1ADB58551C4567`. Package assembly invokes the Python AST parser four times but does not import or execute the helper; primary and alternate remote calls are both zero.
+
+Three package-assembly read-only helpers failed without project writes, remote calls, bounded-helper/observer execution, or evidence creation. The first stale-reference scan did not start because local `rg.exe` returned `Access is denied`; PowerShell `Select-String` completed the exact-path scan. The second new-file metrics helper placed a `foreach` statement directly before a pipeline and stopped at the PowerShell `An empty pipe element is not allowed` parse error before reading a file; the corrected helper first collects objects and then formats them. The third final cross-file validator used the short function name `H`, which resolved to the `Get-History` alias after Git state and helper bytes had been read; the corrected validator uses the unambiguous `Get-ExactSha256Hex` function name.
+
+Primary is exactly one `C:\Program Files\Git\cmd\git.exe ls-remote --heads` query against the fixed repository/ref. Exit 0 requires empty stderr and one canonical SHA/ref line matching the actual new approval-governance commit. Any returned mismatch or malformed/ambiguous response stops without alternate.
+
+Only TLS connect, DNS resolution, connection reset before ref, or HTTP transport unavailable may enter one alternate Python `urllib` GET to GitHub's official single-reference REST endpoint. Alternate disables proxies/redirects, fixes API version `2026-03-10`, uses no authentication, caps the body at 65,536 bytes, and requires strict UTF-8 duplicate-key-free JSON with exact ref/object/SHA. Total remote calls are at most two and same-method retries are zero.
+
+No observer defect was established, so the package does not change the 5,603-byte 1.1.7 observer, 13,336-byte observer Manifest, invocation, modeled command, `HGRAGC17` format, or still-absent result path. It also creates no remote attestation file. A future new approval must explicitly bind the actual 1.1.8 package commit and rebind the unchanged observation path.
+
+The package Manifest is 12,757 bytes with SHA-256 `672FBD0CCE7A43C747645FEC43ABFA4C1EF85084E5164F840F15EE67ECBFDC75`. The package itself authorizes no governance, remote helper, query, parser/static observer gate, observer process, HGRAGC17, result commit, capture host, nested PRE, official operation, Gold, reservation, or Stage3B. Current status is `AMENDMENT_5G_B_1_1_1_1_8_BOUNDED_REMOTE_TRANSPORT_PACKAGE_AWAITING_INDEPENDENT_APPROVAL`.

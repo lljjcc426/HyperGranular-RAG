@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Hard Failure 21 audit package 已完成；post-governance direct GitHub TLS transport failure 等待独立审核 |
-| 获批执行协议 | 无；1.1.7 observer process quota 未使用，但 approval-governance 链已终止且不可复用 |
-| 设计文件 | Hard Failure 21 audit、1.1.7 Approval Decision/Request/Manifest、98-line diagnostic observer |
-| 协议状态 | `AMENDMENT_5G_B_1_1_1_1_7_POST_GOVERNANCE_DIRECT_GITHUB_QUERY_STOPPED_HARD_FAILURE_21` |
+| 当前阶段 | Hard Failure 21 Review 1 已接受；Amendment 1.1.8 bounded remote-transport package 已冻结，等待独立审批 |
+| 获批执行协议 | 无；旧 approval 链不可复用，1.1.8 package 本身不授权 remote helper、parser、observer 或 evidence |
+| 设计文件 | HF21 Review 1、1.1.8 Approval Request/Manifest、bounded remote-gate helper、unchanged 1.1.7 observer |
+| 协议状态 | `AMENDMENT_5G_B_1_1_1_1_8_BOUNDED_REMOTE_TRANSPORT_PACKAGE_AWAITING_INDEPENDENT_APPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -46,6 +46,8 @@ Corrected package 获批后，精确两路径 approval-governance commit `1eb731
 Hard Failure 20 Review 1 接受该审计及 checkpoint `d0dbc553...`，并只允许组装 Amendment 1.1.7 command-line-only durable diagnostic package。新 observer 冻结为 98 行、5,603 bytes / `545A5A6E...FC7307`，Manifest 为 13,336 bytes / `968C3D59...AFE8A3C`；observer 只在 equality gate 前以单一 `HGRAGC17` binary 保存 actual/modeled/executable/arguments 四组 UTF-16LE raw bytes，不包含 capture-host 或其他 child-process 启动路径。依 Review 边界，package 阶段 parser 与 observer execution 均为 0；新 package-bound approval 前不得解析或执行。
 
 Amendment 1.1.7 approval governance 已按精确两路径提交 `f5a9ce38...` 并成功推送。随后的唯一 post-governance direct GitHub main 查询因 TLS connect error 未返回 remote ref，早于 parser/static gate 与 observer 启动。独立审核接受该 transport failure，确认 remote mismatch、wrong SHA、push failure 和 package/observer defect均未建立；parser、observer、HGRAGC17、result commit/push 全部为 0且没有重试。Observer quota 虽未使用，当前 approval 链仍已终止并不可复用，形成 Hard Failure 21。
+
+Hard Failure 21 Review 1 接受 checkpoint `c4ac4b90...`，并只允许组装 Amendment 1.1.8 bounded remote-verification transport policy。新 294-line Python helper 冻结一次 Git `ls-remote` primary；只有四类未返回 ref 的 transport failure 才进入一次不同实现的 GitHub REST alternate，总调用至多 2、同方法零重试。Package Manifest 为 12,757 bytes / `672FBD0C...CBFDC75`；不改 1.1.7 observer、Manifest、`HGRAGC17`或仍缺席的 observation 路径，不创建 remote attestation；package assembly 的 helper AST parse 为 4，helper execution、remote query、observer parser/execution 与 evidence 均为 0。
 
 Hard Failure 17 Review 1 接受上述审计、有效 approval governance、PRE source/parser/arguments 门与零进程/零 evidence 边界，并将根因冻结为 `ORCHESTRATOR_SCHEMA_DESCRIPTOR_MISINTERPRETATION`。Amendment 5G-B.1.1.1.1.4 不改变原 9 source、6 bounded envelope、3 payload、parent/loader/evidence/final-verifier 设计或 62 fixtures；它只新增三份 tracked ASCII PowerShell 顶层适配器，分别冻结 PRE/POST/FINAL 的 descriptor、唯一 executable-path 来源、modeled-command 公式、ProcessStartInfo 和 parent stdout/stderr 门。三份 source parser 均为 0，新增 schema 语义负向 fixtures 为 30/30，组包执行与 evidence/official 计数均为 0。
 

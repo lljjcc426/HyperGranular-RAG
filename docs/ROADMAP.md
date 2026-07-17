@@ -1436,3 +1436,12 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The observer process quota was not exercised, but the approval-governance chain terminated at the failed ordered gate and is non-reusable.
 - Hard Failure 21 audit is an exact five-path, zero-deletion direct child of `f5a9ce38...`. It contains no raw, observer change, Approval Decision, parser output, or post-hoc remote diagnostic artifact.
 - Current state: `AMENDMENT_5G_B_1_1_1_1_7_POST_GOVERNANCE_DIRECT_GITHUB_QUERY_STOPPED_HARD_FAILURE_21`. A new bounded remote-transport policy requires a separately reviewed and approved Amendment before any parser or observer action.
+
+### Hard Failure 21 Review 1 And Amendment 5G-B.1.1.1.1.8
+
+- Independent Review 1 accepts checkpoint `c4ac4b90ea57c18502766b5cba288f67cc46e60b`, its exact five-path scope, valid approval/push, TLS transport boundary, zero retry/parser/observer/evidence counts, and terminated non-reusable approval chain.
+- Amendment 1.1.8 adds one 294-line / 9,964-byte / `7EBC6F40...1C4567` ASCII/LF Python helper. Package assembly performs four AST parses but zero helper executions and zero primary/alternate remote calls.
+- Primary is one fixed Git `ls-remote --heads` query. Only TLS, DNS, connection-reset-before-ref, or HTTP-transport-unavailable with no returned ref may transition to one Python-urllib GitHub REST query. Same-method retries are zero and total remote calls are at most two.
+- Any returned SHA mismatch, ambiguous/multiple ref, auth rejection, malformed response, unregistered primary failure, or alternate failure is terminal before observer parsing or execution.
+- The package keeps the existing 1.1.7 observer, Manifest, invocation, `HGRAGC17` format, and absent result path byte-for-byte unchanged. It selects the narrower no-attestation design; remote success writes no repository file.
+- The package is an exact eight-path, zero-deletion direct child of HF21. Manifest is 12,757 bytes / `672FBD0C...CBFDC75`; the package authorizes no remote call or execution. Current state is `AMENDMENT_5G_B_1_1_1_1_8_BOUNDED_REMOTE_TRANSPORT_PACKAGE_AWAITING_INDEPENDENT_APPROVAL`.
