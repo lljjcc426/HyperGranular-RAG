@@ -1513,3 +1513,19 @@ Only TLS connect, DNS resolution, connection reset before ref, or HTTP transport
 No observer defect was established, so the package does not change the 5,603-byte 1.1.7 observer, 13,336-byte observer Manifest, invocation, modeled command, `HGRAGC17` format, or still-absent result path. It also creates no remote attestation file. A future new approval must explicitly bind the actual 1.1.8 package commit and rebind the unchanged observation path.
 
 The package Manifest is 12,757 bytes with SHA-256 `672FBD0CCE7A43C747645FEC43ABFA4C1EF85084E5164F840F15EE67ECBFDC75`. The package itself authorizes no governance, remote helper, query, parser/static observer gate, observer process, HGRAGC17, result commit, capture host, nested PRE, official operation, Gold, reservation, or Stage3B. Current status is `AMENDMENT_5G_B_1_1_1_1_8_BOUNDED_REMOTE_TRANSPORT_PACKAGE_AWAITING_INDEPENDENT_APPROVAL`.
+
+## Stage4B-U1-D Pre-Gold Hard Failure 22
+
+The independent approval was recorded in an exact two-path governance commit `4d9886be1291133c7a8f94c3a4b35a14f26e0a8d`, the direct child of package `90438287eeb77c2d383d7073315276a322b5670d`, and pushed successfully. The no-direct-query post-governance gate confirmed local `HEAD/main/origin` tracking equality, clean worktree, absent observation path, and exact package/helper/observer/Manifest/invocation identities.
+
+The one approved post-governance bounded-helper AST/static gate ran once and passed. It verified Python 3.11.5, source bytes/LF/SHA, exact invocation, one primary `subprocess.run`, one alternate REST `Request/open`, no remote loops or retry calls, authentication and timeout-partial-output hard stops, exact deterministic success keys, and no repository-write API. Helper execution and remote calls remained zero during this gate.
+
+The next launch-wrapper command did not execute. PowerShell rejected the complete command at parse time because the interpolated error string contained `$exitCode:`; the colon was interpreted as part of an invalid variable reference and produced `InvalidVariableReferenceWithDrive`. This happened before any wrapper statement, `.Start()`, helper PID, Git child, or REST request.
+
+The exact frozen counts are approval commit/push 1/1; post-governance local gate 1 pass; post-governance helper AST/static gate 1 pass; launch-wrapper parse attempts/successes/retries 1/0/0; bounded-helper starts 0; primary/alternate remote calls 0/0; observer parser/static gate 0; observer starts 0; capture host and nested child starts 0; `HGRAGC17` creations 0; result commits/pushes 0/0; difference interpretations 0.
+
+The error is audit-recorded from terminal output and is not separately durable byte evidence. It proves a PowerShell orchestration wrapper parse defect, not a tracked bounded-helper defect, remote failure or ref result, observer defect, or package defect. The observation path remains absent and no remote attestation, parser output, raw evidence, or result file was created.
+
+No corrected wrapper, helper process, remote query, observer parser/process, cleanup, overwrite, nested PRE, POST, FINAL, TERMINAL, synthetic, formal preflight, official, Gold, reservation, or Stage3B action followed. The approval chain is terminated and non-reusable. Full audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_22.md`.
+
+Current state is `AMENDMENT_5G_B_1_1_1_1_8_POST_GOVERNANCE_HELPER_LAUNCH_WRAPPER_PARSE_STOPPED_HARD_FAILURE_22`; execution remains locked pending independent review.

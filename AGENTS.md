@@ -427,6 +427,12 @@
 411. Remote PASS 后只允许对 unchanged 1.1.7 observer 执行一次 PowerShell parser/static source/Manifest/invocation/13-field binary/durable-order gate；该门通过后 observer 至多启动一次，注入 package `90438287...` 与实际 approval-governance SHA。Capture host、adapter、parent、loader、target 及其他 nested child starts 均必须为 0。
 412. 完整 `HGRAGC17` 无论 observer equality exit 0/1，均只允许形成一个以实际 approval-governance commit 为直接父提交、精确包含原 1.1.7 observation 路径的单一路径 result commit/push；commit message、执行轮与状态文档不得解释差异。推送并核验 local/tracking/clean 后立即停止独立 byte review。
 413. 任一治理 parent/path、local/tracking/worktree/path、helper parser/static/remote/PASS、observer parser/static/record、result scope/commit/push 失败均立即停止；禁止 retry、第二次 helper、第三次 remote call、失败后 observer、cleanup、overwrite、partial result commit 或事后诊断。Nested PRE、POST、FINAL、TERMINAL、synthetic、formal preflight、official、Gold、reservation 与 Stage3B 均未获批准。
+414. Amendment 1.1.8 approval governance `4d9886be1291133c7a8f94c3a4b35a14f26e0a8d` 已作为 package `90438287...` 的精确两路径、零删除直接子提交创建并推送；其后无 direct remote query 的 local HEAD/main/origin-tracking、clean worktree、result 缺席、package/helper/observer/Manifest/invocation 身份门全部通过。
+415. 治理后唯一 bounded-helper AST/static gate 已执行一次并通过：Python 3.11.5、source bytes/LF/SHA、一个 `subprocess.run`、一个 REST `Request/open`、零 remote loop/retry、认证与 timeout partial-stdout 先行硬停、exact success schema、零文件写 API 及 Manifest 合同均通过；该门 helper execution 与 remote calls 为 0。
+416. 随后的唯一 helper launch-wrapper 命令在 PowerShell 解析阶段触发 `InvalidVariableReferenceWithDrive`：双引号插值中的 `$exitCode:` 被解析为非法变量引用。失败发生在整个 wrapper 语句执行前，早于任何 `Process.Start()`；因此 bounded helper、primary Git、alternate REST、observer parser/process 与 evidence creation 均为 0。
+417. 精确失败边界为 `POST_GOVERNANCE_BOUNDED_HELPER_LAUNCH_WRAPPER_POWERSHELL_PARSE_FAILURE_BEFORE_PROCESS_START`。错误文本仅为 `AUDIT_RECORDED / NOT_SEPARATELY_DURABLE_BYTE_EVIDENCE`；它建立 orchestration wrapper parse defect，但不建立 bounded helper source/static defect、remote transport/ref defect、observer defect 或 package defect。
+418. helper process quota、primary/alternate call quota 与 observer quota 虽均未使用，当前 approval-governance 链仍因有序 gate 失败而终止且不可复用。禁止修正 wrapper 后重跑、启动 helper/observer、创建 result、cleanup、事后诊断或继续任何下游阶段。
+419. Hard Failure 22 audit package 必须是 approval governance `4d9886be...` 的单一直接子提交，changed paths 精确五条：`AGENTS.md`、`README.md`、`docs/REPRODUCIBILITY.md`、`docs/ROADMAP.md` 与 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_22.md`；零删除、零 result、零执行源码修改。当前状态为 `AMENDMENT_5G_B_1_1_1_1_8_POST_GOVERNANCE_HELPER_LAUNCH_WRAPPER_PARSE_STOPPED_HARD_FAILURE_22`，等待独立审核。
 
 ## GitHub 与文档
 

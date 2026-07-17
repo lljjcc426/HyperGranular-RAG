@@ -1445,3 +1445,13 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Any returned SHA mismatch, ambiguous/multiple ref, auth rejection, malformed response, unregistered primary failure, or alternate failure is terminal before observer parsing or execution.
 - The package keeps the existing 1.1.7 observer, Manifest, invocation, `HGRAGC17` format, and absent result path byte-for-byte unchanged. It selects the narrower no-attestation design; remote success writes no repository file.
 - The package is an exact eight-path, zero-deletion direct child of HF21. Manifest is 12,757 bytes / `672FBD0C...CBFDC75`; the package authorizes no remote call or execution. Current state is `AMENDMENT_5G_B_1_1_1_1_8_BOUNDED_REMOTE_TRANSPORT_PACKAGE_AWAITING_INDEPENDENT_APPROVAL`.
+
+### Hard Failure 22: Bounded-Helper Launch Wrapper Parse Stop
+
+- Amendment 1.1.8 approval governance `4d9886be1291133c7a8f94c3a4b35a14f26e0a8d` is the valid exact two-path, zero-deletion direct child of package `90438287...`; its push succeeded.
+- The post-governance local/tracking/clean/path/identity gate passed without a direct remote query. The one authorized bounded-helper AST/static gate also passed with helper execution and remote calls still zero.
+- The next PowerShell launch wrapper failed at parse time because `$exitCode:` inside a double-quoted string was treated as an invalid variable reference. No wrapper statement ran and no `Process.Start()` occurred.
+- Counts are launch-wrapper parse attempts 1, helper starts 0, primary/alternate calls 0/0, observer parser/process 0/0, `HGRAGC17` creations 0, result commits/pushes 0, retries 0, and difference interpretations 0.
+- This establishes an orchestration wrapper parse defect only. It does not establish a bounded-helper source/static defect, remote transport/ref outcome, observer defect, or package defect.
+- The approval chain is terminated and non-reusable despite its unexercised process/call quotas. The exact five-path, zero-deletion HF22 audit contains no result or execution-source change.
+- Current state: `AMENDMENT_5G_B_1_1_1_1_8_POST_GOVERNANCE_HELPER_LAUNCH_WRAPPER_PARSE_STOPPED_HARD_FAILURE_22`. All execution remains locked pending independent review.
