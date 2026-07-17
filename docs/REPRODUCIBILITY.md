@@ -1383,3 +1383,23 @@ Two read-only post-failure helpers failed on a temporary `H`/`Get-History` alias
 Only the PRE raw path existed. The PRE adapter attestation and semantics narrative/machine paths, all POST paths, both FINAL paths and the TERMINAL path remained absent. No four-path semantics success commit, POST, FINAL, PRE_ATTESTATION, TERMINAL, synthetic, real validator, formal preflight, official, Gold, reservation or Stage3B action followed.
 
 Current status is `AMENDMENT_5G_B_1_1_1_1_5_PRE_CAPTURE_HOST_CHILD_NONZERO_STOPPED_HARD_FAILURE_19`. The raw record is failure evidence only and cannot be overwritten, deleted, retried, reused or represented as successful PRE evidence. Independent review and a new package-bound Amendment are required before further execution. See `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_19.md`.
+
+## Amendment 5G-B.1.1.1.1.6 Reproducibility Boundary
+
+Hard Failure 19 Review 1 accepts the complete 520-byte `HGRAGO15` record and limits the established runtime boundary to `PRE_CAPTURE_HOST_REPORTED_ADAPTER_NONZERO_EXIT_1`. The 1.1.5 approval is consumed. Adapter stdout/stderr, its internal gate, parent/loader/target results, and semantics progress are not reconstructed from absence.
+
+The 1.1.6 package adds one tracked source per nested result boundary. All four writers use the same fixed no-serializer little-endian layout: 8-byte magic, uint32 version/header/layer/flags, int32 exit, zero uint32 reserved, uint64 stdout/stderr lengths, then exact raw streams. The magics/codes are `HGRAGO16/1`, `HGRAGA16/2`, `HGRAGP16/3`, and `HGRAGL16/4`. A failure may preserve only a contiguous outer-to-inner prefix. Every created record is `CreateNew`, durably flushed before classification, and never overwritten or cleaned.
+
+The registered sources are:
+
+```text
+parent        12,118 bytes  91EC38326A39C8A4C9072821B34D4FE92D8423323B0051E027EF3348B56AA19E
+adapter        9,752 bytes  0C97760D26FF4D00D75FCB8847170578AD2DDAA797A588F8FC1844380B3BF3F1
+capture host  10,023 bytes  FD9C6261CEF905EFF2826D025ECE453863BC43AB5C2AEABA9C74C8EB55A8F73A
+observer      13,263 bytes  C37CBF70AA91A0FC8341400DF74B5D883796F6EFEB6AC25A5DBA260716716D52
+raw verifier   6,882 bytes  FF990722ECC7AFAC0C4C1B8778A6743197814F0A1480A5BA0417FFB71A8E47AF
+```
+
+Assembly validation is 116/116: 56 registry/Manifest/invocation/stdout checks, 36 durable-order checks, and 24 binary/path/HF19 checks. Validation read bytes and parsed ASTs only; no package source was dot-sourced or executed and no result path was created. Four failed read-only helper attempts caused zero writes and no frozen-source or experimental process start.
+
+After the package commit is pushed and before a package-bound approval is pushed, do not repeat source joining, parsing, reconstruction, or execution. Only package/Manifest identity, old raw identity, future-path absence, worktree, and remote-triplet checks are allowed. The requested future run is at most one PRE observer chain followed by one failure-or-success evidence commit and immediate review stop; POST, FINAL, TERMINAL, synthetic, official, Gold, reservation, and Stage3B remain locked.

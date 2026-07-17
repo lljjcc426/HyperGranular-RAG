@@ -1,0 +1,271 @@
+{
+  "schema_version": 1,
+  "request_id": "STAGE4B_U1_D_PREGOLD_AMENDMENT_5G_B_1_1_1_1_6",
+  "package_revision": "NESTED_DURABLE_RESULT_CAPTURE_PRE_ONLY_DIAGNOSTIC",
+  "assembled_date": "2026-07-17",
+  "package_status": "AWAITING_INDEPENDENT_APPROVAL",
+  "requested_mode": "PRE_ONLY_DIAGNOSTIC_SINGLE_ATTEMPT",
+  "package_authorizes_execution": false,
+  "approval_must_bind_package_commit": true,
+  "binding_commits": {
+    "accepted_amendment_5g_b_1_1_1_1_5_package": "f634a1ca766cc2885017f63f94ef9b87cab9a765",
+    "accepted_amendment_5g_b_1_1_1_1_5_approval_governance": "950b56e83de8a87b7afe75eb3f021819e19516c8",
+    "accepted_hard_failure_19_audit_checkpoint": "96e9677d4779b9d4b3be59fbb319e0b4c6670732",
+    "future_amendment_5g_b_1_1_1_1_6_package": "FUTURE_PACKAGE_COMMIT",
+    "future_amendment_5g_b_1_1_1_1_6_approval_governance": "FUTURE_APPROVAL_GOVERNANCE_COMMIT"
+  },
+  "lineage_contract": {
+    "package_commit_direct_parent": "96e9677d4779b9d4b3be59fbb319e0b4c6670732",
+    "approval_commit_direct_parent": "FUTURE_PACKAGE_COMMIT",
+    "history_rewrite_forbidden": true
+  },
+  "prior_hard_failure_19": {
+    "accepted": true,
+    "boundary": "PRE_CAPTURE_HOST_REPORTED_ADAPTER_NONZERO_EXIT_1",
+    "deeper_adapter_or_parent_cause": "UNCONFIRMED",
+    "raw_repository_path": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_5_pre_capture_outer_observation.bin",
+    "raw_bytes": 520,
+    "raw_sha256": "4ABEB26000DDC77E8293DB1616682E6748E2290A9608959A2A040B1CD2780A70",
+    "magic": "HGRAGO15",
+    "layer_code": 1,
+    "format_version": 1,
+    "header_bytes": 48,
+    "completion_flags": 15,
+    "exit_code": 1,
+    "stdout_bytes": 0,
+    "stderr_bytes": 472,
+    "immutable": true
+  },
+  "transport_base_manifest": {
+    "path": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_3_MANIFEST.json",
+    "bytes": 323607,
+    "sha256": "804B4F8607532D6CE17EDE043D5A9511C7E855F4EB444C25F461381B6EDDA73D"
+  },
+  "transport_base_frozen_stderr": {
+    "classification": "POWERSHELL_STARTUP_PROGRESS_CLIXML_ON_STDERR",
+    "bytes": 382,
+    "sha256": "4F2B6B3ED9201CA459DB2DD042E0A137C4E58BFE8E15A068E45AD8535FA5B1EF",
+    "base64": "IzwgQ0xJWE1MDQo8T2JqcyBWZXJzaW9uPSIxLjEuMC4xIiB4bWxucz0iaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS9wb3dlcnNoZWxsLzIwMDQvMDQiPjxPYmogUz0icHJvZ3Jlc3MiIFJlZklkPSIwIj48VE4gUmVmSWQ9IjAiPjxUPlN5c3RlbS5NYW5hZ2VtZW50LkF1dG9tYXRpb24uUFNDdXN0b21PYmplY3Q8L1Q+PFQ+U3lzdGVtLk9iamVjdDwvVD48L1ROPjxNUz48STY0IE49IlNvdXJjZUlkIj4xPC9JNjQ+PFBSIE49IlJlY29yZCI+PEFWPtX91NrXvLG4yte0zsq508PEo7/poaM8L0FWPjxBST4wPC9BST48TmlsIC8+PFBJPi0xPC9QST48UEM+LTE8L1BDPjxUPkNvbXBsZXRlZDwvVD48U1I+LTE8L1NSPjxTRD4gPC9TRD48L1BSPjwvTVM+PC9PYmo+PC9PYmpzPg==",
+    "allowed_runtime_classes": [
+      "EMPTY",
+      "EXACT_FROZEN_382_BYTE_STARTUP_CLIXML"
+    ],
+    "comparison": "BYTE_FOR_BYTE_AFTER_LENGTH_AND_SHA256"
+  },
+  "process_start_info_contract": {
+    "file_name": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "working_directory": "E:\\科研\\HyperGranular-RAG",
+    "use_shell_execute": false,
+    "redirect_standard_input": false,
+    "redirect_standard_output": true,
+    "redirect_standard_error": true,
+    "create_no_window": true,
+    "modeled_command_descriptor": "QUOTED_FILE_NAME_SPACE_ARGUMENTS_TERMINAL_NULL",
+    "parent_to_loader_redirect_standard_input_override": true,
+    "required_environment_bindings": [
+      "HGRAG_EXPECTED_PACKAGE_COMMIT",
+      "HGRAG_EXPECTED_APPROVAL_GOVERNANCE_COMMIT"
+    ]
+  },
+  "nested_raw_contract": {
+    "format_name": "HGRAG_NESTED_PROCESS_RESULT_V1",
+    "little_endian_required": true,
+    "header_bytes": 48,
+    "completion_flags": 15,
+    "header_fields": [
+      "magic_ascii_8",
+      "format_version_uint32",
+      "header_bytes_uint32",
+      "layer_code_uint32",
+      "completion_flags_uint32",
+      "exit_code_int32",
+      "reserved_uint32_zero",
+      "stdout_length_uint64",
+      "stderr_length_uint64"
+    ],
+    "payload_order": [
+      "stdout_raw_bytes",
+      "stderr_raw_bytes"
+    ],
+    "persistence_order": "WAIT_FOR_EXIT_THEN_WAIT_ALL_THEN_MATERIALIZE_RAW_BYTES_THEN_CREATE_NEW_THEN_FLUSH_TRUE_THEN_CLASSIFY",
+    "layers": [
+      {
+        "layer": "OUTER_CAPTURE_HOST",
+        "layer_code": 1,
+        "magic": "HGRAGO16",
+        "repository_path": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_capture_outer_observation.bin",
+        "observes_process": "PRE_NESTED_CAPTURE_HOST"
+      },
+      {
+        "layer": "ADAPTER_CHILD",
+        "layer_code": 2,
+        "magic": "HGRAGA16",
+        "repository_path": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_adapter_child_observation.bin",
+        "observes_process": "PRE_NESTED_ADAPTER"
+      },
+      {
+        "layer": "PARENT_CHILD",
+        "layer_code": 3,
+        "magic": "HGRAGP16",
+        "repository_path": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_parent_child_observation.bin",
+        "observes_process": "PRE_NESTED_PARENT"
+      },
+      {
+        "layer": "LOADER_CHILD",
+        "layer_code": 4,
+        "magic": "HGRAGL16",
+        "repository_path": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_loader_child_observation.bin",
+        "observes_process": "PRE_AND_SEMANTICS_STDIN_LOADER"
+      }
+    ],
+    "target_process_raw_record": "NOT_APPLICABLE_TARGET_SCRIPTBLOCK_RUNS_IN_LOADER_PROCESS",
+    "allowed_preserved_path_sets_after_attempt": [
+      ["OUTER_CAPTURE_HOST"],
+      ["OUTER_CAPTURE_HOST", "ADAPTER_CHILD"],
+      ["OUTER_CAPTURE_HOST", "ADAPTER_CHILD", "PARENT_CHILD"],
+      ["OUTER_CAPTURE_HOST", "ADAPTER_CHILD", "PARENT_CHILD", "LOADER_CHILD"]
+    ]
+  },
+  "pre_diagnostic_paths": {
+    "semantics_narrative": "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_VALIDATOR_SEMANTICS_AUDIT.md",
+    "semantics_machine": "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_validator_semantics.json",
+    "exclusive_create_required": true
+  },
+  "pre_nested_parent": {
+    "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_parent.ps1",
+    "source_bytes": 12118,
+    "source_sha256": "91EC38326A39C8A4C9072821B34D4FE92D8423323B0051E027EF3348B56AA19E",
+    "source_line_count": 182,
+    "trailing_newline": true,
+    "static_parse_errors": 0,
+    "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_parent.ps1\"",
+    "complete_arguments_characters": 142,
+    "complete_arguments_ascii_sha256": "AAF1D4AF60CBE85C1B50EC501C409D3C8F2A3DA1254AAA98092828AC8B5B4F86",
+    "modeled_command_characters_including_terminal_null": 203,
+    "modeled_command_ascii_sha256_including_terminal_null": "B9085E62AE155C2740230EC0DB9E0324F2F44F21DA475B96BDD9C57656646540",
+    "fixed_success_stdout": "{\"status\":\"PRE_NESTED_PARENT_VERIFIED\",\"loader_processes\":1,\"loader_raw_observations_created\":1,\"target_stdout_exact\":true,\"loader_stderr_registered\":true}",
+    "fixed_success_stdout_bytes": 155,
+    "fixed_success_stdout_sha256": "51BF91217973F3C26FE4BFE56AADA7DB00C54B511A9061D22B2EB8ADDE4FD5C6"
+  },
+  "pre_nested_adapter": {
+    "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_adapter.ps1",
+    "source_bytes": 9752,
+    "source_sha256": "0C97760D26FF4D00D75FCB8847170578AD2DDAA797A588F8FC1844380B3BF3F1",
+    "source_line_count": 150,
+    "trailing_newline": true,
+    "static_parse_errors": 0,
+    "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_adapter.ps1\"",
+    "complete_arguments_characters": 143,
+    "complete_arguments_ascii_sha256": "0EC365E890EF9AABE89C2ABB3C1D26BC34B9A10EC16393061A04B7EFF45B9081",
+    "modeled_command_characters_including_terminal_null": 204,
+    "modeled_command_ascii_sha256_including_terminal_null": "2785ED776C4C63891E286E749AC7283F2930DCF5D7A415569BB1B09C0BA75142",
+    "fixed_success_stdout": "{\"status\":\"PRE_NESTED_ADAPTER_VERIFIED\",\"parent_processes\":1,\"parent_raw_observations_created\":1,\"parent_stdout_exact\":true,\"parent_stderr_registered\":true}",
+    "fixed_success_stdout_bytes": 156,
+    "fixed_success_stdout_sha256": "B555E95E959EFA847F3A14A599A7C93BA0EDB1BE0FCB7B53CF17E2F93C8ED59A"
+  },
+  "pre_nested_capture_host": {
+    "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_capture_host.ps1",
+    "source_bytes": 10023,
+    "source_sha256": "FD9C6261CEF905EFF2826D025ECE453863BC43AB5C2AEABA9C74C8EB55A8F73A",
+    "source_line_count": 157,
+    "trailing_newline": true,
+    "static_parse_errors": 0,
+    "invocation": {
+      "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_capture_host.ps1\" -Stage PRE",
+      "complete_arguments_characters": 159,
+      "complete_arguments_ascii_sha256": "D5A7E3BDD7A430CC434A46A2441338E6FECDA024D02E4518FCEB6A4AB239F4A6",
+      "modeled_command_characters_including_terminal_null": 220,
+      "modeled_command_ascii_sha256_including_terminal_null": "ACEAFA7F2024EE2B0C55C0F6B33FFDF3A5D7F4170A9CCE607CD7C3EA776BE754"
+    },
+    "fixed_success_stdout": "{\"status\":\"PRE_NESTED_CAPTURE_HOST_VERIFIED\",\"adapter_processes\":1,\"adapter_raw_observations_created\":1,\"adapter_stdout_exact\":true,\"adapter_stderr_registered\":true}",
+    "fixed_success_stdout_bytes": 165,
+    "fixed_success_stdout_sha256": "E805318A390586345981FE6BABCC307FA39E90E6FBD2587B3D0895C9A2486B56"
+  },
+  "pre_nested_observer": {
+    "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_observer.ps1",
+    "source_bytes": 13263,
+    "source_sha256": "C37CBF70AA91A0FC8341400DF74B5D883796F6EFEB6AC25A5DBA260716716D52",
+    "source_line_count": 195,
+    "trailing_newline": true,
+    "static_parse_errors": 0,
+    "invocation": {
+      "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_observer.ps1\" -Mode PRE",
+      "complete_arguments_characters": 154,
+      "complete_arguments_ascii_sha256": "4FC3F941A84FC3972BCAD8860F1AA688329C691A044428F4F651884FA6E8506A",
+      "modeled_command_characters_including_terminal_null": 215,
+      "modeled_command_ascii_sha256_including_terminal_null": "C2F7EF9D26B73B107B874733BA744A222561D52032652ADA6AC764FE29F18681"
+    },
+    "fixed_success_stdout": "{\"status\":\"PRE_NESTED_OUTER_OBSERVATION_PRESERVED_AND_CHILD_VERIFIED\",\"capture_host_processes\":1,\"outer_raw_observations_created\":1}",
+    "fixed_success_stdout_bytes": 132,
+    "fixed_success_stdout_sha256": "8A2BC8B29E5161E055ADD9A993C9A673B2CEEE89DAFC8EAF5FA25ABE65CC07A1"
+  },
+  "nested_raw_verifier": {
+    "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_nested_raw_verifier.ps1",
+    "source_bytes": 6882,
+    "source_sha256": "FF990722ECC7AFAC0C4C1B8778A6743197814F0A1480A5BA0417FFB71A8E47AF",
+    "source_line_count": 114,
+    "trailing_newline": true,
+    "static_parse_errors": 0,
+    "invocation": {
+      "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_nested_raw_verifier.ps1\" -Mode PRE_DIAGNOSTIC",
+      "complete_arguments_characters": 165,
+      "complete_arguments_ascii_sha256": "89FD80DC3F32C77C6C57D4E32F5FF664BC6CB353EC234F03F50256985B9FE691",
+      "modeled_command_characters_including_terminal_null": 226,
+      "modeled_command_ascii_sha256_including_terminal_null": "D50A0BA16D9A50E86771635C71465294C03ADD7BE9DF7414681E40728FDE65D4"
+    },
+    "accepts_new_path_shape": "OUTER_TO_INNER_CONTIGUOUS_PREFIX_ONLY",
+    "writes_repository_files": false
+  },
+  "future_execution_contract": {
+    "approval_required_before_any_source_execution": true,
+    "approval_must_name_exact_package_commit": true,
+    "approval_must_name_exact_approval_governance_commit": true,
+    "observer_processes": 1,
+    "capture_host_processes": 1,
+    "adapter_processes": 1,
+    "parent_processes": 1,
+    "loader_processes": 1,
+    "target_scriptblock_invocations": 1,
+    "retry_count": 0,
+    "stop_on_any_nonzero_or_mismatch": true,
+    "preserve_partial_raw_prefix": true,
+    "post_final_terminal_authorized": false
+  },
+  "explicitly_not_authorized": [
+    "ANY_SOURCE_EXECUTION_BEFORE_NEW_APPROVAL",
+    "POST",
+    "FINAL",
+    "TERMINAL",
+    "RETRY",
+    "THRESHOLD_CHANGE",
+    "DATA_CHANGE",
+    "GOLD_ACCESS",
+    "RESERVATION_OR_TEST_METRIC_ACCESS",
+    "STAGE3B_ACCESS",
+    "SOURCE_RECONSTRUCTION_FROM_MANIFEST",
+    "SYNTHETIC_OR_REAL_VALIDATOR_PREFLIGHT",
+    "OFFICIAL_INPUT_OR_TOKEN_CAPTURE",
+    "CONTROLLER_OR_FORMAL_VERIFIER_EXECUTION"
+  ],
+  "package_assembly_audit": {
+    "direct_parent_required": "96e9677d4779b9d4b3be59fbb319e0b4c6670732",
+    "exact_path_count": 12,
+    "exact_paths": [
+      "AGENTS.md",
+      "README.md",
+      "docs/REPRODUCIBILITY.md",
+      "docs/ROADMAP.md",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_6_APPROVAL_REQUEST.md",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_6_MANIFEST.json",
+      "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_19_REVIEW_1.md",
+      "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_nested_raw_verifier.ps1",
+      "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_adapter.ps1",
+      "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_capture_host.ps1",
+      "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_observer.ps1",
+      "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_parent.ps1"
+    ],
+    "deletions": 0,
+    "raw_result_files_added_to_package": 0
+  },
+  "requested_completion_state": "AWAITING_INDEPENDENT_APPROVAL_FOR_ONE_PRE_ONLY_DIAGNOSTIC_ATTEMPT"
+}

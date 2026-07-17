@@ -1380,3 +1380,13 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Ten other future paths remained absent. No PRE attestation, semantics success commit, POST, FINAL, PRE_ATTESTATION, TERMINAL or downstream experimental action occurred.
 - Two read-only diagnostic helpers failed without writes/external processes; final explicit decoding passed and the raw SHA remained unchanged.
 - Current state: `AMENDMENT_5G_B_1_1_1_1_5_PRE_CAPTURE_HOST_CHILD_NONZERO_STOPPED_HARD_FAILURE_19`. The approval is consumed; the raw is immutable failure evidence and independent review plus a new Amendment are required.
+
+### Hard Failure 19 Review 1 And Amendment 5G-B.1.1.1.1.6
+
+- Review 1 accepts package `f634a1ca...`, approval `950b56e8...`, checkpoint `96e9677d...`, the post-governance 34/34 + 43/43 gates, exactly one PRE observer, and the structurally complete 520-byte `HGRAGO15` record.
+- The exact boundary is `PRE_CAPTURE_HOST_REPORTED_ADAPTER_NONZERO_EXIT_1`. The adapter started once, was awaited, and exited 1. Its raw streams and the parent/loader/target/semantics cause remain `UNCONFIRMED`; package-source and transport defects are not established.
+- Amendment 1.1.1.1.6 adds four versioned raw records at every actual nested Process.Start boundary: `HGRAGO16`, `HGRAGA16`, `HGRAGP16`, and `HGRAGL16`. Each record is completed through `CreateNew` and `Flush(true)` before any exit/hash/classification gate. The target is a loader-process ScriptBlock and gets no fictitious process record.
+- The new parent, adapter, capture host, observer, and raw verifier are 182/150/157/195/114 lines and 12,118/9,752/10,023/13,263/6,882 bytes, all parser-zero. The inherited 323,607-byte transport Manifest remains unchanged.
+- Read-only package assembly passes 56/56 registry, 36/36 durable-order, and 24/24 binary/path fixtures, 116/116 total. No new source was dot-sourced or executed; evidence and experimental writes are zero. Four failed read-only helpers had zero writes and zero frozen-source/experimental starts.
+- The package scope is exactly twelve paths with no deletions. Manifest is 13,802 bytes / `7DA3418D8BF7F4CF49D82088294D78CFB6FB6C8E7F66229F18624FE60A929937`.
+- Current state: `AMENDMENT_5G_B_1_1_1_1_6_NESTED_DURABLE_PRE_DIAGNOSTIC_PACKAGE_AWAITING_INDEPENDENT_APPROVAL`. The next approval may authorize one PRE-only chain and one failure-or-success evidence commit, then must stop; POST, FINAL, and TERMINAL are not requested.
