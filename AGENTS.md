@@ -400,6 +400,12 @@
 384. 第三个只读 final-validation helper 将 `HGRAGC17` binary header 的实际 13 个字段误断言为 12 个，只失败于该校验断言；它只读取精确八条 package 路径，项目写入、observer parser/execution、冻结进程与 evidence 均为 0。正确的 13 字段由 magic、version、header bytes、flags、reserved、四个字符计数和四个 byte length 组成；修正断言后的完整静态校验通过。
 385. 首次 staged whitespace check 在新增 Hard Failure 20 Review 1 末尾发现一个多余空白行；该检查只读暂存的八路径，项目写入、observer parser/execution、冻结进程与 evidence 均为 0。已只移除该空白行且未删除文件，修正后的 staged diff check 必须为 clean。
 386. 同批 staged-index identity diagnostic 正确返回 Manifest 与 observer 的 bytes/SHA-256，但附带换行计数误匹配字面量反斜杠加 `n`/`r` 并输出不可用的 0/0；该两项计数作废。该 helper 只读两个 staged blob，项目写入、observer parser/execution、冻结进程与 evidence 均为 0；最终换行计数必须改用 byte 值 10/13 复核。
+387. Amendment 5G-B.1.1.1.1.7 command-line-only durable diagnostic 已获独立批准，严格绑定 package `8e274060baf844dd1d761e7635bbc6c43ef9d4b6`、HF20 checkpoint `d0dbc5533ddc464c7f7f1433d660ee7ddc355e07`、Manifest 13,336 bytes / `968C3D598840CA25A0DFB2F8006027158B5AFD9EDD48F78BEAE9C7363AFE8A3C` 与 observer 5,603 bytes / `545A5A6E72D82C65B086F08D2FC64F3C359B1A0E453F271D1481013D62FC7307`。批准决定为 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_7_APPROVAL_DECISION.md`。
+388. Approval-governance 必须是 package `8e274060...` 的单一直接子提交，changed paths 精确为 `AGENTS.md` 与本 Approval Decision、零删除，并在任何 parser、observer 或 evidence write 前推送。推送后必须核验 local HEAD/local main/origin main/direct GitHub main 一致、worktree clean 且唯一 observation path 仍缺席。
+389. 只有治理后门全部通过，才允许对新 observer 调用一次 PowerShell parser 并执行一次静态 source/Manifest/invocation/13-field binary/durable-order 合同门；该阶段 observer execution、capture-host start 与 evidence write 必须均为 0。任一失败立即停止且不得启动 observer。
+390. 静态门全通过后，observer 至多启动一次；executable 与 187-character arguments 必须保持冻结，并注入 package `8e274060...` 与本轮实际 approval-governance SHA。Observer 只可 CreateNew/Flush(true)/close 一个 `HGRAGC17` 后执行 equality exit 0/1；capture host、adapter、parent、loader、target ScriptBlock 及其他 child starts 必须为 0。
+391. 完整 `HGRAGC17` 无论 observer exit 0/1，均只允许形成一个以实际 approval-governance commit 为直接父提交的精确单一路径 result commit/push；提交不得含状态文档、审计叙事或差异解释。若 record 不完整，则 result commit/push 均为 0，partial bytes 原样保留，禁止 retry、cleanup、overwrite 或失败后诊断执行。
+392. 结果推送后必须核验 local/origin/direct GitHub main 一致与 clean worktree 并立即停止，状态为 `AMENDMENT_5G_B_1_1_1_1_7_COMMAND_LINE_OBSERVATION_COMMITTED_AWAITING_INDEPENDENT_REVIEW`。Difference type 继续为 `NOT_YET_INTERPRETED`；nested PRE、POST、FINAL、TERMINAL、synthetic、real validator、formal preflight、official、Gold、reservation 与 Stage3B 均未获批准。
 
 ## GitHub 与文档
 
