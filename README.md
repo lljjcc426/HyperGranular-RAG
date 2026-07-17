@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Hard Failure 19 Review 1 已接受；Amendment 5G-B.1.1.1.1.6 nested durable PRE-only diagnostic package 已冻结并等待独立批准 |
-| 获批执行协议 | 1.1.5 approval 已消费且不可复用；1.1.6 package 本身不授权执行 |
-| 设计文件 | 1.1.1.1.6 Approval Request/Manifest、Hard Failure 19 Review 1、五份 versioned PRE-only source |
-| 协议状态 | `AMENDMENT_5G_B_1_1_1_1_6_NESTED_DURABLE_PRE_DIAGNOSTIC_PACKAGE_AWAITING_INDEPENDENT_APPROVAL` |
+| 当前阶段 | 1.1.6 Package Review 1 已拒绝原 package；corrected nested durable PRE-only diagnostic package 已冻结并等待独立批准 |
+| 获批执行协议 | 1.1.5 approval 已消费；原 1.1.6 package 与 corrected package 均不授权执行 |
+| 设计文件 | Corrected 1.1.1.1.6 Approval Request/Manifest、Package Review 1、revised nested parent |
+| 协议状态 | `CORRECTED_AMENDMENT_5G_B_1_1_1_1_6_NESTED_DURABLE_PRE_DIAGNOSTIC_PACKAGE_AWAITING_INDEPENDENT_APPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -38,6 +38,8 @@ Hard Failure 18 Review 1 接受上述边界，并明确没有建立 1.1.4 packag
 1.1.1.1.5 approval governance 已作为 package 的精确两路径直接子提交 `950b56e8...` 推送；三方 main、clean worktree、11 路径不存在门与 post-governance `34/34 + 43/43` 静态门通过。唯一 PRE observer 随后运行一次，并在 success gate 前完成 520-byte `HGRAGO15` raw record（`4ABEB260...80A70`）：header 闭合，capture-host child exit 1、stdout 0 bytes、stderr 472 bytes，stderr 仅报告 `Adapter nonzero exit: 1`。因此更深层 adapter/parent 根因与内层 counts 保持 `UNCONFIRMED`；raw 原样保留为 Hard Failure 19 机器证据，没有 retry、semantics success commit、POST、FINAL 或 TERMINAL。
 
 Hard Failure 19 Review 1 接受上述机器证据与 `PRE_CAPTURE_HOST_REPORTED_ADAPTER_NONZERO_EXIT_1` 边界，并确认 adapter process 启动一次、awaited、exit 1；adapter raw streams、parent/loader/target/semantics 根因仍未建立。Amendment 1.1.1.1.6 新增四层 raw：`HGRAGO16` outer、`HGRAGA16` adapter-child、`HGRAGP16` parent-child、`HGRAGL16` loader-child。每层都在 exit/hash/class gate 前以 CreateNew + Flush(true) 持久化 raw exit/stdout/stderr；组包只读验证为 116/116，未执行新 source。Manifest 为 13,802 bytes / `7DA3418D...A929937`，下一批准仅可覆盖至多一次 PRE chain，不得覆盖 POST/FINAL/TERMINAL。
+
+Package Review 1 接受上述方向但拒绝 package `1e0973e3...`：loader stdin access/write/flush/close 仍可能在启动后、`HGRAGL16` 前逃逸；failure evidence commit 没有精确路径合同；requested completion state 错写成审批前状态。Corrected parent 将四类 stdin failure 延迟到 loader raw `Flush(true)` 后抛出。Git 采用方案 A：成功只提交精确六路径，失败固定零 commit/零 push并保留未提交 raw prefix/partial semantics。Corrected Manifest 为 17,536 bytes / `6C5E027B...259BAC5`；corrected package 本身仍不授权执行。
 
 Hard Failure 17 Review 1 接受上述审计、有效 approval governance、PRE source/parser/arguments 门与零进程/零 evidence 边界，并将根因冻结为 `ORCHESTRATOR_SCHEMA_DESCRIPTOR_MISINTERPRETATION`。Amendment 5G-B.1.1.1.1.4 不改变原 9 source、6 bounded envelope、3 payload、parent/loader/evidence/final-verifier 设计或 62 fixtures；它只新增三份 tracked ASCII PowerShell 顶层适配器，分别冻结 PRE/POST/FINAL 的 descriptor、唯一 executable-path 来源、modeled-command 公式、ProcessStartInfo 和 parent stdout/stderr 门。三份 source parser 均为 0，新增 schema 语义负向 fixtures 为 30/30，组包执行与 evidence/official 计数均为 0。
 
@@ -227,9 +229,9 @@ Hard Failure 10 独立审核接受审计及两轮结果，但只将旧三项工�
 
 ## 下一步
 
-1. 独立审批 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_6_APPROVAL_REQUEST.md` 与其 13,802-byte Manifest，并显式绑定实际 1.1.6 package commit。
+1. 独立审批 corrected `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_6_APPROVAL_REQUEST.md` 与其 17,536-byte Manifest，并显式绑定实际 corrected package commit。
 2. Package 推送后至新 approval-governance 推送前，只核验 package/Manifest、旧 HF19 raw、future-path absence、worktree 与 local/origin/direct-main；不得重新 join/parse/reconstruct 或运行新 source。
-3. 下一 approval 仅申请至多一次 PRE-only diagnostic chain、一个 failure-or-success evidence commit 与立即停止审核；POST、FINAL、TERMINAL、synthetic、official、Gold、reservation 与 Stage3B 继续锁定。
+3. 下一 approval 仅申请至多一次 PRE-only diagnostic chain：成功精确六路径 commit；失败零 commit/零 push并立即停止。POST、FINAL、TERMINAL、synthetic、official、Gold、reservation 与 Stage3B 继续锁定。
 
 ## GitHub
 

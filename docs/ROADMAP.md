@@ -1390,3 +1390,13 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Read-only package assembly passes 56/56 registry, 36/36 durable-order, and 24/24 binary/path fixtures, 116/116 total. No new source was dot-sourced or executed; evidence and experimental writes are zero. Four failed read-only helpers had zero writes and zero frozen-source/experimental starts.
 - The package scope is exactly twelve paths with no deletions. Manifest is 13,802 bytes / `7DA3418D8BF7F4CF49D82088294D78CFB6FB6C8E7F66229F18624FE60A929937`.
 - Current state: `AMENDMENT_5G_B_1_1_1_1_6_NESTED_DURABLE_PRE_DIAGNOSTIC_PACKAGE_AWAITING_INDEPENDENT_APPROVAL`. The next approval may authorize one PRE-only chain and one failure-or-success evidence commit, then must stop; POST, FINAL, and TERMINAL are not requested.
+
+### Amendment 5G-B.1.1.1.1.6 Package Review 1 And Correction
+
+- Package Review 1 accepts package `1e0973e3...` lineage/scope, HF19 raw binding, PRE-only direction, four raw layers, observer/capture/adapter ordering, reported 116/116 fixtures, and zero execution/evidence boundary, but does not approve governance or PRE.
+- It rejects the package because loader stdin access/write/flush/close can fail after start but before `HGRAGL16`, failure commits have no finite exact-path contract, and the requested completion state is still a pre-approval state.
+- The corrected parent captures fixed `BASE_STREAM_ACCESS/WRITE/FLUSH/CLOSE` codes, attempts close, awaits the loader and both drains, completes `HGRAGL16` with `Flush(true)`, and only then throws normalized stdin-delivery failure. It is 197 lines / 12,769 bytes / `B117878F...B45F2` and parser-zero.
+- The correction adopts Scheme A: exact six-path success commit as the approval commit's direct child; zero failure commits and zero failure pushes, with raw prefix/partial semantics left uncommitted for a separately governed Hard Failure audit package.
+- Success, failure, and unified post-attempt review states are frozen. Ten corrected blocker fixtures cover stdin ordering, Scheme A Git branches, and completion states; they join the accepted original 116 checks for 126/126 total. No new source or evidence flow runs during assembly.
+- The corrected package is an exact eight-path, zero-deletion direct child of rejected package `1e0973e3...`. Corrected Manifest is 17,536 bytes / `6C5E027B4B4F337B3CB61BDD381F00715D284B3269B5F39F0BE3A2E75259BAC5`.
+- Current state: `CORRECTED_AMENDMENT_5G_B_1_1_1_1_6_NESTED_DURABLE_PRE_DIAGNOSTIC_PACKAGE_AWAITING_INDEPENDENT_APPROVAL`; approval governance, PRE, POST, FINAL, TERMINAL, synthetic, official, Gold, reservation, and Stage3B are not approved.

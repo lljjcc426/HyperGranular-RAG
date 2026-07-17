@@ -1403,3 +1403,29 @@ raw verifier   6,882 bytes  FF990722ECC7AFAC0C4C1B8778A6743197814F0A1480A5BA0417
 Assembly validation is 116/116: 56 registry/Manifest/invocation/stdout checks, 36 durable-order checks, and 24 binary/path/HF19 checks. Validation read bytes and parsed ASTs only; no package source was dot-sourced or executed and no result path was created. Four failed read-only helper attempts caused zero writes and no frozen-source or experimental process start.
 
 After the package commit is pushed and before a package-bound approval is pushed, do not repeat source joining, parsing, reconstruction, or execution. Only package/Manifest identity, old raw identity, future-path absence, worktree, and remote-triplet checks are allowed. The requested future run is at most one PRE observer chain followed by one failure-or-success evidence commit and immediate review stop; POST, FINAL, TERMINAL, synthetic, official, Gold, reservation, and Stage3B remain locked.
+
+## Amendment 5G-B.1.1.1.1.6 Package Review 1 Correction
+
+Package Review 1 accepts the original twelve-path scope, four nested raw design, observer/capture/adapter persistence order, and reported 116/116 fixtures, but rejects package `1e0973e3...`. In the original nested parent, `BaseStream.Write`, `Flush`, or `Close` could throw after loader start and before `HGRAGL16`, making loader-started stdin failures indistinguishable from no loader start. The request also lacked an exact failure-commit contract and used an approval-waiting state as its post-execution completion state.
+
+The corrected 197-line / 12,769-byte parent has SHA-256 `B117878F04565A686BAAE4B4655386E260540CAAC2F1FB871465234A657B45F2`. It freezes four stdin failure codes, records the first failure locally, attempts close, waits for the loader and both raw drains, persists and durably flushes `HGRAGL16`, and only then throws the fixed failure text. No loader stdin delivery exception captured after `Process.Start` may bypass the loader raw record.
+
+The corrected Git branch contract is finite:
+
+```text
+SUCCESS:
+direct parent = actual approval-governance commit
+exact changed paths = 2 semantics + 4 new raw
+commit count = 1
+push count = 1
+
+FAILURE:
+preserve contiguous raw prefix and any partial semantics
+commit count = 0
+push count = 0
+next action = separately governed Hard Failure audit package
+```
+
+The unified post-attempt state is `AMENDMENT_5G_B_1_1_1_1_6_PRE_DIAGNOSTIC_ATTEMPT_COMPLETED_AWAITING_INDEPENDENT_REVIEW`, with separate success and uncommitted-failure states in the Manifest. Corrected assembly adds 10/10 Package Review 1 blocker fixtures covering stdin ordering, Scheme A Git branches, and completion states to the accepted original 116/116, for 126/126 total. It executes no new source and creates no evidence.
+
+Corrected Manifest: 17,536 bytes / `6C5E027B4B4F337B3CB61BDD381F00715D284B3269B5F39F0BE3A2E75259BAC5`. Approval governance and PRE remain unauthorized until an independent approval binds the actual corrected package commit.

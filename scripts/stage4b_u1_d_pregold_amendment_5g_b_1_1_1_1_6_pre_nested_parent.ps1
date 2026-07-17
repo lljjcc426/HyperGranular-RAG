@@ -128,10 +128,24 @@ $stdoutBuffer = New-Object IO.MemoryStream
 $stderrBuffer = New-Object IO.MemoryStream
 $stdoutDrain = $loaderProcess.StandardOutput.BaseStream.CopyToAsync($stdoutBuffer)
 $stderrDrain = $loaderProcess.StandardError.BaseStream.CopyToAsync($stderrBuffer)
-$stdinStream = $loaderProcess.StandardInput.BaseStream
-$stdinStream.Write($payloadBytes, 0, $payloadBytes.Length)
-$stdinStream.Flush()
-$stdinStream.Close()
+$stdinStream = $null
+$stdinDeliveryFailureCode = $null
+try { $stdinStream = $loaderProcess.StandardInput.BaseStream }
+catch { $stdinDeliveryFailureCode = 'BASE_STREAM_ACCESS' }
+if ($null -eq $stdinDeliveryFailureCode) {
+    try { $stdinStream.Write($payloadBytes, 0, $payloadBytes.Length) }
+    catch { $stdinDeliveryFailureCode = 'WRITE' }
+}
+if ($null -eq $stdinDeliveryFailureCode) {
+    try { $stdinStream.Flush() }
+    catch { $stdinDeliveryFailureCode = 'FLUSH' }
+}
+if ($null -ne $stdinStream) {
+    try { $stdinStream.Close() }
+    catch {
+        if ($null -eq $stdinDeliveryFailureCode) { $stdinDeliveryFailureCode = 'CLOSE' }
+    }
+}
 $loaderProcess.WaitForExit()
 [Threading.Tasks.Task]::WaitAll([Threading.Tasks.Task[]]@($stdoutDrain, $stderrDrain))
 $loaderExitCode = [int]$loaderProcess.ExitCode
@@ -168,6 +182,7 @@ try {
 }
 finally { $rawStream.Dispose() }
 
+if ($null -ne $stdinDeliveryFailureCode) { throw ('PRE loader stdin delivery failure after Process.Start: ' + $stdinDeliveryFailureCode + '; HGRAGL16 preserved') }
 if ($loaderExitCode -ne 0) { throw ('PRE loader nonzero exit: ' + $loaderExitCode) }
 $expectedLoaderStdout = $Utf8.GetBytes([string]$target.fixed_success_stdout)
 if ($loaderStdoutBytes.Length -ne [int]$target.fixed_success_stdout_bytes -or (Get-ExactSha256Hex $loaderStdoutBytes) -cne [string]$target.fixed_success_stdout_sha256) { throw 'PRE loader stdout identity mismatch' }

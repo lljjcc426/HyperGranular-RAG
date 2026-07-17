@@ -1,32 +1,47 @@
-# Stage4B-U1-D Pre-Gold Amendment 5G-B.1.1.1.1.6 Approval Request
+# Stage4B-U1-D Pre-Gold Amendment 5G-B.1.1.1.1.6 Corrected Approval Request
 
 ## Material Passport
 
 - Origin Skill: academic-research-suite / experiment-agent
 - Package date: 2026-07-17
-- Direct parent / Hard Failure 19 checkpoint: `96e9677d4779b9d4b3be59fbb319e0b4c6670732`
+- Direct parent / rejected package: `1e0973e3036af6f54aaf68e0699e35a34d2b78cd`
+- Hard Failure 19 checkpoint ancestor: `96e9677d4779b9d4b3be59fbb319e0b4c6670732`
+- Rejected Manifest: 13,802 bytes / `7DA3418D8BF7F4CF49D82088294D78CFB6FB6C8E7F66229F18624FE60A929937`
 - Consumed 1.1.5 approval governance: `950b56e83de8a87b7afe75eb3f021819e19516c8`
 - Approved 1.1.5 package: `f634a1ca766cc2885017f63f94ef9b87cab9a765`
 - Future package commit: `MUST_BIND_THE_ACTUAL_COMMIT_CREATED_FROM_THIS_EXACT_PACKAGE`
 - Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_6_MANIFEST.json`
-- Manifest bytes: 13,802
-- Manifest SHA-256: `7DA3418D8BF7F4CF49D82088294D78CFB6FB6C8E7F66229F18624FE60A929937`
-- Package status: `AMENDMENT_5G_B_1_1_1_1_6_NESTED_DURABLE_RESULT_CAPTURE_PRE_ONLY_DIAGNOSTIC_PACKAGE_AWAITING_APPROVAL`
+- Manifest bytes: 17,536
+- Manifest SHA-256: `6C5E027B4B4F337B3CB61BDD381F00715D284B3269B5F39F0BE3A2E75259BAC5`
+- Package correction revision: `CORRECTED_AFTER_PACKAGE_REVIEW_1`
+- Package status: `CORRECTED_AMENDMENT_5G_B_1_1_1_1_6_NESTED_DURABLE_PRE_DIAGNOSTIC_PACKAGE_AWAITING_INDEPENDENT_APPROVAL`
 - Package authorizes execution: No
 - Other project conversations, thread tools, and global memory used: No
 
 ## Requested Decision
 
 ```text
-APPROVE_STAGE4B_U1_D_PREGOLD_AMENDMENT_5G_B_1_1_1_1_6_NESTED_DURABLE_RESULT_CAPTURE_PRE_ONLY_DIAGNOSTIC
+APPROVE_CORRECTED_STAGE4B_U1_D_PREGOLD_AMENDMENT_5G_B_1_1_1_1_6_NESTED_DURABLE_RESULT_CAPTURE_PRE_ONLY_DIAGNOSTIC
 
 ONE_NEW_PACKAGE_BOUND_APPROVAL_GOVERNANCE_COMMIT
 ONE_PRE_OBSERVER_CHAIN_AT_MOST_ONCE
-ONE_PRE_FAILURE_OR_SUCCESS_EVIDENCE_COMMIT
+ONE_EXACT_SIX_PATH_PRE_SUCCESS_COMMIT_OR_ZERO_FAILURE_COMMITS
 IMMEDIATE_STOP_FOR_INDEPENDENT_REVIEW
 ```
 
 This request does not itself authorize any source reconstruction or execution. A new independent approval must bind the actual future package commit and this exact Manifest identity. It must not authorize POST, FINAL, or TERMINAL.
+
+## Package Review 1 Disposition And Correction Boundary
+
+Package Review 1 accepts the rejected package's twelve-path scope, immutable Hard Failure 19 raw binding, PRE-only direction, four nested raw layers, observer/capture-host/adapter durable ordering, 116/116 original fixtures, and zero-execution boundary. It rejects package `1e0973e3...` because loader stdin delivery could fail after `Process.Start` but before `HGRAGL16`, the failure commit paths were not frozen, and the requested completion state still described the pre-approval state.
+
+This corrected package changes only:
+
+1. nested-parent stdin access/write/flush/close failures are captured locally and thrown only after the loader result is awaited and `HGRAGL16` is durably flushed;
+2. review-recommended Scheme A freezes exactly one six-path commit on success and exactly zero commits/pushes on failure; and
+3. success, failure, and unified post-attempt review states are explicitly registered.
+
+The other four new sources, their invocation envelopes, the four raw formats/paths, the inherited loader/target transport, fixed success stdout, and Hard Failure 19 evidence remain unchanged.
 
 ## Hard Failure 19 Disposition
 
@@ -42,7 +57,7 @@ The old approval is consumed and cannot be reused. The old raw record remains im
 
 ## Exact Package Scope
 
-The package commit must be the direct child of `96e9677d4779b9d4b3be59fbb319e0b4c6670732` and contain exactly these twelve Git paths:
+The corrected package commit must be the direct child of rejected package `1e0973e3036af6f54aaf68e0699e35a34d2b78cd` and contain exactly these eight Git paths:
 
 ```text
 AGENTS.md
@@ -51,11 +66,7 @@ docs/REPRODUCIBILITY.md
 docs/ROADMAP.md
 docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_6_APPROVAL_REQUEST.md
 docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_6_MANIFEST.json
-docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_19_REVIEW_1.md
-scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_nested_raw_verifier.ps1
-scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_adapter.ps1
-scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_capture_host.ps1
-scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_observer.ps1
+docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_6_PACKAGE_REVIEW_1.md
 scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_parent.ps1
 ```
 
@@ -65,13 +76,13 @@ No file is deleted and no new result file is included in the package commit.
 
 | Source | Lines | Bytes | SHA-256 | Actual boundary |
 |---|---:|---:|---|---|
-| Nested parent | 182 | 12,118 | `91EC38326A39C8A4C9072821B34D4FE92D8423323B0051E027EF3348B56AA19E` | Starts inherited PRE loader and preserves loader result |
+| Nested parent | 197 | 12,769 | `B117878F04565A686BAAE4B4655386E260540CAAC2F1FB871465234A657B45F2` | Starts inherited PRE loader, delays stdin failure, and preserves loader result |
 | Nested adapter | 150 | 9,752 | `0C97760D26FF4D00D75FCB8847170578AD2DDAA797A588F8FC1844380B3BF3F1` | Starts nested parent and preserves parent result |
 | Nested capture host | 157 | 10,023 | `FD9C6261CEF905EFF2826D025ECE453863BC43AB5C2AEABA9C74C8EB55A8F73A` | Starts nested adapter and preserves adapter result |
 | Nested observer | 195 | 13,263 | `C37CBF70AA91A0FC8341400DF74B5D883796F6EFEB6AC25A5DBA260716716D52` | Starts capture host and preserves outer result |
 | Raw verifier | 114 | 6,882 | `FF990722ECC7AFAC0C4C1B8778A6743197814F0A1480A5BA0417FFB71A8E47AF` | Byte-validates old raw plus a contiguous new outer-to-inner prefix; writes no repository file |
 
-All five files are LF/terminal-LF and parser-zero. The inherited 1.1.3 transport Manifest remains exactly 323,607 bytes / `804B4F8607532D6CE17EDE043D5A9511C7E855F4EB444C25F461381B6EDDA73D`. The loader and target source/payload identities are revalidated by the nested parent before a future start; their behavior is not changed by this package.
+All five files are LF/terminal-LF and parser-zero. The inherited 1.1.3 transport Manifest remains exactly 323,607 bytes / `804B4F8607532D6CE17EDE043D5A9511C7E855F4EB444C25F461381B6EDDA73D`. The loader and target source/payload identities and bytes remain unchanged; only the parent-side delivery-failure ordering changes.
 
 ## Frozen Invocation Envelopes
 
@@ -103,6 +114,16 @@ Every new `Process.Start` boundary freezes this order:
 ```
 
 No hash, classification, helper dispatch, or serializer occurs between raw-array materialization and completed durable write.
+
+### Loader stdin-delivery correction
+
+After loader start and both raw drains, the parent uses the fixed failure codes `BASE_STREAM_ACCESS`, `WRITE`, `FLUSH`, and `CLOSE`. It records the first delivery failure without throwing, always attempts close when a stream was obtained, waits for the loader and both drains, materializes exit/stdout/stderr, completes `HGRAGL16` through `Flush(true)`, and only then throws:
+
+```text
+PRE loader stdin delivery failure after Process.Start: <FIXED_CODE>; HGRAGL16 preserved
+```
+
+That normalized parent failure is then preserved by `HGRAGP16`. Therefore an absent `HGRAGL16` once again means the parent did not complete a post-start loader record; a caught stdin-delivery failure after loader start cannot escape without that loader record.
 
 ## Four Fixed Raw Records
 
@@ -136,12 +157,13 @@ Package assembly performed read-only validation without dot-sourcing or invoking
 source/Manifest/invocation/stdout registry checks    56/56
 four-boundary durable ordering fixtures              36/36
 binary/path/prior-HF19 fixtures                       24/24
-total                                                116/116
+corrected Package Review 1 blocker fixtures           10/10
+total                                                126/126
 ```
 
 New observer, capture host, adapter, parent, loader, target, and raw-verifier execution counts are zero. Evidence writes are zero. Synthetic, real-validator, formal-preflight, official input/token/capture, controller, Gold, reservation, and Stage3B counts are zero.
 
-Four read-only package-helper attempts failed before final validation: one orchestration JavaScript parse error before shell launch, one PowerShell `ForEach-Object`/`-join` binding error after read-only property inspection, and two empty-pipe parser errors in report formatting. They created no files and started no experimental or frozen-source process.
+The four previously reported read-only original-package helper failures remain disclosed. Corrected-package validation introduced no additional helper failure. All helper failures created no project file and started no experimental or frozen-source process.
 
 ## Required Future Approval Governance
 
@@ -161,8 +183,8 @@ docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_6_APPROVAL_DECISION.md
 2. After that push, run the approved static identity/parser/invocation gates.
 3. Run the PRE observer chain at most once with the actual package and approval commit bindings.
 4. Preserve the complete outer-to-inner raw prefix on any outcome.
-5. On success, commit and push the two PRE semantics files plus all four new raw records as the one PRE evidence commit.
-6. On failure, do not form a semantics success commit; preserve and Git-anchor the failure raw prefix and any already-created partial semantics evidence in the failure audit.
+5. On success, commit and push exactly the two PRE semantics files plus all four new raw records as the direct child of the approval-governance commit.
+6. On failure, create zero commits and perform zero pushes; preserve the raw prefix and any partial semantics files uncommitted, then stop for a separately governed Hard Failure audit package.
 7. Stop immediately for independent review. Do not run POST, FINAL, or TERMINAL.
 ```
 
@@ -172,7 +194,7 @@ The standalone raw verifier is frozen for byte-level review but is not requested
 
 Any identity, binding, parser, actual command line, path collision, process start, drain, wait, raw materialization, `CreateNew`, durable flush, exit, stdout, stderr, class, evidence path, commit, push, worktree, or remote-triplet failure consumes the authorization and stops the chain.
 
-Retry, fallback, alternate script, source reconstruction after failure, evidence overwrite or cleanup, reset, rebase, force-push, threshold/data change, and partial continuation are forbidden.
+Retry, fallback, alternate script, source reconstruction after failure, evidence overwrite or cleanup, failure-branch commit/push, reset, rebase, force-push, threshold/data change, and partial continuation are forbidden.
 
 ## Explicitly Not Requested
 
@@ -194,5 +216,12 @@ STAGE3B
 ## Requested Completion State
 
 ```text
-AMENDMENT_5G_B_1_1_1_1_6_NESTED_DURABLE_PRE_DIAGNOSTIC_PACKAGE_AWAITING_INDEPENDENT_APPROVAL
+Unified:
+AMENDMENT_5G_B_1_1_1_1_6_PRE_DIAGNOSTIC_ATTEMPT_COMPLETED_AWAITING_INDEPENDENT_REVIEW
+
+Success branch:
+AMENDMENT_5G_B_1_1_1_1_6_PRE_DIAGNOSTIC_SUCCESS_EVIDENCE_COMMITTED_AWAITING_INDEPENDENT_REVIEW
+
+Failure branch:
+AMENDMENT_5G_B_1_1_1_1_6_PRE_DIAGNOSTIC_FAILURE_PREFIX_PRESERVED_UNCOMMITTED_AWAITING_HARD_FAILURE_AUDIT
 ```

@@ -2,8 +2,9 @@
   "schema_version": 1,
   "request_id": "STAGE4B_U1_D_PREGOLD_AMENDMENT_5G_B_1_1_1_1_6",
   "package_revision": "NESTED_DURABLE_RESULT_CAPTURE_PRE_ONLY_DIAGNOSTIC",
+  "package_correction_revision": "CORRECTED_AFTER_PACKAGE_REVIEW_1",
   "assembled_date": "2026-07-17",
-  "package_status": "AWAITING_INDEPENDENT_APPROVAL",
+  "package_status": "CORRECTED_PACKAGE_AWAITING_INDEPENDENT_APPROVAL",
   "requested_mode": "PRE_ONLY_DIAGNOSTIC_SINGLE_ATTEMPT",
   "package_authorizes_execution": false,
   "approval_must_bind_package_commit": true,
@@ -11,11 +12,13 @@
     "accepted_amendment_5g_b_1_1_1_1_5_package": "f634a1ca766cc2885017f63f94ef9b87cab9a765",
     "accepted_amendment_5g_b_1_1_1_1_5_approval_governance": "950b56e83de8a87b7afe75eb3f021819e19516c8",
     "accepted_hard_failure_19_audit_checkpoint": "96e9677d4779b9d4b3be59fbb319e0b4c6670732",
+    "rejected_amendment_5g_b_1_1_1_1_6_package": "1e0973e3036af6f54aaf68e0699e35a34d2b78cd",
     "future_amendment_5g_b_1_1_1_1_6_package": "FUTURE_PACKAGE_COMMIT",
     "future_amendment_5g_b_1_1_1_1_6_approval_governance": "FUTURE_APPROVAL_GOVERNANCE_COMMIT"
   },
   "lineage_contract": {
-    "package_commit_direct_parent": "96e9677d4779b9d4b3be59fbb319e0b4c6670732",
+    "package_commit_direct_parent": "1e0973e3036af6f54aaf68e0699e35a34d2b78cd",
+    "hard_failure_19_checkpoint_ancestor": "96e9677d4779b9d4b3be59fbb319e0b4c6670732",
     "approval_commit_direct_parent": "FUTURE_PACKAGE_COMMIT",
     "history_rewrite_forbidden": true
   },
@@ -88,6 +91,13 @@
       "stderr_raw_bytes"
     ],
     "persistence_order": "WAIT_FOR_EXIT_THEN_WAIT_ALL_THEN_MATERIALIZE_RAW_BYTES_THEN_CREATE_NEW_THEN_FLUSH_TRUE_THEN_CLASSIFY",
+    "loader_stdin_delivery_order": "CAPTURE_ACCESS_WRITE_FLUSH_CLOSE_FAILURE_LOCALLY_THEN_WAIT_FOR_EXIT_AND_WAIT_ALL_THEN_PERSIST_HGRAGL16_THEN_THROW_FROZEN_FAILURE",
+    "loader_stdin_delivery_failure_codes": [
+      "BASE_STREAM_ACCESS",
+      "WRITE",
+      "FLUSH",
+      "CLOSE"
+    ],
     "layers": [
       {
         "layer": "OUTER_CAPTURE_HOST",
@@ -133,9 +143,9 @@
   },
   "pre_nested_parent": {
     "path": "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_parent.ps1",
-    "source_bytes": 12118,
-    "source_sha256": "91EC38326A39C8A4C9072821B34D4FE92D8423323B0051E027EF3348B56AA19E",
-    "source_line_count": 182,
+    "source_bytes": 12769,
+    "source_sha256": "B117878F04565A686BAAE4B4655386E260540CAAC2F1FB871465234A657B45F2",
+    "source_line_count": 197,
     "trailing_newline": true,
     "static_parse_errors": 0,
     "complete_arguments": "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_parent.ps1\"",
@@ -229,7 +239,70 @@
     "retry_count": 0,
     "stop_on_any_nonzero_or_mismatch": true,
     "preserve_partial_raw_prefix": true,
+    "result_branching": "ONE_EXACT_SIX_PATH_SUCCESS_COMMIT_OR_ZERO_FAILURE_COMMITS",
     "post_final_terminal_authorized": false
+  },
+  "result_commit_contract": {
+    "scheme": "PACKAGE_REVIEW_1_RECOMMENDED_SCHEME_A",
+    "success": {
+      "condition": "PRE_NESTED_OBSERVER_EXIT_0_AND_ALL_REGISTERED_GATES_PASS",
+      "direct_parent": "FUTURE_APPROVAL_GOVERNANCE_COMMIT",
+      "exact_path_count": 6,
+      "exact_paths": [
+        "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_VALIDATOR_SEMANTICS_AUDIT.md",
+        "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_adapter_child_observation.bin",
+        "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_capture_outer_observation.bin",
+        "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_loader_child_observation.bin",
+        "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_parent_child_observation.bin",
+        "results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_validator_semantics.json"
+      ],
+      "commit_required": true,
+      "push_required": true,
+      "completion_state": "AMENDMENT_5G_B_1_1_1_1_6_PRE_DIAGNOSTIC_SUCCESS_EVIDENCE_COMMITTED_AWAITING_INDEPENDENT_REVIEW"
+    },
+    "failure": {
+      "condition": "ANY_PRE_NESTED_OBSERVER_OR_CHILD_NONZERO_OR_MISMATCH",
+      "commit_count": 0,
+      "push_count": 0,
+      "preserve_raw_path_shape": "OUTER_TO_INNER_CONTIGUOUS_PREFIX",
+      "preserve_partial_semantics_states": [
+        "ZERO_FILES",
+        "MACHINE_ONLY",
+        "NARRATIVE_ONLY",
+        "MACHINE_AND_NARRATIVE"
+      ],
+      "cleanup_forbidden": true,
+      "next_action": "SEPARATELY_GOVERNED_HARD_FAILURE_AUDIT_PACKAGE",
+      "completion_state": "AMENDMENT_5G_B_1_1_1_1_6_PRE_DIAGNOSTIC_FAILURE_PREFIX_PRESERVED_UNCOMMITTED_AWAITING_HARD_FAILURE_AUDIT"
+    }
+  },
+  "package_review_1": {
+    "reviewed_package": "1e0973e3036af6f54aaf68e0699e35a34d2b78cd",
+    "reviewed_manifest_bytes": 13802,
+    "reviewed_manifest_sha256": "7DA3418D8BF7F4CF49D82088294D78CFB6FB6C8E7F66229F18624FE60A929937",
+    "decision": "REJECT_AMENDMENT_5G_B_1_1_1_1_6_PACKAGE_AS_CURRENTLY_WRITTEN",
+    "accepted": [
+      "HARD_FAILURE_19_REVIEW_1",
+      "PACKAGE_COMMIT_AND_EXACT_TWELVE_PATH_SCOPE",
+      "HARD_FAILURE_19_RAW_PRESERVATION_BINDING",
+      "PRE_ONLY_DIAGNOSTIC_DIRECTION",
+      "FOUR_NESTED_RAW_LAYER_DESIGN",
+      "OUTER_CAPTURE_ADAPTER_PARENT_MAIN_PATH_DURABLE_ORDER",
+      "REPORTED_STATIC_VALIDATION_116_OF_116",
+      "ZERO_NEW_SOURCE_EXECUTION_AND_ZERO_NEW_EVIDENCE_BOUNDARY"
+    ],
+    "blocking_causes": [
+      "LOADER_STDIN_DELIVERY_FAILURE_CAN_ESCAPE_AFTER_PROCESS_START_BEFORE_HGRAGL16_PERSISTENCE",
+      "FAILURE_EVIDENCE_COMMIT_PARENT_AND_EXACT_PATH_SCOPE_NOT_FROZEN",
+      "REQUESTED_COMPLETION_STATE_INCORRECTLY_REMAINS_PRE_APPROVAL_STATE"
+    ],
+    "correction": [
+      "DEFER_STDIN_DELIVERY_FAILURE_UNTIL_AFTER_HGRAGL16_FLUSH_TRUE",
+      "SCHEME_A_ZERO_FAILURE_COMMITS_AND_EXACT_SIX_PATH_SUCCESS_COMMIT",
+      "FREEZE_SUCCESS_FAILURE_AND_UNIFIED_POST_ATTEMPT_REVIEW_STATES"
+    ],
+    "approval_governance_approved": false,
+    "execution_approved": false
   },
   "explicitly_not_authorized": [
     "ANY_SOURCE_EXECUTION_BEFORE_NEW_APPROVAL",
@@ -245,11 +318,12 @@
     "SOURCE_RECONSTRUCTION_FROM_MANIFEST",
     "SYNTHETIC_OR_REAL_VALIDATOR_PREFLIGHT",
     "OFFICIAL_INPUT_OR_TOKEN_CAPTURE",
-    "CONTROLLER_OR_FORMAL_VERIFIER_EXECUTION"
+    "CONTROLLER_OR_FORMAL_VERIFIER_EXECUTION",
+    "FAILURE_BRANCH_COMMIT_OR_PUSH"
   ],
   "package_assembly_audit": {
-    "direct_parent_required": "96e9677d4779b9d4b3be59fbb319e0b4c6670732",
-    "exact_path_count": 12,
+    "direct_parent_required": "1e0973e3036af6f54aaf68e0699e35a34d2b78cd",
+    "exact_path_count": 8,
     "exact_paths": [
       "AGENTS.md",
       "README.md",
@@ -257,15 +331,19 @@
       "docs/ROADMAP.md",
       "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_6_APPROVAL_REQUEST.md",
       "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_6_MANIFEST.json",
-      "docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_19_REVIEW_1.md",
-      "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_nested_raw_verifier.ps1",
-      "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_adapter.ps1",
-      "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_capture_host.ps1",
-      "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_observer.ps1",
+      "docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_6_PACKAGE_REVIEW_1.md",
       "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_6_pre_nested_parent.ps1"
     ],
     "deletions": 0,
-    "raw_result_files_added_to_package": 0
+    "raw_result_files_added_to_package": 0,
+    "original_package_static_validation_passed": 116,
+    "original_package_static_validation_total": 116,
+    "corrected_review_blocker_fixtures_passed": 10,
+    "corrected_review_blocker_fixtures_total": 10,
+    "corrected_total_static_validation_passed": 126,
+    "corrected_total_static_validation_total": 126,
+    "new_source_executions": 0,
+    "new_evidence_creations": 0
   },
-  "requested_completion_state": "AWAITING_INDEPENDENT_APPROVAL_FOR_ONE_PRE_ONLY_DIAGNOSTIC_ATTEMPT"
+  "requested_completion_state": "AMENDMENT_5G_B_1_1_1_1_6_PRE_DIAGNOSTIC_ATTEMPT_COMPLETED_AWAITING_INDEPENDENT_REVIEW"
 }
