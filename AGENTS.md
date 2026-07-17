@@ -454,6 +454,13 @@
 438. 现有证据不能确认 launcher 失败发生在 helper 启动前还是启动后；bounded helper start、primary/alternate/total remote call 与 same-method retry 实际计数全部为 `UNCONFIRMED`，不得写成 0 或将失败归因为 helper、transport、remote ref、PASS framing、launcher/package source defect。
 439. 外层 PASS gate 失败后 observer parser/static/process 全部为 0，`HGRAGC17` 与 result commit/push 均为 0；没有第二次 launcher、direct helper bypass、cleanup、overwrite、stderr reconstruction 或事后实验诊断。当前 approval 链已终止且不可复用。
 440. Hard Failure 23 audit package 必须是 approval governance `ef9ba5b3...` 的单一直接子提交，changed paths 精确五条：`AGENTS.md`、`README.md`、`docs/REPRODUCIBILITY.md`、`docs/ROADMAP.md` 与 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_23.md`；零删除、零 source/result/raw。当前状态为 `AMENDMENT_5G_B_1_1_1_1_9_TRACKED_LAUNCHER_NONZERO_STOPPED_HARD_FAILURE_23`，等待独立审核。
+441. Hard Failure 23 Review 1 已接受 checkpoint `c09f5ee5018ed48d63f28aef11ad5ddccffa7406`、launcher 1/exit 1/stdout 0/stderr 503 non-durable、observer/result 0 与零 retry 边界。Helper start、primary/alternate/total remote calls 精确值继续未确认；结构上分别限于 0–1、0–1、0–1、0–2，same-method retry 因冻结源码无循环且各方法单调用站点而精确为 0。`ef9ba5b3...` 链终止且不可复用。
+442. 用户指示执行治理收缩：不再组装同结构 Amendment 1.1.10，不追查未持久化的 503-byte stderr。1.1.7–1.1.9 PowerShell launcher、remote gate、observer 与 nested PRE 链保留为 Git 历史失败实现，但不再作为 Stage4B-U1 计划执行入口。
+443. 后续审核分三级：A 级覆盖数据/Gold/算法/ranking/指标/统计结论并继续正式预注册、批准与独立验证；B 级覆盖 cache/schema/effective-K/NaN/成员/原子写/Gold scan/ranking subset，以定向测试、一次代码审核和必要的一次完整 suite 为主；C 级覆盖 quoting、命令行字节、TLS、工具权限、alias、stderr/stdout framing、remote visibility 与多层进程拓扑，默认作为普通工程日志。
+444. C 级问题只有实际导致错误数据或配置、Gold 泄漏、不可信 ranking、指标变化或 official output 部分提升时才升级为科研 Hard Failure。未来协议可在 official input 打开前、零 output/Gold、code/config/input/cache identity 不变且仅修复包装/权限/网络/日志时预登记一次受限重试资格；重试不得自动发生，执行时仍须用户明确确认。本规则不追认或重启已终止的 1.1.9 链。
+445. 简化后的目标执行架构为单一冻结 JSON config、直接 Python preflight/controller、一次独立 verifier、ranking 冻结提交后再单独连接 Gold evaluator。保留数据隔离、Gold-free controller、代码/配置/输入 hash、ranking/预算推导、主要终点和统计解释；移除 command-line byte equality、运行时 GitHub-main 查询、terminal-NUL、empty-stderr 与 observer/adapter/parent/loader 进程层级硬门。
+446. 测试按影响分级：科研算法变化运行完整 suite 加一次关键确定性复跑；ranking/verifier/schema 变化通常完整 suite 一次；launcher/log/path 只跑定向测试；文档/审批/README 与 Git push/remote visibility 不跑算法 suite。只有可能影响科研结果的错误才新增永久回归测试。
+447. 本治理修订不实现或授权 simplified runner、preflight、official、Gold、reservation 或 Stage3B。当前状态为 `STAGE4B_U1_HF23_CLOSED_GOVERNANCE_SIMPLIFICATION_ADOPTED_IMPLEMENTATION_PENDING`；下一步仅允许先形成精简执行协议与对应最小代码变更，再按 A/B/C 级别审核。
 
 ## GitHub 与文档
 

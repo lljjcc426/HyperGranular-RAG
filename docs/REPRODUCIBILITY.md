@@ -1575,3 +1575,13 @@ It is therefore unconfirmed whether the helper started. Primary, alternate, tota
 The failed outer PASS gate prevented observer parsing and execution. Observer parser/process counts, `HGRAGC17` creations, result commits, and result pushes are all zero. The observation path remains absent. No retry, direct helper bypass, cleanup, overwrite, stderr reconstruction, or post-failure experimental diagnostic execution occurred.
 
 Current status: `AMENDMENT_5G_B_1_1_1_1_9_TRACKED_LAUNCHER_NONZERO_STOPPED_HARD_FAILURE_23`. Approval governance `ef9ba5b3...` is terminated and non-reusable. Reproduction stops at this boundary pending independent review of `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_23.md` and a separately governed future Amendment.
+
+## Hard Failure 23 Closure And Simplified Execution Boundary
+
+Hard Failure 23 Review 1 accepts checkpoint `c09f5ee5018ed48d63f28aef11ad5ddccffa7406`. The exact helper and remote-call counts remain unconfirmed within their frozen structural bounds, while same-method retries are exactly zero. Approval governance `ef9ba5b3...` remains terminated and non-reusable.
+
+The project will not build Amendment 1.1.10 to recover the missing 503-byte stderr. The 1.1.7–1.1.9 PowerShell launcher/remote/observer/PRE chain is historical only and must not be used as the next reproduction entry point.
+
+The future reproduction path is intentionally not yet executable. It will be specified in a separate minimal protocol as one frozen JSON config, one direct Python preflight/controller, one independent verifier, a committed ranking boundary, and a separate Gold evaluator. The protocol must retain code/config/input/cache hashes, Gold unavailability before ranking freeze, output-path absence, atomic output promotion, effective-K, unique-ID, membership, protected-prefix, planned-insert, trigger, and ranking-subset checks.
+
+No command in this section authorizes official input, Gold, reservation, or Stage3B access. Current status: `STAGE4B_U1_HF23_CLOSED_GOVERNANCE_SIMPLIFICATION_ADOPTED_IMPLEMENTATION_PENDING`.

@@ -1479,3 +1479,13 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - No second launcher, direct helper bypass, cleanup, overwrite, stderr reconstruction, or post-failure experimental diagnostic execution occurred. The approval chain is terminated and non-reusable.
 - The Hard Failure 23 audit is an exact five-path, zero-deletion direct child of `ef9ba5b3...`; it contains no source, result, raw, parser output, or post-hoc diagnostic artifact.
 - Current state: `AMENDMENT_5G_B_1_1_1_1_9_TRACKED_LAUNCHER_NONZERO_STOPPED_HARD_FAILURE_23`. Independent review and a separately governed Amendment are required before any resumption.
+
+### Hard Failure 23 Closure And Governance Simplification
+
+- Independent Review 1 accepts checkpoint `c09f5ee5018ed48d63f28aef11ad5ddccffa7406`, the valid approval lineage, launcher 1/exit 1/stdout 0/stderr 503 non-durable facts, observer/result zero boundary, and no-retry compliance.
+- Helper start and primary/alternate/total remote-call exact counts remain unconfirmed; their structural bounds are 0–1, 0–1, 0–1, and 0–2. Same-method retries are exactly zero from the frozen non-loop single-call structure.
+- The project declines the proposed Amendment 1.1.10 nested stderr capture. The unpreserved 503-byte payload will not be reconstructed or investigated further.
+- The 1.1.7–1.1.9 PowerShell launcher, remote verification, command-line observer, and nested PRE chain remain immutable historical failed implementations and are removed from the planned execution route.
+- Governance now uses Level A scientific-critical review, Level B integrity review, and Level C runtime-infrastructure logging. Scientific hard gates remain focused on data, Gold isolation, algorithm/ranking behavior, outputs, metrics, and statistical conclusions.
+- The planned replacement is one frozen JSON config, one direct Python preflight/controller, one independent verifier, committed rankings, and a separate Gold evaluator. Scientific settings and advancement gates remain unchanged.
+- No replacement runner or official execution is authorized by this governance record. Current state: `STAGE4B_U1_HF23_CLOSED_GOVERNANCE_SIMPLIFICATION_ADOPTED_IMPLEMENTATION_PENDING`.
