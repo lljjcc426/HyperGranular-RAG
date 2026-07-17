@@ -1400,3 +1400,14 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Success, failure, and unified post-attempt review states are frozen. Ten corrected blocker fixtures cover stdin ordering, Scheme A Git branches, and completion states; they join the accepted original 116 checks for 126/126 total. No new source or evidence flow runs during assembly.
 - The corrected package is an exact eight-path, zero-deletion direct child of rejected package `1e0973e3...`. Corrected Manifest is 17,536 bytes / `6C5E027B4B4F337B3CB61BDD381F00715D284B3269B5F39F0BE3A2E75259BAC5`.
 - Current state: `CORRECTED_AMENDMENT_5G_B_1_1_1_1_6_NESTED_DURABLE_PRE_DIAGNOSTIC_PACKAGE_AWAITING_INDEPENDENT_APPROVAL`; approval governance, PRE, POST, FINAL, TERMINAL, synthetic, official, Gold, reservation, and Stage3B are not approved.
+
+### Hard Failure 20: PRE Observer Actual Command-Line Gate
+
+- Corrected package `0efbea018f4ad0e8650e254d313fb9cc85d2a28c` was approved through exact two-path direct-child governance commit `1eb73132d47d5b21fceca9c88a42607ee3dff98d`; the commit was pushed before frozen-source execution.
+- Post-governance local/tracking/direct main, clean worktree, and six-path absence gates passed. Static validation passed 56/56 registry, 36/36 durable-order, 24/24 binary/path/HF19, and 10/10 Review 1 blocker checks, 126/126 total, with zero frozen process starts or evidence writes.
+- The single approved PRE observer process reached its own actual-command-line equality gate and exited 1 with `PRE nested observer actual process command line mismatch`.
+- The gate precedes capture-host invocation reconstruction and `Process.Start()`. Frozen counts are observer 1, capture host 0, adapter 0, parent 0, loader 0, and target ScriptBlock 0.
+- All four new 1.1.6 raw paths and both semantics paths remained absent. The old 520-byte HF19 raw / `4ABEB260...80A70` remained unchanged.
+- Actual and modeled command-line bytes were not persisted before comparison. Exact characters, count, SHA, first differing position, and difference category are `UNCONFIRMED`; no executable-quoting, normalization, package-source, or nested-transport root cause is claimed.
+- Failure-branch compliance is zero result commits, zero result pushes, zero retries, zero standalone verifier, and zero post-failure diagnostic execution. The approval is consumed and non-reusable.
+- Current state: `AMENDMENT_5G_B_1_1_1_1_6_PRE_OBSERVER_ACTUAL_COMMAND_LINE_GATE_STOPPED_HARD_FAILURE_20`. A future command-line-only diagnostic requires a separately governed Amendment/package-bound approval and must not start the capture host.

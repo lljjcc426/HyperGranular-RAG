@@ -1429,3 +1429,19 @@ next action = separately governed Hard Failure audit package
 The unified post-attempt state is `AMENDMENT_5G_B_1_1_1_1_6_PRE_DIAGNOSTIC_ATTEMPT_COMPLETED_AWAITING_INDEPENDENT_REVIEW`, with separate success and uncommitted-failure states in the Manifest. Corrected assembly adds 10/10 Package Review 1 blocker fixtures covering stdin ordering, Scheme A Git branches, and completion states to the accepted original 116/116, for 126/126 total. It executes no new source and creates no evidence.
 
 Corrected Manifest: 17,536 bytes / `6C5E027B4B4F337B3CB61BDD381F00715D284B3269B5F39F0BE3A2E75259BAC5`. Approval governance and PRE remain unauthorized until an independent approval binds the actual corrected package commit.
+
+## Hard Failure 20: PRE Observer Actual Command-Line Gate
+
+The corrected package was approved through exact two-path governance commit `1eb73132d47d5b21fceca9c88a42607ee3dff98d`, whose direct parent is package `0efbea018f4ad0e8650e254d313fb9cc85d2a28c`. After push, local `HEAD`, local `main`, tracked `origin/main`, and direct GitHub `main` matched; the worktree was clean and all six result paths were absent.
+
+The approved post-governance static gate passed 126/126: 56 source/Manifest/invocation/stdout registry checks, 36 durable-order fixtures, 24 binary/path/HF19 fixtures, and 10 Package Review 1 blocker fixtures. Static-stage frozen process starts, evidence writes, dot-sources, and raw-verifier executions were all zero.
+
+The PRE observer was then launched exactly once with the registered package and approval bindings. It exited 1 at `PRE nested observer actual process command line mismatch`. The equality gate compares `[Environment]::CommandLine + [char]0` with the reconstructed modeled command before capture-host invocation reconstruction, `ProcessStartInfo`, capture-host `Process.Start()`, raw drains, or `HGRAGO16 CreateNew`.
+
+The exact process counts are therefore observer 1, capture host 0, adapter 0, parent 0, loader 0, and target ScriptBlock 0. All four 1.1.6 raw paths and both semantics paths remained absent. The immutable Hard Failure 19 raw remained 520 bytes with SHA-256 `4ABEB26000DDC77E8293DB1616682E6748E2290A9608959A2A040B1CD2780A70`.
+
+The observer did not persist actual and modeled command-line bytes before comparing them. Exact actual characters, length, SHA-256, first differing position, and the difference category are consequently unrecoverable. Executable quoting, path normalization, argument escaping, PowerShell normalization, separator/NUL modeling, package-source defect, and nested-transport defect all remain unestablished.
+
+The error boundary is `AUDIT_RECORDED`, not separately durable byte evidence. No post hoc raw was created. The approved failure branch completed with zero result commits, zero result pushes, zero retry, zero standalone verifier, and zero post-failure source reconstruction or diagnostic execution. POST, FINAL, TERMINAL, synthetic, formal preflight, official, Gold, reservation, and Stage3B remained untouched.
+
+Current status: `AMENDMENT_5G_B_1_1_1_1_6_PRE_OBSERVER_ACTUAL_COMMAND_LINE_GATE_STOPPED_HARD_FAILURE_20`. The approval is consumed and non-reusable. A future command-line-only diagnostic requires a separately assembled Amendment and package-bound approval; it is not implemented or authorized by this checkpoint. See `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_20.md`.

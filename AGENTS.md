@@ -382,6 +382,12 @@
 366. PRE 全部成功时仅允许创建并推送一个以实际 approval-governance commit 为直接父提交的精确六路径结果提交：四条 1.1.6 raw 与两条 validator semantics；不得加入状态文档或额外审计文件。推送并核验 local/origin/direct-main 与 clean worktree 后立即停止，状态为 `AMENDMENT_5G_B_1_1_1_1_6_PRE_DIAGNOSTIC_SUCCESS_EVIDENCE_COMMITTED_AWAITING_INDEPENDENT_REVIEW`。
 367. PRE 任一 nonzero 或 mismatch 时 commit count=0、push count=0，必须原样保留 outer-to-inner raw prefix 与 0/1/2 条 partial semantics，禁止 cleanup、retry、fallback、partial continuation、standalone raw verifier、source reconstruction 或任何失败后诊断执行，并立即停止等待另行治理的 Hard Failure audit。失败状态为 `AMENDMENT_5G_B_1_1_1_1_6_PRE_DIAGNOSTIC_FAILURE_PREFIX_PRESERVED_UNCOMMITTED_AWAITING_HARD_FAILURE_AUDIT`。
 368. 本批准的统一执行后边界为 `AMENDMENT_5G_B_1_1_1_1_6_PRE_DIAGNOSTIC_ATTEMPT_COMPLETED_AWAITING_INDEPENDENT_REVIEW`。POST、FINAL、TERMINAL、nested raw verifier execution、synthetic rebinding、real precommit validator、formal preflight、official execution、Gold、reservation 与 Stage3B 均未获批准。
+369. Hard Failure 20 独立审核已接受 approval governance `1eb73132d47d5b21fceca9c88a42607ee3dff98d`、治理后 126/126 静态门、唯一一次 PRE observer 及 fail-closed 零结果提交/零结果推送边界。精确失败边界为 `PRE_NESTED_OBSERVER_ACTUAL_PROCESS_COMMAND_LINE_MISMATCH`；当前 approval 已消费且不可复用。
+370. 本轮冻结进程计数为 observer 1、capture host 0、adapter 0、parent 0、loader 0、target ScriptBlock 0。失败发生在 observer actual-command-line equality gate，早于 capture-host invocation reconstruction、ProcessStartInfo、`Process.Start()` 与全部新 raw `CreateNew`；不得表述为任一嵌套 child 运行失败。
+371. 四条 1.1.6 raw 与两条 semantics 路径均未创建；旧 HF19 raw 继续固定为 520 bytes / `4ABEB26000DDC77E8293DB1616682E6748E2290A9608959A2A040B1CD2780A70`。Observer exit/error 仅为 `AUDIT_RECORDED`，不是 separately durable byte evidence；禁止伪造事后 raw 或 command-line observation。
+372. 实际 `[Environment]::CommandLine` 的字符、长度、SHA、首个差异位置与差异类别均未持久化并保持 `UNCONFIRMED`。不得把根因改写为 executable quoting、path normalization、argument escaping、PowerShell normalization、separator/NUL modeling、package-source defect 或 nested-transport defect。
+373. Hard Failure 20 checkpoint 只允许记录失败审计与项目状态，不授权修改 observer、重试 PRE、运行 standalone raw verifier、source reconstruction、诊断执行、POST、FINAL、TERMINAL、synthetic、real validator、preflight、official、Gold、reservation 或 Stage3B。当前状态为 `AMENDMENT_5G_B_1_1_1_1_6_PRE_OBSERVER_ACTUAL_COMMAND_LINE_GATE_STOPPED_HARD_FAILURE_20`。
+374. 未来 Amendment 5G-B.1.1.1.1.7 必须另行组包、审核和批准；可提议的最窄范围仅为 command-line-only diagnostic：在 equality gate 前以全新 versioned 路径持久化 actual/modeled UTF-16LE raw bytes 与登记元数据，Flush(true) 后比较，不启动 capture host，并立即停止独立审核。该设计当前尚未实现或获批。
 
 ## GitHub 与文档
 
