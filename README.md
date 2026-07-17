@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Hard Failure 22 audit package 已完成；bounded-helper launch wrapper 在 Process.Start 前解析失败，等待独立审核 |
-| 获批执行协议 | 无；1.1.8 approval-governance 链已终止且不可复用，helper/remote/observer quota 未使用 |
-| 设计文件 | HF22 audit、1.1.8 Approval Decision/Request/Manifest、bounded remote-gate helper、unchanged 1.1.7 observer |
-| 协议状态 | `AMENDMENT_5G_B_1_1_1_1_8_POST_GOVERNANCE_HELPER_LAUNCH_WRAPPER_PARSE_STOPPED_HARD_FAILURE_22` |
+| 当前阶段 | Hard Failure 22 Review 1 已接受；1.1.9 tracked/preparsed launcher package 已完成，等待独立审批 |
+| 获批执行协议 | 无；1.1.8 approval-governance 链已终止且不可复用，1.1.9 package 不授权 parser 或执行 |
+| 设计文件 | HF22 audit/Review 1、1.1.9 Approval Request/Manifest/tracked launcher、unchanged 1.1.8 helper 与 1.1.7 observer |
+| 协议状态 | `AMENDMENT_5G_B_1_1_1_1_9_TRACKED_PREPARSED_LAUNCHER_PACKAGE_AWAITING_INDEPENDENT_APPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -50,6 +50,8 @@ Amendment 1.1.7 approval governance 已按精确两路径提交 `f5a9ce38...` �
 Hard Failure 21 Review 1 接受 checkpoint `c4ac4b90...`，并只允许组装 Amendment 1.1.8 bounded remote-verification transport policy。新 294-line Python helper 冻结一次 Git `ls-remote` primary；只有四类未返回 ref 的 transport failure 才进入一次不同实现的 GitHub REST alternate，总调用至多 2、同方法零重试。Package Manifest 为 12,757 bytes / `672FBD0C...CBFDC75`；不改 1.1.7 observer、Manifest、`HGRAGC17`或仍缺席的 observation 路径，不创建 remote attestation；package assembly 的 helper AST parse 为 4，helper execution、remote query、observer parser/execution 与 evidence 均为 0。
 
 Amendment 1.1.8 approval governance 已作为精确两路径提交 `4d9886be...` 推送；无 direct remote query 的 local/tracking/clean/path/identity 门与唯一一次 bounded-helper AST/static gate均通过。随后 helper launch wrapper 在 PowerShell 解析阶段因双引号字符串中的 `$exitCode:` 触发 `InvalidVariableReferenceWithDrive`，早于任何 `Process.Start()`。因此 helper process、primary/alternate remote call、observer parser/process、`HGRAGC17`、result commit/push均为0；没有重试，当前 approval 链终止且不可复用，形成 Hard Failure 22。
+
+Hard Failure 22 Review 1 接受 checkpoint `a740f669...` 与该根因边界，并只返回 Amendment 1.1.9 tracked/preparsed bounded-helper launcher。新 launcher 为 184 LF / 7,952 ASCII bytes / `898BDB48...DB0BC3D`；package 阶段唯一 PowerShell parser 门以 0 errors 通过，launcher/helper/remote/observer/evidence 执行均为 0。它固定一个 helper `Process.Start()`、原始 stdout/stderr 并发捕获、exit/stderr/framing 门与五种 canonical PASS JSON；不改变 1.1.8 helper/transport、1.1.7 observer、`HGRAGC17` 或结果路径。Manifest 为 16,536 bytes / `35F4E35E...304D4FF2`，package 本身不授权审批治理或任何执行。
 
 Hard Failure 17 Review 1 接受上述审计、有效 approval governance、PRE source/parser/arguments 门与零进程/零 evidence 边界，并将根因冻结为 `ORCHESTRATOR_SCHEMA_DESCRIPTOR_MISINTERPRETATION`。Amendment 5G-B.1.1.1.1.4 不改变原 9 source、6 bounded envelope、3 payload、parent/loader/evidence/final-verifier 设计或 62 fixtures；它只新增三份 tracked ASCII PowerShell 顶层适配器，分别冻结 PRE/POST/FINAL 的 descriptor、唯一 executable-path 来源、modeled-command 公式、ProcessStartInfo 和 parent stdout/stderr 门。三份 source parser 均为 0，新增 schema 语义负向 fixtures 为 30/30，组包执行与 evidence/official 计数均为 0。
 
@@ -239,9 +241,9 @@ Hard Failure 10 独立审核接受审计及两轮结果，但只将旧三项工�
 
 ## 下一步
 
-1. 独立审批 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_7_APPROVAL_REQUEST.md` 与对应 Manifest，并显式绑定本次实际 package commit。
-2. 新 approval-governance 推送前，只允许核验 package/Manifest、HF19 raw、1.1.7 observation absence、worktree 与 local/origin/direct-main；不得解析或执行新 observer，也不得重建 actual command line。
-3. 未来审批最多覆盖一次 parser/static gate、一个 command-line diagnostic observer 和一个单路径 raw result；capture host 与 nested PRE chain 不获授权。结果推送后必须立即停止独立审核。
+1. 独立审批 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_9_APPROVAL_REQUEST.md` 与对应 Manifest，并显式绑定本次实际 package commit。
+2. 在新 package-bound approval 推送前，不得再次解析 launcher/helper/observer，不得执行 launcher/helper、发起 remote query 或创建 evidence。
+3. 未来审批若获准，只能依次覆盖 local/tracking/clean/identity 门、一次 launcher parser/static 门、一次 helper AST/static 门、至多一次 launcher/helper、bounded remote gate、PASS 后至多一次 observer parser/process，以及完整 `HGRAGC17` 的精确单路径提交；任一失败立即停止。
 
 ## GitHub
 

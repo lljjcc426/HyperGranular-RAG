@@ -1529,3 +1529,35 @@ The error is audit-recorded from terminal output and is not separately durable b
 No corrected wrapper, helper process, remote query, observer parser/process, cleanup, overwrite, nested PRE, POST, FINAL, TERMINAL, synthetic, formal preflight, official, Gold, reservation, or Stage3B action followed. The approval chain is terminated and non-reusable. Full audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_22.md`.
 
 Current state is `AMENDMENT_5G_B_1_1_1_1_8_POST_GOVERNANCE_HELPER_LAUNCH_WRAPPER_PARSE_STOPPED_HARD_FAILURE_22`; execution remains locked pending independent review.
+
+## Amendment 5G-B.1.1.1.1.9 Tracked And Preparsed Launcher
+
+Hard Failure 22 Review 1 accepts checkpoint `a740f669d535ab3a148c42f6839de6837eec9c15` and the exact root cause `POWERSHELL_EXPANDABLE_STRING_VARIABLE_FOLLOWED_BY_COLON / InvalidVariableReferenceWithDrive`. The 1.1.8 approval chain remains terminated and non-reusable.
+
+The tracked launcher is `scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_9_bounded_remote_gate_launcher.ps1`: 184 LF, 7,952 ASCII bytes, SHA-256 `898BDB48E89CF27A74785D3AD0D67F8F2D129DFDB6FFDF016849C6AFCDB0BC3D`. Its package-stage PowerShell parser count is exactly 1 with 0 errors and 1,195 tokens. Launcher execution, helper execution, primary/alternate calls, observer parsing/execution, and evidence creation are all 0.
+
+Frozen future launcher invocation:
+
+```text
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_9_bounded_remote_gate_launcher.ps1" -Mode BOUNDED_REMOTE_GATE
+```
+
+The arguments are 179 characters / 179 ASCII bytes / SHA-256 `4B788226FBFC6825D53A05CD4C23612286CC2F8BFFE40E4095DD3BB522F2E7EA`, or 358 UTF-16LE bytes / SHA-256 `E9ECBBB54862B5A2F49D7E6E000C0FF0BAFB2F39BF91CCE67BB7B666A9015EEC`. The modeled executable-plus-arguments command including terminal U+0000 is 240 UTF-16 code units / 480 bytes / SHA-256 `6E369AA089C897C7EC7493E0DBF1C50AB0318FE1F20E0483714EE02D579F512A`.
+
+The launcher validates and starts only the unchanged helper:
+
+```text
+C:\ProgramData\anaconda3\python.exe
+-I -B scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_8_bounded_remote_gate.py
+```
+
+The helper remains 294 LF / 9,964 bytes / `7EBC6F40C58D479774B6C083157E5ECB429E02ED0B261FCECF1ADB58551C4567`; its 82-character arguments remain `D3529D34...440E` in ASCII and `BF328887...3682C` in UTF-16LE. The launcher requires lowercase 40-character package and approval bindings, confirms the observation path is absent, starts the helper at most once, concurrently captures both raw streams, waits for exit and both drains, and requires exit 0, stderr 0, one strict-UTF-8 LF line, and one of five exact PASS JSON variants.
+
+Primary remains at most one Git query. Only the four registered no-ref transport failures may enter at most one REST alternate. Total calls are at most two and same-method retries are zero. A PASS bound to the actual new approval SHA is required before the unchanged observer parser and at most one observer process.
+
+The 1.1.7 observer, 13,336-byte observer Manifest, `HGRAGC17` contract, and result path remain byte-for-byte unchanged. A complete record may form one exact single-path result commit/push; any incomplete record or earlier failure produces zero result commits and pushes.
+
+Five read-only package-support checks failed without project writes or frozen-source execution: a nonexistent shortened HF22 path, local `rg.exe` access denial, unavailable static `.NET SHA256.HashData`, an initial cross-file stop on Review 1's omitted launcher SHA, and a recursive reference scan that exceeded the exact eight paths and read tracked historical result files. The last scan's recursive candidate set also included tracked reservation metadata and test source paths, but no matching content from those paths was returned and no reservation/test or historical-result value was used for a package decision; no project-external path was read. Corrected exact-path, SHA, Review-identity, and exact-eight-path checks replace those attempts.
+
+The exact eight-path package has zero deletions and no result file. Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_9_MANIFEST.json`, 16,536 bytes, SHA-256 `35F4E35E6206DAA6C693F2EA7336A468626B50DC7737E471FBEFA154304D4FF2`. Current status is `AMENDMENT_5G_B_1_1_1_1_9_TRACKED_PREPARSED_LAUNCHER_PACKAGE_AWAITING_INDEPENDENT_APPROVAL`; the package itself authorizes no approval governance, post-approval parser, launcher/helper execution, remote query, observer, evidence, nested PRE, official, Gold, reservation, or Stage3B action.
