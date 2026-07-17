@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Hard Failure 20 Review 1 已接受；Amendment 1.1.7 command-line-only durable diagnostic package 已冻结，等待独立审批 |
-| 获批执行协议 | 无；1.1.6 approval 已消费且不可复用，1.1.7 package 本身不授权 parser、observer 或 evidence 执行 |
-| 设计文件 | Hard Failure 20 Review 1、1.1.7 Approval Request/Manifest、98-line diagnostic observer、HF20 audit |
-| 协议状态 | `AMENDMENT_5G_B_1_1_1_1_7_COMMAND_LINE_DIAGNOSTIC_PACKAGE_AWAITING_INDEPENDENT_APPROVAL` |
+| 当前阶段 | Hard Failure 21 audit package 已完成；post-governance direct GitHub TLS transport failure 等待独立审核 |
+| 获批执行协议 | 无；1.1.7 observer process quota 未使用，但 approval-governance 链已终止且不可复用 |
+| 设计文件 | Hard Failure 21 audit、1.1.7 Approval Decision/Request/Manifest、98-line diagnostic observer |
+| 协议状态 | `AMENDMENT_5G_B_1_1_1_1_7_POST_GOVERNANCE_DIRECT_GITHUB_QUERY_STOPPED_HARD_FAILURE_21` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -44,6 +44,8 @@ Package Review 1 接受上述方向但拒绝 package `1e0973e3...`：loader stdi
 Corrected package 获批后，精确两路径 approval-governance commit `1eb73132...` 已推送，四方 main、clean worktree 与六路径缺席门通过；治理后静态门为 `56/56 + 36/36 + 24/24 + 10/10 = 126/126`，零冻结进程/证据写入。唯一 PRE observer 随后在自身 `[Environment]::CommandLine + NUL` equality gate 以 exit 1 停止，早于 capture host `Process.Start()` 与所有新 raw `CreateNew`。因此 capture host/adapter/parent/loader/target counts 均为 0，四条 raw 与两条 semantics 均未创建；actual-versus-modeled 精确差异未持久化并保持 `UNCONFIRMED`。本轮零结果 commit、零结果 push、零 retry、零失败后诊断；approval 已消费，形成 Hard Failure 20。
 
 Hard Failure 20 Review 1 接受该审计及 checkpoint `d0dbc553...`，并只允许组装 Amendment 1.1.7 command-line-only durable diagnostic package。新 observer 冻结为 98 行、5,603 bytes / `545A5A6E...FC7307`，Manifest 为 13,336 bytes / `968C3D59...AFE8A3C`；observer 只在 equality gate 前以单一 `HGRAGC17` binary 保存 actual/modeled/executable/arguments 四组 UTF-16LE raw bytes，不包含 capture-host 或其他 child-process 启动路径。依 Review 边界，package 阶段 parser 与 observer execution 均为 0；新 package-bound approval 前不得解析或执行。
+
+Amendment 1.1.7 approval governance 已按精确两路径提交 `f5a9ce38...` 并成功推送。随后的唯一 post-governance direct GitHub main 查询因 TLS connect error 未返回 remote ref，早于 parser/static gate 与 observer 启动。独立审核接受该 transport failure，确认 remote mismatch、wrong SHA、push failure 和 package/observer defect均未建立；parser、observer、HGRAGC17、result commit/push 全部为 0且没有重试。Observer quota 虽未使用，当前 approval 链仍已终止并不可复用，形成 Hard Failure 21。
 
 Hard Failure 17 Review 1 接受上述审计、有效 approval governance、PRE source/parser/arguments 门与零进程/零 evidence 边界，并将根因冻结为 `ORCHESTRATOR_SCHEMA_DESCRIPTOR_MISINTERPRETATION`。Amendment 5G-B.1.1.1.1.4 不改变原 9 source、6 bounded envelope、3 payload、parent/loader/evidence/final-verifier 设计或 62 fixtures；它只新增三份 tracked ASCII PowerShell 顶层适配器，分别冻结 PRE/POST/FINAL 的 descriptor、唯一 executable-path 来源、modeled-command 公式、ProcessStartInfo 和 parent stdout/stderr 门。三份 source parser 均为 0，新增 schema 语义负向 fixtures 为 30/30，组包执行与 evidence/official 计数均为 0。
 

@@ -1426,3 +1426,13 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The first staged whitespace check found one extra blank line at EOF in the new Hard Failure 20 Review 1 document. It performed zero writes or frozen-source activity; the line was removed without deleting a file, and the corrected staged diff check is clean.
 - A staged-index identity helper correctly returned both registered bytes/SHA-256 identities, but its optional line-ending counters matched literal backslash sequences and produced unusable 0/0 values. Those counters are discarded; the two-blob helper made zero writes or frozen-source starts, and the final check uses byte values 10/13.
 - Current state: `AMENDMENT_5G_B_1_1_1_1_7_COMMAND_LINE_DIAGNOSTIC_PACKAGE_AWAITING_INDEPENDENT_APPROVAL`. Nested PRE, POST, FINAL, TERMINAL, synthetic, official, Gold, reservation, and Stage3B remain locked.
+
+### Hard Failure 21: Post-Governance Direct GitHub TLS Transport Gate
+
+- Amendment 1.1.7 approval governance `f5a9ce38d10d419f8bc92772030f0d7cb77914cb` is the valid exact two-path, zero-deletion direct child of package `8e274060baf844dd1d761e7635bbc6c43ef9d4b6`; its push succeeded.
+- The ordered post-governance gate made exactly one direct GitHub main query. It returned a TLS connect error before yielding a remote ref, so the established boundary is transport failure rather than ref mismatch, wrong SHA, push failure, or package/observer defect.
+- Independent review later observed remote main at `f5a9ce38...` through a separate connector. That later fact does not retroactively pass the failed gate and does not permit continuation.
+- Counts are direct-query attempts 1, successes 0, retries 0; parser/static observer gates 0; observer/capture host/adapter/parent/loader/target starts 0; `HGRAGC17` creations 0; result commits/pushes 0; difference interpretations 0.
+- The observer process quota was not exercised, but the approval-governance chain terminated at the failed ordered gate and is non-reusable.
+- Hard Failure 21 audit is an exact five-path, zero-deletion direct child of `f5a9ce38...`. It contains no raw, observer change, Approval Decision, parser output, or post-hoc remote diagnostic artifact.
+- Current state: `AMENDMENT_5G_B_1_1_1_1_7_POST_GOVERNANCE_DIRECT_GITHUB_QUERY_STOPPED_HARD_FAILURE_21`. A new bounded remote-transport policy requires a separately reviewed and approved Amendment before any parser or observer action.

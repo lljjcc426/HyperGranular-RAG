@@ -406,6 +406,11 @@
 390. 静态门全通过后，observer 至多启动一次；executable 与 187-character arguments 必须保持冻结，并注入 package `8e274060...` 与本轮实际 approval-governance SHA。Observer 只可 CreateNew/Flush(true)/close 一个 `HGRAGC17` 后执行 equality exit 0/1；capture host、adapter、parent、loader、target ScriptBlock 及其他 child starts 必须为 0。
 391. 完整 `HGRAGC17` 无论 observer exit 0/1，均只允许形成一个以实际 approval-governance commit 为直接父提交的精确单一路径 result commit/push；提交不得含状态文档、审计叙事或差异解释。若 record 不完整，则 result commit/push 均为 0，partial bytes 原样保留，禁止 retry、cleanup、overwrite 或失败后诊断执行。
 392. 结果推送后必须核验 local/origin/direct GitHub main 一致与 clean worktree 并立即停止，状态为 `AMENDMENT_5G_B_1_1_1_1_7_COMMAND_LINE_OBSERVATION_COMMITTED_AWAITING_INDEPENDENT_REVIEW`。Difference type 继续为 `NOT_YET_INTERPRETED`；nested PRE、POST、FINAL、TERMINAL、synthetic、real validator、formal preflight、official、Gold、reservation 与 Stage3B 均未获批准。
+393. Hard Failure 21 独立审核已接受 post-governance remote-gate 硬失败，并确认 approval governance `f5a9ce38d10d419f8bc92772030f0d7cb77914cb` 是 package `8e274060...` 的有效精确两路径直接子提交且 push 成功。失败边界严格为 `POST_GOVERNANCE_DIRECT_GITHUB_MAIN_QUERY_TLS_CONNECT_FAILURE`，不得改写为 remote ref mismatch、wrong SHA、push failure 或 package/observer defect。
+394. 唯一 direct GitHub gate attempt 因 TLS connect error 未返回 remote ref，success=0、retry=0；错误文本仅为 `AUDIT_RECORDED / NOT_SEPARATELY_DURABLE_BYTE_EVIDENCE`，禁止伪造事后 TLS raw/log。独立审核稍后通过单独连接器看到 remote main 为 `f5a9ce38...`，但该事实不追认失败 gate 或授权继续原链。
+395. 本轮冻结计数为 parser 0、static observer gate 0、observer process 0、capture host/adapter/parent/loader/target 0、`HGRAGC17` creation 0、result commit/push 0、difference interpretation 0。Observer process quota 在计数层面未使用，但当前 approval-governance 链已终止且 approval 不可复用。
+396. Hard Failure 21 audit package 必须是 `f5a9ce38...` 的单一直接子提交，changed paths 精确五条：`AGENTS.md`、`README.md`、`docs/REPRODUCIBILITY.md`、`docs/ROADMAP.md` 与 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_21.md`；零删除，且不得加入 HGRAGC17、observer 修改、新 Approval Decision、parser 输出或事后 remote 诊断文件。
+397. 当前状态为 `AMENDMENT_5G_B_1_1_1_1_7_POST_GOVERNANCE_DIRECT_GITHUB_QUERY_STOPPED_HARD_FAILURE_21`。在独立审核接受本 checkpoint 并另行形成 package-bound Amendment 前，不得重试 remote gate、调用 parser、启动 observer/capture host、恢复 nested PRE、POST/FINAL/TERMINAL、synthetic、formal preflight、official、Gold、reservation 或 Stage3B。
 
 ## GitHub 与文档
 

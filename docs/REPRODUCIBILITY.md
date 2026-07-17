@@ -1478,3 +1478,22 @@ The associated staged-index helper correctly returned both registered blob byte 
 The package is an exact eight-path direct child of HF20 with zero deletions and zero result files. Manifest is 13,336 bytes / `968C3D598840CA25A0DFB2F8006027158B5AFD9EDD48F78BEAE9C7363AFE8A3C`. It does not authorize parser/static execution, observer launch, observation creation, nested PRE, capture host, POST/FINAL/TERMINAL, official execution, Gold, reservation, or Stage3B. A future independent approval must bind the actual package commit before any parser or execution. A structurally complete observation may then form one exact one-path result commit and push, followed by immediate independent byte-level review.
 
 Current status: `AMENDMENT_5G_B_1_1_1_1_7_COMMAND_LINE_DIAGNOSTIC_PACKAGE_AWAITING_INDEPENDENT_APPROVAL`.
+
+## Stage4B-U1-D Pre-Gold Hard Failure 21
+
+Amendment 1.1.7 approval governance `f5a9ce38d10d419f8bc92772030f0d7cb77914cb` was created as the exact two-path, zero-deletion direct child of package `8e274060baf844dd1d761e7635bbc6c43ef9d4b6` and pushed successfully. It bound the 13,336-byte Manifest, 5,603-byte observer, frozen invocation, modeled command, `HGRAGC17` format, zero-child boundary, and one-path result contract.
+
+The next ordered gate made one direct GitHub main query. It failed before returning a remote ref:
+
+```text
+fatal: unable to access 'https://github.com/lljjcc426/HyperGranular-RAG.git/':
+TLS connect error: error:00000000:lib(0)::reason(0)
+```
+
+The established boundary is `POST_GOVERNANCE_DIRECT_GITHUB_MAIN_QUERY_TLS_CONNECT_FAILURE`. Because no ref SHA was returned, remote mismatch, wrong SHA, push failure, and package/observer defect are not established. The error is audit-recorded and is not separately durable byte evidence; no post-hoc TLS log was created.
+
+The direct-query attempt/success/retry counts are 1/0/0. PowerShell parser invocations, static observer gates, observer/capture-host/adapter/parent/loader/target starts, `HGRAGC17` creations, result commits/pushes, and difference interpretations are all 0. The observation path remains absent. No retry, fallback, parser, observer, cleanup, source modification, nested PRE continuation, or downstream action occurred.
+
+Independent review later observed remote main at `f5a9ce38...` through a separate connector. This does not retroactively satisfy the failed ordered gate. The observer process quota was not exercised, but the current approval chain is terminated and non-reusable.
+
+Full audit: `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_21.md`. Current status is `AMENDMENT_5G_B_1_1_1_1_7_POST_GOVERNANCE_DIRECT_GITHUB_QUERY_STOPPED_HARD_FAILURE_21`. A future bounded remote-verification transport strategy requires a separately reviewed package-bound Amendment; all parser, observer, nested PRE, official, Gold, reservation, and Stage3B actions remain locked.
