@@ -1561,3 +1561,17 @@ The 1.1.7 observer, 13,336-byte observer Manifest, `HGRAGC17` contract, and resu
 Five read-only package-support checks failed without project writes or frozen-source execution: a nonexistent shortened HF22 path, local `rg.exe` access denial, unavailable static `.NET SHA256.HashData`, an initial cross-file stop on Review 1's omitted launcher SHA, and a recursive reference scan that exceeded the exact eight paths and read tracked historical result files. The last scan's recursive candidate set also included tracked reservation metadata and test source paths, but no matching content from those paths was returned and no reservation/test or historical-result value was used for a package decision; no project-external path was read. Corrected exact-path, SHA, Review-identity, and exact-eight-path checks replace those attempts.
 
 The exact eight-path package has zero deletions and no result file. Manifest: `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_9_MANIFEST.json`, 16,536 bytes, SHA-256 `35F4E35E6206DAA6C693F2EA7336A468626B50DC7737E471FBEFA154304D4FF2`. Current status is `AMENDMENT_5G_B_1_1_1_1_9_TRACKED_PREPARSED_LAUNCHER_PACKAGE_AWAITING_INDEPENDENT_APPROVAL`; the package itself authorizes no approval governance, post-approval parser, launcher/helper execution, remote query, observer, evidence, nested PRE, official, Gold, reservation, or Stage3B action.
+
+## Hard Failure 23: Tracked Launcher Nonzero Exit With Non-Durable Stderr
+
+Amendment 1.1.9 approval governance `ef9ba5b3aabfb0be8deeaf569b46e58c3cdf68aa` is the valid exact two-path, zero-deletion direct child of package `046ac17282e1a4dcdedb7f6d744899dedf44d4b5`; its push succeeded before any post-approval parser or process action.
+
+The no-direct-remote local identity gate passed. The tracked launcher PowerShell parser/static gate then passed once with 0 errors and 1,195 tokens, and the existing helper AST/static gate passed once under Python 3.11.5. Launcher/helper executions and remote calls remained zero throughout both gates.
+
+The exact frozen tracked launcher was then started once. The outer executor recorded exit 1, stdout 0 bytes, stderr 503 bytes, and no PASS. The stderr bytes were not persisted to a registered raw/log path. Only their count and the terminal classification `TRACKED_LAUNCHER_NONZERO_EXIT_1_STDOUT_BYTES_0_STDERR_BYTES_503` are audit evidence; content, SHA, error class, and root cause are unavailable.
+
+It is therefore unconfirmed whether the helper started. Primary, alternate, total remote-call, and same-method retry counts are also unconfirmed. These values must not be replaced with zeros or used to infer a helper, transport, remote-ref, framing, launcher-source, or package defect.
+
+The failed outer PASS gate prevented observer parsing and execution. Observer parser/process counts, `HGRAGC17` creations, result commits, and result pushes are all zero. The observation path remains absent. No retry, direct helper bypass, cleanup, overwrite, stderr reconstruction, or post-failure experimental diagnostic execution occurred.
+
+Current status: `AMENDMENT_5G_B_1_1_1_1_9_TRACKED_LAUNCHER_NONZERO_STOPPED_HARD_FAILURE_23`. Approval governance `ef9ba5b3...` is terminated and non-reusable. Reproduction stops at this boundary pending independent review of `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_23.md` and a separately governed future Amendment.

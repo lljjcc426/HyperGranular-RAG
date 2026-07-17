@@ -448,6 +448,12 @@
 432. 只有 remote PASS 后，unchanged 1.1.7 observer parser/static gate 与 observer process 才各允许至多一次。Capture host、adapter、parent、loader、target ScriptBlock 与全部其他 nested child starts 必须为 0。
 433. 完整 `HGRAGC17` 无论 observer equality exit 0/1，均只允许形成一个以实际新 approval-governance commit 为直接父提交、精确包含原 1.1.7 observation 路径的单一路径 result commit/push；不得在 commit message、状态文档或本轮输出解释 command-line difference。
 434. 任一门失败即停止：不得第二次 launcher/helper、同方法 remote retry、第三次 remote call、remote 失败后 observer、partial cleanup/overwrite、incomplete record commit/push 或事后实验诊断。Nested PRE、POST、FINAL、TERMINAL、synthetic、formal preflight、official、Gold、reservation 与 Stage3B 均未获批准。
+435. Amendment 1.1.9 approval governance `ef9ba5b3aabfb0be8deeaf569b46e58c3cdf68aa` 已作为 package `046ac172...` 的精确两路径、零删除直接子提交创建并推送；随后无 direct remote query 的 local HEAD/main/origin-tracking、clean worktree、observation-path absence、package/source/Manifest/invocation identity 门全部通过。
+436. 治理后唯一 tracked-launcher PowerShell parser/static gate 与唯一 helper AST/static gate 均通过；前者 errors 0/tokens 1,195、一个 helper Start/two drains/one WaitForExit/one WaitAll，后者 Python 3.11.5、一个 subprocess.run/Request/open、零 loop 与零 write API。两门期间 launcher/helper execution、remote call、observer 与 evidence 均为 0。
+437. 精确冻结 tracked launcher 随后启动恰好一次并以 exit 1 终止；外层只确认 stdout 0 bytes、stderr 503 bytes 与 PASS absent。503-byte stderr 仅在进程内存捕获，未持久化为 raw/log，因此其文本、SHA、错误类与根因均不得事后重建或推断。
+438. 现有证据不能确认 launcher 失败发生在 helper 启动前还是启动后；bounded helper start、primary/alternate/total remote call 与 same-method retry 实际计数全部为 `UNCONFIRMED`，不得写成 0 或将失败归因为 helper、transport、remote ref、PASS framing、launcher/package source defect。
+439. 外层 PASS gate 失败后 observer parser/static/process 全部为 0，`HGRAGC17` 与 result commit/push 均为 0；没有第二次 launcher、direct helper bypass、cleanup、overwrite、stderr reconstruction 或事后实验诊断。当前 approval 链已终止且不可复用。
+440. Hard Failure 23 audit package 必须是 approval governance `ef9ba5b3...` 的单一直接子提交，changed paths 精确五条：`AGENTS.md`、`README.md`、`docs/REPRODUCIBILITY.md`、`docs/ROADMAP.md` 与 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_23.md`；零删除、零 source/result/raw。当前状态为 `AMENDMENT_5G_B_1_1_1_1_9_TRACKED_LAUNCHER_NONZERO_STOPPED_HARD_FAILURE_23`，等待独立审核。
 
 ## GitHub 与文档
 

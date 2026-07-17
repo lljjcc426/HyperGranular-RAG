@@ -158,7 +158,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
-| Stage4B-U1 | `AMENDMENT_5G_B_1_1_1_1_7_COMMAND_LINE_DIAGNOSTIC_PACKAGE_AWAITING_INDEPENDENT_APPROVAL` | HF20 已接受；1.1.7 仅为 command-line raw 诊断包，尚无执行授权或 Gold 结果 |
+| Stage4B-U1 | `AMENDMENT_5G_B_1_1_1_1_9_TRACKED_LAUNCHER_NONZERO_STOPPED_HARD_FAILURE_23` | 1.1.9 唯一 tracked launcher 以 exit 1 停止；helper/remote 计数未确认，observer 与 Gold 均未运行 |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
@@ -218,6 +218,8 @@ Hard Failure 9 独立审核已接受并冻结提交 `d1c7cf9...`。5G-A.1 仅申
 
 Hard Failure 10 独立审核接受审计及两轮结果，但只将旧三项工件视为冻结的历史失败证据。5G-B.1 package 申请在新 approval bytes 上运行一次纯内存 exact-key-set semantics check、两次 fresh 246/246 rebinding、一次 corrected real precommit validation，并以全新路径创建精确三路径 direct-child 后停止；不申请 execution-HEAD helper、preflight 或 official capture。
 
+Amendment 1.1.9 approval governance `ef9ba5b3...` 已按精确两路径推送；治理后 local/source identity、launcher parser/static 与 helper AST/static 门均通过。唯一 tracked launcher 随后返回 exit 1，外层只确认 stdout 0 bytes、stderr 503 bytes 且 PASS absent；stderr 原始字节未持久化，因此 helper 是否启动、remote 调用计数及具体错误原因均为 `UNCONFIRMED`。Observer parser/process 与 `HGRAGC17` 创建均为 0，详见 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_23.md`。
+
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
 ## 科研治理
@@ -241,9 +243,9 @@ Hard Failure 10 独立审核接受审计及两轮结果，但只将旧三项工�
 
 ## 下一步
 
-1. 独立审批 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_9_APPROVAL_REQUEST.md` 与对应 Manifest，并显式绑定本次实际 package commit。
-2. 在新 package-bound approval 推送前，不得再次解析 launcher/helper/observer，不得执行 launcher/helper、发起 remote query 或创建 evidence。
-3. 未来审批若获准，只能依次覆盖 local/tracking/clean/identity 门、一次 launcher parser/static 门、一次 helper AST/static 门、至多一次 launcher/helper、bounded remote gate、PASS 后至多一次 observer parser/process，以及完整 `HGRAGC17` 的精确单路径提交；任一失败立即停止。
+1. 独立审核 `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_23.md` 及其精确五路径、零删除 checkpoint。
+2. `ef9ba5b3...` approval 链已终止且不可复用；不得重试 launcher、直接执行 helper、补做 remote query、运行 observer 或重建未持久化 stderr。
+3. 后续若恢复，必须先形成新的独立 Amendment、package review 与 package-bound approval；当前审计不诊断或批准修复方案。
 
 ## GitHub
 

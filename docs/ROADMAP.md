@@ -1467,3 +1467,15 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The package is an exact eight-path, zero-deletion direct child of HF22. Manifest is 16,536 bytes / `35F4E35E...304D4FF2`; it contains no result file and authorizes no approval governance, post-approval parser, process, remote call, or evidence.
 - Five read-only support checks failed without writes or experimental execution: nonexistent shortened HF22 path, local `rg.exe` access denial, unavailable static `.NET SHA256.HashData`, a cross-file stop on Review 1's omitted full launcher SHA, and a recursive reference scan that exceeded the exact package paths and read tracked historical result files. The last scan's candidate set also contained tracked reservation metadata and test source paths, but no matching content from those paths was returned and no reservation/test or historical-result value informed a package decision; no project-external path was read. Corrected actual-path, `Get-ChildItem`, `SHA256.Create().ComputeHash()`, Review identity, and exact-eight-path checks passed.
 - Current state: `AMENDMENT_5G_B_1_1_1_1_9_TRACKED_PREPARSED_LAUNCHER_PACKAGE_AWAITING_INDEPENDENT_APPROVAL`. A future approval must bind the actual package commit before any new parser or execution.
+
+### Hard Failure 23: Tracked Launcher Nonzero Exit
+
+- Amendment 1.1.9 package `046ac17282e1a4dcdedb7f6d744899dedf44d4b5` was approved through exact two-path, zero-deletion direct-child governance commit `ef9ba5b3aabfb0be8deeaf569b46e58c3cdf68aa`; the commit was pushed before post-approval parsing or execution.
+- The no-direct-remote local/tracking/clean/path/source identity gate passed. The unique tracked-launcher PowerShell parser/static gate and unique helper AST/static gate also passed with zero process, remote, observer, and evidence activity during those gates.
+- The exact tracked launcher was started once and returned exit 1. The outer executor observed stdout 0 bytes, stderr 503 bytes, and no PASS.
+- The raw stderr content was not durably preserved. Its text, SHA, error class, and root cause are unavailable and must not be reconstructed.
+- Evidence does not establish whether the helper started; helper start, primary/alternate/total remote call, and same-method retry counts are `UNCONFIRMED`. No helper, transport, remote-ref, PASS-framing, launcher-source, or package defect is claimed.
+- Observer parser/static/process counts are zero because the outer PASS gate failed. `HGRAGC17`, result commits, and result pushes are zero, and the registered observation path remains absent.
+- No second launcher, direct helper bypass, cleanup, overwrite, stderr reconstruction, or post-failure experimental diagnostic execution occurred. The approval chain is terminated and non-reusable.
+- The Hard Failure 23 audit is an exact five-path, zero-deletion direct child of `ef9ba5b3...`; it contains no source, result, raw, parser output, or post-hoc diagnostic artifact.
+- Current state: `AMENDMENT_5G_B_1_1_1_1_9_TRACKED_LAUNCHER_NONZERO_STOPPED_HARD_FAILURE_23`. Independent review and a separately governed Amendment are required before any resumption.
