@@ -1445,3 +1445,36 @@ The observer did not persist actual and modeled command-line bytes before compar
 The error boundary is `AUDIT_RECORDED`, not separately durable byte evidence. No post hoc raw was created. The approved failure branch completed with zero result commits, zero result pushes, zero retry, zero standalone verifier, and zero post-failure source reconstruction or diagnostic execution. POST, FINAL, TERMINAL, synthetic, formal preflight, official, Gold, reservation, and Stage3B remained untouched.
 
 Current status: `AMENDMENT_5G_B_1_1_1_1_6_PRE_OBSERVER_ACTUAL_COMMAND_LINE_GATE_STOPPED_HARD_FAILURE_20`. The approval is consumed and non-reusable. A future command-line-only diagnostic requires a separately assembled Amendment and package-bound approval; it is not implemented or authorized by this checkpoint. See `docs/STAGE4B_U1_PREGOLD_HARD_FAILURE_20.md`.
+
+## Amendment 5G-B.1.1.1.1.7 Command-Line-Only Diagnostic Package
+
+Hard Failure 20 Review 1 accepts checkpoint `d0dbc5533ddc464c7f7f1433d660ee7ddc355e07` and returns the project only for a separately governed durable command-line observation package. The consumed 1.1.6 approval is not reusable.
+
+The new source is `scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_7_observer_command_line_diagnostic.ps1`: 98 LF lines, 5,603 ASCII bytes, SHA-256 `545A5A6E72D82C65B086F08D2FC64F3C359B1A0E453F271D1481013D62FC7307`. Package assembly performs no PowerShell parser invocation and no observer execution, as required by the independent review's pre-approval boundary. Text-level scope checks find no child-process or capture-host start token.
+
+The future registered invocation is:
+
+```text
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File "scripts/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_7_observer_command_line_diagnostic.ps1" -Mode COMMAND_LINE_DIAGNOSTIC
+```
+
+Arguments are 187 characters / 374 UTF-16LE bytes. The modeled command is 248 UTF-16 code units / 496 bytes including terminal U+0000. These are static registered identities, not an observation of the actual runtime string.
+
+The future result path is `results/stage4b_u1_d_pregold_amendment_5g_b_1_1_1_1_7_observer_command_line_observation.bin`. Its `HGRAGC17` contract has an 88-byte little-endian header containing format/version/flags, four UTF-16 code-unit counts, and four byte lengths. Payload order is actual `[Environment]::CommandLine` without appended NUL, modeled command with terminal NUL, registered executable, and complete arguments; all use strict UTF-16LE without BOM.
+
+The observer must complete `CreateNew`, all raw writes, `Flush(true)`, and close before it constructs `actual + U+0000` and compares it case-sensitively with modeled. Equality maps only to exit 0/1. It computes no SHA, first difference, prefix/suffix, terminal-NUL classification, or narrative and starts no child process.
+
+One read-only strict-JSON helper failed at Python `-c` syntax before opening the Manifest because Windows native argument transport removed double-quote delimiters. The corrected single-quoted helper returned `STRICT_JSON_OK`. The failed helper performed zero project-file reads/writes, observer parser/execution, frozen-process starts, or evidence creation.
+
+A second read-only helper failed before scanning files because `rg.exe` could not start (`Access is denied`). PowerShell `Select-String` then completed the same reference scan on the exact eight package paths. The failed process performed zero project-file reads/writes, observer parser/execution, frozen-process starts, or evidence creation.
+
+A third read-only final-validation helper incorrectly asserted that the `HGRAGC17` header had 12 fields. The registered 88-byte contract correctly has 13: magic, version, header bytes, flags, reserved, four character counts, and four byte lengths. The helper read the exact eight package paths but performed zero project-file writes, observer parser/execution, frozen-process starts, or evidence creation. The corrected 13-field assertion passed in the final static validation.
+
+The first staged whitespace check found one extra blank line at EOF in the new Hard Failure 20 Review 1 document. It read the staged eight-path package and performed zero project-file writes, observer parser/execution, frozen-process starts, or evidence creation. The single blank line was removed without deleting a file, and the corrected staged diff check is clean.
+
+The associated staged-index helper correctly returned both registered blob byte lengths and SHA-256 identities, but its optional newline counters matched literal backslash-plus-letter sequences and produced unusable 0/0 values. Those counters are discarded. The helper read two staged blobs, wrote nothing, and started no frozen source; the final recheck counts actual byte values 10 and 13.
+
+The package is an exact eight-path direct child of HF20 with zero deletions and zero result files. Manifest is 13,336 bytes / `968C3D598840CA25A0DFB2F8006027158B5AFD9EDD48F78BEAE9C7363AFE8A3C`. It does not authorize parser/static execution, observer launch, observation creation, nested PRE, capture host, POST/FINAL/TERMINAL, official execution, Gold, reservation, or Stage3B. A future independent approval must bind the actual package commit before any parser or execution. A structurally complete observation may then form one exact one-path result commit and push, followed by immediate independent byte-level review.
+
+Current status: `AMENDMENT_5G_B_1_1_1_1_7_COMMAND_LINE_DIAGNOSTIC_PACKAGE_AWAITING_INDEPENDENT_APPROVAL`.

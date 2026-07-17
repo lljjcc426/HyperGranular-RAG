@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Hard Failure 20：唯一 PRE observer 在自身 actual-command-line equality gate 停止，独立失败审核已接受 |
-| 获批执行协议 | 1.1.6 approval 已消费且不可复用；当前仅记录 Hard Failure 20 checkpoint，不授权执行 |
-| 设计文件 | Hard Failure 20 audit、1.1.6 Approval Decision、Corrected Approval Request/Manifest、Package Review 1 |
-| 协议状态 | `AMENDMENT_5G_B_1_1_1_1_6_PRE_OBSERVER_ACTUAL_COMMAND_LINE_GATE_STOPPED_HARD_FAILURE_20` |
+| 当前阶段 | Hard Failure 20 Review 1 已接受；Amendment 1.1.7 command-line-only durable diagnostic package 已冻结，等待独立审批 |
+| 获批执行协议 | 无；1.1.6 approval 已消费且不可复用，1.1.7 package 本身不授权 parser、observer 或 evidence 执行 |
+| 设计文件 | Hard Failure 20 Review 1、1.1.7 Approval Request/Manifest、98-line diagnostic observer、HF20 audit |
+| 协议状态 | `AMENDMENT_5G_B_1_1_1_1_7_COMMAND_LINE_DIAGNOSTIC_PACKAGE_AWAITING_INDEPENDENT_APPROVAL` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -42,6 +42,8 @@ Hard Failure 19 Review 1 接受上述机器证据与 `PRE_CAPTURE_HOST_REPORTED_
 Package Review 1 接受上述方向但拒绝 package `1e0973e3...`：loader stdin access/write/flush/close 仍可能在启动后、`HGRAGL16` 前逃逸；failure evidence commit 没有精确路径合同；requested completion state 错写成审批前状态。Corrected parent 将四类 stdin failure 延迟到 loader raw `Flush(true)` 后抛出。Git 采用方案 A：成功只提交精确六路径，失败固定零 commit/零 push并保留未提交 raw prefix/partial semantics。Corrected Manifest 为 17,536 bytes / `6C5E027B...259BAC5`；corrected package 本身仍不授权执行。
 
 Corrected package 获批后，精确两路径 approval-governance commit `1eb73132...` 已推送，四方 main、clean worktree 与六路径缺席门通过；治理后静态门为 `56/56 + 36/36 + 24/24 + 10/10 = 126/126`，零冻结进程/证据写入。唯一 PRE observer 随后在自身 `[Environment]::CommandLine + NUL` equality gate 以 exit 1 停止，早于 capture host `Process.Start()` 与所有新 raw `CreateNew`。因此 capture host/adapter/parent/loader/target counts 均为 0，四条 raw 与两条 semantics 均未创建；actual-versus-modeled 精确差异未持久化并保持 `UNCONFIRMED`。本轮零结果 commit、零结果 push、零 retry、零失败后诊断；approval 已消费，形成 Hard Failure 20。
+
+Hard Failure 20 Review 1 接受该审计及 checkpoint `d0dbc553...`，并只允许组装 Amendment 1.1.7 command-line-only durable diagnostic package。新 observer 冻结为 98 行、5,603 bytes / `545A5A6E...FC7307`，Manifest 为 13,336 bytes / `968C3D59...AFE8A3C`；observer 只在 equality gate 前以单一 `HGRAGC17` binary 保存 actual/modeled/executable/arguments 四组 UTF-16LE raw bytes，不包含 capture-host 或其他 child-process 启动路径。依 Review 边界，package 阶段 parser 与 observer execution 均为 0；新 package-bound approval 前不得解析或执行。
 
 Hard Failure 17 Review 1 接受上述审计、有效 approval governance、PRE source/parser/arguments 门与零进程/零 evidence 边界，并将根因冻结为 `ORCHESTRATOR_SCHEMA_DESCRIPTOR_MISINTERPRETATION`。Amendment 5G-B.1.1.1.1.4 不改变原 9 source、6 bounded envelope、3 payload、parent/loader/evidence/final-verifier 设计或 62 fixtures；它只新增三份 tracked ASCII PowerShell 顶层适配器，分别冻结 PRE/POST/FINAL 的 descriptor、唯一 executable-path 来源、modeled-command 公式、ProcessStartInfo 和 parent stdout/stderr 门。三份 source parser 均为 0，新增 schema 语义负向 fixtures 为 30/30，组包执行与 evidence/official 计数均为 0。
 
@@ -148,7 +150,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
-| Stage4B-U1 | `AMENDMENT_5G_A_1_SYNTHETICALLY_VERIFIED` | 两次最终 suite 均精确 246/246，evidence 字节一致；official execution 未授权 |
+| Stage4B-U1 | `AMENDMENT_5G_B_1_1_1_1_7_COMMAND_LINE_DIAGNOSTIC_PACKAGE_AWAITING_INDEPENDENT_APPROVAL` | HF20 已接受；1.1.7 仅为 command-line raw 诊断包，尚无执行授权或 Gold 结果 |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
@@ -231,9 +233,9 @@ Hard Failure 10 独立审核接受审计及两轮结果，但只将旧三项工�
 
 ## 下一步
 
-1. 独立审批 corrected `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_6_APPROVAL_REQUEST.md` 与其 17,536-byte Manifest，并显式绑定实际 corrected package commit。
-2. Package 推送后至新 approval-governance 推送前，只核验 package/Manifest、旧 HF19 raw、future-path absence、worktree 与 local/origin/direct-main；不得重新 join/parse/reconstruct 或运行新 source。
-3. 下一 approval 仅申请至多一次 PRE-only diagnostic chain：成功精确六路径 commit；失败零 commit/零 push并立即停止。POST、FINAL、TERMINAL、synthetic、official、Gold、reservation 与 Stage3B 继续锁定。
+1. 独立审批 `docs/STAGE4B_U1_PREGOLD_AMENDMENT_5G_B_1_1_1_1_7_APPROVAL_REQUEST.md` 与对应 Manifest，并显式绑定本次实际 package commit。
+2. 新 approval-governance 推送前，只允许核验 package/Manifest、HF19 raw、1.1.7 observation absence、worktree 与 local/origin/direct-main；不得解析或执行新 observer，也不得重建 actual command line。
+3. 未来审批最多覆盖一次 parser/static gate、一个 command-line diagnostic observer 和一个单路径 raw result；capture host 与 nested PRE chain 不获授权。结果推送后必须立即停止独立审核。
 
 ## GitHub
 
