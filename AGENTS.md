@@ -465,6 +465,10 @@
 449. 协议冻结 q25 `0.1957079917192459`、protect 10、insert 4、`K_q=min(20,|C_q|)`、`P_q=min(10,K_q)`、MiniLM/max-length 192、四输入 ECDF-midrank U1 score、0.60 planned-insert prefix budget、全部输入/cache 身份、四条 pre-Gold 输出路径与独立 verifier 硬门；不得在 B 级实现中改变这些语义。
 450. Pre-Gold config 不得包含 Gold-map、Gold hash、labeled-source hash、reservation path/metric 或 evaluator Gold input。Gold 专属输入只有在 ranking/policy 与 `VERIFIED_PRE_GOLD` 分别提交推送、独立审核并另行批准后，才可直接传给 evaluator；不得传给 preflight/controller。
 451. 本次协议冻结不创建或授权 config、simplified scripts、official preflight/controller/verifier、Gold evaluation、reservation 或 Stage3B。当前状态为 `STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1_FROZEN_AWAITING_LEVEL_A_REVIEW`；下一步仅为独立 A 级协议审核，未获接受前不得实现或执行。
+452. `academic-research-suite` 作者侧送审前验证发现初始协议冻结提交 `8657709fe492455587d1e473ed22ee7793c0b995` 的 policy 与 `VERIFIED_PRE_GOLD` 新 schema 会被 unchanged evaluator 的 legacy field hard checks 拒绝；该问题发生在独立 A 级审核和任何实现/official 之前，不涉及结果或 Gold。
+453. Corrected simplified protocol 必须保留 evaluator 兼容字段：policy 的 `schema_version=stage4b_u1_v2`、`implementation_checkpoint=stage4b_u1_v2_3_1`、legacy scientific `protocol` path/hash，以及 pre-Gold verification 的 `synthetic_test_mode=false`、`frozen_commit_sha`、`implementation_hashes`、`artifact_hashes` 和 `evaluation=null`。新 config/protocol/verifier 身份使用附加字段绑定，不得覆盖这些兼容字段。
+454. Later Gold-only authorization 还必须绑定 evaluator 的 Gold map、evaluator audit、Stage4A-R2 verification/strategy summary、bootstrap iterations/seed 与 development role；这些值仍不得进入 pre-Gold config 或 controller。确定性复跑属于 later Level A validation，不是自动 retry。
+455. 作者侧验证不能替代独立 A 级接受。Corrected protocol 仍保持 `STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1_FROZEN_AWAITING_LEVEL_A_REVIEW`，不得据此开始实现或 official。
 
 ## GitHub 与文档
 

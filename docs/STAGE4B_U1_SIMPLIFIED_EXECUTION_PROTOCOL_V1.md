@@ -264,7 +264,9 @@ The exact required top-level keys are:
 
 ```text
 schema_version, implementation_checkpoint, execution_profile,
-protocol, protocol_sha256, execution_config, execution_config_sha256,
+protocol, protocol_sha256,
+simplified_execution_protocol, simplified_execution_protocol_sha256,
+execution_config, execution_config_sha256,
 status, run_role, git_commit_sha, code_commit_sha,
 sample_id_sha256, query_id_sha256, queries, units,
 model_name, max_length, batch_size, retrieval_config,
@@ -274,19 +276,30 @@ controller_source_sha256, parent_development_policy_sha256,
 evaluation_labels_loaded
 ```
 
-Fixed values include `execution_profile=stage4b_u1_simplified_v1`, `status=POLICY_FROZEN_BEFORE_EVALUATION`, `run_role=development`, `parent_development_policy_sha256=null`, and `evaluation_labels_loaded=false`. The policy records the config SHA, current execution HEAD, bound implementation commit, all implementation/input/output hashes, exact retrieval config, ECDF references, and allocation summary. It contains no evaluation metric or Gold identity.
+For compatibility with the unchanged evaluator, the frozen values are:
+
+- `schema_version=stage4b_u1_v2`;
+- `implementation_checkpoint=stage4b_u1_v2_3_1`, identifying the unchanged scientific algorithm checkpoint rather than the new orchestration profile;
+- `protocol=docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` and its exact SHA-256, because the unchanged evaluator hard-checks that legacy scientific-protocol field;
+- `simplified_execution_protocol=docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md` and the exact SHA-256 bound by the config;
+- `execution_profile=stage4b_u1_simplified_v1`;
+- `status=POLICY_FROZEN_BEFORE_EVALUATION`, `run_role=development`, `parent_development_policy_sha256=null`, and `evaluation_labels_loaded=false`.
+
+The legacy `protocol` field is retained only as evaluator compatibility; it does not reactivate any old launcher or governance chain. The policy additionally records the config SHA, current execution HEAD, bound implementation commit, all implementation/input/output hashes, exact retrieval config, ECDF references, and allocation summary. It contains no evaluation metric or Gold identity.
 
 ### 6.5 Verified pre-Gold JSON
 
 The exact top-level key set is:
 
 ```text
-schema_version, status, artifact_commit_sha,
-protocol, protocol_sha256,
+schema_version, implementation_checkpoint, execution_profile, status,
+synthetic_test_mode, frozen_commit_sha,
+simplified_execution_protocol, simplified_execution_protocol_sha256,
 execution_config, execution_config_sha256, code_commit_sha,
-verifier_source, verifier_source_sha256,
-input_hashes, output_hashes, implementation_hashes,
-queries, units, checks, gold_inputs_loaded, evaluation
+independent_verifier_source, independent_verifier_source_sha256,
+static_controller_boundary, implementation_hashes,
+identity_boundary, policy_and_ranking, checks,
+gold_inputs_loaded, evaluation, artifact_hashes
 ```
 
 The exact `checks` key set is:
@@ -298,7 +311,9 @@ ranking_membership, protected_prefix_and_inserts, final_selector,
 ranking_query_set, committed_artifact_set, gold_isolation
 ```
 
-Every check value is `PASS`. Fixed values are `schema_version=stage4b_u1_simplified_verification_v1`, `status=VERIFIED_PRE_GOLD`, `gold_inputs_loaded=false`, and `evaluation=null`. The file records the committed artifact commit, verifier source/hash, config/hash, all independently recomputed input/output/implementation hashes, and exact query/unit counts. It is deterministic and contains no timestamp or host-specific temporary path.
+Every check value is `PASS`. For compatibility with the unchanged evaluator, fixed values include `schema_version=stage4b_u1_v2`, `implementation_checkpoint=stage4b_u1_v2_3_1`, `synthetic_test_mode=false`, `status=VERIFIED_PRE_GOLD`, `gold_inputs_loaded=false`, and `evaluation=null`.
+
+`frozen_commit_sha` is the commit containing the exact decisions/rankings/policy set. `artifact_hashes` has exactly `channel_audit`, `decisions`, `rankings`, and `policy`, because the evaluator independently compares those fields. `implementation_hashes` must equal the policy field. `identity_boundary` records 4,500 queries, 143,820 units, both ID digests, and the namespace check. The additional simplified-protocol/config/verifier fields bind the new route without removing evaluator-required legacy keys. The file is deterministic and contains no timestamp or host-specific temporary path.
 
 ## 7. Direct Python preflight
 
@@ -322,7 +337,7 @@ The controller must use exclusive create for a same-filesystem pending directory
 
 After a successful controller run:
 
-1. commit and push exactly the frozen pre-Gold artifacts required by the implementation contract;
+1. commit and push exactly decisions, rankings, and policy at their three frozen paths;
 2. stop if commit or push fails;
 3. run the independent verifier only against the committed artifact commit;
 4. commit and push `VERIFIED_PRE_GOLD` separately;
@@ -360,7 +375,7 @@ evaluator_script = scripts/stage4b_u1_evaluate.py
 evaluator_script_sha256 = 343BC9D2478042FF582DAA5DE716498124166C72A520A35DAE53F56C976F2E31
 ```
 
-Gold-map and evaluator-audit paths/hashes are intentionally absent from the pre-Gold config so that the controller process cannot receive them. Only after rankings and `VERIFIED_PRE_GOLD` are committed/pushed, independently reviewed, and separately approved may a Gold-specific authorization bind those inputs and pass them directly to the evaluator process. That later authorization does not permit reservation access.
+Gold-map and evaluator-audit paths/hashes are intentionally absent from the pre-Gold config so that the controller process cannot receive them. Only after rankings and `VERIFIED_PRE_GOLD` are committed/pushed, independently reviewed, and separately approved may a Gold-specific authorization bind and pass evaluator-only values for `gold_map_path`, `evaluator_audit_path`, `stage4a_r2_verification_path`, `stage4a_r2_strategy_summary_path`, `bootstrap_iterations`, `bootstrap_seed`, and `run_role=development`. That later authorization does not permit reservation access.
 
 The frozen U1-D advancement gates remain:
 
@@ -373,6 +388,8 @@ The frozen U1-D advancement gates remain:
 - Gold isolation, ranking-subset validation, independent verification, and deterministic rerun all pass.
 
 Failure yields `STOP_U1_BRANCH_KEEP_RESERVATION_LOCKED`. Passing U1-D still does not open reservation; reservation requires a new protocol and explicit approval.
+
+The deterministic rerun gate is not an automatic retry and is not part of the initial pre-Gold route. Its versioned output paths and comparison contract must be frozen in the later Gold-phase Level A authorization; advancement is withheld until that separately approved check passes.
 
 ## 10. Review and test requirements
 
@@ -396,6 +413,8 @@ The implementation review must include targeted config/preflight/verifier failur
 - Scientific design source: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`.
 - Governance contraction source: `docs/STAGE4B_U1_EXECUTION_GOVERNANCE_SIMPLIFICATION_AMENDMENT.md`.
 - Input/cache identity sources: `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_3_1_MANIFEST.json` and the tracked controller channel audit listed above.
+- Initial protocol freeze commit: `8657709fe492455587d1e473ed22ee7793c0b995`.
+- Author-side ARS validation found, before independent Level A review, that the initial policy and `VERIFIED_PRE_GOLD` schemas were incompatible with the unchanged evaluator's legacy field checks. This corrected freeze retains the evaluator-required schema/checkpoint/protocol and pre-Gold artifact keys while adding separate simplified-route bindings.
 - No external official input, Gold map, Gold metric, reservation metric, prior official ranking content, or evaluator output was opened to create this protocol.
 
 Current state after protocol freeze: `STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1_FROZEN_AWAITING_LEVEL_A_REVIEW`.
