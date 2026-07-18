@@ -37,7 +37,9 @@ from stage4b_u1_common import (  # noqa: E402
     write_jsonl,
 )
 from stage4b_u1_evaluate import (  # noqa: E402
+    assert_verified_ranking_structure,
     baseline_metrics,
+    derive_inserted_ids,
     evaluate_rows,
     run_evaluation,
 )
@@ -321,9 +323,8 @@ def effective_k_ranking(candidate_count: int, planned: int) -> tuple[dict, set[s
     dense = candidate_ids[:effective_k]
     q25 = list(dense)
     if planned:
-        insertion = q25[protect_n + planned : protect_n + 2 * planned]
-        displaced = q25[protect_n : protect_n + planned]
-        q25[protect_n : protect_n + 2 * planned] = insertion + displaced
+        tail = q25[protect_n:]
+        q25[protect_n:] = tail[planned:] + tail[:planned]
     inserted = q25[protect_n : protect_n + planned]
     return (
         {
@@ -333,9 +334,90 @@ def effective_k_ranking(candidate_count: int, planned: int) -> tuple[dict, set[s
             "q25_top20_unit_ids": q25,
             "q25_inserted_unit_ids": inserted,
             "final_top20_unit_ids": q25,
+            "final_inserted_unit_ids": inserted,
+            "trigger_u1": 1,
         },
         set(candidate_ids),
     )
+
+
+class Stage4BU1EvaluatorEffectiveKTests(unittest.TestCase):
+    def assert_evaluator_accepts(self, candidate_count: int, planned: int) -> None:
+        ranking, _ = effective_k_ranking(candidate_count, planned)
+        self.assertEqual(
+            derive_inserted_ids(ranking),
+            (ranking["q25_inserted_unit_ids"], ranking["final_inserted_unit_ids"]),
+        )
+
+    def test_evaluator_effective_k_20_is_accepted(self) -> None:
+        self.assert_evaluator_accepts(20, 4)
+
+    def test_evaluator_effective_k_17_is_accepted(self) -> None:
+        self.assert_evaluator_accepts(17, 4)
+
+    def test_evaluator_effective_k_10_is_accepted(self) -> None:
+        self.assert_evaluator_accepts(10, 0)
+
+    def test_evaluator_effective_k_9_is_accepted(self) -> None:
+        self.assert_evaluator_accepts(9, 0)
+
+    def test_evaluator_effective_k_1_is_accepted(self) -> None:
+        self.assert_evaluator_accepts(1, 0)
+
+    def test_evaluator_planned_insert_overflow_is_rejected(self) -> None:
+        ranking, _ = effective_k_ranking(10, 0)
+        ranking["planned_insert_count"] = 1
+        with self.assertRaisesRegex(ValueError, "outside effective range"):
+            derive_inserted_ids(ranking)
+
+    def test_evaluator_protected_prefix_drift_is_rejected(self) -> None:
+        ranking, _ = effective_k_ranking(17, 2)
+        ranking["q25_top20_unit_ids"][0], ranking["q25_top20_unit_ids"][10] = (
+            ranking["q25_top20_unit_ids"][10],
+            ranking["q25_top20_unit_ids"][0],
+        )
+        ranking["final_top20_unit_ids"] = list(ranking["q25_top20_unit_ids"])
+        with self.assertRaisesRegex(ValueError, "effective protected prefix"):
+            derive_inserted_ids(ranking)
+
+    def test_evaluator_duplicate_id_is_rejected(self) -> None:
+        ranking, _ = effective_k_ranking(17, 2)
+        ranking["q25_top20_unit_ids"][-1] = ranking["q25_top20_unit_ids"][-2]
+        ranking["final_top20_unit_ids"] = list(ranking["q25_top20_unit_ids"])
+        with self.assertRaisesRegex(ValueError, "not unique"):
+            derive_inserted_ids(ranking)
+
+    def test_evaluator_final_selector_drift_is_rejected(self) -> None:
+        ranking, _ = effective_k_ranking(17, 2)
+        ranking["trigger_u1"] = 0
+        with self.assertRaisesRegex(ValueError, "on/off selection"):
+            derive_inserted_ids(ranking)
+
+    def test_evaluator_inserted_id_derivation_drift_is_rejected(self) -> None:
+        ranking, _ = effective_k_ranking(17, 2)
+        ranking["q25_inserted_unit_ids"] = list(reversed(ranking["q25_inserted_unit_ids"]))
+        with self.assertRaisesRegex(ValueError, "differ from effective-K"):
+            derive_inserted_ids(ranking)
+
+    def test_evaluator_final_inserted_ids_drift_is_rejected(self) -> None:
+        ranking, _ = effective_k_ranking(17, 2)
+        ranking["final_inserted_unit_ids"] = []
+        with self.assertRaisesRegex(ValueError, "final inserted IDs"):
+            derive_inserted_ids(ranking)
+
+    def test_evaluator_empty_candidate_pool_is_rejected(self) -> None:
+        ranking, _ = effective_k_ranking(0, 0)
+        with self.assertRaisesRegex(ValueError, r"outside \[1,20\]"):
+            derive_inserted_ids(ranking)
+
+    def test_evaluator_requires_independent_membership_attestation(self) -> None:
+        assert_verified_ranking_structure(
+            {"policy_and_ranking": {"ranking_structure_check": True}}
+        )
+        with self.assertRaisesRegex(ValueError, "candidate-membership attestation"):
+            assert_verified_ranking_structure(
+                {"policy_and_ranking": {"ranking_structure_check": False}}
+            )
 
 
 class Stage4BU1CoreTests(unittest.TestCase):

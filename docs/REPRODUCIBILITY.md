@@ -1595,3 +1595,21 @@ The protocol fixes the Python 3.12.0 environment, unlabeled input and ID-bound-c
 There is intentionally no runnable command in this section: the config and three simplified Python entry points do not yet exist, the protocol has not yet passed independent Level A review, and official execution is not approved. Implementation and commands may be added only after Level A acceptance and must receive Level B review plus a separately bound execution approval.
 
 Current status: `STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1_FROZEN_AWAITING_LEVEL_A_REVIEW`. Gold, reservation, and Stage3B remain locked.
+
+## Level A Effective-K Evaluator Compatibility Correction
+
+Independent Level A review bound corrected protocol commit `76dc179acbb657633fc1da1e4c5fbd398169e284` and returned one required compatibility correction. The evaluator no longer assumes all dense/q25/final lists have length 20. It now enforces the protocol's effective-K range and equal-list contract, `P_q=min(10,K_q)`, uniqueness, protected-prefix preservation, bounded and derived inserted IDs, trigger/final selection, and an independently verified ranking-structure/candidate-membership attestation.
+
+The evaluator SHA-256 after this correction is `D7B96E29AD5AB2F6652FFC14D73048D36C205F78ABA7FA8FCB501818A1A89BBB`. The targeted command was:
+
+```powershell
+& 'D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe' -I -B -m unittest discover -s tests -p 'test_stage4b_u1_goldfree.py' -k Stage4BU1EvaluatorEffectiveKTests -v
+```
+
+It passed 13/13. The complete command was:
+
+```powershell
+& 'D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe' -I -B -m unittest discover -s tests -p 'test_stage4b_u1_goldfree.py' -v
+```
+
+It passed 63/63 in 6.903 seconds. Both commands used synthetic fixtures only and did not read official development, Gold, reservation, Stage3B, or historical official rankings. This establishes implementation compatibility, not method efficacy. Current states are `LEVEL_A_PROTOCOL_ACCEPTED` and `LEVEL_B_IMPLEMENTATION_AUTHORIZED`; official execution, Gold evaluation, and reservation remain unauthorized.

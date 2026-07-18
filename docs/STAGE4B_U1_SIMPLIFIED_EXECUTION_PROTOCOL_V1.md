@@ -2,11 +2,11 @@
 
 ## Status and scope
 
-- Status: `FROZEN_AWAITING_LEVEL_A_REVIEW`
-- Stage state after this freeze: `STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1_FROZEN_AWAITING_LEVEL_A_REVIEW`
+- Status: `LEVEL_A_PROTOCOL_ACCEPTED`
+- Stage state after the approved compatibility correction: `LEVEL_B_IMPLEMENTATION_AUTHORIZED`
 - Scope: Stage4B-U1-D development slice only, 4,500 queries and 143,820 unlabeled units.
 - Reservation, Stage3B, Gold evaluation, official execution, and result interpretation remain locked.
-- This document freezes a future execution contract. It does not create an executable config, implement code, authorize preflight, open official inputs, or authorize a retry.
+- This document freezes the execution contract and authorizes synthetic-only Level B implementation. It does not authorize official preflight/execution, Gold evaluation, reservation access, or a retry of any retired approval chain.
 
 This protocol is the minimal replacement for the retired Amendment 1.1.7–1.1.9 PowerShell launcher, remote gate, observer, and nested PRE route. Those files remain immutable historical evidence but are not an execution dependency of this protocol.
 
@@ -16,7 +16,7 @@ This protocol is a Level A scientific-critical artifact because it fixes the dat
 
 Activation requires all of the following, in order:
 
-1. independent Level A acceptance of the commit containing this protocol;
+1. independent Level A acceptance of the protocol, including the one approved evaluator effective-K compatibility correction (satisfied by the review bound to corrected commit `76dc179acbb657633fc1da1e4c5fbd398169e284` and the correction recorded below);
 2. a later minimal implementation commit and Level B integrity review;
 3. a later config-freeze commit containing `configs/stage4b_u1_d_official.json` with no placeholder values;
 4. explicit user approval binding the protocol, implementation, config, inputs, cache, and output paths before any official preflight.
@@ -191,7 +191,7 @@ If `trigger_u1=0`, final ranking equals dense ranking and final inserted IDs are
 
 ## 5. Frozen algorithm baseline and semantic-equivalence gate
 
-The parent baseline is commit `e12907d5501cb9e3fe9eaec5590e517d3ef93e30`. Its relevant source identities are:
+The parent baseline is commit `e12907d5501cb9e3fe9eaec5590e517d3ef93e30`. The first four identities below are unchanged pre-Gold baseline sources; the evaluator identity is the approved Level A effective-K compatibility correction:
 
 | File | SHA-256 |
 |---|---|
@@ -199,7 +199,7 @@ The parent baseline is commit `e12907d5501cb9e3fe9eaec5590e517d3ef93e30`. Its re
 | `scripts/stage4b_u1_goldfree_retrieval.py` | `3B50FAFD057E2565167ED09288D61829B3FBD044991F139F734F819955038A3B` |
 | `scripts/stage4b_u1_goldfree_controller.py` | `C18AD3B672649BA846C5E191D0DBBAC7644A926D4B8CCD39176127175BBA7C1F` |
 | `scripts/stage4b_u1_verify.py` | `DC134B51A07C14A553746C303EA31D83990BA0EFAD30EFC3A1722F1A141E66EC` |
-| `scripts/stage4b_u1_evaluate.py` | `343BC9D2478042FF582DAA5DE716498124166C72A520A35DAE53F56C976F2E31` |
+| `scripts/stage4b_u1_evaluate.py` | `D7B96E29AD5AB2F6652FFC14D73048D36C205F78ABA7FA8FCB501818A1A89BBB` |
 
 The later `implementation.files` object must bind the exact paths and SHA-256 values for the first four pre-Gold baseline files above plus the three new preflight/runner/verifier entry points. It may not bind a directory glob. `evaluation_contract.evaluator_script` and `.evaluator_script_sha256` bind `stage4b_u1_evaluate.py` separately so that the pre-Gold controller never imports or invokes it.
 
@@ -276,11 +276,11 @@ controller_source_sha256, parent_development_policy_sha256,
 evaluation_labels_loaded
 ```
 
-For compatibility with the unchanged evaluator, the frozen values are:
+For compatibility with the evaluator's retained legacy contract, the frozen values are:
 
 - `schema_version=stage4b_u1_v2`;
 - `implementation_checkpoint=stage4b_u1_v2_3_1`, identifying the unchanged scientific algorithm checkpoint rather than the new orchestration profile;
-- `protocol=docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` and its exact SHA-256, because the unchanged evaluator hard-checks that legacy scientific-protocol field;
+- `protocol=docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md` and its exact SHA-256, because the evaluator retains the hard check for that legacy scientific-protocol field;
 - `simplified_execution_protocol=docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md` and the exact SHA-256 bound by the config;
 - `execution_profile=stage4b_u1_simplified_v1`;
 - `status=POLICY_FROZEN_BEFORE_EVALUATION`, `run_role=development`, `parent_development_policy_sha256=null`, and `evaluation_labels_loaded=false`.
@@ -311,7 +311,7 @@ ranking_membership, protected_prefix_and_inserts, final_selector,
 ranking_query_set, committed_artifact_set, gold_isolation
 ```
 
-Every check value is `PASS`. For compatibility with the unchanged evaluator, fixed values include `schema_version=stage4b_u1_v2`, `implementation_checkpoint=stage4b_u1_v2_3_1`, `synthetic_test_mode=false`, `status=VERIFIED_PRE_GOLD`, `gold_inputs_loaded=false`, and `evaluation=null`.
+Every check value is `PASS`. For compatibility with the evaluator's retained legacy contract, fixed values include `schema_version=stage4b_u1_v2`, `implementation_checkpoint=stage4b_u1_v2_3_1`, `synthetic_test_mode=false`, `status=VERIFIED_PRE_GOLD`, `gold_inputs_loaded=false`, and `evaluation=null`.
 
 `frozen_commit_sha` is the commit containing the exact decisions/rankings/policy set. `artifact_hashes` has exactly `channel_audit`, `decisions`, `rankings`, and `policy`, because the evaluator independently compares those fields. `implementation_hashes` must equal the policy field. `identity_boundary` records 4,500 queries, 143,820 units, both ID digests, and the namespace check. The additional simplified-protocol/config/verifier fields bind the new route without removing evaluator-required legacy keys. The file is deterministic and contains no timestamp or host-specific temporary path.
 
@@ -372,7 +372,7 @@ outputs:
   evaluation_summary = results/stage4b_u1_d_official_dev4500_simplified_v1_evaluation_summary.json
 authorized = false
 evaluator_script = scripts/stage4b_u1_evaluate.py
-evaluator_script_sha256 = 343BC9D2478042FF582DAA5DE716498124166C72A520A35DAE53F56C976F2E31
+evaluator_script_sha256 = D7B96E29AD5AB2F6652FFC14D73048D36C205F78ABA7FA8FCB501818A1A89BBB
 ```
 
 Gold-map and evaluator-audit paths/hashes are intentionally absent from the pre-Gold config so that the controller process cannot receive them. Only after rankings and `VERIFIED_PRE_GOLD` are committed/pushed, independently reviewed, and separately approved may a Gold-specific authorization bind and pass evaluator-only values for `gold_map_path`, `evaluator_audit_path`, `stage4a_r2_verification_path`, `stage4a_r2_strategy_summary_path`, `bootstrap_iterations`, `bootstrap_seed`, and `run_role=development`. That later authorization does not permit reservation access.
@@ -414,7 +414,11 @@ The implementation review must include targeted config/preflight/verifier failur
 - Governance contraction source: `docs/STAGE4B_U1_EXECUTION_GOVERNANCE_SIMPLIFICATION_AMENDMENT.md`.
 - Input/cache identity sources: `docs/STAGE4B_U1_PREGOLD_RESUMPTION_V2_3_1_MANIFEST.json` and the tracked controller channel audit listed above.
 - Initial protocol freeze commit: `8657709fe492455587d1e473ed22ee7793c0b995`.
+- Corrected protocol commit reviewed at Level A: `76dc179acbb657633fc1da1e4c5fbd398169e284`.
+- Level A review source: `C:\Users\cc\.codex\attachments\ab7328dd-72d9-4325-8cfc-7ed983755fbd\pasted-text.txt`, 13,594 bytes, SHA-256 `3982BC0329FFBA82E24834B64491E37F053B6C9684C332762D4A51CF38F30AE6`.
 - Author-side ARS validation found, before independent Level A review, that the initial policy and `VERIFIED_PRE_GOLD` schemas were incompatible with the unchanged evaluator's legacy field checks. This corrected freeze retains the evaluator-required schema/checkpoint/protocol and pre-Gold artifact keys while adding separate simplified-route bindings.
+- The Level A review returned exactly one compatibility correction: replace the evaluator's fixed-20 checks with the frozen effective-K rules. The evaluator now enforces `1 <= K_q <= 20`, equal effective lengths, per-list uniqueness, `P_q=min(10,K_q)`, bounded insertion, protected-prefix preservation, trigger/final selection, derived inserted IDs, and a required independently verified ranking-structure/candidate-membership attestation. It does not change candidates, q25, score, allocation, ranking, endpoints, or any Gold input.
+- Targeted evaluator tests passed 13/13 for candidate sizes 20, 17, 10, 9, and 1 plus the required failure cases. The complete synthetic suite passed 63/63. Both runs used synthetic fixtures only.
 - No external official input, Gold map, Gold metric, reservation metric, prior official ranking content, or evaluator output was opened to create this protocol.
 
-Current state after protocol freeze: `STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1_FROZEN_AWAITING_LEVEL_A_REVIEW`.
+Current states: `LEVEL_A_PROTOCOL_ACCEPTED`, `LEVEL_B_IMPLEMENTATION_AUTHORIZED`, `OFFICIAL_EXECUTION_NOT_YET_AUTHORIZED`, `GOLD_EVALUATION_NOT_AUTHORIZED`, and `RESERVATION_NOT_AUTHORIZED`.

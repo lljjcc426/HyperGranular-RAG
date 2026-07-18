@@ -469,6 +469,11 @@
 453. Corrected simplified protocol 必须保留 evaluator 兼容字段：policy 的 `schema_version=stage4b_u1_v2`、`implementation_checkpoint=stage4b_u1_v2_3_1`、legacy scientific `protocol` path/hash，以及 pre-Gold verification 的 `synthetic_test_mode=false`、`frozen_commit_sha`、`implementation_hashes`、`artifact_hashes` 和 `evaluation=null`。新 config/protocol/verifier 身份使用附加字段绑定，不得覆盖这些兼容字段。
 454. Later Gold-only authorization 还必须绑定 evaluator 的 Gold map、evaluator audit、Stage4A-R2 verification/strategy summary、bootstrap iterations/seed 与 development role；这些值仍不得进入 pre-Gold config 或 controller。确定性复跑属于 later Level A validation，不是自动 retry。
 455. 作者侧验证不能替代独立 A 级接受。Corrected protocol 仍保持 `STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1_FROZEN_AWAITING_LEVEL_A_REVIEW`，不得据此开始实现或 official。
+456. 独立 A 级审核绑定 corrected commit `76dc179acbb657633fc1da1e4c5fbd398169e284`，总体协议方向已接受，只退回一项 evaluator effective-K 兼容性修正；不得借修正改变数据、候选生成、粒球、超边、q25、U1 score、预算、终点或统计规则。
+457. Evaluator effective-K 修正要求 `K_q=len(dense)`、`1<=K_q<=20`、`P_q=min(10,K_q)`，dense/q25/final 等长且各自唯一，保护前缀不变，planned insert 不超过 `min(4,K_q-P_q)`，inserted IDs 从 q25 的有效区间推导，trigger/final selector 一致；candidate membership 继续由哈希绑定的 independent verifier attestation 覆盖。禁止删除 628 条短候选查询或填充虚假 ID。
+458. 修正后的 evaluator SHA-256 为 `D7B96E29AD5AB2F6652FFC14D73048D36C205F78ABA7FA8FCB501818A1A89BBB`。13 项定向测试与一次完整 63 项 synthetic suite 均全部通过；未读取 official development、Gold、reservation、Stage3B 或历史 official ranking 内容。
+459. 当前状态为 `LEVEL_A_PROTOCOL_ACCEPTED` 与 `LEVEL_B_IMPLEMENTATION_AUTHORIZED`；可自主实现 config schema/loader、simplified preflight/runner/verifier、pending guarded promotion、require-existing cache、Gold scan、输出 schema 与 synthetic semantic-equivalence tests。`OFFICIAL_EXECUTION_NOT_YET_AUTHORIZED`、`GOLD_EVALUATION_NOT_AUTHORIZED`、`RESERVATION_NOT_AUTHORIZED` 继续生效。
+460. Level B/C 日常实现、测试、文档、普通提交和推送无需逐项暂停。只有科学语义变化、首次 official 输入/正式 controller、Gold、reservation，或可能影响 ranking/Gold 隔离/正式输出完整性/统计结论的失败，才必须暂停等待外部审核。不得恢复旧 PowerShell launcher、remote gate、observer、stderr capture 或 nested PRE 链。
 
 ## GitHub 与文档
 

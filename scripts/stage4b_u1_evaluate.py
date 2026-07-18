@@ -13,6 +13,8 @@ import numpy as np
 
 from stage4b_u1_common import (
     IMPLEMENTATION_CHECKPOINT,
+    INSERT_BUDGET,
+    MAX_K,
     PROTECT_N,
     PROTOCOL_RELATIVE_PATH,
     SCHEMA_VERSION,
@@ -46,26 +48,48 @@ def derive_inserted_ids(ranking: dict[str, Any]) -> tuple[list[str], list[str]]:
     final = [str(value) for value in ranking["final_top20_unit_ids"]]
     planned = int(ranking["planned_insert_count"])
     trigger = int(ranking["trigger_u1"])
-    if len(dense) != 20 or len(q25) != 20 or len(final) != 20:
-        raise ValueError(f"Evaluator Top-20 length differs: {query_id}")
-    if len(set(dense)) != 20 or len(set(q25)) != 20 or len(set(final)) != 20:
-        raise ValueError(f"Evaluator Top-20 IDs are not unique: {query_id}")
-    if q25[:PROTECT_N] != dense[:PROTECT_N]:
-        raise ValueError(f"Evaluator q25 violates dense Top-10 protection: {query_id}")
-    if planned < 0 or planned > 4:
-        raise ValueError(f"Evaluator planned insert count is outside [0,4]: {query_id}")
-    q25_inserted = q25[PROTECT_N : PROTECT_N + planned]
+    effective_k = len(dense)
+    if effective_k < 1 or effective_k > MAX_K:
+        raise ValueError(f"Evaluator effective-K is outside [1,{MAX_K}]: {query_id}")
+    for label, values in (("dense", dense), ("q25", q25), ("final", final)):
+        if len(values) != effective_k:
+            raise ValueError(f"Evaluator {label} effective-K length differs: {query_id}")
+        if len(set(values)) != effective_k:
+            raise ValueError(f"Evaluator {label} effective-K IDs are not unique: {query_id}")
+        if any(not unit_id for unit_id in values):
+            raise ValueError(f"Evaluator {label} effective-K contains an empty ID: {query_id}")
+    effective_protect_n = min(PROTECT_N, effective_k)
+    if q25[:effective_protect_n] != dense[:effective_protect_n]:
+        raise ValueError(f"Evaluator q25 violates effective protected prefix: {query_id}")
+    maximum_planned = min(INSERT_BUDGET, effective_k - effective_protect_n)
+    if planned < 0 or planned > maximum_planned:
+        raise ValueError(
+            f"Evaluator planned insert count is outside effective range "
+            f"[0,{maximum_planned}]: {query_id}"
+        )
+    q25_inserted = q25[effective_protect_n : effective_protect_n + planned]
     if [str(value) for value in ranking["q25_inserted_unit_ids"]] != q25_inserted:
-        raise ValueError(f"Evaluator q25 inserted IDs differ from Top-20: {query_id}")
+        raise ValueError(f"Evaluator q25 inserted IDs differ from effective-K: {query_id}")
+    if trigger not in (0, 1):
+        raise ValueError(f"Evaluator trigger is outside {{0,1}}: {query_id}")
     expected_final = q25 if trigger else dense
     final_inserted = q25_inserted if trigger else []
     if final != expected_final:
         raise ValueError(f"Evaluator final ranking violates on/off selection: {query_id}")
     if [str(value) for value in ranking["final_inserted_unit_ids"]] != final_inserted:
         raise ValueError(f"Evaluator final inserted IDs differ from derived inserts: {query_id}")
-    if any(unit_id in set(dense[:PROTECT_N]) for unit_id in q25_inserted):
-        raise ValueError(f"Evaluator inserted ID enters dense Top-10: {query_id}")
+    if any(unit_id in set(dense[:effective_protect_n]) for unit_id in q25_inserted):
+        raise ValueError(f"Evaluator inserted ID enters protected prefix: {query_id}")
     return q25_inserted, final_inserted
+
+
+def assert_verified_ranking_structure(pre_gold: dict[str, Any]) -> None:
+    checks = pre_gold.get("policy_and_ranking")
+    if not isinstance(checks, dict) or checks.get("ranking_structure_check") is not True:
+        raise ValueError(
+            "Pre-Gold verification lacks independent effective-K, uniqueness, "
+            "and candidate-membership attestation"
+        )
 
 
 def evaluate_rows(
@@ -370,6 +394,7 @@ def validate_pre_gold_verification(
         raise ValueError("Evaluator requires a VERIFIED_PRE_GOLD artifact")
     if pre_gold.get("evaluation") is not None:
         raise ValueError("Pre-Gold verification evaluation field must be null")
+    assert_verified_ranking_structure(pre_gold)
     if bool(pre_gold.get("synthetic_test_mode")) != synthetic_test_mode:
         raise ValueError("Pre-Gold verification/evaluator synthetic modes differ")
     hashes = pre_gold.get("artifact_hashes", {})
