@@ -169,6 +169,27 @@ class Stage4BU1SimplifiedTests(unittest.TestCase):
         config_path, config = make_synthetic_config(root, paths)
         return paths, config_path, config
 
+    def assert_verifier_rejects_mutation(
+        self,
+        root: Path,
+        artifact: str,
+        mutate: object,
+        expected_error: str,
+    ) -> None:
+        _, config_path, config = self.build(root)
+        run_simplified_controller(config_path, synthetic_test_mode=True)
+        artifact_path = Path(config["outputs"][artifact])
+        rows = load_jsonl(artifact_path)
+        mutate(rows)
+        write_jsonl(artifact_path, rows)
+        policy_path = Path(config["outputs"]["policy"])
+        policy = load_json(policy_path)
+        policy["output_hashes"][artifact] = sha256_file(artifact_path)
+        write_json(policy_path, policy)
+        with self.assertRaisesRegex(ValueError, expected_error):
+            run_independent_verifier(config_path, synthetic_test_mode=True)
+        self.assertFalse(Path(config["verification"]["output"]).exists())
+
     def test_end_to_end_semantic_equivalence_and_independent_verifier(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -309,6 +330,91 @@ class Stage4BU1SimplifiedTests(unittest.TestCase):
             write_json(policy_path, policy)
             with self.assertRaisesRegex(ValueError, "execution_config_sha256"):
                 run_independent_verifier(config_path, synthetic_test_mode=True)
+
+    def test_verifier_rejects_decision_sample_id_drift(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            self.assert_verifier_rejects_mutation(
+                Path(directory),
+                "decisions",
+                lambda rows: rows[0].__setitem__("sample_id", "wrong-sample"),
+                "Decision row identity differs at sample_id",
+            )
+
+    def test_verifier_rejects_ranking_dataset_drift(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            self.assert_verifier_rejects_mutation(
+                Path(directory),
+                "rankings",
+                lambda rows: rows[0].__setitem__("dataset", "wrong-dataset"),
+                "Ranking row identity differs at dataset",
+            )
+
+    def test_verifier_rejects_float_planned_insert_count(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            self.assert_verifier_rejects_mutation(
+                Path(directory),
+                "decisions",
+                lambda rows: rows[0].__setitem__("planned_insert_count", 1.0),
+                "planned_insert_count must be a JSON integer",
+            )
+
+    def test_verifier_rejects_boolean_trigger(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            self.assert_verifier_rejects_mutation(
+                Path(directory),
+                "decisions",
+                lambda rows: rows[0].__setitem__("trigger_u1", True),
+                "trigger_u1 must be a JSON integer",
+            )
+
+    def test_verifier_rejects_numeric_ranking_unit_id(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            self.assert_verifier_rejects_mutation(
+                Path(directory),
+                "rankings",
+                lambda rows: rows[0]["dense_top20_unit_ids"].__setitem__(-1, 123),
+                "dense_top20_unit_ids.*must be a non-empty JSON string",
+            )
+
+    def test_verifier_rejects_infeasible_non_null_score(self) -> None:
+        def mutate(rows: list[dict]) -> None:
+            row = rows[0]
+            row["selected_edge_count"] = 0
+            row["planned_insert_count"] = 0
+            row["feasible"] = 0
+            row["trigger_u1"] = 0
+            row["ordered_rank"] = None
+            for field in (
+                "u_margin",
+                "u_boundary",
+                "r_edge",
+                "r_candidate",
+                "uncertainty",
+                "readiness",
+            ):
+                row[field] = None
+            row["score"] = 0.0
+
+        with tempfile.TemporaryDirectory() as directory:
+            self.assert_verifier_rejects_mutation(
+                Path(directory),
+                "decisions",
+                mutate,
+                "Infeasible decision.*score must be null",
+            )
+
+    def test_verifier_rejects_boolean_feasible_ordered_rank(self) -> None:
+        def mutate(rows: list[dict]) -> None:
+            row = next(value for value in rows if int(value["feasible"]) == 1)
+            row["ordered_rank"] = True
+
+        with tempfile.TemporaryDirectory() as directory:
+            self.assert_verifier_rejects_mutation(
+                Path(directory),
+                "decisions",
+                mutate,
+                "ordered_rank must be a JSON integer",
+            )
 
 
 if __name__ == "__main__":

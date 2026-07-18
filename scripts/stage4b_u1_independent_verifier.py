@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 import subprocess
 from pathlib import Path
 from typing import Any
@@ -165,6 +166,34 @@ def _config_display_path(config_path: Path, repo_root: Path) -> str:
         return str(config_path.resolve())
 
 
+def require_nonempty_string(value: Any, label: str) -> str:
+    if not isinstance(value, str) or not value:
+        raise ValueError(f"{label} must be a non-empty JSON string")
+    return value
+
+
+def require_json_int(value: Any, label: str) -> int:
+    if isinstance(value, bool) or not isinstance(value, int):
+        raise ValueError(f"{label} must be a JSON integer")
+    return value
+
+
+def require_finite_json_number(value: Any, label: str) -> int | float:
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise ValueError(f"{label} must be a finite JSON number")
+    if not math.isfinite(float(value)):
+        raise ValueError(f"{label} must be a finite JSON number")
+    return value
+
+
+def require_nonempty_string_list(value: Any, label: str) -> list[str]:
+    if not isinstance(value, list):
+        raise ValueError(f"{label} must be a JSON array")
+    for index, item in enumerate(value):
+        require_nonempty_string(item, f"{label}[{index}]")
+    return value
+
+
 def _assert_policy_bindings(
     policy: dict[str, Any],
     *,
@@ -231,18 +260,101 @@ def _assert_policy_bindings(
 def _assert_row_contracts(
     decisions: list[dict[str, Any]],
     rankings: list[dict[str, Any]],
-    query_ids: list[str],
+    queries: list[dict[str, Any]],
 ) -> None:
-    if [str(row.get("query_id")) for row in decisions] != query_ids:
-        raise ValueError("Decision query order differs")
-    if [str(row.get("query_id")) for row in rankings] != query_ids:
-        raise ValueError("Ranking query order differs")
-    for row in decisions:
+    if len(decisions) != len(queries):
+        raise ValueError("Decision row count differs from frozen queries")
+    if len(rankings) != len(queries):
+        raise ValueError("Ranking row count differs from frozen queries")
+    derived_fields = (
+        "u_margin",
+        "u_boundary",
+        "r_edge",
+        "r_candidate",
+        "uncertainty",
+        "readiness",
+        "score",
+    )
+    ranking_list_fields = (
+        "dense_top20_unit_ids",
+        "q25_top20_unit_ids",
+        "q25_inserted_unit_ids",
+        "final_top20_unit_ids",
+        "final_inserted_unit_ids",
+    )
+    for index, (row, query) in enumerate(zip(decisions, queries, strict=True)):
         if set(row) != DECISION_KEYS:
             raise ValueError(f"Decision schema differs: {row.get('query_id')}")
-    for row in rankings:
+        for field in ("query_id", "dataset", "sample_id"):
+            expected = require_nonempty_string(
+                query.get(field), f"frozen query[{index}].{field}"
+            )
+            observed = require_nonempty_string(
+                row[field], f"decision[{index}].{field}"
+            )
+            if observed != expected:
+                raise ValueError(f"Decision row identity differs at {field}: {index}")
+        selected_edges = require_json_int(
+            row["selected_edge_count"], f"decision[{index}].selected_edge_count"
+        )
+        planned = require_json_int(
+            row["planned_insert_count"], f"decision[{index}].planned_insert_count"
+        )
+        feasible = require_json_int(row["feasible"], f"decision[{index}].feasible")
+        trigger = require_json_int(row["trigger_u1"], f"decision[{index}].trigger_u1")
+        if selected_edges < 0:
+            raise ValueError(f"decision[{index}].selected_edge_count must be non-negative")
+        if planned < 0:
+            raise ValueError(f"decision[{index}].planned_insert_count must be non-negative")
+        if feasible not in (0, 1):
+            raise ValueError(f"decision[{index}].feasible must be 0 or 1")
+        if trigger not in (0, 1):
+            raise ValueError(f"decision[{index}].trigger_u1 must be 0 or 1")
+        require_finite_json_number(
+            row["ball_score_margin"], f"decision[{index}].ball_score_margin"
+        )
+        require_finite_json_number(
+            row["boundary_margin"], f"decision[{index}].boundary_margin"
+        )
+        require_nonempty_string(row["tie_hash"], f"decision[{index}].tie_hash")
+        if feasible == 0:
+            for field in (*derived_fields, "ordered_rank"):
+                if row[field] is not None:
+                    raise ValueError(
+                        f"Infeasible decision[{index}].{field} must be null"
+                    )
+        else:
+            for field in derived_fields:
+                require_finite_json_number(
+                    row[field], f"decision[{index}].{field}"
+                )
+            ordered_rank = require_json_int(
+                row["ordered_rank"], f"decision[{index}].ordered_rank"
+            )
+            if ordered_rank <= 0:
+                raise ValueError(f"decision[{index}].ordered_rank must be positive")
+    for index, (row, query) in enumerate(zip(rankings, queries, strict=True)):
         if set(row) != RANKING_KEYS:
             raise ValueError(f"Ranking schema differs: {row.get('query_id')}")
+        for field in ("query_id", "dataset", "sample_id"):
+            expected = require_nonempty_string(
+                query.get(field), f"frozen query[{index}].{field}"
+            )
+            observed = require_nonempty_string(
+                row[field], f"ranking[{index}].{field}"
+            )
+            if observed != expected:
+                raise ValueError(f"Ranking row identity differs at {field}: {index}")
+        planned = require_json_int(
+            row["planned_insert_count"], f"ranking[{index}].planned_insert_count"
+        )
+        trigger = require_json_int(row["trigger_u1"], f"ranking[{index}].trigger_u1")
+        if planned < 0:
+            raise ValueError(f"ranking[{index}].planned_insert_count must be non-negative")
+        if trigger not in (0, 1):
+            raise ValueError(f"ranking[{index}].trigger_u1 must be 0 or 1")
+        for field in ranking_list_fields:
+            require_nonempty_string_list(row[field], f"ranking[{index}].{field}")
     assert_no_prohibited_keys(decisions, "simplified_verifier.decisions")
     assert_no_prohibited_keys(rankings, "simplified_verifier.rankings")
 
@@ -318,7 +430,7 @@ def run_independent_verifier(
     rankings = load_strict_jsonl(rankings_path)
     policy = load_strict_json(policy_path)
     query_ids = [str(row["query_id"]) for row in context.queries]
-    _assert_row_contracts(decisions, rankings, query_ids)
+    _assert_row_contracts(decisions, rankings, context.queries)
     _assert_policy_bindings(
         policy,
         context=context,
