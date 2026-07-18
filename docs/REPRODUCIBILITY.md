@@ -1585,3 +1585,13 @@ The project will not build Amendment 1.1.10 to recover the missing 503-byte stde
 The future reproduction path is intentionally not yet executable. It will be specified in a separate minimal protocol as one frozen JSON config, one direct Python preflight/controller, one independent verifier, a committed ranking boundary, and a separate Gold evaluator. The protocol must retain code/config/input/cache hashes, Gold unavailability before ranking freeze, output-path absence, atomic output promotion, effective-K, unique-ID, membership, protected-prefix, planned-insert, trigger, and ranking-subset checks.
 
 No command in this section authorizes official input, Gold, reservation, or Stage3B access. Current status: `STAGE4B_U1_HF23_CLOSED_GOVERNANCE_SIMPLIFICATION_ADOPTED_IMPLEMENTATION_PENDING`.
+
+## Simplified Execution Protocol v1 Freeze
+
+The future reproduction contract is now frozen in `docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md`. It replaces the retired PowerShell/remote/observer/PRE route with one pre-Gold JSON config, a direct Python preflight, a Gold-free controller, committed decisions/rankings/policy, and one independent verifier. Gold remains a separate, later evaluator connection.
+
+The protocol fixes the Python 3.12.0 environment, unlabeled input and ID-bound-cache identities, complete retrieval parameters, q25/protect/insert/effective-K semantics, U1 ECDF score and 0.60 prefix budget, exact output paths/schemas, independent verification checks, and unchanged U1-D gates. The first six future output paths were confirmed absent at protocol freeze.
+
+There is intentionally no runnable command in this section: the config and three simplified Python entry points do not yet exist, the protocol has not yet passed independent Level A review, and official execution is not approved. Implementation and commands may be added only after Level A acceptance and must receive Level B review plus a separately bound execution approval.
+
+Current status: `STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1_FROZEN_AWAITING_LEVEL_A_REVIEW`. Gold, reservation, and Stage3B remain locked.

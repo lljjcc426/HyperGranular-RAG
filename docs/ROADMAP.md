@@ -1489,3 +1489,11 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Governance now uses Level A scientific-critical review, Level B integrity review, and Level C runtime-infrastructure logging. Scientific hard gates remain focused on data, Gold isolation, algorithm/ranking behavior, outputs, metrics, and statistical conclusions.
 - The planned replacement is one frozen JSON config, one direct Python preflight/controller, one independent verifier, committed rankings, and a separate Gold evaluator. Scientific settings and advancement gates remain unchanged.
 - No replacement runner or official execution is authorized by this governance record. Current state: `STAGE4B_U1_HF23_CLOSED_GOVERNANCE_SIMPLIFICATION_ADOPTED_IMPLEMENTATION_PENDING`.
+
+### Simplified Execution Protocol v1 Freeze
+
+- `docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md` freezes the Level A contract for one pre-Gold JSON config, direct Python preflight/controller, committed decisions/rankings/policy, one independent verifier, and a separately approved Gold evaluator.
+- It binds the 4,500-query/143,820-unit unlabeled boundary, exact input/cache identities, Python 3.12.0 environment, full retrieval config, q25/protect/insert/effective-K rules, U1 ECDF score, 0.60 ordered-prefix budget, output schemas, verifier gates, and unchanged U1-D advancement gates.
+- Semantic equivalence replaces PowerShell/file-byte equivalence and is restricted to synthetic fixtures during implementation review. No command-line bytes, TLS, GitHub-main query, stderr framing, observer, or nested process topology is a scientific gate.
+- The pre-Gold config intentionally contains no Gold-map/hash or reservation identity. Gold-specific inputs may be passed only to the evaluator after committed `VERIFIED_PRE_GOLD`, independent review, and separate approval.
+- This freeze adds no config, implementation, result, Gold access, reservation access, or execution authorization. Current state: `STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1_FROZEN_AWAITING_LEVEL_A_REVIEW`.

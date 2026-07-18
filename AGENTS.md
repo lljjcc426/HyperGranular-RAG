@@ -461,6 +461,10 @@
 445. 简化后的目标执行架构为单一冻结 JSON config、直接 Python preflight/controller、一次独立 verifier、ranking 冻结提交后再单独连接 Gold evaluator。保留数据隔离、Gold-free controller、代码/配置/输入 hash、ranking/预算推导、主要终点和统计解释；移除 command-line byte equality、运行时 GitHub-main 查询、terminal-NUL、empty-stderr 与 observer/adapter/parent/loader 进程层级硬门。
 446. 测试按影响分级：科研算法变化运行完整 suite 加一次关键确定性复跑；ranking/verifier/schema 变化通常完整 suite 一次；launcher/log/path 只跑定向测试；文档/审批/README 与 Git push/remote visibility 不跑算法 suite。只有可能影响科研结果的错误才新增永久回归测试。
 447. 本治理修订不实现或授权 simplified runner、preflight、official、Gold、reservation 或 Stage3B。当前状态为 `STAGE4B_U1_HF23_CLOSED_GOVERNANCE_SIMPLIFICATION_ADOPTED_IMPLEMENTATION_PENDING`；下一步仅允许先形成精简执行协议与对应最小代码变更，再按 A/B/C 级别审核。
+448. `docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md` 已冻结 Stage4B-U1-D 的最小替代执行合同：单一 pre-Gold JSON config、直接 Python preflight/controller、独立 verifier、ranking/policy 提交边界，以及另行批准的 Gold evaluator。该协议属于 A 级科研关键文档，当前等待独立 A 级审核。
+449. 协议冻结 q25 `0.1957079917192459`、protect 10、insert 4、`K_q=min(20,|C_q|)`、`P_q=min(10,K_q)`、MiniLM/max-length 192、四输入 ECDF-midrank U1 score、0.60 planned-insert prefix budget、全部输入/cache 身份、四条 pre-Gold 输出路径与独立 verifier 硬门；不得在 B 级实现中改变这些语义。
+450. Pre-Gold config 不得包含 Gold-map、Gold hash、labeled-source hash、reservation path/metric 或 evaluator Gold input。Gold 专属输入只有在 ranking/policy 与 `VERIFIED_PRE_GOLD` 分别提交推送、独立审核并另行批准后，才可直接传给 evaluator；不得传给 preflight/controller。
+451. 本次协议冻结不创建或授权 config、simplified scripts、official preflight/controller/verifier、Gold evaluation、reservation 或 Stage3B。当前状态为 `STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1_FROZEN_AWAITING_LEVEL_A_REVIEW`；下一步仅为独立 A 级协议审核，未获接受前不得实现或执行。
 
 ## GitHub 与文档
 

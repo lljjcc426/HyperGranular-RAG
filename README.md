@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Hard Failure 22 Review 1 已接受；1.1.9 tracked/preparsed launcher package 已完成，等待独立审批 |
-| 获批执行协议 | 无；1.1.8 approval-governance 链已终止且不可复用，1.1.9 package 不授权 parser 或执行 |
-| 设计文件 | HF22 audit/Review 1、1.1.9 Approval Request/Manifest/tracked launcher、unchanged 1.1.8 helper 与 1.1.7 observer |
-| 协议状态 | `AMENDMENT_5G_B_1_1_1_1_9_TRACKED_PREPARSED_LAUNCHER_PACKAGE_AWAITING_INDEPENDENT_APPROVAL` |
+| 当前阶段 | HF23 已关闭并完成治理收缩；简化执行协议 v1 已冻结，等待独立 A 级审核 |
+| 获批执行协议 | 无；简化协议当前仅是冻结文档，不授权实现、official preflight/controller/verifier 或 Gold |
+| 设计文件 | `docs/STAGE4B_U1_EXECUTION_GOVERNANCE_SIMPLIFICATION_AMENDMENT.md` 与 `docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md` |
+| 协议状态 | `STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1_FROZEN_AWAITING_LEVEL_A_REVIEW` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
@@ -222,6 +222,8 @@ Amendment 1.1.9 approval governance `ef9ba5b3...` 已按精确两路径推送；
 
 HF23 Review 1 已接受并关闭该 checkpoint。项目随后执行治理收缩：不再建立 1.1.10 stderr/进程诊断链，1.1.7–1.1.9 PowerShell remote/observer/PRE 路径只作为历史失败实现保留。新的执行方向保持全部科学参数、Gold 隔离、主要终点和晋级门不变，改为单一冻结配置、直接 Python preflight/controller、一次 independent verifier，以及 ranking 提交后单独 Gold evaluation；详见 `docs/STAGE4B_U1_EXECUTION_GOVERNANCE_SIMPLIFICATION_AMENDMENT.md`。
 
+简化执行协议 v1 已冻结于 `docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md`。它固定 Python 3.12.0 环境、输入/cache 身份、完整检索与 U1 score/budget 语义、输出 schema、独立 verifier 门和 Gold 后置边界；本次未创建 config、脚本或结果，尚未授权 official 访问。
+
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
 ## 科研治理
@@ -245,9 +247,9 @@ HF23 Review 1 已接受并关闭该 checkpoint。项目随后执行治理收缩�
 
 ## 下一步
 
-1. 形成精简执行协议，明确单一 config、Python preflight/controller、独立 verifier、ranking 冻结和 Gold evaluator 的输入输出与 hash 边界。
-2. 仅实现该协议所需的最小代码；不得恢复 `ef9ba5b3...` 链、1.1.10 stderr 诊断或旧 observer/PRE 进程层级。
-3. 在协议和代码提交并按 A/B/C 级别完成相应审核前，不运行 official、不读取 Gold 或 reservation。
+1. 对 `docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md` 做独立 A 级审核；未接受前不实现、不执行。
+2. A 级接受后，仅实现协议登记的三个最小 Python 入口和单一 JSON config，并完成 B 级 integrity/semantic-equivalence 审核；不得恢复 `ef9ba5b3...` 链或旧 observer/PRE 层级。
+3. 代码与 config 另行冻结并获得明确执行批准后，才可按 preflight → Gold-free controller → 工件提交 → independent verifier → `VERIFIED_PRE_GOLD` 的顺序执行并停止；Gold 与 reservation 继续另行锁定。
 
 ## GitHub
 
