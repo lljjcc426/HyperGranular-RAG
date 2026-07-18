@@ -50,7 +50,7 @@
     }
   },
   "implementation": {
-    "code_commit": "2dade07843194635f814ef53d0880f0ea7207451",
+    "code_commit": "8ab5e193d00733e0ae617b2c17f02da4ce01594f",
     "files": [
       {
         "path": "scripts/stage4b_u1_common.py",
@@ -78,7 +78,7 @@
       },
       {
         "path": "scripts/stage4b_u1_independent_verifier.py",
-        "sha256": "29CC175C922ED730192ED4B879824548640BAF4EAE26B2ED9B7ABCF0728E35A3"
+        "sha256": "920F0EAD0A270581826646B48A54E508F4E8BEB8FB02F3C5D1B902399CE15A91"
       }
     ]
   },
