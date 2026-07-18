@@ -6,13 +6,13 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | 简化执行协议 v1 已通过 A 级审核及唯一 effective-K 兼容性修正；进入 synthetic-only Level B 实现 |
-| 获批执行协议 | 已批准 Level B 实现；未授权 official preflight/controller/verifier、Gold 或 reservation |
+| 当前阶段 | 简化协议 Level B 实现与 config 冻结已完成，synthetic 验证通过，等待独立 Level B 审核 |
+| 获批执行协议 | 已完成 Level B implementation；未授权 official preflight/controller/verifier、Gold 或 reservation |
 | 设计文件 | `docs/STAGE4B_U1_EXECUTION_GOVERNANCE_SIMPLIFICATION_AMENDMENT.md` 与 `docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md` |
-| 协议状态 | `LEVEL_A_PROTOCOL_ACCEPTED` / `LEVEL_B_IMPLEMENTATION_AUTHORIZED` / `OFFICIAL_EXECUTION_NOT_YET_AUTHORIZED` |
+| 协议状态 | `LEVEL_B_IMPLEMENTATION_COMPLETE_AWAITING_INDEPENDENT_REVIEW` / `OFFICIAL_EXECUTION_NOT_YET_AUTHORIZED` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
-| Controller | v2.3.1 单次运行在 pending decisions 的 v2.2 字节等价门停止；未提升正式工件 |
+| Controller | Simplified runner 已完成 synthetic 语义等价验证；official 尚未运行，六条 future output 均缺席 |
 | 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
 
 Hard Failure 15 Review 1 接受三份 raw machine evidence，并将 382-byte stderr 精确定性为 Windows PowerShell 首次模块准备 progress CLIXML；exact 122-byte pre-verifier stdout 同时证明历史 `ee84988...` 的五个 Git children、三方 SHA 相等与 clean worktree，但旧 launcher 的 stderr-zero 合同仍然失败。Package Review 1 接受 exact classifier 和四个内层 envelope 的静态设计，但因顶层 runner 未冻结、内层 class 不可持久化以及 post class 与 narrative 提交顺序矛盾，明确拒绝 package `7f92c000...`。
@@ -158,7 +158,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
-| Stage4B-U1 | `LEVEL_B_IMPLEMENTATION_AUTHORIZED` | 旧 PowerShell 嵌套链仅作历史证据；科学语义冻结，effective-K evaluator 修正通过 13 项定向与 63 项完整 synthetic tests，精简 Python 入口进入 Level B 实现，official/Gold/reservation 未授权 |
+| Stage4B-U1 | `LEVEL_B_IMPLEMENTATION_COMPLETE_AWAITING_INDEPENDENT_REVIEW` | direct Python preflight/runner/verifier 与冻结 config 已提交；11 项定向和 270 项完整 synthetic tests 全通过，official/Gold/reservation 未授权 |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
@@ -222,7 +222,7 @@ Amendment 1.1.9 approval governance `ef9ba5b3...` 已按精确两路径推送；
 
 HF23 Review 1 已接受并关闭该 checkpoint。项目随后执行治理收缩：不再建立 1.1.10 stderr/进程诊断链，1.1.7–1.1.9 PowerShell remote/observer/PRE 路径只作为历史失败实现保留。新的执行方向保持全部科学参数、Gold 隔离、主要终点和晋级门不变，改为单一冻结配置、直接 Python preflight/controller、一次 independent verifier，以及 ranking 提交后单独 Gold evaluation；详见 `docs/STAGE4B_U1_EXECUTION_GOVERNANCE_SIMPLIFICATION_AMENDMENT.md`。
 
-简化执行协议 v1 已冻结于 `docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md`。它固定 Python 3.12.0 环境、输入/cache 身份、完整检索与 U1 score/budget 语义、输出 schema、独立 verifier 门和 Gold 后置边界。A 级审核要求的唯一 evaluator effective-K 兼容性修正已完成；Level B 实现已授权，但 official 访问、Gold evaluation 和 reservation 仍未授权。
+简化执行协议 v1 已冻结于 `docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md`。A 级审核要求的 evaluator effective-K 修正已完成；direct Python preflight/config loader、Gold-free runner、independent verifier 已在 implementation commit `2dade078...` 实现，official config 在后续提交 `47a189f...` 冻结。Level B synthetic 验证为 11/11 定向、270/270 完整 suite；这证明实现兼容性，不证明 U1-D 有效，也不授权 official、Gold 或 reservation。
 
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
@@ -247,9 +247,9 @@ HF23 Review 1 已接受并关闭该 checkpoint。项目随后执行治理收缩�
 
 ## 下一步
 
-1. 完成 Level B 的 config loader、simplified preflight/runner/independent verifier 与 synthetic semantic-equivalence 验证；在独立 Level B 审核和另行绑定批准前不运行 official。
-2. Level B 仅实现协议登记的三个最小 Python 入口和单一 JSON config，并完成 integrity/semantic-equivalence 审核；不得恢复 `ef9ba5b3...` 链或旧 observer/PRE 层级。
-3. 代码与 config 另行冻结并获得明确执行批准后，才可按 preflight → Gold-free controller → 工件提交 → independent verifier → `VERIFIED_PRE_GOLD` 的顺序执行并停止；Gold 与 reservation 继续另行锁定。
+1. 对 implementation commit `2dade078...` 与 config commit `47a189f...` 做一次集中 Level B integrity/semantic-equivalence 审核。
+2. 审核通过后仍须另行明确绑定批准，才可首次读取 official development/cache 并运行 official preflight；不得恢复 `ef9ba5b3...` 链或旧 observer/PRE 层级。
+3. 获批后按 preflight → Gold-free controller → 三工件提交推送 → independent verifier → `VERIFIED_PRE_GOLD` 提交推送的顺序执行并停止；Gold 与 reservation 继续另行锁定。
 
 ## GitHub
 

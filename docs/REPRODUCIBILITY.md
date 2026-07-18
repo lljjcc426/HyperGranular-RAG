@@ -1613,3 +1613,25 @@ It passed 13/13. The complete command was:
 ```
 
 It passed 63/63 in 6.903 seconds. Both commands used synthetic fixtures only and did not read official development, Gold, reservation, Stage3B, or historical official rankings. This establishes implementation compatibility, not method efficacy. Current states are `LEVEL_A_PROTOCOL_ACCEPTED` and `LEVEL_B_IMPLEMENTATION_AUTHORIZED`; official execution, Gold evaluation, and reservation remain unauthorized.
+
+## Simplified Level B Implementation And Synthetic Verification
+
+The direct implementation is frozen at commit `2dade07843194635f814ef53d0880f0ea7207451`. It adds `scripts/stage4b_u1_simplified_preflight.py`, `scripts/stage4b_u1_simplified_runner.py`, `scripts/stage4b_u1_independent_verifier.py`, and `tests/test_stage4b_u1_simplified.py`; no file was deleted and the four protocol-pinned pre-Gold algorithm sources were unchanged.
+
+The targeted command was:
+
+```powershell
+& 'D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe' -I -B -m unittest discover -s tests -p 'test_stage4b_u1_simplified.py' -v
+```
+
+It passed 11/11. The final complete command was:
+
+```powershell
+& 'D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe' -I -B -m unittest discover -s tests -p 'test_stage4b_u1*.py'
+```
+
+It passed 270/270 in 12.196 seconds. The end-to-end fixture established field-wise decisions/rankings equivalence to the frozen algorithm. Other tests cover strict duplicate/non-finite config rejection, implementation SHA drift, existing-cache-only behavior, output absence, partial-promotion rollback, Gold/config isolation, candidate membership, final selector, and independent config binding.
+
+The official config was then created in the required separate commit `47a189f3e092aee616dbf13ed397230b8ccb8371` at `configs/stage4b_u1_d_official.json`; its SHA-256 is `56F7A177C428BCDA783F1B1B33706B9ED2C0A6A88F08BAE3D7347BA3DA377D21`. A schema/code-binding check before commit and a tracked-config/code/protocol/evaluator Git-blob check after commit both returned PASS. All six registered future output paths were absent. These checks read only the config and tracked project sources; they did not invoke `run_preflight` and therefore did not open official development inputs or the official cache.
+
+Current state: `LEVEL_B_IMPLEMENTATION_COMPLETE_AWAITING_INDEPENDENT_REVIEW`. No official preflight/controller/verifier, historical official ranking, Gold, reservation, or Stage3B action has run. Synthetic verification is implementation evidence only and does not establish U1-D efficacy.
