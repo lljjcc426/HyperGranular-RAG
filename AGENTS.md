@@ -479,6 +479,11 @@
 463. Level B 定向 synthetic tests 11/11 通过；最终完整 `test_stage4b_u1*.py` suite 270/270 通过。语义等价测试确认 simplified runner 与冻结算法在同一 synthetic fixture 上 decisions/rankings 逐字段一致；同时覆盖 strict config、require-existing cache、guarded rollback、Gold scan、candidate membership、effective-K、final selector 与 verifier/config 绑定失败。
 464. 提交后的 config schema/code/Git-blob/tracked-config 绑定检查均通过，六条 future output 路径全部缺席；但未执行 official preflight、runner 或 verifier，未读取 official development、official cache、Gold、reservation、Stage3B 或历史 official ranking 内容。当前状态为 `LEVEL_B_IMPLEMENTATION_COMPLETE_AWAITING_INDEPENDENT_REVIEW`；official execution、Gold evaluation 和 reservation 继续未授权。
 465. 集中式 Level B 审核请求为 `docs/STAGE4B_U1_SIMPLIFIED_LEVEL_B_REVIEW_REQUEST.md`，审核只返回 `ACCEPT_LEVEL_B_IMPLEMENTATION` 或带精确缺陷的 `RETURN_FOR_MINIMAL_LEVEL_B_CORRECTION`。该请求不授权 official preflight/input/cache、runner、verifier、Gold、reservation 或 Stage3B；当前状态为 `LEVEL_B_REVIEW_REQUEST_SUBMITTED_AWAITING_INDEPENDENT_REVIEW`。
+466. Level B 独立审核以 `RETURN_FOR_MINIMAL_LEVEL_B_CORRECTION` 退回唯一缺陷：simplified independent verifier 在下游 `str/int/float` 转换前未完全执行协议冻结的逐行身份、严格 JSON 类型、nullability 与原始 ranking-ID 字符串合同。科学方法、既有 synthetic 结果和总体实现方向未被否定。
+467. 最小 correction commit `8ab5e193d00733e0ae617b2c17f02da4ce01594f` 精确修改 `scripts/stage4b_u1_independent_verifier.py` 与 `tests/test_stage4b_u1_simplified.py`、零删除。Verifier 现先检查 decision/ranking 三项身份的 native non-empty str 与 frozen query 逐行相等，严格 integer/bool 排除、有限 JSON number、feasible nullability、positive ordered rank 和五类 ranking list 的原始非空字符串元素。
+468. 原 11 项 simplified tests 全部保留并新增 7 项审核指定失败注入，定向 suite 18/18；最终完整 `test_stage4b_u1*.py` suite 单次 277/277。所有非法工件均被拒绝且 `VERIFIED_PRE_GOLD` 未生成；未进行第二次完整复跑。
+469. Config rebind commit `fba85c990efb0e3009a4c9fb0ca486ba1485c1f9` 是 correction commit 的直接子提交，仅更新 `implementation.code_commit` 与 verifier SHA；新 config SHA-256 为 `8481D856F27D422B81CFBFDC57C59FD3F8A8E7C0C85A01DC6DD3D0F05F57DDB1`。Evaluator SHA、协议、科学参数、输入/cache 与输出路径不变，tracked bindings 全通过。
+470. 简短 follow-up 为 `docs/STAGE4B_U1_SIMPLIFIED_LEVEL_B_FOLLOWUP_REVIEW_REQUEST.md`。六条 future output 继续缺席，未运行或读取 official preflight/input/cache、runner、verifier、Gold、reservation 或 Stage3B；当前状态为 `LEVEL_B_STRICT_ROW_CONTRACT_CORRECTION_SUBMITTED_AWAITING_FOLLOWUP_REVIEW`。
 
 ## GitHub 与文档
 

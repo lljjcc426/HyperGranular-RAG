@@ -1522,3 +1522,11 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The requested verdict is either `ACCEPT_LEVEL_B_IMPLEMENTATION` or `RETURN_FOR_MINIMAL_LEVEL_B_CORRECTION` with an exact integrity defect. The request does not recreate an Amendment chain or classify ordinary Level C presentation/tooling issues as scientific failures.
 - Review-package preparation performed only project-source/hash/history and future-output-absence checks. It did not run official preflight/controller/verifier or read official development/cache, historical official rankings, Gold, reservation, or Stage3B.
 - Current state: `LEVEL_B_REVIEW_REQUEST_SUBMITTED_AWAITING_INDEPENDENT_REVIEW`. Even acceptance will require a later explicit execution authorization before the first official input or cache read.
+
+### Strict Row-Contract Level B Correction
+
+- Independent Level B review returned one integrity defect: the simplified verifier checked key sets and converted query/count/ranking values before fully enforcing the protocol's native JSON types, row identities, nullability, and raw ranking-ID strings.
+- Correction commit `8ab5e193d00733e0ae617b2c17f02da4ce01594f` changes exactly the verifier and simplified test module. Strict checks now run before downstream conversion and cover frozen row identity, native non-empty strings, bool-excluding integers, finite JSON numbers, feasible nullability, positive ordered rank, and all ranking-array element types.
+- Seven requested failures were added to the retained 11 tests. Targeted results are 18/18; the required single complete `test_stage4b_u1*.py` run passed 277/277 in 14.954 seconds. No double rerun occurred.
+- Direct-child config rebind `fba85c990efb0e3009a4c9fb0ca486ba1485c1f9` updates only the code commit and verifier SHA. Config SHA-256 is now `8481D856F27D422B81CFBFDC57C59FD3F8A8E7C0C85A01DC6DD3D0F05F57DDB1`; evaluator/protocol/scientific/input/cache/output bindings are unchanged.
+- Follow-up review is `docs/STAGE4B_U1_SIMPLIFIED_LEVEL_B_FOLLOWUP_REVIEW_REQUEST.md`. No official or Gold boundary was crossed and all six future outputs remain absent. Current state: `LEVEL_B_STRICT_ROW_CONTRACT_CORRECTION_SUBMITTED_AWAITING_FOLLOWUP_REVIEW`.

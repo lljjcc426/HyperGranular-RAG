@@ -1635,3 +1635,25 @@ It passed 270/270 in 12.196 seconds. The end-to-end fixture established field-wi
 The official config was then created in the required separate commit `47a189f3e092aee616dbf13ed397230b8ccb8371` at `configs/stage4b_u1_d_official.json`; its SHA-256 is `56F7A177C428BCDA783F1B1B33706B9ED2C0A6A88F08BAE3D7347BA3DA377D21`. A schema/code-binding check before commit and a tracked-config/code/protocol/evaluator Git-blob check after commit both returned PASS. All six registered future output paths were absent. These checks read only the config and tracked project sources; they did not invoke `run_preflight` and therefore did not open official development inputs or the official cache.
 
 Current state: `LEVEL_B_IMPLEMENTATION_COMPLETE_AWAITING_INDEPENDENT_REVIEW`. No official preflight/controller/verifier, historical official ranking, Gold, reservation, or Stage3B action has run. Synthetic verification is implementation evidence only and does not establish U1-D efficacy.
+
+## Level B Strict Row-Contract Correction
+
+The first Level B review returned one verifier integrity gap: output row identity, native JSON integer/number types, feasible nullability, and raw ranking-ID string types were not all checked before downstream conversion. No scientific algorithm or existing synthetic result was rejected.
+
+Correction commit `8ab5e193d00733e0ae617b2c17f02da4ce01594f` modifies only the simplified independent verifier and its tests. The targeted command remained:
+
+```powershell
+& 'D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe' -I -B -m unittest discover -s tests -p 'test_stage4b_u1_simplified.py' -v
+```
+
+It passed 18/18 in 6.549 seconds. The single complete command was:
+
+```powershell
+& 'D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe' -I -B -m unittest discover -s tests -p 'test_stage4b_u1*.py'
+```
+
+It passed 277/277 in 14.954 seconds. No second complete-suite execution occurred. The seven new tests cover decision sample-ID drift, ranking dataset drift, float planned-insert count, boolean trigger, numeric ranking unit ID, non-null infeasible score, and boolean feasible ordered rank. Each verifies that `VERIFIED_PRE_GOLD` remains absent.
+
+Config rebind `fba85c990efb0e3009a4c9fb0ca486ba1485c1f9` is the direct child of the correction commit. The corrected config SHA-256 is `8481D856F27D422B81CFBFDC57C59FD3F8A8E7C0C85A01DC6DD3D0F05F57DDB1`; schema/code/Git-blob/tracked config/protocol/evaluator checks passed without calling official preflight. Evaluator and all scientific/data/cache/output bindings are unchanged.
+
+No official preflight/input/cache, runner, verifier, historical official ranking, Gold, reservation, or Stage3B path was opened. Current state: `LEVEL_B_STRICT_ROW_CONTRACT_CORRECTION_SUBMITTED_AWAITING_FOLLOWUP_REVIEW`.

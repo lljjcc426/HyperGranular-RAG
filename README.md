@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | 简化协议 Level B 实现与 config 冻结已完成，集中审核请求已提交，等待独立 Level B 结论 |
+| 当前阶段 | Level B 唯一 strict-row-contract 缺陷已最小修正并重新绑定 config，等待简短 follow-up 审核 |
 | 获批执行协议 | 已完成 Level B implementation；未授权 official preflight/controller/verifier、Gold 或 reservation |
 | 设计文件 | `docs/STAGE4B_U1_EXECUTION_GOVERNANCE_SIMPLIFICATION_AMENDMENT.md` 与 `docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md` |
-| 协议状态 | `LEVEL_B_REVIEW_REQUEST_SUBMITTED_AWAITING_INDEPENDENT_REVIEW` / `OFFICIAL_EXECUTION_NOT_YET_AUTHORIZED` |
+| 协议状态 | `LEVEL_B_STRICT_ROW_CONTRACT_CORRECTION_SUBMITTED_AWAITING_FOLLOWUP_REVIEW` / `OFFICIAL_EXECUTION_NOT_AUTHORIZED` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | Simplified runner 已完成 synthetic 语义等价验证；official 尚未运行，六条 future output 均缺席 |
@@ -158,7 +158,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
-| Stage4B-U1 | `LEVEL_B_REVIEW_REQUEST_SUBMITTED_AWAITING_INDEPENDENT_REVIEW` | direct Python preflight/runner/verifier 与冻结 config 已提交；11 项定向和 270 项完整 synthetic tests 全通过，等待一次集中 Level B 审核，official/Gold/reservation 未授权 |
+| Stage4B-U1 | `LEVEL_B_STRICT_ROW_CONTRACT_CORRECTION_SUBMITTED_AWAITING_FOLLOWUP_REVIEW` | verifier 严格行身份/类型/nullability 合同已补齐；18 项定向和单次 277 项完整 suite 全通过，config 已重新冻结，official/Gold/reservation 未授权 |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
@@ -222,7 +222,7 @@ Amendment 1.1.9 approval governance `ef9ba5b3...` 已按精确两路径推送；
 
 HF23 Review 1 已接受并关闭该 checkpoint。项目随后执行治理收缩：不再建立 1.1.10 stderr/进程诊断链，1.1.7–1.1.9 PowerShell remote/observer/PRE 路径只作为历史失败实现保留。新的执行方向保持全部科学参数、Gold 隔离、主要终点和晋级门不变，改为单一冻结配置、直接 Python preflight/controller、一次 independent verifier，以及 ranking 提交后单独 Gold evaluation；详见 `docs/STAGE4B_U1_EXECUTION_GOVERNANCE_SIMPLIFICATION_AMENDMENT.md`。
 
-简化执行协议 v1 已冻结于 `docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md`。A 级审核要求的 evaluator effective-K 修正已完成；direct Python preflight/config loader、Gold-free runner、independent verifier 已在 implementation commit `2dade078...` 实现，official config 在后续提交 `47a189f...` 冻结。Level B synthetic 验证为 11/11 定向、270/270 完整 suite；这证明实现兼容性，不证明 U1-D 有效，也不授权 official、Gold 或 reservation。
+简化执行协议 v1 已冻结于 `docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md`。Level B 首次审核退回的唯一 verifier strict-row-contract 缺陷已在 `8ab5e193...` 修正，config 已在直接子提交 `fba85c9...` 重新绑定。最终 synthetic 验证为 18/18 定向、单次 277/277 完整 suite；这证明实现完整性，不证明 U1-D 有效，也不授权 official、Gold 或 reservation。
 
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
@@ -247,7 +247,7 @@ HF23 Review 1 已接受并关闭该 checkpoint。项目随后执行治理收缩�
 
 ## 下一步
 
-1. 按 `docs/STAGE4B_U1_SIMPLIFIED_LEVEL_B_REVIEW_REQUEST.md` 对 implementation commit `2dade078...` 与 config commit `47a189f...` 做一次集中 Level B integrity/semantic-equivalence 审核。
+1. 按 `docs/STAGE4B_U1_SIMPLIFIED_LEVEL_B_FOLLOWUP_REVIEW_REQUEST.md` 对 correction commit `8ab5e193...` 与 config rebind `fba85c9...` 做简短 Level B follow-up 审核。
 2. 审核通过后仍须另行明确绑定批准，才可首次读取 official development/cache 并运行 official preflight；不得恢复 `ef9ba5b3...` 链或旧 observer/PRE 层级。
 3. 获批后按 preflight → Gold-free controller → 三工件提交推送 → independent verifier → `VERIFIED_PRE_GOLD` 提交推送的顺序执行并停止；Gold 与 reservation 继续另行锁定。
 
