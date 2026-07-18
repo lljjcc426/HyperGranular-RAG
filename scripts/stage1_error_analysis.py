@@ -4,7 +4,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 
-ROOT = Path(r"E:\科研")
+ROOT = Path(r"E:\SCIENCE")
 PROCESSED_DIR = ROOT / "超粒球RAG_数据" / "processed"
 REPORT_DIR = ROOT / "超粒球RAG_数据" / "reports"
 

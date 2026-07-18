@@ -2,6 +2,10 @@
 
 本文件只保留当前有效的复现入口。完整历史命令与旧治理链快照见 [归档版本](archive/REPRODUCIBILITY_PRE_REORGANIZATION_2026-07-18.md)。
 
+## 文件系统迁移
+
+自 2026-07-19 起，项目根目录由 `E:\科研` 迁移为 `E:\SCIENCE`；当前仓库和登记数据目录分别为 `E:\SCIENCE\HyperGranular-RAG` 与 `E:\SCIENCE\超粒球RAG_数据`。冻结配置、协议、审计清单、归档快照和既有实验报告中的 `E:\科研` 是执行时路径记录，并参与既有 SHA/证据绑定，因此保留原字节；读取这些历史记录时按 `E:\科研` → `E:\SCIENCE` 映射定位现有文件，不据此重新运行已经完成或锁定的实验。
+
 ## 当前复现状态
 
 ```text
@@ -80,7 +84,7 @@ Pre-Gold config 继续绑定 implementation commit `8ab5e193d00733e0ae617b2c17f0
 | `stage4b_u1_d_official_dev4500_v2_3_1_gold_map.json` | 1,498,640 | `76D15A88C218C9EDF36A9F9F52B0D2D9877463E5653EC8AB1E5C94542E99B30B` |
 | `stage4b_u1_d_official_dev4500_v2_3_1_evaluator_channel_audit.json` | 1,182 | `220FD7310AA187840A5E9D95174EBAF5BD4BDF6097BC58BACD28413D85377C17` |
 
-这两个文件位于登记数据目录 `E:\科研\超粒球RAG_数据\processed`，不提交 Git。Gold 在 decisions、rankings、policy 和 `VERIFIED_PRE_GOLD` 冻结后才由 evaluator 读取。
+这两个文件位于登记数据目录 `E:\SCIENCE\超粒球RAG_数据\processed`，不提交 Git。Gold 在 decisions、rankings、policy 和 `VERIFIED_PRE_GOLD` 冻结后才由 evaluator 读取。
 
 ## 冻结 pre-Gold 工件
 

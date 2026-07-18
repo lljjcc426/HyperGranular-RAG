@@ -6,7 +6,7 @@ from statistics import mean
 from typing import Any
 
 
-ROOT = Path(r"E:\科研")
+ROOT = Path(r"E:\SCIENCE")
 PROCESSED_DIR = ROOT / "超粒球RAG_数据" / "processed"
 REPORT_DIR = ROOT / "超粒球RAG_数据" / "reports"
 

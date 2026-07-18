@@ -6,9 +6,9 @@ from pathlib import Path
 from typing import Any
 
 
-REPORT_DIR = Path(r"E:\科研\超粒球RAG_数据\reports")
+REPORT_DIR = Path(r"E:\SCIENCE\超粒球RAG_数据\reports")
 OUT_CSV = REPORT_DIR / "stage2_dense_protection_compare.csv"
-OUT_REPORT = Path(r"E:\科研\超粒球RAG_Stage2C_Dense保护策略报告.md")
+OUT_REPORT = Path(r"E:\SCIENCE\超粒球RAG_Stage2C_Dense保护策略报告.md")
 
 STRATEGIES = {
     "original": "stage2_dense_allminilm",
@@ -126,11 +126,11 @@ def main() -> None:
         "",
         "- Stage: Stage2C dense protection recalibration",
         "- Corpus: HotpotQA sample200 + MuSiQue sample200, 400 queries, 12,304 candidate units",
-        "- Embedding cache: `E:\\科研\\超粒球RAG_数据\\processed\\stage2_dense_allminilm_embeddings.npz`",
+        "- Embedding cache: `E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage2_dense_allminilm_embeddings.npz`",
         "- Gold labels used for indexing: No",
         "- Generator used: No",
-        "- Scripts changed: `E:\\科研\\超粒球RAG_实验脚本\\stage2_dense_replication.py`",
-        "- New comparison script: `E:\\科研\\超粒球RAG_实验脚本\\stage2_dense_protection_compare.py`",
+        "- Scripts changed: `E:\\SCIENCE\\超粒球RAG_实验脚本\\stage2_dense_replication.py`",
+        "- New comparison script: `E:\\SCIENCE\\超粒球RAG_实验脚本\\stage2_dense_protection_compare.py`",
         "- Environment note: runs completed with the same NumPy/numexpr/pandas compatibility warnings observed in Stage2B.",
         "",
         "## ALL Metrics",

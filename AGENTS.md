@@ -1,12 +1,12 @@
 # HyperGranular-RAG 项目约束
 
-本仓库继承 `E:\科研\AGENTS.md` 的全部规则；冲突时采用更严格的规则。
+本仓库继承 `E:\SCIENCE\AGENTS.md` 的全部规则；冲突时采用更严格的规则。
 
 ## 1. 项目范围
 
-- 仓库：`E:\科研\HyperGranular-RAG`
+- 仓库：`E:\SCIENCE\HyperGranular-RAG`
 - GitHub：`https://github.com/lljjcc426/HyperGranular-RAG.git`
-- 登记数据根目录：`E:\科研\超粒球RAG_数据`
+- 登记数据根目录：`E:\SCIENCE\超粒球RAG_数据`
 - 研究范围：粒球/超边多跳检索、q25 扩展、U1 无标签 controller、独立验证与后续 Gold-only 评估。
 - 禁止读取其他项目会话、全局 Codex memory 或项目外中间产物。
 
