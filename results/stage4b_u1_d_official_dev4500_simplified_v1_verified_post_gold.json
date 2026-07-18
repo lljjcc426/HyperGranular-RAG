@@ -1,0 +1,46 @@
+{
+  "authorization_config": "configs/stage4b_u1_d_gold_evaluation.json",
+  "authorization_config_sha256": "CA093EA8455B89B15F874D41A63452C8D24ADD432A540E575DBD5E11EEAB391A",
+  "checks": {
+    "advancement_decision_independent_recomputation": "PASS",
+    "bootstrap_identity": "PASS",
+    "deterministic_rerun_byte_equality": "PASS",
+    "input_bindings": "PASS",
+    "overall_summary_independent_recomputation": "PASS",
+    "query_audit_independent_recomputation": "PASS",
+    "question_type_summary_independent_recomputation": "PASS",
+    "stage4a_r2_baseline_equivalence": "PASS",
+    "subgroup_caution_independent_recomputation": "PASS"
+  },
+  "decision": {
+    "checks": {
+      "false_insert_rate_not_worse_by_more_than_0_01": true,
+      "fisher_zero_null_rejected": false,
+      "observed_cr20_delta_vs_dense_at_least_0_005": false,
+      "observed_cr20_delta_vs_q25_at_least_minus_0_005": false,
+      "resource_reduction_at_least_0_40": true,
+      "retention_gap_at_least_0_15": false
+    },
+    "decision": "STOP_U1_BRANCH_KEEP_RESERVATION_LOCKED",
+    "passed": false,
+    "run_role": "development"
+  },
+  "input_hashes": {
+    "evaluator_audit": "220FD7310AA187840A5E9D95174EBAF5BD4BDF6097BC58BACD28413D85377C17",
+    "gold_map": "76D15A88C218C9EDF36A9F9F52B0D2D9877463E5653EC8AB1E5C94542E99B30B",
+    "policy": "657E5F25A94224D8B020780F3E7335942B16BC6D8C7939FB74D1BBAA9A9D868B",
+    "pre_gold_verification": "39EAD86A3A835983DCB67BAF656255F51569BCEE5B9AC2E16FACF404281D7818",
+    "rankings": "ED289D234F6F4FEC58A48168CB6CA78950489CD5F5640E977068CA6A786E03CB",
+    "stage4a_r2_strategy_summary": "7BF79CC057CDD0565100B1D95F35C95BFBEAA338E9B1EF63D9E81F029BB42B12",
+    "stage4a_r2_verification": "0AD9A7B218A19297070E05F2BF7C04786165378E14990C343A0B8B8EFD8CCAD0"
+  },
+  "output_hashes": {
+    "primary_query_audit": "8616C28C71D190E3287CCE3725EDC0B1FD0DFB41DF47C739F4A84A573F938313",
+    "primary_summary": "7F82056FB14F9D8D73E668A82CB5304B28385E62A01C428599F23260AB7F89DE",
+    "rerun_query_audit": "8616C28C71D190E3287CCE3725EDC0B1FD0DFB41DF47C739F4A84A573F938313",
+    "rerun_summary": "7F82056FB14F9D8D73E668A82CB5304B28385E62A01C428599F23260AB7F89DE"
+  },
+  "queries": 4500,
+  "schema_version": "stage4b_u1_gold_evaluation_verification_v1",
+  "status": "VERIFIED_POST_GOLD"
+}
