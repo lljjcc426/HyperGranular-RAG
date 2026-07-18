@@ -1547,3 +1547,10 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The exact three-artifact commit is `9357c157217f85008fa93df07d321a2f4c6a2bc1`. Decisions/rankings/policy SHA-256 values are `4B2AD2E5...A456A`, `ED289D23...E03CB`, and `657E5F25...D868B` respectively.
 - The independent verifier recomputed all 4,500 queries and passed. `VERIFIED_PRE_GOLD` is 3,479 bytes / SHA-256 `39EAD86A3A835983DCB67BAF656255F51569BCEE5B9AC2E16FACF404281D7818`, with `gold_inputs_loaded=false`, `evaluation=null`, and every check equal to PASS; its single-path commit is `83d172bc89efbb31782eee308bac5293aa24457b`.
 - Gold query audit and evaluation summary remain absent. Current state: `VERIFIED_PRE_GOLD_COMMITTED`, `GOLD_EVALUATION_REQUIRES_PAUSE`, `RESERVATION_REQUIRES_PAUSE`, and `SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE`. No U1-D efficacy or metric conclusion is authorized from pre-Gold evidence alone.
+
+### Repository Entry-Point Reorganization
+
+- The repository separated current scientific entry points from cumulative execution-governance history after verified pre-Gold completion. No scientific protocol, config, implementation, formal result, historical Amendment, Review, Approval, or Hard Failure artifact was deleted or rewritten.
+- The pre-reorganization long-form `README.md`, project `AGENTS.md`, and `docs/REPRODUCIBILITY.md` were preserved byte-for-byte under `docs/archive/`. Concise current versions now cover only the active research question, evidence level, frozen artifacts, current governance, reproduction boundary, and next scientific gate.
+- `docs/INDEX.md` now distinguishes current normative files, current formal artifacts, scientific design evidence, and historical governance file families. Existing historical evidence remains at its original path to preserve SHA and link stability.
+- The reorganization changes no implementation/config/protocol/result bytes and therefore requires link/static/binding checks rather than an algorithm suite. Current scientific state remains `VERIFIED_PRE_GOLD_COMMITTED`; Gold evaluation and reservation remain locked.
