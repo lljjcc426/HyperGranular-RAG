@@ -6,13 +6,13 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Level B implementation 已接受；完整 official pre-Gold transaction 获得持续授权 |
-| 获批执行协议 | 可连续执行 preflight → Gold-free controller → 三工件提交推送 → independent verifier → `VERIFIED_PRE_GOLD` 提交推送；Gold 与 reservation 不在授权内 |
+| 当前阶段 | official pre-Gold transaction 已完成并独立验证；已在 Gold 边界停止 |
+| 获批执行协议 | preflight → Gold-free controller → 三工件提交推送 → independent verifier → `VERIFIED_PRE_GOLD` 提交推送已完成；Gold 与 reservation 不在授权内 |
 | 设计文件 | `docs/STAGE4B_U1_EXECUTION_GOVERNANCE_SIMPLIFICATION_AMENDMENT.md` 与 `docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md` |
-| 协议状态 | `LEVEL_B_IMPLEMENTATION_ACCEPTED` / `STANDING_PREGOLD_EXECUTION_AUTHORIZATION_GRANTED` / `DAILY_DIRECTION_REVIEW_ENABLED` |
+| 协议状态 | `VERIFIED_PRE_GOLD_COMMITTED` / `GOLD_EVALUATION_REQUIRES_PAUSE` / `RESERVATION_REQUIRES_PAUSE` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
-| Controller | Simplified runner 已完成 synthetic 语义等价验证；治理更新前 official 尚未运行，六条 future output 均缺席 |
+| Controller | official Gold-free run 已覆盖 4,500 queries，selected=1,195；三工件已提交推送并通过 independent verifier |
 | 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
 
 Hard Failure 15 Review 1 接受三份 raw machine evidence，并将 382-byte stderr 精确定性为 Windows PowerShell 首次模块准备 progress CLIXML；exact 122-byte pre-verifier stdout 同时证明历史 `ee84988...` 的五个 Git children、三方 SHA 相等与 clean worktree，但旧 launcher 的 stderr-zero 合同仍然失败。Package Review 1 接受 exact classifier 和四个内层 envelope 的静态设计，但因顶层 runner 未冻结、内层 class 不可持久化以及 post class 与 narrative 提交顺序矛盾，明确拒绝 package `7f92c000...`。
@@ -158,7 +158,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
-| Stage4B-U1 | `STANDING_PREGOLD_EXECUTION_AUTHORIZATION_GRANTED` | Level B 已接受；verifier 严格合同、18 项定向和单次 277 项完整 suite 全通过；pre-Gold 可连续执行，Gold/reservation 仍锁定 |
+| Stage4B-U1 | `VERIFIED_PRE_GOLD_COMMITTED` | official preflight/controller/三工件提交/verifier/verified 提交均完成；尚无 Gold evaluation 或 U1-D 指标结论 |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
@@ -228,6 +228,8 @@ Level B follow-up 已以 `ACCEPT_LEVEL_B_IMPLEMENTATION` 接受上述 correction
 
 由于 official config 强校验 simplified protocol SHA，本次协议治理文字变更仅同步了 `protocol.sha256`；当前协议 SHA-256 为 `ABED88FAC906748CE9D93F04C0D4BA35B62BB6819F61A2D84273687BE35C724C`，config SHA-256 为 `176FF6747680DD597DB01E174619CABF7112BF4B91FF8BF2402F5B02754A5F58`。Implementation commit、七个代码 SHA、evaluator、科学参数、输入/cache 和输出路径均未重新绑定或修改。
 
+持续授权的 official pre-Gold transaction 已完成。Preflight 通过；Gold-free controller 对 4,500 queries 产生 `selected=1195`，三工件提交为 `9357c157...`；independent verifier 随后返回 `VERIFIED_PRE_GOLD`，verified 单路径提交为 `83d172bc...`、文件 SHA-256 `39EAD86A3A835983DCB67BAF656255F51569BCEE5B9AC2E16FACF404281D7818`。Verified 记录确认 `gold_inputs_loaded=false`、`evaluation=null` 且全部检查为 PASS；query audit 与 evaluation summary 仍不存在，因此没有 Gold 指标或 U1-D 效果结论。
+
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
 ## 科研治理
@@ -251,9 +253,9 @@ Level B follow-up 已以 `ACCEPT_LEVEL_B_IMPLEMENTATION` 接受上述 correction
 
 ## 下一步
 
-1. 按持续授权连续完成 official preflight → Gold-free controller → decisions/rankings/policy 提交推送 → independent verifier → `VERIFIED_PRE_GOLD` 提交推送；不得恢复 `ef9ba5b3...` 链或旧 observer/PRE 层级。
-2. 到达 `VERIFIED_PRE_GOLD` 后停止，不读取 Gold、不运行 evaluator、不读取 reservation，也不解释 U1-D 指标。
-3. 仅在 Gold evaluation、reservation、科学语义变化或正式工件完整性异常时请求新的暂停式决策；日常 Level B/C 工程问题与方向复核不阻塞执行。
+1. 保持 Gold 边界停止：不读取 Gold、不运行 evaluator、不读取 reservation，也不解释 U1-D 指标。
+2. 若进入 Gold evaluation，必须由用户单独明确授权，并继续只向 evaluator 提供 Gold 专属输入；controller/ranking 保持冻结。
+3. Reservation、科学语义变化或正式工件完整性异常仍需单独协议或暂停式决策。
 
 ## GitHub
 

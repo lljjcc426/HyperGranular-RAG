@@ -1679,3 +1679,15 @@ Level B/C defects may be minimally repaired and rebound before continuing, with 
 The governance text changed the simplified-protocol bytes, which official preflight hard-binds. Therefore the config synchronizes only `protocol.sha256=ABED88FAC906748CE9D93F04C0D4BA35B62BB6819F61A2D84273687BE35C724C`; its resulting SHA-256 is `176FF6747680DD597DB01E174619CABF7112BF4B91FF8BF2402F5B02754A5F58`. No implementation, evaluator, scientific parameter, input/cache identity, or output path changed, so no algorithm suite is required for this governance-only update.
 
 The first post-governance preflight invocation used an unnecessary `-I` flag and exited during module import with `ModuleNotFoundError: stage4b_u1_common`, before config parsing or any official input/cache access. All six future outputs remained absent. The protocol freezes the Python executable but not isolated mode; the direct entry points use sibling-module imports and therefore require the normal script-directory import path. The registered commands above remove only `-I` and retain `-B`; no implementation/config/scientific byte changed. `--help` import checks then passed for preflight, runner, and verifier. This is a Level C invocation correction, not a scientific hard failure or a rerun of an unchanged command.
+
+The corrected official run returned:
+
+```text
+STAGE4B_U1_SIMPLIFIED_PREFLIGHT_PASS config_sha256=176FF6747680DD597DB01E174619CABF7112BF4B91FF8BF2402F5B02754A5F58
+STAGE4B_U1_SIMPLIFIED_CONTROLLER_PASS queries=4500 selected=1195
+STAGE4B_U1_SIMPLIFIED_VERIFIER_PASS queries=4500 status=VERIFIED_PRE_GOLD
+```
+
+The controller artifacts were committed and pushed together at `9357c157217f85008fa93df07d321a2f4c6a2bc1`. Their sizes/SHA-256 values are: decisions 2,684,439 bytes / `4B2AD2E5707B20FD46B6250FDA5395433F52E55FB1281F1499412C8C749A456A`; rankings 18,235,604 bytes / `ED289D234F6F4FEC58A48168CB6CA78950489CD5F5640E977068CA6A786E03CB`; policy 261,587 bytes / `657E5F25A94224D8B020780F3E7335942B16BC6D8C7939FB74D1BBAA9A9D868B`.
+
+The verified artifact was committed and pushed separately at `83d172bc89efbb31782eee308bac5293aa24457b`; it is 3,479 bytes / SHA-256 `39EAD86A3A835983DCB67BAF656255F51569BCEE5B9AC2E16FACF404281D7818`. It records `gold_inputs_loaded=false`, `evaluation=null`, and zero non-PASS checks. Gold query audit and evaluation summary remain absent. Stop state: `VERIFIED_PRE_GOLD_COMMITTED`; do not run the evaluator or read Gold/reservation without a separate authorization.
