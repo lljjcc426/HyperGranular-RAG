@@ -1,0 +1,71 @@
+{
+  "artifact_hashes": {
+    "channel_audit": "D134CDE168C833784F238B61420B4738C1F65B9FCA995945EB04E8B99EAAB2FA",
+    "decisions": "4B2AD2E5707B20FD46B6250FDA5395433F52E55FB1281F1499412C8C749A456A",
+    "policy": "657E5F25A94224D8B020780F3E7335942B16BC6D8C7939FB74D1BBAA9A9D868B",
+    "rankings": "ED289D234F6F4FEC58A48168CB6CA78950489CD5F5640E977068CA6A786E03CB"
+  },
+  "checks": {
+    "allocation_and_trigger": "PASS",
+    "committed_artifact_set": "PASS",
+    "ecdf_and_score": "PASS",
+    "effective_k": "PASS",
+    "final_selector": "PASS",
+    "gold_isolation": "PASS",
+    "identity": "PASS",
+    "input_schema": "PASS",
+    "numeric_finiteness": "PASS",
+    "output_schema": "PASS",
+    "protected_prefix_and_inserts": "PASS",
+    "ranking_membership": "PASS",
+    "ranking_query_set": "PASS"
+  },
+  "code_commit_sha": "8ab5e193d00733e0ae617b2c17f02da4ce01594f",
+  "evaluation": null,
+  "execution_config": "configs/stage4b_u1_d_official.json",
+  "execution_config_sha256": "176FF6747680DD597DB01E174619CABF7112BF4B91FF8BF2402F5B02754A5F58",
+  "execution_profile": "stage4b_u1_simplified_v1",
+  "frozen_commit_sha": "9357c157217f85008fa93df07d321a2f4c6a2bc1",
+  "gold_inputs_loaded": false,
+  "identity_boundary": {
+    "namespace_relation_check": true,
+    "queries": 4500,
+    "query_id_sha256": "8895D4D2EF2A34DE123525011C36A1DF092D27B7588E17E9816ABAB8F1A25CD6",
+    "sample_id_sha256": "6B21FD1D2EFBD6A467C8DAEE9225AA43113FC328CD114F813DD79E6A44458FB2",
+    "units": 143820
+  },
+  "implementation_checkpoint": "stage4b_u1_v2_3_1",
+  "implementation_hashes": {
+    "scripts/stage4b_u1_common.py": "CDF7EAD6007DABE389ED0BD18983496F75290C32243FE6DF84716810CDE92CE4",
+    "scripts/stage4b_u1_goldfree_controller.py": "C18AD3B672649BA846C5E191D0DBBAC7644A926D4B8CCD39176127175BBA7C1F",
+    "scripts/stage4b_u1_goldfree_retrieval.py": "3B50FAFD057E2565167ED09288D61829B3FBD044991F139F734F819955038A3B",
+    "scripts/stage4b_u1_independent_verifier.py": "920F0EAD0A270581826646B48A54E508F4E8BEB8FB02F3C5D1B902399CE15A91",
+    "scripts/stage4b_u1_simplified_preflight.py": "20454CEF178B1C3A04D0D0A1877BC70B1868D82433D23F6D30471BD6B10A451C",
+    "scripts/stage4b_u1_simplified_runner.py": "02F0A89C99777B42034045E5590E73B4DBAD044DAE2B22BE13EC69288B183AAC",
+    "scripts/stage4b_u1_verify.py": "DC134B51A07C14A553746C303EA31D83990BA0EFAD30EFC3A1722F1A141E66EC"
+  },
+  "independent_verifier_source": "scripts/stage4b_u1_independent_verifier.py",
+  "independent_verifier_source_sha256": "920F0EAD0A270581826646B48A54E508F4E8BEB8FB02F3C5D1B902399CE15A91",
+  "policy_and_ranking": {
+    "allquery_planned_inserts": 7260,
+    "independent_cutoff_check": true,
+    "independent_score_recomputation_check": true,
+    "n_feasible": 2446,
+    "ordered_prefix_check": true,
+    "queries": 4500,
+    "ranking_structure_check": true,
+    "resource_reduction": 0.4002754820936639,
+    "selected_planned_inserts": 4354,
+    "selected_queries": 1195
+  },
+  "schema_version": "stage4b_u1_v2",
+  "simplified_execution_protocol": "docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md",
+  "simplified_execution_protocol_sha256": "ABED88FAC906748CE9D93F04C0D4BA35B62BB6819F61A2D84273687BE35C724C",
+  "static_controller_boundary": {
+    "controller_source_sha256": "02F0A89C99777B42034045E5590E73B4DBAD044DAE2B22BE13EC69288B183AAC",
+    "execution_config_gold_field_scan": true,
+    "forbidden_interface_fragments_absent": true
+  },
+  "status": "VERIFIED_PRE_GOLD",
+  "synthetic_test_mode": false
+}
