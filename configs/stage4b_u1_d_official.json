@@ -1,0 +1,161 @@
+{
+  "controller": {
+    "embedding_cache_mode": "require-existing",
+    "evaluation_labels_loaded": false,
+    "script": "scripts/stage4b_u1_simplified_runner.py"
+  },
+  "embedding_cache": {
+    "bytes": 210714667,
+    "dtype": "float32",
+    "max_length": 192,
+    "members": [
+      "max_length",
+      "model_name",
+      "query_embeddings",
+      "query_ids",
+      "unit_embeddings",
+      "unit_ids"
+    ],
+    "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "path": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_minilm_idbound_embeddings.npz",
+    "query_embeddings_shape": [
+      4500,
+      384
+    ],
+    "sha256": "69ED39ABC0636B7B63A41639B64CB037FAE556F10CB130FCD18AFB61CBE06F7D",
+    "unit_embeddings_shape": [
+      143820,
+      384
+    ]
+  },
+  "environment": {
+    "python_executable": "D:\\Users\\cc\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "python_version": "3.12.0",
+    "required_packages": {
+      "numpy": "2.5.1"
+    }
+  },
+  "evaluation_contract": {
+    "authorized": false,
+    "evaluator_script": "scripts/stage4b_u1_evaluate.py",
+    "evaluator_script_sha256": "D7B96E29AD5AB2F6652FFC14D73048D36C205F78ABA7FA8FCB501818A1A89BBB",
+    "inputs": {
+      "policy": "results/stage4b_u1_d_official_dev4500_simplified_v1_policy.json",
+      "rankings": "results/stage4b_u1_d_official_dev4500_simplified_v1_rankings.jsonl",
+      "verified_pre_gold": "results/stage4b_u1_d_official_dev4500_simplified_v1_verified_pre_gold.json"
+    },
+    "outputs": {
+      "evaluation_summary": "results/stage4b_u1_d_official_dev4500_simplified_v1_evaluation_summary.json",
+      "query_audit": "results/stage4b_u1_d_official_dev4500_simplified_v1_query_audit.jsonl"
+    }
+  },
+  "implementation": {
+    "code_commit": "2dade07843194635f814ef53d0880f0ea7207451",
+    "files": [
+      {
+        "path": "scripts/stage4b_u1_common.py",
+        "sha256": "CDF7EAD6007DABE389ED0BD18983496F75290C32243FE6DF84716810CDE92CE4"
+      },
+      {
+        "path": "scripts/stage4b_u1_goldfree_retrieval.py",
+        "sha256": "3B50FAFD057E2565167ED09288D61829B3FBD044991F139F734F819955038A3B"
+      },
+      {
+        "path": "scripts/stage4b_u1_goldfree_controller.py",
+        "sha256": "C18AD3B672649BA846C5E191D0DBBAC7644A926D4B8CCD39176127175BBA7C1F"
+      },
+      {
+        "path": "scripts/stage4b_u1_verify.py",
+        "sha256": "DC134B51A07C14A553746C303EA31D83990BA0EFAD30EFC3A1722F1A141E66EC"
+      },
+      {
+        "path": "scripts/stage4b_u1_simplified_preflight.py",
+        "sha256": "20454CEF178B1C3A04D0D0A1877BC70B1868D82433D23F6D30471BD6B10A451C"
+      },
+      {
+        "path": "scripts/stage4b_u1_simplified_runner.py",
+        "sha256": "02F0A89C99777B42034045E5590E73B4DBAD044DAE2B22BE13EC69288B183AAC"
+      },
+      {
+        "path": "scripts/stage4b_u1_independent_verifier.py",
+        "sha256": "29CC175C922ED730192ED4B879824548640BAF4EAE26B2ED9B7ABCF0728E35A3"
+      }
+    ]
+  },
+  "inputs": {
+    "channel_audit": {
+      "path": "results/stage4b_u1_d_official_dev4500_v2_3_1_controller_channel_audit.json",
+      "sha256": "D134CDE168C833784F238B61420B4738C1F65B9FCA995945EB04E8B99EAAB2FA"
+    },
+    "query_count": 4500,
+    "query_id_namespace_rule": "query_id == dataset + \"::\" + sample_id",
+    "query_id_sha256": "8895D4D2EF2A34DE123525011C36A1DF092D27B7588E17E9816ABAB8F1A25CD6",
+    "sample_id_sha256": "6B21FD1D2EFBD6A467C8DAEE9225AA43113FC328CD114F813DD79E6A44458FB2",
+    "unit_count": 143820,
+    "unlabeled_queries": {
+      "path": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_unlabeled_queries.jsonl",
+      "sha256": "6EE942C680EAC86D0410FC25BCC302CA7312A0E253E318025A957D51A09B4B6B"
+    },
+    "unlabeled_units": {
+      "path": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_unlabeled_units.jsonl",
+      "sha256": "114D28A7C9842079BF80C292274D7DBBBC718F05CBE8F4435487C245238427FA"
+    }
+  },
+  "mode": "development",
+  "outputs": {
+    "decisions": "results/stage4b_u1_d_official_dev4500_simplified_v1_decisions.jsonl",
+    "policy": "results/stage4b_u1_d_official_dev4500_simplified_v1_policy.json",
+    "rankings": "results/stage4b_u1_d_official_dev4500_simplified_v1_rankings.jsonl"
+  },
+  "protocol": {
+    "path": "docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md",
+    "sha256": "CA3B110C8E74BE9E931D720A5D779BA8C831FDE2A7EAD12C633D02E0075132FB"
+  },
+  "retrieval": {
+    "batch_size": 64,
+    "boundary_width": 0.2,
+    "budget_fraction": 0.6,
+    "embedding_dtype": "float32",
+    "insert_budget": 4,
+    "max_candidate_ball_size": 8,
+    "max_depth": 6,
+    "max_expanded_balls": 2,
+    "max_k": 20,
+    "max_length": 192,
+    "max_redundancy": 0.9,
+    "max_size": 3,
+    "max_units_per_new_term": 6.0,
+    "min_ball_score": 0.12,
+    "min_facet_score": 0.1,
+    "min_new_terms": 1,
+    "min_seed_similarity": 0.05,
+    "min_size": 2,
+    "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "protect_n": 10,
+    "q25_floor": 0.1957079917192459,
+    "radius_threshold": 0.78,
+    "scalar_dtype": "float64",
+    "seed_balls": 2,
+    "top_center_terms": 8,
+    "top_facet_edges": 2,
+    "w_ball": 0.2,
+    "w_diversity": 0.15,
+    "w_facet_unit_bonus": 0.0,
+    "w_new": 0.45,
+    "w_redundancy": 0.2,
+    "w_size": 0.05,
+    "w_total": 0.2
+  },
+  "retry_policy": {
+    "automatic_retries": 0
+  },
+  "run_id": "stage4b_u1_d_official_dev4500_simplified_v1",
+  "schema_version": "stage4b_u1_simplified_execution_v1",
+  "verification": {
+    "decisions_input": "results/stage4b_u1_d_official_dev4500_simplified_v1_decisions.jsonl",
+    "output": "results/stage4b_u1_d_official_dev4500_simplified_v1_verified_pre_gold.json",
+    "policy_input": "results/stage4b_u1_d_official_dev4500_simplified_v1_policy.json",
+    "rankings_input": "results/stage4b_u1_d_official_dev4500_simplified_v1_rankings.jsonl",
+    "script": "scripts/stage4b_u1_independent_verifier.py"
+  }
+}
