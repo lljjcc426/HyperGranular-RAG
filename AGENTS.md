@@ -478,6 +478,7 @@
 462. Official config 已作为后续独立提交 `47a189f3e092aee616dbf13ed397230b8ccb8371` 冻结于 `configs/stage4b_u1_d_official.json`，SHA-256 `56F7A177C428BCDA783F1B1B33706B9ED2C0A6A88F08BAE3D7347BA3DA377D21`，其 `implementation.code_commit` 精确绑定 `2dade078...` 及七个 implementation 文件 SHA。Config 不含 Gold-map、Gold hash、source-audit path、reservation 或 Stage3B 输入，evaluator `authorized=false`。
 463. Level B 定向 synthetic tests 11/11 通过；最终完整 `test_stage4b_u1*.py` suite 270/270 通过。语义等价测试确认 simplified runner 与冻结算法在同一 synthetic fixture 上 decisions/rankings 逐字段一致；同时覆盖 strict config、require-existing cache、guarded rollback、Gold scan、candidate membership、effective-K、final selector 与 verifier/config 绑定失败。
 464. 提交后的 config schema/code/Git-blob/tracked-config 绑定检查均通过，六条 future output 路径全部缺席；但未执行 official preflight、runner 或 verifier，未读取 official development、official cache、Gold、reservation、Stage3B 或历史 official ranking 内容。当前状态为 `LEVEL_B_IMPLEMENTATION_COMPLETE_AWAITING_INDEPENDENT_REVIEW`；official execution、Gold evaluation 和 reservation 继续未授权。
+465. 集中式 Level B 审核请求为 `docs/STAGE4B_U1_SIMPLIFIED_LEVEL_B_REVIEW_REQUEST.md`，审核只返回 `ACCEPT_LEVEL_B_IMPLEMENTATION` 或带精确缺陷的 `RETURN_FOR_MINIMAL_LEVEL_B_CORRECTION`。该请求不授权 official preflight/input/cache、runner、verifier、Gold、reservation 或 Stage3B；当前状态为 `LEVEL_B_REVIEW_REQUEST_SUBMITTED_AWAITING_INDEPENDENT_REVIEW`。
 
 ## GitHub 与文档
 

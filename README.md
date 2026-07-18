@@ -6,10 +6,10 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | 简化协议 Level B 实现与 config 冻结已完成，synthetic 验证通过，等待独立 Level B 审核 |
+| 当前阶段 | 简化协议 Level B 实现与 config 冻结已完成，集中审核请求已提交，等待独立 Level B 结论 |
 | 获批执行协议 | 已完成 Level B implementation；未授权 official preflight/controller/verifier、Gold 或 reservation |
 | 设计文件 | `docs/STAGE4B_U1_EXECUTION_GOVERNANCE_SIMPLIFICATION_AMENDMENT.md` 与 `docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md` |
-| 协议状态 | `LEVEL_B_IMPLEMENTATION_COMPLETE_AWAITING_INDEPENDENT_REVIEW` / `OFFICIAL_EXECUTION_NOT_YET_AUTHORIZED` |
+| 协议状态 | `LEVEL_B_REVIEW_REQUEST_SUBMITTED_AWAITING_INDEPENDENT_REVIEW` / `OFFICIAL_EXECUTION_NOT_YET_AUTHORIZED` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
 | Controller | Simplified runner 已完成 synthetic 语义等价验证；official 尚未运行，六条 future output 均缺席 |
@@ -158,7 +158,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
-| Stage4B-U1 | `LEVEL_B_IMPLEMENTATION_COMPLETE_AWAITING_INDEPENDENT_REVIEW` | direct Python preflight/runner/verifier 与冻结 config 已提交；11 项定向和 270 项完整 synthetic tests 全通过，official/Gold/reservation 未授权 |
+| Stage4B-U1 | `LEVEL_B_REVIEW_REQUEST_SUBMITTED_AWAITING_INDEPENDENT_REVIEW` | direct Python preflight/runner/verifier 与冻结 config 已提交；11 项定向和 270 项完整 synthetic tests 全通过，等待一次集中 Level B 审核，official/Gold/reservation 未授权 |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
@@ -247,7 +247,7 @@ HF23 Review 1 已接受并关闭该 checkpoint。项目随后执行治理收缩�
 
 ## 下一步
 
-1. 对 implementation commit `2dade078...` 与 config commit `47a189f...` 做一次集中 Level B integrity/semantic-equivalence 审核。
+1. 按 `docs/STAGE4B_U1_SIMPLIFIED_LEVEL_B_REVIEW_REQUEST.md` 对 implementation commit `2dade078...` 与 config commit `47a189f...` 做一次集中 Level B integrity/semantic-equivalence 审核。
 2. 审核通过后仍须另行明确绑定批准，才可首次读取 official development/cache 并运行 official preflight；不得恢复 `ef9ba5b3...` 链或旧 observer/PRE 层级。
 3. 获批后按 preflight → Gold-free controller → 三工件提交推送 → independent verifier → `VERIFIED_PRE_GOLD` 提交推送的顺序执行并停止；Gold 与 reservation 继续另行锁定。
 
