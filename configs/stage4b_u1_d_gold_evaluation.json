@@ -1,0 +1,182 @@
+{
+  "advancement_gates": {
+    "deterministic_rerun_byte_equality": true,
+    "fisher_greater_pvalue_strictly_less_than": 0.05,
+    "independent_post_gold_verification": true,
+    "inserted_unit_reduction_minimum": 0.4,
+    "retention_gap_minimum": 0.15,
+    "u1_conditional_false_insert_rate_delta_maximum": 0.01,
+    "u1_cr20_delta_vs_dense_minimum": 0.005,
+    "u1_cr20_delta_vs_q25_minimum": -0.005
+  },
+  "authorization": {
+    "date": "2026-07-18",
+    "reservation_authorized": false,
+    "scope": "Stage4B-U1-D development Gold evaluation only",
+    "status": "GRANTED",
+    "user_instruction": "授权按冻结协议执行 Stage4B-U1-D Gold evaluation"
+  },
+  "commands": {
+    "independent_verification": [
+      "D:\\Users\\cc\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-B",
+      "scripts/stage4b_u1_gold_evaluation_verifier.py",
+      "--config",
+      "configs/stage4b_u1_d_gold_evaluation.json"
+    ],
+    "preflight": [
+      "D:\\Users\\cc\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-B",
+      "scripts/stage4b_u1_gold_evaluation_verifier.py",
+      "--config",
+      "configs/stage4b_u1_d_gold_evaluation.json",
+      "--preflight-only"
+    ],
+    "primary_evaluation": [
+      "D:\\Users\\cc\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-B",
+      "scripts/stage4b_u1_evaluate.py",
+      "--rankings",
+      "results/stage4b_u1_d_official_dev4500_simplified_v1_rankings.jsonl",
+      "--policy",
+      "results/stage4b_u1_d_official_dev4500_simplified_v1_policy.json",
+      "--pre-gold-verification",
+      "results/stage4b_u1_d_official_dev4500_simplified_v1_verified_pre_gold.json",
+      "--gold-map",
+      "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_gold_map.json",
+      "--evaluator-audit",
+      "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_evaluator_channel_audit.json",
+      "--stage4a-r2-verification",
+      "results/stage4a_r2_verification.json",
+      "--stage4a-r2-strategy-summary",
+      "results/stage4a_r2_strategy_summary.csv",
+      "--query-audit-output",
+      "results/stage4b_u1_d_official_dev4500_simplified_v1_query_audit.jsonl",
+      "--summary-output",
+      "results/stage4b_u1_d_official_dev4500_simplified_v1_evaluation_summary.json",
+      "--run-role",
+      "development",
+      "--bootstrap-iterations",
+      "10000",
+      "--bootstrap-seed",
+      "20260712"
+    ],
+    "rerun_evaluation": [
+      "D:\\Users\\cc\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "-B",
+      "scripts/stage4b_u1_evaluate.py",
+      "--rankings",
+      "results/stage4b_u1_d_official_dev4500_simplified_v1_rankings.jsonl",
+      "--policy",
+      "results/stage4b_u1_d_official_dev4500_simplified_v1_policy.json",
+      "--pre-gold-verification",
+      "results/stage4b_u1_d_official_dev4500_simplified_v1_verified_pre_gold.json",
+      "--gold-map",
+      "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_gold_map.json",
+      "--evaluator-audit",
+      "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_evaluator_channel_audit.json",
+      "--stage4a-r2-verification",
+      "results/stage4a_r2_verification.json",
+      "--stage4a-r2-strategy-summary",
+      "results/stage4a_r2_strategy_summary.csv",
+      "--query-audit-output",
+      "results/stage4b_u1_d_official_dev4500_simplified_v1_query_audit_rerun.jsonl",
+      "--summary-output",
+      "results/stage4b_u1_d_official_dev4500_simplified_v1_evaluation_summary_rerun.json",
+      "--run-role",
+      "development",
+      "--bootstrap-iterations",
+      "10000",
+      "--bootstrap-seed",
+      "20260712"
+    ]
+  },
+  "implementation": {
+    "evaluator": {
+      "bytes": 25668,
+      "path": "scripts/stage4b_u1_evaluate.py",
+      "sha256": "D7B96E29AD5AB2F6652FFC14D73048D36C205F78ABA7FA8FCB501818A1A89BBB"
+    },
+    "evaluator_commit": "e8dd4885dac6198f37261a6955dc62daf821dc57",
+    "gold_evaluation_verifier": {
+      "bytes": 24890,
+      "path": "scripts/stage4b_u1_gold_evaluation_verifier.py",
+      "sha256": "EC9F6B7DF5AA867A2078FD271EBA691B678C9F44073C9D1FEA780DF484A58BD2"
+    }
+  },
+  "inputs": {
+    "evaluator_audit": {
+      "bytes": 1182,
+      "path": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_evaluator_channel_audit.json",
+      "sha256": "220FD7310AA187840A5E9D95174EBAF5BD4BDF6097BC58BACD28413D85377C17"
+    },
+    "gold_map": {
+      "bytes": 1498640,
+      "path": "E:\\科研\\超粒球RAG_数据\\processed\\stage4b_u1_d_official_dev4500_v2_3_1_gold_map.json",
+      "sha256": "76D15A88C218C9EDF36A9F9F52B0D2D9877463E5653EC8AB1E5C94542E99B30B"
+    },
+    "policy": {
+      "bytes": 261587,
+      "path": "results/stage4b_u1_d_official_dev4500_simplified_v1_policy.json",
+      "sha256": "657E5F25A94224D8B020780F3E7335942B16BC6D8C7939FB74D1BBAA9A9D868B"
+    },
+    "pre_gold_verification": {
+      "bytes": 3479,
+      "path": "results/stage4b_u1_d_official_dev4500_simplified_v1_verified_pre_gold.json",
+      "sha256": "39EAD86A3A835983DCB67BAF656255F51569BCEE5B9AC2E16FACF404281D7818"
+    },
+    "rankings": {
+      "bytes": 18235604,
+      "path": "results/stage4b_u1_d_official_dev4500_simplified_v1_rankings.jsonl",
+      "sha256": "ED289D234F6F4FEC58A48168CB6CA78950489CD5F5640E977068CA6A786E03CB"
+    },
+    "stage4a_r2_strategy_summary": {
+      "bytes": 5205,
+      "path": "results/stage4a_r2_strategy_summary.csv",
+      "sha256": "7BF79CC057CDD0565100B1D95F35C95BFBEAA338E9B1EF63D9E81F029BB42B12"
+    },
+    "stage4a_r2_verification": {
+      "bytes": 2011,
+      "path": "results/stage4a_r2_verification.json",
+      "sha256": "0AD9A7B218A19297070E05F2BF7C04786165378E14990C343A0B8B8EFD8CCAD0"
+    }
+  },
+  "outputs": {
+    "primary_query_audit": "results/stage4b_u1_d_official_dev4500_simplified_v1_query_audit.jsonl",
+    "primary_summary": "results/stage4b_u1_d_official_dev4500_simplified_v1_evaluation_summary.json",
+    "rerun_query_audit": "results/stage4b_u1_d_official_dev4500_simplified_v1_query_audit_rerun.jsonl",
+    "rerun_summary": "results/stage4b_u1_d_official_dev4500_simplified_v1_evaluation_summary_rerun.json",
+    "verification": "results/stage4b_u1_d_official_dev4500_simplified_v1_verified_post_gold.json"
+  },
+  "parameters": {
+    "bootstrap_iterations": 10000,
+    "bootstrap_seed": 20260712,
+    "run_role": "development"
+  },
+  "protocols": {
+    "scientific": {
+      "bytes": 22858,
+      "path": "docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md",
+      "sha256": "6C71F646667FDA22259B37FCE75334DC9D6A7DC006791AC8946AA9DC7325C56F"
+    },
+    "simplified_execution": {
+      "bytes": 30763,
+      "path": "docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md",
+      "sha256": "ABED88FAC906748CE9D93F04C0D4BA35B62BB6819F61A2D84273687BE35C724C"
+    }
+  },
+  "run_id": "stage4b_u1_d_official_dev4500_simplified_v1_gold_evaluation",
+  "runtime": {
+    "python_executable": "D:\\Users\\cc\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "python_version": "3.12.0"
+  },
+  "schema_version": "stage4b_u1_gold_evaluation_v1",
+  "stop_rules": {
+    "evaluation_failure_or_partial_output": "STOP_AND_REPORT_WITHOUT_RETRY",
+    "failed_development_gate": "STOP_U1_BRANCH_KEEP_RESERVATION_LOCKED",
+    "gold_after_method_change": "PROHIBITED",
+    "reservation": "NOT_AUTHORIZED",
+    "rerun_mismatch": "STOP_AND_REPORT",
+    "successful_development_gate": "ELIGIBLE_FOR_U1_R_APPROVAL_REQUEST_ONLY"
+  }
+}
