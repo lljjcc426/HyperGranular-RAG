@@ -6,13 +6,13 @@
 
 | 项目 | 状态 |
 |---|---|
-| 当前阶段 | Level B 唯一 strict-row-contract 缺陷已最小修正并重新绑定 config，等待简短 follow-up 审核 |
-| 获批执行协议 | 已完成 Level B implementation；未授权 official preflight/controller/verifier、Gold 或 reservation |
+| 当前阶段 | Level B implementation 已接受；完整 official pre-Gold transaction 获得持续授权 |
+| 获批执行协议 | 可连续执行 preflight → Gold-free controller → 三工件提交推送 → independent verifier → `VERIFIED_PRE_GOLD` 提交推送；Gold 与 reservation 不在授权内 |
 | 设计文件 | `docs/STAGE4B_U1_EXECUTION_GOVERNANCE_SIMPLIFICATION_AMENDMENT.md` 与 `docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md` |
-| 协议状态 | `LEVEL_B_STRICT_ROW_CONTRACT_CORRECTION_SUBMITTED_AWAITING_FOLLOWUP_REVIEW` / `OFFICIAL_EXECUTION_NOT_AUTHORIZED` |
+| 协议状态 | `LEVEL_B_IMPLEMENTATION_ACCEPTED` / `STANDING_PREGOLD_EXECUTION_AUTHORIZATION_GRANTED` / `DAILY_DIRECTION_REVIEW_ENABLED` |
 | 当前数据状态 | 4,500 queries / 143,820 units / 11,015 gold；R2 指标与确定性复跑已验证 |
 | Stage3B | `KEEP_LOCKED` |
-| Controller | Simplified runner 已完成 synthetic 语义等价验证；official 尚未运行，六条 future output 均缺席 |
+| Controller | Simplified runner 已完成 synthetic 语义等价验证；治理更新前 official 尚未运行，六条 future output 均缺席 |
 | 当前 boundary-only 规则 | Stage2G 未支持，已停用 |
 
 Hard Failure 15 Review 1 接受三份 raw machine evidence，并将 382-byte stderr 精确定性为 Windows PowerShell 首次模块准备 progress CLIXML；exact 122-byte pre-verifier stdout 同时证明历史 `ee84988...` 的五个 Git children、三方 SHA 相等与 clean worktree，但旧 launcher 的 stderr-zero 合同仍然失败。Package Review 1 接受 exact classifier 和四个内层 envelope 的静态设计，但因顶层 runner 未冻结、内层 class 不可持久化以及 post class 与 narrative 提交顺序矛盾，明确拒绝 package `7f92c000...`。
@@ -158,7 +158,7 @@ Stage4A-R2 不优化阈值、不修复 boundary rule、不训练 controller，�
 | Stage3C | 描述性规划 | HotpotQA 有 gain，MuSiQue CR@20 饱和；20-event 仅为启发式 |
 | 原 Stage4A | 已失效镜像 pilot | 不允许推断官方 2Wiki 可行性 |
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；类型异质性明显 |
-| Stage4B-U1 | `LEVEL_B_STRICT_ROW_CONTRACT_CORRECTION_SUBMITTED_AWAITING_FOLLOWUP_REVIEW` | verifier 严格行身份/类型/nullability 合同已补齐；18 项定向和单次 277 项完整 suite 全通过，config 已重新冻结，official/Gold/reservation 未授权 |
+| Stage4B-U1 | `STANDING_PREGOLD_EXECUTION_AUTHORIZATION_GRANTED` | Level B 已接受；verifier 严格合同、18 项定向和单次 277 项完整 suite 全通过；pre-Gold 可连续执行，Gold/reservation 仍锁定 |
 
 完整审计见 [`docs/PRIOR_STAGE_METHOD_AUDIT.md`](docs/PRIOR_STAGE_METHOD_AUDIT.md)，阶段历史见 [`docs/ROADMAP.md`](docs/ROADMAP.md)。
 
@@ -224,6 +224,10 @@ HF23 Review 1 已接受并关闭该 checkpoint。项目随后执行治理收缩�
 
 简化执行协议 v1 已冻结于 `docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md`。Level B 首次审核退回的唯一 verifier strict-row-contract 缺陷已在 `8ab5e193...` 修正，config 已在直接子提交 `fba85c9...` 重新绑定。最终 synthetic 验证为 18/18 定向、单次 277/277 完整 suite；这证明实现完整性，不证明 U1-D 有效，也不授权 official、Gold 或 reservation。
 
+Level B follow-up 已以 `ACCEPT_LEVEL_B_IMPLEMENTATION` 接受上述 correction 与 config rebind。当前执行治理授予完整 pre-Gold transaction 的持续授权，不再要求逐步骤暂停、逐提交送审或逐次运行授权；Level B/C 工程修正可在保持科学语义、Gold 隔离、输入/cache 身份和工件完整性的前提下自行测试、重新绑定并继续。临时 push/remote visibility、路径、权限、依赖或零正式输出时的普通 preflight 失败不触发审批链；每日方向复核也不阻塞执行。Gold evaluation、reservation、科学语义变化，以及错误 official 输入/cache、Gold 泄漏、不可信 ranking、工件字节不一致、无法回滚的部分输出或 verifier 无法确认完整性等异常仍必须暂停。
+
+由于 official config 强校验 simplified protocol SHA，本次协议治理文字变更仅同步了 `protocol.sha256`；当前协议 SHA-256 为 `ABED88FAC906748CE9D93F04C0D4BA35B62BB6819F61A2D84273687BE35C724C`，config SHA-256 为 `176FF6747680DD597DB01E174619CABF7112BF4B91FF8BF2402F5B02754A5F58`。Implementation commit、七个代码 SHA、evaluator、科学参数、输入/cache 和输出路径均未重新绑定或修改。
+
 默认 Anaconda Python 3.11 当前存在 NumPy/二进制扩展不兼容，不作为本项目验证运行时。
 
 ## 科研治理
@@ -247,9 +251,9 @@ HF23 Review 1 已接受并关闭该 checkpoint。项目随后执行治理收缩�
 
 ## 下一步
 
-1. 按 `docs/STAGE4B_U1_SIMPLIFIED_LEVEL_B_FOLLOWUP_REVIEW_REQUEST.md` 对 correction commit `8ab5e193...` 与 config rebind `fba85c9...` 做简短 Level B follow-up 审核。
-2. 审核通过后仍须另行明确绑定批准，才可首次读取 official development/cache 并运行 official preflight；不得恢复 `ef9ba5b3...` 链或旧 observer/PRE 层级。
-3. 获批后按 preflight → Gold-free controller → 三工件提交推送 → independent verifier → `VERIFIED_PRE_GOLD` 提交推送的顺序执行并停止；Gold 与 reservation 继续另行锁定。
+1. 按持续授权连续完成 official preflight → Gold-free controller → decisions/rankings/policy 提交推送 → independent verifier → `VERIFIED_PRE_GOLD` 提交推送；不得恢复 `ef9ba5b3...` 链或旧 observer/PRE 层级。
+2. 到达 `VERIFIED_PRE_GOLD` 后停止，不读取 Gold、不运行 evaluator、不读取 reservation，也不解释 U1-D 指标。
+3. 仅在 Gold evaluation、reservation、科学语义变化或正式工件完整性异常时请求新的暂停式决策；日常 Level B/C 工程问题与方向复核不阻塞执行。
 
 ## GitHub
 

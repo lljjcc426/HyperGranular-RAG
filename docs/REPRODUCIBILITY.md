@@ -1657,3 +1657,23 @@ It passed 277/277 in 14.954 seconds. No second complete-suite execution occurred
 Config rebind `fba85c990efb0e3009a4c9fb0ca486ba1485c1f9` is the direct child of the correction commit. The corrected config SHA-256 is `8481D856F27D422B81CFBFDC57C59FD3F8A8E7C0C85A01DC6DD3D0F05F57DDB1`; schema/code/Git-blob/tracked config/protocol/evaluator checks passed without calling official preflight. Evaluator and all scientific/data/cache/output bindings are unchanged.
 
 No official preflight/input/cache, runner, verifier, historical official ranking, Gold, reservation, or Stage3B path was opened. Current state: `LEVEL_B_STRICT_ROW_CONTRACT_CORRECTION_SUBMITTED_AWAITING_FOLLOWUP_REVIEW`.
+
+## Standing-Authorized Simplified Pre-Gold Transaction
+
+Level B follow-up accepted implementation correction `8ab5e193d00733e0ae617b2c17f02da4ce01594f` and config rebind `fba85c990efb0e3009a4c9fb0ca486ba1485c1f9`. The complete pre-Gold route is now standing-authorized and runs continuously without per-step review or per-run approval:
+
+```powershell
+& 'D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe' -I -B scripts/stage4b_u1_simplified_preflight.py --config configs/stage4b_u1_d_official.json
+& 'D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe' -I -B scripts/stage4b_u1_simplified_runner.py --config configs/stage4b_u1_d_official.json
+git add -- results/stage4b_u1_d_official_dev4500_simplified_v1_decisions.jsonl results/stage4b_u1_d_official_dev4500_simplified_v1_rankings.jsonl results/stage4b_u1_d_official_dev4500_simplified_v1_policy.json
+git commit -m "results: freeze stage4b u1 simplified pre-gold artifacts"
+git push origin main
+& 'D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe' -I -B scripts/stage4b_u1_independent_verifier.py --config configs/stage4b_u1_d_official.json
+git add -- results/stage4b_u1_d_official_dev4500_simplified_v1_verified_pre_gold.json
+git commit -m "results: verify stage4b u1 simplified pre-gold artifacts"
+git push origin main
+```
+
+Level B/C defects may be minimally repaired and rebound before continuing, with tests proportional to the changed bytes. Temporary push/remote-visibility, path, permission, dependency, logging, or preflight-before-output failures do not require a new approval; blind repetition of an unchanged failed command is prohibited. Stop and report a wrong official input/cache, artifact-byte mismatch, untrusted ranking, partial output that cannot be rolled back, or verifier inability to confirm integrity. Stop after the verified artifact is pushed: Gold inputs/evaluator, reservation, scientific-semantic changes, and U1-D metric interpretation require a new pause and authorization. Daily direction review is non-blocking and does not require a new daily document.
+
+The governance text changed the simplified-protocol bytes, which official preflight hard-binds. Therefore the config synchronizes only `protocol.sha256=ABED88FAC906748CE9D93F04C0D4BA35B62BB6819F61A2D84273687BE35C724C`; its resulting SHA-256 is `176FF6747680DD597DB01E174619CABF7112BF4B91FF8BF2402F5B02754A5F58`. No implementation, evaluator, scientific parameter, input/cache identity, or output path changed, so no algorithm suite is required for this governance-only update.

@@ -3,10 +3,10 @@
 ## Status and scope
 
 - Status: `LEVEL_A_PROTOCOL_ACCEPTED`
-- Stage state after the approved compatibility correction: `LEVEL_B_IMPLEMENTATION_AUTHORIZED`
+- Stage state: `LEVEL_B_IMPLEMENTATION_ACCEPTED`
 - Scope: Stage4B-U1-D development slice only, 4,500 queries and 143,820 unlabeled units.
-- Reservation, Stage3B, Gold evaluation, official execution, and result interpretation remain locked.
-- This document freezes the execution contract and authorizes synthetic-only Level B implementation. It does not authorize official preflight/execution, Gold evaluation, reservation access, or a retry of any retired approval chain.
+- The complete pre-Gold transaction is covered by `STANDING_PREGOLD_EXECUTION_AUTHORIZATION_GRANTED`; Gold evaluation, reservation, Stage3B, scientific-semantic changes, and result interpretation remain locked.
+- This document freezes the execution contract and authorizes the direct official preflight, Gold-free controller, three-artifact commit/push, independent verifier, and separate `VERIFIED_PRE_GOLD` commit/push as one continuous transaction. It does not authorize Gold evaluation, reservation access, or reuse of any retired approval chain.
 
 This protocol is the minimal replacement for the retired Amendment 1.1.7–1.1.9 PowerShell launcher, remote gate, observer, and nested PRE route. Those files remain immutable historical evidence but are not an execution dependency of this protocol.
 
@@ -14,14 +14,14 @@ This protocol is the minimal replacement for the retired Amendment 1.1.7–1.1.9
 
 This protocol is a Level A scientific-critical artifact because it fixes the data boundary, Gold boundary, algorithm, ranking semantics, outputs, evaluation gates, and stop rules.
 
-Activation requires all of the following, in order:
+Activation required all of the following, in order, and every item is now satisfied for the frozen development pre-Gold route:
 
 1. independent Level A acceptance of the protocol, including the one approved evaluator effective-K compatibility correction (satisfied by the review bound to corrected commit `76dc179acbb657633fc1da1e4c5fbd398169e284` and the correction recorded below);
-2. a later minimal implementation commit and Level B integrity review;
-3. a later config-freeze commit containing `configs/stage4b_u1_d_official.json` with no placeholder values;
-4. explicit user approval binding the protocol, implementation, config, inputs, cache, and output paths before any official preflight.
+2. the minimal implementation and strict-row-contract correction accepted at Level B, bound to implementation correction `8ab5e193d00733e0ae617b2c17f02da4ce01594f`;
+3. the config freeze and rebind at `fba85c990efb0e3009a4c9fb0ca486ba1485c1f9`, with no placeholder values and accepted config SHA-256 `8481D856F27D422B81CFBFDC57C59FD3F8A8E7C0C85A01DC6DD3D0F05F57DDB1` before this governance-only protocol-hash synchronization;
+4. the standing user authorization recorded in the material passport below, binding this scientific protocol, the accepted implementation/config identities, the frozen inputs/cache/output paths, and the complete pre-Gold transaction.
 
-No step is implicitly approved by completion of the previous step.
+No separate pause, per-step review, per-commit review, or additional run authorization is required inside the standing-authorized pre-Gold transaction. Daily direction review is enabled but does not block execution. The standing authorization ends at the Gold boundary and does not transfer to Gold evaluation, reservation, or any scientific-semantic change.
 
 ## 2. Minimal process architecture
 
@@ -338,10 +338,12 @@ The controller must use exclusive create for a same-filesystem pending directory
 After a successful controller run:
 
 1. commit and push exactly decisions, rankings, and policy at their three frozen paths;
-2. stop if commit or push fails;
+2. do not advance to the verifier until commit and push succeed; a temporary push/remote-visibility failure is a Level C issue that may be diagnosed and resumed without a new approval, while a local/tracked/remote artifact-byte mismatch is a formal integrity anomaly that requires a pause;
 3. run the independent verifier only against the committed artifact commit;
 4. commit and push `VERIFIED_PRE_GOLD` separately;
 5. stop immediately.
+
+Steps 1–4 form one continuous standing-authorized transaction. Successful completion of one step does not require a new user message before the next. Step 5 is the Gold boundary: after recording the current repository status, no evaluator, Gold input, reservation input, U1-D metric, or result interpretation may be opened without a new Level A authorization.
 
 The verifier must independently recompute or validate, without calling the controller:
 
@@ -356,7 +358,7 @@ The verifier must independently recompute or validate, without calling the contr
 - controller/config/policy/outputs contain no prohibited Gold or label payload;
 - evaluator has not run and evaluation is null.
 
-Any failed gate prevents `VERIFIED_PRE_GOLD` and stops the branch. There is no automatic rerun.
+Any failed scientific or artifact-integrity gate prevents `VERIFIED_PRE_GOLD` and stops the branch. Diagnosed Level B/C engineering defects may be corrected, tested at their applicable level, rebound when bytes change, and resumed without a separate approval, provided the frozen scientific semantics, Gold isolation, input/cache identity, and official-output integrity remain intact. Blind repetition of an unchanged failed command is not permitted.
 
 ## 9. Separate Gold evaluator boundary
 
@@ -401,9 +403,10 @@ The implementation review must include targeted config/preflight/verifier failur
 
 ## 11. Stop and retry rules
 
-- Automatic retries: zero.
-- A config, code, input, cache, Gold-boundary, ranking, output-integrity, or verifier failure stops immediately and is recorded at the corresponding review level.
-- A Level C failure before official input is opened and before any output exists may be corrected only after reporting it and obtaining explicit user confirmation; any code/config byte change requires renewed binding and the applicable review.
+- Blind automatic retries of an unchanged failed attempt: zero.
+- Level B/C engineering defects may be diagnosed and corrected autonomously. Applicable targeted tests, one complete suite when ranking/verifier/schema code changes, renewed code/config binding when bytes change, and normal commit/push evidence are required before resumption; no additional per-fix approval or per-run authorization is required when scientific semantics are unchanged.
+- A scientific-semantic change, Gold access/evaluation, reservation access, Gold leakage, a wrong official input/cache, untrusted ranking, partial or inconsistent official-output promotion, a local/tracked/remote artifact-byte mismatch, or verifier inability to confirm artifact integrity requires an immediate pause and explicit new authorization at the applicable level.
+- A preflight failure before official output creation is not automatically a scientific hard failure. Ordinary dependency, path, permission, logging, or remote-visibility defects may be corrected and resumed under the standing authorization; a failure that reveals a wrong official input/cache or changes the registered identity/scientific boundary follows the mandatory-pause rule above.
 - No retry may reuse the terminated `ef9ba5b3...` approval chain or any 1.1.7–1.1.9 launcher/observer artifact.
 
 ## 12. Material passport
@@ -416,9 +419,12 @@ The implementation review must include targeted config/preflight/verifier failur
 - Initial protocol freeze commit: `8657709fe492455587d1e473ed22ee7793c0b995`.
 - Corrected protocol commit reviewed at Level A: `76dc179acbb657633fc1da1e4c5fbd398169e284`.
 - Level A review source: `C:\Users\cc\.codex\attachments\ab7328dd-72d9-4325-8cfc-7ed983755fbd\pasted-text.txt`, 13,594 bytes, SHA-256 `3982BC0329FFBA82E24834B64491E37F053B6C9684C332762D4A51CF38F30AE6`.
+- Level B accepted implementation correction: `8ab5e193d00733e0ae617b2c17f02da4ce01594f`; accepted config rebind: `fba85c990efb0e3009a4c9fb0ca486ba1485c1f9`; accepted config SHA-256 before this governance-only protocol-hash synchronization: `8481D856F27D422B81CFBFDC57C59FD3F8A8E7C0C85A01DC6DD3D0F05F57DDB1`.
+- Level B follow-up acceptance and supplemental standing authorization source: `C:\Users\cc\.codex\attachments\b997ca23-05fd-448f-b8c6-a3ae74a3ced5\pasted-text.txt`, 8,303 bytes, SHA-256 `80F5C3F0946FEAC1E738A12322CE91699FAC9558FCBCC24FBFF5ADCE72B0EA96`.
+- Standing pre-Gold authorization and governance-simplification source: `C:\Users\cc\.codex\attachments\8ac5ae54-919c-4f6f-96e5-c741559544ee\pasted-text.txt`, SHA-256 `415227D0A6D42335AB827F6F4442DFC0C581C9E5D209251B6EF85AD79C37335D`.
 - Author-side ARS validation found, before independent Level A review, that the initial policy and `VERIFIED_PRE_GOLD` schemas were incompatible with the unchanged evaluator's legacy field checks. This corrected freeze retains the evaluator-required schema/checkpoint/protocol and pre-Gold artifact keys while adding separate simplified-route bindings.
 - The Level A review returned exactly one compatibility correction: replace the evaluator's fixed-20 checks with the frozen effective-K rules. The evaluator now enforces `1 <= K_q <= 20`, equal effective lengths, per-list uniqueness, `P_q=min(10,K_q)`, bounded insertion, protected-prefix preservation, trigger/final selection, derived inserted IDs, and a required independently verified ranking-structure/candidate-membership attestation. It does not change candidates, q25, score, allocation, ranking, endpoints, or any Gold input.
 - Targeted evaluator tests passed 13/13 for candidate sizes 20, 17, 10, 9, and 1 plus the required failure cases. The complete synthetic suite passed 63/63. Both runs used synthetic fixtures only.
 - No external official input, Gold map, Gold metric, reservation metric, prior official ranking content, or evaluator output was opened to create this protocol.
 
-Current states: `LEVEL_A_PROTOCOL_ACCEPTED`, `LEVEL_B_IMPLEMENTATION_AUTHORIZED`, `OFFICIAL_EXECUTION_NOT_YET_AUTHORIZED`, `GOLD_EVALUATION_NOT_AUTHORIZED`, and `RESERVATION_NOT_AUTHORIZED`.
+Current states: `LEVEL_A_PROTOCOL_ACCEPTED`, `LEVEL_B_IMPLEMENTATION_ACCEPTED`, `STANDING_PREGOLD_EXECUTION_AUTHORIZATION_GRANTED`, `DAILY_DIRECTION_REVIEW_ENABLED`, `GOLD_EVALUATION_REQUIRES_PAUSE`, `RESERVATION_REQUIRES_PAUSE`, and `SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE`.

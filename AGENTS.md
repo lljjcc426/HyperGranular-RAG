@@ -484,6 +484,12 @@
 468. 原 11 项 simplified tests 全部保留并新增 7 项审核指定失败注入，定向 suite 18/18；最终完整 `test_stage4b_u1*.py` suite 单次 277/277。所有非法工件均被拒绝且 `VERIFIED_PRE_GOLD` 未生成；未进行第二次完整复跑。
 469. Config rebind commit `fba85c990efb0e3009a4c9fb0ca486ba1485c1f9` 是 correction commit 的直接子提交，仅更新 `implementation.code_commit` 与 verifier SHA；新 config SHA-256 为 `8481D856F27D422B81CFBFDC57C59FD3F8A8E7C0C85A01DC6DD3D0F05F57DDB1`。Evaluator SHA、协议、科学参数、输入/cache 与输出路径不变，tracked bindings 全通过。
 470. 简短 follow-up 为 `docs/STAGE4B_U1_SIMPLIFIED_LEVEL_B_FOLLOWUP_REVIEW_REQUEST.md`。六条 future output 继续缺席，未运行或读取 official preflight/input/cache、runner、verifier、Gold、reservation 或 Stage3B；当前状态为 `LEVEL_B_STRICT_ROW_CONTRACT_CORRECTION_SUBMITTED_AWAITING_FOLLOWUP_REVIEW`。
+471. Level B follow-up 已接受 correction commit `8ab5e193d00733e0ae617b2c17f02da4ce01594f`、config rebind `fba85c990efb0e3009a4c9fb0ca486ba1485c1f9` 与接受时 config SHA-256 `8481D856F27D422B81CFBFDC57C59FD3F8A8E7C0C85A01DC6DD3D0F05F57DDB1`。当前状态改为 `LEVEL_B_IMPLEMENTATION_ACCEPTED`；此前 459–470 条中的等待 follow-up 与 official 未授权状态作为历史状态保留，但不再是当前执行门。
+472. 用户已对完整 pre-Gold transaction 授予持续执行授权：direct official preflight → Gold-free controller → decisions/rankings/policy 精确三工件提交推送 → independent verifier → `VERIFIED_PRE_GOLD` 单独提交推送 → Gold 前停止。该链内部不再逐步骤暂停、不逐提交送审、不逐次申请运行授权；`DAILY_DIRECTION_REVIEW_ENABLED` 仅用于方向复核，不阻塞执行。
+473. Level B/C 日常工程问题可自主诊断、最小修正、运行适用的定向测试或必要的一次完整 suite、在代码/config 字节变化时正确重新绑定，并在提交推送后继续 pre-Gold 链；无需为每个修正新建 Amendment、approval request 或 daily review 文档。禁止盲目重复未变化的失败命令，禁止恢复 1.1.7–1.1.9 PowerShell/remote/observer/PRE 链。
+474. 必须暂停的边界仅为：Gold 输入或 evaluator、reservation、科学语义变化，以及 Gold 泄漏、错误 official 输入/cache、不可信 ranking、正式输出部分提升或不一致、本地/tracked/remote 工件字节不一致、verifier 无法确认完整性等正式工件异常。临时 push/remote visibility、路径、权限、日志、依赖或零正式输出时的普通 preflight 失败属于可自行诊断恢复的 Level C，不需要新审批。到达并推送 `VERIFIED_PRE_GOLD` 后停止；不得读取或解释 U1-D Gold 指标。
+475. 当前治理状态为 `LEVEL_B_IMPLEMENTATION_ACCEPTED`、`STANDING_PREGOLD_EXECUTION_AUTHORIZATION_GRANTED`、`DAILY_DIRECTION_REVIEW_ENABLED`、`GOLD_EVALUATION_REQUIRES_PAUSE`、`RESERVATION_REQUIRES_PAUSE` 与 `SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE`。本次治理变更不改变 q25、effective-K、粒球、超边、U1 score、预算、候选、ranking、主要终点、统计规则、evaluator SHA 或输入/cache 身份。
+476. 因 official config 对 simplified protocol SHA 进行强校验，本次按要求修改协议治理条款后，只将 `protocol.sha256` 同步为 `ABED88FAC906748CE9D93F04C0D4BA35B62BB6819F61A2D84273687BE35C724C`；当前 config SHA-256 为 `176FF6747680DD597DB01E174619CABF7112BF4B91FF8BF2402F5B02754A5F58`。`implementation.code_commit`、七个 implementation SHA、evaluator SHA、科学参数、输入/cache 与输出路径均未变化。
 
 ## GitHub 与文档
 
