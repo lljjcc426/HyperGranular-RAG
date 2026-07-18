@@ -14,6 +14,8 @@
 | [Official config](../configs/stage4b_u1_d_official.json) | 冻结输入、代码、cache、参数和输出绑定 |
 | [Gold evaluation config](../configs/stage4b_u1_d_gold_evaluation.json) | 已授权 Gold 输入、命令、复跑、验证和停止规则绑定 |
 | [Stage4B-U1-D 统计验证报告](../reports/超粒球RAG_Stage4B_U1_D_Gold评估与统计验证报告.md) | Gold 结果、门判定、复现与 11 类谬误扫描 |
+| [Stage4C-U1-FMA protocol](STAGE4C_U1_FAILURE_MECHANISM_AUDIT_PROTOCOL.md) | post-Gold 探索性失败机制诊断的冻结合同 |
+| [Stage4C-U1-FMA 报告](../reports/超粒球RAG_Stage4C_U1失败机制诊断报告.md) | 特征、decile、all-on/off、OOF 与 11 类谬误扫描 |
 
 ## 当前正式工件
 
@@ -29,6 +31,17 @@
 | [VERIFIED_POST_GOLD](../results/stage4b_u1_d_official_dev4500_simplified_v1_verified_post_gold.json) | 独立重算与复跑核验通过 |
 
 结果状态为 `STOP_U1_BRANCH_KEEP_RESERVATION_LOCKED`。结果生成提交为 `c06761f0c55cbeecf75564211a59f4540cfbae06`，正式 summary 原始字节修复提交为 `b500184bc581d73a381de65c32cf3b72e9758cc9`。
+
+### Stage4C-U1-FMA 诊断工件
+
+| 文件 | 状态 |
+|---|---|
+| [query features](../results/stage4c_u1_fma_query_features.csv) | 4,500 queries；严格对账通过 |
+| [feature separability](../results/stage4c_u1_fma_feature_separability.csv) | 12 个预设特征的分布与 GAIN/HARM 可分性 |
+| [score deciles](../results/stage4c_u1_fma_score_deciles.csv) | 10 个冻结 ordered-rank deciles |
+| [candidate mechanisms](../results/stage4c_u1_fma_candidate_mechanisms.csv) | query-level all-on/off composition；不含 candidate Gold identity |
+| [OOF predictions](../results/stage4c_u1_fma_oof_predictions.csv) | 3 tasks × 3 fixed panels |
+| [Stage4C summary](../results/stage4c_u1_fma_summary.json) | `MECHANISM_EVIDENCE_INCONCLUSIVE` |
 
 ## 科学设计与阶段证据
 
@@ -71,4 +84,4 @@
 
 ## 当前下一步
 
-当前状态为 `VERIFIED_POST_GOLD` 与 `STOP_U1_BRANCH_KEEP_RESERVATION_LOCKED`。后续应先形成新的研究问题和预注册协议；不得在同一 development 上事后调整 U1 并重跑，reservation 与 Stage3B 继续锁定。
+当前状态为 Stage4C-U1-FMA 已完成、`MECHANISM_EVIDENCE_INCONCLUSIVE`，同时保留 `STOP_U1_BRANCH_KEEP_RESERVATION_LOCKED`。不自动启动 U2；任何 candidate/path-level controller 都必须先形成新的 Level A 协议并另行授权。Reservation 与 Stage3B 继续锁定。

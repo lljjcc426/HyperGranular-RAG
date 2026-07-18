@@ -3,8 +3,8 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage4B-U1-D development Gold evaluation completed and independently verified; U1 branch stopped; reservation and Stage3B remain locked
-- Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive development batch used through Stage4B-U1-D; reservation metrics not accessed
+- Current stage: Stage4C-U1-FMA post-Gold exploratory diagnosis completed with `MECHANISM_EVIDENCE_INCONCLUSIVE`; Stage4B-U1-D remains a valid negative result; reservation and Stage3B remain locked
+- Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive development batch used through Stage4C-U1-FMA; reservation metrics not accessed
 - Generator used: No
 - Gold labels used for indexing: No
 
@@ -18,7 +18,7 @@ The full integrity and methodology audit is recorded in `docs/PRIOR_STAGE_METHOD
 - Stage2G: valid negative mechanism result; the current boundary rule is unsupported.
 - Stage2H: diagnostic only. Stage3A: failed development. Stage3C: descriptive planning only.
 - Restarted Stage4A `n=2,800`: exact event-count arithmetic is correct, but 20 gains is a planning heuristic. The number is not an approved effect-power or controller-training sample size.
-- Research position: `BETWEEN_STAGE3C_AND_STAGE4A_DESIGN`; no next experiment is authorized.
+- Research position: `STAGE4C_U1_FMA_COMPLETED_MECHANISM_EVIDENCE_INCONCLUSIVE`; no U2 development or reservation access is authorized.
 
 ## Completed Execution History
 
@@ -1569,3 +1569,15 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The five verified result artifacts were first committed and pushed as `c06761f0c55cbeecf75564211a59f4540cfbae06`. `core.autocrlf=true` normalized the two 7,662-byte CRLF summaries to 7,467-byte LF tracked blobs, while the JSONL and verification blobs stayed exact. This formal byte mismatch was reported and paused before documentation commit.
 - Authorized correction commit `b500184bc581d73a381de65c32cf3b72e9758cc9` adds exactly two `.gitattributes -text` paths and re-adds only the existing frozen summary bytes. Local, index, commit, and directly fetched GitHub blobs are all 7,662 bytes / `7F82056FB14F9D8D73E668A82CB5304B28385E62A01C428599F23260AB7F89DE`; primary and rerun remain byte-identical. The other three Gold result objects, rankings, policy, and pre-Gold verification did not change.
 - Reservation metrics and Stage3B were not accessed. The result rejects only the frozen U1-D controller, not HyperGranular-RAG as a whole. Any future controller is a new scientific-semantic proposal requiring a new development protocol and explicit authorization; this result is not permission to open reservation.
+
+### Stage4C-U1-FMA Failure Mechanism Audit
+
+- The user authorized a post-Gold exploratory diagnosis of the frozen Stage4B-U1-D failure without reopening U1-D, running a new efficacy evaluation, or accessing reservation/Stage3B. Protocol commit `2e925063175a6402a21ade3fc0ab4a27faaa6dd7` was pushed before diagnostic statistics.
+- Implementation commit `1bbe8a571d4e0c4aa965b4f0fa71b1de5901b2a7` adds one NumPy-based diagnostic script and one targeted suite. The corrected discover invocation passed 16/16 tests; an earlier dotted-module invocation loaded no tests because `tests/` is not a package.
+- The one official Stage4C run covered 4,500 queries and atomically produced six artifacts. Frozen reconciliation is 94 GAIN, 69 HARM, 4,337 NEUTRAL, 47 retained GAIN, and 53 retained HARM. All seven Stage4B input SHA-256 identities remained unchanged.
+- Raw U1 score is harm-high for GAIN-vs-HARM: AUROC `0.39269`, 95% bootstrap interval `[0.30558,0.48150]`. Score-minus-uncertainty AUROC difference interval is `[-0.16482,-0.00709]`, but the preregistered multiplication flag remains false because readiness's harm-high interval criterion did not pass.
+- The fixed rank audit is `D_LOCALIZED_OR_IRREGULAR_SIGNAL`: the first two deciles have slightly negative retention gaps, decile 3 contains 4 gains and 17 harms, and later gains are localized rather than monotonically concentrated at the top.
+- Query-level composition is structurally limiting: 92 `MIXED_GAIN_NOISE_QUERY`, 2 `PURE_GAIN_QUERY`, and 69 `DISPLACEMENT_HARM_QUERY`; `ALL_ON_OFF_LIMITATION_EVIDENCE=true`. Candidate Gold identity/rank and candidate score/support/similarity/facet/hyperedge fields are unavailable in the seven allowed artifacts and were not backfilled.
+- Fixed Task-A OOF AUROCs are `0.60762` for ORIGINAL_U1_8, `0.54001` for RANK_STRUCTURE_6, and `0.61810` for COMBINED_14. None reaches the frozen stable-signal rule; the partial ORIGINAL/COMBINED signal also prevents classification as uniformly insufficient.
+- The final frozen decision is `MECHANISM_EVIDENCE_INCONCLUSIVE`. Evidence confidence is `CAUTION`: this is same-development post-Gold exploration with complete prespecification but no multiplicity correction and no candidate-level target identity. No U2 protocol draft or implementation was created.
+- Stage4B-U1-D remains a valid negative result. Reservation remains locked. No new controller efficacy has been established.

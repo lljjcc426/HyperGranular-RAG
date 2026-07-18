@@ -16,10 +16,11 @@
 - 文档导航：`docs/INDEX.md`
 - 当前复现边界：`docs/REPRODUCIBILITY.md`
 - 完整研究时间线：`docs/ROADMAP.md`
-- 当前科学/执行协议：`docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md`
+- 当前诊断协议：`docs/STAGE4C_U1_FAILURE_MECHANISM_AUDIT_PROTOCOL.md`
+- 冻结 Stage4B 执行协议：`docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md`
 - 冻结配置：`configs/stage4b_u1_d_official.json`
 - Gold 授权与执行配置：`configs/stage4b_u1_d_gold_evaluation.json`
-- 当前统计验证报告：`reports/超粒球RAG_Stage4B_U1_D_Gold评估与统计验证报告.md`
+- 当前诊断报告：`reports/超粒球RAG_Stage4C_U1失败机制诊断报告.md`
 
 历史 Amendment、Approval、Review、Hard Failure 和 PowerShell 执行文件是不可改写的证据，不是当前日常执行规则。不得从历史文件恢复已退役的 launcher、remote gate、observer、stderr framing 或 nested PRE 链。
 
@@ -31,6 +32,8 @@ VERIFIED_PRE_GOLD_COMMITTED
 GOLD_EVALUATION_COMPLETED
 VERIFIED_POST_GOLD
 STOP_U1_BRANCH_KEEP_RESERVATION_LOCKED
+STAGE4C_U1_FMA_COMPLETED
+MECHANISM_EVIDENCE_INCONCLUSIVE
 RESERVATION_REQUIRES_PAUSE
 SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
 ```
@@ -44,6 +47,8 @@ SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
 - 主运行与确定性复跑同字节，独立验证通过；6 项 development 晋级门仅通过 2 项。
 - 冻结 evaluator/validator 未生成或核对协议要求的 question-type 区间；不得事后选取区间算法补算或据类型点估计形成 efficacy 主张。
 - 这是当前冻结 U1-D controller 的有效负结果，不等于 HyperGranular-RAG 整体无效，不授权 reservation，也不允许在同一 development 上调整后重跑。
+- Stage4C 协议提交：`2e925063175a6402a21ade3fc0ab4a27faaa6dd7`；实现提交：`1bbe8a571d4e0c4aa965b4f0fa71b1de5901b2a7`。
+- Stage4C 仅形成 post-Gold 探索性 `CAUTION` 证据；raw U1 score 方向错误且 all-on/off 受限，但固定 OOF panels 未达到稳定门，不授权 U2 或任何新 efficacy 主张。
 
 ## 4. 科研不可变边界
 
@@ -94,4 +99,4 @@ Level B/C 的普通工程工作、测试、文档、提交和推送不逐项暂�
 
 ## 8. 下一科研门
 
-Stage4B-U1 分支已经按冻结失败门停止。下一科研工作应基于该负结果重新定义研究问题，并在读取新结果前形成新的协议；任何新 controller 均属于新的科学语义和新的开发协议，不得在同一 development 上修改 U1 特征、公式、预算、阈值或检验后重跑。Reservation、Stage3B、再次 Gold 执行和任何科学语义变化仍需单独协议与明确授权。
+Stage4B-U1 分支已经按冻结失败门停止，Stage4C 决策为 `MECHANISM_EVIDENCE_INCONCLUSIVE`。不自动创建或执行 U2；任何 candidate/path-level controller 都属于新的科学语义，必须先形成新的 Level A 开发协议并获得明确授权。不得在同一 development 上修改 U1 特征、公式、预算、阈值或检验后重跑。Reservation、Stage3B、再次 Gold 执行和任何科学语义变化仍需单独协议与明确授权。

@@ -7,10 +7,14 @@
 ```text
 VERIFIED_POST_GOLD
 STOP_U1_BRANCH_KEEP_RESERVATION_LOCKED
+STAGE4C_U1_FMA_COMPLETED
+MECHANISM_EVIDENCE_INCONCLUSIVE
 RESERVATION_REQUIRES_PAUSE
 ```
 
 Pre-Gold 和本次获授权的 Gold evaluation 均已完成，不应重复运行。主运行与预注册复跑同字节，独立验证器已重建 4,500 条逐查询审计、汇总和 development 决策。
+
+Stage4C-U1-FMA 也已完成一次冻结的 post-Gold exploratory diagnosis。它不是新的 Gold evaluation，不改变 Stage4B 负结果，也不授权 U2 或 reservation。
 
 ## 运行环境
 
@@ -21,6 +25,41 @@ NumPy: 2.5.1
 ```
 
 当前 direct entry point 使用普通脚本目录导入，只保留 `-B`；不要加入会移除 sibling-module 路径的 `-I`。
+
+## Stage4C 冻结绑定与输出
+
+| 项目 | 绑定 |
+|---|---|
+| Protocol commit | `2e925063175a6402a21ade3fc0ab4a27faaa6dd7` |
+| Protocol SHA-256 | `7F1C3F78BFA5C9D36A4EA318394E8E791476215AEBAA73DFEA1B40B6D5FDD383` |
+| Implementation commit | `1bbe8a571d4e0c4aa965b4f0fa71b1de5901b2a7` |
+| Script SHA-256 | `274A4E01516B12EAB8A81323D612CAA5954DFB25865F189B89298466380AD670` |
+| Targeted tests SHA-256 | `A59C683B741007556362603ACF9876E0F19DC25655B0FF8C08F587B63DEF9639` |
+
+Stage4C 只读取下文已经登记的四个 pre-Gold 工件、Gold query audit、evaluation summary 和 `VERIFIED_POST_GOLD`；七个输入长度/SHA 均由脚本在读取统计前核对。
+
+| 工件 | Bytes | SHA-256 |
+|---|---:|---|
+| `results/stage4c_u1_fma_query_features.csv` | 1,205,296 | `311D4AE15F80A14A5C3BEBE427E894E445C76F17045709CE62E15F89A138E142` |
+| `results/stage4c_u1_fma_feature_separability.csv` | 10,057 | `BE1FA4F74BE8A059E7DB92326BD22084D5817901F106D2B367F2249B1F2C8CE9` |
+| `results/stage4c_u1_fma_score_deciles.csv` | 1,813 | `04CE6F940473439C6CBA8D52CF518602D3725B4561E5711F437519E042056180` |
+| `results/stage4c_u1_fma_candidate_mechanisms.csv` | 772,763 | `FA5C378F6A8E69CAC52859D49918912B6822F0F97C29BB63C0ADCD1D655A23EF` |
+| `results/stage4c_u1_fma_oof_predictions.csv` | 3,671,149 | `BEE06C3FBE69FED3D30C0C33126F37E218268BEC9C327DA0BE1C2B654AE09866` |
+| `results/stage4c_u1_fma_summary.json` | 108,940 | `7B6D8C8B85EC32D596250137CC676B4C732C964C64714F7EF5EE6B3E86E7B0C6` |
+
+完成记录（不是当前重跑指令）：
+
+```powershell
+& 'D:\Users\cc\AppData\Local\Programs\Python\Python312\python.exe' -B scripts/stage4c_u1_failure_mechanism_audit.py --output-dir results
+```
+
+terminal marker：
+
+```text
+STAGE4C_U1_FMA_PASS queries=4500 decision=MECHANISM_EVIDENCE_INCONCLUSIVE
+```
+
+正式脚本拒绝覆盖已有六工件。完整正式重跑未执行；确定性证据限于固定输入/代码/seed、16/16 targeted tests 中的 synthetic byte check、summary 内置 CSV SHA 和运行后的只读结构复核。因此完整结果的 ARS reproducibility verdict 为 `CANNOT_VERIFY`，而不是虚构第二次同字节运行。
 
 ## 冻结配置
 
@@ -119,6 +158,8 @@ STAGE4B_U1_GOLD_INDEPENDENT_VERIFICATION_PASS queries=4500 decision=STOP_U1_BRAN
 - 结果层复现：query audit 与 summary 的主运行/复跑长度、SHA-256 和字节完全相等。
 - 独立验证器注册的输入绑定、逐查询审计、总体/类型点估计汇总、bootstrap 身份、Stage4A 基线等价、决策和输出提交全部 PASS。
 - 报告完整性限制：科学协议要求 question-type 区间，但冻结 evaluator/validator 未生成或核对类型级区间。Gold 后未临时选择新算法补算；该缺口不影响由总体预注册门触发的停止决定。
+- Stage4C targeted suite：16/16 PASS；最初的 dotted-module 调用因 `tests/` 不是 package 而加载 0 个用例，随后使用精确 discover 命令完成测试。
+- Stage4C 只读结果复核：4,500/48/10/4,500/27,489 CSV 行数、schema、有限值、唯一键、OOF 概率范围、五个内置 CSV SHA 和七输入 SHA 全部 PASS。
 
 ## 后续复现边界
 
@@ -130,4 +171,4 @@ STAGE4B_U1_GOLD_INDEPENDENT_VERIFICATION_PASS queries=4500 decision=STOP_U1_BRAN
 4. 后续新研究必须先形成独立问题、协议、样本边界和停止规则，再读取新结果；
 5. Reservation、Stage3B、再次 Gold 执行和科学语义修改仍需单独协议与明确授权。
 
-本次冻结负结果只否定当前 U1-D controller 的晋级主张，不否定 HyperGranular-RAG 整体研究方向。后续新 controller 必须作为新的科学语义和新的 development 协议处理。
+本次冻结负结果只否定当前 U1-D controller 的晋级主张，不否定 HyperGranular-RAG 整体研究方向。Stage4C 的 `MECHANISM_EVIDENCE_INCONCLUSIVE` 不自动创建 U2；后续新 controller 必须作为新的科学语义和新的 Level A development 协议处理。
