@@ -12,6 +12,8 @@
 | [ROADMAP](ROADMAP.md) | 完整研究时间线与阶段状态 |
 | [Simplified execution protocol](STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md) | Stage4B-U1-D 科学与 pre-Gold 执行合同 |
 | [Official config](../configs/stage4b_u1_d_official.json) | 冻结输入、代码、cache、参数和输出绑定 |
+| [Gold evaluation config](../configs/stage4b_u1_d_gold_evaluation.json) | 已授权 Gold 输入、命令、复跑、验证和停止规则绑定 |
+| [Stage4B-U1-D 统计验证报告](../reports/超粒球RAG_Stage4B_U1_D_Gold评估与统计验证报告.md) | Gold 结果、门判定、复现与 11 类谬误扫描 |
 
 ## 当前正式工件
 
@@ -21,8 +23,12 @@
 | [rankings](../results/stage4b_u1_d_official_dev4500_simplified_v1_rankings.jsonl) | 已冻结 |
 | [policy](../results/stage4b_u1_d_official_dev4500_simplified_v1_policy.json) | 已冻结 |
 | [VERIFIED_PRE_GOLD](../results/stage4b_u1_d_official_dev4500_simplified_v1_verified_pre_gold.json) | 独立验证通过 |
+| [Gold query audit](../results/stage4b_u1_d_official_dev4500_simplified_v1_query_audit.jsonl) | 4,500 queries；已提交 |
+| [Gold evaluation summary](../results/stage4b_u1_d_official_dev4500_simplified_v1_evaluation_summary.json) | development 门判定：失败 |
+| [deterministic rerun summary](../results/stage4b_u1_d_official_dev4500_simplified_v1_evaluation_summary_rerun.json) | 与主摘要同字节 |
+| [VERIFIED_POST_GOLD](../results/stage4b_u1_d_official_dev4500_simplified_v1_verified_post_gold.json) | 独立重算与复跑核验通过 |
 
-Gold query audit 和 evaluation summary 尚未生成。
+结果状态为 `STOP_U1_BRANCH_KEEP_RESERVATION_LOCKED`。结果生成提交为 `c06761f0c55cbeecf75564211a59f4540cfbae06`，正式 summary 原始字节修复提交为 `b500184bc581d73a381de65c32cf3b72e9758cc9`。
 
 ## 科学设计与阶段证据
 
@@ -65,4 +71,4 @@ Gold query audit 和 evaluation summary 尚未生成。
 
 ## 当前下一步
 
-当前状态为 `VERIFIED_PRE_GOLD_COMMITTED`。下一科研门是用户单独授权的 Gold evaluation；授权前不得读取 Gold、运行 evaluator、访问 reservation 或解释 U1-D 指标。
+当前状态为 `VERIFIED_POST_GOLD` 与 `STOP_U1_BRANCH_KEEP_RESERVATION_LOCKED`。后续应先形成新的研究问题和预注册协议；不得在同一 development 上事后调整 U1 并重跑，reservation 与 Stage3B 继续锁定。

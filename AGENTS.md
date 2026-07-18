@@ -18,6 +18,8 @@
 - 完整研究时间线：`docs/ROADMAP.md`
 - 当前科学/执行协议：`docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md`
 - 冻结配置：`configs/stage4b_u1_d_official.json`
+- Gold 授权与执行配置：`configs/stage4b_u1_d_gold_evaluation.json`
+- 当前统计验证报告：`reports/超粒球RAG_Stage4B_U1_D_Gold评估与统计验证报告.md`
 
 历史 Amendment、Approval、Review、Hard Failure 和 PowerShell 执行文件是不可改写的证据，不是当前日常执行规则。不得从历史文件恢复已退役的 launcher、remote gate、observer、stderr framing 或 nested PRE 链。
 
@@ -26,16 +28,22 @@
 ```text
 LEVEL_B_IMPLEMENTATION_ACCEPTED
 VERIFIED_PRE_GOLD_COMMITTED
-GOLD_EVALUATION_REQUIRES_PAUSE
+GOLD_EVALUATION_COMPLETED
+VERIFIED_POST_GOLD
+STOP_U1_BRANCH_KEEP_RESERVATION_LOCKED
 RESERVATION_REQUIRES_PAUSE
 SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
 ```
 
 - Controller 三工件提交：`9357c157217f85008fa93df07d321a2f4c6a2bc1`。
 - `VERIFIED_PRE_GOLD` 提交：`83d172bc89efbb31782eee308bac5293aa24457b`。
-- Verified 文件 SHA-256：`39EAD86A3A835983DCB67BAF656255F51569BCEE5B9AC2E16FACF404281D7818`。
-- Gold query audit 与 evaluation summary 尚不存在。
-- Pre-Gold 结果只证明工件/实现完整性，不证明 U1-D 有效。
+- Gold 结果提交：`c06761f0c55cbeecf75564211a59f4540cfbae06`。
+- Summary 原始字节修复提交：`b500184bc581d73a381de65c32cf3b72e9758cc9`；本地/index/commit/GitHub 四方均为 7,662 bytes / `7F82056F...7F89DE`。
+- Evaluation summary SHA-256：`7F82056FB14F9D8D73E668A82CB5304B28385E62A01C428599F23260AB7F89DE`。
+- `VERIFIED_POST_GOLD` SHA-256：`44BF3E8B0B036958633E237186A458B13090D8073F587657D831656FB7720ECD`。
+- 主运行与确定性复跑同字节，独立验证通过；6 项 development 晋级门仅通过 2 项。
+- 冻结 evaluator/validator 未生成或核对协议要求的 question-type 区间；不得事后选取区间算法补算或据类型点估计形成 efficacy 主张。
+- 这是当前冻结 U1-D controller 的有效负结果，不等于 HyperGranular-RAG 整体无效，不授权 reservation，也不允许在同一 development 上调整后重跑。
 
 ## 4. 科研不可变边界
 
@@ -47,6 +55,7 @@ SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
 - U1 输入、ECDF、score、tie-break 或 60% budget；
 - 主要终点、统计检验、bootstrap、确定性复跑或晋级门；
 - 已冻结 decisions、rankings、policy、`VERIFIED_PRE_GOLD`。
+- 已验证的 Gold query audit、evaluation summary、复跑和 `VERIFIED_POST_GOLD` 工件。
 
 Gold 不得进入 controller、索引、候选、排序、过滤或阈值选择。Reservation 和 Stage3B 继续锁定。
 
@@ -54,9 +63,9 @@ Gold 不得进入 controller、索引、候选、排序、过滤或阈值选择�
 
 Level B/C 的普通工程工作、测试、文档、提交和推送不逐项暂停，也不建立逐提交审批链。根据变更影响自主完成最小修正、适量测试、必要绑定与 GitHub 同步。
 
-必须暂停并报告：
+本次获授权的 Gold evaluation 已结束，不得自行再次运行。必须暂停并报告：
 
-1. 准备连接或运行 Gold evaluator；
+1. 准备再次连接或运行 Gold evaluator；
 2. 准备读取 reservation 或 Stage3B；
 3. 准备改变科学语义、数据边界、终点或统计规则；
 4. 发现错误 official 输入/cache、Gold 泄漏、不可信 ranking；
@@ -73,6 +82,7 @@ Level B/C 的普通工程工作、测试、文档、提交和推送不逐项暂�
 - 禁止为形式性治理重复运行完整 suite。
 - 禁止盲目重复未变化的失败命令；先诊断和修正再继续。
 - 不自行重新运行已完成的 official pre-Gold transaction。
+- 不自行重新运行已完成的 Stage4B-U1-D Gold transaction。
 
 ## 7. GitHub 与文件
 
@@ -84,4 +94,4 @@ Level B/C 的普通工程工作、测试、文档、提交和推送不逐项暂�
 
 ## 8. 下一科研门
 
-当前只能整理仓库、核验 pre-Gold 工件和规划后续工作。实际 Gold evaluation 必须等待用户单独明确授权；授权前不得读取 Gold、运行 evaluator、解释 U1-D 指标或修改冻结 ranking。
+Stage4B-U1 分支已经按冻结失败门停止。下一科研工作应基于该负结果重新定义研究问题，并在读取新结果前形成新的协议；任何新 controller 均属于新的科学语义和新的开发协议，不得在同一 development 上修改 U1 特征、公式、预算、阈值或检验后重跑。Reservation、Stage3B、再次 Gold 执行和任何科学语义变化仍需单独协议与明确授权。

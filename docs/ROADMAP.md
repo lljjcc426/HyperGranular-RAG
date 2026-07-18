@@ -3,8 +3,8 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage4A-R2 official event-rate estimation completed and independently verified; next controller study not yet authorized; Stage3B remains locked
-- Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive used for source reconciliation only; no restarted Stage4A metrics
+- Current stage: Stage4B-U1-D development Gold evaluation completed and independently verified; U1 branch stopped; reservation and Stage3B remain locked
+- Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive development batch used through Stage4B-U1-D; reservation metrics not accessed
 - Generator used: No
 - Gold labels used for indexing: No
 
@@ -1554,3 +1554,18 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The pre-reorganization long-form `README.md`, project `AGENTS.md`, and `docs/REPRODUCIBILITY.md` were preserved byte-for-byte under `docs/archive/`. Concise current versions now cover only the active research question, evidence level, frozen artifacts, current governance, reproduction boundary, and next scientific gate.
 - `docs/INDEX.md` now distinguishes current normative files, current formal artifacts, scientific design evidence, and historical governance file families. Existing historical evidence remains at its original path to preserve SHA and link stability.
 - The reorganization changes no implementation/config/protocol/result bytes and therefore requires link/static/binding checks rather than an algorithm suite. Current scientific state remains `VERIFIED_PRE_GOLD_COMMITTED`; Gold evaluation and reservation remain locked.
+
+### Stage4B-U1-D Gold Evaluation And Branch Stop
+
+- The user explicitly authorized only the frozen Stage4B-U1-D development Gold evaluation on 2026-07-18. Gold authorization/config/verifier commit `1bfcf7b108dd4a8db17ba97a4d3b97a6f274f983` was pushed before metric execution; reservation and Stage3B were not authorized.
+- The evaluator used the already committed ranking/policy/`VERIFIED_PRE_GOLD` identities, the registered 4,500-query development Gold map, evaluator audit, Stage4A-R2 baseline references, 10,000 bootstrap iterations, and seed `20260712`. No Gold value entered controller construction, candidate generation, score, allocation, or ranking.
+- Primary evaluation exited 0 in 51.6 seconds. The preregistered deterministic rerun exited 0 in 56.9 seconds. Query-audit and summary pairs matched byte-for-byte: SHA-256 `8616C28C...F938313` and `7F82056F...7F89DE` respectively.
+- The independent Gold verifier did not import the evaluator. It rebuilt 4,500 query rows, overall/type summaries, Stage4A baseline equivalence, advancement gates, and output identities; all integrity checks passed. `VERIFIED_POST_GOLD` is 2,293 bytes / SHA-256 `44BF3E8B0B036958633E237186A458B13090D8073F587657D831656FB7720ECD`.
+- U1 reduced inserted units from 7,260 to 4,354 (`40.0275%`) and kept conditional false-insert-rate worsening to `+0.002582`, so those two gates passed. Gain retention was `47/94=0.5000`, harm retention was `53/69=0.7681`, retention gap was `-0.2681`, and the one-sided Fisher p-value was `0.999889`; both mechanism gates failed.
+- U1 CR@20 was `0.77089`, delta `-0.00133` versus Dense and `-0.00689` versus q25; both development CR gates failed. The retention-gap bootstrap interval was `[-0.4091,-0.1183]`, the U1-vs-Dense interval was `[-0.00578,0.00311]`, and the U1-vs-q25 interval was `[-0.01044,-0.00333]`.
+- `compositional` and `inference` were marked `SUBGROUP_CAUTION`; type rows remain descriptive and do not override the overall frozen decision.
+- A post-result protocol-completeness audit found that the scientific protocol asks for question-type intervals, while the frozen evaluator/verifier only emitted and checked type-level point estimates and caution flags. No post-Gold interval method was selected or retrofitted. This is a reporting-completeness `CAUTION`; it does not affect the four failed aggregate development gates or the branch-stop decision.
+- The 6 development gates passed 2 and failed 4. The exact frozen outcome is `STOP_U1_BRANCH_KEEP_RESERVATION_LOCKED`. This is a verified negative scientific result, not an execution failure, and it forbids post-result adjustment/re-execution on the same development batch.
+- The five verified result artifacts were first committed and pushed as `c06761f0c55cbeecf75564211a59f4540cfbae06`. `core.autocrlf=true` normalized the two 7,662-byte CRLF summaries to 7,467-byte LF tracked blobs, while the JSONL and verification blobs stayed exact. This formal byte mismatch was reported and paused before documentation commit.
+- Authorized correction commit `b500184bc581d73a381de65c32cf3b72e9758cc9` adds exactly two `.gitattributes -text` paths and re-adds only the existing frozen summary bytes. Local, index, commit, and directly fetched GitHub blobs are all 7,662 bytes / `7F82056FB14F9D8D73E668A82CB5304B28385E62A01C428599F23260AB7F89DE`; primary and rerun remain byte-identical. The other three Gold result objects, rankings, policy, and pre-Gold verification did not change.
+- Reservation metrics and Stage3B were not accessed. The result rejects only the frozen U1-D controller, not HyperGranular-RAG as a whole. Any future controller is a new scientific-semantic proposal requiring a new development protocol and explicit authorization; this result is not permission to open reservation.
