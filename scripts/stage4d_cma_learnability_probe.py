@@ -475,9 +475,13 @@ def run_synthetic_probe(
     environment = validate_runtime_environment()
     validate_feature_panels()
     joined = _joined_rows(candidate_rows, label_rows)
+    query_ids = [row["query_id"] for row in query_rows]
+    if len(query_ids) != len(set(query_ids)):
+        raise ValueError("query trace contains duplicate IDs")
     query_u1 = {row["query_id"]: row.get("original_u1_score") for row in query_rows}
-    if set(query_u1) != {row["query_id"] for row in joined}:
-        raise ValueError("query trace IDs differ from candidate rows")
+    candidate_query_ids = {row["query_id"] for row in joined}
+    if not candidate_query_ids.issubset(query_u1):
+        raise ValueError("candidate query IDs are missing from query trace")
     for row in joined:
         row["original_u1_score"] = query_u1[row["query_id"]]
     assignments = build_fold_assignments((row["query_id"] for row in joined))

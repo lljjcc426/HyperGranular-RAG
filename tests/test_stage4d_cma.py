@@ -459,6 +459,53 @@ class LearnabilityProbeTests(unittest.TestCase):
         for row in self.first["oof_predictions"]:
             self.assertEqual(row["fold"], assignments[row["query_id"]])
 
+    def test_zero_candidate_query_is_allowed_and_missing_candidate_query_is_rejected(
+        self,
+    ) -> None:
+        zero_candidate_query_id = "synthetic::zero-candidate"
+        with_zero_candidate = probe.run_synthetic_probe(
+            self.candidates,
+            self.labels,
+            [
+                *self.queries,
+                {
+                    "original_u1_score": 0.5,
+                    "query_id": zero_candidate_query_id,
+                },
+            ],
+            bootstrap_iterations=20,
+            minimum_clusters=1,
+            minimum_per_fold=1,
+        )
+        self.assertNotIn(
+            zero_candidate_query_id, with_zero_candidate["fold_assignments"]
+        )
+        self.assertFalse(
+            any(
+                row["query_id"] == zero_candidate_query_id
+                for row in with_zero_candidate["oof_predictions"]
+            )
+        )
+        self.assertEqual(
+            trace.render_json(self.first), trace.render_json(with_zero_candidate)
+        )
+
+        candidate_query_id = self.candidates[0]["query_id"]
+        missing_candidate_query = [
+            row for row in self.queries if row["query_id"] != candidate_query_id
+        ]
+        with self.assertRaisesRegex(
+            ValueError, "candidate query IDs are missing from query trace"
+        ):
+            probe.run_synthetic_probe(
+                self.candidates,
+                self.labels,
+                missing_candidate_query,
+                bootstrap_iterations=20,
+                minimum_clusters=1,
+                minimum_per_fold=1,
+            )
+
     def test_all_panels_same_oof_predictions_stratified_and_verified(self) -> None:
         for task in probe.TASKS:
             result = self.first["results"][task]
