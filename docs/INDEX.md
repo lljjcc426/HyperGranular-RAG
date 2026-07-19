@@ -16,6 +16,8 @@
 | [Stage4B-U1-D 统计验证报告](../reports/超粒球RAG_Stage4B_U1_D_Gold评估与统计验证报告.md) | Gold 结果、门判定、复现与 11 类谬误扫描 |
 | [Stage4C-U1-FMA protocol](STAGE4C_U1_FAILURE_MECHANISM_AUDIT_PROTOCOL.md) | post-Gold 探索性失败机制诊断的冻结合同 |
 | [Stage4C-U1-FMA 报告](../reports/超粒球RAG_Stage4C_U1失败机制诊断报告.md) | 特征、decile、all-on/off、OOF 与 11 类谬误扫描 |
+| [Stage4D-CMA protocol](STAGE4D_CANDIDATE_MARGINAL_UTILITY_AUDIT_PROTOCOL.md) | 已接受的 candidate marginal-utility Level A 合同；当前仅 implementation/synthetic 有效 |
+| [Stage4D 固定依赖](../requirements-stage4d.txt) | CPython 3.12.0 下的精确 NumPy/SciPy/scikit-learn 运行绑定 |
 
 ## 当前正式工件
 
@@ -42,6 +44,19 @@
 | [candidate mechanisms](../results/stage4c_u1_fma_candidate_mechanisms.csv) | query-level all-on/off composition；不含 candidate Gold identity |
 | [OOF predictions](../results/stage4c_u1_fma_oof_predictions.csv) | 3 tasks × 3 fixed panels |
 | [Stage4C summary](../results/stage4c_u1_fma_summary.json) | `MECHANISM_EVIDENCE_INCONCLUSIVE` |
+
+### Stage4D-CMA 实现（无正式结果）
+
+| 文件 | 状态 |
+|---|---|
+| [Channel A trace](../scripts/stage4d_cma_candidate_trace.py) | Gold-free 完整候选池 trace；official execution 未授权 |
+| [Channel A verifier](../scripts/stage4d_cma_candidate_trace_verifier.py) | strict schema + 独立候选/排名/特征重建 |
+| [Channel B labeler](../scripts/stage4d_cma_marginal_labeler.py) | standardized single + 双 LOO；official Gold access 未授权 |
+| [learnability probe](../scripts/stage4d_cma_learnability_probe.py) | 固定 5-fold L2 logistic、4 panels 与 query-cluster bootstrap |
+| [independent verifier](../scripts/stage4d_cma_independent_verifier.py) | label/counterfactual/OOF 独立重算 |
+| [synthetic tests](../tests/test_stage4d_cma.py) | 15/15 PASS；未使用 official/Gold/reservation 输入 |
+
+实现提交为 `b4dfa52d0a38409dfc19444d21beec59606088e1`。`results/` 中没有 Stage4D 正式工件。
 
 ## 科学设计与阶段证据
 
@@ -84,4 +99,4 @@
 
 ## 当前下一步
 
-当前状态为 Stage4C-U1-FMA 已完成、`MECHANISM_EVIDENCE_INCONCLUSIVE`，同时保留 `STOP_U1_BRANCH_KEEP_RESERVATION_LOCKED`。不自动启动 U2；任何 candidate/path-level controller 都必须先形成新的 Level A 协议并另行授权。Reservation 与 Stage3B 继续锁定。
+当前状态为 `STAGE4D_IMPLEMENTATION_READY`、`STAGE4D_SYNTHETIC_TESTS_PASSED`。首次 official Channel A 尚未授权；Channel B 必须等待 Channel A 的提交、远端字节核验和独立验证，当前同样未授权。保留 `STOP_U1_BRANCH_KEEP_RESERVATION_LOCKED` 与 `MECHANISM_EVIDENCE_INCONCLUSIVE`；Reservation、Stage3B 和 U2 继续锁定。

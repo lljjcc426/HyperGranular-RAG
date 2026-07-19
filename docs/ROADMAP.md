@@ -3,8 +3,8 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage4C-U1-FMA post-Gold exploratory diagnosis completed with `MECHANISM_EVIDENCE_INCONCLUSIVE`; Stage4B-U1-D remains a valid negative result; reservation and Stage3B remain locked
-- Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive development batch used through Stage4C-U1-FMA; reservation metrics not accessed
+- Current stage: Stage4D-CMA Level A accepted; implementation ready and synthetic tests passed; official Channel A/B not executed; reservation and Stage3B remain locked
+- Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive development batch used through Stage4C-U1-FMA; Stage4D implementation used synthetic fixtures only; reservation metrics not accessed
 - Generator used: No
 - Gold labels used for indexing: No
 
@@ -18,7 +18,7 @@ The full integrity and methodology audit is recorded in `docs/PRIOR_STAGE_METHOD
 - Stage2G: valid negative mechanism result; the current boundary rule is unsupported.
 - Stage2H: diagnostic only. Stage3A: failed development. Stage3C: descriptive planning only.
 - Restarted Stage4A `n=2,800`: exact event-count arithmetic is correct, but 20 gains is a planning heuristic. The number is not an approved effect-power or controller-training sample size.
-- Research position: `STAGE4C_U1_FMA_COMPLETED_MECHANISM_EVIDENCE_INCONCLUSIVE`; no U2 development or reservation access is authorized.
+- Research position: `STAGE4D_IMPLEMENTATION_READY` and `STAGE4D_SYNTHETIC_TESTS_PASSED`; official Channel A/B, U2 development, and reservation access are not authorized.
 
 ## Completed Execution History
 
@@ -1581,3 +1581,13 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Fixed Task-A OOF AUROCs are `0.60762` for ORIGINAL_U1_8, `0.54001` for RANK_STRUCTURE_6, and `0.61810` for COMBINED_14. None reaches the frozen stable-signal rule; the partial ORIGINAL/COMBINED signal also prevents classification as uniformly insufficient.
 - The final frozen decision is `MECHANISM_EVIDENCE_INCONCLUSIVE`. Evidence confidence is `CAUTION`: this is same-development post-Gold exploration with complete prespecification but no multiplicity correction and no candidate-level target identity. No U2 protocol draft or implementation was created.
 - Stage4B-U1-D remains a valid negative result. Reservation remains locked. No new controller efficacy has been established.
+
+### Stage4D-CMA Candidate Marginal-Utility Attribution Audit
+
+- Level A accepted the complete eligible candidate universe, explicit `ORIGINAL_INSERT_SET`/`BEYOND_ORIGINAL_BUDGET` reporting, standardized first-slot insertion utility, primary `LOO_NO_BACKFILL`, replacement-only `LOO_WITH_BACKFILL`, seven mutually exclusive labels, combined-only advancement panel, fixed L2 logistic v1 probe, and the minimum-feasibility-not-power interpretation.
+- The draft was promoted with `git mv` to `docs/STAGE4D_CANDIDATE_MARGINAL_UTILITY_AUDIT_PROTOCOL.md`. The exact implementation/synthetic commit is `b4dfa52d0a38409dfc19444d21beec59606088e1`.
+- Channel A code constructs a Gold-free full candidate trace, retains budget-external eligible candidates, checks all frozen Stage4B input identities, and has a separate strict verifier that independently rebuilds candidate availability, Dense/q25 rankings, source ball/edge fields, and deployable numeric features.
+- Channel B code uses Gold only for targets, implements standardized-single and both LOO counterfactuals, keeps ER-only labels outside Task C, strips question type, and reports events and deltas overall and by budget region.
+- The fixed probe uses exact GroupKFold query grouping, fold-local preprocessing, L2 logistic regression only, 4 predeclared panels, same-OOF budget stratification, 10,000-query-cluster bootstrap semantics, and a combined-only advancement decision function. Determinism is bound to CPython 3.12.0, NumPy 2.5.1, SciPy 1.18.0, scikit-learn 1.9.0, joblib 1.5.3, threadpoolctl 3.6.0, narwhals 2.24.0, float64 inputs, fixed order, and one-thread settings.
+- The final synthetic suite passed 15/15, including complete-pool reconstruction, strict schema/type/leakage rejection, all seven labels, dual-LOO separation, fixed fold reuse, Task-C ER-only exclusion, same-OOF stratum checks, combined-only advancement, exact environment binding, fail-closed official entry points, and byte-identical synthetic rerun.
+- No official 4,500-query Channel A run occurred. No official unit/embedding trace, Stage4D Gold access, Channel B run, formal Stage4D artifact, reservation/Stage3B access, or U2 implementation occurred. The mandatory pause is immediately before the first official Channel A execution.
