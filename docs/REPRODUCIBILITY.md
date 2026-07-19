@@ -50,7 +50,7 @@ threadpoolctl: 3.6.0
 narwhals: 2.24.0
 ```
 
-精确依赖见 `requirements-stage4d.txt`。运行 probe 前必须把 `PYTHONHASHSEED` 设为 `0`，并把 `OMP_NUM_THREADS`、`OPENBLAS_NUM_THREADS`、`MKL_NUM_THREADS`、`NUMEXPR_NUM_THREADS`、`VECLIB_MAXIMUM_THREADS`、`BLIS_NUM_THREADS` 全部设为 `1`。实现提交为 `b4dfa52d0a38409dfc19444d21beec59606088e1`。
+精确依赖见 `requirements-stage4d.txt`。运行 probe 前必须把 `PYTHONHASHSEED` 设为 `0`，并把 `OMP_NUM_THREADS`、`OPENBLAS_NUM_THREADS`、`MKL_NUM_THREADS`、`NUMEXPR_NUM_THREADS`、`VECLIB_MAXIMUM_THREADS`、`BLIS_NUM_THREADS` 全部设为 `1`。核心实现提交为 `b4dfa52d0a38409dfc19444d21beec59606088e1`，guarded artifact transaction 补全提交为 `730daea1350616bfdcb6a11832b361c4d574d985`。
 
 已完成的 synthetic-only 验证命令：
 
@@ -65,7 +65,7 @@ $env:BLIS_NUM_THREADS='1'
 & 'temp\stage4d_env\Scripts\python.exe' -B -m unittest discover -s tests -p 'test_stage4d_cma.py' -v
 ```
 
-结果：15/15 PASS，包含 byte-identical synthetic rerun。`temp/stage4d_env` 为 `.gitignore` 覆盖的本地隔离环境，不是科研工件，不提交 Git。
+结果：16/16 PASS，包含 byte-identical synthetic rerun。`temp/stage4d_env` 为 `.gitignore` 覆盖的本地隔离环境，不是科研工件，不提交 Git。
 
 ## Stage4C 冻结绑定与输出
 
@@ -201,7 +201,7 @@ STAGE4B_U1_GOLD_INDEPENDENT_VERIFICATION_PASS queries=4500 decision=STOP_U1_BRAN
 - 报告完整性限制：科学协议要求 question-type 区间，但冻结 evaluator/validator 未生成或核对类型级区间。Gold 后未临时选择新算法补算；该缺口不影响由总体预注册门触发的停止决定。
 - Stage4C targeted suite：16/16 PASS；最初的 dotted-module 调用因 `tests/` 不是 package 而加载 0 个用例，随后使用精确 discover 命令完成测试。
 - Stage4C 只读结果复核：4,500/48/10/4,500/27,489 CSV 行数、schema、有限值、唯一键、OOF 概率范围、五个内置 CSV SHA 和七输入 SHA 全部 PASS。
-- Stage4D-CMA synthetic suite：15/15 PASS；覆盖完整候选池/预算分层、独立 trace 重建、严格 schema/type/nullability/leakage、七标签、双 LOO、固定 query folds、Task-C 类边界、同一 OOF 分层指标、combined-only advancement、固定环境、fail-closed 和同字节复跑。
+- Stage4D-CMA synthetic suite：16/16 PASS；覆盖完整候选池/预算分层、独立 trace 重建、严格 schema/type/nullability/leakage、七标签、双 LOO、固定 query folds、Task-C 类边界、同一 OOF 分层指标、combined-only advancement、确定性 LF CSV、固定环境、official transaction fail-closed 和同字节复跑。
 
 ## 后续复现边界
 

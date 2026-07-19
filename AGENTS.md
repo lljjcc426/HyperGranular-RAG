@@ -56,7 +56,7 @@ SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
 - 这是当前冻结 U1-D controller 的有效负结果，不等于 HyperGranular-RAG 整体无效，不授权 reservation，也不允许在同一 development 上调整后重跑。
 - Stage4C 协议提交：`2e925063175a6402a21ade3fc0ab4a27faaa6dd7`；实现提交：`1bbe8a571d4e0c4aa965b4f0fa71b1de5901b2a7`。
 - Stage4C 仅形成 post-Gold 探索性 `CAUTION` 证据；raw U1 score 方向错误且 all-on/off 受限，但固定 OOF panels 未达到稳定门，不授权 U2 或任何新 efficacy 主张。
-- Stage4D-CMA Level A 协议与 implementation/synthetic 提交：`b4dfa52d0a38409dfc19444d21beec59606088e1`；固定环境为 CPython 3.12.0 / scikit-learn 1.9.0，定向 suite 为 15/15 PASS。
+- Stage4D-CMA Level A 协议与核心 implementation/synthetic 提交：`b4dfa52d0a38409dfc19444d21beec59606088e1`；guarded artifact transaction 补全提交：`730daea1350616bfdcb6a11832b361c4d574d985`；固定环境为 CPython 3.12.0 / scikit-learn 1.9.0，定向 suite 为 16/16 PASS。
 - Stage4D 尚未运行 official Channel A，未读取 Stage4D Channel B Gold，也没有生成任何正式 Stage4D 结果。首次 official Channel A、Channel B/Gold、reservation/Stage3B 或 U2 均需按协议暂停边界处理。
 
 ## 4. 科研不可变边界

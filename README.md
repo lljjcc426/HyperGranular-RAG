@@ -32,7 +32,7 @@ Stage4B-U1-D 回答的问题是：在不使用 Gold 参与检索决策的前提�
 
 Stage4C-U1-FMA 进一步审计其失败机制：raw U1 score 对 GAIN-vs-HARM 的 AUROC 为 `0.39269 [0.30558, 0.48150]`，92/94 个 gain query 为 mixed gain/noise，69/69 个 harm query 为 displacement harm；但固定 OOF panels 均未达到稳定信号门，最终决策为 `MECHANISM_EVIDENCE_INCONCLUSIVE`。
 
-Stage4D-CMA 将问题下沉到 candidate 级：冻结完整 eligible candidate universe，区分原插入集合与预算外候选，以 standardized first-slot insertion、`LOO_NO_BACKFILL` 和 `LOO_WITH_BACKFILL` 归因候选边际效用，并只用 Gold-free deployable features 进行固定 L2 logistic OOF probe。Level A 协议与实现已提交，15/15 synthetic tests 通过；尚未运行 official Channel A 或读取 Stage4D Channel B Gold。
+Stage4D-CMA 将问题下沉到 candidate 级：冻结完整 eligible candidate universe，区分原插入集合与预算外候选，以 standardized first-slot insertion、`LOO_NO_BACKFILL` 和 `LOO_WITH_BACKFILL` 归因候选边际效用，并只用 Gold-free deployable features 进行固定 L2 logistic OOF probe。Level A 协议与实现已提交，16/16 synthetic tests 通过；尚未运行 official Channel A 或读取 Stage4D Channel B Gold。
 
 ## 冻结方法
 

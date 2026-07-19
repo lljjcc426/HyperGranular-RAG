@@ -54,9 +54,9 @@
 | [Channel B labeler](../scripts/stage4d_cma_marginal_labeler.py) | standardized single + 双 LOO；official Gold access 未授权 |
 | [learnability probe](../scripts/stage4d_cma_learnability_probe.py) | 固定 5-fold L2 logistic、4 panels 与 query-cluster bootstrap |
 | [independent verifier](../scripts/stage4d_cma_independent_verifier.py) | label/counterfactual/OOF 独立重算 |
-| [synthetic tests](../tests/test_stage4d_cma.py) | 15/15 PASS；未使用 official/Gold/reservation 输入 |
+| [synthetic tests](../tests/test_stage4d_cma.py) | 16/16 PASS；未使用 official/Gold/reservation 输入 |
 
-实现提交为 `b4dfa52d0a38409dfc19444d21beec59606088e1`。`results/` 中没有 Stage4D 正式工件。
+核心实现提交为 `b4dfa52d0a38409dfc19444d21beec59606088e1`，guarded artifact transaction 补全提交为 `730daea1350616bfdcb6a11832b361c4d574d985`。`results/` 中没有 Stage4D 正式工件。
 
 ## 科学设计与阶段证据
 
