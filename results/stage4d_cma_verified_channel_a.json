@@ -1,0 +1,12 @@
+{
+  "beyond_original_budget_rows": 1207,
+  "candidate_rows": 8467,
+  "independent_reconstruction": {
+    "candidate_rows": 8467,
+    "queries": 4500,
+    "status": "CHANNEL_A_INDEPENDENT_RECONSTRUCTION_VERIFIED"
+  },
+  "original_insert_set_rows": 7260,
+  "queries": 4500,
+  "status": "CHANNEL_A_TRACE_VERIFIED"
+}

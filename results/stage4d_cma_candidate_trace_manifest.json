@@ -1,0 +1,42 @@
+{
+  "candidate_rows": 8467,
+  "candidate_schema_version": "stage4d_cma_v1",
+  "channel": "A_GOLD_FREE",
+  "not_available": {
+    "bridge_entity_overlap": {
+      "reason": "no frozen entity or bridge annotation",
+      "status": "NOT_AVAILABLE"
+    },
+    "cross_ball_support_count": {
+      "reason": "no frozen cross-ball support relation",
+      "status": "NOT_AVAILABLE"
+    },
+    "entity_new_coverage": {
+      "reason": "no frozen entity linker or entity vocabulary",
+      "status": "NOT_AVAILABLE"
+    },
+    "independent_facet_support_count": {
+      "reason": "facet terms are lexical, not independent facet nodes",
+      "status": "NOT_AVAILABLE"
+    },
+    "path_length": {
+      "reason": "no explicit multi-edge path object",
+      "status": "NOT_AVAILABLE"
+    },
+    "path_position": {
+      "reason": "no explicit multi-edge path object",
+      "status": "NOT_AVAILABLE"
+    },
+    "path_support_strength": {
+      "reason": "no explicit multi-edge path object",
+      "status": "NOT_AVAILABLE"
+    },
+    "support_source_entropy": {
+      "reason": "no multi-source support distribution",
+      "status": "NOT_AVAILABLE"
+    }
+  },
+  "queries": 4500,
+  "query_id_sha256": "57D011D7B78AC25347531B71575358C16C37855A084432DCCEDB7BCC61DEA6D5",
+  "status": "CANDIDATE_TRACE_BUILT_PENDING_VERIFICATION"
+}
