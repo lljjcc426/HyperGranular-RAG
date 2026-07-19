@@ -847,10 +847,12 @@ JSONL is UTF-8/LF, one sorted-key JSON object per line, with fixed separators. J
 
 Monitoring requirements for later execution:
 
-- process-alive plus timeout monitoring;
+- process-alive monitoring;
 - no final output before atomic promotion;
-- timeout fixed at 60 minutes per deterministic transaction;
-- no automatic kill except hard timeout;
+- official probe has no fixed wall-clock hard timeout;
+- elapsed wall time alone is not a failure condition;
+- a live process with continuing computation must not be terminated solely for exceeding an arbitrary duration;
+- pause only on process exit, crash, resource exhaustion, operating-system error, or clear evidence of prolonged complete computational inactivity;
 - no automatic rerun after a crash.
 
 The accepted synthetic-test command uses the isolated environment created from `requirements-stage4d.txt`:
