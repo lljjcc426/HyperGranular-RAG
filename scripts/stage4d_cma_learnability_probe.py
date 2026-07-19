@@ -2,11 +2,15 @@
 
 from __future__ import annotations
 
+import argparse
+import csv
 import importlib.metadata
+import io
 import math
 import os
 import platform
 from collections import defaultdict
+from pathlib import Path
 from typing import Any, Iterable
 
 
@@ -36,10 +40,21 @@ from sklearn.metrics import (
 )
 from sklearn.model_selection import GroupKFold
 
+from stage4d_cma_candidate_trace import (
+    _atomic_promote,
+    load_json,
+    load_jsonl,
+    render_json,
+)
+from stage4d_cma_candidate_trace_verifier import verify_channel_a_traces
+
 
 SEED = 20260719
 PROBE_AUTH_ENV = "STAGE4D_PROBE_EXECUTION_AUTHORIZED"
 PROBE_AUTH_VALUE = "AUTHORIZED_STAGE4D_PROBE"
+FOLDS_NAME = "stage4d_cma_fold_assignments.json"
+OOF_NAME = "stage4d_cma_oof_predictions.csv"
+METRICS_NAME = "stage4d_cma_metrics.json"
 
 EXPECTED_VERSIONS = {
     "joblib": "1.5.3",
@@ -100,6 +115,16 @@ TASKS = {
     "TASK_A_GAIN_VS_ALL": ("MARGINAL_GAIN", None),
     "TASK_B_HARM_VS_ALL": ("DISPLACEMENT_HARM", None),
     "TASK_C_GAIN_VS_HARM": ("MARGINAL_GAIN", "DISPLACEMENT_HARM"),
+}
+
+PRIMARY_LABELS = {
+    "MARGINAL_GAIN",
+    "DISPLACEMENT_HARM",
+    "EVIDENCE_GAIN_ONLY",
+    "EVIDENCE_HARM_ONLY",
+    "INTERACTION_DEPENDENT",
+    "REDUNDANT_GOLD",
+    "NEUTRAL_NOISE",
 }
 
 FORBIDDEN_FEATURES = {
@@ -191,6 +216,8 @@ def _joined_rows(
         key = (row.get("query_id"), row.get("candidate_unit_id"))
         if not all(isinstance(value, str) and value for value in key) or key in labels:
             raise ValueError("invalid or duplicate label identity")
+        if row.get("marginal_label") not in PRIMARY_LABELS:
+            raise ValueError(f"unknown marginal label: {row.get('marginal_label')}")
         labels[key] = row
     result: list[dict[str, Any]] = []
     for candidate in candidate_rows:
@@ -687,3 +714,126 @@ def assign_scientific_decision(
         "decision": "CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE",
         "reason": "valid_result_missed_proceed_and_stop_rules",
     }
+
+
+def render_oof_csv(rows: list[dict[str, Any]]) -> bytes:
+    columns = (
+        "task",
+        "panel",
+        "query_id",
+        "candidate_unit_id",
+        "candidate_budget_region",
+        "fold",
+        "label",
+        "probability",
+    )
+    buffer = io.StringIO(newline="")
+    writer = csv.DictWriter(buffer, fieldnames=columns, lineterminator="\n")
+    writer.writeheader()
+    for row in rows:
+        writer.writerow(
+            {
+                **{column: row[column] for column in columns if column != "probability"},
+                "probability": format(row["probability"], ".17g"),
+            }
+        )
+    return buffer.getvalue().encode("utf-8")
+
+
+def run_official_probe_transaction(
+    query_trace_path: Path,
+    candidate_trace_path: Path,
+    channel_a_manifest_path: Path,
+    channel_a_verification_path: Path,
+    label_path: Path,
+    counterfactual_summary_path: Path,
+    output_dir: Path,
+) -> dict[str, Any]:
+    """Future official probe transaction; authorization precedes every read."""
+
+    require_official_probe_authorization()
+    query_rows = load_jsonl(query_trace_path)
+    candidate_rows = load_jsonl(candidate_trace_path)
+    manifest = load_json(channel_a_manifest_path)
+    verify_channel_a_traces(query_rows, candidate_rows, manifest)
+    channel_a_verification = load_json(channel_a_verification_path)
+    if (
+        channel_a_verification.get("status") != "CHANNEL_A_TRACE_VERIFIED"
+        or channel_a_verification.get("independent_reconstruction", {}).get("status")
+        != "CHANNEL_A_INDEPENDENT_RECONSTRUCTION_VERIFIED"
+    ):
+        raise ValueError("committed Channel A verification status differs")
+    label_rows = load_jsonl(label_path)
+    summary = load_json(counterfactual_summary_path)
+    if summary.get("status") != "CHANNEL_B_LABELS_BUILT_PENDING_VERIFICATION":
+        raise ValueError("Channel B counterfactual summary status differs")
+
+    first = run_synthetic_probe(candidate_rows, label_rows, query_rows)
+    second = run_synthetic_probe(candidate_rows, label_rows, query_rows)
+    first["status"] = "OFFICIAL_STAGE4D_PROBE_COMPLETE_PENDING_FINAL_VERIFICATION"
+    second["status"] = "OFFICIAL_STAGE4D_PROBE_COMPLETE_PENDING_FINAL_VERIFICATION"
+    first_metrics = {
+        key: value
+        for key, value in first.items()
+        if key not in {"fold_assignments", "oof_predictions"}
+    }
+    second_metrics = {
+        key: value
+        for key, value in second.items()
+        if key not in {"fold_assignments", "oof_predictions"}
+    }
+    first_artifacts = {
+        FOLDS_NAME: render_json(first["fold_assignments"]),
+        OOF_NAME: render_oof_csv(first["oof_predictions"]),
+        METRICS_NAME: render_json(first_metrics),
+    }
+    second_artifacts = {
+        FOLDS_NAME: render_json(second["fold_assignments"]),
+        OOF_NAME: render_oof_csv(second["oof_predictions"]),
+        METRICS_NAME: render_json(second_metrics),
+    }
+    if first_artifacts != second_artifacts:
+        raise ValueError("official probe deterministic rerun bytes differ")
+
+    from stage4d_cma_independent_verifier import verify_probe_outputs
+
+    verification = verify_probe_outputs(candidate_rows, label_rows, first)
+    if verification.get("status") != "STAGE4D_PROBE_VERIFIED":
+        raise ValueError("independent probe verification failed")
+    _atomic_promote(output_dir, first_artifacts)
+    return {
+        "candidate_rows": summary["candidate_rows"],
+        "metrics_status": first_metrics["status"],
+        "verification": verification,
+    }
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--query-trace", type=Path, required=True)
+    parser.add_argument("--candidate-trace", type=Path, required=True)
+    parser.add_argument("--channel-a-manifest", type=Path, required=True)
+    parser.add_argument("--channel-a-verification", type=Path, required=True)
+    parser.add_argument("--labels", type=Path, required=True)
+    parser.add_argument("--counterfactual-summary", type=Path, required=True)
+    parser.add_argument("--output-dir", type=Path, required=True)
+    return parser.parse_args()
+
+
+def main() -> int:
+    args = parse_args()
+    result = run_official_probe_transaction(
+        args.query_trace,
+        args.candidate_trace,
+        args.channel_a_manifest,
+        args.channel_a_verification,
+        args.labels,
+        args.counterfactual_summary,
+        args.output_dir,
+    )
+    print(result["metrics_status"])
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

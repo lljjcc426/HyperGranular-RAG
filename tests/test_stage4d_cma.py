@@ -41,6 +41,7 @@ from stage4d_cma_marginal_labeler import (
     frozen_gold_targets,
     label_candidates,
     run_official_channel_b,
+    run_official_channel_b_transaction,
 )
 
 
@@ -151,9 +152,23 @@ class ProtocolAndEnvironmentTests(unittest.TestCase):
                 run_official_channel_b(
                     missing, missing, missing, missing, missing, missing
                 )
+            with self.assertRaisesRegex(PermissionError, "no input was opened"):
+                run_official_channel_b_transaction(
+                    missing, missing, missing, missing, missing, missing, ROOT / "results"
+                )
         with mock.patch.dict(os.environ, {probe.PROBE_AUTH_ENV: ""}, clear=False):
             with self.assertRaisesRegex(PermissionError, "no input was opened"):
                 probe.require_official_probe_authorization()
+            with self.assertRaisesRegex(PermissionError, "no input was opened"):
+                probe.run_official_probe_transaction(
+                    missing,
+                    missing,
+                    missing,
+                    missing,
+                    missing,
+                    missing,
+                    ROOT / "results",
+                )
 
 
 class ChannelATraceTests(unittest.TestCase):
@@ -471,6 +486,13 @@ class LearnabilityProbeTests(unittest.TestCase):
             "threshold_interpretation"
         ]
         self.assertEqual(text, "minimum feasibility threshold, not a power guarantee")
+
+    def test_oof_csv_render_is_deterministic_lf(self) -> None:
+        rows = self.first["oof_predictions"][:3]
+        first = probe.render_oof_csv(rows)
+        self.assertEqual(first, probe.render_oof_csv(rows))
+        self.assertNotIn(b"\r\n", first)
+        self.assertTrue(first.startswith(b"task,panel,query_id,"))
 
     def test_probe_tamper_is_rejected(self) -> None:
         tampered = copy.deepcopy(self.first)

@@ -17,7 +17,13 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Iterable
 
-from stage4d_cma_candidate_trace import load_json, load_jsonl
+from stage4d_cma_candidate_trace import (
+    _atomic_promote,
+    load_json,
+    load_jsonl,
+    render_json,
+    render_jsonl,
+)
 from stage4d_cma_candidate_trace_verifier import verify_channel_a_traces
 
 
@@ -25,6 +31,8 @@ CHANNEL_B_AUTH_ENV = "STAGE4D_CHANNEL_B_EXECUTION_AUTHORIZED"
 CHANNEL_B_AUTH_VALUE = "AUTHORIZED_STAGE4D_CHANNEL_B"
 GOLD_MAP_SHA256 = "76D15A88C218C9EDF36A9F9F52B0D2D9877463E5653EC8AB1E5C94542E99B30B"
 EVALUATOR_AUDIT_SHA256 = "220FD7310AA187840A5E9D95174EBAF5BD4BDF6097BC58BACD28413D85377C17"
+LABELS_NAME = "stage4d_cma_candidate_labels.jsonl"
+SUMMARY_NAME = "stage4d_cma_counterfactual_summary.json"
 
 PRIMARY_LABELS = (
     "MARGINAL_GAIN",
@@ -469,6 +477,47 @@ def run_official_channel_b(
     return label_candidates(query_rows, candidate_rows, targets)
 
 
+def run_official_channel_b_transaction(
+    query_trace_path: Path,
+    candidate_trace_path: Path,
+    channel_a_manifest_path: Path,
+    channel_a_verification_path: Path,
+    gold_map_path: Path,
+    evaluator_audit_path: Path,
+    output_dir: Path,
+) -> dict[str, Any]:
+    """Future guarded deterministic Channel B transaction."""
+
+    first = run_official_channel_b(
+        query_trace_path,
+        candidate_trace_path,
+        channel_a_manifest_path,
+        channel_a_verification_path,
+        gold_map_path,
+        evaluator_audit_path,
+    )
+    second = run_official_channel_b(
+        query_trace_path,
+        candidate_trace_path,
+        channel_a_manifest_path,
+        channel_a_verification_path,
+        gold_map_path,
+        evaluator_audit_path,
+    )
+    first_artifacts = {
+        LABELS_NAME: render_jsonl(first[0]),
+        SUMMARY_NAME: render_json(first[1]),
+    }
+    second_artifacts = {
+        LABELS_NAME: render_jsonl(second[0]),
+        SUMMARY_NAME: render_json(second[1]),
+    }
+    if first_artifacts != second_artifacts:
+        raise ValueError("Channel B deterministic rerun bytes differ")
+    _atomic_promote(output_dir, first_artifacts)
+    return first[1]
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--query-trace", type=Path, required=True)
@@ -477,20 +526,22 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--channel-a-verification", type=Path, required=True)
     parser.add_argument("--gold-map", type=Path, required=True)
     parser.add_argument("--evaluator-audit", type=Path, required=True)
+    parser.add_argument("--output-dir", type=Path, required=True)
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
-    rows, summary = run_official_channel_b(
+    summary = run_official_channel_b_transaction(
         args.query_trace,
         args.candidate_trace,
         args.channel_a_manifest,
         args.channel_a_verification,
         args.gold_map,
         args.evaluator_audit,
+        args.output_dir,
     )
-    print(json.dumps({"candidate_rows": len(rows), "summary": summary}, sort_keys=True))
+    print(json.dumps(summary, sort_keys=True))
     return 0
 
 

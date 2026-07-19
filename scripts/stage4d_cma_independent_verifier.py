@@ -209,7 +209,10 @@ def verify_probe_outputs(
     label_rows: list[dict[str, Any]],
     probe: dict[str, Any],
 ) -> dict[str, Any]:
-    if probe.get("status") != "SYNTHETIC_STAGE4D_PROBE_COMPLETE":
+    if probe.get("status") not in {
+        "SYNTHETIC_STAGE4D_PROBE_COMPLETE",
+        "OFFICIAL_STAGE4D_PROBE_COMPLETE_PENDING_FINAL_VERIFICATION",
+    }:
         raise ValueError("probe status differs")
     identities = {
         (row["query_id"], row["candidate_unit_id"]): row for row in label_rows
