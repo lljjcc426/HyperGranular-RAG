@@ -1,28 +1,31 @@
-# Stage4D-CMA Candidate Marginal-Utility Attribution Audit Protocol — DRAFT
+# Stage4D-CMA Candidate Marginal-Utility Attribution Audit Protocol
 
-> Status: Level A scientific-semantics draft only. This document does not authorize implementation, Channel A generation, Gold access, candidate statistics, learnability probes, U2 design, or any experiment run.
+> Status: Level A accepted; implementation is ready and the synthetic suite passed. Official Channel A, Channel B, Gold access, official candidate statistics, official learnability analysis, reservation, and U2 remain unauthorized.
 
 ## 1. Material Passport
 
 - Origin Skill: academic-research-suite / experiment-agent
 - Origin Mode: plan
 - Origin Date: 2026-07-19
-- Verification Status: `DRAFT_AWAITING_LEVEL_A_SCIENTIFIC_REVIEW`
-- Version Label: `stage4d_cma_protocol_draft_v1`
+- Verification Status: `STAGE4D_SYNTHETIC_TESTS_PASSED`
+- Version Label: `stage4d_cma_protocol_v1`
 - Study: `Stage4D-CMA — Candidate Marginal-Utility Attribution Audit`
 - Study role: candidate-level attribution, deployment-feature feasibility, and low-capacity learnability probe
 - Evidence class: `post-Gold exploratory feasibility evidence`
 - Data role: previously opened 2WikiMultiHopQA development, 4,500 queries
 - Research unit: `(query, candidate)`; `(query, hyperedge_path, candidate)` is allowed only when an explicit path exists
-- Current authorization: protocol drafting and Git synchronization only
+- Current authorization: protocol correction, implementation, fixed dependency environment, synthetic fixtures/tests, and Git synchronization
 - Reservation / Stage3B / external test access: prohibited
 - New controller efficacy claim: prohibited
 
 Current gate:
 
 ```text
-STAGE4D_LEVEL_A_PROTOCOL_DRAFTED
-STAGE4D_EXECUTION_NOT_AUTHORIZED
+STAGE4D_LEVEL_A_PROTOCOL_ACCEPTED
+STAGE4D_IMPLEMENTATION_READY
+STAGE4D_SYNTHETIC_TESTS_PASSED
+CHANNEL_A_EXECUTION_NOT_AUTHORIZED
+CHANNEL_B_EXECUTION_NOT_AUTHORIZED
 RESERVATION_REMAINS_LOCKED
 U2_NOT_AUTHORIZED
 ```
@@ -175,7 +178,8 @@ B_q = min(4, K_q - P_q)
 7. Candidate rank is one-based and contiguous in `E_q`.
 8. `candidate_proposed_insert_position = P_q + rank` only when `rank <= B_q`; otherwise it is null.
 9. The original all-query q25 inserted set is the first `min(B_q, |E_q|)` members of `E_q`.
-10. The reconstructed Dense Top-K, q25 Top-K, and inserted IDs must match the frozen ranking artifact exactly for all 4,500 queries.
+10. Candidates in that fixed prefix have `candidate_budget_region=ORIGINAL_INSERT_SET`; all remaining members have `candidate_budget_region=BEYOND_ORIGINAL_BUDGET`.
+11. The reconstructed Dense Top-K, q25 Top-K, and inserted IDs must match the frozen ranking artifact exactly for all 4,500 queries.
 
 Duplicate `(query_id, candidate_unit_id)` rows, a protected-prefix candidate, non-contiguous candidate ranks, or any ranking mismatch are terminal integrity failures.
 
@@ -195,6 +199,7 @@ source_ball_id
 source_edge_id
 candidate_rank_in_eligible_slice
 candidate_proposed_insert_position
+candidate_budget_region
 is_in_original_q25_insert_set
 planned_insert_budget
 effective_k
@@ -248,6 +253,7 @@ Operational definitions:
 - `q25_score` is the frozen candidate rerank score. Under the frozen `w_facet_unit_bonus=0.0`, the verifier must assert exact semantic equality with `dense_score`; both are retained for traceability but only one may enter a model panel.
 - `q25_floor_margin = dense_score - 0.1957079917192459`.
 - `candidate_source_type` is the exact constant `Q25_EXPANDED_BALL`; it is audit metadata and not a model feature.
+- `candidate_budget_region` is the exact string `ORIGINAL_INSERT_SET` when eligible rank is at most `min(B_q, |E_q|)`, and `BEYOND_ORIGINAL_BUDGET` otherwise. It is a pre-Gold audit stratum, not a model feature.
 - `seed_candidate_similarity` is the maximum cosine similarity between the candidate embedding and the frozen seed-ball centers.
 - `supporting_seed_count` counts seed-ball centers whose candidate similarity is at least the frozen `min_seed_similarity=0.05`.
 - Current terminal granular balls partition candidates, so `supporting_ball_count` and `supporting_hyperedge_count` must each equal one for every eligible row. They are audit fields, not model features.
@@ -290,7 +296,7 @@ generate pending query/candidate traces
 → only then make Channel B eligible to run
 ```
 
-A later execution authorization may cover this transaction, but this draft does not.
+A later explicit Channel A authorization may cover this transaction. Level A acceptance currently authorizes only implementation and synthetic tests.
 
 ## 7. Channel B Gold-Only Marginal Labeler
 
@@ -330,7 +336,7 @@ CR@20(R) = 1 if G_q ⊆ set(R[:20]), else 0
 
 For effective `K_q < 20`, `R` contains exactly `K_q` unique units and the same definitions operate on the whole effective ranking.
 
-### 8.2 Single-candidate insertion — primary attribution
+### 8.2 Standardized first-slot single-candidate insertion
 
 For every candidate `c in E_q`:
 
@@ -340,23 +346,34 @@ For every candidate `c in E_q`:
 4. append Dense units in their original order, skipping duplicates;
 5. truncate to `K_q`;
 6. record the uniquely displaced Dense unit, if any;
-7. compute `delta_single_cr = CR(single_c) - CR(Dense)`;
-8. compute `delta_single_er = ER(single_c) - ER(Dense)`.
+7. compute `delta_standardized_single_cr = CR(single_c) - CR(Dense)`;
+8. compute `delta_standardized_single_er = ER(single_c) - ER(Dense)`.
 
-Every candidate is tested at the same first available insertion position. The candidate's original q25 eligible rank is retained as a feature; it does not change the single-insertion position.
+Every candidate is tested at the same first available insertion position. The candidate's original q25 eligible rank is retained as a feature; it does not change the standardized position. This estimand is named `standardized first-slot insertion utility`. It is not the candidate's historical contribution at its original q25 position and must never be described that way.
 
 ### 8.3 Leave-one-candidate-out — fixed set-context attribution
 
-Only candidates in the original q25 inserted set receive LOO values:
+Only candidates in the original q25 inserted set receive LOO values. Both definitions are mandatory.
+
+`LOO_NO_BACKFILL`, the primary set-context attribution:
+
+1. remove `c` from the fixed original inserted set;
+2. retain every other originally inserted candidate in original order;
+3. do not admit a replacement candidate;
+4. rebuild the effective Top-K from the protected prefix, the reduced insert set, and Dense remainder;
+5. compute `delta_loo_no_backfill_cr = CR(q25_full) - CR(q25_without_c_no_backfill)`;
+6. compute `delta_loo_no_backfill_er = ER(q25_full) - ER(q25_without_c_no_backfill)`.
+
+`LOO_WITH_BACKFILL`, replacement-relative attribution:
 
 1. remove `c` from the full ordered eligible list `E_q`;
-2. rerun the frozen protected rerank with the original `B_q`;
+2. rerun the frozen protected rerank with original `B_q`;
 3. allow the next eligible candidate to backfill the vacated budget position;
 4. rebuild the effective Top-K;
-5. compute `delta_loo_cr = CR(q25_full) - CR(q25_without_c_with_backfill)`;
-6. compute `delta_loo_er = ER(q25_full) - ER(q25_without_c_with_backfill)`.
+5. compute `delta_loo_with_backfill_cr = CR(q25_full) - CR(q25_without_c_with_backfill)`;
+6. compute `delta_loo_with_backfill_er = ER(q25_full) - ER(q25_without_c_with_backfill)`.
 
-Candidates outside the original insert set have null LOO fields. No no-backfill alternative is computed. The with-backfill definition is frozen to measure the candidate relative to the next available choice.
+Candidates outside the original insert set have null values for both LOO definitions. With-backfill values measure substitutability relative to the next eligible candidate; they can create replacement-related subtypes but may not determine the primary label.
 
 ### 8.4 Displacement attribution
 
@@ -364,7 +381,7 @@ For each candidate, Channel B records target-only facts:
 
 - whether the candidate is in the Gold unit set;
 - whether the single displaced unit is in the Gold unit set;
-- single-insertion and LOO CR/ER values and deltas;
+- standardized first-slot insertion and both LOO CR/ER values and deltas;
 - whether the candidate provides previously unretrieved Gold evidence;
 - whether displacement removes previously retrieved Gold evidence.
 
@@ -377,21 +394,23 @@ These fields are diagnostic targets and may never enter Channel A or any feature
 - A candidate already in the protected prefix is invalid and rejected.
 - A candidate already in the unprotected Dense tail may move earlier without displacing a unique unit; this yields `has_displaced_unit=0`.
 - Duplicates, empty IDs, missing candidates, non-finite numbers, or a candidate not belonging to the query pool are terminal failures.
-- Multi-candidate effects are represented only by the fixed with-backfill LOO calculation. No pair search or higher-order interaction search is authorized.
+- Multi-candidate effects are represented only by the fixed no-backfill and with-backfill LOO calculations. No pair search or higher-order interaction search is authorized.
 
 ## 9. Candidate Label Definitions
 
 Each candidate receives exactly one mutually exclusive primary label using this priority:
 
-1. `MARGINAL_GAIN` when `delta_single_cr > 0`, or when `delta_single_cr = 0` and `delta_single_er > 0`.
-2. `DISPLACEMENT_HARM` when `delta_single_cr < 0`, or when `delta_single_cr = 0` and `delta_single_er < 0`.
-3. `INTERACTION_DEPENDENT` when both single deltas are zero, the candidate is in the original q25 insert set, and either LOO delta is non-zero.
-4. `REDUNDANT_GOLD` when all applicable single and LOO deltas are zero and the candidate belongs to the Gold unit set.
-5. `NEUTRAL_NOISE` when all applicable deltas are zero and the candidate does not belong to the Gold unit set.
+1. `MARGINAL_GAIN` when `delta_standardized_single_cr > 0`.
+2. `DISPLACEMENT_HARM` when `delta_standardized_single_cr < 0`.
+3. `EVIDENCE_GAIN_ONLY` when standardized CR delta is zero and `delta_standardized_single_er > 0`.
+4. `EVIDENCE_HARM_ONLY` when standardized CR delta is zero and `delta_standardized_single_er < 0`.
+5. `INTERACTION_DEPENDENT` when both standardized single deltas are zero, the candidate is in the original q25 insert set, and either `LOO_NO_BACKFILL` delta is non-zero.
+6. `REDUNDANT_GOLD` when all applicable standardized/no-backfill deltas are zero and the candidate belongs to the Gold unit set.
+7. `NEUTRAL_NOISE` when all applicable standardized/no-backfill deltas are zero and the candidate does not belong to the Gold unit set.
 
-A secondary subtype records `CHAIN_GAIN`, `EVIDENCE_GAIN_ONLY`, `CHAIN_HARM`, `EVIDENCE_HARM_ONLY`, `SET_CONTEXT_GAIN`, `SET_CONTEXT_HARM`, `REDUNDANT`, or `NO_EFFECT` without changing the primary label.
+With-backfill values create exactly one replacement subtype: `REPLACEMENT_BETTER_THAN_NEXT`, `REPLACEMENT_WORSE_THAN_NEXT`, `REPLACEMENT_EQUIVALENT_TO_NEXT`, or `NOT_APPLICABLE`, using lexicographic CR then ER direction. This subtype never changes the primary label.
 
-This draft deliberately treats ER-only improvement as marginal gain and ER-only loss as displacement harm. It does not use `candidate_is_gold` as the primary utility definition.
+ER-only effects remain separate from CR gain/harm. `candidate_is_gold` is not the primary utility definition.
 
 Post-result category merging, splitting, direction flipping, or relabeling is prohibited.
 
@@ -467,10 +486,12 @@ The probe feature matrix must reject:
 candidate_is_gold
 supporting_fact_identity
 marginal_label
-delta_single_cr
-delta_single_er
-delta_loo_cr
-delta_loo_er
+delta_standardized_single_cr
+delta_standardized_single_er
+delta_loo_no_backfill_cr
+delta_loo_no_backfill_er
+delta_loo_with_backfill_cr
+delta_loo_with_backfill_er
 dense_cr20
 q25_cr20
 final_cr20
@@ -526,15 +547,17 @@ Before any model fit, Channel B must report:
 
 - all 4,500 query-trace rows;
 - total candidate rows and per-query candidate count distribution;
-- counts of all five primary labels;
+- counts of all seven primary labels;
 - distinct query counts containing each label;
 - original-insert-set versus beyond-budget counts by label;
-- single-insertion and LOO CR/ER delta distributions;
+- standardized first-slot insertion and both LOO CR/ER delta distributions;
 - queries with mixed candidate labels;
 - queries whose q25 effect is visible only through `INTERACTION_DEPENDENT` labels;
 - reconciliation of reconstructed all-query q25 outcomes to exactly 94 gain and 69 harm queries.
 
 Candidate rows are descriptive counts only. Independent event counts are query clusters.
+
+All event counts must also be reported separately for `ORIGINAL_INSERT_SET` and `BEYOND_ORIGINAL_BUDGET`.
 
 A binary probe task is eligible only if:
 
@@ -544,6 +567,8 @@ A binary probe task is eligible only if:
 4. all required labels and features pass independent verification.
 
 If Task C is ineligible, `PROCEED` is impossible. No oversampling, synthetic events, row-level resampling, class merging, or fold reassignment is allowed.
+
+The 30-query-cluster and per-fold 5/5 rules are a `minimum feasibility threshold, not a power guarantee`. They are not a demonstrated sufficient sample size, a formal power analysis, or confirmatory assurance.
 
 ## 13. Grouped OOF Probe
 
@@ -555,7 +580,7 @@ Task B: DISPLACEMENT_HARM vs all other primary labels
 Task C: MARGINAL_GAIN vs DISPLACEMENT_HARM
 ```
 
-Task C is primary. No candidate-ranking task, pairwise candidate search, learning-to-rank objective, or supplementary model may be added after execution.
+Task C is primary and includes only `MARGINAL_GAIN` and `DISPLACEMENT_HARM`. `EVIDENCE_GAIN_ONLY` and `EVIDENCE_HARM_ONLY` are excluded rather than merged into either class. No candidate-ranking task, pairwise candidate search, learning-to-rank objective, or supplementary model may be added after execution.
 
 ### 13.2 Fixed folds
 
@@ -586,7 +611,7 @@ No preprocessing statistic, feature selection, class prevalence estimate, or cal
 
 ### 13.4 Fixed model
 
-The only learned probe in this draft is L2-regularized logistic regression:
+The only learned probe in v1 is L2-regularized logistic regression:
 
 ```text
 penalty = L2
@@ -596,13 +621,44 @@ max_iter = 1000
 tol = 1e-8
 fit_intercept = true
 class_weight = none
-random_state = 20260719
 probability threshold = 0.5
 ```
 
 No hyperparameter search, class reweighting, threshold optimization, shallow tree, gradient boosting, neural network, automatic feature generation, or model selection is authorized in v1. All four panels are reported; the primary decision uses `COMBINED_DEPLOYABLE_28` only.
 
-### 13.5 Fixed baselines
+`lbfgs` does not use a random seed as a determinism guarantee. Determinism instead requires exact package versions, fixed float64 model inputs, fixed row/fold order, fixed fold-local preprocessing, one-thread BLAS/OpenMP settings, and byte-identical synthetic reruns.
+
+### 13.5 Fixed implementation environment
+
+The accepted, installation-tested environment is:
+
+```text
+CPython == 3.12.0
+numpy == 2.5.1
+scipy == 1.18.0
+scikit-learn == 1.9.0
+joblib == 1.5.3
+threadpoolctl == 3.6.0
+narwhals == 2.24.0
+```
+
+The repository binding is `requirements-stage4d.txt`. `narwhals` is included because scikit-learn 1.9.0 declares it as a runtime dependency. The environment was resolved in an isolated synthetic-only environment; no official Stage4D input was opened.
+
+Before importing NumPy/SciPy/scikit-learn, every Stage4D process must set:
+
+```text
+PYTHONHASHSEED=0
+OMP_NUM_THREADS=1
+OPENBLAS_NUM_THREADS=1
+MKL_NUM_THREADS=1
+NUMEXPR_NUM_THREADS=1
+VECLIB_MAXIMUM_THREADS=1
+BLIS_NUM_THREADS=1
+```
+
+The implementation must validate all seven package versions and these thread settings before model fitting. A mismatch is a pre-execution failure, not permission to continue with another environment.
+
+### 13.6 Fixed baselines
 
 For every eligible task, report without direction flipping:
 
@@ -627,6 +683,10 @@ For every eligible task and fixed feature panel, report:
 - every fold's AUROC, AP, Brier, confusion matrix, positive candidate rows, negative candidate rows, positive query clusters, and negative query clusters;
 - candidate-score/rank and original-U1 baselines;
 - paired differences from the original U1 score for Task C.
+
+Using the exact same frozen OOF probabilities, every task/panel metric must also be recomputed descriptively within `ORIGINAL_INSERT_SET` and `BEYOND_ORIGINAL_BUDGET`; no stratum-specific refit, fold change, threshold change, or model selection is permitted. The report must show stratum event/query counts even when a metric is undefined.
+
+Set `BEYOND_BUDGET_DRIVEN_SIGNAL=true` when the combined Task-C advancement panel passes the overall AUROC point gate while the original-insert-set AUROC is at most 0.55 or its interval contains 0.50. This flag does not silently alter the frozen decision rule, but it must appear beside any `PROCEED` interpretation so that a signal driven by low-ranked budget-external candidates is explicit.
 
 Calibration intercept/slope use an unpenalized logistic recalibration of the binary outcome on `logit(clip(p, 1e-6, 1-1e-6))`. A degenerate fit is null with an explicit reason; it may not be replaced by another method.
 
@@ -715,7 +775,7 @@ Any violation blocks output promotion and leaves all final paths absent.
 
 ## 17. Planned Artifacts
 
-No artifact in this section is authorized or created by this draft.
+The implementation paths and synthetic tests in this section are authorized. Official Channel A/B/probe outputs remain planned-only and must not be created in the implementation transaction.
 
 Future implementation paths:
 
@@ -726,6 +786,7 @@ scripts/stage4d_cma_marginal_labeler.py
 scripts/stage4d_cma_learnability_probe.py
 scripts/stage4d_cma_independent_verifier.py
 tests/test_stage4d_cma.py
+requirements-stage4d.txt
 ```
 
 Future Channel A outputs:
@@ -788,11 +849,24 @@ Monitoring requirements for later execution:
 
 - process-alive plus timeout monitoring;
 - no final output before atomic promotion;
-- timeout proposed at 60 minutes per deterministic transaction, subject to Level A review;
+- timeout fixed at 60 minutes per deterministic transaction;
 - no automatic kill except hard timeout;
 - no automatic rerun after a crash.
 
-The exact command and dependency versions are `NOT_DEFINED_UNTIL_LEVEL_A_APPROVAL`. This draft does not authorize environment changes.
+The accepted synthetic-test command uses the isolated environment created from `requirements-stage4d.txt`:
+
+```powershell
+$env:PYTHONHASHSEED='0'
+$env:OMP_NUM_THREADS='1'
+$env:OPENBLAS_NUM_THREADS='1'
+$env:MKL_NUM_THREADS='1'
+$env:NUMEXPR_NUM_THREADS='1'
+$env:VECLIB_MAXIMUM_THREADS='1'
+$env:BLIS_NUM_THREADS='1'
+& 'temp\stage4d_env\Scripts\python.exe' -B -m unittest discover -s tests -p 'test_stage4d_cma.py' -v
+```
+
+This command may exercise synthetic fixtures only. Any official Channel A/B entry point must fail closed without a future explicit authorization token.
 
 ## 19. Permitted Conclusions
 
@@ -845,26 +919,18 @@ Pause immediately and report without continuing if:
 10. a U2 protocol, controller, new ranking, new Gold evaluation, or reservation access is proposed.
 11. a scientific definition needs post-result modification.
 
-This draft itself triggers the first mandatory pause after commit and push. No implementation or experiment may begin until the user provides one explicit Level A scientific-direction approval.
+The Level A review accepted the complete candidate universe, standardized first-slot utility, dual LOO definitions, seven-label partition, combined-only advancement panel, logistic-only v1 probe, minimum feasibility thresholds, and pinned scikit-learn environment with the corrections frozen above.
 
-### Level A review questions
+After implementation and synthetic tests are committed and pushed, the mandatory pause is immediately before the first official Channel A run. No additional approval chain is required for ordinary implementation corrections or synthetic-only test reruns that do not change scientific semantics.
 
-The scientific reviewer should explicitly accept or revise:
-
-1. candidate universe `E_q` includes all q25-floor-eligible candidates, including those beyond the original four-unit budget;
-2. single insertion always uses the first available post-protection position rather than the candidate's original q25 position;
-3. LOO uses deterministic backfill from the next eligible candidate;
-4. ER-only changes are classified as `MARGINAL_GAIN` or `DISPLACEMENT_HARM` rather than `REDUNDANT_GOLD`;
-5. `COMBINED_DEPLOYABLE_28` is the sole advancement panel;
-6. v1 uses only fixed L2 logistic regression;
-7. the 30-query-cluster event minimum and `PROCEED` thresholds are scientifically adequate;
-8. the later runtime may add a pinned scikit-learn dependency without changing scientific semantics.
-
-Until these points are accepted, the status remains:
+Current authorized state:
 
 ```text
-STAGE4D_LEVEL_A_PROTOCOL_DRAFTED
-STAGE4D_EXECUTION_NOT_AUTHORIZED
+STAGE4D_LEVEL_A_PROTOCOL_ACCEPTED
+STAGE4D_IMPLEMENTATION_READY
+STAGE4D_SYNTHETIC_TESTS_PASSED
+CHANNEL_A_EXECUTION_NOT_AUTHORIZED
+CHANNEL_B_EXECUTION_NOT_AUTHORIZED
 RESERVATION_REMAINS_LOCKED
 U2_NOT_AUTHORIZED
 ```
