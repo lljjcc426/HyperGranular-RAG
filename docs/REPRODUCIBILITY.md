@@ -24,9 +24,11 @@ STAGE4D_FINAL_VERIFICATION_PASSED
 CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE
 STAGE4D_CMA_CLOSED
 CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED
-STAGE4E_LEVEL_A_PROTOCOL_DRAFTED
+STAGE4E_LEVEL_A_PROTOCOL_ACCEPTED
+STAGE4E_INPUT_BINDING_AUTHORIZED
+STAGE4E_LEVEL_B_IMPLEMENTATION_AUTHORIZED
 STAGE4E_INPUTS_NOT_BOUND
-STAGE4E_EXECUTION_NOT_AUTHORIZED
+STAGE4E_OFFICIAL_EXECUTION_NOT_AUTHORIZED
 RESERVATION_REQUIRES_PAUSE
 U2_NOT_AUTHORIZED
 ```
@@ -37,7 +39,7 @@ Stage4C-U1-FMA 也已完成一次冻结的 post-Gold exploratory diagnosis。它
 
 Stage4D-CMA 已在获授权边界内完成 Gold-free Channel A、development-Gold Channel B、固定 official probe、独立验证和 bounded provenance audit。唯一 advancement panel 未通过全部联合门，冻结结论为 `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。现有工件不得覆盖或重跑；reservation、Stage3B 与 U2 仍未授权。
 
-Stage4D 和当前 controller 分支已按 [STAGE4D_CMA_CLOSURE](STAGE4D_CMA_CLOSURE.md) 冻结关闭。Stage4E-E2E 仅有 [Level A 草案](STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL_DRAFT.md)：尚未下载/读取 HotpotQA train、加载 proposed encoder/generator、构造 Stage4E embedding/ranking、连接 Stage4E Gold 或生成任何 Stage4E 结果。
+Stage4D 和当前 controller 分支已按 [STAGE4D_CMA_CLOSURE](STAGE4D_CMA_CLOSURE.md) 冻结关闭。Stage4E-E2E [Level A 协议](STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md) 已接受，只授权 source/model/environment identity binding 与 Level B implementation；尚未运行 1,000-query official retrieval/generation/Gold evaluation，也没有 Stage4E 科研结果。
 
 ## Stage4E 待冻结复现边界
 
@@ -52,7 +54,7 @@ Stage4D 和当前 controller 分支已按 [STAGE4D_CMA_CLOSURE](STAGE4D_CMA_CLOS
 | primary | paired `delta_answer_f1`，10,000 query bootstrap；未运行 |
 | decision | supported / negative / inconclusive / no-scientific-decision；未判定 |
 
-Level A 接受、Level B implementation、exact source/model/environment/config/verifier 绑定和明确执行确认完成前，不得把草案值当作已验证事实或运行入口。Stage4D 的环境和命令不自动成为 Stage4E 环境。
+Level B implementation、exact source/model/environment/config/verifier 绑定和明确执行确认完成前，不得把 proposed 值当作已验证结果或 official 运行入口。Stage4D 的环境和命令不自动成为 Stage4E 环境。
 
 ## 运行环境
 

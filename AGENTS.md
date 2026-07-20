@@ -16,7 +16,7 @@
 - 文档导航：`docs/INDEX.md`
 - 当前复现边界：`docs/REPRODUCIBILITY.md`
 - 完整研究时间线：`docs/ROADMAP.md`
-- 当前 Stage4E 草案：`docs/STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL_DRAFT.md`
+- 当前 Stage4E 协议：`docs/STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md`
 - Stage4D 关闭声明：`docs/STAGE4D_CMA_CLOSURE.md`
 - 已完成 Stage4D 协议：`docs/STAGE4D_CANDIDATE_MARGINAL_UTILITY_AUDIT_PROTOCOL.md`
 - 已完成诊断协议：`docs/STAGE4C_U1_FAILURE_MECHANISM_AUDIT_PROTOCOL.md`
@@ -49,9 +49,11 @@ CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE
 STAGE4D_CMA_CLOSED
 CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED
 NO_ACTIVE_CONTROLLER_DEVELOPMENT
-STAGE4E_LEVEL_A_PROTOCOL_DRAFTED
+STAGE4E_LEVEL_A_PROTOCOL_ACCEPTED
+STAGE4E_INPUT_BINDING_AUTHORIZED
+STAGE4E_LEVEL_B_IMPLEMENTATION_AUTHORIZED
 STAGE4E_INPUTS_NOT_BOUND
-STAGE4E_EXECUTION_NOT_AUTHORIZED
+STAGE4E_OFFICIAL_EXECUTION_NOT_AUTHORIZED
 RESERVATION_REQUIRES_PAUSE
 U2_NOT_AUTHORIZED
 SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
@@ -72,7 +74,7 @@ SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
 - Stage4D official Channel A、Channel B、固定 probe、bounded provenance audit 与 final verification 均已完成。8,467 个候选和 68,588 条 OOF 预测通过身份、内容、bootstrap 与独立验证；combined Task-C AUROC 为 `0.64310 [0.55520,0.72974]`，最终为 `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。
 - 现有 Stage4D transaction 不得重复，probe 三工件不得覆盖；该结果不授权 reservation/Stage3B、U2 或新 candidate controller。
 - Stage4D 与当前 controller 线已冻结关闭。Stage4E 是不含 U1/Stage4D model 的静态 Dense-vs-q25 E2E 评价，不得读取 Stage4D labels/probabilities 形成 ranking。
-- Stage4E 当前仅有 Level A 草案；HotpotQA train、Stage4E encoder/generator、Stage4E Gold 与正式结果均未授权读取或生成。
+- Stage4E Level A 已接受，允许冻结 HotpotQA train provenance/通道身份、encoder/generator snapshot 和实现 synthetic tests；不允许运行 1,000-query official retrieval/generation/Gold evaluation。
 
 ## 4. 科研不可变边界
 
@@ -102,7 +104,7 @@ Level B/C 的普通工程工作、测试、文档、提交和推送不逐项暂�
 4. 发现错误 official 输入/cache、Gold 泄漏、不可信 ranking；
 5. 正式输出部分生成且不能可靠回滚，或本地/tracked/remote 工件字节不一致；
 6. verifier 无法确认正式工件完整性。
-7. 准备首次下载/读取 Stage4E official source、加载 Stage4E 模型或执行 Stage4E Gold evaluation，而 final Level A/Level B 绑定与明确执行确认尚未完成。
+7. 准备首次运行 1,000-query Stage4E official retrieval/generation 或 Stage4E Gold evaluation，而 Level B 绑定与精确命令确认尚未完成。
 
 临时 push/remote visibility、路径、权限、日志、依赖或零正式输出时的普通 preflight 错误默认是 Level C，不自动升级为科研 Hard Failure。
 
@@ -116,7 +118,7 @@ Level B/C 的普通工程工作、测试、文档、提交和推送不逐项暂�
 - 不自行重新运行已完成的 official pre-Gold transaction。
 - 不自行重新运行已完成的 Stage4B-U1-D Gold transaction。
 - 不自行重新运行或覆盖已完成的 Stage4D Channel A、Channel B 和 official probe transaction。
-- Stage4E Level A 草案阶段只做文档、来源与静态设计核对；不运行 official retrieval/generation/evaluation。
+- Stage4E Level B 阶段只做 source/model/environment identity binding、实现与 synthetic tests；不运行 1,000-query official retrieval/generation/evaluation。
 
 ## 7. GitHub 与文件
 

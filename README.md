@@ -6,8 +6,8 @@
 
 | 项目 | 当前事实 |
 |---|---|
-| 研究阶段 | Stage4D-CMA 已验证并关闭；Stage4E-E2E Level A 协议草案待审核 |
-| 状态 | `STAGE4D_CMA_CLOSED`；`CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED`；`STAGE4E_EXECUTION_NOT_AUTHORIZED` |
+| 研究阶段 | Stage4D-CMA 已验证并关闭；Stage4E-E2E Level A 已接受，输入冻结与 Level B 实现已授权 |
+| 状态 | `STAGE4D_CMA_CLOSED`；`CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED`；`STAGE4E_OFFICIAL_EXECUTION_NOT_AUTHORIZED` |
 | 已用数据边界 | 2WikiMultiHopQA development：4,500 queries / 143,820 unlabeled units |
 | 当前证据 | U1-D 是有效 development 负结果；Stage4D candidate 机制证据不确定；静态 HGRAG 的答案质量尚未测试 |
 | Gold | 仅在 ranking 冻结后由独立 evaluator 使用；未进入 controller 或排序 |
@@ -34,7 +34,7 @@ Stage4C-U1-FMA 进一步审计其失败机制：raw U1 score 对 GAIN-vs-HARM �
 
 Stage4D-CMA 将问题下沉到 candidate 级：8,467 个 eligible candidates 经 standardized first-slot insertion、`LOO_NO_BACKFILL` 和 `LOO_WITH_BACKFILL` 归因后，固定 Task-C combined panel 的 AUROC 为 `0.64310 [0.55520, 0.72974]`、AP 为 `0.72198`。它存在部分符号信号，但 AUROC 未达到 `0.65` 且 Brier 未优于 prevalence baseline，最终为 `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。
 
-Stage4D 和当前 controller 分支现已冻结关闭。Stage4E-E2E 转向独立问题：在此前未读的 HotpotQA train ID-hash 边界上，用同一固定生成器比较 Dense Top-20 与不带 controller 的静态 q25 Top-20，主要评价 answer F1。该协议仍是草案；尚未下载/读取新边界、加载 Stage4E 模型或生成任何结果。
+Stage4D 和当前 controller 分支现已冻结关闭。Stage4E-E2E 转向独立问题：在此前未读的 HotpotQA train ID-hash 边界上，用同一固定生成器比较 Dense Top-20 与不带 controller 的静态 q25 Top-20，主要评价 answer F1。Level A 已接受并只授权输入冻结与 Level B 实现；尚未运行 official retrieval、generation 或 Gold evaluation。
 
 ## 冻结方法边界
 
@@ -60,7 +60,7 @@ Stage4D 和当前 controller 分支现已冻结关闭。Stage4E-E2E 转向独立
 | Stage4B-U1-D | development Gold 评估与独立验证完成 | 资源门单项通过，但联合晋级门失败；U1 分支停止 |
 | Stage4C-U1-FMA | post-Gold 探索性诊断，`CAUTION` | query-level score 方向错误且 all-on/off 受限；不足以授权 U2 |
 | Stage4D-CMA | post-Gold exploratory official audit，`CAUTION`；已关闭 | candidate-level 部分信号未过联合晋级门；不授权 U2 |
-| Stage4E-E2E | Level A draft；未执行 | 计划检验静态 q25 是否转化为答案质量收益；当前无结果 |
+| Stage4E-E2E | Level A accepted；仅授权输入冻结与 Level B 实现 | 计划检验静态 q25 是否转化为答案质量收益；当前无结果 |
 
 完整研究轨迹见 [ROADMAP](docs/ROADMAP.md) 和 [文档索引](docs/INDEX.md)。
 
@@ -104,7 +104,7 @@ paper/             论文结构、证据主张台账与待补材料
 - [Stage4D final verification](results/stage4d_cma_verified_final.json)
 - [Stage4D 候选边际效用归因报告](reports/超粒球RAG_Stage4D_CMA候选边际效用归因审计报告.md)
 - [Stage4D 关闭声明](docs/STAGE4D_CMA_CLOSURE.md)
-- [Stage4E-E2E Level A 协议草案](docs/STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL_DRAFT.md)
+- [Stage4E-E2E Level A 协议](docs/STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md)
 - [论文证据与主张台账](paper/EVIDENCE_AND_CLAIM_LEDGER.md)
 
 ## 科研治理
@@ -133,6 +133,6 @@ paper/             论文结构、证据主张台账与待补材料
 
 ## 下一步
 
-审核 [Stage4E-E2E Level A 草案](docs/STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL_DRAFT.md)，补齐官方 train 文件、1,000-query manifest、encoder/generator snapshot、精确环境、命令与 verifier 绑定。通过 Level A/Level B 后，才可在首次新数据/模型/Gold 读取前确认正式执行。Stage4D、当前 controller、Reservation、Stage3B 和 U2 保持关闭或锁定。
+按已接受的 [Stage4E-E2E Level A 协议](docs/STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md) 补齐官方 train 文件、1,000-query manifest、encoder/generator snapshot、精确环境、命令与 verifier 绑定。Level B 通过后，首次 1,000-query official retrieval/generation/Gold 命令仍需确认。Stage4D、当前 controller、Reservation、Stage3B 和 U2 保持关闭或锁定。
 
 仓库：<https://github.com/lljjcc426/HyperGranular-RAG>

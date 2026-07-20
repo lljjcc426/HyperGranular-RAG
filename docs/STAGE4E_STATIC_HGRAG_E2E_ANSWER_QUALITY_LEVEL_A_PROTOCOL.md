@@ -1,12 +1,12 @@
-# Stage4E-E2E：静态 HyperGranular-RAG 端到端答案质量 Level A 协议草案
+# Stage4E-E2E：静态 HyperGranular-RAG 端到端答案质量 Level A 协议
 
 ## Material Passport
 
 - Origin Skill: academic-research-suite / academic-pipeline / experiment-agent
 - Origin Mode: plan
 - Origin Date: 2026-07-20
-- Protocol Status: `DRAFT_AWAITING_LEVEL_A_REVIEW`
-- Execution Status: `NOT_AUTHORIZED`
+- Protocol Status: `LEVEL_A_ACCEPTED_FOR_INPUT_BINDING_AND_LEVEL_B_IMPLEMENTATION`
+- Execution Status: `OFFICIAL_E2E_NOT_AUTHORIZED`
 - Data Access During Drafting: no HotpotQA train download or read; no Stage4E Gold/model/embedding/result access
 
 ## 1. 科学问题
@@ -259,9 +259,9 @@ STATIC_HGRAG_E2E_INCONCLUSIVE
 
 生成器可能已经见过公开 HotpotQA 训练问题，因此本阶段不主张“LLM-uncontaminated evaluation”。相同 generator 的 paired retrieval-arm comparison 可以控制模型身份，但参数化记忆可能削弱或扭曲上下文差异；该风险必须进入报告限制，不能由显著性结果消除。
 
-## 11. Level A 接受前必须补齐的绑定
+## 11. Level B 完成前必须补齐的绑定
 
-本草案不等于执行授权。以下项目缺一不可：
+Level A 已于 2026-07-20 接受，并授权输入冻结与 Level B 实现；这不等于 official E2E 执行授权。以下项目缺一不可：
 
 - official train file URL、Bytes、SHA-256、许可证据；
 - selected 1,000 ID manifest SHA 与历史零重叠证明；
@@ -272,13 +272,15 @@ STATIC_HGRAG_E2E_INCONCLUSIVE
 - synthetic fixtures 上的 retrieval、prompt、metric、bootstrap、leakage 和 byte-identical rerun tests；
 - independent Level B implementation review。
 
-这些绑定完成并通过 Level A/Level B 检查后，仍需在首次下载/读取 HotpotQA train、首次模型加载和首次 Gold evaluation 前按最终授权边界执行。当前状态保持：
+这些绑定完成并通过 Level B 检查后，仍需在首次 1,000-query official retrieval/generation 和 Gold evaluation 前确认精确命令。官方 source 下载、ID-only/通道冻结和模型 snapshot 下载仅用于 provenance/identity binding，不得计算 retrieval、generation 或 Gold metric。当前状态为：
 
 ```text
-STAGE4E_LEVEL_A_PROTOCOL_DRAFTED
+STAGE4E_LEVEL_A_PROTOCOL_ACCEPTED
+STAGE4E_INPUT_BINDING_AUTHORIZED
+STAGE4E_LEVEL_B_IMPLEMENTATION_AUTHORIZED
 STAGE4E_INPUTS_NOT_BOUND
 STAGE4E_IMPLEMENTATION_NOT_STARTED
-STAGE4E_EXECUTION_NOT_AUTHORIZED
+STAGE4E_OFFICIAL_EXECUTION_NOT_AUTHORIZED
 RESERVATION_REMAINS_LOCKED
 STAGE3B_REMAINS_LOCKED
 U2_NOT_AUTHORIZED

@@ -3,7 +3,7 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage4D-CMA official transaction is verified and closed with `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`; the current controller branch is frozen closed; Stage4E-E2E Level A is drafted but not authorized for execution
+- Current stage: Stage4D-CMA official transaction is verified and closed with `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`; the current controller branch is frozen closed; Stage4E-E2E Level A is accepted for input binding and Level B implementation only
 - Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive development batch used through verified Stage4D-CMA; reservation and Stage3B were not accessed
 - Generator used: No
 - Gold labels used for indexing: No
@@ -18,7 +18,7 @@ The full integrity and methodology audit is recorded in `docs/PRIOR_STAGE_METHOD
 - Stage2G: valid negative mechanism result; the current boundary rule is unsupported.
 - Stage2H: diagnostic only. Stage3A: failed development. Stage3C: descriptive planning only.
 - Restarted Stage4A `n=2,800`: exact event-count arithmetic is correct, but 20 gains is a planning heuristic. The number is not an approved effect-power or controller-training sample size.
-- Research position: `STAGE4D_CMA_CLOSED` and `CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED`; Stage4E is a separate static-retrieval end-to-end question with a draft Level A protocol. Stage4E data/model execution, U2, reservation, and Stage3B are not authorized.
+- Research position: `STAGE4D_CMA_CLOSED` and `CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED`; Stage4E is a separate static-retrieval end-to-end question with an accepted Level A protocol. Input/model identity binding and Level B implementation are authorized; 1,000-query official execution, U2, reservation, and Stage3B are not authorized.
 
 ## Completed Execution History
 
@@ -1608,4 +1608,4 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Stage4E-E2E asks a distinct question: whether the static all-query q25 protected-insertion ranking, without U1 or any learned controller, improves end-to-end answer quality relative to Dense under one fixed generator and one previously unread query boundary.
 - The proposed new boundary is a deterministic 1,000-query, ID-hash-selected subset of official HotpotQA `hotpot_train_v1.1.json` in the closed distractor-context setting. It is a new-ID same-domain holdout, not a new benchmark and not external-domain validation. The raw source bytes/SHA, selected-ID digest, blind/Gold channel split, model files, exact environment, commands, and output paths must be bound before Level A acceptance.
 - The draft freezes one primary endpoint, paired answer F1 difference (`static q25 - Dense`), with 10,000 paired query bootstrap iterations; answer EM is a non-inferiority guard. Retrieval coverage, context tokens, latency, and subgroup rows are secondary/descriptive and cannot replace the primary gate.
-- No HotpotQA train file, Stage4E model, Stage4E embedding, Stage4E Gold value, or Stage4E result was read or generated while drafting. Current state: `STAGE4E_LEVEL_A_PROTOCOL_DRAFTED`, `STAGE4E_INPUTS_NOT_BOUND`, and `STAGE4E_EXECUTION_NOT_AUTHORIZED`.
+- No HotpotQA train file, Stage4E model, Stage4E embedding, Stage4E Gold value, or Stage4E result was read or generated while drafting. Level A was accepted on 2026-07-20 for input binding and Level B implementation. Current state: `STAGE4E_LEVEL_A_PROTOCOL_ACCEPTED`, `STAGE4E_INPUT_BINDING_AUTHORIZED`, `STAGE4E_LEVEL_B_IMPLEMENTATION_AUTHORIZED`, and `STAGE4E_OFFICIAL_EXECUTION_NOT_AUTHORIZED`.

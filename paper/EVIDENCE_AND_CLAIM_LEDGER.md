@@ -36,7 +36,7 @@
 | Stage4D candidate 机制 | `reports/超粒球RAG_Stage4D_CMA候选边际效用归因审计报告.md` |
 | Stage4D final verification | `results/stage4d_cma_verified_final.json` |
 | Stage4D 关闭边界 | `docs/STAGE4D_CMA_CLOSURE.md` |
-| Stage4E planned evaluation | `docs/STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL_DRAFT.md` |
+| Stage4E planned evaluation | `docs/STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md` |
 
 ## Stage4E 写入规则
 

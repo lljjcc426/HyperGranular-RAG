@@ -11,7 +11,7 @@
 | [REPRODUCIBILITY](REPRODUCIBILITY.md) | 当前环境、冻结 SHA、工件与复现边界 |
 | [ROADMAP](ROADMAP.md) | 完整研究时间线与阶段状态 |
 | [Stage4D-CMA closure](STAGE4D_CMA_CLOSURE.md) | Stage4D 与当前 controller 分支的冻结关闭范围 |
-| [Stage4E-E2E Level A draft](STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL_DRAFT.md) | 静态 Dense-vs-q25 端到端答案质量的待审核协议；尚未授权执行 |
+| [Stage4E-E2E Level A protocol](STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md) | 已接受的静态 Dense-vs-q25 端到端答案质量协议；只授权输入冻结与 Level B 实现 |
 | [论文材料入口](../paper/README.md) | 论文结构、证据主张台账和待补结果 |
 | [论文证据与主张台账](../paper/EVIDENCE_AND_CLAIM_LEDGER.md) | 将可写主张、证据等级、来源与限制逐项绑定 |
 | [Simplified execution protocol](STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md) | Stage4B-U1-D 科学与 pre-Gold 执行合同 |
@@ -108,4 +108,4 @@
 
 ## 当前下一步
 
-当前状态为 `STAGE4D_CMA_CLOSED`、`CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED` 和 `STAGE4E_LEVEL_A_PROTOCOL_DRAFTED`。先审核 Stage4E 的 1,000-query hash boundary、静态 Dense/q25 比较、固定 generator、paired answer-F1 主门和 Gold isolation；再补齐 source/model/environment/config/verifier 绑定。正式 Stage4E source/model/Gold 执行尚未授权。Reservation、Stage3B 和 U2 继续锁定。
+当前状态为 `STAGE4D_CMA_CLOSED`、`CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED` 和 `STAGE4E_LEVEL_A_PROTOCOL_ACCEPTED`。正在补齐 source/model/environment/config/verifier 绑定与 synthetic tests；1,000-query official retrieval/generation/Gold 执行尚未授权。Reservation、Stage3B 和 U2 继续锁定。
