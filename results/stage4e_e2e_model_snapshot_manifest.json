@@ -1,0 +1,127 @@
+{
+  "download_date": "2026-07-20",
+  "models": {
+    "encoder": {
+      "files": [
+        {
+          "bytes": 1229,
+          "path": ".gitattributes",
+          "sha256": "98CCB431C012EBFE976280FBD45AEA4CEC7409935868CCECF3954370F96732A1"
+        },
+        {
+          "bytes": 190,
+          "path": "1_Pooling/config.json",
+          "sha256": "4BE450DDE3B0273BB9787637CFBD28FE04A7BA6AB9D36AC48E92B11E350FFC23"
+        },
+        {
+          "bytes": 612,
+          "path": "config.json",
+          "sha256": "953F9C0D463486B10A6871CC2FD59F223B2C70184F49815E7EFBCAB5D8908B41"
+        },
+        {
+          "bytes": 116,
+          "path": "config_sentence_transformers.json",
+          "sha256": "061CA9D39661D6C6D6DE5BA27F79A1CD5770EA247F8D46412A68A498DC5AC9F3"
+        },
+        {
+          "bytes": 39265,
+          "path": "data_config.json",
+          "sha256": "32EDCB108FC2516B920734A862AE0692BCAE1C5D45D5F8D972CB0D53434A4C54"
+        },
+        {
+          "bytes": 90868376,
+          "path": "model.safetensors",
+          "sha256": "53AA51172D142C89D9012CCE15AE4D6CC0CA6895895114379CACB4FAB128D9DB"
+        },
+        {
+          "bytes": 349,
+          "path": "modules.json",
+          "sha256": "84E40C8E006C9B1D6C122E02CBA9B02458120B5FB0C87B746C41E0207CF642CF"
+        },
+        {
+          "bytes": 23026053,
+          "path": "onnx/model_qint8_arm64.onnx",
+          "sha256": "4278337FD0FF3C68BFB6291042CAD8AB363E1D9FBC43DCB499FE91C871902474"
+        },
+        {
+          "bytes": 10502,
+          "path": "README.md",
+          "sha256": "DCD602D2FD35C203A247304A06FEC6654A12F7941B739F9221A064FE8DC3B7F0"
+        },
+        {
+          "bytes": 112,
+          "path": "special_tokens_map.json",
+          "sha256": "303DF45A03609E4EAD04BC3DC1536D0AB19B5358DB685B6F3DA123D05EC200E3"
+        },
+        {
+          "bytes": 466247,
+          "path": "tokenizer.json",
+          "sha256": "BE50C3628F2BF5BB5E3A7F17B1F74611B2561A3A27EEAB05E5AA30F411572037"
+        },
+        {
+          "bytes": 350,
+          "path": "tokenizer_config.json",
+          "sha256": "ACB92769E8195AABD29B7B2137A9E6D6E25C476A4F15AA4355C233426C61576B"
+        },
+        {
+          "bytes": 231508,
+          "path": "vocab.txt",
+          "sha256": "07ECED375CEC144D27C900241F3E339478DEC958F92FDDBC551F295C992038A3"
+        }
+      ],
+      "files_sha256": "766AD566460F0494963F3DF1DEBC5A3B15B219F95C305C54859C2E330C064782",
+      "license": "Apache-2.0",
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "snapshot_path": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--sentence-transformers--all-MiniLM-L6-v2\\snapshots\\1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "source_url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/tree/1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+    },
+    "generator": {
+      "files": [
+        {
+          "bytes": 660,
+          "path": "config.json",
+          "sha256": "98D2FF8CC47488D08A2B0B3ACF4EB99EF210779B42BD48605F6B8E36ACDBF670"
+        },
+        {
+          "bytes": 242,
+          "path": "generation_config.json",
+          "sha256": "E558847A8B4402616F1273797B015104DC266FE4B520056FCA88823BA8F8EBE6"
+        },
+        {
+          "bytes": 1671839,
+          "path": "merges.txt",
+          "sha256": "599BAB54075088774B1733FDE865D5BD747CBCC7A547C5BC12610E874E26F5E3"
+        },
+        {
+          "bytes": 3087467144,
+          "path": "model.safetensors",
+          "sha256": "DD924A11B4C220F385B51FFA522DAEA7C9F3D850E31B162BB5661DF483C6D3EE"
+        },
+        {
+          "bytes": 7031645,
+          "path": "tokenizer.json",
+          "sha256": "C0382117EA329CDF097041132F6D735924B697924D6F6FC3945713E96CE87539"
+        },
+        {
+          "bytes": 7305,
+          "path": "tokenizer_config.json",
+          "sha256": "5B5D4F65D0ACD3B2D56A35B56D374A36CBC1C8FA5CF3B3FEBBBFABF22F359583"
+        },
+        {
+          "bytes": 2776833,
+          "path": "vocab.json",
+          "sha256": "CA10D7E9FB3ED18575DD1E277A2579C16D108E32F27439684AFA0E10B1440910"
+        }
+      ],
+      "files_sha256": "29726780E76777165E4E7B462356A18E374FEC4DBFF02A0BC8E4F5ACD09468C4",
+      "license": "Apache-2.0",
+      "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+      "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "snapshot_path": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--Qwen--Qwen2.5-1.5B-Instruct\\snapshots\\989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "source_url": "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct/tree/989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+    }
+  },
+  "schema_version": "stage4e_e2e_v1",
+  "status": "STAGE4E_MODEL_SNAPSHOTS_FROZEN_NO_OFFICIAL_INFERENCE"
+}
