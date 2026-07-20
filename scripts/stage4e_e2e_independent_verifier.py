@@ -687,6 +687,13 @@ def main() -> None:
     if not isinstance(config, dict) or config.get("schema_version") != SCHEMA_VERSION:
         raise ValueError("Stage4E config schema differs")
     assert_implementation_binding(config, Path(__file__).resolve().parents[1])
+    output_key = {
+        "input": "verified_input",
+        "pregold": "verified_pregold",
+        "postgold": "final_verification",
+    }[args.phase]
+    if args.output.resolve() != _path(config, output_key).resolve():
+        raise ValueError(f"Verifier output path differs from paths.{output_key}")
     result = (
         verify_inputs(config)
         if args.phase == "input"
