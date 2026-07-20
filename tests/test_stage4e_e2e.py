@@ -242,6 +242,39 @@ class RunnerContractTests(unittest.TestCase):
 
 
 class EvaluationAndVerificationTests(unittest.TestCase):
+    def test_frozen_config_binds_implementation_and_keeps_both_gates_locked(self) -> None:
+        config = common.load_json(ROOT / "configs" / "stage4e_e2e_official_train1000_v1.json")
+        self.assertIs(config["official_execution"]["authorized"], False)
+        self.assertIs(config["gold_evaluation"]["authorized"], False)
+        common.assert_implementation_binding(config, ROOT)
+        model_manifest = common.load_json(ROOT / "results" / "stage4e_e2e_model_snapshot_manifest.json")
+        environment_manifest = common.load_json(
+            ROOT / "results" / "stage4e_e2e_environment_manifest.json"
+        )
+        self.assertEqual(config["models"], model_manifest["models"])
+        self.assertEqual(config["environment"], environment_manifest)
+
+    def test_only_input_verification_exists_before_official_execution(self) -> None:
+        config = common.load_json(ROOT / "configs" / "stage4e_e2e_official_train1000_v1.json")
+        verified = common.load_json(Path(config["paths"]["verified_input"]))
+        self.assertEqual(verified["status"], "STAGE4E_INPUT_CHANNELS_VERIFIED")
+        for key in (
+            "embedding_cache",
+            "rankings",
+            "predictions_main",
+            "predictions_rerun",
+            "prompt_audit_main",
+            "prompt_audit_rerun",
+            "telemetry_main",
+            "telemetry_rerun",
+            "verified_pregold",
+            "query_audit",
+            "evaluation_summary",
+            "scientific_decision",
+            "final_verification",
+        ):
+            self.assertFalse(Path(config["paths"][key]).exists(), key)
+
     def test_official_answer_scoring_examples(self) -> None:
         self.assertEqual(evaluator.answer_scores("The Eiffel Tower", "Eiffel Tower"), (1.0, 1.0))
         self.assertEqual(evaluator.answer_scores("yes", "no"), (0.0, 0.0))

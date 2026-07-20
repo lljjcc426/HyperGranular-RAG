@@ -3,7 +3,7 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage4D-CMA official transaction is verified and closed with `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`; the current controller branch is frozen closed; Stage4E-E2E Level A is accepted for input binding and Level B implementation only
+- Current stage: Stage4D-CMA is verified and closed; Stage4E-E2E input/model/environment binding and Level B implementation are complete; official retrieval/generation and Gold evaluation remain unauthorized
 - Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive development batch used through verified Stage4D-CMA; reservation and Stage3B were not accessed
 - Generator used: No
 - Gold labels used for indexing: No
@@ -18,7 +18,7 @@ The full integrity and methodology audit is recorded in `docs/PRIOR_STAGE_METHOD
 - Stage2G: valid negative mechanism result; the current boundary rule is unsupported.
 - Stage2H: diagnostic only. Stage3A: failed development. Stage3C: descriptive planning only.
 - Restarted Stage4A `n=2,800`: exact event-count arithmetic is correct, but 20 gains is a planning heuristic. The number is not an approved effect-power or controller-training sample size.
-- Research position: `STAGE4D_CMA_CLOSED` and `CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED`; Stage4E is a separate static-retrieval end-to-end question with an accepted Level A protocol. Input/model identity binding and Level B implementation are authorized; 1,000-query official execution, U2, reservation, and Stage3B are not authorized.
+- Research position: `STAGE4D_CMA_CLOSED` and `CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED`; Stage4E is a separate static-retrieval end-to-end question with accepted Level A and completed Level B bindings. The 1,000-query official execution, U2, reservation, and Stage3B are not authorized.
 
 ## Completed Execution History
 
@@ -1609,3 +1609,11 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The proposed new boundary is a deterministic 1,000-query, ID-hash-selected subset of official HotpotQA `hotpot_train_v1.1.json` in the closed distractor-context setting. It is a new-ID same-domain holdout, not a new benchmark and not external-domain validation. The raw source bytes/SHA, selected-ID digest, blind/Gold channel split, model files, exact environment, commands, and output paths must be bound before Level A acceptance.
 - The draft freezes one primary endpoint, paired answer F1 difference (`static q25 - Dense`), with 10,000 paired query bootstrap iterations; answer EM is a non-inferiority guard. Retrieval coverage, context tokens, latency, and subgroup rows are secondary/descriptive and cannot replace the primary gate.
 - No HotpotQA train file, Stage4E model, Stage4E embedding, Stage4E Gold value, or Stage4E result was read or generated while drafting. Level A was accepted on 2026-07-20 for input binding and Level B implementation. Current state: `STAGE4E_LEVEL_A_PROTOCOL_ACCEPTED`, `STAGE4E_INPUT_BINDING_AUTHORIZED`, `STAGE4E_LEVEL_B_IMPLEMENTATION_AUTHORIZED`, and `STAGE4E_OFFICIAL_EXECUTION_NOT_AUTHORIZED`.
+
+### Stage4E-E2E Input Binding And Level B Implementation
+
+- Canonical HotpotQA train identity is 566,426,227 bytes / `26650CF...CD316`. The canonical host timed out in three bounded attempts; an exact-revision transport mirror was accepted only after byte and SHA-256 equality. The deterministic hash sample contains 1,000 IDs with zero overlap against all registered historical HotpotQA query inputs.
+- Source custody produced aligned blind, Gold-target, and sealed descriptive-metadata channels. Independent verification reconstructed the source selection, every row identity, context normalization, supporting-fact-to-unit mapping, channel bytes, historical zero-overlap, model snapshots, and environment manifest. Status is `STAGE4E_INPUT_CHANNELS_VERIFIED`; no retrieval, generation, or metric was computed by input freezing.
+- The encoder snapshot binds 13 actual files at revision `1110a243...`; the Qwen generator binds 7 files at revision `989aa798...`. The isolated environment is CPython 3.12.0 / torch 2.12.1+cu130 / CUDA 13.0 / transformers 5.9.0 on an RTX 4060 Laptop GPU. Two synthetic encoder runs were byte-identical and two synthetic generator runs were token-identical.
+- Level B implements a Gold-free blind-only runner, frozen Dense/static-q25 rankings, fixed Qwen prompt/decode, main/rerun artifacts, a separately locked Gold evaluator, and an independent verifier that does not import the evaluator. Nineteen targeted tests pass, including authorization-before-input, channel leakage, strict types, prompt cap, official answer scoring, deterministic bootstrap, decision gates, config binding, future-output absence, and atomic rollback.
+- Both `official_execution.authorized` and `gold_evaluation.authorized` remain false in the config. The next boundary is exact-command confirmation for the first official Gold-free retrieval/generation transaction. Gold remains sealed until byte-identical predictions and `STAGE4E_PRE_GOLD_ARTIFACTS_VERIFIED` exist.

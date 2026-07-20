@@ -6,7 +6,8 @@
 
 - [EVIDENCE_AND_CLAIM_LEDGER](EVIDENCE_AND_CLAIM_LEDGER.md)：把每项可写主张、证据等级、来源工件和限制对应起来；
 - [MANUSCRIPT_OUTLINE](MANUSCRIPT_OUTLINE.md)：按科研问题而不是执行治理历史组织论文结构；
-- [Stage4E Level A 协议](../docs/STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md)：已接受但尚未正式执行的端到端答案质量验证设计。
+- [Stage4E Level A 协议](../docs/STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md)：已接受、输入和 Level B 实现已绑定但尚未正式执行的端到端答案质量验证设计；
+- [Stage4E Level B 实现报告](../docs/STAGE4E_E2E_LEVEL_B_IMPLEMENTATION_REPORT.md)：数据/模型/环境身份、合成确定性和 official lock 的证据入口。
 
 写作规则：
 

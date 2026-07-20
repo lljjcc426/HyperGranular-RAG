@@ -11,7 +11,11 @@
 | [REPRODUCIBILITY](REPRODUCIBILITY.md) | 当前环境、冻结 SHA、工件与复现边界 |
 | [ROADMAP](ROADMAP.md) | 完整研究时间线与阶段状态 |
 | [Stage4D-CMA closure](STAGE4D_CMA_CLOSURE.md) | Stage4D 与当前 controller 分支的冻结关闭范围 |
-| [Stage4E-E2E Level A protocol](STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md) | 已接受的静态 Dense-vs-q25 端到端答案质量协议；只授权输入冻结与 Level B 实现 |
+| [Stage4E-E2E Level A protocol](STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md) | 已接受的静态 Dense-vs-q25 端到端答案质量协议；输入与 Level B 实现已绑定，official 未授权 |
+| [Stage4E official config](../configs/stage4e_e2e_official_train1000_v1.json) | 1,000-query 输入、模型、环境、实现、输出路径与双授权锁 |
+| [Stage4E input verification](../results/stage4e_e2e_official_train1000_v1_verified_input.json) | source、三通道、历史零重叠、模型和环境的独立只读验证 |
+| [Stage4E Level B implementation report](STAGE4E_E2E_LEVEL_B_IMPLEMENTATION_REPORT.md) | 输入、模型、环境、代码、测试、双授权锁与下一边界 |
+| [Stage4E Level B review request](STAGE4E_E2E_LEVEL_B_REVIEW_REQUEST.md) | 一次集中完整性审核请求；本身不授权 official 执行 |
 | [论文材料入口](../paper/README.md) | 论文结构、证据主张台账和待补结果 |
 | [论文证据与主张台账](../paper/EVIDENCE_AND_CLAIM_LEDGER.md) | 将可写主张、证据等级、来源与限制逐项绑定 |
 | [Simplified execution protocol](STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md) | Stage4B-U1-D 科学与 pre-Gold 执行合同 |
@@ -73,7 +77,7 @@
 - 方法审计见 [PRIOR_STAGE_METHOD_AUDIT](PRIOR_STAGE_METHOD_AUDIT.md)。
 - 阶段性结果说明位于 `reports/`。
 - Stage4D 与当前 controller 线已经按 [关闭声明](STAGE4D_CMA_CLOSURE.md) 冻结；Stage4E 不继承 controller labels、features 或 model。
-- Stage4E 草案把 proposed data boundary 明确限定为 HotpotQA train 的 new-ID same-domain distractor sample，不表述为跨数据集或 full-wiki external validation。
+- Stage4E 把 data boundary 明确限定为 HotpotQA train 的 new-ID same-domain distractor sample，不表述为跨数据集或 full-wiki external validation。输入、模型、CUDA 环境与 Level B 实现已冻结，尚无 official E2E 结果。
 
 ## 历史治理证据
 
@@ -108,4 +112,4 @@
 
 ## 当前下一步
 
-当前状态为 `STAGE4D_CMA_CLOSED`、`CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED` 和 `STAGE4E_LEVEL_A_PROTOCOL_ACCEPTED`。正在补齐 source/model/environment/config/verifier 绑定与 synthetic tests；1,000-query official retrieval/generation/Gold 执行尚未授权。Reservation、Stage3B 和 U2 继续锁定。
+当前状态为 `STAGE4D_CMA_CLOSED`、`STAGE4E_INPUT_CHANNELS_VERIFIED` 和 `STAGE4E_LEVEL_B_IMPLEMENTATION_READY`。下一步是在用户确认精确命令后执行首次 1,000-query Gold-free retrieval/generation；Gold evaluation 仍是后续独立授权边界。Reservation、Stage3B 和 U2 继续锁定。

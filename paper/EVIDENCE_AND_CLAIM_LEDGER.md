@@ -13,7 +13,7 @@
 | 当前 U1-D controller 降低资源但选择方向失败 | verified development negative result | 插入量 `-40.0275%`；gain retention `0.5000`；harm retention `0.7681`；CR@20 低于 Dense/q25 | 可写为当前 controller 的有效负结果；不能写成 HGRAG 整体无效 |
 | raw U1 score 对 gain/harm 方向错误且 all-on/off 受限 | post-Gold exploratory，`CAUTION` | Stage4C raw score AUROC `0.39269 [0.30558, 0.48150]`；92/94 gain query 为 mixed gain/noise | 机制诊断，不是新 controller efficacy |
 | candidate deployable features 含部分 gain/harm 符号信号，但不足以晋级 | post-Gold exploratory，`CAUTION` | Stage4D Task-C combined AUROC `0.64310 [0.55520, 0.72974]`，Brier 未优于 prevalence baseline | 结论必须是 inconclusive；不授权 U2、selector 或阈值 |
-| 静态 HGRAG 改善端到端答案质量 | **尚无证据** | Stage4E-E2E 仅有 Level A 草案 | 在 final verification 前不得写结果、方向或效果量 |
+| 静态 HGRAG 改善端到端答案质量 | **尚无结果证据** | Stage4E-E2E Level A 已接受，输入/模型/环境/Level B 实现已验证；official 未运行 | 在 final verification 前不得写结果、方向或效果量 |
 
 ## 不可写主张
 
@@ -36,7 +36,7 @@
 | Stage4D candidate 机制 | `reports/超粒球RAG_Stage4D_CMA候选边际效用归因审计报告.md` |
 | Stage4D final verification | `results/stage4d_cma_verified_final.json` |
 | Stage4D 关闭边界 | `docs/STAGE4D_CMA_CLOSURE.md` |
-| Stage4E planned evaluation | `docs/STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md` |
+| Stage4E planned evaluation | `docs/STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md`；`docs/STAGE4E_E2E_LEVEL_B_IMPLEMENTATION_REPORT.md` |
 
 ## Stage4E 写入规则
 

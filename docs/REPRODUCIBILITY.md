@@ -27,7 +27,10 @@ CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED
 STAGE4E_LEVEL_A_PROTOCOL_ACCEPTED
 STAGE4E_INPUT_BINDING_AUTHORIZED
 STAGE4E_LEVEL_B_IMPLEMENTATION_AUTHORIZED
-STAGE4E_INPUTS_NOT_BOUND
+STAGE4E_INPUTS_BOUND
+STAGE4E_LEVEL_B_IMPLEMENTATION_READY
+STAGE4E_SYNTHETIC_TESTS_PASSED
+STAGE4E_INPUT_CHANNELS_VERIFIED
 STAGE4E_OFFICIAL_EXECUTION_NOT_AUTHORIZED
 RESERVATION_REQUIRES_PAUSE
 U2_NOT_AUTHORIZED
@@ -39,22 +42,23 @@ Stage4C-U1-FMA 也已完成一次冻结的 post-Gold exploratory diagnosis。它
 
 Stage4D-CMA 已在获授权边界内完成 Gold-free Channel A、development-Gold Channel B、固定 official probe、独立验证和 bounded provenance audit。唯一 advancement panel 未通过全部联合门，冻结结论为 `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。现有工件不得覆盖或重跑；reservation、Stage3B 与 U2 仍未授权。
 
-Stage4D 和当前 controller 分支已按 [STAGE4D_CMA_CLOSURE](STAGE4D_CMA_CLOSURE.md) 冻结关闭。Stage4E-E2E [Level A 协议](STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md) 已接受，只授权 source/model/environment identity binding 与 Level B implementation；尚未运行 1,000-query official retrieval/generation/Gold evaluation，也没有 Stage4E 科研结果。
+Stage4D 和当前 controller 分支已按 [STAGE4D_CMA_CLOSURE](STAGE4D_CMA_CLOSURE.md) 冻结关闭。Stage4E-E2E [Level A 协议](STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md) 已接受；source/model/environment/config/verifier 绑定和 Level B implementation 已完成。尚未运行 1,000-query official retrieval/generation/Gold evaluation，也没有 Stage4E 科研结果。
 
-## Stage4E 待冻结复现边界
+## Stage4E 已冻结复现边界
 
-| 项目 | 草案值 / 当前状态 |
+| 项目 | 冻结值 / 当前状态 |
 |---|---|
-| 数据 | 官方 `hotpot_train_v1.1.json`；Bytes/SHA 未绑定，未访问 |
-| 样本 | `SHA256("stage4e_e2e_v1\0" + _id)` 排序前 1,000；manifest 未生成 |
+| 数据 | `hotpot_train_v1.1.json`；566,426,227 bytes；`26650CF...CD316` |
+| 样本 | `SHA256("stage4e_e2e_v1\0" + _id)` 排序前 1,000；历史 HotpotQA ID 重叠 0 |
 | 研究角色 | new-ID same-domain closed distractor holdout；不是外部数据集/full-wiki |
 | retrieval arms | `DENSE_TOP20` vs 无 controller 的 `STATIC_Q25_TOP20` |
-| encoder | `sentence-transformers/all-MiniLM-L6-v2` proposed revision `1110a243fdf4706b3f48f1d95db1a4f5529b4d41`；文件 SHA 未绑定 |
-| generator | `Qwen/Qwen2.5-1.5B-Instruct` proposed revision `989aa7980e4cf806f80c7fef2b1adb7bc71aa306`；文件 SHA/运行环境未绑定 |
+| encoder | `sentence-transformers/all-MiniLM-L6-v2` revision `1110a243...`；13 个实际文件已绑定 |
+| generator | `Qwen/Qwen2.5-1.5B-Instruct` revision `989aa798...`；7 个实际文件已绑定 |
+| 环境 | CPython 3.12.0；torch 2.12.1+cu130；CUDA 13.0；transformers 5.9.0；RTX 4060 Laptop GPU |
 | primary | paired `delta_answer_f1`，10,000 query bootstrap；未运行 |
 | decision | supported / negative / inconclusive / no-scientific-decision；未判定 |
 
-Level B implementation、exact source/model/environment/config/verifier 绑定和明确执行确认完成前，不得把 proposed 值当作已验证结果或 official 运行入口。Stage4D 的环境和命令不自动成为 Stage4E 环境。
+精确绑定见 [official config](../configs/stage4e_e2e_official_train1000_v1.json)、[input manifest](../results/stage4e_e2e_official_train1000_v1_input_manifest.json)、[model manifest](../results/stage4e_e2e_model_snapshot_manifest.json)、[environment manifest](../results/stage4e_e2e_environment_manifest.json) 与 [input verification](../results/stage4e_e2e_official_train1000_v1_verified_input.json)。这些是输入与工程验证，不是 official 科研结果。Stage4D 的环境和命令不自动成为 Stage4E 环境。
 
 ## 运行环境
 

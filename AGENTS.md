@@ -52,7 +52,10 @@ NO_ACTIVE_CONTROLLER_DEVELOPMENT
 STAGE4E_LEVEL_A_PROTOCOL_ACCEPTED
 STAGE4E_INPUT_BINDING_AUTHORIZED
 STAGE4E_LEVEL_B_IMPLEMENTATION_AUTHORIZED
-STAGE4E_INPUTS_NOT_BOUND
+STAGE4E_INPUTS_BOUND
+STAGE4E_LEVEL_B_IMPLEMENTATION_READY
+STAGE4E_SYNTHETIC_TESTS_PASSED
+STAGE4E_INPUT_CHANNELS_VERIFIED
 STAGE4E_OFFICIAL_EXECUTION_NOT_AUTHORIZED
 RESERVATION_REQUIRES_PAUSE
 U2_NOT_AUTHORIZED
@@ -74,7 +77,7 @@ SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
 - Stage4D official Channel A、Channel B、固定 probe、bounded provenance audit 与 final verification 均已完成。8,467 个候选和 68,588 条 OOF 预测通过身份、内容、bootstrap 与独立验证；combined Task-C AUROC 为 `0.64310 [0.55520,0.72974]`，最终为 `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。
 - 现有 Stage4D transaction 不得重复，probe 三工件不得覆盖；该结果不授权 reservation/Stage3B、U2 或新 candidate controller。
 - Stage4D 与当前 controller 线已冻结关闭。Stage4E 是不含 U1/Stage4D model 的静态 Dense-vs-q25 E2E 评价，不得读取 Stage4D labels/probabilities 形成 ranking。
-- Stage4E Level A 已接受，允许冻结 HotpotQA train provenance/通道身份、encoder/generator snapshot 和实现 synthetic tests；不允许运行 1,000-query official retrieval/generation/Gold evaluation。
+- Stage4E Level A 已接受；HotpotQA train provenance/通道身份、encoder/generator snapshot、CUDA 环境、config 和 Level B 实现已冻结并通过输入独立验证。仍不允许运行 1,000-query official retrieval/generation/Gold evaluation。
 
 ## 4. 科研不可变边界
 
@@ -130,4 +133,4 @@ Level B/C 的普通工程工作、测试、文档、提交和推送不逐项暂�
 
 ## 8. 下一科研门
 
-Stage4B-U1、Stage4C、Stage4D 和当前 controller 线均已停止或关闭，不自动创建 U2。当前唯一拟议科研门是 Stage4E-E2E：固定 Dense 与静态 all-query q25、固定生成器，在此前未读的 new-ID same-domain 边界上评价答案 F1/EM。必须先接受 Level A 科学定义，再完成 Level B implementation、source/model/environment/config/verifier 绑定；首次 official source/model/Gold 执行仍需明确确认。Reservation、Stage3B、再次既有 Gold 执行和任何新 controller 继续锁定。
+Stage4B-U1、Stage4C、Stage4D 和当前 controller 线均已停止或关闭，不自动创建 U2。当前唯一科研门是 Stage4E-E2E：固定 Dense 与静态 all-query q25、固定生成器，在 new-ID same-domain 边界上评价答案 F1/EM。Level A 与 Level B 绑定已完成；下一边界是首次 official Gold-free retrieval/generation 的精确命令确认。Gold evaluation 只能在 main/rerun 与 pre-Gold 独立验证通过后另行确认。Reservation、Stage3B、再次既有 Gold 执行和任何新 controller 继续锁定。

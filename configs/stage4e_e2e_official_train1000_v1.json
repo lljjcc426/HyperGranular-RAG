@@ -1,0 +1,308 @@
+{
+  "environment": {
+    "determinism": {
+      "completion_token_bytes_sha256": "DFDC83C48298A17B849C441B21C5185ADE24E0287996C962801090BD7B016A75",
+      "encoder_embedding_sha256": "5BBB65443B2359073B6153F00996BC6E45CB51E61CAA1BF701FEAF244F5BD4B9",
+      "encoder_rerun_byte_identical": true,
+      "rerun_token_identical": true,
+      "torch_deterministic_algorithms": true
+    },
+    "environment_variables": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "PYTHONHASHSEED": "0",
+      "TOKENIZERS_PARALLELISM": "false"
+    },
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "total_memory_bytes": 8585216000
+    },
+    "packages": {
+      "accelerate": "1.13.0",
+      "filelock": "3.29.0",
+      "fsspec": "2026.6.0",
+      "huggingface-hub": "1.17.0",
+      "jinja2": "3.1.6",
+      "markupsafe": "3.0.3",
+      "mpmath": "1.3.0",
+      "networkx": "3.6.1",
+      "numpy": "2.5.1",
+      "packaging": "24.0",
+      "psutil": "7.2.2",
+      "pyyaml": "6.0.1",
+      "regex": "2026.5.9",
+      "requests": "2.28.1",
+      "safetensors": "0.7.0",
+      "setuptools": "81.0.0",
+      "sympy": "1.14.0",
+      "tokenizers": "0.22.2",
+      "torch": "2.12.1+cu130",
+      "tqdm": "4.67.3",
+      "transformers": "5.9.0",
+      "typing-extensions": "4.16.0"
+    },
+    "python": {
+      "executable": "E:\\SCIENCE\\HyperGranular-RAG\\temp\\stage4e_env\\Scripts\\python.exe",
+      "implementation": "CPython",
+      "version": "3.12.0"
+    },
+    "runtime": {
+      "cuda": "13.0",
+      "cudnn": 92000,
+      "platform": "Windows-11-10.0.26200-SP0",
+      "torch": "2.12.1+cu130"
+    },
+    "schema_version": "stage4e_e2e_v1",
+    "status": "STAGE4E_SYNTHETIC_CUDA_ENVIRONMENT_VERIFIED_NO_OFFICIAL_DATA"
+  },
+  "evaluation": {
+    "bootstrap_iterations": 10000,
+    "bootstrap_numpy_generator": "PCG64",
+    "bootstrap_percentile_method": "linear",
+    "bootstrap_seed": 20260720,
+    "decision_gates": {
+      "em_interval_lower_minimum": -0.01,
+      "minimum_delta_answer_f1": 0.01,
+      "negative_em_interval_upper_below": -0.01,
+      "negative_f1_interval_upper_below": 0.0,
+      "supported_f1_interval_lower_strictly_positive": true
+    },
+    "official_answer_evaluator": {
+      "bytes": 4257,
+      "commit": "3635853403a8735609ee997664e1528f4480762a",
+      "sha256": "D35FC91A6DB21D791DBDDA11DAF3856E9359F5701D54E3EEFBA20D88FECC02C0",
+      "source": "https://github.com/hotpotqa/hotpot/blob/3635853403a8735609ee997664e1528f4480762a/hotpot_evaluate_v1.py"
+    },
+    "primary_endpoint": "delta_answer_f1",
+    "supportive_guard": "delta_answer_em"
+  },
+  "generation": {
+    "decoding": {
+      "do_sample": false,
+      "max_new_tokens": 32,
+      "num_beams": 1
+    },
+    "dtype": "float16",
+    "evidence_format": "[{rank}] {title}: {sentence}",
+    "input_token_cap": 4096,
+    "method_order": "SHA256(query_id) first-byte parity",
+    "postprocess": "strip leading and trailing whitespace only",
+    "system_message": "Answer the question using only the provided evidence. Return only the shortest final answer. If the evidence is insufficient, return UNKNOWN.",
+    "user_message_template": "Evidence:\n[1] <title>: <sentence>\n...\n\nQuestion: <question>\nFinal answer:"
+  },
+  "gold_evaluation": {
+    "authorized": false,
+    "confirmed_command_sha256": null
+  },
+  "historical_inputs": [
+    {
+      "bytes": 234624,
+      "hotpotqa_sample_id_sha256": "15F0A301BE112B704F70904F06C1C0420A7CE5699F846A94B035C474BE1B6567",
+      "hotpotqa_sample_ids": 200,
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage1_sample400_queries.jsonl",
+      "sha256": "51A1389C159CC7703CA0F47F36B709CAE081A1F7BD6E8FC646D59EE3CFF0B13D"
+    },
+    {
+      "bytes": 236284,
+      "hotpotqa_sample_id_sha256": "DF46C91F1A1EC653D79CE4CE435DCB178D1848AC3F93A00D6AC94DC542298D5F",
+      "hotpotqa_sample_ids": 200,
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage2f_unseen400_queries.jsonl",
+      "sha256": "81298D4CE25EFED6B178EB367D9C48A8FB1CACAE420B43E4315199D3C0492715"
+    },
+    {
+      "bytes": 235741,
+      "hotpotqa_sample_id_sha256": "9D799D0D9C32B9EB3806B8972B933BEA8892A494E0DFE7EF3B8D5F735ECD1914",
+      "hotpotqa_sample_ids": 200,
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage2g_unseen400_queries.jsonl",
+      "sha256": "7049C2662C3FE6AAF2F3401D578B5F93465F4046C206256F87F871B5BC227D1E"
+    },
+    {
+      "bytes": 473710,
+      "hotpotqa_sample_id_sha256": "5D78DBAC36CD71345703EAE2DA416D930CA06441D87EAA42243E30981118D706",
+      "hotpotqa_sample_ids": 400,
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage3a_dev800_queries.jsonl",
+      "sha256": "D24A19CD2BDC80DF3886ECEC081FCBE45022F0D761EDDB86E44CFCAA9FBD4785"
+    }
+  ],
+  "historical_query_paths": [
+    "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage1_sample400_queries.jsonl",
+    "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage2f_unseen400_queries.jsonl",
+    "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage2g_unseen400_queries.jsonl",
+    "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage3a_dev800_queries.jsonl"
+  ],
+  "implementation": {
+    "code_commit": "712077edbe3f85d15da7d4290d294ab05bbdc9fc",
+    "files": {
+      "requirements-stage4e.txt": "7B6A4C050B4D0BC64B53A0D71049BC0B49C4625873E690B76F7608375FF23C1F",
+      "scripts/stage4b_u1_goldfree_retrieval.py": "3B50FAFD057E2565167ED09288D61829B3FBD044991F139F734F819955038A3B",
+      "scripts/stage4e_e2e_common.py": "05E1CF6393F0403BC294C5A5F6B315077FF21D407848C3CA63F3B40699184A29",
+      "scripts/stage4e_e2e_environment_audit.py": "B0DE4533C25276987FAF3D7690EC95D4EC5A7DA20F3D8336C56DDC0C09F06C76",
+      "scripts/stage4e_e2e_evaluate.py": "9C01F457A2231CB7BBA479F256A1F04D9380412AE3B9B0B3A26769161ABADBE8",
+      "scripts/stage4e_e2e_freeze_inputs.py": "9F180F71C60E387F89F387A188076236FDA8700070762C4244F310CEA017D3AE",
+      "scripts/stage4e_e2e_freeze_models.py": "6E02B2C327F6EBFE7906941CB86B421591C1764A141902AC2C9460A75F09C1DA",
+      "scripts/stage4e_e2e_goldfree_runner.py": "97F88658520EC8B6D38703BB5417AECF68FDF587D67903E5617C3BFB17AE7710",
+      "scripts/stage4e_e2e_independent_verifier.py": "9C3A08DC70C2904E26B5FA2A657334E2A667B653AE553AB8F09B9B90688578E5"
+    },
+    "level_a_acceptance_commit": "113917aa75f8229c98ce29c2bdd7c22f55caa445"
+  },
+  "input_selection": {
+    "query_id_sha256": "EB23E487E9E6EA3DD37AC510050B613C20B45F3083CD24C6C3E87A0169D5A76C",
+    "sample_id_sha256": "91876D2B59A83B6C1528D986ADA69B9F40E0D9FE10CD8F5164F925BBE065ED3A",
+    "sample_size": 1000,
+    "salt": "stage4e_e2e_v1\u0000"
+  },
+  "inputs": {
+    "blind": {
+      "bytes": 6487688,
+      "sha256": "CB30B9764ADF256A5C5E130F1B78F6AA1EC30613C529FDB554F0F2F29C873958"
+    },
+    "environment_manifest": {
+      "bytes": 1729,
+      "sha256": "EDABA03F2C19C3BF6846728077BF82D44A1D0F0A3AC5F472D6E384775A19A65E"
+    },
+    "gold": {
+      "bytes": 500814,
+      "sha256": "7FE6824DA2B46D76DDAF3C0D65C7DBBEC7D0788BD363A4AFC819AAC5F71D6907"
+    },
+    "input_manifest": {
+      "bytes": 241648,
+      "sha256": "87C5666D484274BBCDDEC1DA78C4397E9921733736C7D15788197BD72B9EAE32"
+    },
+    "metadata": {
+      "bytes": 187106,
+      "sha256": "CB2DAA864F8B341B186C1DBB7770DF205111CDB8EF54EE3BBABB3A2D370345E2"
+    },
+    "model_manifest": {
+      "bytes": 4797,
+      "sha256": "C90488946DF99AF62583447E155B26660F87BF26E2EC55D5FA09AD6A6EBAAF95"
+    },
+    "protocol": {
+      "bytes": 16410,
+      "sha256": "44196D6E894184D661F56ADD2D75542145418E3C2A0F2FB61A79ACF99448C7B6"
+    },
+    "requirements": {
+      "bytes": 913,
+      "sha256": "7B6A4C050B4D0BC64B53A0D71049BC0B49C4625873E690B76F7608375FF23C1F"
+    },
+    "source": {
+      "bytes": 566426227,
+      "sha256": "26650CF50234EF5FB2E664ED70BBECDFD87815E6BFFC257E068EFEA5CF7CD316"
+    }
+  },
+  "locks": {
+    "reservation": "LOCKED",
+    "stage3b": "LOCKED",
+    "u2": "NOT_AUTHORIZED"
+  },
+  "models": {
+    "encoder": {
+      "files": [
+        {"bytes": 1229, "path": ".gitattributes", "sha256": "98CCB431C012EBFE976280FBD45AEA4CEC7409935868CCECF3954370F96732A1"},
+        {"bytes": 190, "path": "1_Pooling/config.json", "sha256": "4BE450DDE3B0273BB9787637CFBD28FE04A7BA6AB9D36AC48E92B11E350FFC23"},
+        {"bytes": 612, "path": "config.json", "sha256": "953F9C0D463486B10A6871CC2FD59F223B2C70184F49815E7EFBCAB5D8908B41"},
+        {"bytes": 116, "path": "config_sentence_transformers.json", "sha256": "061CA9D39661D6C6D6DE5BA27F79A1CD5770EA247F8D46412A68A498DC5AC9F3"},
+        {"bytes": 39265, "path": "data_config.json", "sha256": "32EDCB108FC2516B920734A862AE0692BCAE1C5D45D5F8D972CB0D53434A4C54"},
+        {"bytes": 90868376, "path": "model.safetensors", "sha256": "53AA51172D142C89D9012CCE15AE4D6CC0CA6895895114379CACB4FAB128D9DB"},
+        {"bytes": 349, "path": "modules.json", "sha256": "84E40C8E006C9B1D6C122E02CBA9B02458120B5FB0C87B746C41E0207CF642CF"},
+        {"bytes": 23026053, "path": "onnx/model_qint8_arm64.onnx", "sha256": "4278337FD0FF3C68BFB6291042CAD8AB363E1D9FBC43DCB499FE91C871902474"},
+        {"bytes": 10502, "path": "README.md", "sha256": "DCD602D2FD35C203A247304A06FEC6654A12F7941B739F9221A064FE8DC3B7F0"},
+        {"bytes": 112, "path": "special_tokens_map.json", "sha256": "303DF45A03609E4EAD04BC3DC1536D0AB19B5358DB685B6F3DA123D05EC200E3"},
+        {"bytes": 466247, "path": "tokenizer.json", "sha256": "BE50C3628F2BF5BB5E3A7F17B1F74611B2561A3A27EEAB05E5AA30F411572037"},
+        {"bytes": 350, "path": "tokenizer_config.json", "sha256": "ACB92769E8195AABD29B7B2137A9E6D6E25C476A4F15AA4355C233426C61576B"},
+        {"bytes": 231508, "path": "vocab.txt", "sha256": "07ECED375CEC144D27C900241F3E339478DEC958F92FDDBC551F295C992038A3"}
+      ],
+      "files_sha256": "766AD566460F0494963F3DF1DEBC5A3B15B219F95C305C54859C2E330C064782",
+      "license": "Apache-2.0",
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "snapshot_path": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--sentence-transformers--all-MiniLM-L6-v2\\snapshots\\1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "source_url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/tree/1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+    },
+    "generator": {
+      "files": [
+        {"bytes": 660, "path": "config.json", "sha256": "98D2FF8CC47488D08A2B0B3ACF4EB99EF210779B42BD48605F6B8E36ACDBF670"},
+        {"bytes": 242, "path": "generation_config.json", "sha256": "E558847A8B4402616F1273797B015104DC266FE4B520056FCA88823BA8F8EBE6"},
+        {"bytes": 1671839, "path": "merges.txt", "sha256": "599BAB54075088774B1733FDE865D5BD747CBCC7A547C5BC12610E874E26F5E3"},
+        {"bytes": 3087467144, "path": "model.safetensors", "sha256": "DD924A11B4C220F385B51FFA522DAEA7C9F3D850E31B162BB5661DF483C6D3EE"},
+        {"bytes": 7031645, "path": "tokenizer.json", "sha256": "C0382117EA329CDF097041132F6D735924B697924D6F6FC3945713E96CE87539"},
+        {"bytes": 7305, "path": "tokenizer_config.json", "sha256": "5B5D4F65D0ACD3B2D56A35B56D374A36CBC1C8FA5CF3B3FEBBBFABF22F359583"},
+        {"bytes": 2776833, "path": "vocab.json", "sha256": "CA10D7E9FB3ED18575DD1E277A2579C16D108E32F27439684AFA0E10B1440910"}
+      ],
+      "files_sha256": "29726780E76777165E4E7B462356A18E374FEC4DBFF02A0BC8E4F5ACD09468C4",
+      "license": "Apache-2.0",
+      "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+      "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "snapshot_path": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--Qwen--Qwen2.5-1.5B-Instruct\\snapshots\\989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "source_url": "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct/tree/989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+    }
+  },
+  "official_execution": {
+    "authorized": false,
+    "confirmed_command_sha256": null
+  },
+  "paths": {
+    "blind": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4e_e2e_official_train1000_v1_blind_queries.jsonl",
+    "embedding_cache": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4e_e2e_official_train1000_v1_embeddings.npz",
+    "encoder_snapshot": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--sentence-transformers--all-MiniLM-L6-v2\\snapshots\\1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "environment_manifest": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_environment_manifest.json",
+    "evaluation_summary": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_evaluation_summary.json",
+    "final_verification": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_final_verification.json",
+    "generator_snapshot": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--Qwen--Qwen2.5-1.5B-Instruct\\snapshots\\989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "gold": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4e_e2e_official_train1000_v1_gold_targets.jsonl",
+    "input_manifest": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_input_manifest.json",
+    "metadata": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4e_e2e_official_train1000_v1_descriptive_metadata.jsonl",
+    "model_manifest": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_model_snapshot_manifest.json",
+    "predictions_main": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_predictions_main.jsonl",
+    "predictions_rerun": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_predictions_rerun.jsonl",
+    "prompt_audit_main": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_prompt_audit_main.jsonl",
+    "prompt_audit_rerun": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_prompt_audit_rerun.jsonl",
+    "protocol": "E:\\SCIENCE\\HyperGranular-RAG\\docs\\STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md",
+    "query_audit": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_query_audit.jsonl",
+    "rankings": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_rankings.jsonl",
+    "requirements": "E:\\SCIENCE\\HyperGranular-RAG\\requirements-stage4e.txt",
+    "scientific_decision": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_scientific_decision.json",
+    "source": "E:\\SCIENCE\\超粒球RAG_数据\\raw\\hotpotqa\\hotpot_train_v1.1.json",
+    "telemetry_main": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_telemetry_main.json",
+    "telemetry_rerun": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_telemetry_rerun.json",
+    "verified_input": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_verified_input.json",
+    "verified_pregold": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_verified_pregold.json"
+  },
+  "protocol_status": "LEVEL_A_ACCEPTED_FOR_INPUT_BINDING_AND_LEVEL_B_IMPLEMENTATION",
+  "retrieval": {
+    "dense": {"max_k": 20, "score": "cosine", "tie_break": "unit_id ascending"},
+    "embedding": {"batch_size": 64, "max_length": 192, "matrix_dtype": "float32", "scientific_scalar_dtype": "float64"},
+    "static_q25": {
+      "boundary_width": 0.2,
+      "insert_budget": 4,
+      "max_candidate_ball_size": 8,
+      "max_depth": 6,
+      "max_expanded_balls": 2,
+      "max_redundancy": 0.9,
+      "max_units_per_new_term": 6.0,
+      "min_ball_score": 0.12,
+      "min_facet_score": 0.1,
+      "min_new_terms": 1,
+      "min_seed_similarity": 0.05,
+      "min_size": 2,
+      "max_size": 3,
+      "protected_dense_prefix": 10,
+      "q25_floor": 0.1957079917192459,
+      "radius_threshold": 0.78,
+      "seed_balls": 2,
+      "top_center_terms": 8,
+      "top_facet_edges": 2,
+      "w_ball": 0.2,
+      "w_diversity": 0.15,
+      "w_facet_unit_bonus": 0.0,
+      "w_new": 0.45,
+      "w_redundancy": 0.2,
+      "w_size": 0.05,
+      "w_total": 0.2
+    }
+  },
+  "schema_version": "stage4e_e2e_v1",
+  "status": "STAGE4E_LEVEL_B_IMPLEMENTATION_READY_OFFICIAL_EXECUTION_NOT_AUTHORIZED"
+}

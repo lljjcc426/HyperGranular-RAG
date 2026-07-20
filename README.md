@@ -6,8 +6,8 @@
 
 | 项目 | 当前事实 |
 |---|---|
-| 研究阶段 | Stage4D-CMA 已验证并关闭；Stage4E-E2E Level A 已接受，输入冻结与 Level B 实现已授权 |
-| 状态 | `STAGE4D_CMA_CLOSED`；`CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED`；`STAGE4E_OFFICIAL_EXECUTION_NOT_AUTHORIZED` |
+| 研究阶段 | Stage4D-CMA 已验证并关闭；Stage4E-E2E 输入、模型、环境和 Level B 实现已冻结 |
+| 状态 | `STAGE4E_INPUT_CHANNELS_VERIFIED`；`STAGE4E_LEVEL_B_IMPLEMENTATION_READY`；`STAGE4E_OFFICIAL_EXECUTION_NOT_AUTHORIZED` |
 | 已用数据边界 | 2WikiMultiHopQA development：4,500 queries / 143,820 unlabeled units |
 | 当前证据 | U1-D 是有效 development 负结果；Stage4D candidate 机制证据不确定；静态 HGRAG 的答案质量尚未测试 |
 | Gold | 仅在 ranking 冻结后由独立 evaluator 使用；未进入 controller 或排序 |
@@ -34,7 +34,7 @@ Stage4C-U1-FMA 进一步审计其失败机制：raw U1 score 对 GAIN-vs-HARM �
 
 Stage4D-CMA 将问题下沉到 candidate 级：8,467 个 eligible candidates 经 standardized first-slot insertion、`LOO_NO_BACKFILL` 和 `LOO_WITH_BACKFILL` 归因后，固定 Task-C combined panel 的 AUROC 为 `0.64310 [0.55520, 0.72974]`、AP 为 `0.72198`。它存在部分符号信号，但 AUROC 未达到 `0.65` 且 Brier 未优于 prevalence baseline，最终为 `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。
 
-Stage4D 和当前 controller 分支现已冻结关闭。Stage4E-E2E 转向独立问题：在此前未读的 HotpotQA train ID-hash 边界上，用同一固定生成器比较 Dense Top-20 与不带 controller 的静态 q25 Top-20，主要评价 answer F1。Level A 已接受并只授权输入冻结与 Level B 实现；尚未运行 official retrieval、generation 或 Gold evaluation。
+Stage4D 和当前 controller 分支现已冻结关闭。Stage4E-E2E 转向独立问题：在此前未读的 HotpotQA train ID-hash 边界上，用同一固定生成器比较 Dense Top-20 与不带 controller 的静态 q25 Top-20，主要评价 answer F1。Level A 已接受；1,000-query blind/Gold/metadata 通道、模型 snapshot、CUDA 环境、config、runner/evaluator/verifier 和合成测试现已完成绑定，但尚未运行 official retrieval、generation 或 Gold evaluation。
 
 ## 冻结方法边界
 
@@ -60,7 +60,7 @@ Stage4D 和当前 controller 分支现已冻结关闭。Stage4E-E2E 转向独立
 | Stage4B-U1-D | development Gold 评估与独立验证完成 | 资源门单项通过，但联合晋级门失败；U1 分支停止 |
 | Stage4C-U1-FMA | post-Gold 探索性诊断，`CAUTION` | query-level score 方向错误且 all-on/off 受限；不足以授权 U2 |
 | Stage4D-CMA | post-Gold exploratory official audit，`CAUTION`；已关闭 | candidate-level 部分信号未过联合晋级门；不授权 U2 |
-| Stage4E-E2E | Level A accepted；仅授权输入冻结与 Level B 实现 | 计划检验静态 q25 是否转化为答案质量收益；当前无结果 |
+| Stage4E-E2E | Level A accepted；输入与 Level B 实现已验证 | 计划检验静态 q25 是否转化为答案质量收益；official 执行未授权，当前无答案质量结果 |
 
 完整研究轨迹见 [ROADMAP](docs/ROADMAP.md) 和 [文档索引](docs/INDEX.md)。
 
@@ -70,7 +70,7 @@ Stage4D 和当前 controller 分支现已冻结关闭。Stage4E-E2E 转向独立
 - Stage4B-U1-D development：4,500 queries / 143,820 units。
 - Gold 仅由已授权 evaluator 在 ranking 冻结后使用，未进入索引、候选、排序、过滤或 controller。
 - Reservation 仅保留登记的 ID 摘要边界，不读取内容、embedding 或指标。
-- Stage4E proposed boundary 是此前未读的 HotpotQA `hotpot_train_v1.1.json` 确定性 1,000-query 样本；当前仅完成设计，尚未访问。
+- Stage4E boundary 是 HotpotQA `hotpot_train_v1.1.json` 的确定性 1,000-query 样本；source 和三个隔离通道已冻结且历史 ID 重叠为 0，但未执行 retrieval、generation 或 Gold metric。
 - Raw data、processed corpus、embedding cache、模型和密钥不进入 Git。
 
 ## 仓库结构
@@ -105,6 +105,11 @@ paper/             论文结构、证据主张台账与待补材料
 - [Stage4D 候选边际效用归因报告](reports/超粒球RAG_Stage4D_CMA候选边际效用归因审计报告.md)
 - [Stage4D 关闭声明](docs/STAGE4D_CMA_CLOSURE.md)
 - [Stage4E-E2E Level A 协议](docs/STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md)
+- [Stage4E official config](configs/stage4e_e2e_official_train1000_v1.json)
+- [Stage4E input manifest](results/stage4e_e2e_official_train1000_v1_input_manifest.json)
+- [Stage4E model snapshot manifest](results/stage4e_e2e_model_snapshot_manifest.json)
+- [Stage4E environment manifest](results/stage4e_e2e_environment_manifest.json)
+- [Stage4E Level B 实现报告](docs/STAGE4E_E2E_LEVEL_B_IMPLEMENTATION_REPORT.md)
 - [论文证据与主张台账](paper/EVIDENCE_AND_CLAIM_LEDGER.md)
 
 ## 科研治理
@@ -114,7 +119,7 @@ paper/             论文结构、证据主张台账与待补材料
 - 必须暂停：Gold/evaluator、reservation、科学语义变化，以及错误 official 输入/cache、Gold 泄漏、不可信 ranking 或正式工件完整性异常。
 - 已完成的 U1-D Gold evaluation 不自行重复；不得在同一 development 结果后改特征、阈值、预算或检验再包装重跑。
 - Stage4D 与当前 controller 分支已经关闭；Stage4E 只评价静态 Dense/q25，不读取 Stage4D label/probability，也不创建 U2。
-- Stage4E 的新数据、模型、Gold 和正式执行必须在 Level A/Level B 绑定与明确执行确认之后开始。
+- Stage4E 的 Level A/Level B 绑定已经完成；首次正式 retrieval/generation 和随后 Gold evaluation 仍必须分别经过精确命令确认。
 - 每日方向复核是非阻塞检查，不要求每日创建审核文档。
 - 旧 PowerShell launcher、remote gate、observer、stderr framing 和 nested PRE 链只作为历史失败实现保留。
 
