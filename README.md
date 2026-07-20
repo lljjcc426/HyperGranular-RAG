@@ -114,14 +114,24 @@ paper/             论文结构、证据主张台账与待补材料
 
 ## 科研治理
 
-- 预注册协议、样本量、主要终点和停止规则先于结果读取提交。
-- Level B/C 工程问题按影响做最小修正和适量测试，不恢复逐步骤审批链。
-- 必须暂停：Gold/evaluator、reservation、科学语义变化，以及错误 official 输入/cache、Gold 泄漏、不可信 ranking 或正式工件完整性异常。
-- 已完成的 U1-D Gold evaluation 不自行重复；不得在同一 development 结果后改特征、阈值、预算或检验再包装重跑。
-- Stage4D 与当前 controller 分支已经关闭；Stage4E 只评价静态 Dense/q25，不读取 Stage4D label/probability，也不创建 U2。
-- Stage4E 的 Level A/Level B 绑定已经完成；首次正式 retrieval/generation 和随后 Gold evaluation 仍必须分别经过精确命令确认。
-- 每日方向复核是非阻塞检查，不要求每日创建审核文档。
-- 旧 PowerShell launcher、remote gate、observer、stderr framing 和 nested PRE 链只作为历史失败实现保留。
+```text
+STAGE_LEVEL_AUTHORIZATION_ACTIVE
+ONE_RESEARCH_STAGE_ONE_AUTHORIZATION
+STEP_LEVEL_APPROVAL_DISABLED
+CHANNEL_LEVEL_REAPPROVAL_DISABLED
+ENGINEERING_WORK_AUTONOMOUS
+STAGE_INTERNAL_EXECUTION_CONTINUOUS
+EXCEPTION_BASED_PAUSE_ONLY
+SCIENTIFIC_INTEGRITY_CONTROLS_RETAINED
+```
+
+- 这是项目长期、全局的现行治理基线，适用于当前及未来全部科研阶段，不是本次任务或 Stage4E 的临时规则。预注册数据边界、主要终点和停止规则先于结果读取提交；一个科学阶段只授权一次。除非实验卡明确排除，授权覆盖实现、测试、预定义 Channel/数据读取、正式运行、固定分析、verifier、rerun、报告、文档、Git 同步和远端验证。
+- Channel A/B 与 Gold-free/Gold-only 继续技术隔离，但不形成重复审批点；精确命令、脚本、环境变量、文件或提交不是科学审批对象。
+- 阶段内工程问题自主最小修复、测试、记录并继续。只在新科学问题/阶段、冻结科学语义变化、使用授权外新证据源，或严重科研完整性异常时暂停。
+- 逐命令、逐脚本、逐文件、逐提交、逐通道审批，以及重复 review、单独 synthetic 授权、普通修复 Amendment、逐次 approval record 和 nested approval chain 均已取消。
+- 新阶段默认使用 1–3 页轻量实验卡，固定研究问题、假设、数据边界、方法、主要终点、成功/停止/证据不足规则、Gold/独立测试/reservation 边界和禁止事项；长协议仅用于高风险例外。
+- 历史审批链只用于证据追溯，不再构成当前执行规则。已有科学协议、技术隔离、完整性检查、结果和停止结论不变。
+- 全局规则不自动扩大既有阶段明确排除的科学范围。当前 Stage4E 既有授权明确止于输入绑定和 Level B 实现，因此 official 仍未授权；下一边界是扩展阶段授权范围，不是分别确认 retrieval/generation 与 Gold 命令。
 
 ## 已知限制
 
@@ -138,6 +148,6 @@ paper/             论文结构、证据主张台账与待补材料
 
 ## 下一步
 
-按已接受的 [Stage4E-E2E Level A 协议](docs/STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md) 补齐官方 train 文件、1,000-query manifest、encoder/generator snapshot、精确环境、命令与 verifier 绑定。Level B 通过后，首次 1,000-query official retrieval/generation/Gold 命令仍需确认。Stage4D、当前 controller、Reservation、Stage3B 和 U2 保持关闭或锁定。
+Stage4E-E2E 的输入、模型、环境、命令、verifier 与 Level B 实现已经绑定。下一步是决定是否一次性扩展 Stage4E 阶段授权以覆盖冻结的 official 事务；若授权范围包含预定义 Gold-free 和 Gold 通道，则按协议完整性门连续执行。Stage4D、当前 controller、Reservation、Stage3B 和 U2 保持关闭或锁定。
 
 仓库：<https://github.com/lljjcc426/HyperGranular-RAG>

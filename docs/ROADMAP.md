@@ -4,6 +4,7 @@
 
 - Project: HyperGranular-RAG
 - Current stage: Stage4D-CMA is verified and closed; Stage4E-E2E input/model/environment binding and Level B implementation are complete; official retrieval/generation and Gold evaluation remain unauthorized
+- Current governance: project-wide and durable across all current/future stages; one research stage receives one authorization; stage-internal predefined work is continuous; step/channel reapproval is disabled; only new scientific boundaries or serious integrity anomalies pause execution
 - Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive development batch used through verified Stage4D-CMA; reservation and Stage3B were not accessed
 - Generator used: No
 - Gold labels used for indexing: No
@@ -1617,3 +1618,12 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - The encoder snapshot binds 13 actual files at revision `1110a243...`; the Qwen generator binds 7 files at revision `989aa798...`. The isolated environment is CPython 3.12.0 / torch 2.12.1+cu130 / CUDA 13.0 / transformers 5.9.0 on an RTX 4060 Laptop GPU. Two synthetic encoder runs were byte-identical and two synthetic generator runs were token-identical.
 - Level B implements a Gold-free blind-only runner, frozen Dense/static-q25 rankings, fixed Qwen prompt/decode, main/rerun artifacts, a separately locked Gold evaluator, and an independent verifier that does not import the evaluator. Nineteen targeted tests pass, including authorization-before-input, channel leakage, strict types, prompt cap, official answer scoring, deterministic bootstrap, decision gates, config binding, future-output absence, and atomic rollback.
 - Both `official_execution.authorized` and `gold_evaluation.authorized` remain false in the config. The next boundary is exact-command confirmation for the first official Gold-free retrieval/generation transaction. Gold remains sealed until byte-identical predictions and `STAGE4E_PRE_GOLD_ARTIFACTS_VERIFIED` exist.
+
+### Research Authorization Governance Simplification (2026-07-20)
+
+- This is the durable project-wide governance baseline for every current and future research stage, not a temporary exception for this documentation task or Stage4E. Current governance is `STAGE_LEVEL_AUTHORIZATION_ACTIVE`, `ONE_RESEARCH_STAGE_ONE_AUTHORIZATION`, `STEP_LEVEL_APPROVAL_DISABLED`, `CHANNEL_LEVEL_REAPPROVAL_DISABLED`, `ENGINEERING_WORK_AUTONOMOUS`, `STAGE_INTERNAL_EXECUTION_CONTINUOUS`, `EXCEPTION_BASED_PAUSE_ONLY`, and `SCIENTIFIC_INTEGRITY_CONTROLS_RETAINED`.
+- One stage authorization now covers all predefined implementation, tests, Channels/data reads, formal runs, fixed analyses, verifiers, deterministic reruns, reports, documentation, commits, pushes, and remote verification unless the experiment card explicitly excludes an item. Technical Channel/Gold isolation remains unchanged and no longer creates a separate approval gate.
+- Exact commands, scripts, files, environment variables, commits, synthetic-test completion, and routine engineering corrections are not scientific approval objects. Routine faults are fixed minimally, tested, recorded, and execution continues.
+- Execution pauses only for a new scientific question/stage/controller, a frozen scientific-semantic change, a new evidence source outside the current authorization, or a serious scientific-integrity anomaly. Historical approval chains remain immutable trace evidence but no longer define current execution.
+- Existing Stage4E authorization was explicitly limited to input binding and Level B implementation, so official execution remains unauthorized without retroactive scope expansion. Its future boundary is stage-authorization scope, not exact-command confirmation; a scope that includes both predefined Gold-free and Gold Channels proceeds continuously through their frozen integrity gates.
+- No scientific protocol, parameter, data boundary, algorithm, result, artifact SHA, or frozen conclusion changed in this governance-only update. No experiment or new data/Gold/reservation/Stage3B access occurred.

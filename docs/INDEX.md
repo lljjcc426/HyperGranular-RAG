@@ -91,6 +91,15 @@
 
 这些材料记录了失败、修订和治理演化，但不应被用作当前命令入口，也不得据此恢复已经退役的逐步骤审批链。
 
+## 当前授权治理
+
+这是项目长期、全局的现行治理基线，适用于当前及未来全部科研阶段，不是单次任务或当前 Stage 的临时例外。现行状态为 `STAGE_LEVEL_AUTHORIZATION_ACTIVE`、`ONE_RESEARCH_STAGE_ONE_AUTHORIZATION`、`STEP_LEVEL_APPROVAL_DISABLED`、`CHANNEL_LEVEL_REAPPROVAL_DISABLED`、`ENGINEERING_WORK_AUTONOMOUS`、`STAGE_INTERNAL_EXECUTION_CONTINUOUS`、`EXCEPTION_BASED_PAUSE_ONLY` 和 `SCIENTIFIC_INTEGRITY_CONTROLS_RETAINED`。
+
+- 一个科学阶段一次授权；除非实验卡明确排除，阶段内实现、测试、预定义数据/Channel、正式运行、固定分析、验证、复跑、报告和 Git 同步连续完成。
+- 技术 Channel 隔离继续保留，不再转化为通道级复审；CLI、环境变量、路径和提交不是科学审批对象。
+- 普通工程异常自主最小修复。只在新科学问题/阶段、冻结科学语义变化、授权外新证据源或严重完整性异常时暂停。
+- 历史 Amendment/Approval/Review/Hard Failure 文件保持原样，仅作证据追溯。
+
 ## 归档快照
 
 仓库整理前的长入口文档按原字节归档于 [archive](archive/README.md)：
@@ -106,10 +115,10 @@
 - README 只保留当前状态、研究问题、证据等级、方法概览、限制和下一步。
 - ROADMAP 承载按时间追加的完整阶段历史。
 - REPRODUCIBILITY 只保留当前可执行/可核验入口；旧命令进入归档。
-- 不为每次普通测试、push 或 Level C 问题创建独立审批文档。
+- 不为普通测试、push、工程问题、单次运行或通道切换创建独立审批文档。
 - 科学协议、失败证据和正式结果不删除、不覆盖、不改写。
 - 新增历史证据时优先更新 ROADMAP 和本索引，不向 README 堆叠全过程。
 
 ## 当前下一步
 
-当前状态为 `STAGE4D_CMA_CLOSED`、`STAGE4E_INPUT_CHANNELS_VERIFIED` 和 `STAGE4E_LEVEL_B_IMPLEMENTATION_READY`。下一步是在用户确认精确命令后执行首次 1,000-query Gold-free retrieval/generation；Gold evaluation 仍是后续独立授权边界。Reservation、Stage3B 和 U2 继续锁定。
+当前状态为 `STAGE4D_CMA_CLOSED`、`STAGE4E_INPUT_CHANNELS_VERIFIED` 和 `STAGE4E_LEVEL_B_IMPLEMENTATION_READY`。Stage4E 既有授权范围止于 Level B；下一步是决定是否一次性扩展阶段授权以覆盖冻结的 official 事务，而不是审批某条命令或逐通道复审。Reservation、Stage3B 和 U2 继续锁定。

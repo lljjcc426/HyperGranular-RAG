@@ -44,6 +44,23 @@ Stage4D-CMA 已在获授权边界内完成 Gold-free Channel A、development-Gol
 
 Stage4D 和当前 controller 分支已按 [STAGE4D_CMA_CLOSURE](STAGE4D_CMA_CLOSURE.md) 冻结关闭。Stage4E-E2E [Level A 协议](STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md) 已接受；source/model/environment/config/verifier 绑定和 Level B implementation 已完成。尚未运行 1,000-query official retrieval/generation/Gold evaluation，也没有 Stage4E 科研结果。
 
+## 当前授权治理
+
+```text
+STAGE_LEVEL_AUTHORIZATION_ACTIVE
+ONE_RESEARCH_STAGE_ONE_AUTHORIZATION
+STEP_LEVEL_APPROVAL_DISABLED
+CHANNEL_LEVEL_REAPPROVAL_DISABLED
+ENGINEERING_WORK_AUTONOMOUS
+STAGE_INTERNAL_EXECUTION_CONTINUOUS
+EXCEPTION_BASED_PAUSE_ONLY
+SCIENTIFIC_INTEGRITY_CONTROLS_RETAINED
+```
+
+这是项目长期、全局的现行治理基线，适用于当前及未来全部科研阶段，不是单次复现事务或 Stage4E 的临时规则。阶段授权默认连续覆盖实验卡中预定义的实现、测试、数据/Channel、正式运行、固定分析、独立验证、确定性复跑、报告和 Git/远端核验。Channel 与 Gold 隔离仍是可复现性和防泄漏合同，但不自动形成重复审批点；本文登记的命令、环境、SHA 和路径用于重建与核验，不是逐命令授权凭证。
+
+普通工程异常自主最小修复并继续。只有新科学问题或阶段、冻结科学语义变化、使用当前授权外的新证据源、或严重完整性异常才暂停。历史审批链与旧命令保留为证据，不构成当前执行规则。全局治理不自动扩大既有阶段明确排除的科学范围；当前 Stage4E 既有授权止于输入绑定和 Level B 实现，因此 official 状态仍为未授权，这不是精确命令门。
+
 ## Stage4E 已冻结复现边界
 
 | 项目 | 冻结值 / 当前状态 |
@@ -259,10 +276,10 @@ STAGE4B_U1_GOLD_INDEPENDENT_VERIFICATION_PASS queries=4500 decision=STOP_U1_BRAN
 2. 不在同一 development 上修改特征、公式、预算、阈值、排序或检验后重跑；
 3. 不由该结果打开 reservation 或 Stage3B；
 4. 后续新研究必须先形成独立问题、协议、样本边界和停止规则，再读取新结果；
-5. Reservation、Stage3B、再次 Gold 执行和科学语义修改仍需单独协议与明确授权。
+5. Reservation、Stage3B、再次既有 Gold 执行和科学语义修改不在当前阶段授权内；如需使用，必须进入新的科学边界或明确扩展阶段授权。
 
 Stage4D 的冻结 transaction 已完成；不得再次运行 Channel A/B/probe、覆盖三项 probe 工件、降低 bootstrap 或在同一 development 上结果后修改模型/feature/threshold。`CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE` 不授权 U2。Reservation、Stage3B、新 Gold 和任何新 candidate controller 仍需新的科学协议与明确授权。
 
 本次冻结负结果只否定当前 U1-D controller 的晋级主张，不否定 HyperGranular-RAG 整体研究方向。Stage4C 的 `MECHANISM_EVIDENCE_INCONCLUSIVE` 不自动创建 U2；后续新 controller 必须作为新的科学语义和新的 Level A development 协议处理。
 
-当前下一项科研工作是审核并完成 Stage4E-E2E 的 Level A/Level B 绑定。Stage4E 是静态方法的全新 E2E 问题，不允许利用 Stage4D labels、OOF probabilities、feature panels 或 decision 来选择 ranking。首次 official source/model/Gold 读取前必须停在协议检查点；当前文档提交不构成执行授权。
+Stage4E-E2E 的 Level A/Level B 绑定已经完成。Stage4E 是静态方法的独立 E2E 问题，不允许利用 Stage4D labels、OOF probabilities、feature panels 或 decision 来选择 ranking。当前既有授权未覆盖 official source/model/Gold 事务；下一边界是是否扩展该阶段授权范围，而不是逐命令或逐通道确认。本次治理文档提交不构成 Stage4E official 执行授权。

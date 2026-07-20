@@ -30,6 +30,14 @@
 ## 3. 当前科研状态
 
 ```text
+STAGE_LEVEL_AUTHORIZATION_ACTIVE
+ONE_RESEARCH_STAGE_ONE_AUTHORIZATION
+STEP_LEVEL_APPROVAL_DISABLED
+CHANNEL_LEVEL_REAPPROVAL_DISABLED
+ENGINEERING_WORK_AUTONOMOUS
+STAGE_INTERNAL_EXECUTION_CONTINUOUS
+EXCEPTION_BASED_PAUSE_ONLY
+SCIENTIFIC_INTEGRITY_CONTROLS_RETAINED
 LEVEL_B_IMPLEMENTATION_ACCEPTED
 VERIFIED_PRE_GOLD_COMMITTED
 GOLD_EVALUATION_COMPLETED
@@ -81,7 +89,7 @@ SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
 
 ## 4. 科研不可变边界
 
-未经新的 Level A 协议或明确授权，不得修改或事后选择：
+未经新的阶段级科学协议/实验卡与授权，不得修改或事后选择：
 
 - development/reservation 数据边界；
 - 候选生成、粒球、超边或 facet；
@@ -97,19 +105,26 @@ Stage4E 中，Gold 还不得进入 blind input、embedding、Dense/q25 ranking�
 
 ## 5. 授权与暂停
 
-Level B/C 的普通工程工作、测试、文档、提交和推送不逐项暂停，也不建立逐提交审批链。根据变更影响自主完成最小修正、适量测试、必要绑定与 GitHub 同步。
+本节是 HyperGranular-RAG 项目长期、全局的现行治理基线，适用于当前及未来全部科研阶段，不是单次任务或单一 Stage 的临时规则，也不因阶段切换而失效。一个已定义的科研阶段只进行一次阶段级授权。除非实验卡或用户明确排除，授权默认连续覆盖：协议/实验卡定稿、实现、测试、所有预定义 Channel、所有预定义数据读取（包括已在实验卡中授权的 Gold）、正式运行、固定统计或 probe、独立 verifier、确定性复跑、报告、状态文档、Git 提交/推送和远端一致性验证。不得因切换脚本、通道、命令、工件或提交而重复请求批准。
 
-本次获授权的 Gold evaluation 已结束，不得自行再次运行。必须暂停并报告：
+Channel A/Channel B、Gold-free/Gold-only 的代码、输入、依赖和工件仍须严格隔离；技术隔离不等于审批隔离。当前阶段授权若覆盖两条通道，前一通道及完整性门通过后直接进入后一通道。精确 CLI、参数、环境变量、输出路径和依赖版本属于冻结执行细节，不是独立科学审批对象。
 
-1. 准备再次连接或运行 Gold evaluator；
-2. 准备读取 reservation 或 Stage3B；
-3. 准备改变科学语义、数据边界、终点或统计规则；
-4. 发现错误 official 输入/cache、Gold 泄漏、不可信 ranking；
-5. 正式输出部分生成且不能可靠回滚，或本地/tracked/remote 工件字节不一致；
-6. verifier 无法确认正式工件完整性。
-7. 准备首次运行 1,000-query Stage4E official retrieval/generation 或 Stage4E Gold evaluation，而 Level B 绑定与精确命令确认尚未完成。
+全局治理生效不等于自动扩大任何既有阶段明确排除的科学范围。当前 Stage4E 既有授权明确只覆盖输入绑定与 Level B 实现，因此不追溯扩大为 official 授权；其下一边界是扩大 Stage4E 阶段授权范围，而不是确认某条命令。当前与未来阶段一律按本节判断授权覆盖与暂停边界。
 
-临时 push/remote visibility、路径、权限、日志、依赖或零正式输出时的普通 preflight 错误默认是 Level C，不自动升级为科研 Hard Failure。
+阶段内默认自主完成：代码编写/重构、单元/集成/synthetic tests、普通依赖安装与固定、路径/CLI/编码/序列化/环境/运行时修复、已授权 Gold-free 或 Gold evaluator 事务、固定统计/probe、rerun、verifier、schema/SHA/身份/泄漏检查、报告与五个治理入口更新，以及 commit、push 和远端字节验证。普通工程异常按“定位 → 判断是否改变科学语义 → 最小修复 → 必要测试 → 记录 → 继续”处理，不升级为新的科学审核。
+
+只在以下四类情形暂停并请求一次集中决策：
+
+1. 启动新的科学问题、Stage、controller 或主要假设；
+2. 修改已冻结科学语义，包括候选/标签/Gold 用法/主要特征或模型/数据切分/主要终点/晋级门/停止规则/确认性统计；
+3. 使用当前阶段授权未覆盖的新证据源，包括新的独立测试、reservation、Stage3B、外部 benchmark 或未登记 Gold；
+4. 出现严重科研完整性异常，包括 Gold、question-type 或身份泄漏，输入/Gold SHA 不一致，ranking/candidate trace/关键工件不可重建，main/rerun 不一致，需要改变科学语义才能修复的 verifier 失败，正式结果被覆盖、部分生成或不可恢复，或必须修改冻结正式结论。
+
+除此之外不得暂停。临时 push/remote visibility、路径、权限、日志、依赖、PowerShell/环境变量包装、普通性能问题或零正式输出的 preflight 错误均属工程问题。
+
+取消逐命令、逐脚本、逐文件、逐提交、逐通道审批；取消实现后的重复科学审核、synthetic tests 后的单独授权、正式运行前复述固定授权语句、普通修复 Amendment、同阶段重复 review request、逐次运行 approval record 和嵌套审批链。不得只为记录一次授权新增治理文档。历史 Amendment/Approval/Review 链仅用于证据追溯，不构成现行执行规则。
+
+新科学阶段默认使用 1–3 页轻量实验卡，固定研究问题、假设、数据边界、主要方法、主要终点、成功/停止/证据不足规则、Gold/独立测试/reservation 边界和禁止事项。只有高风险确认性实验、一次性独立 reservation、复杂多源泄漏风险、多主要终点或不可逆外部提交才使用长协议。
 
 ## 6. 测试与执行
 
@@ -121,7 +136,7 @@ Level B/C 的普通工程工作、测试、文档、提交和推送不逐项暂�
 - 不自行重新运行已完成的 official pre-Gold transaction。
 - 不自行重新运行已完成的 Stage4B-U1-D Gold transaction。
 - 不自行重新运行或覆盖已完成的 Stage4D Channel A、Channel B 和 official probe transaction。
-- Stage4E Level B 阶段只做 source/model/environment identity binding、实现与 synthetic tests；不运行 1,000-query official retrieval/generation/evaluation。
+- 当前 Stage4E 已授权范围只含 source/model/environment identity binding、实现与 synthetic tests；在阶段授权范围扩大前不运行 1,000-query official retrieval/generation/evaluation。
 
 ## 7. GitHub 与文件
 
@@ -133,4 +148,4 @@ Level B/C 的普通工程工作、测试、文档、提交和推送不逐项暂�
 
 ## 8. 下一科研门
 
-Stage4B-U1、Stage4C、Stage4D 和当前 controller 线均已停止或关闭，不自动创建 U2。当前唯一科研门是 Stage4E-E2E：固定 Dense 与静态 all-query q25、固定生成器，在 new-ID same-domain 边界上评价答案 F1/EM。Level A 与 Level B 绑定已完成；下一边界是首次 official Gold-free retrieval/generation 的精确命令确认。Gold evaluation 只能在 main/rerun 与 pre-Gold 独立验证通过后另行确认。Reservation、Stage3B、再次既有 Gold 执行和任何新 controller 继续锁定。
+Stage4B-U1、Stage4C、Stage4D 和当前 controller 线均已停止或关闭，不自动创建 U2。当前唯一科研门是 Stage4E-E2E：固定 Dense 与静态 all-query q25、固定生成器，在 new-ID same-domain 边界上评价答案 F1/EM。Level A 与 Level B 绑定已完成；下一边界是决定是否将 official 事务纳入 Stage4E 阶段授权范围。若一次授权同时覆盖预定义 Gold-free 与 Gold 通道，则在 main/rerun 和 pre-Gold 独立验证通过后连续执行，不再按命令或通道复审。Reservation、Stage3B、再次既有 Gold 执行和任何新 controller 继续锁定。
