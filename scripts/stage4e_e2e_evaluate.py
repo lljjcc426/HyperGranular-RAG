@@ -332,6 +332,13 @@ def run(config: dict[str, Any], confirmed_command_sha256: str) -> None:
     rerun_path = _path(config, "predictions_rerun")
     if main_path.read_bytes() != rerun_path.read_bytes():
         raise ValueError("Main/rerun predictions are not byte-identical")
+    if _path(config, "prompt_audit_main").read_bytes() != _path(
+        config, "prompt_audit_rerun"
+    ).read_bytes():
+        raise ValueError("Main/rerun prompt audits are not byte-identical")
+    pregold_verification = load_json(_path(config, "verified_pregold"))
+    if pregold_verification.get("status") != "STAGE4E_PRE_GOLD_ARTIFACTS_VERIFIED":
+        raise ValueError("Independent pre-Gold verification has not passed")
     predictions = _load_predictions(main_path)
     rankings = load_jsonl(_path(config, "rankings"))
 

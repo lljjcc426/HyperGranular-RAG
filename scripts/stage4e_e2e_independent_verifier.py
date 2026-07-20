@@ -97,7 +97,11 @@ def verify_inputs(config: dict[str, Any]) -> dict[str, Any]:
     source_path = _assert_bound(config, "source")
     if file_identity(source_path) != {"bytes": SOURCE_BYTES, "sha256": SOURCE_SHA256}:
         raise ValueError("Source identity differs from the canonical frozen identity")
+    protocol_path = _assert_bound(config, "protocol")
+    requirements_path = _assert_bound(config, "requirements")
     manifest_path = _assert_bound(config, "input_manifest")
+    model_manifest_path = _assert_bound(config, "model_manifest")
+    environment_manifest_path = _assert_bound(config, "environment_manifest")
     blind_path = _assert_bound(config, "blind")
     gold_path = _assert_bound(config, "gold")
     metadata_path = _assert_bound(config, "metadata")
@@ -196,6 +200,47 @@ def verify_inputs(config: dict[str, Any]) -> dict[str, Any]:
         raise ValueError("Input manifest incorrectly records retrieval/generation")
     if checks.get("official_metrics_computed") is not False:
         raise ValueError("Input manifest incorrectly records official metrics")
+
+    historical_bindings = config.get("historical_inputs")
+    historical_paths = config.get("historical_query_paths")
+    if not isinstance(historical_bindings, list) or not isinstance(historical_paths, list):
+        raise ValueError("Historical input bindings are missing")
+    if [row.get("path") for row in historical_bindings] != historical_paths:
+        raise ValueError("Historical input path lists differ")
+    if manifest.get("historical_inputs") != historical_bindings:
+        raise ValueError("Historical input bindings differ from the frozen input manifest")
+    for index, binding in enumerate(historical_bindings):
+        if not isinstance(binding, dict) or not isinstance(binding.get("path"), str):
+            raise ValueError(f"historical_inputs[{index}] schema differs")
+        assert_file_identity(
+            Path(binding["path"]),
+            {"bytes": binding.get("bytes"), "sha256": binding.get("sha256")},
+            f"historical_inputs[{index}]",
+        )
+
+    model_manifest = load_json(model_manifest_path)
+    if not isinstance(model_manifest, dict) or model_manifest.get("schema_version") != SCHEMA_VERSION:
+        raise ValueError("Model snapshot manifest schema differs")
+    if config.get("models") != model_manifest.get("models"):
+        raise ValueError("Config model bindings differ from the model snapshot manifest")
+    for model_label, model in model_manifest["models"].items():
+        root = Path(require_native_string(model.get("snapshot_path"), f"models.{model_label}.snapshot_path"))
+        files = model.get("files")
+        if not isinstance(files, list) or not files:
+            raise ValueError(f"models.{model_label}.files are missing")
+        if model.get("files_sha256") != sha256_bytes(render_json(files)):
+            raise ValueError(f"models.{model_label}.files_sha256 differs")
+        for file_index, file_row in enumerate(files):
+            assert_file_identity(
+                root / require_native_string(file_row.get("path"), "model file path"),
+                {"bytes": file_row.get("bytes"), "sha256": file_row.get("sha256")},
+                f"models.{model_label}.files[{file_index}]",
+            )
+    environment_manifest = load_json(environment_manifest_path)
+    if environment_manifest.get("status") != "STAGE4E_SYNTHETIC_CUDA_ENVIRONMENT_VERIFIED_NO_OFFICIAL_DATA":
+        raise ValueError("Stage4E environment verification status differs")
+    if config.get("environment") != environment_manifest:
+        raise ValueError("Config environment binding differs from the environment manifest")
     return {
         "channels": {
             "blind": file_identity(blind_path),
@@ -203,8 +248,12 @@ def verify_inputs(config: dict[str, Any]) -> dict[str, Any]:
             "metadata": file_identity(metadata_path),
         },
         "historical_hotpotqa_overlap": 0,
+        "environment_manifest": file_identity(environment_manifest_path),
         "input_manifest": file_identity(manifest_path),
+        "model_manifest": file_identity(model_manifest_path),
+        "protocol": file_identity(protocol_path),
         "queries": SAMPLE_SIZE,
+        "requirements": file_identity(requirements_path),
         "schema_version": SCHEMA_VERSION,
         "source": file_identity(source_path),
         "status": "STAGE4E_INPUT_CHANNELS_VERIFIED",
@@ -327,6 +376,23 @@ def verify_pregold(config: dict[str, Any]) -> dict[str, Any]:
         raise ValueError("Main/rerun predictions are not byte-identical")
     if _path(config, "prompt_audit_main").read_bytes() != _path(config, "prompt_audit_rerun").read_bytes():
         raise ValueError("Main/rerun prompt audits are not byte-identical")
+    telemetry_rows: dict[str, dict[str, Any]] = {}
+    for run_id in ("main", "rerun"):
+        telemetry = load_json(_path(config, f"telemetry_{run_id}"))
+        if (
+            not isinstance(telemetry, dict)
+            or telemetry.get("run_id") != run_id
+            or telemetry.get("generation_calls") != 2000
+            or telemetry.get("failed_calls") != 0
+            or telemetry.get("status")
+            != "STAGE4E_GOLDFREE_RUN_COMPLETE_PENDING_VERIFICATION"
+        ):
+            raise ValueError(f"{run_id} telemetry contract differs")
+        telemetry_rows[run_id] = telemetry
+    if telemetry_rows["main"].get("embedding_cache") != telemetry_rows["rerun"].get(
+        "embedding_cache"
+    ):
+        raise ValueError("Main/rerun telemetry binds different embedding caches")
     blind = load_jsonl(_assert_bound(config, "blind"))
     assert_no_prohibited_keys(blind, "pre-Gold blind input")
     units, queries = _build_units(blind)
@@ -383,6 +449,7 @@ def verify_pregold(config: dict[str, Any]) -> dict[str, Any]:
     if _path(config, "prompt_audit_main").read_bytes() != render_jsonl(expected_audits):
         raise ValueError("Prompt audit differs from independent reconstruction")
     predictions = load_jsonl(_path(config, "predictions_main"))
+    assert_no_prohibited_keys(predictions, "pre-Gold predictions")
     actual_order: list[tuple[str, str]] = []
     for row in predictions:
         if set(row) != {"dataset", "method", "prediction", "query_id", "sample_id"}:
@@ -399,6 +466,8 @@ def verify_pregold(config: dict[str, Any]) -> dict[str, Any]:
         "rankings": file_identity(_path(config, "rankings")),
         "schema_version": SCHEMA_VERSION,
         "status": "STAGE4E_PRE_GOLD_ARTIFACTS_VERIFIED",
+        "telemetry_main": file_identity(_path(config, "telemetry_main")),
+        "telemetry_rerun": file_identity(_path(config, "telemetry_rerun")),
     }
 
 
@@ -462,6 +531,9 @@ def _decision(bootstrap: dict[str, Any]) -> str:
 
 
 def verify_postgold(config: dict[str, Any]) -> dict[str, Any]:
+    pregold_verification = load_json(_path(config, "verified_pregold"))
+    if pregold_verification.get("status") != "STAGE4E_PRE_GOLD_ARTIFACTS_VERIFIED":
+        raise ValueError("Independent pre-Gold verification has not passed")
     predictions = load_jsonl(_path(config, "predictions_main"))
     rankings = load_jsonl(_path(config, "rankings"))
     gold = load_jsonl(_assert_bound(config, "gold"))

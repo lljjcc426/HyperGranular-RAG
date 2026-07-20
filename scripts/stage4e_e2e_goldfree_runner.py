@@ -8,8 +8,10 @@ from __future__ import annotations
 
 import argparse
 import gc
+import importlib.metadata
 import json
 import os
+import platform
 import sys
 import time
 from pathlib import Path
@@ -195,21 +197,39 @@ def build_units_queries(
     return units, queries
 
 
-def _set_determinism() -> None:
-    required_environment = {
-        "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
-        "MKL_NUM_THREADS": "1",
-        "NUMEXPR_NUM_THREADS": "1",
-        "OMP_NUM_THREADS": "1",
-        "OPENBLAS_NUM_THREADS": "1",
-        "PYTHONHASHSEED": "0",
-        "TOKENIZERS_PARALLELISM": "false",
-    }
+def _set_determinism(environment: dict[str, Any]) -> None:
+    required_environment = environment.get("environment_variables")
+    if not isinstance(required_environment, dict) or not required_environment:
+        raise ValueError("Frozen environment_variables binding is missing")
     for name, expected in required_environment.items():
         if os.environ.get(name) != expected:
             raise RuntimeError(f"Frozen environment variable differs: {name}")
     import torch
 
+    packages = environment.get("packages")
+    if not isinstance(packages, dict) or not packages:
+        raise ValueError("Frozen package binding is missing")
+    for name, expected in packages.items():
+        if importlib.metadata.version(name) != expected:
+            raise RuntimeError(f"Frozen package version differs: {name}")
+    python = environment.get("python")
+    runtime = environment.get("runtime")
+    gpu = environment.get("gpu")
+    if not all(isinstance(value, dict) for value in (python, runtime, gpu)):
+        raise ValueError("Frozen Python/runtime/GPU binding is missing")
+    if platform.python_version() != python["version"] or Path(sys.executable) != Path(python["executable"]):
+        raise RuntimeError("Frozen Python runtime differs")
+    if (
+        torch.__version__ != runtime["torch"]
+        or torch.version.cuda != runtime["cuda"]
+        or int(torch.backends.cudnn.version()) != runtime["cudnn"]
+        or platform.platform() != runtime["platform"]
+    ):
+        raise RuntimeError("Frozen torch/CUDA/platform runtime differs")
+    if not torch.cuda.is_available() or torch.cuda.get_device_name(0) != gpu["name"]:
+        raise RuntimeError("Frozen CUDA device differs")
+    if int(torch.cuda.get_device_properties(0).total_memory) != gpu["total_memory_bytes"]:
+        raise RuntimeError("Frozen CUDA total-memory identity differs")
     torch.manual_seed(0)
     torch.cuda.manual_seed_all(0)
     torch.set_num_threads(1)
@@ -548,7 +568,11 @@ def run(config: dict[str, Any], run_id: str, confirmed_command_sha256: str) -> N
     assert_implementation_binding(config, Path(__file__).resolve().parents[1])
     if run_id not in {"main", "rerun"}:
         raise ValueError("run-id must be main or rerun")
-    _set_determinism()
+    environment_path = _assert_bound_file(config, "environment_manifest")
+    environment = load_json(environment_path)
+    if not isinstance(environment, dict) or config.get("environment") != environment:
+        raise ValueError("Config environment binding differs from the environment manifest")
+    _set_determinism(environment)
 
     blind_path = _assert_bound_file(config, "blind")
     blind_rows = load_jsonl(blind_path)
@@ -572,6 +596,10 @@ def run(config: dict[str, Any], run_id: str, confirmed_command_sha256: str) -> N
         raise ValueError("Generator identity differs from the frozen protocol")
     encoder_snapshot = _path(config, "encoder_snapshot")
     generator_snapshot = _path(config, "generator_snapshot")
+    if str(encoder_snapshot.resolve()) != encoder.get("snapshot_path"):
+        raise ValueError("Encoder snapshot path differs from model manifest")
+    if str(generator_snapshot.resolve()) != generator.get("snapshot_path"):
+        raise ValueError("Generator snapshot path differs from model manifest")
     validate_snapshot(encoder_snapshot, encoder, "models.encoder")
     validate_snapshot(generator_snapshot, generator, "models.generator")
 
