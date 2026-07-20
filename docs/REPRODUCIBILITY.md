@@ -22,6 +22,11 @@ EXISTING_OFFICIAL_PROBE_ARTIFACTS_PROVENANCE_VERIFIED
 STAGE4D_PROBE_VERIFIED
 STAGE4D_FINAL_VERIFICATION_PASSED
 CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE
+STAGE4D_CMA_CLOSED
+CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED
+STAGE4E_LEVEL_A_PROTOCOL_DRAFTED
+STAGE4E_INPUTS_NOT_BOUND
+STAGE4E_EXECUTION_NOT_AUTHORIZED
 RESERVATION_REQUIRES_PAUSE
 U2_NOT_AUTHORIZED
 ```
@@ -31,6 +36,23 @@ Pre-Gold 和本次获授权的 Gold evaluation 均已完成，不应重复运行
 Stage4C-U1-FMA 也已完成一次冻结的 post-Gold exploratory diagnosis。它不是新的 Gold evaluation，不改变 Stage4B 负结果，也不授权 U2 或 reservation。
 
 Stage4D-CMA 已在获授权边界内完成 Gold-free Channel A、development-Gold Channel B、固定 official probe、独立验证和 bounded provenance audit。唯一 advancement panel 未通过全部联合门，冻结结论为 `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。现有工件不得覆盖或重跑；reservation、Stage3B 与 U2 仍未授权。
+
+Stage4D 和当前 controller 分支已按 [STAGE4D_CMA_CLOSURE](STAGE4D_CMA_CLOSURE.md) 冻结关闭。Stage4E-E2E 仅有 [Level A 草案](STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL_DRAFT.md)：尚未下载/读取 HotpotQA train、加载 proposed encoder/generator、构造 Stage4E embedding/ranking、连接 Stage4E Gold 或生成任何 Stage4E 结果。
+
+## Stage4E 待冻结复现边界
+
+| 项目 | 草案值 / 当前状态 |
+|---|---|
+| 数据 | 官方 `hotpot_train_v1.1.json`；Bytes/SHA 未绑定，未访问 |
+| 样本 | `SHA256("stage4e_e2e_v1\0" + _id)` 排序前 1,000；manifest 未生成 |
+| 研究角色 | new-ID same-domain closed distractor holdout；不是外部数据集/full-wiki |
+| retrieval arms | `DENSE_TOP20` vs 无 controller 的 `STATIC_Q25_TOP20` |
+| encoder | `sentence-transformers/all-MiniLM-L6-v2` proposed revision `1110a243fdf4706b3f48f1d95db1a4f5529b4d41`；文件 SHA 未绑定 |
+| generator | `Qwen/Qwen2.5-1.5B-Instruct` proposed revision `989aa7980e4cf806f80c7fef2b1adb7bc71aa306`；文件 SHA/运行环境未绑定 |
+| primary | paired `delta_answer_f1`，10,000 query bootstrap；未运行 |
+| decision | supported / negative / inconclusive / no-scientific-decision；未判定 |
+
+Level A 接受、Level B implementation、exact source/model/environment/config/verifier 绑定和明确执行确认完成前，不得把草案值当作已验证事实或运行入口。Stage4D 的环境和命令不自动成为 Stage4E 环境。
 
 ## 运行环境
 
@@ -236,3 +258,5 @@ STAGE4B_U1_GOLD_INDEPENDENT_VERIFICATION_PASS queries=4500 decision=STOP_U1_BRAN
 Stage4D 的冻结 transaction 已完成；不得再次运行 Channel A/B/probe、覆盖三项 probe 工件、降低 bootstrap 或在同一 development 上结果后修改模型/feature/threshold。`CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE` 不授权 U2。Reservation、Stage3B、新 Gold 和任何新 candidate controller 仍需新的科学协议与明确授权。
 
 本次冻结负结果只否定当前 U1-D controller 的晋级主张，不否定 HyperGranular-RAG 整体研究方向。Stage4C 的 `MECHANISM_EVIDENCE_INCONCLUSIVE` 不自动创建 U2；后续新 controller 必须作为新的科学语义和新的 Level A development 协议处理。
+
+当前下一项科研工作是审核并完成 Stage4E-E2E 的 Level A/Level B 绑定。Stage4E 是静态方法的全新 E2E 问题，不允许利用 Stage4D labels、OOF probabilities、feature panels 或 decision 来选择 ranking。首次 official source/model/Gold 读取前必须停在协议检查点；当前文档提交不构成执行授权。

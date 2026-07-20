@@ -6,10 +6,10 @@
 
 | 项目 | 当前事实 |
 |---|---|
-| 研究阶段 | Stage4D-CMA official candidate attribution 与固定 OOF probe 已完成并验证 |
-| 状态 | `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`；Stage4B 仍为 `STOP_U1_BRANCH_KEEP_RESERVATION_LOCKED` |
-| 数据边界 | 2WikiMultiHopQA development：4,500 queries / 143,820 unlabeled units |
-| 当前证据 | 冻结 U1 controller 的有效 development 负结果；Stage4D 找到部分 candidate-level gain/harm 信号，但未达到晋级门 |
+| 研究阶段 | Stage4D-CMA 已验证并关闭；Stage4E-E2E Level A 协议草案待审核 |
+| 状态 | `STAGE4D_CMA_CLOSED`；`CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED`；`STAGE4E_EXECUTION_NOT_AUTHORIZED` |
+| 已用数据边界 | 2WikiMultiHopQA development：4,500 queries / 143,820 unlabeled units |
+| 当前证据 | U1-D 是有效 development 负结果；Stage4D candidate 机制证据不确定；静态 HGRAG 的答案质量尚未测试 |
 | Gold | 仅在 ranking 冻结后由独立 evaluator 使用；未进入 controller 或排序 |
 | Reservation / Stage3B | `KEEP_LOCKED` |
 
@@ -34,11 +34,14 @@ Stage4C-U1-FMA 进一步审计其失败机制：raw U1 score 对 GAIN-vs-HARM �
 
 Stage4D-CMA 将问题下沉到 candidate 级：8,467 个 eligible candidates 经 standardized first-slot insertion、`LOO_NO_BACKFILL` 和 `LOO_WITH_BACKFILL` 归因后，固定 Task-C combined panel 的 AUROC 为 `0.64310 [0.55520, 0.72974]`、AP 为 `0.72198`。它存在部分符号信号，但 AUROC 未达到 `0.65` 且 Brier 未优于 prevalence baseline，最终为 `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。
 
-## 冻结方法
+Stage4D 和当前 controller 分支现已冻结关闭。Stage4E-E2E 转向独立问题：在此前未读的 HotpotQA train ID-hash 边界上，用同一固定生成器比较 Dense Top-20 与不带 controller 的静态 q25 Top-20，主要评价 answer F1。该协议仍是草案；尚未下载/读取新边界、加载 Stage4E 模型或生成任何结果。
+
+## 冻结方法边界
 
 - Dense Top-10 受保护；最终 effective-K 为 `K_q=min(20, |C_q|)`。
 - q25 floor：`0.1957079917192459`。
 - 每查询最多插入 4 个 q25 单元。
+- Stage4E proposed static arm 对所有 query 直接使用 q25 ranking，不调用 controller。
 - U1 score 使用四项无标签 ECDF-midrank 输入及冻结 tie-break。
 - 全局使用 60% planned-insert ordered-prefix budget。
 - Controller 不接收 Gold、reservation 或 Stage3B 输入。
@@ -56,7 +59,8 @@ Stage4D-CMA 将问题下沉到 candidate 级：8,467 个 eligible candidates 经
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；异质性明显 |
 | Stage4B-U1-D | development Gold 评估与独立验证完成 | 资源门单项通过，但联合晋级门失败；U1 分支停止 |
 | Stage4C-U1-FMA | post-Gold 探索性诊断，`CAUTION` | query-level score 方向错误且 all-on/off 受限；不足以授权 U2 |
-| Stage4D-CMA | post-Gold exploratory official audit，`CAUTION` | candidate-level 部分信号未过联合晋级门；不授权 U2 |
+| Stage4D-CMA | post-Gold exploratory official audit，`CAUTION`；已关闭 | candidate-level 部分信号未过联合晋级门；不授权 U2 |
+| Stage4E-E2E | Level A draft；未执行 | 计划检验静态 q25 是否转化为答案质量收益；当前无结果 |
 
 完整研究轨迹见 [ROADMAP](docs/ROADMAP.md) 和 [文档索引](docs/INDEX.md)。
 
@@ -66,6 +70,7 @@ Stage4D-CMA 将问题下沉到 candidate 级：8,467 个 eligible candidates 经
 - Stage4B-U1-D development：4,500 queries / 143,820 units。
 - Gold 仅由已授权 evaluator 在 ranking 冻结后使用，未进入索引、候选、排序、过滤或 controller。
 - Reservation 仅保留登记的 ID 摘要边界，不读取内容、embedding 或指标。
+- Stage4E proposed boundary 是此前未读的 HotpotQA `hotpot_train_v1.1.json` 确定性 1,000-query 样本；当前仅完成设计，尚未访问。
 - Raw data、processed corpus、embedding cache、模型和密钥不进入 Git。
 
 ## 仓库结构
@@ -78,6 +83,7 @@ reports/           阶段性科研报告
 results/           可提交的审计、汇总与冻结工件
 scripts/           数据、检索、controller、验证和评估脚本
 tests/             研究代码回归测试
+paper/             论文结构、证据主张台账与待补材料
 ```
 
 日常阅读从 [docs/INDEX.md](docs/INDEX.md) 开始。历史 Amendment、Hard Failure 和 PowerShell 边界材料保留用于追溯，但不再是当前执行入口。
@@ -97,6 +103,9 @@ tests/             研究代码回归测试
 - [Stage4D 固定依赖](requirements-stage4d.txt)
 - [Stage4D final verification](results/stage4d_cma_verified_final.json)
 - [Stage4D 候选边际效用归因报告](reports/超粒球RAG_Stage4D_CMA候选边际效用归因审计报告.md)
+- [Stage4D 关闭声明](docs/STAGE4D_CMA_CLOSURE.md)
+- [Stage4E-E2E Level A 协议草案](docs/STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL_DRAFT.md)
+- [论文证据与主张台账](paper/EVIDENCE_AND_CLAIM_LEDGER.md)
 
 ## 科研治理
 
@@ -104,12 +113,14 @@ tests/             研究代码回归测试
 - Level B/C 工程问题按影响做最小修正和适量测试，不恢复逐步骤审批链。
 - 必须暂停：Gold/evaluator、reservation、科学语义变化，以及错误 official 输入/cache、Gold 泄漏、不可信 ranking 或正式工件完整性异常。
 - 已完成的 U1-D Gold evaluation 不自行重复；不得在同一 development 结果后改特征、阈值、预算或检验再包装重跑。
+- Stage4D 与当前 controller 分支已经关闭；Stage4E 只评价静态 Dense/q25，不读取 Stage4D label/probability，也不创建 U2。
+- Stage4E 的新数据、模型、Gold 和正式执行必须在 Level A/Level B 绑定与明确执行确认之后开始。
 - 每日方向复核是非阻塞检查，不要求每日创建审核文档。
 - 旧 PowerShell launcher、remote gate、observer、stderr framing 和 nested PRE 链只作为历史失败实现保留。
 
 ## 已知限制
 
-- 当前研究只评估检索，不包含生成器答案质量。
+- 已完成证据只评估检索/controller 机制；Stage4E 尚未运行，因此当前没有生成器答案质量证据。
 - q25 阈值来自早期数据，不能声称对 2Wiki 最优。
 - Stage4B-U1 是单一 development benchmark batch 的资源分配实验，不能主张为在线 controller。
 - 插入量减少刚超过 `40%` 门槛，但不能抵消 retention、Fisher 和 CR 门失败。
@@ -118,9 +129,10 @@ tests/             研究代码回归测试
 - Stage4C 不含 candidate Gold identity/rank 或 candidate score/support/similarity 特征；candidate-level 方向只能作为未来假设。
 - Stage4C 是同一 development 上的 post-Gold 探索性诊断，不建立新 controller efficacy。
 - Stage4D 仍是同一 development 上的探索性 candidate audit；最低事件门不是 power guarantee，也没有 reservation 或外部验证。
+- Stage4E proposed HotpotQA train 边界属于 new-ID same-domain closed distractor evaluation，不是新数据集、full-wiki 或跨域外部验证；拟定 `n=1000` 也不是 power guarantee。
 
 ## 下一步
 
-Stage4D-CMA 已完成并得到 `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。不得重跑现有 probe、据结果挑选 panel/feature/threshold，或把 Task A/B 的事件检测能力包装为 gain/harm selector。Reservation、Stage3B 和 U2 继续锁定；任何新 controller 都属于新的科学语义，必须先形成新的 Level A development 协议并获得明确授权。
+审核 [Stage4E-E2E Level A 草案](docs/STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL_DRAFT.md)，补齐官方 train 文件、1,000-query manifest、encoder/generator snapshot、精确环境、命令与 verifier 绑定。通过 Level A/Level B 后，才可在首次新数据/模型/Gold 读取前确认正式执行。Stage4D、当前 controller、Reservation、Stage3B 和 U2 保持关闭或锁定。
 
 仓库：<https://github.com/lljjcc426/HyperGranular-RAG>

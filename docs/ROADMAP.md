@@ -3,8 +3,8 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage4D-CMA Level A accepted; implementation ready and synthetic tests passed; official Channel A/B not executed; reservation and Stage3B remain locked
-- Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive development batch used through Stage4C-U1-FMA; Stage4D implementation used synthetic fixtures only; reservation metrics not accessed
+- Current stage: Stage4D-CMA official transaction is verified and closed with `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`; the current controller branch is frozen closed; Stage4E-E2E Level A is drafted but not authorized for execution
+- Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive development batch used through verified Stage4D-CMA; reservation and Stage3B were not accessed
 - Generator used: No
 - Gold labels used for indexing: No
 
@@ -18,7 +18,7 @@ The full integrity and methodology audit is recorded in `docs/PRIOR_STAGE_METHOD
 - Stage2G: valid negative mechanism result; the current boundary rule is unsupported.
 - Stage2H: diagnostic only. Stage3A: failed development. Stage3C: descriptive planning only.
 - Restarted Stage4A `n=2,800`: exact event-count arithmetic is correct, but 20 gains is a planning heuristic. The number is not an approved effect-power or controller-training sample size.
-- Research position: `STAGE4D_IMPLEMENTATION_READY` and `STAGE4D_SYNTHETIC_TESTS_PASSED`; official Channel A/B, U2 development, and reservation access are not authorized.
+- Research position: `STAGE4D_CMA_CLOSED` and `CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED`; Stage4E is a separate static-retrieval end-to-end question with a draft Level A protocol. Stage4E data/model execution, U2, reservation, and Stage3B are not authorized.
 
 ## Completed Execution History
 
@@ -1600,3 +1600,12 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - A separately authorized read-only provenance audit reconstructed the existing probe container, passed all canonical byte, identity, fold, Task-C label, probability, fixed-panel, expected-row, and existing independent-verifier checks, and recomputed every overall/fold/budget-region metric. It repeated 36 registered query-cluster bootstrap blocks with seed 20260719 and 10,000 iterations per block; all intervals and sample counts matched. Five protected artifact identities were unchanged before/after.
 - The only advancement panel, Task-C `COMBINED_DEPLOYABLE_28`, obtained AUROC `0.64310 [0.55520,0.72974]`, AP `0.72198`, prevalence `0.53052`, and Brier `0.26321`. It failed the AUROC `>=0.65` gate and the Brier-versus-prevalence-baseline gate, while the four panels did not jointly meet the stop rule.
 - The frozen final decision is `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`. Stage4B-U1-D remains a valid negative result; reservation, Stage3B, U2, and any new controller remain locked pending a new Level A scientific protocol and explicit authorization.
+
+### Stage4D Closure And Stage4E-E2E Level A Draft
+
+- Stage4D-CMA is formally closed after `STAGE4D_FINAL_VERIFICATION_PASSED`. Its frozen decision remains `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`; no existing Channel A, Channel B, probe, decision, report, or verification artifact is deleted, rewritten, or rerun.
+- The current adaptive-controller line is frozen closed. Stage4B-U1-D remains a verified development negative result, while Stage4C and Stage4D remain exploratory mechanism evidence. No U2, replacement controller, feature/panel selection, threshold tuning, reservation, or Stage3B access follows from them.
+- Stage4E-E2E asks a distinct question: whether the static all-query q25 protected-insertion ranking, without U1 or any learned controller, improves end-to-end answer quality relative to Dense under one fixed generator and one previously unread query boundary.
+- The proposed new boundary is a deterministic 1,000-query, ID-hash-selected subset of official HotpotQA `hotpot_train_v1.1.json` in the closed distractor-context setting. It is a new-ID same-domain holdout, not a new benchmark and not external-domain validation. The raw source bytes/SHA, selected-ID digest, blind/Gold channel split, model files, exact environment, commands, and output paths must be bound before Level A acceptance.
+- The draft freezes one primary endpoint, paired answer F1 difference (`static q25 - Dense`), with 10,000 paired query bootstrap iterations; answer EM is a non-inferiority guard. Retrieval coverage, context tokens, latency, and subgroup rows are secondary/descriptive and cannot replace the primary gate.
+- No HotpotQA train file, Stage4E model, Stage4E embedding, Stage4E Gold value, or Stage4E result was read or generated while drafting. Current state: `STAGE4E_LEVEL_A_PROTOCOL_DRAFTED`, `STAGE4E_INPUTS_NOT_BOUND`, and `STAGE4E_EXECUTION_NOT_AUTHORIZED`.

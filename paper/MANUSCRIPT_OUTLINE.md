@@ -1,0 +1,89 @@
+# HyperGranular-RAG 论文结构草案
+
+## 暂定中心问题
+
+静态、受保护的超边证据补全能否在保留 Dense 主干的同时改善多跳证据覆盖，并最终转化为答案质量收益；若按 query/candidate 选择性削减扩展，为什么当前无标签 controller 没有成功？
+
+## 1. Introduction
+
+- 多跳 RAG 的核心张力：Dense relevance、跨证据链补全与上下文成本。
+- 静态方法贡献：粒球组织、query-aware facet hyperedge、Dense prefix protection、bounded insertion。
+- controller 作为独立失败研究：资源下降不等于选择有效。
+- 明确贡献层级：retrieval evidence、negative controller evidence、mechanism diagnosis、Stage4E E2E validation。
+
+## 2. Method
+
+### 2.1 Sentence units and dense retrieval
+
+定义 per-query unit pool、encoder、cosine ranking 与 effective-K。
+
+### 2.2 Granular balls and query-aware hyperedges
+
+给出 ball split、facet term、candidate edge 与 Gold-free 约束。
+
+### 2.3 Static protected insertion
+
+定义 Dense Top-10 protection、q25 floor、最多四项插入和 final Top-20。静态方法不含 U1/controller。
+
+### 2.4 Adaptive-controller branch
+
+将 U1-D、Stage4C、Stage4D 作为单独研究线描述，避免把失败 controller 混入静态方法定义。
+
+## 3. Experimental Design
+
+- Stage2F：内部 frozen-threshold retrieval evidence。
+- Stage4A-R2 / Stage4B：官方 2Wiki development 的 gain/harm 与 controller 评价。
+- Stage4C/4D：同一 development 上预冻结的 exploratory mechanism audits。
+- Stage4E：此前未读 HotpotQA train ID-hash sample，Dense vs static q25，同一固定 generator；主 endpoint 为 paired answer F1。
+- 每阶段列出数据角色、Gold 隔离、复现绑定、样本/功效限制和停止规则。
+
+## 4. Results
+
+### 4.1 Retrieval evidence
+
+只写已验证 Stage2F、Stage4A-R2 与 Stage4B retrieval 结果，区分 primary gate 与 secondary evidence。
+
+### 4.2 Controller negative result
+
+完整报告 40% 资源目标、retention gap、Fisher、Dense/q25 CR 对照与 2/6 gates。
+
+### 4.3 Failure mechanisms
+
+Stage4C 写 query-level composition；Stage4D 写 candidate labels、Task-C AUROC/AP/Brier 与 budget-region audit。两节都标记 `CAUTION`。
+
+### 4.4 End-to-end answer quality
+
+当前保留为空，只登记 Stage4E protocol。只有在 verified final artifact 形成后写两臂 F1/EM、paired intervals、retrieval secondary、context cost、decision 与失败/限制。
+
+## 5. Discussion
+
+- retrieval gain 是否转化为 answer gain；若没有，区分 evidence sufficiency、context ordering、generator utilization 与 noise。
+- 静态扩展与动态选择的不同难度。
+- 当前 controller 的 displacement harm 与 mixed gain/noise 结构。
+- same-domain closed candidate pool 对外部效度的限制。
+
+## 6. Reproducibility and Integrity
+
+- 代码/config/data/model SHA；
+- blind/Gold channel；
+- main/rerun byte identity；
+- independent verifier；
+- negative/inconclusive result preservation；
+- 11 类统计谬误扫描。
+
+## 7. Limitations
+
+- 当前静态 retrieval 阈值来自早期开发数据；
+- Stage4B-D 共享同一 2Wiki development，不是外部验证；
+- Stage4E proposed boundary 是 HotpotQA same-domain distractor candidate pool，不是 full-wiki；
+- 生成器固定为单一小型模型时，结论不能外推到所有 LLM；
+- `n=1000` 是资源边界，不是正式功效保证。
+- HotpotQA train 只保证对本项目研究流程未读，不能保证对预训练生成器无污染；参数化记忆可能压低或改变 retrieval-arm 差异。
+
+## 待 Stage4E 通过后补齐
+
+- exact data/model/environment citation 与 SHA table；
+- Figure：Dense 与 static q25 的 answer F1/EM paired difference；
+- Figure：retrieval CR change 与 answer F1 change 的 query-level joint audit（描述性，不作因果）；
+- Table：绝对指标、区间、context tokens 与 runtime；
+- Appendix：prompt、schema、decision gate、determinism 与 independent verification。

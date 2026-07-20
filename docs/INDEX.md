@@ -10,6 +10,10 @@
 | [项目 AGENTS](../AGENTS.md) | 当前治理、暂停边界和 GitHub 规则 |
 | [REPRODUCIBILITY](REPRODUCIBILITY.md) | 当前环境、冻结 SHA、工件与复现边界 |
 | [ROADMAP](ROADMAP.md) | 完整研究时间线与阶段状态 |
+| [Stage4D-CMA closure](STAGE4D_CMA_CLOSURE.md) | Stage4D 与当前 controller 分支的冻结关闭范围 |
+| [Stage4E-E2E Level A draft](STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL_DRAFT.md) | 静态 Dense-vs-q25 端到端答案质量的待审核协议；尚未授权执行 |
+| [论文材料入口](../paper/README.md) | 论文结构、证据主张台账和待补结果 |
+| [论文证据与主张台账](../paper/EVIDENCE_AND_CLAIM_LEDGER.md) | 将可写主张、证据等级、来源与限制逐项绑定 |
 | [Simplified execution protocol](STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md) | Stage4B-U1-D 科学与 pre-Gold 执行合同 |
 | [Official config](../configs/stage4b_u1_d_official.json) | 冻结输入、代码、cache、参数和输出绑定 |
 | [Gold evaluation config](../configs/stage4b_u1_d_gold_evaluation.json) | 已授权 Gold 输入、命令、复跑、验证和停止规则绑定 |
@@ -20,7 +24,7 @@
 | [Stage4D 固定依赖](../requirements-stage4d.txt) | CPython 3.12.0 下的精确 NumPy/SciPy/scikit-learn 运行绑定 |
 | [Stage4D-CMA 报告](../reports/超粒球RAG_Stage4D_CMA候选边际效用归因审计报告.md) | 候选标签、固定 OOF、provenance、decision 与 11 类谬误扫描 |
 
-## 当前正式工件
+## 已完成的冻结正式工件
 
 | 文件 | 状态 |
 |---|---|
@@ -68,6 +72,8 @@
 - 当前 simplified 协议是在不改变科学语义的前提下替代旧多层 PowerShell 执行链。
 - 方法审计见 [PRIOR_STAGE_METHOD_AUDIT](PRIOR_STAGE_METHOD_AUDIT.md)。
 - 阶段性结果说明位于 `reports/`。
+- Stage4D 与当前 controller 线已经按 [关闭声明](STAGE4D_CMA_CLOSURE.md) 冻结；Stage4E 不继承 controller labels、features 或 model。
+- Stage4E 草案把 proposed data boundary 明确限定为 HotpotQA train 的 new-ID same-domain distractor sample，不表述为跨数据集或 full-wiki external validation。
 
 ## 历史治理证据
 
@@ -102,4 +108,4 @@
 
 ## 当前下一步
 
-当前状态为 `STAGE4D_FINAL_VERIFICATION_PASSED`、`CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。现有 official transaction 不得重复或覆盖；保留 `STOP_U1_BRANCH_KEEP_RESERVATION_LOCKED`。Reservation、Stage3B 和 U2 继续锁定，新的 candidate controller 必须另建 Level A 协议。
+当前状态为 `STAGE4D_CMA_CLOSED`、`CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED` 和 `STAGE4E_LEVEL_A_PROTOCOL_DRAFTED`。先审核 Stage4E 的 1,000-query hash boundary、静态 Dense/q25 比较、固定 generator、paired answer-F1 主门和 Gold isolation；再补齐 source/model/environment/config/verifier 绑定。正式 Stage4E source/model/Gold 执行尚未授权。Reservation、Stage3B 和 U2 继续锁定。
