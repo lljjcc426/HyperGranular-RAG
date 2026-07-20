@@ -1,0 +1,175 @@
+{
+  "audit": {
+    "artifact_identities_unchanged_before_after": true,
+    "bootstrap_recomputation": {
+      "blocks_recomputed": 36,
+      "cluster_sampling_unit": "query_id",
+      "cluster_sampling_unit_verified": true,
+      "iterations_per_block": 10000,
+      "registered_intervals_and_sample_counts_equal": true,
+      "seed": 20260719
+    },
+    "calibration_recomputation": {
+      "comparison_passed": true,
+      "independent_method": "direct unpenalized binomial log-likelihood optimization without estimator fit",
+      "maximum_absolute_parameter_difference": 0.0017718947560503295,
+      "relative_tolerance": 0.0002
+    },
+    "canonical_byte_checks": {
+      "fold_assignments": true,
+      "metrics": true,
+      "oof_predictions": true
+    },
+    "eligible_tasks_have_all_fixed_panels": true,
+    "expected_oof_prediction_rows": 68588,
+    "fold_contract_verified": true,
+    "independent_verifier": {
+      "oof_prediction_rows": 68588,
+      "status": "STAGE4D_PROBE_VERIFIED"
+    },
+    "metrics_baselines_folds_and_regions_recomputed": true,
+    "no_active_probe_process": true,
+    "no_pending_transaction": true,
+    "oof_identity_region_label_and_probability_contracts_verified": true,
+    "oof_prediction_rows": 68588,
+    "task_c_gain_harm_only": true
+  },
+  "channel_a_inputs": {
+    "candidate_trace": {
+      "bytes": 17237780,
+      "sha256": "F89E189D22DC09FA083C0F9C334FDB381BBAAD4470F8A98089088E98CD2A3E07"
+    },
+    "manifest": {
+      "bytes": 1318,
+      "sha256": "0DE37CDBFF96C461BCE7521EA9CBC4BCC75087DACE2BBA4D8A656D614748D5A6"
+    },
+    "query_trace": {
+      "bytes": 13084375,
+      "sha256": "3436B194A460601A4815AEABE637655DC103290CC940CD094FFEB16F84240D7D"
+    },
+    "verification": {
+      "bytes": 313,
+      "sha256": "03C1B66D848604F0AAF17620D39926B85764B0753198508F901DCF445A3DAAA5"
+    }
+  },
+  "channel_b_inputs": {
+    "candidate_labels": {
+      "bytes": 6229542,
+      "candidate_rows": 8467,
+      "sha256": "E206895E36FB7472502E8FEA082C1AEA7C7AD2CB7E198F37200B271E7164F9E3"
+    },
+    "counterfactual_summary": {
+      "bytes": 5189,
+      "q25_cr_gain_queries": 94,
+      "q25_cr_harm_queries": 69,
+      "sha256": "37A57AD7AB2760C8C9E368F359C80B378F51C6B5C38629BDC0A75ECEB5D6C9F1"
+    }
+  },
+  "decision": {
+    "attribution_integrity_passed": true,
+    "decision": "CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE",
+    "decision_artifact": {
+      "bytes": 120,
+      "sha256": "7EE774CA97722353DEC7D71E5B461FEF17ADA08DDCB96568C988A1497B72FA68"
+    },
+    "feature_reproducible": true,
+    "integrity_passed": true,
+    "q25_gain_queries": 94,
+    "q25_harm_queries": 69,
+    "reason": "valid_result_missed_proceed_and_stop_rules"
+  },
+  "environment": {
+    "packages": {
+      "joblib": "1.5.3",
+      "narwhals": "2.24.0",
+      "numpy": "2.5.1",
+      "scikit-learn": "1.9.0",
+      "scipy": "1.18.0",
+      "threadpoolctl": "3.6.0"
+    },
+    "python": "3.12.0",
+    "thread_settings": {
+      "BLIS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "PYTHONHASHSEED": "0",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    }
+  },
+  "git_source_binding": {
+    "current_protocol_commit": "b8bd1eafd51507e0d272a701219b7f7833c35704",
+    "probe_source_blob_at_current_protocol_commit": "a1dc95ceeb819320ed938ae38bc6dbde61d80e59",
+    "probe_source_blob_at_zero_candidate_repair_commit": "a1dc95ceeb819320ed938ae38bc6dbde61d80e59",
+    "probe_source_blob_equal": true,
+    "zero_candidate_repair_commit": "080cc44781cddc7d25584812fee5dea2158142e9"
+  },
+  "probe_artifacts": {
+    "fold_assignments": {
+      "bytes": 141871,
+      "sha256": "9B80923965407838105BA182E45B685EF5CD60ABC148B49061576EFDAF6FA650"
+    },
+    "metrics": {
+      "bytes": 117023,
+      "sha256": "22C843E248D0EB44893E42FB61D207061E8F9E07744A4C808AB8F55D63226999",
+      "status": "OFFICIAL_STAGE4D_PROBE_COMPLETE_PENDING_FINAL_VERIFICATION"
+    },
+    "oof_predictions": {
+      "bytes": 13335718,
+      "rows": 68588,
+      "sha256": "29EC13EC6AEAB28837C3EBBE24F99AF496A98B0793475DADF2BA071FFEE7ECDC"
+    }
+  },
+  "provenance": {
+    "audit_date": "2026-07-20",
+    "existing_artifacts_audited_in_place": true,
+    "first_transaction": {
+      "atomic_promotion_completed": true,
+      "internal_independent_verification_completed": true,
+      "main_rerun_byte_identity_completed": true,
+      "python_child_continued_after_outer_shell_timeout": true
+    },
+    "later_no_timeout_transaction": {
+      "existing_artifacts_modified": false,
+      "internal_independent_verification_completed": true,
+      "main_rerun_completed": true,
+      "promotion_blocked_by_no_overwrite_guard": true
+    },
+    "no_probe_artifact_regeneration_during_audit": true,
+    "provenance_status": "EXISTING_OFFICIAL_PROBE_ARTIFACTS_PROVENANCE_VERIFIED"
+  },
+  "report": {
+    "bytes": 12680,
+    "path": "reports/超粒球RAG_Stage4D_CMA候选边际效用归因审计报告.md",
+    "sha256": "27F8799B37C8D52E297751742EBADC002E9FA0AC74A968AD6F433982BB0E3FEA",
+    "statistical_fallacy_scan": "11/11 checked"
+  },
+  "restrictions": {
+    "candidate_controller_not_authorized": true,
+    "reservation_locked": true,
+    "stage3b_locked": true,
+    "u2_not_authorized": true
+  },
+  "scientific_result": {
+    "advancement_panel": "COMBINED_DEPLOYABLE_28",
+    "beyond_budget_driven_signal": false,
+    "task_c": {
+      "ap": 0.7219801376740966,
+      "auroc": 0.6430973451327433,
+      "auroc_interval": {
+        "lower": 0.5552036151764412,
+        "upper": 0.7297439516677202
+      },
+      "auroc_minus_original_u1": 0.26345132743362826,
+      "brier": 0.2632105411302701,
+      "negative_candidate_rows": 100,
+      "negative_query_clusters": 45,
+      "positive_candidate_rows": 113,
+      "positive_query_clusters": 113,
+      "prevalence": 0.5305164319248826,
+      "training_prevalence_brier": 0.25337663607410116
+    }
+  },
+  "status": "STAGE4D_FINAL_VERIFICATION_PASSED"
+}

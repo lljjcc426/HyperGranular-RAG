@@ -6,10 +6,10 @@
 
 | 项目 | 当前事实 |
 |---|---|
-| 研究阶段 | Stage4D-CMA Level A 协议已接受；实现就绪且 synthetic tests 通过 |
-| 状态 | `STAGE4D_IMPLEMENTATION_READY`；official Channel A/B 未授权；Stage4B 仍为 `STOP_U1_BRANCH_KEEP_RESERVATION_LOCKED` |
+| 研究阶段 | Stage4D-CMA official candidate attribution 与固定 OOF probe 已完成并验证 |
+| 状态 | `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`；Stage4B 仍为 `STOP_U1_BRANCH_KEEP_RESERVATION_LOCKED` |
 | 数据边界 | 2WikiMultiHopQA development：4,500 queries / 143,820 unlabeled units |
-| 当前证据 | 冻结 U1 controller 的有效 development 负结果；Stage4C/4D 均为同一 development 上的探索性机制/可行性研究 |
+| 当前证据 | 冻结 U1 controller 的有效 development 负结果；Stage4D 找到部分 candidate-level gain/harm 信号，但未达到晋级门 |
 | Gold | 仅在 ranking 冻结后由独立 evaluator 使用；未进入 controller 或排序 |
 | Reservation / Stage3B | `KEEP_LOCKED` |
 
@@ -32,7 +32,7 @@ Stage4B-U1-D 回答的问题是：在不使用 Gold 参与检索决策的前提�
 
 Stage4C-U1-FMA 进一步审计其失败机制：raw U1 score 对 GAIN-vs-HARM 的 AUROC 为 `0.39269 [0.30558, 0.48150]`，92/94 个 gain query 为 mixed gain/noise，69/69 个 harm query 为 displacement harm；但固定 OOF panels 均未达到稳定信号门，最终决策为 `MECHANISM_EVIDENCE_INCONCLUSIVE`。
 
-Stage4D-CMA 将问题下沉到 candidate 级：冻结完整 eligible candidate universe，区分原插入集合与预算外候选，以 standardized first-slot insertion、`LOO_NO_BACKFILL` 和 `LOO_WITH_BACKFILL` 归因候选边际效用，并只用 Gold-free deployable features 进行固定 L2 logistic OOF probe。Level A 协议与实现已提交，16/16 synthetic tests 通过；尚未运行 official Channel A 或读取 Stage4D Channel B Gold。
+Stage4D-CMA 将问题下沉到 candidate 级：8,467 个 eligible candidates 经 standardized first-slot insertion、`LOO_NO_BACKFILL` 和 `LOO_WITH_BACKFILL` 归因后，固定 Task-C combined panel 的 AUROC 为 `0.64310 [0.55520, 0.72974]`、AP 为 `0.72198`。它存在部分符号信号，但 AUROC 未达到 `0.65` 且 Brier 未优于 prevalence baseline，最终为 `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。
 
 ## 冻结方法
 
@@ -56,7 +56,7 @@ Stage4D-CMA 将问题下沉到 candidate 级：冻结完整 eligible candidate u
 | Stage4A-R2 | 官方内部验证完成 | 事件率精度达标；平均 CR 提升未确认；异质性明显 |
 | Stage4B-U1-D | development Gold 评估与独立验证完成 | 资源门单项通过，但联合晋级门失败；U1 分支停止 |
 | Stage4C-U1-FMA | post-Gold 探索性诊断，`CAUTION` | query-level score 方向错误且 all-on/off 受限；不足以授权 U2 |
-| Stage4D-CMA | Level A 接受；implementation + synthetic only | 候选归因与固定 probe 已实现；尚无 official Stage4D 统计或科学结论 |
+| Stage4D-CMA | post-Gold exploratory official audit，`CAUTION` | candidate-level 部分信号未过联合晋级门；不授权 U2 |
 
 完整研究轨迹见 [ROADMAP](docs/ROADMAP.md) 和 [文档索引](docs/INDEX.md)。
 
@@ -95,6 +95,8 @@ tests/             研究代码回归测试
 - [Stage4C 失败机制诊断报告](reports/超粒球RAG_Stage4C_U1失败机制诊断报告.md)
 - [Stage4D-CMA Level A 协议](docs/STAGE4D_CANDIDATE_MARGINAL_UTILITY_AUDIT_PROTOCOL.md)
 - [Stage4D 固定依赖](requirements-stage4d.txt)
+- [Stage4D final verification](results/stage4d_cma_verified_final.json)
+- [Stage4D 候选边际效用归因报告](reports/超粒球RAG_Stage4D_CMA候选边际效用归因审计报告.md)
 
 ## 科研治理
 
@@ -115,9 +117,10 @@ tests/             研究代码回归测试
 - 冻结 evaluator 未输出协议所写的类型级区间；该报告完整性缺口不改变总体停止决定，但限制类型层解释。
 - Stage4C 不含 candidate Gold identity/rank 或 candidate score/support/similarity 特征；candidate-level 方向只能作为未来假设。
 - Stage4C 是同一 development 上的 post-Gold 探索性诊断，不建立新 controller efficacy。
+- Stage4D 仍是同一 development 上的探索性 candidate audit；最低事件门不是 power guarantee，也没有 reservation 或外部验证。
 
 ## 下一步
 
-Stage4D-CMA 已停在首次 official Channel A 之前：实现与 synthetic tests 已完成，但 Channel A、Channel B、reservation、Stage3B 和 U2 均未授权。下一步只有在新的明确授权下运行冻结的 Gold-free Channel A；Channel B 仍须等待 Channel A 工件提交、远端字节核验和独立验证通过。不得在同一 development 上事后调整 U1 并重跑。
+Stage4D-CMA 已完成并得到 `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。不得重跑现有 probe、据结果挑选 panel/feature/threshold，或把 Task A/B 的事件检测能力包装为 gain/harm selector。Reservation、Stage3B 和 U2 继续锁定；任何新 controller 都属于新的科学语义，必须先形成新的 Level A development 协议并获得明确授权。
 
 仓库：<https://github.com/lljjcc426/HyperGranular-RAG>

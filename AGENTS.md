@@ -21,7 +21,7 @@
 - 冻结 Stage4B 执行协议：`docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md`
 - 冻结配置：`configs/stage4b_u1_d_official.json`
 - Gold 授权与执行配置：`configs/stage4b_u1_d_gold_evaluation.json`
-- 当前诊断报告：`reports/超粒球RAG_Stage4C_U1失败机制诊断报告.md`
+- 当前诊断报告：`reports/超粒球RAG_Stage4D_CMA候选边际效用归因审计报告.md`
 
 历史 Amendment、Approval、Review、Hard Failure 和 PowerShell 执行文件是不可改写的证据，不是当前日常执行规则。不得从历史文件恢复已退役的 launcher、remote gate、observer、stderr framing 或 nested PRE 链。
 
@@ -38,8 +38,12 @@ MECHANISM_EVIDENCE_INCONCLUSIVE
 STAGE4D_LEVEL_A_PROTOCOL_ACCEPTED
 STAGE4D_IMPLEMENTATION_READY
 STAGE4D_SYNTHETIC_TESTS_PASSED
-CHANNEL_A_EXECUTION_NOT_AUTHORIZED
-CHANNEL_B_EXECUTION_NOT_AUTHORIZED
+STAGE4D_CHANNEL_A_VERIFIED
+STAGE4D_CHANNEL_B_LABELS_VERIFIED
+EXISTING_OFFICIAL_PROBE_ARTIFACTS_PROVENANCE_VERIFIED
+STAGE4D_PROBE_VERIFIED
+STAGE4D_FINAL_VERIFICATION_PASSED
+CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE
 RESERVATION_REQUIRES_PAUSE
 U2_NOT_AUTHORIZED
 SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
@@ -57,7 +61,8 @@ SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
 - Stage4C 协议提交：`2e925063175a6402a21ade3fc0ab4a27faaa6dd7`；实现提交：`1bbe8a571d4e0c4aa965b4f0fa71b1de5901b2a7`。
 - Stage4C 仅形成 post-Gold 探索性 `CAUTION` 证据；raw U1 score 方向错误且 all-on/off 受限，但固定 OOF panels 未达到稳定门，不授权 U2 或任何新 efficacy 主张。
 - Stage4D-CMA Level A 协议与核心 implementation/synthetic 提交：`b4dfa52d0a38409dfc19444d21beec59606088e1`；guarded artifact transaction 补全提交：`730daea1350616bfdcb6a11832b361c4d574d985`；固定环境为 CPython 3.12.0 / scikit-learn 1.9.0，定向 suite 为 16/16 PASS。
-- Stage4D 尚未运行 official Channel A，未读取 Stage4D Channel B Gold，也没有生成任何正式 Stage4D 结果。首次 official Channel A、Channel B/Gold、reservation/Stage3B 或 U2 均需按协议暂停边界处理。
+- Stage4D official Channel A、Channel B、固定 probe、bounded provenance audit 与 final verification 均已完成。8,467 个候选和 68,588 条 OOF 预测通过身份、内容、bootstrap 与独立验证；combined Task-C AUROC 为 `0.64310 [0.55520,0.72974]`，最终为 `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。
+- 现有 Stage4D transaction 不得重复，probe 三工件不得覆盖；该结果不授权 reservation/Stage3B、U2 或新 candidate controller。
 
 ## 4. 科研不可变边界
 
@@ -97,6 +102,7 @@ Level B/C 的普通工程工作、测试、文档、提交和推送不逐项暂�
 - 禁止盲目重复未变化的失败命令；先诊断和修正再继续。
 - 不自行重新运行已完成的 official pre-Gold transaction。
 - 不自行重新运行已完成的 Stage4B-U1-D Gold transaction。
+- 不自行重新运行或覆盖已完成的 Stage4D Channel A、Channel B 和 official probe transaction。
 
 ## 7. GitHub 与文件
 
@@ -108,4 +114,4 @@ Level B/C 的普通工程工作、测试、文档、提交和推送不逐项暂�
 
 ## 8. 下一科研门
 
-Stage4B-U1 分支已经按冻结失败门停止，Stage4C 决策为 `MECHANISM_EVIDENCE_INCONCLUSIVE`。不自动创建或执行 U2；任何 candidate/path-level controller 都属于新的科学语义，必须先形成新的 Level A 开发协议并获得明确授权。不得在同一 development 上修改 U1 特征、公式、预算、阈值或检验后重跑。Reservation、Stage3B、再次 Gold 执行和任何科学语义变化仍需单独协议与明确授权。
+Stage4B-U1 分支已经按冻结失败门停止，Stage4C 为 `MECHANISM_EVIDENCE_INCONCLUSIVE`，Stage4D 为 `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。不自动创建或执行 U2；任何新的 candidate/path-level controller、feature panel、model 或 threshold 都属于新的科学语义，必须先形成新的 Level A 开发协议并获得明确授权。不得在同一 development 上修改后重跑。Reservation、Stage3B、再次 Gold 执行和任何科学语义变化仍需单独协议与明确授权。

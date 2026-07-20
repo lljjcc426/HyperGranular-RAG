@@ -1,0 +1,3536 @@
+{
+  "beyond_budget_driven_signal": false,
+  "environment": {
+    "packages": {
+      "joblib": "1.5.3",
+      "narwhals": "2.24.0",
+      "numpy": "2.5.1",
+      "scikit-learn": "1.9.0",
+      "scipy": "1.18.0",
+      "threadpoolctl": "3.6.0"
+    },
+    "python": "3.12.0",
+    "thread_settings": {
+      "BLIS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "PYTHONHASHSEED": "0",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    }
+  },
+  "results": {
+    "TASK_A_GAIN_VS_ALL": {
+      "feasibility": {
+        "eligible": true,
+        "fold_query_cluster_counts": {
+          "0": {
+            "negative_query_clusters": 490,
+            "positive_query_clusters": 24
+          },
+          "1": {
+            "negative_query_clusters": 489,
+            "positive_query_clusters": 20
+          },
+          "2": {
+            "negative_query_clusters": 489,
+            "positive_query_clusters": 30
+          },
+          "3": {
+            "negative_query_clusters": 489,
+            "positive_query_clusters": 17
+          },
+          "4": {
+            "negative_query_clusters": 489,
+            "positive_query_clusters": 22
+          }
+        },
+        "minimum_clusters": 30,
+        "minimum_per_fold": 5,
+        "negative_query_clusters": 2446,
+        "positive_query_clusters": 113,
+        "threshold_interpretation": "minimum feasibility threshold, not a power guarantee"
+      },
+      "panels": {
+        "COMBINED_DEPLOYABLE_28": {
+          "ap": 0.11745363119895016,
+          "auroc": 0.8785203844907108,
+          "auroc_minus_original_u1": 0.40944457744792906,
+          "baselines": {
+            "dense_score": {
+              "ap": 0.014303256496754048,
+              "auroc": 0.5038633392725862
+            },
+            "facet_score": {
+              "ap": 0.013620816284962416,
+              "auroc": 0.4699900000211864
+            },
+            "negative_eligible_rank": {
+              "ap": 0.010620539087369811,
+              "auroc": 0.38238902036224504
+            },
+            "original_u1_score": {
+              "ap": 0.013130830660762403,
+              "auroc": 0.46907580704278173
+            },
+            "training_prevalence": {
+              "ap": 0.011837677388661575,
+              "auroc": 0.44626441469403666,
+              "brier": 0.013171643526662337,
+              "calibration": {
+                "intercept": -20.588643314072808,
+                "reason": null,
+                "slope": -3.779618955434294
+              },
+              "confusion_matrix": {
+                "fn": 113,
+                "fp": 0,
+                "tn": 8354,
+                "tp": 0
+              },
+              "negative_rows": 8354,
+              "positive_rows": 113,
+              "prevalence": 0.013345931262548719
+            }
+          },
+          "bootstrap": {
+            "ap": {
+              "lower": 0.08093692559773848,
+              "samples": 10000,
+              "upper": 0.17123603788136946
+            },
+            "auroc": {
+              "lower": 0.8555392991265327,
+              "samples": 10000,
+              "upper": 0.9003341829167707
+            },
+            "auroc_minus_original_u1": {
+              "lower": 0.3518150600422706,
+              "samples": 10000,
+              "upper": 0.46716477585886884
+            },
+            "brier": {
+              "lower": 0.010456090828397047,
+              "samples": 10000,
+              "upper": 0.01463585730631006
+            },
+            "iterations_requested": 10000
+          },
+          "brier": 0.012470252020983178,
+          "calibration": {
+            "intercept": -0.4207526468142366,
+            "reason": null,
+            "slope": 0.8626181850987233
+          },
+          "candidate_budget_regions": {
+            "BEYOND_ORIGINAL_BUDGET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.02696394523662109,
+                  "samples": 10000,
+                  "upper": 0.22283594414011856
+                },
+                "auroc": {
+                  "lower": 0.574532725870014,
+                  "samples": 10000,
+                  "upper": 0.8045238713934326
+                },
+                "auroc_minus_original_u1": {
+                  "lower": 0.10905960664965116,
+                  "samples": 10000,
+                  "upper": 0.42430639569835926
+                },
+                "brier": {
+                  "lower": 0.011222140123114453,
+                  "samples": 10000,
+                  "upper": 0.02455833601561114
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 1207,
+              "metrics": {
+                "ap": 0.07917992364190315,
+                "auroc": 0.6912159570387417,
+                "brier": 0.017609021877930703,
+                "calibration": {
+                  "intercept": -1.5752926731559274,
+                  "reason": null,
+                  "slope": 0.58530808841976
+                },
+                "confusion_matrix": {
+                  "fn": 22,
+                  "fp": 0,
+                  "tn": 1185,
+                  "tp": 0
+                },
+                "negative_rows": 1185,
+                "positive_rows": 22,
+                "prevalence": 0.018227009113504555
+              },
+              "negative_query_clusters": 632,
+              "positive_query_clusters": 22
+            },
+            "ORIGINAL_INSERT_SET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.08886111580821165,
+                  "samples": 10000,
+                  "upper": 0.19410642306390513
+                },
+                "auroc": {
+                  "lower": 0.8829194383215074,
+                  "samples": 10000,
+                  "upper": 0.9235100362590654
+                },
+                "auroc_minus_original_u1": {
+                  "lower": 0.37232351194364577,
+                  "samples": 10000,
+                  "upper": 0.502669205746041
+                },
+                "brier": {
+                  "lower": 0.009499374172313961,
+                  "samples": 10000,
+                  "upper": 0.013871410240375153
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 7260,
+              "metrics": {
+                "ap": 0.1316038039670654,
+                "auroc": 0.903966865886241,
+                "brier": 0.011615913836777165,
+                "calibration": {
+                  "intercept": -0.2354388797527209,
+                  "reason": null,
+                  "slope": 0.9041235921227194
+                },
+                "confusion_matrix": {
+                  "fn": 90,
+                  "fp": 0,
+                  "tn": 7169,
+                  "tp": 1
+                },
+                "negative_rows": 7169,
+                "positive_rows": 91,
+                "prevalence": 0.012534435261707989
+              },
+              "negative_query_clusters": 2446,
+              "positive_query_clusters": 91
+            }
+          },
+          "confusion_matrix": {
+            "fn": 112,
+            "fp": 0,
+            "tn": 8354,
+            "tp": 1
+          },
+          "folds": {
+            "0": {
+              "ap": 0.1964565532013049,
+              "auroc": 0.8905943987465725,
+              "brier": 0.012572591981808354,
+              "calibration": {
+                "intercept": -0.061411493698468635,
+                "reason": null,
+                "slope": 0.9539054735295089
+              },
+              "confusion_matrix": {
+                "fn": 24,
+                "fp": 0,
+                "tn": 1702,
+                "tp": 0
+              },
+              "negative_query_clusters": 490,
+              "negative_rows": 1702,
+              "positive_query_clusters": 24,
+              "positive_rows": 24,
+              "prevalence": 0.013904982618771726
+            },
+            "1": {
+              "ap": 0.057277235043967194,
+              "auroc": 0.8558535178777393,
+              "brier": 0.011129635569018432,
+              "calibration": {
+                "intercept": -0.9424059415049365,
+                "reason": null,
+                "slope": 0.7276448189550774
+              },
+              "confusion_matrix": {
+                "fn": 20,
+                "fp": 0,
+                "tn": 1734,
+                "tp": 0
+              },
+              "negative_query_clusters": 489,
+              "negative_rows": 1734,
+              "positive_query_clusters": 20,
+              "positive_rows": 20,
+              "prevalence": 0.011402508551881414
+            },
+            "2": {
+              "ap": 0.21272403204157686,
+              "auroc": 0.9118125868572562,
+              "brier": 0.01567205866362763,
+              "calibration": {
+                "intercept": 0.9642211721847985,
+                "reason": null,
+                "slope": 1.188369345108885
+              },
+              "confusion_matrix": {
+                "fn": 29,
+                "fp": 0,
+                "tn": 1679,
+                "tp": 1
+              },
+              "negative_query_clusters": 489,
+              "negative_rows": 1679,
+              "positive_query_clusters": 30,
+              "positive_rows": 30,
+              "prevalence": 0.017554125219426564
+            },
+            "3": {
+              "ap": 0.06987405922810613,
+              "auroc": 0.8453301606186794,
+              "brier": 0.010047742508105195,
+              "calibration": {
+                "intercept": -1.464381005158692,
+                "reason": null,
+                "slope": 0.6670160906730211
+              },
+              "confusion_matrix": {
+                "fn": 17,
+                "fp": 0,
+                "tn": 1681,
+                "tp": 0
+              },
+              "negative_query_clusters": 489,
+              "negative_rows": 1681,
+              "positive_query_clusters": 17,
+              "positive_rows": 17,
+              "prevalence": 0.010011778563015312
+            },
+            "4": {
+              "ap": 0.13871532421490831,
+              "auroc": 0.8774361068969541,
+              "brier": 0.012986920429178981,
+              "calibration": {
+                "intercept": -0.49525614977239335,
+                "reason": null,
+                "slope": 0.8416004272143922
+              },
+              "confusion_matrix": {
+                "fn": 22,
+                "fp": 0,
+                "tn": 1558,
+                "tp": 0
+              },
+              "negative_query_clusters": 489,
+              "negative_rows": 1558,
+              "positive_query_clusters": 22,
+              "positive_rows": 22,
+              "prevalence": 0.013924050632911392
+            }
+          },
+          "negative_rows": 8354,
+          "positive_rows": 113,
+          "prevalence": 0.013345931262548719,
+          "query_clusters": 2446
+        },
+        "COMPLEMENTARITY_RISK_10": {
+          "ap": 0.11029693664508992,
+          "auroc": 0.8594653401158049,
+          "auroc_minus_original_u1": 0.39038953307302315,
+          "baselines": {
+            "dense_score": {
+              "ap": 0.014303256496754048,
+              "auroc": 0.5038633392725862
+            },
+            "facet_score": {
+              "ap": 0.013620816284962416,
+              "auroc": 0.4699900000211864
+            },
+            "negative_eligible_rank": {
+              "ap": 0.010620539087369811,
+              "auroc": 0.38238902036224504
+            },
+            "original_u1_score": {
+              "ap": 0.013130830660762403,
+              "auroc": 0.46907580704278173
+            },
+            "training_prevalence": {
+              "ap": 0.011837677388661575,
+              "auroc": 0.44626441469403666,
+              "brier": 0.013171643526662337,
+              "calibration": {
+                "intercept": -20.588643314072808,
+                "reason": null,
+                "slope": -3.779618955434294
+              },
+              "confusion_matrix": {
+                "fn": 113,
+                "fp": 0,
+                "tn": 8354,
+                "tp": 0
+              },
+              "negative_rows": 8354,
+              "positive_rows": 113,
+              "prevalence": 0.013345931262548719
+            }
+          },
+          "bootstrap": {
+            "ap": {
+              "lower": 0.07445133198440525,
+              "samples": 10000,
+              "upper": 0.16299488711694476
+            },
+            "auroc": {
+              "lower": 0.8358780082095615,
+              "samples": 10000,
+              "upper": 0.8820530796912581
+            },
+            "auroc_minus_original_u1": {
+              "lower": 0.3348271939336836,
+              "samples": 10000,
+              "upper": 0.44533043182642407
+            },
+            "brier": {
+              "lower": 0.010485699569504535,
+              "samples": 10000,
+              "upper": 0.014725147967906142
+            },
+            "iterations_requested": 10000
+          },
+          "brier": 0.01251730961270597,
+          "calibration": {
+            "intercept": -0.15735581307310767,
+            "reason": null,
+            "slope": 0.9514686003196571
+          },
+          "candidate_budget_regions": {
+            "BEYOND_ORIGINAL_BUDGET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.03127746615256036,
+                  "samples": 10000,
+                  "upper": 0.2188847037671202
+                },
+                "auroc": {
+                  "lower": 0.6134818814074467,
+                  "samples": 10000,
+                  "upper": 0.8291114272328489
+                },
+                "auroc_minus_original_u1": {
+                  "lower": 0.13869082720296333,
+                  "samples": 10000,
+                  "upper": 0.4644369315378852
+                },
+                "brier": {
+                  "lower": 0.011112626983134175,
+                  "samples": 10000,
+                  "upper": 0.02456659139357022
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 1207,
+              "metrics": {
+                "ap": 0.07549028358207156,
+                "auroc": 0.7231300345224396,
+                "brier": 0.01755611815756168,
+                "calibration": {
+                  "intercept": -0.6914747790122958,
+                  "reason": null,
+                  "slope": 0.8395764486732681
+                },
+                "confusion_matrix": {
+                  "fn": 22,
+                  "fp": 0,
+                  "tn": 1185,
+                  "tp": 0
+                },
+                "negative_rows": 1185,
+                "positive_rows": 22,
+                "prevalence": 0.018227009113504555
+              },
+              "negative_query_clusters": 632,
+              "positive_query_clusters": 22
+            },
+            "ORIGINAL_INSERT_SET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.07986709424647408,
+                  "samples": 10000,
+                  "upper": 0.18611853778329104
+                },
+                "auroc": {
+                  "lower": 0.856706876918904,
+                  "samples": 10000,
+                  "upper": 0.9012507297274682
+                },
+                "auroc_minus_original_u1": {
+                  "lower": 0.3506511211840227,
+                  "samples": 10000,
+                  "upper": 0.47560955537476385
+                },
+                "brier": {
+                  "lower": 0.009527740671990144,
+                  "samples": 10000,
+                  "upper": 0.013968064345773568
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 7260,
+              "metrics": {
+                "ap": 0.12250538389529644,
+                "auroc": 0.8796343843072815,
+                "brier": 0.011679590340854615,
+                "calibration": {
+                  "intercept": -0.08862310186828243,
+                  "reason": null,
+                  "slope": 0.960399017057446
+                },
+                "confusion_matrix": {
+                  "fn": 90,
+                  "fp": 0,
+                  "tn": 7169,
+                  "tp": 1
+                },
+                "negative_rows": 7169,
+                "positive_rows": 91,
+                "prevalence": 0.012534435261707989
+              },
+              "negative_query_clusters": 2446,
+              "positive_query_clusters": 91
+            }
+          },
+          "confusion_matrix": {
+            "fn": 112,
+            "fp": 0,
+            "tn": 8354,
+            "tp": 1
+          },
+          "folds": {
+            "0": {
+              "ap": 0.12156846892814231,
+              "auroc": 0.8483157070113592,
+              "brier": 0.012995288798637464,
+              "calibration": {
+                "intercept": -0.3157544404231333,
+                "reason": null,
+                "slope": 0.8670482737207317
+              },
+              "confusion_matrix": {
+                "fn": 24,
+                "fp": 0,
+                "tn": 1702,
+                "tp": 0
+              },
+              "negative_query_clusters": 490,
+              "negative_rows": 1702,
+              "positive_query_clusters": 24,
+              "positive_rows": 24,
+              "prevalence": 0.013904982618771726
+            },
+            "1": {
+              "ap": 0.07298160148143733,
+              "auroc": 0.8479815455594002,
+              "brier": 0.010981503756305439,
+              "calibration": {
+                "intercept": -0.3751894530365983,
+                "reason": null,
+                "slope": 0.9031294475271149
+              },
+              "confusion_matrix": {
+                "fn": 20,
+                "fp": 0,
+                "tn": 1734,
+                "tp": 0
+              },
+              "negative_query_clusters": 489,
+              "negative_rows": 1734,
+              "positive_query_clusters": 20,
+              "positive_rows": 20,
+              "prevalence": 0.011402508551881414
+            },
+            "2": {
+              "ap": 0.1845475986331398,
+              "auroc": 0.8840778241016477,
+              "brier": 0.015999243619200024,
+              "calibration": {
+                "intercept": 0.921483672925065,
+                "reason": null,
+                "slope": 1.174944814073862
+              },
+              "confusion_matrix": {
+                "fn": 29,
+                "fp": 0,
+                "tn": 1679,
+                "tp": 1
+              },
+              "negative_query_clusters": 489,
+              "negative_rows": 1679,
+              "positive_query_clusters": 30,
+              "positive_rows": 30,
+              "prevalence": 0.017554125219426564
+            },
+            "3": {
+              "ap": 0.1195036750431644,
+              "auroc": 0.8656961892430977,
+              "brier": 0.009572422784886094,
+              "calibration": {
+                "intercept": -0.6133250397181171,
+                "reason": null,
+                "slope": 0.9541922581046703
+              },
+              "confusion_matrix": {
+                "fn": 17,
+                "fp": 0,
+                "tn": 1681,
+                "tp": 0
+              },
+              "negative_query_clusters": 489,
+              "negative_rows": 1681,
+              "positive_query_clusters": 17,
+              "positive_rows": 17,
+              "prevalence": 0.010011778563015312
+            },
+            "4": {
+              "ap": 0.13807886925322538,
+              "auroc": 0.855759131753997,
+              "brier": 0.013098704558116476,
+              "calibration": {
+                "intercept": -0.17978219177995738,
+                "reason": null,
+                "slope": 0.9511204174717998
+              },
+              "confusion_matrix": {
+                "fn": 22,
+                "fp": 0,
+                "tn": 1558,
+                "tp": 0
+              },
+              "negative_query_clusters": 489,
+              "negative_rows": 1558,
+              "positive_query_clusters": 22,
+              "positive_rows": 22,
+              "prevalence": 0.013924050632911392
+            }
+          },
+          "negative_rows": 8354,
+          "positive_rows": 113,
+          "prevalence": 0.013345931262548719,
+          "query_clusters": 2446
+        },
+        "RELEVANCE_RANK_8": {
+          "ap": 0.04459243617483726,
+          "auroc": 0.6992209762267452,
+          "auroc_minus_original_u1": 0.23014516918396344,
+          "baselines": {
+            "dense_score": {
+              "ap": 0.014303256496754048,
+              "auroc": 0.5038633392725862
+            },
+            "facet_score": {
+              "ap": 0.013620816284962416,
+              "auroc": 0.4699900000211864
+            },
+            "negative_eligible_rank": {
+              "ap": 0.010620539087369811,
+              "auroc": 0.38238902036224504
+            },
+            "original_u1_score": {
+              "ap": 0.013130830660762403,
+              "auroc": 0.46907580704278173
+            },
+            "training_prevalence": {
+              "ap": 0.011837677388661575,
+              "auroc": 0.44626441469403666,
+              "brier": 0.013171643526662337,
+              "calibration": {
+                "intercept": -20.588643314072808,
+                "reason": null,
+                "slope": -3.779618955434294
+              },
+              "confusion_matrix": {
+                "fn": 113,
+                "fp": 0,
+                "tn": 8354,
+                "tp": 0
+              },
+              "negative_rows": 8354,
+              "positive_rows": 113,
+              "prevalence": 0.013345931262548719
+            }
+          },
+          "bootstrap": {
+            "ap": {
+              "lower": 0.03001207140442543,
+              "samples": 10000,
+              "upper": 0.07038760549631573
+            },
+            "auroc": {
+              "lower": 0.6465019321972219,
+              "samples": 10000,
+              "upper": 0.7489648238500992
+            },
+            "auroc_minus_original_u1": {
+              "lower": 0.15334763921233457,
+              "samples": 10000,
+              "upper": 0.30616682568841874
+            },
+            "brier": {
+              "lower": 0.010838875231937993,
+              "samples": 10000,
+              "upper": 0.015337465582632624
+            },
+            "iterations_requested": 10000
+          },
+          "brier": 0.013006397886291134,
+          "calibration": {
+            "intercept": -0.47256391760340744,
+            "reason": null,
+            "slope": 0.8818163168633638
+          },
+          "candidate_budget_regions": {
+            "BEYOND_ORIGINAL_BUDGET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.01465170805109988,
+                  "samples": 10000,
+                  "upper": 0.08377685004339862
+                },
+                "auroc": {
+                  "lower": 0.4366951989972339,
+                  "samples": 10000,
+                  "upper": 0.6860462201009436
+                },
+                "auroc_minus_original_u1": {
+                  "lower": -0.014255145449835738,
+                  "samples": 10000,
+                  "upper": 0.30338814354571847
+                },
+                "brier": {
+                  "lower": 0.011298621627302675,
+                  "samples": 10000,
+                  "upper": 0.025277909216320327
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 1207,
+              "metrics": {
+                "ap": 0.02972633337384886,
+                "auroc": 0.5628308400460299,
+                "brier": 0.017994189437439242,
+                "calibration": {
+                  "intercept": -2.879573827257714,
+                  "reason": null,
+                  "slope": 0.2690056469538668
+                },
+                "confusion_matrix": {
+                  "fn": 22,
+                  "fp": 0,
+                  "tn": 1185,
+                  "tp": 0
+                },
+                "negative_rows": 1185,
+                "positive_rows": 22,
+                "prevalence": 0.018227009113504555
+              },
+              "negative_query_clusters": 632,
+              "positive_query_clusters": 22
+            },
+            "ORIGINAL_INSERT_SET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.0335514180758501,
+                  "samples": 10000,
+                  "upper": 0.08737392327142311
+                },
+                "auroc": {
+                  "lower": 0.6596546567537932,
+                  "samples": 10000,
+                  "upper": 0.7746878521766435
+                },
+                "auroc_minus_original_u1": {
+                  "lower": 0.162853211710856,
+                  "samples": 10000,
+                  "upper": 0.34225233137197664
+                },
+                "brier": {
+                  "lower": 0.009869905814452833,
+                  "samples": 10000,
+                  "upper": 0.014604680187273799
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 7260,
+              "metrics": {
+                "ap": 0.053936115908024544,
+                "auroc": 0.7182695948214152,
+                "brier": 0.01217716036532202,
+                "calibration": {
+                  "intercept": -0.012642531216310982,
+                  "reason": null,
+                  "slope": 0.9934225788930691
+                },
+                "confusion_matrix": {
+                  "fn": 91,
+                  "fp": 0,
+                  "tn": 7169,
+                  "tp": 0
+                },
+                "negative_rows": 7169,
+                "positive_rows": 91,
+                "prevalence": 0.012534435261707989
+              },
+              "negative_query_clusters": 2446,
+              "positive_query_clusters": 91
+            }
+          },
+          "confusion_matrix": {
+            "fn": 113,
+            "fp": 0,
+            "tn": 8354,
+            "tp": 0
+          },
+          "folds": {
+            "0": {
+              "ap": 0.07521936171602997,
+              "auroc": 0.74385526831179,
+              "brier": 0.013459581332900011,
+              "calibration": {
+                "intercept": 1.1023010815935348,
+                "reason": null,
+                "slope": 1.2737003231570962
+              },
+              "confusion_matrix": {
+                "fn": 24,
+                "fp": 0,
+                "tn": 1702,
+                "tp": 0
+              },
+              "negative_query_clusters": 490,
+              "negative_rows": 1702,
+              "positive_query_clusters": 24,
+              "positive_rows": 24,
+              "prevalence": 0.013904982618771726
+            },
+            "1": {
+              "ap": 0.019966306187936624,
+              "auroc": 0.6467416378316032,
+              "brier": 0.011341937024159867,
+              "calibration": {
+                "intercept": -2.192054827399136,
+                "reason": null,
+                "slope": 0.505151359026722
+              },
+              "confusion_matrix": {
+                "fn": 20,
+                "fp": 0,
+                "tn": 1734,
+                "tp": 0
+              },
+              "negative_query_clusters": 489,
+              "negative_rows": 1734,
+              "positive_query_clusters": 20,
+              "positive_rows": 20,
+              "prevalence": 0.011402508551881414
+            },
+            "2": {
+              "ap": 0.08393358437295292,
+              "auroc": 0.7408775064522534,
+              "brier": 0.016965402587611988,
+              "calibration": {
+                "intercept": 1.0136465842036098,
+                "reason": null,
+                "slope": 1.1530553315945256
+              },
+              "confusion_matrix": {
+                "fn": 30,
+                "fp": 0,
+                "tn": 1679,
+                "tp": 0
+              },
+              "negative_query_clusters": 489,
+              "negative_rows": 1679,
+              "positive_query_clusters": 30,
+              "positive_rows": 30,
+              "prevalence": 0.017554125219426564
+            },
+            "3": {
+              "ap": 0.03971903189138979,
+              "auroc": 0.6923749868775589,
+              "brier": 0.009850713941598928,
+              "calibration": {
+                "intercept": -0.8808163121062941,
+                "reason": null,
+                "slope": 0.8746260623332174
+              },
+              "confusion_matrix": {
+                "fn": 17,
+                "fp": 0,
+                "tn": 1681,
+                "tp": 0
+              },
+              "negative_query_clusters": 489,
+              "negative_rows": 1681,
+              "positive_query_clusters": 17,
+              "positive_rows": 17,
+              "prevalence": 0.010011778563015312
+            },
+            "4": {
+              "ap": 0.07712686997684624,
+              "auroc": 0.676829268292683,
+              "brier": 0.013468221953924898,
+              "calibration": {
+                "intercept": -0.9130074476089913,
+                "reason": null,
+                "slope": 0.7583135129075621
+              },
+              "confusion_matrix": {
+                "fn": 22,
+                "fp": 0,
+                "tn": 1558,
+                "tp": 0
+              },
+              "negative_query_clusters": 489,
+              "negative_rows": 1558,
+              "positive_query_clusters": 22,
+              "positive_rows": 22,
+              "prevalence": 0.013924050632911392
+            }
+          },
+          "negative_rows": 8354,
+          "positive_rows": 113,
+          "prevalence": 0.013345931262548719,
+          "query_clusters": 2446
+        },
+        "SUPPORT_STRUCTURE_10": {
+          "ap": 0.01663847971662376,
+          "auroc": 0.5354888019305044,
+          "auroc_minus_original_u1": 0.06641299488772268,
+          "baselines": {
+            "dense_score": {
+              "ap": 0.014303256496754048,
+              "auroc": 0.5038633392725862
+            },
+            "facet_score": {
+              "ap": 0.013620816284962416,
+              "auroc": 0.4699900000211864
+            },
+            "negative_eligible_rank": {
+              "ap": 0.010620539087369811,
+              "auroc": 0.38238902036224504
+            },
+            "original_u1_score": {
+              "ap": 0.013130830660762403,
+              "auroc": 0.46907580704278173
+            },
+            "training_prevalence": {
+              "ap": 0.011837677388661575,
+              "auroc": 0.44626441469403666,
+              "brier": 0.013171643526662337,
+              "calibration": {
+                "intercept": -20.588643314072808,
+                "reason": null,
+                "slope": -3.779618955434294
+              },
+              "confusion_matrix": {
+                "fn": 113,
+                "fp": 0,
+                "tn": 8354,
+                "tp": 0
+              },
+              "negative_rows": 8354,
+              "positive_rows": 113,
+              "prevalence": 0.013345931262548719
+            }
+          },
+          "bootstrap": {
+            "ap": {
+              "lower": 0.0125942389798861,
+              "samples": 10000,
+              "upper": 0.025515176372744804
+            },
+            "auroc": {
+              "lower": 0.48333734650865,
+              "samples": 10000,
+              "upper": 0.5881689816649633
+            },
+            "auroc_minus_original_u1": {
+              "lower": -0.00022410263218199778,
+              "samples": 10000,
+              "upper": 0.1335694809726416
+            },
+            "brier": {
+              "lower": 0.010968504843224924,
+              "samples": 10000,
+              "upper": 0.015562593362574402
+            },
+            "iterations_requested": 10000
+          },
+          "brier": 0.013177115832055074,
+          "calibration": {
+            "intercept": -2.9383560514033142,
+            "reason": null,
+            "slope": 0.3129920506836892
+          },
+          "candidate_budget_regions": {
+            "BEYOND_ORIGINAL_BUDGET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.013913779180606912,
+                  "samples": 10000,
+                  "upper": 0.12161432947363107
+                },
+                "auroc": {
+                  "lower": 0.35763202063861843,
+                  "samples": 10000,
+                  "upper": 0.644600554557267
+                },
+                "auroc_minus_original_u1": {
+                  "lower": -0.03332170501085624,
+                  "samples": 10000,
+                  "upper": 0.21261787624087694
+                },
+                "brier": {
+                  "lower": 0.011102189428280484,
+                  "samples": 10000,
+                  "upper": 0.02528057300142564
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 1207,
+              "metrics": {
+                "ap": 0.036583149453988835,
+                "auroc": 0.5036440352896049,
+                "brier": 0.017905475721543468,
+                "calibration": {
+                  "intercept": -4.598411075090635,
+                  "reason": null,
+                  "slope": -0.14220519614252536
+                },
+                "confusion_matrix": {
+                  "fn": 22,
+                  "fp": 0,
+                  "tn": 1185,
+                  "tp": 0
+                },
+                "negative_rows": 1185,
+                "positive_rows": 22,
+                "prevalence": 0.018227009113504555
+              },
+              "negative_query_clusters": 632,
+              "positive_query_clusters": 22
+            },
+            "ORIGINAL_INSERT_SET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.011262752681074675,
+                  "samples": 10000,
+                  "upper": 0.022732502678669383
+                },
+                "auroc": {
+                  "lower": 0.48717846842731166,
+                  "samples": 10000,
+                  "upper": 0.5982252618409746
+                },
+                "auroc_minus_original_u1": {
+                  "lower": -0.0018180983822783574,
+                  "samples": 10000,
+                  "upper": 0.15515788463071534
+                },
+                "brier": {
+                  "lower": 0.01003611289882634,
+                  "samples": 10000,
+                  "upper": 0.014876223573053526
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 7260,
+              "metrics": {
+                "ap": 0.01485267794077478,
+                "auroc": 0.5425910398709952,
+                "brier": 0.012391009718196604,
+                "calibration": {
+                  "intercept": -2.7501095095124795,
+                  "reason": null,
+                  "slope": 0.36987626769105614
+                },
+                "confusion_matrix": {
+                  "fn": 91,
+                  "fp": 0,
+                  "tn": 7169,
+                  "tp": 0
+                },
+                "negative_rows": 7169,
+                "positive_rows": 91,
+                "prevalence": 0.012534435261707989
+              },
+              "negative_query_clusters": 2446,
+              "positive_query_clusters": 91
+            }
+          },
+          "confusion_matrix": {
+            "fn": 113,
+            "fp": 0,
+            "tn": 8354,
+            "tp": 0
+          },
+          "folds": {
+            "0": {
+              "ap": 0.0207578352106669,
+              "auroc": 0.628819036427732,
+              "brier": 0.013690340731189578,
+              "calibration": {
+                "intercept": 0.4890979310031154,
+                "reason": null,
+                "slope": 1.1006930739643914
+              },
+              "confusion_matrix": {
+                "fn": 24,
+                "fp": 0,
+                "tn": 1702,
+                "tp": 0
+              },
+              "negative_query_clusters": 490,
+              "negative_rows": 1702,
+              "positive_query_clusters": 24,
+              "positive_rows": 24,
+              "prevalence": 0.013904982618771726
+            },
+            "1": {
+              "ap": 0.016513348967764473,
+              "auroc": 0.4286908881199538,
+              "brier": 0.011335483674922781,
+              "calibration": {
+                "intercept": -6.772079847594944,
+                "reason": null,
+                "slope": -0.5198445849301826
+              },
+              "confusion_matrix": {
+                "fn": 20,
+                "fp": 0,
+                "tn": 1734,
+                "tp": 0
+              },
+              "negative_query_clusters": 489,
+              "negative_rows": 1734,
+              "positive_query_clusters": 20,
+              "positive_rows": 20,
+              "prevalence": 0.011402508551881414
+            },
+            "2": {
+              "ap": 0.030814873452068067,
+              "auroc": 0.5369565217391304,
+              "brier": 0.01725739678171665,
+              "calibration": {
+                "intercept": -1.891549521053108,
+                "reason": null,
+                "slope": 0.4832942988576764
+              },
+              "confusion_matrix": {
+                "fn": 30,
+                "fp": 0,
+                "tn": 1679,
+                "tp": 0
+              },
+              "negative_query_clusters": 489,
+              "negative_rows": 1679,
+              "positive_query_clusters": 30,
+              "positive_rows": 30,
+              "prevalence": 0.017554125219426564
+            },
+            "3": {
+              "ap": 0.012696789726149557,
+              "auroc": 0.5399622073695629,
+              "brier": 0.009962604450130528,
+              "calibration": {
+                "intercept": -3.0407097590134944,
+                "reason": null,
+                "slope": 0.3609349719886711
+              },
+              "confusion_matrix": {
+                "fn": 17,
+                "fp": 0,
+                "tn": 1681,
+                "tp": 0
+              },
+              "negative_query_clusters": 489,
+              "negative_rows": 1681,
+              "positive_query_clusters": 17,
+              "positive_rows": 17,
+              "prevalence": 0.010011778563015312
+            },
+            "4": {
+              "ap": 0.029634759800507903,
+              "auroc": 0.6007264558291516,
+              "brier": 0.01370207583916908,
+              "calibration": {
+                "intercept": -0.5334861217223826,
+                "reason": null,
+                "slope": 0.8620527001214038
+              },
+              "confusion_matrix": {
+                "fn": 22,
+                "fp": 0,
+                "tn": 1558,
+                "tp": 0
+              },
+              "negative_query_clusters": 489,
+              "negative_rows": 1558,
+              "positive_query_clusters": 22,
+              "positive_rows": 22,
+              "prevalence": 0.013924050632911392
+            }
+          },
+          "negative_rows": 8354,
+          "positive_rows": 113,
+          "prevalence": 0.013345931262548719,
+          "query_clusters": 2446
+        }
+      }
+    },
+    "TASK_B_HARM_VS_ALL": {
+      "feasibility": {
+        "eligible": true,
+        "fold_query_cluster_counts": {
+          "0": {
+            "negative_query_clusters": 489,
+            "positive_query_clusters": 9
+          },
+          "1": {
+            "negative_query_clusters": 488,
+            "positive_query_clusters": 9
+          },
+          "2": {
+            "negative_query_clusters": 488,
+            "positive_query_clusters": 9
+          },
+          "3": {
+            "negative_query_clusters": 486,
+            "positive_query_clusters": 8
+          },
+          "4": {
+            "negative_query_clusters": 487,
+            "positive_query_clusters": 10
+          }
+        },
+        "minimum_clusters": 30,
+        "minimum_per_fold": 5,
+        "negative_query_clusters": 2438,
+        "positive_query_clusters": 45,
+        "threshold_interpretation": "minimum feasibility threshold, not a power guarantee"
+      },
+      "panels": {
+        "COMBINED_DEPLOYABLE_28": {
+          "ap": 0.03053507121959051,
+          "auroc": 0.7972021035018525,
+          "auroc_minus_original_u1": 0.20553961993546077,
+          "baselines": {
+            "dense_score": {
+              "ap": 0.008898036030845612,
+              "auroc": 0.36244890641807104
+            },
+            "facet_score": {
+              "ap": 0.01039408838752851,
+              "auroc": 0.461143181546552
+            },
+            "negative_eligible_rank": {
+              "ap": 0.008138984851208703,
+              "auroc": 0.2966953507828374
+            },
+            "original_u1_score": {
+              "ap": 0.015427738787895079,
+              "auroc": 0.5916624835663917
+            },
+            "training_prevalence": {
+              "ap": 0.010344338997149975,
+              "auroc": 0.4399288872953269,
+              "brier": 0.011674746423178244,
+              "calibration": {
+                "intercept": -21.16065096469396,
+                "reason": null,
+                "slope": -3.7745590685196797
+              },
+              "confusion_matrix": {
+                "fn": 100,
+                "fp": 0,
+                "tn": 8367,
+                "tp": 0
+              },
+              "negative_rows": 8367,
+              "positive_rows": 100,
+              "prevalence": 0.011810558639423645
+            }
+          },
+          "bootstrap": {
+            "ap": {
+              "lower": 0.019288399920622295,
+              "samples": 10000,
+              "upper": 0.05053539209467042
+            },
+            "auroc": {
+              "lower": 0.7591012815059233,
+              "samples": 10000,
+              "upper": 0.8375239226555338
+            },
+            "auroc_minus_original_u1": {
+              "lower": 0.11452807002640428,
+              "samples": 10000,
+              "upper": 0.30586628969740387
+            },
+            "brier": {
+              "lower": 0.008116509368299274,
+              "samples": 10000,
+              "upper": 0.015805027224440923
+            },
+            "iterations_requested": 10000
+          },
+          "brier": 0.011768206080995868,
+          "calibration": {
+            "intercept": -1.5452125755718271,
+            "reason": null,
+            "slope": 0.5644358433133468
+          },
+          "candidate_budget_regions": {
+            "BEYOND_ORIGINAL_BUDGET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.020752906057379276,
+                  "samples": 10000,
+                  "upper": 0.08823454231601521
+                },
+                "auroc": {
+                  "lower": 0.4845945253849992,
+                  "samples": 10000,
+                  "upper": 0.7211667370411048
+                },
+                "auroc_minus_original_u1": {
+                  "lower": -0.03335288314678905,
+                  "samples": 10000,
+                  "upper": 0.1973818782464886
+                },
+                "brier": {
+                  "lower": 0.017118050637450866,
+                  "samples": 10000,
+                  "upper": 0.0462173671165724
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 1207,
+              "metrics": {
+                "ap": 0.04279094055643497,
+                "auroc": 0.6064218064218064,
+                "brier": 0.030458422315778402,
+                "calibration": {
+                  "intercept": -2.1056691682106856,
+                  "reason": null,
+                  "slope": 0.33804446399428545
+                },
+                "confusion_matrix": {
+                  "fn": 37,
+                  "fp": 0,
+                  "tn": 1170,
+                  "tp": 0
+                },
+                "negative_rows": 1170,
+                "positive_rows": 37,
+                "prevalence": 0.030654515327257662
+              },
+              "negative_query_clusters": 625,
+              "positive_query_clusters": 20
+            },
+            "ORIGINAL_INSERT_SET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.016951769691743265,
+                  "samples": 10000,
+                  "upper": 0.038868186139612244
+                },
+                "auroc": {
+                  "lower": 0.7902549180831816,
+                  "samples": 10000,
+                  "upper": 0.8585032971982368
+                },
+                "auroc_minus_original_u1": {
+                  "lower": 0.13362942407459139,
+                  "samples": 10000,
+                  "upper": 0.37042259377018866
+                },
+                "brier": {
+                  "lower": 0.00567887063866712,
+                  "samples": 10000,
+                  "upper": 0.011988401891650608
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 7260,
+              "metrics": {
+                "ap": 0.025055881344756593,
+                "auroc": 0.8222892695589652,
+                "brier": 0.00866089327171453,
+                "calibration": {
+                  "intercept": -1.51161193783485,
+                  "reason": null,
+                  "slope": 0.5991389370062162
+                },
+                "confusion_matrix": {
+                  "fn": 63,
+                  "fp": 0,
+                  "tn": 7197,
+                  "tp": 0
+                },
+                "negative_rows": 7197,
+                "positive_rows": 63,
+                "prevalence": 0.008677685950413223
+              },
+              "negative_query_clusters": 2438,
+              "positive_query_clusters": 35
+            }
+          },
+          "confusion_matrix": {
+            "fn": 100,
+            "fp": 0,
+            "tn": 8367,
+            "tp": 0
+          },
+          "folds": {
+            "0": {
+              "ap": 0.029961999166924873,
+              "auroc": 0.781399245915375,
+              "brier": 0.012148032064748989,
+              "calibration": {
+                "intercept": -1.6000299364100274,
+                "reason": null,
+                "slope": 0.5422700087520926
+              },
+              "confusion_matrix": {
+                "fn": 21,
+                "fp": 0,
+                "tn": 1705,
+                "tp": 0
+              },
+              "negative_query_clusters": 489,
+              "negative_rows": 1705,
+              "positive_query_clusters": 9,
+              "positive_rows": 21,
+              "prevalence": 0.01216685979142526
+            },
+            "1": {
+              "ap": 0.028004063001161594,
+              "auroc": 0.7962430515622004,
+              "brier": 0.008821439770241057,
+              "calibration": {
+                "intercept": -2.133360255843246,
+                "reason": null,
+                "slope": 0.5086118396467723
+              },
+              "confusion_matrix": {
+                "fn": 15,
+                "fp": 0,
+                "tn": 1739,
+                "tp": 0
+              },
+              "negative_query_clusters": 488,
+              "negative_rows": 1739,
+              "positive_query_clusters": 9,
+              "positive_rows": 15,
+              "prevalence": 0.00855188141391106
+            },
+            "2": {
+              "ap": 0.048995650797283935,
+              "auroc": 0.8338200528438326,
+              "brier": 0.009784546947984378,
+              "calibration": {
+                "intercept": -1.3320347138306985,
+                "reason": null,
+                "slope": 0.6873843442072376
+              },
+              "confusion_matrix": {
+                "fn": 17,
+                "fp": 0,
+                "tn": 1692,
+                "tp": 0
+              },
+              "negative_query_clusters": 488,
+              "negative_rows": 1692,
+              "positive_query_clusters": 9,
+              "positive_rows": 17,
+              "prevalence": 0.00994733762434172
+            },
+            "3": {
+              "ap": 0.036071961736809315,
+              "auroc": 0.787175565751269,
+              "brier": 0.015848977812568023,
+              "calibration": {
+                "intercept": -1.376547901692967,
+                "reason": null,
+                "slope": 0.5247364006270697
+              },
+              "confusion_matrix": {
+                "fn": 27,
+                "fp": 0,
+                "tn": 1671,
+                "tp": 0
+              },
+              "negative_query_clusters": 486,
+              "negative_rows": 1671,
+              "positive_query_clusters": 8,
+              "positive_rows": 27,
+              "prevalence": 0.015901060070671377
+            },
+            "4": {
+              "ap": 0.044058774730237726,
+              "auroc": 0.8269871794871795,
+              "brier": 0.012384643751383954,
+              "calibration": {
+                "intercept": -0.867379381435598,
+                "reason": null,
+                "slope": 0.6924900816154779
+              },
+              "confusion_matrix": {
+                "fn": 20,
+                "fp": 0,
+                "tn": 1560,
+                "tp": 0
+              },
+              "negative_query_clusters": 487,
+              "negative_rows": 1560,
+              "positive_query_clusters": 10,
+              "positive_rows": 20,
+              "prevalence": 0.012658227848101266
+            }
+          },
+          "negative_rows": 8367,
+          "positive_rows": 100,
+          "prevalence": 0.011810558639423645,
+          "query_clusters": 2446
+        },
+        "COMPLEMENTARITY_RISK_10": {
+          "ap": 0.027989496709147233,
+          "auroc": 0.7839584080315526,
+          "auroc_minus_original_u1": 0.19229592446516086,
+          "baselines": {
+            "dense_score": {
+              "ap": 0.008898036030845612,
+              "auroc": 0.36244890641807104
+            },
+            "facet_score": {
+              "ap": 0.01039408838752851,
+              "auroc": 0.461143181546552
+            },
+            "negative_eligible_rank": {
+              "ap": 0.008138984851208703,
+              "auroc": 0.2966953507828374
+            },
+            "original_u1_score": {
+              "ap": 0.015427738787895079,
+              "auroc": 0.5916624835663917
+            },
+            "training_prevalence": {
+              "ap": 0.010344338997149975,
+              "auroc": 0.4399288872953269,
+              "brier": 0.011674746423178244,
+              "calibration": {
+                "intercept": -21.16065096469396,
+                "reason": null,
+                "slope": -3.7745590685196797
+              },
+              "confusion_matrix": {
+                "fn": 100,
+                "fp": 0,
+                "tn": 8367,
+                "tp": 0
+              },
+              "negative_rows": 8367,
+              "positive_rows": 100,
+              "prevalence": 0.011810558639423645
+            }
+          },
+          "bootstrap": {
+            "ap": {
+              "lower": 0.018952554513117916,
+              "samples": 10000,
+              "upper": 0.04331285267876583
+            },
+            "auroc": {
+              "lower": 0.7401215591978567,
+              "samples": 10000,
+              "upper": 0.830252336755007
+            },
+            "auroc_minus_original_u1": {
+              "lower": 0.09176899757018372,
+              "samples": 10000,
+              "upper": 0.3020602197670864
+            },
+            "brier": {
+              "lower": 0.007943274963296464,
+              "samples": 10000,
+              "upper": 0.015696618928408554
+            },
+            "iterations_requested": 10000
+          },
+          "brier": 0.011626922291436014,
+          "calibration": {
+            "intercept": -1.231839252912063,
+            "reason": null,
+            "slope": 0.6617425758186131
+          },
+          "candidate_budget_regions": {
+            "BEYOND_ORIGINAL_BUDGET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.01963219804376014,
+                  "samples": 10000,
+                  "upper": 0.07428352450927601
+                },
+                "auroc": {
+                  "lower": 0.4368268948205906,
+                  "samples": 10000,
+                  "upper": 0.6669064553706715
+                },
+                "auroc_minus_original_u1": {
+                  "lower": -0.11577220314565,
+                  "samples": 10000,
+                  "upper": 0.18139040580342577
+                },
+                "brier": {
+                  "lower": 0.0165453932747762,
+                  "samples": 10000,
+                  "upper": 0.046083001027429786
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 1207,
+              "metrics": {
+                "ap": 0.03590203838249109,
+                "auroc": 0.5498729498729499,
+                "brier": 0.030058182195337728,
+                "calibration": {
+                  "intercept": -2.215190649689759,
+                  "reason": null,
+                  "slope": 0.31388179404023525
+                },
+                "confusion_matrix": {
+                  "fn": 37,
+                  "fp": 0,
+                  "tn": 1170,
+                  "tp": 0
+                },
+                "negative_rows": 1170,
+                "positive_rows": 37,
+                "prevalence": 0.030654515327257662
+              },
+              "negative_query_clusters": 625,
+              "positive_query_clusters": 20
+            },
+            "ORIGINAL_INSERT_SET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.01647965618673214,
+                  "samples": 10000,
+                  "upper": 0.03948653808764817
+                },
+                "auroc": {
+                  "lower": 0.7770084357935266,
+                  "samples": 10000,
+                  "upper": 0.8613595115125727
+                },
+                "auroc_minus_original_u1": {
+                  "lower": 0.12328138632994987,
+                  "samples": 10000,
+                  "upper": 0.36984727446117455
+                },
+                "brier": {
+                  "lower": 0.005589899473052201,
+                  "samples": 10000,
+                  "upper": 0.011868195463579258
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 7260,
+              "metrics": {
+                "ap": 0.024860009672186996,
+                "auroc": 0.8174106936091096,
+                "brier": 0.008562661863886515,
+                "calibration": {
+                  "intercept": -1.100214353781694,
+                  "reason": null,
+                  "slope": 0.7240961816311936
+                },
+                "confusion_matrix": {
+                  "fn": 63,
+                  "fp": 0,
+                  "tn": 7197,
+                  "tp": 0
+                },
+                "negative_rows": 7197,
+                "positive_rows": 63,
+                "prevalence": 0.008677685950413223
+              },
+              "negative_query_clusters": 2438,
+              "positive_query_clusters": 35
+            }
+          },
+          "confusion_matrix": {
+            "fn": 100,
+            "fp": 0,
+            "tn": 8367,
+            "tp": 0
+          },
+          "folds": {
+            "0": {
+              "ap": 0.03163971735654868,
+              "auroc": 0.7718754363915655,
+              "brier": 0.011946487845689321,
+              "calibration": {
+                "intercept": -1.1074736999767205,
+                "reason": null,
+                "slope": 0.682876966954069
+              },
+              "confusion_matrix": {
+                "fn": 21,
+                "fp": 0,
+                "tn": 1705,
+                "tp": 0
+              },
+              "negative_query_clusters": 489,
+              "negative_rows": 1705,
+              "positive_query_clusters": 9,
+              "positive_rows": 21,
+              "prevalence": 0.01216685979142526
+            },
+            "1": {
+              "ap": 0.025178329153547754,
+              "auroc": 0.800115008625647,
+              "brier": 0.008595818751630048,
+              "calibration": {
+                "intercept": -1.512860260925627,
+                "reason": null,
+                "slope": 0.6773491745113799
+              },
+              "confusion_matrix": {
+                "fn": 15,
+                "fp": 0,
+                "tn": 1739,
+                "tp": 0
+              },
+              "negative_query_clusters": 488,
+              "negative_rows": 1739,
+              "positive_query_clusters": 9,
+              "positive_rows": 15,
+              "prevalence": 0.00855188141391106
+            },
+            "2": {
+              "ap": 0.03658870164651263,
+              "auroc": 0.8149770546516479,
+              "brier": 0.009815480863551001,
+              "calibration": {
+                "intercept": -1.466688521159479,
+                "reason": null,
+                "slope": 0.6591857574919983
+              },
+              "confusion_matrix": {
+                "fn": 17,
+                "fp": 0,
+                "tn": 1692,
+                "tp": 0
+              },
+              "negative_query_clusters": 488,
+              "negative_rows": 1692,
+              "positive_query_clusters": 9,
+              "positive_rows": 17,
+              "prevalence": 0.00994733762434172
+            },
+            "3": {
+              "ap": 0.045169445391053144,
+              "auroc": 0.7673160892789856,
+              "brier": 0.015532315635140593,
+              "calibration": {
+                "intercept": -1.080096803567066,
+                "reason": null,
+                "slope": 0.6191596883584607
+              },
+              "confusion_matrix": {
+                "fn": 27,
+                "fp": 0,
+                "tn": 1671,
+                "tp": 0
+              },
+              "negative_query_clusters": 486,
+              "negative_rows": 1671,
+              "positive_query_clusters": 8,
+              "positive_rows": 27,
+              "prevalence": 0.015901060070671377
+            },
+            "4": {
+              "ap": 0.033071934130566284,
+              "auroc": 0.80375,
+              "brier": 0.012405011509678786,
+              "calibration": {
+                "intercept": -0.7151800653513246,
+                "reason": null,
+                "slope": 0.7690408430004364
+              },
+              "confusion_matrix": {
+                "fn": 20,
+                "fp": 0,
+                "tn": 1560,
+                "tp": 0
+              },
+              "negative_query_clusters": 487,
+              "negative_rows": 1560,
+              "positive_query_clusters": 10,
+              "positive_rows": 20,
+              "prevalence": 0.012658227848101266
+            }
+          },
+          "negative_rows": 8367,
+          "positive_rows": 100,
+          "prevalence": 0.011810558639423645,
+          "query_clusters": 2446
+        },
+        "RELEVANCE_RANK_8": {
+          "ap": 0.020884816556852745,
+          "auroc": 0.6711210708736703,
+          "auroc_minus_original_u1": 0.07945858730727862,
+          "baselines": {
+            "dense_score": {
+              "ap": 0.008898036030845612,
+              "auroc": 0.36244890641807104
+            },
+            "facet_score": {
+              "ap": 0.01039408838752851,
+              "auroc": 0.461143181546552
+            },
+            "negative_eligible_rank": {
+              "ap": 0.008138984851208703,
+              "auroc": 0.2966953507828374
+            },
+            "original_u1_score": {
+              "ap": 0.015427738787895079,
+              "auroc": 0.5916624835663917
+            },
+            "training_prevalence": {
+              "ap": 0.010344338997149975,
+              "auroc": 0.4399288872953269,
+              "brier": 0.011674746423178244,
+              "calibration": {
+                "intercept": -21.16065096469396,
+                "reason": null,
+                "slope": -3.7745590685196797
+              },
+              "confusion_matrix": {
+                "fn": 100,
+                "fp": 0,
+                "tn": 8367,
+                "tp": 0
+              },
+              "negative_rows": 8367,
+              "positive_rows": 100,
+              "prevalence": 0.011810558639423645
+            }
+          },
+          "bootstrap": {
+            "ap": {
+              "lower": 0.012968435832266109,
+              "samples": 10000,
+              "upper": 0.033633059959103276
+            },
+            "auroc": {
+              "lower": 0.6053680522768089,
+              "samples": 10000,
+              "upper": 0.7371401461724416
+            },
+            "auroc_minus_original_u1": {
+              "lower": -0.030106969865224247,
+              "samples": 10000,
+              "upper": 0.1956750085059961
+            },
+            "brier": {
+              "lower": 0.007916335794263114,
+              "samples": 10000,
+              "upper": 0.015761603496170846
+            },
+            "iterations_requested": 10000
+          },
+          "brier": 0.011648232309249197,
+          "calibration": {
+            "intercept": -1.3412376327793074,
+            "reason": null,
+            "slope": 0.6805291282573447
+          },
+          "candidate_budget_regions": {
+            "BEYOND_ORIGINAL_BUDGET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.01895589475712061,
+                  "samples": 10000,
+                  "upper": 0.07418289951412622
+                },
+                "auroc": {
+                  "lower": 0.4244384161258668,
+                  "samples": 10000,
+                  "upper": 0.6648460017916958
+                },
+                "auroc_minus_original_u1": {
+                  "lower": -0.10440426462010476,
+                  "samples": 10000,
+                  "upper": 0.186239342268488
+                },
+                "brier": {
+                  "lower": 0.016135451879637067,
+                  "samples": 10000,
+                  "upper": 0.04599043116211083
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 1207,
+              "metrics": {
+                "ap": 0.037262325679988585,
+                "auroc": 0.5515592515592516,
+                "brier": 0.029816154256315005,
+                "calibration": {
+                  "intercept": -2.2148890692458854,
+                  "reason": null,
+                  "slope": 0.3199254064610701
+                },
+                "confusion_matrix": {
+                  "fn": 37,
+                  "fp": 0,
+                  "tn": 1170,
+                  "tp": 0
+                },
+                "negative_rows": 1170,
+                "positive_rows": 37,
+                "prevalence": 0.030654515327257662
+              },
+              "negative_query_clusters": 625,
+              "positive_query_clusters": 20
+            },
+            "ORIGINAL_INSERT_SET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.008849489212965475,
+                  "samples": 10000,
+                  "upper": 0.020790376383728024
+                },
+                "auroc": {
+                  "lower": 0.5668374885835322,
+                  "samples": 10000,
+                  "upper": 0.7174999540030896
+                },
+                "auroc_minus_original_u1": {
+                  "lower": -0.0807260719833883,
+                  "samples": 10000,
+                  "upper": 0.22138794672305248
+                },
+                "brier": {
+                  "lower": 0.005598140193106055,
+                  "samples": 10000,
+                  "upper": 0.011980967623944575
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 7260,
+              "metrics": {
+                "ap": 0.013466204936166043,
+                "auroc": 0.6382707962532889,
+                "brier": 0.008627752723834812,
+                "calibration": {
+                  "intercept": -2.1985050456063555,
+                  "reason": null,
+                  "slope": 0.5350866902900503
+                },
+                "confusion_matrix": {
+                  "fn": 63,
+                  "fp": 0,
+                  "tn": 7197,
+                  "tp": 0
+                },
+                "negative_rows": 7197,
+                "positive_rows": 63,
+                "prevalence": 0.008677685950413223
+              },
+              "negative_query_clusters": 2438,
+              "positive_query_clusters": 35
+            }
+          },
+          "confusion_matrix": {
+            "fn": 100,
+            "fp": 0,
+            "tn": 8367,
+            "tp": 0
+          },
+          "folds": {
+            "0": {
+              "ap": 0.016981187326420906,
+              "auroc": 0.6337103756458595,
+              "brier": 0.012092661244582721,
+              "calibration": {
+                "intercept": -2.192974504592513,
+                "reason": null,
+                "slope": 0.4772946733801094
+              },
+              "confusion_matrix": {
+                "fn": 21,
+                "fp": 0,
+                "tn": 1705,
+                "tp": 0
+              },
+              "negative_query_clusters": 489,
+              "negative_rows": 1705,
+              "positive_query_clusters": 9,
+              "positive_rows": 21,
+              "prevalence": 0.01216685979142526
+            },
+            "1": {
+              "ap": 0.028195216644432333,
+              "auroc": 0.7472493770366111,
+              "brier": 0.008436509573263518,
+              "calibration": {
+                "intercept": 0.35315270484768596,
+                "reason": null,
+                "slope": 1.1937925730937928
+              },
+              "confusion_matrix": {
+                "fn": 15,
+                "fp": 0,
+                "tn": 1739,
+                "tp": 0
+              },
+              "negative_query_clusters": 488,
+              "negative_rows": 1739,
+              "positive_query_clusters": 9,
+              "positive_rows": 15,
+              "prevalence": 0.00855188141391106
+            },
+            "2": {
+              "ap": 0.0839928927342878,
+              "auroc": 0.7331038798498123,
+              "brier": 0.009762548508529971,
+              "calibration": {
+                "intercept": 0.2900532947045376,
+                "reason": null,
+                "slope": 1.1236659239397206
+              },
+              "confusion_matrix": {
+                "fn": 17,
+                "fp": 0,
+                "tn": 1692,
+                "tp": 0
+              },
+              "negative_query_clusters": 488,
+              "negative_rows": 1692,
+              "positive_query_clusters": 9,
+              "positive_rows": 17,
+              "prevalence": 0.00994733762434172
+            },
+            "3": {
+              "ap": 0.023292111231211336,
+              "auroc": 0.6150674911895737,
+              "brier": 0.015690421074118114,
+              "calibration": {
+                "intercept": -2.2871516159518013,
+                "reason": null,
+                "slope": 0.38272053221173574
+              },
+              "confusion_matrix": {
+                "fn": 27,
+                "fp": 0,
+                "tn": 1671,
+                "tp": 0
+              },
+              "negative_query_clusters": 486,
+              "negative_rows": 1671,
+              "positive_query_clusters": 8,
+              "positive_rows": 27,
+              "prevalence": 0.015901060070671377
+            },
+            "4": {
+              "ap": 0.027897111018872614,
+              "auroc": 0.7207371794871795,
+              "brier": 0.012423722454321951,
+              "calibration": {
+                "intercept": -0.05927824398667308,
+                "reason": null,
+                "slope": 0.959249655503794
+              },
+              "confusion_matrix": {
+                "fn": 20,
+                "fp": 0,
+                "tn": 1560,
+                "tp": 0
+              },
+              "negative_query_clusters": 487,
+              "negative_rows": 1560,
+              "positive_query_clusters": 10,
+              "positive_rows": 20,
+              "prevalence": 0.012658227848101266
+            }
+          },
+          "negative_rows": 8367,
+          "positive_rows": 100,
+          "prevalence": 0.011810558639423645,
+          "query_clusters": 2446
+        },
+        "SUPPORT_STRUCTURE_10": {
+          "ap": 0.01669836309032443,
+          "auroc": 0.570021513087128,
+          "auroc_minus_original_u1": -0.02164097047926372,
+          "baselines": {
+            "dense_score": {
+              "ap": 0.008898036030845612,
+              "auroc": 0.36244890641807104
+            },
+            "facet_score": {
+              "ap": 0.01039408838752851,
+              "auroc": 0.461143181546552
+            },
+            "negative_eligible_rank": {
+              "ap": 0.008138984851208703,
+              "auroc": 0.2966953507828374
+            },
+            "original_u1_score": {
+              "ap": 0.015427738787895079,
+              "auroc": 0.5916624835663917
+            },
+            "training_prevalence": {
+              "ap": 0.010344338997149975,
+              "auroc": 0.4399288872953269,
+              "brier": 0.011674746423178244,
+              "calibration": {
+                "intercept": -21.16065096469396,
+                "reason": null,
+                "slope": -3.7745590685196797
+              },
+              "confusion_matrix": {
+                "fn": 100,
+                "fp": 0,
+                "tn": 8367,
+                "tp": 0
+              },
+              "negative_rows": 8367,
+              "positive_rows": 100,
+              "prevalence": 0.011810558639423645
+            }
+          },
+          "bootstrap": {
+            "ap": {
+              "lower": 0.009908800010650878,
+              "samples": 10000,
+              "upper": 0.03262831015733846
+            },
+            "auroc": {
+              "lower": 0.48742318092241693,
+              "samples": 10000,
+              "upper": 0.6506258281510162
+            },
+            "auroc_minus_original_u1": {
+              "lower": -0.13486634249696966,
+              "samples": 10000,
+              "upper": 0.09587836685643726
+            },
+            "brier": {
+              "lower": 0.007946851700721664,
+              "samples": 10000,
+              "upper": 0.015844145498419098
+            },
+            "iterations_requested": 10000
+          },
+          "brier": 0.011693508617873887,
+          "calibration": {
+            "intercept": -2.5306902422871547,
+            "reason": null,
+            "slope": 0.41734365068806095
+          },
+          "candidate_budget_regions": {
+            "BEYOND_ORIGINAL_BUDGET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.02219964872858634,
+                  "samples": 10000,
+                  "upper": 0.21164369843089012
+                },
+                "auroc": {
+                  "lower": 0.4520886911832949,
+                  "samples": 10000,
+                  "upper": 0.754942687556286
+                },
+                "auroc_minus_original_u1": {
+                  "lower": -0.03349856515304459,
+                  "samples": 10000,
+                  "upper": 0.21121583690795756
+                },
+                "brier": {
+                  "lower": 0.01598072269263038,
+                  "samples": 10000,
+                  "upper": 0.046382333442041346
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 1207,
+              "metrics": {
+                "ap": 0.07565340161175668,
+                "auroc": 0.6141718641718643,
+                "brier": 0.02989153128042332,
+                "calibration": {
+                  "intercept": -0.4145010147676663,
+                  "reason": null,
+                  "slope": 0.6757877486300287
+                },
+                "confusion_matrix": {
+                  "fn": 37,
+                  "fp": 0,
+                  "tn": 1170,
+                  "tp": 0
+                },
+                "negative_rows": 1170,
+                "positive_rows": 37,
+                "prevalence": 0.030654515327257662
+              },
+              "negative_query_clusters": 625,
+              "positive_query_clusters": 20
+            },
+            "ORIGINAL_INSERT_SET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.006472629764959646,
+                  "samples": 10000,
+                  "upper": 0.015260095258485871
+                },
+                "auroc": {
+                  "lower": 0.4669080939633499,
+                  "samples": 10000,
+                  "upper": 0.625349479704086
+                },
+                "auroc_minus_original_u1": {
+                  "lower": -0.16911389043375274,
+                  "samples": 10000,
+                  "upper": 0.12310675801703917
+                },
+                "brier": {
+                  "lower": 0.005642552614306322,
+                  "samples": 10000,
+                  "upper": 0.012027278361340151
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 7260,
+              "metrics": {
+                "ap": 0.009811157033265693,
+                "auroc": 0.5471404531429542,
+                "brier": 0.00866802468485775,
+                "calibration": {
+                  "intercept": -3.5571252118124956,
+                  "reason": null,
+                  "slope": 0.2581932765083352
+                },
+                "confusion_matrix": {
+                  "fn": 63,
+                  "fp": 0,
+                  "tn": 7197,
+                  "tp": 0
+                },
+                "negative_rows": 7197,
+                "positive_rows": 63,
+                "prevalence": 0.008677685950413223
+              },
+              "negative_query_clusters": 2438,
+              "positive_query_clusters": 35
+            }
+          },
+          "confusion_matrix": {
+            "fn": 100,
+            "fp": 0,
+            "tn": 8367,
+            "tp": 0
+          },
+          "folds": {
+            "0": {
+              "ap": 0.03496646970327275,
+              "auroc": 0.5644742354419774,
+              "brier": 0.011991257980880677,
+              "calibration": {
+                "intercept": -1.8439173381579672,
+                "reason": null,
+                "slope": 0.566395595809467
+              },
+              "confusion_matrix": {
+                "fn": 21,
+                "fp": 0,
+                "tn": 1705,
+                "tp": 0
+              },
+              "negative_query_clusters": 489,
+              "negative_rows": 1705,
+              "positive_query_clusters": 9,
+              "positive_rows": 21,
+              "prevalence": 0.01216685979142526
+            },
+            "1": {
+              "ap": 0.013178555721068453,
+              "auroc": 0.5821928311290013,
+              "brier": 0.008574413087639848,
+              "calibration": {
+                "intercept": -3.885078738335874,
+                "reason": null,
+                "slope": 0.1926027872192172
+              },
+              "confusion_matrix": {
+                "fn": 15,
+                "fp": 0,
+                "tn": 1739,
+                "tp": 0
+              },
+              "negative_query_clusters": 488,
+              "negative_rows": 1739,
+              "positive_query_clusters": 9,
+              "positive_rows": 15,
+              "prevalence": 0.00855188141391106
+            },
+            "2": {
+              "ap": 0.02017639139845687,
+              "auroc": 0.5678278403560006,
+              "brier": 0.009892568662521138,
+              "calibration": {
+                "intercept": -2.6923593921977083,
+                "reason": null,
+                "slope": 0.4244740576737668
+              },
+              "confusion_matrix": {
+                "fn": 17,
+                "fp": 0,
+                "tn": 1692,
+                "tp": 0
+              },
+              "negative_query_clusters": 488,
+              "negative_rows": 1692,
+              "positive_query_clusters": 9,
+              "positive_rows": 17,
+              "prevalence": 0.00994733762434172
+            },
+            "3": {
+              "ap": 0.02365145933426436,
+              "auroc": 0.641144136356584,
+              "brier": 0.015689610830845312,
+              "calibration": {
+                "intercept": -1.331934720311799,
+                "reason": null,
+                "slope": 0.608298801591059
+              },
+              "confusion_matrix": {
+                "fn": 27,
+                "fp": 0,
+                "tn": 1671,
+                "tp": 0
+              },
+              "negative_query_clusters": 486,
+              "negative_rows": 1671,
+              "positive_query_clusters": 8,
+              "positive_rows": 27,
+              "prevalence": 0.015901060070671377
+            },
+            "4": {
+              "ap": 0.05284037816127884,
+              "auroc": 0.548397435897436,
+              "brier": 0.012484270001135384,
+              "calibration": {
+                "intercept": -2.4991566159076988,
+                "reason": null,
+                "slope": 0.40209462939388646
+              },
+              "confusion_matrix": {
+                "fn": 20,
+                "fp": 0,
+                "tn": 1560,
+                "tp": 0
+              },
+              "negative_query_clusters": 487,
+              "negative_rows": 1560,
+              "positive_query_clusters": 10,
+              "positive_rows": 20,
+              "prevalence": 0.012658227848101266
+            }
+          },
+          "negative_rows": 8367,
+          "positive_rows": 100,
+          "prevalence": 0.011810558639423645,
+          "query_clusters": 2446
+        }
+      }
+    },
+    "TASK_C_GAIN_VS_HARM": {
+      "feasibility": {
+        "eligible": true,
+        "fold_query_cluster_counts": {
+          "0": {
+            "negative_query_clusters": 9,
+            "positive_query_clusters": 24
+          },
+          "1": {
+            "negative_query_clusters": 9,
+            "positive_query_clusters": 20
+          },
+          "2": {
+            "negative_query_clusters": 9,
+            "positive_query_clusters": 30
+          },
+          "3": {
+            "negative_query_clusters": 8,
+            "positive_query_clusters": 17
+          },
+          "4": {
+            "negative_query_clusters": 10,
+            "positive_query_clusters": 22
+          }
+        },
+        "minimum_clusters": 30,
+        "minimum_per_fold": 5,
+        "negative_query_clusters": 45,
+        "positive_query_clusters": 113,
+        "threshold_interpretation": "minimum feasibility threshold, not a power guarantee"
+      },
+      "panels": {
+        "COMBINED_DEPLOYABLE_28": {
+          "ap": 0.7219801376740966,
+          "auroc": 0.6430973451327433,
+          "auroc_minus_original_u1": 0.26345132743362826,
+          "baselines": {
+            "dense_score": {
+              "ap": 0.6376902148712441,
+              "auroc": 0.635929203539823
+            },
+            "facet_score": {
+              "ap": 0.5815920569592592,
+              "auroc": 0.5005309734513275
+            },
+            "negative_eligible_rank": {
+              "ap": 0.6032569951743648,
+              "auroc": 0.6061504424778761
+            },
+            "original_u1_score": {
+              "ap": 0.5030062929336448,
+              "auroc": 0.37964601769911505
+            },
+            "training_prevalence": {
+              "ap": 0.47789737783008174,
+              "auroc": 0.4089823008849558,
+              "brier": 0.25337663607410116,
+              "calibration": {
+                "intercept": 0.5879846790008448,
+                "reason": null,
+                "slope": -3.8019218094263865
+              },
+              "confusion_matrix": {
+                "fn": 0,
+                "fp": 100,
+                "tn": 0,
+                "tp": 113
+              },
+              "negative_rows": 100,
+              "positive_rows": 113,
+              "prevalence": 0.5305164319248826
+            }
+          },
+          "bootstrap": {
+            "ap": {
+              "lower": 0.6238420549481761,
+              "samples": 10000,
+              "upper": 0.8179921430298865
+            },
+            "auroc": {
+              "lower": 0.5552036151764412,
+              "samples": 10000,
+              "upper": 0.7297439516677202
+            },
+            "auroc_minus_original_u1": {
+              "lower": 0.13281807024753223,
+              "samples": 10000,
+              "upper": 0.388486434234877
+            },
+            "brier": {
+              "lower": 0.2214891144095541,
+              "samples": 10000,
+              "upper": 0.3050583920722936
+            },
+            "iterations_requested": 10000
+          },
+          "brier": 0.2632105411302701,
+          "calibration": {
+            "intercept": -0.033476990959386686,
+            "reason": null,
+            "slope": 0.3556367874070665
+          },
+          "candidate_budget_regions": {
+            "BEYOND_ORIGINAL_BUDGET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.2760907305301191,
+                  "samples": 10000,
+                  "upper": 0.6885976680203109
+                },
+                "auroc": {
+                  "lower": 0.3157873650472334,
+                  "samples": 10000,
+                  "upper": 0.689907711988304
+                },
+                "auroc_minus_original_u1": {
+                  "lower": -0.13706204100367192,
+                  "samples": 10000,
+                  "upper": 0.38758922311893695
+                },
+                "brier": {
+                  "lower": 0.23312171456511135,
+                  "samples": 10000,
+                  "upper": 0.39264245744292386
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 59,
+              "metrics": {
+                "ap": 0.4593009606176891,
+                "auroc": 0.5073710073710074,
+                "brier": 0.3111205965425108,
+                "calibration": {
+                  "intercept": -0.5207862045307622,
+                  "reason": null,
+                  "slope": 0.06623089433259358
+                },
+                "confusion_matrix": {
+                  "fn": 11,
+                  "fp": 20,
+                  "tn": 17,
+                  "tp": 11
+                },
+                "negative_rows": 37,
+                "positive_rows": 22,
+                "prevalence": 0.3728813559322034
+              },
+              "negative_query_clusters": 20,
+              "positive_query_clusters": 22
+            },
+            "ORIGINAL_INSERT_SET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.7000655047043327,
+                  "samples": 10000,
+                  "upper": 0.8741454777388172
+                },
+                "auroc": {
+                  "lower": 0.5772378554176181,
+                  "samples": 10000,
+                  "upper": 0.7652103173957164
+                },
+                "auroc_minus_original_u1": {
+                  "lower": 0.13651999136928222,
+                  "samples": 10000,
+                  "upper": 0.4023009031198686
+                },
+                "brier": {
+                  "lower": 0.1989302671739303,
+                  "samples": 10000,
+                  "upper": 0.2905177011110996
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 154,
+              "metrics": {
+                "ap": 0.7907359450522063,
+                "auroc": 0.6741671027385313,
+                "brier": 0.2448553900307752,
+                "calibration": {
+                  "intercept": 0.13339979166552407,
+                  "reason": null,
+                  "slope": 0.4230441704092807
+                },
+                "confusion_matrix": {
+                  "fn": 22,
+                  "fp": 38,
+                  "tn": 25,
+                  "tp": 69
+                },
+                "negative_rows": 63,
+                "positive_rows": 91,
+                "prevalence": 0.5909090909090909
+              },
+              "negative_query_clusters": 35,
+              "positive_query_clusters": 91
+            }
+          },
+          "confusion_matrix": {
+            "fn": 33,
+            "fp": 58,
+            "tn": 42,
+            "tp": 80
+          },
+          "folds": {
+            "0": {
+              "ap": 0.6863727729436393,
+              "auroc": 0.5952380952380952,
+              "brier": 0.27815138353863933,
+              "calibration": {
+                "intercept": 0.011953907876261166,
+                "reason": null,
+                "slope": 0.28716833306441936
+              },
+              "confusion_matrix": {
+                "fn": 7,
+                "fp": 12,
+                "tn": 9,
+                "tp": 17
+              },
+              "negative_query_clusters": 9,
+              "negative_rows": 21,
+              "positive_query_clusters": 24,
+              "positive_rows": 24,
+              "prevalence": 0.5333333333333333
+            },
+            "1": {
+              "ap": 0.6886355123634536,
+              "auroc": 0.5466666666666666,
+              "brier": 0.3064111997767126,
+              "calibration": {
+                "intercept": 0.2736742243519624,
+                "reason": null,
+                "slope": 0.11359288885180353
+              },
+              "confusion_matrix": {
+                "fn": 9,
+                "fp": 8,
+                "tn": 7,
+                "tp": 11
+              },
+              "negative_query_clusters": 9,
+              "negative_rows": 15,
+              "positive_query_clusters": 20,
+              "positive_rows": 20,
+              "prevalence": 0.5714285714285714
+            },
+            "2": {
+              "ap": 0.8512888685202171,
+              "auroc": 0.719607843137255,
+              "brier": 0.22177043862835064,
+              "calibration": {
+                "intercept": 0.17279795812578105,
+                "reason": null,
+                "slope": 0.5191868175956431
+              },
+              "confusion_matrix": {
+                "fn": 6,
+                "fp": 13,
+                "tn": 4,
+                "tp": 24
+              },
+              "negative_query_clusters": 9,
+              "negative_rows": 17,
+              "positive_query_clusters": 30,
+              "positive_rows": 30,
+              "prevalence": 0.6382978723404256
+            },
+            "3": {
+              "ap": 0.6248637489827037,
+              "auroc": 0.6361655773420479,
+              "brier": 0.2894840709882293,
+              "calibration": {
+                "intercept": -0.6973145098582241,
+                "reason": null,
+                "slope": 0.404915939195012
+              },
+              "confusion_matrix": {
+                "fn": 5,
+                "fp": 15,
+                "tn": 12,
+                "tp": 12
+              },
+              "negative_query_clusters": 8,
+              "negative_rows": 27,
+              "positive_query_clusters": 17,
+              "positive_rows": 17,
+              "prevalence": 0.38636363636363635
+            },
+            "4": {
+              "ap": 0.7917887841619418,
+              "auroc": 0.7227272727272728,
+              "brier": 0.23005074453117247,
+              "calibration": {
+                "intercept": -0.02732710896440909,
+                "reason": null,
+                "slope": 0.5646402797903673
+              },
+              "confusion_matrix": {
+                "fn": 6,
+                "fp": 10,
+                "tn": 10,
+                "tp": 16
+              },
+              "negative_query_clusters": 10,
+              "negative_rows": 20,
+              "positive_query_clusters": 22,
+              "positive_rows": 22,
+              "prevalence": 0.5238095238095238
+            }
+          },
+          "negative_rows": 100,
+          "positive_rows": 113,
+          "prevalence": 0.5305164319248826,
+          "query_clusters": 158
+        },
+        "COMPLEMENTARITY_RISK_10": {
+          "ap": 0.6923553280334029,
+          "auroc": 0.5992920353982301,
+          "auroc_minus_original_u1": 0.21964601769911501,
+          "baselines": {
+            "dense_score": {
+              "ap": 0.6376902148712441,
+              "auroc": 0.635929203539823
+            },
+            "facet_score": {
+              "ap": 0.5815920569592592,
+              "auroc": 0.5005309734513275
+            },
+            "negative_eligible_rank": {
+              "ap": 0.6032569951743648,
+              "auroc": 0.6061504424778761
+            },
+            "original_u1_score": {
+              "ap": 0.5030062929336448,
+              "auroc": 0.37964601769911505
+            },
+            "training_prevalence": {
+              "ap": 0.47789737783008174,
+              "auroc": 0.4089823008849558,
+              "brier": 0.25337663607410116,
+              "calibration": {
+                "intercept": 0.5879846790008448,
+                "reason": null,
+                "slope": -3.8019218094263865
+              },
+              "confusion_matrix": {
+                "fn": 0,
+                "fp": 100,
+                "tn": 0,
+                "tp": 113
+              },
+              "negative_rows": 100,
+              "positive_rows": 113,
+              "prevalence": 0.5305164319248826
+            }
+          },
+          "bootstrap": {
+            "ap": {
+              "lower": 0.5952288202158591,
+              "samples": 10000,
+              "upper": 0.7904437982316754
+            },
+            "auroc": {
+              "lower": 0.5146685572390234,
+              "samples": 10000,
+              "upper": 0.6848778791407867
+            },
+            "auroc_minus_original_u1": {
+              "lower": 0.09256634214212979,
+              "samples": 10000,
+              "upper": 0.3442805373172201
+            },
+            "brier": {
+              "lower": 0.2272947842552395,
+              "samples": 10000,
+              "upper": 0.2891958300516041
+            },
+            "iterations_requested": 10000
+          },
+          "brier": 0.2583044260318805,
+          "calibration": {
+            "intercept": 0.017022204104338422,
+            "reason": null,
+            "slope": 0.39018626434427134
+          },
+          "candidate_budget_regions": {
+            "BEYOND_ORIGINAL_BUDGET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.26841182745098174,
+                  "samples": 10000,
+                  "upper": 0.6790312180981843
+                },
+                "auroc": {
+                  "lower": 0.32499698067632854,
+                  "samples": 10000,
+                  "upper": 0.6733589484327602
+                },
+                "auroc_minus_original_u1": {
+                  "lower": -0.12795072720163583,
+                  "samples": 10000,
+                  "upper": 0.37514021173577583
+                },
+                "brier": {
+                  "lower": 0.22922705344692224,
+                  "samples": 10000,
+                  "upper": 0.3526188361326118
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 59,
+              "metrics": {
+                "ap": 0.44265150448430796,
+                "auroc": 0.4987714987714988,
+                "brier": 0.2898722850304631,
+                "calibration": {
+                  "intercept": -0.5197967325301205,
+                  "reason": null,
+                  "slope": 0.02677613929446344
+                },
+                "confusion_matrix": {
+                  "fn": 11,
+                  "fp": 17,
+                  "tn": 20,
+                  "tp": 11
+                },
+                "negative_rows": 37,
+                "positive_rows": 22,
+                "prevalence": 0.3728813559322034
+              },
+              "negative_query_clusters": 20,
+              "positive_query_clusters": 22
+            },
+            "ORIGINAL_INSERT_SET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.6570432981653705,
+                  "samples": 10000,
+                  "upper": 0.8495634090475906
+                },
+                "auroc": {
+                  "lower": 0.5229119690694942,
+                  "samples": 10000,
+                  "upper": 0.713307446697225
+                },
+                "auroc_minus_original_u1": {
+                  "lower": 0.08576707733741228,
+                  "samples": 10000,
+                  "upper": 0.34426940699389097
+                },
+                "brier": {
+                  "lower": 0.21113000390940717,
+                  "samples": 10000,
+                  "upper": 0.281576237874871
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 154,
+              "metrics": {
+                "ap": 0.7562957457147028,
+                "auroc": 0.6180010465724752,
+                "brier": 0.2462102462856703,
+                "calibration": {
+                  "intercept": 0.2110819872617525,
+                  "reason": null,
+                  "slope": 0.4490277705525616
+                },
+                "confusion_matrix": {
+                  "fn": 27,
+                  "fp": 38,
+                  "tn": 25,
+                  "tp": 64
+                },
+                "negative_rows": 63,
+                "positive_rows": 91,
+                "prevalence": 0.5909090909090909
+              },
+              "negative_query_clusters": 35,
+              "positive_query_clusters": 91
+            }
+          },
+          "confusion_matrix": {
+            "fn": 38,
+            "fp": 55,
+            "tn": 45,
+            "tp": 75
+          },
+          "folds": {
+            "0": {
+              "ap": 0.6595529261549813,
+              "auroc": 0.48611111111111116,
+              "brier": 0.31489075913863396,
+              "calibration": {
+                "intercept": 0.12786133227967036,
+                "reason": null,
+                "slope": 0.015835448507953532
+              },
+              "confusion_matrix": {
+                "fn": 10,
+                "fp": 15,
+                "tn": 6,
+                "tp": 14
+              },
+              "negative_query_clusters": 9,
+              "negative_rows": 21,
+              "positive_query_clusters": 24,
+              "positive_rows": 24,
+              "prevalence": 0.5333333333333333
+            },
+            "1": {
+              "ap": 0.6995705364421487,
+              "auroc": 0.5966666666666667,
+              "brier": 0.26372247505257135,
+              "calibration": {
+                "intercept": 0.2689878715465136,
+                "reason": null,
+                "slope": 0.32063903870687255
+              },
+              "confusion_matrix": {
+                "fn": 8,
+                "fp": 7,
+                "tn": 8,
+                "tp": 12
+              },
+              "negative_query_clusters": 9,
+              "negative_rows": 15,
+              "positive_query_clusters": 20,
+              "positive_rows": 20,
+              "prevalence": 0.5714285714285714
+            },
+            "2": {
+              "ap": 0.7894196240292755,
+              "auroc": 0.6529411764705882,
+              "brier": 0.23805493402777705,
+              "calibration": {
+                "intercept": 0.46161119113483196,
+                "reason": null,
+                "slope": 0.5158857992573045
+              },
+              "confusion_matrix": {
+                "fn": 11,
+                "fp": 8,
+                "tn": 9,
+                "tp": 19
+              },
+              "negative_query_clusters": 9,
+              "negative_rows": 17,
+              "positive_query_clusters": 30,
+              "positive_rows": 30,
+              "prevalence": 0.6382978723404256
+            },
+            "3": {
+              "ap": 0.747281838679847,
+              "auroc": 0.75599128540305,
+              "brier": 0.22715205422213328,
+              "calibration": {
+                "intercept": -1.0297158203039234,
+                "reason": null,
+                "slope": 1.4731701946141968
+              },
+              "confusion_matrix": {
+                "fn": 3,
+                "fp": 15,
+                "tn": 12,
+                "tp": 14
+              },
+              "negative_query_clusters": 8,
+              "negative_rows": 27,
+              "positive_query_clusters": 17,
+              "positive_rows": 17,
+              "prevalence": 0.38636363636363635
+            },
+            "4": {
+              "ap": 0.7070083719365436,
+              "auroc": 0.6272727272727273,
+              "brier": 0.2484571350388722,
+              "calibration": {
+                "intercept": -0.03459452277300695,
+                "reason": null,
+                "slope": 0.48395283780639214
+              },
+              "confusion_matrix": {
+                "fn": 6,
+                "fp": 10,
+                "tn": 10,
+                "tp": 16
+              },
+              "negative_query_clusters": 10,
+              "negative_rows": 20,
+              "positive_query_clusters": 22,
+              "positive_rows": 22,
+              "prevalence": 0.5238095238095238
+            }
+          },
+          "negative_rows": 100,
+          "positive_rows": 113,
+          "prevalence": 0.5305164319248826,
+          "query_clusters": 158
+        },
+        "RELEVANCE_RANK_8": {
+          "ap": 0.5974087462481874,
+          "auroc": 0.5108849557522124,
+          "auroc_minus_original_u1": 0.13123893805309733,
+          "baselines": {
+            "dense_score": {
+              "ap": 0.6376902148712441,
+              "auroc": 0.635929203539823
+            },
+            "facet_score": {
+              "ap": 0.5815920569592592,
+              "auroc": 0.5005309734513275
+            },
+            "negative_eligible_rank": {
+              "ap": 0.6032569951743648,
+              "auroc": 0.6061504424778761
+            },
+            "original_u1_score": {
+              "ap": 0.5030062929336448,
+              "auroc": 0.37964601769911505
+            },
+            "training_prevalence": {
+              "ap": 0.47789737783008174,
+              "auroc": 0.4089823008849558,
+              "brier": 0.25337663607410116,
+              "calibration": {
+                "intercept": 0.5879846790008448,
+                "reason": null,
+                "slope": -3.8019218094263865
+              },
+              "confusion_matrix": {
+                "fn": 0,
+                "fp": 100,
+                "tn": 0,
+                "tp": 113
+              },
+              "negative_rows": 100,
+              "positive_rows": 113,
+              "prevalence": 0.5305164319248826
+            }
+          },
+          "bootstrap": {
+            "ap": {
+              "lower": 0.4696289502323087,
+              "samples": 10000,
+              "upper": 0.7404851615217684
+            },
+            "auroc": {
+              "lower": 0.4244439416901481,
+              "samples": 10000,
+              "upper": 0.6016370127838369
+            },
+            "auroc_minus_original_u1": {
+              "lower": 0.023503352490421486,
+              "samples": 10000,
+              "upper": 0.2429052426454112
+            },
+            "brier": {
+              "lower": 0.23990536726774878,
+              "samples": 10000,
+              "upper": 0.2920355889512962
+            },
+            "iterations_requested": 10000
+          },
+          "brier": 0.26536981914799984,
+          "calibration": {
+            "intercept": 0.09016708626926344,
+            "reason": null,
+            "slope": 0.17584417086039214
+          },
+          "candidate_budget_regions": {
+            "BEYOND_ORIGINAL_BUDGET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.2102721858681162,
+                  "samples": 10000,
+                  "upper": 0.6015279286205968
+                },
+                "auroc": {
+                  "lower": 0.25130016850490194,
+                  "samples": 10000,
+                  "upper": 0.588239556692242
+                },
+                "auroc_minus_original_u1": {
+                  "lower": -0.16296316826804644,
+                  "samples": 10000,
+                  "upper": 0.24582083958020987
+                },
+                "brier": {
+                  "lower": 0.23895947798374662,
+                  "samples": 10000,
+                  "upper": 0.30088806135216856
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 59,
+              "metrics": {
+                "ap": 0.34337122463957337,
+                "auroc": 0.4103194103194103,
+                "brier": 0.2695890384959609,
+                "calibration": {
+                  "intercept": -0.5411840916611796,
+                  "reason": null,
+                  "slope": -0.4748305213138442
+                },
+                "confusion_matrix": {
+                  "fn": 12,
+                  "fp": 19,
+                  "tn": 18,
+                  "tp": 10
+                },
+                "negative_rows": 37,
+                "positive_rows": 22,
+                "prevalence": 0.3728813559322034
+              },
+              "negative_query_clusters": 20,
+              "positive_query_clusters": 22
+            },
+            "ORIGINAL_INSERT_SET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.5199806426243225,
+                  "samples": 10000,
+                  "upper": 0.7987856112880877
+                },
+                "auroc": {
+                  "lower": 0.41630556691089377,
+                  "samples": 10000,
+                  "upper": 0.6177256129999515
+                },
+                "auroc_minus_original_u1": {
+                  "lower": -0.008772411798727614,
+                  "samples": 10000,
+                  "upper": 0.24118380572017004
+                },
+                "brier": {
+                  "lower": 0.2324429989527204,
+                  "samples": 10000,
+                  "upper": 0.2954483808495677
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 154,
+              "metrics": {
+                "ap": 0.6525317648358946,
+                "auroc": 0.5147392290249433,
+                "brier": 0.2637533649822226,
+                "calibration": {
+                  "intercept": 0.3317769445761332,
+                  "reason": null,
+                  "slope": 0.13725666228893788
+                },
+                "confusion_matrix": {
+                  "fn": 33,
+                  "fp": 41,
+                  "tn": 22,
+                  "tp": 58
+                },
+                "negative_rows": 63,
+                "positive_rows": 91,
+                "prevalence": 0.5909090909090909
+              },
+              "negative_query_clusters": 35,
+              "positive_query_clusters": 91
+            }
+          },
+          "confusion_matrix": {
+            "fn": 45,
+            "fp": 60,
+            "tn": 40,
+            "tp": 68
+          },
+          "folds": {
+            "0": {
+              "ap": 0.6244738220363961,
+              "auroc": 0.3968253968253968,
+              "brier": 0.30479310259322323,
+              "calibration": {
+                "intercept": 0.21946658449941367,
+                "reason": null,
+                "slope": -0.22350490902425327
+              },
+              "confusion_matrix": {
+                "fn": 10,
+                "fp": 19,
+                "tn": 2,
+                "tp": 14
+              },
+              "negative_query_clusters": 9,
+              "negative_rows": 21,
+              "positive_query_clusters": 24,
+              "positive_rows": 24,
+              "prevalence": 0.5333333333333333
+            },
+            "1": {
+              "ap": 0.7353382448371384,
+              "auroc": 0.66,
+              "brier": 0.2357977072184277,
+              "calibration": {
+                "intercept": 0.39145832225409366,
+                "reason": null,
+                "slope": 1.1428277648651077
+              },
+              "confusion_matrix": {
+                "fn": 10,
+                "fp": 5,
+                "tn": 10,
+                "tp": 10
+              },
+              "negative_query_clusters": 9,
+              "negative_rows": 15,
+              "positive_query_clusters": 20,
+              "positive_rows": 20,
+              "prevalence": 0.5714285714285714
+            },
+            "2": {
+              "ap": 0.6866453091816028,
+              "auroc": 0.5137254901960784,
+              "brier": 0.2670347442135163,
+              "calibration": {
+                "intercept": 0.5737305821910209,
+                "reason": null,
+                "slope": 0.1539045365101836
+              },
+              "confusion_matrix": {
+                "fn": 15,
+                "fp": 7,
+                "tn": 10,
+                "tp": 15
+              },
+              "negative_query_clusters": 9,
+              "negative_rows": 17,
+              "positive_query_clusters": 30,
+              "positive_rows": 30,
+              "prevalence": 0.6382978723404256
+            },
+            "3": {
+              "ap": 0.4683463458845759,
+              "auroc": 0.5838779956427016,
+              "brier": 0.28269800939439454,
+              "calibration": {
+                "intercept": -0.7400262091314767,
+                "reason": null,
+                "slope": 0.5438505198760994
+              },
+              "confusion_matrix": {
+                "fn": 2,
+                "fp": 20,
+                "tn": 7,
+                "tp": 15
+              },
+              "negative_query_clusters": 8,
+              "negative_rows": 27,
+              "positive_query_clusters": 17,
+              "positive_rows": 17,
+              "prevalence": 0.38636363636363635
+            },
+            "4": {
+              "ap": 0.7530638614065698,
+              "auroc": 0.6272727272727273,
+              "brier": 0.22775754089988887,
+              "calibration": {
+                "intercept": 0.005446909512883008,
+                "reason": null,
+                "slope": 1.053309244869518
+              },
+              "confusion_matrix": {
+                "fn": 8,
+                "fp": 9,
+                "tn": 11,
+                "tp": 14
+              },
+              "negative_query_clusters": 10,
+              "negative_rows": 20,
+              "positive_query_clusters": 22,
+              "positive_rows": 22,
+              "prevalence": 0.5238095238095238
+            }
+          },
+          "negative_rows": 100,
+          "positive_rows": 113,
+          "prevalence": 0.5305164319248826,
+          "query_clusters": 158
+        },
+        "SUPPORT_STRUCTURE_10": {
+          "ap": 0.6161457879572165,
+          "auroc": 0.5691150442477877,
+          "auroc_minus_original_u1": 0.18946902654867265,
+          "baselines": {
+            "dense_score": {
+              "ap": 0.6376902148712441,
+              "auroc": 0.635929203539823
+            },
+            "facet_score": {
+              "ap": 0.5815920569592592,
+              "auroc": 0.5005309734513275
+            },
+            "negative_eligible_rank": {
+              "ap": 0.6032569951743648,
+              "auroc": 0.6061504424778761
+            },
+            "original_u1_score": {
+              "ap": 0.5030062929336448,
+              "auroc": 0.37964601769911505
+            },
+            "training_prevalence": {
+              "ap": 0.47789737783008174,
+              "auroc": 0.4089823008849558,
+              "brier": 0.25337663607410116,
+              "calibration": {
+                "intercept": 0.5879846790008448,
+                "reason": null,
+                "slope": -3.8019218094263865
+              },
+              "confusion_matrix": {
+                "fn": 0,
+                "fp": 100,
+                "tn": 0,
+                "tp": 113
+              },
+              "negative_rows": 100,
+              "positive_rows": 113,
+              "prevalence": 0.5305164319248826
+            }
+          },
+          "bootstrap": {
+            "ap": {
+              "lower": 0.5100573291272512,
+              "samples": 10000,
+              "upper": 0.7407070620764648
+            },
+            "auroc": {
+              "lower": 0.4671522642735729,
+              "samples": 10000,
+              "upper": 0.6675237975346131
+            },
+            "auroc_minus_original_u1": {
+              "lower": 0.05461649013518837,
+              "samples": 10000,
+              "upper": 0.31700838824043165
+            },
+            "brier": {
+              "lower": 0.230293503014958,
+              "samples": 10000,
+              "upper": 0.28710711837301384
+            },
+            "iterations_requested": 10000
+          },
+          "brier": 0.25853338978200746,
+          "calibration": {
+            "intercept": 0.059366637431692945,
+            "reason": null,
+            "slope": 0.307177008493827
+          },
+          "candidate_budget_regions": {
+            "BEYOND_ORIGINAL_BUDGET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.3018939930147037,
+                  "samples": 10000,
+                  "upper": 0.7337860768325608
+                },
+                "auroc": {
+                  "lower": 0.375,
+                  "samples": 10000,
+                  "upper": 0.7691388585099111
+                },
+                "auroc_minus_original_u1": {
+                  "lower": -0.07756029684601116,
+                  "samples": 10000,
+                  "upper": 0.4591905681191394
+                },
+                "brier": {
+                  "lower": 0.20742546345850552,
+                  "samples": 10000,
+                  "upper": 0.33507690725617
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 59,
+              "metrics": {
+                "ap": 0.48397755516846347,
+                "auroc": 0.5847665847665847,
+                "brier": 0.2679779614496725,
+                "calibration": {
+                  "intercept": -0.6034629111341795,
+                  "reason": null,
+                  "slope": 0.3705662822731902
+                },
+                "confusion_matrix": {
+                  "fn": 6,
+                  "fp": 18,
+                  "tn": 19,
+                  "tp": 16
+                },
+                "negative_rows": 37,
+                "positive_rows": 22,
+                "prevalence": 0.3728813559322034
+              },
+              "negative_query_clusters": 20,
+              "positive_query_clusters": 22
+            },
+            "ORIGINAL_INSERT_SET": {
+              "bootstrap": {
+                "ap": {
+                  "lower": 0.5556754788768905,
+                  "samples": 10000,
+                  "upper": 0.7962254731921271
+                },
+                "auroc": {
+                  "lower": 0.45428360208129415,
+                  "samples": 10000,
+                  "upper": 0.6610967481942108
+                },
+                "auroc_minus_original_u1": {
+                  "lower": 0.028419853195184894,
+                  "samples": 10000,
+                  "upper": 0.28611685463659137
+                },
+                "brier": {
+                  "lower": 0.2269317619793241,
+                  "samples": 10000,
+                  "upper": 0.2836236014815798
+                },
+                "iterations_requested": 10000
+              },
+              "candidate_rows": 154,
+              "metrics": {
+                "ap": 0.6707074489373723,
+                "auroc": 0.5588697017268447,
+                "brier": 0.2549150149223176,
+                "calibration": {
+                  "intercept": 0.3104959441087974,
+                  "reason": null,
+                  "slope": 0.28167451795240117
+                },
+                "confusion_matrix": {
+                  "fn": 33,
+                  "fp": 35,
+                  "tn": 28,
+                  "tp": 58
+                },
+                "negative_rows": 63,
+                "positive_rows": 91,
+                "prevalence": 0.5909090909090909
+              },
+              "negative_query_clusters": 35,
+              "positive_query_clusters": 91
+            }
+          },
+          "confusion_matrix": {
+            "fn": 39,
+            "fp": 53,
+            "tn": 47,
+            "tp": 74
+          },
+          "folds": {
+            "0": {
+              "ap": 0.7758362120734241,
+              "auroc": 0.7222222222222223,
+              "brier": 0.21808646776740376,
+              "calibration": {
+                "intercept": -0.0742943629505361,
+                "reason": null,
+                "slope": 2.013459965887777
+              },
+              "confusion_matrix": {
+                "fn": 5,
+                "fp": 10,
+                "tn": 11,
+                "tp": 19
+              },
+              "negative_query_clusters": 9,
+              "negative_rows": 21,
+              "positive_query_clusters": 24,
+              "positive_rows": 24,
+              "prevalence": 0.5333333333333333
+            },
+            "1": {
+              "ap": 0.5643078927351096,
+              "auroc": 0.41666666666666663,
+              "brier": 0.33542798530236845,
+              "calibration": {
+                "intercept": 0.28742301971015727,
+                "reason": null,
+                "slope": -0.17427097818128073
+              },
+              "confusion_matrix": {
+                "fn": 13,
+                "fp": 5,
+                "tn": 10,
+                "tp": 7
+              },
+              "negative_query_clusters": 9,
+              "negative_rows": 15,
+              "positive_query_clusters": 20,
+              "positive_rows": 20,
+              "prevalence": 0.5714285714285714
+            },
+            "2": {
+              "ap": 0.8090151313081735,
+              "auroc": 0.6784313725490196,
+              "brier": 0.22355180810203867,
+              "calibration": {
+                "intercept": 0.3798892369560075,
+                "reason": null,
+                "slope": 0.727603526652042
+              },
+              "confusion_matrix": {
+                "fn": 8,
+                "fp": 9,
+                "tn": 8,
+                "tp": 22
+              },
+              "negative_query_clusters": 9,
+              "negative_rows": 17,
+              "positive_query_clusters": 30,
+              "positive_rows": 30,
+              "prevalence": 0.6382978723404256
+            },
+            "3": {
+              "ap": 0.5253373341208294,
+              "auroc": 0.5599128540305012,
+              "brier": 0.27025733147711717,
+              "calibration": {
+                "intercept": -0.582016535189681,
+                "reason": null,
+                "slope": 0.44535213651954086
+              },
+              "confusion_matrix": {
+                "fn": 5,
+                "fp": 16,
+                "tn": 11,
+                "tp": 12
+              },
+              "negative_query_clusters": 8,
+              "negative_rows": 27,
+              "positive_query_clusters": 17,
+              "positive_rows": 17,
+              "prevalence": 0.38636363636363635
+            },
+            "4": {
+              "ap": 0.6461016112996589,
+              "auroc": 0.5772727272727272,
+              "brier": 0.26465437911101297,
+              "calibration": {
+                "intercept": -0.011100695444842322,
+                "reason": null,
+                "slope": 0.32657731451284416
+              },
+              "confusion_matrix": {
+                "fn": 8,
+                "fp": 13,
+                "tn": 7,
+                "tp": 14
+              },
+              "negative_query_clusters": 10,
+              "negative_rows": 20,
+              "positive_query_clusters": 22,
+              "positive_rows": 22,
+              "prevalence": 0.5238095238095238
+            }
+          },
+          "negative_rows": 100,
+          "positive_rows": 113,
+          "prevalence": 0.5305164319248826,
+          "query_clusters": 158
+        }
+      }
+    }
+  },
+  "status": "OFFICIAL_STAGE4D_PROBE_COMPLETE_PENDING_FINAL_VERIFICATION"
+}

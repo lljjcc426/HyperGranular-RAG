@@ -16,8 +16,9 @@
 | [Stage4B-U1-D 统计验证报告](../reports/超粒球RAG_Stage4B_U1_D_Gold评估与统计验证报告.md) | Gold 结果、门判定、复现与 11 类谬误扫描 |
 | [Stage4C-U1-FMA protocol](STAGE4C_U1_FAILURE_MECHANISM_AUDIT_PROTOCOL.md) | post-Gold 探索性失败机制诊断的冻结合同 |
 | [Stage4C-U1-FMA 报告](../reports/超粒球RAG_Stage4C_U1失败机制诊断报告.md) | 特征、decile、all-on/off、OOF 与 11 类谬误扫描 |
-| [Stage4D-CMA protocol](STAGE4D_CANDIDATE_MARGINAL_UTILITY_AUDIT_PROTOCOL.md) | 已接受的 candidate marginal-utility Level A 合同；当前仅 implementation/synthetic 有效 |
+| [Stage4D-CMA protocol](STAGE4D_CANDIDATE_MARGINAL_UTILITY_AUDIT_PROTOCOL.md) | candidate marginal-utility attribution、固定 probe 与 decision 合同 |
 | [Stage4D 固定依赖](../requirements-stage4d.txt) | CPython 3.12.0 下的精确 NumPy/SciPy/scikit-learn 运行绑定 |
+| [Stage4D-CMA 报告](../reports/超粒球RAG_Stage4D_CMA候选边际效用归因审计报告.md) | 候选标签、固定 OOF、provenance、decision 与 11 类谬误扫描 |
 
 ## 当前正式工件
 
@@ -45,18 +46,20 @@
 | [OOF predictions](../results/stage4c_u1_fma_oof_predictions.csv) | 3 tasks × 3 fixed panels |
 | [Stage4C summary](../results/stage4c_u1_fma_summary.json) | `MECHANISM_EVIDENCE_INCONCLUSIVE` |
 
-### Stage4D-CMA 实现（无正式结果）
+### Stage4D-CMA 正式工件
 
 | 文件 | 状态 |
 |---|---|
-| [Channel A trace](../scripts/stage4d_cma_candidate_trace.py) | Gold-free 完整候选池 trace；official execution 未授权 |
-| [Channel A verifier](../scripts/stage4d_cma_candidate_trace_verifier.py) | strict schema + 独立候选/排名/特征重建 |
-| [Channel B labeler](../scripts/stage4d_cma_marginal_labeler.py) | standardized single + 双 LOO；official Gold access 未授权 |
-| [learnability probe](../scripts/stage4d_cma_learnability_probe.py) | 固定 5-fold L2 logistic、4 panels 与 query-cluster bootstrap |
-| [independent verifier](../scripts/stage4d_cma_independent_verifier.py) | label/counterfactual/OOF 独立重算 |
-| [synthetic tests](../tests/test_stage4d_cma.py) | 16/16 PASS；未使用 official/Gold/reservation 输入 |
+| [Channel A candidate trace](../results/stage4d_cma_candidate_trace.jsonl) | 8,467 个 Gold-free eligible candidates；独立重建通过 |
+| [Channel B candidate labels](../results/stage4d_cma_candidate_labels.jsonl) | 七类 candidate marginal labels；独立反事实验证通过 |
+| [counterfactual summary](../results/stage4d_cma_counterfactual_summary.json) | 94/69 q25 gain/harm query 对账 |
+| [fold assignments](../results/stage4d_cma_fold_assignments.json) | 2,446 个 candidate-bearing queries 的固定 5 folds |
+| [OOF predictions](../results/stage4d_cma_oof_predictions.csv) | 68,588 行；3 tasks × 4 panels |
+| [metrics](../results/stage4d_cma_metrics.json) | 10,000 次 query-cluster bootstrap 与 budget-region 分层 |
+| [decision](../results/stage4d_cma_decision.json) | `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE` |
+| [final verification](../results/stage4d_cma_verified_final.json) | provenance、内容级重算与独立验证通过 |
 
-核心实现提交为 `b4dfa52d0a38409dfc19444d21beec59606088e1`，guarded artifact transaction 补全提交为 `730daea1350616bfdcb6a11832b361c4d574d985`。`results/` 中没有 Stage4D 正式工件。
+核心实现提交为 `b4dfa52d0a38409dfc19444d21beec59606088e1`，guarded transaction 补全提交为 `730daea1350616bfdcb6a11832b361c4d574d985`，zero-candidate repair 为 `080cc44781cddc7d25584812fee5dea2158142e9`。probe source blob 在 repair 与当前协议提交 `b8bd1eafd51507e0d272a701219b7f7833c35704` 中相同。
 
 ## 科学设计与阶段证据
 
@@ -99,4 +102,4 @@
 
 ## 当前下一步
 
-当前状态为 `STAGE4D_IMPLEMENTATION_READY`、`STAGE4D_SYNTHETIC_TESTS_PASSED`。首次 official Channel A 尚未授权；Channel B 必须等待 Channel A 的提交、远端字节核验和独立验证，当前同样未授权。保留 `STOP_U1_BRANCH_KEEP_RESERVATION_LOCKED` 与 `MECHANISM_EVIDENCE_INCONCLUSIVE`；Reservation、Stage3B 和 U2 继续锁定。
+当前状态为 `STAGE4D_FINAL_VERIFICATION_PASSED`、`CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。现有 official transaction 不得重复或覆盖；保留 `STOP_U1_BRANCH_KEEP_RESERVATION_LOCKED`。Reservation、Stage3B 和 U2 继续锁定，新的 candidate controller 必须另建 Level A 协议。

@@ -16,8 +16,12 @@ MECHANISM_EVIDENCE_INCONCLUSIVE
 STAGE4D_LEVEL_A_PROTOCOL_ACCEPTED
 STAGE4D_IMPLEMENTATION_READY
 STAGE4D_SYNTHETIC_TESTS_PASSED
-CHANNEL_A_EXECUTION_NOT_AUTHORIZED
-CHANNEL_B_EXECUTION_NOT_AUTHORIZED
+STAGE4D_CHANNEL_A_VERIFIED
+STAGE4D_CHANNEL_B_LABELS_VERIFIED
+EXISTING_OFFICIAL_PROBE_ARTIFACTS_PROVENANCE_VERIFIED
+STAGE4D_PROBE_VERIFIED
+STAGE4D_FINAL_VERIFICATION_PASSED
+CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE
 RESERVATION_REQUIRES_PAUSE
 U2_NOT_AUTHORIZED
 ```
@@ -26,7 +30,7 @@ Pre-Gold 和本次获授权的 Gold evaluation 均已完成，不应重复运行
 
 Stage4C-U1-FMA 也已完成一次冻结的 post-Gold exploratory diagnosis。它不是新的 Gold evaluation，不改变 Stage4B 负结果，也不授权 U2 或 reservation。
 
-Stage4D-CMA 当前只有已接受协议、代码实现和 synthetic test 证据。尚未读取 official Stage4D trace 输入、Gold map 或 evaluator audit，尚未生成正式 Stage4D 工件。
+Stage4D-CMA 已在获授权边界内完成 Gold-free Channel A、development-Gold Channel B、固定 official probe、独立验证和 bounded provenance audit。唯一 advancement panel 未通过全部联合门，冻结结论为 `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。现有工件不得覆盖或重跑；reservation、Stage3B 与 U2 仍未授权。
 
 ## 运行环境
 
@@ -66,6 +70,21 @@ $env:BLIS_NUM_THREADS='1'
 ```
 
 结果：16/16 PASS，包含 byte-identical synthetic rerun。`temp/stage4d_env` 为 `.gitignore` 覆盖的本地隔离环境，不是科研工件，不提交 Git。
+
+## Stage4D official 工件与验证
+
+| 工件 | Bytes | SHA-256 |
+|---|---:|---|
+| `stage4d_cma_candidate_labels.jsonl` | 6,229,542 | `E206895E36FB7472502E8FEA082C1AEA7C7AD2CB7E198F37200B271E7164F9E3` |
+| `stage4d_cma_counterfactual_summary.json` | 5,189 | `37A57AD7AB2760C8C9E368F359C80B378F51C6B5C38629BDC0A75ECEB5D6C9F1` |
+| `stage4d_cma_fold_assignments.json` | 141,871 | `9B80923965407838105BA182E45B685EF5CD60ABC148B49061576EFDAF6FA650` |
+| `stage4d_cma_oof_predictions.csv` | 13,335,718 | `29EC13EC6AEAB28837C3EBBE24F99AF496A98B0793475DADF2BA071FFEE7ECDC` |
+| `stage4d_cma_metrics.json` | 117,023 | `22C843E248D0EB44893E42FB61D207061E8F9E07744A4C808AB8F55D63226999` |
+| `stage4d_cma_decision.json` | 120 | `7EE774CA97722353DEC7D71E5B461FEF17ADA08DDCB96568C988A1497B72FA68` |
+
+Probe source blob `a1dc95ceeb819320ed938ae38bc6dbde61d80e59` 在 zero-candidate repair `080cc44781cddc7d25584812fee5dea2158142e9` 与当前协议提交 `b8bd1eafd51507e0d272a701219b7f7833c35704` 中相同。第一轮外层 shell timeout 后，Python 子进程完成两次 probe、同字节检查、内部验证和原子提升；后续 no-timeout 事务在完成 main/rerun 与内部验证后被 no-overwrite guard 阻止覆盖。
+
+只读 bounded provenance audit 重新解析三 probe 工件，确认 frozen renderer 逐字节一致、68,588 行 OOF identity/region/label/fold 合同完整，`verify_probe_outputs()` 返回 `STAGE4D_PROBE_VERIFIED`。它从既有 probabilities 重算所有 overall/fold/region metrics 和 36 个 seed `20260719`、10,000 次 query-cluster bootstrap 区块；五项受保护工件审计前后完全未变。正式报告为 [Stage4D-CMA 候选边际效用归因审计报告](../reports/超粒球RAG_Stage4D_CMA候选边际效用归因审计报告.md)。
 
 ## Stage4C 冻结绑定与输出
 
@@ -202,6 +221,7 @@ STAGE4B_U1_GOLD_INDEPENDENT_VERIFICATION_PASS queries=4500 decision=STOP_U1_BRAN
 - Stage4C targeted suite：16/16 PASS；最初的 dotted-module 调用因 `tests/` 不是 package 而加载 0 个用例，随后使用精确 discover 命令完成测试。
 - Stage4C 只读结果复核：4,500/48/10/4,500/27,489 CSV 行数、schema、有限值、唯一键、OOF 概率范围、五个内置 CSV SHA 和七输入 SHA 全部 PASS。
 - Stage4D-CMA synthetic suite：16/16 PASS；覆盖完整候选池/预算分层、独立 trace 重建、严格 schema/type/nullability/leakage、七标签、双 LOO、固定 query folds、Task-C 类边界、同一 OOF 分层指标、combined-only advancement、确定性 LF CSV、固定环境、official transaction fail-closed 和同字节复跑。
+- Stage4D official probe：main/rerun 三工件同字节，内部 independent verifier PASS；bounded provenance audit 的 canonical bytes、68,588 OOF 行、全部 metrics/baselines 和 36 个 bootstrap 区块均 PASS。
 
 ## 后续复现边界
 
@@ -213,6 +233,6 @@ STAGE4B_U1_GOLD_INDEPENDENT_VERIFICATION_PASS queries=4500 decision=STOP_U1_BRAN
 4. 后续新研究必须先形成独立问题、协议、样本边界和停止规则，再读取新结果；
 5. Reservation、Stage3B、再次 Gold 执行和科学语义修改仍需单独协议与明确授权。
 
-Stage4D 的下一执行门是首次 official Channel A：当前未授权。只有 Channel A 工件通过提交、远端字节核验和独立重建后，Channel B 才可能在新的明确授权下读取已冻结 development Gold。当前不得运行 Channel A/B，不得生成正式 Stage4D 结果。
+Stage4D 的冻结 transaction 已完成；不得再次运行 Channel A/B/probe、覆盖三项 probe 工件、降低 bootstrap 或在同一 development 上结果后修改模型/feature/threshold。`CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE` 不授权 U2。Reservation、Stage3B、新 Gold 和任何新 candidate controller 仍需新的科学协议与明确授权。
 
 本次冻结负结果只否定当前 U1-D controller 的晋级主张，不否定 HyperGranular-RAG 整体研究方向。Stage4C 的 `MECHANISM_EVIDENCE_INCONCLUSIVE` 不自动创建 U2；后续新 controller 必须作为新的科学语义和新的 Level A development 协议处理。
