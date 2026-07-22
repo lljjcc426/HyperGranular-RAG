@@ -78,7 +78,11 @@ STAGE4F_INPUT_BOUNDARY_VERIFIED
 STAGE4F_MODEL_ENVIRONMENT_BOUND
 STAGE4F_LEVEL_B_IMPLEMENTATION_READY
 STAGE4F_SYNTHETIC_TESTS_PASSED
-STAGE4F_OFFICIAL_EXECUTION_NOT_AUTHORIZED
+STAGE4F_PRE_GOLD_ARTIFACTS_VERIFIED
+STAGE4F_GOLD_EVALUATION_COMPLETED
+STAGE4F_FINAL_VERIFICATION_PASS
+STAGE4F_DESCRIPTIVE_SUBGROUPS_FROZEN
+STATIC_HGRAG_XDR_SUPPORTED
 RESERVATION_REQUIRES_PAUSE
 U2_NOT_AUTHORIZED
 SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
@@ -101,7 +105,8 @@ SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
 - Stage4D 与当前 controller 线已冻结关闭。Stage4E 是不含 U1/Stage4D model 的静态 Dense-vs-q25 E2E 评价，不得读取 Stage4D labels/probabilities 形成 ranking。
 - Stage4E 已完成：在 RTX 4060 Laptop 8GB、固定短答案 RAG prompt、4,096-token 上限和可实际部署格式下，Qwen2.5-1.5B-Instruct FP16 经冻结 200-query development 与预登记规则选择后成为唯一生成器；Gemma 4 E2B 使用官方 mobile-QAT，本次选择不作纯架构解释。随后 1,000-query Gold-free main/rerun、pre-Gold verification、Gold evaluation 和 final verification 均通过；Static q25 相对 Dense 的 answer F1 差为 `+0.01478 [0.00020,0.02988]`，冻结决策为 `STATIC_HGRAG_E2E_SUPPORTED`。
 - Stage4E 工件不得覆盖或重跑；该结果限于 HotpotQA same-domain closed distractor，不授权 reservation、Stage3B、U2 或重开 controller。
-- Stage4F-XDR 已冻结 MuSiQue train 3,000 个新 ID，历史 overlap 0；A/B/C、model/environment、Level B 和 synthetic tests 已验证。当前不得运行正式 embedding、ranking、generation、Gold、bootstrap、decision 或 Channel C subgroup。
+- Stage4F-XDR 已完成 MuSiQue train 3,000 个新 ID 的跨数据集复制：历史 overlap 0，A/B/C 与 model/environment 已验证；12,000 次生成零失败，main/rerun predictions 与 prompt audits 同字节；answer F1 差为 `+0.011401 [0.004495,0.018352]`，final verification 通过，冻结决策为 `STATIC_HGRAG_XDR_SUPPORTED`。
+- Stage4F 正式 rankings、predictions、prompt audits、telemetry、query audit、evaluation summary、scientific decision、final verification、descriptive subgroups 与 artifact manifest 均不可覆盖或重跑。该结果限于 MuSiQue closed-candidate、单生成器边界，不授权 full-wiki、open-domain、controller、reservation、Stage3B 或 U2。
 
 ## 4. 科研不可变边界
 
@@ -119,6 +124,7 @@ Gold 不得进入 controller、索引、候选、排序、过滤或阈值选择�
 
 Stage4E 中，Gold 还不得进入 blind input、embedding、Dense/q25 ranking、prompt、生成、截断或重试。静态 q25 必须保持 all-query 语义，不得借 Stage4E 重新引入 U1、Stage4D feature panel/model 或动态阈值。
 已冻结的 Stage4E rankings、predictions、prompt audits、query audit、evaluation summary、scientific decision 与 final verification 也属于不可覆盖工件。
+已冻结的 Stage4F rankings、predictions、prompt audits、telemetry、query audit、evaluation summary、scientific decision、final verification 与 Channel C 描述性工件同样不可覆盖。
 
 ## 5. 授权与暂停
 
@@ -154,6 +160,7 @@ Channel A/Channel B、Gold-free/Gold-only 的代码、输入、依赖和工件�
 - 不自行重新运行已完成的 Stage4B-U1-D Gold transaction。
 - 不自行重新运行或覆盖已完成的 Stage4D Channel A、Channel B 和 official probe transaction。
 - 不自行重新运行或覆盖已完成的 Stage4E Gold-free、Gold evaluation 和 final verification transaction。
+- 不自行重新运行或覆盖已完成的 Stage4F Gold-free、Gold evaluation、final verification 和 Channel C transaction。
 
 ## 7. GitHub 与文件
 
@@ -165,4 +172,4 @@ Channel A/Channel B、Gold-free/Gold-only 的代码、输入、依赖和工件�
 
 ## 8. 下一科研门
 
-Stage4B-U1、Stage4C、Stage4D 和当前 controller 线均已停止或关闭，不自动创建 U2。Stage4E-E2E 已完成并冻结。Stage4F-XDR 已完成实验卡与 Level B，下一科研门只是在新的阶段授权下执行其已冻结的完整 official 事务；未授权前正式输出必须不存在。full-wiki、Reservation、Stage3B、U2、subgroup confirmation 和新 controller 继续锁定。
+Stage4B-U1、Stage4C、Stage4D 和当前 controller 线均已停止或关闭，不自动创建 U2。Stage4E-E2E 与 Stage4F-XDR 均已完成并冻结。下一科研门必须先定义新的科学问题与轻量实验卡；full-wiki、open-domain、跨生成器确认、Reservation、Stage3B、U2、subgroup confirmation 和新 controller 继续锁定。

@@ -1,0 +1,101 @@
+{
+  "artifacts": {
+    "descriptive_subgroups": {
+      "bytes": 785,
+      "git_tracked": true,
+      "path": "results/stage4f_xdr_musique_train3000_v1_descriptive_subgroups.json",
+      "sha256": "405465EAABC4B333E4A7BA8E1CA798E1E7B11B60DD570667E6B0D3C1F5AD6467"
+    },
+    "embedding_cache": {
+      "bytes": 399838172,
+      "git_tracked": false,
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4f_xdr_musique_train3000_v1_embeddings.npz",
+      "sha256": "5D8A1155C5541F76BB8CCD8BC37E79D48D48FB0F5C9B861BB9CAFF09256D0073"
+    },
+    "evaluation_summary": {
+      "bytes": 1795,
+      "git_tracked": true,
+      "path": "results/stage4f_xdr_musique_train3000_v1_evaluation_summary.json",
+      "sha256": "839E946A5BA5AEB5502D10867647B26B9DBA1001BF7BC27EF740056312CE6C50"
+    },
+    "final_verification": {
+      "bytes": 5498,
+      "git_tracked": true,
+      "path": "results/stage4f_xdr_musique_train3000_v1_final_verification.json",
+      "sha256": "86A2EC634981BF9FB4E7DAFBF94CEF59AC2EFAA2B0BEBAD5C3A33711233E6B8F"
+    },
+    "predictions_main": {
+      "bytes": 1106316,
+      "git_tracked": true,
+      "path": "results/stage4f_xdr_musique_train3000_v1_predictions_main.jsonl",
+      "sha256": "68F9524542B91C8FD93C7A4B0B3549BFE168DF1EB5D94E6479149E5B4534E62E"
+    },
+    "predictions_rerun": {
+      "bytes": 1106316,
+      "git_tracked": true,
+      "path": "results/stage4f_xdr_musique_train3000_v1_predictions_rerun.jsonl",
+      "sha256": "68F9524542B91C8FD93C7A4B0B3549BFE168DF1EB5D94E6479149E5B4534E62E"
+    },
+    "prompt_audit_main": {
+      "bytes": 8573108,
+      "git_tracked": true,
+      "path": "results/stage4f_xdr_musique_train3000_v1_prompt_audit_main.jsonl",
+      "sha256": "D27D24E79F79758F860884C2B36D2AC509D0FFA4B587E90E8EE596F10FFF132E"
+    },
+    "prompt_audit_rerun": {
+      "bytes": 8573108,
+      "git_tracked": true,
+      "path": "results/stage4f_xdr_musique_train3000_v1_prompt_audit_rerun.jsonl",
+      "sha256": "D27D24E79F79758F860884C2B36D2AC509D0FFA4B587E90E8EE596F10FFF132E"
+    },
+    "query_audit": {
+      "bytes": 1510981,
+      "git_tracked": true,
+      "path": "results/stage4f_xdr_musique_train3000_v1_query_audit.jsonl",
+      "sha256": "EA7634EE7354A959A1D03D1E9DD7A220BA39F3F7CF2D6F168D17E3EC53C66ADF"
+    },
+    "rankings": {
+      "bytes": 7758160,
+      "git_tracked": true,
+      "path": "results/stage4f_xdr_musique_train3000_v1_rankings.jsonl",
+      "sha256": "732A10DE74E8F97E5CECFDBFBBC3B49E5EF053C6F190948CD5C0B66D71D6AEDD"
+    },
+    "scientific_decision": {
+      "bytes": 406,
+      "git_tracked": true,
+      "path": "results/stage4f_xdr_musique_train3000_v1_scientific_decision.json",
+      "sha256": "7406AD4525FF8422515DA31027C68D75864B4C24385F2D942703A6CD577BBED2"
+    },
+    "telemetry_main": {
+      "bytes": 391,
+      "git_tracked": true,
+      "path": "results/stage4f_xdr_musique_train3000_v1_telemetry_main.json",
+      "sha256": "D5988004E2D3DA8E5116F3DF094B8277C60198E3CAE8A726A75B40AE5377BCA3"
+    },
+    "telemetry_rerun": {
+      "bytes": 391,
+      "git_tracked": true,
+      "path": "results/stage4f_xdr_musique_train3000_v1_telemetry_rerun.json",
+      "sha256": "92CD7C0ABF39929204456C18E4E0FA20C607820522BFF79C1F4E34A2C718DDBA"
+    },
+    "verified_pregold": {
+      "bytes": 969,
+      "git_tracked": true,
+      "path": "results/stage4f_xdr_musique_train3000_v1_verified_pregold.json",
+      "sha256": "DF5ADB467AFB8C4C4FA66D8ECBF6D68C9BD64A211D15D6D2E436333135167CD4"
+    }
+  },
+  "decision": "STATIC_HGRAG_XDR_SUPPORTED",
+  "execution_commits": {
+    "authorization": "a45e42303215b0c146538dfb1a34f9b3f0a05689",
+    "final_verifier_binding": "c890eda2fbc0bde048dcb4dfbb5a4a6abcd98e42",
+    "verifier_correction": "ba3f1740bdd31f25b171e6c076072c7ce96b51e7"
+  },
+  "final_verification_status": "STAGE4F_FINAL_VERIFICATION_PASS",
+  "main_rerun": {
+    "predictions_byte_identical": true,
+    "prompt_audit_byte_identical": true
+  },
+  "schema_version": "stage4f_xdr_v1",
+  "status": "STAGE4F_OFFICIAL_ARTIFACTS_FROZEN"
+}

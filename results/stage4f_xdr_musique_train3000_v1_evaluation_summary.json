@@ -1,0 +1,55 @@
+{
+  "bootstrap": {
+    "delta_answer_em": {
+      "lower_95": 0.0033333333333333335,
+      "point": 0.01,
+      "upper_95": 0.016666666666666666
+    },
+    "delta_answer_f1": {
+      "lower_95": 0.004495336102426787,
+      "point": 0.011401426011948454,
+      "upper_95": 0.01835157947488784
+    },
+    "iterations": 10000,
+    "numpy_generator": "PCG64",
+    "percentile_method": "linear",
+    "seed": 20260723
+  },
+  "evidence_label_granularity": "official_supporting_paragraph",
+  "insertion_effect_queries": {
+    "gain": 125,
+    "harm": 77,
+    "same": 2798
+  },
+  "methods": {
+    "DENSE_TOP20": {
+      "answer_em": 0.10033333333333333,
+      "answer_f1": 0.13595239981357152,
+      "retrieval_cr20": 0.589,
+      "retrieval_er20": 0.8055277777777778,
+      "unknown": 0.6783333333333333
+    },
+    "STATIC_Q25_TOP20": {
+      "answer_em": 0.11033333333333334,
+      "answer_f1": 0.14735382582551998,
+      "retrieval_cr20": 0.65,
+      "retrieval_er20": 0.8412777777777777,
+      "unknown": 0.6556666666666666
+    }
+  },
+  "official_answer_evaluator": {
+    "answer_metric_bytes": 2837,
+    "answer_metric_sha256": "10368F619B4D5EF5D83748C05A96C0AFD332A14AB5C010740C98D58DFAEFE974",
+    "commit": "922ac98f19a201998dbdae6d7f2887a5258dbdeb",
+    "evaluator_bytes": 4257,
+    "evaluator_sha256": "F5FE66AE61DBEA5172CBA9D428D9924A5811F3457EDC945FC1D81369C30E74B7",
+    "source": "https://github.com/StonyBrookNLP/musique/blob/922ac98f19a201998dbdae6d7f2887a5258dbdeb/evaluate_v1.0.py"
+  },
+  "queries": 3000,
+  "schema_version": "stage4f_xdr_v1",
+  "status": "STAGE4F_GOLD_EVALUATION_COMPLETE_PENDING_INDEPENDENT_VERIFICATION",
+  "supporting_fact_sentence_recall": {
+    "available": false,
+    "reason": "MuSiQue v1.0 provides supporting-paragraph, not supporting-sentence, labels"
+  }
+}

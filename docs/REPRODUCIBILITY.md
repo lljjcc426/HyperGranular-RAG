@@ -43,7 +43,11 @@ STAGE4F_INPUT_BOUNDARY_VERIFIED
 STAGE4F_MODEL_ENVIRONMENT_BOUND
 STAGE4F_LEVEL_B_IMPLEMENTATION_READY
 STAGE4F_SYNTHETIC_TESTS_PASSED
-STAGE4F_OFFICIAL_EXECUTION_NOT_AUTHORIZED
+STAGE4F_PRE_GOLD_ARTIFACTS_VERIFIED
+STAGE4F_GOLD_EVALUATION_COMPLETED
+STAGE4F_FINAL_VERIFICATION_PASS
+STAGE4F_DESCRIPTIVE_SUBGROUPS_FROZEN
+STATIC_HGRAG_XDR_SUPPORTED
 RESERVATION_REQUIRES_PAUSE
 U2_NOT_AUTHORIZED
 ```
@@ -56,7 +60,7 @@ Stage4D-CMA 已在获授权边界内完成 Gold-free Channel A、development-Gol
 
 Stage4D 和当前 controller 分支已按 [STAGE4D_CMA_CLOSURE](STAGE4D_CMA_CLOSURE.md) 冻结关闭。Stage4E-E2E [Level A 协议](STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md) 已完成：生成器选择、1,000-query Gold-free main/rerun、pre-Gold verification、Gold evaluation 与 final verification 均通过。冻结决策为 `STATIC_HGRAG_E2E_SUPPORTED`；现有事务不应覆盖或重跑。
 
-Stage4F-XDR 已冻结 [实验卡](STAGE4F_XDR_EXPERIMENT_CARD.md)、官方 MuSiQue source、3,000-query A/B/C 输入、Stage4E encoder/Qwen 环境复用绑定及 Level B 实现。独立 input verifier 从 source 重建三通道并核验历史 overlap 0、模型逐文件身份和正式输出缺席。当前未授权任何正式 Stage4F embedding、ranking、generation、Gold、bootstrap、decision 或 Channel C 读取。
+Stage4F-XDR 已完成 [实验卡](STAGE4F_XDR_EXPERIMENT_CARD.md) 预定义的完整 official 事务。3,000-query main/rerun、pre-Gold verification、Gold evaluation、10,000 bootstrap、final verification 与 post-decision Channel C 均完成；冻结结果为 `STATIC_HGRAG_XDR_SUPPORTED`。现有 Stage4F 工件不得覆盖或重跑。
 
 ## 当前授权治理
 
@@ -73,7 +77,7 @@ SCIENTIFIC_INTEGRITY_CONTROLS_RETAINED
 
 这是项目长期、全局的现行治理基线，适用于当前及未来全部科研阶段，不是单次复现事务或 Stage4E 的临时规则。阶段授权默认连续覆盖实验卡中预定义的实现、测试、数据/Channel、正式运行、固定分析、独立验证、确定性复跑、报告和 Git/远端核验。Channel 与 Gold 隔离仍是可复现性和防泄漏合同，但不自动形成重复审批点；本文登记的命令、环境、SHA 和路径用于重建与核验，不是逐命令授权凭证。
 
-普通工程异常自主最小修复并继续。只有新科学问题或阶段、冻结科学语义变化、使用当前授权外的新证据源、或严重完整性异常才暂停。历史审批链与旧命令保留为证据，不构成当前执行规则。Stage4E 已按扩展后的阶段授权完成；该授权不延伸到新的数据集、full-wiki、reservation、Stage3B、U2 或新 controller。
+普通工程异常自主最小修复并继续。只有新科学问题或阶段、冻结科学语义变化、使用当前授权外的新证据源、或严重完整性异常才暂停。历史审批链与旧命令保留为证据，不构成当前执行规则。Stage4E 与 Stage4F 已按各自阶段授权完成；这些授权不延伸到 full-wiki、open-domain、跨生成器确认、reservation、Stage3B、U2 或新 controller。
 
 ## Stage4E 已冻结复现边界
 
@@ -102,7 +106,7 @@ SCIENTIFIC_INTEGRITY_CONTROLS_RETAINED
 - scientific decision：`9692B1E3B6BC1DFEEF596FBC8C42CB5DC67649D426F85299D7162CEB346B2B9B`；
 - final verification 文件：`310B0A53F54B043BBFDA027FDCA3A18901AAFE890716EC6F5919A31B4229931D`。
 
-## Stage4F 已冻结输入与实现边界
+## Stage4F 已完成并冻结的复现边界
 
 | 项目 | 冻结值 / 当前状态 |
 |---|---|
@@ -114,10 +118,25 @@ SCIENTIFIC_INTEGRITY_CONTROLS_RETAINED
 | methods | `DENSE_TOP20` vs 无 U1/controller 的 `STATIC_Q25_TOP20`；Stage4E q25 参数不变 |
 | statistics | paired answer F1；10,000 bootstrap；seed 20260723；EM non-inferiority guard |
 | implementation | source validation、A/B/C、retrieval/generation、official MuSiQue scoring、bootstrap、decision、independent verifier、atomic/no-overwrite |
-| tests | 24/24 synthetic PASS；未使用正式 Stage4F 数据作为开发测试 |
-| authorization | `official_execution=false`；`gold_evaluation=false`；正式输出必须不存在 |
+| tests | 初始 24/24 synthetic PASS；final-verifier 完整性修正后 27/27 PASS |
+| primary | answer F1 `0.135952→0.147354`；delta `+0.011401 [0.004495,0.018352]` |
+| supportive | answer EM delta `+0.010000 [0.003333,0.016667]`；CR@20 `0.589→0.650` |
+| determinism | predictions main/rerun 同为 `1,106,316 / 68F95245...34E62E`；prompt audits 同为 `8,573,108 / D27D24E7...FF132E` |
+| decision | `STATIC_HGRAG_XDR_SUPPORTED`；`STAGE4F_FINAL_VERIFICATION_PASS` |
+| authorization | `AUTHORIZE_STAGE4F_XDR_FULL_OFFICIAL_EXECUTION` 已完整执行并关闭 |
 
-精确入口为 [experiment card](STAGE4F_XDR_EXPERIMENT_CARD.md)、[official config](../configs/stage4f_xdr_official.json)、[input manifest](../results/stage4f_xdr_musique_train3000_v1_input_manifest.json) 与 [input verification](../results/stage4f_xdr_musique_train3000_v1_verified_input.json)。Raw/processed A/B/C 和未来 embedding cache 不进入 Git。
+精确入口为 [experiment card](STAGE4F_XDR_EXPERIMENT_CARD.md)、[official config](../configs/stage4f_xdr_official.json)、[input manifest](../results/stage4f_xdr_musique_train3000_v1_input_manifest.json)、[input verification](../results/stage4f_xdr_musique_train3000_v1_verified_input.json)、[evaluation summary](../results/stage4f_xdr_musique_train3000_v1_evaluation_summary.json)、[final verification](../results/stage4f_xdr_musique_train3000_v1_final_verification.json)、[artifact manifest](../results/stage4f_xdr_musique_train3000_v1_artifact_manifest.json) 与 [正式报告](../reports/超粒球RAG_Stage4F_XDR跨数据集复制报告.md)。Raw/processed A/B/C 和 embedding cache 不进入 Git。
+
+关键冻结 SHA-256：
+
+- rankings：`732A10DE74E8F97E5CECFDBFBBC3B49E5EF053C6F190948CD5C0B66D71D6AEDD`；
+- predictions main/rerun：`68F9524542B91C8FD93C7A4B0B3549BFE168DF1EB5D94E6479149E5B4534E62E`；
+- prompt audit main/rerun：`D27D24E79F79758F860884C2B36D2AC509D0FFA4B587E90E8EE596F10FFF132E`；
+- evaluation summary：`839E946A5BA5AEB5502D10867647B26B9DBA1001BF7BC27EF740056312CE6C50`；
+- query audit：`EA7634EE7354A959A1D03D1E9DD7A220BA39F3F7CF2D6F168D17E3EC53C66ADF`；
+- scientific decision：`7406AD4525FF8422515DA31027C68D75864B4C24385F2D942703A6CD577BBED2`；
+- final verification：`86A2EC634981BF9FB4E7DAFBF94CEF59AC2EFAA2B0BEBAD5C3A33711233E6B8F`；
+- descriptive subgroups：`405465EAABC4B333E4A7BA8E1CA798E1E7B11B60DD570667E6B0D3C1F5AD6467`。
 
 ## 运行环境
 
@@ -324,4 +343,4 @@ Stage4D 的冻结 transaction 已完成；不得再次运行 Channel A/B/probe�
 
 本次冻结负结果只否定当前 U1-D controller 的晋级主张，不否定 HyperGranular-RAG 整体研究方向。Stage4C 的 `MECHANISM_EVIDENCE_INCONCLUSIVE` 不自动创建 U2；后续新 controller 必须作为新的科学语义和新的 Level A development 协议处理。
 
-Stage4E-E2E 已完成并冻结，不允许利用 Stage4D labels、OOF probabilities、feature panels 或 decision 改写其 ranking。Stage4F-XDR 已完成实验卡、输入和 Level B；下一边界是是否授权该卡中预定义的完整 official 事务，而不是逐命令或逐通道确认。未授权前不得运行或创建任何正式 Stage4F 输出；Reservation、Stage3B、U2 和新 controller 继续锁定。
+Stage4E-E2E 与 Stage4F-XDR 均已完成并冻结，不允许利用 Stage4D labels、OOF probabilities、feature panels 或 decision 改写其 ranking，也不得覆盖或重跑现有正式事务。下一边界是先定义新的科学问题与轻量实验卡；Reservation、Stage3B、U2 和新 controller 继续锁定。

@@ -20,9 +20,13 @@
 | [Stage4E Level B implementation report](STAGE4E_E2E_LEVEL_B_IMPLEMENTATION_REPORT.md) | 输入、模型、环境、代码、测试、双授权锁与下一边界 |
 | [Stage4E Level B review request](STAGE4E_E2E_LEVEL_B_REVIEW_REQUEST.md) | 一次集中完整性审核请求；本身不授权 official 执行 |
 | [Stage4F-XDR 实验卡](STAGE4F_XDR_EXPERIMENT_CARD.md) | MuSiQue 跨数据集复制的 source、新 ID、两臂、模型、终点、门与停止规则 |
-| [Stage4F official config](../configs/stage4f_xdr_official.json) | 3,000-query A/B/C、环境、实现和未授权正式输出路径绑定 |
+| [Stage4F official config](../configs/stage4f_xdr_official.json) | 3,000-query A/B/C、环境、实现、授权与已完成结果绑定 |
 | [Stage4F input manifest](../results/stage4f_xdr_musique_train3000_v1_input_manifest.json) | source-only 选择、候选池、历史 overlap 与三通道身份 |
-| [Stage4F input verification](../results/stage4f_xdr_musique_train3000_v1_verified_input.json) | source/channel/model/environment 独立重建通过；正式输出缺席 |
+| [Stage4F input verification](../results/stage4f_xdr_musique_train3000_v1_verified_input.json) | source/channel/model/environment 独立重建通过的执行前快照 |
+| [Stage4F 跨数据集复制报告](../reports/超粒球RAG_Stage4F_XDR跨数据集复制报告.md) | MuSiQue answer F1/EM、retrieval、成本、Channel C、验证与 11 类谬误扫描 |
+| [Stage4F evaluation summary](../results/stage4f_xdr_musique_train3000_v1_evaluation_summary.json) | 3,000-query official metrics、10,000 bootstrap 与 supporting-paragraph retrieval |
+| [Stage4F final verification](../results/stage4f_xdr_musique_train3000_v1_final_verification.json) | source/model/environment、query audit、overall metrics、bootstrap、decision 与工件身份独立重建 |
+| [Stage4F artifact manifest](../results/stage4f_xdr_musique_train3000_v1_artifact_manifest.json) | 正式工件与本地 embedding cache 的 Bytes/SHA 清单 |
 | [论文材料入口](../paper/README.md) | 论文结构、证据主张台账和待补结果 |
 | [论文证据与主张台账](../paper/EVIDENCE_AND_CLAIM_LEDGER.md) | 将可写主张、证据等级、来源与限制逐项绑定 |
 | [Simplified execution protocol](STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md) | Stage4B-U1-D 科学与 pre-Gold 执行合同 |
@@ -76,6 +80,18 @@
 
 核心实现提交为 `b4dfa52d0a38409dfc19444d21beec59606088e1`，guarded transaction 补全提交为 `730daea1350616bfdcb6a11832b361c4d574d985`，zero-candidate repair 为 `080cc44781cddc7d25584812fee5dea2158142e9`。probe source blob 在 repair 与当前协议提交 `b8bd1eafd51507e0d272a701219b7f7833c35704` 中相同。
 
+### Stage4F-XDR 正式工件
+
+| 文件 | 状态 |
+|---|---|
+| [rankings](../results/stage4f_xdr_musique_train3000_v1_rankings.jsonl) | 3,000 queries；独立 Gold-free reconstruction 通过 |
+| [predictions main/rerun](../results/stage4f_xdr_musique_train3000_v1_predictions_main.jsonl) | 两份各 1,106,316 bytes / `68F95245...34E62E`；同字节 |
+| [prompt audits main/rerun](../results/stage4f_xdr_musique_train3000_v1_prompt_audit_main.jsonl) | 两份各 8,573,108 bytes / `D27D24E7...FF132E`；同字节 |
+| [pre-Gold verification](../results/stage4f_xdr_musique_train3000_v1_verified_pregold.json) | `STAGE4F_PRE_GOLD_ARTIFACTS_VERIFIED` |
+| [query audit](../results/stage4f_xdr_musique_train3000_v1_query_audit.jsonl) | 3,000-query answer/retrieval/context audit；独立重建通过 |
+| [scientific decision](../results/stage4f_xdr_musique_train3000_v1_scientific_decision.json) | `STATIC_HGRAG_XDR_SUPPORTED` |
+| [descriptive subgroups](../results/stage4f_xdr_musique_train3000_v1_descriptive_subgroups.json) | post-decision hop-count audit；全行 `SUBGROUP_CAUTION` |
+
 ## 科学设计与阶段证据
 
 - Stage4A-R2 的样本、映射、估计和验证协议保留在对应 `STAGE4A_R2_*` 文档中。
@@ -85,6 +101,7 @@
 - 阶段性结果说明位于 `reports/`。
 - Stage4D 与当前 controller 线已经按 [关闭声明](STAGE4D_CMA_CLOSURE.md) 冻结；Stage4E 不继承 controller labels、features 或 model。
 - Stage4E 把 data boundary 明确限定为 HotpotQA train 的 new-ID same-domain distractor sample，不表述为跨数据集或 full-wiki external validation。正式结果为 answer F1 `+0.01478 [0.00020,0.02988]`，独立验证通过。
+- Stage4F 在 MuSiQue train 3,000 个新 ID 上复制同一静态方法：answer F1 `+0.01140 [0.00450,0.01835]`，冻结为 `STATIC_HGRAG_XDR_SUPPORTED`；仍不是 full-wiki、open-domain 或跨生成器确认。
 
 ## 历史治理证据
 
@@ -128,4 +145,4 @@
 
 ## 当前下一步
 
-当前状态为 `STAGE4D_CMA_CLOSED`、`STAGE4E_FINAL_VERIFICATION_PASS` 和 `STATIC_HGRAG_E2E_SUPPORTED`。Stage4E 已冻结关闭；下一步必须先定义新的科学问题与轻量实验卡。Reservation、Stage3B 和 U2 继续锁定。
+当前状态为 `STAGE4D_CMA_CLOSED`、`STAGE4E_FINAL_VERIFICATION_PASS`、`STAGE4F_FINAL_VERIFICATION_PASS` 和 `STATIC_HGRAG_XDR_SUPPORTED`。Stage4E/4F 均已冻结；下一步必须先定义新的科学问题与轻量实验卡。Reservation、Stage3B、U2 和 controller 继续锁定。

@@ -34,7 +34,9 @@
   "gold_evaluation": {
     "authorization": "AUTHORIZE_STAGE4F_XDR_FULL_OFFICIAL_EXECUTION",
     "authorization_date": "2026-07-22",
-    "authorized": true
+    "authorized": true,
+    "completed": true,
+    "status": "STAGE4F_GOLD_EVALUATION_COMPLETED"
   },
   "historical_inputs": [
     {"bytes": 2826022, "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\musique_ans_dev_sample200_unified.json", "sha256": "BBA41D7258D045FE66F6B0AA23BBE54D9FDE2EE940EE44389461D9265392E9B1"},
@@ -74,7 +76,22 @@
     "authorization": "AUTHORIZE_STAGE4F_XDR_FULL_OFFICIAL_EXECUTION",
     "authorization_date": "2026-07-22",
     "authorized": true,
-    "authorized_start_commit": "3ecbf2acd7dbbee709fbbc4b64d6871e2278dd9c"
+    "authorized_start_commit": "3ecbf2acd7dbbee709fbbc4b64d6871e2278dd9c",
+    "completed": true,
+    "status": "STAGE4F_OFFICIAL_EXECUTION_COMPLETED"
+  },
+  "official_results": {
+    "artifact_manifest": {
+      "bytes": 4033,
+      "path": "results/stage4f_xdr_musique_train3000_v1_artifact_manifest.json",
+      "sha256": "290756470A2295FD5E6AF2DEAFCB8BB87F1366349F1EFE861B737069E75B7445"
+    },
+    "decision": "STATIC_HGRAG_XDR_SUPPORTED",
+    "final_verification": {
+      "bytes": 5498,
+      "sha256": "86A2EC634981BF9FB4E7DAFBF94CEF59AC2EFAA2B0BEBAD5C3A33711233E6B8F",
+      "status": "STAGE4F_FINAL_VERIFICATION_PASS"
+    }
   },
   "paths": {
     "blind": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4f_xdr_musique_train3000_v1_blind_queries.jsonl",
@@ -104,7 +121,7 @@
     "verified_input": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_verified_input.json",
     "verified_pregold": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_verified_pregold.json"
   },
-  "protocol_status": "STAGE4F_FULL_OFFICIAL_EXECUTION_AUTHORIZED",
+  "protocol_status": "STAGE4F_FULL_OFFICIAL_EXECUTION_COMPLETED_AND_VERIFIED",
   "retrieval": {
     "dense": {"max_k": 20, "score": "cosine", "tie_break": "unit_id ascending"},
     "embedding": {"batch_size": 64, "max_length": 192, "matrix_dtype": "float32", "scientific_scalar_dtype": "float64"},
@@ -132,5 +149,5 @@
     "repository_commit": "922ac98f19a201998dbdae6d7f2887a5258dbdeb",
     "url": "https://drive.google.com/file/d/1tGdADlNjWFaHLeZZGShh2IRcpO6Lv24h/view"
   },
-  "status": "STAGE4F_FULL_OFFICIAL_EXECUTION_AUTHORIZED"
+  "status": "STAGE4F_XDR_COMPLETED_STATIC_HGRAG_XDR_SUPPORTED"
 }

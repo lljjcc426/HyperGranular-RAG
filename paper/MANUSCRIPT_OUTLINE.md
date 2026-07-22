@@ -9,7 +9,7 @@
 - 多跳 RAG 的核心张力：Dense relevance、跨证据链补全与上下文成本。
 - 静态方法贡献：粒球组织、query-aware facet hyperedge、Dense prefix protection、bounded insertion。
 - controller 作为独立失败研究：资源下降不等于选择有效。
-- 明确贡献层级：retrieval evidence、negative controller evidence、mechanism diagnosis、Stage4E E2E validation。
+- 明确贡献层级：retrieval evidence、negative controller evidence、mechanism diagnosis、Stage4E E2E validation 与 Stage4F cross-dataset replication。
 
 ## 2. Method
 
@@ -35,7 +35,7 @@
 - Stage4A-R2 / Stage4B：官方 2Wiki development 的 gain/harm 与 controller 评价。
 - Stage4C/4D：同一 development 上预冻结的 exploratory mechanism audits。
 - Stage4E：此前未读 HotpotQA train ID-hash sample，Dense vs static q25，同一固定 generator；主 endpoint 为 paired answer F1。
-- Stage4F：预注册 MuSiQue train 新 ID 跨数据集复制；当前仅 source/input/Level B 就绪，无正式结果，不进入 Results。
+- Stage4F：预注册 MuSiQue train 新 ID 跨数据集复制；3,000-query official transaction 与独立 final verification 已完成。
 - 每阶段列出数据角色、Gold 隔离、复现绑定、样本/功效限制和停止规则。
 
 ## 4. Results
@@ -56,12 +56,16 @@ Stage4C 写 query-level composition；Stage4D 写 candidate labels、Task-C AURO
 
 报告 Stage4E verified final：Dense/static-q25 answer F1 `0.42150/0.43628`，paired delta `+0.01478 [0.00020,0.02988]`；EM `0.356/0.366`，delta `+0.01000 [-0.00500,0.02500]`；CR@20 `0.737/0.798`。写明 `STATIC_HGRAG_E2E_SUPPORTED`、F1 下界接近 0、subgroup 仅 `CAUTION`，并报告 main/rerun 与 independent verifier。
 
+### 4.5 Cross-dataset replication
+
+报告 Stage4F verified final：MuSiQue Dense/static-q25 answer F1 `0.13595/0.14735`，paired delta `+0.01140 [0.00450,0.01835]`；EM delta `+0.01000 [0.00333,0.01667]`；supporting-paragraph CR@20 `0.589/0.650`。写明 `STATIC_HGRAG_XDR_SUPPORTED`、与 Stage4E 方向一致、12,000 calls 零失败、main/rerun 字节一致及 final independent verification；hop-count 只作 `SUBGROUP_CAUTION`。
+
 ## 5. Discussion
 
-- retrieval gain 在本次冻结边界上转化为小幅 answer-F1 gain；讨论 evidence sufficiency、context ordering、generator utilization 与 921/1000 query answer-F1 不变的现象。
+- retrieval gain 在 HotpotQA 与 MuSiQue 两个冻结边界上转化为小幅 answer-F1 gain；讨论 evidence sufficiency、context ordering、generator utilization 与多数 query answer-F1 不变的现象。
 - 静态扩展与动态选择的不同难度。
 - 当前 controller 的 displacement harm 与 mixed gain/noise 结构。
-- same-domain closed candidate pool 对外部效度的限制。
+- 两个数据集仍共享 closed candidate pool 和同一生成器，对外部效度的限制。
 
 ## 6. Reproducibility and Integrity
 
@@ -81,9 +85,10 @@ Stage4C 写 query-level composition；Stage4D 写 candidate labels、Task-C AURO
 - `n=1000` 是资源边界，不是正式功效保证。
 - HotpotQA train 只保证对本项目研究流程未读，不能保证对预训练生成器无污染；参数化记忆可能压低或改变 retrieval-arm 差异。
 - Stage4F 的 `n=3000` 同样只是资源/精度边界；MuSiQue Gold 为 supporting paragraph，不支持句子级 Gold 主张。
+- Stage4F 是跨数据集而非 full-wiki/open-domain 或跨生成器复制，不能将两个正结果概括为普遍有效。
 
 ## 下一步论文材料
 
 - Figure：Dense 与 static q25 的 answer F1/EM paired difference；
 - Figure：retrieval CR change 与 answer F1 change 的 query-level joint audit（描述性，不作因果）；
-- 将已冻结的 exact data/model/environment SHA、绝对指标、区间、context tokens、runtime、prompt、schema、decision gate、determinism 与 independent verification 从 Stage4E 报告整理为主文表和附录。
+- 将 Stage4E/4F 的 exact data/model/environment SHA、绝对指标、区间、context tokens、runtime、prompt、schema、decision gate、determinism 与 independent verification 整理为主文表和附录。

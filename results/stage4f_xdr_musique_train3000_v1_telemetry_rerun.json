@@ -1,0 +1,13 @@
+{
+  "embedding_cache": {
+    "bytes": 399838172,
+    "sha256": "5D8A1155C5541F76BB8CCD8BC37E79D48D48FB0F5C9B861BB9CAFF09256D0073"
+  },
+  "failed_calls": 0,
+  "generation_calls": 6000,
+  "gpu_peak_memory_bytes": 4268636672,
+  "run_id": "rerun",
+  "schema_version": "stage4f_xdr_v1",
+  "status": "STAGE4F_GOLDFREE_RUN_COMPLETE_PENDING_VERIFICATION",
+  "wall_time_seconds": 6446.539616500006
+}

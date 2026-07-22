@@ -1,0 +1,30 @@
+{
+  "rows": [
+    {
+      "caution": "SUBGROUP_CAUTION",
+      "dense_answer_f1": 0.15419287323590739,
+      "dimension": "hop_count",
+      "queries": 2148,
+      "static_q25_answer_f1": 0.1610861505867146,
+      "value": 2
+    },
+    {
+      "caution": "SUBGROUP_CAUTION",
+      "dense_answer_f1": 0.09685758601979781,
+      "dimension": "hop_count",
+      "queries": 665,
+      "static_q25_answer_f1": 0.11803439167028767,
+      "value": 3
+    },
+    {
+      "caution": "SUBGROUP_CAUTION",
+      "dense_answer_f1": 0.06545782367283381,
+      "dimension": "hop_count",
+      "queries": 187,
+      "static_q25_answer_f1": 0.0938799762329174,
+      "value": 4
+    }
+  ],
+  "schema_version": "stage4f_xdr_v1",
+  "status": "STAGE4F_DESCRIPTIVE_SUBGROUPS_FROZEN_AFTER_PRIMARY_DECISION"
+}

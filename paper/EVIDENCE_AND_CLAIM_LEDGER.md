@@ -2,7 +2,7 @@
 
 ## 当前总论边界
 
-静态 q25 protected insertion 与 adaptive controller 是两个不同主张。Stage4E 现已支持前者在冻结 HotpotQA same-domain closed-distractor 边界上的端到端答案质量增益，同时当前 U1/Stage4D controller 线仍保持关闭。论文不得用 controller 负结果覆盖静态方法，也不得用静态 Stage4E 正结果替 controller 晋级。
+静态 q25 protected insertion 与 adaptive controller 是两个不同主张。Stage4E 支持前者在冻结 HotpotQA same-domain closed-distractor 边界上的端到端答案质量增益，Stage4F 又在冻结 MuSiQue closed-candidate 边界复制该 answer-F1 方向与支持门；当前 U1/Stage4D controller 线仍保持关闭。论文不得用 controller 负结果覆盖静态方法，也不得用静态 Stage4E/4F 正结果替 controller 晋级。
 
 ## 可写主张
 
@@ -14,8 +14,9 @@
 | raw U1 score 对 gain/harm 方向错误且 all-on/off 受限 | post-Gold exploratory，`CAUTION` | Stage4C raw score AUROC `0.39269 [0.30558, 0.48150]`；92/94 gain query 为 mixed gain/noise | 机制诊断，不是新 controller efficacy |
 | candidate deployable features 含部分 gain/harm 符号信号，但不足以晋级 | post-Gold exploratory，`CAUTION` | Stage4D Task-C combined AUROC `0.64310 [0.55520, 0.72974]`，Brier 未优于 prevalence baseline | 结论必须是 inconclusive；不授权 U2、selector 或阈值 |
 | 静态 HGRAG 在冻结 same-domain closed-distractor 边界上改善端到端答案质量 | verified official positive result | Stage4E：answer F1 `0.42150→0.43628`；paired delta `+0.01478 [0.00020,0.02988]`；final verification PASS | 仅限 HotpotQA deterministic 1,000-query、Qwen2.5-1.5B、Top-20；F1 下界接近 0，不写成大幅或普遍提升 |
+| 静态 HGRAG 的 answer-F1 增益在新的 MuSiQue 边界上复现 | verified cross-dataset replication | Stage4F：answer F1 `0.13595→0.14735`；paired delta `+0.01140 [0.00450,0.01835]`；EM guard 与 final verification PASS | 可写为两个 frozen closed-candidate 多跳 QA 数据集上的复制；不可写成 full-wiki/open-domain、跨生成器或普遍有效 |
 
-Stage4F-XDR 当前只是预注册的跨数据集复制：MuSiQue train 3,000 个新 ID、source/A/B/C/model/environment/implementation 已冻结，但 `official_execution=false` 且无结果。因此它不能新增“跨数据集有效”主张；只有未来通过独立 final verification 的正式 decision 才能更新本表。
+Stage4F-XDR 已完成 MuSiQue train 3,000 个新 ID 的完整事务并通过独立 final verification。它支持“Stage4E 的静态 answer-F1 增益在第二个冻结数据集边界上复现”，但不支持将该主张扩大为所有多跳任务、所有生成器或开放域有效。
 
 ## 不可写主张
 
@@ -23,7 +24,7 @@ Stage4F-XDR 当前只是预注册的跨数据集复制：MuSiQue train 3,000 个
 - “q25 在 2Wiki 上平均优于 Dense”；现有 Stage4A/4B 证据没有建立该总体现象。
 - “U1 能保留 gain 并过滤 harm”；冻结结果方向相反。
 - “Stage4D 已学会可部署 candidate selector”；唯一 advancement panel 未过联合门。
-- “当前结果已跨数据集或 full-wiki 泛化”；Stage4E proposed boundary 仍是 HotpotQA same-domain closed distractor setting。
+- “当前结果已 full-wiki、open-domain 或跨生成器泛化”；Stage4F 只完成第二个 closed-candidate 数据集和同一 Qwen 生成器的复制。
 - “Stage4E 是对生成器未见数据的无污染测试”；它只保证未被本项目读取，公开 HotpotQA train 可能进入过模型预训练语料。
 - “不显著说明方法等价”；所有未过正/负门的结果都应写为 inconclusive。
 
@@ -41,9 +42,14 @@ Stage4F-XDR 当前只是预注册的跨数据集复制：MuSiQue train 3,000 个
 | Stage4E generator selection | `reports/超粒球RAG_Stage4E生成模型选择报告.md`；`results/stage4e_generator_selection_verified.json` |
 | Stage4E official E2E result | `reports/超粒球RAG_Stage4E_E2E答案质量报告.md`；`results/stage4e_e2e_official_train1000_v1_evaluation_summary.json`；`results/stage4e_e2e_official_train1000_v1_final_verification.json` |
 | Stage4F cross-dataset preregistration | `docs/STAGE4F_XDR_EXPERIMENT_CARD.md`；`configs/stage4f_xdr_official.json`；`results/stage4f_xdr_musique_train3000_v1_verified_input.json` |
+| Stage4F verified replication | `reports/超粒球RAG_Stage4F_XDR跨数据集复制报告.md`；`results/stage4f_xdr_musique_train3000_v1_evaluation_summary.json`；`results/stage4f_xdr_musique_train3000_v1_final_verification.json` |
 
 ## Stage4E 写入规则
 
 Stage4E 已完成，可写两臂绝对 F1/EM、成对差值与区间、retrieval secondary metrics、确定性/独立验证状态和冻结决策。必须同段保留 new-ID same-domain closed-distractor、公开 train 可能存在预训练污染、F1 下界接近零、subgroup 仅 `CAUTION` 的限制。不得把 Stage4E 正结果用于恢复 U1/Stage4D controller，或推断跨数据集/full-wiki 泛化。
 
 生成器选择的唯一规范表述是：在 RTX 4060 Laptop 8GB、固定短答案 RAG prompt、4,096-token 输入上限和可实际部署格式下，Qwen2.5-1.5B-Instruct FP16 在 200-query generator-selection development 上取得更高 answer F1/EM 和更低运行时间/显存，并按预登记规则成为 Stage4E 唯一生成器。Gemma 4 E2B 以官方 mobile-QAT 格式运行，因此该结果不能用于分离或评价纯基础模型架构能力。
+
+## Stage4F 写入规则
+
+Stage4F 可写两臂绝对 F1/EM、paired intervals、supporting-paragraph ER/CR、上下文与运行成本、确定性/独立验证和 `STATIC_HGRAG_XDR_SUPPORTED`。必须同段保留：MuSiQue 只有 paragraph-level Gold；`n=3000` 不是 power guarantee；候选来自题内给定 paragraphs；生成器仍为单一 Qwen；Channel C 仅 `SUBGROUP_CAUTION`。不得把 Stage4F 用于恢复 controller、访问 Reservation/Stage3B/U2，或声称 full-wiki/open-domain 与跨生成器泛化。

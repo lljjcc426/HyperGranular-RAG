@@ -1,0 +1,31 @@
+{
+  "artifacts": {
+    "embedding_cache": {
+      "bytes": 399838172,
+      "sha256": "5D8A1155C5541F76BB8CCD8BC37E79D48D48FB0F5C9B861BB9CAFF09256D0073"
+    },
+    "predictions_main": {
+      "bytes": 1106316,
+      "sha256": "68F9524542B91C8FD93C7A4B0B3549BFE168DF1EB5D94E6479149E5B4534E62E"
+    },
+    "predictions_rerun": {
+      "bytes": 1106316,
+      "sha256": "68F9524542B91C8FD93C7A4B0B3549BFE168DF1EB5D94E6479149E5B4534E62E"
+    },
+    "prompt_audit_main": {
+      "bytes": 8573108,
+      "sha256": "D27D24E79F79758F860884C2B36D2AC509D0FFA4B587E90E8EE596F10FFF132E"
+    },
+    "prompt_audit_rerun": {
+      "bytes": 8573108,
+      "sha256": "D27D24E79F79758F860884C2B36D2AC509D0FFA4B587E90E8EE596F10FFF132E"
+    },
+    "rankings": {
+      "bytes": 7758160,
+      "sha256": "732A10DE74E8F97E5CECFDBFBBC3B49E5EF053C6F190948CD5C0B66D71D6AEDD"
+    }
+  },
+  "queries": 3000,
+  "schema_version": "stage4f_xdr_v1",
+  "status": "STAGE4F_PRE_GOLD_ARTIFACTS_VERIFIED"
+}

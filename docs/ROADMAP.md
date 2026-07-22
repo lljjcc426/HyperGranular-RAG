@@ -3,10 +3,10 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage4D-CMA and the controller line are closed; Stage4E-E2E is complete with `STAGE4E_FINAL_VERIFICATION_PASS` and `STATIC_HGRAG_E2E_SUPPORTED`
+- Current stage: Stage4D-CMA/controller are closed; Stage4E-E2E and Stage4F-XDR are complete with independent final verification and supported frozen decisions
 - Current governance: project-wide and durable across all current/future stages; one research stage receives one authorization; stage-internal predefined work is continuous; step/channel reapproval is disabled; only new scientific boundaries or serious integrity anomalies pause execution
-- Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive development batch used through verified Stage4D-CMA; a deterministic 1,000-query HotpotQA train distractor boundary used by Stage4E; reservation and Stage3B were not accessed
-- Generator used: Qwen2.5-1.5B-Instruct in the verified Stage4E E2E transaction
+- Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive development batch through verified Stage4D-CMA; deterministic new-ID HotpotQA train 1,000 and MuSiQue train 3,000 boundaries in Stage4E/4F; reservation and Stage3B were not accessed
+- Generator used: Qwen2.5-1.5B-Instruct in the verified Stage4E and Stage4F E2E transactions
 - Gold labels used for indexing: No
 
 ## Prior-stage Audit Decision
@@ -19,7 +19,7 @@ The full integrity and methodology audit is recorded in `docs/PRIOR_STAGE_METHOD
 - Stage2G: valid negative mechanism result; the current boundary rule is unsupported.
 - Stage2H: diagnostic only. Stage3A: failed development. Stage3C: descriptive planning only.
 - Restarted Stage4A `n=2,800`: exact event-count arithmetic is correct, but 20 gains is a planning heuristic. The number is not an approved effect-power or controller-training sample size.
-- Research position: `STAGE4D_CMA_CLOSED` and `CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED`; Stage4E independently supports static q25 at the frozen same-domain closed-distractor boundary. U2, reservation, Stage3B, new controllers, full-wiki, and external replication are not authorized.
+- Research position: `STAGE4D_CMA_CLOSED` and `CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED`; Stage4E supports static q25 on frozen HotpotQA and Stage4F replicates the answer-F1 gain on frozen MuSiQue. U2, reservation, Stage3B, new controllers, full-wiki/open-domain, and cross-generator confirmation are not authorized.
 
 ## Completed Execution History
 
@@ -1651,3 +1651,12 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Source custody created aligned blind, Gold and sealed metadata channels. Independent verification reconstructed all three from the source, checked the selected-ID digest, historical overlap, source/archive identities, MiniLM/Qwen snapshot files, requirements/environment manifests and absence of every formal output. Status is `STAGE4F_INPUT_BOUNDARY_VERIFIED`.
 - Level B implements source/input freezing, Gold-free Dense/static-q25 retrieval and Qwen main/rerun generation, official MuSiQue answer/alias scoring, paired 10,000-bootstrap decision logic, post-decision metadata handling, independent verification and guarded atomic/no-overwrite transactions. Twenty-four synthetic tests pass without official Stage4F data.
 - Current state is `STAGE4F_XDR_EXPERIMENT_CARD_FROZEN`, `STAGE4F_SOURCE_BOUND`, `STAGE4F_INPUT_BOUNDARY_VERIFIED`, `STAGE4F_MODEL_ENVIRONMENT_BOUND`, `STAGE4F_LEVEL_B_IMPLEMENTATION_READY`, `STAGE4F_SYNTHETIC_TESTS_PASSED`, and `STAGE4F_OFFICIAL_EXECUTION_NOT_AUTHORIZED`. No official embedding, ranking, generation, metric, bootstrap, decision or Channel C result exists. Reservation, Stage3B and U2 remain locked.
+
+### Stage4F-XDR Official Cross-Dataset Replication (2026-07-22)
+
+- Stage-level authorization commit `a45e42303215b0c146538dfb1a34f9b3f0a05689` opened the complete frozen transaction. Main and rerun each produced 6,000 paired generation calls with zero failures. Predictions were byte-identical at 1,106,316 bytes / `68F95245...34E62E`; prompt audits were byte-identical at 8,573,108 bytes / `D27D24E7...FF132E`.
+- Independent pre-Gold verification reconstructed all 3,000 Dense/static-q25 rankings from the frozen Blind Channel and embedding cache. Gold evaluation then used official MuSiQue answer/alias normalization. The strengthened final verifier independently rebuilt source channels, historical zero-overlap, model/environment binding, telemetry, prompt/ranking contracts, every query audit row, overall metrics, bootstrap, decision and artifact identities.
+- Dense vs static-q25 answer F1 was `0.13595240` vs `0.14735383`; paired delta was `+0.01140143 [0.00449534,0.01835158]`. Answer EM was `0.10033333` vs `0.11033333`; delta was `+0.01000000 [0.00333333,0.01666667]`. Supporting-paragraph CR@20 improved from `0.589` to `0.650`, and ER@20 from `0.80553` to `0.84128`.
+- All preregistered support gates passed, producing `STATIC_HGRAG_XDR_SUPPORTED` and `STAGE4F_FINAL_VERIFICATION_PASS`. q25 inserted 7,233 units across 2,336 queries; both arms retained 20 prompt units without rank-1 truncation. Hop-count Channel C rows are all `SUBGROUP_CAUTION` and cannot alter the primary decision.
+- During finalization, a bounded implementation correction expanded `verify_postgold()` from bootstrap/decision-only coverage to the full frozen final-verification contract. Commits `ba3f1740bdd31f25b171e6c076072c7ce96b51e7` and `c890eda2fbc0bde048dcb4dfbb5a4a6abcd98e42` changed only the verifier, targeted tests and binding. Existing scientific artifacts were preserved; 27/27 tests passed; no model, data, ranking, evaluator, threshold, bootstrap or decision semantics changed.
+- The result is a verified cross-dataset replication across two closed-candidate multi-hop QA boundaries with one frozen generator. It is not full-wiki/open-domain or cross-generator confirmation and does not reopen controller, reservation, Stage3B or U2.
