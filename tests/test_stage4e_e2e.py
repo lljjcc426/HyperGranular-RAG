@@ -55,15 +55,15 @@ def _write_jsonl(path: Path, rows: list[dict]) -> None:
 
 
 class ProtocolAndInputFreezeTests(unittest.TestCase):
-    def test_level_a_protocol_is_promoted_and_execution_remains_locked(self) -> None:
+    def test_level_a_protocol_is_promoted_and_stage_transaction_authorized(self) -> None:
         accepted = ROOT / "docs" / "STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md"
         draft = ROOT / "docs" / "STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL_DRAFT.md"
         text = accepted.read_text(encoding="utf-8")
         self.assertTrue(accepted.is_file())
         self.assertFalse(draft.exists())
         for token in (
-            "LEVEL_A_ACCEPTED_FOR_INPUT_BINDING_AND_LEVEL_B_IMPLEMENTATION",
-            "STAGE4E_OFFICIAL_EXECUTION_NOT_AUTHORIZED",
+            "LEVEL_A_ACCEPTED_AND_IMPLEMENTATION_BOUND",
+            "STAGE4E_OFFICIAL_EXECUTION_AUTHORIZED",
             "STATIC_Q25_TOP20",
             "delta_answer_f1",
             "10,000",

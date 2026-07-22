@@ -5,8 +5,8 @@
 - Origin Skill: academic-research-suite / academic-pipeline / experiment-agent
 - Origin Mode: plan
 - Origin Date: 2026-07-20
-- Protocol Status: `LEVEL_A_ACCEPTED_FOR_INPUT_BINDING_AND_LEVEL_B_IMPLEMENTATION`
-- Execution Status: `OFFICIAL_E2E_NOT_AUTHORIZED`
+- Protocol Status: `LEVEL_A_ACCEPTED_AND_IMPLEMENTATION_BOUND`
+- Execution Status: `STAGE4E_CONTINUOUS_OFFICIAL_TRANSACTION_AUTHORIZED`
 - Data Access During Drafting: no HotpotQA train download or read; no Stage4E Gold/model/embedding/result access
 
 ## 1. 科学问题
@@ -116,6 +116,7 @@ Channel A 的 schema 明确禁止 `answer`、`supporting_facts`、`type`、`leve
 ### 5.1 模型与环境
 
 - model：[Qwen/Qwen2.5-1.5B-Instruct](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct)。
+- selection：2026-07-22 的冻结 200-query development 对比与独立验证选择该模型；Gemma 4 E2B mobile-QAT 为落选对照，不进入本协议的正式事务。
 - proposed revision：`989aa7980e4cf806f80c7fef2b1adb7bc71aa306`。
 - license：Apache 2.0。
 - 推理：本地 `transformers`，不调用在线 API，不训练或量化搜索。
@@ -259,20 +260,22 @@ STATIC_HGRAG_E2E_INCONCLUSIVE
 
 生成器可能已经见过公开 HotpotQA 训练问题，因此本阶段不主张“LLM-uncontaminated evaluation”。相同 generator 的 paired retrieval-arm comparison 可以控制模型身份，但参数化记忆可能削弱或扭曲上下文差异；该风险必须进入报告限制，不能由显著性结果消除。
 
-## 11. Level B 完成前必须补齐的绑定
+## 11. 已完成绑定与阶段授权
 
-Level A 已于 2026-07-20 接受，并授权输入冻结与 Level B 实现；这不等于 official E2E 执行授权。以下项目缺一不可：
+Level A 已于 2026-07-20 接受。以下绑定均已完成并通过 Level B 与输入独立验证：
 
 - official train file URL、Bytes、SHA-256、许可证据；
 - selected 1,000 ID manifest SHA 与历史零重叠证明；
 - blind/Gold split schema 和两个文件身份；
 - encoder snapshot 文件身份与 embedding environment；
 - generator snapshot 全文件身份、可用的精确 CUDA/PyTorch 环境和确定性证明；
-- exact config、命令、工件路径、schema、atomic transaction 和 no-overwrite tests；
+- exact config、工件路径、schema、atomic transaction 和 no-overwrite tests；
 - synthetic fixtures 上的 retrieval、prompt、metric、bootstrap、leakage 和 byte-identical rerun tests；
-- independent Level B implementation review。
+- independent Level B implementation review；
+- Qwen2.5-1.5B-Instruct 生成器选择事务与独立复核；
+- CPython 3.12.0、PyTorch 2.12.1+cu130、Transformers 5.14.1、safetensors 0.8.0 的重新冻结与 synthetic token/embedding 确定性复核。
 
-这些绑定完成并通过 Level B 检查后，仍需在首次 1,000-query official retrieval/generation 和 Gold evaluation 前确认精确命令。官方 source 下载、ID-only/通道冻结和模型 snapshot 下载仅用于 provenance/identity binding，不得计算 retrieval、generation 或 Gold metric。当前状态为：
+用户于 2026-07-22 在确认生成器后要求继续科研，按仓库全局的一阶段一次授权规则，授权覆盖本协议预定义的 Gold-free main/rerun、pre-Gold independent verification、Gold evaluation、final verification、报告与 Git 同步。CLI、命令哈希、通道切换和提交不再构成独立审批点；Gold 仍必须等到 pre-Gold 独立验证通过后才可读取。当前状态为：
 
 ```text
 STAGE4E_LEVEL_A_PROTOCOL_ACCEPTED
@@ -282,7 +285,10 @@ STAGE4E_INPUTS_BOUND
 STAGE4E_LEVEL_B_IMPLEMENTATION_READY
 STAGE4E_SYNTHETIC_TESTS_PASSED
 STAGE4E_INPUT_CHANNELS_VERIFIED
-STAGE4E_OFFICIAL_EXECUTION_NOT_AUTHORIZED
+STAGE4E_GENERATOR_SELECTION_VERIFIED
+STAGE4E_GENERATOR_QWEN_SELECTED
+STAGE4E_OFFICIAL_EXECUTION_AUTHORIZED
+STAGE4E_GOLD_EVALUATION_AUTHORIZED_AFTER_PREGOLD_VERIFICATION
 RESERVATION_REMAINS_LOCKED
 STAGE3B_REMAINS_LOCKED
 U2_NOT_AUTHORIZED
