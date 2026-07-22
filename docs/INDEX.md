@@ -19,6 +19,10 @@
 | [Stage4E final verification](../results/stage4e_e2e_official_train1000_v1_final_verification.json) | `STATIC_HGRAG_E2E_SUPPORTED` 的独立 post-Gold 重算与工件身份 |
 | [Stage4E Level B implementation report](STAGE4E_E2E_LEVEL_B_IMPLEMENTATION_REPORT.md) | 输入、模型、环境、代码、测试、双授权锁与下一边界 |
 | [Stage4E Level B review request](STAGE4E_E2E_LEVEL_B_REVIEW_REQUEST.md) | 一次集中完整性审核请求；本身不授权 official 执行 |
+| [Stage4F-XDR 实验卡](STAGE4F_XDR_EXPERIMENT_CARD.md) | MuSiQue 跨数据集复制的 source、新 ID、两臂、模型、终点、门与停止规则 |
+| [Stage4F official config](../configs/stage4f_xdr_official.json) | 3,000-query A/B/C、环境、实现和未授权正式输出路径绑定 |
+| [Stage4F input manifest](../results/stage4f_xdr_musique_train3000_v1_input_manifest.json) | source-only 选择、候选池、历史 overlap 与三通道身份 |
+| [Stage4F input verification](../results/stage4f_xdr_musique_train3000_v1_verified_input.json) | source/channel/model/environment 独立重建通过；正式输出缺席 |
 | [论文材料入口](../paper/README.md) | 论文结构、证据主张台账和待补结果 |
 | [论文证据与主张台账](../paper/EVIDENCE_AND_CLAIM_LEDGER.md) | 将可写主张、证据等级、来源与限制逐项绑定 |
 | [Simplified execution protocol](STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md) | Stage4B-U1-D 科学与 pre-Gold 执行合同 |

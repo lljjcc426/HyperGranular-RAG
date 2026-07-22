@@ -35,6 +35,7 @@
 - Stage4A-R2 / Stage4B：官方 2Wiki development 的 gain/harm 与 controller 评价。
 - Stage4C/4D：同一 development 上预冻结的 exploratory mechanism audits。
 - Stage4E：此前未读 HotpotQA train ID-hash sample，Dense vs static q25，同一固定 generator；主 endpoint 为 paired answer F1。
+- Stage4F：预注册 MuSiQue train 新 ID 跨数据集复制；当前仅 source/input/Level B 就绪，无正式结果，不进入 Results。
 - 每阶段列出数据角色、Gold 隔离、复现绑定、样本/功效限制和停止规则。
 
 ## 4. Results
@@ -79,6 +80,7 @@ Stage4C 写 query-level composition；Stage4D 写 candidate labels、Task-C AURO
 - 生成器固定为单一小型模型时，结论不能外推到所有 LLM；
 - `n=1000` 是资源边界，不是正式功效保证。
 - HotpotQA train 只保证对本项目研究流程未读，不能保证对预训练生成器无污染；参数化记忆可能压低或改变 retrieval-arm 差异。
+- Stage4F 的 `n=3000` 同样只是资源/精度边界；MuSiQue Gold 为 supporting paragraph，不支持句子级 Gold 主张。
 
 ## 下一步论文材料
 

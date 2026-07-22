@@ -15,6 +15,8 @@
 | candidate deployable features 含部分 gain/harm 符号信号，但不足以晋级 | post-Gold exploratory，`CAUTION` | Stage4D Task-C combined AUROC `0.64310 [0.55520, 0.72974]`，Brier 未优于 prevalence baseline | 结论必须是 inconclusive；不授权 U2、selector 或阈值 |
 | 静态 HGRAG 在冻结 same-domain closed-distractor 边界上改善端到端答案质量 | verified official positive result | Stage4E：answer F1 `0.42150→0.43628`；paired delta `+0.01478 [0.00020,0.02988]`；final verification PASS | 仅限 HotpotQA deterministic 1,000-query、Qwen2.5-1.5B、Top-20；F1 下界接近 0，不写成大幅或普遍提升 |
 
+Stage4F-XDR 当前只是预注册的跨数据集复制：MuSiQue train 3,000 个新 ID、source/A/B/C/model/environment/implementation 已冻结，但 `official_execution=false` 且无结果。因此它不能新增“跨数据集有效”主张；只有未来通过独立 final verification 的正式 decision 才能更新本表。
+
 ## 不可写主张
 
 - “HyperGranular-RAG 在所有任务或 full-wiki 环境提高最终答案准确率”；Stage4E 只支持冻结的 HotpotQA same-domain closed-distractor 边界。
@@ -38,6 +40,7 @@
 | Stage4D 关闭边界 | `docs/STAGE4D_CMA_CLOSURE.md` |
 | Stage4E generator selection | `reports/超粒球RAG_Stage4E生成模型选择报告.md`；`results/stage4e_generator_selection_verified.json` |
 | Stage4E official E2E result | `reports/超粒球RAG_Stage4E_E2E答案质量报告.md`；`results/stage4e_e2e_official_train1000_v1_evaluation_summary.json`；`results/stage4e_e2e_official_train1000_v1_final_verification.json` |
+| Stage4F cross-dataset preregistration | `docs/STAGE4F_XDR_EXPERIMENT_CARD.md`；`configs/stage4f_xdr_official.json`；`results/stage4f_xdr_musique_train3000_v1_verified_input.json` |
 
 ## Stage4E 写入规则
 

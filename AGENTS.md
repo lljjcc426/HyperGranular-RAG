@@ -7,7 +7,7 @@
 - 仓库：`E:\SCIENCE\HyperGranular-RAG`
 - GitHub：`https://github.com/lljjcc426/HyperGranular-RAG.git`
 - 登记数据根目录：`E:\SCIENCE\超粒球RAG_数据`
-- 研究范围：粒球/超边多跳检索、静态 q25 protected insertion、已关闭的 U1/candidate-controller 审计线、独立验证，以及 Stage4E 端到端答案质量评估。
+- 研究范围：粒球/超边多跳检索、静态 q25 protected insertion、已关闭的 U1/candidate-controller 审计线、Stage4E 端到端答案质量，以及 Stage4F 跨数据集复制。
 - 禁止读取其他项目会话、全局 Codex memory 或项目外中间产物。
 
 ## 2. 当前权威入口
@@ -17,6 +17,8 @@
 - 当前复现边界：`docs/REPRODUCIBILITY.md`
 - 完整研究时间线：`docs/ROADMAP.md`
 - 当前 Stage4E 协议：`docs/STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md`
+- 当前 Stage4F 实验卡：`docs/STAGE4F_XDR_EXPERIMENT_CARD.md`
+- 当前 Stage4F 配置：`configs/stage4f_xdr_official.json`
 - Stage4D 关闭声明：`docs/STAGE4D_CMA_CLOSURE.md`
 - 已完成 Stage4D 协议：`docs/STAGE4D_CANDIDATE_MARGINAL_UTILITY_AUDIT_PROTOCOL.md`
 - 已完成诊断协议：`docs/STAGE4C_U1_FAILURE_MECHANISM_AUDIT_PROTOCOL.md`
@@ -70,6 +72,13 @@ STAGE4E_PRE_GOLD_ARTIFACTS_VERIFIED
 STAGE4E_GOLD_EVALUATION_COMPLETED
 STAGE4E_FINAL_VERIFICATION_PASS
 STATIC_HGRAG_E2E_SUPPORTED
+STAGE4F_XDR_EXPERIMENT_CARD_FROZEN
+STAGE4F_SOURCE_BOUND
+STAGE4F_INPUT_BOUNDARY_VERIFIED
+STAGE4F_MODEL_ENVIRONMENT_BOUND
+STAGE4F_LEVEL_B_IMPLEMENTATION_READY
+STAGE4F_SYNTHETIC_TESTS_PASSED
+STAGE4F_OFFICIAL_EXECUTION_NOT_AUTHORIZED
 RESERVATION_REQUIRES_PAUSE
 U2_NOT_AUTHORIZED
 SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
@@ -92,6 +101,7 @@ SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
 - Stage4D 与当前 controller 线已冻结关闭。Stage4E 是不含 U1/Stage4D model 的静态 Dense-vs-q25 E2E 评价，不得读取 Stage4D labels/probabilities 形成 ranking。
 - Stage4E 已完成：在 RTX 4060 Laptop 8GB、固定短答案 RAG prompt、4,096-token 上限和可实际部署格式下，Qwen2.5-1.5B-Instruct FP16 经冻结 200-query development 与预登记规则选择后成为唯一生成器；Gemma 4 E2B 使用官方 mobile-QAT，本次选择不作纯架构解释。随后 1,000-query Gold-free main/rerun、pre-Gold verification、Gold evaluation 和 final verification 均通过；Static q25 相对 Dense 的 answer F1 差为 `+0.01478 [0.00020,0.02988]`，冻结决策为 `STATIC_HGRAG_E2E_SUPPORTED`。
 - Stage4E 工件不得覆盖或重跑；该结果限于 HotpotQA same-domain closed distractor，不授权 reservation、Stage3B、U2 或重开 controller。
+- Stage4F-XDR 已冻结 MuSiQue train 3,000 个新 ID，历史 overlap 0；A/B/C、model/environment、Level B 和 synthetic tests 已验证。当前不得运行正式 embedding、ranking、generation、Gold、bootstrap、decision 或 Channel C subgroup。
 
 ## 4. 科研不可变边界
 
@@ -155,4 +165,4 @@ Channel A/Channel B、Gold-free/Gold-only 的代码、输入、依赖和工件�
 
 ## 8. 下一科研门
 
-Stage4B-U1、Stage4C、Stage4D 和当前 controller 线均已停止或关闭，不自动创建 U2。Stage4E-E2E 也已完成并冻结，支持静态 all-query q25 在当前 HotpotQA same-domain closed distractor 边界上改善 answer F1。下一科研门必须是新定义的科学问题；跨数据集复制、full-wiki 验证、subgroup/机制确认、其他生成器复现或任何新 controller 均需新的轻量实验卡和阶段授权。Reservation、Stage3B、既有 Gold 重跑和 U2 继续锁定。
+Stage4B-U1、Stage4C、Stage4D 和当前 controller 线均已停止或关闭，不自动创建 U2。Stage4E-E2E 已完成并冻结。Stage4F-XDR 已完成实验卡与 Level B，下一科研门只是在新的阶段授权下执行其已冻结的完整 official 事务；未授权前正式输出必须不存在。full-wiki、Reservation、Stage3B、U2、subgroup confirmation 和新 controller 继续锁定。

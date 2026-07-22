@@ -484,6 +484,9 @@ def run(config: dict[str, Any], run_id: str) -> None:
     assert_implementation_binding(config, Path(__file__).resolve().parents[1])
     if run_id not in {"main", "rerun"}:
         raise ValueError("run_id must be main or rerun")
+    verified_input = load_json(_assert_bound_file(config, "verified_input"))
+    if verified_input.get("status") != "STAGE4F_INPUT_BOUNDARY_VERIFIED":
+        raise ValueError("Official execution requires verified Stage4F input boundary")
     environment = load_json(_assert_bound_file(config, "environment_manifest"))
     model_manifest = load_json(_assert_bound_file(config, "model_manifest"))
     _set_determinism(environment)
@@ -557,4 +560,3 @@ if __name__ == "__main__":
     except Exception as exc:
         print(f"STAGE4F_GOLDFREE_RUN_FAIL: {exc}", file=sys.stderr)
         raise
-

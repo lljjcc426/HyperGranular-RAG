@@ -186,6 +186,9 @@ def require_complete_pairs(
 def run_gold(config: dict[str, Any]) -> None:
     _validate_authorization(config)
     assert_implementation_binding(config, Path(__file__).resolve().parents[1])
+    verified_pregold = load_json(_require_artifact(config, "verified_pregold"))
+    if verified_pregold.get("status") != "STAGE4F_PRE_GOLD_ARTIFACTS_VERIFIED":
+        raise ValueError("Gold evaluation requires independent pre-Gold verification")
     predictions_main = _require_artifact(config, "predictions_main")
     predictions_rerun = _require_artifact(config, "predictions_rerun")
     prompt_main = _require_artifact(config, "prompt_audit_main")

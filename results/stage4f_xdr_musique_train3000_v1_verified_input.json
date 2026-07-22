@@ -1,0 +1,39 @@
+{
+  "artifacts": {
+    "blind": {
+      "bytes": 90210161,
+      "sha256": "C8D73F6F8E0B9CA0BEAFD84DC05C43438400966998B5C2C3510E0EB47D1EC4C5"
+    },
+    "gold": {
+      "bytes": 2194235,
+      "sha256": "E53E3AF330D1D498A8B23CF06BA0AB9DA8452FC7BF4CB565C6ED749B28C60B2D"
+    },
+    "input_manifest": {
+      "bytes": 1459,
+      "sha256": "9835F2EB8C59EB226319E24CF1018C147800C326A51C8C20723A6375F80DE958"
+    },
+    "metadata": {
+      "bytes": 817266,
+      "sha256": "8CBA7F1C94D10BB3582BDBBACE441CCECCB23D2EF28A983FB376F2017D0ECAA3"
+    }
+  },
+  "historical_musique_ids": 1000,
+  "historical_overlap": 0,
+  "model_environment": {
+    "environment_manifest": {
+      "bytes": 1730,
+      "sha256": "23B9A57FF067DF4101C17F1DFCB5F63BEAB7AE7481693B34D3A2C408373B100F"
+    },
+    "model_manifest": {
+      "bytes": 4797,
+      "sha256": "C90488946DF99AF62583447E155B26660F87BF26E2EC55D5FA09AD6A6EBAAF95"
+    },
+    "requirements": {
+      "bytes": 924,
+      "sha256": "18EE7422569D9701C9BE87009626C5826D37B429B77D66EA5371DAEA368F6B50"
+    }
+  },
+  "queries": 3000,
+  "schema_version": "stage4f_xdr_v1",
+  "status": "STAGE4F_INPUT_BOUNDARY_VERIFIED"
+}
