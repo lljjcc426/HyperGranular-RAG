@@ -1,0 +1,13 @@
+{
+  "embedding_cache": {
+    "bytes": 75756384,
+    "sha256": "C8C7A8D23F0A17869B7CDA7920517CA1B8E18C78CF6202C347C997CC40B0B17A"
+  },
+  "failed_calls": 0,
+  "generation_calls": 2000,
+  "gpu_peak_memory_bytes": 3508564992,
+  "run_id": "rerun",
+  "schema_version": "stage4e_e2e_v1",
+  "status": "STAGE4E_GOLDFREE_RUN_COMPLETE_PENDING_VERIFICATION",
+  "wall_time_seconds": 767.3370642000009
+}
