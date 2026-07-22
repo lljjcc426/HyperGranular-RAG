@@ -47,14 +47,9 @@ Transformers 5.9.0 不能识别 Gemma 官方量化 snapshot 的 `quant_method`�
 
 ## 4. 科学解释
 
-结论限定为：在本项目固定提示、固定 200-query development 边界、RTX 4060 Laptop 8GB 和可部署格式下，Qwen2.5-1.5B-Instruct 是 Stage4E 更合适的唯一生成器。
+规范结论为：在 RTX 4060 Laptop 8GB、固定短答案 RAG prompt、4,096-token 输入上限和可实际部署格式下，Qwen2.5-1.5B-Instruct FP16 在 200-query generator-selection development 上取得更高的 answer F1/EM，同时具有更低的运行时间与显存占用，因此被预登记规则选为 Stage4E 唯一生成器。预登记选择在 F1 主规则处即已完成，运行时间与显存是方向一致的部署支持性证据。
 
-该结果不能推出：
-
-- Qwen 在其他任务、硬件、prompt 或数据上普遍优于 Gemma；
-- Gemma 4 架构本身低于 Qwen，因为本机只能运行官方 mobile-QAT 形式，架构与量化效应未被分离；
-- 当前分数是 Stage4E 的正式 Dense-vs-q25 端到端结果；
-- 生成器差异解释了 HyperGranular-RAG 检索方法的因果效应。
+Gemma 4 E2B 在本实验中以 Google 官方 mobile-QAT 格式运行。因此，本结果比较的是上述目标硬件与部署格式下的两个完整运行方案，不能分离基础模型架构、数值格式和量化实现的影响。该 200-query development 选择也不属于 Stage4E 正式 Dense-vs-q25 端到端结果，不能解释 HyperGranular-RAG 检索方法的因果效应。
 
 ## 5. 偏差与谬误检查
 
@@ -62,9 +57,9 @@ Transformers 5.9.0 不能识别 Gemma 官方量化 snapshot 的 `quant_method`�
 2. 事后规则：选择门、主次指标和 bootstrap 在运行前冻结，未按结果修改。
 3. 多重搜索：只比较用户指定的两个模型，没有追加模型或超参数搜索。
 4. Gold 泄漏：runner 只读取 blind channel；Gold 在模型工件冻结后进入 evaluator。
-5. 量化混杂：Gemma 使用官方 mobile-QAT，报告中不把结果解释为纯架构比较。
+5. 量化混杂：Gemma 使用官方 mobile-QAT，架构、数值格式和量化实现的影响不可分离。
 6. 硬件外推：结论限定于 RTX 4060 Laptop 8GB。
-7. 统计夸大：报告点估计和区间，不把 bootstrap 区间写成模型普遍优越证明。
+7. 统计夸大：点估计和区间只用于本项目冻结部署条件下的生成器选择。
 8. 选择性报告：F1、EM、时间、显存和两个模型完整 main/rerun 均保留。
 9. 确定性：只以字节一致的 predictions/audit 为确定性证据，不以 `random_state` 或单次运行代替。
 10. 因果归因：没有把生成器对比解释成检索器或超边方法的因果结论。
@@ -76,4 +71,3 @@ Transformers 5.9.0 不能识别 Gemma 官方量化 snapshot 的 `quant_method`�
 - Gemma 不进入 Stage4E active config、runner、requirements 或模型缓存；
 - Gemma 的实验卡、predictions、prompt audit、telemetry、逐 query scores、summary、独立验证与本报告永久保留为对比证据；
 - 后续 Stage4E 正式实验不得依据本开发集再选择生成器。
-

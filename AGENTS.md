@@ -90,7 +90,7 @@ SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
 - Stage4D official Channel A、Channel B、固定 probe、bounded provenance audit 与 final verification 均已完成。8,467 个候选和 68,588 条 OOF 预测通过身份、内容、bootstrap 与独立验证；combined Task-C AUROC 为 `0.64310 [0.55520,0.72974]`，最终为 `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。
 - 现有 Stage4D transaction 不得重复，probe 三工件不得覆盖；该结果不授权 reservation/Stage3B、U2 或新 candidate controller。
 - Stage4D 与当前 controller 线已冻结关闭。Stage4E 是不含 U1/Stage4D model 的静态 Dense-vs-q25 E2E 评价，不得读取 Stage4D labels/probabilities 形成 ranking。
-- Stage4E 已完成：Qwen2.5-1.5B-Instruct 经冻结选择后成为唯一生成器；1,000-query Gold-free main/rerun、pre-Gold verification、Gold evaluation 和 final verification 均通过。Static q25 相对 Dense 的 answer F1 差为 `+0.01478 [0.00020,0.02988]`，冻结决策为 `STATIC_HGRAG_E2E_SUPPORTED`。
+- Stage4E 已完成：在 RTX 4060 Laptop 8GB、固定短答案 RAG prompt、4,096-token 上限和可实际部署格式下，Qwen2.5-1.5B-Instruct FP16 经冻结 200-query development 与预登记规则选择后成为唯一生成器；Gemma 4 E2B 使用官方 mobile-QAT，本次选择不作纯架构解释。随后 1,000-query Gold-free main/rerun、pre-Gold verification、Gold evaluation 和 final verification 均通过；Static q25 相对 Dense 的 answer F1 差为 `+0.01478 [0.00020,0.02988]`，冻结决策为 `STATIC_HGRAG_E2E_SUPPORTED`。
 - Stage4E 工件不得覆盖或重跑；该结果限于 HotpotQA same-domain closed distractor，不授权 reservation、Stage3B、U2 或重开 controller。
 
 ## 4. 科研不可变边界

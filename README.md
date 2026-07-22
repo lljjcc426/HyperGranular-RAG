@@ -15,7 +15,7 @@
 
 Stage4E 正式结果：
 
-- Qwen2.5-1.5B-Instruct 经冻结双模型对比胜出并成为唯一 Stage4E 生成器；
+- 在 RTX 4060 Laptop 8GB、固定短答案 RAG prompt、4,096-token 上限和可实际部署格式下，Qwen2.5-1.5B-Instruct FP16 在冻结 200-query development 上取得更高 F1/EM 及更低时间/显存，并按预登记规则成为唯一 Stage4E 生成器；Gemma 4 E2B 使用官方 mobile-QAT，结果不作纯架构解释；
 - Static q25 answer F1 为 `0.43628`，Dense 为 `0.42150`，成对差为 `+0.01478 [0.00020, 0.02988]`；
 - answer EM 差为 `+0.01000 [-0.00500, 0.02500]`，通过预定 EM non-inferiority guard；
 - retrieval CR@20 从 `0.737` 提高到 `0.798`，ER@20 从 `0.87860` 提高到 `0.90818`；

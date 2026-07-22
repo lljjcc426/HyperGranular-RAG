@@ -42,3 +42,5 @@
 ## Stage4E 写入规则
 
 Stage4E 已完成，可写两臂绝对 F1/EM、成对差值与区间、retrieval secondary metrics、确定性/独立验证状态和冻结决策。必须同段保留 new-ID same-domain closed-distractor、公开 train 可能存在预训练污染、F1 下界接近零、subgroup 仅 `CAUTION` 的限制。不得把 Stage4E 正结果用于恢复 U1/Stage4D controller，或推断跨数据集/full-wiki 泛化。
+
+生成器选择的唯一规范表述是：在 RTX 4060 Laptop 8GB、固定短答案 RAG prompt、4,096-token 输入上限和可实际部署格式下，Qwen2.5-1.5B-Instruct FP16 在 200-query generator-selection development 上取得更高 answer F1/EM 和更低运行时间/显存，并按预登记规则成为 Stage4E 唯一生成器。Gemma 4 E2B 以官方 mobile-QAT 格式运行，因此该结果不能用于分离或评价纯基础模型架构能力。
