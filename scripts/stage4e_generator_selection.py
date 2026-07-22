@@ -268,8 +268,10 @@ class GeneratorAdapter:
 
     def token_ids(self, messages: list[dict[str, str]]) -> list[int]:
         rendered = self._template(messages, tokenize=True)
-        if self.model_key == "gemma":
-            return [int(value) for value in rendered["input_ids"][0].tolist()]
+        if isinstance(rendered, dict) or hasattr(rendered, "keys"):
+            rendered = rendered["input_ids"]
+        if hasattr(rendered, "tolist"):
+            rendered = rendered.tolist()
         if rendered and isinstance(rendered[0], list):
             rendered = rendered[0]
         return [int(value) for value in rendered]

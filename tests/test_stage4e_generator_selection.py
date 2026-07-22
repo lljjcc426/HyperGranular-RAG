@@ -41,6 +41,13 @@ class FakeAdapter:
         return "x " * len(token_ids)
 
 
+class DictTemplateAdapter:
+    model_key = "qwen"
+
+    def _template(self, messages, *, tokenize):
+        return {"input_ids": [[1, 2, 3]]}
+
+
 class GeneratorSelectionTests(unittest.TestCase):
     def test_split_rows_strips_gold_from_blind(self):
         source = [{
@@ -100,6 +107,9 @@ class GeneratorSelectionTests(unittest.TestCase):
             self.assertEqual(prompt["evidence_unit_ids"], [f"u{i}" for i in range(len(prompt["evidence_unit_ids"]))])
         finally:
             selection.TOKEN_CAP = original_cap
+
+    def test_token_ids_accepts_new_transformers_mapping_return(self):
+        self.assertEqual(selection.GeneratorAdapter.token_ids(DictTemplateAdapter(), []), [1, 2, 3])
 
     def test_blind_loader_rejects_numeric_identity(self):
         row = {
