@@ -6,14 +6,23 @@
 
 | 项目 | 当前事实 |
 |---|---|
-| 研究阶段 | Stage4D-CMA 已验证并关闭；Stage4E-E2E 输入、模型、环境和 Level B 实现已冻结 |
-| 状态 | `STAGE4E_INPUT_CHANNELS_VERIFIED`；`STAGE4E_LEVEL_B_IMPLEMENTATION_READY`；`STAGE4E_OFFICIAL_EXECUTION_NOT_AUTHORIZED` |
-| 已用数据边界 | 2WikiMultiHopQA development：4,500 queries / 143,820 unlabeled units |
-| 当前证据 | U1-D 是有效 development 负结果；Stage4D candidate 机制证据不确定；静态 HGRAG 的答案质量尚未测试 |
+| 研究阶段 | Stage4D controller 线已关闭；Stage4E-E2E 已完成并冻结 |
+| 状态 | `STAGE4E_FINAL_VERIFICATION_PASS`；`STATIC_HGRAG_E2E_SUPPORTED` |
+| 已用数据边界 | 2WikiMultiHopQA development 4,500 queries；HotpotQA new-ID same-domain distractor 1,000 queries |
+| 当前证据 | 当前 U1-D controller 不受支持；静态 all-query q25 在冻结 Stage4E 边界上提高 answer F1 |
 | Gold | 仅在 ranking 冻结后由独立 evaluator 使用；未进入 controller 或排序 |
 | Reservation / Stage3B | `KEEP_LOCKED` |
 
-当前 Gold 结果：
+Stage4E 正式结果：
+
+- Qwen2.5-1.5B-Instruct 经冻结双模型对比胜出并成为唯一 Stage4E 生成器；
+- Static q25 answer F1 为 `0.43628`，Dense 为 `0.42150`，成对差为 `+0.01478 [0.00020, 0.02988]`；
+- answer EM 差为 `+0.01000 [-0.00500, 0.02500]`，通过预定 EM non-inferiority guard；
+- retrieval CR@20 从 `0.737` 提高到 `0.798`，ER@20 从 `0.87860` 提高到 `0.90818`；
+- main/rerun predictions 与 prompt audits 同字节，pre-Gold 和 post-Gold 独立验证均通过；
+- 冻结决策为 `STATIC_HGRAG_E2E_SUPPORTED`，但边界仍限于 HotpotQA same-domain closed distractor。
+
+此前 U1-D Gold 结果：
 
 - U1 将 q25 插入量从 7,260 降至 4,354，减少 `40.0275%`；
 - gain retention 为 `47/94=0.5000`，harm retention 为 `53/69=0.7681`，retention gap 为 `-0.2681`；
@@ -34,7 +43,7 @@ Stage4C-U1-FMA 进一步审计其失败机制：raw U1 score 对 GAIN-vs-HARM �
 
 Stage4D-CMA 将问题下沉到 candidate 级：8,467 个 eligible candidates 经 standardized first-slot insertion、`LOO_NO_BACKFILL` 和 `LOO_WITH_BACKFILL` 归因后，固定 Task-C combined panel 的 AUROC 为 `0.64310 [0.55520, 0.72974]`、AP 为 `0.72198`。它存在部分符号信号，但 AUROC 未达到 `0.65` 且 Brier 未优于 prevalence baseline，最终为 `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。
 
-Stage4D 和当前 controller 分支现已冻结关闭。Stage4E-E2E 转向独立问题：在此前未读的 HotpotQA train ID-hash 边界上，用同一固定生成器比较 Dense Top-20 与不带 controller 的静态 q25 Top-20，主要评价 answer F1。Level A 已接受；1,000-query blind/Gold/metadata 通道、模型 snapshot、CUDA 环境、config、runner/evaluator/verifier 和合成测试现已完成绑定，但尚未运行 official retrieval、generation 或 Gold evaluation。
+Stage4D 和当前 controller 分支已经冻结关闭。Stage4E-E2E 随后在此前未读的 HotpotQA train ID-hash 边界上，用同一 Qwen2.5-1.5B-Instruct 生成器比较 Dense Top-20 与不带 controller 的静态 q25 Top-20。1,000-query 正式事务、确定性复跑和独立验证均已完成，结果支持静态 q25 在该冻结边界上改善 answer F1。下一步若进行跨数据集复制、full-wiki 验证或 subgroup 机制确认，必须作为新的科学阶段定义。
 
 ## 冻结方法边界
 
@@ -60,7 +69,7 @@ Stage4D 和当前 controller 分支现已冻结关闭。Stage4E-E2E 转向独立
 | Stage4B-U1-D | development Gold 评估与独立验证完成 | 资源门单项通过，但联合晋级门失败；U1 分支停止 |
 | Stage4C-U1-FMA | post-Gold 探索性诊断，`CAUTION` | query-level score 方向错误且 all-on/off 受限；不足以授权 U2 |
 | Stage4D-CMA | post-Gold exploratory official audit，`CAUTION`；已关闭 | candidate-level 部分信号未过联合晋级门；不授权 U2 |
-| Stage4E-E2E | Level A accepted；输入与 Level B 实现已验证 | 计划检验静态 q25 是否转化为答案质量收益；official 执行未授权，当前无答案质量结果 |
+| Stage4E-E2E | new-ID same-domain official transaction；独立验证完成 | static q25 answer F1 `+0.01478 [0.00020, 0.02988]`；`STATIC_HGRAG_E2E_SUPPORTED` |
 
 完整研究轨迹见 [ROADMAP](docs/ROADMAP.md) 和 [文档索引](docs/INDEX.md)。
 
@@ -70,7 +79,7 @@ Stage4D 和当前 controller 分支现已冻结关闭。Stage4E-E2E 转向独立
 - Stage4B-U1-D development：4,500 queries / 143,820 units。
 - Gold 仅由已授权 evaluator 在 ranking 冻结后使用，未进入索引、候选、排序、过滤或 controller。
 - Reservation 仅保留登记的 ID 摘要边界，不读取内容、embedding 或指标。
-- Stage4E boundary 是 HotpotQA `hotpot_train_v1.1.json` 的确定性 1,000-query 样本；source 和三个隔离通道已冻结且历史 ID 重叠为 0，但未执行 retrieval、generation 或 Gold metric。
+- Stage4E boundary 是 HotpotQA `hotpot_train_v1.1.json` 的确定性 1,000-query 样本；source 和三个隔离通道已冻结且历史 ID 重叠为 0；正式结果与独立验证已提交。
 - Raw data、processed corpus、embedding cache、模型和密钥不进入 Git。
 
 ## 仓库结构
@@ -110,6 +119,9 @@ paper/             论文结构、证据主张台账与待补材料
 - [Stage4E model snapshot manifest](results/stage4e_e2e_model_snapshot_manifest.json)
 - [Stage4E environment manifest](results/stage4e_e2e_environment_manifest.json)
 - [Stage4E Level B 实现报告](docs/STAGE4E_E2E_LEVEL_B_IMPLEMENTATION_REPORT.md)
+- [Stage4E 生成模型选择报告](reports/超粒球RAG_Stage4E生成模型选择报告.md)
+- [Stage4E E2E 答案质量报告](reports/超粒球RAG_Stage4E_E2E答案质量报告.md)
+- [Stage4E final verification](results/stage4e_e2e_official_train1000_v1_final_verification.json)
 - [论文证据与主张台账](paper/EVIDENCE_AND_CLAIM_LEDGER.md)
 
 ## 科研治理
@@ -131,11 +143,11 @@ SCIENTIFIC_INTEGRITY_CONTROLS_RETAINED
 - 逐命令、逐脚本、逐文件、逐提交、逐通道审批，以及重复 review、单独 synthetic 授权、普通修复 Amendment、逐次 approval record 和 nested approval chain 均已取消。
 - 新阶段默认使用 1–3 页轻量实验卡，固定研究问题、假设、数据边界、方法、主要终点、成功/停止/证据不足规则、Gold/独立测试/reservation 边界和禁止事项；长协议仅用于高风险例外。
 - 历史审批链只用于证据追溯，不再构成当前执行规则。已有科学协议、技术隔离、完整性检查、结果和停止结论不变。
-- 全局规则不自动扩大既有阶段明确排除的科学范围。当前 Stage4E 既有授权明确止于输入绑定和 Level B 实现，因此 official 仍未授权；下一边界是扩展阶段授权范围，不是分别确认 retrieval/generation 与 Gold 命令。
+- 全局规则不自动扩大既有阶段明确排除的科学范围。Stage4E 已在用户扩展阶段授权后连续完成；下一科学问题仍需新的阶段卡，而不是复用本次授权。
 
 ## 已知限制
 
-- 已完成证据只评估检索/controller 机制；Stage4E 尚未运行，因此当前没有生成器答案质量证据。
+- Stage4E 是 HotpotQA same-domain closed distractor 证据，不是跨域、full-wiki 或生成器未污染验证；F1 区间下界仅略高于 0。
 - q25 阈值来自早期数据，不能声称对 2Wiki 最优。
 - Stage4B-U1 是单一 development benchmark batch 的资源分配实验，不能主张为在线 controller。
 - 插入量减少刚超过 `40%` 门槛，但不能抵消 retention、Fisher 和 CR 门失败。

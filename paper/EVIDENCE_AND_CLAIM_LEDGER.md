@@ -2,7 +2,7 @@
 
 ## 当前总论边界
 
-静态 q25 protected insertion 与 adaptive controller 是两个不同主张。现有证据支持继续检验前者的端到端答案质量，但已经关闭当前 U1/Stage4D controller 线。论文不得用 controller 负结果覆盖静态方法，也不得用静态 retrieval 的局部增益替 controller 晋级。
+静态 q25 protected insertion 与 adaptive controller 是两个不同主张。Stage4E 现已支持前者在冻结 HotpotQA same-domain closed-distractor 边界上的端到端答案质量增益，同时当前 U1/Stage4D controller 线仍保持关闭。论文不得用 controller 负结果覆盖静态方法，也不得用静态 Stage4E 正结果替 controller 晋级。
 
 ## 可写主张
 
@@ -13,11 +13,11 @@
 | 当前 U1-D controller 降低资源但选择方向失败 | verified development negative result | 插入量 `-40.0275%`；gain retention `0.5000`；harm retention `0.7681`；CR@20 低于 Dense/q25 | 可写为当前 controller 的有效负结果；不能写成 HGRAG 整体无效 |
 | raw U1 score 对 gain/harm 方向错误且 all-on/off 受限 | post-Gold exploratory，`CAUTION` | Stage4C raw score AUROC `0.39269 [0.30558, 0.48150]`；92/94 gain query 为 mixed gain/noise | 机制诊断，不是新 controller efficacy |
 | candidate deployable features 含部分 gain/harm 符号信号，但不足以晋级 | post-Gold exploratory，`CAUTION` | Stage4D Task-C combined AUROC `0.64310 [0.55520, 0.72974]`，Brier 未优于 prevalence baseline | 结论必须是 inconclusive；不授权 U2、selector 或阈值 |
-| 静态 HGRAG 改善端到端答案质量 | **尚无结果证据** | Stage4E-E2E Level A 已接受，输入/模型/环境/Level B 实现已验证；official 未运行 | 在 final verification 前不得写结果、方向或效果量 |
+| 静态 HGRAG 在冻结 same-domain closed-distractor 边界上改善端到端答案质量 | verified official positive result | Stage4E：answer F1 `0.42150→0.43628`；paired delta `+0.01478 [0.00020,0.02988]`；final verification PASS | 仅限 HotpotQA deterministic 1,000-query、Qwen2.5-1.5B、Top-20；F1 下界接近 0，不写成大幅或普遍提升 |
 
 ## 不可写主张
 
-- “HyperGranular-RAG 已提高最终答案准确率”；尚未运行生成器答案质量实验。
+- “HyperGranular-RAG 在所有任务或 full-wiki 环境提高最终答案准确率”；Stage4E 只支持冻结的 HotpotQA same-domain closed-distractor 边界。
 - “q25 在 2Wiki 上平均优于 Dense”；现有 Stage4A/4B 证据没有建立该总体现象。
 - “U1 能保留 gain 并过滤 harm”；冻结结果方向相反。
 - “Stage4D 已学会可部署 candidate selector”；唯一 advancement panel 未过联合门。
@@ -36,8 +36,9 @@
 | Stage4D candidate 机制 | `reports/超粒球RAG_Stage4D_CMA候选边际效用归因审计报告.md` |
 | Stage4D final verification | `results/stage4d_cma_verified_final.json` |
 | Stage4D 关闭边界 | `docs/STAGE4D_CMA_CLOSURE.md` |
-| Stage4E planned evaluation | `docs/STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md`；`docs/STAGE4E_E2E_LEVEL_B_IMPLEMENTATION_REPORT.md` |
+| Stage4E generator selection | `reports/超粒球RAG_Stage4E生成模型选择报告.md`；`results/stage4e_generator_selection_verified.json` |
+| Stage4E official E2E result | `reports/超粒球RAG_Stage4E_E2E答案质量报告.md`；`results/stage4e_e2e_official_train1000_v1_evaluation_summary.json`；`results/stage4e_e2e_official_train1000_v1_final_verification.json` |
 
 ## Stage4E 写入规则
 
-Stage4E 完成前，论文只能写：研究问题、冻结比较、new-ID same-domain 边界、generator/prompt、主终点和判定门。完成后必须先登记：两臂绝对 F1/EM、成对差值与区间、retrieval secondary metrics、确定性/独立验证状态、数据与模型 SHA、负或不确定结果，以及 11 类谬误检查；之后才能更新摘要、结果和结论。
+Stage4E 已完成，可写两臂绝对 F1/EM、成对差值与区间、retrieval secondary metrics、确定性/独立验证状态和冻结决策。必须同段保留 new-ID same-domain closed-distractor、公开 train 可能存在预训练污染、F1 下界接近零、subgroup 仅 `CAUTION` 的限制。不得把 Stage4E 正结果用于恢复 U1/Stage4D controller，或推断跨数据集/full-wiki 泛化。

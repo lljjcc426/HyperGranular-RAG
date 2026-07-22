@@ -11,9 +11,12 @@
 | [REPRODUCIBILITY](REPRODUCIBILITY.md) | 当前环境、冻结 SHA、工件与复现边界 |
 | [ROADMAP](ROADMAP.md) | 完整研究时间线与阶段状态 |
 | [Stage4D-CMA closure](STAGE4D_CMA_CLOSURE.md) | Stage4D 与当前 controller 分支的冻结关闭范围 |
-| [Stage4E-E2E Level A protocol](STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md) | 已接受的静态 Dense-vs-q25 端到端答案质量协议；输入与 Level B 实现已绑定，official 未授权 |
-| [Stage4E official config](../configs/stage4e_e2e_official_train1000_v1.json) | 1,000-query 输入、模型、环境、实现、输出路径与双授权锁 |
-| [Stage4E input verification](../results/stage4e_e2e_official_train1000_v1_verified_input.json) | source、三通道、历史零重叠、模型和环境的独立只读验证 |
+| [Stage4E-E2E Level A protocol](STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md) | 已完成的静态 Dense-vs-q25 端到端答案质量协议 |
+| [Stage4E official config](../configs/stage4e_e2e_official_train1000_v1.json) | 1,000-query 输入、模型、环境、实现与输出路径绑定 |
+| [Stage4E rebound input verification](../results/stage4e_e2e_official_train1000_v1_verified_input_rebind.json) | source、三通道、历史零重叠、Qwen 环境与协议的独立只读验证 |
+| [Stage4E 生成器选择报告](../reports/超粒球RAG_Stage4E生成模型选择报告.md) | Qwen-vs-Gemma 冻结对比、选择规则与限制 |
+| [Stage4E E2E 报告](../reports/超粒球RAG_Stage4E_E2E答案质量报告.md) | answer F1/EM、retrieval secondary、bootstrap、subgroup caution 与谬误扫描 |
+| [Stage4E final verification](../results/stage4e_e2e_official_train1000_v1_final_verification.json) | `STATIC_HGRAG_E2E_SUPPORTED` 的独立 post-Gold 重算与工件身份 |
 | [Stage4E Level B implementation report](STAGE4E_E2E_LEVEL_B_IMPLEMENTATION_REPORT.md) | 输入、模型、环境、代码、测试、双授权锁与下一边界 |
 | [Stage4E Level B review request](STAGE4E_E2E_LEVEL_B_REVIEW_REQUEST.md) | 一次集中完整性审核请求；本身不授权 official 执行 |
 | [论文材料入口](../paper/README.md) | 论文结构、证据主张台账和待补结果 |
@@ -77,7 +80,7 @@
 - 方法审计见 [PRIOR_STAGE_METHOD_AUDIT](PRIOR_STAGE_METHOD_AUDIT.md)。
 - 阶段性结果说明位于 `reports/`。
 - Stage4D 与当前 controller 线已经按 [关闭声明](STAGE4D_CMA_CLOSURE.md) 冻结；Stage4E 不继承 controller labels、features 或 model。
-- Stage4E 把 data boundary 明确限定为 HotpotQA train 的 new-ID same-domain distractor sample，不表述为跨数据集或 full-wiki external validation。输入、模型、CUDA 环境与 Level B 实现已冻结，尚无 official E2E 结果。
+- Stage4E 把 data boundary 明确限定为 HotpotQA train 的 new-ID same-domain distractor sample，不表述为跨数据集或 full-wiki external validation。正式结果为 answer F1 `+0.01478 [0.00020,0.02988]`，独立验证通过。
 
 ## 历史治理证据
 
@@ -121,4 +124,4 @@
 
 ## 当前下一步
 
-当前状态为 `STAGE4D_CMA_CLOSED`、`STAGE4E_INPUT_CHANNELS_VERIFIED` 和 `STAGE4E_LEVEL_B_IMPLEMENTATION_READY`。Stage4E 既有授权范围止于 Level B；下一步是决定是否一次性扩展阶段授权以覆盖冻结的 official 事务，而不是审批某条命令或逐通道复审。Reservation、Stage3B 和 U2 继续锁定。
+当前状态为 `STAGE4D_CMA_CLOSED`、`STAGE4E_FINAL_VERIFICATION_PASS` 和 `STATIC_HGRAG_E2E_SUPPORTED`。Stage4E 已冻结关闭；下一步必须先定义新的科学问题与轻量实验卡。Reservation、Stage3B 和 U2 继续锁定。

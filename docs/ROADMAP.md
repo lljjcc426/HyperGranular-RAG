@@ -3,10 +3,10 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage4D-CMA is verified and closed; Stage4E-E2E input/model/environment binding and Level B implementation are complete; official retrieval/generation and Gold evaluation remain unauthorized
+- Current stage: Stage4D-CMA and the controller line are closed; Stage4E-E2E is complete with `STAGE4E_FINAL_VERIFICATION_PASS` and `STATIC_HGRAG_E2E_SUPPORTED`
 - Current governance: project-wide and durable across all current/future stages; one research stage receives one authorization; stage-internal predefined work is continuous; step/channel reapproval is disabled; only new scientific boundaries or serious integrity anomalies pause execution
-- Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive development batch used through verified Stage4D-CMA; reservation and Stage3B were not accessed
-- Generator used: No
+- Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive development batch used through verified Stage4D-CMA; a deterministic 1,000-query HotpotQA train distractor boundary used by Stage4E; reservation and Stage3B were not accessed
+- Generator used: Qwen2.5-1.5B-Instruct in the verified Stage4E E2E transaction
 - Gold labels used for indexing: No
 
 ## Prior-stage Audit Decision
@@ -19,7 +19,7 @@ The full integrity and methodology audit is recorded in `docs/PRIOR_STAGE_METHOD
 - Stage2G: valid negative mechanism result; the current boundary rule is unsupported.
 - Stage2H: diagnostic only. Stage3A: failed development. Stage3C: descriptive planning only.
 - Restarted Stage4A `n=2,800`: exact event-count arithmetic is correct, but 20 gains is a planning heuristic. The number is not an approved effect-power or controller-training sample size.
-- Research position: `STAGE4D_CMA_CLOSED` and `CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED`; Stage4E is a separate static-retrieval end-to-end question with accepted Level A and completed Level B bindings. The 1,000-query official execution, U2, reservation, and Stage3B are not authorized.
+- Research position: `STAGE4D_CMA_CLOSED` and `CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED`; Stage4E independently supports static q25 at the frozen same-domain closed-distractor boundary. U2, reservation, Stage3B, new controllers, full-wiki, and external replication are not authorized.
 
 ## Completed Execution History
 
@@ -1627,3 +1627,18 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Execution pauses only for a new scientific question/stage/controller, a frozen scientific-semantic change, a new evidence source outside the current authorization, or a serious scientific-integrity anomaly. Historical approval chains remain immutable trace evidence but no longer define current execution.
 - Existing Stage4E authorization was explicitly limited to input binding and Level B implementation, so official execution remains unauthorized without retroactive scope expansion. Its future boundary is stage-authorization scope, not exact-command confirmation; a scope that includes both predefined Gold-free and Gold Channels proceeds continuously through their frozen integrity gates.
 - No scientific protocol, parameter, data boundary, algorithm, result, artifact SHA, or frozen conclusion changed in this governance-only update. No experiment or new data/Gold/reservation/Stage3B access occurred.
+
+### Stage4E Generator Selection (2026-07-22)
+
+- A frozen 200-query HotpotQA development comparison evaluated `Qwen/Qwen2.5-1.5B-Instruct` against the official `google/gemma-4-E2B-it-qat-mobile-transformers` format on the project RTX 4060 Laptop 8GB target. Both models completed main/rerun with byte-identical predictions and prompt audits; an independent verifier reconstructed channels, answer metrics, 10,000 paired bootstrap draws, and the selection rule.
+- Qwen obtained answer F1/EM `0.44091/0.32000`; Gemma obtained `0.33570/0.24500`. The Gemma-minus-Qwen F1 difference was `-0.10521 [-0.18054,-0.02815]`, so the preregistered primary rule selected Qwen. This is a target-hardware development selection, not a general model ranking; Gemma's architecture and official mobile-QAT effect are not separated.
+- Gemma's local 2.5GB snapshot/cache and the temporary comparison runtime/adapters were removed after the evidence was committed. The experiment card, both models' predictions/audits/telemetry, query scores, summary, verification and report remain tracked; Git history retains the retired comparison implementation.
+- The active Qwen environment was rebound to CPython 3.12.0 / torch 2.12.1+cu130 / CUDA 13.0 / transformers 5.14.1 / safetensors 0.8.0. Synthetic encoder bytes and generator token bytes remained identical to the earlier environment manifest.
+
+### Stage4E-E2E Official Result (2026-07-22)
+
+- The deterministic 1,000-query HotpotQA train distractor sample retained zero overlap with registered historical HotpotQA IDs. Gold-free main/rerun each completed 2,000 generation calls with zero failures. Predictions were byte-identical at 419,866 bytes / `FE9D6716...945D58`, and prompt audits were byte-identical at 3,337,447 bytes / `130B78B8...56055`.
+- Independent pre-Gold verification reconstructed rankings, prompt contracts, identities, implementation/environment binding and the embedding cache before Gold was opened. Gold evaluation then used the frozen official HotpotQA answer scorer; independent post-Gold verification recomputed every query metric, bootstrap and decision.
+- Dense vs static q25 answer F1 was `0.42150` vs `0.43628`; paired delta was `+0.01478 [0.00020,0.02988]`. Answer EM was `0.356` vs `0.366`; delta was `+0.01000 [-0.00500,0.02500]`. Retrieval CR@20 improved from `0.737` to `0.798`, and ER@20 from `0.87860` to `0.90818`.
+- All preregistered positive gates passed, producing `STATIC_HGRAG_E2E_SUPPORTED` and `STAGE4E_FINAL_VERIFICATION_PASS`. The F1 interval lower bound is only slightly above zero, so the result is supportive but not a large or universal effect claim.
+- Descriptive subgroup points suggest positive bridge/easy and slightly negative comparison directions, but they remain `SUBGROUP_CAUTION` without confirmatory intervals and cannot change the overall result. Stage4E is limited to a same-domain closed distractor boundary and does not authorize full-wiki, external replication, reservation, Stage3B, U2, or a renewed controller line.

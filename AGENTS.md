@@ -23,7 +23,7 @@
 - 冻结 Stage4B 执行协议：`docs/STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md`
 - 冻结配置：`configs/stage4b_u1_d_official.json`
 - Gold 授权与执行配置：`configs/stage4b_u1_d_gold_evaluation.json`
-- 当前诊断报告：`reports/超粒球RAG_Stage4D_CMA候选边际效用归因审计报告.md`
+- 当前正式报告：`reports/超粒球RAG_Stage4E_E2E答案质量报告.md`
 
 历史 Amendment、Approval、Review、Hard Failure 和 PowerShell 执行文件是不可改写的证据，不是当前日常执行规则。不得从历史文件恢复已退役的 launcher、remote gate、observer、stderr framing 或 nested PRE 链。
 
@@ -64,7 +64,12 @@ STAGE4E_INPUTS_BOUND
 STAGE4E_LEVEL_B_IMPLEMENTATION_READY
 STAGE4E_SYNTHETIC_TESTS_PASSED
 STAGE4E_INPUT_CHANNELS_VERIFIED
-STAGE4E_OFFICIAL_EXECUTION_NOT_AUTHORIZED
+STAGE4E_GENERATOR_SELECTION_VERIFIED
+STAGE4E_GENERATOR_QWEN_SELECTED
+STAGE4E_PRE_GOLD_ARTIFACTS_VERIFIED
+STAGE4E_GOLD_EVALUATION_COMPLETED
+STAGE4E_FINAL_VERIFICATION_PASS
+STATIC_HGRAG_E2E_SUPPORTED
 RESERVATION_REQUIRES_PAUSE
 U2_NOT_AUTHORIZED
 SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
@@ -85,7 +90,8 @@ SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
 - Stage4D official Channel A、Channel B、固定 probe、bounded provenance audit 与 final verification 均已完成。8,467 个候选和 68,588 条 OOF 预测通过身份、内容、bootstrap 与独立验证；combined Task-C AUROC 为 `0.64310 [0.55520,0.72974]`，最终为 `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。
 - 现有 Stage4D transaction 不得重复，probe 三工件不得覆盖；该结果不授权 reservation/Stage3B、U2 或新 candidate controller。
 - Stage4D 与当前 controller 线已冻结关闭。Stage4E 是不含 U1/Stage4D model 的静态 Dense-vs-q25 E2E 评价，不得读取 Stage4D labels/probabilities 形成 ranking。
-- Stage4E Level A 已接受；HotpotQA train provenance/通道身份、encoder/generator snapshot、CUDA 环境、config 和 Level B 实现已冻结并通过输入独立验证。仍不允许运行 1,000-query official retrieval/generation/Gold evaluation。
+- Stage4E 已完成：Qwen2.5-1.5B-Instruct 经冻结选择后成为唯一生成器；1,000-query Gold-free main/rerun、pre-Gold verification、Gold evaluation 和 final verification 均通过。Static q25 相对 Dense 的 answer F1 差为 `+0.01478 [0.00020,0.02988]`，冻结决策为 `STATIC_HGRAG_E2E_SUPPORTED`。
+- Stage4E 工件不得覆盖或重跑；该结果限于 HotpotQA same-domain closed distractor，不授权 reservation、Stage3B、U2 或重开 controller。
 
 ## 4. 科研不可变边界
 
@@ -102,6 +108,7 @@ SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
 Gold 不得进入 controller、索引、候选、排序、过滤或阈值选择。Reservation 和 Stage3B 继续锁定。
 
 Stage4E 中，Gold 还不得进入 blind input、embedding、Dense/q25 ranking、prompt、生成、截断或重试。静态 q25 必须保持 all-query 语义，不得借 Stage4E 重新引入 U1、Stage4D feature panel/model 或动态阈值。
+已冻结的 Stage4E rankings、predictions、prompt audits、query audit、evaluation summary、scientific decision 与 final verification 也属于不可覆盖工件。
 
 ## 5. 授权与暂停
 
@@ -109,7 +116,7 @@ Stage4E 中，Gold 还不得进入 blind input、embedding、Dense/q25 ranking�
 
 Channel A/Channel B、Gold-free/Gold-only 的代码、输入、依赖和工件仍须严格隔离；技术隔离不等于审批隔离。当前阶段授权若覆盖两条通道，前一通道及完整性门通过后直接进入后一通道。精确 CLI、参数、环境变量、输出路径和依赖版本属于冻结执行细节，不是独立科学审批对象。
 
-全局治理生效不等于自动扩大任何既有阶段明确排除的科学范围。当前 Stage4E 既有授权明确只覆盖输入绑定与 Level B 实现，因此不追溯扩大为 official 授权；其下一边界是扩大 Stage4E 阶段授权范围，而不是确认某条命令。当前与未来阶段一律按本节判断授权覆盖与暂停边界。
+全局治理生效不等于自动扩大任何既有阶段明确排除的科学范围。Stage4E 已在 2026-07-22 的用户扩展授权下连续完成；该授权不延伸到新的数据集、full-wiki、reservation、Stage3B、U2、subgroup 确认或新 controller。当前与未来阶段一律按本节判断授权覆盖与暂停边界。
 
 阶段内默认自主完成：代码编写/重构、单元/集成/synthetic tests、普通依赖安装与固定、路径/CLI/编码/序列化/环境/运行时修复、已授权 Gold-free 或 Gold evaluator 事务、固定统计/probe、rerun、verifier、schema/SHA/身份/泄漏检查、报告与五个治理入口更新，以及 commit、push 和远端字节验证。普通工程异常按“定位 → 判断是否改变科学语义 → 最小修复 → 必要测试 → 记录 → 继续”处理，不升级为新的科学审核。
 
@@ -136,7 +143,7 @@ Channel A/Channel B、Gold-free/Gold-only 的代码、输入、依赖和工件�
 - 不自行重新运行已完成的 official pre-Gold transaction。
 - 不自行重新运行已完成的 Stage4B-U1-D Gold transaction。
 - 不自行重新运行或覆盖已完成的 Stage4D Channel A、Channel B 和 official probe transaction。
-- 当前 Stage4E 已授权范围只含 source/model/environment identity binding、实现与 synthetic tests；在阶段授权范围扩大前不运行 1,000-query official retrieval/generation/evaluation。
+- 不自行重新运行或覆盖已完成的 Stage4E Gold-free、Gold evaluation 和 final verification transaction。
 
 ## 7. GitHub 与文件
 
@@ -148,4 +155,4 @@ Channel A/Channel B、Gold-free/Gold-only 的代码、输入、依赖和工件�
 
 ## 8. 下一科研门
 
-Stage4B-U1、Stage4C、Stage4D 和当前 controller 线均已停止或关闭，不自动创建 U2。当前唯一科研门是 Stage4E-E2E：固定 Dense 与静态 all-query q25、固定生成器，在 new-ID same-domain 边界上评价答案 F1/EM。Level A 与 Level B 绑定已完成；下一边界是决定是否将 official 事务纳入 Stage4E 阶段授权范围。若一次授权同时覆盖预定义 Gold-free 与 Gold 通道，则在 main/rerun 和 pre-Gold 独立验证通过后连续执行，不再按命令或通道复审。Reservation、Stage3B、再次既有 Gold 执行和任何新 controller 继续锁定。
+Stage4B-U1、Stage4C、Stage4D 和当前 controller 线均已停止或关闭，不自动创建 U2。Stage4E-E2E 也已完成并冻结，支持静态 all-query q25 在当前 HotpotQA same-domain closed distractor 边界上改善 answer F1。下一科研门必须是新定义的科学问题；跨数据集复制、full-wiki 验证、subgroup/机制确认、其他生成器复现或任何新 controller 均需新的轻量实验卡和阶段授权。Reservation、Stage3B、既有 Gold 重跑和 U2 继续锁定。

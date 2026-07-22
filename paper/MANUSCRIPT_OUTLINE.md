@@ -53,11 +53,11 @@ Stage4C 写 query-level composition；Stage4D 写 candidate labels、Task-C AURO
 
 ### 4.4 End-to-end answer quality
 
-当前保留为空，只登记 Stage4E protocol。只有在 verified final artifact 形成后写两臂 F1/EM、paired intervals、retrieval secondary、context cost、decision 与失败/限制。
+报告 Stage4E verified final：Dense/static-q25 answer F1 `0.42150/0.43628`，paired delta `+0.01478 [0.00020,0.02988]`；EM `0.356/0.366`，delta `+0.01000 [-0.00500,0.02500]`；CR@20 `0.737/0.798`。写明 `STATIC_HGRAG_E2E_SUPPORTED`、F1 下界接近 0、subgroup 仅 `CAUTION`，并报告 main/rerun 与 independent verifier。
 
 ## 5. Discussion
 
-- retrieval gain 是否转化为 answer gain；若没有，区分 evidence sufficiency、context ordering、generator utilization 与 noise。
+- retrieval gain 在本次冻结边界上转化为小幅 answer-F1 gain；讨论 evidence sufficiency、context ordering、generator utilization 与 921/1000 query answer-F1 不变的现象。
 - 静态扩展与动态选择的不同难度。
 - 当前 controller 的 displacement harm 与 mixed gain/noise 结构。
 - same-domain closed candidate pool 对外部效度的限制。
@@ -75,15 +75,13 @@ Stage4C 写 query-level composition；Stage4D 写 candidate labels、Task-C AURO
 
 - 当前静态 retrieval 阈值来自早期开发数据；
 - Stage4B-D 共享同一 2Wiki development，不是外部验证；
-- Stage4E proposed boundary 是 HotpotQA same-domain distractor candidate pool，不是 full-wiki；
+- Stage4E boundary 是 HotpotQA same-domain distractor candidate pool，不是 full-wiki；
 - 生成器固定为单一小型模型时，结论不能外推到所有 LLM；
 - `n=1000` 是资源边界，不是正式功效保证。
 - HotpotQA train 只保证对本项目研究流程未读，不能保证对预训练生成器无污染；参数化记忆可能压低或改变 retrieval-arm 差异。
 
-## 待 Stage4E 通过后补齐
+## 下一步论文材料
 
-- exact data/model/environment citation 与 SHA table；
 - Figure：Dense 与 static q25 的 answer F1/EM paired difference；
 - Figure：retrieval CR change 与 answer F1 change 的 query-level joint audit（描述性，不作因果）；
-- Table：绝对指标、区间、context tokens 与 runtime；
-- Appendix：prompt、schema、decision gate、determinism 与 independent verification。
+- 将已冻结的 exact data/model/environment SHA、绝对指标、区间、context tokens、runtime、prompt、schema、decision gate、determinism 与 independent verification 从 Stage4E 报告整理为主文表和附录。

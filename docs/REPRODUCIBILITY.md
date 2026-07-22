@@ -31,7 +31,12 @@ STAGE4E_INPUTS_BOUND
 STAGE4E_LEVEL_B_IMPLEMENTATION_READY
 STAGE4E_SYNTHETIC_TESTS_PASSED
 STAGE4E_INPUT_CHANNELS_VERIFIED
-STAGE4E_OFFICIAL_EXECUTION_NOT_AUTHORIZED
+STAGE4E_GENERATOR_SELECTION_VERIFIED
+STAGE4E_GENERATOR_QWEN_SELECTED
+STAGE4E_PRE_GOLD_ARTIFACTS_VERIFIED
+STAGE4E_GOLD_EVALUATION_COMPLETED
+STAGE4E_FINAL_VERIFICATION_PASS
+STATIC_HGRAG_E2E_SUPPORTED
 RESERVATION_REQUIRES_PAUSE
 U2_NOT_AUTHORIZED
 ```
@@ -42,7 +47,7 @@ Stage4C-U1-FMA 也已完成一次冻结的 post-Gold exploratory diagnosis。它
 
 Stage4D-CMA 已在获授权边界内完成 Gold-free Channel A、development-Gold Channel B、固定 official probe、独立验证和 bounded provenance audit。唯一 advancement panel 未通过全部联合门，冻结结论为 `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。现有工件不得覆盖或重跑；reservation、Stage3B 与 U2 仍未授权。
 
-Stage4D 和当前 controller 分支已按 [STAGE4D_CMA_CLOSURE](STAGE4D_CMA_CLOSURE.md) 冻结关闭。Stage4E-E2E [Level A 协议](STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md) 已接受；source/model/environment/config/verifier 绑定和 Level B implementation 已完成。尚未运行 1,000-query official retrieval/generation/Gold evaluation，也没有 Stage4E 科研结果。
+Stage4D 和当前 controller 分支已按 [STAGE4D_CMA_CLOSURE](STAGE4D_CMA_CLOSURE.md) 冻结关闭。Stage4E-E2E [Level A 协议](STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md) 已完成：生成器选择、1,000-query Gold-free main/rerun、pre-Gold verification、Gold evaluation 与 final verification 均通过。冻结决策为 `STATIC_HGRAG_E2E_SUPPORTED`；现有事务不应覆盖或重跑。
 
 ## 当前授权治理
 
@@ -59,7 +64,7 @@ SCIENTIFIC_INTEGRITY_CONTROLS_RETAINED
 
 这是项目长期、全局的现行治理基线，适用于当前及未来全部科研阶段，不是单次复现事务或 Stage4E 的临时规则。阶段授权默认连续覆盖实验卡中预定义的实现、测试、数据/Channel、正式运行、固定分析、独立验证、确定性复跑、报告和 Git/远端核验。Channel 与 Gold 隔离仍是可复现性和防泄漏合同，但不自动形成重复审批点；本文登记的命令、环境、SHA 和路径用于重建与核验，不是逐命令授权凭证。
 
-普通工程异常自主最小修复并继续。只有新科学问题或阶段、冻结科学语义变化、使用当前授权外的新证据源、或严重完整性异常才暂停。历史审批链与旧命令保留为证据，不构成当前执行规则。全局治理不自动扩大既有阶段明确排除的科学范围；当前 Stage4E 既有授权止于输入绑定和 Level B 实现，因此 official 状态仍为未授权，这不是精确命令门。
+普通工程异常自主最小修复并继续。只有新科学问题或阶段、冻结科学语义变化、使用当前授权外的新证据源、或严重完整性异常才暂停。历史审批链与旧命令保留为证据，不构成当前执行规则。Stage4E 已按扩展后的阶段授权完成；该授权不延伸到新的数据集、full-wiki、reservation、Stage3B、U2 或新 controller。
 
 ## Stage4E 已冻结复现边界
 
@@ -71,11 +76,22 @@ SCIENTIFIC_INTEGRITY_CONTROLS_RETAINED
 | retrieval arms | `DENSE_TOP20` vs 无 controller 的 `STATIC_Q25_TOP20` |
 | encoder | `sentence-transformers/all-MiniLM-L6-v2` revision `1110a243...`；13 个实际文件已绑定 |
 | generator | `Qwen/Qwen2.5-1.5B-Instruct` revision `989aa798...`；7 个实际文件已绑定 |
-| 环境 | CPython 3.12.0；torch 2.12.1+cu130；CUDA 13.0；transformers 5.9.0；RTX 4060 Laptop GPU |
-| primary | paired `delta_answer_f1`，10,000 query bootstrap；未运行 |
-| decision | supported / negative / inconclusive / no-scientific-decision；未判定 |
+| 环境 | CPython 3.12.0；torch 2.12.1+cu130；CUDA 13.0；transformers 5.14.1；safetensors 0.8.0；RTX 4060 Laptop GPU |
+| primary | paired `delta_answer_f1 = +0.014780 [0.000203,0.029883]`；10,000 query bootstrap |
+| secondary | `delta_answer_em = +0.010000 [-0.005000,0.025000]`；CR@20 `0.737→0.798` |
+| decision | `STATIC_HGRAG_E2E_SUPPORTED`；`STAGE4E_FINAL_VERIFICATION_PASS` |
 
-精确绑定见 [official config](../configs/stage4e_e2e_official_train1000_v1.json)、[input manifest](../results/stage4e_e2e_official_train1000_v1_input_manifest.json)、[model manifest](../results/stage4e_e2e_model_snapshot_manifest.json)、[environment manifest](../results/stage4e_e2e_environment_manifest.json) 与 [input verification](../results/stage4e_e2e_official_train1000_v1_verified_input.json)。这些是输入与工程验证，不是 official 科研结果。Stage4D 的环境和命令不自动成为 Stage4E 环境。
+精确绑定见 [official config](../configs/stage4e_e2e_official_train1000_v1.json)、[input manifest](../results/stage4e_e2e_official_train1000_v1_input_manifest.json)、[model manifest](../results/stage4e_e2e_model_snapshot_manifest.json)、[environment manifest](../results/stage4e_e2e_environment_manifest.json) 与 [rebound input verification](../results/stage4e_e2e_official_train1000_v1_verified_input_rebind.json)。正式结果见 [evaluation summary](../results/stage4e_e2e_official_train1000_v1_evaluation_summary.json)、[scientific decision](../results/stage4e_e2e_official_train1000_v1_scientific_decision.json)、[final verification](../results/stage4e_e2e_official_train1000_v1_final_verification.json) 和 [Stage4E 报告](../reports/超粒球RAG_Stage4E_E2E答案质量报告.md)。Stage4D 的环境和命令不自动成为 Stage4E 环境。
+
+关键冻结 SHA-256：
+
+- rankings：`AA6CBAD5D37BD66424DCAC6472FEBA8AC5FBAA769B789D968103AAB7CFDD1455`；
+- predictions main/rerun：`FE9D6716BBB2D83DD3407CB5A042CB9F888912256C478FA501DE9F5457945D58`；
+- prompt audit main/rerun：`130B78B896EDDBF0250E60736B223029163C30BBA6A492C6D4978D57E2556055`；
+- evaluation summary：`BC6D6EF89A47B7314AEA12966894750E5733449ED76241582116451E4BFFF05E`；
+- query audit：`ACDB9D22C14B9D10FEA0867DFFB2B87DBD4D1B4E07FCDBA8277638E3AB638C19`；
+- scientific decision：`9692B1E3B6BC1DFEEF596FBC8C42CB5DC67649D426F85299D7162CEB346B2B9B`；
+- final verification 文件：`310B0A53F54B043BBFDA027FDCA3A18901AAFE890716EC6F5919A31B4229931D`。
 
 ## 运行环境
 
