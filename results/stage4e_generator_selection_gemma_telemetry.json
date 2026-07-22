@@ -1,0 +1,23 @@
+{
+  "cuda_devices": [
+    "cuda:0"
+  ],
+  "failed_calls": 0,
+  "generation_calls": 200,
+  "gpu_peak_memory_bytes": 7930366464,
+  "model": "gemma",
+  "model_id": "google/gemma-4-E2B-it",
+  "output_token_count": 975,
+  "python": "3.12.0",
+  "run_id": "main",
+  "runtime_format": "official_mobile_qat_transformers",
+  "schema_version": "stage4e_generator_selection_v1",
+  "snapshot": {
+    "bytes": 2458111846,
+    "sha256": "EFAB429012B97AB986C4D4838A46FF3AD95D618B42CE514771CA40FADC76A9A4"
+  },
+  "torch": "2.12.1+cu130",
+  "torchvision": "0.27.1+cu130",
+  "transformers": "5.14.1",
+  "wall_time_seconds": 1948.0653591999994
+}

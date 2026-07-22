@@ -1,0 +1,16 @@
+{
+  "artifact_identities": {
+    "scores": {
+      "bytes": 48046,
+      "sha256": "ECA8A96CD29DB7AE0E11A1E11FFDB63667CB5DAB1224218BB5F2FC77B3DD0A79"
+    },
+    "summary": {
+      "bytes": 1404,
+      "sha256": "A03E50E8BA70E2CF47C14A4ABDF019624CB501B049C3A202A6C0A956CA07A4C6"
+    }
+  },
+  "query_count": 200,
+  "schema_version": "stage4e_generator_selection_v1",
+  "selected_model": "qwen",
+  "status": "STAGE4E_GENERATOR_SELECTION_VERIFIED"
+}

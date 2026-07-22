@@ -1,0 +1,200 @@
+{"dataset":"hotpotqa","model":"qwen","prediction":"Crackle","query_id":"hotpotqa::5adef80b5542993a75d263c4","sample_id":"5adef80b5542993a75d263c4"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Salford City F.C.","query_id":"hotpotqa::5ae0aaf455429945ae959401","sample_id":"5ae0aaf455429945ae959401"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Michael Graves","query_id":"hotpotqa::5ab47d765542991751b4d78f","sample_id":"5ab47d765542991751b4d78f"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"American Hustle, Breaking Bad, and Brooklyn Nine-Nine each attained multiple awards at the 71st Golden Globe Awards for television in 201","query_id":"hotpotqa::5a7ed2c655429930675135e5","sample_id":"5a7ed2c655429930675135e5"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Kevin Spacey","query_id":"hotpotqa::5ac3e0f7554299194317388b","sample_id":"5ac3e0f7554299194317388b"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5a7bae20554299294a54aa96","sample_id":"5a7bae20554299294a54aa96"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ab8ee035542991b5579f04b","sample_id":"5ab8ee035542991b5579f04b"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Charles Hastings Judd","query_id":"hotpotqa::5a7a276d5542996c55b2dd27","sample_id":"5a7a276d5542996c55b2dd27"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Pavel Alexandrov","query_id":"hotpotqa::5a717d4c5542994082a3e854","sample_id":"5a717d4c5542994082a3e854"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Gal Gadot","query_id":"hotpotqa::5ac02e31554299294b218f3f","sample_id":"5ac02e31554299294b218f3f"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"J. Edward Snyder","query_id":"hotpotqa::5a79ea435542996c55b2dc9e","sample_id":"5a79ea435542996c55b2dc9e"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Cristela Alonzo","query_id":"hotpotqa::5ab7e4dc5542995dae37e9df","sample_id":"5ab7e4dc5542995dae37e9df"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Manhattan Life Insurance Building","query_id":"hotpotqa::5a834ed95542990548d0b1ca","sample_id":"5a834ed95542990548d0b1ca"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"right-hand","query_id":"hotpotqa::5ab41d855542996a3a969f4b","sample_id":"5ab41d855542996a3a969f4b"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Arthur Conan Doyle","query_id":"hotpotqa::5a7b7ff75542995eb53be93d","sample_id":"5a7b7ff75542995eb53be93d"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Birmingham, Alabama","query_id":"hotpotqa::5a7d19d85542995ed0d165e8","sample_id":"5a7d19d85542995ed0d165e8"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"5","query_id":"hotpotqa::5ae7ed17554299540e5a56a3","sample_id":"5ae7ed17554299540e5a56a3"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ab2659e554299340b5254b2","sample_id":"5ab2659e554299340b5254b2"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Erinsborough","query_id":"hotpotqa::5abd2eab5542992ac4f38210","sample_id":"5abd2eab5542992ac4f38210"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Samoa","query_id":"hotpotqa::5abaf3195542996cc5e49f2c","sample_id":"5abaf3195542996cc5e49f2c"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Ellie Kemper is known for playing the character Kimmy Schmidt in the Netflix original series \"Unbreakable Kimmy Schmidt\".","query_id":"hotpotqa::5a791a97554299148911f9f2","sample_id":"5a791a97554299148911f9f2"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"\"The Young Ones\"","query_id":"hotpotqa::5adf58f15542993a75d264d2","sample_id":"5adf58f15542993a75d264d2"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5adc65e85542996e68525350","sample_id":"5adc65e85542996e68525350"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"19th century","query_id":"hotpotqa::5a87ab9b5542996e4f3088c2","sample_id":"5a87ab9b5542996e4f3088c2"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Awake","query_id":"hotpotqa::5a738fe855429908901be2fb","sample_id":"5a738fe855429908901be2fb"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"French Canadians","query_id":"hotpotqa::5a8c65a1554299585d9e3680","sample_id":"5a8c65a1554299585d9e3680"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ac2bbd0554299218029db09","sample_id":"5ac2bbd0554299218029db09"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5adf3e355542993a75d26440","sample_id":"5adf3e355542993a75d26440"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Rawhide","query_id":"hotpotqa::5ae82ae555429952e35eaa71","sample_id":"5ae82ae555429952e35eaa71"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ac289ff5542996366519a02","sample_id":"5ac289ff5542996366519a02"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"St James's Palace","query_id":"hotpotqa::5a7a5b3a5542996c55b2dd71","sample_id":"5a7a5b3a5542996c55b2dd71"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Starlite","query_id":"hotpotqa::5ab8688b55429934fafe6daa","sample_id":"5ab8688b55429934fafe6daa"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Bank of China Tower (Hong Kong)","query_id":"hotpotqa::5a7a3a945542996a35c17147","sample_id":"5a7a3a945542996a35c17147"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"United States v. Paramount Pictures, Inc.","query_id":"hotpotqa::5ab9b29c554299743d22ebae","sample_id":"5ab9b29c554299743d22ebae"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Bangor","query_id":"hotpotqa::5a8b63fa55429950cd6afcd7","sample_id":"5a8b63fa55429950cd6afcd7"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Arrowhead Stadium","query_id":"hotpotqa::5ade51b45542997c77adedf4","sample_id":"5ade51b45542997c77adedf4"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Cranberries","query_id":"hotpotqa::5ae4c49a5542995dadf24400","sample_id":"5ae4c49a5542995dadf24400"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Compliance","query_id":"hotpotqa::5a7d3470554299452d57bb56","sample_id":"5a7d3470554299452d57bb56"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Logan International Airport","query_id":"hotpotqa::5ae4f2c75542993aec5ec0fb","sample_id":"5ae4f2c75542993aec5ec0fb"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Ehretia has more species than Xanthoceras.","query_id":"hotpotqa::5ab1d7ac554299449642c7e6","sample_id":"5ab1d7ac554299449642c7e6"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Frank Thomas' Big Hurt","query_id":"hotpotqa::5a85cead5542991dd0999ea9","sample_id":"5a85cead5542991dd0999ea9"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Paige O'Hara","query_id":"hotpotqa::5a73a7c755429978a71e9068","sample_id":"5a73a7c755429978a71e9068"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Reggie Jackson","query_id":"hotpotqa::5a7f113d55429934daa2fcbe","sample_id":"5a7f113d55429934daa2fcbe"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Thomas Mawson","query_id":"hotpotqa::5ae6828f5542996d980e7bb9","sample_id":"5ae6828f5542996d980e7bb9"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Indian classical music","query_id":"hotpotqa::5ab31864554299233954ff06","sample_id":"5ab31864554299233954ff06"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Brad Silberling","query_id":"hotpotqa::5abe239355429976d4830a7d","sample_id":"5abe239355429976d4830a7d"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"25","query_id":"hotpotqa::5ac2659b55429963665199a1","sample_id":"5ac2659b55429963665199a1"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ae058e855429945ae959331","sample_id":"5ae058e855429945ae959331"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Henri Bergson","query_id":"hotpotqa::5a7b8749554299294a54a9db","sample_id":"5a7b8749554299294a54a9db"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Taylor Swift","query_id":"hotpotqa::5a864ff7554299211dda2af2","sample_id":"5a864ff7554299211dda2af2"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Istanbul","query_id":"hotpotqa::5ae4d3c95542990ba0bbb165","sample_id":"5ae4d3c95542990ba0bbb165"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ab7f97a5542991d322237ef","sample_id":"5ab7f97a5542991d322237ef"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"ORDOS CITY CHINA SCIENCE FLYING UNIVERSE SCIENCE AND TECHNOLOGY CO., LTD.","query_id":"hotpotqa::5a7b46e55542995eb53be8e5","sample_id":"5a7b46e55542995eb53be8e5"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Alain Resnais","query_id":"hotpotqa::5a879ba55542993e715abfc3","sample_id":"5a879ba55542993e715abfc3"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Spencer Gifts","query_id":"hotpotqa::5ae4563e5542996836b02c7f","sample_id":"5ae4563e5542996836b02c7f"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Berea College","query_id":"hotpotqa::5ab6ff3a5542991d3222372a","sample_id":"5ab6ff3a5542991d3222372a"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"1946","query_id":"hotpotqa::5a7a46605542994f819ef1ad","sample_id":"5a7a46605542994f819ef1ad"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ade7a435542997c77adee3a","sample_id":"5ade7a435542997c77adee3a"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ac1795f5542994ab5c67d5f","sample_id":"5ac1795f5542994ab5c67d5f"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ab1e984554299340b525428","sample_id":"5ab1e984554299340b525428"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"\"Slaughterhouse-Five\"","query_id":"hotpotqa::5a86769c5542994775f60776","sample_id":"5a86769c5542994775f60776"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Leinster","query_id":"hotpotqa::5ab7da6f55429928e1fe3928","sample_id":"5ab7da6f55429928e1fe3928"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Sport & Leisure Swifts F.C.","query_id":"hotpotqa::5ae497f15542995ad6573db8","sample_id":"5ae497f15542995ad6573db8"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Romeo","query_id":"hotpotqa::5ae6f2a7554299572ea5464a","sample_id":"5ae6f2a7554299572ea5464a"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"SKUM","query_id":"hotpotqa::5adea9ea55429939a52fe934","sample_id":"5adea9ea55429939a52fe934"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Anabolic steroid","query_id":"hotpotqa::5a7caae75542996dd594b971","sample_id":"5a7caae75542996dd594b971"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Don S. Davis","query_id":"hotpotqa::5ac01bb8554299012d1db5a6","sample_id":"5ac01bb8554299012d1db5a6"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Ron Kingery","query_id":"hotpotqa::5abc3a65554299700f9d782d","sample_id":"5abc3a65554299700f9d782d"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"3,384,569","query_id":"hotpotqa::5ae3ff575542995dadf242aa","sample_id":"5ae3ff575542995dadf242aa"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Anna Clyne","query_id":"hotpotqa::5a89fb525542993b751ca9d6","sample_id":"5a89fb525542993b751ca9d6"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"USS Essex (CV-9)","query_id":"hotpotqa::5ab3d69255429969a97a81c9","sample_id":"5ab3d69255429969a97a81c9"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ac5199a5542994611c8b38a","sample_id":"5ac5199a5542994611c8b38a"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Catwoman (film)","query_id":"hotpotqa::5ae048a255429924de1b708e","sample_id":"5ae048a255429924de1b708e"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5a9068a95542990a98493621","sample_id":"5a9068a95542990a98493621"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Laura Osnes","query_id":"hotpotqa::5adf9dc3554299025d62a2e6","sample_id":"5adf9dc3554299025d62a2e6"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"25","query_id":"hotpotqa::5ae406245542995dadf242e2","sample_id":"5ae406245542995dadf242e2"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ab6369655429953192ad2a1","sample_id":"5ab6369655429953192ad2a1"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ae628f55542995703ce8b32","sample_id":"5ae628f55542995703ce8b32"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Waimea Bay, Hawaii","query_id":"hotpotqa::5adccdd55542992c1e3a2408","sample_id":"5adccdd55542992c1e3a2408"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5abd1529554299114383a1e3","sample_id":"5abd1529554299114383a1e3"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"James Franco","query_id":"hotpotqa::5a78db8055429970f5fffdb2","sample_id":"5a78db8055429970f5fffdb2"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Humphrey Goodman","query_id":"hotpotqa::5ab9debb55429955dce3ed97","sample_id":"5ab9debb55429955dce3ed97"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"March","query_id":"hotpotqa::5ae791ef55429952e35ea979","sample_id":"5ae791ef55429952e35ea979"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Oz the Great and Powerful","query_id":"hotpotqa::5ab8f7535542991b5579f0a7","sample_id":"5ab8f7535542991b5579f0a7"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Calgary","query_id":"hotpotqa::5ac119335542992a796dede4","sample_id":"5ac119335542992a796dede4"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5a7d2afd5542995f4f402221","sample_id":"5a7d2afd5542995f4f402221"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"paracycling","query_id":"hotpotqa::5a8dd5f955429917b4a5bcc7","sample_id":"5a8dd5f955429917b4a5bcc7"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Peterhouse, Cambridge","query_id":"hotpotqa::5a83a532554299334474606f","sample_id":"5a83a532554299334474606f"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Suicide Kings","query_id":"hotpotqa::5a90692f5542990a98493625","sample_id":"5a90692f5542990a98493625"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Hey Pa! There's a Goat on the Roof","query_id":"hotpotqa::5a7555215542996c70cfaee1","sample_id":"5a7555215542996c70cfaee1"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"13–3","query_id":"hotpotqa::5a90580655429933b8a204ef","sample_id":"5a90580655429933b8a204ef"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5a88e605554299206df2b39c","sample_id":"5a88e605554299206df2b39c"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"The Crowned Prince of the Philadelphia Mob","query_id":"hotpotqa::5add67915542992200553af8","sample_id":"5add67915542992200553af8"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Supervisor of the royal works","query_id":"hotpotqa::5a8463545542990548d0b2a3","sample_id":"5a8463545542990548d0b2a3"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Janet Jackson","query_id":"hotpotqa::5a74684655429929fddd8410","sample_id":"5a74684655429929fddd8410"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Continental Army","query_id":"hotpotqa::5a835c9f5542992ef85e228a","sample_id":"5a835c9f5542992ef85e228a"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Canary Islands","query_id":"hotpotqa::5ae7edee554299540e5a56ad","sample_id":"5ae7edee554299540e5a56ad"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"The Treaty of Gandamak officially ended the first phase of the Second Anglo-Afghan War.","query_id":"hotpotqa::5a8ee4315542990e94052ba7","sample_id":"5a8ee4315542990e94052ba7"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"California","query_id":"hotpotqa::5a8cb288554299585d9e3726","sample_id":"5a8cb288554299585d9e3726"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5adfbca255429942ec259b2c","sample_id":"5adfbca255429942ec259b2c"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Bury St Edmunds, Suffolk, England","query_id":"hotpotqa::5ae24abc5542994d89d5b3c3","sample_id":"5ae24abc5542994d89d5b3c3"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ab802085542990e739ec7ca","sample_id":"5ab802085542990e739ec7ca"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5adfa3da554299025d62a317","sample_id":"5adfa3da554299025d62a317"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"The Soloist","query_id":"hotpotqa::5a76e88555429972597f13f4","sample_id":"5a76e88555429972597f13f4"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ac3ae475542995ef918c1e5","sample_id":"5ac3ae475542995ef918c1e5"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5abffc41554299012d1db551","sample_id":"5abffc41554299012d1db551"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Almonte, Ontario","query_id":"hotpotqa::5ae4c39f5542995dadf243fb","sample_id":"5ae4c39f5542995dadf243fb"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Sir George Cayley","query_id":"hotpotqa::5a79c6a55542994bb9457091","sample_id":"5a79c6a55542994bb9457091"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Leonberger","query_id":"hotpotqa::5a7be5bd5542997c3ec972ba","sample_id":"5a7be5bd5542997c3ec972ba"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5a7ec61a55429934daa2fc5f","sample_id":"5a7ec61a55429934daa2fc5f"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5a7cb9b95542990527d55515","sample_id":"5a7cb9b95542990527d55515"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5a867089554299211dda2b30","sample_id":"5a867089554299211dda2b30"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ae1801955429901ffe4aec4","sample_id":"5ae1801955429901ffe4aec4"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Am Rong","query_id":"hotpotqa::5a76387d554299109176e6ba","sample_id":"5a76387d554299109176e6ba"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"42","query_id":"hotpotqa::5abd0d635542992ac4f381b8","sample_id":"5abd0d635542992ac4f381b8"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ae68fcb5542992ae0d1635b","sample_id":"5ae68fcb5542992ae0d1635b"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Northumbrian dialect","query_id":"hotpotqa::5ab28b12554299449642c8ee","sample_id":"5ab28b12554299449642c8ee"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Oldham County","query_id":"hotpotqa::5a7133565542994082a3e65c","sample_id":"5a7133565542994082a3e65c"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5abbd3ac55429931dba1458b","sample_id":"5abbd3ac55429931dba1458b"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Una Healy and Rachel Stevens","query_id":"hotpotqa::5a85ab905542994c784ddb35","sample_id":"5a85ab905542994c784ddb35"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5a8d93ad554299653c1aa13d","sample_id":"5a8d93ad554299653c1aa13d"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"FIFA Women's World Cup","query_id":"hotpotqa::5a886886554299206df2b258","sample_id":"5a886886554299206df2b258"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"1987","query_id":"hotpotqa::5a7c6bcc55429935c91b519c","sample_id":"5a7c6bcc55429935c91b519c"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Chicago","query_id":"hotpotqa::5a825bb455429940e5e1a874","sample_id":"5a825bb455429940e5e1a874"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Oedipus Rex","query_id":"hotpotqa::5a72a0be5542992359bc3143","sample_id":"5a72a0be5542992359bc3143"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"mother","query_id":"hotpotqa::5ade15f35542997545bbbe47","sample_id":"5ade15f35542997545bbbe47"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Kang and Kodos","query_id":"hotpotqa::5a77cb5e55429967ab1052a7","sample_id":"5a77cb5e55429967ab1052a7"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"The College Dropout","query_id":"hotpotqa::5a83aaeb5542996488c2e483","sample_id":"5a83aaeb5542996488c2e483"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ac4392e5542997ea680ca32","sample_id":"5ac4392e5542997ea680ca32"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Spring city","query_id":"hotpotqa::5a7f5c9f55429969796c1a0f","sample_id":"5a7f5c9f55429969796c1a0f"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Philadelphia","query_id":"hotpotqa::5a8b770f5542995d1e6f13a7","sample_id":"5a8b770f5542995d1e6f13a7"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"minor basilica","query_id":"hotpotqa::5ae3dc205542992f92d823a1","sample_id":"5ae3dc205542992f92d823a1"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"90,000","query_id":"hotpotqa::5a7cf29255429909bec768b8","sample_id":"5a7cf29255429909bec768b8"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Aqua","query_id":"hotpotqa::5a79f6ca554299029c4b5f90","sample_id":"5a79f6ca554299029c4b5f90"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Selle v. Gibb","query_id":"hotpotqa::5a8e3dc05542995085b37401","sample_id":"5a8e3dc05542995085b37401"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"The Good Wife","query_id":"hotpotqa::5ade24e35542992fa25da6e6","sample_id":"5ade24e35542992fa25da6e6"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Pakistan","query_id":"hotpotqa::5ab5f854554299637185c64e","sample_id":"5ab5f854554299637185c64e"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"The Four Seasons","query_id":"hotpotqa::5ab5b6c1554299637185c5e5","sample_id":"5ab5b6c1554299637185c5e5"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ae25ed15542992decbdccd2","sample_id":"5ae25ed15542992decbdccd2"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ab808ea5542991d3222380e","sample_id":"5ab808ea5542991d3222380e"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Maroon 5","query_id":"hotpotqa::5ae5072e55429960a22e0246","sample_id":"5ae5072e55429960a22e0246"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Happy Death Day","query_id":"hotpotqa::5ac01bca5542992a796dec8d","sample_id":"5ac01bca5542992a796dec8d"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5adf34d35542993a75d26425","sample_id":"5adf34d35542993a75d26425"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Battle of Belleau Wood","query_id":"hotpotqa::5add67555542992ae4cec54e","sample_id":"5add67555542992ae4cec54e"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Royal Australian Navy (RAN)","query_id":"hotpotqa::5a8085705542992bc0c4a74b","sample_id":"5a8085705542992bc0c4a74b"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5a756fa15542996c70cfaefb","sample_id":"5a756fa15542996c70cfaefb"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"West Point Iron and Cannon Foundry","query_id":"hotpotqa::5a7f6eab5542992097ad2f66","sample_id":"5a7f6eab5542992097ad2f66"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Jack Ryan (character)","query_id":"hotpotqa::5ae5e1345542996de7b71a50","sample_id":"5ae5e1345542996de7b71a50"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Tomato","query_id":"hotpotqa::5a72c6f65542994cef4bc402","sample_id":"5a72c6f65542994cef4bc402"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"2009","query_id":"hotpotqa::5a80ad7c5542992097ad3018","sample_id":"5a80ad7c5542992097ad3018"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"February 17, 2017","query_id":"hotpotqa::5a77a65b5542992a6e59df57","sample_id":"5a77a65b5542992a6e59df57"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5a78b209554299148911f93e","sample_id":"5a78b209554299148911f93e"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ab85a1155429934fafe6d7c","sample_id":"5ab85a1155429934fafe6d7c"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Impresario","query_id":"hotpotqa::5a8da81e554299068b959d7e","sample_id":"5a8da81e554299068b959d7e"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ab8f57b5542991b5579f097","sample_id":"5ab8f57b5542991b5579f097"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ab6bf6d55429953192ad372","sample_id":"5ab6bf6d55429953192ad372"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Worcester County","query_id":"hotpotqa::5ae7385d5542992ae0d163da","sample_id":"5ae7385d5542992ae0d163da"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"J. G. Farrell","query_id":"hotpotqa::5a7dd9445542997cc2c474ac","sample_id":"5a7dd9445542997cc2c474ac"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"New York City","query_id":"hotpotqa::5ab446d455429942dd415f07","sample_id":"5ab446d455429942dd415f07"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Dallas Austin and Tionne \"T-Boz\" Watkins","query_id":"hotpotqa::5ac497025542997ea680ca8d","sample_id":"5ac497025542997ea680ca8d"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Buckingham Palace","query_id":"hotpotqa::5a7b7bed5542997c3ec971bc","sample_id":"5a7b7bed5542997c3ec971bc"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Scott Sandelin grew up in a town in Saint Louis County, Minnesota.","query_id":"hotpotqa::5a89706055429951533612f9","sample_id":"5a89706055429951533612f9"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Phil Collins","query_id":"hotpotqa::5ac02edb554299294b218f41","sample_id":"5ac02edb554299294b218f41"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Video game","query_id":"hotpotqa::5ab67772554299110f219a12","sample_id":"5ab67772554299110f219a12"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Cambridge University","query_id":"hotpotqa::5a7b65ab5542997c3ec97144","sample_id":"5a7b65ab5542997c3ec97144"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Love Streams","query_id":"hotpotqa::5a760faa5542994ccc9186a8","sample_id":"5a760faa5542994ccc9186a8"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Lowe's","query_id":"hotpotqa::5adbe1a7554299438c868cc3","sample_id":"5adbe1a7554299438c868cc3"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Runner-up","query_id":"hotpotqa::5a80aeff5542996402f6a5eb","sample_id":"5a80aeff5542996402f6a5eb"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"1987","query_id":"hotpotqa::5ae74890554299572ea547af","sample_id":"5ae74890554299572ea547af"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"James Packer","query_id":"hotpotqa::5ac3d9c9554299204fd21ea3","sample_id":"5ac3d9c9554299204fd21ea3"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Documentary","query_id":"hotpotqa::5abc8620554299700f9d78e2","sample_id":"5abc8620554299700f9d78e2"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"England","query_id":"hotpotqa::5a7b4bc35542992d025e67e0","sample_id":"5a7b4bc35542992d025e67e0"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Changmin","query_id":"hotpotqa::5a85dfcc5542994775f60673","sample_id":"5a85dfcc5542994775f60673"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Hot toddy","query_id":"hotpotqa::5a7b76735542997c3ec9719f","sample_id":"5a7b76735542997c3ec9719f"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"2017","query_id":"hotpotqa::5a8c66db554299585d9e3683","sample_id":"5a8c66db554299585d9e3683"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"The Late Late Show","query_id":"hotpotqa::5a7e05ba5542995f4f402392","sample_id":"5a7e05ba5542995f4f402392"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Equix","query_id":"hotpotqa::5a88a4245542997e5c09a668","sample_id":"5a88a4245542997e5c09a668"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Scandinavian design","query_id":"hotpotqa::5a8799c55542996e4f308877","sample_id":"5a8799c55542996e4f308877"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"The Hunger Games: Mockingjay – Part 1","query_id":"hotpotqa::5ac038db554299294b218f57","sample_id":"5ac038db554299294b218f57"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5a764c0b55429976ec32bd89","sample_id":"5a764c0b55429976ec32bd89"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"José Echegaray y Eizaguirre","query_id":"hotpotqa::5a77309d55429972597f1487","sample_id":"5a77309d55429972597f1487"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Knowsley United Women","query_id":"hotpotqa::5ab7bae95542993667793ff4","sample_id":"5ab7bae95542993667793ff4"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Atomic Kitten","query_id":"hotpotqa::5a7c9f325542990527d554e6","sample_id":"5a7c9f325542990527d554e6"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Cold Spring Historic District","query_id":"hotpotqa::5a8f69b55542997ba9cb324f","sample_id":"5a8f69b55542997ba9cb324f"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Philip K. Dick","query_id":"hotpotqa::5adbda2755429944faac2385","sample_id":"5adbda2755429944faac2385"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Los Angeles Rams","query_id":"hotpotqa::5ab67bd355429954757d32f2","sample_id":"5ab67bd355429954757d32f2"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"1961","query_id":"hotpotqa::5a90843c5542995651fb517e","sample_id":"5a90843c5542995651fb517e"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Copenhagen","query_id":"hotpotqa::5a8324815542990548d0b184","sample_id":"5a8324815542990548d0b184"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5adf4a275542993a75d26498","sample_id":"5adf4a275542993a75d26498"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Soha Ali Khan","query_id":"hotpotqa::5ae4c5595542990ba0bbb123","sample_id":"5ae4c5595542990ba0bbb123"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"horror","query_id":"hotpotqa::5ab5057b5542991779162d56","sample_id":"5ab5057b5542991779162d56"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Alyson Stoner","query_id":"hotpotqa::5a837d9a554299123d8c213e","sample_id":"5a837d9a554299123d8c213e"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Rings (2017 film)","query_id":"hotpotqa::5a81ebee554299676cceb16d","sample_id":"5a81ebee554299676cceb16d"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"UNKNOWN","query_id":"hotpotqa::5ab48c325542996a3a969f93","sample_id":"5ab48c325542996a3a969f93"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"John Whiting","query_id":"hotpotqa::5a8488f45542992a431d1a47","sample_id":"5a8488f45542992a431d1a47"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"The 1974 French Open","query_id":"hotpotqa::5abe689a55429976d4830b16","sample_id":"5abe689a55429976d4830b16"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"German battleship Bismarck","query_id":"hotpotqa::5a7a014a5542996c55b2dccf","sample_id":"5a7a014a5542996c55b2dccf"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Manchester United","query_id":"hotpotqa::5a895d305542993b751ca931","sample_id":"5a895d305542993b751ca931"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Ubisoft","query_id":"hotpotqa::5a85c3a15542992a431d1b97","sample_id":"5a85c3a15542992a431d1b97"}
+{"dataset":"hotpotqa","model":"qwen","prediction":"Cook Group Incorporated","query_id":"hotpotqa::5ae32b6755429928c4239644","sample_id":"5ae32b6755429928c4239644"}

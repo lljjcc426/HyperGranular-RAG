@@ -1,0 +1,47 @@
+{
+  "bootstrap": {
+    "answer_em_gemma_minus_qwen": {
+      "lower_95": -0.15,
+      "point": -0.075,
+      "upper_95": 0.0
+    },
+    "answer_f1_gemma_minus_qwen": {
+      "lower_95": -0.1805365666853039,
+      "point": -0.10521428720469642,
+      "upper_95": -0.02815313448806096
+    },
+    "iterations": 10000,
+    "seed": 20260722
+  },
+  "decision": {
+    "reason": "PRIMARY_F1_DIFFERENCE_AT_LEAST_0_010",
+    "selected_model": "qwen"
+  },
+  "models": {
+    "gemma": {
+      "answer_em": 0.245,
+      "answer_f1": 0.33569827245786327,
+      "main_rerun_audit_byte_identical": true,
+      "main_rerun_prediction_byte_identical": true,
+      "peak_gpu_memory_bytes": 7930366464,
+      "runtime_format": "official_mobile_qat_transformers",
+      "wall_time_seconds_mean": 1782.2815450999994
+    },
+    "qwen": {
+      "answer_em": 0.32,
+      "answer_f1": 0.44091255966255966,
+      "main_rerun_audit_byte_identical": true,
+      "main_rerun_prediction_byte_identical": true,
+      "peak_gpu_memory_bytes": 5264665600,
+      "runtime_format": "cuda_fp16",
+      "wall_time_seconds_mean": 170.92459080000026
+    }
+  },
+  "query_count": 200,
+  "schema_version": "stage4e_generator_selection_v1",
+  "source": {
+    "bytes": 1699596,
+    "sha256": "0818FCB2E130C3BCC207912F59F9ACE14B534321AD93686378E6923FF7405AC5"
+  },
+  "status": "STAGE4E_GENERATOR_SELECTION_COMPLETE_PENDING_INDEPENDENT_VERIFICATION"
+}
