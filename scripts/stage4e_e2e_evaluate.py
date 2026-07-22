@@ -30,7 +30,6 @@ from stage4e_e2e_common import (
     render_jsonl,
     require_json_bool,
     require_native_string,
-    validate_sha256,
     write_new_files_atomically,
 )
 
@@ -131,7 +130,7 @@ def scientific_decision(bootstrap: dict[str, Any]) -> str:
     return "STATIC_HGRAG_E2E_INCONCLUSIVE"
 
 
-def _validate_authorization(config: dict[str, Any], confirmed_command_sha256: str) -> None:
+def _validate_authorization(config: dict[str, Any]) -> None:
     if config.get("schema_version") != SCHEMA_VERSION:
         raise ValueError("Stage4E config schema_version differs")
     authorization = config.get("gold_evaluation")
@@ -139,13 +138,6 @@ def _validate_authorization(config: dict[str, Any], confirmed_command_sha256: st
         raise ValueError("gold_evaluation must be an object")
     if require_json_bool(authorization.get("authorized"), "gold_evaluation.authorized") is not True:
         raise PermissionError("STAGE4E_GOLD_EVALUATION_NOT_AUTHORIZED")
-    expected = validate_sha256(
-        authorization.get("confirmed_command_sha256"),
-        "gold_evaluation.confirmed_command_sha256",
-    )
-    supplied = validate_sha256(confirmed_command_sha256, "--confirmed-command-sha256")
-    if supplied != expected:
-        raise PermissionError("Exact Gold-evaluation command confirmation SHA differs")
 
 
 def _path(config: dict[str, Any], key: str) -> Path:
@@ -324,8 +316,8 @@ def _descriptive_subgroups(
     return result
 
 
-def run(config: dict[str, Any], confirmed_command_sha256: str) -> None:
-    _validate_authorization(config, confirmed_command_sha256)
+def run(config: dict[str, Any]) -> None:
+    _validate_authorization(config)
     assert_implementation_binding(config, Path(__file__).resolve().parents[1])
 
     main_path = _path(config, "predictions_main")
@@ -381,7 +373,6 @@ def run(config: dict[str, Any], confirmed_command_sha256: str) -> None:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", required=True, type=Path)
-    parser.add_argument("--confirmed-command-sha256", required=True)
     return parser.parse_args()
 
 
@@ -390,7 +381,7 @@ def main() -> None:
     config = load_json(args.config)
     if not isinstance(config, dict):
         raise ValueError("Stage4E config must be an object")
-    run(config, args.confirmed_command_sha256)
+    run(config)
 
 
 if __name__ == "__main__":

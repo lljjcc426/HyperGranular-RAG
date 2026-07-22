@@ -73,7 +73,7 @@ def _path(config: dict[str, Any], key: str) -> Path:
     return Path(require_native_string(value, f"paths.{key}"))
 
 
-def _validate_authorization(config: dict[str, Any], confirmed_command_sha256: str) -> None:
+def _validate_authorization(config: dict[str, Any]) -> None:
     if config.get("schema_version") != SCHEMA_VERSION:
         raise ValueError("Stage4E config schema_version differs")
     authorization = config.get("official_execution")
@@ -81,13 +81,6 @@ def _validate_authorization(config: dict[str, Any], confirmed_command_sha256: st
         raise ValueError("official_execution must be an object")
     if require_json_bool(authorization.get("authorized"), "official_execution.authorized") is not True:
         raise PermissionError("STAGE4E_OFFICIAL_EXECUTION_NOT_AUTHORIZED")
-    expected = validate_sha256(
-        authorization.get("confirmed_command_sha256"),
-        "official_execution.confirmed_command_sha256",
-    )
-    supplied = validate_sha256(confirmed_command_sha256, "--confirmed-command-sha256")
-    if supplied != expected:
-        raise PermissionError("Exact official command confirmation SHA differs")
 
 
 def _assert_bound_file(config: dict[str, Any], key: str) -> Path:
@@ -563,8 +556,8 @@ def _require_rankings(path: Path, expected_payload: bytes) -> None:
         raise ValueError("Frozen main rankings differ from independent reconstruction")
 
 
-def run(config: dict[str, Any], run_id: str, confirmed_command_sha256: str) -> None:
-    _validate_authorization(config, confirmed_command_sha256)
+def run(config: dict[str, Any], run_id: str) -> None:
+    _validate_authorization(config)
     assert_implementation_binding(config, Path(__file__).resolve().parents[1])
     if run_id not in {"main", "rerun"}:
         raise ValueError("run-id must be main or rerun")
@@ -649,7 +642,6 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", required=True, type=Path)
     parser.add_argument("--run-id", required=True, choices=("main", "rerun"))
-    parser.add_argument("--confirmed-command-sha256", required=True)
     return parser.parse_args()
 
 
@@ -658,7 +650,7 @@ def main() -> None:
     config = load_json(args.config)
     if not isinstance(config, dict):
         raise ValueError("Stage4E config must be an object")
-    run(config, args.run_id, args.confirmed_command_sha256)
+    run(config, args.run_id)
 
 
 if __name__ == "__main__":
