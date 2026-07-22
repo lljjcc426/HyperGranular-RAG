@@ -1,0 +1,89 @@
+{
+  "bootstrap": {
+    "delta_answer_em": {
+      "lower_95": -0.005,
+      "point": 0.01,
+      "upper_95": 0.025
+    },
+    "delta_answer_f1": {
+      "lower_95": 0.0002025386860936729,
+      "point": 0.014779758952329285,
+      "upper_95": 0.029882683915792907
+    },
+    "iterations": 10000,
+    "numpy_generator": "PCG64",
+    "percentile_method": "linear",
+    "seed": 20260720
+  },
+  "descriptive_subgroups": [
+    {
+      "caution": "SUBGROUP_CAUTION",
+      "dense_answer_f1": 0.4546571308997114,
+      "dimension": "type",
+      "queries": 783,
+      "static_q25_answer_f1": 0.4753303261660022,
+      "value": "bridge"
+    },
+    {
+      "caution": "SUBGROUP_CAUTION",
+      "dense_answer_f1": 0.3018496645970216,
+      "dimension": "type",
+      "queries": 217,
+      "static_q25_answer_f1": 0.2953641671722453,
+      "value": "comparison"
+    },
+    {
+      "caution": "SUBGROUP_CAUTION",
+      "dense_answer_f1": 0.5011190106713533,
+      "dimension": "level",
+      "queries": 209,
+      "static_q25_answer_f1": 0.5402281471489109,
+      "value": "easy"
+    },
+    {
+      "caution": "SUBGROUP_CAUTION",
+      "dense_answer_f1": 0.4015321403402799,
+      "dimension": "level",
+      "queries": 172,
+      "static_q25_answer_f1": 0.4096258164999615,
+      "value": "hard"
+    },
+    {
+      "caution": "SUBGROUP_CAUTION",
+      "dense_answer_f1": 0.40016237373697366,
+      "dimension": "level",
+      "queries": 619,
+      "static_q25_answer_f1": 0.4085853739454624,
+      "value": "medium"
+    }
+  ],
+  "insertion_effect_queries": {
+    "gain": 70,
+    "harm": 9,
+    "same": 921
+  },
+  "methods": {
+    "DENSE_TOP20": {
+      "answer_em": 0.356,
+      "answer_f1": 0.42149791071202763,
+      "retrieval_cr20": 0.737,
+      "retrieval_er20": 0.8785999999999999,
+      "unknown": 0.354
+    },
+    "STATIC_Q25_TOP20": {
+      "answer_em": 0.366,
+      "answer_f1": 0.43627766966435694,
+      "retrieval_cr20": 0.798,
+      "retrieval_er20": 0.9081833333333332,
+      "unknown": 0.331
+    }
+  },
+  "official_answer_evaluator": {
+    "commit": "3635853403a8735609ee997664e1528f4480762a",
+    "sha256": "D35FC91A6DB21D791DBDDA11DAF3856E9359F5701D54E3EEFBA20D88FECC02C0",
+    "source": "https://github.com/hotpotqa/hotpot/blob/3635853403a8735609ee997664e1528f4480762a/hotpot_evaluate_v1.py"
+  },
+  "queries": 1000,
+  "schema_version": "stage4e_e2e_v1",
+  "status": "STAGE4E_GOLD_EVALUATION_COMPLETE_PENDING_INDEPENDENT_VERIFICATION"
+}

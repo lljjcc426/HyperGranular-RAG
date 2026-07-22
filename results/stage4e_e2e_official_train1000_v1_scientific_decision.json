@@ -1,0 +1,12 @@
+{
+  "decision": "STATIC_HGRAG_E2E_SUPPORTED",
+  "gates": {
+    "em_interval_lower_minimum": -0.01,
+    "f1_interval_lower_strictly_positive": true,
+    "minimum_delta_answer_f1": 0.01,
+    "negative_em_interval_upper_below": -0.01,
+    "negative_f1_interval_upper_below": 0.0
+  },
+  "schema_version": "stage4e_e2e_v1",
+  "status": "STAGE4E_SCIENTIFIC_DECISION_PENDING_INDEPENDENT_VERIFICATION"
+}

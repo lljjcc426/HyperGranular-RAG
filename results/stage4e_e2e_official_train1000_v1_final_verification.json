@@ -1,0 +1,40 @@
+{
+  "artifacts": {
+    "evaluation_summary": {
+      "bytes": 2444,
+      "sha256": "BC6D6EF89A47B7314AEA12966894750E5733449ED76241582116451E4BFFF05E"
+    },
+    "predictions_main": {
+      "bytes": 419866,
+      "sha256": "FE9D6716BBB2D83DD3407CB5A042CB9F888912256C478FA501DE9F5457945D58"
+    },
+    "predictions_rerun": {
+      "bytes": 419866,
+      "sha256": "FE9D6716BBB2D83DD3407CB5A042CB9F888912256C478FA501DE9F5457945D58"
+    },
+    "prompt_audit_main": {
+      "bytes": 3337447,
+      "sha256": "130B78B896EDDBF0250E60736B223029163C30BBA6A492C6D4978D57E2556055"
+    },
+    "prompt_audit_rerun": {
+      "bytes": 3337447,
+      "sha256": "130B78B896EDDBF0250E60736B223029163C30BBA6A492C6D4978D57E2556055"
+    },
+    "query_audit": {
+      "bytes": 417568,
+      "sha256": "ACDB9D22C14B9D10FEA0867DFFB2B87DBD4D1B4E07FCDBA8277638E3AB638C19"
+    },
+    "rankings": {
+      "bytes": 3036774,
+      "sha256": "AA6CBAD5D37BD66424DCAC6472FEBA8AC5FBAA769B789D968103AAB7CFDD1455"
+    },
+    "scientific_decision": {
+      "bytes": 396,
+      "sha256": "9692B1E3B6BC1DFEEF596FBC8C42CB5DC67649D426F85299D7162CEB346B2B9B"
+    }
+  },
+  "decision": "STATIC_HGRAG_E2E_SUPPORTED",
+  "queries": 1000,
+  "schema_version": "stage4e_e2e_v1",
+  "status": "STAGE4E_FINAL_VERIFICATION_PASS"
+}
