@@ -1,0 +1,113 @@
+{
+  "evaluation": {
+    "bootstrap_iterations": 10000,
+    "bootstrap_seed": 20260723,
+    "decision_gates": {
+      "em_interval_lower_minimum": -0.01,
+      "minimum_delta_answer_f1": 0.01,
+      "negative_em_interval_upper_below": -0.01,
+      "negative_f1_interval_upper_below": 0.0,
+      "supported_f1_interval_lower_strictly_positive": true
+    },
+    "official_answer_evaluator": {
+      "answer_metric_bytes": 2837,
+      "answer_metric_sha256": "10368F619B4D5EF5D83748C05A96C0AFD332A14AB5C010740C98D58DFAEFE974",
+      "commit": "922ac98f19a201998dbdae6d7f2887a5258dbdeb",
+      "evaluator_bytes": 4257,
+      "evaluator_sha256": "F5FE66AE61DBEA5172CBA9D428D9924A5811F3457EDC945FC1D81369C30E74B7",
+      "source": "https://github.com/StonyBrookNLP/musique/blob/922ac98f19a201998dbdae6d7f2887a5258dbdeb/evaluate_v1.0.py"
+    },
+    "primary_endpoint": "delta_answer_f1",
+    "supportive_guard": "delta_answer_em"
+  },
+  "generation": {
+    "batch_size": 1,
+    "do_sample": false,
+    "dtype": "float16",
+    "input_token_cap": 4096,
+    "max_new_tokens": 32,
+    "num_beams": 1,
+    "postprocess": "strip leading and trailing whitespace only",
+    "system_message": "Answer the question using only the provided evidence. Return only the shortest final answer. If the evidence is insufficient, return UNKNOWN.",
+    "use_cache": true
+  },
+  "gold_evaluation": {"authorized": false},
+  "historical_inputs": [
+    {"bytes": 2826022, "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\musique_ans_dev_sample200_unified.json", "sha256": "BBA41D7258D045FE66F6B0AA23BBE54D9FDE2EE940EE44389461D9265392E9B1"},
+    {"bytes": 2941869, "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage2f_musique_unseen200_unified.json", "sha256": "728252CED21B4B117DB6091B6C0A131746A0270E58CA5FCE2780702049894BE0"},
+    {"bytes": 2938875, "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage2g_musique_unseen200_unified.json", "sha256": "33B37EED295E5A6B5260C6041AFD970C698CA5AC300853DB5FB5564392458F70"},
+    {"bytes": 6029681, "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage3a_musique_dev400_unified.json", "sha256": "C24C1C57BA66FA4F21F4ED7AE0D9929FC7D7D76F4A548543B907970BB8719426"}
+  ],
+  "implementation": {"code_commit": "PENDING_LEVEL_B_BINDING", "files": {}},
+  "input_binding": {"authorized": true},
+  "inputs": {
+    "blind": {"bytes": 90210161, "sha256": "C8D73F6F8E0B9CA0BEAFD84DC05C43438400966998B5C2C3510E0EB47D1EC4C5"},
+    "environment_manifest": {"bytes": 1730, "sha256": "23B9A57FF067DF4101C17F1DFCB5F63BEAB7AE7481693B34D3A2C408373B100F"},
+    "gold": {"bytes": 2194235, "sha256": "E53E3AF330D1D498A8B23CF06BA0AB9DA8452FC7BF4CB565C6ED749B28C60B2D"},
+    "input_manifest": {"bytes": 1459, "sha256": "9835F2EB8C59EB226319E24CF1018C147800C326A51C8C20723A6375F80DE958"},
+    "metadata": {"bytes": 817266, "sha256": "8CBA7F1C94D10BB3582BDBBACE441CCECCB23D2EF28A983FB376F2017D0ECAA3"},
+    "model_manifest": {"bytes": 4797, "sha256": "C90488946DF99AF62583447E155B26660F87BF26E2EC55D5FA09AD6A6EBAAF95"},
+    "requirements": {"bytes": 924, "sha256": "18EE7422569D9701C9BE87009626C5826D37B429B77D66EA5371DAEA368F6B50"},
+    "source": {"bytes": 241046755, "sha256": "83A75B1E11E4E9BB8F8308E72AC40CA617AE4431B3A0D955B61CAB259248490A"},
+    "source_zip": {"bytes": 272049578, "sha256": "98F839BF2FD5319F5C688AED77901A6D5C30B3B9F9F691AB9A8ECAFB045EE0CD"}
+  },
+  "locks": {"reservation": "LOCKED", "stage3b": "LOCKED", "u2": "NOT_AUTHORIZED"},
+  "official_execution": {"authorized": false},
+  "paths": {
+    "blind": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4f_xdr_musique_train3000_v1_blind_queries.jsonl",
+    "descriptive_subgroups": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_descriptive_subgroups.json",
+    "embedding_cache": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4f_xdr_musique_train3000_v1_embeddings.npz",
+    "encoder_snapshot": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--sentence-transformers--all-MiniLM-L6-v2\\snapshots\\1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "environment_manifest": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_environment_manifest.json",
+    "evaluation_summary": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_evaluation_summary.json",
+    "final_verification": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_final_verification.json",
+    "generator_snapshot": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--Qwen--Qwen2.5-1.5B-Instruct\\snapshots\\989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "gold": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4f_xdr_musique_train3000_v1_gold_targets.jsonl",
+    "input_manifest": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_input_manifest.json",
+    "metadata": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4f_xdr_musique_train3000_v1_sealed_metadata.jsonl",
+    "model_manifest": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_model_snapshot_manifest.json",
+    "predictions_main": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_predictions_main.jsonl",
+    "predictions_rerun": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_predictions_rerun.jsonl",
+    "prompt_audit_main": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_prompt_audit_main.jsonl",
+    "prompt_audit_rerun": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_prompt_audit_rerun.jsonl",
+    "query_audit": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_query_audit.jsonl",
+    "rankings": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_rankings.jsonl",
+    "requirements": "E:\\SCIENCE\\HyperGranular-RAG\\requirements-stage4f.txt",
+    "scientific_decision": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_scientific_decision.json",
+    "source": "E:\\SCIENCE\\超粒球RAG_数据\\raw\\musique\\data\\musique_ans_v1.0_train.jsonl",
+    "source_zip": "E:\\SCIENCE\\超粒球RAG_数据\\raw\\musique\\musique_v1.0.zip",
+    "telemetry_main": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_telemetry_main.json",
+    "telemetry_rerun": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_telemetry_rerun.json",
+    "verified_input": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_verified_input.json",
+    "verified_pregold": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_verified_pregold.json"
+  },
+  "protocol_status": "STAGE4F_LEVEL_B_INPUT_BINDING_ONLY_OFFICIAL_EXECUTION_NOT_AUTHORIZED",
+  "retrieval": {
+    "dense": {"max_k": 20, "score": "cosine", "tie_break": "unit_id ascending"},
+    "embedding": {"batch_size": 64, "max_length": 192, "matrix_dtype": "float32", "scientific_scalar_dtype": "float64"},
+    "static_q25": {
+      "boundary_width": 0.2, "insert_budget": 4, "max_candidate_ball_size": 8,
+      "max_depth": 6, "max_expanded_balls": 2, "max_redundancy": 0.9,
+      "max_size": 3, "max_units_per_new_term": 6.0, "min_ball_score": 0.12,
+      "min_facet_score": 0.1, "min_new_terms": 1, "min_seed_similarity": 0.05,
+      "min_size": 2, "protected_dense_prefix": 10, "q25_floor": 0.1957079917192459,
+      "radius_threshold": 0.78, "seed_balls": 2, "top_center_terms": 8,
+      "top_facet_edges": 2, "w_ball": 0.2, "w_diversity": 0.15,
+      "w_facet_unit_bonus": 0.0, "w_new": 0.45, "w_redundancy": 0.2,
+      "w_size": 0.05, "w_total": 0.2
+    }
+  },
+  "schema_version": "stage4f_xdr_v1",
+  "source": {
+    "dataset": "MuSiQue-Answerable v1.0 train",
+    "download_date": "2026-07-22",
+    "license": "CC-BY-4.0",
+    "raw_bytes": 241046755,
+    "raw_filename": "musique_ans_v1.0_train.jsonl",
+    "raw_rows": 19938,
+    "raw_sha256": "83A75B1E11E4E9BB8F8308E72AC40CA617AE4431B3A0D955B61CAB259248490A",
+    "repository_commit": "922ac98f19a201998dbdae6d7f2887a5258dbdeb",
+    "url": "https://drive.google.com/file/d/1tGdADlNjWFaHLeZZGShh2IRcpO6Lv24h/view"
+  },
+  "status": "STAGE4F_OFFICIAL_EXECUTION_NOT_AUTHORIZED"
+}

@@ -1,0 +1,43 @@
+{
+  "candidate_units": {
+    "maximum": 151,
+    "minimum": 27,
+    "total": 218698
+  },
+  "channels": {
+    "blind": {
+      "bytes": 90210161,
+      "sha256": "C8D73F6F8E0B9CA0BEAFD84DC05C43438400966998B5C2C3510E0EB47D1EC4C5"
+    },
+    "gold": {
+      "bytes": 2194235,
+      "rows": 3000,
+      "sha256": "E53E3AF330D1D498A8B23CF06BA0AB9DA8452FC7BF4CB565C6ED749B28C60B2D"
+    },
+    "metadata": {
+      "bytes": 817266,
+      "rows": 3000,
+      "sha256": "8CBA7F1C94D10BB3582BDBBACE441CCECCB23D2EF28A983FB376F2017D0ECAA3"
+    }
+  },
+  "checks": {
+    "formal_metrics_computed": false,
+    "gold_fields_in_blind": false,
+    "historical_musique_overlap": 0,
+    "sample_selection_used_gold": false
+  },
+  "historical_native_id_count": 1000,
+  "historical_native_id_sha256": "8521C1F623B7C15601A76CBFE52164E64B6D090C269C152F04100E4B86993E5B",
+  "query_id_sha256": "77253A0E281AFE91DFA6E776126185E0385DDBAE557AA10BCC906D9733AC43E0",
+  "sample_id_sha256": "7B0111DE65479428E2686A9E116F18D1AB0B1AB8A688103AD4CF53E6DCC14A74",
+  "sample_size": 3000,
+  "schema_version": "stage4f_xdr_v1",
+  "selection_order": "(SHA256(stage4f_xdr_v1\\0 + dataset + \\0 + native_id), native_id)",
+  "sentence_splitter": "stage4f_regex_sentence_splitter_v1",
+  "source": {
+    "bytes": 241046755,
+    "rows": 19938,
+    "sha256": "83A75B1E11E4E9BB8F8308E72AC40CA617AE4431B3A0D955B61CAB259248490A"
+  },
+  "status": "STAGE4F_INPUT_CHANNELS_BUILT_PENDING_INDEPENDENT_VERIFICATION"
+}
