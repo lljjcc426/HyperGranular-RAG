@@ -31,7 +31,11 @@
     "system_message": "Answer the question using only the provided evidence. Return only the shortest final answer. If the evidence is insufficient, return UNKNOWN.",
     "use_cache": true
   },
-  "gold_evaluation": {"authorized": false},
+  "gold_evaluation": {
+    "authorization": "AUTHORIZE_STAGE4F_XDR_FULL_OFFICIAL_EXECUTION",
+    "authorization_date": "2026-07-22",
+    "authorized": true
+  },
   "historical_inputs": [
     {"bytes": 2826022, "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\musique_ans_dev_sample200_unified.json", "sha256": "BBA41D7258D045FE66F6B0AA23BBE54D9FDE2EE940EE44389461D9265392E9B1"},
     {"bytes": 2941869, "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage2f_musique_unseen200_unified.json", "sha256": "728252CED21B4B117DB6091B6C0A131746A0270E58CA5FCE2780702049894BE0"},
@@ -66,7 +70,12 @@
     "verified_input": {"bytes": 1150, "sha256": "08785FF415A1809FB0308D850D1CF581686354D318B1D20DA96A8A4E1C20629F"}
   },
   "locks": {"reservation": "LOCKED", "stage3b": "LOCKED", "u2": "NOT_AUTHORIZED"},
-  "official_execution": {"authorized": false},
+  "official_execution": {
+    "authorization": "AUTHORIZE_STAGE4F_XDR_FULL_OFFICIAL_EXECUTION",
+    "authorization_date": "2026-07-22",
+    "authorized": true,
+    "authorized_start_commit": "3ecbf2acd7dbbee709fbbc4b64d6871e2278dd9c"
+  },
   "paths": {
     "blind": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4f_xdr_musique_train3000_v1_blind_queries.jsonl",
     "descriptive_subgroups": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_descriptive_subgroups.json",
@@ -95,7 +104,7 @@
     "verified_input": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_verified_input.json",
     "verified_pregold": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_verified_pregold.json"
   },
-  "protocol_status": "STAGE4F_LEVEL_B_INPUT_BINDING_ONLY_OFFICIAL_EXECUTION_NOT_AUTHORIZED",
+  "protocol_status": "STAGE4F_FULL_OFFICIAL_EXECUTION_AUTHORIZED",
   "retrieval": {
     "dense": {"max_k": 20, "score": "cosine", "tie_break": "unit_id ascending"},
     "embedding": {"batch_size": 64, "max_length": 192, "matrix_dtype": "float32", "scientific_scalar_dtype": "float64"},
@@ -123,5 +132,5 @@
     "repository_commit": "922ac98f19a201998dbdae6d7f2887a5258dbdeb",
     "url": "https://drive.google.com/file/d/1tGdADlNjWFaHLeZZGShh2IRcpO6Lv24h/view"
   },
-  "status": "STAGE4F_OFFICIAL_EXECUTION_NOT_AUTHORIZED"
+  "status": "STAGE4F_FULL_OFFICIAL_EXECUTION_AUTHORIZED"
 }
