@@ -12,9 +12,29 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 import stage4g_gtr_common as common
 import stage4g_gtr_evaluate as evaluate
+import stage4g_gtr_goldfree_runner as runner
 
 
 class Stage4GTests(unittest.TestCase):
+    def test_prompt_fast_path_preserves_complete_ranking(self):
+        class Adapter:
+            def __init__(self):
+                self.calls = 0
+
+            def token_ids(self, messages):
+                self.calls += 1
+                return list(range(len(" ".join(row["content"] for row in messages).split())))
+
+        adapter = Adapter()
+        ranked = [
+            {"unit_id": f"u{i}", "title": "T", "text": "short evidence"}
+            for i in range(20)
+        ]
+        prompt = runner.build_prompt(adapter, "Question?", ranked)
+        self.assertEqual(prompt["evidence_unit_ids"], [f"u{i}" for i in range(20)])
+        self.assertFalse(prompt["rank1_truncated"])
+        self.assertEqual(adapter.calls, 2)
+
     def test_rerun_subset_is_stratified_deterministic_and_gold_free(self):
         queries = [
             {"dataset": dataset, "query_id": f"{dataset}::q{i}"}

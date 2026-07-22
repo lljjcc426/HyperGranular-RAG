@@ -252,6 +252,15 @@ def _semantic_digest(question: str, included: list[dict[str, str]], lines: list[
 def _prompt(frontend: Any, question: str, ranked: list[dict[str, str]]) -> dict[str, Any]:
     if len(_token_ids(frontend, _messages(question, []))) > TOKEN_CAP:
         raise ValueError("Template alone exceeds token cap")
+    full_lines = [f"[{rank}] {unit['title']}: {unit['text']}" for rank, unit in enumerate(ranked, start=1)]
+    full_count = len(_token_ids(frontend, _messages(question, full_lines)))
+    if full_count <= TOKEN_CAP:
+        return {
+            "evidence_unit_ids": [unit["unit_id"] for unit in ranked],
+            "input_token_count": full_count,
+            "prompt_semantic_content_sha256": _semantic_digest(question, ranked, full_lines),
+            "rank1_truncated": False,
+        }
     lines: list[str] = []
     included: list[dict[str, str]] = []
     truncated = False

@@ -133,6 +133,22 @@ def build_prompt(
         raise ValueError("Cannot build a prompt from an empty ranking")
     if len(adapter.token_ids(_messages(question, []))) > TOKEN_CAP:
         raise ValueError("Question and template exceed the token cap")
+    full_lines = [
+        f"[{rank}] {unit['title']}: {unit['text']}"
+        for rank, unit in enumerate(ranked_units, start=1)
+    ]
+    full_messages = _messages(question, full_lines)
+    full_input_token_count = len(adapter.token_ids(full_messages))
+    if full_input_token_count <= TOKEN_CAP:
+        return {
+            "evidence_unit_ids": [unit["unit_id"] for unit in ranked_units],
+            "input_token_count": full_input_token_count,
+            "messages": full_messages,
+            "prompt_semantic_content_sha256": semantic_prompt_digest(
+                question, ranked_units, full_lines
+            ),
+            "rank1_truncated": False,
+        }
     lines: list[str] = []
     included_units: list[dict[str, Any]] = []
     rank1_truncated = False
