@@ -36,17 +36,23 @@ from stage4f_xdr_common import (
     load_jsonl,
     render_json,
     render_jsonl,
+    require_finite_number,
     require_json_bool,
     require_json_int,
     require_native_string,
     selection_key,
     split_sentences,
+    validate_sha256,
     write_new_files_atomically,
 )
 from stage4f_xdr_retrieval import RetrievalConfig, build_query_decisions, dot
 
 
 METHODS = ("DENSE_TOP20", "STATIC_Q25_TOP20")
+PREGOLD_ARTIFACT_KEYS = (
+    "embedding_cache", "rankings", "predictions_main", "predictions_rerun",
+    "prompt_audit_main", "prompt_audit_rerun",
+)
 OFFICIAL_OUTPUT_KEYS = (
     "embedding_cache", "rankings", "predictions_main", "predictions_rerun",
     "prompt_audit_main", "prompt_audit_rerun", "telemetry_main", "telemetry_rerun",
@@ -387,30 +393,325 @@ def _decision(bootstrap: dict[str, Any]) -> str:
     return "STATIC_HGRAG_XDR_INCONCLUSIVE"
 
 
-def verify_postgold(config: dict[str, Any]) -> dict[str, Any]:
-    gold = load_jsonl(_assert_bound(config, "gold"))
-    predictions = load_jsonl(_require_artifact(config, "predictions_main"))
-    prediction_map = {(row["query_id"], row["method"]): row for row in predictions}
-    metrics = {method: {"em": [], "f1": []} for method in METHODS}
-    for row in gold:
-        for method in METHODS:
-            prediction = prediction_map.get((row["query_id"], method))
-            if prediction is None:
-                raise ValueError("Gold/prediction pairing differs")
-            em, f1 = _scores(prediction["prediction"], row["answers"])
-            metrics[method]["em"].append(em)
-            metrics[method]["f1"].append(f1)
-    bootstrap = _bootstrap(
-        np.asarray(metrics["DENSE_TOP20"]["f1"]), np.asarray(metrics["STATIC_Q25_TOP20"]["f1"]),
-        np.asarray(metrics["DENSE_TOP20"]["em"]), np.asarray(metrics["STATIC_Q25_TOP20"]["em"]),
-    )
-    summary = load_json(_path(config, "evaluation_summary"))
-    decision = load_json(_path(config, "scientific_decision"))
-    if summary.get("bootstrap") != bootstrap or decision.get("decision") != _decision(bootstrap):
-        raise ValueError("Gold summary or decision differs from independent reconstruction")
+def _paragraph_indices(unit_ids: list[str], label: str) -> set[int]:
+    result: set[int] = set()
+    for index, unit_id in enumerate(unit_ids):
+        unit_id = require_native_string(unit_id, f"{label}[{index}]")
+        match = re.search(r"::p(\d+)::s\d+$", unit_id)
+        if match is None:
+            raise ValueError(f"{label}[{index}] unit ID schema differs")
+        result.add(int(match.group(1)))
+    return result
+
+
+def _validate_telemetry_row(
+    row: dict[str, Any], run_id: str, embedding_identity: dict[str, Any]
+) -> None:
+    expected_keys = {
+        "embedding_cache", "failed_calls", "generation_calls",
+        "gpu_peak_memory_bytes", "run_id", "schema_version", "status",
+        "wall_time_seconds",
+    }
+    if not isinstance(row, dict) or set(row) != expected_keys:
+        raise ValueError(f"{run_id} telemetry schema differs")
+    if row["run_id"] != run_id or row["schema_version"] != SCHEMA_VERSION:
+        raise ValueError(f"{run_id} telemetry identity differs")
+    if row["status"] != "STAGE4F_GOLDFREE_RUN_COMPLETE_PENDING_VERIFICATION":
+        raise ValueError(f"{run_id} telemetry status differs")
+    if row["embedding_cache"] != embedding_identity:
+        raise ValueError(f"{run_id} embedding-cache identity differs")
+    if require_json_int(row["generation_calls"], f"{run_id}.generation_calls") != SAMPLE_SIZE * len(METHODS):
+        raise ValueError(f"{run_id} generation call count differs")
+    if require_json_int(row["failed_calls"], f"{run_id}.failed_calls") != 0:
+        raise ValueError(f"{run_id} reports failed generation calls")
+    if require_json_int(row["gpu_peak_memory_bytes"], f"{run_id}.gpu_peak_memory_bytes") <= 0:
+        raise ValueError(f"{run_id} GPU peak memory must be positive")
+    if require_finite_number(row["wall_time_seconds"], f"{run_id}.wall_time_seconds") <= 0:
+        raise ValueError(f"{run_id} wall time must be positive")
+
+
+def _pair_index(
+    rows: list[dict[str, Any]],
+    identities: dict[str, tuple[str, str]],
+    label: str,
+    expected_keys: set[str],
+) -> dict[tuple[str, str], dict[str, Any]]:
+    result: dict[tuple[str, str], dict[str, Any]] = {}
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict) or set(row) != expected_keys:
+            raise ValueError(f"{label}[{index}] schema differs")
+        query_id = require_native_string(row["query_id"], f"{label}[{index}].query_id")
+        method = require_native_string(row["method"], f"{label}[{index}].method")
+        dataset = require_native_string(row["dataset"], f"{label}[{index}].dataset")
+        sample_id = require_native_string(row["sample_id"], f"{label}[{index}].sample_id")
+        if method not in METHODS or identities.get(query_id) != (dataset, sample_id):
+            raise ValueError(f"{label}[{index}] row identity differs")
+        key = (query_id, method)
+        if key in result:
+            raise ValueError(f"{label} pair identities duplicate")
+        result[key] = row
+    expected = {(query_id, method) for query_id in identities for method in METHODS}
+    if set(result) != expected:
+        raise ValueError(f"{label} must pair every query across both arms")
+    return result
+
+
+def _validate_prompt_contract(
+    row: dict[str, Any], ranked_ids: list[str], token_cap: int, label: str
+) -> None:
+    evidence = row["evidence_unit_ids"]
+    if not isinstance(evidence, list) or not evidence:
+        raise ValueError(f"{label}.evidence_unit_ids must be non-empty")
+    evidence = [
+        require_native_string(value, f"{label}.evidence_unit_ids[{index}]")
+        for index, value in enumerate(evidence)
+    ]
+    if evidence != ranked_ids[: len(evidence)]:
+        raise ValueError(f"{label} evidence is not the frozen ranking prefix")
+    token_count = require_json_int(row["input_token_count"], f"{label}.input_token_count")
+    if token_count <= 0 or token_count > token_cap:
+        raise ValueError(f"{label} input token cap differs")
+    require_json_bool(row["rank1_truncated"], f"{label}.rank1_truncated")
+    validate_sha256(row["prompt_sha256"], f"{label}.prompt_sha256")
+
+
+def _verify_frozen_boundaries(config: dict[str, Any]) -> dict[str, Any]:
+    source_path = _assert_bound(config, "source")
+    source_zip_path = _assert_bound(config, "source_zip")
+    history = _historical_ids(config)
+    blind, gold, metadata = _independent_channels(load_jsonl(source_path), history)
+    for key, rows in (("blind", blind), ("gold", gold), ("metadata", metadata)):
+        path = _assert_bound(config, key)
+        if path.read_bytes() != render_jsonl(rows):
+            raise ValueError(f"{key} differs from independent source reconstruction")
+    manifest_path = _assert_bound(config, "input_manifest")
+    verified_input_path = _assert_bound(config, "verified_input")
+    verified_input = load_json(verified_input_path)
+    if verified_input.get("status") != "STAGE4F_INPUT_BOUNDARY_VERIFIED":
+        raise ValueError("Verified input status differs")
     return {
-        "decision": decision["decision"], "queries": len(gold),
-        "schema_version": SCHEMA_VERSION, "status": "STAGE4F_FINAL_VERIFICATION_PASS",
+        "channels": {
+            key: file_identity(_path(config, key))
+            for key in ("blind", "gold", "metadata", "input_manifest", "verified_input")
+        },
+        "historical_overlap": len({row["sample_id"] for row in blind} & history),
+        "model_environment": _validate_model_environment(config),
+        "source": file_identity(source_path),
+        "source_zip": file_identity(source_zip_path),
+    }
+
+
+def verify_postgold(config: dict[str, Any]) -> dict[str, Any]:
+    if require_json_bool(config.get("official_execution", {}).get("authorized"), "official_execution.authorized") is not True:
+        raise PermissionError("STAGE4F_OFFICIAL_EXECUTION_NOT_AUTHORIZED")
+    if require_json_bool(config.get("gold_evaluation", {}).get("authorized"), "gold_evaluation.authorized") is not True:
+        raise PermissionError("STAGE4F_GOLD_EVALUATION_NOT_AUTHORIZED")
+    frozen_boundaries = _verify_frozen_boundaries(config)
+    pregold_path = _require_artifact(config, "verified_pregold")
+    pregold = load_json(pregold_path)
+    if pregold.get("status") != "STAGE4F_PRE_GOLD_ARTIFACTS_VERIFIED":
+        raise ValueError("Pre-Gold verifier status differs")
+    if set(pregold.get("artifacts", {})) != set(PREGOLD_ARTIFACT_KEYS):
+        raise ValueError("Pre-Gold artifact manifest differs")
+    for key in PREGOLD_ARTIFACT_KEYS:
+        if pregold["artifacts"][key] != file_identity(_require_artifact(config, key)):
+            raise ValueError(f"Pre-Gold artifact identity changed: {key}")
+
+    predictions_main_path = _require_artifact(config, "predictions_main")
+    predictions_rerun_path = _require_artifact(config, "predictions_rerun")
+    prompt_main_path = _require_artifact(config, "prompt_audit_main")
+    prompt_rerun_path = _require_artifact(config, "prompt_audit_rerun")
+    if predictions_main_path.read_bytes() != predictions_rerun_path.read_bytes():
+        raise ValueError("Main/rerun prediction bytes differ")
+    if prompt_main_path.read_bytes() != prompt_rerun_path.read_bytes():
+        raise ValueError("Main/rerun prompt-audit bytes differ")
+    embedding_identity = file_identity(_require_artifact(config, "embedding_cache"))
+    for run_id in ("main", "rerun"):
+        _validate_telemetry_row(
+            load_json(_require_artifact(config, f"telemetry_{run_id}")),
+            run_id,
+            embedding_identity,
+        )
+
+    gold = load_jsonl(_assert_bound(config, "gold"))
+    if len(gold) != SAMPLE_SIZE:
+        raise ValueError("Official Stage4F Gold query count differs")
+    identities: dict[str, tuple[str, str]] = {}
+    for index, row in enumerate(gold):
+        expected_keys = {
+            "answers", "dataset", "query_id", "sample_id",
+            "supporting_paragraph_indices", "supporting_unit_ids",
+        }
+        if set(row) != expected_keys:
+            raise ValueError(f"gold[{index}] schema differs")
+        dataset = require_native_string(row["dataset"], f"gold[{index}].dataset")
+        query_id = require_native_string(row["query_id"], f"gold[{index}].query_id")
+        sample_id = require_native_string(row["sample_id"], f"gold[{index}].sample_id")
+        if dataset != DATASET or query_id != f"{dataset}::{sample_id}" or query_id in identities:
+            raise ValueError(f"gold[{index}] identity differs")
+        answers = row["answers"]
+        if not isinstance(answers, list) or not answers:
+            raise ValueError(f"gold[{index}].answers must be non-empty")
+        for answer_index, answer in enumerate(answers):
+            require_native_string(answer, f"gold[{index}].answers[{answer_index}]")
+        supporting = row["supporting_paragraph_indices"]
+        if not isinstance(supporting, list) or not supporting:
+            raise ValueError(f"gold[{index}].supporting_paragraph_indices must be non-empty")
+        supporting_set = {
+            require_json_int(value, f"gold[{index}].supporting_paragraph_indices")
+            for value in supporting
+        }
+        support_units = row["supporting_unit_ids"]
+        if not isinstance(support_units, list) or not support_units:
+            raise ValueError(f"gold[{index}].supporting_unit_ids must be non-empty")
+        if _paragraph_indices(support_units, f"gold[{index}].supporting_unit_ids") != supporting_set:
+            raise ValueError(f"gold[{index}] supporting unit mapping differs")
+        identities[query_id] = (dataset, sample_id)
+
+    rankings = load_jsonl(_require_artifact(config, "rankings"))
+    if len(rankings) != SAMPLE_SIZE or [row.get("query_id") for row in rankings] != list(identities):
+        raise ValueError("Ranking query identity/order differs")
+    ranking_map: dict[str, dict[str, Any]] = {}
+    ranking_keys = {
+        "dataset", "dense_top20_unit_ids", "q25_inserted_unit_ids",
+        "query_id", "sample_id", "static_q25_top20_unit_ids",
+    }
+    for index, row in enumerate(rankings):
+        if set(row) != ranking_keys:
+            raise ValueError(f"rankings[{index}] schema differs")
+        query_id = require_native_string(row["query_id"], f"rankings[{index}].query_id")
+        if identities.get(query_id) != (row["dataset"], row["sample_id"]):
+            raise ValueError(f"rankings[{index}] identity differs")
+        for key in ("dense_top20_unit_ids", "static_q25_top20_unit_ids", "q25_inserted_unit_ids"):
+            values = row[key]
+            if not isinstance(values, list):
+                raise ValueError(f"rankings[{index}].{key} must be a list")
+            native_values = [require_native_string(value, f"rankings[{index}].{key}") for value in values]
+            if len(native_values) != len(set(native_values)):
+                raise ValueError(f"rankings[{index}].{key} duplicates")
+        if not row["dense_top20_unit_ids"] or not row["static_q25_top20_unit_ids"]:
+            raise ValueError(f"rankings[{index}] effective-K is empty")
+        ranking_map[query_id] = row
+
+    predictions = load_jsonl(predictions_main_path)
+    prompts = load_jsonl(prompt_main_path)
+    assert_no_gold_fields(rankings, "rankings")
+    assert_no_gold_fields(predictions, "predictions")
+    assert_no_gold_fields(prompts, "prompt audits")
+    prediction_map = _pair_index(
+        predictions, identities, "predictions",
+        {"dataset", "method", "prediction", "query_id", "sample_id"},
+    )
+    prompt_map = _pair_index(
+        prompts, identities, "prompt audits",
+        {"dataset", "evidence_unit_ids", "input_token_count", "method", "prompt_sha256", "query_id", "rank1_truncated", "sample_id"},
+    )
+    generation = config.get("generation")
+    if not isinstance(generation, dict) or generation.get("input_token_cap") != 4096:
+        raise ValueError("Frozen generation contract differs")
+    for key, expected in (("batch_size", 1), ("do_sample", False), ("max_new_tokens", 32), ("num_beams", 1), ("use_cache", True)):
+        if generation.get(key) != expected or type(generation.get(key)) is not type(expected):
+            raise ValueError(f"Frozen generation field differs: {key}")
+
+    metric_keys = ("answer_em", "answer_f1", "retrieval_cr20", "retrieval_er20", "unknown")
+    metrics = {method: {key: [] for key in metric_keys} for method in METHODS}
+    audits: list[dict[str, Any]] = []
+    effect_counts = {"gain": 0, "harm": 0, "same": 0}
+    for row in gold:
+        query_id = row["query_id"]
+        ranking = ranking_map[query_id]
+        supporting_set = set(row["supporting_paragraph_indices"])
+        audit: dict[str, Any] = {
+            "dataset": row["dataset"], "query_id": query_id, "sample_id": row["sample_id"],
+        }
+        for method, ranking_key in (
+            ("DENSE_TOP20", "dense_top20_unit_ids"),
+            ("STATIC_Q25_TOP20", "static_q25_top20_unit_ids"),
+        ):
+            ranked_ids = ranking[ranking_key]
+            prediction = prediction_map[(query_id, method)]["prediction"]
+            if not isinstance(prediction, str):
+                raise ValueError(f"{query_id}/{method} prediction must be a JSON string")
+            prompt = prompt_map[(query_id, method)]
+            _validate_prompt_contract(prompt, ranked_ids, 4096, f"{query_id}/{method}")
+            em, f1 = _scores(prediction, row["answers"])
+            retrieved = _paragraph_indices(ranked_ids, f"{query_id}/{method}.ranking")
+            overlap = len(supporting_set & retrieved)
+            er = overlap / len(supporting_set)
+            cr = float(overlap == len(supporting_set))
+            unknown = float(prediction.strip().upper() == "UNKNOWN")
+            values = {
+                "answer_em": em, "answer_f1": f1, "retrieval_cr20": cr,
+                "retrieval_er20": er, "unknown": unknown,
+            }
+            for key, value in values.items():
+                metrics[method][key].append(value)
+            audit[method.lower()] = {
+                **values,
+                "included_evidence_units": len(prompt["evidence_unit_ids"]),
+                "input_token_count": prompt["input_token_count"],
+                "rank1_truncated": prompt["rank1_truncated"],
+            }
+        delta = audit["static_q25_top20"]["answer_f1"] - audit["dense_top20"]["answer_f1"]
+        effect_counts["gain" if delta > 0 else "harm" if delta < 0 else "same"] += 1
+        audits.append(audit)
+
+    query_audit_path = _require_artifact(config, "query_audit")
+    if query_audit_path.read_bytes() != render_jsonl(audits):
+        raise ValueError("Query audit differs from independent reconstruction")
+    bootstrap = _bootstrap(
+        np.asarray(metrics["DENSE_TOP20"]["answer_f1"]), np.asarray(metrics["STATIC_Q25_TOP20"]["answer_f1"]),
+        np.asarray(metrics["DENSE_TOP20"]["answer_em"]), np.asarray(metrics["STATIC_Q25_TOP20"]["answer_em"]),
+    )
+    expected_summary = {
+        "bootstrap": bootstrap,
+        "evidence_label_granularity": "official_supporting_paragraph",
+        "insertion_effect_queries": effect_counts,
+        "methods": {
+            method: {key: float(np.mean(values)) for key, values in rows.items()}
+            for method, rows in metrics.items()
+        },
+        "official_answer_evaluator": config["evaluation"]["official_answer_evaluator"],
+        "queries": SAMPLE_SIZE,
+        "schema_version": SCHEMA_VERSION,
+        "supporting_fact_sentence_recall": {
+            "available": False,
+            "reason": "MuSiQue v1.0 provides supporting-paragraph, not supporting-sentence, labels",
+        },
+        "status": "STAGE4F_GOLD_EVALUATION_COMPLETE_PENDING_INDEPENDENT_VERIFICATION",
+    }
+    summary_path = _require_artifact(config, "evaluation_summary")
+    if load_json(summary_path) != expected_summary:
+        raise ValueError("Gold summary differs from independent reconstruction")
+    expected_decision = {
+        "decision": _decision(bootstrap),
+        "gates": config["evaluation"]["decision_gates"],
+        "schema_version": SCHEMA_VERSION,
+        "status": "STAGE4F_SCIENTIFIC_DECISION_PENDING_INDEPENDENT_VERIFICATION",
+    }
+    decision_path = _require_artifact(config, "scientific_decision")
+    if load_json(decision_path) != expected_decision:
+        raise ValueError("Scientific decision differs from independent reconstruction")
+    artifact_keys = PREGOLD_ARTIFACT_KEYS + (
+        "telemetry_main", "telemetry_rerun", "verified_pregold", "query_audit",
+        "evaluation_summary", "scientific_decision",
+    )
+    return {
+        "artifacts": {key: file_identity(_require_artifact(config, key)) for key in artifact_keys},
+        "bootstrap": bootstrap,
+        "decision": expected_decision["decision"],
+        "frozen_boundaries": frozen_boundaries,
+        "gold_isolation": "PASS",
+        "implementation": config["implementation"],
+        "main_rerun_determinism": {
+            "predictions_byte_identical": True,
+            "prompt_audit_byte_identical": True,
+        },
+        "methods": expected_summary["methods"],
+        "queries": len(gold),
+        "query_audit_reconstructed": True,
+        "schema_version": SCHEMA_VERSION,
+        "status": "STAGE4F_FINAL_VERIFICATION_PASS",
     }
 
 

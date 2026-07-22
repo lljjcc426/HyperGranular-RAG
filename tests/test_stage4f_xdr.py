@@ -260,6 +260,53 @@ class IntegrityTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "pair every query"):
             evaluator.require_complete_pairs(rows, ["q"], "predictions")
 
+    def test_25_final_verifier_rejects_failed_generation_calls(self) -> None:
+        telemetry = {
+            "embedding_cache": {"bytes": 1, "sha256": "A" * 64},
+            "failed_calls": 1,
+            "generation_calls": common.SAMPLE_SIZE * len(verifier.METHODS),
+            "gpu_peak_memory_bytes": 1,
+            "run_id": "main",
+            "schema_version": common.SCHEMA_VERSION,
+            "status": "STAGE4F_GOLDFREE_RUN_COMPLETE_PENDING_VERIFICATION",
+            "wall_time_seconds": 1.0,
+        }
+        with self.assertRaisesRegex(ValueError, "failed generation calls"):
+            verifier._validate_telemetry_row(
+                telemetry, "main", telemetry["embedding_cache"]
+            )
+
+    def test_26_final_verifier_rejects_nonprefix_prompt_evidence(self) -> None:
+        prompt = {
+            "evidence_unit_ids": ["q::p1::s0"],
+            "input_token_count": 10,
+            "prompt_sha256": "A" * 64,
+            "rank1_truncated": False,
+        }
+        with self.assertRaisesRegex(ValueError, "not the frozen ranking prefix"):
+            verifier._validate_prompt_contract(
+                prompt, ["q::p0::s0", "q::p1::s0"], 4096, "prompt"
+            )
+
+    def test_27_final_verifier_strict_pair_identity(self) -> None:
+        rows = [
+            {
+                "dataset": common.DATASET,
+                "method": method,
+                "prediction": "x",
+                "query_id": "q",
+                "sample_id": "wrong",
+            }
+            for method in verifier.METHODS
+        ]
+        with self.assertRaisesRegex(ValueError, "row identity differs"):
+            verifier._pair_index(
+                rows,
+                {"q": (common.DATASET, "s")},
+                "predictions",
+                {"dataset", "method", "prediction", "query_id", "sample_id"},
+            )
+
 
 if __name__ == "__main__":
     unittest.main()
