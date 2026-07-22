@@ -25,6 +25,8 @@ from stage4f_xdr_common import (
     SCHEMA_VERSION,
     SOURCE_BYTES,
     SOURCE_SHA256,
+    SOURCE_ZIP_BYTES,
+    SOURCE_ZIP_SHA256,
     assert_file_identity,
     assert_implementation_binding,
     assert_no_gold_fields,
@@ -225,6 +227,11 @@ def _validate_model_environment(config: dict[str, Any]) -> dict[str, Any]:
 def verify_inputs(config: dict[str, Any]) -> dict[str, Any]:
     source_path = _path(config, "source")
     assert_file_identity(source_path, {"bytes": SOURCE_BYTES, "sha256": SOURCE_SHA256}, "source")
+    assert_file_identity(
+        _path(config, "source_zip"),
+        {"bytes": SOURCE_ZIP_BYTES, "sha256": SOURCE_ZIP_SHA256},
+        "source_zip",
+    )
     history = _historical_ids(config)
     blind, gold, metadata = _independent_channels(load_jsonl(source_path), history)
     expected = {
