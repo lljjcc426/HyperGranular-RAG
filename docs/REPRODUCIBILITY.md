@@ -48,6 +48,14 @@ STAGE4F_GOLD_EVALUATION_COMPLETED
 STAGE4F_FINAL_VERIFICATION_PASS
 STAGE4F_DESCRIPTIVE_SUBGROUPS_FROZEN
 STATIC_HGRAG_XDR_SUPPORTED
+STAGE4G_GTR_EXPERIMENT_CARD_FROZEN
+STAGE4G_GTR_INPUT_MODEL_BINDING_VERIFIED
+STAGE4G_GTR_MAIN_COMPLETE
+STAGE4G_GTR_PRE_GOLD_VERIFIED
+STAGE4G_GTR_GOLD_EVALUATION_COMPLETE
+STAGE4G_GTR_FINAL_VERIFICATION_PASS
+STAGE4G_GTR_ARTIFACT_MANIFEST_FROZEN
+GENERATOR_TRANSFER_INCONCLUSIVE
 RESERVATION_REQUIRES_PAUSE
 U2_NOT_AUTHORIZED
 ```
@@ -61,6 +69,8 @@ Stage4D-CMA 已在获授权边界内完成 Gold-free Channel A、development-Gol
 Stage4D 和当前 controller 分支已按 [STAGE4D_CMA_CLOSURE](STAGE4D_CMA_CLOSURE.md) 冻结关闭。Stage4E-E2E [Level A 协议](STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md) 已完成：生成器选择、1,000-query Gold-free main/rerun、pre-Gold verification、Gold evaluation 与 final verification 均通过。冻结决策为 `STATIC_HGRAG_E2E_SUPPORTED`；现有事务不应覆盖或重跑。
 
 Stage4F-XDR 已完成 [实验卡](STAGE4F_XDR_EXPERIMENT_CARD.md) 预定义的完整 official 事务。3,000-query main/rerun、pre-Gold verification、Gold evaluation、10,000 bootstrap、final verification 与 post-decision Channel C 均完成；冻结结果为 `STATIC_HGRAG_XDR_SUPPORTED`。现有 Stage4F 工件不得覆盖或重跑。
+
+Stage4G-GTR 已完成 [实验卡](STAGE4G_GTR_EXPERIMENT_CARD.md) 预定义的完整 generator-transfer 事务。它复用 Stage4E/4F frozen inputs 与 rankings，只更换为一个事前指定的 Gemma official mobile-QAT 配置。8,000-call main、400-call 分层 subset rerun、pre-Gold verification、Gold evaluation、10,000 次 dataset-stratified bootstrap、generator interaction 与 final verification 均完成；冻结结果为 `GENERATOR_TRANSFER_INCONCLUSIVE`。现有 Stage4G 工件不得覆盖或重跑。
 
 ## 当前授权治理
 
@@ -77,7 +87,7 @@ SCIENTIFIC_INTEGRITY_CONTROLS_RETAINED
 
 这是项目长期、全局的现行治理基线，适用于当前及未来全部科研阶段，不是单次复现事务或 Stage4E 的临时规则。阶段授权默认连续覆盖实验卡中预定义的实现、测试、数据/Channel、正式运行、固定分析、独立验证、确定性复跑、报告和 Git/远端核验。Channel 与 Gold 隔离仍是可复现性和防泄漏合同，但不自动形成重复审批点；本文登记的命令、环境、SHA 和路径用于重建与核验，不是逐命令授权凭证。
 
-普通工程异常自主最小修复并继续。只有新科学问题或阶段、冻结科学语义变化、使用当前授权外的新证据源、或严重完整性异常才暂停。历史审批链与旧命令保留为证据，不构成当前执行规则。Stage4E 与 Stage4F 已按各自阶段授权完成；这些授权不延伸到 full-wiki、open-domain、跨生成器确认、reservation、Stage3B、U2 或新 controller。
+普通工程异常自主最小修复并继续。只有新科学问题或阶段、冻结科学语义变化、使用当前授权外的新证据源、或严重完整性异常才暂停。历史审批链与旧命令保留为证据，不构成当前执行规则。Stage4E、Stage4F 与 Stage4G 已按各自阶段授权完成；这些授权不延伸到 full-wiki、open-domain、新生成器、reservation、Stage3B、U2 或新 controller。
 
 ## Stage4E 已冻结复现边界
 
@@ -137,6 +147,43 @@ SCIENTIFIC_INTEGRITY_CONTROLS_RETAINED
 - scientific decision：`7406AD4525FF8422515DA31027C68D75864B4C24385F2D942703A6CD577BBED2`；
 - final verification：`86A2EC634981BF9FB4E7DAFBF94CEF59AC2EFAA2B0BEBAD5C3A33711233E6B8F`；
 - descriptive subgroups：`405465EAABC4B333E4A7BA8E1CA798E1E7B11B60DD570667E6B0D3C1F5AD6467`。
+
+## Stage4G 已完成并冻结的复现边界
+
+| 项目 | 冻结值 / 当前状态 |
+|---|---|
+| 新因素 | 一个事前指定生成器配置；不改变数据、ranking、prompt 语义或 evaluator |
+| generator | `google/gemma-4-E2B-it-qat-mobile-transformers@dd693ff40353f057ca5f07e945ad867f4afbf2ec` |
+| runtime | Google official mobile-QAT Transformers；thinking disabled |
+| weight | 2,458,111,846 bytes；`EFAB4290...76A9A4` |
+| inputs | Stage4E HotpotQA 1,000 + Stage4F MuSiQue 3,000 frozen blind inputs/rankings |
+| methods | `DENSE_TOP20` vs `STATIC_Q25_TOP20`；不重跑 retrieval |
+| generation | 4,096-token cap；greedy；beams 1；max new tokens 32；batch 1 |
+| determinism | B：full main 8,000 calls + pre-hash dataset-stratified 400-call subset rerun；精确复现 |
+| statistics | dataset-specific paired bootstrap + dataset-equal-weight stratified bootstrap；10,000；seed 20260724 |
+| HotpotQA | F1 delta `+0.012647 [-0.002196,0.027444]`；EM delta `+0.006000 [-0.009000,0.021000]` |
+| MuSiQue | F1 delta `-0.002320 [-0.006849,0.002076]`；EM delta `-0.001333 [-0.005667,0.003000]` |
+| equal-weight | F1 delta `+0.005164 [-0.002623,0.012950]`；EM delta `+0.002333 [-0.005667,0.010333]` |
+| query-weighted | F1 `+0.001422`；EM `+0.000500`；MuSiQue weight 75%；描述性 |
+| execution | main/subset 共 8,400 calls；零失败；零 truncation |
+| decision | `GENERATOR_TRANSFER_INCONCLUSIVE`；`STAGE4G_GTR_FINAL_VERIFICATION_PASS` |
+
+精确入口为 [experiment card](STAGE4G_GTR_EXPERIMENT_CARD.md)、[official config](../configs/stage4g_gtr_official.json)、[input/model manifest](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_input_model_manifest.json)、[pre-Gold verification](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_verified_pregold.json)、[dataset summaries](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_dataset_summaries.json)、[equal-weight summary](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_equal_weight_summary.json)、[final verification](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_final_verification.json)、[artifact manifest](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_artifact_manifest.json) 与 [正式报告](../reports/超粒球RAG_Stage4G_GTR生成器迁移复制报告.md)。
+
+关键冻结 SHA-256：
+
+- input/model manifest：`5B4070AF14F2DBBEB4D69EFA1FA445017DB6F1BF7B071DCE73D9D7498E7DAEC5`；
+- predictions main：`E6B0A50CB3090A7268E838EC5BBB0DD6C5FE90440A75DA0B103D2E0906D31709`；
+- predictions rerun subset：`43CDF730152032D752956D359E707FF92C17C8517EBE0B8AA1DEB72855688FA9`；
+- prompt audit main：`E8227941D1AF5E3C893AC538E1E5DD61C2FE818F879D0EA6D45FB7137E54F8F1`；
+- prompt audit rerun subset：`75947C6F15168F49E552A5B99388354E39490349E30BDC034D79B9F4B75ADFA4`；
+- verified pre-Gold：`5F9C26A6D0F80B423FFD500FA2ECFCF5815F60815F36E639BEEE11E5AA1ABAB4`；
+- query scores：`8796DC8033CC9B3993BC02A224CD8585AE89C46E7CDAB20DA1447E9C6B0241BE`；
+- dataset summaries：`1656CEAC063EB53D4854481C83A1A4046D6257B442A3C376EDC851B5436D6E3B`；
+- equal-weight summary：`0BF7E2658521510438545BC077DBAA1EA7C902C2FD35FFBE4013D209D7890239`；
+- scientific decision：`246FE8B1DFC157551E570994059306315C03AA050B23AC3F9FD31780D710FBF5`；
+- final verification：`3BB9A87C3BD62FCF8CE663F4EEA7A28A6D0C8E1ECC0AB8FBF8C015212137E65B`；
+- artifact manifest：`E61FADC265D2F2AA937E7E66F78011BDD6B45E67CB61BDCF03FF320C5DB0FDD1`。
 
 ## 运行环境
 

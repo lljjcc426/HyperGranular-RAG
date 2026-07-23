@@ -9,7 +9,7 @@
 - 多跳 RAG 的核心张力：Dense relevance、跨证据链补全与上下文成本。
 - 静态方法贡献：粒球组织、query-aware facet hyperedge、Dense prefix protection、bounded insertion。
 - controller 作为独立失败研究：资源下降不等于选择有效。
-- 明确贡献层级：retrieval evidence、negative controller evidence、mechanism diagnosis、Stage4E E2E validation 与 Stage4F cross-dataset replication。
+- 明确贡献层级：retrieval evidence、negative controller evidence、mechanism diagnosis、Stage4E E2E validation、Stage4F cross-dataset replication 与 Stage4G one-additional-generator transfer test。
 
 ## 2. Method
 
@@ -36,6 +36,7 @@
 - Stage4C/4D：同一 development 上预冻结的 exploratory mechanism audits。
 - Stage4E：此前未读 HotpotQA train ID-hash sample，Dense vs static q25，同一固定 generator；主 endpoint 为 paired answer F1。
 - Stage4F：预注册 MuSiQue train 新 ID 跨数据集复制；3,000-query official transaction 与独立 final verification 已完成。
+- Stage4G：完全复用 Stage4E/4F frozen inputs/rankings，只更换为一个事前指定的 Gemma official mobile-QAT 配置；数据集等权联合统计和独立 final verification 已完成。
 - 每阶段列出数据角色、Gold 隔离、复现绑定、样本/功效限制和停止规则。
 
 ## 4. Results
@@ -60,18 +61,29 @@ Stage4C 写 query-level composition；Stage4D 写 candidate labels、Task-C AURO
 
 报告 Stage4F verified final：MuSiQue Dense/static-q25 answer F1 `0.13595/0.14735`，paired delta `+0.01140 [0.00450,0.01835]`；EM delta `+0.01000 [0.00333,0.01667]`；supporting-paragraph CR@20 `0.589/0.650`。写明 `STATIC_HGRAG_XDR_SUPPORTED`、与 Stage4E 方向一致、12,000 calls 零失败、main/rerun 字节一致及 final independent verification；hop-count 只作 `SUBGROUP_CAUTION`。
 
+### 4.6 Generator-transfer replication
+
+报告 Stage4G verified final：
+
+- Gemma HotpotQA Dense/static-q25 F1 `0.34978/0.36243`，delta `+0.01265 [-0.00220,0.02744]`；
+- Gemma MuSiQue Dense/static-q25 F1 `0.04476/0.04244`，delta `-0.00232 [-0.00685,0.00208]`；
+- dataset-equal-weight F1 delta `+0.00516 [-0.00262,0.01295]`，EM delta `+0.00233 [-0.00567,0.01033]`；
+- `GENERATOR_TRANSFER_INCONCLUSIVE`、8,000-call main 零失败、400-call stratified subset 精确复现和 final independent verification；
+- 与冻结 Qwen retrieval delta 的 interaction 只作描述性解释，不进入主判定。
+
 ## 5. Discussion
 
 - retrieval gain 在 HotpotQA 与 MuSiQue 两个冻结边界上转化为小幅 answer-F1 gain；讨论 evidence sufficiency、context ordering、generator utilization 与多数 query answer-F1 不变的现象。
 - 静态扩展与动态选择的不同难度。
 - 当前 controller 的 displacement harm 与 mixed gain/noise 结构。
-- 两个数据集仍共享 closed candidate pool 和同一生成器，对外部效度的限制。
+- 两个数据集仍是 closed candidate pool；Stage4G 只增加一个 Gemma mobile-QAT 配置且迁移判定 inconclusive，对外部效度和 generator robustness 的限制。
+- 讨论 MuSiQue 上 negative generator interaction，但不得从该描述性结果推导模型架构优劣或调整 retrieval。
 
 ## 6. Reproducibility and Integrity
 
 - 代码/config/data/model SHA；
 - blind/Gold channel；
-- main/rerun byte identity；
+- Stage4E/4F full main/rerun byte identity 与 Stage4G pre-hash stratified subset exact reproduction；
 - independent verifier；
 - negative/inconclusive result preservation；
 - 11 类统计谬误扫描。
@@ -81,14 +93,17 @@ Stage4C 写 query-level composition；Stage4D 写 candidate labels、Task-C AURO
 - 当前静态 retrieval 阈值来自早期开发数据；
 - Stage4B-D 共享同一 2Wiki development，不是外部验证；
 - Stage4E boundary 是 HotpotQA same-domain distractor candidate pool，不是 full-wiki；
-- 生成器固定为单一小型模型时，结论不能外推到所有 LLM；
+- Stage4E/4F 的正结果来自单一 Qwen；Stage4G 只测试一个额外 Gemma mobile-QAT 配置且联合结果 inconclusive，仍不能外推到所有 LLM；
 - `n=1000` 是资源边界，不是正式功效保证。
 - HotpotQA train 只保证对本项目研究流程未读，不能保证对预训练生成器无污染；参数化记忆可能压低或改变 retrieval-arm 差异。
 - Stage4F 的 `n=3000` 同样只是资源/精度边界；MuSiQue Gold 为 supporting paragraph，不支持句子级 Gold 主张。
-- Stage4F 是跨数据集而非 full-wiki/open-domain 或跨生成器复制，不能将两个正结果概括为普遍有效。
+- Stage4F 是跨数据集而非 full-wiki/open-domain；Stage4G 也不能把一个额外配置的 inconclusive 结果概括为普遍生成器鲁棒性。
+- Stage4G 中 Gemma 架构、mobile-QAT 与数值格式效应不可分离，不能进行纯基础模型架构排名。
 
 ## 下一步论文材料
 
 - Figure：Dense 与 static q25 的 answer F1/EM paired difference；
 - Figure：retrieval CR change 与 answer F1 change 的 query-level joint audit（描述性，不作因果）；
-- 将 Stage4E/4F 的 exact data/model/environment SHA、绝对指标、区间、context tokens、runtime、prompt、schema、decision gate、determinism 与 independent verification 整理为主文表和附录。
+- Figure：Stage4E/4F Qwen 与 Stage4G Gemma 的 dataset-specific retrieval delta 及区间；只展示交互，不作模型能力排名。
+- 将 Stage4E/4F/4G 的 exact data/model/environment SHA、绝对指标、区间、context tokens、runtime、prompt、schema、decision gate、determinism 与 independent verification 整理为主文表和附录。
+- 按 `ABLATION_AND_STRONG_BASELINE_PLAN.md` 优先设计 protected insertion/prefix/budget 消融与 BM25、hybrid、stronger-dense 基线；这些需新阶段，不从现有 Gold 事后选参。

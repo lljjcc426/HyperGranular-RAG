@@ -1,0 +1,41 @@
+{
+  "artifacts": {
+    "dataset_summaries": {
+      "bytes": 3523,
+      "sha256": "1656CEAC063EB53D4854481C83A1A4046D6257B442A3C376EDC851B5436D6E3B"
+    },
+    "equal_weight_summary": {
+      "bytes": 1124,
+      "sha256": "0BF7E2658521510438545BC077DBAA1EA7C902C2FD35FFBE4013D209D7890239"
+    },
+    "input_model_manifest": {
+      "bytes": 15863,
+      "sha256": "5B4070AF14F2DBBEB4D69EFA1FA445017DB6F1BF7B071DCE73D9D7498E7DAEC5"
+    },
+    "query_scores": {
+      "bytes": 1212870,
+      "sha256": "8796DC8033CC9B3993BC02A224CD8585AE89C46E7CDAB20DA1447E9C6B0241BE"
+    },
+    "scientific_decision": {
+      "bytes": 579,
+      "sha256": "246FE8B1DFC157551E570994059306315C03AA050B23AC3F9FD31780D710FBF5"
+    },
+    "verified_pregold": {
+      "bytes": 1439,
+      "sha256": "5F9C26A6D0F80B423FFD500FA2ECFCF5815F60815F36E639BEEE11E5AA1ABAB4"
+    }
+  },
+  "bootstrap_reconstructed": true,
+  "decision": "GENERATOR_TRANSFER_INCONCLUSIVE",
+  "generator_interaction_reconstructed": true,
+  "gold_identity_and_pairing_verified": true,
+  "locks": {
+    "controller_branch": "FROZEN_CLOSED",
+    "reservation": "LOCKED",
+    "stage3b": "LOCKED",
+    "u2": "NOT_AUTHORIZED"
+  },
+  "query_scores_reconstructed": 4000,
+  "schema_version": "stage4g_gtr_v1",
+  "status": "STAGE4G_GTR_FINAL_VERIFICATION_PASS"
+}

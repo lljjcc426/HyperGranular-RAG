@@ -1,0 +1,72 @@
+{
+  "artifact_count": 13,
+  "artifacts": {
+    "dataset_summaries": {
+      "bytes": 3523,
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4g_gtr_gemma_hotpot1000_musique3000_v1_dataset_summaries.json",
+      "sha256": "1656CEAC063EB53D4854481C83A1A4046D6257B442A3C376EDC851B5436D6E3B"
+    },
+    "equal_weight_summary": {
+      "bytes": 1124,
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4g_gtr_gemma_hotpot1000_musique3000_v1_equal_weight_summary.json",
+      "sha256": "0BF7E2658521510438545BC077DBAA1EA7C902C2FD35FFBE4013D209D7890239"
+    },
+    "final_verification": {
+      "bytes": 1302,
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4g_gtr_gemma_hotpot1000_musique3000_v1_final_verification.json",
+      "sha256": "3BB9A87C3BD62FCF8CE663F4EEA7A28A6D0C8E1ECC0AB8FBF8C015212137E65B"
+    },
+    "input_model_manifest": {
+      "bytes": 15863,
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4g_gtr_gemma_hotpot1000_musique3000_v1_input_model_manifest.json",
+      "sha256": "5B4070AF14F2DBBEB4D69EFA1FA445017DB6F1BF7B071DCE73D9D7498E7DAEC5"
+    },
+    "predictions_main": {
+      "bytes": 1508328,
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4g_gtr_gemma_hotpot1000_musique3000_v1_predictions_main.jsonl",
+      "sha256": "E6B0A50CB3090A7268E838EC5BBB0DD6C5FE90440A75DA0B103D2E0906D31709"
+    },
+    "predictions_rerun_subset": {
+      "bytes": 78362,
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4g_gtr_gemma_hotpot1000_musique3000_v1_predictions_rerun_subset.jsonl",
+      "sha256": "43CDF730152032D752956D359E707FF92C17C8517EBE0B8AA1DEB72855688FA9"
+    },
+    "prompt_audit_main": {
+      "bytes": 14058957,
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4g_gtr_gemma_hotpot1000_musique3000_v1_prompt_audit_main.jsonl",
+      "sha256": "E8227941D1AF5E3C893AC538E1E5DD61C2FE818F879D0EA6D45FB7137E54F8F1"
+    },
+    "prompt_audit_rerun_subset": {
+      "bytes": 722498,
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4g_gtr_gemma_hotpot1000_musique3000_v1_prompt_audit_rerun_subset.jsonl",
+      "sha256": "75947C6F15168F49E552A5B99388354E39490349E30BDC034D79B9F4B75ADFA4"
+    },
+    "query_scores": {
+      "bytes": 1212870,
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4g_gtr_gemma_hotpot1000_musique3000_v1_query_scores.jsonl",
+      "sha256": "8796DC8033CC9B3993BC02A224CD8585AE89C46E7CDAB20DA1447E9C6B0241BE"
+    },
+    "scientific_decision": {
+      "bytes": 579,
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4g_gtr_gemma_hotpot1000_musique3000_v1_scientific_decision.json",
+      "sha256": "246FE8B1DFC157551E570994059306315C03AA050B23AC3F9FD31780D710FBF5"
+    },
+    "telemetry_main": {
+      "bytes": 1818,
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4g_gtr_gemma_hotpot1000_musique3000_v1_telemetry_main.json",
+      "sha256": "F4B5B8E49149C692993EE4023C80A443AE608C2BBF34E627CBF256F41BDB0BA9"
+    },
+    "telemetry_rerun_subset": {
+      "bytes": 1784,
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4g_gtr_gemma_hotpot1000_musique3000_v1_telemetry_rerun_subset.json",
+      "sha256": "3F12932BD92BD054DBF7113CB96B6396DDFAF6FC43B664C33448E85FF05EA95F"
+    },
+    "verified_pregold": {
+      "bytes": 1439,
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4g_gtr_gemma_hotpot1000_musique3000_v1_verified_pregold.json",
+      "sha256": "5F9C26A6D0F80B423FFD500FA2ECFCF5815F60815F36E639BEEE11E5AA1ABAB4"
+    }
+  },
+  "schema_version": "stage4g_gtr_v1",
+  "status": "STAGE4G_GTR_ARTIFACT_MANIFEST_FROZEN"
+}

@@ -1,0 +1,17 @@
+{
+  "decision": "GENERATOR_TRANSFER_INCONCLUSIVE",
+  "generator": {
+    "model_id": "google/gemma-4-E2B-it-qat-mobile-transformers",
+    "revision": "dd693ff40353f057ca5f07e945ad867f4afbf2ec",
+    "runtime_format": "google_official_mobile_qat_transformers"
+  },
+  "locks": {
+    "controller_branch": "FROZEN_CLOSED",
+    "reservation": "LOCKED",
+    "stage3b": "LOCKED",
+    "u2": "NOT_AUTHORIZED"
+  },
+  "schema_version": "stage4g_gtr_v1",
+  "scope": "ONE_ADDITIONAL_PRE_SPECIFIED_GENERATOR_CONFIGURATION",
+  "status": "STAGE4G_SCIENTIFIC_DECISION_PENDING_FINAL_VERIFICATION"
+}

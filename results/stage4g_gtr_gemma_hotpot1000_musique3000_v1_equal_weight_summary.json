@@ -1,0 +1,40 @@
+{
+  "bootstrap": {
+    "delta_answer_em": {
+      "lower_95": -0.005666666666666666,
+      "point": 0.0023333333333333335,
+      "upper_95": 0.010333333333333333
+    },
+    "delta_answer_f1": {
+      "lower_95": -0.0026229990302156785,
+      "point": 0.005163964536727919,
+      "upper_95": 0.012950454307054302
+    },
+    "iterations": 10000,
+    "numpy_generator": "PCG64",
+    "percentile_method": "linear",
+    "seed": 20260724,
+    "weighting": "DATASET_EQUAL_WEIGHT"
+  },
+  "generator_interaction": {
+    "answer_em": {
+      "lower_95": -0.018666666666666665,
+      "point": -0.007666666666666667,
+      "upper_95": 0.003
+    },
+    "answer_f1": {
+      "lower_95": -0.01869574179715375,
+      "point": -0.00792662794541095,
+      "upper_95": 0.0028558901647692363
+    },
+    "decision_role": "DESCRIPTIVE_ONLY"
+  },
+  "query_weighted_descriptive": {
+    "decision_role": "DESCRIPTIVE_ONLY",
+    "delta_answer_em": 0.0005,
+    "delta_answer_f1": 0.0014222144315143037,
+    "musique_weight": 0.75
+  },
+  "schema_version": "stage4g_gtr_v1",
+  "status": "STAGE4G_EQUAL_WEIGHT_SUMMARY_PENDING_INDEPENDENT_VERIFICATION"
+}

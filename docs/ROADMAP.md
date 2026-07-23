@@ -3,10 +3,10 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage4D-CMA/controller are closed; Stage4E-E2E and Stage4F-XDR are complete with independent final verification and supported frozen decisions
+- Current stage: Stage4D-CMA/controller are closed; Stage4E-E2E, Stage4F-XDR and Stage4G-GTR are complete with independent final verification; Stage4G generator transfer is inconclusive
 - Current governance: project-wide and durable across all current/future stages; one research stage receives one authorization; stage-internal predefined work is continuous; step/channel reapproval is disabled; only new scientific boundaries or serious integrity anomalies pause execution
 - Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive development batch through verified Stage4D-CMA; deterministic new-ID HotpotQA train 1,000 and MuSiQue train 3,000 boundaries in Stage4E/4F; reservation and Stage3B were not accessed
-- Generator used: Qwen2.5-1.5B-Instruct in the verified Stage4E and Stage4F E2E transactions
+- Generators used: Qwen2.5-1.5B-Instruct in verified Stage4E/4F; one pre-specified Gemma 4 E2B official mobile-QAT configuration in verified Stage4G
 - Gold labels used for indexing: No
 
 ## Prior-stage Audit Decision
@@ -19,7 +19,7 @@ The full integrity and methodology audit is recorded in `docs/PRIOR_STAGE_METHOD
 - Stage2G: valid negative mechanism result; the current boundary rule is unsupported.
 - Stage2H: diagnostic only. Stage3A: failed development. Stage3C: descriptive planning only.
 - Restarted Stage4A `n=2,800`: exact event-count arithmetic is correct, but 20 gains is a planning heuristic. The number is not an approved effect-power or controller-training sample size.
-- Research position: `STAGE4D_CMA_CLOSED` and `CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED`; Stage4E supports static q25 on frozen HotpotQA and Stage4F replicates the answer-F1 gain on frozen MuSiQue. U2, reservation, Stage3B, new controllers, full-wiki/open-domain, and cross-generator confirmation are not authorized.
+- Research position: `STAGE4D_CMA_CLOSED` and `CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED`; Stage4E supports static q25 on frozen HotpotQA and Stage4F replicates the answer-F1 gain on frozen MuSiQue under Qwen. Stage4G tests one additional Gemma mobile-QAT configuration and returns `GENERATOR_TRANSFER_INCONCLUSIVE`. U2, reservation, Stage3B, new controllers, full-wiki/open-domain, and any new generator experiment are not authorized.
 
 ## Completed Execution History
 
@@ -1660,3 +1660,15 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - All preregistered support gates passed, producing `STATIC_HGRAG_XDR_SUPPORTED` and `STAGE4F_FINAL_VERIFICATION_PASS`. q25 inserted 7,233 units across 2,336 queries; both arms retained 20 prompt units without rank-1 truncation. Hop-count Channel C rows are all `SUBGROUP_CAUTION` and cannot alter the primary decision.
 - During finalization, a bounded implementation correction expanded `verify_postgold()` from bootstrap/decision-only coverage to the full frozen final-verification contract. Commits `ba3f1740bdd31f25b171e6c076072c7ce96b51e7` and `c890eda2fbc0bde048dcb4dfbb5a4a6abcd98e42` changed only the verifier, targeted tests and binding. Existing scientific artifacts were preserved; 27/27 tests passed; no model, data, ranking, evaluator, threshold, bootstrap or decision semantics changed.
 - The result is a verified cross-dataset replication across two closed-candidate multi-hop QA boundaries with one frozen generator. It is not full-wiki/open-domain or cross-generator confirmation and does not reopen controller, reservation, Stage3B or U2.
+
+### Stage4G-GTR Generator-Transfer Replication (2026-07-23)
+
+- Stage4G asks whether the frozen static-q25 retrieval gain transfers to one additional result-independent, pre-specified generator configuration while reusing Stage4E/4F blind inputs, Dense/static-q25 rankings, prompt semantics and evaluators. It does not create a new dataset, rerun retrieval, compare multiple generators on official Gold, or test full-wiki/open-domain behavior.
+- The bound generator is `google/gemma-4-E2B-it-qat-mobile-transformers@dd693ff40353f057ca5f07e945ad867f4afbf2ec`, run with Google's official mobile-QAT Transformers snapshot and thinking disabled. The 2,458,111,846-byte weight file has SHA-256 `EFAB4290...76A9A4`. Architecture, quantization and numerical-format effects are inseparable.
+- Resource assessment froze determinism contract B before official output: one full 8,000-call main plus a pre-hash-selected, dataset-stratified 400-call rerun subset covering both datasets and both arms. The main completed with zero failures and zero truncation; the independent pre-Gold verifier established exact subset prediction/audit reproduction, ranking-prefix reconstruction, prompt semantics and Gold isolation.
+- After `STAGE4G_GTR_PRE_GOLD_VERIFIED`, Gold evaluation scored 4,000 paired queries. HotpotQA Dense/static-q25 F1 was `0.349781/0.362429`, delta `+0.012647 [-0.002196,0.027444]`; MuSiQue was `0.044764/0.042444`, delta `-0.002320 [-0.006849,0.002076]`.
+- Dataset-stratified equal-weight F1 delta was `+0.005164 [-0.002623,0.012950]`; equal-weight EM delta was `+0.002333 [-0.005667,0.010333]`. The support gate failed because the F1 point was below `+0.010`, its lower bound was non-positive, and the MuSiQue point was non-positive. No registered negative gate fired.
+- The final decision is `GENERATOR_TRANSFER_INCONCLUSIVE`, with `STAGE4G_GTR_FINAL_VERIFICATION_PASS`. Independent verification rebuilt query scores, dataset and equal-weight bootstraps, the descriptive generator interaction and the exact decision.
+- Descriptive F1 interaction (`Gemma retrieval delta - frozen Qwen retrieval delta`) was `-0.002132 [-0.021990,0.017276]` on HotpotQA, `-0.013721 [-0.021864,-0.005658]` on MuSiQue, and `-0.007927 [-0.018696,0.002856]` under dataset equal weighting. Interaction does not enter the primary decision.
+- The only defensible transfer statement is that evidence under one additional pre-specified generator configuration is inconclusive. The result does not establish universal generator robustness, model-architecture ranking, Gemma unsuitability for RAG, or device-general efficiency. Reservation, Stage3B, U2 and the controller branch remain locked.
+- A non-executional `paper/ABLATION_AND_STRONG_BASELINE_PLAN.md` records protected insertion/prefix/budget and structural ablations plus BM25, hybrid and stronger-dense baselines. It does not authorize new data, Gold, ranking or model runs.

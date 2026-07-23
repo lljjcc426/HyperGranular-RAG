@@ -1,0 +1,400 @@
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Movin' Out","query_id":"hotpotqa_train_distractor_v1_1::5a83c505554299123d8c21b0","sample_id":"5a83c505554299123d8c21b0"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Movin' Out","query_id":"hotpotqa_train_distractor_v1_1::5a83c505554299123d8c21b0","sample_id":"5a83c505554299123d8c21b0"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a83950b5542992ef85e231a","sample_id":"5a83950b5542992ef85e231a"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a83950b5542992ef85e231a","sample_id":"5a83950b5542992ef85e231a"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"13th century","query_id":"hotpotqa_train_distractor_v1_1::5ae2c83c5542992decbdcd9b","sample_id":"5ae2c83c5542992decbdcd9b"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"13th century","query_id":"hotpotqa_train_distractor_v1_1::5ae2c83c5542992decbdcd9b","sample_id":"5ae2c83c5542992decbdcd9b"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Hal Haydel was drafted in the Rule 5 draft by the Minnesota Twins three years later.","query_id":"hotpotqa_train_distractor_v1_1::5ae3b7425542990afbd1e1b4","sample_id":"5ae3b7425542990afbd1e1b4"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Hal Haydel was drafted in the Rule 5 draft by the Minnesota Twins.","query_id":"hotpotqa_train_distractor_v1_1::5ae3b7425542990afbd1e1b4","sample_id":"5ae3b7425542990afbd1e1b4"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Mantri Square","query_id":"hotpotqa_train_distractor_v1_1::5a84f1b35542997175ce1f2d","sample_id":"5a84f1b35542997175ce1f2d"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Mantri Square","query_id":"hotpotqa_train_distractor_v1_1::5a84f1b35542997175ce1f2d","sample_id":"5a84f1b35542997175ce1f2d"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Kristina Keneally","query_id":"hotpotqa_train_distractor_v1_1::5ac42e095542997ea680ca1e","sample_id":"5ac42e095542997ea680ca1e"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Kristina Keneally","query_id":"hotpotqa_train_distractor_v1_1::5ac42e095542997ea680ca1e","sample_id":"5ac42e095542997ea680ca1e"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a7af5a255429927d897bf1f","sample_id":"5a7af5a255429927d897bf1f"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a7af5a255429927d897bf1f","sample_id":"5a7af5a255429927d897bf1f"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ab82fc855429916710eb011","sample_id":"5ab82fc855429916710eb011"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ab82fc855429916710eb011","sample_id":"5ab82fc855429916710eb011"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Go Radio is an American rock band, and Wire is an English rock band.","query_id":"hotpotqa_train_distractor_v1_1::5a7333ee5542994cef4bc4b8","sample_id":"5a7333ee5542994cef4bc4b8"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Go Radio is an American rock band, and Wire is an English rock band.","query_id":"hotpotqa_train_distractor_v1_1::5a7333ee5542994cef4bc4b8","sample_id":"5a7333ee5542994cef4bc4b8"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"The Lives of Others","query_id":"hotpotqa_train_distractor_v1_1::5a8ce8695542996e8ac88b3d","sample_id":"5a8ce8695542996e8ac88b3d"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"The Lives of Others","query_id":"hotpotqa_train_distractor_v1_1::5a8ce8695542996e8ac88b3d","sample_id":"5a8ce8695542996e8ac88b3d"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"","query_id":"hotpotqa_train_distractor_v1_1::5a88496755429938390d3f20","sample_id":"5a88496755429938390d3f20"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"","query_id":"hotpotqa_train_distractor_v1_1::5a88496755429938390d3f20","sample_id":"5a88496755429938390d3f20"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Howard Goodall","query_id":"hotpotqa_train_distractor_v1_1::5ae1473c55429920d523437c","sample_id":"5ae1473c55429920d523437c"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Howard Goodall","query_id":"hotpotqa_train_distractor_v1_1::5ae1473c55429920d523437c","sample_id":"5ae1473c55429920d523437c"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae63a2355429929b0807af7","sample_id":"5ae63a2355429929b0807af7"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae63a2355429929b0807af7","sample_id":"5ae63a2355429929b0807af7"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae0fd5e55429920d5234263","sample_id":"5ae0fd5e55429920d5234263"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae0fd5e55429920d5234263","sample_id":"5ae0fd5e55429920d5234263"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"The Living Desert is a nature documentary.","query_id":"hotpotqa_train_distractor_v1_1::5aded16755429975fa854fab","sample_id":"5aded16755429975fa854fab"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"The Living Desert is a nature documentary.","query_id":"hotpotqa_train_distractor_v1_1::5aded16755429975fa854fab","sample_id":"5aded16755429975fa854fab"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"2016","query_id":"hotpotqa_train_distractor_v1_1::5abb13a35542992ccd8e7f01","sample_id":"5abb13a35542992ccd8e7f01"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"2016","query_id":"hotpotqa_train_distractor_v1_1::5abb13a35542992ccd8e7f01","sample_id":"5abb13a35542992ccd8e7f01"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a8e2e8b5542995085b373c8","sample_id":"5a8e2e8b5542995085b373c8"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a8e2e8b5542995085b373c8","sample_id":"5a8e2e8b5542995085b373c8"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a72863b5542992359bc30d4","sample_id":"5a72863b5542992359bc30d4"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Wayne State University was founded in 1868, while Stellenbosch University was founded in 1866.","query_id":"hotpotqa_train_distractor_v1_1::5a72863b5542992359bc30d4","sample_id":"5a72863b5542992359bc30d4"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Gaetano Donizetti","query_id":"hotpotqa_train_distractor_v1_1::5ac37a45554299741d48a264","sample_id":"5ac37a45554299741d48a264"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Gaetano Donizetti","query_id":"hotpotqa_train_distractor_v1_1::5ac37a45554299741d48a264","sample_id":"5ac37a45554299741d48a264"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Daniele De Rossi","query_id":"hotpotqa_train_distractor_v1_1::5a832c2755429966c78a6b48","sample_id":"5a832c2755429966c78a6b48"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Daniele De Rossi","query_id":"hotpotqa_train_distractor_v1_1::5a832c2755429966c78a6b48","sample_id":"5a832c2755429966c78a6b48"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"IIT Delhi","query_id":"hotpotqa_train_distractor_v1_1::5a7d33e15542995f4f402235","sample_id":"5a7d33e15542995f4f402235"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"IIT Delhi","query_id":"hotpotqa_train_distractor_v1_1::5a7d33e15542995f4f402235","sample_id":"5a7d33e15542995f4f402235"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"","query_id":"hotpotqa_train_distractor_v1_1::5ae48e025542995ad6573d7d","sample_id":"5ae48e025542995ad6573d7d"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"","query_id":"hotpotqa_train_distractor_v1_1::5ae48e025542995ad6573d7d","sample_id":"5ae48e025542995ad6573d7d"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ac29e1c554299657fa28fde","sample_id":"5ac29e1c554299657fa28fde"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ac29e1c554299657fa28fde","sample_id":"5ac29e1c554299657fa28fde"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Cocktails","query_id":"hotpotqa_train_distractor_v1_1::5ab289fa554299449642c8ea","sample_id":"5ab289fa554299449642c8ea"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Cocktails","query_id":"hotpotqa_train_distractor_v1_1::5ab289fa554299449642c8ea","sample_id":"5ab289fa554299449642c8ea"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a776ced5542993569682da3","sample_id":"5a776ced5542993569682da3"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a776ced5542993569682da3","sample_id":"5a776ced5542993569682da3"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a835bb5554299123d8c2102","sample_id":"5a835bb5554299123d8c2102"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a835bb5554299123d8c2102","sample_id":"5a835bb5554299123d8c2102"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Argentina national football team","query_id":"hotpotqa_train_distractor_v1_1::5ab5cfe35542997d4ad1f1e5","sample_id":"5ab5cfe35542997d4ad1f1e5"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Argentina national football team","query_id":"hotpotqa_train_distractor_v1_1::5ab5cfe35542997d4ad1f1e5","sample_id":"5ab5cfe35542997d4ad1f1e5"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae5aa7d554299546bf82f14","sample_id":"5ae5aa7d554299546bf82f14"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae5aa7d554299546bf82f14","sample_id":"5ae5aa7d554299546bf82f14"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"USA Network","query_id":"hotpotqa_train_distractor_v1_1::5add326f5542994ed6169ccd","sample_id":"5add326f5542994ed6169ccd"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"","query_id":"hotpotqa_train_distractor_v1_1::5add326f5542994ed6169ccd","sample_id":"5add326f5542994ed6169ccd"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae73e5d5542991e8301cc36","sample_id":"5ae73e5d5542991e8301cc36"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae73e5d5542991e8301cc36","sample_id":"5ae73e5d5542991e8301cc36"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ab3f7845542992ade7c6efc","sample_id":"5ab3f7845542992ade7c6efc"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ab3f7845542992ade7c6efc","sample_id":"5ab3f7845542992ade7c6efc"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ab5b258554299494045f033","sample_id":"5ab5b258554299494045f033"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ab5b258554299494045f033","sample_id":"5ab5b258554299494045f033"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"René Laloux","query_id":"hotpotqa_train_distractor_v1_1::5abfc95b5542993fe9a41e5c","sample_id":"5abfc95b5542993fe9a41e5c"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"René Laloux","query_id":"hotpotqa_train_distractor_v1_1::5abfc95b5542993fe9a41e5c","sample_id":"5abfc95b5542993fe9a41e5c"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Claudia Gerini","query_id":"hotpotqa_train_distractor_v1_1::5a87266b5542991e771816f1","sample_id":"5a87266b5542991e771816f1"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Claudia Gerini","query_id":"hotpotqa_train_distractor_v1_1::5a87266b5542991e771816f1","sample_id":"5a87266b5542991e771816f1"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae277ce554299492dc91c23","sample_id":"5ae277ce554299492dc91c23"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae277ce554299492dc91c23","sample_id":"5ae277ce554299492dc91c23"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Wharton","query_id":"hotpotqa_train_distractor_v1_1::5a85ccb65542991dd0999e9e","sample_id":"5a85ccb65542991dd0999e9e"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Wharton","query_id":"hotpotqa_train_distractor_v1_1::5a85ccb65542991dd0999e9e","sample_id":"5a85ccb65542991dd0999e9e"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Tuxedo","query_id":"hotpotqa_train_distractor_v1_1::5a8b324855429950cd6afc6c","sample_id":"5a8b324855429950cd6afc6c"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Tuxedo","query_id":"hotpotqa_train_distractor_v1_1::5a8b324855429950cd6afc6c","sample_id":"5a8b324855429950cd6afc6c"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"The evidence does not state which author wrote \"Dragon Tears\" or which bestseller list it appeared on.","query_id":"hotpotqa_train_distractor_v1_1::5a89d50655429946c8d6e9d7","sample_id":"5a89d50655429946c8d6e9d7"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a89d50655429946c8d6e9d7","sample_id":"5a89d50655429946c8d6e9d7"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Melbourne","query_id":"hotpotqa_train_distractor_v1_1::5ab5e4545542992aa134a3cf","sample_id":"5ab5e4545542992aa134a3cf"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Melbourne","query_id":"hotpotqa_train_distractor_v1_1::5ab5e4545542992aa134a3cf","sample_id":"5ab5e4545542992aa134a3cf"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a8670b955429960ec39b6a8","sample_id":"5a8670b955429960ec39b6a8"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a8670b955429960ec39b6a8","sample_id":"5a8670b955429960ec39b6a8"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ab459535542996a3a969f72","sample_id":"5ab459535542996a3a969f72"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ab459535542996a3a969f72","sample_id":"5ab459535542996a3a969f72"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Yes","query_id":"hotpotqa_train_distractor_v1_1::5a84cc685542994c784dda57","sample_id":"5a84cc685542994c784dda57"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Yes","query_id":"hotpotqa_train_distractor_v1_1::5a84cc685542994c784dda57","sample_id":"5a84cc685542994c784dda57"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5abeccc15542997ec76fd36b","sample_id":"5abeccc15542997ec76fd36b"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Nevada","query_id":"hotpotqa_train_distractor_v1_1::5abeccc15542997ec76fd36b","sample_id":"5abeccc15542997ec76fd36b"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Anwar Sadat","query_id":"hotpotqa_train_distractor_v1_1::5abebb385542997719eab599","sample_id":"5abebb385542997719eab599"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Anwar Sadat","query_id":"hotpotqa_train_distractor_v1_1::5abebb385542997719eab599","sample_id":"5abebb385542997719eab599"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"California","query_id":"hotpotqa_train_distractor_v1_1::5abae3dc5542996606241662","sample_id":"5abae3dc5542996606241662"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Moffett Field","query_id":"hotpotqa_train_distractor_v1_1::5abae3dc5542996606241662","sample_id":"5abae3dc5542996606241662"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Jean-Bertrand Aristide","query_id":"hotpotqa_train_distractor_v1_1::5ae244c8554299492dc91c00","sample_id":"5ae244c8554299492dc91c00"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Jean-Bertrand Aristide","query_id":"hotpotqa_train_distractor_v1_1::5ae244c8554299492dc91c00","sample_id":"5ae244c8554299492dc91c00"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"5000 metres","query_id":"hotpotqa_train_distractor_v1_1::5abe81d85542993f32c2a137","sample_id":"5abe81d85542993f32c2a137"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"5000 metres","query_id":"hotpotqa_train_distractor_v1_1::5abe81d85542993f32c2a137","sample_id":"5abe81d85542993f32c2a137"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"They were both pioneers in heavy metal and doom metal.","query_id":"hotpotqa_train_distractor_v1_1::5ab46bbb5542991751b4d768","sample_id":"5ab46bbb5542991751b4d768"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"They were both pioneers in heavy metal and doom metal.","query_id":"hotpotqa_train_distractor_v1_1::5ab46bbb5542991751b4d768","sample_id":"5ab46bbb5542991751b4d768"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a89283c554299669944a4d1","sample_id":"5a89283c554299669944a4d1"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Paul Coffey","query_id":"hotpotqa_train_distractor_v1_1::5a89283c554299669944a4d1","sample_id":"5a89283c554299669944a4d1"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"No Doubt","query_id":"hotpotqa_train_distractor_v1_1::5aba639955429939ce03dcbd","sample_id":"5aba639955429939ce03dcbd"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"No Doubt","query_id":"hotpotqa_train_distractor_v1_1::5aba639955429939ce03dcbd","sample_id":"5aba639955429939ce03dcbd"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Alison Goldfrapp","query_id":"hotpotqa_train_distractor_v1_1::5a81d6af55429903bc27b9df","sample_id":"5a81d6af55429903bc27b9df"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Alison Goldfrapp","query_id":"hotpotqa_train_distractor_v1_1::5a81d6af55429903bc27b9df","sample_id":"5a81d6af55429903bc27b9df"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a8fa9f15542995b44242087","sample_id":"5a8fa9f15542995b44242087"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a8fa9f15542995b44242087","sample_id":"5a8fa9f15542995b44242087"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"The Meyerowitz Stories","query_id":"hotpotqa_train_distractor_v1_1::5adf01f95542992d7e9f9272","sample_id":"5adf01f95542992d7e9f9272"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"The Meyerowitz Stories","query_id":"hotpotqa_train_distractor_v1_1::5adf01f95542992d7e9f9272","sample_id":"5adf01f95542992d7e9f9272"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae5a7885542992663a4f206","sample_id":"5ae5a7885542992663a4f206"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae5a7885542992663a4f206","sample_id":"5ae5a7885542992663a4f206"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Humulus","query_id":"hotpotqa_train_distractor_v1_1::5a891b55554299669944a4b4","sample_id":"5a891b55554299669944a4b4"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Humulus","query_id":"hotpotqa_train_distractor_v1_1::5a891b55554299669944a4b4","sample_id":"5a891b55554299669944a4b4"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"William Procter founded a company with James Gamble, who was an Irish soap maker.","query_id":"hotpotqa_train_distractor_v1_1::5a8973f85542995153361304","sample_id":"5a8973f85542995153361304"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"William Procter founded a company with James Gamble, who was an Irish soap maker.","query_id":"hotpotqa_train_distractor_v1_1::5a8973f85542995153361304","sample_id":"5a8973f85542995153361304"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Styles P","query_id":"hotpotqa_train_distractor_v1_1::5ab43f9f55429942dd415ef8","sample_id":"5ab43f9f55429942dd415ef8"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Styles P","query_id":"hotpotqa_train_distractor_v1_1::5ab43f9f55429942dd415ef8","sample_id":"5ab43f9f55429942dd415ef8"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Suomi KP/-31","query_id":"hotpotqa_train_distractor_v1_1::5ab56a91554299494045efb9","sample_id":"5ab56a91554299494045efb9"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Suomi KP/-31","query_id":"hotpotqa_train_distractor_v1_1::5ab56a91554299494045efb9","sample_id":"5ab56a91554299494045efb9"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"United States","query_id":"hotpotqa_train_distractor_v1_1::5aba042f55429901930fa771","sample_id":"5aba042f55429901930fa771"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"United States","query_id":"hotpotqa_train_distractor_v1_1::5aba042f55429901930fa771","sample_id":"5aba042f55429901930fa771"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae67fc15542996d980e7b9b","sample_id":"5ae67fc15542996d980e7b9b"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae67fc15542996d980e7b9b","sample_id":"5ae67fc15542996d980e7b9b"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"They were piloted by Mika Salo and Allan McNish.","query_id":"hotpotqa_train_distractor_v1_1::5adcca9f5542994ed6169c07","sample_id":"5adcca9f5542994ed6169c07"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"They were piloted by Mika Salo and Allan McNish.","query_id":"hotpotqa_train_distractor_v1_1::5adcca9f5542994ed6169c07","sample_id":"5adcca9f5542994ed6169c07"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Meyerbeer","query_id":"hotpotqa_train_distractor_v1_1::5ab5639d554299494045ef90","sample_id":"5ab5639d554299494045ef90"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Gluck","query_id":"hotpotqa_train_distractor_v1_1::5ab5639d554299494045ef90","sample_id":"5ab5639d554299494045ef90"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Playboy","query_id":"hotpotqa_train_distractor_v1_1::5a7cffd055429907fabef0a0","sample_id":"5a7cffd055429907fabef0a0"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Playboy","query_id":"hotpotqa_train_distractor_v1_1::5a7cffd055429907fabef0a0","sample_id":"5a7cffd055429907fabef0a0"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a8d809e554299068b959d11","sample_id":"5a8d809e554299068b959d11"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a8d809e554299068b959d11","sample_id":"5a8d809e554299068b959d11"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae276115542996483e649b0","sample_id":"5ae276115542996483e649b0"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae276115542996483e649b0","sample_id":"5ae276115542996483e649b0"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a8d54c75542994ba4e3dc75","sample_id":"5a8d54c75542994ba4e3dc75"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a8d54c75542994ba4e3dc75","sample_id":"5a8d54c75542994ba4e3dc75"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ac313ce554299741d48a1b1","sample_id":"5ac313ce554299741d48a1b1"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ac313ce554299741d48a1b1","sample_id":"5ac313ce554299741d48a1b1"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a75d491554299109176e5a1","sample_id":"5a75d491554299109176e5a1"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a75d491554299109176e5a1","sample_id":"5a75d491554299109176e5a1"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Singapore Changi Airport","query_id":"hotpotqa_train_distractor_v1_1::5addc2f15542997dc7907018","sample_id":"5addc2f15542997dc7907018"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Singapore Changi Airport","query_id":"hotpotqa_train_distractor_v1_1::5addc2f15542997dc7907018","sample_id":"5addc2f15542997dc7907018"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a736c9e55429901807db047","sample_id":"5a736c9e55429901807db047"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a736c9e55429901807db047","sample_id":"5a736c9e55429901807db047"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"To increase the political strength of religious groups on the Christian right and promote social conservative values in the United States.","query_id":"hotpotqa_train_distractor_v1_1::5ab82d3655429916710eb00c","sample_id":"5ab82d3655429916710eb00c"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"To increase the political strength of religious groups on the Christian right and promote social conservative values in the United States.","query_id":"hotpotqa_train_distractor_v1_1::5ab82d3655429916710eb00c","sample_id":"5ab82d3655429916710eb00c"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"The Connells","query_id":"hotpotqa_train_distractor_v1_1::5a808f00554299485f598654","sample_id":"5a808f00554299485f598654"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"The Connells","query_id":"hotpotqa_train_distractor_v1_1::5a808f00554299485f598654","sample_id":"5a808f00554299485f598654"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5add50105542990dbb2f7e25","sample_id":"5add50105542990dbb2f7e25"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5add50105542990dbb2f7e25","sample_id":"5add50105542990dbb2f7e25"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Charlotte of Mecklenburg-Strelitz","query_id":"hotpotqa_train_distractor_v1_1::5ae08be255429945ae9593ae","sample_id":"5ae08be255429945ae9593ae"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Charlotte of Mecklenburg-Strelitz","query_id":"hotpotqa_train_distractor_v1_1::5ae08be255429945ae9593ae","sample_id":"5ae08be255429945ae9593ae"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ab282d0554299706120964b","sample_id":"5ab282d0554299706120964b"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Tirupati","query_id":"hotpotqa_train_distractor_v1_1::5ab282d0554299706120964b","sample_id":"5ab282d0554299706120964b"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Yes","query_id":"hotpotqa_train_distractor_v1_1::5ac3a6245542993915413881","sample_id":"5ac3a6245542993915413881"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Yes","query_id":"hotpotqa_train_distractor_v1_1::5ac3a6245542993915413881","sample_id":"5ac3a6245542993915413881"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a7e9c995542994959419a2c","sample_id":"5a7e9c995542994959419a2c"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a7e9c995542994959419a2c","sample_id":"5a7e9c995542994959419a2c"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Redlands, California","query_id":"hotpotqa_train_distractor_v1_1::5a80b0fb554299485f5986bf","sample_id":"5a80b0fb554299485f5986bf"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Redlands, California","query_id":"hotpotqa_train_distractor_v1_1::5a80b0fb554299485f5986bf","sample_id":"5a80b0fb554299485f5986bf"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae52ad755429908b6326534","sample_id":"5ae52ad755429908b6326534"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Oni Press","query_id":"hotpotqa_train_distractor_v1_1::5ae52ad755429908b6326534","sample_id":"5ae52ad755429908b6326534"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a7719ca55429937353601cf","sample_id":"5a7719ca55429937353601cf"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a7719ca55429937353601cf","sample_id":"5a7719ca55429937353601cf"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a7e41c2554299495941994e","sample_id":"5a7e41c2554299495941994e"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"screenwriter, film director, and stuntman","query_id":"hotpotqa_train_distractor_v1_1::5a7e41c2554299495941994e","sample_id":"5a7e41c2554299495941994e"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae2232b5542994d89d5b36d","sample_id":"5ae2232b5542994d89d5b36d"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae2232b5542994d89d5b36d","sample_id":"5ae2232b5542994d89d5b36d"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Edwin Forrest","query_id":"hotpotqa_train_distractor_v1_1::5ae5457555429960a22e02ab","sample_id":"5ae5457555429960a22e02ab"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Edwin Forrest","query_id":"hotpotqa_train_distractor_v1_1::5ae5457555429960a22e02ab","sample_id":"5ae5457555429960a22e02ab"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a77420b55429972597f14db","sample_id":"5a77420b55429972597f14db"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a77420b55429972597f14db","sample_id":"5a77420b55429972597f14db"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Border Ruffians","query_id":"hotpotqa_train_distractor_v1_1::5a7782a45542997042120a90","sample_id":"5a7782a45542997042120a90"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Border Ruffians","query_id":"hotpotqa_train_distractor_v1_1::5a7782a45542997042120a90","sample_id":"5a7782a45542997042120a90"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a848a175542990548d0b2c6","sample_id":"5a848a175542990548d0b2c6"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a848a175542990548d0b2c6","sample_id":"5a848a175542990548d0b2c6"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ab4f5d95542990594ba9cb9","sample_id":"5ab4f5d95542990594ba9cb9"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ab4f5d95542990594ba9cb9","sample_id":"5ab4f5d95542990594ba9cb9"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae00cc5554299025d62a3c7","sample_id":"5ae00cc5554299025d62a3c7"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae00cc5554299025d62a3c7","sample_id":"5ae00cc5554299025d62a3c7"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae0cec055429945ae95945f","sample_id":"5ae0cec055429945ae95945f"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ae0cec055429945ae95945f","sample_id":"5ae0cec055429945ae95945f"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"2010","query_id":"hotpotqa_train_distractor_v1_1::5a83ae59554299123d8c2189","sample_id":"5a83ae59554299123d8c2189"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"2010","query_id":"hotpotqa_train_distractor_v1_1::5a83ae59554299123d8c2189","sample_id":"5a83ae59554299123d8c2189"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Cleveland, Ohio","query_id":"hotpotqa_train_distractor_v1_1::5a75147455429916b016424b","sample_id":"5a75147455429916b016424b"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Cleveland, Ohio","query_id":"hotpotqa_train_distractor_v1_1::5a75147455429916b016424b","sample_id":"5a75147455429916b016424b"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"","query_id":"hotpotqa_train_distractor_v1_1::5a8f8fb45542997ba9cb32c6","sample_id":"5a8f8fb45542997ba9cb32c6"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a8f8fb45542997ba9cb32c6","sample_id":"5a8f8fb45542997ba9cb32c6"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Richard Fleischer","query_id":"hotpotqa_train_distractor_v1_1::5a79cf07554299148911fa60","sample_id":"5a79cf07554299148911fa60"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a79cf07554299148911fa60","sample_id":"5a79cf07554299148911fa60"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"The evidence does not explicitly state which CS Lewis novel Jonathan Scott appeared in a 1988 BBC adaptation.","query_id":"hotpotqa_train_distractor_v1_1::5ae81055554299540e5a572b","sample_id":"5ae81055554299540e5a572b"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"The evidence does not state that Jonathan Scott appeared in a CS Lewis novel's 1988 BBC adaptation.","query_id":"hotpotqa_train_distractor_v1_1::5ae81055554299540e5a572b","sample_id":"5ae81055554299540e5a572b"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a7a0c8d5542996c55b2dced","sample_id":"5a7a0c8d5542996c55b2dced"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a7a0c8d5542996c55b2dced","sample_id":"5a7a0c8d5542996c55b2dced"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"China","query_id":"hotpotqa_train_distractor_v1_1::5ab29c11554299706120966d","sample_id":"5ab29c11554299706120966d"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"China","query_id":"hotpotqa_train_distractor_v1_1::5ab29c11554299706120966d","sample_id":"5ab29c11554299706120966d"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Peter Schamoni","query_id":"hotpotqa_train_distractor_v1_1::5a8122845542995ce29dcbbf","sample_id":"5a8122845542995ce29dcbbf"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Peter Schamoni","query_id":"hotpotqa_train_distractor_v1_1::5a8122845542995ce29dcbbf","sample_id":"5a8122845542995ce29dcbbf"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"Lucona","query_id":"hotpotqa_train_distractor_v1_1::5a89fbcf55429970aeb701dd","sample_id":"5a89fbcf55429970aeb701dd"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"Lucona","query_id":"hotpotqa_train_distractor_v1_1::5a89fbcf55429970aeb701dd","sample_id":"5a89fbcf55429970aeb701dd"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ab6d5b35542995eadef00b6","sample_id":"5ab6d5b35542995eadef00b6"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5ab6d5b35542995eadef00b6","sample_id":"5ab6d5b35542995eadef00b6"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a72ad7a5542992359bc3166","sample_id":"5a72ad7a5542992359bc3166"}
+{"dataset":"hotpotqa_train_distractor_v1_1","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"hotpotqa_train_distractor_v1_1::5a72ad7a5542992359bc3166","sample_id":"5a72ad7a5542992359bc3166"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__66436_55566","sample_id":"2hop__66436_55566"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__66436_55566","sample_id":"2hop__66436_55566"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__107223_19132","sample_id":"2hop__107223_19132"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__107223_19132","sample_id":"2hop__107223_19132"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__76105_23202","sample_id":"2hop__76105_23202"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__76105_23202","sample_id":"2hop__76105_23202"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__62586_109005","sample_id":"2hop__62586_109005"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__62586_109005","sample_id":"2hop__62586_109005"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__140644_369731","sample_id":"2hop__140644_369731"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__140644_369731","sample_id":"2hop__140644_369731"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"House of Representatives","query_id":"musique_ans_v1_0_train::4hop1__405751_4520_65397_52251","sample_id":"4hop1__405751_4520_65397_52251"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"House of Representatives","query_id":"musique_ans_v1_0_train::4hop1__405751_4520_65397_52251","sample_id":"4hop1__405751_4520_65397_52251"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__54630_52870","sample_id":"2hop__54630_52870"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__54630_52870","sample_id":"2hop__54630_52870"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__131243_701819","sample_id":"2hop__131243_701819"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__131243_701819","sample_id":"2hop__131243_701819"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__11230_11117","sample_id":"2hop__11230_11117"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__11230_11117","sample_id":"2hop__11230_11117"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__373147_77937","sample_id":"2hop__373147_77937"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__373147_77937","sample_id":"2hop__373147_77937"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__799630_208796","sample_id":"2hop__799630_208796"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__799630_208796","sample_id":"2hop__799630_208796"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop1__130320_548096_527472","sample_id":"3hop1__130320_548096_527472"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop1__130320_548096_527472","sample_id":"3hop1__130320_548096_527472"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__106616_85890","sample_id":"2hop__106616_85890"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__106616_85890","sample_id":"2hop__106616_85890"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__275130_126084","sample_id":"2hop__275130_126084"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__275130_126084","sample_id":"2hop__275130_126084"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__731120_781580","sample_id":"2hop__731120_781580"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__731120_781580","sample_id":"2hop__731120_781580"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__528481_37260","sample_id":"2hop__528481_37260"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__528481_37260","sample_id":"2hop__528481_37260"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"Reedley, California","query_id":"musique_ans_v1_0_train::2hop__262180_386152","sample_id":"2hop__262180_386152"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"Reedley, California area schools","query_id":"musique_ans_v1_0_train::2hop__262180_386152","sample_id":"2hop__262180_386152"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__16774_419765","sample_id":"2hop__16774_419765"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__16774_419765","sample_id":"2hop__16774_419765"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop1__713895_823374_26316","sample_id":"3hop1__713895_823374_26316"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop1__713895_823374_26316","sample_id":"3hop1__713895_823374_26316"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__146364_495","sample_id":"2hop__146364_495"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__146364_495","sample_id":"2hop__146364_495"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop1__143714_291186_4303","sample_id":"3hop1__143714_291186_4303"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop1__143714_291186_4303","sample_id":"3hop1__143714_291186_4303"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"","query_id":"musique_ans_v1_0_train::3hop1__157534_275705_91800","sample_id":"3hop1__157534_275705_91800"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"","query_id":"musique_ans_v1_0_train::3hop1__157534_275705_91800","sample_id":"3hop1__157534_275705_91800"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__631634_471321","sample_id":"2hop__631634_471321"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__631634_471321","sample_id":"2hop__631634_471321"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__302164_62851","sample_id":"2hop__302164_62851"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__302164_62851","sample_id":"2hop__302164_62851"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__9129_58953","sample_id":"2hop__9129_58953"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__9129_58953","sample_id":"2hop__9129_58953"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"26,968","query_id":"musique_ans_v1_0_train::2hop__753498_7606","sample_id":"2hop__753498_7606"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"26,968","query_id":"musique_ans_v1_0_train::2hop__753498_7606","sample_id":"2hop__753498_7606"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"Colorado River","query_id":"musique_ans_v1_0_train::2hop__783229_84230","sample_id":"2hop__783229_84230"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"Colorado River","query_id":"musique_ans_v1_0_train::2hop__783229_84230","sample_id":"2hop__783229_84230"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__718356_565667","sample_id":"2hop__718356_565667"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__718356_565667","sample_id":"2hop__718356_565667"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__48727_81708","sample_id":"2hop__48727_81708"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__48727_81708","sample_id":"2hop__48727_81708"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"San Francisco, California","query_id":"musique_ans_v1_0_train::2hop__222162_386543","sample_id":"2hop__222162_386543"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"San Francisco, California","query_id":"musique_ans_v1_0_train::2hop__222162_386543","sample_id":"2hop__222162_386543"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__547734_34197","sample_id":"2hop__547734_34197"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__547734_34197","sample_id":"2hop__547734_34197"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__102049_74309","sample_id":"2hop__102049_74309"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__102049_74309","sample_id":"2hop__102049_74309"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__661591_33802","sample_id":"2hop__661591_33802"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__661591_33802","sample_id":"2hop__661591_33802"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__712807_39199","sample_id":"2hop__712807_39199"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__712807_39199","sample_id":"2hop__712807_39199"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__142513_287578","sample_id":"2hop__142513_287578"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__142513_287578","sample_id":"2hop__142513_287578"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__118927_333904","sample_id":"2hop__118927_333904"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__118927_333904","sample_id":"2hop__118927_333904"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__101181_14971","sample_id":"2hop__101181_14971"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"Antarctica is the fifth-largest continent.","query_id":"musique_ans_v1_0_train::2hop__101181_14971","sample_id":"2hop__101181_14971"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__2849_2913","sample_id":"2hop__2849_2913"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__2849_2913","sample_id":"2hop__2849_2913"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"May 1997","query_id":"musique_ans_v1_0_train::2hop__20858_20779","sample_id":"2hop__20858_20779"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"May 1997","query_id":"musique_ans_v1_0_train::2hop__20858_20779","sample_id":"2hop__20858_20779"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop1__531155_87072_46487","sample_id":"3hop1__531155_87072_46487"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop1__531155_87072_46487","sample_id":"3hop1__531155_87072_46487"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__66717_64652","sample_id":"2hop__66717_64652"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__66717_64652","sample_id":"2hop__66717_64652"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"anti-slavery forces in the North and pro-slavery forces from the South","query_id":"musique_ans_v1_0_train::2hop__800015_60675","sample_id":"2hop__800015_60675"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__800015_60675","sample_id":"2hop__800015_60675"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::4hop3__493923_300471_162189_73761","sample_id":"4hop3__493923_300471_162189_73761"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::4hop3__493923_300471_162189_73761","sample_id":"4hop3__493923_300471_162189_73761"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__342734_159937","sample_id":"2hop__342734_159937"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__342734_159937","sample_id":"2hop__342734_159937"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop1__314333_863719_77801","sample_id":"3hop1__314333_863719_77801"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop1__314333_863719_77801","sample_id":"3hop1__314333_863719_77801"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__708239_677577","sample_id":"2hop__708239_677577"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__708239_677577","sample_id":"2hop__708239_677577"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"1978","query_id":"musique_ans_v1_0_train::2hop__20857_20732","sample_id":"2hop__20857_20732"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"1978","query_id":"musique_ans_v1_0_train::2hop__20857_20732","sample_id":"2hop__20857_20732"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__356224_135304","sample_id":"2hop__356224_135304"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__356224_135304","sample_id":"2hop__356224_135304"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__66717_607800","sample_id":"2hop__66717_607800"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__66717_607800","sample_id":"2hop__66717_607800"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop1__159612_22372_22347","sample_id":"3hop1__159612_22372_22347"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop1__159612_22372_22347","sample_id":"3hop1__159612_22372_22347"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__652626_3004","sample_id":"2hop__652626_3004"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__652626_3004","sample_id":"2hop__652626_3004"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"Warsaw City Council","query_id":"musique_ans_v1_0_train::2hop__383_42292","sample_id":"2hop__383_42292"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"The Warsaw City Council has legislative power.","query_id":"musique_ans_v1_0_train::2hop__383_42292","sample_id":"2hop__383_42292"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__40750_641245","sample_id":"2hop__40750_641245"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__40750_641245","sample_id":"2hop__40750_641245"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__146644_516766","sample_id":"2hop__146644_516766"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__146644_516766","sample_id":"2hop__146644_516766"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"South Africa","query_id":"musique_ans_v1_0_train::2hop__35828_58232","sample_id":"2hop__35828_58232"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"South Africa","query_id":"musique_ans_v1_0_train::2hop__35828_58232","sample_id":"2hop__35828_58232"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__23887_4697","sample_id":"2hop__23887_4697"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__23887_4697","sample_id":"2hop__23887_4697"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__145459_434","sample_id":"2hop__145459_434"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"","query_id":"musique_ans_v1_0_train::2hop__145459_434","sample_id":"2hop__145459_434"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__267271_51682","sample_id":"2hop__267271_51682"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__267271_51682","sample_id":"2hop__267271_51682"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::4hop2__10725_41193_484788_26397","sample_id":"4hop2__10725_41193_484788_26397"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::4hop2__10725_41193_484788_26397","sample_id":"4hop2__10725_41193_484788_26397"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"David","query_id":"musique_ans_v1_0_train::2hop__78663_46283","sample_id":"2hop__78663_46283"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"David","query_id":"musique_ans_v1_0_train::2hop__78663_46283","sample_id":"2hop__78663_46283"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__661591_13665","sample_id":"2hop__661591_13665"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__661591_13665","sample_id":"2hop__661591_13665"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop2__107261_822545_62462","sample_id":"3hop2__107261_822545_62462"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop2__107261_822545_62462","sample_id":"3hop2__107261_822545_62462"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop1__189331_481978_18264","sample_id":"3hop1__189331_481978_18264"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop1__189331_481978_18264","sample_id":"3hop1__189331_481978_18264"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop1__204168_9522_8184","sample_id":"3hop1__204168_9522_8184"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop1__204168_9522_8184","sample_id":"3hop1__204168_9522_8184"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__107369_123863","sample_id":"2hop__107369_123863"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__107369_123863","sample_id":"2hop__107369_123863"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__137703_68782","sample_id":"2hop__137703_68782"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__137703_68782","sample_id":"2hop__137703_68782"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__21564_306274","sample_id":"2hop__21564_306274"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__21564_306274","sample_id":"2hop__21564_306274"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__28974_22384","sample_id":"2hop__28974_22384"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__28974_22384","sample_id":"2hop__28974_22384"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"West drew musical inspiration from arena rock bands such as The Rolling Stones, U2, and Led Zeppelin in terms of melody and chord progression.","query_id":"musique_ans_v1_0_train::2hop__172371_2578","sample_id":"2hop__172371_2578"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"West drew inspiration from arena rock bands such as The Rolling Stones, U2, and Led Zeppelin in terms of melody and chord progression.","query_id":"musique_ans_v1_0_train::2hop__172371_2578","sample_id":"2hop__172371_2578"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__595405_5365","sample_id":"2hop__595405_5365"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__595405_5365","sample_id":"2hop__595405_5365"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"minimalism and process music","query_id":"musique_ans_v1_0_train::2hop__590896_694982","sample_id":"2hop__590896_694982"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"minimalism and process music","query_id":"musique_ans_v1_0_train::2hop__590896_694982","sample_id":"2hop__590896_694982"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::4hop3__29341_30907_32417_24628","sample_id":"4hop3__29341_30907_32417_24628"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::4hop3__29341_30907_32417_24628","sample_id":"4hop3__29341_30907_32417_24628"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__732813_3429","sample_id":"2hop__732813_3429"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__732813_3429","sample_id":"2hop__732813_3429"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"Colorado River","query_id":"musique_ans_v1_0_train::2hop__754967_84230","sample_id":"2hop__754967_84230"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"Colorado River","query_id":"musique_ans_v1_0_train::2hop__754967_84230","sample_id":"2hop__754967_84230"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__826678_37260","sample_id":"2hop__826678_37260"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__826678_37260","sample_id":"2hop__826678_37260"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"1995","query_id":"musique_ans_v1_0_train::2hop__473264_127375","sample_id":"2hop__473264_127375"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"1995","query_id":"musique_ans_v1_0_train::2hop__473264_127375","sample_id":"2hop__473264_127375"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__630207_432198","sample_id":"2hop__630207_432198"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__630207_432198","sample_id":"2hop__630207_432198"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop1__10879_10384_59072","sample_id":"3hop1__10879_10384_59072"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop1__10879_10384_59072","sample_id":"3hop1__10879_10384_59072"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__77824_299942","sample_id":"2hop__77824_299942"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__77824_299942","sample_id":"2hop__77824_299942"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__781496_81010","sample_id":"2hop__781496_81010"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__781496_81010","sample_id":"2hop__781496_81010"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"James Manning was the first president of Brown University.","query_id":"musique_ans_v1_0_train::2hop__122660_501351","sample_id":"2hop__122660_501351"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"James Manning","query_id":"musique_ans_v1_0_train::2hop__122660_501351","sample_id":"2hop__122660_501351"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__249051_131886","sample_id":"2hop__249051_131886"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__249051_131886","sample_id":"2hop__249051_131886"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"FBI","query_id":"musique_ans_v1_0_train::2hop__13631_13640","sample_id":"2hop__13631_13640"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"FBI","query_id":"musique_ans_v1_0_train::2hop__13631_13640","sample_id":"2hop__13631_13640"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__389055_26789","sample_id":"2hop__389055_26789"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__389055_26789","sample_id":"2hop__389055_26789"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__333650_77478","sample_id":"2hop__333650_77478"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__333650_77478","sample_id":"2hop__333650_77478"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__352068_82827","sample_id":"2hop__352068_82827"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__352068_82827","sample_id":"2hop__352068_82827"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__103885_45358","sample_id":"2hop__103885_45358"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__103885_45358","sample_id":"2hop__103885_45358"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__11693_20713","sample_id":"2hop__11693_20713"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__11693_20713","sample_id":"2hop__11693_20713"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__513098_3004","sample_id":"2hop__513098_3004"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__513098_3004","sample_id":"2hop__513098_3004"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__107219_73460","sample_id":"2hop__107219_73460"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__107219_73460","sample_id":"2hop__107219_73460"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__686534_541630","sample_id":"2hop__686534_541630"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__686534_541630","sample_id":"2hop__686534_541630"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"Apollo of Mantua","query_id":"musique_ans_v1_0_train::2hop__66919_533073","sample_id":"2hop__66919_533073"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__66919_533073","sample_id":"2hop__66919_533073"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__347682_49441","sample_id":"2hop__347682_49441"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__347682_49441","sample_id":"2hop__347682_49441"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__20874_20713","sample_id":"2hop__20874_20713"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__20874_20713","sample_id":"2hop__20874_20713"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop2__144657_683614_41384","sample_id":"3hop2__144657_683614_41384"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop2__144657_683614_41384","sample_id":"3hop2__144657_683614_41384"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__210354_81382","sample_id":"2hop__210354_81382"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__210354_81382","sample_id":"2hop__210354_81382"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__130712_555599","sample_id":"2hop__130712_555599"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__130712_555599","sample_id":"2hop__130712_555599"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop1__769887_299916_31236","sample_id":"3hop1__769887_299916_31236"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::3hop1__769887_299916_31236","sample_id":"3hop1__769887_299916_31236"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__159116_54749","sample_id":"2hop__159116_54749"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__159116_54749","sample_id":"2hop__159116_54749"}
+{"dataset":"musique_ans_v1_0_train","method":"STATIC_Q25_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__788541_161223","sample_id":"2hop__788541_161223"}
+{"dataset":"musique_ans_v1_0_train","method":"DENSE_TOP20","prediction":"UNKNOWN","query_id":"musique_ans_v1_0_train::2hop__788541_161223","sample_id":"2hop__788541_161223"}

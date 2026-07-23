@@ -1,0 +1,44 @@
+{
+  "artifacts": {
+    "predictions_main": {
+      "bytes": 1508328,
+      "sha256": "E6B0A50CB3090A7268E838EC5BBB0DD6C5FE90440A75DA0B103D2E0906D31709"
+    },
+    "predictions_rerun_subset": {
+      "bytes": 78362,
+      "sha256": "43CDF730152032D752956D359E707FF92C17C8517EBE0B8AA1DEB72855688FA9"
+    },
+    "prompt_audit_main": {
+      "bytes": 14058957,
+      "sha256": "E8227941D1AF5E3C893AC538E1E5DD61C2FE818F879D0EA6D45FB7137E54F8F1"
+    },
+    "prompt_audit_rerun_subset": {
+      "bytes": 722498,
+      "sha256": "75947C6F15168F49E552A5B99388354E39490349E30BDC034D79B9F4B75ADFA4"
+    },
+    "telemetry_main": {
+      "bytes": 1818,
+      "sha256": "F4B5B8E49149C692993EE4023C80A443AE608C2BBF34E627CBF256F41BDB0BA9"
+    },
+    "telemetry_rerun_subset": {
+      "bytes": 1784,
+      "sha256": "3F12932BD92BD054DBF7113CB96B6396DDFAF6FC43B664C33448E85FF05EA95F"
+    }
+  },
+  "determinism": {
+    "contract": "B_FULL_MAIN_PLUS_PREHASH_STRATIFIED_SUBSET_RERUN",
+    "main_calls": 8000,
+    "rerun_subset_calls": 400,
+    "subset_prediction_and_audit_exact_match": true,
+    "verification_level": "STRATIFIED_SUBSET_NOT_FULL_RERUN"
+  },
+  "gold_opened": false,
+  "prompt_contract": {
+    "completion_tokens_verified": true,
+    "gold_or_method_inside_prompt": false,
+    "ranking_prefixes_verified": true,
+    "semantic_content_reconstructed": true
+  },
+  "schema_version": "stage4g_gtr_v1",
+  "status": "STAGE4G_GTR_PRE_GOLD_VERIFIED"
+}

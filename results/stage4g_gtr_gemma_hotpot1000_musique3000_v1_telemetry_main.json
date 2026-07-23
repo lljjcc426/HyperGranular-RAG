@@ -1,0 +1,58 @@
+{
+  "cuda_devices": [
+    "cuda:0"
+  ],
+  "determinism_contract": "B_FULL_MAIN_PLUS_PREHASH_STRATIFIED_SUBSET_RERUN",
+  "failed_calls": 0,
+  "generation_calls": 8000,
+  "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "gpu_peak_memory_bytes": 7885933056,
+  "groups": {
+    "hotpotqa_train_distractor_v1_1|DENSE_TOP20": {
+      "calls": 1000,
+      "completion_tokens": 3914,
+      "included_evidence_units_mean": 19.939,
+      "input_tokens_mean": 899.164,
+      "truncated_calls": 0,
+      "unknown_calls": 466
+    },
+    "hotpotqa_train_distractor_v1_1|STATIC_Q25_TOP20": {
+      "calls": 1000,
+      "completion_tokens": 4080,
+      "included_evidence_units_mean": 19.939,
+      "input_tokens_mean": 900.923,
+      "truncated_calls": 0,
+      "unknown_calls": 445
+    },
+    "musique_ans_v1_0_train|DENSE_TOP20": {
+      "calls": 3000,
+      "completion_tokens": 7903,
+      "included_evidence_units_mean": 20.0,
+      "input_tokens_mean": 882.0816666666667,
+      "truncated_calls": 0,
+      "unknown_calls": 2606
+    },
+    "musique_ans_v1_0_train|STATIC_Q25_TOP20": {
+      "calls": 3000,
+      "completion_tokens": 7803,
+      "included_evidence_units_mean": 20.0,
+      "input_tokens_mean": 885.4546666666666,
+      "truncated_calls": 0,
+      "unknown_calls": 2627
+    }
+  },
+  "model_id": "google/gemma-4-E2B-it-qat-mobile-transformers",
+  "python": "3.12.0",
+  "revision": "dd693ff40353f057ca5f07e945ad867f4afbf2ec",
+  "run_id": "main",
+  "runtime_format": "google_official_mobile_qat_transformers",
+  "schema_version": "stage4g_gtr_v1",
+  "snapshot_weight": {
+    "bytes": 2458111846,
+    "sha256": "EFAB429012B97AB986C4D4838A46FF3AD95D618B42CE514771CA40FADC76A9A4"
+  },
+  "torch": "2.12.1+cu130",
+  "torchvision": "0.27.1+cu130",
+  "transformers": "5.14.1",
+  "wall_time_seconds": 56501.841953999996
+}

@@ -1,0 +1,112 @@
+{
+  "datasets": {
+    "hotpotqa_train_distractor_v1_1": {
+      "bootstrap": {
+        "delta_answer_em": {
+          "lower_95": -0.009,
+          "point": 0.006,
+          "upper_95": 0.021
+        },
+        "delta_answer_f1": {
+          "lower_95": -0.002195889147831873,
+          "point": 0.01264746474715515,
+          "upper_95": 0.027443666191050094
+        },
+        "iterations": 10000,
+        "numpy_generator": "PCG64",
+        "percentile_method": "linear",
+        "seed": 20260724
+      },
+      "generator_interaction": {
+        "answer_em": {
+          "lower_95": -0.024,
+          "point": -0.004,
+          "upper_95": 0.016
+        },
+        "answer_f1": {
+          "lower_95": -0.021989955298735757,
+          "point": -0.0021322942051741354,
+          "upper_95": 0.017275818140762785
+        },
+        "decision_role": "DESCRIPTIVE_ONLY",
+        "definition": "second_generator_retrieval_delta_minus_frozen_qwen_retrieval_delta"
+      },
+      "methods": {
+        "DENSE_TOP20": {
+          "answer_em": 0.305,
+          "answer_f1": 0.34978145162077395,
+          "completion_tokens_mean": 3.914,
+          "included_evidence_units_mean": 19.939,
+          "input_tokens_mean": 899.164,
+          "truncation_rate": 0.0,
+          "unknown_rate": 0.466
+        },
+        "STATIC_Q25_TOP20": {
+          "answer_em": 0.311,
+          "answer_f1": 0.3624289163679292,
+          "completion_tokens_mean": 4.08,
+          "included_evidence_units_mean": 19.939,
+          "input_tokens_mean": 900.923,
+          "truncation_rate": 0.0,
+          "unknown_rate": 0.445
+        }
+      },
+      "queries": 1000
+    },
+    "musique_ans_v1_0_train": {
+      "bootstrap": {
+        "delta_answer_em": {
+          "lower_95": -0.005666666666666667,
+          "point": -0.0013333333333333333,
+          "upper_95": 0.003
+        },
+        "delta_answer_f1": {
+          "lower_95": -0.006848898723398533,
+          "point": -0.002319535673699312,
+          "upper_95": 0.002075527284730326
+        },
+        "iterations": 10000,
+        "numpy_generator": "PCG64",
+        "percentile_method": "linear",
+        "seed": 20260724
+      },
+      "generator_interaction": {
+        "answer_em": {
+          "lower_95": -0.019,
+          "point": -0.011333333333333334,
+          "upper_95": -0.0036666666666666666
+        },
+        "answer_f1": {
+          "lower_95": -0.02186436721201972,
+          "point": -0.013720961685647765,
+          "upper_95": -0.005658036152645419
+        },
+        "decision_role": "DESCRIPTIVE_ONLY",
+        "definition": "second_generator_retrieval_delta_minus_frozen_qwen_retrieval_delta"
+      },
+      "methods": {
+        "DENSE_TOP20": {
+          "answer_em": 0.03333333333333333,
+          "answer_f1": 0.04476359350116787,
+          "completion_tokens_mean": 2.634333333333333,
+          "included_evidence_units_mean": 20.0,
+          "input_tokens_mean": 882.0816666666667,
+          "truncation_rate": 0.0,
+          "unknown_rate": 0.8686666666666667
+        },
+        "STATIC_Q25_TOP20": {
+          "answer_em": 0.032,
+          "answer_f1": 0.042444057827468566,
+          "completion_tokens_mean": 2.601,
+          "included_evidence_units_mean": 20.0,
+          "input_tokens_mean": 885.4546666666666,
+          "truncation_rate": 0.0,
+          "unknown_rate": 0.8756666666666667
+        }
+      },
+      "queries": 3000
+    }
+  },
+  "schema_version": "stage4g_gtr_v1",
+  "status": "STAGE4G_DATASET_SUMMARIES_PENDING_INDEPENDENT_VERIFICATION"
+}

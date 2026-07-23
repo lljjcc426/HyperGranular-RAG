@@ -27,6 +27,15 @@
 | [Stage4F evaluation summary](../results/stage4f_xdr_musique_train3000_v1_evaluation_summary.json) | 3,000-query official metrics、10,000 bootstrap 与 supporting-paragraph retrieval |
 | [Stage4F final verification](../results/stage4f_xdr_musique_train3000_v1_final_verification.json) | source/model/environment、query audit、overall metrics、bootstrap、decision 与工件身份独立重建 |
 | [Stage4F artifact manifest](../results/stage4f_xdr_musique_train3000_v1_artifact_manifest.json) | 正式工件与本地 embedding cache 的 Bytes/SHA 清单 |
+| [Stage4G-GTR 实验卡](STAGE4G_GTR_EXPERIMENT_CARD.md) | 单一额外生成器、冻结输入/rankings、等权联合统计、判定门和确定性合同 |
+| [Stage4G official config](../configs/stage4g_gtr_official.json) | Gemma revision/runtime、Stage4E/4F 输入身份、代码和正式输出路径绑定 |
+| [Stage4G 生成器迁移复制报告](../reports/超粒球RAG_Stage4G_GTR生成器迁移复制报告.md) | 数据集级/等权 F1/EM、interaction、运行资源、验证和主张边界 |
+| [Stage4G pre-Gold verification](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_verified_pregold.json) | 8,000-call main、400-call subset、prompt/ranking/Gold 隔离与精确复现 |
+| [Stage4G dataset summaries](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_dataset_summaries.json) | HotpotQA 与 MuSiQue 的绝对指标、paired bootstrap 和 interaction |
+| [Stage4G equal-weight summary](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_equal_weight_summary.json) | 数据集等权主要联合统计与 query-weighted 描述量 |
+| [Stage4G final verification](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_final_verification.json) | 4,000-query scoring、bootstrap、interaction 和 decision 独立重建 |
+| [Stage4G artifact manifest](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_artifact_manifest.json) | 13 个前置正式工件的 Bytes/SHA 清单 |
+| [消融与强基线计划](../paper/ABLATION_AND_STRONG_BASELINE_PLAN.md) | 投稿前组件消融、强基线、可复用资产和证据缺口；仅设计不授权执行 |
 | [论文材料入口](../paper/README.md) | 论文结构、证据主张台账和待补结果 |
 | [论文证据与主张台账](../paper/EVIDENCE_AND_CLAIM_LEDGER.md) | 将可写主张、证据等级、来源与限制逐项绑定 |
 | [Simplified execution protocol](STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md) | Stage4B-U1-D 科学与 pre-Gold 执行合同 |
@@ -92,6 +101,21 @@
 | [scientific decision](../results/stage4f_xdr_musique_train3000_v1_scientific_decision.json) | `STATIC_HGRAG_XDR_SUPPORTED` |
 | [descriptive subgroups](../results/stage4f_xdr_musique_train3000_v1_descriptive_subgroups.json) | post-decision hop-count audit；全行 `SUBGROUP_CAUTION` |
 
+### Stage4G-GTR 正式工件
+
+| 文件 | 状态 |
+|---|---|
+| [input/model manifest](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_input_model_manifest.json) | Stage4E/4F frozen inputs/rankings 与 Gemma mobile-QAT snapshot 身份通过 |
+| [predictions main](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_predictions_main.jsonl) | 8,000 calls；零失败；1,508,328 bytes / `E6B0A50C...D31709` |
+| [predictions rerun subset](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_predictions_rerun_subset.jsonl) | 2 datasets × 2 arms × 100 calls；相对 main 精确复现 |
+| [prompt audits main](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_prompt_audit_main.jsonl) | 14,058,957 bytes / `E8227941...54F8F1`；独立重建通过 |
+| [pre-Gold verification](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_verified_pregold.json) | `STAGE4G_GTR_PRE_GOLD_VERIFIED` |
+| [query scores](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_query_scores.jsonl) | 4,000 paired queries；独立重建通过 |
+| [dataset summaries](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_dataset_summaries.json) | HotpotQA F1 `+0.01265`；MuSiQue F1 `-0.00232` |
+| [equal-weight summary](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_equal_weight_summary.json) | F1 `+0.00516 [-0.00262,0.01295]` |
+| [scientific decision](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_scientific_decision.json) | `GENERATOR_TRANSFER_INCONCLUSIVE` |
+| [final verification](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_final_verification.json) | `STAGE4G_GTR_FINAL_VERIFICATION_PASS` |
+
 ## 科学设计与阶段证据
 
 - Stage4A-R2 的样本、映射、估计和验证协议保留在对应 `STAGE4A_R2_*` 文档中。
@@ -102,6 +126,7 @@
 - Stage4D 与当前 controller 线已经按 [关闭声明](STAGE4D_CMA_CLOSURE.md) 冻结；Stage4E 不继承 controller labels、features 或 model。
 - Stage4E 把 data boundary 明确限定为 HotpotQA train 的 new-ID same-domain distractor sample，不表述为跨数据集或 full-wiki external validation。正式结果为 answer F1 `+0.01478 [0.00020,0.02988]`，独立验证通过。
 - Stage4F 在 MuSiQue train 3,000 个新 ID 上复制同一静态方法：answer F1 `+0.01140 [0.00450,0.01835]`，冻结为 `STATIC_HGRAG_XDR_SUPPORTED`；仍不是 full-wiki、open-domain 或跨生成器确认。
+- Stage4G 只改变为一个事前指定的 Gemma official mobile-QAT 生成器配置。HotpotQA/MuSiQue F1 点差方向不一致，数据集等权 F1 为 `+0.00516 [-0.00262,0.01295]`，冻结为 `GENERATOR_TRANSFER_INCONCLUSIVE`；不能写成普遍 generator robustness 或模型架构排名。
 
 ## 历史治理证据
 
