@@ -42,3 +42,9 @@ results/stage4i_sdc_* -text
 paper/figures/*.svg -text
 paper/figures/source_data/*.csv -text
 paper/figures/STAGE5_PMC_FIGURE_MANIFEST.json -text
+configs/stage5a_bnh_official.json -text
+docs/STAGE5A_BNH_EXPERIMENT_CARD.md -text
+scripts/stage5a_bnh_*.py -text
+tests/test_stage5a_bnh.py -text
+results/stage5a_bnh_* -text
+reports/超粒球RAG_Stage5A_BNH强语义空间原生检索报告.md -text
