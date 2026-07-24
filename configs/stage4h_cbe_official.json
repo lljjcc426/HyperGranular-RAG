@@ -1,0 +1,305 @@
+{
+  "schema_version": "stage4h_cbe_v1",
+  "status": "STAGE4H_INPUTS_BOUND_IMPLEMENTATION_PENDING_GIT_BINDING",
+  "official_execution": {
+    "authorized": true,
+    "authorization_date": "2026-07-24",
+    "scope": "FULL_STAGE_INPUT_BINDING_THROUGH_GOLD_FINAL_VERIFICATION_REPORT_AND_GITHUB_SYNC"
+  },
+  "sample_sizes": {
+    "hotpotqa_train_distractor_v1_1": 1000,
+    "musique_ans_v1_0_train": 1500
+  },
+  "selection": {
+    "salt": "stage4h_cbe_v1\u0000",
+    "contract": "SHA256(salt + dataset_key + NUL + native_id), native_id",
+    "uses_gold_or_metadata": false
+  },
+  "sources": {
+    "hotpotqa": {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\raw\\hotpotqa\\hotpot_train_v1.1.json",
+      "bytes": 566426227,
+      "sha256": "26650CF50234EF5FB2E664ED70BBECDFD87815E6BFFC257E068EFEA5CF7CD316",
+      "dataset": "HotpotQA train distractor v1.1",
+      "license": "CC-BY-SA-4.0",
+      "canonical_url": "http://curtis.ml.cmu.edu/datasets/hotpot/hotpot_train_v1.1.json",
+      "source_revision": "hotpotqa_v1.1"
+    },
+    "musique": {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\raw\\musique\\data\\musique_ans_v1.0_train.jsonl",
+      "bytes": 241046755,
+      "sha256": "83A75B1E11E4E9BB8F8308E72AC40CA617AE4431B3A0D955B61CAB259248490A",
+      "dataset": "MuSiQue-Answerable v1.0 train",
+      "license": "CC-BY-4.0",
+      "repository_commit": "922ac98f19a201998dbdae6d7f2887a5258dbdeb",
+      "canonical_url": "https://github.com/StonyBrookNLP/musique/tree/922ac98f19a201998dbdae6d7f2887a5258dbdeb"
+    }
+  },
+  "historical_inputs": [
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\musique_ans_dev_sample200_unified.json",
+      "bytes": 2826022,
+      "sha256": "BBA41D7258D045FE66F6B0AA23BBE54D9FDE2EE940EE44389461D9265392E9B1"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage1_sample400_queries.jsonl",
+      "bytes": 234624,
+      "sha256": "51A1389C159CC7703CA0F47F36B709CAE081A1F7BD6E8FC646D59EE3CFF0B13D"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage2f_hotpotqa_unseen200_unified.json",
+      "bytes": 1699596,
+      "sha256": "0818FCB2E130C3BCC207912F59F9ACE14B534321AD93686378E6923FF7405AC5"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage2f_musique_unseen200_unified.json",
+      "bytes": 2941869,
+      "sha256": "728252CED21B4B117DB6091B6C0A131746A0270E58CA5FCE2780702049894BE0"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage2f_unseen400_queries.jsonl",
+      "bytes": 236284,
+      "sha256": "81298D4CE25EFED6B178EB367D9C48A8FB1CACAE420B43E4315199D3C0492715"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage2g_musique_unseen200_unified.json",
+      "bytes": 2938875,
+      "sha256": "33B37EED295E5A6B5260C6041AFD970C698CA5AC300853DB5FB5564392458F70"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage2g_unseen400_queries.jsonl",
+      "bytes": 235741,
+      "sha256": "7049C2662C3FE6AAF2F3401D578B5F93465F4046C206256F87F871B5BC227D1E"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage3a_dev800_queries.jsonl",
+      "bytes": 473710,
+      "sha256": "D24A19CD2BDC80DF3886ECEC081FCBE45022F0D761EDDB86E44CFCAA9FBD4785"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage3a_musique_dev400_unified.json",
+      "bytes": 6029681,
+      "sha256": "C24C1C57BA66FA4F21F4ED7AE0D9929FC7D7D76F4A548543B907970BB8719426"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4e_e2e_official_train1000_v1_blind_queries.jsonl",
+      "bytes": 6487688,
+      "sha256": "CB30B9764ADF256A5C5E130F1B78F6AA1EC30613C529FDB554F0F2F29C873958"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4f_xdr_musique_train3000_v1_blind_queries.jsonl",
+      "bytes": 90210161,
+      "sha256": "C8D73F6F8E0B9CA0BEAFD84DC05C43438400966998B5C2C3510E0EB47D1EC4C5"
+    }
+  ],
+  "models": {
+    "minilm": {
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "license": "Apache-2.0",
+      "snapshot_path": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--sentence-transformers--all-MiniLM-L6-v2\\snapshots\\1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "files_sha256": "766AD566460F0494963F3DF1DEBC5A3B15B219F95C305C54859C2E330C064782",
+      "files": [
+        {"bytes": 1229, "path": ".gitattributes", "sha256": "98CCB431C012EBFE976280FBD45AEA4CEC7409935868CCECF3954370F96732A1"},
+        {"bytes": 190, "path": "1_Pooling/config.json", "sha256": "4BE450DDE3B0273BB9787637CFBD28FE04A7BA6AB9D36AC48E92B11E350FFC23"},
+        {"bytes": 612, "path": "config.json", "sha256": "953F9C0D463486B10A6871CC2FD59F223B2C70184F49815E7EFBCAB5D8908B41"},
+        {"bytes": 116, "path": "config_sentence_transformers.json", "sha256": "061CA9D39661D6C6D6DE5BA27F79A1CD5770EA247F8D46412A68A498DC5AC9F3"},
+        {"bytes": 39265, "path": "data_config.json", "sha256": "32EDCB108FC2516B920734A862AE0692BCAE1C5D45D5F8D972CB0D53434A4C54"},
+        {"bytes": 90868376, "path": "model.safetensors", "sha256": "53AA51172D142C89D9012CCE15AE4D6CC0CA6895895114379CACB4FAB128D9DB"},
+        {"bytes": 349, "path": "modules.json", "sha256": "84E40C8E006C9B1D6C122E02CBA9B02458120B5FB0C87B746C41E0207CF642CF"},
+        {"bytes": 23026053, "path": "onnx/model_qint8_arm64.onnx", "sha256": "4278337FD0FF3C68BFB6291042CAD8AB363E1D9FBC43DCB499FE91C871902474"},
+        {"bytes": 10502, "path": "README.md", "sha256": "DCD602D2FD35C203A247304A06FEC6654A12F7941B739F9221A064FE8DC3B7F0"},
+        {"bytes": 112, "path": "special_tokens_map.json", "sha256": "303DF45A03609E4EAD04BC3DC1536D0AB19B5358DB685B6F3DA123D05EC200E3"},
+        {"bytes": 466247, "path": "tokenizer.json", "sha256": "BE50C3628F2BF5BB5E3A7F17B1F74611B2561A3A27EEAB05E5AA30F411572037"},
+        {"bytes": 350, "path": "tokenizer_config.json", "sha256": "ACB92769E8195AABD29B7B2137A9E6D6E25C476A4F15AA4355C233426C61576B"},
+        {"bytes": 231508, "path": "vocab.txt", "sha256": "07ECED375CEC144D27C900241F3E339478DEC958F92FDDBC551F295C992038A3"}
+      ]
+    },
+    "strong_dense": {
+      "model_id": "BAAI/bge-large-en-v1.5",
+      "revision": "d4aa6901d3a41ba39fb536a557fa166f842b0e09",
+      "license": "MIT",
+      "selection_basis": "OFFICIAL_MODEL_CARD_RETRIEVAL_ABILITY_STANDARD_TRANSFORMERS_LICENSE_AND_LOCAL_HARDWARE_ONLY_NO_STAGE4H_GOLD",
+      "snapshot_path": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--BAAI--bge-large-en-v1.5\\snapshots\\d4aa6901d3a41ba39fb536a557fa166f842b0e09",
+      "files_sha256": "29C01618732E315301950DBA16CB2C7D24656D3C994FEB4742AD51E6A7D39629",
+      "files": [
+        {"bytes": 1519, "path": ".gitattributes", "sha256": "11AD7EFA24975EE4B0C3C3A38ED18737F0658A5F75A0A96787B576A78A023361"},
+        {"bytes": 191, "path": "1_Pooling/config.json", "sha256": "E54C164A07274F2EB45BB724F54A79D1EFCC90C41573887CD9A29AEEE0597352"},
+        {"bytes": 779, "path": "config.json", "sha256": "446712FAC367857B4B1302762FE1CD7BFA8B3C4B77B4DC5D77C4025407660896"},
+        {"bytes": 124, "path": "config_sentence_transformers.json", "sha256": "940D5F50DB195FA6E5E6A4F122C095F77880DE259D74B14A65779ED48BDD7C56"},
+        {"bytes": 1340616616, "path": "model.safetensors", "sha256": "45E1954914E29BD74080E6C1510165274FF5279421C89F76C418878732F64AE7"},
+        {"bytes": 349, "path": "modules.json", "sha256": "84E40C8E006C9B1D6C122E02CBA9B02458120B5FB0C87B746C41E0207CF642CF"},
+        {"bytes": 94607, "path": "README.md", "sha256": "9FFEB4467F293416C1F7642E64AE0BD44778FA182CE1165196E8A0329A34FD80"},
+        {"bytes": 52, "path": "sentence_bert_config.json", "sha256": "84E39FDA68CCBFF05BFA723AE9C0E70E23E2EC373B76E0F8C6E71AF72A693CBF"},
+        {"bytes": 125, "path": "special_tokens_map.json", "sha256": "B6D346BE366A7D1D48332DBC9FDF3BF8960B5D879522B7799DDBA59E76237EE3"},
+        {"bytes": 711396, "path": "tokenizer.json", "sha256": "D241A60D5E8F04CC1B2B3E9EF7A4921B27BF526D9F6050AB90F9267A1F9E5C66"},
+        {"bytes": 366, "path": "tokenizer_config.json", "sha256": "9261E7D79B44C8195C1CADA2B453E55B00AEB81E907A6664974B4D7776172AB3"},
+        {"bytes": 231508, "path": "vocab.txt", "sha256": "07ECED375CEC144D27C900241F3E339478DEC958F92FDDBC551F295C992038A3"}
+      ]
+    },
+    "generator": {
+      "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+      "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "license": "Apache-2.0",
+      "snapshot_path": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--Qwen--Qwen2.5-1.5B-Instruct\\snapshots\\989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "files_sha256": "29726780E76777165E4E7B462356A18E374FEC4DBFF02A0BC8E4F5ACD09468C4",
+      "files": [
+        {"bytes": 660, "path": "config.json", "sha256": "98D2FF8CC47488D08A2B0B3ACF4EB99EF210779B42BD48605F6B8E36ACDBF670"},
+        {"bytes": 242, "path": "generation_config.json", "sha256": "E558847A8B4402616F1273797B015104DC266FE4B520056FCA88823BA8F8EBE6"},
+        {"bytes": 1671839, "path": "merges.txt", "sha256": "599BAB54075088774B1733FDE865D5BD747CBCC7A547C5BC12610E874E26F5E3"},
+        {"bytes": 3087467144, "path": "model.safetensors", "sha256": "DD924A11B4C220F385B51FFA522DAEA7C9F3D850E31B162BB5661DF483C6D3EE"},
+        {"bytes": 7031645, "path": "tokenizer.json", "sha256": "C0382117EA329CDF097041132F6D735924B697924D6F6FC3945713E96CE87539"},
+        {"bytes": 7305, "path": "tokenizer_config.json", "sha256": "5B5D4F65D0ACD3B2D56A35B56D374A36CBC1C8FA5CF3B3FEBBBFABF22F359583"},
+        {"bytes": 2776833, "path": "vocab.json", "sha256": "CA10D7E9FB3ED18575DD1E277A2579C16D108E32F27439684AFA0E10B1440910"}
+      ]
+    }
+  },
+  "generation": {
+    "batch_size": 1,
+    "do_sample": false,
+    "dtype": "float16",
+    "input_token_cap": 4096,
+    "max_new_tokens": 32,
+    "num_beams": 1,
+    "postprocess": "strip leading and trailing whitespace only",
+    "system_message": "Answer the question using only the provided evidence. Return only the shortest final answer. If the evidence is insufficient, return UNKNOWN."
+  },
+  "retrieval": {
+    "top_k": 20,
+    "minilm_max_length": 192,
+    "strong_dense_max_length": 512,
+    "bm25": {
+      "tokenizer": "ASCII_ALNUM_LOWER",
+      "k1": 1.5,
+      "b": 0.75,
+      "idf": "log(1 + (N - df + 0.5) / (df + 0.5))"
+    },
+    "hybrid": {
+      "dense_weight": 0.5,
+      "bm25_weight": 0.5,
+      "normalization": "query_local_minmax_zero_if_constant"
+    },
+    "static_q25": {
+      "boundary_width": 0.2,
+      "insert_budget": 4,
+      "max_candidate_ball_size": 8,
+      "max_depth": 6,
+      "max_expanded_balls": 2,
+      "max_redundancy": 0.9,
+      "max_size": 3,
+      "max_units_per_new_term": 6.0,
+      "min_ball_score": 0.12,
+      "min_facet_score": 0.1,
+      "min_new_terms": 1,
+      "min_seed_similarity": 0.05,
+      "min_size": 2,
+      "protected_dense_prefix": 10,
+      "q25_floor": 0.1957079917192459,
+      "radius_threshold": 0.78,
+      "seed_balls": 2,
+      "top_center_terms": 8,
+      "top_facet_edges": 2,
+      "w_ball": 0.2,
+      "w_diversity": 0.15,
+      "w_facet_unit_bonus": 0.0,
+      "w_new": 0.45,
+      "w_redundancy": 0.2,
+      "w_size": 0.05,
+      "w_total": 0.2
+    }
+  },
+  "ablations": {
+    "Q25_NO_PROTECTION": "SAME_FULL_INSERTED_SET_PROMOTED_AHEAD_OF_DENSE",
+    "Q25_NO_FACET_HYPEREDGE": "CENTROID_ONLY_BALL_EXPANSION",
+    "FLAT_UNIT_PROTECTED_INSERTION": "NOT_FAIRLY_DEFINED",
+    "effect_cost_curve": "NOT_RUN_RESOURCE_BOUNDED"
+  },
+  "determinism": {
+    "contract": "FULL_MAIN_PLUS_PREHASH_STRATIFIED_SUBSET_RERUN",
+    "rerun_queries_per_dataset": 100,
+    "rerun_salt": "stage4h_cbe_rerun_v1\u0000",
+    "full_main_calls": 17500,
+    "subset_rerun_calls": 1400
+  },
+  "evaluation": {
+    "primary_endpoint": "dataset_equal_weight_delta_answer_f1",
+    "supportive_guard": "dataset_equal_weight_delta_answer_em",
+    "bootstrap_iterations": 10000,
+    "bootstrap_seed": 20260725,
+    "bootstrap_numpy_generator": "PCG64",
+    "bootstrap_percentile_method": "linear",
+    "multiple_comparison": "HOLM_STEP_DOWN_ONE_SIDED_POSITIVE_FAMILY_OF_FOUR",
+    "familywise_alpha": 0.05,
+    "em_interval_lower_minimum": -0.01
+  },
+  "inputs": {
+    "blind": {
+      "bytes": 73895304,
+      "sha256": "19E2659B190E91A4FC6350698C921C8F3FFA86B793BA89F3D726C004C5EA9B64"
+    },
+    "environment_manifest": {
+      "bytes": 1730,
+      "sha256": "23B9A57FF067DF4101C17F1DFCB5F63BEAB7AE7481693B34D3A2C408373B100F"
+    },
+    "gold": {
+      "bytes": 812450,
+      "sha256": "02407A306C0728024CB3D515C7427610C2AFB4898C75FEE9EDA9BA890A22B92F"
+    },
+    "input_manifest": {
+      "bytes": 668237,
+      "sha256": "6095D8FAB5526F1F10956C1808802C4122B20840666422253B9591802DD92615"
+    },
+    "metadata": {
+      "bytes": 697917,
+      "sha256": "6A4461955F8D83C1F71B9C996CBC7CC824A1185D685F15E660BB66312E7F5B6C"
+    },
+    "strong_dense_selection_manifest": {
+      "bytes": 1836,
+      "sha256": "262100E8767450D5D38E2A79F3629BBD5305A4FBE1FF367D7C952BA70898B711"
+    }
+  },
+  "paths": {
+    "blind": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4h_cbe_hotpot1000_musique1500_v1_blind_queries.jsonl",
+    "gold": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4h_cbe_hotpot1000_musique1500_v1_gold_targets.jsonl",
+    "metadata": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4h_cbe_hotpot1000_musique1500_v1_sealed_metadata.jsonl",
+    "input_manifest": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_hotpot1000_musique1500_v1_input_manifest.json",
+    "environment_manifest": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_environment_manifest.json",
+    "minilm_snapshot": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--sentence-transformers--all-MiniLM-L6-v2\\snapshots\\1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "strong_dense_snapshot": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--BAAI--bge-large-en-v1.5\\snapshots\\d4aa6901d3a41ba39fb536a557fa166f842b0e09",
+    "strong_dense_selection_manifest": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_strong_dense_selection_manifest.json",
+    "generator_snapshot": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--Qwen--Qwen2.5-1.5B-Instruct\\snapshots\\989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "minilm_embedding_cache": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4h_cbe_hotpot1000_musique1500_v1_minilm_embeddings.npz",
+    "strong_embedding_cache": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4h_cbe_hotpot1000_musique1500_v1_bge_large_en_v1_5_embeddings.npz",
+    "rankings": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_hotpot1000_musique1500_v1_rankings.jsonl",
+    "retrieval_trace": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_hotpot1000_musique1500_v1_retrieval_trace.jsonl",
+    "predictions_main": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_hotpot1000_musique1500_v1_predictions_main.jsonl",
+    "prompt_audit_main": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_hotpot1000_musique1500_v1_prompt_audit_main.jsonl",
+    "telemetry_main": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_hotpot1000_musique1500_v1_telemetry_main.json",
+    "predictions_rerun_subset": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_hotpot1000_musique1500_v1_predictions_rerun_subset.jsonl",
+    "prompt_audit_rerun_subset": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_hotpot1000_musique1500_v1_prompt_audit_rerun_subset.jsonl",
+    "telemetry_rerun_subset": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_hotpot1000_musique1500_v1_telemetry_rerun_subset.json",
+    "verified_pregold": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_hotpot1000_musique1500_v1_verified_pregold.json",
+    "query_audit": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_hotpot1000_musique1500_v1_query_audit.jsonl",
+    "dataset_summaries": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_hotpot1000_musique1500_v1_dataset_summaries.json",
+    "equal_weight_summary": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_hotpot1000_musique1500_v1_equal_weight_summary.json",
+    "scientific_decision": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_hotpot1000_musique1500_v1_scientific_decision.json",
+    "descriptive_metadata": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_hotpot1000_musique1500_v1_descriptive_metadata.json",
+    "final_verification": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_hotpot1000_musique1500_v1_final_verification.json",
+    "artifact_manifest": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_hotpot1000_musique1500_v1_artifact_manifest.json",
+    "checkpoint_main": "E:\\SCIENCE\\HyperGranular-RAG\\temp\\stage4h_cbe_main_checkpoint.jsonl",
+    "checkpoint_rerun_subset": "E:\\SCIENCE\\HyperGranular-RAG\\temp\\stage4h_cbe_rerun_subset_checkpoint.jsonl"
+  },
+  "implementation": {
+    "code_commit": "0000000000000000000000000000000000000000",
+    "files": {
+      "configs/stage4h_cbe_official.json": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  },
+  "locks": {
+    "reservation": "LOCKED",
+    "stage3b": "LOCKED",
+    "u2": "NOT_AUTHORIZED",
+    "controller_branch": "FROZEN_CLOSED",
+    "full_wiki": "NOT_AUTHORIZED"
+  }
+}

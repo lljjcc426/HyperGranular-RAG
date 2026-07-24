@@ -1,0 +1,45 @@
+{
+  "candidate_review": [
+    {
+      "model_id": "BAAI/bge-large-en-v1.5",
+      "official_retrieval_score": 54.29,
+      "official_score_context": "MTEB retrieval average reported by the official model card",
+      "revision": "d4aa6901d3a41ba39fb536a557fa166f842b0e09",
+      "runtime": "standard_transformers_no_remote_code",
+      "status": "SELECTED"
+    },
+    {
+      "model_id": "intfloat/e5-large-v2",
+      "official_retrieval_score": 50.56,
+      "official_score_context": "MTEB retrieval average reported in the BGE official comparison table",
+      "runtime": "standard_transformers",
+      "status": "NOT_SELECTED_LOWER_PUBLIC_RETRIEVAL_SCORE"
+    },
+    {
+      "model_id": "Alibaba-NLP/gte-large-en-v1.5",
+      "official_retrieval_score": 57.91,
+      "official_score_context": "MTEB retrieval average reported by the official model card",
+      "runtime": "trust_remote_code_required_by_official_transformers_example",
+      "status": "NOT_SELECTED_HIGHER_INDEPENDENT_RECONSTRUCTION_RISK"
+    }
+  ],
+  "files_sha256": "29C01618732E315301950DBA16CB2C7D24656D3C994FEB4742AD51E6A7D39629",
+  "license": "MIT",
+  "local_feasibility": {
+    "dtype": "float16_model_float32_normalized_embeddings",
+    "embedding_dimension": 1024,
+    "finite": true,
+    "max_abs_rerun_difference": 0.0,
+    "rerun_byte_identical": true,
+    "synthetic_texts": 3
+  },
+  "model_id": "BAAI/bge-large-en-v1.5",
+  "official_sources": [
+    "https://huggingface.co/BAAI/bge-large-en-v1.5",
+    "https://github.com/FlagOpen/FlagEmbedding"
+  ],
+  "revision": "d4aa6901d3a41ba39fb536a557fa166f842b0e09",
+  "selection_basis": "PUBLIC_RETRIEVAL_ABILITY_LICENSE_STANDARD_TRANSFORMERS_LOCAL_HARDWARE_AND_INDEPENDENT_RECONSTRUCTION_ONLY",
+  "selection_used_stage4h_gold": false,
+  "status": "STAGE4H_STRONG_DENSE_SELECTED_AND_SYNTHETICALLY_QUALIFIED"
+}
