@@ -1,6 +1,6 @@
 {
   "schema_version": "stage4h_cbe_v1",
-  "status": "STAGE4H_INPUTS_BOUND_IMPLEMENTATION_READY_SYNTHETIC_TESTS_PASSED",
+  "status": "STAGE4H_GOLDFREE_EMBEDDING_CACHES_FROZEN_MAIN_PENDING",
   "official_execution": {
     "authorized": true,
     "authorization_date": "2026-07-24",
@@ -253,6 +253,14 @@
       "bytes": 697917,
       "sha256": "6A4461955F8D83C1F71B9C996CBC7CC824A1185D685F15E660BB66312E7F5B6C"
     },
+    "minilm_embedding_cache": {
+      "bytes": 275898280,
+      "sha256": "26EE26A63B320A94ECF9ED3E7E8C9719FEB48BB4A44E44C318167F94E3657337"
+    },
+    "strong_embedding_cache": {
+      "bytes": 667539988,
+      "sha256": "653CB33F0FA3D253048845A983F1C1F7517DBFCCD69AC72496155FCC58B83E7E"
+    },
     "strong_dense_selection_manifest": {
       "bytes": 1836,
       "sha256": "262100E8767450D5D38E2A79F3629BBD5305A4FBE1FF367D7C952BA70898B711"
@@ -290,7 +298,7 @@
     "checkpoint_rerun_subset": "E:\\SCIENCE\\HyperGranular-RAG\\temp\\stage4h_cbe_rerun_subset_checkpoint.jsonl"
   },
   "implementation": {
-    "code_commit": "e8d014a3f205745b932917e28b31cf2c10d1d6fd",
+    "code_commit": "8f891480d3f21e2c368c1c83f191bbf302908268",
     "files": {
       "docs/STAGE4H_CBE_EXPERIMENT_CARD.md": "45595CF2B69A5501790FD473AFF663C6338D98C14F383EED5EAF6623E48B4A18",
       "requirements-stage4h.txt": "F7D7BF509539778AB312169723A4096A55C61C44E525335528D66BBCD7E75543",
@@ -299,8 +307,8 @@
       "scripts/stage4h_cbe_goldfree_runner.py": "498DD740AD7B259D37C57E88D1F51573B207A83069FEDFEA99EBA1F9A4ED6FF8",
       "scripts/stage4h_cbe_independent_verifier.py": "02F6B7451A9729CE3A2D1D607916EC2B70D660A00B32724115D6BBDAB661757A",
       "scripts/stage4h_cbe_prepare.py": "6755B6306888EE2A773029C14A2AB4C2DD55151EE2661EB2767C83ABB76BD3E8",
-      "scripts/stage4h_cbe_retrieval.py": "A7FE4A7D476D613045478F5DEC54CE887E393F1EA922E5390C237C1FF1BEB13F",
-      "tests/test_stage4h_cbe.py": "73DD26ABB868046312BF41037BDCD7EE55D58D0F229D45648B4F81B164384D0F"
+      "scripts/stage4h_cbe_retrieval.py": "BFDFC3F4D4398B48CD8786AB36CFFC0308F41A7F584C149BB79322D1EA7722CE",
+      "tests/test_stage4h_cbe.py": "C13E3A4B220230BF3B14072419A3A56647B80AE433B24D6A08A69C5777623F76"
     }
   },
   "locks": {
