@@ -1,6 +1,6 @@
 {
   "schema_version": "stage5a_bnh_v1",
-  "status": "STAGE5A_IMPLEMENTATION_FROZEN_INPUT_PREPARATION_AUTHORIZED",
+  "status": "STAGE5A_INPUTS_FROZEN_STAGE5A0_GEOMETRY_AUTHORIZED",
   "official_execution": {
     "authorized": true,
     "authorization_date": "2026-07-24",
@@ -298,7 +298,40 @@
     "reports/*Stage4[E-I]*",
     "paper/**"
   ],
-  "inputs": {},
+  "inputs": {
+    "development_blind": {
+      "bytes": 36581554,
+      "sha256": "8AC212D70CA1DA3064207FE4136814A6392ECCC6DC6FF105DC447411A7915A37"
+    },
+    "development_gold": {
+      "bytes": 402978,
+      "sha256": "6724C13250010198C1ACBB60D592BE701DD0814C431C8E17680B746706E9F073"
+    },
+    "development_metadata": {
+      "bytes": 348933,
+      "sha256": "FA093F51050D4F30C32CC36957D5135252C2E550EE11B047B8246B4A8D889E47"
+    },
+    "confirmation_blind": {
+      "bytes": 74190146,
+      "sha256": "B4310147CEF7BCF706420E8E838A51C32CC5ABBCC6C62E2AA5FCC00AF5242BBD"
+    },
+    "confirmation_gold": {
+      "bytes": 810049,
+      "sha256": "1230A75C6D37BA05BA085B3A613ADE626C91187CF013A98103C1BD150DA98364"
+    },
+    "confirmation_metadata": {
+      "bytes": 697981,
+      "sha256": "6316B5567AE9DFD218FAC0F154DEF759021A1BF016056F7AFC05242B5F1FBD5A"
+    },
+    "input_manifest": {
+      "bytes": 1233106,
+      "sha256": "9A04CCE267F074097FED488B38F5F8596D057E689DE7A4B555DDBA6898BC7ED2"
+    },
+    "preexisting_frozen_manifest": {
+      "bytes": 30857,
+      "sha256": "A2C51835AD1B38A765DFDD46355709CE6074CF4C3BD7C926EB47D9BAA9364248"
+    }
+  },
   "paths": {
     "development_blind": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage5a_bnh_development_hotpot500_musique750_v1_blind_queries.jsonl",
     "development_gold": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage5a_bnh_development_hotpot500_musique750_v1_gold_targets.jsonl",
