@@ -3,10 +3,10 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage4D-CMA/controller are closed; Stage4E-E2E, Stage4F-XDR and Stage4G-GTR are complete with independent final verification; Stage4G generator transfer is inconclusive
+- Current stage: Stage4D-CMA/controller are closed; Stage4E–4H are complete with independent final verification; Stage4H supports Full vs historical Dense and no-facet, is negative vs BGE strong dense, and is inconclusive for protection
 - Current governance: project-wide and durable across all current/future stages; one research stage receives one authorization; stage-internal predefined work is continuous; step/channel reapproval is disabled; only new scientific boundaries or serious integrity anomalies pause execution
-- Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive development batch through verified Stage4D-CMA; deterministic new-ID HotpotQA train 1,000 and MuSiQue train 3,000 boundaries in Stage4E/4F; reservation and Stage3B were not accessed
-- Generators used: Qwen2.5-1.5B-Instruct in verified Stage4E/4F; one pre-specified Gemma 4 E2B official mobile-QAT configuration in verified Stage4G
+- Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive development batch through verified Stage4D-CMA; deterministic new-ID HotpotQA train 1,000 and MuSiQue train 3,000 in Stage4E/4F; a further zero-overlap HotpotQA 1,000 + MuSiQue 1,500 in Stage4H; reservation and Stage3B were not accessed
+- Generators used: Qwen2.5-1.5B-Instruct in verified Stage4E/4F/4H; one pre-specified Gemma 4 E2B official mobile-QAT configuration in verified Stage4G
 - Gold labels used for indexing: No
 
 ## Prior-stage Audit Decision
@@ -19,7 +19,7 @@ The full integrity and methodology audit is recorded in `docs/PRIOR_STAGE_METHOD
 - Stage2G: valid negative mechanism result; the current boundary rule is unsupported.
 - Stage2H: diagnostic only. Stage3A: failed development. Stage3C: descriptive planning only.
 - Restarted Stage4A `n=2,800`: exact event-count arithmetic is correct, but 20 gains is a planning heuristic. The number is not an approved effect-power or controller-training sample size.
-- Research position: `STAGE4D_CMA_CLOSED` and `CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED`; Stage4E supports static q25 on frozen HotpotQA and Stage4F replicates the answer-F1 gain on frozen MuSiQue under Qwen. Stage4G tests one additional Gemma mobile-QAT configuration and returns `GENERATOR_TRANSFER_INCONCLUSIVE`. U2, reservation, Stage3B, new controllers, full-wiki/open-domain, and any new generator experiment are not authorized.
+- Research position: `STAGE4D_CMA_CLOSED` and `CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED`; Stage4E/4F support static q25 relative to historical Dense under Qwen, while Stage4G returns `GENERATOR_TRANSFER_INCONCLUSIVE`. Stage4H again supports Full vs historical Dense and supports the no-facet comparison, but Full is negative vs BGE strong dense and protection is inconclusive. U2, reservation, Stage3B, new controllers, full-wiki Gold, and any new generator experiment are not authorized.
 
 ## Completed Execution History
 
@@ -1672,3 +1672,17 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - Descriptive F1 interaction (`Gemma retrieval delta - frozen Qwen retrieval delta`) was `-0.002132 [-0.021990,0.017276]` on HotpotQA, `-0.013721 [-0.021864,-0.005658]` on MuSiQue, and `-0.007927 [-0.018696,0.002856]` under dataset equal weighting. Interaction does not enter the primary decision.
 - The only defensible transfer statement is that evidence under one additional pre-specified generator configuration is inconclusive. The result does not establish universal generator robustness, model-architecture ranking, Gemma unsuitability for RAG, or device-general efficiency. Reservation, Stage3B, U2 and the controller branch remain locked.
 - A non-executional `paper/ABLATION_AND_STRONG_BASELINE_PLAN.md` records protected insertion/prefix/budget and structural ablations plus BM25, hybrid and stronger-dense baselines. It does not authorize new data, Gold, ranking or model runs.
+
+### Stage4H-CBE Core Component Ablation And Strong Baseline Evaluation (2026-07-24)
+
+- A stage-level continuous authorization opened a new HotpotQA/MuSiQue closed-candidate evaluation without changing Stage4E/4F/4G. ID-only salted selection excluded every registered historical formal query before choosing HotpotQA 1,000 and MuSiQue 1,500 rows. The final boundary contains 150,485 candidate units and zero historical ID overlap.
+- Seven P0 arms were frozen before Gold: historical MiniLM Dense, Static q25 Full, no protection, no facet-hyperedge, BM25, fixed 0.5/0.5 Dense-BM25 hybrid, and one BGE strong dense. The generator remained Qwen2.5-1.5B-Instruct with the Stage4E/4F prompt/decode contract.
+- `BAAI/bge-large-en-v1.5@d4aa6901...` was selected without Stage4H Gold based on official model-card retrieval use, MIT licensing, standard Transformers reconstruction and local synthetic determinism. The flat-unit arm was declared `NOT_FAIRLY_DEFINED` before Gold; the P1 effect-cost curve was `NOT_RUN_RESOURCE_BOUNDED`.
+- The full main completed 17,500 calls with zero failures in 6,265.00 seconds; a pre-hash dataset-stratified subset completed 1,400 calls with zero failures. Subset predictions and prompt audits exactly matched their main projections.
+- Independent pre-Gold verification reconstructed source-only selection, historical zero-overlap, cache identities, all 2,500 seven-arm rankings, 17,500 prompts and subset determinism. Gold was read only after this artifact passed.
+- Four primary comparisons used dataset-specific paired bootstrap, dataset-equal-weight stratified bootstrap, 10,000 iterations, seed 20260725 and Holm correction. Full−Dense F1 was `+0.01357 [0.00491,0.02233]` (`SUPPORTED`); Full−StrongDense was `-0.03998 [-0.05393,-0.02621]` (`NEGATIVE`); Full−NoProtection was `+0.00354 [-0.00675,0.01389]` (`INCONCLUSIVE`); Full−NoFacet was `+0.01336 [0.00341,0.02343]` (`SUPPORTED`).
+- BM25 and hybrid were fully reported as supporting baselines. Full−BM25 and Full−Hybrid equal-weight F1 were `-0.00755 [-0.02259,0.00773]` and `-0.00320 [-0.01591,0.00942]`; they did not enter advancement.
+- Final verification independently rebuilt query metrics, bootstrap, Holm, decisions, artifacts and lock state, producing `STAGE4H_FINAL_VERIFICATION_PASS`.
+- Three bounded engineering corrections preserved science and formal outputs: a pre-prediction no-facet ID serialization fix (`8f89148`), verifier cache-load renormalization (`5e811b1`), and prompt-audit projection comparison (`b406424`). An outer 180-second wait returned while pre-Gold verification continued normally; no duplicate transaction was started.
+- The updated paper claim is deliberately narrower: Static q25 Full improves over the historical MiniLM Dense and benefits from facet-hyperedge within the frozen system, but it does not outperform BGE strong dense; protection remains inconclusive and granular-ball contribution lacks a fair flat control.
+- The next permitted research-design step is a new `Stage4I-FWF` full-wiki feasibility card focused on indexing, candidate reachability, ANN latency, cost and verifiability. Full-wiki Gold belongs to a later `Stage4J-FWV` only if feasibility is established. Reservation, Stage3B, U2, controller and new-generator work remain locked.

@@ -1,9 +1,26 @@
-# HyperGranular-RAG 消融与强基线计划（非执行性）
+# HyperGranular-RAG 消融与强基线：预注册设计与 Stage4H 结果
 
-状态：`DESIGN_ONLY_NO_NEW_DATA_OR_GOLD_OPENED`
-日期：2026-07-23
+状态：`STAGE4H_FINAL_VERIFICATION_PASS`
+设计冻结：2026-07-23
+正式结果：2026-07-24
 
-本文仅整理投稿前证据缺口、实验依赖和优先级，不授权执行、不读取新 Gold，也不改变 Stage4G-GTR 的联合判定。
+本文保留投稿前的结果无关设计，并登记随后获阶段级授权完成的 Stage4H-CBE 结果。Stage4H 不改变 Stage4E/4F/4G 的冻结结论。
+
+## 0. Stage4H 已验证结果
+
+Stage4H 在新的 HotpotQA 1,000 + MuSiQue 1,500、历史正式 ID overlap 0 的边界上完成七个 P0 方法臂。固定 Qwen、Top-20、candidate universe 与 4,096-token cap 不变；独立 verifier 重建输入选择、rankings、prompts、query metrics、10,000-bootstrap、Holm 和 decisions。
+
+| 问题 | 等权 answer-F1 差（Full − 对照） | 冻结结论 |
+|---|---:|---|
+| Full vs historical Dense | `+0.01357 [0.00491,0.02233]` | `SUPPORTED` |
+| Full vs BGE strong dense | `-0.03998 [-0.05393,-0.02621]` | `NEGATIVE` |
+| Full vs no protection | `+0.00354 [-0.00675,0.01389]` | `INCONCLUSIVE` |
+| Full vs no facet-hyperedge | `+0.01336 [0.00341,0.02343]` | `SUPPORTED` |
+| Granular ball vs flat | — | `NOT_FAIRLY_DEFINED` |
+
+BM25 与 Dense+BM25 hybrid 为支持性比较；Full 的等权 F1 差分别为 `-0.00755 [-0.02259,0.00773]` 与 `-0.00320 [-0.01591,0.00942]`。P1 effect-cost curve 在 Gold 前登记为 `NOT_RUN_RESOURCE_BOUNDED`，没有根据结果删减。
+
+论文含义：Stage4H 支持 static-q25 相对历史 MiniLM Dense 的复制和 facet-hyperedge 的系统内增量价值，但不支持 full 优于 strong dense，也未确认 protected insertion 的独立增量贡献。完整证据见 `reports/超粒球RAG_Stage4H_CBE核心消融与强基线报告.md`。
 
 ## 1. 目标
 
@@ -48,7 +65,7 @@
 - full-wiki/open-domain、Reservation、Stage3B 或新 benchmark；
 - 任何用于确认 subgroup、controller 或动态预算的实验。
 
-## 5. 投稿前证据缺口优先级
+## 5. Stage4H 前的投稿证据缺口优先级（历史设计）
 
 1. `P0`：protected insertion、protected prefix 与 insertion budget 的独立贡献及效果—成本曲线；
 2. `P0`：BM25、事前冻结 hybrid 和一个更强 dense retriever；
@@ -57,10 +74,13 @@
 5. `P1`：加入延迟、显存、prompt tokens 和索引成本的统一资源表；
 6. `P2`：更细 subgroup 与机制分析，仅在样本量和多重比较控制足够时进入主文。
 
-## 6. 解释纪律
+## 6. Stage4H 后的解释纪律
 
 - 消融回答组件贡献，不自动建立因果机制；
 - 强基线失败或成功均不得改写已冻结 Stage4E/Stage4F/Stage4G 结果；
 - 同一正式 Gold 不得同时承担参数选择和确认；
 - generator、retriever、数据集、prompt 与开放域边界每次只改变实验卡允许的因素；
 - Reservation、Stage3B、U2 和 controller 保持锁定，除非新的阶段级科学授权明确开放。
+- 不得把“Full vs Dense supported”省略限定后写成“Full 优于强稠密检索”；BGE 比较为明确负向。
+- 不得把 no-protection 的 `INCONCLUSIVE` 写成 protected insertion 无作用、等价或已确认有效。
+- flat-unit 对照未公平定义；不得用缺失对照反推粒球结构已经获得独立支持。

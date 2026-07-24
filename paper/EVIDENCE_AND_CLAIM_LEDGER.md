@@ -2,7 +2,7 @@
 
 ## 当前总论边界
 
-静态 q25 protected insertion 与 adaptive controller 是两个不同主张。Stage4E 支持前者在冻结 HotpotQA same-domain closed-distractor 边界上的端到端答案质量增益，Stage4F 又在冻结 MuSiQue closed-candidate 边界复制该 answer-F1 方向与支持门；Stage4G 在一个额外、事前指定的 Gemma mobile-QAT 配置下得到 inconclusive generator-transfer 结果。当前 U1/Stage4D controller 线仍保持关闭。论文不得用 controller 负结果覆盖静态方法，也不得用静态 Stage4E/4F 正结果替 controller 晋级或把 Stage4G 写成普遍 generator robustness。
+静态 q25 protected insertion 与 adaptive controller 是两个不同主张。Stage4E 支持前者在冻结 HotpotQA same-domain closed-distractor 边界上的端到端答案质量增益，Stage4F 又在冻结 MuSiQue closed-candidate 边界复制该 answer-F1 方向与支持门；Stage4G 在一个额外、事前指定的 Gemma mobile-QAT 配置下得到 inconclusive generator-transfer 结果。Stage4H 在两组新的零重叠 closed-candidate 边界上支持 full 相对历史 MiniLM Dense 和 no-facet ablation 的增益，但 full 明确低于 BGE strong dense，protected insertion 贡献不确定，flat-unit 对照未公平定义。当前 U1/Stage4D controller 线仍保持关闭。
 
 ## 可写主张
 
@@ -16,6 +16,9 @@
 | 静态 HGRAG 在冻结 same-domain closed-distractor 边界上改善端到端答案质量 | verified official positive result | Stage4E：answer F1 `0.42150→0.43628`；paired delta `+0.01478 [0.00020,0.02988]`；final verification PASS | 仅限 HotpotQA deterministic 1,000-query、Qwen2.5-1.5B、Top-20；F1 下界接近 0，不写成大幅或普遍提升 |
 | 静态 HGRAG 的 answer-F1 增益在新的 MuSiQue 边界上复现 | verified cross-dataset replication | Stage4F：answer F1 `0.13595→0.14735`；paired delta `+0.01140 [0.00450,0.01835]`；EM guard 与 final verification PASS | 可写为两个 frozen closed-candidate 多跳 QA 数据集上的复制；不可写成 full-wiki/open-domain、跨生成器或普遍有效 |
 | 静态 HGRAG 的 retrieval gain 在一个额外预指定生成器配置下未获得明确复制或负向证据 | verified generator-transfer replication，inconclusive | Stage4G：HotpotQA F1 delta `+0.01265 [-0.00220,0.02744]`；MuSiQue `-0.00232 [-0.00685,0.00208]`；equal-weight `+0.00516 [-0.00262,0.01295]`；final verification PASS | 只能写为 one-additional-generator inconclusive；Gemma 架构与 mobile-QAT 效应不可分离；不建立普遍鲁棒性或架构排名 |
+| Static q25 full 相对历史 MiniLM Dense 的增益在两个新边界上再次出现，且 facet-hyperedge 有系统内增量价值 | verified component/baseline evaluation | Stage4H：Full−Dense 等权 F1 `+0.01357 [0.00491,0.02233]`；Full−NoFacet `+0.01336 [0.00341,0.02343]`；Holm 后均通过 | 只限固定 Qwen、两个 closed-candidate 新边界和冻结实现；消融支持增量价值，不自动证明一般因果机制 |
+| Full 方法不优于事前绑定的 BGE strong dense | verified negative strong-baseline result | Stage4H：Full−StrongDense 等权 F1 `-0.03998 [-0.05393,-0.02621]`；EM `-0.04067 [-0.05483,-0.02683]` | 必须如实保留；不得用 Full−MiniLM Dense 正结果声称优于强稠密检索 |
+| Protected insertion 的独立贡献未确定，粒球 flat 对照未公平定义 | verified inconclusive/design boundary | Stage4H：Full−NoProtection F1 `+0.00354 [-0.00675,0.01389]`；flat=`NOT_FAIRLY_DEFINED` | 不得写成保护无作用、等价或已确认；不得把缺失 flat 对照当作粒球贡献证据 |
 
 Stage4F-XDR 已完成 MuSiQue train 3,000 个新 ID 的完整事务并通过独立 final verification。它支持“Stage4E 的静态 answer-F1 增益在第二个冻结数据集边界上复现”。Stage4G-GTR 又在同一两个数据边界上测试一个额外 Gemma mobile-QAT 配置，得到 `GENERATOR_TRANSFER_INCONCLUSIVE`；所以不能将 Stage4E/4F 的 Qwen 结果扩大为所有生成器或开放域有效。
 
@@ -26,6 +29,8 @@ Stage4F-XDR 已完成 MuSiQue train 3,000 个新 ID 的完整事务并通过独�
 - “U1 能保留 gain 并过滤 harm”；冻结结果方向相反。
 - “Stage4D 已学会可部署 candidate selector”；唯一 advancement panel 未过联合门。
 - “当前结果已 full-wiki、open-domain 或普遍跨生成器泛化”；Stage4G 只测试一个额外 Gemma mobile-QAT 配置，且联合判定 inconclusive。
+- “完整 HyperGranular-RAG 优于强稠密检索器”或“强基线比较支持完整方法”；Stage4H 对 BGE strong dense 为明确负向。
+- “protected insertion 已被独立证明必要/无效”或“粒球结构已通过 flat 消融”；Stage4H 的前者不确定，后者未公平定义。
 - “Gemma 4 E2B 不适合 RAG”“Qwen 基础模型能力显著更强”或“Gemma 架构质量较差”；Stage4G 不是纯架构比较，mobile-QAT 效应不可分离。
 - “Stage4E 是对生成器未见数据的无污染测试”；它只保证未被本项目读取，公开 HotpotQA train 可能进入过模型预训练语料。
 - “不显著说明方法等价”；所有未过正/负门的结果都应写为 inconclusive。
@@ -47,6 +52,7 @@ Stage4F-XDR 已完成 MuSiQue train 3,000 个新 ID 的完整事务并通过独�
 | Stage4F verified replication | `reports/超粒球RAG_Stage4F_XDR跨数据集复制报告.md`；`results/stage4f_xdr_musique_train3000_v1_evaluation_summary.json`；`results/stage4f_xdr_musique_train3000_v1_final_verification.json` |
 | Stage4G generator-transfer preregistration | `docs/STAGE4G_GTR_EXPERIMENT_CARD.md`；`configs/stage4g_gtr_official.json`；`results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_input_model_manifest.json` |
 | Stage4G verified generator transfer | `reports/超粒球RAG_Stage4G_GTR生成器迁移复制报告.md`；`results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_equal_weight_summary.json`；`results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_final_verification.json` |
+| Stage4H component/strong-baseline evaluation | `docs/STAGE4H_CBE_EXPERIMENT_CARD.md`；`reports/超粒球RAG_Stage4H_CBE核心消融与强基线报告.md`；`results/stage4h_cbe_hotpot1000_musique1500_v1_equal_weight_summary.json`；`results/stage4h_cbe_hotpot1000_musique1500_v1_final_verification.json` |
 
 ## Stage4E 写入规则
 
@@ -61,3 +67,15 @@ Stage4F 可写两臂绝对 F1/EM、paired intervals、supporting-paragraph ER/CR
 ## Stage4G 写入规则
 
 Stage4G 可写两个数据集的 Gemma Dense/static-q25 绝对 F1/EM、paired intervals、数据集等权联合统计、query-weighted 描述量、generator interaction、运行资源、确定性合同 B、Gold 隔离和 `STAGE4G_GTR_FINAL_VERIFICATION_PASS`。必须把冻结决策写为 `GENERATOR_TRANSFER_INCONCLUSIVE`，并同段说明：HotpotQA F1 点估计为正、MuSiQue 为轻微负向、支持门和负向门均未触发；只测试一个额外生成器配置；Gemma 架构、mobile-QAT 和数值格式效应不可分离；interaction 不进入主判定。不得写成普遍 generator robustness、显著负向迁移、等价、纯架构比较，或用于重开 controller/Reservation/Stage3B/U2。
+
+## Stage4H 写入规则
+
+Stage4H 可写七臂绝对 F1/EM/CR/ER、四个主要等权比较、Holm p、BM25/hybrid 支持性比较、插入/资源、pre-hash subset determinism、Gold 隔离和 `STAGE4H_FINAL_VERIFICATION_PASS`。必须同时保留：
+
+- Full−Dense 为 `SUPPORTED`，但对照是历史 MiniLM Dense；
+- Full−StrongDense 为 `NEGATIVE`，因此不能声称 full 优于强稠密检索；
+- Full−NoFacet 为 `SUPPORTED`，只表示冻结系统内的增量价值；
+- Full−NoProtection 为 `INCONCLUSIVE`，不能解释成有效、无效或等价；
+- granular-ball flat 对照为 `NOT_FAIRLY_DEFINED`；
+- P1 effect-cost curve 为 `NOT_RUN_RESOURCE_BOUNDED`；
+- 全部结果限于固定 Qwen、closed-candidate HotpotQA/MuSiQue 新边界，不是 full-wiki/open-domain。

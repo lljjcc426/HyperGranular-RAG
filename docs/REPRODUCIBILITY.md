@@ -56,6 +56,15 @@ STAGE4G_GTR_GOLD_EVALUATION_COMPLETE
 STAGE4G_GTR_FINAL_VERIFICATION_PASS
 STAGE4G_GTR_ARTIFACT_MANIFEST_FROZEN
 GENERATOR_TRANSFER_INCONCLUSIVE
+STAGE4H_CBE_EXPERIMENT_CARD_FROZEN
+STAGE4H_PRE_GOLD_VERIFICATION_PASS
+STAGE4H_GOLD_EVALUATION_COMPLETE
+STAGE4H_FINAL_VERIFICATION_PASS
+FULL_METHOD_VS_DENSE_SUPPORTED
+FULL_METHOD_VS_STRONG_DENSE_NEGATIVE
+PROTECTED_INSERTION_ABLATION_INCONCLUSIVE
+FACET_HYPEREDGE_ABLATION_SUPPORTED
+GRANULAR_BALL_ABLATION_NOT_FAIRLY_DEFINED
 RESERVATION_REQUIRES_PAUSE
 U2_NOT_AUTHORIZED
 ```
@@ -72,6 +81,8 @@ Stage4F-XDR 已完成 [实验卡](STAGE4F_XDR_EXPERIMENT_CARD.md) 预定义的�
 
 Stage4G-GTR 已完成 [实验卡](STAGE4G_GTR_EXPERIMENT_CARD.md) 预定义的完整 generator-transfer 事务。它复用 Stage4E/4F frozen inputs 与 rankings，只更换为一个事前指定的 Gemma official mobile-QAT 配置。8,000-call main、400-call 分层 subset rerun、pre-Gold verification、Gold evaluation、10,000 次 dataset-stratified bootstrap、generator interaction 与 final verification 均完成；冻结结果为 `GENERATOR_TRANSFER_INCONCLUSIVE`。现有 Stage4G 工件不得覆盖或重跑。
 
+Stage4H-CBE 已完成 [实验卡](STAGE4H_CBE_EXPERIMENT_CARD.md) 预定义的完整 component/strong-baseline 事务。新的 HotpotQA 1,000 + MuSiQue 1,500 边界与全部历史正式 IDs overlap 0；17,500-call main、1,400-call pre-hash subset、pre-Gold reconstruction、Gold evaluation、10,000-bootstrap、Holm 和 final verification 均完成。Full−Dense/NoFacet 受支持，Full−StrongDense 为负，Full−NoProtection 不确定，flat-unit 未公平定义。现有 Stage4H 工件不得覆盖或重跑。
+
 ## 当前授权治理
 
 ```text
@@ -87,7 +98,7 @@ SCIENTIFIC_INTEGRITY_CONTROLS_RETAINED
 
 这是项目长期、全局的现行治理基线，适用于当前及未来全部科研阶段，不是单次复现事务或 Stage4E 的临时规则。阶段授权默认连续覆盖实验卡中预定义的实现、测试、数据/Channel、正式运行、固定分析、独立验证、确定性复跑、报告和 Git/远端核验。Channel 与 Gold 隔离仍是可复现性和防泄漏合同，但不自动形成重复审批点；本文登记的命令、环境、SHA 和路径用于重建与核验，不是逐命令授权凭证。
 
-普通工程异常自主最小修复并继续。只有新科学问题或阶段、冻结科学语义变化、使用当前授权外的新证据源、或严重完整性异常才暂停。历史审批链与旧命令保留为证据，不构成当前执行规则。Stage4E、Stage4F 与 Stage4G 已按各自阶段授权完成；这些授权不延伸到 full-wiki、open-domain、新生成器、reservation、Stage3B、U2 或新 controller。
+普通工程异常自主最小修复并继续。只有新科学问题或阶段、冻结科学语义变化、使用当前授权外的新证据源、或严重完整性异常才暂停。历史审批链与旧命令保留为证据，不构成当前执行规则。Stage4E–4H 已按各自阶段授权完成；这些授权不延伸到 full-wiki Gold、open-domain、新生成器、reservation、Stage3B、U2 或新 controller。
 
 ## Stage4E 已冻结复现边界
 
@@ -184,6 +195,40 @@ SCIENTIFIC_INTEGRITY_CONTROLS_RETAINED
 - scientific decision：`246FE8B1DFC157551E570994059306315C03AA050B23AC3F9FD31780D710FBF5`；
 - final verification：`3BB9A87C3BD62FCF8CE663F4EEA7A28A6D0C8E1ECC0AB8FBF8C015212137E65B`；
 - artifact manifest：`E61FADC265D2F2AA937E7E66F78011BDD6B45E67CB61BDCF03FF320C5DB0FDD1`。
+
+## Stage4H 已完成并冻结的复现边界
+
+| 项目 | 冻结值 / 当前状态 |
+|---|---|
+| samples | HotpotQA 1,000 + MuSiQue 1,500；全部历史正式 IDs overlap 0 |
+| candidate units | HotpotQA 41,153 + MuSiQue 109,332 = 150,485 |
+| methods | Dense、Full、NoProtection、NoFacet、BM25、Hybrid、BGE StrongDense；同 query/candidate/Top-20/Qwen |
+| strong dense | `BAAI/bge-large-en-v1.5@d4aa6901d3a41ba39fb536a557fa166f842b0e09`；MIT；Gold 前绑定 |
+| determinism | full main 17,500 calls + 200-query/1,400-call pre-hash dataset-stratified subset；predictions/prompts 精确复现 |
+| statistics | dataset-paired + dataset-equal-weight bootstrap；10,000；seed 20260725；四个主要比较 Holm |
+| Full−Dense | F1 `+0.0135685 [0.0049140,0.0223253]`；`SUPPORTED` |
+| Full−StrongDense | F1 `-0.0399791 [-0.0539331,-0.0262114]`；`NEGATIVE` |
+| Full−NoProtection | F1 `+0.0035400 [-0.0067456,0.0138931]`；`INCONCLUSIVE` |
+| Full−NoFacet | F1 `+0.0133579 [0.0034084,0.0234257]`；`SUPPORTED` |
+| flat / P1 curve | `NOT_FAIRLY_DEFINED` / `NOT_RUN_RESOURCE_BOUNDED` |
+| execution | main/subset 共 18,900 calls；零失败；main wall 6,265.00 s；GPU peak 4,174,117,888 bytes |
+| decision | `STAGE4H_FINAL_VERIFICATION_PASS` |
+
+精确入口为 [experiment card](STAGE4H_CBE_EXPERIMENT_CARD.md)、[official config](../configs/stage4h_cbe_official.json)、[input manifest](../results/stage4h_cbe_hotpot1000_musique1500_v1_input_manifest.json)、[pre-Gold verification](../results/stage4h_cbe_hotpot1000_musique1500_v1_verified_pregold.json)、[dataset summaries](../results/stage4h_cbe_hotpot1000_musique1500_v1_dataset_summaries.json)、[equal-weight summary](../results/stage4h_cbe_hotpot1000_musique1500_v1_equal_weight_summary.json)、[final verification](../results/stage4h_cbe_hotpot1000_musique1500_v1_final_verification.json)、[artifact manifest](../results/stage4h_cbe_hotpot1000_musique1500_v1_artifact_manifest.json) 与 [正式报告](../reports/超粒球RAG_Stage4H_CBE核心消融与强基线报告.md)。
+
+关键冻结 SHA-256：
+
+- rankings：`EAECD420CEDDFD0E670892E9B78B0D6D02BB3E9BE2A84BC36631C1D985C49822`；
+- predictions main：`52B9276E93AF19820B8F2E358F54BE9CDF88D4A8C6A34020AF3EDC153470E310`；
+- predictions subset：`84025B63BB1C49268287DE2E0A1B85B9EF4A91821D98441658C0E7807C943C78`；
+- prompt audit main：`B7B2D3E3846CD7406C4E646A0DC007F54A5CC3BBA863CAD9E0551F7AB9A5B507`；
+- prompt audit subset：`BB6CA94A55F311B07F96F5B5A280D944F5117A8A3220629C4C2F7835E3119042`；
+- verified pre-Gold：`ACF11E359BFFF40DB53C07DB27A39E6C5ABE61AC1C4161C8A15542397783639B`；
+- query audit：`6232260E8D91D070E8A28B96A4F179538D2EB300F16FE28DB3B24168ADBD4CA9`；
+- dataset/equal-weight summaries：`C9B2E163A46FE41B458321C8292CCF21A99C5B6AC666E3E28BA6798E013CB85B` / `0C8677960F2CB07526B36264CE58883ED28D12C0016F6EAD8A036D3DD0BE7FA4`；
+- scientific decision：`3C4B2E4A2AAC4A5E031D8513DD88391BC378351113DF7E99E6362B85DDE8BBD5`；
+- final verification：`692D7150043071580B58F1CC1F758884A6178412C98ED193C4D4D27BDB40726F`；
+- artifact manifest：`6E467B17BE53F1EA75D897E1185558F1FE50C04A4302568515C831DA7641C72D`。
 
 ## 运行环境
 
@@ -375,6 +420,7 @@ STAGE4B_U1_GOLD_INDEPENDENT_VERIFICATION_PASS queries=4500 decision=STOP_U1_BRAN
 - Stage4C 只读结果复核：4,500/48/10/4,500/27,489 CSV 行数、schema、有限值、唯一键、OOF 概率范围、五个内置 CSV SHA 和七输入 SHA 全部 PASS。
 - Stage4D-CMA synthetic suite：16/16 PASS；覆盖完整候选池/预算分层、独立 trace 重建、严格 schema/type/nullability/leakage、七标签、双 LOO、固定 query folds、Task-C 类边界、同一 OOF 分层指标、combined-only advancement、确定性 LF CSV、固定环境、official transaction fail-closed 和同字节复跑。
 - Stage4D official probe：main/rerun 三工件同字节，内部 independent verifier PASS；bounded provenance audit 的 canonical bytes、68,588 OOF 行、全部 metrics/baselines 和 36 个 bootstrap 区块均 PASS。
+- Stage4E–4H 统一回归：在冻结 CPython 3.12.0 下以标准库 `unittest discover` 分别执行四个精确测试文件，Stage4E 19/19、Stage4F 27/27、Stage4G 9/9、Stage4H 15/15，合计 70/70 PASS。环境未安装 `pytest`，因此没有修改冻结依赖，仅改用等价的仓库既有测试入口。
 
 ## 后续复现边界
 

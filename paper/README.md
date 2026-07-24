@@ -13,7 +13,10 @@
 - [Stage4F final verification](../results/stage4f_xdr_musique_train3000_v1_final_verification.json)：source/model/environment、3,000-query metrics、bootstrap 与 decision 独立重建。
 - [Stage4G-GTR 报告](../reports/超粒球RAG_Stage4G_GTR生成器迁移复制报告.md)：一个额外 Gemma mobile-QAT 配置下的数据集级/等权结果、interaction、确定性和主张边界；
 - [Stage4G final verification](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_final_verification.json)：4,000-query scores、分层 bootstrap、interaction 与 `GENERATOR_TRANSFER_INCONCLUSIVE` 独立重建；
-- [消融与强基线计划](ABLATION_AND_STRONG_BASELINE_PLAN.md)：投稿前 protected insertion/prefix/budget、结构消融与 BM25/hybrid/stronger-dense 优先级；仅设计，不授权执行。
+- [Stage4H-CBE 报告](../reports/超粒球RAG_Stage4H_CBE核心消融与强基线报告.md)：两个新零重叠边界上的七臂绝对结果、四个主要比较、资源、验证与谬误扫描；
+- [Stage4H final verification](../results/stage4h_cbe_hotpot1000_musique1500_v1_final_verification.json)：2,500-query metrics、10,000-bootstrap、Holm 与分项 decision 独立重建；
+- [方法定义与冻结结果表](METHODS_AND_RESULTS_TABLES.md)：静态方法公式/伪代码、Stage4E–4G 统一结果、Stage4H 消融/强基线以及资源与完整性表；
+- [消融与强基线设计/结果](ABLATION_AND_STRONG_BASELINE_PLAN.md)：保留事前设计并登记 Stage4H 的 strong-dense negative、facet support、protection inconclusive 与 flat not-defined。
 
 写作规则：
 
@@ -23,4 +26,5 @@
 - 不把 U1-D controller 的失败外推为 HyperGranular-RAG 整体失败；
 - Stage4E 可写为冻结 HotpotQA same-domain closed-distractor 正结果；Stage4F 可写为在冻结 MuSiQue closed-candidate 边界上的跨数据集复制；两者都不得外推到 full-wiki/open-domain、其他生成器或 controller；
 - Stage4G 必须写成一个额外预指定生成器配置下的 inconclusive transfer test：HotpotQA F1 点差为正、MuSiQue 为轻微负向、数据集等权门未通过；不得写成普遍 generator robustness、显著负向迁移或模型架构排名；
+- Stage4H 必须同时写明 Full−Dense `SUPPORTED`、Full−StrongDense `NEGATIVE`、NoProtection `INCONCLUSIVE`、NoFacet `SUPPORTED`、flat `NOT_FAIRLY_DEFINED`；不得只保留有利消融；
 - 所有数字必须能定位到 tracked result/report，或明确标记为 protocol parameter。

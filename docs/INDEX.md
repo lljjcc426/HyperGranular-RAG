@@ -35,7 +35,14 @@
 | [Stage4G equal-weight summary](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_equal_weight_summary.json) | 数据集等权主要联合统计与 query-weighted 描述量 |
 | [Stage4G final verification](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_final_verification.json) | 4,000-query scoring、bootstrap、interaction 和 decision 独立重建 |
 | [Stage4G artifact manifest](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_artifact_manifest.json) | 13 个前置正式工件的 Bytes/SHA 清单 |
-| [消融与强基线计划](../paper/ABLATION_AND_STRONG_BASELINE_PLAN.md) | 投稿前组件消融、强基线、可复用资产和证据缺口；仅设计不授权执行 |
+| [Stage4H-CBE 实验卡](STAGE4H_CBE_EXPERIMENT_CARD.md) | 新零重叠边界、七臂、强 Dense 选择、四个主要比较、Holm、确定性与锁边界 |
+| [Stage4H official config](../configs/stage4h_cbe_official.json) | source/history/model/code/cache、正式工件与 Stage4H complete 状态绑定 |
+| [Stage4H 核心消融与强基线报告](../reports/超粒球RAG_Stage4H_CBE核心消融与强基线报告.md) | 七臂绝对指标、主要比较、资源、工程修复、工件 SHA 和 11 类谬误扫描 |
+| [Stage4H equal-weight summary](../results/stage4h_cbe_hotpot1000_musique1500_v1_equal_weight_summary.json) | 10,000-bootstrap、Holm 与四个主要/两个支持性比较 |
+| [Stage4H final verification](../results/stage4h_cbe_hotpot1000_musique1500_v1_final_verification.json) | query metrics、bootstrap、Holm、decision 与锁状态独立重建 |
+| [Stage4H artifact manifest](../results/stage4h_cbe_hotpot1000_musique1500_v1_artifact_manifest.json) | 16 个核心正式工件的 Bytes/SHA 清单 |
+| [消融与强基线设计/结果](../paper/ABLATION_AND_STRONG_BASELINE_PLAN.md) | 保留事前设计并登记 Stage4H verified outcomes |
+| [方法定义与冻结结果表](../paper/METHODS_AND_RESULTS_TABLES.md) | 静态方法、Stage4E–4G 统一结果、Stage4H 消融/强基线及资源表 |
 | [论文材料入口](../paper/README.md) | 论文结构、证据主张台账和待补结果 |
 | [论文证据与主张台账](../paper/EVIDENCE_AND_CLAIM_LEDGER.md) | 将可写主张、证据等级、来源与限制逐项绑定 |
 | [Simplified execution protocol](STAGE4B_U1_SIMPLIFIED_EXECUTION_PROTOCOL_V1.md) | Stage4B-U1-D 科学与 pre-Gold 执行合同 |
@@ -116,6 +123,21 @@
 | [scientific decision](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_scientific_decision.json) | `GENERATOR_TRANSFER_INCONCLUSIVE` |
 | [final verification](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_final_verification.json) | `STAGE4G_GTR_FINAL_VERIFICATION_PASS` |
 
+### Stage4H-CBE 正式工件
+
+| 文件 | 状态 |
+|---|---|
+| [input manifest](../results/stage4h_cbe_hotpot1000_musique1500_v1_input_manifest.json) | HotpotQA 1,000 + MuSiQue 1,500；全部历史正式 ID overlap 0 |
+| [strong-dense selection](../results/stage4h_cbe_strong_dense_selection_manifest.json) | BGE strong dense 在 Gold 前唯一绑定 |
+| [rankings](../results/stage4h_cbe_hotpot1000_musique1500_v1_rankings.jsonl) | 2,500 queries × 7 arms；独立重建通过 |
+| [predictions main](../results/stage4h_cbe_hotpot1000_musique1500_v1_predictions_main.jsonl) | 17,500 calls；零失败 |
+| [predictions subset](../results/stage4h_cbe_hotpot1000_musique1500_v1_predictions_rerun_subset.jsonl) | 200-query/1,400-pair pre-hash subset；与 main 精确复现 |
+| [pre-Gold verification](../results/stage4h_cbe_hotpot1000_musique1500_v1_verified_pregold.json) | selection/ranking/prompt/determinism reconstruction PASS |
+| [dataset summaries](../results/stage4h_cbe_hotpot1000_musique1500_v1_dataset_summaries.json) | 七臂 HotpotQA/MuSiQue 绝对 F1/EM/CR/ER |
+| [equal-weight summary](../results/stage4h_cbe_hotpot1000_musique1500_v1_equal_weight_summary.json) | Full−Dense/NoFacet supported；StrongDense negative；NoProtection inconclusive |
+| [scientific decision](../results/stage4h_cbe_hotpot1000_musique1500_v1_scientific_decision.json) | 五项分项结论冻结 |
+| [final verification](../results/stage4h_cbe_hotpot1000_musique1500_v1_final_verification.json) | `STAGE4H_FINAL_VERIFICATION_PASS` |
+
 ## 科学设计与阶段证据
 
 - Stage4A-R2 的样本、映射、估计和验证协议保留在对应 `STAGE4A_R2_*` 文档中。
@@ -127,6 +149,7 @@
 - Stage4E 把 data boundary 明确限定为 HotpotQA train 的 new-ID same-domain distractor sample，不表述为跨数据集或 full-wiki external validation。正式结果为 answer F1 `+0.01478 [0.00020,0.02988]`，独立验证通过。
 - Stage4F 在 MuSiQue train 3,000 个新 ID 上复制同一静态方法：answer F1 `+0.01140 [0.00450,0.01835]`，冻结为 `STATIC_HGRAG_XDR_SUPPORTED`；仍不是 full-wiki、open-domain 或跨生成器确认。
 - Stage4G 只改变为一个事前指定的 Gemma official mobile-QAT 生成器配置。HotpotQA/MuSiQue F1 点差方向不一致，数据集等权 F1 为 `+0.00516 [-0.00262,0.01295]`，冻结为 `GENERATOR_TRANSFER_INCONCLUSIVE`；不能写成普遍 generator robustness 或模型架构排名。
+- Stage4H 在两组新的零重叠边界上运行七个 P0 retrieval/ablation arms：Full−Dense 与 Full−NoFacet 受支持，Full−StrongDense 明确负向，Full−NoProtection 不确定，flat-unit 未公平定义。结果限制论文的强基线主张，不改变 Stage4E/4F 的历史冻结正结果。
 
 ## 历史治理证据
 
@@ -170,4 +193,4 @@
 
 ## 当前下一步
 
-当前状态为 `STAGE4D_CMA_CLOSED`、`STAGE4E_FINAL_VERIFICATION_PASS`、`STAGE4F_FINAL_VERIFICATION_PASS` 和 `STATIC_HGRAG_XDR_SUPPORTED`。Stage4E/4F 均已冻结；下一步必须先定义新的科学问题与轻量实验卡。Reservation、Stage3B、U2 和 controller 继续锁定。
+当前状态为 `STAGE4H_FINAL_VERIFICATION_PASS`。Stage4E–4H 均已冻结；下一步只能先定义 `Stage4I-FWF` full-wiki feasibility 轻量实验卡，不直接进行 full-wiki Gold。Reservation、Stage3B、U2、controller 和新生成器继续锁定。
