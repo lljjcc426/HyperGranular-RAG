@@ -41,6 +41,7 @@ from stage5a_bnh_common import (
     path_from_config,
     render_json,
     render_jsonl,
+    require_finite_number,
     rerun_selection_key,
     sha256_bytes,
     validate_authorization,
@@ -156,7 +157,11 @@ def _load_prefix_checkpoint(
         if not line.strip():
             continue
         row = json.loads(line)
-        if not isinstance(row, dict) or set(row) != {"audit", "prediction"}:
+        if not isinstance(row, dict) or set(row) != {
+            "audit",
+            "generation_seconds",
+            "prediction",
+        }:
             raise ValueError(f"{path}:{line_number}: checkpoint schema differs")
         rows.append(row)
     if len(rows) > len(task_keys):
@@ -181,6 +186,14 @@ def _load_prefix_checkpoint(
             or prediction.get("sample_id") != audit.get("sample_id")
         ):
             raise ValueError(f"{path}:{index}: checkpoint identity differs")
+        generation_seconds = require_finite_number(
+            row["generation_seconds"],
+            f"{path}:{index}.generation_seconds",
+        )
+        if generation_seconds <= 0.0:
+            raise ValueError(
+                f"{path}:{index}: generation_seconds must be positive"
+            )
         result[key] = row
     return result
 
@@ -219,6 +232,8 @@ def generate_predictions(
     model.eval().to("cuda")
     torch.cuda.reset_peak_memory_stats()
     generation_seconds = defaultdict(float)
+    for (_query_id, method), row in checkpoint.items():
+        generation_seconds[method] += float(row["generation_seconds"])
     generated_now = 0
     started = time.perf_counter()
     checkpoint_path.parent.mkdir(parents=True, exist_ok=True)
@@ -253,7 +268,8 @@ def generate_predictions(
                     **GENERATION_KWARGS,
                 )
             torch.cuda.synchronize()
-            generation_seconds[method] += time.perf_counter() - call_started
+            call_seconds = time.perf_counter() - call_started
+            generation_seconds[method] += call_seconds
             completion = tokenizer.decode(
                 output[0, input_ids.shape[1] :], skip_special_tokens=True
             ).strip()
@@ -274,7 +290,11 @@ def generate_predictions(
                 "rank1_truncated": prompt["rank1_truncated"],
                 "sample_id": query["sample_id"],
             }
-            row = {"audit": audit, "prediction": prediction}
+            row = {
+                "audit": audit,
+                "generation_seconds": call_seconds,
+                "prediction": prediction,
+            }
             handle.write(
                 json.dumps(
                     row,
@@ -301,6 +321,7 @@ def generate_predictions(
         "failed_calls": 0,
         "generated_in_this_process": generated_now,
         "generation_calls": len(predictions),
+        "generation_seconds_total": float(sum(generation_seconds.values())),
         "generation_seconds_by_method": {
             method: generation_seconds[method] for method in methods
         },

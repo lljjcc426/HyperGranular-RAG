@@ -355,6 +355,7 @@ class SelectionAndDecisionTests(unittest.TestCase):
                 "query_id": "q1",
                 "sample_id": "s",
             },
+            "generation_seconds": 0.1,
             "prediction": {
                 "dataset": "d",
                 "method": "m2",
