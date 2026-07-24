@@ -1,0 +1,113 @@
+{
+  "artifacts": {
+    "blind": {
+      "bytes": 74044749,
+      "sha256": "9384866CC3F915CA4D3D7CA660585B3DFC15B800B3152FEA544BF1C9B2249FA1"
+    },
+    "candidate_trace": {
+      "bytes": 3876033,
+      "sha256": "62AC7A2FD91997FFC72E2F0A2A0F9945D2056C0670C299CC002917B2EC4D9DA7"
+    },
+    "eligibility_audit": {
+      "bytes": 3597,
+      "sha256": "31623F0562B0ED83671A871D5039FE498E9359C384C6ED1549A8B0687DDBB92B"
+    },
+    "input_manifest": {
+      "bytes": 668755,
+      "sha256": "E9933740CD7C3DDA5203DC4D993709237A249117918701DF340D04F8932634F1"
+    },
+    "minilm_embedding_cache": {
+      "bytes": 276194136,
+      "sha256": "C7931066992B0ACF1EAD03A6E8C8F24EAF0D7714E63E514A53EC5601B953F84C"
+    },
+    "predictions_main": {
+      "bytes": 2024605,
+      "sha256": "A6D8A4652A208E39EDEBA590CA17D9DACB05D2C9C29EC37E8E274C8AF30B2D22"
+    },
+    "predictions_rerun_subset": {
+      "bytes": 163838,
+      "sha256": "7452A946C25E76DC6252241C3B25611863CAD751951EDC2D612A2C7549F6B3C4"
+    },
+    "prompt_audit_main": {
+      "bytes": 15313783,
+      "sha256": "3CECDADE511873D0951B24DB9C617042C50900A4B23123CCFFFDF199902E2EA0"
+    },
+    "prompt_audit_rerun_subset": {
+      "bytes": 1242269,
+      "sha256": "11D2A9CE00F736D94EECA4B959A330C2A7D0084B35FD48F25669D3F663CF9D98"
+    },
+    "rankings": {
+      "bytes": 13453513,
+      "sha256": "AACC7776AFF4BA512FE9530F366D177DEC7BF04531620F4447245C6E96682FC2"
+    },
+    "strong_embedding_cache": {
+      "bytes": 668255684,
+      "sha256": "2D655280095AE514291EFB521BD5A4FC32C758C76C6E8DC04D6ADEAE6F8E4EE0"
+    },
+    "telemetry_main": {
+      "bytes": 1136,
+      "sha256": "4B7BA469098AE1FD6805FAE724B10A89F7916B939ECDD2DBE47B416BC656E52B"
+    },
+    "telemetry_rerun_subset": {
+      "bytes": 1136,
+      "sha256": "2482A76E68F98C23150F561256B2D7DA11DD81E60855E16D5BAE4AA184A3F981"
+    }
+  },
+  "checks": {
+    "blind_gold_fields_absent": true,
+    "candidate_units": 150649,
+    "eligibility_reconstruction": true,
+    "four_arm_ranking_reconstruction": true,
+    "input_selection": {
+      "hotpotqa_train_distractor_v1_1": {
+        "eligible_source_ids": 88447,
+        "historical_id_sha256": "0909856D05746ED681D4301791D05D6688628402C4002ED663F9E88BEE78D723",
+        "historical_ids": 3000,
+        "sample_id_sha256": "28B02D298707A1C020B84BDEDFAE959303876CD0495C4CB63DE58DD032D1F786",
+        "sample_ids": 1000
+      },
+      "musique_ans_v1_0_train": {
+        "eligible_source_ids": 15438,
+        "historical_id_sha256": "D1E9110E9DC0C3A817F813A05D459995635A3A3F13A3CE73968816B13E7D33A8",
+        "historical_ids": 5500,
+        "sample_id_sha256": "2F845F0F202E2FE6933C3B5AC62E82D725463F738B1E3D4726AF86109843C320",
+        "sample_ids": 1500
+      }
+    },
+    "main_pairs": 10000,
+    "minilm_cache_metadata": {
+      "document_input": "title + '. ' + sentence",
+      "max_length": 192,
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "pooling": "attention_mask_mean_then_l2",
+      "query_id_sha256": "AE5697BB18B10D6D0FDF12A0F826875FD32E963D83F119691DFC42883576E2E0",
+      "query_input": "question",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "snapshot_files_sha256": "766AD566460F0494963F3DF1DEBC5A3B15B219F95C305C54859C2E330C064782",
+      "unit_id_sha256": "46D1D4C2C4735ECF3F7818BDC83DE73EE589A6542374C8EEEE4A50F53C436B98"
+    },
+    "parent_stage4h_artifact_count": 24,
+    "prompt_reconstruction": true,
+    "q25_applied_only_in_minilm_sidecar_space": true,
+    "strong_cache_metadata": {
+      "document_input": "title + '. ' + sentence",
+      "max_length": 512,
+      "model_id": "BAAI/bge-large-en-v1.5",
+      "pooling": "CLS_then_l2",
+      "query_id_sha256": "AE5697BB18B10D6D0FDF12A0F826875FD32E963D83F119691DFC42883576E2E0",
+      "query_input": "Represent this sentence for searching relevant passages: <question>",
+      "revision": "d4aa6901d3a41ba39fb536a557fa166f842b0e09",
+      "snapshot_files_sha256": "29C01618732E315301950DBA16CB2C7D24656D3C994FEB4742AD51E6A7D39629",
+      "unit_id_sha256": "46D1D4C2C4735ECF3F7818BDC83DE73EE589A6542374C8EEEE4A50F53C436B98"
+    },
+    "subset_determinism": {
+      "pairs": 800,
+      "predictions_identical": true,
+      "prompts_identical": true,
+      "queries": 200
+    }
+  },
+  "query_count": 2500,
+  "schema_version": "stage4i_sdc_v1",
+  "status": "STAGE4I_PRE_GOLD_VERIFICATION_PASS"
+}

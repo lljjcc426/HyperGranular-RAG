@@ -1,6 +1,6 @@
 {
   "schema_version": "stage4i_sdc_v1",
-  "status": "STAGE4I_GOLDFREE_RUNS_FROZEN_PRE_GOLD_VERIFICATION_PENDING",
+  "status": "STAGE4I_PRE_GOLD_VERIFICATION_PASS_GOLD_EVALUATION_PENDING",
   "official_execution": {
     "authorized": true,
     "authorization_date": "2026-07-24",
@@ -169,6 +169,10 @@
     "telemetry_rerun_subset": {
       "bytes": 1136,
       "sha256": "2482A76E68F98C23150F561256B2D7DA11DD81E60855E16D5BAE4AA184A3F981"
+    },
+    "verified_pregold": {
+      "bytes": 4375,
+      "sha256": "30172A18E4403BE8701952918119EC2BE9606743D5CA4A5AD51456A24B08BEEC"
     }
   },
   "paths": {
