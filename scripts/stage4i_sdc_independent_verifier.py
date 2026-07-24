@@ -203,7 +203,7 @@ def verify_input_selection(
     return checks
 
 
-def _renormalize_cache_matrix(
+def _validated_cache_matrix(
     matrix: np.ndarray, expected_rows: int, label: str
 ) -> np.ndarray:
     matrix = np.asarray(matrix, dtype="float32")
@@ -218,10 +218,7 @@ def _renormalize_cache_matrix(
         norms[:, 0], 1.0, atol=1e-5, rtol=0.0
     ):
         raise ValueError(f"{label}: cache embeddings are not L2-normalized")
-    rebuilt = (matrix / norms).astype("float32")
-    if not np.isfinite(rebuilt).all():
-        raise ValueError(f"{label}: cache normalization is non-finite")
-    return rebuilt
+    return matrix
 
 
 def _load_embedding_cache(
@@ -249,8 +246,8 @@ def _load_embedding_cache(
     if not isinstance(metadata, dict):
         raise ValueError(f"{path}: cache metadata differs")
     return (
-        _renormalize_cache_matrix(unit, len(units), f"{path}.unit"),
-        _renormalize_cache_matrix(query, len(queries), f"{path}.query"),
+        _validated_cache_matrix(unit, len(units), f"{path}.unit"),
+        _validated_cache_matrix(query, len(queries), f"{path}.query"),
         metadata,
     )
 

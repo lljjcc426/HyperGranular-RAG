@@ -358,6 +358,28 @@ class RetrievalAndEligibilityTests(unittest.TestCase):
 
 
 class StatisticsAndMechanismTests(unittest.TestCase):
+    def test_frozen_cache_validation_preserves_float32_bytes(self) -> None:
+        matrix = np.asarray([[0.70710677, 0.70710677]], dtype="float32")
+        rebuilt = verifier._validated_cache_matrix(matrix, 1, "synthetic")
+        np.testing.assert_array_equal(rebuilt, matrix)
+        self.assertFalse(
+            np.array_equal(
+                rebuilt,
+                (matrix / np.linalg.norm(matrix, axis=1, keepdims=True)).astype(
+                    "float32"
+                ),
+            )
+        )
+
+    def test_runner_exact_cache_helper_is_used_for_both_embedding_spaces(
+        self,
+    ) -> None:
+        source = (SCRIPTS / "stage4i_sdc_goldfree_runner.py").read_text(
+            encoding="utf-8"
+        )
+        self.assertEqual(source.count("build_or_load_exact_embeddings("), 3)
+        self.assertIn("return raw_unit, raw_query, seconds", source)
+
     def test_core_decision_priority_and_all_states(self) -> None:
         cases = (
             (

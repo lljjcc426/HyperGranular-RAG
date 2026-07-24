@@ -11,6 +11,8 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
+import numpy as np
+
 from stage4e_e2e_goldfree_runner import build_prompt
 from stage4h_cbe_goldfree_runner import (
     GENERATION_KWARGS,
@@ -45,6 +47,57 @@ from stage4i_sdc_retrieval import (
     build_units_queries,
     summarize_eligibility,
 )
+
+
+def build_or_load_exact_embeddings(
+    path: Path,
+    units: list[dict[str, Any]],
+    queries: list[dict[str, Any]],
+    binding: dict[str, Any],
+    snapshot: Path,
+    kind: str,
+    allow_build: bool,
+) -> tuple[np.ndarray, np.ndarray, float]:
+    """Validate with the inherited loader but preserve frozen float32 cache bytes.
+
+    The inherited loader re-normalizes an already-normalized cache on every
+    read.  That non-idempotent float32 transform can reorder near ties.  A new
+    cache build still returns the exact matrices used to write the cache; a
+    cache read validates the inherited schema/metadata and then returns the
+    stored finite, L2-normalized matrices without a second transformation.
+    """
+
+    cache_existed = path.is_file()
+    unit, query, seconds = build_or_load_embeddings(
+        path,
+        units,
+        queries,
+        binding,
+        snapshot,
+        kind,
+        allow_build,
+    )
+    if not cache_existed:
+        return unit, query, seconds
+    with np.load(path, allow_pickle=False) as cache:
+        raw_unit = np.asarray(cache["unit_embeddings"], dtype="float32")
+        raw_query = np.asarray(cache["query_embeddings"], dtype="float32")
+    for matrix, expected_rows, label in (
+        (raw_unit, len(units), f"{kind}.unit_embeddings"),
+        (raw_query, len(queries), f"{kind}.query_embeddings"),
+    ):
+        if (
+            matrix.ndim != 2
+            or matrix.shape[0] != expected_rows
+            or not np.isfinite(matrix).all()
+        ):
+            raise ValueError(f"{label}: frozen cache matrix differs")
+        norms = np.linalg.norm(matrix, axis=1)
+        if np.any(norms <= 0.0) or not np.allclose(
+            norms, 1.0, atol=1e-5, rtol=0.0
+        ):
+            raise ValueError(f"{label}: frozen cache is not L2-normalized")
+    return raw_unit, raw_query, seconds
 
 
 def select_rerun_queries(queries: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -207,7 +260,7 @@ def _context(
         raise ValueError("Stage4I query count differs")
     minilm_binding = parent["models"]["minilm"]
     strong_binding = parent["models"]["strong_dense"]
-    minilm_unit, minilm_query, minilm_seconds = build_or_load_embeddings(
+    minilm_unit, minilm_query, minilm_seconds = build_or_load_exact_embeddings(
         path_from_config(config, "minilm_embedding_cache"),
         units,
         queries,
@@ -216,7 +269,7 @@ def _context(
         "minilm",
         allow_cache_build,
     )
-    strong_unit, strong_query, strong_seconds = build_or_load_embeddings(
+    strong_unit, strong_query, strong_seconds = build_or_load_exact_embeddings(
         path_from_config(config, "strong_embedding_cache"),
         units,
         queries,
