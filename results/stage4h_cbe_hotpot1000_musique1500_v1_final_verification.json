@@ -1,0 +1,83 @@
+{
+  "artifacts": {
+    "dataset_summaries": {
+      "bytes": 6998,
+      "sha256": "C9B2E163A46FE41B458321C8292CCF21A99C5B6AC666E3E28BA6798E013CB85B"
+    },
+    "descriptive_metadata": {
+      "bytes": 3834,
+      "sha256": "07DA983E648E2477B09038CDF8511560B2FD1DF33E61C715CF4A8C67C5CB4B30"
+    },
+    "equal_weight_summary": {
+      "bytes": 10465,
+      "sha256": "0C8677960F2CB07526B36264CE58883ED28D12C0016F6EAD8A036D3DD0BE7FA4"
+    },
+    "input_manifest": {
+      "bytes": 668237,
+      "sha256": "6095D8FAB5526F1F10956C1808802C4122B20840666422253B9591802DD92615"
+    },
+    "predictions_main": {
+      "bytes": 3449765,
+      "sha256": "52B9276E93AF19820B8F2E358F54BE9CDF88D4A8C6A34020AF3EDC153470E310"
+    },
+    "predictions_rerun_subset": {
+      "bytes": 279671,
+      "sha256": "84025B63BB1C49268287DE2E0A1B85B9EF4A91821D98441658C0E7807C943C78"
+    },
+    "prompt_audit_main": {
+      "bytes": 26702494,
+      "sha256": "B7B2D3E3846CD7406C4E646A0DC007F54A5CC3BBA863CAD9E0551F7AB9A5B507"
+    },
+    "prompt_audit_rerun_subset": {
+      "bytes": 2161571,
+      "sha256": "BB6CA94A55F311B07F96F5B5A280D944F5117A8A3220629C4C2F7835E3119042"
+    },
+    "query_audit": {
+      "bytes": 3111653,
+      "sha256": "6232260E8D91D070E8A28B96A4F179538D2EB300F16FE28DB3B24168ADBD4CA9"
+    },
+    "rankings": {
+      "bytes": 22809912,
+      "sha256": "EAECD420CEDDFD0E670892E9B78B0D6D02BB3E9BE2A84BC36631C1D985C49822"
+    },
+    "retrieval_trace": {
+      "bytes": 1280228,
+      "sha256": "308D3FCF9B0D517548542C33BB241B2824446B68453697F83BC5CAA13796087F"
+    },
+    "scientific_decision": {
+      "bytes": 691,
+      "sha256": "3C4B2E4A2AAC4A5E031D8513DD88391BC378351113DF7E99E6362B85DDE8BBD5"
+    },
+    "telemetry_main": {
+      "bytes": 1366,
+      "sha256": "5B69B732D19A0C04337AFB05FA44362BF43977C2AB1BFD6ACF4D4DAC1520E164"
+    },
+    "telemetry_rerun_subset": {
+      "bytes": 1378,
+      "sha256": "0EEAC0F16DF8D5F996B9F477CFFAF065D4A3DDC1F2F63C31FC9B014464707048"
+    },
+    "verified_pregold": {
+      "bytes": 4211,
+      "sha256": "ACF11E359BFFF40DB53C07DB27A39E6C5ABE61AC1C4161C8A15542397783639B"
+    }
+  },
+  "checks": {
+    "artifact_identities": true,
+    "decision_reconstruction": true,
+    "holm_and_bootstrap_reconstruction": true,
+    "query_metric_reconstruction": true,
+    "reservation_locked": true,
+    "stage3b_locked": true,
+    "u2_not_authorized": true
+  },
+  "decisions": {
+    "FACET_HYPEREDGE_ABLATION": "SUPPORTED",
+    "FULL_METHOD_VS_DENSE": "SUPPORTED",
+    "FULL_METHOD_VS_STRONG_DENSE": "NEGATIVE",
+    "GRANULAR_BALL_ABLATION": "NOT_FAIRLY_DEFINED",
+    "PROTECTED_INSERTION_ABLATION": "INCONCLUSIVE"
+  },
+  "query_count": 2500,
+  "schema_version": "stage4h_cbe_v1",
+  "status": "STAGE4H_FINAL_VERIFICATION_PASS"
+}

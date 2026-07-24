@@ -1,6 +1,6 @@
 {
   "schema_version": "stage4h_cbe_v1",
-  "status": "STAGE4H_GOLD_EVALUATION_COMPLETE_FINAL_VERIFICATION_PENDING",
+  "status": "STAGE4H_COMPLETE_FINAL_VERIFICATION_PASS",
   "official_execution": {
     "authorized": true,
     "authorization_date": "2026-07-24",
@@ -237,6 +237,10 @@
       "bytes": 73895304,
       "sha256": "19E2659B190E91A4FC6350698C921C8F3FFA86B793BA89F3D726C004C5EA9B64"
     },
+    "artifact_manifest": {
+      "bytes": 2370,
+      "sha256": "6E467B17BE53F1EA75D897E1185558F1FE50C04A4302568515C831DA7641C72D"
+    },
     "dataset_summaries": {
       "bytes": 6998,
       "sha256": "C9B2E163A46FE41B458321C8292CCF21A99C5B6AC666E3E28BA6798E013CB85B"
@@ -252,6 +256,10 @@
     "environment_manifest": {
       "bytes": 1730,
       "sha256": "23B9A57FF067DF4101C17F1DFCB5F63BEAB7AE7481693B34D3A2C408373B100F"
+    },
+    "final_verification": {
+      "bytes": 2754,
+      "sha256": "692D7150043071580B58F1CC1F758884A6178412C98ED193C4D4D27BDB40726F"
     },
     "gold": {
       "bytes": 812450,
