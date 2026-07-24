@@ -1,6 +1,6 @@
 {
   "schema_version": "stage4i_sdc_v1",
-  "status": "STAGE4I_IMPLEMENTATION_AND_SYNTHETIC_TESTS_PASS_INPUT_BINDING_PENDING",
+  "status": "STAGE4I_INPUT_CHANNELS_FROZEN_BLIND_ELIGIBILITY_PENDING",
   "official_execution": {
     "authorized": true,
     "authorization_date": "2026-07-24",
@@ -108,6 +108,24 @@
       "PROTECTED_MINUS_BGE",
       "PROTECTED_MINUS_NO_FACET"
     ]
+  },
+  "inputs": {
+    "blind": {
+      "bytes": 74044749,
+      "sha256": "9384866CC3F915CA4D3D7CA660585B3DFC15B800B3152FEA544BF1C9B2249FA1"
+    },
+    "gold": {
+      "bytes": 811889,
+      "sha256": "BC0538A25C8FB2C4F14DC5FDC39039710C2F9222DB99FF3E6DEA088F8A991867"
+    },
+    "input_manifest": {
+      "bytes": 668755,
+      "sha256": "E9933740CD7C3DDA5203DC4D993709237A249117918701DF340D04F8932634F1"
+    },
+    "metadata": {
+      "bytes": 697976,
+      "sha256": "9C47510EC53BF0DC873917DC6F6181F0E1829E21CBBB1E2A23582DFE571504B0"
+    }
   },
   "paths": {
     "blind": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4i_sdc_hotpot1000_musique1500_v1_blind_queries.jsonl",
