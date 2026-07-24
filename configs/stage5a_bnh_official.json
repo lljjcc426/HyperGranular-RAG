@@ -1,6 +1,6 @@
 {
   "schema_version": "stage5a_bnh_v1",
-  "status": "STAGE5A_DEVELOPMENT_GOLDFREE_TIMING_CORRECTION_REGENERATION_AUTHORIZED",
+  "status": "STAGE5A_DEVELOPMENT_PRE_GOLD_VERIFIED_DEVELOPMENT_GOLD_EVALUATION_AUTHORIZED",
   "official_execution": {
     "authorized": true,
     "authorization_date": "2026-07-24",
@@ -348,6 +348,34 @@
     "geometry_feasibility_audit": {
       "bytes": 13664,
       "sha256": "2633CB5A750A48B39E6427C9BC38596D97E63220B73AF410911B41EAA15A7D0B"
+    },
+    "development_predictions_main": {
+      "bytes": 4314248,
+      "sha256": "43174D969BE28A62FDEB2848619998B82144F94282D87C78C629356FED5B3451"
+    },
+    "development_prompt_audit_main": {
+      "bytes": 32564032,
+      "sha256": "39A612E5D06268B75EB22DAA9D414F6977456BA4B8349224044122D2A8830E5D"
+    },
+    "development_telemetry_main": {
+      "bytes": 1538,
+      "sha256": "67B95CE24DA64A98B12223846C3A27900EDD6D3F256BE1EDA559B5F4B80D63D1"
+    },
+    "development_predictions_rerun_subset": {
+      "bytes": 348732,
+      "sha256": "1528063E66FAC5BF3B96491DD672B5CE83A17A99C15139B5F710653510383796"
+    },
+    "development_prompt_audit_rerun_subset": {
+      "bytes": 2640256,
+      "sha256": "F468949E72DFC4C36F76456EF2967E9C429CAC490F25DE85FFA7749B6F22E59D"
+    },
+    "development_telemetry_rerun_subset": {
+      "bytes": 1535,
+      "sha256": "B05BAE44ED79CE7CFC0540886FE12E0605C36DA590A71C8EDCC77BDF2A0D27D6"
+    },
+    "development_verified_pregold": {
+      "bytes": 2005,
+      "sha256": "051EC810411DCEA205F5E65ECFA1688C21E0864344A218848FF1FA09F74BF5E5"
     }
   },
   "paths": {
