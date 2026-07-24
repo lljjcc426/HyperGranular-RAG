@@ -7,7 +7,7 @@
 - 仓库：`E:\SCIENCE\HyperGranular-RAG`
 - GitHub：`https://github.com/lljjcc426/HyperGranular-RAG.git`
 - 登记数据根目录：`E:\SCIENCE\超粒球RAG_数据`
-- 研究范围：粒球/超边多跳检索、静态 q25 protected insertion、已关闭的 U1/candidate-controller 审计线、Stage4E–4G 复制、Stage4H 核心消融与强基线评价，以及已完成的 Stage4I strong-dense sidecar 互补性评价。
+- 研究范围：粒球/超边多跳检索、静态 q25 protected insertion、已关闭的 U1/candidate-controller 审计线、Stage4E–4G 复制、Stage4H 核心消融与强基线评价、已完成的 Stage4I strong-dense sidecar 互补性评价，以及当前 Stage5-PMC 论文整合与投稿准备。
 - 禁止读取其他项目会话、全局 Codex memory 或项目外中间产物。
 
 ## 2. 当前权威入口
@@ -28,7 +28,12 @@
 - 已完成 Stage4I 实验卡：`docs/STAGE4I_SDC_EXPERIMENT_CARD.md`
 - 已完成 Stage4I 配置：`configs/stage4i_sdc_official.json`
 - Stage4I final verification：`results/stage4i_sdc_hotpot1000_musique1500_v1_final_verification.json`
-- 当前正式报告：`reports/超粒球RAG_Stage4I_SDC强稠密检索互补性报告.md`
+- Stage5-PMC 阶段卡：`docs/STAGE5_PMC_PAPER_MANUSCRIPT_CONSOLIDATION_CARD.md`
+- 当前论文蓝图：`paper/STAGE5_PMC_MANUSCRIPT_BLUEPRINT.md`
+- 当前核心表：`paper/SUBMISSION_CORE_TABLES.md`
+- 当前论文图合同与追溯：`paper/figures/FIGURE_CONTRACTS_AND_CAPTIONS.md`
+- 当前投稿前审计：`paper/STAGE5_PMC_PRE_SUBMISSION_AUDIT.md`
+- 最近完成的正式实验报告：`reports/超粒球RAG_Stage4I_SDC强稠密检索互补性报告.md`
 - Stage4D 关闭声明：`docs/STAGE4D_CMA_CLOSURE.md`
 - 已完成 Stage4D 协议：`docs/STAGE4D_CANDIDATE_MARGINAL_UTILITY_AUDIT_PROTOCOL.md`
 - 已完成诊断协议：`docs/STAGE4C_U1_FAILURE_MECHANISM_AUDIT_PROTOCOL.md`
@@ -120,6 +125,13 @@ STAGE4I_FINAL_VERIFICATION_PASS
 STRONG_DENSE_COMPLEMENTARITY_INCONCLUSIVE
 PROTECTED_PLACEMENT_SUPPORTED
 BGE_FACET_INCREMENT_INCONCLUSIVE
+STAGE4I_CLOSED_AND_FROZEN
+CORE_EXPERIMENTAL_PROGRAM_COMPLETE
+STAGE5_PMC_ACTIVE
+PAPER_MANUSCRIPT_CONSOLIDATION_ONLY
+FULL_WIKI_OPTIONAL_AND_DEFERRED
+NEW_MODEL_SEARCH_NOT_AUTHORIZED
+CONTROLLER_LINE_CLOSED
 RESERVATION_REQUIRES_PAUSE
 U2_NOT_AUTHORIZED
 SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE

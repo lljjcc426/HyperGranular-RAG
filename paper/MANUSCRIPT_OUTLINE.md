@@ -1,8 +1,14 @@
 # HyperGranular-RAG 论文结构草案
 
+状态：`STAGE5_PMC_ACTIVE`
+
+当前权威论文蓝图为 [STAGE5_PMC_MANUSCRIPT_BLUEPRINT](STAGE5_PMC_MANUSCRIPT_BLUEPRINT.md)。本文件保留更细的历史 section notes，但中心问题已按 Stage4I 最终边界收缩。
+
 ## 暂定中心问题
 
-静态、受保护的超边证据补全能否在保留 Dense 主干的同时改善多跳证据覆盖，并最终转化为答案质量收益；若按 query/candidate 选择性削减扩展，为什么当前无标签 controller 没有成功？
+结构化、受保护的高阶证据补全能否在 compact dense 主干与固定 Top-k 预算下改善多跳答案质量，其效益在 strong dense、额外生成器和 component/placement 边界上在哪里停止？
+
+论文定位为 `structured evidence-completion layer for compact dense retrieval backbones`，不是普遍优于 strong dense 的新 SOTA 检索器。U1/controller 负结果作为独立机制边界，不再承担论文中心问题。
 
 ## 1. Introduction
 

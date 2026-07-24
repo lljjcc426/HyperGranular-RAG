@@ -3,7 +3,7 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage4D-CMA/controller are closed; Stage4E–4I are complete with independent final verification; Stage4I finds strong-dense sidecar complementarity inconclusive, protected placement supported, and facet increment inconclusive
+- Current stage: Stage4D-CMA/controller are closed; Stage4E–4I are complete, independently verified and frozen; Stage5-PMC paper manuscript consolidation is active and no new algorithm experiment is open
 - Current governance: project-wide and durable across all current/future stages; one research stage receives one authorization; stage-internal predefined work is continuous; step/channel reapproval is disabled; only new scientific boundaries or serious integrity anomalies pause execution
 - Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive development batch through verified Stage4D-CMA; deterministic new-ID HotpotQA train 1,000 and MuSiQue train 3,000 in Stage4E/4F; separate zero-overlap HotpotQA 1,000 + MuSiQue 1,500 boundaries in Stage4H and Stage4I; reservation and Stage3B were not accessed
 - Generators used: Qwen2.5-1.5B-Instruct in verified Stage4E/4F/4H; one pre-specified Gemma 4 E2B official mobile-QAT configuration in verified Stage4G
@@ -19,7 +19,33 @@ The full integrity and methodology audit is recorded in `docs/PRIOR_STAGE_METHOD
 - Stage2G: valid negative mechanism result; the current boundary rule is unsupported.
 - Stage2H: diagnostic only. Stage3A: failed development. Stage3C: descriptive planning only.
 - Restarted Stage4A `n=2,800`: exact event-count arithmetic is correct, but 20 gains is a planning heuristic. The number is not an approved effect-power or controller-training sample size.
-- Research position: `STAGE4D_CMA_CLOSED` and `CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED`; Stage4E/4F support static q25 relative to historical Dense under Qwen, while Stage4G returns `GENERATOR_TRANSFER_INCONCLUSIVE`. Stage4H again supports Full vs historical Dense but is negative vs BGE strong dense. Stage4I tests the narrower BGE+HGRAG sidecar formulation: the core comparison is inconclusive, protected placement is supported, and facet increment is inconclusive. U2, reservation, Stage3B, new controllers, full-wiki Gold, and new generator/strong-retriever search are not authorized.
+- Research position: `STAGE4D_CMA_CLOSED` and `CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED`; Stage4E/4F support static q25 relative to historical Dense under Qwen, while Stage4G returns `GENERATOR_TRANSFER_INCONCLUSIVE`. Stage4H again supports Full vs historical Dense but is negative vs BGE strong dense. Stage4I tests the narrower BGE+HGRAG sidecar formulation: the core comparison is inconclusive, protected placement is supported, and facet increment is inconclusive. The core experimental program is complete. Stage5-PMC consolidates the manuscript; U2, reservation, Stage3B, new controllers, full-wiki Gold, and new generator/strong-retriever search are not authorized.
+
+## Active Non-Experimental Phase: Stage5-PMC
+
+```text
+STAGE4I_CLOSED_AND_FROZEN
+CORE_EXPERIMENTAL_PROGRAM_COMPLETE
+NEXT_PHASE = STAGE5_PAPER_MANUSCRIPT_CONSOLIDATION
+FULL_WIKI = OPTIONAL_AND_DEFERRED
+NEW_MODEL_SEARCH = NOT_AUTHORIZED
+CONTROLLER_LINE = CLOSED
+RESERVATION = LOCKED
+STAGE3B = LOCKED
+U2 = NOT_AUTHORIZED
+```
+
+Stage5-PMC does not create a new scientific result. It freezes the paper claim hierarchy, consolidates four core result tables, builds traceable Python figures, and audits the manuscript against the verified Stage4E–Stage4I ledger. The paper is positioned as structured evidence completion for compact dense backbones. It must retain the Stage4H strong-dense negative result, the Stage4I sidecar and facet inconclusive results, the Stage4G generator-transfer inconclusive result, and the undefined granular-ball flat control.
+
+The current Stage5 entry points are:
+
+- `docs/STAGE5_PMC_PAPER_MANUSCRIPT_CONSOLIDATION_CARD.md`
+- `paper/STAGE5_PMC_MANUSCRIPT_BLUEPRINT.md`
+- `paper/SUBMISSION_CORE_TABLES.md`
+- `paper/figures/FIGURE_CONTRACTS_AND_CAPTIONS.md`
+- `paper/STAGE5_PMC_PRE_SUBMISSION_AUDIT.md`
+
+Full-wiki is optional future work and does not block submission preparation. A new experimental stage requires a new scientific boundary; manuscript editing, citation verification, figure/table production and venue formatting remain continuous Stage5 work.
 
 ## Completed Execution History
 

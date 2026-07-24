@@ -1,0 +1,5 @@
+component,frozen_value,role
+Compact dense backbone,MiniLM-L6-v2 cosine ranking,base relevance order
+Adaptive granular balls,local sentence-unit groups,structured evidence units
+Facet hyperedges,query-aware cross-ball relation,higher-order evidence expansion
+Protected insertion,protect Dense top-10; at most 4 inserts; final top-20,bounded placement

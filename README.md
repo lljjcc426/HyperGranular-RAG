@@ -6,10 +6,12 @@
 
 | 项目 | 当前事实 |
 |---|---|
-| 研究阶段 | Stage4I-SDC 已完成、独立验证并冻结 |
-| 状态 | `STAGE4I_FINAL_VERIFICATION_PASS` |
+| 研究阶段 | Stage4E–Stage4I 科学实验线已完成并冻结；当前进入 Stage5-PMC 论文整合与投稿准备 |
+| 状态 | `CORE_EXPERIMENTAL_PROGRAM_COMPLETE` / `STAGE5_PMC_ACTIVE` |
 | Stage4I 新边界 | HotpotQA train 1,000 + MuSiQue train 1,500；与全部历史正式 ID overlap 0 |
 | 当前证据 | BGE+protected HGRAG sidecar 相对 BGE-only 不确定；相同候选集合下 protected placement 受支持；facet increment 不确定 |
+| 下一工作 | 冻结主张、四张核心表、论文图、正文蓝图与投稿前一致性审计；不启动新算法实验 |
+| Full-wiki | `OPTIONAL_AND_DEFERRED`，不阻塞当前投稿准备 |
 | Gold | 仅在 Gold-free main/rerun 与 pre-Gold verification 后使用；未进入检索、prompt、生成或排序 |
 | Reservation / Stage3B | `KEEP_LOCKED` |
 
@@ -78,7 +80,9 @@ Stage4C-U1-FMA 进一步审计其失败机制：raw U1 score 对 GAIN-vs-HARM �
 
 Stage4D-CMA 将问题下沉到 candidate 级：8,467 个 eligible candidates 经 standardized first-slot insertion、`LOO_NO_BACKFILL` 和 `LOO_WITH_BACKFILL` 归因后，固定 Task-C combined panel 的 AUROC 为 `0.64310 [0.55520, 0.72974]`、AP 为 `0.72198`。它存在部分符号信号，但 AUROC 未达到 `0.65` 且 Brier 未优于 prevalence baseline，最终为 `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。
 
-Stage4D 和当前 controller 分支已经冻结关闭。Stage4E/4F 支持 static q25 相对历史 Dense 的两个 closed-candidate 正结果；Stage4G 的单一额外 Gemma mobile-QAT 迁移结果不确定。Stage4H 在新边界上再次支持 Full 相对历史 Dense，并显示 Full 明确低于 BGE strong dense。Stage4I 进一步表明：当前冻结 MiniLM-HGRAG sidecar 没有在 BGE 主干上形成可确认的额外答案质量，但 protected placement 明确优于把同一插入集合放在前部。下一科研阶段尚未定义；full-wiki、Reservation、Stage3B、U2/controller 和新 strong-retriever search 均未授权。
+Stage4D 和当前 controller 分支已经冻结关闭。Stage4E/4F 支持 static q25 相对历史 Dense 的两个 closed-candidate 正结果；Stage4G 的单一额外 Gemma mobile-QAT 迁移结果不确定。Stage4H 在新边界上再次支持 Full 相对历史 Dense，并显示 Full 明确低于 BGE strong dense。Stage4I 进一步表明：当前冻结 MiniLM-HGRAG sidecar 没有在 BGE 主干上形成可确认的额外答案质量，但 protected placement 明确优于把同一插入集合放在前部。
+
+当前进入 [Stage5-PMC](docs/STAGE5_PMC_PAPER_MANUSCRIPT_CONSOLIDATION_CARD.md)：不再自动启动新的算法实验，而是将上述正结果、负结果、不确定结果和未定义消融整合为边界准确的论文。论文定位为面向 compact dense backbone 的 `structured evidence-completion layer`，不是普遍优于 strong dense 的新 SOTA 检索器。full-wiki 为可选、延后的未来工作；Reservation、Stage3B、U2/controller、新生成器和新 strong-retriever search 均保持锁定。
 
 ## 冻结方法边界
 
@@ -109,6 +113,7 @@ Stage4D 和当前 controller 分支已经冻结关闭。Stage4E/4F 支持 static
 | Stage4G-GTR | one-additional-generator controlled replication；独立验证完成 | equal-weight F1 `+0.00516 [-0.00262,0.01295]`；`GENERATOR_TRANSFER_INCONCLUSIVE` |
 | Stage4H-CBE | new-ID component/strong-baseline evaluation；独立验证完成 | Full−Dense/NoFacet supported；Full−StrongDense negative；NoProtection inconclusive；flat not defined |
 | Stage4I-SDC | new-ID strong-dense sidecar complementarity；独立验证完成 | Protected−BGE inconclusive；Protected−Unprotected supported；facet increment inconclusive |
+| Stage5-PMC | 论文整合与投稿准备；非实验阶段 | 主张、核心表、图和内部一致性审计进行中；不新增科学结果 |
 
 完整研究轨迹见 [ROADMAP](docs/ROADMAP.md) 和 [文档索引](docs/INDEX.md)。
 

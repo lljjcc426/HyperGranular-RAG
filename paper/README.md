@@ -2,8 +2,16 @@
 
 本目录只组织可由仓库证据支持的论文内容，不保存原始数据、模型、embedding cache 或未验证结果。
 
+当前阶段为 `STAGE5_PMC_ACTIVE`：Stage4E–Stage4I 科学实验线已经完成并冻结，当前只进行论文整合、图表生成、引用准备和一致性审计，不启动新算法实验。
+
 当前文件：
 
+- [Stage5-PMC manuscript blueprint](STAGE5_PMC_MANUSCRIPT_BLUEPRINT.md)：中心论点、摘要框架、IMRaD、主表/主图和投稿缺口；
+- [Stage5 manuscript core draft](MANUSCRIPT_CORE_DRAFT.md)：基于冻结证据的英文核心稿；外部引用尚未绑定，当前不可投稿；
+- [Stage5-PMC core tables](SUBMISSION_CORE_TABLES.md)：主结果、外部稳健性、消融、效率与完整性四张核心表；
+- [Stage5-PMC pre-submission audit](STAGE5_PMC_PRE_SUBMISSION_AUDIT.md)：内部 evidence/claim/caption 一致性与剩余投稿缺口；
+- [Stage5 figure contracts](figures/FIGURE_CONTRACTS_AND_CAPTIONS.md)：五组论文图的 visual contract、caption、CSV trace 与 QA；
+- [Stage5 figure manifest](figures/STAGE5_PMC_FIGURE_MANIFEST.json)：14 个 frozen input 和全部派生图/CSV 的 Bytes/SHA；
 - [EVIDENCE_AND_CLAIM_LEDGER](EVIDENCE_AND_CLAIM_LEDGER.md)：把每项可写主张、证据等级、来源工件和限制对应起来；
 - [MANUSCRIPT_OUTLINE](MANUSCRIPT_OUTLINE.md)：按科研问题而不是执行治理历史组织论文结构；
 - [Stage4E Level A 协议](../docs/STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md)：已完成的端到端答案质量验证设计；

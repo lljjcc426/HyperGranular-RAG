@@ -1,6 +1,6 @@
 # HyperGranular-RAG 方法定义与冻结结果表
 
-状态：`STAGE4I_FINAL_VERIFICATION_PASS`
+状态：`STAGE4I_FINAL_VERIFICATION_PASS` / `STAGE5_PMC_DERIVED_TABLE_SOURCE`
 用途：论文 Methods、Results 与 Reproducibility 的统一数字入口。
 证据边界：本文件只汇总已经提交并通过独立验证的 Stage4E–4I 工件；不新增统计检验，不改变任何冻结结论。
 

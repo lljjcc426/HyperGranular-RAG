@@ -1,0 +1,6 @@
+boundary,evidence,paper_claim,status
+Compact MiniLM dense / closed candidate / Qwen,Supported answer-F1 gain,Core supported scope,supported
+BGE strong dense as replacement,Full method lower than BGE,Explicit negative boundary,negative
+BGE strong dense + HGRAG sidecar,Interval crosses zero,Complementarity uncertain,inconclusive
+Additional Gemma mobile-QAT generator,Joint transfer gate not passed,Generator transfer uncertain,inconclusive
+Full-wiki / open-domain retrieval,Not evaluated,Deferred future work,deferred

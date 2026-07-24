@@ -1,5 +1,7 @@
 # HyperGranular-RAG 证据与主张台账
 
+Stage5-PMC 论文定位：`structured evidence-completion layer for compact dense retrieval backbones`。本台账继续作为正结果、负结果、不确定结果和未定义对照的权威 claim boundary；论文不得只选择有利证据。
+
 ## 当前总论边界
 
 静态 q25 protected insertion 与 adaptive controller 是两个不同主张。Stage4E 支持前者在冻结 HotpotQA same-domain closed-distractor 边界上的端到端答案质量增益，Stage4F 又在冻结 MuSiQue closed-candidate 边界复制该 answer-F1 方向与支持门；Stage4G 在一个额外、事前指定的 Gemma mobile-QAT 配置下得到 inconclusive generator-transfer 结果。Stage4H 在两组新的零重叠 closed-candidate 边界上支持 full 相对历史 MiniLM Dense 和 no-facet ablation 的增益，但 full 明确低于 BGE strong dense，protected insertion 贡献不确定，flat-unit 对照未公平定义。Stage4I 进一步把冻结 HGRAG 作为 BGE 主排名上的独立 sidecar：核心 protected sidecar 相对 BGE 的 answer-F1 差异不确定；在完全相同插入集合下，protected placement 优于 unprotected placement；facet 相对 no-facet 的增量仍不确定。当前 U1/Stage4D controller 线仍保持关闭。

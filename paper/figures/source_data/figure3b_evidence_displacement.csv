@@ -1,0 +1,7 @@
+dataset,method,added_gold,displaced_gold,net_gold,interpretation
+HotpotQA,BGE,0,0,0,post-decision descriptive only
+HotpotQA,Protected,21,29,-8,post-decision descriptive only
+HotpotQA,Unprotected,21,29,-8,post-decision descriptive only
+MuSiQue,BGE,0,0,0,post-decision descriptive only
+MuSiQue,Protected,59,50,9,post-decision descriptive only
+MuSiQue,Unprotected,59,50,9,post-decision descriptive only

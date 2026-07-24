@@ -39,3 +39,6 @@ docs/STAGE4I_SDC_EXPERIMENT_CARD.md -text
 scripts/stage4i_sdc_*.py -text
 tests/test_stage4i_sdc.py -text
 results/stage4i_sdc_* -text
+paper/figures/*.svg -text
+paper/figures/source_data/*.csv -text
+paper/figures/STAGE5_PMC_FIGURE_MANIFEST.json -text

@@ -1,0 +1,235 @@
+{
+  "backend": {
+    "language": "Python",
+    "matplotlib": "3.10.7",
+    "numpy": "2.4.6",
+    "python": "3.11.5",
+    "svg_text": "editable"
+  },
+  "derived_files": [
+    {
+      "bytes": 25828,
+      "path": "paper/figures/figure1_method_overview.pdf",
+      "sha256": "5B82089C977A0D84ED1818100B816B0BE49E8C44239F7BA8D6D5BA90CE1C887C"
+    },
+    {
+      "bytes": 185706,
+      "path": "paper/figures/figure1_method_overview.png",
+      "sha256": "43F52274865B143524254A621025C31295E184EA7B550AD04DFF670CDD838740"
+    },
+    {
+      "bytes": 20725,
+      "path": "paper/figures/figure1_method_overview.svg",
+      "sha256": "77E5B940806E2713848A35DAE8BCF547EC677964F4EAC8A007D452F485DC8C04"
+    },
+    {
+      "bytes": 932788,
+      "path": "paper/figures/figure1_method_overview.tiff",
+      "sha256": "E3CFD1D045C24B36E0E9572837A8577B178CB6E98DFA805FA532738E9B760829"
+    },
+    {
+      "bytes": 25459,
+      "path": "paper/figures/figure2_effect_size_forest.pdf",
+      "sha256": "FD453CA629BE934EE2C6544B401842EF18552F6CAF9469750FA8E80846446E75"
+    },
+    {
+      "bytes": 181399,
+      "path": "paper/figures/figure2_effect_size_forest.png",
+      "sha256": "1A82965DCD43643CA7A7081ECF6690DC1C17CFC6B04E655C31248ADE3F80971E"
+    },
+    {
+      "bytes": 20010,
+      "path": "paper/figures/figure2_effect_size_forest.svg",
+      "sha256": "7D259A652347A0F70EEF79BBC8FB64C87194221F528EB82FB017B1035F48584F"
+    },
+    {
+      "bytes": 876088,
+      "path": "paper/figures/figure2_effect_size_forest.tiff",
+      "sha256": "4629173EE335B218DBF3A8686183070F570646FCFA4A0A3160BC49F990615B64"
+    },
+    {
+      "bytes": 23269,
+      "path": "paper/figures/figure3_strong_dense_and_displacement.pdf",
+      "sha256": "1A17683E257373D395FC847E45FC19850AE7D0F7189F378E83781ABCB453515B"
+    },
+    {
+      "bytes": 110349,
+      "path": "paper/figures/figure3_strong_dense_and_displacement.png",
+      "sha256": "87C537F748624DE8E4C4CE3BF1D2B0E806B68F445A6E407D3DE67DE454B982A5"
+    },
+    {
+      "bytes": 20891,
+      "path": "paper/figures/figure3_strong_dense_and_displacement.svg",
+      "sha256": "A9B9546444CF84E805FAD87073D658F20DC9CAE0663B35F6B435EC0D2BE9611D"
+    },
+    {
+      "bytes": 927950,
+      "path": "paper/figures/figure3_strong_dense_and_displacement.tiff",
+      "sha256": "B20F05B4B981BCDFB362AB8557C35B8C9ACF8CF1FEB5554F0D6E6685E6C4111B"
+    },
+    {
+      "bytes": 23133,
+      "path": "paper/figures/figure4_evidence_map.pdf",
+      "sha256": "C61E638BC3284BF435336D7A989EED7A57A0DC2D4287FDAD66C8BBD9FFA6C472"
+    },
+    {
+      "bytes": 138200,
+      "path": "paper/figures/figure4_evidence_map.png",
+      "sha256": "09D6C271252779D4E72A35EA32BC91A818E5D21C870D2243BAC89C1BB68A1E36"
+    },
+    {
+      "bytes": 10145,
+      "path": "paper/figures/figure4_evidence_map.svg",
+      "sha256": "5E0537DC80B50D20F639B1216D74A450180F60E1D6F7D3BC9CF20E62CB52C044"
+    },
+    {
+      "bytes": 652902,
+      "path": "paper/figures/figure4_evidence_map.tiff",
+      "sha256": "9A67E1C91006DBEA6885CC16BDAB369D759222BB98A44A79C4AE737D3DFADAA5"
+    },
+    {
+      "bytes": 21782,
+      "path": "paper/figures/figure5_applicability_boundary.pdf",
+      "sha256": "8E45A71E858E98379C97BE8F90236D7D7B9FEA92260E32DDB9ADB029E09F43F8"
+    },
+    {
+      "bytes": 129425,
+      "path": "paper/figures/figure5_applicability_boundary.png",
+      "sha256": "37A5AC4D75FAF79FF985EB00E0C3A491FC4DF491AF61AA3F500A921A270C271E"
+    },
+    {
+      "bytes": 10714,
+      "path": "paper/figures/figure5_applicability_boundary.svg",
+      "sha256": "21398451713EF9914F6B98FED8BF9EC30C23372860BC1F65B4C86CD49A235B02"
+    },
+    {
+      "bytes": 809524,
+      "path": "paper/figures/figure5_applicability_boundary.tiff",
+      "sha256": "B9F41104C8921F4F2B0901FD2F53CF7C7D2FBA0AC2CC59EAF62C1F4F4DB92767"
+    },
+    {
+      "bytes": 350,
+      "path": "paper/figures/source_data/figure1_method_overview.csv",
+      "sha256": "9024752ECE388894BED3C980A08294B0D9D16DF27F1FC9F267FB0228E8B90BBE"
+    },
+    {
+      "bytes": 1452,
+      "path": "paper/figures/source_data/figure2_effect_size_forest.csv",
+      "sha256": "52BBF249B84569332781337DE60A9938E94AD383CED4277F03AD454DAA824DA9"
+    },
+    {
+      "bytes": 508,
+      "path": "paper/figures/source_data/figure3a_strong_dense_absolute_metrics.csv",
+      "sha256": "348D9E9183F504935420B29D093AA841F607931FDD29A4F94BC7CCC3084C4207"
+    },
+    {
+      "bytes": 400,
+      "path": "paper/figures/source_data/figure3b_evidence_displacement.csv",
+      "sha256": "2E5295A44837A864007FA2B0E66C1851E47F7EC1D7D1A8A071EF1113136FF052"
+    },
+    {
+      "bytes": 682,
+      "path": "paper/figures/source_data/figure4_evidence_map.csv",
+      "sha256": "882BE389D5F93C3887CA3CA61BB15EF707C3A88175D9A79097F5F20F216C178C"
+    },
+    {
+      "bytes": 518,
+      "path": "paper/figures/source_data/figure5_applicability_boundary.csv",
+      "sha256": "9C110C876CE893DFEEC88913BB5FC9BF368C62CC4FC5EF4BB2799FC705770DEA"
+    },
+    {
+      "bytes": 514,
+      "path": "paper/figures/source_data/table4_efficiency_and_integrity.csv",
+      "sha256": "CF5AB0750186F623287623A05230F6BBFE8F69D7805C287CC15BDBAC3D74637A"
+    }
+  ],
+  "inputs": [
+    {
+      "bytes": 2444,
+      "label": "stage4e_summary",
+      "path": "results/stage4e_e2e_official_train1000_v1_evaluation_summary.json",
+      "sha256": "BC6D6EF89A47B7314AEA12966894750E5733449ED76241582116451E4BFFF05E"
+    },
+    {
+      "bytes": 389,
+      "label": "stage4e_telemetry",
+      "path": "results/stage4e_e2e_official_train1000_v1_telemetry_main.json",
+      "sha256": "D9971191A45F4F2BA2F6BA61716BBF9ACA707FACD66528778E73D3B203D39385"
+    },
+    {
+      "bytes": 1795,
+      "label": "stage4f_summary",
+      "path": "results/stage4f_xdr_musique_train3000_v1_evaluation_summary.json",
+      "sha256": "839E946A5BA5AEB5502D10867647B26B9DBA1001BF7BC27EF740056312CE6C50"
+    },
+    {
+      "bytes": 391,
+      "label": "stage4f_telemetry",
+      "path": "results/stage4f_xdr_musique_train3000_v1_telemetry_main.json",
+      "sha256": "D5988004E2D3DA8E5116F3DF094B8277C60198E3CAE8A726A75B40AE5377BCA3"
+    },
+    {
+      "bytes": 3523,
+      "label": "stage4g_datasets",
+      "path": "results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_dataset_summaries.json",
+      "sha256": "1656CEAC063EB53D4854481C83A1A4046D6257B442A3C376EDC851B5436D6E3B"
+    },
+    {
+      "bytes": 1124,
+      "label": "stage4g_equal",
+      "path": "results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_equal_weight_summary.json",
+      "sha256": "0BF7E2658521510438545BC077DBAA1EA7C902C2FD35FFBE4013D209D7890239"
+    },
+    {
+      "bytes": 1818,
+      "label": "stage4g_telemetry",
+      "path": "results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_telemetry_main.json",
+      "sha256": "F4B5B8E49149C692993EE4023C80A443AE608C2BBF34E627CBF256F41BDB0BA9"
+    },
+    {
+      "bytes": 6998,
+      "label": "stage4h_datasets",
+      "path": "results/stage4h_cbe_hotpot1000_musique1500_v1_dataset_summaries.json",
+      "sha256": "C9B2E163A46FE41B458321C8292CCF21A99C5B6AC666E3E28BA6798E013CB85B"
+    },
+    {
+      "bytes": 10465,
+      "label": "stage4h_equal",
+      "path": "results/stage4h_cbe_hotpot1000_musique1500_v1_equal_weight_summary.json",
+      "sha256": "0C8677960F2CB07526B36264CE58883ED28D12C0016F6EAD8A036D3DD0BE7FA4"
+    },
+    {
+      "bytes": 1366,
+      "label": "stage4h_telemetry",
+      "path": "results/stage4h_cbe_hotpot1000_musique1500_v1_telemetry_main.json",
+      "sha256": "5B69B732D19A0C04337AFB05FA44362BF43977C2AB1BFD6ACF4D4DAC1520E164"
+    },
+    {
+      "bytes": 4257,
+      "label": "stage4i_datasets",
+      "path": "results/stage4i_sdc_hotpot1000_musique1500_v1_dataset_summaries.json",
+      "sha256": "4487349198E34F0DA99A91423EDC991315909947036D6D2E11F3BCFD14DF95DF"
+    },
+    {
+      "bytes": 6115,
+      "label": "stage4i_equal",
+      "path": "results/stage4i_sdc_hotpot1000_musique1500_v1_equal_weight_summary.json",
+      "sha256": "EC1AF7077CDC6858CE39B76FE842E60283EB9BF19068C6384CDF8C282C9E1717"
+    },
+    {
+      "bytes": 3858,
+      "label": "stage4i_evidence",
+      "path": "results/stage4i_sdc_hotpot1000_musique1500_v1_evidence_transition_audit.json",
+      "sha256": "3DE05CBDAEC38EE216C9C0D5DC8834B6B6EC1726E4CDDC37B0A1132DC8611BE2"
+    },
+    {
+      "bytes": 1136,
+      "label": "stage4i_telemetry",
+      "path": "results/stage4i_sdc_hotpot1000_musique1500_v1_telemetry_main.json",
+      "sha256": "4B7BA469098AE1FD6805FAE724B10A89F7916B939ECDD2DBE47B416BC656E52B"
+    }
+  ],
+  "schema_version": "stage5_pmc_figure_manifest_v1",
+  "scientific_scope": "Derived visualization only; no retrieval, inference, bootstrap, thresholding, or scientific-semantic modification.",
+  "status": "STAGE5_PMC_FIGURES_BUILT_FROM_FROZEN_STAGE4E_I_EVIDENCE"
+}

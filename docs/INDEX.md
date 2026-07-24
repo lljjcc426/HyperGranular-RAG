@@ -10,6 +10,12 @@
 | [项目 AGENTS](../AGENTS.md) | 当前治理、暂停边界和 GitHub 规则 |
 | [REPRODUCIBILITY](REPRODUCIBILITY.md) | 当前环境、冻结 SHA、工件与复现边界 |
 | [ROADMAP](ROADMAP.md) | 完整研究时间线与阶段状态 |
+| [Stage5-PMC 阶段卡](STAGE5_PMC_PAPER_MANUSCRIPT_CONSOLIDATION_CARD.md) | 当前非实验论文整合阶段、主张层级、交付物与锁边界 |
+| [Stage5 manuscript blueprint](../paper/STAGE5_PMC_MANUSCRIPT_BLUEPRINT.md) | 论文中心论点、IMRaD 结构、主表/主图和投稿缺口 |
+| [Stage5 manuscript core draft](../paper/MANUSCRIPT_CORE_DRAFT.md) | 已按冻结主张编写的英文核心稿；外部文献引用仍待核验绑定 |
+| [Stage5 core tables](../paper/SUBMISSION_CORE_TABLES.md) | 主结果、外部稳健性、消融、效率与完整性四张核心表 |
+| [Stage5 figure contracts](../paper/figures/FIGURE_CONTRACTS_AND_CAPTIONS.md) | Python 图形合同、caption、source-data 与 QA 追溯 |
+| [Stage5 pre-submission audit](../paper/STAGE5_PMC_PRE_SUBMISSION_AUDIT.md) | evidence/claim/caption 一致性与剩余非科学投稿缺口 |
 | [Stage4D-CMA closure](STAGE4D_CMA_CLOSURE.md) | Stage4D 与当前 controller 分支的冻结关闭范围 |
 | [Stage4E-E2E Level A protocol](STAGE4E_STATIC_HGRAG_E2E_ANSWER_QUALITY_LEVEL_A_PROTOCOL.md) | 已完成的静态 Dense-vs-q25 端到端答案质量协议 |
 | [Stage4E official config](../configs/stage4e_e2e_official_train1000_v1.json) | 1,000-query 输入、模型、环境、实现与输出路径绑定 |

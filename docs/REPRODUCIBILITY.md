@@ -2,6 +2,31 @@
 
 本文件只保留当前有效的复现入口。完整历史命令与旧治理链快照见 [归档版本](archive/REPRODUCIBILITY_PRE_REORGANIZATION_2026-07-18.md)。
 
+## 当前 Stage5-PMC 边界
+
+Stage4E–Stage4I 科学实验线已完成、独立验证并冻结。当前 Stage5-PMC 只整理论文，不重跑 retrieval、generation、Gold evaluation、bootstrap 或 scientific decision。论文图由 `scripts/stage5_pmc_build_figures.py` 使用 Python/Matplotlib 从 14 个 SHA-verified frozen JSON 工件派生；七个 CSV source-data、五组 SVG/PDF/TIFF/PNG 和完整 Bytes/SHA manifest 位于 `paper/figures/`。
+
+当前状态：
+
+```text
+STAGE4I_CLOSED_AND_FROZEN
+CORE_EXPERIMENTAL_PROGRAM_COMPLETE
+STAGE5_PMC_ACTIVE
+FULL_WIKI_OPTIONAL_AND_DEFERRED
+RESERVATION_LOCKED
+STAGE3B_LOCKED
+U2_NOT_AUTHORIZED
+```
+
+Stage5 的可复现入口是 [阶段卡](STAGE5_PMC_PAPER_MANUSCRIPT_CONSOLIDATION_CARD.md)、[核心表](../paper/SUBMISSION_CORE_TABLES.md)、[图形合同](../paper/figures/FIGURE_CONTRACTS_AND_CAPTIONS.md) 和 [figure manifest](../paper/figures/STAGE5_PMC_FIGURE_MANIFEST.json)。所有 Stage4E–Stage4I 正式工件仍保持只读。
+
+```powershell
+python scripts\stage5_pmc_build_figures.py
+python scripts\stage5_pmc_verify_materials.py
+```
+
+第一条命令先验证 14 个 frozen source SHA，再派生图与 CSV；第二条命令只读核对 source/derived Bytes/SHA、核心数值字符串、状态边界、SVG editable text 和本地链接。当前验证结果为 `STAGE5_PMC_MATERIALS_VERIFIED`；连续两次构建的 29 个 `paper/figures/` 文件 SHA 无变化。
+
 ## 文件系统迁移
 
 自 2026-07-19 起，项目根目录由 `E:\科研` 迁移为 `E:\SCIENCE`；当前仓库和登记数据目录分别为 `E:\SCIENCE\HyperGranular-RAG` 与 `E:\SCIENCE\超粒球RAG_数据`。冻结配置、协议、审计清单、归档快照和既有实验报告中的 `E:\科研` 是执行时路径记录，并参与既有 SHA/证据绑定，因此保留原字节；读取这些历史记录时按 `E:\科研` → `E:\SCIENCE` 映射定位现有文件，不据此重新运行已经完成或锁定的实验。

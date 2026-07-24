@@ -1,0 +1,11 @@
+evidence,result,scope
+Static q25 vs MiniLM Dense (HotpotQA/Qwen),Positive,closed candidate
+Static q25 vs MiniLM Dense (MuSiQue/Qwen),Positive,closed candidate
+Generator transfer to Gemma mobile-QAT,Inconclusive,one additional configuration
+Full vs BGE strong dense,Negative,closed candidate
+Facet hyperedge within MiniLM system,Positive,Stage4H frozen system
+Protected insertion independent ablation,Inconclusive,Stage4H frozen system
+HGRAG sidecar vs BGE,Inconclusive,one frozen BGE backbone
+Protected vs unprotected placement,Positive,same inserted set
+Facet increment on BGE sidecar,Inconclusive,one frozen BGE backbone
+Granular-ball flat-unit ablation,Undefined,no fair control

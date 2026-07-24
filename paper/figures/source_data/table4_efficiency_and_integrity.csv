@@ -1,0 +1,6 @@
+stage,queries,methods,generation_calls,failed_calls,wall_time_seconds,gpu_peak_memory_bytes,determinism
+Stage4E,1000,2,2000,0,854.8333127999995,3509613568,full main/rerun byte identity
+Stage4F,3000,2,6000,0,1947.3681109000026,4268833280,full main/rerun byte identity
+Stage4G,4000,2,8000,0,56501.841953999996,7885933056,400-call pre-hash subset exact
+Stage4H,2500,7,17500,0,6265.000715,4174117888,"1,400-call pre-hash subset exact"
+Stage4I,2500,4,10000,0,4999.069429899999,4356265984,800-call pre-hash subset exact
