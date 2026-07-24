@@ -1,6 +1,6 @@
 {
   "schema_version": "stage4i_sdc_v1",
-  "status": "STAGE4I_BLIND_ELIGIBILITY_PASS_GOLDFREE_GENERATION_PENDING",
+  "status": "STAGE4I_GOLDFREE_MAIN_FROZEN_SUBSET_RERUN_PENDING",
   "official_execution": {
     "authorized": true,
     "authorization_date": "2026-07-24",
@@ -138,6 +138,14 @@
       "bytes": 276194136,
       "sha256": "C7931066992B0ACF1EAD03A6E8C8F24EAF0D7714E63E514A53EC5601B953F84C"
     },
+    "predictions_main": {
+      "bytes": 2024605,
+      "sha256": "A6D8A4652A208E39EDEBA590CA17D9DACB05D2C9C29EC37E8E274C8AF30B2D22"
+    },
+    "prompt_audit_main": {
+      "bytes": 15313783,
+      "sha256": "3CECDADE511873D0951B24DB9C617042C50900A4B23123CCFFFDF199902E2EA0"
+    },
     "rankings": {
       "bytes": 13453513,
       "sha256": "AACC7776AFF4BA512FE9530F366D177DEC7BF04531620F4447245C6E96682FC2"
@@ -145,6 +153,10 @@
     "strong_embedding_cache": {
       "bytes": 668255684,
       "sha256": "2D655280095AE514291EFB521BD5A4FC32C758C76C6E8DC04D6ADEAE6F8E4EE0"
+    },
+    "telemetry_main": {
+      "bytes": 1136,
+      "sha256": "4B7BA469098AE1FD6805FAE724B10A89F7916B939ECDD2DBE47B416BC656E52B"
     }
   },
   "paths": {

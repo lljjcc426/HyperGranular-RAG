@@ -1,0 +1,36 @@
+{
+  "embedding_cache": {
+    "minilm": {
+      "bytes": 276194136,
+      "sha256": "C7931066992B0ACF1EAD03A6E8C8F24EAF0D7714E63E514A53EC5601B953F84C"
+    },
+    "strong_dense": {
+      "bytes": 668255684,
+      "sha256": "2D655280095AE514291EFB521BD5A4FC32C758C76C6E8DC04D6ADEAE6F8E4EE0"
+    }
+  },
+  "embedding_load_seconds": {
+    "minilm": 0.7447183000003861,
+    "strong_dense": 1.8243479000011575
+  },
+  "failed_calls": 0,
+  "generated_in_this_process": 10000,
+  "generation_calls": 10000,
+  "generation_seconds_by_method": {
+    "BGE_HGRAG_NO_FACET_TOP20": 1178.0775214999412,
+    "BGE_HGRAG_PROTECTED_TOP20": 1181.3012944999537,
+    "BGE_HGRAG_UNPROTECTED_TOP20": 1183.7756383998712,
+    "BGE_TOP20": 1194.4361477000457
+  },
+  "gpu_peak_memory_bytes": 4356265984,
+  "query_count": 2500,
+  "retrieval_seconds": {
+    "BGE_TOP20": 0.37850360000447836,
+    "HGRAG_FACET_SIDECAR": 6.529265799970744,
+    "HGRAG_NO_FACET_SIDECAR": 6.195043999981863
+  },
+  "run_id": "main",
+  "schema_version": "stage4i_sdc_v1",
+  "status": "STAGE4I_GOLDFREE_RUN_COMPLETE_PENDING_VERIFICATION",
+  "wall_time_seconds_this_process": 4999.069429899999
+}
