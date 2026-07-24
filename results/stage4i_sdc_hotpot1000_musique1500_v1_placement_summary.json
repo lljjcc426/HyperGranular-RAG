@@ -1,0 +1,139 @@
+{
+  "comparisons": {
+    "protected_minus_bge": {
+      "contrast": "BGE_HGRAG_PROTECTED_TOP20 - BGE_TOP20",
+      "dataset_equal_weight": {
+        "delta_answer_em": {
+          "ci95_lower": -0.009833333333333333,
+          "ci95_upper": 0.004670833333333273,
+          "point": -0.002333333333333333
+        },
+        "delta_answer_f1": {
+          "ci95_lower": -0.009981696740290903,
+          "ci95_upper": 0.0045765019549832385,
+          "one_sided_positive_p": 0.7590240975902409,
+          "point": -0.002563487034017898
+        }
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "delta_answer_em": {
+            "ci95_lower": -0.014,
+            "ci95_upper": 0.01,
+            "point": -0.002
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.014534220268222826,
+            "ci95_upper": 0.008703521003719204,
+            "one_sided_positive_p": 0.6918308169183082,
+            "point": -0.002978940411676984
+          }
+        },
+        "musique_ans_v1_0_train": {
+          "delta_answer_em": {
+            "ci95_lower": -0.010666666666666666,
+            "ci95_upper": 0.005333333333333333,
+            "point": -0.0026666666666666666
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.010821261384592006,
+            "ci95_upper": 0.006582312798557839,
+            "one_sided_positive_p": 0.6792320767923208,
+            "point": -0.002148033656358812
+          }
+        }
+      }
+    },
+    "protected_minus_unprotected": {
+      "contrast": "BGE_HGRAG_PROTECTED_TOP20 - BGE_HGRAG_UNPROTECTED_TOP20",
+      "dataset_equal_weight": {
+        "delta_answer_em": {
+          "ci95_lower": 0.003333333333333333,
+          "ci95_upper": 0.022833333333333334,
+          "point": 0.013000000000000001
+        },
+        "delta_answer_f1": {
+          "ci95_lower": 0.0012860023909922955,
+          "ci95_upper": 0.02104337340730401,
+          "one_sided_positive_p": 0.014198580141985802,
+          "point": 0.011222464550536135
+        }
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "delta_answer_em": {
+            "ci95_lower": -0.005,
+            "ci95_upper": 0.026,
+            "point": 0.01
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.0055914139266306445,
+            "ci95_upper": 0.02445843971559916,
+            "one_sided_positive_p": 0.11858814118588142,
+            "point": 0.009314285095709245
+          }
+        },
+        "musique_ans_v1_0_train": {
+          "delta_answer_em": {
+            "ci95_lower": 0.004666666666666667,
+            "ci95_upper": 0.028,
+            "point": 0.016
+          },
+          "delta_answer_f1": {
+            "ci95_lower": 0.0006373562196608741,
+            "ci95_upper": 0.025630399525894618,
+            "one_sided_positive_p": 0.020897910208979104,
+            "point": 0.013130644005363028
+          }
+        }
+      }
+    },
+    "unprotected_minus_bge": {
+      "contrast": "BGE_HGRAG_UNPROTECTED_TOP20 - BGE_TOP20",
+      "dataset_equal_weight": {
+        "delta_answer_em": {
+          "ci95_lower": -0.026166666666666664,
+          "ci95_upper": -0.005,
+          "point": -0.015333333333333334
+        },
+        "delta_answer_f1": {
+          "ci95_lower": -0.02440232762054237,
+          "ci95_upper": -0.003394487420571022,
+          "one_sided_positive_p": 0.9954004599540046,
+          "point": -0.013785951584554035
+        }
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "delta_answer_em": {
+            "ci95_lower": -0.029,
+            "ci95_upper": 0.005,
+            "point": -0.012
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.02848232468825651,
+            "ci95_upper": 0.004028354379052993,
+            "one_sided_positive_p": 0.9259074092590741,
+            "point": -0.012293225507386228
+          }
+        },
+        "musique_ans_v1_0_train": {
+          "delta_answer_em": {
+            "ci95_lower": -0.03133333333333333,
+            "ci95_upper": -0.006,
+            "point": -0.018666666666666668
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.028649944158727375,
+            "ci95_upper": -0.0020898803533140053,
+            "one_sided_positive_p": 0.9887011298870113,
+            "point": -0.015278677661721843
+          }
+        }
+      }
+    }
+  },
+  "interpretation": "SUPPORTING_NO_CORE_ADVANCEMENT",
+  "state": "PROTECTED_PLACEMENT_SUPPORTED",
+  "status": "STAGE4I_PLACEMENT_ANALYSIS_COMPLETE"
+}

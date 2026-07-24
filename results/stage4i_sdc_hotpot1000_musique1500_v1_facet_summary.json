@@ -1,0 +1,49 @@
+{
+  "comparison": {
+    "contrast": "BGE_HGRAG_PROTECTED_TOP20 - BGE_HGRAG_NO_FACET_TOP20",
+    "dataset_equal_weight": {
+      "delta_answer_em": {
+        "ci95_lower": -0.014833333333333334,
+        "ci95_upper": 0.0028333333333333327,
+        "point": -0.006
+      },
+      "delta_answer_f1": {
+        "ci95_lower": -0.01616085411047949,
+        "ci95_upper": 0.0013248250233646012,
+        "one_sided_positive_p": 0.9535046495350465,
+        "point": -0.007431143894698319
+      }
+    },
+    "datasets": {
+      "hotpotqa_train_distractor_v1_1": {
+        "delta_answer_em": {
+          "ci95_lower": -0.02,
+          "ci95_upper": 0.008,
+          "point": -0.006
+        },
+        "delta_answer_f1": {
+          "ci95_lower": -0.020896385281385283,
+          "ci95_upper": 0.006470952380952372,
+          "one_sided_positive_p": 0.8433156684331566,
+          "point": -0.007150479405651819
+        }
+      },
+      "musique_ans_v1_0_train": {
+        "delta_answer_em": {
+          "ci95_lower": -0.016,
+          "ci95_upper": 0.004016666666666425,
+          "point": -0.006
+        },
+        "delta_answer_f1": {
+          "ci95_lower": -0.0182386917467334,
+          "ci95_upper": 0.003076476231975772,
+          "one_sided_positive_p": 0.9202079792020798,
+          "point": -0.0077118083837448195
+        }
+      }
+    }
+  },
+  "interpretation": "SUPPORTING_NO_CORE_ADVANCEMENT",
+  "state": "BGE_FACET_INCREMENT_INCONCLUSIVE",
+  "status": "STAGE4I_FACET_ANALYSIS_COMPLETE"
+}

@@ -1,0 +1,142 @@
+{
+  "_resource": {
+    "embedding_cache": {
+      "minilm": {
+        "bytes": 276194136,
+        "sha256": "C7931066992B0ACF1EAD03A6E8C8F24EAF0D7714E63E514A53EC5601B953F84C"
+      },
+      "strong_dense": {
+        "bytes": 668255684,
+        "sha256": "2D655280095AE514291EFB521BD5A4FC32C758C76C6E8DC04D6ADEAE6F8E4EE0"
+      }
+    },
+    "generation_seconds_by_method": {
+      "BGE_HGRAG_NO_FACET_TOP20": 1178.0775214999412,
+      "BGE_HGRAG_PROTECTED_TOP20": 1181.3012944999537,
+      "BGE_HGRAG_UNPROTECTED_TOP20": 1183.7756383998712,
+      "BGE_TOP20": 1194.4361477000457
+    },
+    "gpu_peak_memory_bytes": 4356265984,
+    "retrieval_seconds": {
+      "BGE_TOP20": 0.37850360000447836,
+      "HGRAG_FACET_SIDECAR": 6.529265799970744,
+      "HGRAG_NO_FACET_SIDECAR": 6.195043999981863
+    }
+  },
+  "hotpotqa_train_distractor_v1_1": {
+    "gain_same_harm_relative_to_bge": {
+      "BGE_HGRAG_NO_FACET_TOP20": {
+        "gain_queries": 31,
+        "harm_queries": 27,
+        "same_queries": 942
+      },
+      "BGE_HGRAG_PROTECTED_TOP20": {
+        "gain_queries": 23,
+        "harm_queries": 27,
+        "same_queries": 950
+      },
+      "BGE_HGRAG_UNPROTECTED_TOP20": {
+        "gain_queries": 42,
+        "harm_queries": 59,
+        "same_queries": 899
+      }
+    },
+    "methods": {
+      "BGE_HGRAG_NO_FACET_TOP20": {
+        "answer_em": 0.444,
+        "answer_f1": 0.5236964256320698,
+        "evidence_count": 19.894,
+        "input_token_count": 925.309,
+        "retrieval_cr20": 0.905,
+        "retrieval_er20": 0.9604333333333334,
+        "unknown": 0.268
+      },
+      "BGE_HGRAG_PROTECTED_TOP20": {
+        "answer_em": 0.438,
+        "answer_f1": 0.5165459462264179,
+        "evidence_count": 19.894,
+        "input_token_count": 929.945,
+        "retrieval_cr20": 0.917,
+        "retrieval_er20": 0.9647833333333333,
+        "unknown": 0.269
+      },
+      "BGE_HGRAG_UNPROTECTED_TOP20": {
+        "answer_em": 0.428,
+        "answer_f1": 0.5072316611307086,
+        "evidence_count": 19.894,
+        "input_token_count": 929.945,
+        "retrieval_cr20": 0.917,
+        "retrieval_er20": 0.9647833333333333,
+        "unknown": 0.265
+      },
+      "BGE_TOP20": {
+        "answer_em": 0.44,
+        "answer_f1": 0.5195248866380948,
+        "evidence_count": 19.894,
+        "input_token_count": 929.236,
+        "retrieval_cr20": 0.926,
+        "retrieval_er20": 0.9687166666666667,
+        "unknown": 0.261
+      }
+    },
+    "query_count": 1000
+  },
+  "musique_ans_v1_0_train": {
+    "gain_same_harm_relative_to_bge": {
+      "BGE_HGRAG_NO_FACET_TOP20": {
+        "gain_queries": 60,
+        "harm_queries": 51,
+        "same_queries": 1389
+      },
+      "BGE_HGRAG_PROTECTED_TOP20": {
+        "gain_queries": 42,
+        "harm_queries": 42,
+        "same_queries": 1416
+      },
+      "BGE_HGRAG_UNPROTECTED_TOP20": {
+        "gain_queries": 78,
+        "harm_queries": 98,
+        "same_queries": 1324
+      }
+    },
+    "methods": {
+      "BGE_HGRAG_NO_FACET_TOP20": {
+        "answer_em": 0.12333333333333334,
+        "answer_f1": 0.17206223996734554,
+        "evidence_count": 20.0,
+        "input_token_count": 905.9546666666666,
+        "retrieval_cr20": 0.7593333333333333,
+        "retrieval_er20": 0.8977222222222222,
+        "unknown": 0.6106666666666667
+      },
+      "BGE_HGRAG_PROTECTED_TOP20": {
+        "answer_em": 0.11733333333333333,
+        "answer_f1": 0.16435043158360077,
+        "evidence_count": 20.0,
+        "input_token_count": 910.43,
+        "retrieval_cr20": 0.77,
+        "retrieval_er20": 0.9043888888888888,
+        "unknown": 0.622
+      },
+      "BGE_HGRAG_UNPROTECTED_TOP20": {
+        "answer_em": 0.10133333333333333,
+        "answer_f1": 0.15121978757823773,
+        "evidence_count": 20.0,
+        "input_token_count": 910.43,
+        "retrieval_cr20": 0.77,
+        "retrieval_er20": 0.9043888888888888,
+        "unknown": 0.6133333333333333
+      },
+      "BGE_TOP20": {
+        "answer_em": 0.12,
+        "answer_f1": 0.16649846523995956,
+        "evidence_count": 20.0,
+        "input_token_count": 912.276,
+        "retrieval_cr20": 0.7733333333333333,
+        "retrieval_er20": 0.9031666666666667,
+        "unknown": 0.6133333333333333
+      }
+    },
+    "query_count": 1500
+  }
+}

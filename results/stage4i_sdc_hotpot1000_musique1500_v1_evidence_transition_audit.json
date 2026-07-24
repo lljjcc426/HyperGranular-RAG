@@ -1,0 +1,121 @@
+{
+  "datasets": {
+    "hotpotqa_train_distractor_v1_1": {
+      "BGE_HGRAG_NO_FACET_TOP20": {
+        "added_gold_evidence_total": 6,
+        "added_non_gold_units_total": 1706,
+        "answer_change_by_net_gold": {
+          "GAIN|NEGATIVE": 1,
+          "GAIN|POSITIVE": 1,
+          "GAIN|ZERO": 29,
+          "HARM|NEGATIVE": 3,
+          "HARM|ZERO": 24,
+          "SAME|NEGATIVE": 24,
+          "SAME|POSITIVE": 5,
+          "SAME|ZERO": 913
+        },
+        "displaced_bge_gold_evidence_total": 28,
+        "displaced_non_gold_units_total": 1684,
+        "net_gold_evidence_change_total": -22,
+        "query_count": 1000
+      },
+      "BGE_HGRAG_PROTECTED_TOP20": {
+        "added_gold_evidence_total": 21,
+        "added_non_gold_units_total": 1051,
+        "answer_change_by_net_gold": {
+          "GAIN|NEGATIVE": 2,
+          "GAIN|POSITIVE": 8,
+          "GAIN|ZERO": 13,
+          "HARM|NEGATIVE": 6,
+          "HARM|ZERO": 21,
+          "SAME|NEGATIVE": 21,
+          "SAME|POSITIVE": 11,
+          "SAME|ZERO": 918
+        },
+        "displaced_bge_gold_evidence_total": 29,
+        "displaced_non_gold_units_total": 1043,
+        "net_gold_evidence_change_total": -8,
+        "query_count": 1000
+      },
+      "BGE_HGRAG_UNPROTECTED_TOP20": {
+        "added_gold_evidence_total": 21,
+        "added_non_gold_units_total": 1051,
+        "answer_change_by_net_gold": {
+          "GAIN|NEGATIVE": 4,
+          "GAIN|POSITIVE": 9,
+          "GAIN|ZERO": 29,
+          "HARM|NEGATIVE": 5,
+          "HARM|POSITIVE": 1,
+          "HARM|ZERO": 53,
+          "SAME|NEGATIVE": 20,
+          "SAME|POSITIVE": 9,
+          "SAME|ZERO": 870
+        },
+        "displaced_bge_gold_evidence_total": 29,
+        "displaced_non_gold_units_total": 1043,
+        "net_gold_evidence_change_total": -8,
+        "query_count": 1000
+      }
+    },
+    "musique_ans_v1_0_train": {
+      "BGE_HGRAG_NO_FACET_TOP20": {
+        "added_gold_evidence_total": 43,
+        "added_non_gold_units_total": 3795,
+        "answer_change_by_net_gold": {
+          "GAIN|NEGATIVE": 2,
+          "GAIN|POSITIVE": 2,
+          "GAIN|ZERO": 56,
+          "HARM|NEGATIVE": 3,
+          "HARM|POSITIVE": 1,
+          "HARM|ZERO": 47,
+          "SAME|NEGATIVE": 56,
+          "SAME|POSITIVE": 40,
+          "SAME|ZERO": 1293
+        },
+        "displaced_bge_gold_evidence_total": 62,
+        "displaced_non_gold_units_total": 3611,
+        "net_gold_evidence_change_total": -19,
+        "query_count": 1500
+      },
+      "BGE_HGRAG_PROTECTED_TOP20": {
+        "added_gold_evidence_total": 59,
+        "added_non_gold_units_total": 2480,
+        "answer_change_by_net_gold": {
+          "GAIN|NEGATIVE": 2,
+          "GAIN|ZERO": 40,
+          "HARM|NEGATIVE": 3,
+          "HARM|POSITIVE": 2,
+          "HARM|ZERO": 37,
+          "SAME|NEGATIVE": 41,
+          "SAME|POSITIVE": 51,
+          "SAME|ZERO": 1324
+        },
+        "displaced_bge_gold_evidence_total": 50,
+        "displaced_non_gold_units_total": 2446,
+        "net_gold_evidence_change_total": 9,
+        "query_count": 1500
+      },
+      "BGE_HGRAG_UNPROTECTED_TOP20": {
+        "added_gold_evidence_total": 59,
+        "added_non_gold_units_total": 2480,
+        "answer_change_by_net_gold": {
+          "GAIN|NEGATIVE": 5,
+          "GAIN|POSITIVE": 2,
+          "GAIN|ZERO": 71,
+          "HARM|NEGATIVE": 3,
+          "HARM|POSITIVE": 3,
+          "HARM|ZERO": 92,
+          "SAME|NEGATIVE": 38,
+          "SAME|POSITIVE": 48,
+          "SAME|ZERO": 1238
+        },
+        "displaced_bge_gold_evidence_total": 50,
+        "displaced_non_gold_units_total": 2446,
+        "net_gold_evidence_change_total": 9,
+        "query_count": 1500
+      }
+    }
+  },
+  "interpretation": "POST_DECISION_DESCRIPTIVE_ONLY_NO_RETUNING_OR_ADVANCEMENT",
+  "status": "STAGE4I_POST_GOLD_EVIDENCE_TRANSITION_AUDIT_COMPLETE"
+}
