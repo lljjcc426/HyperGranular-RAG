@@ -1,6 +1,6 @@
 {
   "schema_version": "stage5a_bnh_v1",
-  "status": "STAGE5A0_GEOMETRY_PASS_DEVELOPMENT_GOLDFREE_GENERATION_AUTHORIZED",
+  "status": "STAGE5A_DEVELOPMENT_GOLDFREE_TIMING_CORRECTION_REGENERATION_AUTHORIZED",
   "official_execution": {
     "authorized": true,
     "authorization_date": "2026-07-24",
@@ -397,17 +397,17 @@
     "confirmation_checkpoint_rerun_subset": "E:\\SCIENCE\\HyperGranular-RAG\\temp\\stage5a_bnh_confirmation_rerun_subset_checkpoint.jsonl"
   },
   "implementation": {
-    "code_commit": "85d163284694bc809d2a4dd199fe583c4bf08490",
+    "code_commit": "83823ad82b4226d3941322bb5ca35bda4bdee0bd",
     "files": {
       "scripts/stage5a_bnh_common.py": "01EB604D74B21F7A2450322C9419CADB5EACEA0614B1DB691885223FF6FD316B",
       "scripts/stage5a_bnh_evaluate.py": "7CF49F21AB375EC32BA292F0A707C81D9D19285D6341ACD95AF86CD3AFBFB052",
-      "scripts/stage5a_bnh_goldfree_runner.py": "7A4E0A3E5379A16229E2B4C9659E53EEC69556AC62FC0F1C904CA005482859E4",
+      "scripts/stage5a_bnh_goldfree_runner.py": "72D0677BB90393B4ADC1CA46DD41F02654757453FA8B501A188122CD697D9A8A",
       "scripts/stage5a_bnh_independent_retrieval.py": "4869BDD568C4EBA5300E519E3B4D0EA6654BA44D4CCF3A690F4F2DF92894601B",
       "scripts/stage5a_bnh_independent_statistics.py": "D7E9AAAD3AD72E0756CF5EEF15300048A218A60CD4004DD529F2A20BE4E1C6E6",
       "scripts/stage5a_bnh_independent_verifier.py": "10DBA5DDA3403C894BDCACF051DF3626E82AA347ADE523D5183052D9C3CD07A2",
       "scripts/stage5a_bnh_prepare.py": "EB3F2F8CABE7753AC31812E7BC3AF87B58D61BA83486971C34DF73D0AA52FB49",
       "scripts/stage5a_bnh_retrieval.py": "401284DC34AFE62DA847DEA468CEFC5808F2385D584BC518E5619E86F38E4359",
-      "tests/test_stage5a_bnh.py": "D8E961F12BF5BD35B4FE140BFDC9D7019FB9CAC4715D52803A3C33AA020C5A5F"
+      "tests/test_stage5a_bnh.py": "7128D81B964009CDC90C1ACE9110D3322B431B0A51CFE7A4F4172CACFE6B3E56"
     }
   }
 }
