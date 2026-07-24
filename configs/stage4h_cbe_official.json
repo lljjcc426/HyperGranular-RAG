@@ -1,6 +1,6 @@
 {
   "schema_version": "stage4h_cbe_v1",
-  "status": "STAGE4H_GOLDFREE_MAIN_AND_RERUN_FROZEN_PRE_GOLD_VERIFICATION_PENDING",
+  "status": "STAGE4H_PRE_GOLD_VERIFICATION_PASS_GOLD_EVALUATION_PENDING",
   "official_execution": {
     "authorized": true,
     "authorization_date": "2026-07-24",
@@ -296,6 +296,10 @@
     "telemetry_rerun_subset": {
       "bytes": 1378,
       "sha256": "0EEAC0F16DF8D5F996B9F477CFFAF065D4A3DDC1F2F63C31FC9B014464707048"
+    },
+    "verified_pregold": {
+      "bytes": 4211,
+      "sha256": "ACF11E359BFFF40DB53C07DB27A39E6C5ABE61AC1C4161C8A15542397783639B"
     }
   },
   "paths": {

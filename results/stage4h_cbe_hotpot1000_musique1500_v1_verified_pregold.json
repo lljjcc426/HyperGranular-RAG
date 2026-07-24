@@ -1,0 +1,109 @@
+{
+  "artifacts": {
+    "blind": {
+      "bytes": 73895304,
+      "sha256": "19E2659B190E91A4FC6350698C921C8F3FFA86B793BA89F3D726C004C5EA9B64"
+    },
+    "input_manifest": {
+      "bytes": 668237,
+      "sha256": "6095D8FAB5526F1F10956C1808802C4122B20840666422253B9591802DD92615"
+    },
+    "minilm_embedding_cache": {
+      "bytes": 275898280,
+      "sha256": "26EE26A63B320A94ECF9ED3E7E8C9719FEB48BB4A44E44C318167F94E3657337"
+    },
+    "predictions_main": {
+      "bytes": 3449765,
+      "sha256": "52B9276E93AF19820B8F2E358F54BE9CDF88D4A8C6A34020AF3EDC153470E310"
+    },
+    "predictions_rerun_subset": {
+      "bytes": 279671,
+      "sha256": "84025B63BB1C49268287DE2E0A1B85B9EF4A91821D98441658C0E7807C943C78"
+    },
+    "prompt_audit_main": {
+      "bytes": 26702494,
+      "sha256": "B7B2D3E3846CD7406C4E646A0DC007F54A5CC3BBA863CAD9E0551F7AB9A5B507"
+    },
+    "prompt_audit_rerun_subset": {
+      "bytes": 2161571,
+      "sha256": "BB6CA94A55F311B07F96F5B5A280D944F5117A8A3220629C4C2F7835E3119042"
+    },
+    "rankings": {
+      "bytes": 22809912,
+      "sha256": "EAECD420CEDDFD0E670892E9B78B0D6D02BB3E9BE2A84BC36631C1D985C49822"
+    },
+    "retrieval_trace": {
+      "bytes": 1280228,
+      "sha256": "308D3FCF9B0D517548542C33BB241B2824446B68453697F83BC5CAA13796087F"
+    },
+    "strong_dense_selection_manifest": {
+      "bytes": 1836,
+      "sha256": "262100E8767450D5D38E2A79F3629BBD5305A4FBE1FF367D7C952BA70898B711"
+    },
+    "strong_embedding_cache": {
+      "bytes": 667539988,
+      "sha256": "653CB33F0FA3D253048845A983F1C1F7517DBFCCD69AC72496155FCC58B83E7E"
+    },
+    "telemetry_main": {
+      "bytes": 1366,
+      "sha256": "5B69B732D19A0C04337AFB05FA44362BF43977C2AB1BFD6ACF4D4DAC1520E164"
+    },
+    "telemetry_rerun_subset": {
+      "bytes": 1378,
+      "sha256": "0EEAC0F16DF8D5F996B9F477CFFAF065D4A3DDC1F2F63C31FC9B014464707048"
+    }
+  },
+  "checks": {
+    "blind_gold_fields_absent": true,
+    "candidate_units": 150485,
+    "input_selection": {
+      "hotpotqa_train_distractor_v1_1": {
+        "eligible_source_ids": 89447,
+        "historical_id_sha256": "562A296E18FAF69E7B77D63945B0B4781CBF38D4738F39263E488275B65762A2",
+        "historical_ids": 2000,
+        "sample_id_sha256": "D2B734F735FF319D1B5A69AB34607430AFD55B93BA9552F7C1A8C930A10360B1",
+        "sample_ids": 1000
+      },
+      "musique_ans_v1_0_train": {
+        "eligible_source_ids": 16938,
+        "historical_id_sha256": "7BF80999680D01B63C338C015910DF2D331D962F383E8A583254325F9865D7C5",
+        "historical_ids": 4000,
+        "sample_id_sha256": "268D8F07910B09894140E9720CB5BF81D3846BA9E961577089FECD5F4CF895E4",
+        "sample_ids": 1500
+      }
+    },
+    "main_pairs": 17500,
+    "minilm_cache_metadata": {
+      "document_input": "title + '. ' + sentence",
+      "max_length": 192,
+      "model_id": "sentence-transformers/all-MiniLM-L6-v2",
+      "pooling": "attention_mask_mean_then_l2",
+      "query_id_sha256": "E66A001D60DFF972425B2FCEAB4C62BBFCD42F027D4A69DA745841EC52C28AC9",
+      "query_input": "question",
+      "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+      "snapshot_files_sha256": "766AD566460F0494963F3DF1DEBC5A3B15B219F95C305C54859C2E330C064782",
+      "unit_id_sha256": "A5DC4FE35B51489B162EB5ABA9399D40852DC50FDE01C19BA2DC90590CE94277"
+    },
+    "ranking_reconstruction": true,
+    "strong_cache_metadata": {
+      "document_input": "title + '. ' + sentence",
+      "max_length": 512,
+      "model_id": "BAAI/bge-large-en-v1.5",
+      "pooling": "CLS_then_l2",
+      "query_id_sha256": "E66A001D60DFF972425B2FCEAB4C62BBFCD42F027D4A69DA745841EC52C28AC9",
+      "query_input": "Represent this sentence for searching relevant passages: <question>",
+      "revision": "d4aa6901d3a41ba39fb536a557fa166f842b0e09",
+      "snapshot_files_sha256": "29C01618732E315301950DBA16CB2C7D24656D3C994FEB4742AD51E6A7D39629",
+      "unit_id_sha256": "A5DC4FE35B51489B162EB5ABA9399D40852DC50FDE01C19BA2DC90590CE94277"
+    },
+    "subset_determinism": {
+      "pairs": 1400,
+      "predictions_identical": true,
+      "prompts_identical": true,
+      "queries": 200
+    }
+  },
+  "query_count": 2500,
+  "schema_version": "stage4h_cbe_v1",
+  "status": "STAGE4H_PRE_GOLD_VERIFICATION_PASS"
+}
