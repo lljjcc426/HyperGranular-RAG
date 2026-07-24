@@ -34,3 +34,8 @@ requirements-stage4h.txt -text
 scripts/stage4h_cbe_*.py -text
 tests/test_stage4h_cbe.py -text
 results/stage4h_cbe_* -text
+configs/stage4i_sdc_official.json -text
+docs/STAGE4I_SDC_EXPERIMENT_CARD.md -text
+scripts/stage4i_sdc_*.py -text
+tests/test_stage4i_sdc.py -text
+results/stage4i_sdc_* -text
