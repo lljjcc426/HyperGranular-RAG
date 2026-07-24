@@ -1,6 +1,6 @@
 {
   "schema_version": "stage5a_bnh_v1",
-  "status": "STAGE5A_DEVELOPMENT_SELECTION_VERIFIED_CONFIRMATION_RANKINGS_AUTHORIZED",
+  "status": "STAGE5A_CONFIRMATION_RANKINGS_FROZEN_GOLDFREE_GENERATION_AUTHORIZED",
   "official_execution": {
     "authorized": true,
     "authorization_date": "2026-07-24",
@@ -392,6 +392,22 @@
     "development_final_verification": {
       "bytes": 132,
       "sha256": "52C705B7A5FF53ACDC93CFAC70775CEC68A20F7C0B721B454166B801CFE64644"
+    },
+    "confirmation_bge_embedding_cache": {
+      "bytes": 670420228,
+      "sha256": "DC09AEEE113F702BC0F5800ACE5369C8C80905F8C991203DAB27D12982477325"
+    },
+    "confirmation_rankings": {
+      "bytes": 13277645,
+      "sha256": "18FC4DBDAF104F3BCD69FEB0DBED9976BFF389FA3EF84484DC72B52CB91E2D3D"
+    },
+    "confirmation_candidate_trace": {
+      "bytes": 3012307,
+      "sha256": "226BA734FAB41E8941259109529B93DA8A3E951B7E7AF3F700147BDFF38B00CB"
+    },
+    "confirmation_retrieval_telemetry": {
+      "bytes": 400,
+      "sha256": "31A6121EC8E42923F093AF1A43B7E35643CF238CD39EF0174757C82F5298D1BC"
     }
   },
   "paths": {

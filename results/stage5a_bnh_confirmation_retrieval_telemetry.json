@@ -1,0 +1,12 @@
+{
+  "embedding_cache": {
+    "bytes": 670420228,
+    "sha256": "DC09AEEE113F702BC0F5800ACE5369C8C80905F8C991203DAB27D12982477325"
+  },
+  "embedding_load_or_build_seconds": 451.00797910000256,
+  "query_count": 2500,
+  "retrieval_seconds": 8.744147300007171,
+  "schema_version": "stage5a_bnh_v1",
+  "selected_config_id": "C10",
+  "status": "STAGE5A_CONFIRMATION_RANKINGS_FROZEN_PENDING_VERIFICATION"
+}
