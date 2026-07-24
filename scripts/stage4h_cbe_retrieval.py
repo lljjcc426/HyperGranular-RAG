@@ -409,9 +409,7 @@ def build_rankings(
                 "effective_k": effective_k,
                 "full_inserted_unit_ids": inserted_ids,
                 "methods": methods,
-                "no_facet_inserted_unit_ids": [
-                    row["unit_id"] for row in nofacet_inserted
-                ],
+                "no_facet_inserted_unit_ids": nofacet_inserted,
                 "query_id": query["query_id"],
                 "sample_id": query["sample_id"],
             }

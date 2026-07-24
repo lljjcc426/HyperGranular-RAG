@@ -163,6 +163,12 @@ class RetrievalTests(unittest.TestCase):
         self.assertEqual(len(rankings), 1)
         self.assertEqual(len(traces), 1)
         self.assertEqual(set(rankings[0]["methods"]), set(common.METHODS))
+        self.assertTrue(
+            all(
+                isinstance(value, str)
+                for value in rankings[0]["no_facet_inserted_unit_ids"]
+            )
+        )
         for values in rankings[0]["methods"].values():
             self.assertEqual(len(values), 20)
             self.assertEqual(len(values), len(set(values)))
