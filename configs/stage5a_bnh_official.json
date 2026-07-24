@@ -1,6 +1,6 @@
 {
   "schema_version": "stage5a_bnh_v1",
-  "status": "STAGE5A_INPUTS_FROZEN_STAGE5A0_GEOMETRY_AUTHORIZED",
+  "status": "STAGE5A0_GEOMETRY_PASS_DEVELOPMENT_GOLDFREE_GENERATION_AUTHORIZED",
   "official_execution": {
     "authorized": true,
     "authorization_date": "2026-07-24",
@@ -330,6 +330,22 @@
     "preexisting_frozen_manifest": {
       "bytes": 30857,
       "sha256": "A2C51835AD1B38A765DFDD46355709CE6074CF4C3BD7C926EB47D9BAA9364248"
+    },
+    "development_bge_embedding_cache": {
+      "bytes": 330797652,
+      "sha256": "BD4423C6397839086F13FE99D86B71643E54D9913FCC6ABB6BB9E545D7992244"
+    },
+    "development_rankings": {
+      "bytes": 26393671,
+      "sha256": "87366489C9F16D29B1E76B886DF137E2BA13C472562686AF5AB8732AE8B1B7EE"
+    },
+    "development_candidate_trace": {
+      "bytes": 19912280,
+      "sha256": "8D726B4E6B9F9078939CE111D9C81D1DA2A31A9BD1766C4ED77ECD71C5192120"
+    },
+    "geometry_feasibility_audit": {
+      "bytes": 13664,
+      "sha256": "2633CB5A750A48B39E6427C9BC38596D97E63220B73AF410911B41EAA15A7D0B"
     }
   },
   "paths": {

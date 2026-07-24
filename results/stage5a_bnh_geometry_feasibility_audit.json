@@ -1,0 +1,461 @@
+{
+  "candidate_config_count": 16,
+  "config_summaries": {
+    "C01": {
+      "combined_insertable_query_rate": 0.2256,
+      "config": {
+        "config_id": "C01",
+        "facet_gate": "BROAD",
+        "insert_budget": 2,
+        "leaf_size": 4,
+        "unit_score_percentile": 0.5
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "insertable_query_count": 64,
+          "insertable_query_rate": 0.128,
+          "mean_eligible_ball_count": 0.704,
+          "mean_insert_count": 0.198,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "insertable_query_count": 218,
+          "insertable_query_rate": 0.2906666666666667,
+          "mean_eligible_ball_count": 1.108,
+          "mean_insert_count": 0.5333333333333333,
+          "query_count": 750
+        }
+      },
+      "feasible": true
+    },
+    "C02": {
+      "combined_insertable_query_rate": 0.2256,
+      "config": {
+        "config_id": "C02",
+        "facet_gate": "BROAD",
+        "insert_budget": 4,
+        "leaf_size": 4,
+        "unit_score_percentile": 0.5
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "insertable_query_count": 64,
+          "insertable_query_rate": 0.128,
+          "mean_eligible_ball_count": 0.704,
+          "mean_insert_count": 0.28,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "insertable_query_count": 218,
+          "insertable_query_rate": 0.2906666666666667,
+          "mean_eligible_ball_count": 1.108,
+          "mean_insert_count": 0.9013333333333333,
+          "query_count": 750
+        }
+      },
+      "feasible": true
+    },
+    "C03": {
+      "combined_insertable_query_rate": 0.0288,
+      "config": {
+        "config_id": "C03",
+        "facet_gate": "BROAD",
+        "insert_budget": 2,
+        "leaf_size": 4,
+        "unit_score_percentile": 0.75
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "insertable_query_count": 0,
+          "insertable_query_rate": 0.0,
+          "mean_eligible_ball_count": 0.704,
+          "mean_insert_count": 0.0,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "insertable_query_count": 36,
+          "insertable_query_rate": 0.048,
+          "mean_eligible_ball_count": 1.108,
+          "mean_insert_count": 0.064,
+          "query_count": 750
+        }
+      },
+      "feasible": false
+    },
+    "C04": {
+      "combined_insertable_query_rate": 0.0288,
+      "config": {
+        "config_id": "C04",
+        "facet_gate": "BROAD",
+        "insert_budget": 4,
+        "leaf_size": 4,
+        "unit_score_percentile": 0.75
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "insertable_query_count": 0,
+          "insertable_query_rate": 0.0,
+          "mean_eligible_ball_count": 0.704,
+          "mean_insert_count": 0.0,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "insertable_query_count": 36,
+          "insertable_query_rate": 0.048,
+          "mean_eligible_ball_count": 1.108,
+          "mean_insert_count": 0.07333333333333333,
+          "query_count": 750
+        }
+      },
+      "feasible": false
+    },
+    "C05": {
+      "combined_insertable_query_rate": 0.1864,
+      "config": {
+        "config_id": "C05",
+        "facet_gate": "STRICT",
+        "insert_budget": 2,
+        "leaf_size": 4,
+        "unit_score_percentile": 0.5
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "insertable_query_count": 47,
+          "insertable_query_rate": 0.094,
+          "mean_eligible_ball_count": 0.35,
+          "mean_insert_count": 0.146,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "insertable_query_count": 186,
+          "insertable_query_rate": 0.248,
+          "mean_eligible_ball_count": 0.572,
+          "mean_insert_count": 0.44666666666666666,
+          "query_count": 750
+        }
+      },
+      "feasible": false
+    },
+    "C06": {
+      "combined_insertable_query_rate": 0.1864,
+      "config": {
+        "config_id": "C06",
+        "facet_gate": "STRICT",
+        "insert_budget": 4,
+        "leaf_size": 4,
+        "unit_score_percentile": 0.5
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "insertable_query_count": 47,
+          "insertable_query_rate": 0.094,
+          "mean_eligible_ball_count": 0.35,
+          "mean_insert_count": 0.196,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "insertable_query_count": 186,
+          "insertable_query_rate": 0.248,
+          "mean_eligible_ball_count": 0.572,
+          "mean_insert_count": 0.728,
+          "query_count": 750
+        }
+      },
+      "feasible": false
+    },
+    "C07": {
+      "combined_insertable_query_rate": 0.024,
+      "config": {
+        "config_id": "C07",
+        "facet_gate": "STRICT",
+        "insert_budget": 2,
+        "leaf_size": 4,
+        "unit_score_percentile": 0.75
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "insertable_query_count": 0,
+          "insertable_query_rate": 0.0,
+          "mean_eligible_ball_count": 0.35,
+          "mean_insert_count": 0.0,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "insertable_query_count": 30,
+          "insertable_query_rate": 0.04,
+          "mean_eligible_ball_count": 0.572,
+          "mean_insert_count": 0.052,
+          "query_count": 750
+        }
+      },
+      "feasible": false
+    },
+    "C08": {
+      "combined_insertable_query_rate": 0.024,
+      "config": {
+        "config_id": "C08",
+        "facet_gate": "STRICT",
+        "insert_budget": 4,
+        "leaf_size": 4,
+        "unit_score_percentile": 0.75
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "insertable_query_count": 0,
+          "insertable_query_rate": 0.0,
+          "mean_eligible_ball_count": 0.35,
+          "mean_insert_count": 0.0,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "insertable_query_count": 30,
+          "insertable_query_rate": 0.04,
+          "mean_eligible_ball_count": 0.572,
+          "mean_insert_count": 0.05733333333333333,
+          "query_count": 750
+        }
+      },
+      "feasible": false
+    },
+    "C09": {
+      "combined_insertable_query_rate": 0.2128,
+      "config": {
+        "config_id": "C09",
+        "facet_gate": "BROAD",
+        "insert_budget": 2,
+        "leaf_size": 6,
+        "unit_score_percentile": 0.5
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "insertable_query_count": 51,
+          "insertable_query_rate": 0.102,
+          "mean_eligible_ball_count": 0.508,
+          "mean_insert_count": 0.154,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "insertable_query_count": 215,
+          "insertable_query_rate": 0.2866666666666667,
+          "mean_eligible_ball_count": 0.896,
+          "mean_insert_count": 0.5386666666666666,
+          "query_count": 750
+        }
+      },
+      "feasible": true
+    },
+    "C10": {
+      "combined_insertable_query_rate": 0.2128,
+      "config": {
+        "config_id": "C10",
+        "facet_gate": "BROAD",
+        "insert_budget": 4,
+        "leaf_size": 6,
+        "unit_score_percentile": 0.5
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "insertable_query_count": 51,
+          "insertable_query_rate": 0.102,
+          "mean_eligible_ball_count": 0.508,
+          "mean_insert_count": 0.216,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "insertable_query_count": 215,
+          "insertable_query_rate": 0.2866666666666667,
+          "mean_eligible_ball_count": 0.896,
+          "mean_insert_count": 0.9426666666666667,
+          "query_count": 750
+        }
+      },
+      "feasible": true
+    },
+    "C11": {
+      "combined_insertable_query_rate": 0.0328,
+      "config": {
+        "config_id": "C11",
+        "facet_gate": "BROAD",
+        "insert_budget": 2,
+        "leaf_size": 6,
+        "unit_score_percentile": 0.75
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "insertable_query_count": 0,
+          "insertable_query_rate": 0.0,
+          "mean_eligible_ball_count": 0.508,
+          "mean_insert_count": 0.0,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "insertable_query_count": 41,
+          "insertable_query_rate": 0.05466666666666667,
+          "mean_eligible_ball_count": 0.896,
+          "mean_insert_count": 0.076,
+          "query_count": 750
+        }
+      },
+      "feasible": false
+    },
+    "C12": {
+      "combined_insertable_query_rate": 0.0328,
+      "config": {
+        "config_id": "C12",
+        "facet_gate": "BROAD",
+        "insert_budget": 4,
+        "leaf_size": 6,
+        "unit_score_percentile": 0.75
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "insertable_query_count": 0,
+          "insertable_query_rate": 0.0,
+          "mean_eligible_ball_count": 0.508,
+          "mean_insert_count": 0.0,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "insertable_query_count": 41,
+          "insertable_query_rate": 0.05466666666666667,
+          "mean_eligible_ball_count": 0.896,
+          "mean_insert_count": 0.08933333333333333,
+          "query_count": 750
+        }
+      },
+      "feasible": false
+    },
+    "C13": {
+      "combined_insertable_query_rate": 0.1696,
+      "config": {
+        "config_id": "C13",
+        "facet_gate": "STRICT",
+        "insert_budget": 2,
+        "leaf_size": 6,
+        "unit_score_percentile": 0.5
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "insertable_query_count": 31,
+          "insertable_query_rate": 0.062,
+          "mean_eligible_ball_count": 0.276,
+          "mean_insert_count": 0.094,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "insertable_query_count": 181,
+          "insertable_query_rate": 0.24133333333333334,
+          "mean_eligible_ball_count": 0.49733333333333335,
+          "mean_insert_count": 0.4493333333333333,
+          "query_count": 750
+        }
+      },
+      "feasible": false
+    },
+    "C14": {
+      "combined_insertable_query_rate": 0.1696,
+      "config": {
+        "config_id": "C14",
+        "facet_gate": "STRICT",
+        "insert_budget": 4,
+        "leaf_size": 6,
+        "unit_score_percentile": 0.5
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "insertable_query_count": 31,
+          "insertable_query_rate": 0.062,
+          "mean_eligible_ball_count": 0.276,
+          "mean_insert_count": 0.124,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "insertable_query_count": 181,
+          "insertable_query_rate": 0.24133333333333334,
+          "mean_eligible_ball_count": 0.49733333333333335,
+          "mean_insert_count": 0.7373333333333333,
+          "query_count": 750
+        }
+      },
+      "feasible": false
+    },
+    "C15": {
+      "combined_insertable_query_rate": 0.0288,
+      "config": {
+        "config_id": "C15",
+        "facet_gate": "STRICT",
+        "insert_budget": 2,
+        "leaf_size": 6,
+        "unit_score_percentile": 0.75
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "insertable_query_count": 0,
+          "insertable_query_rate": 0.0,
+          "mean_eligible_ball_count": 0.276,
+          "mean_insert_count": 0.0,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "insertable_query_count": 36,
+          "insertable_query_rate": 0.048,
+          "mean_eligible_ball_count": 0.49733333333333335,
+          "mean_insert_count": 0.064,
+          "query_count": 750
+        }
+      },
+      "feasible": false
+    },
+    "C16": {
+      "combined_insertable_query_rate": 0.0288,
+      "config": {
+        "config_id": "C16",
+        "facet_gate": "STRICT",
+        "insert_budget": 4,
+        "leaf_size": 6,
+        "unit_score_percentile": 0.75
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "insertable_query_count": 0,
+          "insertable_query_rate": 0.0,
+          "mean_eligible_ball_count": 0.276,
+          "mean_insert_count": 0.0,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "insertable_query_count": 36,
+          "insertable_query_rate": 0.048,
+          "mean_eligible_ball_count": 0.49733333333333335,
+          "mean_insert_count": 0.07066666666666667,
+          "query_count": 750
+        }
+      },
+      "feasible": false
+    }
+  },
+  "eligible_config_count": 4,
+  "eligible_config_ids": [
+    "C01",
+    "C02",
+    "C09",
+    "C10"
+  ],
+  "embedding_cache": {
+    "bytes": 330797652,
+    "sha256": "BD4423C6397839086F13FE99D86B71643E54D9913FCC6ABB6BB9E545D7992244"
+  },
+  "embedding_load_or_build_seconds": 231.99406030000682,
+  "gate": {
+    "minimum_eligible_configs": 4,
+    "minimum_insertable_query_rate_combined": 0.15,
+    "minimum_insertable_query_rate_each_dataset": 0.1,
+    "pass": true,
+    "requires_both_leaf_sizes": true,
+    "status": "STAGE5A_BGE_NATIVE_GEOMETRY_FEASIBILITY_PASS"
+  },
+  "interpretation": "BLIND_ONLY_FEASIBILITY_NOT_ANSWER_QUALITY_OR_POWER_GUARANTEE",
+  "query_count": 1250,
+  "retrieval_seconds": 21.79144929999893,
+  "schema_version": "stage5a_bnh_v1"
+}
