@@ -147,6 +147,27 @@ def verify_input_selection(
     return checks
 
 
+def _renormalize_cache_matrix(
+    matrix: np.ndarray, expected_rows: int, label: str
+) -> np.ndarray:
+    matrix = np.asarray(matrix, dtype="float32")
+    if (
+        matrix.ndim != 2
+        or matrix.shape[0] != expected_rows
+        or not np.isfinite(matrix).all()
+    ):
+        raise ValueError(f"{label}: cache matrix differs")
+    norms = np.linalg.norm(matrix, axis=1, keepdims=True)
+    if np.any(norms <= 0.0) or not np.allclose(
+        norms[:, 0], 1.0, atol=1e-5, rtol=0.0
+    ):
+        raise ValueError(f"{label}: cache embeddings are not L2-normalized")
+    rebuilt = (matrix / norms).astype("float32")
+    if not np.isfinite(rebuilt).all():
+        raise ValueError(f"{label}: normalized cache matrix is not finite")
+    return rebuilt
+
+
 def _load_embedding_cache(
     path: Path,
     units: list[dict[str, Any]],
@@ -169,19 +190,13 @@ def _load_embedding_cache(
         unit = np.asarray(cache["unit_embeddings"], dtype="float32")
         query = np.asarray(cache["query_embeddings"], dtype="float32")
         metadata = json.loads(str(cache["metadata_json"].item()))
-    for matrix, expected in ((unit, len(units)), (query, len(queries))):
-        if (
-            matrix.ndim != 2
-            or matrix.shape[0] != expected
-            or not np.isfinite(matrix).all()
-        ):
-            raise ValueError(f"{path}: cache matrix differs")
-        norms = np.linalg.norm(matrix, axis=1)
-        if not np.allclose(norms[norms > 0], 1.0, atol=1e-5, rtol=0.0):
-            raise ValueError(f"{path}: cache embeddings are not L2-normalized")
+    normalized = (
+        _renormalize_cache_matrix(unit, len(units), str(path)),
+        _renormalize_cache_matrix(query, len(queries), str(path)),
+    )
     if not isinstance(metadata, dict):
         raise ValueError(f"{path}: cache metadata differs")
-    return unit, query, metadata
+    return normalized[0], normalized[1], metadata
 
 
 def _pair_map(

@@ -16,6 +16,7 @@ if str(SCRIPTS) not in sys.path:
 import stage4h_cbe_common as common
 import stage4h_cbe_evaluate as evaluator
 import stage4h_cbe_goldfree_runner as runner
+import stage4h_cbe_independent_verifier as verifier
 import stage4h_cbe_prepare as prepare
 import stage4h_cbe_retrieval as retrieval
 
@@ -182,6 +183,16 @@ class RetrievalTests(unittest.TestCase):
 
 
 class DeterminismAndStatisticsTests(unittest.TestCase):
+    def test_verifier_reproduces_runner_cache_renormalization(self) -> None:
+        matrix = np.asarray(
+            [[0.6, 0.8], [0.70710677, 0.70710677]], dtype="float32"
+        )
+        verifier_rebuilt = verifier._renormalize_cache_matrix(
+            matrix, len(matrix), "synthetic"
+        )
+        runner_rebuilt = runner._normalize_embeddings(matrix)
+        np.testing.assert_array_equal(verifier_rebuilt, runner_rebuilt)
+
     def test_rerun_selection_is_deterministic_and_stratified(self) -> None:
         queries = []
         for dataset in common.DATASETS:
