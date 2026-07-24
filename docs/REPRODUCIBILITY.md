@@ -98,7 +98,7 @@ SCIENTIFIC_INTEGRITY_CONTROLS_RETAINED
 
 这是项目长期、全局的现行治理基线，适用于当前及未来全部科研阶段，不是单次复现事务或 Stage4E 的临时规则。阶段授权默认连续覆盖实验卡中预定义的实现、测试、数据/Channel、正式运行、固定分析、独立验证、确定性复跑、报告和 Git/远端核验。Channel 与 Gold 隔离仍是可复现性和防泄漏合同，但不自动形成重复审批点；本文登记的命令、环境、SHA 和路径用于重建与核验，不是逐命令授权凭证。
 
-普通工程异常自主最小修复并继续。只有新科学问题或阶段、冻结科学语义变化、使用当前授权外的新证据源、或严重完整性异常才暂停。历史审批链与旧命令保留为证据，不构成当前执行规则。Stage4E–4H 已按各自阶段授权完成；这些授权不延伸到 full-wiki Gold、open-domain、新生成器、reservation、Stage3B、U2 或新 controller。
+普通工程异常自主最小修复并继续。只有新科学问题或阶段、冻结科学语义变化、使用当前授权外的新证据源、或严重完整性异常才暂停。历史审批链与旧命令保留为证据，不构成当前执行规则。Stage4E–4I 已按各自阶段授权完成；这些授权不延伸到 full-wiki Gold、open-domain、新生成器、新 strong-retriever search、reservation、Stage3B、U2 或新 controller。
 
 ## Stage4E 已冻结复现边界
 
@@ -229,6 +229,58 @@ SCIENTIFIC_INTEGRITY_CONTROLS_RETAINED
 - scientific decision：`3C4B2E4A2AAC4A5E031D8513DD88391BC378351113DF7E99E6362B85DDE8BBD5`；
 - final verification：`692D7150043071580B58F1CC1F758884A6178412C98ED193C4D4D27BDB40726F`；
 - artifact manifest：`6E467B17BE53F1EA75D897E1185558F1FE50C04A4302568515C831DA7641C72D`。
+
+## Stage4I 已完成并冻结的复现边界
+
+| 项目 | 冻结值 / 当前状态 |
+|---|---|
+| samples | HotpotQA 1,000 + MuSiQue 1,500；全部历史正式 IDs overlap 0 |
+| candidate units | HotpotQA 41,353 + MuSiQue 109,296 = 150,649 |
+| methods | BGE、BGE+HGRAG Protected、相同 inserted set Unprotected、Protected NoFacet |
+| retrievers | `BAAI/bge-large-en-v1.5@d4aa6901...` 主干；`all-MiniLM-L6-v2@1110a243...` sidecar |
+| q25 | `0.1957079917192459`；只用于 MiniLM sidecar eligibility；不做 score fusion |
+| blind eligibility | HotpotQA 0.458；MuSiQue 0.71333；combined 0.6112；PASS |
+| determinism | full main 10,000 calls + 200-query/800-call pre-hash subset；predictions/prompts 精确复现 |
+| statistics | dataset-paired + dataset-equal-weight bootstrap；10,000；seed 20260726 |
+| Protected−BGE | F1 `-0.0025635 [-0.0099817,0.0045765]`；`INCONCLUSIVE` |
+| Protected−Unprotected | F1 `+0.0112225 [0.0012860,0.0210434]`；`SUPPORTED` |
+| Protected−NoFacet | F1 `-0.0074311 [-0.0161609,0.0013248]`；`INCONCLUSIVE` |
+| execution | main/subset 共 10,800 calls；零失败；main wall 4,999.07 s；GPU peak 4,356,265,984 bytes |
+| decision | `STAGE4I_FINAL_VERIFICATION_PASS` |
+
+精确入口为 [experiment card](STAGE4I_SDC_EXPERIMENT_CARD.md)、[official config](../configs/stage4i_sdc_official.json)、[input manifest](../results/stage4i_sdc_hotpot1000_musique1500_v1_input_manifest.json)、[eligibility audit](../results/stage4i_sdc_hotpot1000_musique1500_v1_eligibility_audit.json)、[pre-Gold verification](../results/stage4i_sdc_hotpot1000_musique1500_v1_verified_pregold.json)、[equal-weight summary](../results/stage4i_sdc_hotpot1000_musique1500_v1_equal_weight_summary.json)、[evidence transition audit](../results/stage4i_sdc_hotpot1000_musique1500_v1_evidence_transition_audit.json)、[final verification](../results/stage4i_sdc_hotpot1000_musique1500_v1_final_verification.json)、[artifact manifest](../results/stage4i_sdc_hotpot1000_musique1500_v1_artifact_manifest.json) 与 [正式报告](../reports/超粒球RAG_Stage4I_SDC强稠密检索互补性报告.md)。
+
+关键冻结 SHA-256：
+
+- input manifest：`E9933740CD7C3DDA5203DC4D993709237A249117918701DF340D04F8932634F1`；
+- MiniLM/BGE caches：`C7931066992B0ACF1EAD03A6E8C8F24EAF0D7714E63E514A53EC5601B953F84C` / `2D655280095AE514291EFB521BD5A4FC32C758C76C6E8DC04D6ADEAE6F8E4EE0`；
+- eligibility audit：`31623F0562B0ED83671A871D5039FE498E9359C384C6ED1549A8B0687DDBB92B`；
+- rankings / candidate trace：`AACC7776AFF4BA512FE9530F366D177DEC7BF04531620F4447245C6E96682FC2` / `62AC7A2FD91997FFC72E2F0A2A0F9945D2056C0670C299CC002917B2EC4D9DA7`；
+- predictions main / subset：`A6D8A4652A208E39EDEBA590CA17D9DACB05D2C9C29EC37E8E274C8AF30B2D22` / `7452A946C25E76DC6252241C3B25611863CAD751951EDC2D612A2C7549F6B3C4`；
+- prompt audit main / subset：`3CECDADE511873D0951B24DB9C617042C50900A4B23123CCFFFDF199902E2EA0` / `11D2A9CE00F736D94EECA4B959A330C2A7D0084B35FD48F25669D3F663CF9D98`；
+- verified pre-Gold：`30172A18E4403BE8701952918119EC2BE9606743D5CA4A5AD51456A24B08BEEC`；
+- query audit：`03AE49C301AD2AB250FB79D7DFA561B936D6C5201AAF9B87131D4DFB4D70ABFB`；
+- dataset/equal-weight summaries：`4487349198E34F0DA99A91423EDC991315909947036D6D2E11F3BCFD14DF95DF` / `EC1AF7077CDC6858CE39B76FE842E60283EB9BF19068C6384CDF8C282C9E1717`；
+- evidence transition audit：`3DE05CBDAEC38EE216C9C0D5DC8834B6B6EC1726E4CDDC37B0A1132DC8611BE2`；
+- scientific decision：`D0D10AB368A3C8ABD4EB7B6B7C3454BB3943671D04307B4A9D77B13610008726`；
+- final verification：`B15620888F68EB6EF9D39DABB2295D425665F870617FD021B237B9CDA96D2019`；
+- artifact manifest：`831D937749548A05D09579F5F3BB39506F762ABE6066A04273D7A34287F9292E`。
+
+正式运行使用 Stage4E 冻结 CPython 3.12/Qwen/CUDA 环境，并在启动前设置：
+
+```powershell
+$env:CUBLAS_WORKSPACE_CONFIG=':4096:8'
+$env:MKL_NUM_THREADS='1'
+$env:NUMEXPR_NUM_THREADS='1'
+$env:OMP_NUM_THREADS='1'
+$env:OPENBLAS_NUM_THREADS='1'
+$env:PYTHONHASHSEED='0'
+$env:TOKENIZERS_PARALLELISM='false'
+```
+
+实施绑定提交为 `6aea4fba476ffd6c8b437acd5f9c97214218116a`；配置重新绑定提交为
+`c62577d`。修正只避免对已归一化 float32 cache 做第二次非幂等归一化，未重建或覆盖
+cache、rankings、candidate trace 或 eligibility audit。
 
 ## 运行环境
 
@@ -421,6 +473,7 @@ STAGE4B_U1_GOLD_INDEPENDENT_VERIFICATION_PASS queries=4500 decision=STOP_U1_BRAN
 - Stage4D-CMA synthetic suite：16/16 PASS；覆盖完整候选池/预算分层、独立 trace 重建、严格 schema/type/nullability/leakage、七标签、双 LOO、固定 query folds、Task-C 类边界、同一 OOF 分层指标、combined-only advancement、确定性 LF CSV、固定环境、official transaction fail-closed 和同字节复跑。
 - Stage4D official probe：main/rerun 三工件同字节，内部 independent verifier PASS；bounded provenance audit 的 canonical bytes、68,588 OOF 行、全部 metrics/baselines 和 36 个 bootstrap 区块均 PASS。
 - Stage4E–4H 统一回归：在冻结 CPython 3.12.0 下以标准库 `unittest discover` 分别执行四个精确测试文件，Stage4E 19/19、Stage4F 27/27、Stage4G 9/9、Stage4H 15/15，合计 70/70 PASS。环境未安装 `pytest`，因此没有修改冻结依赖，仅改用等价的仓库既有测试入口。
+- Stage4I 定向 suite：19/19 PASS；Stage4E–4I 当前统一回归：89/89 PASS。Stage4D 另在其冻结 CPython 3.12 环境保持 17/17 PASS。
 
 ## 后续复现边界
 

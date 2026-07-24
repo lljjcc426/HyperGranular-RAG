@@ -1,10 +1,10 @@
-# HyperGranular-RAG 消融与强基线：预注册设计与 Stage4H 结果
+# HyperGranular-RAG 消融与强基线：预注册设计及 Stage4H–4I 结果
 
-状态：`STAGE4H_FINAL_VERIFICATION_PASS`
+状态：`STAGE4I_FINAL_VERIFICATION_PASS`
 设计冻结：2026-07-23
 正式结果：2026-07-24
 
-本文保留投稿前的结果无关设计，并登记随后获阶段级授权完成的 Stage4H-CBE 结果。Stage4H 不改变 Stage4E/4F/4G 的冻结结论。
+本文保留投稿前的结果无关设计，并登记随后完成的 Stage4H-CBE 与 Stage4I-SDC 结果。Stage4H/4I 不改变 Stage4E/4F/4G 的冻结结论。
 
 ## 0. Stage4H 已验证结果
 
@@ -21,6 +21,19 @@ Stage4H 在新的 HotpotQA 1,000 + MuSiQue 1,500、历史正式 ID overlap 0 的
 BM25 与 Dense+BM25 hybrid 为支持性比较；Full 的等权 F1 差分别为 `-0.00755 [-0.02259,0.00773]` 与 `-0.00320 [-0.01591,0.00942]`。P1 effect-cost curve 在 Gold 前登记为 `NOT_RUN_RESOURCE_BOUNDED`，没有根据结果删减。
 
 论文含义：Stage4H 支持 static-q25 相对历史 MiniLM Dense 的复制和 facet-hyperedge 的系统内增量价值，但不支持 full 优于 strong dense，也未确认 protected insertion 的独立增量贡献。完整证据见 `reports/超粒球RAG_Stage4H_CBE核心消融与强基线报告.md`。
+
+## 0.1 Stage4I 已验证结果
+
+Stage4I 在另一组零重叠 HotpotQA 1,000 + MuSiQue 1,500 边界上，把 BGE Top-20 固定为主排名，把 MiniLM-HGRAG 固定为独立 sidecar；q25 只决定 sidecar eligibility，不做 score fusion。
+
+| 问题 | 数据集等权 answer-F1 差 | 冻结结论 |
+|---|---:|---|
+| Protected sidecar vs BGE | `-0.00256 [-0.00998,0.00458]` | `STRONG_DENSE_COMPLEMENTARITY_INCONCLUSIVE` |
+| Protected vs Unprotected（相同插入集合） | `+0.01122 [0.00129,0.02104]` | `PROTECTED_PLACEMENT_SUPPORTED` |
+| Unprotected sidecar vs BGE | `-0.01379 [-0.02440,-0.00339]` | supporting placement evidence |
+| Protected vs NoFacet | `-0.00743 [-0.01616,0.00132]` | `BGE_FACET_INCREMENT_INCONCLUSIVE` |
+
+该结果没有建立当前 sidecar 相对 BGE 的答案质量互补增益，也没有证明伤害或等价。它支持一个更窄的内部设计结论：候选集合固定时，保护 BGE prefix 的放置方式优于无保护放置。Facet 在 BGE sidecar 中的增量仍不确定。完整证据见 `reports/超粒球RAG_Stage4I_SDC强稠密检索互补性报告.md`。
 
 ## 1. 目标
 
@@ -74,7 +87,7 @@ BM25 与 Dense+BM25 hybrid 为支持性比较；Full 的等权 F1 差分别为 `
 5. `P1`：加入延迟、显存、prompt tokens 和索引成本的统一资源表；
 6. `P2`：更细 subgroup 与机制分析，仅在样本量和多重比较控制足够时进入主文。
 
-## 6. Stage4H 后的解释纪律
+## 6. Stage4H–4I 后的解释纪律
 
 - 消融回答组件贡献，不自动建立因果机制；
 - 强基线失败或成功均不得改写已冻结 Stage4E/Stage4F/Stage4G 结果；
@@ -84,3 +97,6 @@ BM25 与 Dense+BM25 hybrid 为支持性比较；Full 的等权 F1 差分别为 `
 - 不得把“Full vs Dense supported”省略限定后写成“Full 优于强稠密检索”；BGE 比较为明确负向。
 - 不得把 no-protection 的 `INCONCLUSIVE` 写成 protected insertion 无作用、等价或已确认有效。
 - flat-unit 对照未公平定义；不得用缺失对照反推粒球结构已经获得独立支持。
+- Stage4I core 只能写成 strong-dense complementarity inconclusive；不得写成 sidecar 改善、损害或等价于 BGE。
+- Stage4I placement 支持只限相同插入集合的排序位置；不得把该结果替代 Protected−BGE 核心比较。
+- Stage4I facet 比较仍为 inconclusive；不得用 Stage4H 的 facet support 覆盖这一新 backbone 边界。

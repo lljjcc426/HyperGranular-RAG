@@ -6,10 +6,10 @@
 
 | 项目 | 当前事实 |
 |---|---|
-| 研究阶段 | Stage4H-CBE 已完成、独立验证并冻结 |
-| 状态 | `STAGE4H_FINAL_VERIFICATION_PASS` |
-| Stage4H 新边界 | HotpotQA train 1,000 + MuSiQue train 1,500；与全部历史正式 ID overlap 0 |
-| 当前证据 | Full 相对历史 MiniLM Dense 与 no-facet 消融受支持；相对 BGE strong dense 为负；protected insertion 不确定；flat 对照未公平定义 |
+| 研究阶段 | Stage4I-SDC 已完成、独立验证并冻结 |
+| 状态 | `STAGE4I_FINAL_VERIFICATION_PASS` |
+| Stage4I 新边界 | HotpotQA train 1,000 + MuSiQue train 1,500；与全部历史正式 ID overlap 0 |
+| 当前证据 | BGE+protected HGRAG sidecar 相对 BGE-only 不确定；相同候选集合下 protected placement 受支持；facet increment 不确定 |
 | Gold | 仅在 Gold-free main/rerun 与 pre-Gold verification 后使用；未进入检索、prompt、生成或排序 |
 | Reservation / Stage3B | `KEEP_LOCKED` |
 
@@ -48,6 +48,15 @@ Stage4H-CBE 核心消融与强基线结果：
 - flat-unit 粒球消融为 `NOT_FAIRLY_DEFINED`；P1 效果—成本曲线为 `NOT_RUN_RESOURCE_BOUNDED`；
 - 17,500-call main 与 1,400-call subset 均零失败，pre-Gold/final independent verification 通过。
 
+Stage4I-SDC 强稠密检索互补性结果：
+
+- 在另一组 HotpotQA 1,000 + MuSiQue 1,500 历史零重叠边界上，以 BGE large-en-v1.5 Top-20 为主干、冻结 MiniLM-HGRAG 为 sidecar；q25 只过滤 sidecar，不进行 BGE/MiniLM score fusion；
+- Protected−BGE 的数据集等权 answer-F1 为 `-0.00256 [-0.00998,0.00458]`，EM 为 `-0.00233 [-0.00983,0.00467]`，核心状态为 `STRONG_DENSE_COMPLEMENTARITY_INCONCLUSIVE`；
+- Protected−Unprotected 为 `+0.01122 [0.00129,0.02104]`，`PROTECTED_PLACEMENT_SUPPORTED`；两臂使用完全相同的 inserted set，只改变 placement；
+- Protected−NoFacet 为 `-0.00743 [-0.01616,0.00132]`，`BGE_FACET_INCREMENT_INCONCLUSIVE`；
+- Blind-only insertable rate 为 HotpotQA `0.458`、MuSiQue `0.71333`、合并 `0.6112`，通过预登记 feasibility gate；
+- 10,000-call main 与 800-call subset 均零失败，subset predictions/prompts 与 main 对应 pair 精确一致，pre-Gold/final independent verification 通过。
+
 此前 U1-D Gold 结果：
 
 - U1 将 q25 插入量从 7,260 降至 4,354，减少 `40.0275%`；
@@ -69,7 +78,7 @@ Stage4C-U1-FMA 进一步审计其失败机制：raw U1 score 对 GAIN-vs-HARM �
 
 Stage4D-CMA 将问题下沉到 candidate 级：8,467 个 eligible candidates 经 standardized first-slot insertion、`LOO_NO_BACKFILL` 和 `LOO_WITH_BACKFILL` 归因后，固定 Task-C combined panel 的 AUROC 为 `0.64310 [0.55520, 0.72974]`、AP 为 `0.72198`。它存在部分符号信号，但 AUROC 未达到 `0.65` 且 Brier 未优于 prevalence baseline，最终为 `CANDIDATE_MECHANISM_EVIDENCE_INCONCLUSIVE`。
 
-Stage4D 和当前 controller 分支已经冻结关闭。Stage4E/4F 支持 static q25 相对历史 Dense 的两个 closed-candidate 正结果；Stage4G 的单一额外 Gemma mobile-QAT 迁移结果不确定。Stage4H 在新边界上再次支持 Full 相对历史 Dense，并支持 facet-hyperedge 的冻结系统内增量价值，但 Full 明确低于 BGE strong dense，protected insertion 贡献不确定。下一门为单独定义 Stage4I-FWF full-wiki feasibility；当前不授权 full-wiki Gold。
+Stage4D 和当前 controller 分支已经冻结关闭。Stage4E/4F 支持 static q25 相对历史 Dense 的两个 closed-candidate 正结果；Stage4G 的单一额外 Gemma mobile-QAT 迁移结果不确定。Stage4H 在新边界上再次支持 Full 相对历史 Dense，并显示 Full 明确低于 BGE strong dense。Stage4I 进一步表明：当前冻结 MiniLM-HGRAG sidecar 没有在 BGE 主干上形成可确认的额外答案质量，但 protected placement 明确优于把同一插入集合放在前部。下一科研阶段尚未定义；full-wiki、Reservation、Stage3B、U2/controller 和新 strong-retriever search 均未授权。
 
 ## 冻结方法边界
 
@@ -99,6 +108,7 @@ Stage4D 和当前 controller 分支已经冻结关闭。Stage4E/4F 支持 static
 | Stage4F-XDR | MuSiQue cross-dataset replication；独立验证完成 | answer F1 `+0.01140 [0.00450,0.01835]`；`STATIC_HGRAG_XDR_SUPPORTED` |
 | Stage4G-GTR | one-additional-generator controlled replication；独立验证完成 | equal-weight F1 `+0.00516 [-0.00262,0.01295]`；`GENERATOR_TRANSFER_INCONCLUSIVE` |
 | Stage4H-CBE | new-ID component/strong-baseline evaluation；独立验证完成 | Full−Dense/NoFacet supported；Full−StrongDense negative；NoProtection inconclusive；flat not defined |
+| Stage4I-SDC | new-ID strong-dense sidecar complementarity；独立验证完成 | Protected−BGE inconclusive；Protected−Unprotected supported；facet increment inconclusive |
 
 完整研究轨迹见 [ROADMAP](docs/ROADMAP.md) 和 [文档索引](docs/INDEX.md)。
 
@@ -112,6 +122,7 @@ Stage4D 和当前 controller 分支已经冻结关闭。Stage4E/4F 支持 static
 - Stage4F boundary 是官方 MuSiQue-Answerable v1.0 train 的确定性 3,000-query 样本；与历史 MuSiQue dev 1,000 ID 交集为 0，A/B/C、正式结果与 final verification 已冻结。
 - Stage4G 不建立新数据边界；它只在上述两个冻结边界和 rankings 上更换为唯一事前绑定的 Gemma mobile-QAT 生成器，main、subset rerun、Gold evaluation 与 final verification 已冻结。
 - Stage4H 使用另一组 HotpotQA 1,000 + MuSiQue 1,500 ID-only 样本；与全部历史正式 IDs overlap 0；Blind/Gold/Metadata、两套 embedding cache、七臂结果与 final verification 已冻结。
+- Stage4I 使用再一组 HotpotQA 1,000 + MuSiQue 1,500 ID-only 样本；与全部历史正式 IDs overlap 0；BGE 主干、MiniLM sidecar、四臂结果、deterministic subset 与 final verification 已冻结。
 - Raw data、processed corpus、embedding cache、模型和密钥不进入 Git。
 
 ## 仓库结构
@@ -172,6 +183,11 @@ paper/             论文结构、证据主张台账与待补材料
 - [Stage4H equal-weight summary](results/stage4h_cbe_hotpot1000_musique1500_v1_equal_weight_summary.json)
 - [Stage4H final verification](results/stage4h_cbe_hotpot1000_musique1500_v1_final_verification.json)
 - [Stage4H 核心消融与强基线报告](reports/超粒球RAG_Stage4H_CBE核心消融与强基线报告.md)
+- [Stage4I-SDC 实验卡](docs/STAGE4I_SDC_EXPERIMENT_CARD.md)
+- [Stage4I official config](configs/stage4i_sdc_official.json)
+- [Stage4I equal-weight summary](results/stage4i_sdc_hotpot1000_musique1500_v1_equal_weight_summary.json)
+- [Stage4I final verification](results/stage4i_sdc_hotpot1000_musique1500_v1_final_verification.json)
+- [Stage4I 强稠密检索互补性报告](reports/超粒球RAG_Stage4I_SDC强稠密检索互补性报告.md)
 - [方法定义与冻结结果表](paper/METHODS_AND_RESULTS_TABLES.md)
 - [消融与强基线设计/结果](paper/ABLATION_AND_STRONG_BASELINE_PLAN.md)
 - [论文证据与主张台账](paper/EVIDENCE_AND_CLAIM_LEDGER.md)
@@ -195,7 +211,7 @@ SCIENTIFIC_INTEGRITY_CONTROLS_RETAINED
 - 逐命令、逐脚本、逐文件、逐提交、逐通道审批，以及重复 review、单独 synthetic 授权、普通修复 Amendment、逐次 approval record 和 nested approval chain 均已取消。
 - 新阶段默认使用 1–3 页轻量实验卡，固定研究问题、假设、数据边界、方法、主要终点、成功/停止/证据不足规则、Gold/独立测试/reservation 边界和禁止事项；长协议仅用于高风险例外。
 - 历史审批链只用于证据追溯，不再构成当前执行规则。已有科学协议、技术隔离、完整性检查、结果和停止结论不变。
-- 全局规则不自动扩大既有阶段明确排除的科学范围。Stage4E–4H 均已在各自阶段授权下连续完成；Stage4I 仍需新的阶段卡。
+- 全局规则不自动扩大既有阶段明确排除的科学范围。Stage4E–4I 均已在各自阶段授权下连续完成；新的科学问题仍需新的阶段卡。
 
 ## 已知限制
 
@@ -212,9 +228,10 @@ SCIENTIFIC_INTEGRITY_CONTROLS_RETAINED
 - Stage4F 的 `n=3000` 是资源/精度边界，不是 power guarantee；MuSiQue 只提供 supporting-paragraph 标签，不能伪称具有 supporting-sentence Gold；其结果仍是 closed-candidate、单生成器复制。
 - Stage4G 只测试一个额外的 Gemma official mobile-QAT 配置；HotpotQA 与 MuSiQue 的 F1 点差方向不一致，等权联合门未通过。该结果不能证明等价、普遍 generator robustness、Gemma 不适合 RAG，或 Qwen/Gemma 的纯架构能力排序。
 - Stage4H 仍是 closed-candidate；Full 明确低于 BGE strong dense，不能声称优于强检索器。NoProtection 区间跨 0，flat 对照未定义，效果—成本曲线未运行。
+- Stage4I 仍是 closed-candidate，只测试一个冻结 BGE backbone 和固定 Qwen；核心 sidecar 区间跨 0。Placement 支持只限相同插入集合的顺序，facet 增量仍不确定。
 
 ## 下一步
 
-Stage4H-CBE 已冻结完成。下一步只可起草 `Stage4I-FWF` 的 full-wiki engineering feasibility 实验卡，先验证索引、ANN、candidate reachability、延迟、成本和独立重建合同；不得直接运行 full-wiki Gold。Reservation、Stage3B、U2、controller 和新生成器继续锁定。
+Stage4I-SDC 已冻结完成，当前没有已授权的下一科学阶段。full-wiki、Reservation、Stage3B、U2/controller、新生成器和新 strong-retriever search 继续锁定；若开展后续研究，先形成新的轻量阶段卡。
 
 仓库：<https://github.com/lljjcc426/HyperGranular-RAG>

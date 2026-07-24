@@ -2,7 +2,7 @@
 
 ## 当前总论边界
 
-静态 q25 protected insertion 与 adaptive controller 是两个不同主张。Stage4E 支持前者在冻结 HotpotQA same-domain closed-distractor 边界上的端到端答案质量增益，Stage4F 又在冻结 MuSiQue closed-candidate 边界复制该 answer-F1 方向与支持门；Stage4G 在一个额外、事前指定的 Gemma mobile-QAT 配置下得到 inconclusive generator-transfer 结果。Stage4H 在两组新的零重叠 closed-candidate 边界上支持 full 相对历史 MiniLM Dense 和 no-facet ablation 的增益，但 full 明确低于 BGE strong dense，protected insertion 贡献不确定，flat-unit 对照未公平定义。当前 U1/Stage4D controller 线仍保持关闭。
+静态 q25 protected insertion 与 adaptive controller 是两个不同主张。Stage4E 支持前者在冻结 HotpotQA same-domain closed-distractor 边界上的端到端答案质量增益，Stage4F 又在冻结 MuSiQue closed-candidate 边界复制该 answer-F1 方向与支持门；Stage4G 在一个额外、事前指定的 Gemma mobile-QAT 配置下得到 inconclusive generator-transfer 结果。Stage4H 在两组新的零重叠 closed-candidate 边界上支持 full 相对历史 MiniLM Dense 和 no-facet ablation 的增益，但 full 明确低于 BGE strong dense，protected insertion 贡献不确定，flat-unit 对照未公平定义。Stage4I 进一步把冻结 HGRAG 作为 BGE 主排名上的独立 sidecar：核心 protected sidecar 相对 BGE 的 answer-F1 差异不确定；在完全相同插入集合下，protected placement 优于 unprotected placement；facet 相对 no-facet 的增量仍不确定。当前 U1/Stage4D controller 线仍保持关闭。
 
 ## 可写主张
 
@@ -19,6 +19,9 @@
 | Static q25 full 相对历史 MiniLM Dense 的增益在两个新边界上再次出现，且 facet-hyperedge 有系统内增量价值 | verified component/baseline evaluation | Stage4H：Full−Dense 等权 F1 `+0.01357 [0.00491,0.02233]`；Full−NoFacet `+0.01336 [0.00341,0.02343]`；Holm 后均通过 | 只限固定 Qwen、两个 closed-candidate 新边界和冻结实现；消融支持增量价值，不自动证明一般因果机制 |
 | Full 方法不优于事前绑定的 BGE strong dense | verified negative strong-baseline result | Stage4H：Full−StrongDense 等权 F1 `-0.03998 [-0.05393,-0.02621]`；EM `-0.04067 [-0.05483,-0.02683]` | 必须如实保留；不得用 Full−MiniLM Dense 正结果声称优于强稠密检索 |
 | Protected insertion 的独立贡献未确定，粒球 flat 对照未公平定义 | verified inconclusive/design boundary | Stage4H：Full−NoProtection F1 `+0.00354 [-0.00675,0.01389]`；flat=`NOT_FAIRLY_DEFINED` | 不得写成保护无作用、等价或已确认；不得把缺失 flat 对照当作粒球贡献证据 |
+| 当前冻结 HGRAG sidecar 没有建立相对 BGE strong dense 的互补增益 | verified strong-dense sidecar result，inconclusive | Stage4I：Protected−BGE 等权 F1 `-0.00256 [-0.00998,0.00458]`；EM `-0.00233 [-0.00983,0.00467]`；final verification PASS | 只能写成该 BGE、Qwen、Top-20 和两个新 closed-candidate 边界下证据不确定；不能写成增益、伤害或等价 |
+| 在相同 HGRAG 插入集合下，protected placement 优于 unprotected placement | verified supporting placement result | Stage4I：Protected−Unprotected 等权 F1 `+0.01122 [0.00129,0.02104]`；EM `+0.01300 [0.00333,0.02283]` | 只支持冻结 sidecar 内部的位置设计；不得据此声称 protected sidecar 优于 BGE |
+| BGE sidecar 中 facet 相对 no-facet 的增量未确定 | verified supporting ablation，inconclusive | Stage4I：Protected−NoFacet 等权 F1 `-0.00743 [-0.01616,0.00132]`；EM `-0.00600 [-0.01483,0.00283]` | 不得写成 facet 有效、无效、等价或一般机制证据 |
 
 Stage4F-XDR 已完成 MuSiQue train 3,000 个新 ID 的完整事务并通过独立 final verification。它支持“Stage4E 的静态 answer-F1 增益在第二个冻结数据集边界上复现”。Stage4G-GTR 又在同一两个数据边界上测试一个额外 Gemma mobile-QAT 配置，得到 `GENERATOR_TRANSFER_INCONCLUSIVE`；所以不能将 Stage4E/4F 的 Qwen 结果扩大为所有生成器或开放域有效。
 
@@ -31,6 +34,9 @@ Stage4F-XDR 已完成 MuSiQue train 3,000 个新 ID 的完整事务并通过独�
 - “当前结果已 full-wiki、open-domain 或普遍跨生成器泛化”；Stage4G 只测试一个额外 Gemma mobile-QAT 配置，且联合判定 inconclusive。
 - “完整 HyperGranular-RAG 优于强稠密检索器”或“强基线比较支持完整方法”；Stage4H 对 BGE strong dense 为明确负向。
 - “protected insertion 已被独立证明必要/无效”或“粒球结构已通过 flat 消融”；Stage4H 的前者不确定，后者未公平定义。
+- “HGRAG sidecar 改善/损害 BGE strong dense”或“二者等价”；Stage4I 核心区间跨 0，冻结结论为 `STRONG_DENSE_COMPLEMENTARITY_INCONCLUSIVE`。
+- “protected placement 获得支持，所以 HGRAG sidecar 优于 BGE”；Stage4I placement 是同一插入集合内的支持性比较，不是核心 advancement comparison。
+- “Stage4I 证明 facet 在 BGE backbone 上有效/无效”；Protected−NoFacet 区间跨 0。
 - “Gemma 4 E2B 不适合 RAG”“Qwen 基础模型能力显著更强”或“Gemma 架构质量较差”；Stage4G 不是纯架构比较，mobile-QAT 效应不可分离。
 - “Stage4E 是对生成器未见数据的无污染测试”；它只保证未被本项目读取，公开 HotpotQA train 可能进入过模型预训练语料。
 - “不显著说明方法等价”；所有未过正/负门的结果都应写为 inconclusive。
@@ -53,6 +59,7 @@ Stage4F-XDR 已完成 MuSiQue train 3,000 个新 ID 的完整事务并通过独�
 | Stage4G generator-transfer preregistration | `docs/STAGE4G_GTR_EXPERIMENT_CARD.md`；`configs/stage4g_gtr_official.json`；`results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_input_model_manifest.json` |
 | Stage4G verified generator transfer | `reports/超粒球RAG_Stage4G_GTR生成器迁移复制报告.md`；`results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_equal_weight_summary.json`；`results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_final_verification.json` |
 | Stage4H component/strong-baseline evaluation | `docs/STAGE4H_CBE_EXPERIMENT_CARD.md`；`reports/超粒球RAG_Stage4H_CBE核心消融与强基线报告.md`；`results/stage4h_cbe_hotpot1000_musique1500_v1_equal_weight_summary.json`；`results/stage4h_cbe_hotpot1000_musique1500_v1_final_verification.json` |
+| Stage4I strong-dense sidecar complementarity | `docs/STAGE4I_SDC_EXPERIMENT_CARD.md`；`reports/超粒球RAG_Stage4I_SDC强稠密检索互补性报告.md`；`results/stage4i_sdc_hotpot1000_musique1500_v1_equal_weight_summary.json`；`results/stage4i_sdc_hotpot1000_musique1500_v1_final_verification.json` |
 
 ## Stage4E 写入规则
 
@@ -79,3 +86,14 @@ Stage4H 可写七臂绝对 F1/EM/CR/ER、四个主要等权比较、Holm p、BM2
 - granular-ball flat 对照为 `NOT_FAIRLY_DEFINED`；
 - P1 effect-cost curve 为 `NOT_RUN_RESOURCE_BOUNDED`；
 - 全部结果限于固定 Qwen、closed-candidate HotpotQA/MuSiQue 新边界，不是 full-wiki/open-domain。
+
+## Stage4I 写入规则
+
+Stage4I 可写四臂绝对 F1/EM/CR/ER、Protected−BGE 的数据集级与等权差异、完全相同插入集合下的 Protected−Unprotected 支持性比较、Protected−NoFacet 支持性消融、added/displaced/net Gold 的 post-decision 描述、资源、pre-hash subset determinism、Gold 隔离和 `STAGE4I_FINAL_VERIFICATION_PASS`。必须同时保留：
+
+- 核心结论为 `STRONG_DENSE_COMPLEMENTARITY_INCONCLUSIVE`，不能写成 sidecar 改善、损害或等价于 BGE；
+- placement 结论为 `PROTECTED_PLACEMENT_SUPPORTED`，但只说明同一候选集合的排序位置重要，不能触发核心 advancement；
+- unprotected sidecar 相对 BGE 的等权 F1 为 `-0.01379 [-0.02440,-0.00339]`，用于解释 placement，而不是另立事后主结论；
+- facet 结论为 `BGE_FACET_INCREMENT_INCONCLUSIVE`；
+- HGRAG 使用独立 MiniLM sidecar，q25 只决定 sidecar eligibility，不与 BGE 分数融合；
+- 全部结果限于一个事前冻结的 BGE large-en-v1.5 backbone、固定 Qwen、Top-20 和两个新零重叠 closed-candidate 边界，不是普遍 strong-retriever、full-wiki 或 open-domain 结论。

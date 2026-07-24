@@ -1,6 +1,6 @@
 {
   "schema_version": "stage4i_sdc_v1",
-  "status": "STAGE4I_GOLD_RESULTS_FROZEN_FINAL_VERIFICATION_PENDING",
+  "status": "STAGE4I_COMPLETE_FINAL_VERIFICATION_PASS",
   "official_execution": {
     "authorized": true,
     "authorization_date": "2026-07-24",
@@ -110,6 +110,10 @@
     ]
   },
   "inputs": {
+    "artifact_manifest": {
+      "bytes": 2784,
+      "sha256": "831D937749548A05D09579F5F3BB39506F762ABE6066A04273D7A34287F9292E"
+    },
     "blind": {
       "bytes": 74044749,
       "sha256": "9384866CC3F915CA4D3D7CA660585B3DFC15B800B3152FEA544BF1C9B2249FA1"
@@ -133,6 +137,10 @@
     "facet_summary": {
       "bytes": 1490,
       "sha256": "5F4CC09C57CAB29FA34F7D60162CA10B88F27B6B7A216F0DD70F3DE38146FE7A"
+    },
+    "final_verification": {
+      "bytes": 3134,
+      "sha256": "B15620888F68EB6EF9D39DABB2295D425665F870617FD021B237B9CDA96D2019"
     },
     "gold": {
       "bytes": 811889,

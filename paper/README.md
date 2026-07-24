@@ -15,8 +15,10 @@
 - [Stage4G final verification](../results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_final_verification.json)：4,000-query scores、分层 bootstrap、interaction 与 `GENERATOR_TRANSFER_INCONCLUSIVE` 独立重建；
 - [Stage4H-CBE 报告](../reports/超粒球RAG_Stage4H_CBE核心消融与强基线报告.md)：两个新零重叠边界上的七臂绝对结果、四个主要比较、资源、验证与谬误扫描；
 - [Stage4H final verification](../results/stage4h_cbe_hotpot1000_musique1500_v1_final_verification.json)：2,500-query metrics、10,000-bootstrap、Holm 与分项 decision 独立重建；
-- [方法定义与冻结结果表](METHODS_AND_RESULTS_TABLES.md)：静态方法公式/伪代码、Stage4E–4G 统一结果、Stage4H 消融/强基线以及资源与完整性表；
-- [消融与强基线设计/结果](ABLATION_AND_STRONG_BASELINE_PLAN.md)：保留事前设计并登记 Stage4H 的 strong-dense negative、facet support、protection inconclusive 与 flat not-defined。
+- [Stage4I-SDC 报告](../reports/超粒球RAG_Stage4I_SDC强稠密检索互补性报告.md)：BGE 主排名 + MiniLM-HGRAG sidecar 的四臂绝对结果、核心互补性、placement、facet、资源与验证；
+- [Stage4I final verification](../results/stage4i_sdc_hotpot1000_musique1500_v1_final_verification.json)：2,500-query metrics、10,000-bootstrap、evidence transition、decision 与工件身份独立重建；
+- [方法定义与冻结结果表](METHODS_AND_RESULTS_TABLES.md)：静态方法公式/伪代码、Stage4E–4G 统一结果、Stage4H 消融/强基线、Stage4I strong-dense sidecar 以及资源与完整性表；
+- [消融与强基线设计/结果](ABLATION_AND_STRONG_BASELINE_PLAN.md)：保留事前设计并登记 Stage4H strong-baseline 边界与 Stage4I sidecar/placement/facet 结果。
 
 写作规则：
 
@@ -27,4 +29,5 @@
 - Stage4E 可写为冻结 HotpotQA same-domain closed-distractor 正结果；Stage4F 可写为在冻结 MuSiQue closed-candidate 边界上的跨数据集复制；两者都不得外推到 full-wiki/open-domain、其他生成器或 controller；
 - Stage4G 必须写成一个额外预指定生成器配置下的 inconclusive transfer test：HotpotQA F1 点差为正、MuSiQue 为轻微负向、数据集等权门未通过；不得写成普遍 generator robustness、显著负向迁移或模型架构排名；
 - Stage4H 必须同时写明 Full−Dense `SUPPORTED`、Full−StrongDense `NEGATIVE`、NoProtection `INCONCLUSIVE`、NoFacet `SUPPORTED`、flat `NOT_FAIRLY_DEFINED`；不得只保留有利消融；
+- Stage4I 必须把 Protected−BGE `INCONCLUSIVE`、Protected−Unprotected `SUPPORTED` 与 Protected−NoFacet `INCONCLUSIVE` 分层写明；placement 支持不得替代核心 strong-dense comparison；
 - 所有数字必须能定位到 tracked result/report，或明确标记为 protocol parameter。

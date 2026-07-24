@@ -1,8 +1,8 @@
 # HyperGranular-RAG 方法定义与冻结结果表
 
-状态：`STAGE4H_FINAL_VERIFICATION_PASS`
+状态：`STAGE4I_FINAL_VERIFICATION_PASS`
 用途：论文 Methods、Results 与 Reproducibility 的统一数字入口。
-证据边界：本文件只汇总已经提交并通过独立验证的 Stage4E–4H 工件；不新增统计检验，不改变任何冻结结论。
+证据边界：本文件只汇总已经提交并通过独立验证的 Stage4E–4I 工件；不新增统计检验，不改变任何冻结结论。
 
 ## 1. 静态 HyperGranular-RAG 方法
 
@@ -16,7 +16,7 @@ s(q,u_i)=\hat e_q^\top\hat e_i
 \]
 
 排序；同分时按 `unit_id` 升序。Dense 基线取前
-\(K_q=\min(20, |U_q|)\) 项。Stage4E–4H 的静态方法不调用 U1/controller。
+\(K_q=\min(20, |U_q|)\) 项。Stage4E–4I 的静态方法不调用 U1/controller。
 
 ### 1.2 自适应粒球
 
@@ -154,7 +154,40 @@ Stage4H 结果同时支持两项不同强度的陈述：
 因此论文不能声称 HyperGranular-RAG 优于强 dense retriever；现有证据更接近“在较弱历史
 Dense 主干上进行结构化补全有价值，但强 encoder 可覆盖更多相关证据”。
 
-## 5. 统一资源与确定性
+## 5. Stage4I BGE sidecar 互补性
+
+Stage4I 在另一组历史正式 ID overlap 为 0 的 HotpotQA 1,000 + MuSiQue 1,500 上，以
+BGE Top-20 为主排名，以冻结 MiniLM-HGRAG 为独立 sidecar。q25 只决定 sidecar candidate
+eligibility，不进行 BGE/MiniLM score fusion。Protected 与 Unprotected 使用完全相同的插入
+集合，唯一差异是插入位置。
+
+### 5.1 四臂绝对指标
+
+| 数据集 | 方法 | Answer F1 | EM | CR@20 | ER@20 |
+|---|---|---:|---:|---:|---:|
+| HotpotQA | BGE Top-20 | 0.51952 | 0.44000 | 0.92600 | 0.96872 |
+| HotpotQA | BGE + protected HGRAG sidecar | 0.51655 | 0.43800 | 0.91700 | 0.96478 |
+| HotpotQA | BGE + unprotected HGRAG sidecar | 0.50723 | 0.42800 | 0.91700 | 0.96478 |
+| HotpotQA | BGE + no-facet protected sidecar | 0.52370 | 0.44400 | 0.90500 | 0.96043 |
+| MuSiQue | BGE Top-20 | 0.16650 | 0.12000 | 0.77333 | 0.90317 |
+| MuSiQue | BGE + protected HGRAG sidecar | 0.16435 | 0.11733 | 0.77000 | 0.90439 |
+| MuSiQue | BGE + unprotected HGRAG sidecar | 0.15122 | 0.10133 | 0.77000 | 0.90439 |
+| MuSiQue | BGE + no-facet protected sidecar | 0.17206 | 0.12333 | 0.75933 | 0.89772 |
+
+### 5.2 数据集等权冻结比较
+
+| 比较（左−右） | ΔF1 [95% CI] | ΔEM [95% CI] | 冻结判定 |
+|---|---:|---:|---|
+| Protected sidecar − BGE | -0.00256 [-0.00998, 0.00458] | -0.00233 [-0.00983, 0.00467] | `STRONG_DENSE_COMPLEMENTARITY_INCONCLUSIVE` |
+| Protected − Unprotected | +0.01122 [0.00129, 0.02104] | +0.01300 [0.00333, 0.02283] | `PROTECTED_PLACEMENT_SUPPORTED` |
+| Unprotected sidecar − BGE | -0.01379 [-0.02440, -0.00339] | -0.01533 [-0.02617, -0.00500] | supporting placement evidence |
+| Protected − NoFacet | -0.00743 [-0.01616, 0.00132] | -0.00600 [-0.01483, 0.00283] | `BGE_FACET_INCREMENT_INCONCLUSIVE` |
+
+Stage4I 的核心 comparison 只有 Protected sidecar−BGE。Placement 与 facet 是支持性诊断，
+不能单独触发 advancement。核心区间跨 0，因此既不能声称 sidecar 改善或损害 BGE，也不能
+声称等价。
+
+## 6. 统一资源与确定性
 
 | 阶段 | Generator/runtime | Main calls | Determinism transaction | Main wall time (s) | Main GPU peak (bytes) | 零失败 |
 |---|---|---:|---|---:|---:|---|
@@ -162,15 +195,18 @@ Dense 主干上进行结构化补全有价值，但强 encoder 可覆盖更多�
 | Stage4F | Qwen FP16 | 6,000 | full main + full rerun（另 6,000） | 1,947.368 | 4,268,833,280 | 是 |
 | Stage4G | Gemma official mobile-QAT | 8,000 | full main + pre-hash subset（400） | 56,501.842 | 7,885,933,056 | 是 |
 | Stage4H | Qwen FP16 | 17,500 | full main + pre-hash subset（1,400） | 6,265.001 | 4,174,117,888 | 是 |
+| Stage4I | Qwen FP16 | 10,000 | full main + pre-hash subset（800） | 4,999.069 | 4,356,265,984 | 是 |
 
 Stage4E embedding cache 为 75,756,384 bytes；Stage4F 为 399,838,172 bytes；Stage4H 的
 MiniLM/BGE caches 分别为 275,898,280 / 667,539,988 bytes。Stage4G 表中的时间和显存来自
 mobile-QAT runtime，不能外推为 Gemma 架构在所有设备上的效率。
 
 Stage4E/4F 的完整复跑和 Stage4G/4H 的预哈希分层 subset 均通过冻结的精确重现合同；
-Stage4H subset 的 200 queries / 1,400 predictions 与 main 投影逐字节一致。
+Stage4H subset 的 200 queries / 1,400 predictions 与 main 投影逐字节一致。Stage4I 的
+MiniLM/BGE caches 分别为 276,194,136 / 668,255,684 bytes；其 200-query / 800-prediction
+subset 与 main 投影逐字节一致。
 
-## 6. 完整性、主张与限制
+## 7. 完整性、主张与限制
 
 - Stage4H HotpotQA 1,000 + MuSiQue 1,500 样本与全部历史正式 ID overlap 为 0；选择只使用
   native IDs 和预注册 hash salt。
@@ -181,14 +217,23 @@ Stage4H subset 的 200 queries / 1,400 predictions 与 main 投影逐字节一�
 - Stage4E/4F/4H 是 closed-candidate 结果，不是 full-wiki/open-domain 结果。
 - Stage4H 的保护插入比较区间跨 0，只能写为证据不足；facet-hyperedge 的结论限于当前冻结
   系统，不能推广为普遍因果机制。
+- Stage4I 在独立零重叠样本上以 BGE 为主排名；core sidecar comparison 为 inconclusive，
+  placement supporting comparison 为 supported，facet supporting comparison 为 inconclusive。
+- Stage4I verifier 独立重建 query metrics、dataset/equal-weight summaries、10,000
+  bootstrap、evidence transitions 和 decision，状态为 `STAGE4I_FINAL_VERIFICATION_PASS`。
+- Stage4I cache roundtrip 修正只消除了已归一化 float32 cache 的二次归一化；正式 cache、
+  ranking、candidate trace 和科学定义均未改变。
 - post-decision metadata 只允许描述，不能转化为新的确认性 subgroup 结论。
 - controller 负结果属于独立研究分支，不能用于修改或否定静态方法的已冻结结果。
 
-## 7. 证据定位
+## 8. 证据定位
 
-- Stage4E/4F/4G/4H 结果与限制：对应 `reports/` 阶段报告；
+- Stage4E/4F/4G/4H/4I 结果与限制：对应 `reports/` 阶段报告；
 - Stage4H 逐数据集绝对指标：`results/stage4h_cbe_hotpot1000_musique1500_v1_dataset_summaries.json`；
 - Stage4H 主要比较：`results/stage4h_cbe_hotpot1000_musique1500_v1_equal_weight_summary.json`；
 - Stage4H 决策：`results/stage4h_cbe_hotpot1000_musique1500_v1_scientific_decision.json`；
 - Stage4H 独立验证：`results/stage4h_cbe_hotpot1000_musique1500_v1_final_verification.json`；
-- 精确算法实现：`scripts/stage4f_xdr_retrieval.py` 与 `scripts/stage4h_cbe_retrieval.py`。
+- Stage4I 主要比较：`results/stage4i_sdc_hotpot1000_musique1500_v1_equal_weight_summary.json`；
+- Stage4I placement/facet：`results/stage4i_sdc_hotpot1000_musique1500_v1_placement_summary.json` 与 `results/stage4i_sdc_hotpot1000_musique1500_v1_facet_summary.json`；
+- Stage4I 决策/独立验证：`results/stage4i_sdc_hotpot1000_musique1500_v1_scientific_decision.json` 与 `results/stage4i_sdc_hotpot1000_musique1500_v1_final_verification.json`；
+- 精确算法实现：`scripts/stage4f_xdr_retrieval.py`、`scripts/stage4h_cbe_retrieval.py` 与 `scripts/stage4i_sdc_retrieval.py`。

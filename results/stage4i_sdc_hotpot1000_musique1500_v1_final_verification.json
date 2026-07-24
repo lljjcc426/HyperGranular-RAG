@@ -1,0 +1,92 @@
+{
+  "artifacts": {
+    "candidate_trace": {
+      "bytes": 3876033,
+      "sha256": "62AC7A2FD91997FFC72E2F0A2A0F9945D2056C0670C299CC002917B2EC4D9DA7"
+    },
+    "dataset_summaries": {
+      "bytes": 4257,
+      "sha256": "4487349198E34F0DA99A91423EDC991315909947036D6D2E11F3BCFD14DF95DF"
+    },
+    "eligibility_audit": {
+      "bytes": 3597,
+      "sha256": "31623F0562B0ED83671A871D5039FE498E9359C384C6ED1549A8B0687DDBB92B"
+    },
+    "equal_weight_summary": {
+      "bytes": 6115,
+      "sha256": "EC1AF7077CDC6858CE39B76FE842E60283EB9BF19068C6384CDF8C282C9E1717"
+    },
+    "evidence_transition_audit": {
+      "bytes": 3858,
+      "sha256": "3DE05CBDAEC38EE216C9C0D5DC8834B6B6EC1726E4CDDC37B0A1132DC8611BE2"
+    },
+    "facet_summary": {
+      "bytes": 1490,
+      "sha256": "5F4CC09C57CAB29FA34F7D60162CA10B88F27B6B7A216F0DD70F3DE38146FE7A"
+    },
+    "input_manifest": {
+      "bytes": 668755,
+      "sha256": "E9933740CD7C3DDA5203DC4D993709237A249117918701DF340D04F8932634F1"
+    },
+    "placement_summary": {
+      "bytes": 4544,
+      "sha256": "9C5AE91A5D4CFD5E501A618C50D532A70413CB846915D67FDDE5C0EF6DDB8053"
+    },
+    "predictions_main": {
+      "bytes": 2024605,
+      "sha256": "A6D8A4652A208E39EDEBA590CA17D9DACB05D2C9C29EC37E8E274C8AF30B2D22"
+    },
+    "predictions_rerun_subset": {
+      "bytes": 163838,
+      "sha256": "7452A946C25E76DC6252241C3B25611863CAD751951EDC2D612A2C7549F6B3C4"
+    },
+    "prompt_audit_main": {
+      "bytes": 15313783,
+      "sha256": "3CECDADE511873D0951B24DB9C617042C50900A4B23123CCFFFDF199902E2EA0"
+    },
+    "prompt_audit_rerun_subset": {
+      "bytes": 1242269,
+      "sha256": "11D2A9CE00F736D94EECA4B959A330C2A7D0084B35FD48F25669D3F663CF9D98"
+    },
+    "query_audit": {
+      "bytes": 4272115,
+      "sha256": "03AE49C301AD2AB250FB79D7DFA561B936D6C5201AAF9B87131D4DFB4D70ABFB"
+    },
+    "rankings": {
+      "bytes": 13453513,
+      "sha256": "AACC7776AFF4BA512FE9530F366D177DEC7BF04531620F4447245C6E96682FC2"
+    },
+    "scientific_decision": {
+      "bytes": 459,
+      "sha256": "D0D10AB368A3C8ABD4EB7B6B7C3454BB3943671D04307B4A9D77B13610008726"
+    },
+    "telemetry_main": {
+      "bytes": 1136,
+      "sha256": "4B7BA469098AE1FD6805FAE724B10A89F7916B939ECDD2DBE47B416BC656E52B"
+    },
+    "telemetry_rerun_subset": {
+      "bytes": 1136,
+      "sha256": "2482A76E68F98C23150F561256B2D7DA11DD81E60855E16D5BAE4AA184A3F981"
+    },
+    "verified_pregold": {
+      "bytes": 4375,
+      "sha256": "30172A18E4403BE8701952918119EC2BE9606743D5CA4A5AD51456A24B08BEEC"
+    }
+  },
+  "checks": {
+    "artifact_identities": true,
+    "bootstrap_and_decision_reconstruction": true,
+    "evidence_transition_reconstruction": true,
+    "parent_stage4h_artifact_count": 24,
+    "query_metric_reconstruction": true,
+    "reservation_locked": true,
+    "stage3b_locked": true,
+    "u2_not_authorized": true
+  },
+  "core_state": "STRONG_DENSE_COMPLEMENTARITY_INCONCLUSIVE",
+  "facet_state": "BGE_FACET_INCREMENT_INCONCLUSIVE",
+  "placement_state": "PROTECTED_PLACEMENT_SUPPORTED",
+  "query_count": 2500,
+  "schema_version": "stage4i_sdc_v1",
+  "status": "STAGE4I_FINAL_VERIFICATION_PASS"
+}

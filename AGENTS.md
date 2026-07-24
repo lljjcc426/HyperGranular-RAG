@@ -7,7 +7,7 @@
 - 仓库：`E:\SCIENCE\HyperGranular-RAG`
 - GitHub：`https://github.com/lljjcc426/HyperGranular-RAG.git`
 - 登记数据根目录：`E:\SCIENCE\超粒球RAG_数据`
-- 研究范围：粒球/超边多跳检索、静态 q25 protected insertion、已关闭的 U1/candidate-controller 审计线、Stage4E–4G 复制，以及已完成的 Stage4H 核心消融与强基线评价。
+- 研究范围：粒球/超边多跳检索、静态 q25 protected insertion、已关闭的 U1/candidate-controller 审计线、Stage4E–4G 复制、Stage4H 核心消融与强基线评价，以及已完成的 Stage4I strong-dense sidecar 互补性评价。
 - 禁止读取其他项目会话、全局 Codex memory 或项目外中间产物。
 
 ## 2. 当前权威入口
@@ -25,7 +25,10 @@
 - 已完成 Stage4H 实验卡：`docs/STAGE4H_CBE_EXPERIMENT_CARD.md`
 - 已完成 Stage4H 配置：`configs/stage4h_cbe_official.json`
 - Stage4H final verification：`results/stage4h_cbe_hotpot1000_musique1500_v1_final_verification.json`
-- 当前正式报告：`reports/超粒球RAG_Stage4H_CBE核心消融与强基线报告.md`
+- 已完成 Stage4I 实验卡：`docs/STAGE4I_SDC_EXPERIMENT_CARD.md`
+- 已完成 Stage4I 配置：`configs/stage4i_sdc_official.json`
+- Stage4I final verification：`results/stage4i_sdc_hotpot1000_musique1500_v1_final_verification.json`
+- 当前正式报告：`reports/超粒球RAG_Stage4I_SDC强稠密检索互补性报告.md`
 - Stage4D 关闭声明：`docs/STAGE4D_CMA_CLOSURE.md`
 - 已完成 Stage4D 协议：`docs/STAGE4D_CANDIDATE_MARGINAL_UTILITY_AUDIT_PROTOCOL.md`
 - 已完成诊断协议：`docs/STAGE4C_U1_FAILURE_MECHANISM_AUDIT_PROTOCOL.md`
@@ -109,6 +112,14 @@ FULL_METHOD_VS_STRONG_DENSE_NEGATIVE
 PROTECTED_INSERTION_ABLATION_INCONCLUSIVE
 FACET_HYPEREDGE_ABLATION_SUPPORTED
 GRANULAR_BALL_ABLATION_NOT_FAIRLY_DEFINED
+STAGE4I_SDC_EXPERIMENT_CARD_FROZEN
+STAGE4I_SIDECAR_ELIGIBILITY_GATE_PASS
+STAGE4I_GOLDFREE_RUNS_FROZEN
+STAGE4I_PRE_GOLD_VERIFICATION_PASS
+STAGE4I_FINAL_VERIFICATION_PASS
+STRONG_DENSE_COMPLEMENTARITY_INCONCLUSIVE
+PROTECTED_PLACEMENT_SUPPORTED
+BGE_FACET_INCREMENT_INCONCLUSIVE
 RESERVATION_REQUIRES_PAUSE
 U2_NOT_AUTHORIZED
 SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
@@ -137,6 +148,8 @@ SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
 - Stage4G 正式 main/subset predictions、prompt audits、telemetry、query scores、summaries、decision、verification 与 manifest 均不可覆盖或重跑。该阶段只测试一个额外 generator 配置；Gemma 架构与 mobile-QAT 效应不可分离，不授权普遍 generator robustness、模型架构排名、full-wiki/open-domain、controller、reservation、Stage3B 或 U2。
 - Stage4H-CBE 已完成另一组 HotpotQA 1,000 + MuSiQue 1,500 历史零重叠边界上的七臂评价。Full−Dense 和 Full−NoFacet 为 `SUPPORTED`；Full−StrongDense 为 `NEGATIVE`；Full−NoProtection 为 `INCONCLUSIVE`；flat 为 `NOT_FAIRLY_DEFINED`。17,500-call main、1,400-call subset、pre-Gold/final verification 已通过。
 - Stage4H 正式 input manifest、rankings、trace、main/subset predictions、prompt audits、telemetry、pre-Gold、query audit、summaries、decision、metadata、final verification 与 manifest 均不可覆盖或重跑。
+- Stage4I-SDC 已完成另一组 HotpotQA 1,000 + MuSiQue 1,500 历史零重叠边界上的四臂 BGE+MiniLM-HGRAG sidecar 评价。Protected−BGE 等权 F1 为 `-0.00256 [-0.00998,0.00458]`，核心状态 `INCONCLUSIVE`；Protected−Unprotected 为 `+0.01122 [0.00129,0.02104]`，placement 受支持；facet increment 不确定。10,000-call main、800-call subset、pre-Gold/final verification 已通过。
+- Stage4I 正式 input/eligibility manifests、两套 embedding cache identities、rankings、candidate trace、main/subset outputs、Gold summaries、mechanism audit、decisions、pre-Gold/final verification 与 artifact manifest 均不可覆盖或重跑。
 
 ## 4. 科研不可变边界
 
@@ -157,6 +170,7 @@ Stage4E 中，Gold 还不得进入 blind input、embedding、Dense/q25 ranking�
 已冻结的 Stage4F rankings、predictions、prompt audits、telemetry、query audit、evaluation summary、scientific decision、final verification 与 Channel C 描述性工件同样不可覆盖。
 已冻结的 Stage4G input/model manifest、main/subset predictions、prompt audits、telemetry、pre-Gold verification、query scores、dataset/equal-weight summaries、decision、final verification 与 artifact manifest 同样不可覆盖。Stage4G 不允许事后更换生成器、prompt、两臂 rankings、数据集权重或联合判定门。
 已冻结的 Stage4H input/model manifests、两套 embedding cache identities、七臂 rankings/trace、main/subset outputs、Gold summaries、decisions、pre-Gold/final verification 与 manifest 同样不可覆盖。不得事后更换 strong dense、hybrid 权重、消融定义、Holm family 或解释 flat/cost-curve 为已运行。
+已冻结的 Stage4I input/eligibility manifests、两套 embedding cache identities、四臂 rankings/candidate trace、main/subset outputs、Gold summaries、mechanism audit、decisions、pre-Gold/final verification 与 manifest 同样不可覆盖。不得事后更换 BGE 主干、q25 sidecar eligibility、protected/unprotected placement、facet 定义、bootstrap 或 decision hierarchy。
 
 ## 5. 授权与暂停
 
@@ -193,7 +207,7 @@ Channel A/Channel B、Gold-free/Gold-only 的代码、输入、依赖和工件�
 - 不自行重新运行或覆盖已完成的 Stage4D Channel A、Channel B 和 official probe transaction。
 - 不自行重新运行或覆盖已完成的 Stage4E Gold-free、Gold evaluation 和 final verification transaction。
 - 不自行重新运行或覆盖已完成的 Stage4F Gold-free、Gold evaluation、final verification 和 Channel C transaction。
-- 不自行重新运行或覆盖已完成的 Stage4G 或 Stage4H 正式事务。
+- 不自行重新运行或覆盖已完成的 Stage4G、Stage4H 或 Stage4I 正式事务。
 
 ## 7. GitHub 与文件
 
@@ -205,4 +219,4 @@ Channel A/Channel B、Gold-free/Gold-only 的代码、输入、依赖和工件�
 
 ## 8. 下一科研门
 
-Stage4B-U1、Stage4C、Stage4D 和当前 controller 线均已停止或关闭，不自动创建 U2。Stage4E–4H 均已完成并冻结。下一科研门是尚未起草的 `Stage4I-FWF` full-wiki feasibility 实验卡，只能先定义索引、ANN、candidate reachability、延迟、成本与验证合同；full-wiki Gold、Stage4J、Reservation、Stage3B、U2、新生成器和新 controller 继续锁定。
+Stage4B-U1、Stage4C、Stage4D 和当前 controller 线均已停止或关闭，不自动创建 U2。Stage4E–4I 均已完成并冻结，当前没有已授权的下一科学阶段。full-wiki、Stage4J、Reservation、Stage3B、U2、新生成器、新 strong-retriever search 和新 controller 继续锁定；新研究先形成新的阶段级科学边界。

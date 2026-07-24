@@ -9,7 +9,7 @@
 - 多跳 RAG 的核心张力：Dense relevance、跨证据链补全与上下文成本。
 - 静态方法贡献：粒球组织、query-aware facet hyperedge、Dense prefix protection、bounded insertion。
 - controller 作为独立失败研究：资源下降不等于选择有效。
-- 明确贡献层级：retrieval evidence、negative controller evidence、mechanism diagnosis、Stage4E E2E validation、Stage4F cross-dataset replication、Stage4G one-additional-generator transfer test，以及 Stage4H component/strong-baseline boundary。
+- 明确贡献层级：retrieval evidence、negative controller evidence、mechanism diagnosis、Stage4E E2E validation、Stage4F cross-dataset replication、Stage4G one-additional-generator transfer test、Stage4H component/strong-baseline boundary，以及 Stage4I strong-dense sidecar complementarity test。
 
 ## 2. Method
 
@@ -38,6 +38,7 @@
 - Stage4F：预注册 MuSiQue train 新 ID 跨数据集复制；3,000-query official transaction 与独立 final verification 已完成。
 - Stage4G：完全复用 Stage4E/4F frozen inputs/rankings，只更换为一个事前指定的 Gemma official mobile-QAT 配置；数据集等权联合统计和独立 final verification 已完成。
 - Stage4H：新的 HotpotQA 1,000 + MuSiQue 1,500 零重叠边界；固定 Qwen；七个 P0 retrieval/ablation arms；四个 Holm-adjusted 主要比较；full main + 预哈希分层 subset rerun；final verification 已完成。
+- Stage4I：另一组 HotpotQA 1,000 + MuSiQue 1,500 零重叠边界；BGE 主排名 + MiniLM-HGRAG 独立 sidecar；protected/unprotected 相同插入集合；四臂、10,000-bootstrap、pre-hash subset 与 final verification 已完成。
 - 每阶段列出数据角色、Gold 隔离、复现绑定、样本/功效限制和停止规则。
 
 ## 4. Results
@@ -84,6 +85,17 @@ Stage4C 写 query-level composition；Stage4D 写 candidate labels、Task-C AURO
 - BM25/hybrid 全量报告但不触发 advancement；
 - 17,500-call main、1,400-call subset、Gold 隔离与 final independent verification。
 
+### 4.8 Strong-dense sidecar complementarity
+
+报告 Stage4I verified final：
+
+- Protected sidecar−BGE 等权 F1 `-0.00256 [-0.00998,0.00458]`，EM `-0.00233 [-0.00983,0.00467]`，核心结论 `STRONG_DENSE_COMPLEMENTARITY_INCONCLUSIVE`；
+- Protected−Unprotected 在完全相同插入集合下的等权 F1 `+0.01122 [0.00129,0.02104]`、EM `+0.01300 [0.00333,0.02283]`，`PROTECTED_PLACEMENT_SUPPORTED`；
+- Unprotected−BGE 等权 F1 `-0.01379 [-0.02440,-0.00339]`，作为 placement 机制的支持性证据；
+- Protected−NoFacet `-0.00743 [-0.01616,0.00132]`，`BGE_FACET_INCREMENT_INCONCLUSIVE`；
+- 10,000-call main、800-call stratified subset、Gold 隔离与 final independent verification；
+- added/displaced/net Gold 只作 post-decision 描述，不进入确认性判定。
+
 ## 5. Discussion
 
 - retrieval gain 在 HotpotQA 与 MuSiQue 两个冻结边界上转化为小幅 answer-F1 gain；讨论 evidence sufficiency、context ordering、generator utilization 与多数 query answer-F1 不变的现象。
@@ -93,6 +105,7 @@ Stage4C 写 query-level composition；Stage4D 写 candidate labels、Task-C AURO
 - 讨论 MuSiQue 上 negative generator interaction，但不得从该描述性结果推导模型架构优劣或调整 retrieval。
 - Stage4H 表明论文主张必须区分“相对历史 MiniLM Dense 的小幅增益”与“相对 BGE strong dense 的明确不足”；讨论强 encoder 能否吸收静态扩展所补充的信号。
 - facet-hyperedge 在冻结系统中有增量价值，但 protected insertion 的独立贡献不确定；不得把消融写成普遍因果机制。
+- Stage4I 表明把相同静态候选直接接到更强 BGE 主排名上没有获得明确核心增益；但相同候选集合的 protected placement 优于 unprotected placement。二者必须作为不同层级的结论。
 
 ## 6. Reproducibility and Integrity
 
@@ -117,12 +130,15 @@ Stage4C 写 query-level composition；Stage4D 写 candidate labels、Task-C AURO
 - Stage4H 仍是 closed-candidate；BGE negative 结果限制当前方法相对强检索器的竞争力。
 - flat-unit 对照没有公平定义，不能单独确认 granular-ball 结构；protected insertion 区间跨 0。
 - Stage4H 的 P1 效果—成本曲线因资源边界未运行，不能给出新的最优 prefix/budget。
+- Stage4I 只测试一个冻结 BGE large-en-v1.5 backbone、固定 Qwen 和 closed-candidate Top-20；核心区间跨 0，不能推断所有 strong retriever、full-wiki 或 open-domain 场景。
+- Stage4I 的 placement 结果不等于 sidecar 相对 BGE 的有效性；facet 在该 backbone 上仍未获得明确支持。
 
 ## 下一步论文材料
 
 - Figure：Dense 与 static q25 的 answer F1/EM paired difference；
 - Figure：retrieval CR change 与 answer F1 change 的 query-level joint audit（描述性，不作因果）；
 - Figure：Stage4E/4F Qwen 与 Stage4G Gemma 的 dataset-specific retrieval delta 及区间；只展示交互，不作模型能力排名。
-- 将 Stage4E/4F/4G 的 exact data/model/environment SHA、绝对指标、区间、context tokens、runtime、prompt、schema、decision gate、determinism 与 independent verification 整理为主文表和附录。
+- 将 Stage4E–4I 的 exact data/model/environment SHA、绝对指标、区间、context tokens、runtime、prompt、schema、decision gate、determinism 与 independent verification 整理为主文表和附录。
 - 将 Stage4H 七臂结果整理为主文消融/强基线表；正文明确保留 strong-dense negative、no-protection inconclusive 与 flat not-defined。
-- 下一阶段仅起草 `Stage4I-FWF` full-wiki feasibility：索引、ANN、candidate reachability、延迟、成本和可验证合同；不直接启动 full-wiki Gold。
+- 将 Stage4I 四臂结果整理为 strong-dense sidecar 表；正文把 core inconclusive、placement supported 和 facet inconclusive 分层呈现。
+- 当前不预设或启动下一正式科研阶段；full-wiki、Reservation、Stage3B、U2/controller 和新 generator/strong-dense search 继续保持锁定。
