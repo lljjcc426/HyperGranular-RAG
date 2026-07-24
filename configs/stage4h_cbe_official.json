@@ -1,6 +1,6 @@
 {
   "schema_version": "stage4h_cbe_v1",
-  "status": "STAGE4H_GOLDFREE_EMBEDDING_CACHES_FROZEN_MAIN_PENDING",
+  "status": "STAGE4H_GOLDFREE_MAIN_FROZEN_RERUN_SUBSET_PENDING",
   "official_execution": {
     "authorized": true,
     "authorization_date": "2026-07-24",
@@ -257,6 +257,22 @@
       "bytes": 275898280,
       "sha256": "26EE26A63B320A94ECF9ED3E7E8C9719FEB48BB4A44E44C318167F94E3657337"
     },
+    "predictions_main": {
+      "bytes": 3449765,
+      "sha256": "52B9276E93AF19820B8F2E358F54BE9CDF88D4A8C6A34020AF3EDC153470E310"
+    },
+    "prompt_audit_main": {
+      "bytes": 26702494,
+      "sha256": "B7B2D3E3846CD7406C4E646A0DC007F54A5CC3BBA863CAD9E0551F7AB9A5B507"
+    },
+    "rankings": {
+      "bytes": 22809912,
+      "sha256": "EAECD420CEDDFD0E670892E9B78B0D6D02BB3E9BE2A84BC36631C1D985C49822"
+    },
+    "retrieval_trace": {
+      "bytes": 1280228,
+      "sha256": "308D3FCF9B0D517548542C33BB241B2824446B68453697F83BC5CAA13796087F"
+    },
     "strong_embedding_cache": {
       "bytes": 667539988,
       "sha256": "653CB33F0FA3D253048845A983F1C1F7517DBFCCD69AC72496155FCC58B83E7E"
@@ -264,6 +280,10 @@
     "strong_dense_selection_manifest": {
       "bytes": 1836,
       "sha256": "262100E8767450D5D38E2A79F3629BBD5305A4FBE1FF367D7C952BA70898B711"
+    },
+    "telemetry_main": {
+      "bytes": 1366,
+      "sha256": "5B69B732D19A0C04337AFB05FA44362BF43977C2AB1BFD6ACF4D4DAC1520E164"
     }
   },
   "paths": {
