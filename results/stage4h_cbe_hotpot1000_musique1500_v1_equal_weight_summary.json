@@ -1,0 +1,321 @@
+{
+  "bootstrap_iterations": 10000,
+  "bootstrap_seed": 20260725,
+  "comparisons": {
+    "BM25_TOP20": {
+      "contrast": "STATIC_Q25_FULL - BM25_TOP20",
+      "dataset_equal_weight": {
+        "delta_answer_em": {
+          "ci95_lower": -0.024833333333333336,
+          "ci95_upper": 0.006166666666666667,
+          "point": -0.009500000000000001
+        },
+        "delta_answer_f1": {
+          "ci95_lower": -0.022594058337913458,
+          "ci95_upper": 0.007730291021238081,
+          "one_sided_positive_p": 0.832016798320168,
+          "point": -0.007546384636305455
+        }
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "delta_answer_em": {
+            "ci95_lower": -0.047,
+            "ci95_upper": 0.005,
+            "point": -0.021
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.041984275906675556,
+            "ci95_upper": 0.007916172981781286,
+            "one_sided_positive_p": 0.9139086091390861,
+            "point": -0.017359032856434538
+          }
+        },
+        "musique_ans_v1_0_train": {
+          "delta_answer_em": {
+            "ci95_lower": -0.014666666666666666,
+            "ci95_upper": 0.018666666666666668,
+            "point": 0.002
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.015044969294842152,
+            "ci95_upper": 0.019569938137295573,
+            "one_sided_positive_p": 0.40455954404559547,
+            "point": 0.0022662635838236276
+          }
+        }
+      },
+      "outcome": "FULL_REPORT_SUPPORTING_NO_ADVANCEMENT",
+      "query_weighted": {
+        "delta_answer_em_point": -0.0072,
+        "delta_answer_f1_point": -0.005583854992279641,
+        "interpretation": "DESCRIPTIVE_ONLY"
+      }
+    },
+    "DENSE_BM25_HYBRID_TOP20": {
+      "contrast": "STATIC_Q25_FULL - DENSE_BM25_HYBRID_TOP20",
+      "dataset_equal_weight": {
+        "delta_answer_em": {
+          "ci95_lower": -0.016666666666666666,
+          "ci95_upper": 0.008666666666666666,
+          "point": -0.004
+        },
+        "delta_answer_f1": {
+          "ci95_lower": -0.015911614540638306,
+          "ci95_upper": 0.009415566970715744,
+          "one_sided_positive_p": 0.6867313268673133,
+          "point": -0.003203619303303144
+        }
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "delta_answer_em": {
+            "ci95_lower": -0.029,
+            "ci95_upper": 0.013,
+            "point": -0.008
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.029409755106005107,
+            "ci95_upper": 0.011082967865467861,
+            "one_sided_positive_p": 0.822017798220178,
+            "point": -0.009416968297403083
+          }
+        },
+        "musique_ans_v1_0_train": {
+          "delta_answer_em": {
+            "ci95_lower": -0.014666666666666666,
+            "ci95_upper": 0.014,
+            "point": 0.0
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.012242863425330637,
+            "ci95_upper": 0.01807570318958712,
+            "one_sided_positive_p": 0.35466453354664534,
+            "point": 0.003009729690796795
+          }
+        }
+      },
+      "outcome": "FULL_REPORT_SUPPORTING_NO_ADVANCEMENT",
+      "query_weighted": {
+        "delta_answer_em_point": -0.0032,
+        "delta_answer_f1_point": -0.0019609495044831554,
+        "interpretation": "DESCRIPTIVE_ONLY"
+      }
+    },
+    "DENSE_TOP20": {
+      "contrast": "STATIC_Q25_FULL - DENSE_TOP20",
+      "dataset_equal_weight": {
+        "delta_answer_em": {
+          "ci95_lower": 0.0008333333333333334,
+          "ci95_upper": 0.017833333333333333,
+          "point": 0.009333333333333334
+        },
+        "delta_answer_f1": {
+          "ci95_lower": 0.004914009111820089,
+          "ci95_upper": 0.022325349137863187,
+          "holm_adjusted_p": 0.0051994800519948,
+          "one_sided_positive_p": 0.0012998700129987,
+          "point": 0.013568502134698303
+        }
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "delta_answer_em": {
+            "ci95_lower": 0.002,
+            "ci95_upper": 0.03,
+            "point": 0.016
+          },
+          "delta_answer_f1": {
+            "ci95_lower": 0.005697716727716728,
+            "ci95_upper": 0.03565174783549783,
+            "one_sided_positive_p": 0.0038996100389961006,
+            "point": 0.020696114996114998
+          }
+        },
+        "musique_ans_v1_0_train": {
+          "delta_answer_em": {
+            "ci95_lower": -0.006666666666666667,
+            "ci95_upper": 0.011333333333333334,
+            "point": 0.0026666666666666666
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.0030115489911880693,
+            "ci95_upper": 0.015684265219680568,
+            "one_sided_positive_p": 0.0932906709329067,
+            "point": 0.0064408892732816065
+          }
+        }
+      },
+      "outcome": "SUPPORTED",
+      "query_weighted": {
+        "delta_answer_em_point": 0.008,
+        "delta_answer_f1_point": 0.012142979562414962,
+        "interpretation": "DESCRIPTIVE_ONLY"
+      }
+    },
+    "Q25_NO_FACET_HYPEREDGE": {
+      "contrast": "STATIC_Q25_FULL - Q25_NO_FACET_HYPEREDGE",
+      "dataset_equal_weight": {
+        "delta_answer_em": {
+          "ci95_lower": -0.00016666666666666653,
+          "ci95_upper": 0.019166666666666665,
+          "point": 0.0095
+        },
+        "delta_answer_f1": {
+          "ci95_lower": 0.00340838044254275,
+          "ci95_upper": 0.02342573799950633,
+          "holm_adjusted_p": 0.011998800119988001,
+          "one_sided_positive_p": 0.003999600039996,
+          "point": 0.013357917602763414
+        }
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "delta_answer_em": {
+            "ci95_lower": 0.003,
+            "ci95_upper": 0.036,
+            "point": 0.019
+          },
+          "delta_answer_f1": {
+            "ci95_lower": 0.007754938235606392,
+            "ci95_upper": 0.042136610792589055,
+            "one_sided_positive_p": 0.0018998100189981002,
+            "point": 0.024789538267927014
+          }
+        },
+        "musique_ans_v1_0_train": {
+          "delta_answer_em": {
+            "ci95_lower": -0.009333333333333334,
+            "ci95_upper": 0.009333333333333334,
+            "point": 0.0
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.008412686445504317,
+            "ci95_upper": 0.012057043472379717,
+            "one_sided_positive_p": 0.3524647535246475,
+            "point": 0.0019262969375998151
+          }
+        }
+      },
+      "outcome": "SUPPORTED",
+      "query_weighted": {
+        "delta_answer_em_point": 0.0076,
+        "delta_answer_f1_point": 0.011071593469730696,
+        "interpretation": "DESCRIPTIVE_ONLY"
+      }
+    },
+    "Q25_NO_PROTECTION": {
+      "contrast": "STATIC_Q25_FULL - Q25_NO_PROTECTION",
+      "dataset_equal_weight": {
+        "delta_answer_em": {
+          "ci95_lower": -0.009833333333333335,
+          "ci95_upper": 0.011333333333333334,
+          "point": 0.0006666666666666666
+        },
+        "delta_answer_f1": {
+          "ci95_lower": -0.006745598437691575,
+          "ci95_upper": 0.013893057862104112,
+          "holm_adjusted_p": 0.49695030496950304,
+          "one_sided_positive_p": 0.24847515248475152,
+          "point": 0.0035400399583050907
+        }
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "delta_answer_em": {
+            "ci95_lower": -0.018,
+            "ci95_upper": 0.018,
+            "point": 0.0
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.010953211843711843,
+            "ci95_upper": 0.02441028965478965,
+            "one_sided_positive_p": 0.22967703229677033,
+            "point": 0.006667097347097348
+          }
+        },
+        "musique_ans_v1_0_train": {
+          "delta_answer_em": {
+            "ci95_lower": -0.01,
+            "ci95_upper": 0.012666666666666666,
+            "point": 0.0013333333333333333
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.01108860820318578,
+            "ci95_upper": 0.011867442394207096,
+            "one_sided_positive_p": 0.47515248475152483,
+            "point": 0.000412982569512834
+          }
+        }
+      },
+      "outcome": "INCONCLUSIVE",
+      "query_weighted": {
+        "delta_answer_em_point": 0.0008,
+        "delta_answer_f1_point": 0.002914628480546639,
+        "interpretation": "DESCRIPTIVE_ONLY"
+      }
+    },
+    "STRONG_DENSE_TOP20": {
+      "contrast": "STATIC_Q25_FULL - STRONG_DENSE_TOP20",
+      "dataset_equal_weight": {
+        "delta_answer_em": {
+          "ci95_lower": -0.05483333333333333,
+          "ci95_upper": -0.026833333333333334,
+          "point": -0.04066666666666667
+        },
+        "delta_answer_f1": {
+          "ci95_lower": -0.05393311667777282,
+          "ci95_upper": -0.026211352078037622,
+          "holm_adjusted_p": 1.0,
+          "one_sided_positive_p": 1.0,
+          "point": -0.03997911063667102
+        }
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "delta_answer_em": {
+            "ci95_lower": -0.072,
+            "ci95_upper": -0.024,
+            "point": -0.048
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.06943255650161669,
+            "ci95_upper": -0.022446807536070763,
+            "one_sided_positive_p": 1.0,
+            "point": -0.045926330890015306
+          }
+        },
+        "musique_ans_v1_0_train": {
+          "delta_answer_em": {
+            "ci95_lower": -0.04733333333333333,
+            "ci95_upper": -0.018666666666666668,
+            "point": -0.03333333333333333
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.04908391764376765,
+            "ci95_upper": -0.018683518996682833,
+            "one_sided_positive_p": 1.0,
+            "point": -0.034031890383326734
+          }
+        }
+      },
+      "outcome": "NEGATIVE",
+      "query_weighted": {
+        "delta_answer_em_point": -0.0392,
+        "delta_answer_f1_point": -0.03878966658600217,
+        "interpretation": "DESCRIPTIVE_ONLY"
+      }
+    }
+  },
+  "dataset_weights": {
+    "hotpotqa_train_distractor_v1_1": 0.5,
+    "musique_ans_v1_0_train": 0.5
+  },
+  "holm_family": [
+    "DENSE_TOP20",
+    "STRONG_DENSE_TOP20",
+    "Q25_NO_PROTECTION",
+    "Q25_NO_FACET_HYPEREDGE"
+  ],
+  "status": "STAGE4H_STATISTICS_COMPLETE_PENDING_VERIFICATION"
+}

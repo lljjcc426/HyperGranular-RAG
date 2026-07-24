@@ -1,0 +1,106 @@
+{
+  "groups": {
+    "hotpotqa_train_distractor_v1_1": {
+      "level=easy": {
+        "count": 207,
+        "method_answer_f1": {
+          "BM25_TOP20": 0.5565715835604905,
+          "DENSE_BM25_HYBRID_TOP20": 0.5438109930863554,
+          "DENSE_TOP20": 0.5291946378902901,
+          "Q25_NO_FACET_HYPEREDGE": 0.5082143031418394,
+          "Q25_NO_PROTECTION": 0.5603065211760864,
+          "STATIC_Q25_FULL": 0.5535175774306209,
+          "STRONG_DENSE_TOP20": 0.561909220808125
+        }
+      },
+      "level=hard": {
+        "count": 165,
+        "method_answer_f1": {
+          "BM25_TOP20": 0.3980116852844126,
+          "DENSE_BM25_HYBRID_TOP20": 0.3772399317853863,
+          "DENSE_TOP20": 0.3581340881340881,
+          "Q25_NO_FACET_HYPEREDGE": 0.3751037851037851,
+          "Q25_NO_PROTECTION": 0.3927840307840308,
+          "STATIC_Q25_FULL": 0.3804473304473305,
+          "STRONG_DENSE_TOP20": 0.3950754296208841
+        }
+      },
+      "level=medium": {
+        "count": 628,
+        "method_answer_f1": {
+          "BM25_TOP20": 0.49844190338659,
+          "DENSE_BM25_HYBRID_TOP20": 0.4954589686675674,
+          "DENSE_TOP20": 0.4573458578945286,
+          "Q25_NO_FACET_HYPEREDGE": 0.45328456174981085,
+          "Q25_NO_PROTECTION": 0.4603261401741739,
+          "STATIC_Q25_FULL": 0.47642162466137816,
+          "STRONG_DENSE_TOP20": 0.542943319481817
+        }
+      },
+      "type=bridge": {
+        "count": 795,
+        "method_answer_f1": {
+          "BM25_TOP20": 0.5514654646000141,
+          "DENSE_BM25_HYBRID_TOP20": 0.5440359116774212,
+          "DENSE_TOP20": 0.5019079184419628,
+          "Q25_NO_FACET_HYPEREDGE": 0.4928233761141641,
+          "Q25_NO_PROTECTION": 0.5158929411062306,
+          "STATIC_Q25_FULL": 0.5256404053819969,
+          "STRONG_DENSE_TOP20": 0.5862136986140126
+        }
+      },
+      "type=comparison": {
+        "count": 205,
+        "method_answer_f1": {
+          "BM25_TOP20": 0.2706766675059358,
+          "DENSE_BM25_HYBRID_TOP20": 0.2607470578202285,
+          "DENSE_TOP20": 0.27722838137472283,
+          "Q25_NO_FACET_HYPEREDGE": 0.29249076127124907,
+          "Q25_NO_PROTECTION": 0.29142801372069665,
+          "STATIC_Q25_FULL": 0.28614929785661497,
+          "STRONG_DENSE_TOP20": 0.27527399429838456
+        }
+      }
+    },
+    "musique_ans_v1_0_train": {
+      "hop_count=2": {
+        "count": 1080,
+        "method_answer_f1": {
+          "BM25_TOP20": 0.1644996130063527,
+          "DENSE_BM25_HYBRID_TOP20": 0.1693752505797337,
+          "DENSE_TOP20": 0.16824153755284021,
+          "Q25_NO_FACET_HYPEREDGE": 0.16907795445115673,
+          "Q25_NO_PROTECTION": 0.16959716929161373,
+          "STATIC_Q25_FULL": 0.17445301230603635,
+          "STRONG_DENSE_TOP20": 0.20722015585841358
+        }
+      },
+      "hop_count=3": {
+        "count": 342,
+        "method_answer_f1": {
+          "BM25_TOP20": 0.13102834701131913,
+          "DENSE_BM25_HYBRID_TOP20": 0.1321888441986481,
+          "DENSE_TOP20": 0.12481361231361231,
+          "Q25_NO_FACET_HYPEREDGE": 0.14171888053467,
+          "Q25_NO_PROTECTION": 0.15346858307384623,
+          "STATIC_Q25_FULL": 0.14221987306352632,
+          "STRONG_DENSE_TOP20": 0.16282867255858943
+        }
+      },
+      "hop_count=4": {
+        "count": 78,
+        "method_answer_f1": {
+          "BM25_TOP20": 0.1717948717948718,
+          "DENSE_BM25_HYBRID_TOP20": 0.0849002849002849,
+          "DENSE_TOP20": 0.06695156695156695,
+          "Q25_NO_FACET_HYPEREDGE": 0.06806639415335067,
+          "Q25_NO_PROTECTION": 0.038461538461538464,
+          "STATIC_Q25_FULL": 0.02849002849002849,
+          "STRONG_DENSE_TOP20": 0.13888888888888887
+        }
+      }
+    }
+  },
+  "interpretation": "POST_DECISION_DESCRIPTIVE_ONLY_NO_SUBGROUP_CONFIRMATION",
+  "status": "STAGE4H_CHANNEL_C_DESCRIPTIVE_COMPLETE"
+}

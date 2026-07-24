@@ -1,0 +1,13 @@
+{
+  "decisions": {
+    "FACET_HYPEREDGE_ABLATION": "SUPPORTED",
+    "FULL_METHOD_VS_DENSE": "SUPPORTED",
+    "FULL_METHOD_VS_STRONG_DENSE": "NEGATIVE",
+    "GRANULAR_BALL_ABLATION": "NOT_FAIRLY_DEFINED",
+    "PROTECTED_INSERTION_ABLATION": "INCONCLUSIVE"
+  },
+  "flat_unit_reason": "No unique seed, edge-budget, radius, compactness, or boundary mapping exists from frozen granular balls to flat units.",
+  "interpretation_boundary": "Closed-candidate HotpotQA/MuSiQue with fixed Qwen generator; no full-wiki, open-domain, reservation, Stage3B, U2, or controller inference.",
+  "schema_version": "stage4h_cbe_v1",
+  "status": "STAGE4H_SCIENTIFIC_DECISION_FROZEN_PENDING_FINAL_VERIFICATION"
+}
