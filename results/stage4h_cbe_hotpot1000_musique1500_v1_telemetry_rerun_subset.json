@@ -1,0 +1,41 @@
+{
+  "embedding_cache": {
+    "minilm": {
+      "bytes": 275898280,
+      "sha256": "26EE26A63B320A94ECF9ED3E7E8C9719FEB48BB4A44E44C318167F94E3657337"
+    },
+    "strong_dense": {
+      "bytes": 667539988,
+      "sha256": "653CB33F0FA3D253048845A983F1C1F7517DBFCCD69AC72496155FCC58B83E7E"
+    }
+  },
+  "embedding_load_or_build_seconds": {
+    "minilm": 0.6518598000002385,
+    "strong_dense": 1.8196027000012691
+  },
+  "failed_calls": 0,
+  "generated_in_this_process": 1400,
+  "generation_calls": 1400,
+  "generation_seconds_by_method": {
+    "BM25_TOP20": 73.27201559998866,
+    "DENSE_BM25_HYBRID_TOP20": 71.44009760002518,
+    "DENSE_TOP20": 72.98577000001751,
+    "Q25_NO_FACET_HYPEREDGE": 70.27674830000979,
+    "Q25_NO_PROTECTION": 70.7450554000061,
+    "STATIC_Q25_FULL": 75.3602546999864,
+    "STRONG_DENSE_TOP20": 73.48584179999307
+  },
+  "gpu_peak_memory_bytes": 3490882560,
+  "query_count": 200,
+  "retrieval_seconds_by_method": {
+    "BM25_TOP20": 2.4719362999894656,
+    "DENSE_BM25_HYBRID_TOP20": 0.44948299982206663,
+    "Q25_NO_FACET_HYPEREDGE": 9.716375699947093,
+    "STATIC_Q25_FULL_AND_DENSE_TOP20": 10.328153200000088,
+    "STRONG_DENSE_TOP20": 0.37221979994501453
+  },
+  "run_id": "rerun_subset",
+  "schema_version": "stage4h_cbe_v1",
+  "status": "STAGE4H_GOLDFREE_RUN_COMPLETE_PENDING_VERIFICATION",
+  "wall_time_seconds_this_process": 541.3904713000011
+}
