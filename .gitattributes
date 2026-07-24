@@ -28,3 +28,9 @@ results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_equal_weight_summary.json -t
 results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_scientific_decision.json -text
 results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_final_verification.json -text
 results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_artifact_manifest.json -text
+configs/stage4h_cbe_official.json -text
+docs/STAGE4H_CBE_EXPERIMENT_CARD.md -text
+requirements-stage4h.txt -text
+scripts/stage4h_cbe_*.py -text
+tests/test_stage4h_cbe.py -text
+results/stage4h_cbe_* -text
