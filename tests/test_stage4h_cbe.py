@@ -193,6 +193,27 @@ class DeterminismAndStatisticsTests(unittest.TestCase):
         runner_rebuilt = runner._normalize_embeddings(matrix)
         np.testing.assert_array_equal(verifier_rebuilt, runner_rebuilt)
 
+    def test_verifier_prompt_projection_excludes_runtime_input_ids(self) -> None:
+        projected = verifier._prompt_audit_projection(
+            {
+                "evidence_unit_ids": ["u1"],
+                "input_ids": [1, 2, 3],
+                "input_token_count": 3,
+                "prompt_sha256": "A" * 64,
+                "rank1_truncated": False,
+            }
+        )
+        self.assertNotIn("input_ids", projected)
+        self.assertEqual(
+            set(projected),
+            {
+                "evidence_unit_ids",
+                "input_token_count",
+                "prompt_sha256",
+                "rank1_truncated",
+            },
+        )
+
     def test_rerun_selection_is_deterministic_and_stratified(self) -> None:
         queries = []
         for dataset in common.DATASETS:

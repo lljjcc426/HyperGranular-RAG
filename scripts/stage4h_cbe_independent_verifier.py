@@ -259,6 +259,15 @@ def verify_deterministic_subset(
     }
 
 
+def _prompt_audit_projection(prompt: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "evidence_unit_ids": prompt.get("evidence_unit_ids"),
+        "input_token_count": prompt.get("input_token_count"),
+        "prompt_sha256": prompt.get("prompt_sha256"),
+        "rank1_truncated": prompt.get("rank1_truncated"),
+    }
+
+
 def verify_prompts(
     config: dict[str, Any],
     units: list[dict[str, Any]],
@@ -282,19 +291,16 @@ def verify_prompts(
     for query in queries:
         for method in METHODS:
             ranked_ids = ranking_by_query[query["query_id"]]["methods"][method]
-            expected = build_prompt(
-                tokenizer,
-                query["question"],
-                [units_by_id[value] for value in ranked_ids],
-                4096,
+            expected = _prompt_audit_projection(
+                build_prompt(
+                    tokenizer,
+                    query["question"],
+                    [units_by_id[value] for value in ranked_ids],
+                    4096,
+                )
             )
             actual = prompt_map[(query["query_id"], method)]
-            projected = {
-                "evidence_unit_ids": actual.get("evidence_unit_ids"),
-                "input_token_count": actual.get("input_token_count"),
-                "prompt_sha256": actual.get("prompt_sha256"),
-                "rank1_truncated": actual.get("rank1_truncated"),
-            }
+            projected = _prompt_audit_projection(actual)
             if projected != expected:
                 raise ValueError(f"{query['query_id']}/{method}: prompt reconstruction differs")
 
