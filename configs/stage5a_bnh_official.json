@@ -1,6 +1,6 @@
 {
   "schema_version": "stage5a_bnh_v1",
-  "status": "STAGE5A_DEVELOPMENT_PRE_GOLD_VERIFIED_DEVELOPMENT_GOLD_EVALUATION_AUTHORIZED",
+  "status": "STAGE5A_DEVELOPMENT_SELECTION_VERIFIED_CONFIRMATION_RANKINGS_AUTHORIZED",
   "official_execution": {
     "authorized": true,
     "authorization_date": "2026-07-24",
@@ -376,6 +376,22 @@
     "development_verified_pregold": {
       "bytes": 2005,
       "sha256": "051EC810411DCEA205F5E65ECFA1688C21E0864344A218848FF1FA09F74BF5E5"
+    },
+    "development_query_audit": {
+      "bytes": 2702476,
+      "sha256": "DDEB13359F7B58D3B8459421EB3D209D149C82A2BF0C88E5FD4851C649719C6B"
+    },
+    "development_summary": {
+      "bytes": 22703,
+      "sha256": "071800D16F7622905BF6D42418D9159EBFD629196234A55F11887CC04B20F132"
+    },
+    "development_selected_config": {
+      "bytes": 593,
+      "sha256": "9AE26DB0CDECDDD234BACD4AF67075F84B3E85529E4F700DBB34B90E16DDDC75"
+    },
+    "development_final_verification": {
+      "bytes": 132,
+      "sha256": "52C705B7A5FF53ACDC93CFAC70775CEC68A20F7C0B721B454166B801CFE64644"
     }
   },
   "paths": {

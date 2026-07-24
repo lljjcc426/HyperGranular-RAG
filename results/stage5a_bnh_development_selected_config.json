@@ -1,0 +1,18 @@
+{
+  "development_summary_status": "STAGE5A_DEVELOPMENT_EVALUATION_COMPLETE",
+  "selected_config": {
+    "config_id": "C10",
+    "facet_gate": "BROAD",
+    "insert_budget": 4,
+    "leaf_size": 6,
+    "unit_score_percentile": 0.5
+  },
+  "selection_reconstruction": {
+    "best_equal_weight_f1": 0.005032199826317488,
+    "near_tie_threshold": 0.002,
+    "selected_equal_weight_em": 0.0020000000000000018,
+    "selected_equal_weight_f1": 0.0031433109374285895,
+    "selected_mean_incremental_input_tokens": -1.1273333333333333
+  },
+  "status": "STAGE5A_DEVELOPMENT_UNIQUE_CONFIGURATION_FROZEN"
+}

@@ -1,0 +1,630 @@
+{
+  "candidate_config_count": 16,
+  "config_summaries": {
+    "C01": {
+      "config": {
+        "config_id": "C01",
+        "facet_gate": "BROAD",
+        "insert_budget": 2,
+        "leaf_size": 4,
+        "unit_score_percentile": 0.5
+      },
+      "dataset_equal_weight_delta_answer_em": 0.0016666666666666705,
+      "dataset_equal_weight_delta_answer_f1": 0.002493939393939451,
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "baseline_answer_em": 0.432,
+          "baseline_answer_f1": 0.5023555000555,
+          "delta_answer_em": 0.0020000000000000018,
+          "delta_answer_f1": 0.002000000000000113,
+          "mean_incremental_input_tokens": -1.342,
+          "protected_answer_em": 0.434,
+          "protected_answer_f1": 0.5043555000555001,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "baseline_answer_em": 0.11733333333333333,
+          "baseline_answer_f1": 0.1549015937411078,
+          "delta_answer_em": 0.0013333333333333391,
+          "delta_answer_f1": 0.0029878787878787894,
+          "mean_incremental_input_tokens": -1.4973333333333334,
+          "protected_answer_em": 0.11866666666666667,
+          "protected_answer_f1": 0.15788947252898658,
+          "query_count": 750
+        }
+      },
+      "directional_conflict": false,
+      "em_guard_pass": true,
+      "geometry_feasible": true,
+      "mean_incremental_input_tokens": -1.4196666666666666,
+      "selection_eligible": true
+    },
+    "C02": {
+      "config": {
+        "config_id": "C02",
+        "facet_gate": "BROAD",
+        "insert_budget": 4,
+        "leaf_size": 4,
+        "unit_score_percentile": 0.5
+      },
+      "dataset_equal_weight_delta_answer_em": 0.0040000000000000036,
+      "dataset_equal_weight_delta_answer_f1": 0.005032199826317488,
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "baseline_answer_em": 0.432,
+          "baseline_answer_f1": 0.5023555000555,
+          "delta_answer_em": 0.0040000000000000036,
+          "delta_answer_f1": 0.0040000000000000036,
+          "mean_incremental_input_tokens": -1.218,
+          "protected_answer_em": 0.436,
+          "protected_answer_f1": 0.5063555000555,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "baseline_answer_em": 0.11733333333333333,
+          "baseline_answer_f1": 0.1549015937411078,
+          "delta_answer_em": 0.0040000000000000036,
+          "delta_answer_f1": 0.006064399652634972,
+          "mean_incremental_input_tokens": 0.20133333333333334,
+          "protected_answer_em": 0.12133333333333333,
+          "protected_answer_f1": 0.16096599339374276,
+          "query_count": 750
+        }
+      },
+      "directional_conflict": false,
+      "em_guard_pass": true,
+      "geometry_feasible": true,
+      "mean_incremental_input_tokens": -0.5083333333333333,
+      "selection_eligible": true
+    },
+    "C03": {
+      "config": {
+        "config_id": "C03",
+        "facet_gate": "BROAD",
+        "insert_budget": 2,
+        "leaf_size": 4,
+        "unit_score_percentile": 0.75
+      },
+      "dataset_equal_weight_delta_answer_em": 0.0,
+      "dataset_equal_weight_delta_answer_f1": 0.00033333333333333826,
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "baseline_answer_em": 0.432,
+          "baseline_answer_f1": 0.5023555000555,
+          "delta_answer_em": 0.0,
+          "delta_answer_f1": 0.0,
+          "mean_incremental_input_tokens": 0.0,
+          "protected_answer_em": 0.432,
+          "protected_answer_f1": 0.5023555000555,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "baseline_answer_em": 0.11733333333333333,
+          "baseline_answer_f1": 0.1549015937411078,
+          "delta_answer_em": 0.0,
+          "delta_answer_f1": 0.0006666666666666765,
+          "mean_incremental_input_tokens": -0.04933333333333333,
+          "protected_answer_em": 0.11733333333333333,
+          "protected_answer_f1": 0.15556826040777447,
+          "query_count": 750
+        }
+      },
+      "directional_conflict": false,
+      "em_guard_pass": true,
+      "geometry_feasible": false,
+      "mean_incremental_input_tokens": -0.024666666666666667,
+      "selection_eligible": false
+    },
+    "C04": {
+      "config": {
+        "config_id": "C04",
+        "facet_gate": "BROAD",
+        "insert_budget": 4,
+        "leaf_size": 4,
+        "unit_score_percentile": 0.75
+      },
+      "dataset_equal_weight_delta_answer_em": 0.0,
+      "dataset_equal_weight_delta_answer_f1": 0.00033333333333333826,
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "baseline_answer_em": 0.432,
+          "baseline_answer_f1": 0.5023555000555,
+          "delta_answer_em": 0.0,
+          "delta_answer_f1": 0.0,
+          "mean_incremental_input_tokens": 0.0,
+          "protected_answer_em": 0.432,
+          "protected_answer_f1": 0.5023555000555,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "baseline_answer_em": 0.11733333333333333,
+          "baseline_answer_f1": 0.1549015937411078,
+          "delta_answer_em": 0.0,
+          "delta_answer_f1": 0.0006666666666666765,
+          "mean_incremental_input_tokens": -0.084,
+          "protected_answer_em": 0.11733333333333333,
+          "protected_answer_f1": 0.15556826040777447,
+          "query_count": 750
+        }
+      },
+      "directional_conflict": false,
+      "em_guard_pass": true,
+      "geometry_feasible": false,
+      "mean_incremental_input_tokens": -0.042,
+      "selection_eligible": false
+    },
+    "C05": {
+      "config": {
+        "config_id": "C05",
+        "facet_gate": "STRICT",
+        "insert_budget": 2,
+        "leaf_size": 4,
+        "unit_score_percentile": 0.5
+      },
+      "dataset_equal_weight_delta_answer_em": 0.0013333333333333322,
+      "dataset_equal_weight_delta_answer_f1": 0.0022648795648796266,
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "baseline_answer_em": 0.432,
+          "baseline_answer_f1": 0.5023555000555,
+          "delta_answer_em": 0.0,
+          "delta_answer_f1": 1.1102230246251565e-16,
+          "mean_incremental_input_tokens": -0.898,
+          "protected_answer_em": 0.432,
+          "protected_answer_f1": 0.5023555000555001,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "baseline_answer_em": 0.11733333333333333,
+          "baseline_answer_f1": 0.1549015937411078,
+          "delta_answer_em": 0.0026666666666666644,
+          "delta_answer_f1": 0.004529759129759142,
+          "mean_incremental_input_tokens": -1.4413333333333334,
+          "protected_answer_em": 0.12,
+          "protected_answer_f1": 0.15943135287086693,
+          "query_count": 750
+        }
+      },
+      "directional_conflict": false,
+      "em_guard_pass": true,
+      "geometry_feasible": false,
+      "mean_incremental_input_tokens": -1.1696666666666666,
+      "selection_eligible": false
+    },
+    "C06": {
+      "config": {
+        "config_id": "C06",
+        "facet_gate": "STRICT",
+        "insert_budget": 4,
+        "leaf_size": 4,
+        "unit_score_percentile": 0.5
+      },
+      "dataset_equal_weight_delta_answer_em": 0.0040000000000000036,
+      "dataset_equal_weight_delta_answer_f1": 0.004287101787101788,
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "baseline_answer_em": 0.432,
+          "baseline_answer_f1": 0.5023555000555,
+          "delta_answer_em": 0.0040000000000000036,
+          "delta_answer_f1": 0.0040000000000000036,
+          "mean_incremental_input_tokens": -0.968,
+          "protected_answer_em": 0.436,
+          "protected_answer_f1": 0.5063555000555,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "baseline_answer_em": 0.11733333333333333,
+          "baseline_answer_f1": 0.1549015937411078,
+          "delta_answer_em": 0.0040000000000000036,
+          "delta_answer_f1": 0.0045742035742035725,
+          "mean_incremental_input_tokens": -0.78,
+          "protected_answer_em": 0.12133333333333333,
+          "protected_answer_f1": 0.15947579731531136,
+          "query_count": 750
+        }
+      },
+      "directional_conflict": false,
+      "em_guard_pass": true,
+      "geometry_feasible": false,
+      "mean_incremental_input_tokens": -0.874,
+      "selection_eligible": false
+    },
+    "C07": {
+      "config": {
+        "config_id": "C07",
+        "facet_gate": "STRICT",
+        "insert_budget": 2,
+        "leaf_size": 4,
+        "unit_score_percentile": 0.75
+      },
+      "dataset_equal_weight_delta_answer_em": 0.0,
+      "dataset_equal_weight_delta_answer_f1": 0.00033333333333333826,
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "baseline_answer_em": 0.432,
+          "baseline_answer_f1": 0.5023555000555,
+          "delta_answer_em": 0.0,
+          "delta_answer_f1": 0.0,
+          "mean_incremental_input_tokens": 0.0,
+          "protected_answer_em": 0.432,
+          "protected_answer_f1": 0.5023555000555,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "baseline_answer_em": 0.11733333333333333,
+          "baseline_answer_f1": 0.1549015937411078,
+          "delta_answer_em": 0.0,
+          "delta_answer_f1": 0.0006666666666666765,
+          "mean_incremental_input_tokens": 0.034666666666666665,
+          "protected_answer_em": 0.11733333333333333,
+          "protected_answer_f1": 0.15556826040777447,
+          "query_count": 750
+        }
+      },
+      "directional_conflict": false,
+      "em_guard_pass": true,
+      "geometry_feasible": false,
+      "mean_incremental_input_tokens": 0.017333333333333333,
+      "selection_eligible": false
+    },
+    "C08": {
+      "config": {
+        "config_id": "C08",
+        "facet_gate": "STRICT",
+        "insert_budget": 4,
+        "leaf_size": 4,
+        "unit_score_percentile": 0.75
+      },
+      "dataset_equal_weight_delta_answer_em": 0.0,
+      "dataset_equal_weight_delta_answer_f1": 0.00033333333333333826,
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "baseline_answer_em": 0.432,
+          "baseline_answer_f1": 0.5023555000555,
+          "delta_answer_em": 0.0,
+          "delta_answer_f1": 0.0,
+          "mean_incremental_input_tokens": 0.0,
+          "protected_answer_em": 0.432,
+          "protected_answer_f1": 0.5023555000555,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "baseline_answer_em": 0.11733333333333333,
+          "baseline_answer_f1": 0.1549015937411078,
+          "delta_answer_em": 0.0,
+          "delta_answer_f1": 0.0006666666666666765,
+          "mean_incremental_input_tokens": 0.04933333333333333,
+          "protected_answer_em": 0.11733333333333333,
+          "protected_answer_f1": 0.15556826040777447,
+          "query_count": 750
+        }
+      },
+      "directional_conflict": false,
+      "em_guard_pass": true,
+      "geometry_feasible": false,
+      "mean_incremental_input_tokens": 0.024666666666666667,
+      "selection_eligible": false
+    },
+    "C09": {
+      "config": {
+        "config_id": "C09",
+        "facet_gate": "BROAD",
+        "insert_budget": 2,
+        "leaf_size": 6,
+        "unit_score_percentile": 0.5
+      },
+      "dataset_equal_weight_delta_answer_em": 0.0010000000000000009,
+      "dataset_equal_weight_delta_answer_f1": 0.0024434343434344002,
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "baseline_answer_em": 0.432,
+          "baseline_answer_f1": 0.5023555000555,
+          "delta_answer_em": 0.0020000000000000018,
+          "delta_answer_f1": 0.002000000000000113,
+          "mean_incremental_input_tokens": -0.784,
+          "protected_answer_em": 0.434,
+          "protected_answer_f1": 0.5043555000555001,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "baseline_answer_em": 0.11733333333333333,
+          "baseline_answer_f1": 0.1549015937411078,
+          "delta_answer_em": 0.0,
+          "delta_answer_f1": 0.0028868686868686877,
+          "mean_incremental_input_tokens": -1.7853333333333334,
+          "protected_answer_em": 0.11733333333333333,
+          "protected_answer_f1": 0.15778846242797648,
+          "query_count": 750
+        }
+      },
+      "directional_conflict": false,
+      "em_guard_pass": true,
+      "geometry_feasible": true,
+      "mean_incremental_input_tokens": -1.2846666666666668,
+      "selection_eligible": true
+    },
+    "C10": {
+      "config": {
+        "config_id": "C10",
+        "facet_gate": "BROAD",
+        "insert_budget": 4,
+        "leaf_size": 6,
+        "unit_score_percentile": 0.5
+      },
+      "dataset_equal_weight_delta_answer_em": 0.0020000000000000018,
+      "dataset_equal_weight_delta_answer_f1": 0.0031433109374285895,
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "baseline_answer_em": 0.432,
+          "baseline_answer_f1": 0.5023555000555,
+          "delta_answer_em": 0.0040000000000000036,
+          "delta_answer_f1": 0.0040000000000000036,
+          "mean_incremental_input_tokens": -1.024,
+          "protected_answer_em": 0.436,
+          "protected_answer_f1": 0.5063555000555,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "baseline_answer_em": 0.11733333333333333,
+          "baseline_answer_f1": 0.1549015937411078,
+          "delta_answer_em": 0.0,
+          "delta_answer_f1": 0.0022866218748571754,
+          "mean_incremental_input_tokens": -1.2306666666666666,
+          "protected_answer_em": 0.11733333333333333,
+          "protected_answer_f1": 0.15718821561596497,
+          "query_count": 750
+        }
+      },
+      "directional_conflict": false,
+      "em_guard_pass": true,
+      "geometry_feasible": true,
+      "mean_incremental_input_tokens": -1.1273333333333333,
+      "selection_eligible": true
+    },
+    "C11": {
+      "config": {
+        "config_id": "C11",
+        "facet_gate": "BROAD",
+        "insert_budget": 2,
+        "leaf_size": 6,
+        "unit_score_percentile": 0.75
+      },
+      "dataset_equal_weight_delta_answer_em": -0.0006666666666666626,
+      "dataset_equal_weight_delta_answer_f1": 0.00011111111111111738,
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "baseline_answer_em": 0.432,
+          "baseline_answer_f1": 0.5023555000555,
+          "delta_answer_em": 0.0,
+          "delta_answer_f1": 0.0,
+          "mean_incremental_input_tokens": 0.0,
+          "protected_answer_em": 0.432,
+          "protected_answer_f1": 0.5023555000555,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "baseline_answer_em": 0.11733333333333333,
+          "baseline_answer_f1": 0.1549015937411078,
+          "delta_answer_em": -0.0013333333333333253,
+          "delta_answer_f1": 0.00022222222222223476,
+          "mean_incremental_input_tokens": 0.124,
+          "protected_answer_em": 0.116,
+          "protected_answer_f1": 0.15512381596333003,
+          "query_count": 750
+        }
+      },
+      "directional_conflict": false,
+      "em_guard_pass": true,
+      "geometry_feasible": false,
+      "mean_incremental_input_tokens": 0.062,
+      "selection_eligible": false
+    },
+    "C12": {
+      "config": {
+        "config_id": "C12",
+        "facet_gate": "BROAD",
+        "insert_budget": 4,
+        "leaf_size": 6,
+        "unit_score_percentile": 0.75
+      },
+      "dataset_equal_weight_delta_answer_em": -0.0006666666666666626,
+      "dataset_equal_weight_delta_answer_f1": 0.00017171717171717005,
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "baseline_answer_em": 0.432,
+          "baseline_answer_f1": 0.5023555000555,
+          "delta_answer_em": 0.0,
+          "delta_answer_f1": 0.0,
+          "mean_incremental_input_tokens": 0.0,
+          "protected_answer_em": 0.432,
+          "protected_answer_f1": 0.5023555000555,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "baseline_answer_em": 0.11733333333333333,
+          "baseline_answer_f1": 0.1549015937411078,
+          "delta_answer_em": -0.0013333333333333253,
+          "delta_answer_f1": 0.0003434343434343401,
+          "mean_incremental_input_tokens": 0.15333333333333332,
+          "protected_answer_em": 0.116,
+          "protected_answer_f1": 0.15524502808454213,
+          "query_count": 750
+        }
+      },
+      "directional_conflict": false,
+      "em_guard_pass": true,
+      "geometry_feasible": false,
+      "mean_incremental_input_tokens": 0.07666666666666666,
+      "selection_eligible": false
+    },
+    "C13": {
+      "config": {
+        "config_id": "C13",
+        "facet_gate": "STRICT",
+        "insert_budget": 2,
+        "leaf_size": 6,
+        "unit_score_percentile": 0.5
+      },
+      "dataset_equal_weight_delta_answer_em": 0.002333333333333333,
+      "dataset_equal_weight_delta_answer_f1": 0.0027767676767677385,
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "baseline_answer_em": 0.432,
+          "baseline_answer_f1": 0.5023555000555,
+          "delta_answer_em": 0.0020000000000000018,
+          "delta_answer_f1": 0.002000000000000113,
+          "mean_incremental_input_tokens": -0.304,
+          "protected_answer_em": 0.434,
+          "protected_answer_f1": 0.5043555000555001,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "baseline_answer_em": 0.11733333333333333,
+          "baseline_answer_f1": 0.1549015937411078,
+          "delta_answer_em": 0.0026666666666666644,
+          "delta_answer_f1": 0.003553535353535364,
+          "mean_incremental_input_tokens": -1.856,
+          "protected_answer_em": 0.12,
+          "protected_answer_f1": 0.15845512909464315,
+          "query_count": 750
+        }
+      },
+      "directional_conflict": false,
+      "em_guard_pass": true,
+      "geometry_feasible": false,
+      "mean_incremental_input_tokens": -1.08,
+      "selection_eligible": false
+    },
+    "C14": {
+      "config": {
+        "config_id": "C14",
+        "facet_gate": "STRICT",
+        "insert_budget": 4,
+        "leaf_size": 6,
+        "unit_score_percentile": 0.5
+      },
+      "dataset_equal_weight_delta_answer_em": 0.0026666666666666713,
+      "dataset_equal_weight_delta_answer_f1": 0.003116161616161628,
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "baseline_answer_em": 0.432,
+          "baseline_answer_f1": 0.5023555000555,
+          "delta_answer_em": 0.0040000000000000036,
+          "delta_answer_f1": 0.0040000000000000036,
+          "mean_incremental_input_tokens": -0.582,
+          "protected_answer_em": 0.436,
+          "protected_answer_f1": 0.5063555000555,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "baseline_answer_em": 0.11733333333333333,
+          "baseline_answer_f1": 0.1549015937411078,
+          "delta_answer_em": 0.0013333333333333391,
+          "delta_answer_f1": 0.0022323232323232522,
+          "mean_incremental_input_tokens": -1.076,
+          "protected_answer_em": 0.11866666666666667,
+          "protected_answer_f1": 0.15713391697343104,
+          "query_count": 750
+        }
+      },
+      "directional_conflict": false,
+      "em_guard_pass": true,
+      "geometry_feasible": false,
+      "mean_incremental_input_tokens": -0.829,
+      "selection_eligible": false
+    },
+    "C15": {
+      "config": {
+        "config_id": "C15",
+        "facet_gate": "STRICT",
+        "insert_budget": 2,
+        "leaf_size": 6,
+        "unit_score_percentile": 0.75
+      },
+      "dataset_equal_weight_delta_answer_em": 0.0,
+      "dataset_equal_weight_delta_answer_f1": 0.00033333333333333826,
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "baseline_answer_em": 0.432,
+          "baseline_answer_f1": 0.5023555000555,
+          "delta_answer_em": 0.0,
+          "delta_answer_f1": 0.0,
+          "mean_incremental_input_tokens": 0.0,
+          "protected_answer_em": 0.432,
+          "protected_answer_f1": 0.5023555000555,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "baseline_answer_em": 0.11733333333333333,
+          "baseline_answer_f1": 0.1549015937411078,
+          "delta_answer_em": 0.0,
+          "delta_answer_f1": 0.0006666666666666765,
+          "mean_incremental_input_tokens": 0.236,
+          "protected_answer_em": 0.11733333333333333,
+          "protected_answer_f1": 0.15556826040777447,
+          "query_count": 750
+        }
+      },
+      "directional_conflict": false,
+      "em_guard_pass": true,
+      "geometry_feasible": false,
+      "mean_incremental_input_tokens": 0.118,
+      "selection_eligible": false
+    },
+    "C16": {
+      "config": {
+        "config_id": "C16",
+        "facet_gate": "STRICT",
+        "insert_budget": 4,
+        "leaf_size": 6,
+        "unit_score_percentile": 0.75
+      },
+      "dataset_equal_weight_delta_answer_em": 0.0,
+      "dataset_equal_weight_delta_answer_f1": 0.0003939393939393909,
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "baseline_answer_em": 0.432,
+          "baseline_answer_f1": 0.5023555000555,
+          "delta_answer_em": 0.0,
+          "delta_answer_f1": 0.0,
+          "mean_incremental_input_tokens": 0.0,
+          "protected_answer_em": 0.432,
+          "protected_answer_f1": 0.5023555000555,
+          "query_count": 500
+        },
+        "musique_ans_v1_0_train": {
+          "baseline_answer_em": 0.11733333333333333,
+          "baseline_answer_f1": 0.1549015937411078,
+          "delta_answer_em": 0.0,
+          "delta_answer_f1": 0.0007878787878787818,
+          "mean_incremental_input_tokens": 0.344,
+          "protected_answer_em": 0.11733333333333333,
+          "protected_answer_f1": 0.15568947252898657,
+          "query_count": 750
+        }
+      },
+      "directional_conflict": false,
+      "em_guard_pass": true,
+      "geometry_feasible": false,
+      "mean_incremental_input_tokens": 0.172,
+      "selection_eligible": false
+    }
+  },
+  "development_selection_hierarchy": [
+    "integrity_and_determinism_pass",
+    "geometry_feasible",
+    "no_opposite_dataset_f1_point_signs",
+    "dataset_equal_weight_delta_answer_em_at_least_minus_0_010",
+    "maximum_dataset_equal_weight_delta_answer_f1",
+    "within_0_002_choose_lower_token_cost_then_simpler_configuration",
+    "config_id_lexical_tie_break"
+  ],
+  "eligible_config_count": 4,
+  "near_tie_config_ids": [
+    "C02",
+    "C10"
+  ],
+  "schema_version": "stage5a_bnh_v1",
+  "selected_config_id": "C10",
+  "status": "STAGE5A_DEVELOPMENT_EVALUATION_COMPLETE"
+}
