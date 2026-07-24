@@ -206,6 +206,7 @@ def generate_predictions(
     generator_snapshot: Path,
     checkpoint_path: Path,
     namespace: str,
+    process_call_limit: int | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str, Any]]:
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -222,6 +223,15 @@ def generate_predictions(
         )
     ]
     task_keys = [(query["query_id"], method) for query, method in tasks]
+    if (
+        process_call_limit is not None
+        and (
+            isinstance(process_call_limit, bool)
+            or not isinstance(process_call_limit, int)
+            or process_call_limit <= 0
+        )
+    ):
+        raise ValueError("process_call_limit must be a positive integer")
     checkpoint = _load_prefix_checkpoint(checkpoint_path, task_keys)
     tokenizer = AutoTokenizer.from_pretrained(
         generator_snapshot, local_files_only=True
@@ -313,14 +323,23 @@ def generate_predictions(
                     "STAGE5A_GENERATION_PROGRESS "
                     f"namespace={namespace} completed={len(checkpoint)}/{len(tasks)}"
                 )
-    if list(checkpoint) != task_keys:
+            if (
+                process_call_limit is not None
+                and generated_now >= process_call_limit
+                and len(checkpoint) < len(tasks)
+            ):
+                break
+    complete = list(checkpoint) == task_keys
+    if not complete and process_call_limit is None:
         raise RuntimeError("Stage5A generation checkpoint is not the full task plan")
-    predictions = [checkpoint[key]["prediction"] for key in task_keys]
-    audits = [checkpoint[key]["audit"] for key in task_keys]
+    predictions = (
+        [checkpoint[key]["prediction"] for key in task_keys] if complete else []
+    )
+    audits = [checkpoint[key]["audit"] for key in task_keys] if complete else []
     telemetry = {
         "failed_calls": 0,
         "generated_in_this_process": generated_now,
-        "generation_calls": len(predictions),
+        "generation_calls": len(task_keys) if complete else len(checkpoint),
         "generation_seconds_total": float(sum(generation_seconds.values())),
         "generation_seconds_by_method": {
             method: generation_seconds[method] for method in methods
@@ -331,6 +350,10 @@ def generate_predictions(
     del model, tokenizer
     gc.collect()
     torch.cuda.empty_cache()
+    if not complete:
+        telemetry["checkpoint_calls"] = len(checkpoint)
+        telemetry["chunk_complete"] = True
+        return [], [], telemetry
     return predictions, audits, telemetry
 
 
@@ -498,7 +521,10 @@ def _frozen_rankings(
 
 
 def run_generation(
-    config: dict[str, Any], boundary: str, run_id: str
+    config: dict[str, Any],
+    boundary: str,
+    run_id: str,
+    process_call_limit: int | None,
 ) -> None:
     if run_id not in {"main", "rerun_subset"}:
         raise ValueError("run_id must be main or rerun_subset")
@@ -532,7 +558,16 @@ def run_generation(
         generator_snapshot,
         path_from_config(config, f"{boundary}_checkpoint_{run_id}"),
         namespace,
+        process_call_limit,
     )
+    if telemetry.get("chunk_complete") is True:
+        print(
+            "STAGE5A_CHECKPOINT_PROCESS_CHUNK_COMPLETE "
+            f"boundary={boundary} run={run_id} "
+            f"checkpoint_calls={telemetry['checkpoint_calls']} "
+            f"generated_in_process={telemetry['generated_in_this_process']}"
+        )
+        return
     telemetry.update(
         {
             "boundary": boundary,
@@ -575,7 +610,11 @@ def run_generation(
     )
 
 
-def run(config: dict[str, Any], mode: str) -> None:
+def run(
+    config: dict[str, Any],
+    mode: str,
+    process_call_limit: int | None = None,
+) -> None:
     validate_authorization(config)
     assert_implementation_binding(config, Path(__file__).resolve().parents[1])
     if mode == "development_geometry":
@@ -589,7 +628,7 @@ def run(config: dict[str, Any], mode: str) -> None:
         "confirmation_rerun_subset",
     }:
         boundary, suffix = mode.split("_", 1)
-        run_generation(config, boundary, suffix)
+        run_generation(config, boundary, suffix, process_call_limit)
     else:
         raise ValueError(f"unknown Stage5A mode: {mode}")
 
@@ -609,11 +648,12 @@ def main() -> None:
             "confirmation_rerun_subset",
         ),
     )
+    parser.add_argument("--process-call-limit", type=int)
     args = parser.parse_args()
     config = load_json(args.config)
     if not isinstance(config, dict):
         raise ValueError("Stage5A config must be an object")
-    run(config, args.mode)
+    run(config, args.mode, args.process_call_limit)
 
 
 if __name__ == "__main__":
