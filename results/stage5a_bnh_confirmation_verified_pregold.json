@@ -1,0 +1,61 @@
+{
+  "boundary": "confirmation",
+  "embedding_cache": {
+    "bytes": 670420228,
+    "sha256": "DC09AEEE113F702BC0F5800ACE5369C8C80905F8C991203DAB27D12982477325"
+  },
+  "frozen_preexisting": {
+    "file_count": 161,
+    "status": "STAGE4E_THROUGH_STAGE5_PMC_FROZEN_ARTIFACTS_UNCHANGED"
+  },
+  "input_selection": {
+    "boundaries": {
+      "confirmation": {
+        "hotpotqa_train_distractor_v1_1": {
+          "count": 1000,
+          "native_id_sha256": "7FF9F11FE014F9894FA4A88841F987E1B94D6C4A55A201943378E267C6C0E8A6"
+        },
+        "musique_ans_v1_0_train": {
+          "count": 1500,
+          "native_id_sha256": "EF6C53941E9850B4C00AD4696837AE042C614F08E57B4DEC39AB9F205FB5D340"
+        }
+      },
+      "development": {
+        "hotpotqa_train_distractor_v1_1": {
+          "count": 500,
+          "native_id_sha256": "04313BEE551BBC9AC62DB32AEBF8650B3CFF98A3252F375A6B31B8836C3ED2F8"
+        },
+        "musique_ans_v1_0_train": {
+          "count": 750,
+          "native_id_sha256": "0CD78C4378FEC71D8C16154A88B9CFBFFDE18AFF23BBAAC7576EE66F169BAA8F"
+        }
+      }
+    },
+    "development_confirmation_overlap": 0,
+    "historical_native_ids": {
+      "hotpotqa_train_distractor_v1_1": {
+        "count": 4000,
+        "sha256": "43B89D21A2316916B5C2B0BF00E2DE7BB98A0608B492DE7584057388154EE5D1"
+      },
+      "musique_ans_v1_0_train": {
+        "count": 7000,
+        "sha256": "1D14C82E662F46A9F762CC42853C02FE4D1234DD6068D62E881411C3748E52B8"
+      }
+    },
+    "historical_overlap": 0,
+    "status": "STAGE5A_INPUT_SELECTION_INDEPENDENTLY_VERIFIED"
+  },
+  "prompt_and_determinism": {
+    "full_main_calls": 10000,
+    "main_subset_prediction_identity": true,
+    "prompt_reconstruction": "PASS",
+    "rerun_calls": 800,
+    "subset_query_count": 200
+  },
+  "rankings": {
+    "bytes": 13277645,
+    "sha256": "18FC4DBDAF104F3BCD69FEB0DBED9976BFF389FA3EF84484DC72B52CB91E2D3D"
+  },
+  "schema_version": "stage5a_bnh_v1",
+  "status": "STAGE5A_CONFIRMATION_PRE_GOLD_VERIFICATION_PASS"
+}

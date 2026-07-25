@@ -1,0 +1,25 @@
+{
+  "boundary": "confirmation",
+  "embedding_cache": {
+    "bytes": 670420228,
+    "sha256": "DC09AEEE113F702BC0F5800ACE5369C8C80905F8C991203DAB27D12982477325"
+  },
+  "embedding_load_seconds": 1.3910941000067396,
+  "failed_calls": 0,
+  "generated_in_this_process": 2000,
+  "generation_calls": 10000,
+  "generation_seconds_by_method": {
+    "BGE_NATIVE_HGRAG_NO_FACET_TOP20": 886.0583329999645,
+    "BGE_NATIVE_HGRAG_PROTECTED_TOP20": 884.1983041003259,
+    "BGE_NATIVE_HGRAG_UNPROTECTED_TOP20": 888.2818677003524,
+    "BGE_TOP20": 887.650115699842
+  },
+  "generation_seconds_total": 3546.188620500485,
+  "gpu_peak_memory_bytes": 3856969216,
+  "query_count": 2500,
+  "retrieval_reconstruction_seconds": 8.544015699997544,
+  "run_id": "main",
+  "schema_version": "stage5a_bnh_v1",
+  "status": "STAGE5A_GOLDFREE_GENERATION_COMPLETE_PENDING_VERIFICATION",
+  "wall_time_seconds_this_process": 731.3150128999987
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": "stage5a_bnh_v1",
-  "status": "STAGE5A_CONFIRMATION_RANKINGS_FROZEN_GOLDFREE_GENERATION_AUTHORIZED",
+  "status": "STAGE5A_CONFIRMATION_PRE_GOLD_VERIFIED_CONFIRMATION_GOLD_EVALUATION_AUTHORIZED",
   "official_execution": {
     "authorized": true,
     "authorization_date": "2026-07-24",
@@ -408,6 +408,34 @@
     "confirmation_retrieval_telemetry": {
       "bytes": 400,
       "sha256": "31A6121EC8E42923F093AF1A43B7E35643CF238CD39EF0174757C82F5298D1BC"
+    },
+    "confirmation_predictions_main": {
+      "bytes": 2078579,
+      "sha256": "EE3892B45BD4A7EA776402AE1428438592F1948ED081CEAF39AB07AA4BD2E1F9"
+    },
+    "confirmation_prompt_audit_main": {
+      "bytes": 15375577,
+      "sha256": "AAC4656D37E45FCE966A7D9B868B1228C1C9F0D18DC7EB934EBB1CD3E8E0DD57"
+    },
+    "confirmation_telemetry_main": {
+      "bytes": 908,
+      "sha256": "12B8B48BB5078E6CBE82D8337EF781DB94EA1361E6E5B1F612580C96F13BB30B"
+    },
+    "confirmation_predictions_rerun_subset": {
+      "bytes": 168422,
+      "sha256": "CEB63F1AD240CB4CBEDA3A85BEF6738E7C1A54C075D978E176C72A03179BA170"
+    },
+    "confirmation_prompt_audit_rerun_subset": {
+      "bytes": 1254478,
+      "sha256": "21D3A455EBC3B9CC7B07C70D40DB9AF0443A7954516F7AC3F506A870345ECB73"
+    },
+    "confirmation_telemetry_rerun_subset": {
+      "bytes": 911,
+      "sha256": "380D29B2B0F3C45F48124F3B9B57184BB0A8E24521818E056715B9406F95EBFA"
+    },
+    "confirmation_verified_pregold": {
+      "bytes": 2006,
+      "sha256": "F64160759739B6509E52C377E856845D5D7020DEFF06ED1DF6F4592BE60822EA"
     }
   },
   "paths": {
