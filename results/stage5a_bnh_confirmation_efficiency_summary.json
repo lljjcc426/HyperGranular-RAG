@@ -1,0 +1,18 @@
+{
+  "embedding_cache": {
+    "bytes": 670420228,
+    "sha256": "DC09AEEE113F702BC0F5800ACE5369C8C80905F8C991203DAB27D12982477325"
+  },
+  "generation_seconds_by_method": {
+    "BGE_NATIVE_HGRAG_NO_FACET_TOP20": 886.0583329999645,
+    "BGE_NATIVE_HGRAG_PROTECTED_TOP20": 884.1983041003259,
+    "BGE_NATIVE_HGRAG_UNPROTECTED_TOP20": 888.2818677003524,
+    "BGE_TOP20": 887.650115699842
+  },
+  "gpu_peak_memory_bytes": 3856969216,
+  "incremental_generation_seconds_protected_minus_bge": -3.451811599516077,
+  "incremental_seconds_per_equal_weight_f1_point": 1133.2946337470498,
+  "interpretation": "DESCRIPTIVE_COST_CAUTION_ONLY_NO_DECISION_RETUNING",
+  "retrieval_reconstruction_seconds": 8.544015699997544,
+  "status": "STAGE5A_EFFICIENCY_SUMMARY_COMPLETE"
+}

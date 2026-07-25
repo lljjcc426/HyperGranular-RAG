@@ -1,0 +1,8 @@
+{
+  "core_state": "BGE_NATIVE_HGRAG_INCONCLUSIVE",
+  "facet_state": "BGE_NATIVE_FACET_INCREMENT_INCONCLUSIVE",
+  "interpretation_boundary": "One frozen BGE-large-en-v1.5 backbone on closed-candidate Top-20 HotpotQA/MuSiQue confirmation IDs; no universal strong-retriever or full-wiki claim.",
+  "placement_state": "BGE_NATIVE_PROTECTED_PLACEMENT_INCONCLUSIVE",
+  "schema_version": "stage5a_bnh_v1",
+  "status": "STAGE5A_SCIENTIFIC_DECISION_FROZEN_PENDING_FINAL_VERIFICATION"
+}

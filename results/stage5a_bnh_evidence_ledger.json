@@ -1,0 +1,193 @@
+{
+  "material_passport": {
+    "origin_skill": "academic-research-suite/experiment-agent",
+    "origin_mode": "validate",
+    "origin_date": "2026-07-25",
+    "verification_status": "VERIFIED",
+    "version_label": "stage5a_bnh_evidence_ledger_v1"
+  },
+  "schema_version": "stage5a_bnh_v1",
+  "status": "STAGE5A_BNH_EVIDENCE_LEDGER_FROZEN",
+  "scientific_question": "Whether a BGE-native HyperGranular retrieval structure provides incremental value over one pre-specified BGE strong-dense retriever under a fixed closed-candidate Top-20 budget.",
+  "boundary": {
+    "retriever": "BAAI/bge-large-en-v1.5@d4aa6901d3a41ba39fb536a557fa166f842b0e09",
+    "generator": "Qwen/Qwen2.5-1.5B-Instruct@989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "development_queries": 1250,
+    "confirmation_queries": 2500,
+    "development_confirmation_overlap": 0,
+    "historical_overlap": 0,
+    "selection_used_gold_or_metadata": false,
+    "gold_fields_in_blind": false
+  },
+  "geometry": {
+    "state": "BGE_NATIVE_GEOMETRY_FEASIBILITY_PASS",
+    "eligible_config_ids": [
+      "C01",
+      "C02",
+      "C09",
+      "C10"
+    ],
+    "development_insertable_query_rates": {
+      "C01": {
+        "hotpotqa": 0.128,
+        "musique": 0.2906666666666667,
+        "combined": 0.2256
+      },
+      "C02": {
+        "hotpotqa": 0.128,
+        "musique": 0.2906666666666667,
+        "combined": 0.2256
+      },
+      "C09": {
+        "hotpotqa": 0.102,
+        "musique": 0.2866666666666667,
+        "combined": 0.2128
+      },
+      "C10": {
+        "hotpotqa": 0.102,
+        "musique": 0.2866666666666667,
+        "combined": 0.2128
+      }
+    },
+    "interpretation": "Gold-free minimum geometry feasibility passed; this is not evidence of answer-quality benefit or statistical power."
+  },
+  "development": {
+    "selected_config": {
+      "config_id": "C10",
+      "facet_gate": "BROAD",
+      "insert_budget": 4,
+      "leaf_size": 6,
+      "unit_score_percentile": 0.5
+    },
+    "selection_rule": "Maximum dataset-equal-weight answer-F1 among integrity-, geometry-, direction-, and EM-eligible configurations; within 0.002 of the best, prefer lower mean incremental input tokens, then the frozen simplicity hierarchy.",
+    "best_equal_weight_f1_delta": 0.005032199826317488,
+    "selected_equal_weight_f1_delta": 0.0031433109374285895,
+    "selected_equal_weight_em_delta": 0.0020000000000000018,
+    "selected_mean_incremental_input_tokens": -1.1273333333333333,
+    "interpretation": "Configuration selection evidence only; development estimates are not confirmation evidence."
+  },
+  "confirmation": {
+    "core": {
+      "contrast": "BGE_NATIVE_HGRAG_PROTECTED_TOP20 - BGE_TOP20",
+      "state": "BGE_NATIVE_HGRAG_INCONCLUSIVE",
+      "dataset_equal_weight_answer_f1": {
+        "point": -0.0030458201219070785,
+        "ci95_lower": -0.006879831388418345,
+        "ci95_upper": 0.0006312558576688999
+      },
+      "dataset_equal_weight_answer_em": {
+        "point": -0.003666666666666667,
+        "ci95_lower": -0.007666666666666667,
+        "ci95_upper": 0.00000416666666660603
+      },
+      "hotpotqa_answer_f1": {
+        "baseline": 0.5135207547880715,
+        "protected": 0.5106132637284064,
+        "delta": -0.0029074910596649725,
+        "ci95_lower": -0.008681818181818181,
+        "ci95_upper": 0.002651663372859023
+      },
+      "musique_answer_f1": {
+        "baseline": 0.17785618488888189,
+        "protected": 0.17467203570473272,
+        "delta": -0.0031841491841491844,
+        "ci95_lower": -0.008485766455766456,
+        "ci95_upper": 0.0018634748584748589
+      },
+      "interpretation": "Both dataset point estimates and the equal-weight point estimate are slightly negative, while all relevant F1 intervals cross zero. The preregistered negative and supported gates are both unmet."
+    },
+    "placement": {
+      "contrast": "BGE_NATIVE_HGRAG_PROTECTED_TOP20 - BGE_NATIVE_HGRAG_UNPROTECTED_TOP20",
+      "state": "BGE_NATIVE_PROTECTED_PLACEMENT_INCONCLUSIVE",
+      "dataset_equal_weight_answer_f1": {
+        "point": 0.003367058043988329,
+        "ci95_lower": -0.0012851527336356795,
+        "ci95_upper": 0.008025643021968454
+      },
+      "dataset_equal_weight_answer_em": {
+        "point": 0.0018333333333333333,
+        "ci95_lower": -0.0031666666666666666,
+        "ci95_upper": 0.006833333333333334
+      }
+    },
+    "facet": {
+      "contrast": "BGE_NATIVE_HGRAG_PROTECTED_TOP20 - BGE_NATIVE_HGRAG_NO_FACET_TOP20",
+      "state": "BGE_NATIVE_FACET_INCREMENT_INCONCLUSIVE",
+      "dataset_equal_weight_answer_f1": {
+        "point": 0.0006309544782878872,
+        "ci95_lower": -0.0042201766774451,
+        "ci95_upper": 0.005364560771923123
+      },
+      "dataset_equal_weight_answer_em": {
+        "point": 0.002,
+        "ci95_lower": -0.0028333333333333335,
+        "ci95_upper": 0.006833333333333334
+      }
+    }
+  },
+  "post_decision_mechanism": {
+    "protected_added_gold": {
+      "hotpotqa": 3,
+      "musique": 16
+    },
+    "protected_displaced_bge_gold": {
+      "hotpotqa": 2,
+      "musique": 15
+    },
+    "protected_net_gold": {
+      "hotpotqa": 1,
+      "musique": 1
+    },
+    "interpretation": "Descriptive after the frozen decision; the small positive net Gold count did not yield a confirmed answer-F1 gain and cannot be used for retuning."
+  },
+  "efficiency": {
+    "confirmation_embedding_cache_bytes": 670420228,
+    "retrieval_reconstruction_seconds": 8.544015699997544,
+    "generation_seconds": {
+      "bge": 887.650115699842,
+      "protected": 884.1983041003259,
+      "unprotected": 888.2818677003524,
+      "no_facet": 886.0583329999645
+    },
+    "gpu_peak_memory_bytes": 3856969216,
+    "failed_calls": 0,
+    "interpretation": "Descriptive cost evidence only. Because the primary effect is negative and inconclusive, a positive cost-per-gain claim is not available."
+  },
+  "integrity": {
+    "bootstrap_iterations": 10000,
+    "bootstrap_seed": 20260727,
+    "deterministic_subset_prediction_identity": true,
+    "deterministic_subset_prompt_identity": true,
+    "independent_retrieval_reconstruction": "PASS",
+    "independent_statistics_reconstruction": "PASS",
+    "final_verification": "STAGE5A_FINAL_INDEPENDENT_VERIFICATION_PASS",
+    "preexisting_frozen_file_count": 161,
+    "preexisting_frozen_state": "STAGE4E_THROUGH_STAGE5_PMC_FROZEN_ARTIFACTS_UNCHANGED"
+  },
+  "claim_boundary": {
+    "supported": [
+      "BGE-native geometry was feasible under the frozen blind-only minimum gate.",
+      "A single development configuration was selected by the preregistered hierarchy.",
+      "The complete Stage5A transaction is independently reconstructable and internally consistent."
+    ],
+    "not_supported": [
+      "A confirmed answer-F1 gain of BGE-native HyperGranular retrieval over BGE Top-20.",
+      "An independently supported protected-placement increment in the BGE-native system.",
+      "An independently supported facet-hyperedge increment in the BGE-native system.",
+      "Universal improvement over strong dense retrieval, full-wiki effectiveness, or cross-generator robustness."
+    ],
+    "route": "Stop automatic BGE-native parameter search and do not advance to Stage5B-MSB or full-wiki; preserve the frozen Stage5-PMC manuscript baseline."
+  },
+  "source_artifacts": [
+    "results/stage5a_bnh_input_manifest.json",
+    "results/stage5a_bnh_geometry_feasibility_audit.json",
+    "results/stage5a_bnh_development_summary.json",
+    "results/stage5a_bnh_development_selected_config.json",
+    "results/stage5a_bnh_confirmation_dataset_summaries.json",
+    "results/stage5a_bnh_confirmation_equal_weight_summary.json",
+    "results/stage5a_bnh_confirmation_mechanism_audit.json",
+    "results/stage5a_bnh_confirmation_efficiency_summary.json",
+    "results/stage5a_bnh_scientific_decision.json",
+    "results/stage5a_bnh_final_verification.json"
+  ]
+}

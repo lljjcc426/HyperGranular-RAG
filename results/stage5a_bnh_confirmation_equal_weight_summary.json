@@ -1,0 +1,188 @@
+{
+  "bootstrap_iterations": 10000,
+  "bootstrap_seed": 20260727,
+  "comparisons": {
+    "protected_minus_bge": {
+      "contrast": "BGE_NATIVE_HGRAG_PROTECTED_TOP20 - BGE_TOP20",
+      "dataset_equal_weight": {
+        "delta_answer_em": {
+          "ci95_lower": -0.007666666666666667,
+          "ci95_upper": 4.16666666660603e-06,
+          "point": -0.003666666666666667
+        },
+        "delta_answer_f1": {
+          "ci95_lower": -0.006879831388418345,
+          "ci95_upper": 0.0006312558576688999,
+          "one_sided_positive_p": 0.9459054094590541,
+          "point": -0.0030458201219070785
+        }
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "delta_answer_em": {
+            "ci95_lower": -0.01,
+            "ci95_upper": 0.002,
+            "point": -0.004
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.008681818181818181,
+            "ci95_upper": 0.002651663372859023,
+            "one_sided_positive_p": 0.8425157484251575,
+            "point": -0.0029074910596649725
+          }
+        },
+        "musique_ans_v1_0_train": {
+          "delta_answer_em": {
+            "ci95_lower": -0.008,
+            "ci95_upper": 0.0013333333333333333,
+            "point": -0.0033333333333333335
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.008485766455766456,
+            "ci95_upper": 0.0018634748584748589,
+            "one_sided_positive_p": 0.8906109389061094,
+            "point": -0.0031841491841491844
+          }
+        }
+      }
+    },
+    "protected_minus_no_facet": {
+      "contrast": "BGE_NATIVE_HGRAG_PROTECTED_TOP20 - BGE_NATIVE_HGRAG_NO_FACET_TOP20",
+      "dataset_equal_weight": {
+        "delta_answer_em": {
+          "ci95_lower": -0.0028333333333333335,
+          "ci95_upper": 0.006833333333333334,
+          "point": 0.002
+        },
+        "delta_answer_f1": {
+          "ci95_lower": -0.0042201766774451,
+          "ci95_upper": 0.005364560771923123,
+          "one_sided_positive_p": 0.40345965403459655,
+          "point": 0.0006309544782878872
+        }
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "delta_answer_em": {
+            "ci95_lower": -0.007,
+            "ci95_upper": 0.007,
+            "point": 0.0
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.007033333333333333,
+            "ci95_upper": 0.007333333333333333,
+            "one_sided_positive_p": 0.48435156484351566,
+            "point": 0.00016666666666666674
+          }
+        },
+        "musique_ans_v1_0_train": {
+          "delta_answer_em": {
+            "ci95_lower": -0.0026666666666666666,
+            "ci95_upper": 0.010666666666666666,
+            "point": 0.004
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.005438199047180762,
+            "ci95_upper": 0.007539513175737746,
+            "one_sided_positive_p": 0.3738626137386261,
+            "point": 0.0010952422899091077
+          }
+        }
+      }
+    },
+    "protected_minus_unprotected": {
+      "contrast": "BGE_NATIVE_HGRAG_PROTECTED_TOP20 - BGE_NATIVE_HGRAG_UNPROTECTED_TOP20",
+      "dataset_equal_weight": {
+        "delta_answer_em": {
+          "ci95_lower": -0.0031666666666666666,
+          "ci95_upper": 0.006833333333333334,
+          "point": 0.0018333333333333333
+        },
+        "delta_answer_f1": {
+          "ci95_lower": -0.0012851527336356795,
+          "ci95_upper": 0.008025643021968454,
+          "one_sided_positive_p": 0.07839216078392161,
+          "point": 0.003367058043988329
+        }
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "delta_answer_em": {
+            "ci95_lower": -0.006,
+            "ci95_upper": 0.008,
+            "point": 0.001
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.0020879120879120877,
+            "ci95_upper": 0.010238095238095237,
+            "one_sided_positive_p": 0.0994900509949005,
+            "point": 0.004063704411530499
+          }
+        },
+        "musique_ans_v1_0_train": {
+          "delta_answer_em": {
+            "ci95_lower": -0.004,
+            "ci95_upper": 0.009333333333333334,
+            "point": 0.0026666666666666666
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.004433410990350645,
+            "ci95_upper": 0.00962824751876476,
+            "one_sided_positive_p": 0.2233776622337766,
+            "point": 0.0026704116764461588
+          }
+        }
+      }
+    },
+    "unprotected_minus_bge": {
+      "contrast": "BGE_NATIVE_HGRAG_UNPROTECTED_TOP20 - BGE_TOP20",
+      "dataset_equal_weight": {
+        "delta_answer_em": {
+          "ci95_lower": -0.011,
+          "ci95_upper": 0.0,
+          "point": -0.0055
+        },
+        "delta_answer_f1": {
+          "ci95_lower": -0.01171411357799289,
+          "ci95_upper": -0.0011762427180099593,
+          "one_sided_positive_p": 0.9917008299170083,
+          "point": -0.006412878165895407
+        }
+      },
+      "datasets": {
+        "hotpotqa_train_distractor_v1_1": {
+          "delta_answer_em": {
+            "ci95_lower": -0.013,
+            "ci95_upper": 0.003,
+            "point": -0.005
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.014384902597402596,
+            "ci95_upper": -5.113636363636557e-05,
+            "one_sided_positive_p": 0.9755024497550245,
+            "point": -0.00697119547119547
+          }
+        },
+        "musique_ans_v1_0_train": {
+          "delta_answer_em": {
+            "ci95_lower": -0.013333333333333334,
+            "ci95_upper": 0.0013333333333333333,
+            "point": -0.006
+          },
+          "delta_answer_f1": {
+            "ci95_lower": -0.013557915008841733,
+            "ci95_upper": 0.0015559252505157643,
+            "one_sided_positive_p": 0.9364063593640636,
+            "point": -0.005854560860595343
+          }
+        }
+      }
+    }
+  },
+  "dataset_weights": {
+    "hotpotqa_train_distractor_v1_1": 0.5,
+    "musique_ans_v1_0_train": 0.5
+  },
+  "primary_comparison": "protected_minus_bge",
+  "status": "STAGE5A_CONFIRMATION_STATISTICS_COMPLETE_PENDING_VERIFICATION"
+}

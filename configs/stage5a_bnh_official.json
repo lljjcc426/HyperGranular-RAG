@@ -1,6 +1,6 @@
 {
   "schema_version": "stage5a_bnh_v1",
-  "status": "STAGE5A_CONFIRMATION_PRE_GOLD_VERIFIED_CONFIRMATION_GOLD_EVALUATION_AUTHORIZED",
+  "status": "STAGE5A_COMPLETE_FINAL_VERIFICATION_PASS",
   "official_execution": {
     "authorized": true,
     "authorization_date": "2026-07-24",
@@ -436,6 +436,34 @@
     "confirmation_verified_pregold": {
       "bytes": 2006,
       "sha256": "F64160759739B6509E52C377E856845D5D7020DEFF06ED1DF6F4592BE60822EA"
+    },
+    "confirmation_query_audit": {
+      "bytes": 4375509,
+      "sha256": "A8AB7176504AB8C84466F69AC80873C8D5CD62C93B25B15B76DE65C7374FEDBD"
+    },
+    "confirmation_dataset_summaries": {
+      "bytes": 2649,
+      "sha256": "F4893C526AC45C5622A93B44BDCFAA50A484C896F4F7984AF0E4150F79763546"
+    },
+    "confirmation_equal_weight_summary": {
+      "bytes": 6165,
+      "sha256": "D38608EB73FF1A7741A6EBE2DE2E08B0F7FC7D0305067F6FE7D60F8B8C83983F"
+    },
+    "confirmation_mechanism_audit": {
+      "bytes": 3595,
+      "sha256": "0AEEA7C41680E10A417E036CD1C6DC2D86BF60BAAD337218AE07F6DE697027F1"
+    },
+    "confirmation_efficiency_summary": {
+      "bytes": 757,
+      "sha256": "A79140BC374A12F9EF887DFEEA32042F45E6FEDC3E31A1072B445194BACCE1D8"
+    },
+    "scientific_decision": {
+      "bytes": 477,
+      "sha256": "9C453E0FB2CE8BF3224DD949B620DA1C17567C7AC8A5A7CF5CC109DA978459A0"
+    },
+    "final_verification": {
+      "bytes": 386,
+      "sha256": "145B51FB194BA0DE5B00D294FE4D8F8EAC9FD9D2E7C1F39F741D7AFEDDF0BA09"
     }
   },
   "paths": {

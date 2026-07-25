@@ -1,0 +1,347 @@
+{
+  "external_untracked_artifacts": {
+    "file_count": 8,
+    "files": [
+      {
+        "bytes": 36581554,
+        "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage5a_bnh_development_hotpot500_musique750_v1_blind_queries.jsonl",
+        "sha256": "8AC212D70CA1DA3064207FE4136814A6392ECCC6DC6FF105DC447411A7915A37"
+      },
+      {
+        "bytes": 402978,
+        "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage5a_bnh_development_hotpot500_musique750_v1_gold_targets.jsonl",
+        "sha256": "6724C13250010198C1ACBB60D592BE701DD0814C431C8E17680B746706E9F073"
+      },
+      {
+        "bytes": 348933,
+        "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage5a_bnh_development_hotpot500_musique750_v1_sealed_metadata.jsonl",
+        "sha256": "FA093F51050D4F30C32CC36957D5135252C2E550EE11B047B8246B4A8D889E47"
+      },
+      {
+        "bytes": 330797652,
+        "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage5a_bnh_development_hotpot500_musique750_v1_bge_large_en_v1_5_embeddings.npz",
+        "sha256": "BD4423C6397839086F13FE99D86B71643E54D9913FCC6ABB6BB9E545D7992244"
+      },
+      {
+        "bytes": 74190146,
+        "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage5a_bnh_confirmation_hotpot1000_musique1500_v1_blind_queries.jsonl",
+        "sha256": "B4310147CEF7BCF706420E8E838A51C32CC5ABBCC6C62E2AA5FCC00AF5242BBD"
+      },
+      {
+        "bytes": 810049,
+        "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage5a_bnh_confirmation_hotpot1000_musique1500_v1_gold_targets.jsonl",
+        "sha256": "1230A75C6D37BA05BA085B3A613ADE626C91187CF013A98103C1BD150DA98364"
+      },
+      {
+        "bytes": 697981,
+        "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage5a_bnh_confirmation_hotpot1000_musique1500_v1_sealed_metadata.jsonl",
+        "sha256": "6316B5567AE9DFD218FAC0F154DEF759021A1BF016056F7AFC05242B5F1FBD5A"
+      },
+      {
+        "bytes": 670420228,
+        "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage5a_bnh_confirmation_hotpot1000_musique1500_v1_bge_large_en_v1_5_embeddings.npz",
+        "sha256": "DC09AEEE113F702BC0F5800ACE5369C8C80905F8C991203DAB27D12982477325"
+      }
+    ],
+    "policy": "LOCAL_ONLY_BOUND_BY_BYTES_AND_SHA256_NOT_COMMITTED_TO_GIT",
+    "total_bytes": 1114249521
+  },
+  "frozen_preexisting": {
+    "file_count": 161,
+    "manifest": {
+      "bytes": 30857,
+      "path": "results/stage5a_bnh_preexisting_frozen_manifest.json",
+      "sha256": "A2C51835AD1B38A765DFDD46355709CE6074CF4C3BD7C926EB47D9BAA9364248"
+    },
+    "status": "STAGE4E_THROUGH_STAGE5_PMC_FROZEN_ARTIFACTS_UNCHANGED"
+  },
+  "implementation": {
+    "code_commit": "63a09bc37afa32d1c559f1f71314d55f7c6b616d",
+    "files": {
+      "scripts/stage5a_bnh_common.py": "01EB604D74B21F7A2450322C9419CADB5EACEA0614B1DB691885223FF6FD316B",
+      "scripts/stage5a_bnh_evaluate.py": "7CF49F21AB375EC32BA292F0A707C81D9D19285D6341ACD95AF86CD3AFBFB052",
+      "scripts/stage5a_bnh_goldfree_runner.py": "6A2E1A97E162E32A66C0B10B15364AED0396A653080AA7C06C8B430230599FB3",
+      "scripts/stage5a_bnh_independent_retrieval.py": "4869BDD568C4EBA5300E519E3B4D0EA6654BA44D4CCF3A690F4F2DF92894601B",
+      "scripts/stage5a_bnh_independent_statistics.py": "D7E9AAAD3AD72E0756CF5EEF15300048A218A60CD4004DD529F2A20BE4E1C6E6",
+      "scripts/stage5a_bnh_independent_verifier.py": "10DBA5DDA3403C894BDCACF051DF3626E82AA347ADE523D5183052D9C3CD07A2",
+      "scripts/stage5a_bnh_prepare.py": "EB3F2F8CABE7753AC31812E7BC3AF87B58D61BA83486971C34DF73D0AA52FB49",
+      "scripts/stage5a_bnh_retrieval.py": "401284DC34AFE62DA847DEA468CEFC5808F2385D584BC518E5619E86F38E4359",
+      "tests/test_stage5a_bnh.py": "7128D81B964009CDC90C1ACE9110D3322B431B0A51CFE7A4F4172CACFE6B3E56"
+    }
+  },
+  "models": {
+    "generator": {
+      "files_sha256": "29726780E76777165E4E7B462356A18E374FEC4DBFF02A0BC8E4F5ACD09468C4",
+      "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+      "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "snapshot_path": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--Qwen--Qwen2.5-1.5B-Instruct\\snapshots\\989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+    },
+    "retriever": {
+      "files_sha256": "29C01618732E315301950DBA16CB2C7D24656D3C994FEB4742AD51E6A7D39629",
+      "model_id": "BAAI/bge-large-en-v1.5",
+      "revision": "d4aa6901d3a41ba39fb536a557fa166f842b0e09",
+      "snapshot_path": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--BAAI--bge-large-en-v1.5\\snapshots\\d4aa6901d3a41ba39fb536a557fa166f842b0e09"
+    }
+  },
+  "notes": [
+    "This manifest excludes itself to avoid a recursive hash.",
+    "The final synchronization commit is recorded by Git history rather than embedded in this self-containing manifest.",
+    "Temporary checkpoints, diagnostics, and the preserved interrupted timing transaction are excluded from formal artifacts."
+  ],
+  "repository_artifacts": {
+    "file_count": 46,
+    "files": [
+      {
+        "bytes": 22569,
+        "path": "configs/stage5a_bnh_official.json",
+        "sha256": "B94473A673946BBC75B68F18EA06F9D231A80EDC14472F795096C5C32E47B109"
+      },
+      {
+        "bytes": 11074,
+        "path": "docs/STAGE5A_BNH_EXPERIMENT_CARD.md",
+        "sha256": "CDB44AC6A044FC62159E309311EF1B0C48B3F698C90EF60F00EFBDADCE80F8A6"
+      },
+      {
+        "bytes": 11259,
+        "path": "reports/超粒球RAG_Stage5A_BNH强语义空间原生检索报告.md",
+        "sha256": "16BE8345E00D3C201669B0210903131CCA055312B82A51EC58C5EC4409CAC388"
+      },
+      {
+        "bytes": 2649,
+        "path": "results/stage5a_bnh_confirmation_dataset_summaries.json",
+        "sha256": "F4893C526AC45C5622A93B44BDCFAA50A484C896F4F7984AF0E4150F79763546"
+      },
+      {
+        "bytes": 757,
+        "path": "results/stage5a_bnh_confirmation_efficiency_summary.json",
+        "sha256": "A79140BC374A12F9EF887DFEEA32042F45E6FEDC3E31A1072B445194BACCE1D8"
+      },
+      {
+        "bytes": 6165,
+        "path": "results/stage5a_bnh_confirmation_equal_weight_summary.json",
+        "sha256": "D38608EB73FF1A7741A6EBE2DE2E08B0F7FC7D0305067F6FE7D60F8B8C83983F"
+      },
+      {
+        "bytes": 3012307,
+        "path": "results/stage5a_bnh_confirmation_hotpot1000_musique1500_v1_candidate_trace.jsonl",
+        "sha256": "226BA734FAB41E8941259109529B93DA8A3E951B7E7AF3F700147BDFF38B00CB"
+      },
+      {
+        "bytes": 13277645,
+        "path": "results/stage5a_bnh_confirmation_hotpot1000_musique1500_v1_rankings.jsonl",
+        "sha256": "18FC4DBDAF104F3BCD69FEB0DBED9976BFF389FA3EF84484DC72B52CB91E2D3D"
+      },
+      {
+        "bytes": 3595,
+        "path": "results/stage5a_bnh_confirmation_mechanism_audit.json",
+        "sha256": "0AEEA7C41680E10A417E036CD1C6DC2D86BF60BAAD337218AE07F6DE697027F1"
+      },
+      {
+        "bytes": 2078579,
+        "path": "results/stage5a_bnh_confirmation_predictions_main.jsonl",
+        "sha256": "EE3892B45BD4A7EA776402AE1428438592F1948ED081CEAF39AB07AA4BD2E1F9"
+      },
+      {
+        "bytes": 168422,
+        "path": "results/stage5a_bnh_confirmation_predictions_rerun_subset.jsonl",
+        "sha256": "CEB63F1AD240CB4CBEDA3A85BEF6738E7C1A54C075D978E176C72A03179BA170"
+      },
+      {
+        "bytes": 15375577,
+        "path": "results/stage5a_bnh_confirmation_prompt_audit_main.jsonl",
+        "sha256": "AAC4656D37E45FCE966A7D9B868B1228C1C9F0D18DC7EB934EBB1CD3E8E0DD57"
+      },
+      {
+        "bytes": 1254478,
+        "path": "results/stage5a_bnh_confirmation_prompt_audit_rerun_subset.jsonl",
+        "sha256": "21D3A455EBC3B9CC7B07C70D40DB9AF0443A7954516F7AC3F506A870345ECB73"
+      },
+      {
+        "bytes": 4375509,
+        "path": "results/stage5a_bnh_confirmation_query_audit.jsonl",
+        "sha256": "A8AB7176504AB8C84466F69AC80873C8D5CD62C93B25B15B76DE65C7374FEDBD"
+      },
+      {
+        "bytes": 400,
+        "path": "results/stage5a_bnh_confirmation_retrieval_telemetry.json",
+        "sha256": "31A6121EC8E42923F093AF1A43B7E35643CF238CD39EF0174757C82F5298D1BC"
+      },
+      {
+        "bytes": 908,
+        "path": "results/stage5a_bnh_confirmation_telemetry_main.json",
+        "sha256": "12B8B48BB5078E6CBE82D8337EF781DB94EA1361E6E5B1F612580C96F13BB30B"
+      },
+      {
+        "bytes": 911,
+        "path": "results/stage5a_bnh_confirmation_telemetry_rerun_subset.json",
+        "sha256": "380D29B2B0F3C45F48124F3B9B57184BB0A8E24521818E056715B9406F95EBFA"
+      },
+      {
+        "bytes": 2006,
+        "path": "results/stage5a_bnh_confirmation_verified_pregold.json",
+        "sha256": "F64160759739B6509E52C377E856845D5D7020DEFF06ED1DF6F4592BE60822EA"
+      },
+      {
+        "bytes": 132,
+        "path": "results/stage5a_bnh_development_final_verification.json",
+        "sha256": "52C705B7A5FF53ACDC93CFAC70775CEC68A20F7C0B721B454166B801CFE64644"
+      },
+      {
+        "bytes": 19912280,
+        "path": "results/stage5a_bnh_development_hotpot500_musique750_v1_candidate_trace.jsonl",
+        "sha256": "8D726B4E6B9F9078939CE111D9C81D1DA2A31A9BD1766C4ED77ECD71C5192120"
+      },
+      {
+        "bytes": 26393671,
+        "path": "results/stage5a_bnh_development_hotpot500_musique750_v1_rankings.jsonl",
+        "sha256": "87366489C9F16D29B1E76B886DF137E2BA13C472562686AF5AB8732AE8B1B7EE"
+      },
+      {
+        "bytes": 4314248,
+        "path": "results/stage5a_bnh_development_predictions_main.jsonl",
+        "sha256": "43174D969BE28A62FDEB2848619998B82144F94282D87C78C629356FED5B3451"
+      },
+      {
+        "bytes": 348732,
+        "path": "results/stage5a_bnh_development_predictions_rerun_subset.jsonl",
+        "sha256": "1528063E66FAC5BF3B96491DD672B5CE83A17A99C15139B5F710653510383796"
+      },
+      {
+        "bytes": 32564032,
+        "path": "results/stage5a_bnh_development_prompt_audit_main.jsonl",
+        "sha256": "39A612E5D06268B75EB22DAA9D414F6977456BA4B8349224044122D2A8830E5D"
+      },
+      {
+        "bytes": 2640256,
+        "path": "results/stage5a_bnh_development_prompt_audit_rerun_subset.jsonl",
+        "sha256": "F468949E72DFC4C36F76456EF2967E9C429CAC490F25DE85FFA7749B6F22E59D"
+      },
+      {
+        "bytes": 2702476,
+        "path": "results/stage5a_bnh_development_query_audit.jsonl",
+        "sha256": "DDEB13359F7B58D3B8459421EB3D209D149C82A2BF0C88E5FD4851C649719C6B"
+      },
+      {
+        "bytes": 593,
+        "path": "results/stage5a_bnh_development_selected_config.json",
+        "sha256": "9AE26DB0CDECDDD234BACD4AF67075F84B3E85529E4F700DBB34B90E16DDDC75"
+      },
+      {
+        "bytes": 22703,
+        "path": "results/stage5a_bnh_development_summary.json",
+        "sha256": "071800D16F7622905BF6D42418D9159EBFD629196234A55F11887CC04B20F132"
+      },
+      {
+        "bytes": 1538,
+        "path": "results/stage5a_bnh_development_telemetry_main.json",
+        "sha256": "67B95CE24DA64A98B12223846C3A27900EDD6D3F256BE1EDA559B5F4B80D63D1"
+      },
+      {
+        "bytes": 1535,
+        "path": "results/stage5a_bnh_development_telemetry_rerun_subset.json",
+        "sha256": "B05BAE44ED79CE7CFC0540886FE12E0605C36DA590A71C8EDCC77BDF2A0D27D6"
+      },
+      {
+        "bytes": 2005,
+        "path": "results/stage5a_bnh_development_verified_pregold.json",
+        "sha256": "051EC810411DCEA205F5E65ECFA1688C21E0864344A218848FF1FA09F74BF5E5"
+      },
+      {
+        "bytes": 7858,
+        "path": "results/stage5a_bnh_evidence_ledger.json",
+        "sha256": "9D97B4100C9BCD31E421595EC18BA2C7318D9E6709AE9106446388C9CA63ABE4"
+      },
+      {
+        "bytes": 386,
+        "path": "results/stage5a_bnh_final_verification.json",
+        "sha256": "145B51FB194BA0DE5B00D294FE4D8F8EAC9FD9D2E7C1F39F741D7AFEDDF0BA09"
+      },
+      {
+        "bytes": 13664,
+        "path": "results/stage5a_bnh_geometry_feasibility_audit.json",
+        "sha256": "2633CB5A750A48B39E6427C9BC38596D97E63220B73AF410911B41EAA15A7D0B"
+      },
+      {
+        "bytes": 1233106,
+        "path": "results/stage5a_bnh_input_manifest.json",
+        "sha256": "9A04CCE267F074097FED488B38F5F8596D057E689DE7A4B555DDBA6898BC7ED2"
+      },
+      {
+        "bytes": 30857,
+        "path": "results/stage5a_bnh_preexisting_frozen_manifest.json",
+        "sha256": "A2C51835AD1B38A765DFDD46355709CE6074CF4C3BD7C926EB47D9BAA9364248"
+      },
+      {
+        "bytes": 477,
+        "path": "results/stage5a_bnh_scientific_decision.json",
+        "sha256": "9C453E0FB2CE8BF3224DD949B620DA1C17567C7AC8A5A7CF5CC109DA978459A0"
+      },
+      {
+        "bytes": 8680,
+        "path": "scripts/stage5a_bnh_common.py",
+        "sha256": "01EB604D74B21F7A2450322C9419CADB5EACEA0614B1DB691885223FF6FD316B"
+      },
+      {
+        "bytes": 34503,
+        "path": "scripts/stage5a_bnh_evaluate.py",
+        "sha256": "7CF49F21AB375EC32BA292F0A707C81D9D19285D6341ACD95AF86CD3AFBFB052"
+      },
+      {
+        "bytes": 23083,
+        "path": "scripts/stage5a_bnh_goldfree_runner.py",
+        "sha256": "6A2E1A97E162E32A66C0B10B15364AED0396A653080AA7C06C8B430230599FB3"
+      },
+      {
+        "bytes": 20054,
+        "path": "scripts/stage5a_bnh_independent_retrieval.py",
+        "sha256": "4869BDD568C4EBA5300E519E3B4D0EA6654BA44D4CCF3A690F4F2DF92894601B"
+      },
+      {
+        "bytes": 26834,
+        "path": "scripts/stage5a_bnh_independent_statistics.py",
+        "sha256": "D7E9AAAD3AD72E0756CF5EEF15300048A218A60CD4004DD529F2A20BE4E1C6E6"
+      },
+      {
+        "bytes": 29277,
+        "path": "scripts/stage5a_bnh_independent_verifier.py",
+        "sha256": "10DBA5DDA3403C894BDCACF051DF3626E82AA347ADE523D5183052D9C3CD07A2"
+      },
+      {
+        "bytes": 11284,
+        "path": "scripts/stage5a_bnh_prepare.py",
+        "sha256": "EB3F2F8CABE7753AC31812E7BC3AF87B58D61BA83486971C34DF73D0AA52FB49"
+      },
+      {
+        "bytes": 26087,
+        "path": "scripts/stage5a_bnh_retrieval.py",
+        "sha256": "401284DC34AFE62DA847DEA468CEFC5808F2385D584BC518E5619E86F38E4359"
+      },
+      {
+        "bytes": 13336,
+        "path": "tests/test_stage5a_bnh.py",
+        "sha256": "7128D81B964009CDC90C1ACE9110D3322B431B0A51CFE7A4F4172CACFE6B3E56"
+      }
+    ],
+    "total_bytes": 129988497
+  },
+  "runtime": {
+    "cuda_runtime": "13.0",
+    "cuda_visible_devices": null,
+    "cudnn": 92000,
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "numpy": "2.5.1",
+    "python": "3.12.0",
+    "safetensors": "0.8.0",
+    "tokenizers": "0.22.2",
+    "torch": "2.12.1+cu130",
+    "transformers": "5.14.1"
+  },
+  "schema_version": "stage5a_bnh_artifact_manifest_v1",
+  "scientific_states": {
+    "core": "BGE_NATIVE_HGRAG_INCONCLUSIVE",
+    "facet": "BGE_NATIVE_FACET_INCREMENT_INCONCLUSIVE",
+    "final_verification": "STAGE5A_FINAL_INDEPENDENT_VERIFICATION_PASS",
+    "placement": "BGE_NATIVE_PROTECTED_PLACEMENT_INCONCLUSIVE"
+  },
+  "status": "STAGE5A_ARTIFACT_MANIFEST_FROZEN"
+}

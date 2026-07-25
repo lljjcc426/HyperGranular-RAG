@@ -1,0 +1,84 @@
+{
+  "hotpotqa_train_distractor_v1_1": {
+    "methods": {
+      "BGE_NATIVE_HGRAG_NO_FACET_TOP20": {
+        "answer_em": 0.426,
+        "answer_f1": 0.5104465970617398,
+        "evidence_count": 19.921,
+        "input_token_count": 931.508,
+        "retrieval_cr20": 0.939,
+        "retrieval_er20": 0.9763499999999999,
+        "unknown": 0.287
+      },
+      "BGE_NATIVE_HGRAG_PROTECTED_TOP20": {
+        "answer_em": 0.426,
+        "answer_f1": 0.5106132637284064,
+        "evidence_count": 19.921,
+        "input_token_count": 931.338,
+        "retrieval_cr20": 0.94,
+        "retrieval_er20": 0.9764333333333333,
+        "unknown": 0.286
+      },
+      "BGE_NATIVE_HGRAG_UNPROTECTED_TOP20": {
+        "answer_em": 0.425,
+        "answer_f1": 0.506549559316876,
+        "evidence_count": 19.921,
+        "input_token_count": 931.338,
+        "retrieval_cr20": 0.94,
+        "retrieval_er20": 0.9764333333333333,
+        "unknown": 0.284
+      },
+      "BGE_TOP20": {
+        "answer_em": 0.43,
+        "answer_f1": 0.5135207547880715,
+        "evidence_count": 19.921,
+        "input_token_count": 931.196,
+        "retrieval_cr20": 0.938,
+        "retrieval_er20": 0.9760999999999999,
+        "unknown": 0.286
+      }
+    },
+    "query_count": 1000
+  },
+  "musique_ans_v1_0_train": {
+    "methods": {
+      "BGE_NATIVE_HGRAG_NO_FACET_TOP20": {
+        "answer_em": 0.13266666666666665,
+        "answer_f1": 0.17357679341482363,
+        "evidence_count": 20.0,
+        "input_token_count": 908.6393333333333,
+        "retrieval_cr20": 0.78,
+        "retrieval_er20": 0.907111111111111,
+        "unknown": 0.63
+      },
+      "BGE_NATIVE_HGRAG_PROTECTED_TOP20": {
+        "answer_em": 0.13666666666666666,
+        "answer_f1": 0.17467203570473272,
+        "evidence_count": 20.0,
+        "input_token_count": 910.8946666666667,
+        "retrieval_cr20": 0.7846666666666666,
+        "retrieval_er20": 0.9093333333333333,
+        "unknown": 0.6293333333333333
+      },
+      "BGE_NATIVE_HGRAG_UNPROTECTED_TOP20": {
+        "answer_em": 0.134,
+        "answer_f1": 0.17200162402828656,
+        "evidence_count": 20.0,
+        "input_token_count": 910.8946666666667,
+        "retrieval_cr20": 0.7846666666666666,
+        "retrieval_er20": 0.9093333333333333,
+        "unknown": 0.6213333333333333
+      },
+      "BGE_TOP20": {
+        "answer_em": 0.14,
+        "answer_f1": 0.17785618488888189,
+        "evidence_count": 20.0,
+        "input_token_count": 911.2953333333334,
+        "retrieval_cr20": 0.7853333333333333,
+        "retrieval_er20": 0.9096666666666666,
+        "unknown": 0.6253333333333333
+      }
+    },
+    "query_count": 1500
+  }
+}
