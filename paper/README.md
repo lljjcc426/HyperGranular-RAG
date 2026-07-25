@@ -2,10 +2,13 @@
 
 本目录只组织可由仓库证据支持的论文内容，不保存原始数据、模型、embedding cache 或未验证结果。
 
-当前状态为 `STAGE5R_PMR_COMPLETE` / `SUBMISSION_METADATA_PENDING`：Stage4E–Stage5A 科学实验线已经完成并冻结，Stage5R 已完成论文、引用、图表、supplement、venue/license 与联合审计，不启动新算法实验。作者、基金、COI、唯一 venue 和项目 license 尚待人类事实绑定，因此不是 `SUBMISSION_READY`。
+当前状态为 `ACL_ANONYMOUS_FIRST_DRAFT_COMPLETE` / `SUBMISSION_METADATA_PENDING`：Stage4E–Stage5A 科学实验线已经完成并冻结，Stage5R 已完成论文、引用、图表、supplement、venue/license、联合审计与匿名 ACL 初稿，不启动新算法实验。作者、基金、COI、唯一 venue 和项目 license 尚待人类事实绑定，因此不是 `SUBMISSION_READY`。
 
 当前文件：
 
+- [Anonymous ACL first-draft PDF](latex/main.pdf)：12 页匿名初稿，正文 8 页、参考文献 2 页、附录内容 2 页；
+- [Anonymous ACL LaTeX source](latex/main.tex)：使用冻结证据、官方 ACL 样式快照和 23 条已核验参考文献；
+- [LaTeX build status](latex/DRAFT_BUILD_STATUS.md)：精确 Bytes/SHA、编译环境、页面与引用检查；
 - [Stage5R English manuscript](MANUSCRIPT_CORE_DRAFT_STAGE5R.md)：已纳入 Stage5A、引用已绑定的完整英文核心稿；
 - [Stage5R manuscript blueprint](STAGE5R_MANUSCRIPT_BLUEPRINT.md)：唯一推荐标题、中心论点、主张层级和提交边界；
 - [Stage5R core tables](STAGE5R_CORE_TABLES.md)：从冻结 JSON/CSV 自动生成的五张核心表；
@@ -17,7 +20,7 @@
 - [Submission blockers](submission/SUBMISSION_BLOCKERS.md)：必须由作者补充的事实与许可决定；
 - [Author and submission metadata](AUTHOR_AND_SUBMISSION_METADATA.yaml)：人工确认的作者、单位、投稿、许可与 AI 披露字段的唯一权威来源；
 - [Metadata confirmation history](AUTHOR_AND_SUBMISSION_METADATA_HISTORY.md)：作者顺序、通讯作者、基金、许可和目标场所变更的追加式人工记录；
-- [LaTeX identity switch](latex/README.md)：默认匿名、显式 camera-ready 且缺失身份时 fail-closed 的开关；
+- [LaTeX identity switch and build guide](latex/README.md)：默认匿名、显式 camera-ready 且缺失身份时 fail-closed 的开关与构建说明；
 - [Stage5-PMC manuscript blueprint](STAGE5_PMC_MANUSCRIPT_BLUEPRINT.md)：中心论点、摘要框架、IMRaD、主表/主图和投稿缺口；
 - [Stage5-PMC manuscript core draft](MANUSCRIPT_CORE_DRAFT.md)：Stage5A 前首轮英文稿，保留为冻结历史基线；
 - [Stage5-PMC core tables](SUBMISSION_CORE_TABLES.md)：主结果、外部稳健性、消融、效率与完整性四张核心表；

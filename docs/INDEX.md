@@ -11,6 +11,9 @@
 | [REPRODUCIBILITY](REPRODUCIBILITY.md) | 当前环境、冻结 SHA、工件与复现边界 |
 | [ROADMAP](ROADMAP.md) | 完整研究时间线与阶段状态 |
 | [Stage5R revision card](STAGE5R_PMR_MANUSCRIPT_REVISION_CARD.md) | Stage5A 后论文重构范围、派生输出、测试、锁与完成状态 |
+| [Anonymous ACL first-draft PDF](../paper/latex/main.pdf) | 当前 12 页匿名论文初稿；正文 8 页、参考文献 2 页、附录内容 2 页 |
+| [Anonymous ACL LaTeX source](../paper/latex/main.tex) | 使用官方 ACL 样式快照、冻结 Stage5A 证据和已核验参考文献的投稿格式源码 |
+| [LaTeX draft build status](../paper/latex/DRAFT_BUILD_STATUS.md) | 初稿 Bytes/SHA、编译环境、引用、匿名性和视觉检查结果 |
 | [Stage5R English manuscript](../paper/MANUSCRIPT_CORE_DRAFT_STAGE5R.md) | 纳入 Stage5A 后的完整英文核心稿；当前科学证据完整，投稿元数据待作者绑定 |
 | [Stage5R blueprint](../paper/STAGE5R_MANUSCRIPT_BLUEPRINT.md) | 唯一推荐标题、中心论点、主张层级与完成边界 |
 | [Stage5R core tables](../paper/STAGE5R_CORE_TABLES.md) | 从冻结 JSON/CSV 自动生成的五张核心表 |
@@ -19,7 +22,7 @@
 | [Verified literature corpus](../paper/references/VERIFIED_LITERATURE_CORPUS.md) | 23 条外部文献的官方来源、审阅状态和允许引用用途 |
 | [Author and submission metadata](../paper/AUTHOR_AND_SUBMISSION_METADATA.yaml) | 人工确认的作者、单位、投稿、许可与 AI 披露字段；未确认字段禁止自动推断 |
 | [Metadata confirmation history](../paper/AUTHOR_AND_SUBMISSION_METADATA_HISTORY.md) | 作者顺序、通讯作者、基金、许可和目标场所等人工变更的追加式记录 |
-| [LaTeX identity switch](../paper/latex/README.md) | 默认匿名、显式 camera-ready 的 fail-closed 使用说明 |
+| [LaTeX identity switch](../paper/latex/README.md) | 默认匿名、显式 camera-ready 的 fail-closed 使用说明与构建入口 |
 | [Venue matrix](../paper/submission/VENUE_TARGET_MATRIX.md) | TACL、ACL/EMNLP、TMLR、Cambridge NLP 与 Findings 适配分析 |
 | [Submission blockers](../paper/submission/SUBMISSION_BLOCKERS.md) | 作者、基金、COI、venue、许可和格式的显式待办 |
 | [Stage5A-BNH experiment card](STAGE5A_BNH_EXPERIMENT_CARD.md) | 已冻结 BGE-native development/confirmation、停止规则与主张边界 |

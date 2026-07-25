@@ -15,6 +15,7 @@ BGE_NATIVE_HGRAG_INCONCLUSIVE
 CORE_ALGORITHM_EXPERIMENTS_CLOSED
 STAGE5R_PMR_COMPLETE
 CURRENT_EVIDENCE_MANUSCRIPT_COMPLETE
+ACL_ANONYMOUS_FIRST_DRAFT_COMPLETE
 VERIFIED_LITERATURE_CORPUS_COMPLETE
 FIGURE_AND_TABLE_AUDIT_PASS
 CLAIM_AND_CITATION_AUDIT_PASS
@@ -25,7 +26,7 @@ STAGE3B_LOCKED
 U2_NOT_AUTHORIZED
 ```
 
-Stage5R 的可复现入口是 [英文核心稿](../paper/MANUSCRIPT_CORE_DRAFT_STAGE5R.md)、[核心表](../paper/STAGE5R_CORE_TABLES.md)、[图形合同](../paper/figures_stage5r/FIGURE_CONTRACTS_AND_CAPTIONS.md)、[figure manifest](../paper/figures_stage5r/STAGE5R_FIGURE_MANIFEST.json) 和 [联合审计](../paper/STAGE5R_PRE_SUBMISSION_AUDIT.md)。所有 Stage4E–Stage5A 正式工件保持只读。
+Stage5R 的可复现入口是 [匿名 ACL 初稿 PDF](../paper/latex/main.pdf)、[LaTeX 源码](../paper/latex/main.tex)、[初稿构建状态](../paper/latex/DRAFT_BUILD_STATUS.md)、[英文核心稿](../paper/MANUSCRIPT_CORE_DRAFT_STAGE5R.md)、[核心表](../paper/STAGE5R_CORE_TABLES.md)、[图形合同](../paper/figures_stage5r/FIGURE_CONTRACTS_AND_CAPTIONS.md)、[figure manifest](../paper/figures_stage5r/STAGE5R_FIGURE_MANIFEST.json) 和 [联合审计](../paper/STAGE5R_PRE_SUBMISSION_AUDIT.md)。所有 Stage4E–Stage5A 正式工件保持只读。
 
 作者与投稿信息的唯一权威来源是
 [`paper/AUTHOR_AND_SUBMISSION_METADATA.yaml`](../paper/AUTHOR_AND_SUBMISSION_METADATA.yaml)；
@@ -34,6 +35,19 @@ Stage5R 的可复现入口是 [英文核心稿](../paper/MANUSCRIPT_CORE_DRAFT_S
 不得由程序填充 `TBD_HUMAN_INPUT` 或 `TBD_HUMAN_CONFIRMATION`。LaTeX
 [`submission_mode.tex`](../paper/latex/submission_mode.tex) 默认匿名；只有人工解除匿名并提供完整
 camera-ready author block 后才允许显式切换。
+
+匿名初稿在 `paper/latex/` 目录使用 Tectonic 0.16.9 编译：
+
+```powershell
+$env:SOURCE_DATE_EPOCH = '1784950406'
+tectonic -X compile --outdir ..\..\temp\stage5r_latex_build main.tex
+```
+
+当前 `main.pdf` 共 12 页，Bytes 为 `194076`，SHA-256 为
+`3DC0B6D98B2027EC4B67BDFD343CC53A959C79ABF1A5CF1D9AAD2EF423102157`。
+固定上述 `SOURCE_DATE_EPOCH` 后，两次完整编译得到同字节 PDF。
+完整源码/style 身份、引用与匿名性检查见
+[`DRAFT_BUILD_STATUS.md`](../paper/latex/DRAFT_BUILD_STATUS.md)。
 
 ```powershell
 python scripts\stage5r_build_materials.py

@@ -5,6 +5,7 @@ Status:
 ```text
 STAGE5R_PMR_COMPLETE
 CURRENT_EVIDENCE_MANUSCRIPT_COMPLETE
+ACL_ANONYMOUS_FIRST_DRAFT_COMPLETE
 VERIFIED_LITERATURE_CORPUS_COMPLETE
 FIGURE_AND_TABLE_AUDIT_PASS
 CLAIM_AND_CITATION_AUDIT_PASS
@@ -119,8 +120,12 @@ PASS with one explicit author-level blocker.
 
 ## 7. Submission readiness
 
-The scientific package is complete for current evidence, but it is not ready
-for a submission portal. The canonical partial record is
+The scientific package and the anonymous ACL first draft are complete for
+current evidence, but the package is not ready for a submission portal. The
+tracked draft comprises `paper/latex/main.tex` and a visually inspected
+12-page `paper/latex/main.pdf`; exact identities and build checks are recorded
+in [`latex/DRAFT_BUILD_STATUS.md`](latex/DRAFT_BUILD_STATUS.md). The canonical
+partial metadata record is
 [`AUTHOR_AND_SUBMISSION_METADATA.yaml`](AUTHOR_AND_SUBMISSION_METADATA.yaml).
 It confirms the first two Chinese author names and positions, their shared
 university affiliation, and the advisor's corresponding-author role. The

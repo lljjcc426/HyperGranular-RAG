@@ -6,8 +6,8 @@
 
 | 项目 | 当前事实 |
 |---|---|
-| 研究阶段 | Stage4E–Stage5A 科学实验线已完成并冻结；Stage5R-PMR 论文重构已完成 |
-| 状态 | `CORE_ALGORITHM_EXPERIMENTS_CLOSED` / `STAGE5R_PMR_COMPLETE` / `SUBMISSION_METADATA_PENDING` |
+| 研究阶段 | Stage4E–Stage5A 科学实验线已完成并冻结；Stage5R-PMR 论文重构及匿名 ACL 初稿已完成 |
+| 状态 | `CORE_ALGORITHM_EXPERIMENTS_CLOSED` / `ACL_ANONYMOUS_FIRST_DRAFT_COMPLETE` / `SUBMISSION_METADATA_PENDING` |
 | Stage5A 新边界 | BGE-native confirmation：HotpotQA train 1,000 + MuSiQue train 1,500；历史正式 ID overlap 0 |
 | 当前证据 | compact MiniLM 上重复小幅正向；Full 明确弱于 BGE；cross-space sidecar 与 BGE-native 增量均不确定 |
 | 当前工作 | 已建立部分确认的人工作者/投稿元数据；继续补齐英文发表姓名、导师、基金、COI、许可与唯一投稿渠道，不启动新算法实验 |
@@ -17,13 +17,16 @@
 
 Stage5R 当前论文入口：
 
+- [匿名 ACL 初稿 PDF](paper/latex/main.pdf)
+- [匿名 ACL 初稿 LaTeX 源码](paper/latex/main.tex)
+- [初稿构建与校验状态](paper/latex/DRAFT_BUILD_STATUS.md)
 - [英文核心稿](paper/MANUSCRIPT_CORE_DRAFT_STAGE5R.md)
 - [五张自动核验核心表](paper/STAGE5R_CORE_TABLES.md)
 - [经核验文献语料库](paper/references/VERIFIED_LITERATURE_CORPUS.md)
 - [Stage5R 图表与 Bytes/SHA manifest](paper/figures_stage5r/STAGE5R_FIGURE_MANIFEST.json)
 - [投稿前联合审计](paper/STAGE5R_PRE_SUBMISSION_AUDIT.md)
 - [人工作者与投稿元数据](paper/AUTHOR_AND_SUBMISSION_METADATA.yaml)
-- [LaTeX 匿名/camera-ready 开关](paper/latex/README.md)
+- [LaTeX 匿名/camera-ready 开关与构建说明](paper/latex/README.md)
 
 Stage5A-BNH 冻结结论：BGE-native Protected−BGE 等权 answer-F1 为
 `-0.003046 [-0.006880,0.000631]`，EM 为

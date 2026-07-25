@@ -1,16 +1,41 @@
 # LaTeX submission identity switch
 
+Current anonymous paper draft:
+
+- [`main.tex`](main.tex)
+- [`main.pdf`](main.pdf)
+- [`DRAFT_BUILD_STATUS.md`](DRAFT_BUILD_STATUS.md)
+- [`ACL_STYLE_PROVENANCE.md`](ACL_STYLE_PROVENANCE.md)
+
+The tracked PDF is the visually inspected 12-page anonymous first draft built
+from the tracked source. It contains eight pages of main text, two pages of
+references, and two pages of appendix content. The build-status record binds
+its exact bytes and SHA-256.
+
+## Build
+
+From `paper/latex/`, use Tectonic 0.16.9 or an equivalent compatible engine:
+
+```powershell
+$env:SOURCE_DATE_EPOCH = '1784950406'
+tectonic -X compile --outdir ..\..\temp\stage5r_latex_build main.tex
+```
+
+The source uses the official ACL style snapshot recorded in
+[`ACL_STYLE_PROVENANCE.md`](ACL_STYLE_PROVENANCE.md) and the verified
+bibliography at `../references/verified_references.bib`.
+
 The canonical human-maintained metadata record is
 [`../AUTHOR_AND_SUBMISSION_METADATA.yaml`](../AUTHOR_AND_SUBMISSION_METADATA.yaml).
 It must not be copied into the anonymous `main.tex`.
 
 ## Anonymous mode (default)
 
-Load the switch after the document class/style and before
+`main.tex` already loads the switch after the document class/style and before
 `\begin{document}`:
 
 ```tex
-\input{paper/latex/submission_mode.tex}
+\input{submission_mode.tex}
 ```
 
 With no other definition, this produces:
@@ -22,13 +47,15 @@ With no other definition, this produces:
 The tracked review source must keep this default. Missing human metadata does
 not block writing or compiling the anonymous manuscript body.
 
+The tracked draft also selects the official ACL style's `review` option in this
+mode, so author identity is absent and review line/page numbers are enabled.
+
 ## Camera-ready mode
 
 Camera-ready mode is an explicit human-controlled override:
 
 ```tex
-\def\HGRUseCameraReady{1}
-\input{paper/latex/submission_mode.tex}
+\def\HGRUseCameraReady{1} % define before loading main.tex
 ```
 
 Before enabling it:
@@ -46,6 +73,8 @@ Before enabling it:
 `camera_ready_author_block.tex` is ignored by Git while the repository is being
 used for anonymous review preparation. The example contains no real author
 identity.
+
+The same explicit definition selects the official ACL style's `final` option.
 
 ## Fail-closed behavior
 
