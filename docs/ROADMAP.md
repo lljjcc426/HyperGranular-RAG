@@ -3,9 +3,9 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage4D-CMA/controller are closed; Stage4E–4I are complete, independently verified and frozen; Stage5-PMC paper manuscript consolidation is active and no new algorithm experiment is open
+- Current stage: Stage4D-CMA/controller are closed; Stage4E–Stage5A are complete, independently verified and frozen; Stage5R-PMR manuscript revision is complete and only author/venue/license metadata remain
 - Current governance: project-wide and durable across all current/future stages; one research stage receives one authorization; stage-internal predefined work is continuous; step/channel reapproval is disabled; only new scientific boundaries or serious integrity anomalies pause execution
-- Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive development batch through verified Stage4D-CMA; deterministic new-ID HotpotQA train 1,000 and MuSiQue train 3,000 in Stage4E/4F; separate zero-overlap HotpotQA 1,000 + MuSiQue 1,500 boundaries in Stage4H and Stage4I; reservation and Stage3B were not accessed
+- Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive development batch through verified Stage4D-CMA; deterministic new-ID HotpotQA train 1,000 and MuSiQue train 3,000 in Stage4E/4F; separate zero-overlap HotpotQA 1,000 + MuSiQue 1,500 boundaries in Stage4H, Stage4I, and Stage5A confirmation; reservation and Stage3B were not accessed
 - Generators used: Qwen2.5-1.5B-Instruct in verified Stage4E/4F/4H; one pre-specified Gemma 4 E2B official mobile-QAT configuration in verified Stage4G
 - Gold labels used for indexing: No
 
@@ -19,33 +19,56 @@ The full integrity and methodology audit is recorded in `docs/PRIOR_STAGE_METHOD
 - Stage2G: valid negative mechanism result; the current boundary rule is unsupported.
 - Stage2H: diagnostic only. Stage3A: failed development. Stage3C: descriptive planning only.
 - Restarted Stage4A `n=2,800`: exact event-count arithmetic is correct, but 20 gains is a planning heuristic. The number is not an approved effect-power or controller-training sample size.
-- Research position: `STAGE4D_CMA_CLOSED` and `CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED`; Stage4E/4F support static q25 relative to historical Dense under Qwen, while Stage4G returns `GENERATOR_TRANSFER_INCONCLUSIVE`. Stage4H again supports Full vs historical Dense but is negative vs BGE strong dense. Stage4I tests the narrower BGE+HGRAG sidecar formulation: the core comparison is inconclusive, protected placement is supported, and facet increment is inconclusive. The core experimental program is complete. Stage5-PMC consolidates the manuscript; U2, reservation, Stage3B, new controllers, full-wiki Gold, and new generator/strong-retriever search are not authorized.
+- Research position: `STAGE4D_CMA_CLOSED` and `CURRENT_CONTROLLER_BRANCH_FROZEN_CLOSED`; Stage4E/4F support static q25 relative to historical Dense under Qwen, while Stage4G returns `GENERATOR_TRANSFER_INCONCLUSIVE`. Stage4H supports Full vs historical Dense but is negative vs BGE strong dense. Stage4I sidecar and Stage5A BGE-native confirmation do not establish incremental answer-quality gain over BGE. The core algorithm program is closed. Stage5R has integrated the complete evidence into a manuscript; U2, reservation, Stage3B, new controllers, full-wiki, and new generator/strong-retriever search are not authorized.
 
-## Active Non-Experimental Phase: Stage5-PMC
+## Completed Non-Experimental Phase: Stage5R-PMR
 
 ```text
 STAGE4I_CLOSED_AND_FROZEN
-CORE_EXPERIMENTAL_PROGRAM_COMPLETE
-NEXT_PHASE = STAGE5_PAPER_MANUSCRIPT_CONSOLIDATION
-FULL_WIKI = OPTIONAL_AND_DEFERRED
-NEW_MODEL_SEARCH = NOT_AUTHORIZED
+STAGE5A_BNH_COMPLETE_AND_FROZEN
+BGE_NATIVE_HGRAG_INCONCLUSIVE
+CORE_ALGORITHM_EXPERIMENTS_CLOSED
+STAGE5R_PMR_COMPLETE
+CURRENT_EVIDENCE_MANUSCRIPT_COMPLETE
+VERIFIED_LITERATURE_CORPUS_COMPLETE
+FIGURE_AND_TABLE_AUDIT_PASS
+CLAIM_AND_CITATION_AUDIT_PASS
+SUBMISSION_METADATA_PENDING
+FULL_WIKI_NOT_AUTHORIZED
+NEW_GENERATOR_NOT_AUTHORIZED
+NEW_STRONG_RETRIEVER_SEARCH_NOT_AUTHORIZED
 CONTROLLER_LINE = CLOSED
 RESERVATION = LOCKED
 STAGE3B = LOCKED
 U2 = NOT_AUTHORIZED
 ```
 
-Stage5-PMC does not create a new scientific result. It freezes the paper claim hierarchy, consolidates four core result tables, builds traceable Python figures, and audits the manuscript against the verified Stage4E–Stage4I ledger. The paper is positioned as structured evidence completion for compact dense backbones. It must retain the Stage4H strong-dense negative result, the Stage4I sidecar and facet inconclusive results, the Stage4G generator-transfer inconclusive result, and the undefined granular-ball flat control.
+Stage5A rebuilt HGRAG natively in BGE space. Protected−BGE equals
+`-0.003046 [-0.006880,0.000631]` for dataset-equal-weight answer F1 and is
+`INCONCLUSIVE`; native placement and facet increments are also inconclusive.
+Net Gold evidence is `+1` on each dataset but does not translate into answer
+gain. The development `C10 +0.003143` remains selection evidence only.
 
-The current Stage5 entry points are:
+Stage5R creates no new scientific result. It integrates Stage4E–Stage5A,
+rewrites the English manuscript around the strong-retriever boundary, binds 23
+verified references, builds five traceable tables and five four-format Python
+figures, and completes the evidence/citation/figure/language/reproducibility
+audit.
 
-- `docs/STAGE5_PMC_PAPER_MANUSCRIPT_CONSOLIDATION_CARD.md`
-- `paper/STAGE5_PMC_MANUSCRIPT_BLUEPRINT.md`
-- `paper/SUBMISSION_CORE_TABLES.md`
-- `paper/figures/FIGURE_CONTRACTS_AND_CAPTIONS.md`
-- `paper/STAGE5_PMC_PRE_SUBMISSION_AUDIT.md`
+The current Stage5R entry points are:
 
-Full-wiki is optional future work and does not block submission preparation. A new experimental stage requires a new scientific boundary; manuscript editing, citation verification, figure/table production and venue formatting remain continuous Stage5 work.
+- `paper/MANUSCRIPT_CORE_DRAFT_STAGE5R.md`
+- `paper/STAGE5R_MANUSCRIPT_BLUEPRINT.md`
+- `paper/STAGE5R_CORE_TABLES.md`
+- `paper/figures_stage5r/FIGURE_CONTRACTS_AND_CAPTIONS.md`
+- `paper/references/VERIFIED_LITERATURE_CORPUS.md`
+- `paper/STAGE5R_PRE_SUBMISSION_AUDIT.md`
+- `paper/submission/SUBMISSION_BLOCKERS.md`
+
+Author identity, funding, conflicts, a unique venue, final venue formatting, and
+the repository license are pending human facts/choices. The package is not
+`SUBMISSION_READY`. A new experimental stage requires a new scientific
+boundary.
 
 ## Completed Execution History
 
@@ -1726,3 +1749,51 @@ Revision 2 design: `docs/STAGE4B_U1_PROTOCOL_REVISION_2_DRAFT.md`. At the review
 - A bounded cache round-trip correction preserved the exact stored float32 embeddings instead of re-normalizing them a second time; existing caches/rankings/trace/eligibility artifacts were not overwritten. An outer command timeout returned while the original main process continued; no duplicate process was launched.
 - The paper claim is now narrower: structural expansion has verified value relative to the historical MiniLM Dense in Stage4E/4F/4H, but current evidence does not establish additional answer-quality value when the frozen MiniLM-HGRAG sidecar is attached to the pre-specified BGE strong backbone. Protected placement matters within the sidecar design, but does not make the sidecar superior to BGE-only.
 - No next scientific stage is active. Starting full-wiki, a new retriever/generator search, Reservation, Stage3B, U2 or a controller requires a new stage-level scientific definition and authorization.
+
+### Stage5A-BNH BGE-Native HGRAG (2026-07-25)
+
+- Stage5A removed the Stage4I cross-space mismatch by reconstructing adaptive
+  balls, facets, and insertion candidates in the frozen BGE space. Development
+  and confirmation used separate deterministic zero-overlap boundaries.
+- Configuration `C10` was selected on development with answer-F1 difference
+  `+0.003143`; the value remains selection evidence and is not pooled with
+  confirmation.
+- On confirmation, BGE-native Protected−BGE answer-F1 was
+  `-0.002907 [-0.008682,0.002652]` on HotpotQA and
+  `-0.003184 [-0.008486,0.001863]` on MuSiQue. Dataset-equal-weight F1 was
+  `-0.003046 [-0.006880,0.000631]`, and EM was
+  `-0.003667 [-0.007667,0.000004]`.
+- Protected−Unprotected was `+0.003367 [-0.001285,0.008026]`; Protected−NoFacet
+  was `+0.000631 [-0.004220,0.005365]`. All three confirmation claims are
+  inconclusive.
+- Post-decision descriptive audits found added/displaced/net Gold of `3/2/+1`
+  on HotpotQA and `16/15/+1` on MuSiQue. The small positive net count did not
+  establish answer utility.
+- Final independent verification passed. Automatic BGE-native parameter search
+  stopped, and all development/confirmation artifacts are frozen at commit
+  `02128346cf2b0c088e388f8ea796fadfb9d596b4`.
+
+### Stage5R-PMR Post-Stage5A Manuscript Revision (2026-07-25)
+
+- Stage5R rewrote the manuscript around one bounded claim: HGRAG repeatedly
+  helps the historical compact MiniLM backbone, original Full is below BGE, and
+  neither cross-space nor BGE-native expansion establishes an increment over
+  BGE.
+- The package contains a complete English manuscript, a 23-entry verified
+  literature corpus and BibTeX, a citation–claim map, five automatically built
+  core tables, five figures in SVG/PDF/600-dpi TIFF/PNG, supplementary material,
+  a venue matrix, license/availability record, metadata template, and blockers.
+- Two complete figure/table builds were byte-identical. The manifest SHA-256
+was `EFCED94CC12FDDA26360AE958E40EE1C7C2D88FC4B5853CC63B27DCD91ED246A`,
+  with 33 identical derived-file identities.
+- Stage4E–Stage4I regression tests passed 89/89, Stage5A passed 9/9,
+  Stage5-PMC verification passed, and the Stage5R joint verifier returned
+  `STAGE5R_PMR_MATERIALS_VERIFIED`.
+- No frozen experimental artifact or original Stage5-PMC figure source was
+  modified. No retrieval, generation, Gold evaluation, bootstrap, model search,
+  or algorithm experiment ran.
+- Current state is `STAGE5R_PMR_COMPLETE`,
+  `CURRENT_EVIDENCE_MANUSCRIPT_COMPLETE`, and
+  `SUBMISSION_METADATA_PENDING`. Author facts, final venue, project license,
+  and venue formatting remain human decisions; the package is not
+  `SUBMISSION_READY`.

@@ -2,12 +2,21 @@
 
 本目录只组织可由仓库证据支持的论文内容，不保存原始数据、模型、embedding cache 或未验证结果。
 
-当前阶段为 `STAGE5_PMC_ACTIVE`：Stage4E–Stage4I 科学实验线已经完成并冻结，当前只进行论文整合、图表生成、引用准备和一致性审计，不启动新算法实验。
+当前状态为 `STAGE5R_PMR_COMPLETE` / `SUBMISSION_METADATA_PENDING`：Stage4E–Stage5A 科学实验线已经完成并冻结，Stage5R 已完成论文、引用、图表、supplement、venue/license 与联合审计，不启动新算法实验。作者、基金、COI、唯一 venue 和项目 license 尚待人类事实绑定，因此不是 `SUBMISSION_READY`。
 
 当前文件：
 
+- [Stage5R English manuscript](MANUSCRIPT_CORE_DRAFT_STAGE5R.md)：已纳入 Stage5A、引用已绑定的完整英文核心稿；
+- [Stage5R manuscript blueprint](STAGE5R_MANUSCRIPT_BLUEPRINT.md)：唯一推荐标题、中心论点、主张层级和提交边界；
+- [Stage5R core tables](STAGE5R_CORE_TABLES.md)：从冻结 JSON/CSV 自动生成的五张核心表；
+- [Stage5R joint audit](STAGE5R_PRE_SUBMISSION_AUDIT.md)：evidence/citation/figure/language/reproducibility 联合审计；
+- [Verified literature corpus](references/VERIFIED_LITERATURE_CORPUS.md)：23 条经官方来源核验的文献与允许引用用途；
+- [Stage5R figure contracts](figures_stage5r/FIGURE_CONTRACTS_AND_CAPTIONS.md)：五组图、caption、CSV 与 manifest；
+- [Supplementary draft](supplementary/SUPPLEMENTARY_MATERIAL_DRAFT.md)：实验治理、边界、环境、完整结果与工件追溯；
+- [Venue target matrix](submission/VENUE_TARGET_MATRIX.md)：当前官方投稿要求、CCF/CAS 边界和适配风险；
+- [Submission blockers](submission/SUBMISSION_BLOCKERS.md)：必须由作者补充的事实与许可决定；
 - [Stage5-PMC manuscript blueprint](STAGE5_PMC_MANUSCRIPT_BLUEPRINT.md)：中心论点、摘要框架、IMRaD、主表/主图和投稿缺口；
-- [Stage5 manuscript core draft](MANUSCRIPT_CORE_DRAFT.md)：基于冻结证据的英文核心稿；外部引用尚未绑定，当前不可投稿；
+- [Stage5-PMC manuscript core draft](MANUSCRIPT_CORE_DRAFT.md)：Stage5A 前首轮英文稿，保留为冻结历史基线；
 - [Stage5-PMC core tables](SUBMISSION_CORE_TABLES.md)：主结果、外部稳健性、消融、效率与完整性四张核心表；
 - [Stage5-PMC pre-submission audit](STAGE5_PMC_PRE_SUBMISSION_AUDIT.md)：内部 evidence/claim/caption 一致性与剩余投稿缺口；
 - [Stage5 figure contracts](figures/FIGURE_CONTRACTS_AND_CAPTIONS.md)：五组论文图的 visual contract、caption、CSV trace 与 QA；
@@ -38,4 +47,5 @@
 - Stage4G 必须写成一个额外预指定生成器配置下的 inconclusive transfer test：HotpotQA F1 点差为正、MuSiQue 为轻微负向、数据集等权门未通过；不得写成普遍 generator robustness、显著负向迁移或模型架构排名；
 - Stage4H 必须同时写明 Full−Dense `SUPPORTED`、Full−StrongDense `NEGATIVE`、NoProtection `INCONCLUSIVE`、NoFacet `SUPPORTED`、flat `NOT_FAIRLY_DEFINED`；不得只保留有利消融；
 - Stage4I 必须把 Protected−BGE `INCONCLUSIVE`、Protected−Unprotected `SUPPORTED` 与 Protected−NoFacet `INCONCLUSIVE` 分层写明；placement 支持不得替代核心 strong-dense comparison；
+- Stage5A 必须把 BGE-native Protected−BGE、Protected−Unprotected 与 Protected−NoFacet 全部写为 `INCONCLUSIVE`；Development `C10 +0.003143` 仅为选择证据，净 Gold `+1/+1` 仅为 post-decision descriptive；
 - 所有数字必须能定位到 tracked result/report，或明确标记为 protocol parameter。

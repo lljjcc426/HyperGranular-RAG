@@ -1,0 +1,6 @@
+boundary,contrast,delta_f1_ci,status
+Compact component,Full − NoFacet,"+0.01336 [0.00341, 0.02343]",SUPPORTED
+Cross-space placement,Protected − Unprotected,"+0.01122 [0.00129, 0.02104]",SUPPORTED
+BGE-native placement,Protected − Unprotected,"+0.00337 [-0.00129, 0.00803]",INCONCLUSIVE
+BGE-native facet,Protected − NoFacet,"+0.00063 [-0.00422, 0.00536]",INCONCLUSIVE
+Granular-ball control,Full − FlatBalls,not estimable,NOT_FAIRLY_DEFINED

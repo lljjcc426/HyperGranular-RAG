@@ -1,0 +1,8 @@
+step,component,role
+1,Compact dense or BGE backbone,ranked evidence
+2,Adaptive granular balls,local organization
+3,Query-aware facet hyperedges,high-order links
+4,Protected bounded insertion,Top-k completion
+5,Generator,answer prediction
+6,BGE cross-space sidecar,inconclusive variant
+7,BGE-native reconstruction,inconclusive variant

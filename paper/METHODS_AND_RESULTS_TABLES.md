@@ -1,8 +1,8 @@
 # HyperGranular-RAG 方法定义与冻结结果表
 
-状态：`STAGE4I_FINAL_VERIFICATION_PASS` / `STAGE5_PMC_DERIVED_TABLE_SOURCE`
+状态：`STAGE5A_FINAL_INDEPENDENT_VERIFICATION_PASS` / `STAGE5R_DERIVED_TABLE_SOURCE`
 用途：论文 Methods、Results 与 Reproducibility 的统一数字入口。
-证据边界：本文件只汇总已经提交并通过独立验证的 Stage4E–4I 工件；不新增统计检验，不改变任何冻结结论。
+证据边界：本文件只汇总已经提交并通过独立验证的 Stage4E–Stage5A 工件；不新增统计检验，不改变任何冻结结论。
 
 ## 1. 静态 HyperGranular-RAG 方法
 
@@ -187,7 +187,49 @@ Stage4I 的核心 comparison 只有 Protected sidecar−BGE。Placement 与 face
 不能单独触发 advancement。核心区间跨 0，因此既不能声称 sidecar 改善或损害 BGE，也不能
 声称等价。
 
-## 6. 统一资源与确定性
+## 6. Stage5A BGE-native 重建
+
+Stage5A 在独立的 HotpotQA 1,000 + MuSiQue 1,500 confirmation 边界上，把
+adaptive balls、facet eligibility 与候选排序重建到冻结 BGE 空间。Development
+`C10 +0.003143` 只承担事前配置选择，不进入 confirmation 汇总。
+
+### 6.1 四臂绝对指标
+
+| 数据集 | 方法 | Answer F1 | EM | CR@20 | ER@20 |
+|---|---|---:|---:|---:|---:|
+| HotpotQA | BGE Top-20 | 0.51352 | 0.43000 | 0.93800 | 0.97610 |
+| HotpotQA | BGE-native Protected | 0.51061 | 0.42600 | 0.94000 | 0.97643 |
+| HotpotQA | BGE-native Unprotected | 0.50655 | 0.42500 | 0.94000 | 0.97643 |
+| HotpotQA | BGE-native NoFacet | 0.51045 | 0.42600 | 0.93900 | 0.97635 |
+| MuSiQue | BGE Top-20 | 0.17786 | 0.14000 | 0.78533 | 0.90967 |
+| MuSiQue | BGE-native Protected | 0.17467 | 0.13667 | 0.78467 | 0.90933 |
+| MuSiQue | BGE-native Unprotected | 0.17200 | 0.13400 | 0.78467 | 0.90933 |
+| MuSiQue | BGE-native NoFacet | 0.17358 | 0.13267 | 0.78000 | 0.90711 |
+
+### 6.2 数据集等权冻结比较
+
+| 比较（左−右） | ΔF1 [95% CI] | ΔEM [95% CI] | 冻结判定 |
+|---|---:|---:|---|
+| Native Protected − BGE | -0.003046 [-0.006880, 0.000631] | -0.003667 [-0.007667, 0.000004] | `BGE_NATIVE_HGRAG_INCONCLUSIVE` |
+| Native Protected − Unprotected | +0.003367 [-0.001285, 0.008026] | +0.001833 [-0.003167, 0.006833] | `BGE_NATIVE_PROTECTED_PLACEMENT_INCONCLUSIVE` |
+| Native Protected − NoFacet | +0.000631 [-0.004220, 0.005365] | +0.002000 [-0.002833, 0.006833] | `BGE_NATIVE_FACET_INCREMENT_INCONCLUSIVE` |
+
+HotpotQA/MuSiQue 的 Protected−BGE F1 分别为
+`-0.002907 [-0.008682,0.002652]` 与
+`-0.003184 [-0.008486,0.001863]`。点估计均略负但区间跨 0，因此既不建立
+增益，也不建立伤害或等价。
+
+### 6.3 Post-decision mechanism
+
+| 数据集 | Added Gold | Displaced BGE Gold | Net Gold | 证据角色 |
+|---|---:|---:|---:|---|
+| HotpotQA | 3 | 2 | +1 | `POST_DECISION_DESCRIPTIVE_ONLY` |
+| MuSiQue | 16 | 15 | +1 | `POST_DECISION_DESCRIPTIVE_ONLY` |
+
+净 Gold 略为正而 answer-F1 点估计略负，说明 evidence count 不能替代端到端
+answer evaluation。
+
+## 7. 统一资源与确定性
 
 | 阶段 | Generator/runtime | Main calls | Determinism transaction | Main wall time (s) | Main GPU peak (bytes) | 零失败 |
 |---|---|---:|---|---:|---:|---|
@@ -196,6 +238,7 @@ Stage4I 的核心 comparison 只有 Protected sidecar−BGE。Placement 与 face
 | Stage4G | Gemma official mobile-QAT | 8,000 | full main + pre-hash subset（400） | 56,501.842 | 7,885,933,056 | 是 |
 | Stage4H | Qwen FP16 | 17,500 | full main + pre-hash subset（1,400） | 6,265.001 | 4,174,117,888 | 是 |
 | Stage4I | Qwen FP16 | 10,000 | full main + pre-hash subset（800） | 4,999.069 | 4,356,265,984 | 是 |
+| Stage5A | Qwen FP16 | 10,000 | full main + pre-hash subset（800） | 3,546.189（四臂 generation 合计） | 3,856,969,216 | 是 |
 
 Stage4E embedding cache 为 75,756,384 bytes；Stage4F 为 399,838,172 bytes；Stage4H 的
 MiniLM/BGE caches 分别为 275,898,280 / 667,539,988 bytes。Stage4G 表中的时间和显存来自
@@ -206,7 +249,7 @@ Stage4H subset 的 200 queries / 1,400 predictions 与 main 投影逐字节一�
 MiniLM/BGE caches 分别为 276,194,136 / 668,255,684 bytes；其 200-query / 800-prediction
 subset 与 main 投影逐字节一致。
 
-## 7. 完整性、主张与限制
+## 8. 完整性、主张与限制
 
 - Stage4H HotpotQA 1,000 + MuSiQue 1,500 样本与全部历史正式 ID overlap 为 0；选择只使用
   native IDs 和预注册 hash salt。
@@ -223,10 +266,15 @@ subset 与 main 投影逐字节一致。
   bootstrap、evidence transitions 和 decision，状态为 `STAGE4I_FINAL_VERIFICATION_PASS`。
 - Stage4I cache roundtrip 修正只消除了已归一化 float32 cache 的二次归一化；正式 cache、
   ranking、candidate trace 和科学定义均未改变。
+- Stage5A final verifier 独立重建 development/confirmation boundary、BGE-native
+  candidates、四臂 metrics、10,000 bootstrap、decision、mechanism 和 artifact
+  identities；核心、placement 和 facet confirmation 均为 inconclusive。
+- Stage5A development 只负责选择 `C10`，不得与 confirmation 合并；post-decision
+  Gold 只允许描述，不得触发重新调参。
 - post-decision metadata 只允许描述，不能转化为新的确认性 subgroup 结论。
 - controller 负结果属于独立研究分支，不能用于修改或否定静态方法的已冻结结果。
 
-## 8. 证据定位
+## 9. 证据定位
 
 - Stage4E/4F/4G/4H/4I 结果与限制：对应 `reports/` 阶段报告；
 - Stage4H 逐数据集绝对指标：`results/stage4h_cbe_hotpot1000_musique1500_v1_dataset_summaries.json`；
@@ -236,4 +284,6 @@ subset 与 main 投影逐字节一致。
 - Stage4I 主要比较：`results/stage4i_sdc_hotpot1000_musique1500_v1_equal_weight_summary.json`；
 - Stage4I placement/facet：`results/stage4i_sdc_hotpot1000_musique1500_v1_placement_summary.json` 与 `results/stage4i_sdc_hotpot1000_musique1500_v1_facet_summary.json`；
 - Stage4I 决策/独立验证：`results/stage4i_sdc_hotpot1000_musique1500_v1_scientific_decision.json` 与 `results/stage4i_sdc_hotpot1000_musique1500_v1_final_verification.json`；
-- 精确算法实现：`scripts/stage4f_xdr_retrieval.py`、`scripts/stage4h_cbe_retrieval.py` 与 `scripts/stage4i_sdc_retrieval.py`。
+- Stage5A 数据集/等权比较：`results/stage5a_bnh_confirmation_dataset_summaries.json` 与 `results/stage5a_bnh_confirmation_equal_weight_summary.json`；
+- Stage5A mechanism/final verification：`results/stage5a_bnh_confirmation_mechanism_audit.json` 与 `results/stage5a_bnh_final_verification.json`；
+- 精确算法实现：`scripts/stage4f_xdr_retrieval.py`、`scripts/stage4h_cbe_retrieval.py`、`scripts/stage4i_sdc_retrieval.py` 与 `scripts/stage5a_bnh_retrieval.py`。

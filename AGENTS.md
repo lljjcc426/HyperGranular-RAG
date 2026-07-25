@@ -7,7 +7,7 @@
 - 仓库：`E:\SCIENCE\HyperGranular-RAG`
 - GitHub：`https://github.com/lljjcc426/HyperGranular-RAG.git`
 - 登记数据根目录：`E:\SCIENCE\超粒球RAG_数据`
-- 研究范围：粒球/超边多跳检索、静态 q25 protected insertion、已关闭的 U1/candidate-controller 审计线、Stage4E–4G 复制、Stage4H 核心消融与强基线评价、已完成的 Stage4I strong-dense sidecar 互补性评价，以及当前 Stage5-PMC 论文整合与投稿准备。
+- 研究范围：粒球/超边多跳检索、静态 q25 protected insertion、已关闭的 U1/candidate-controller 审计线、Stage4E–Stage5A 已冻结实验，以及已完成的 Stage5R-PMR 论文重构与投稿准备。
 - 禁止读取其他项目会话、全局 Codex memory 或项目外中间产物。
 
 ## 2. 当前权威入口
@@ -28,11 +28,18 @@
 - 已完成 Stage4I 实验卡：`docs/STAGE4I_SDC_EXPERIMENT_CARD.md`
 - 已完成 Stage4I 配置：`configs/stage4i_sdc_official.json`
 - Stage4I final verification：`results/stage4i_sdc_hotpot1000_musique1500_v1_final_verification.json`
+- 已完成 Stage5A 实验卡：`docs/STAGE5A_BNH_EXPERIMENT_CARD.md`
+- Stage5A evidence ledger：`results/stage5a_bnh_evidence_ledger.json`
+- Stage5A final verification：`results/stage5a_bnh_final_verification.json`
 - Stage5-PMC 阶段卡：`docs/STAGE5_PMC_PAPER_MANUSCRIPT_CONSOLIDATION_CARD.md`
-- 当前论文蓝图：`paper/STAGE5_PMC_MANUSCRIPT_BLUEPRINT.md`
-- 当前核心表：`paper/SUBMISSION_CORE_TABLES.md`
-- 当前论文图合同与追溯：`paper/figures/FIGURE_CONTRACTS_AND_CAPTIONS.md`
-- 当前投稿前审计：`paper/STAGE5_PMC_PRE_SUBMISSION_AUDIT.md`
+- Stage5R 完成卡：`docs/STAGE5R_PMR_MANUSCRIPT_REVISION_CARD.md`
+- 当前英文论文：`paper/MANUSCRIPT_CORE_DRAFT_STAGE5R.md`
+- 当前论文蓝图：`paper/STAGE5R_MANUSCRIPT_BLUEPRINT.md`
+- 当前核心表：`paper/STAGE5R_CORE_TABLES.md`
+- 当前论文图合同与追溯：`paper/figures_stage5r/FIGURE_CONTRACTS_AND_CAPTIONS.md`
+- 当前投稿前审计：`paper/STAGE5R_PRE_SUBMISSION_AUDIT.md`
+- 当前文献语料库：`paper/references/VERIFIED_LITERATURE_CORPUS.md`
+- 当前投稿元数据/阻塞项：`paper/submission/AUTHOR_METADATA_TEMPLATE.md` / `paper/submission/SUBMISSION_BLOCKERS.md`
 - 最近完成的正式实验报告：`reports/超粒球RAG_Stage4I_SDC强稠密检索互补性报告.md`
 - Stage4D 关闭声明：`docs/STAGE4D_CMA_CLOSURE.md`
 - 已完成 Stage4D 协议：`docs/STAGE4D_CANDIDATE_MARGINAL_UTILITY_AUDIT_PROTOCOL.md`
@@ -126,11 +133,18 @@ STRONG_DENSE_COMPLEMENTARITY_INCONCLUSIVE
 PROTECTED_PLACEMENT_SUPPORTED
 BGE_FACET_INCREMENT_INCONCLUSIVE
 STAGE4I_CLOSED_AND_FROZEN
-CORE_EXPERIMENTAL_PROGRAM_COMPLETE
-STAGE5_PMC_ACTIVE
-PAPER_MANUSCRIPT_CONSOLIDATION_ONLY
-FULL_WIKI_OPTIONAL_AND_DEFERRED
-NEW_MODEL_SEARCH_NOT_AUTHORIZED
+STAGE5A_BNH_COMPLETE_AND_FROZEN
+BGE_NATIVE_HGRAG_INCONCLUSIVE
+CORE_ALGORITHM_EXPERIMENTS_CLOSED
+STAGE5R_PMR_COMPLETE
+CURRENT_EVIDENCE_MANUSCRIPT_COMPLETE
+VERIFIED_LITERATURE_CORPUS_COMPLETE
+FIGURE_AND_TABLE_AUDIT_PASS
+CLAIM_AND_CITATION_AUDIT_PASS
+SUBMISSION_METADATA_PENDING
+FULL_WIKI_NOT_AUTHORIZED
+NEW_GENERATOR_NOT_AUTHORIZED
+NEW_STRONG_RETRIEVER_SEARCH_NOT_AUTHORIZED
 CONTROLLER_LINE_CLOSED
 RESERVATION_REQUIRES_PAUSE
 U2_NOT_AUTHORIZED
@@ -162,6 +176,9 @@ SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
 - Stage4H 正式 input manifest、rankings、trace、main/subset predictions、prompt audits、telemetry、pre-Gold、query audit、summaries、decision、metadata、final verification 与 manifest 均不可覆盖或重跑。
 - Stage4I-SDC 已完成另一组 HotpotQA 1,000 + MuSiQue 1,500 历史零重叠边界上的四臂 BGE+MiniLM-HGRAG sidecar 评价。Protected−BGE 等权 F1 为 `-0.00256 [-0.00998,0.00458]`，核心状态 `INCONCLUSIVE`；Protected−Unprotected 为 `+0.01122 [0.00129,0.02104]`，placement 受支持；facet increment 不确定。10,000-call main、800-call subset、pre-Gold/final verification 已通过。
 - Stage4I 正式 input/eligibility manifests、两套 embedding cache identities、rankings、candidate trace、main/subset outputs、Gold summaries、mechanism audit、decisions、pre-Gold/final verification 与 artifact manifest 均不可覆盖或重跑。
+- Stage5A-BNH 已在独立零重叠 HotpotQA 1,000 + MuSiQue 1,500 confirmation 边界完成 BGE-native 四臂评价。Protected−BGE 等权 F1 为 `-0.003046 [-0.006880,0.000631]`、EM 为 `-0.003667 [-0.007667,0.000004]`，核心状态为 `BGE_NATIVE_HGRAG_INCONCLUSIVE`；placement 与 facet 增量也均不确定。Development `C10 +0.003143` 仅为配置选择证据。
+- Stage5A 正式 development/confirmation rankings、predictions、prompt/query audits、summaries、mechanism/efficiency、decisions、final verification 与 manifests 均不可覆盖或重跑。Stage5R 只读取冻结证据生成论文、引用、表图和投稿材料。
+- Stage5R-PMR 已完成英文核心稿、23 条经核验文献、五张核心表、五组四格式图、supplement、venue/license/metadata 模板及联合审计。作者、基金、COI、唯一 venue 和项目 license 未由 Codex 编造，状态保持 `SUBMISSION_METADATA_PENDING`，不得写成 `SUBMISSION_READY`。
 
 ## 4. 科研不可变边界
 
@@ -183,6 +200,7 @@ Stage4E 中，Gold 还不得进入 blind input、embedding、Dense/q25 ranking�
 已冻结的 Stage4G input/model manifest、main/subset predictions、prompt audits、telemetry、pre-Gold verification、query scores、dataset/equal-weight summaries、decision、final verification 与 artifact manifest 同样不可覆盖。Stage4G 不允许事后更换生成器、prompt、两臂 rankings、数据集权重或联合判定门。
 已冻结的 Stage4H input/model manifests、两套 embedding cache identities、七臂 rankings/trace、main/subset outputs、Gold summaries、decisions、pre-Gold/final verification 与 manifest 同样不可覆盖。不得事后更换 strong dense、hybrid 权重、消融定义、Holm family 或解释 flat/cost-curve 为已运行。
 已冻结的 Stage4I input/eligibility manifests、两套 embedding cache identities、四臂 rankings/candidate trace、main/subset outputs、Gold summaries、mechanism audit、decisions、pre-Gold/final verification 与 manifest 同样不可覆盖。不得事后更换 BGE 主干、q25 sidecar eligibility、protected/unprotected placement、facet 定义、bootstrap 或 decision hierarchy。
+已冻结的 Stage5A development/confirmation 输入、BGE-native candidate family、rankings、predictions、prompt/query audits、telemetry、summaries、mechanism/efficiency、decision、final verification 与 manifests 同样不可覆盖。不得将 development 与 confirmation 合并，也不得用 post-decision Gold 机制量重新选择参数。
 
 ## 5. 授权与暂停
 

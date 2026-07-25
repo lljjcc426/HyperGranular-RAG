@@ -1,0 +1,5 @@
+boundary,contrast,delta_f1_ci,status
+Generator transfer,Full − Dense (Gemma),"+0.00516 [-0.00262, 0.01295]",INCONCLUSIVE
+Strong baseline,Full − BGE,"-0.03998 [-0.05393, -0.02621]",NEGATIVE
+Cross-space sidecar,Protected − BGE,"-0.00256 [-0.00998, 0.00458]",INCONCLUSIVE
+BGE-native,Protected − BGE,"-0.00305 [-0.00688, 0.00063]",INCONCLUSIVE

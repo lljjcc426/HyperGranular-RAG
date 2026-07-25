@@ -1,0 +1,7 @@
+boundary,status,conclusion
+Compact MiniLM Dense,SUPPORTED,repeated small positive evidence
+Strong BGE baseline,NEGATIVE,original Full underperforms BGE
+Cross-space BGE sidecar,INCONCLUSIVE,no confirmed incremental answer-quality gain
+BGE-native HGRAG,INCONCLUSIVE,"no confirmed gain, harm, or equivalence"
+Additional generator,INCONCLUSIVE,one Gemma mobile-QAT configuration
+Full-wiki / open-domain,NOT_EVALUATED,outside the frozen evidence

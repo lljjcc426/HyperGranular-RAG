@@ -1,10 +1,10 @@
 # HyperGranular-RAG 证据与主张台账
 
-Stage5-PMC 论文定位：`structured evidence-completion layer for compact dense retrieval backbones`。本台账继续作为正结果、负结果、不确定结果和未定义对照的权威 claim boundary；论文不得只选择有利证据。
+Stage5R-PMR 论文定位：`protected high-order evidence completion for constrained multi-hop retrieval`。本台账继续作为正结果、负结果、不确定结果和未定义对照的权威 claim boundary；论文不得只选择有利证据。
 
 ## 当前总论边界
 
-静态 q25 protected insertion 与 adaptive controller 是两个不同主张。Stage4E 支持前者在冻结 HotpotQA same-domain closed-distractor 边界上的端到端答案质量增益，Stage4F 又在冻结 MuSiQue closed-candidate 边界复制该 answer-F1 方向与支持门；Stage4G 在一个额外、事前指定的 Gemma mobile-QAT 配置下得到 inconclusive generator-transfer 结果。Stage4H 在两组新的零重叠 closed-candidate 边界上支持 full 相对历史 MiniLM Dense 和 no-facet ablation 的增益，但 full 明确低于 BGE strong dense，protected insertion 贡献不确定，flat-unit 对照未公平定义。Stage4I 进一步把冻结 HGRAG 作为 BGE 主排名上的独立 sidecar：核心 protected sidecar 相对 BGE 的 answer-F1 差异不确定；在完全相同插入集合下，protected placement 优于 unprotected placement；facet 相对 no-facet 的增量仍不确定。当前 U1/Stage4D controller 线仍保持关闭。
+静态 q25 protected insertion 与 adaptive controller 是两个不同主张。Stage4E/4F/4H 在冻结 Qwen closed-candidate 边界上重复支持 static HGRAG 相对历史 MiniLM Dense 的小幅 answer-F1 增益；Stage4G 的一个额外 Gemma mobile-QAT 迁移配置不确定。Stage4H 同时支持 frozen MiniLM 系统内 facet 增量，但 Full 明确低于 BGE strong dense，protected insertion 独立贡献不确定，flat-unit 对照未公平定义。Stage4I 的 MiniLM-HGRAG cross-space sidecar 相对 BGE 不确定；相同插入集合下 protected placement 受支持，facet 增量不确定。Stage5A 在 BGE 空间原生重建 HGRAG 后，核心、placement、facet confirmation 均不确定；净 Gold `+1/+1` 没有转化为 answer-quality 增益。当前 controller 线和核心算法实验均关闭。
 
 ## 可写主张
 
@@ -24,6 +24,9 @@ Stage5-PMC 论文定位：`structured evidence-completion layer for compact dens
 | 当前冻结 HGRAG sidecar 没有建立相对 BGE strong dense 的互补增益 | verified strong-dense sidecar result，inconclusive | Stage4I：Protected−BGE 等权 F1 `-0.00256 [-0.00998,0.00458]`；EM `-0.00233 [-0.00983,0.00467]`；final verification PASS | 只能写成该 BGE、Qwen、Top-20 和两个新 closed-candidate 边界下证据不确定；不能写成增益、伤害或等价 |
 | 在相同 HGRAG 插入集合下，protected placement 优于 unprotected placement | verified supporting placement result | Stage4I：Protected−Unprotected 等权 F1 `+0.01122 [0.00129,0.02104]`；EM `+0.01300 [0.00333,0.02283]` | 只支持冻结 sidecar 内部的位置设计；不得据此声称 protected sidecar 优于 BGE |
 | BGE sidecar 中 facet 相对 no-facet 的增量未确定 | verified supporting ablation，inconclusive | Stage4I：Protected−NoFacet 等权 F1 `-0.00743 [-0.01616,0.00132]`；EM `-0.00600 [-0.01483,0.00283]` | 不得写成 facet 有效、无效、等价或一般机制证据 |
+| BGE-native HGRAG 没有建立相对 BGE 的增量答案质量 | verified confirmation，inconclusive | Stage5A：Protected−BGE 等权 F1 `-0.003046 [-0.006880,0.000631]`；EM `-0.003667 [-0.007667,0.000004]`；HotpotQA `-0.002907 [-0.008682,0.002652]`；MuSiQue `-0.003184 [-0.008486,0.001863]` | 只能写成未建立增益、伤害或等价；不得与 development `C10 +0.003143` 合并 |
+| BGE-native placement 与 facet 增量均未确定 | verified supporting confirmation，inconclusive | Stage5A：Protected−Unprotected `+0.003367 [-0.001285,0.008026]`；Protected−NoFacet `+0.000631 [-0.004220,0.005365]` | 不得用 Stage4I placement 或 Stage4H facet 支持覆盖 native confirmation |
+| Gold evidence 数量变化不能替代答案质量评价 | post-decision descriptive | Stage5A Protected：HotpotQA added/displaced/net `3/2/+1`；MuSiQue `16/15/+1`；核心 F1 点估计仍略负 | 机制描述，不是配置选择、确认性因果或 advancement 证据 |
 
 Stage4F-XDR 已完成 MuSiQue train 3,000 个新 ID 的完整事务并通过独立 final verification。它支持“Stage4E 的静态 answer-F1 增益在第二个冻结数据集边界上复现”。Stage4G-GTR 又在同一两个数据边界上测试一个额外 Gemma mobile-QAT 配置，得到 `GENERATOR_TRANSFER_INCONCLUSIVE`；所以不能将 Stage4E/4F 的 Qwen 结果扩大为所有生成器或开放域有效。
 
@@ -39,6 +42,9 @@ Stage4F-XDR 已完成 MuSiQue train 3,000 个新 ID 的完整事务并通过独�
 - “HGRAG sidecar 改善/损害 BGE strong dense”或“二者等价”；Stage4I 核心区间跨 0，冻结结论为 `STRONG_DENSE_COMPLEMENTARITY_INCONCLUSIVE`。
 - “protected placement 获得支持，所以 HGRAG sidecar 优于 BGE”；Stage4I placement 是同一插入集合内的支持性比较，不是核心 advancement comparison。
 - “Stage4I 证明 facet 在 BGE backbone 上有效/无效”；Protected−NoFacet 区间跨 0。
+- “Stage5A 证明 BGE-native HGRAG 有效、无效、损害或等价于 BGE”；核心、placement、facet 区间均跨 0。
+- “C10 development 正向加上 confirmation 即可证明 BGE-native 有效”；development 只承担配置选择，禁止合并。
+- “净 Gold `+1` 说明答案质量提高”；post-decision evidence count 不等于端到端 answer utility。
 - “Gemma 4 E2B 不适合 RAG”“Qwen 基础模型能力显著更强”或“Gemma 架构质量较差”；Stage4G 不是纯架构比较，mobile-QAT 效应不可分离。
 - “Stage4E 是对生成器未见数据的无污染测试”；它只保证未被本项目读取，公开 HotpotQA train 可能进入过模型预训练语料。
 - “不显著说明方法等价”；所有未过正/负门的结果都应写为 inconclusive。

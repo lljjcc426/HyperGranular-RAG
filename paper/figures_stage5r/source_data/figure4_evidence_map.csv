@@ -1,0 +1,11 @@
+claim,status,scope
+Compact Full > Dense (three frozen boundaries),SUPPORTED,"MiniLM, Qwen, closed-candidate Top-20"
+Facet increment in frozen MiniLM system,SUPPORTED,Stage4H only
+Protected placement with identical sidecar insertions,SUPPORTED,Stage4I only
+Original Full > strong BGE,NEGATIVE,Stage4H
+Cross-space sidecar > BGE,INCONCLUSIVE,Stage4I
+BGE-native Protected > BGE,INCONCLUSIVE,Stage5A
+BGE-native placement increment,INCONCLUSIVE,Stage5A
+BGE-native facet increment,INCONCLUSIVE,Stage5A
+Additional-generator transfer,INCONCLUSIVE,one Gemma mobile-QAT setting
+Flat granular-ball control,NOT_FAIRLY_DEFINED,no scientifically matched contrast

@@ -1,0 +1,9 @@
+item,value,role
+Stage5A retrieval reconstruction,8.544 s,descriptive
+Stage5A BGE generation,887.650 s,descriptive
+Stage5A native Protected generation,884.198 s,descriptive
+Stage5A GPU peak memory,3.592 GiB,descriptive
+Bootstrap,"10,000 iterations per frozen decision",confirmatory
+Build policy,two byte-identical Stage5R builds,integrity
+Gold policy,Gold isolated until frozen rankings/predictions,integrity
+Verification,independent final verifiers passed,integrity

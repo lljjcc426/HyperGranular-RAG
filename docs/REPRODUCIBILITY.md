@@ -2,30 +2,51 @@
 
 本文件只保留当前有效的复现入口。完整历史命令与旧治理链快照见 [归档版本](archive/REPRODUCIBILITY_PRE_REORGANIZATION_2026-07-18.md)。
 
-## 当前 Stage5-PMC 边界
+## 当前 Stage5R-PMR 边界
 
-Stage4E–Stage4I 科学实验线已完成、独立验证并冻结。当前 Stage5-PMC 只整理论文，不重跑 retrieval、generation、Gold evaluation、bootstrap 或 scientific decision。论文图由 `scripts/stage5_pmc_build_figures.py` 使用 Python/Matplotlib 从 14 个 SHA-verified frozen JSON 工件派生；七个 CSV source-data、五组 SVG/PDF/TIFF/PNG 和完整 Bytes/SHA manifest 位于 `paper/figures/`。
+Stage4E–Stage5A 科学实验线已完成、独立验证并冻结。Stage5R-PMR 只整理论文，不重跑 retrieval、generation、Gold evaluation、bootstrap 或 scientific decision。论文图由 `scripts/stage5r_build_materials.py` 使用 Python/Matplotlib 从 20 个 SHA-verified frozen JSON 工件派生；11 个 CSV source-data、五组 SVG/PDF/600-dpi TIFF/PNG 和完整 Bytes/SHA manifest 位于 `paper/figures_stage5r/`。原 `paper/figures/` Stage5-PMC 图和 source-data 保持不变。
 
 当前状态：
 
 ```text
 STAGE4I_CLOSED_AND_FROZEN
-CORE_EXPERIMENTAL_PROGRAM_COMPLETE
-STAGE5_PMC_ACTIVE
-FULL_WIKI_OPTIONAL_AND_DEFERRED
+STAGE5A_BNH_COMPLETE_AND_FROZEN
+BGE_NATIVE_HGRAG_INCONCLUSIVE
+CORE_ALGORITHM_EXPERIMENTS_CLOSED
+STAGE5R_PMR_COMPLETE
+CURRENT_EVIDENCE_MANUSCRIPT_COMPLETE
+VERIFIED_LITERATURE_CORPUS_COMPLETE
+FIGURE_AND_TABLE_AUDIT_PASS
+CLAIM_AND_CITATION_AUDIT_PASS
+SUBMISSION_METADATA_PENDING
+FULL_WIKI_NOT_AUTHORIZED
 RESERVATION_LOCKED
 STAGE3B_LOCKED
 U2_NOT_AUTHORIZED
 ```
 
-Stage5 的可复现入口是 [阶段卡](STAGE5_PMC_PAPER_MANUSCRIPT_CONSOLIDATION_CARD.md)、[核心表](../paper/SUBMISSION_CORE_TABLES.md)、[图形合同](../paper/figures/FIGURE_CONTRACTS_AND_CAPTIONS.md) 和 [figure manifest](../paper/figures/STAGE5_PMC_FIGURE_MANIFEST.json)。所有 Stage4E–Stage4I 正式工件仍保持只读。
+Stage5R 的可复现入口是 [英文核心稿](../paper/MANUSCRIPT_CORE_DRAFT_STAGE5R.md)、[核心表](../paper/STAGE5R_CORE_TABLES.md)、[图形合同](../paper/figures_stage5r/FIGURE_CONTRACTS_AND_CAPTIONS.md)、[figure manifest](../paper/figures_stage5r/STAGE5R_FIGURE_MANIFEST.json) 和 [联合审计](../paper/STAGE5R_PRE_SUBMISSION_AUDIT.md)。所有 Stage4E–Stage5A 正式工件保持只读。
 
 ```powershell
-python scripts\stage5_pmc_build_figures.py
-python scripts\stage5_pmc_verify_materials.py
+python scripts\stage5r_build_materials.py
+python scripts\stage5r_build_materials.py
+python scripts\stage5r_verify_materials.py
 ```
 
-第一条命令先验证 14 个 frozen source SHA，再派生图与 CSV；第二条命令只读核对 source/derived Bytes/SHA、核心数值字符串、状态边界、SVG editable text 和本地链接。当前验证结果为 `STAGE5_PMC_MATERIALS_VERIFIED`；连续两次构建的 29 个 `paper/figures/` 文件 SHA 无变化。
+前两条命令分别先验证 20 个 frozen source SHA，再派生图、表与 CSV。连续两次构建的 manifest SHA 均为 `EFCED94CC12FDDA26360AE958E40EE1C7C2D88FC4B5853CC63B27DCD91ED246A`，33 个 derived-file SHA 全部相同。第三条命令只读核对 source/derived Bytes/SHA、CSV 数值、五张表、23 个 BibTeX 条目、citation keys、主张边界、SVG editable text、本地链接、license 状态和旧 Stage5-PMC verifier；当前结果为 `STAGE5R_PMR_MATERIALS_VERIFIED`。
+
+### Stage5A 与 Stage5R 关键身份
+
+| 工件 | Bytes | SHA-256 |
+|---|---:|---|
+| `results/stage5a_bnh_evidence_ledger.json` | 7,858 | `9D97B4100C9BCD31E421595EC18BA2C7318D9E6709AE9106446388C9CA63ABE4` |
+| `results/stage5a_bnh_confirmation_equal_weight_summary.json` | tracked manifest | `D38608EB73FF1A7741A6EBE2DE2E08B0F7FC7D0305067F6FE7D60F8B8C83983F` |
+| `results/stage5a_bnh_confirmation_dataset_summaries.json` | tracked manifest | `F4893C526AC45C5622A93B44BDCFAA50A484C896F4F7984AF0E4150F79763546` |
+| `results/stage5a_bnh_confirmation_mechanism_audit.json` | tracked manifest | `0AEEA7C41680E10A417E036CD1C6DC2D86BF60BAAD337218AE07F6DE697027F1` |
+| `results/stage5a_bnh_final_verification.json` | tracked manifest | `145B51FB194BA0DE5B00D294FE4D8F8EAC9FD9D2E7C1F39F741D7AFEDDF0BA09` |
+| `paper/figures_stage5r/STAGE5R_FIGURE_MANIFEST.json` | derived | `EFCED94CC12FDDA26360AE958E40EE1C7C2D88FC4B5853CC63B27DCD91ED246A` |
+
+Bytes 标记为 `tracked manifest` 的 Stage5A 项由 `results/stage5a_bnh_artifact_manifest.json` 与 Stage5R verifier 双重核对；这里不复制可能随展示方式产生歧义的长度。Stage5R manifest 的 derived 长度由自身清单逐文件绑定。
 
 ## 文件系统迁移
 
@@ -90,6 +111,21 @@ FULL_METHOD_VS_STRONG_DENSE_NEGATIVE
 PROTECTED_INSERTION_ABLATION_INCONCLUSIVE
 FACET_HYPEREDGE_ABLATION_SUPPORTED
 GRANULAR_BALL_ABLATION_NOT_FAIRLY_DEFINED
+STAGE4I_FINAL_VERIFICATION_PASS
+STRONG_DENSE_COMPLEMENTARITY_INCONCLUSIVE
+PROTECTED_PLACEMENT_SUPPORTED
+BGE_FACET_INCREMENT_INCONCLUSIVE
+STAGE5A_FINAL_INDEPENDENT_VERIFICATION_PASS
+BGE_NATIVE_HGRAG_INCONCLUSIVE
+BGE_NATIVE_PROTECTED_PLACEMENT_INCONCLUSIVE
+BGE_NATIVE_FACET_INCREMENT_INCONCLUSIVE
+CORE_ALGORITHM_EXPERIMENTS_CLOSED
+STAGE5R_PMR_COMPLETE
+CURRENT_EVIDENCE_MANUSCRIPT_COMPLETE
+VERIFIED_LITERATURE_CORPUS_COMPLETE
+FIGURE_AND_TABLE_AUDIT_PASS
+CLAIM_AND_CITATION_AUDIT_PASS
+SUBMISSION_METADATA_PENDING
 RESERVATION_REQUIRES_PAUSE
 U2_NOT_AUTHORIZED
 ```
@@ -107,6 +143,10 @@ Stage4F-XDR 已完成 [实验卡](STAGE4F_XDR_EXPERIMENT_CARD.md) 预定义的�
 Stage4G-GTR 已完成 [实验卡](STAGE4G_GTR_EXPERIMENT_CARD.md) 预定义的完整 generator-transfer 事务。它复用 Stage4E/4F frozen inputs 与 rankings，只更换为一个事前指定的 Gemma official mobile-QAT 配置。8,000-call main、400-call 分层 subset rerun、pre-Gold verification、Gold evaluation、10,000 次 dataset-stratified bootstrap、generator interaction 与 final verification 均完成；冻结结果为 `GENERATOR_TRANSFER_INCONCLUSIVE`。现有 Stage4G 工件不得覆盖或重跑。
 
 Stage4H-CBE 已完成 [实验卡](STAGE4H_CBE_EXPERIMENT_CARD.md) 预定义的完整 component/strong-baseline 事务。新的 HotpotQA 1,000 + MuSiQue 1,500 边界与全部历史正式 IDs overlap 0；17,500-call main、1,400-call pre-hash subset、pre-Gold reconstruction、Gold evaluation、10,000-bootstrap、Holm 和 final verification 均完成。Full−Dense/NoFacet 受支持，Full−StrongDense 为负，Full−NoProtection 不确定，flat-unit 未公平定义。现有 Stage4H 工件不得覆盖或重跑。
+
+Stage4I-SDC 已完成 [实验卡](STAGE4I_SDC_EXPERIMENT_CARD.md) 的 BGE 主排名 + MiniLM-HGRAG sidecar 事务。Protected−BGE 不确定；同一插入集合的 protected placement 受支持；facet 增量不确定。Stage5A-BNH 又在 BGE-native 语义空间完成 development/confirmation 与 final independent verification；核心、placement、facet 三项均不确定。两阶段正式工件均不得覆盖或重跑。
+
+Stage5R-PMR 只读派生论文材料。Stage4E–Stage4I 回归 89/89、Stage5A 9/9、Stage5-PMC verifier 和 Stage5R joint verifier 均通过。作者/venue/license 元数据尚未绑定，因此当前是科学稿完整而非正式可投稿状态。
 
 ## 当前授权治理
 

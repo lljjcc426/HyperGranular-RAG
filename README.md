@@ -6,14 +6,29 @@
 
 | 项目 | 当前事实 |
 |---|---|
-| 研究阶段 | Stage4E–Stage4I 科学实验线已完成并冻结；当前进入 Stage5-PMC 论文整合与投稿准备 |
-| 状态 | `CORE_EXPERIMENTAL_PROGRAM_COMPLETE` / `STAGE5_PMC_ACTIVE` |
-| Stage4I 新边界 | HotpotQA train 1,000 + MuSiQue train 1,500；与全部历史正式 ID overlap 0 |
-| 当前证据 | BGE+protected HGRAG sidecar 相对 BGE-only 不确定；相同候选集合下 protected placement 受支持；facet increment 不确定 |
-| 下一工作 | 冻结主张、四张核心表、论文图、正文蓝图与投稿前一致性审计；不启动新算法实验 |
-| Full-wiki | `OPTIONAL_AND_DEFERRED`，不阻塞当前投稿准备 |
+| 研究阶段 | Stage4E–Stage5A 科学实验线已完成并冻结；Stage5R-PMR 论文重构已完成 |
+| 状态 | `CORE_ALGORITHM_EXPERIMENTS_CLOSED` / `STAGE5R_PMR_COMPLETE` / `SUBMISSION_METADATA_PENDING` |
+| Stage5A 新边界 | BGE-native confirmation：HotpotQA train 1,000 + MuSiQue train 1,500；历史正式 ID overlap 0 |
+| 当前证据 | compact MiniLM 上重复小幅正向；Full 明确弱于 BGE；cross-space sidecar 与 BGE-native 增量均不确定 |
+| 当前工作 | 作者、许可与唯一投稿渠道元数据绑定；不启动新算法实验 |
+| Full-wiki | `NOT_AUTHORIZED`，不阻塞当前论文完成 |
 | Gold | 仅在 Gold-free main/rerun 与 pre-Gold verification 后使用；未进入检索、prompt、生成或排序 |
 | Reservation / Stage3B | `KEEP_LOCKED` |
+
+Stage5R 当前论文入口：
+
+- [英文核心稿](paper/MANUSCRIPT_CORE_DRAFT_STAGE5R.md)
+- [五张自动核验核心表](paper/STAGE5R_CORE_TABLES.md)
+- [经核验文献语料库](paper/references/VERIFIED_LITERATURE_CORPUS.md)
+- [Stage5R 图表与 Bytes/SHA manifest](paper/figures_stage5r/STAGE5R_FIGURE_MANIFEST.json)
+- [投稿前联合审计](paper/STAGE5R_PRE_SUBMISSION_AUDIT.md)
+
+Stage5A-BNH 冻结结论：BGE-native Protected−BGE 等权 answer-F1 为
+`-0.003046 [-0.006880,0.000631]`，EM 为
+`-0.003667 [-0.007667,0.000004]`，均为 `INCONCLUSIVE`；Protected−Unprotected
+与 Protected−NoFacet 也均不确定。HotpotQA 和 MuSiQue 的净 Gold 均为 `+1`，
+但没有转化为答案质量提升。Development `C10 +0.003143` 仅为配置选择证据，
+不与 confirmation 合并。
 
 Stage4E 正式结果：
 

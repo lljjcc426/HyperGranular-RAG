@@ -1,8 +1,10 @@
 # HyperGranular-RAG 论文结构草案
 
-状态：`STAGE5_PMC_ACTIVE`
+状态：`SUPERSEDED_BY_STAGE5R_MANUSCRIPT_BLUEPRINT`
 
-当前权威论文蓝图为 [STAGE5_PMC_MANUSCRIPT_BLUEPRINT](STAGE5_PMC_MANUSCRIPT_BLUEPRINT.md)。本文件保留更细的历史 section notes，但中心问题已按 Stage4I 最终边界收缩。
+当前权威论文蓝图为 [STAGE5R_MANUSCRIPT_BLUEPRINT](STAGE5R_MANUSCRIPT_BLUEPRINT.md)，
+权威英文稿为 [MANUSCRIPT_CORE_DRAFT_STAGE5R](MANUSCRIPT_CORE_DRAFT_STAGE5R.md)。
+本文件保留 Stage5A 前的历史 section notes，不再作为当前主张入口。
 
 ## 暂定中心问题
 

@@ -1,0 +1,4 @@
+boundary,contrast,delta_f1_ci,status
+Compact / HotpotQA,Full − Dense (Stage4E),"+0.01478 [0.00020, 0.02988]",SUPPORTED
+Compact / MuSiQue,Full − Dense (Stage4F),"+0.01140 [0.00450, 0.01835]",SUPPORTED
+Compact / joint,Full − Dense (Stage4H),"+0.01357 [0.00491, 0.02233]",SUPPORTED

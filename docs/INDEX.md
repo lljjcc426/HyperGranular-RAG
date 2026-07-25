@@ -10,9 +10,20 @@
 | [项目 AGENTS](../AGENTS.md) | 当前治理、暂停边界和 GitHub 规则 |
 | [REPRODUCIBILITY](REPRODUCIBILITY.md) | 当前环境、冻结 SHA、工件与复现边界 |
 | [ROADMAP](ROADMAP.md) | 完整研究时间线与阶段状态 |
+| [Stage5R revision card](STAGE5R_PMR_MANUSCRIPT_REVISION_CARD.md) | Stage5A 后论文重构范围、派生输出、测试、锁与完成状态 |
+| [Stage5R English manuscript](../paper/MANUSCRIPT_CORE_DRAFT_STAGE5R.md) | 纳入 Stage5A 后的完整英文核心稿；当前科学证据完整，投稿元数据待作者绑定 |
+| [Stage5R blueprint](../paper/STAGE5R_MANUSCRIPT_BLUEPRINT.md) | 唯一推荐标题、中心论点、主张层级与完成边界 |
+| [Stage5R core tables](../paper/STAGE5R_CORE_TABLES.md) | 从冻结 JSON/CSV 自动生成的五张核心表 |
+| [Stage5R figures and captions](../paper/figures_stage5r/FIGURE_CONTRACTS_AND_CAPTIONS.md) | 五组 Python 图、caption、CSV 与 Bytes/SHA 追溯 |
+| [Stage5R joint audit](../paper/STAGE5R_PRE_SUBMISSION_AUDIT.md) | evidence/citation/figure/language/reproducibility 联合审计 |
+| [Verified literature corpus](../paper/references/VERIFIED_LITERATURE_CORPUS.md) | 23 条外部文献的官方来源、审阅状态和允许引用用途 |
+| [Venue matrix](../paper/submission/VENUE_TARGET_MATRIX.md) | TACL、ACL/EMNLP、TMLR、Cambridge NLP 与 Findings 适配分析 |
+| [Submission blockers](../paper/submission/SUBMISSION_BLOCKERS.md) | 作者、基金、COI、venue、许可和格式的显式待办 |
+| [Stage5A-BNH experiment card](STAGE5A_BNH_EXPERIMENT_CARD.md) | 已冻结 BGE-native development/confirmation、停止规则与主张边界 |
+| [Stage5A final verification](../results/stage5a_bnh_final_verification.json) | BGE-native 核心/placement/facet 结论与工件身份的最终独立验证 |
 | [Stage5-PMC 阶段卡](STAGE5_PMC_PAPER_MANUSCRIPT_CONSOLIDATION_CARD.md) | 当前非实验论文整合阶段、主张层级、交付物与锁边界 |
-| [Stage5 manuscript blueprint](../paper/STAGE5_PMC_MANUSCRIPT_BLUEPRINT.md) | 论文中心论点、IMRaD 结构、主表/主图和投稿缺口 |
-| [Stage5 manuscript core draft](../paper/MANUSCRIPT_CORE_DRAFT.md) | 已按冻结主张编写的英文核心稿；外部文献引用仍待核验绑定 |
+| [Stage5-PMC manuscript blueprint](../paper/STAGE5_PMC_MANUSCRIPT_BLUEPRINT.md) | Stage5A 前的首轮冻结论文蓝图 |
+| [Stage5-PMC manuscript core draft](../paper/MANUSCRIPT_CORE_DRAFT.md) | Stage5A 前的首轮英文稿；保留为历史基线 |
 | [Stage5 core tables](../paper/SUBMISSION_CORE_TABLES.md) | 主结果、外部稳健性、消融、效率与完整性四张核心表 |
 | [Stage5 figure contracts](../paper/figures/FIGURE_CONTRACTS_AND_CAPTIONS.md) | Python 图形合同、caption、source-data 与 QA 追溯 |
 | [Stage5 pre-submission audit](../paper/STAGE5_PMC_PRE_SUBMISSION_AUDIT.md) | evidence/claim/caption 一致性与剩余非科学投稿缺口 |
