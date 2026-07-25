@@ -1,35 +1,44 @@
-# Author and Submission Metadata Template
+# Author and Submission Metadata Checklist
 
-Status: `SUBMISSION_METADATA_PENDING`
+Status: `PARTIALLY_CONFIRMED` / `SUBMISSION_METADATA_PENDING`
 
-No author, affiliation, funding, conflict, or acknowledgement fact has been
-inferred. Every bracketed field requires author confirmation.
+The canonical, human-maintained source is
+[`../AUTHOR_AND_SUBMISSION_METADATA.yaml`](../AUTHOR_AND_SUBMISSION_METADATA.yaml).
+Its confirmed values and field order must not be replaced from this checklist.
+Every future human-confirmed change must also be appended to
+[`../AUTHOR_AND_SUBMISSION_METADATA_HISTORY.md`](../AUTHOR_AND_SUBMISSION_METADATA_HISTORY.md).
+
+No unconfirmed author, affiliation, funding, conflict, acknowledgement,
+license, or venue fact may be inferred.
 
 ## Paper identity
 
 - Final title: `[AUTHOR_CONFIRM_TITLE]`
 - Short title: `[AUTHOR_SUPPLY_SHORT_TITLE]`
-- Target venue: `[AUTHOR_SELECT_VENUE]`
-- Submission type: `[LONG_PAPER_OR_JOURNAL_ARTICLE]`
+- Target venue: `TBD_AFTER_STAGE4I` (retained exactly from the human metadata
+  record; still requires a new human selection)
+- Submission type: ACL/ARR `long_paper`
 - Keywords: retrieval-augmented generation; multi-hop question answering;
   structure-aware retrieval; evidence completion; reproducibility
 
 ## Author order
 
-| Order | Full legal/publishing name | Preferred published name | Affiliation IDs | Email | ORCID | Corresponding author |
+| Order | Confirmed Chinese name / role | Published English name | Affiliation ID | Email | ORCID | Corresponding author |
 |---:|---|---|---|---|---|---|
-| 1 | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED_OR_NOT_AVAILABLE]` | `[YES/NO]` |
-| 2 | `[ADD_OR_REMOVE_ROW]` | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED_OR_NOT_AVAILABLE]` | `[YES/NO]` |
+| 1 | 李珈辰 / first author | `TBD_HUMAN_INPUT` | `affiliation_1` | `TBD_HUMAN_INPUT` | `TBD_HUMAN_INPUT` | No |
+| 2 | 陈耀洋 / second author | `TBD_HUMAN_INPUT` | `affiliation_1` | `TBD_HUMAN_INPUT` | `TBD_HUMAN_INPUT` | No |
+| `TBD_HUMAN_INPUT` | advisor | `TBD_HUMAN_INPUT` | `TBD_HUMAN_INPUT` | `TBD_HUMAN_INPUT` | `TBD_HUMAN_INPUT` | Yes |
 
-All listed authors must approve the manuscript, author order, target venue, and
-submission. Venue-specific authorship rules must be checked after target
-selection.
+The first and second positions above are human-confirmed. Overall author order
+is not frozen because the advisor's position and any additional authors remain
+undetermined. Do not add an author without a human-confirmed name, order,
+affiliation, and contribution.
 
 ## Affiliations
 
-| ID | Department / school | Institution | City | State/province | Country |
+| ID | Department / school | Institution | City | Country | Applies to |
 |---|---|---|---|---|---|
-| A1 | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` | `[IF_APPLICABLE]` | `[REQUIRED]` |
+| `affiliation_1` | `TBD_HUMAN_INPUT` | Chongqing University of Posts and Telecommunications | Chongqing | China | author_1; author_2 |
 
 ## Contributions
 

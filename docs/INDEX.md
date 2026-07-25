@@ -17,6 +17,9 @@
 | [Stage5R figures and captions](../paper/figures_stage5r/FIGURE_CONTRACTS_AND_CAPTIONS.md) | 五组 Python 图、caption、CSV 与 Bytes/SHA 追溯 |
 | [Stage5R joint audit](../paper/STAGE5R_PRE_SUBMISSION_AUDIT.md) | evidence/citation/figure/language/reproducibility 联合审计 |
 | [Verified literature corpus](../paper/references/VERIFIED_LITERATURE_CORPUS.md) | 23 条外部文献的官方来源、审阅状态和允许引用用途 |
+| [Author and submission metadata](../paper/AUTHOR_AND_SUBMISSION_METADATA.yaml) | 人工确认的作者、单位、投稿、许可与 AI 披露字段；未确认字段禁止自动推断 |
+| [Metadata confirmation history](../paper/AUTHOR_AND_SUBMISSION_METADATA_HISTORY.md) | 作者顺序、通讯作者、基金、许可和目标场所等人工变更的追加式记录 |
+| [LaTeX identity switch](../paper/latex/README.md) | 默认匿名、显式 camera-ready 的 fail-closed 使用说明 |
 | [Venue matrix](../paper/submission/VENUE_TARGET_MATRIX.md) | TACL、ACL/EMNLP、TMLR、Cambridge NLP 与 Findings 适配分析 |
 | [Submission blockers](../paper/submission/SUBMISSION_BLOCKERS.md) | 作者、基金、COI、venue、许可和格式的显式待办 |
 | [Stage5A-BNH experiment card](STAGE5A_BNH_EXPERIMENT_CARD.md) | 已冻结 BGE-native development/confirmation、停止规则与主张边界 |

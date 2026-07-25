@@ -120,15 +120,22 @@ PASS with one explicit author-level blocker.
 ## 7. Submission readiness
 
 The scientific package is complete for current evidence, but it is not ready
-for a submission portal. The following require human facts or choices:
+for a submission portal. The canonical partial record is
+[`AUTHOR_AND_SUBMISSION_METADATA.yaml`](AUTHOR_AND_SUBMISSION_METADATA.yaml).
+It confirms the first two Chinese author names and positions, their shared
+university affiliation, and the advisor's corresponding-author role. The
+following still require human facts or choices:
 
-- author order, names, affiliations, email, ORCID, and corresponding author;
+- English publication names; advisor identity/order/affiliation; exact
+  school/department; emails; ORCIDs; and whether additional authors exist;
 - funding, conflicts, contributions, acknowledgements, and final AI disclosure;
 - a unique target venue and venue-specific format;
 - repository and derived-artifact licenses;
 - any APC/waiver decision.
 
-The detailed checklist is
+The append-only confirmation record is
+[`AUTHOR_AND_SUBMISSION_METADATA_HISTORY.md`](AUTHOR_AND_SUBMISSION_METADATA_HISTORY.md);
+the detailed remaining checklist is
 [`submission/SUBMISSION_BLOCKERS.md`](submission/SUBMISSION_BLOCKERS.md).
 
 ## 8. Frozen continuation boundary

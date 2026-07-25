@@ -1,0 +1,20 @@
+% Copy this file to camera_ready_author_block.tex only after human confirmation.
+% The copied file is intentionally ignored by Git while the review package is
+% anonymous. Replace every placeholder using the canonical metadata record and
+% append the confirmation to AUTHOR_AND_SUBMISSION_METADATA_HISTORY.md.
+
+\PackageError{hypergranular-rag}{%
+  Camera-ready author metadata is still incomplete%
+}{%
+  Do not enable camera-ready mode until every author, order, affiliation,
+  corresponding-author field, funding statement, and acknowledgement has been
+  confirmed by the human authors.%
+}
+
+% Venue-specific example to complete manually after confirmation:
+%
+% \author{
+%   TBD_HUMAN_INPUT \\
+%   TBD_HUMAN_INPUT \\
+%   \texttt{TBD_HUMAN_INPUT}
+% }

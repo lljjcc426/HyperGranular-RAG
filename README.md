@@ -10,7 +10,7 @@
 | 状态 | `CORE_ALGORITHM_EXPERIMENTS_CLOSED` / `STAGE5R_PMR_COMPLETE` / `SUBMISSION_METADATA_PENDING` |
 | Stage5A 新边界 | BGE-native confirmation：HotpotQA train 1,000 + MuSiQue train 1,500；历史正式 ID overlap 0 |
 | 当前证据 | compact MiniLM 上重复小幅正向；Full 明确弱于 BGE；cross-space sidecar 与 BGE-native 增量均不确定 |
-| 当前工作 | 作者、许可与唯一投稿渠道元数据绑定；不启动新算法实验 |
+| 当前工作 | 已建立部分确认的人工作者/投稿元数据；继续补齐英文发表姓名、导师、基金、COI、许可与唯一投稿渠道，不启动新算法实验 |
 | Full-wiki | `NOT_AUTHORIZED`，不阻塞当前论文完成 |
 | Gold | 仅在 Gold-free main/rerun 与 pre-Gold verification 后使用；未进入检索、prompt、生成或排序 |
 | Reservation / Stage3B | `KEEP_LOCKED` |
@@ -22,6 +22,8 @@ Stage5R 当前论文入口：
 - [经核验文献语料库](paper/references/VERIFIED_LITERATURE_CORPUS.md)
 - [Stage5R 图表与 Bytes/SHA manifest](paper/figures_stage5r/STAGE5R_FIGURE_MANIFEST.json)
 - [投稿前联合审计](paper/STAGE5R_PRE_SUBMISSION_AUDIT.md)
+- [人工作者与投稿元数据](paper/AUTHOR_AND_SUBMISSION_METADATA.yaml)
+- [LaTeX 匿名/camera-ready 开关](paper/latex/README.md)
 
 Stage5A-BNH 冻结结论：BGE-native Protected−BGE 等权 answer-F1 为
 `-0.003046 [-0.006880,0.000631]`，EM 为

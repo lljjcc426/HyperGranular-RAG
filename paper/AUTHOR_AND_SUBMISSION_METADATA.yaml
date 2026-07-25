@@ -1,0 +1,236 @@
+metadata_status:
+  schema_version: hypergranular_rag_paper_metadata_v1
+  status: PARTIALLY_CONFIRMED
+  last_confirmed_by: human_author
+  codex_may_autofill_unconfirmed_fields: false
+
+authorship:
+  author_order_frozen: false
+
+  authors:
+    - author_id: author_1
+      author_order: 1
+      role: first_author
+
+      name_zh: 李珈辰
+      publication_name_en: "TBD_HUMAN_INPUT"
+      given_name_en: "TBD_HUMAN_INPUT"
+      family_name_en: "TBD_HUMAN_INPUT"
+
+      affiliation_id: affiliation_1
+      email: "TBD_HUMAN_INPUT"
+      orcid: "TBD_HUMAN_INPUT"
+
+      corresponding_author: false
+
+      contributions:
+        status: "TBD_HUMAN_CONFIRMATION"
+        tentative:
+          - Conceptualization
+          - Methodology
+          - Software
+          - Validation
+          - Formal Analysis
+          - Investigation
+          - Data Curation
+          - Visualization
+          - Writing - Original Draft
+
+    - author_id: author_2
+      author_order: 2
+      role: second_author
+
+      name_zh: 陈耀洋
+      publication_name_en: "TBD_HUMAN_INPUT"
+      given_name_en: "TBD_HUMAN_INPUT"
+      family_name_en: "TBD_HUMAN_INPUT"
+
+      affiliation_id: affiliation_1
+      email: "TBD_HUMAN_INPUT"
+      orcid: "TBD_HUMAN_INPUT"
+
+      corresponding_author: false
+
+      contributions:
+        status: "TBD_HUMAN_CONFIRMATION"
+        tentative: []
+
+    - author_id: corresponding_advisor
+      author_order: "TBD_HUMAN_INPUT"
+      role: advisor_and_corresponding_author
+
+      name_zh: "TBD_HUMAN_INPUT"
+      publication_name_en: "TBD_HUMAN_INPUT"
+      given_name_en: "TBD_HUMAN_INPUT"
+      family_name_en: "TBD_HUMAN_INPUT"
+
+      affiliation_id: "TBD_HUMAN_INPUT"
+      email: "TBD_HUMAN_INPUT"
+      orcid: "TBD_HUMAN_INPUT"
+
+      corresponding_author: true
+
+      contributions:
+        status: "TBD_HUMAN_CONFIRMATION"
+        tentative:
+          - Supervision
+          - Writing - Review & Editing
+
+  additional_authors:
+    status: NOT_YET_DETERMINED
+    instruction: >
+      不得自行添加其他作者。只有收到人工确认的姓名、顺序、单位和贡献后，
+      才能写入作者列表。
+
+affiliations:
+  - affiliation_id: affiliation_1
+
+    institution_zh: 重庆邮电大学
+    institution_en: Chongqing University of Posts and Telecommunications
+
+    school_or_department_zh: "TBD_HUMAN_INPUT"
+    school_or_department_en: "TBD_HUMAN_INPUT"
+
+    city_zh: 重庆
+    city_en: Chongqing
+    country_zh: 中国
+    country_en: China
+
+    applies_to:
+      - author_1
+      - author_2
+
+    confirmation:
+      same_affiliation_for_first_and_second_author: true
+      exact_school_name_confirmed: false
+
+correspondence:
+  corresponding_author_role: advisor
+  corresponding_author_name: "TBD_HUMAN_INPUT"
+  corresponding_author_email: "TBD_HUMAN_INPUT"
+  corresponding_author_order: "TBD_HUMAN_INPUT"
+
+funding:
+  status: "TBD_HUMAN_INPUT"
+  funders: []
+  grant_numbers: []
+  instruction: >
+    不得根据学校、实验室或项目背景推断基金。没有基金时应由人工明确填写 NONE。
+
+acknowledgements:
+  status: NOT_FROZEN
+  content: "TBD_AFTER_AUTHOR_AND_FUNDING_CONFIRMATION"
+
+conflicts_of_interest:
+  status: "TBD_HUMAN_CONFIRMATION"
+  declaration: "TBD_HUMAN_INPUT"
+
+venue:
+  review_platform: ACL Rolling Review
+  paper_type: long_paper
+  final_target_venue: TBD_AFTER_STAGE4I
+  candidate_venues:
+    - ACL Main Conference
+    - EMNLP Main Conference
+    - Findings of ACL
+    - Findings of EMNLP
+    - TACL
+
+  instruction: >
+    Stage4I 结束前不得把某一个候选场所写成已经最终确定。
+    当前论文统一按 ACL/ARR long-paper 结构组织。
+
+submission:
+  manuscript_language: English
+  source_format: ACL_official_LaTeX
+  review_mode: anonymous
+  layout: double_column
+
+  anonymous_author_text: Anonymous Authors
+
+  include_in_main_pdf:
+    - Main Paper
+    - Limitations
+    - Ethical Considerations if applicable
+    - References
+    - Appendices
+
+  camera_ready_mode:
+    status: NOT_ACTIVE
+    instruction: >
+      在正式录用或人工解除匿名前，不得将真实作者、单位、基金和致谢写入匿名 PDF。
+
+licensing:
+  status: PROVISIONAL_HUMAN_REVIEW_REQUIRED
+
+  proposed_original_code_license: Apache-2.0
+  proposed_original_documentation_license: CC-BY-4.0
+
+  third_party_materials:
+    policy: UPSTREAM_TERMS_APPLY
+    examples:
+      - HotpotQA
+      - MuSiQue
+      - BAAI/bge-large-en-v1.5
+      - Qwen/Qwen2.5-1.5B-Instruct
+
+  restrictions:
+    - 不得将第三方数据集重新声明为 Apache-2.0
+    - 不得将第三方模型权重重新授权
+    - 未经人工许可审查，不得公开原始数据副本或 embedding cache
+    - 优先发布代码、ID manifest、SHA-256、重建脚本和统计结果
+
+  final_license_decision: "TBD_HUMAN_CONFIRMATION"
+
+generative_ai_disclosure:
+  generative_ai_used: true
+
+  known_usage:
+    - code assistance
+    - experiment workflow assistance
+    - documentation assistance
+    - language editing assistance
+
+  final_disclosure_text: "TBD_BY_TARGET_VENUE_AND_HUMAN_REVIEW"
+
+  restrictions:
+    - 不得把 AI 工具列为作者
+    - 不得声称 AI 工具承担学术责任
+    - 最终披露内容需按目标场所政策人工确认
+
+repository_release:
+  current_repository: lljjcc426/HyperGranular-RAG
+  current_repository_identity_exposing: true
+
+  anonymous_submission_repository:
+    status: NOT_CREATED
+    required_before_submission: true
+
+  anonymous_snapshot_requirements:
+    - 删除作者姓名和邮箱
+    - 删除 Git 历史中的身份信息
+    - 删除 Windows 绝对路径
+    - 删除学校、实验室和个人目录信息
+    - 使用相对路径
+    - 保留正式工件 SHA-256
+    - 不覆盖 Stage4E–Stage4I 冻结工件
+    - 不链接实名 GitHub 主页
+
+manual_fields_still_required:
+  - 李珈辰的正式英文发表姓名
+  - 陈耀洋的正式英文发表姓名
+  - 导师的中文姓名
+  - 导师的正式英文发表姓名
+  - 导师在作者列表中的顺序
+  - 导师的单位
+  - 三位作者的正式邮箱
+  - 三位作者的 ORCID；没有时需明确填写 NONE
+  - 重庆邮电大学具体学院或系的中英文官方名称
+  - 陈耀洋的实际 CRediT 贡献
+  - 导师的实际 CRediT 贡献
+  - 是否还有其他作者
+  - 是否存在基金及基金编号
+  - 利益冲突声明
+  - 仓库最终许可证决定
+  - Stage4I 后的最终投稿场所
+  - 生成式 AI 最终披露文本

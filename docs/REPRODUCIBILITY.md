@@ -27,6 +27,14 @@ U2_NOT_AUTHORIZED
 
 Stage5R 的可复现入口是 [英文核心稿](../paper/MANUSCRIPT_CORE_DRAFT_STAGE5R.md)、[核心表](../paper/STAGE5R_CORE_TABLES.md)、[图形合同](../paper/figures_stage5r/FIGURE_CONTRACTS_AND_CAPTIONS.md)、[figure manifest](../paper/figures_stage5r/STAGE5R_FIGURE_MANIFEST.json) 和 [联合审计](../paper/STAGE5R_PRE_SUBMISSION_AUDIT.md)。所有 Stage4E–Stage5A 正式工件保持只读。
 
+作者与投稿信息的唯一权威来源是
+[`paper/AUTHOR_AND_SUBMISSION_METADATA.yaml`](../paper/AUTHOR_AND_SUBMISSION_METADATA.yaml)；
+它是人工维护记录，不是 Stage5R 构建脚本的自动派生物。任何确认后的修改都必须追加到
+[`AUTHOR_AND_SUBMISSION_METADATA_HISTORY.md`](../paper/AUTHOR_AND_SUBMISSION_METADATA_HISTORY.md)，
+不得由程序填充 `TBD_HUMAN_INPUT` 或 `TBD_HUMAN_CONFIRMATION`。LaTeX
+[`submission_mode.tex`](../paper/latex/submission_mode.tex) 默认匿名；只有人工解除匿名并提供完整
+camera-ready author block 后才允许显式切换。
+
 ```powershell
 python scripts\stage5r_build_materials.py
 python scripts\stage5r_build_materials.py

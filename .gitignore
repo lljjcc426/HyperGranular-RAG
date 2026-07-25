@@ -33,3 +33,5 @@ checkpoints/
 tmp/
 temp/
 
+# Human-confirmed camera-ready identity block; excluded during anonymous review
+paper/latex/camera_ready_author_block.tex

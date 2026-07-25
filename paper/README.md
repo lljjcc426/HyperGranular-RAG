@@ -15,6 +15,9 @@
 - [Supplementary draft](supplementary/SUPPLEMENTARY_MATERIAL_DRAFT.md)：实验治理、边界、环境、完整结果与工件追溯；
 - [Venue target matrix](submission/VENUE_TARGET_MATRIX.md)：当前官方投稿要求、CCF/CAS 边界和适配风险；
 - [Submission blockers](submission/SUBMISSION_BLOCKERS.md)：必须由作者补充的事实与许可决定；
+- [Author and submission metadata](AUTHOR_AND_SUBMISSION_METADATA.yaml)：人工确认的作者、单位、投稿、许可与 AI 披露字段的唯一权威来源；
+- [Metadata confirmation history](AUTHOR_AND_SUBMISSION_METADATA_HISTORY.md)：作者顺序、通讯作者、基金、许可和目标场所变更的追加式人工记录；
+- [LaTeX identity switch](latex/README.md)：默认匿名、显式 camera-ready 且缺失身份时 fail-closed 的开关；
 - [Stage5-PMC manuscript blueprint](STAGE5_PMC_MANUSCRIPT_BLUEPRINT.md)：中心论点、摘要框架、IMRaD、主表/主图和投稿缺口；
 - [Stage5-PMC manuscript core draft](MANUSCRIPT_CORE_DRAFT.md)：Stage5A 前首轮英文稿，保留为冻结历史基线；
 - [Stage5-PMC core tables](SUBMISSION_CORE_TABLES.md)：主结果、外部稳健性、消融、效率与完整性四张核心表；

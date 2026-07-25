@@ -39,7 +39,10 @@
 - 当前论文图合同与追溯：`paper/figures_stage5r/FIGURE_CONTRACTS_AND_CAPTIONS.md`
 - 当前投稿前审计：`paper/STAGE5R_PRE_SUBMISSION_AUDIT.md`
 - 当前文献语料库：`paper/references/VERIFIED_LITERATURE_CORPUS.md`
-- 当前投稿元数据/阻塞项：`paper/submission/AUTHOR_METADATA_TEMPLATE.md` / `paper/submission/SUBMISSION_BLOCKERS.md`
+- 当前人工投稿元数据：`paper/AUTHOR_AND_SUBMISSION_METADATA.yaml`
+- 人工确认历史：`paper/AUTHOR_AND_SUBMISSION_METADATA_HISTORY.md`
+- LaTeX 匿名/camera-ready 开关：`paper/latex/submission_mode.tex`
+- 当前投稿阻塞项：`paper/submission/SUBMISSION_BLOCKERS.md`
 - 最近完成的正式实验报告：`reports/超粒球RAG_Stage4I_SDC强稠密检索互补性报告.md`
 - Stage4D 关闭声明：`docs/STAGE4D_CMA_CLOSURE.md`
 - 已完成 Stage4D 协议：`docs/STAGE4D_CANDIDATE_MARGINAL_UTILITY_AUDIT_PROTOCOL.md`
@@ -178,7 +181,7 @@ SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
 - Stage4I 正式 input/eligibility manifests、两套 embedding cache identities、rankings、candidate trace、main/subset outputs、Gold summaries、mechanism audit、decisions、pre-Gold/final verification 与 artifact manifest 均不可覆盖或重跑。
 - Stage5A-BNH 已在独立零重叠 HotpotQA 1,000 + MuSiQue 1,500 confirmation 边界完成 BGE-native 四臂评价。Protected−BGE 等权 F1 为 `-0.003046 [-0.006880,0.000631]`、EM 为 `-0.003667 [-0.007667,0.000004]`，核心状态为 `BGE_NATIVE_HGRAG_INCONCLUSIVE`；placement 与 facet 增量也均不确定。Development `C10 +0.003143` 仅为配置选择证据。
 - Stage5A 正式 development/confirmation rankings、predictions、prompt/query audits、summaries、mechanism/efficiency、decisions、final verification 与 manifests 均不可覆盖或重跑。Stage5R 只读取冻结证据生成论文、引用、表图和投稿材料。
-- Stage5R-PMR 已完成英文核心稿、23 条经核验文献、五张核心表、五组四格式图、supplement、venue/license/metadata 模板及联合审计。作者、基金、COI、唯一 venue 和项目 license 未由 Codex 编造，状态保持 `SUBMISSION_METADATA_PENDING`，不得写成 `SUBMISSION_READY`。
+- Stage5R-PMR 已完成英文核心稿、23 条经核验文献、五张核心表、五组四格式图、supplement、venue/license/metadata 模板及联合审计。人工元数据现以 `paper/AUTHOR_AND_SUBMISSION_METADATA.yaml` 为唯一权威来源；`TBD_HUMAN_INPUT` / `TBD_HUMAN_CONFIRMATION` 不得自动填充，任何作者顺序、通讯作者、基金、许可或目标场所变更必须追加到人工确认历史。状态保持 `SUBMISSION_METADATA_PENDING`，不得写成 `SUBMISSION_READY`。
 
 ## 4. 科研不可变边界
 

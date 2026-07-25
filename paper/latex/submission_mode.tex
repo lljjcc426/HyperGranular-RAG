@@ -1,0 +1,30 @@
+% HyperGranular-RAG submission identity switch.
+% Default: anonymous. Do not change the default in the tracked review source.
+%
+% Camera-ready use requires an explicit definition before this file is loaded:
+%   \def\HGRUseCameraReady{1}
+% It also requires a human-confirmed camera_ready_author_block.tex file.
+
+\newif\ifhgrcameraready
+\ifdefined\HGRUseCameraReady
+  \hgrcamerareadytrue
+\else
+  \hgrcamerareadyfalse
+\fi
+
+\providecommand{\HGRAnonymousAuthorText}{Anonymous Authors}
+\providecommand{\HGRCameraReadyAuthorFile}
+  {paper/latex/camera_ready_author_block.tex}
+
+\ifhgrcameraready
+  \InputIfFileExists{\HGRCameraReadyAuthorFile}{}{%
+    \PackageError{hypergranular-rag}{%
+      Camera-ready identity file is missing%
+    }{%
+      Keep anonymous mode active, or create the identity file only after all
+      author metadata has been confirmed by the human authors.%
+    }%
+  }
+\else
+  \author{\HGRAnonymousAuthorText}
+\fi

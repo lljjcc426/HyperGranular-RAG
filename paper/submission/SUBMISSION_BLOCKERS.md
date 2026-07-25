@@ -5,13 +5,23 @@ Status: `SUBMISSION_METADATA_PENDING`
 The scientific manuscript and current-evidence audit can be completed without
 inventing author facts. An actual submission cannot.
 
+Canonical partial metadata:
+[`../AUTHOR_AND_SUBMISSION_METADATA.yaml`](../AUTHOR_AND_SUBMISSION_METADATA.yaml).
+The first author is 李珈辰, the second author is 陈耀洋, both share the
+confirmed university affiliation, and the advisor role is corresponding
+author. All fields still marked `TBD_HUMAN_INPUT` or
+`TBD_HUMAN_CONFIRMATION` remain blocking facts and must not be inferred.
+
 ## Blocking author decisions
 
 - [ ] Confirm final title.
 - [ ] Select one target venue and article type.
-- [ ] Supply complete author order and published names.
-- [ ] Supply affiliations, cities, countries, emails, and ORCIDs.
-- [ ] Identify the corresponding author.
+- [ ] Supply both confirmed authors' English publication names.
+- [ ] Confirm the advisor's identity, order, English publication name, and
+      affiliation; confirm whether any additional authors exist.
+- [ ] Supply the exact school/department names, all emails, and all ORCIDs (or
+      explicitly record `NONE`).
+- [ ] Supply the corresponding advisor's name, order, and email.
 - [ ] Approve CRediT contributions.
 - [ ] Supply funding/grant facts or confirm no external funding.
 - [ ] Supply competing-interest declarations.
