@@ -12,6 +12,14 @@
     "old_frozen_builder_sha256": "3940976AD7E57443AFE3EF78BFF42316BFD965EED2C76991C23ACF46EED8CD46",
     "path": "scripts/stage5r_build_materials.py"
   },
+  "figure1_replacement": {
+    "active_asset": "paper/figures_stage5r/figure1_method_overview.png",
+    "alternate_pdf_svg_tiff_status": "LEGACY_UNREFERENCED_STAGE5R_EXPORTS_RETAINED",
+    "latex_inclusion": "PNG_WITH_BOTTOM_EMBEDDED_CAPTION_CLIPPED; ACL_CAPTION_RENDERED_ONCE",
+    "replacement_date": "2026-07-26",
+    "scientific_reanalysis": false,
+    "source_sha256": "215FBB2149B958A422B7B111395A53F32B0C423F12F61481A616BB5D81FBD969"
+  },
   "derived_files": [
     {
       "bytes": 4484,
@@ -19,9 +27,9 @@
       "sha256": "4D1FB359CC5F7B1F0C378BF3E2D8057F7928EB8EB6DE7659D4061BC7D47D1CF5"
     },
     {
-      "bytes": 1980,
+      "bytes": 2174,
       "path": "paper/figures_stage5r/FIGURE_CONTRACTS_AND_CAPTIONS.md",
-      "sha256": "BD29956D9FEA80B28F768706E66BC8E4EE695ECE5FCB528215B98DE8E61678A8"
+      "sha256": "3A6C1D7BC660CC666A9A780DD0D1CE67DD375DCBB5B58F481DB3F1C5935885E6"
     },
     {
       "bytes": 21600,
@@ -29,9 +37,9 @@
       "sha256": "737599512CE326BE676C204CB9EB21DF2D16755B0B205916B61C40BBFB7547B8"
     },
     {
-      "bytes": 149747,
+      "bytes": 1508661,
       "path": "paper/figures_stage5r/figure1_method_overview.png",
-      "sha256": "D5F57EEDC137A57D7187262C762E17A2057E2B52CB61AC380CD4887FA4D8F118"
+      "sha256": "215FBB2149B958A422B7B111395A53F32B0C423F12F61481A616BB5D81FBD969"
     },
     {
       "bytes": 9485,

@@ -2,12 +2,14 @@
 
 ## Figure 1
 
-**HyperGranular-RAG method overview.** The compact system organizes locally
-related evidence as adaptive granular balls, links query-relevant facets across
-balls with high-order hyperedges, and inserts bounded candidates after a
-protected prefix under the same Top-k budget. The dashed cross-space and
-BGE-native variants are evaluated configurations, not validated improvements
-over BGE.
+**Verified HyperGranular-RAG workflow and study boundaries.** Candidate units
+are ranked by a frozen dense retriever, organized into adaptive granular balls,
+connected through query-aware facet hyperedges, and inserted under a protected,
+bounded Top-k policy before frozen answer generation. Compact, cross-space
+sidecar, and BGE-native variants are evaluated separately rather than pooled.
+The right column distinguishes supported, negative, inconclusive, and
+not-fairly-defined outcomes, while the bottom row summarizes the scientific
+controls applied to the verified experiments.
 
 ## Figure 2
 

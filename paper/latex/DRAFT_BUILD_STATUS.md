@@ -8,6 +8,7 @@ Status:
 ACL_ANONYMOUS_FIRST_DRAFT_COMPLETE
 WEAK_REJECT_REVISION_COMPLETE
 MANUSCRIPT_LEVEL_EVALUATION_REVISION_COMPLETE
+FIGURE1_WORKFLOW_REPLACED
 SCIENTIFIC_EVIDENCE_CUTOFF = STAGE5A_BNH
 SUBMISSION_METADATA_PENDING
 SUBMISSION_READY = FALSE
@@ -17,8 +18,9 @@ SUBMISSION_READY = FALSE
 
 | File | Bytes | SHA-256 |
 |---|---:|---|
-| `main.tex` | 44,606 | `CBBFF413F618B87385EC16BAF7B14A800A0FFDE7E24DA42AFCA8A19798C9A784` |
-| `main.pdf` | 198,547 | `822AA85CD1A3A825FACC4B6C6CF638AF50E705E68DF5CD4F58AD6A12B82C3BD3` |
+| `main.tex` | 44,847 | `AFA8DAD5E01BD75C898CA25103ED55E52898276AC02FEF8B87835666E25109D5` |
+| `main.pdf` | 1,583,544 | `1FE8F5FA0F3D0644DF3D45DC9088E23637E39D8EC2DDF1417579090E99A422F4` |
+| `../figures_stage5r/figure1_method_overview.png` | 1,508,661 | `215FBB2149B958A422B7B111395A53F32B0C423F12F61481A616BB5D81FBD969` |
 | `vendor/acl.sty` | 11,927 | `7DEF961AC900A2BBCC091DA0EE71796B277E6D14A707C9EED52B76EF5D25AE2A` |
 | `acl_natbib.bst` | 47,393 | `99DBB3C8E53F0DF971AE882F02C35D37AC2BF387558518B822DB16109A799F44` |
 
@@ -37,8 +39,8 @@ tectonic -X compile --outdir ..\..\temp\stage5r_latex_build main.tex
 
 Validation results:
 
-- 13 pages total: main text on pages 1–8, ethics/data/AI-disclosure back matter
-  and references on pages 9–10, and appendix figures/tables on pages 11–13;
+- 14 pages total: main text on pages 1–8, ethics/data/AI-disclosure back matter
+  and references on pages 9–10, and appendix figures/tables on pages 11–14;
 - 23 unique citation keys, all present in the 23-entry verified BibTeX file;
 - 26 frozen scientific inputs, 12 machine-readable table/figure source CSVs,
   and 34 derived-file identities pass the read-only Stage5R verifier;
@@ -47,11 +49,12 @@ Validation results:
 - no confirmed author names or affiliation strings in the anonymous source or
   extracted PDF text;
 - two clean builds with the fixed `SOURCE_DATE_EPOCH=1784950406` produced
-  byte-identical 198,547-byte PDFs with SHA-256
-  `822AA85CD1A3A825FACC4B6C6CF638AF50E705E68DF5CD4F58AD6A12B82C3BD3`;
-- all 13 rendered pages were visually inspected; the final method-equation and
-  page-limit boundary pages were re-rendered after the last source change; no
-  clipping, overlap, or missing figure/table content was found;
+  byte-identical 1,583,544-byte PDFs with SHA-256
+  `1FE8F5FA0F3D0644DF3D45DC9088E23637E39D8EC2DDF1417579090E99A422F4`;
+- the replacement Figure 1 page was rendered and visually inspected after the
+  final source change; its embedded caption was clipped at inclusion time so
+  the ACL caption appears exactly once, with no clipping of diagram content,
+  overlap, or missing panels;
 - one non-blocking BibTeX style warning remains for the `feng2019hgnn` record
   containing both `volume` and `number`; it does not change the resolved
   citation or manuscript content.
