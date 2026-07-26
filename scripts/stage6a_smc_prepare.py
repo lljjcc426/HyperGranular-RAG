@@ -194,9 +194,11 @@ def build_twowiki_channels(
             )
             units.append(unit)
             key = (title, sentence_index)
-            if key in support_map:
-                raise ValueError(f"{sample_id}: ambiguous supporting target {key}")
-            support_map[key] = unit["unit_id"]
+            # The frozen official 2Wiki normalizer resolves a duplicated
+            # context title to its first occurrence. Mirror that existing
+            # source contract while retaining every duplicate-title context
+            # as a distinct candidate unit.
+            support_map.setdefault(key, unit["unit_id"])
     supporting_unit_ids = []
     for item in row.get("supporting_facts") or []:
         if not isinstance(item, list) or len(item) != 2:

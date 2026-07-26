@@ -164,3 +164,23 @@ def test_twowiki_channel_rejects_unmappable_support():
     }
     with pytest.raises(ValueError):
         build_twowiki_channels(10000, "abc123", row)
+
+
+def test_twowiki_duplicate_title_uses_frozen_first_context_mapping():
+    row = {
+        "_id": "abc123",
+        "answer": "Answer",
+        "context": [
+            ["Alpha", ["Official supporting sentence."]],
+            ["Alpha", ["Duplicate-title distractor."]],
+        ],
+        "evidences": [],
+        "question": "What is supported?",
+        "supporting_facts": [["Alpha", 0]],
+        "type": "inference",
+    }
+    blind, gold, _ = build_twowiki_channels(10000, "abc123", row)
+    assert len(blind["candidate_units"]) == 2
+    assert gold["supporting_unit_ids"] == [
+        "2wikimultihopqa_official_dev::abc123::p0::s0"
+    ]
