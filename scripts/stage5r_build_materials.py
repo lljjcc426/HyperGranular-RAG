@@ -11,6 +11,10 @@ import csv
 import hashlib
 import json
 import os
+import re
+import statistics
+import textwrap
+from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -29,6 +33,7 @@ from stage5_pmc_build_figures import INPUTS as STAGE4_INPUTS
 
 
 ROOT = Path(__file__).resolve().parents[1]
+DATA_ROOT = ROOT.parent / "超粒球RAG_数据"
 OUT = ROOT / "paper" / "figures_stage5r"
 SOURCE = OUT / "source_data"
 TABLES = ROOT / "paper" / "STAGE5R_CORE_TABLES.md"
@@ -87,21 +92,55 @@ PAPER_JSONL_INPUTS = {
         ROOT / "results" / "stage4h_cbe_hotpot1000_musique1500_v1_query_audit.jsonl",
         "6232260E8D91D070E8A28B96A4F179538D2EB300F16FE28DB3B24168ADBD4CA9",
     ),
+    "stage4h_predictions": (
+        ROOT / "results" / "stage4h_cbe_hotpot1000_musique1500_v1_predictions_main.jsonl",
+        "52B9276E93AF19820B8F2E358F54BE9CDF88D4A8C6A34020AF3EDC153470E310",
+    ),
+    "stage4h_trace": (
+        ROOT / "results" / "stage4h_cbe_hotpot1000_musique1500_v1_retrieval_trace.jsonl",
+        "308D3FCF9B0D517548542C33BB241B2824446B68453697F83BC5CAA13796087F",
+    ),
+    "stage4i_trace": (
+        ROOT / "results" / "stage4i_sdc_hotpot1000_musique1500_v1_candidate_trace.jsonl",
+        "62AC7A2FD91997FFC72E2F0A2A0F9945D2056C0670C299CC002917B2EC4D9DA7",
+    ),
+    "stage5a_trace": (
+        ROOT
+        / "results"
+        / "stage5a_bnh_confirmation_hotpot1000_musique1500_v1_candidate_trace.jsonl",
+        "226BA734FAB41E8941259109529B93DA8A3E951B7E7AF3F700147BDFF38B00CB",
+    ),
+    "stage4h_blind_queries": (
+        DATA_ROOT
+        / "processed"
+        / "stage4h_cbe_hotpot1000_musique1500_v1_blind_queries.jsonl",
+        "19E2659B190E91A4FC6350698C921C8F3FFA86B793BA89F3D726C004C5EA9B64",
+    ),
+    "stage4h_gold_targets": (
+        DATA_ROOT
+        / "processed"
+        / "stage4h_cbe_hotpot1000_musique1500_v1_gold_targets.jsonl",
+        "02407A306C0728024CB3D515C7427610C2AFB4898C75FEE9EDA9BA890A22B92F",
+    ),
 }
 MANIFEST_INPUTS = {**INPUTS, **PAPER_JSONL_INPUTS}
 
 COLORS = {
-    "dense": "#4C78A8",
-    "hgrag": "#F2A65A",
-    "bge": "#355C7D",
-    "protected": "#3A7D44",
-    "unprotected": "#B24C4C",
-    "facet": "#7B61A8",
-    "inconclusive": "#777777",
+    "dense": "#7A7F87",
+    "hgrag": "#0072B2",
+    "bge": "#484878",
+    "protected": "#2E8B57",
+    "unprotected": "#D55E00",
+    "facet": "#8C6BB1",
+    "inconclusive": "#8A8A8A",
     "undefined": "#A88B32",
     "not_evaluated": "#6F7B86",
-    "ink": "#202830",
+    "ink": "#263238",
     "grid": "#D9DEE3",
+    "pale_blue": "#E8F3F8",
+    "pale_violet": "#F1ECF7",
+    "pale_orange": "#FBEDE4",
+    "pale_gray": "#F3F4F5",
 }
 
 
@@ -146,19 +185,23 @@ def write_csv(path: Path, fields: list[str], rows: Iterable[dict[str, Any]]) -> 
 def configure() -> None:
     plt.rcParams.update(
         {
-            "font.family": "DejaVu Sans",
-            "font.size": 8,
-            "axes.titlesize": 9,
-            "axes.labelsize": 8,
-            "xtick.labelsize": 7,
-            "ytick.labelsize": 7,
-            "legend.fontsize": 7,
+            "font.family": "sans-serif",
+            "font.sans-serif": ["Arial", "DejaVu Sans", "Liberation Sans"],
+            "font.size": 7.5,
+            "axes.titlesize": 8.2,
+            "axes.labelsize": 7.5,
+            "xtick.labelsize": 6.7,
+            "ytick.labelsize": 6.7,
+            "legend.fontsize": 6.7,
             "axes.linewidth": 0.7,
+            "axes.spines.top": False,
+            "axes.spines.right": False,
+            "legend.frameon": False,
             "figure.facecolor": "white",
             "axes.facecolor": "white",
             "savefig.facecolor": "white",
             "svg.fonttype": "none",
-            "svg.hashsalt": "stage5r-pmr-v1",
+            "svg.hashsalt": "stage5r-pmr-figure-redesign-v2",
             "pdf.fonttype": 42,
             "ps.fonttype": 42,
         }
@@ -168,7 +211,7 @@ def configure() -> None:
 def save(fig: plt.Figure, stem: str) -> list[Path]:
     OUT.mkdir(parents=True, exist_ok=True)
     paths = [OUT / f"{stem}.{suffix}" for suffix in ("svg", "pdf", "tiff", "png")]
-    fig.savefig(paths[0], metadata={"Date": None})
+    fig.savefig(paths[0], metadata={"Date": None}, bbox_inches="tight")
     svg = paths[0].read_text(encoding="utf-8")
     paths[0].write_text(
         "\n".join(line.rstrip() for line in svg.splitlines()) + "\n",
@@ -183,9 +226,20 @@ def save(fig: plt.Figure, stem: str) -> list[Path]:
             "Creator": "stage5r_build_materials.py",
             "Producer": "Matplotlib",
         },
+        bbox_inches="tight",
     )
-    fig.savefig(paths[2], dpi=600, pil_kwargs={"compression": "tiff_lzw"})
-    fig.savefig(paths[3], dpi=300, metadata={"Software": "Matplotlib"})
+    fig.savefig(
+        paths[2],
+        dpi=600,
+        bbox_inches="tight",
+        pil_kwargs={"compression": "tiff_lzw"},
+    )
+    fig.savefig(
+        paths[3],
+        dpi=300,
+        bbox_inches="tight",
+        metadata={"Software": "Matplotlib"},
+    )
     plt.close(fig)
     return paths
 
@@ -282,6 +336,13 @@ def effect_rows(data: dict[str, Any]) -> list[dict[str, Any]]:
             "CONFIRMATION",
         ),
         (
+            "Compact protection",
+            "Full − NoProtection",
+            metric(h["Q25_NO_PROTECTION"]["dataset_equal_weight"]["delta_answer_f1"], "4h"),
+            "INCONCLUSIVE",
+            "CONFIRMATION",
+        ),
+        (
             "Cross-space sidecar",
             "Protected − BGE",
             metric(i["protected_minus_bge"]["dataset_equal_weight"]["delta_answer_f1"], "4i"),
@@ -293,6 +354,13 @@ def effect_rows(data: dict[str, Any]) -> list[dict[str, Any]]:
             "Protected − Unprotected",
             metric(i["protected_minus_unprotected"]["dataset_equal_weight"]["delta_answer_f1"], "4i"),
             "SUPPORTED",
+            "CONFIRMATION",
+        ),
+        (
+            "Cross-space facet",
+            "Protected − NoFacet",
+            metric(i["protected_minus_no_facet"]["dataset_equal_weight"]["delta_answer_f1"], "4i"),
+            "INCONCLUSIVE",
             "CONFIRMATION",
         ),
         (
@@ -616,6 +684,1126 @@ def figure5(rows: list[dict[str, Any]]) -> list[Path]:
     return save(fig, "figure5_applicability_boundary")
 
 
+def add_panel_label(ax: plt.Axes, label: str) -> None:
+    ax.text(
+        -0.10,
+        1.04,
+        label,
+        transform=ax.transAxes,
+        fontsize=8.5,
+        fontweight="bold",
+        ha="left",
+        va="bottom",
+        color=COLORS["ink"],
+    )
+
+
+def main_performance_rows(
+    compact_rows: list[dict[str, Any]],
+    strong_rows: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    compact_labels = ["HotpotQA", "MuSiQue", "Joint"]
+    for label, row in zip(compact_labels, compact_rows):
+        rows.append(
+            {
+                "setting_group": "Compact MiniLM",
+                "boundary": label,
+                "baseline_method": "Dense",
+                "structural_method": "Full",
+                "baseline_f1": float(row["dense_f1"]),
+                "structural_f1": float(row["full_f1"]),
+                "baseline_em": float(row["dense_em"]),
+                "structural_em": float(row["full_em"]),
+                "comparability_note": "matched within the same frozen boundary",
+            }
+        )
+    for label, base, structural in zip(
+        ["Original Full", "Cross-space sidecar", "BGE-native"],
+        strong_rows[0::2],
+        strong_rows[1::2],
+    ):
+        rows.append(
+            {
+                "setting_group": "Strong BGE",
+                "boundary": label,
+                "baseline_method": "BGE",
+                "structural_method": structural["method"],
+                "baseline_f1": base["dataset_equal_weight_answer_f1"],
+                "structural_f1": structural["dataset_equal_weight_answer_f1"],
+                "baseline_em": base["dataset_equal_weight_answer_em"],
+                "structural_em": structural["dataset_equal_weight_answer_em"],
+                "comparability_note": "matched within boundary; strong rows are not pooled",
+            }
+        )
+    return rows
+
+
+def draw_dumbbell(
+    ax: plt.Axes,
+    rows: list[dict[str, Any]],
+    title: str,
+    baseline_label: str,
+    structural_label: str,
+) -> None:
+    y = np.arange(len(rows))[::-1]
+    baseline = np.array([float(row["baseline_f1"]) for row in rows])
+    structural = np.array([float(row["structural_f1"]) for row in rows])
+    for yy, base, full in zip(y, baseline, structural):
+        ax.plot([base, full], [yy, yy], color="#B7BDC3", linewidth=1.4, zorder=1)
+        ax.scatter(
+            base,
+            yy,
+            s=26,
+            marker="o",
+            color=COLORS["dense"] if baseline_label == "Dense" else COLORS["bge"],
+            edgecolor="white",
+            linewidth=0.6,
+            zorder=3,
+        )
+        ax.scatter(
+            full,
+            yy,
+            s=30,
+            marker="D",
+            color=COLORS["hgrag"],
+            edgecolor="white",
+            linewidth=0.6,
+            zorder=3,
+        )
+        delta = full - base
+        ax.text(
+            max(base, full) + 0.004,
+            yy,
+            f"{delta:+.4f}",
+            fontsize=6.4,
+            va="center",
+            color=COLORS["protected"] if delta > 0 else COLORS["unprotected"],
+            fontweight="bold",
+        )
+    ax.set_yticks(y)
+    ax.set_yticklabels([row["boundary"] for row in rows])
+    lo = min(baseline.min(), structural.min())
+    hi = max(baseline.max(), structural.max())
+    ax.set_xlim(lo - 0.025, hi + 0.045)
+    ax.set_ylim(-0.58, len(rows) - 0.48)
+    ax.set_xlabel("Answer F1")
+    ax.set_title(title, loc="left", fontweight="bold")
+    ax.grid(axis="x", color=COLORS["grid"], linewidth=0.45)
+    handles = [
+        plt.Line2D(
+            [0],
+            [0],
+            marker="o",
+            linestyle="",
+            markerfacecolor=COLORS["dense"] if baseline_label == "Dense" else COLORS["bge"],
+            markeredgecolor="white",
+            markersize=5,
+            label=baseline_label,
+        ),
+        plt.Line2D(
+            [0],
+            [0],
+            marker="D",
+            linestyle="",
+            markerfacecolor=COLORS["hgrag"],
+            markeredgecolor="white",
+            markersize=5,
+            label=structural_label,
+        ),
+    ]
+    ax.legend(
+        handles=handles,
+        loc="lower right",
+        ncol=2,
+        handletextpad=0.3,
+        columnspacing=0.7,
+        borderaxespad=0.2,
+        fontsize=6.0,
+    )
+
+
+def figure2_redesigned(
+    effects: list[dict[str, Any]],
+    compact_rows: list[dict[str, Any]],
+    strong_rows: list[dict[str, Any]],
+) -> list[Path]:
+    performance = main_performance_rows(compact_rows, strong_rows)
+    write_csv(
+        SOURCE / "figure2_main_performance.csv",
+        list(performance[0]),
+        performance,
+    )
+    write_csv(
+        SOURCE / "figure2_effect_size_forest.csv",
+        list(effects[0]),
+        effects,
+    )
+
+    fig = plt.figure(figsize=(10.2, 6.1))
+    grid = fig.add_gridspec(
+        2,
+        2,
+        width_ratios=[0.92, 1.70],
+        height_ratios=[1, 1],
+        wspace=0.48,
+        hspace=0.55,
+    )
+    ax_compact = fig.add_subplot(grid[0, 0])
+    ax_strong = fig.add_subplot(grid[1, 0])
+    ax_forest = fig.add_subplot(grid[:, 1])
+
+    draw_dumbbell(
+        ax_compact,
+        performance[:3],
+        "Compact MiniLM boundaries",
+        "Dense",
+        "Full",
+    )
+    draw_dumbbell(
+        ax_strong,
+        performance[3:],
+        "Strong-BGE boundaries (not pooled)",
+        "BGE",
+        "Structural variant",
+    )
+    add_panel_label(ax_compact, "a")
+    add_panel_label(ax_strong, "b")
+
+    family_order = [
+        "Compact / HotpotQA",
+        "Compact / MuSiQue",
+        "Compact / joint",
+        "Compact component",
+        "Compact protection",
+        "Cross-space placement",
+        "Cross-space facet",
+        "BGE-native placement",
+        "BGE-native facet",
+        "Generator transfer",
+        "Strong baseline",
+        "Cross-space sidecar",
+        "BGE-native",
+    ]
+    by_family = {row["evidence_family"]: row for row in effects}
+    ordered = [by_family[name] for name in family_order]
+    labels = {
+        "Compact / HotpotQA": "HotpotQA: Full - Dense",
+        "Compact / MuSiQue": "MuSiQue: Full - Dense",
+        "Compact / joint": "Joint: Full - Dense",
+        "Compact component": "MiniLM: Full - NoFacet",
+        "Compact protection": "MiniLM: Full - NoProtection",
+        "Cross-space placement": "Sidecar: Protected - Unprotected",
+        "Cross-space facet": "Sidecar: Protected - NoFacet",
+        "BGE-native placement": "Native: Protected - Unprotected",
+        "BGE-native facet": "Native: Protected - NoFacet",
+        "Generator transfer": "Gemma: Full - Dense",
+        "Strong baseline": "Original Full - BGE",
+        "Cross-space sidecar": "Sidecar Protected - BGE",
+        "BGE-native": "Native Protected - BGE",
+    }
+    y = np.arange(len(ordered))[::-1]
+    group_spans = [
+        (0, 2, COLORS["pale_blue"], "compact effectiveness"),
+        (3, 8, COLORS["pale_violet"], "component / placement"),
+        (9, 9, COLORS["pale_gray"], "generator transfer"),
+        (10, 12, COLORS["pale_orange"], "strong-retriever boundary"),
+    ]
+    for start, end, color, group_label in group_spans:
+        y_high = y[start] + 0.48
+        y_low = y[end] - 0.48
+        ax_forest.axhspan(y_low, y_high, color=color, alpha=0.62, zorder=0)
+        ax_forest.text(
+            -0.059,
+            y_high - 0.12,
+            group_label,
+            fontsize=5.9,
+            color="#5D6870",
+            va="top",
+        )
+
+    for yy, row in zip(y, ordered):
+        point = float(row["delta_answer_f1"])
+        low = float(row["ci95_lower"])
+        high = float(row["ci95_upper"])
+        status = row["status"]
+        if status == "SUPPORTED":
+            marker, color, face = "o", COLORS["protected"], COLORS["protected"]
+        elif status == "NEGATIVE":
+            marker, color, face = "D", COLORS["unprotected"], COLORS["unprotected"]
+        else:
+            marker, color, face = "o", COLORS["inconclusive"], "white"
+        ax_forest.plot([low, high], [yy, yy], color=color, linewidth=1.25, zorder=2)
+        ax_forest.plot(
+            point,
+            yy,
+            marker=marker,
+            markersize=4.8,
+            markerfacecolor=face,
+            markeredgecolor=color,
+            markeredgewidth=1.0,
+            linestyle="",
+            zorder=3,
+        )
+        ax_forest.text(
+            0.036,
+            yy,
+            f"{point:+.4f} [{low:+.4f}, {high:+.4f}]",
+            fontsize=5.8,
+            va="center",
+            ha="left",
+            clip_on=False,
+            color=COLORS["ink"],
+        )
+    ax_forest.axvline(0, color=COLORS["ink"], linewidth=0.8, linestyle="--")
+    ax_forest.set_yticks(y)
+    ax_forest.set_yticklabels([labels[row["evidence_family"]] for row in ordered])
+    ax_forest.set_xlim(-0.060, 0.035)
+    ax_forest.set_xlabel("Paired answer-F1 difference (95% bootstrap CI)")
+    ax_forest.set_title("All confirmatory answer-F1 effects", loc="left", fontweight="bold")
+    ax_forest.grid(axis="x", color=COLORS["grid"], linewidth=0.45)
+    add_panel_label(ax_forest, "c")
+    fig.subplots_adjust(left=0.10, right=0.86, top=0.96, bottom=0.09)
+    return save(fig, "figure2_main_performance_and_effects")
+
+
+def coverage_utility_rows(
+    compact_rows: list[dict[str, Any]],
+    strong_rows: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    rows = []
+    for label, row in zip(["HotpotQA", "MuSiQue", "Joint"], compact_rows):
+        rows.append(
+            {
+                "setting_group": "Compact MiniLM",
+                "boundary": label,
+                "delta_answer_f1": float(row["full_f1"]) - float(row["dense_f1"]),
+                "delta_cr20": float(row["full_cr20"]) - float(row["dense_cr20"]),
+                "delta_er20": float(row["full_er20"]) - float(row["dense_er20"]),
+                "comparability_note": "matched within the same frozen boundary",
+            }
+        )
+    for label, base, structural in zip(
+        ["Original Full", "Cross-space sidecar", "BGE-native"],
+        strong_rows[0::2],
+        strong_rows[1::2],
+    ):
+        rows.append(
+            {
+                "setting_group": "Strong BGE",
+                "boundary": label,
+                "delta_answer_f1": (
+                    structural["dataset_equal_weight_answer_f1"]
+                    - base["dataset_equal_weight_answer_f1"]
+                ),
+                "delta_cr20": (
+                    structural["dataset_equal_weight_retrieval_cr20"]
+                    - base["dataset_equal_weight_retrieval_cr20"]
+                ),
+                "delta_er20": (
+                    structural["dataset_equal_weight_retrieval_er20"]
+                    - base["dataset_equal_weight_retrieval_er20"]
+                ),
+                "comparability_note": "matched within boundary; strong rows are not pooled",
+            }
+        )
+    return rows
+
+
+def figure3_redesigned(
+    effects: list[dict[str, Any]],
+    compact_rows: list[dict[str, Any]],
+    strong_rows: list[dict[str, Any]],
+    displacement: list[dict[str, Any]],
+) -> list[Path]:
+    coverage = coverage_utility_rows(compact_rows, strong_rows)
+    component_families = {
+        "Compact component",
+        "Compact protection",
+        "Cross-space placement",
+        "Cross-space facet",
+        "BGE-native placement",
+        "BGE-native facet",
+    }
+    components = [
+        row for row in effects if row["evidence_family"] in component_families
+    ]
+    query_counts = {"HotpotQA": 1000, "MuSiQue": 1500}
+    displacement_norm = []
+    for row in displacement:
+        n = query_counts[row["dataset"]]
+        displacement_norm.append(
+            {
+                **row,
+                "queries": n,
+                "added_gold_per_1000_queries": 1000 * row["added_gold"] / n,
+                "displaced_gold_per_1000_queries": 1000
+                * row["displaced_gold"]
+                / n,
+                "net_gold_per_1000_queries": 1000 * row["net_gold"] / n,
+            }
+        )
+    write_csv(
+        SOURCE / "figure3a_coverage_utility.csv",
+        list(coverage[0]),
+        coverage,
+    )
+    write_csv(
+        SOURCE / "figure3b_component_effects.csv",
+        list(components[0]),
+        components,
+    )
+    write_csv(
+        SOURCE / "figure3c_evidence_displacement.csv",
+        list(displacement_norm[0]),
+        displacement_norm,
+    )
+
+    fig, axes = plt.subplots(2, 2, figsize=(8.5, 6.2))
+    ax_cr, ax_er, ax_component, ax_disp = axes.ravel()
+    short = {
+        "HotpotQA": "HP",
+        "MuSiQue": "MQ",
+        "Joint": "Joint",
+        "Original Full": "Original",
+        "Cross-space sidecar": "Sidecar",
+        "BGE-native": "Native",
+    }
+    for ax, x_field, x_label, panel in [
+        (ax_cr, "delta_cr20", "Change in CR@20", "a"),
+        (ax_er, "delta_er20", "Change in ER@20", "b"),
+    ]:
+        for idx, row in enumerate(coverage):
+            compact = row["setting_group"] == "Compact MiniLM"
+            ax.scatter(
+                row[x_field],
+                row["delta_answer_f1"],
+                s=36,
+                marker="o" if compact else "D",
+                facecolor=COLORS["hgrag"] if compact else COLORS["facet"],
+                edgecolor="white",
+                linewidth=0.7,
+                zorder=3,
+            )
+            ax.annotate(
+                short[row["boundary"]],
+                (row[x_field], row["delta_answer_f1"]),
+                xytext=(4, 5 if idx % 2 == 0 else -9),
+                textcoords="offset points",
+                fontsize=6.1,
+                color=COLORS["ink"],
+            )
+        ax.axhline(0, color="#7A7F87", linewidth=0.7, linestyle="--")
+        ax.axvline(0, color="#7A7F87", linewidth=0.7, linestyle="--")
+        ax.set_xlabel(x_label)
+        ax.set_ylabel("Change in answer F1")
+        ax.grid(color=COLORS["grid"], linewidth=0.4)
+        add_panel_label(ax, panel)
+    ax_cr.set_title("Coverage change vs answer utility", loc="left", fontweight="bold")
+    ax_er.set_title("Evidence-recall change vs answer utility", loc="left", fontweight="bold")
+
+    component_order = [
+        "Compact component",
+        "Compact protection",
+        "Cross-space placement",
+        "Cross-space facet",
+        "BGE-native placement",
+        "BGE-native facet",
+    ]
+    component_by = {row["evidence_family"]: row for row in components}
+    component_rows = [component_by[name] for name in component_order]
+    component_labels = [
+        "MiniLM facet",
+        "MiniLM protection",
+        "Sidecar placement",
+        "Sidecar facet",
+        "Native placement",
+        "Native facet",
+    ]
+    y = np.arange(len(component_rows))[::-1]
+    for yy, row in zip(y, component_rows):
+        point = row["delta_answer_f1"]
+        low = row["ci95_lower"]
+        high = row["ci95_upper"]
+        resolved = row["status"] == "SUPPORTED"
+        color = COLORS["protected"] if resolved else COLORS["inconclusive"]
+        ax_component.plot([low, high], [yy, yy], color=color, linewidth=1.25)
+        ax_component.plot(
+            point,
+            yy,
+            "o",
+            markersize=4.8,
+            markerfacecolor=color if resolved else "white",
+            markeredgecolor=color,
+        )
+    ax_component.axvline(0, color=COLORS["ink"], linewidth=0.8, linestyle="--")
+    ax_component.set_yticks(y)
+    ax_component.set_yticklabels(component_labels)
+    ax_component.set_xlim(-0.022, 0.028)
+    ax_component.set_xlabel("Paired answer-F1 difference (95% CI)")
+    ax_component.set_title("Matched component effects", loc="left", fontweight="bold")
+    ax_component.grid(axis="x", color=COLORS["grid"], linewidth=0.4)
+    add_panel_label(ax_component, "c")
+
+    y = np.arange(len(displacement_norm))[::-1]
+    for yy, row in zip(y, displacement_norm):
+        added = row["added_gold_per_1000_queries"]
+        displaced = row["displaced_gold_per_1000_queries"]
+        ax_disp.plot([added, displaced], [yy, yy], color="#B7BDC3", linewidth=1.2)
+        ax_disp.plot(added, yy, "o", color=COLORS["hgrag"], markersize=4.8)
+        ax_disp.plot(displaced, yy, "D", color=COLORS["unprotected"], markersize=4.5)
+        ax_disp.text(
+            max(added, displaced) + 1.0,
+            yy,
+            f'net {row["net_gold_per_1000_queries"]:+.1f}',
+            fontsize=6.1,
+            va="center",
+        )
+    ax_disp.set_yticks(y)
+    ax_disp.set_yticklabels(
+        [
+            f'{row["frozen_boundary"].replace("Stage", "S")}\n{row["dataset"]}'
+            for row in displacement_norm
+        ]
+    )
+    ax_disp.set_xlabel("Gold evidence events per 1,000 queries")
+    ax_disp.set_title("Post-decision evidence turnover", loc="left", fontweight="bold")
+    ax_disp.grid(axis="x", color=COLORS["grid"], linewidth=0.4)
+    handles = [
+        plt.Line2D([0], [0], marker="o", linestyle="", color=COLORS["hgrag"], label="added"),
+        plt.Line2D([0], [0], marker="D", linestyle="", color=COLORS["unprotected"], label="displaced"),
+    ]
+    ax_disp.legend(handles=handles, loc="lower right", ncol=2)
+    add_panel_label(ax_disp, "d")
+    fig.tight_layout(pad=1.1, w_pad=2.0, h_pad=2.0)
+    return save(fig, "figure3_coverage_utility_and_ablation")
+
+
+def equal_weight_cell_percentages(
+    rows: list[dict[str, Any]],
+    row_key,
+    column_key,
+    row_categories: list[str],
+    column_categories: list[str],
+) -> tuple[list[dict[str, Any]], np.ndarray]:
+    by_dataset: dict[str, Counter[tuple[str, str]]] = defaultdict(Counter)
+    totals: Counter[str] = Counter()
+    for row in rows:
+        dataset = row["dataset"]
+        by_dataset[dataset][(row_key(row), column_key(row))] += 1
+        totals[dataset] += 1
+    output: list[dict[str, Any]] = []
+    matrix = np.zeros((len(row_categories), len(column_categories)))
+    datasets = sorted(by_dataset)
+    for i, row_category in enumerate(row_categories):
+        for j, column_category in enumerate(column_categories):
+            percentages = []
+            for dataset in datasets:
+                percent = (
+                    100
+                    * by_dataset[dataset][(row_category, column_category)]
+                    / totals[dataset]
+                )
+                percentages.append(percent)
+                output.append(
+                    {
+                        "dataset": dataset,
+                        "row_category": row_category,
+                        "column_category": column_category,
+                        "query_percent": percent,
+                    }
+                )
+            matrix[i, j] = sum(percentages) / len(percentages)
+            output.append(
+                {
+                    "dataset": "DATASET_EQUAL_WEIGHT",
+                    "row_category": row_category,
+                    "column_category": column_category,
+                    "query_percent": matrix[i, j],
+                }
+            )
+    return output, matrix
+
+
+def figure4_redesigned(data: dict[str, Any]) -> list[Path]:
+    stage4h = list(jsonl_rows(data["stage4h_trace"]))
+    stage4i = list(jsonl_rows(data["stage4i_trace"]))
+    stage5a = list(jsonl_rows(data["stage5a_trace"]))
+
+    edge_categories = ["0", "1", "2", "3+"]
+    insert_categories = ["0", "1", "2", "3", "4"]
+    edge_rows, edge_matrix = equal_weight_cell_percentages(
+        stage4h,
+        lambda row: str(row["full_selected_edge_count"])
+        if row["full_selected_edge_count"] < 3
+        else "3+",
+        lambda row: str(min(row["full_insert_count"], 4)),
+        edge_categories,
+        insert_categories,
+    )
+
+    def facet_bin(value: int) -> str:
+        if value <= 3:
+            return "0-3"
+        if value <= 6:
+            return "4-6"
+        if value <= 9:
+            return "7-9"
+        return "10+"
+
+    facet_categories = ["0-3", "4-6", "7-9", "10+"]
+    eligible_categories = ["0", "1", "2", "3", "4+"]
+    facet_rows, facet_matrix = equal_weight_cell_percentages(
+        stage5a,
+        lambda row: facet_bin(int(row["topology"]["query_facet_count"])),
+        lambda row: (
+            str(row["facet"]["eligible_candidate_count"])
+            if row["facet"]["eligible_candidate_count"] < 4
+            else "4+"
+        ),
+        facet_categories,
+        eligible_categories,
+    )
+
+    insertion_specs = [
+        (
+            "Compact Full",
+            stage4h,
+            lambda row: int(row["full_insert_count"]),
+        ),
+        (
+            "Cross-space sidecar",
+            stage4i,
+            lambda row: int(row["full_insert_count"]),
+        ),
+        (
+            "BGE-native",
+            stage5a,
+            lambda row: len(row["inserted_unit_ids"]),
+        ),
+    ]
+    insertion_rows: list[dict[str, Any]] = []
+    for setting, records, getter in insertion_specs:
+        by_dataset: dict[str, Counter[int]] = defaultdict(Counter)
+        totals: Counter[str] = Counter()
+        for row in records:
+            dataset = row["dataset"]
+            by_dataset[dataset][min(getter(row), 4)] += 1
+            totals[dataset] += 1
+        for count in range(5):
+            percentages = []
+            for dataset in sorted(by_dataset):
+                percent = 100 * by_dataset[dataset][count] / totals[dataset]
+                percentages.append(percent)
+                insertion_rows.append(
+                    {
+                        "setting": setting,
+                        "dataset": dataset,
+                        "inserted_unit_count": count,
+                        "query_percent": percent,
+                    }
+                )
+            insertion_rows.append(
+                {
+                    "setting": setting,
+                    "dataset": "DATASET_EQUAL_WEIGHT",
+                    "inserted_unit_count": count,
+                    "query_percent": sum(percentages) / len(percentages),
+                }
+            )
+
+    overlap_rows = []
+    for dataset in sorted({row["dataset"] for row in stage4i}):
+        selected = [row for row in stage4i if row["dataset"] == dataset]
+        top10 = sum(int(row["full_overlap_bge_top10_count"]) for row in selected)
+        top20 = sum(int(row["full_overlap_bge_top20_count"]) for row in selected)
+        eligible = sum(int(row["full_eligible_count"]) for row in selected)
+        counts = {
+            "already in BGE Top-10": top10,
+            "only in BGE ranks 11-20": max(top20 - top10, 0),
+            "beyond BGE Top-20": max(eligible - top20, 0),
+        }
+        total = sum(counts.values())
+        for region, count in counts.items():
+            overlap_rows.append(
+                {
+                    "dataset": dataset,
+                    "candidate_region": region,
+                    "candidate_count": count,
+                    "candidate_percent": 100 * count / total if total else 0.0,
+                    "evidence_role": "GOLD_FREE_DESCRIPTIVE",
+                }
+            )
+
+    write_csv(
+        SOURCE / "figure4a_edge_insertion_matrix.csv",
+        list(edge_rows[0]),
+        edge_rows,
+    )
+    write_csv(
+        SOURCE / "figure4b_facet_supply_matrix.csv",
+        list(facet_rows[0]),
+        facet_rows,
+    )
+    write_csv(
+        SOURCE / "figure4c_insertion_distribution.csv",
+        list(insertion_rows[0]),
+        insertion_rows,
+    )
+    write_csv(
+        SOURCE / "figure4d_sidecar_overlap.csv",
+        list(overlap_rows[0]),
+        overlap_rows,
+    )
+
+    fig, axes = plt.subplots(2, 2, figsize=(8.4, 6.3))
+    ax_edge, ax_facet, ax_insert, ax_overlap = axes.ravel()
+    cmap_blue = matplotlib.colors.LinearSegmentedColormap.from_list(
+        "hgrag_blue",
+        ["#F7FAFC", "#A9D4E8", COLORS["hgrag"]],
+    )
+    cmap_violet = matplotlib.colors.LinearSegmentedColormap.from_list(
+        "hgrag_violet",
+        ["#FBF9FD", "#D6C5E5", COLORS["facet"]],
+    )
+    for ax, matrix, xlabels, ylabels, cmap, panel, title in [
+        (
+            ax_edge,
+            edge_matrix,
+            insert_categories,
+            edge_categories,
+            cmap_blue,
+            "a",
+            "Facet-hyperedge selection and insertion",
+        ),
+        (
+            ax_facet,
+            facet_matrix,
+            eligible_categories,
+            facet_categories,
+            cmap_violet,
+            "b",
+            "Query facets and eligible candidates",
+        ),
+    ]:
+        image = ax.imshow(matrix, aspect="auto", cmap=cmap, vmin=0)
+        for (i, j), value in np.ndenumerate(matrix):
+            ax.text(
+                j,
+                i,
+                f"{value:.1f}",
+                ha="center",
+                va="center",
+                fontsize=6.1,
+                color="white" if value > matrix.max() * 0.58 else COLORS["ink"],
+            )
+        ax.set_xticks(range(len(xlabels)))
+        ax.set_xticklabels(xlabels)
+        ax.set_yticks(range(len(ylabels)))
+        ax.set_yticklabels(ylabels)
+        ax.set_title(title, loc="left", fontweight="bold")
+        ax.set_frame_on(False)
+        cbar = fig.colorbar(image, ax=ax, fraction=0.045, pad=0.03)
+        cbar.set_label("Dataset-equal-weight query share (%)", fontsize=6.2)
+        cbar.ax.tick_params(labelsize=5.8)
+        add_panel_label(ax, panel)
+    ax_edge.set_xlabel("Inserted units")
+    ax_edge.set_ylabel("Selected hyperedges")
+    ax_facet.set_xlabel("Eligible structural candidates")
+    ax_facet.set_ylabel("Query-facet count")
+
+    setting_colors = {
+        "Compact Full": COLORS["hgrag"],
+        "Cross-space sidecar": COLORS["facet"],
+        "BGE-native": COLORS["bge"],
+    }
+    for setting in setting_colors:
+        subset = [
+            row
+            for row in insertion_rows
+            if row["setting"] == setting
+            and row["dataset"] == "DATASET_EQUAL_WEIGHT"
+        ]
+        ax_insert.plot(
+            [row["inserted_unit_count"] for row in subset],
+            [row["query_percent"] for row in subset],
+            marker="o",
+            linewidth=1.4,
+            markersize=4.2,
+            color=setting_colors[setting],
+            label=setting,
+        )
+    ax_insert.set_xticks(range(5))
+    ax_insert.set_xlabel("Inserted units per query")
+    ax_insert.set_ylabel("Dataset-equal-weight query share (%)")
+    ax_insert.set_title("Bounded insertion remains sparse", loc="left", fontweight="bold")
+    ax_insert.grid(axis="y", color=COLORS["grid"], linewidth=0.4)
+    ax_insert.legend(loc="upper right")
+    add_panel_label(ax_insert, "c")
+
+    dataset_labels = {
+        "hotpotqa_train_distractor_v1_1": "HotpotQA",
+        "musique_ans_v1_0_train": "MuSiQue",
+    }
+    regions = [
+        "already in BGE Top-10",
+        "only in BGE ranks 11-20",
+        "beyond BGE Top-20",
+    ]
+    region_colors = [COLORS["bge"], "#8EA0C7", COLORS["hgrag"]]
+    datasets = sorted(dataset_labels, key=lambda value: dataset_labels[value])
+    left = np.zeros(len(datasets))
+    for region, color in zip(regions, region_colors):
+        values = [
+            next(
+                row["candidate_percent"]
+                for row in overlap_rows
+                if row["dataset"] == dataset
+                and row["candidate_region"] == region
+            )
+            for dataset in datasets
+        ]
+        ax_overlap.barh(
+            np.arange(len(datasets)),
+            values,
+            left=left,
+            color=color,
+            edgecolor="white",
+            linewidth=0.5,
+            label=region,
+        )
+        left += np.array(values)
+    ax_overlap.set_yticks(np.arange(len(datasets)))
+    ax_overlap.set_yticklabels([dataset_labels[dataset] for dataset in datasets])
+    ax_overlap.set_xlim(0, 100)
+    ax_overlap.set_xlabel("Sidecar eligible-candidate share (%)")
+    ax_overlap.set_title("Candidate overlap with BGE", loc="left", fontweight="bold")
+    ax_overlap.legend(loc="lower center", bbox_to_anchor=(0.5, -0.45), ncol=1)
+    add_panel_label(ax_overlap, "d")
+    fig.tight_layout(pad=1.1, w_pad=1.8, h_pad=2.0)
+    return save(fig, "figure4_mechanism_analysis")
+
+
+def qualitative_case_rows(data: dict[str, Any]) -> list[dict[str, Any]]:
+    audits = {row["query_id"]: row for row in jsonl_rows(data["stage4h_query_audit"])}
+    rankings = {row["query_id"]: row for row in jsonl_rows(data["stage4h_rankings"])}
+    blind = {row["query_id"]: row for row in jsonl_rows(data["stage4h_blind_queries"])}
+    gold = {row["query_id"]: row for row in jsonl_rows(data["stage4h_gold_targets"])}
+    predictions = {
+        (row["query_id"], row["method"]): row["prediction"]
+        for row in jsonl_rows(data["stage4h_predictions"])
+    }
+    query_ids = sorted(
+        query_id
+        for query_id in set(audits) & set(rankings) & set(blind) & set(gold)
+        if isinstance(gold[query_id].get("supporting_unit_ids"), list)
+    )
+    success_candidates = []
+    failure_candidates = []
+    for query_id in query_ids:
+        audit = audits[query_id]["methods"]
+        ranking = rankings[query_id]
+        methods = ranking["methods"]
+        supporting = set(gold[query_id]["supporting_unit_ids"])
+        inserted = set(ranking["full_inserted_unit_ids"])
+        success_delta = (
+            audit["STATIC_Q25_FULL"]["answer_f1"]
+            - audit["DENSE_TOP20"]["answer_f1"]
+        )
+        if (
+            success_delta > 0
+            and audit["STATIC_Q25_FULL"]["retrieval_cr20"]
+            > audit["DENSE_TOP20"]["retrieval_cr20"]
+            and inserted & supporting
+        ):
+            success_candidates.append((success_delta, query_id))
+
+        failure_delta = (
+            audit["STATIC_Q25_FULL"]["answer_f1"]
+            - audit["STRONG_DENSE_TOP20"]["answer_f1"]
+        )
+        displaced_support = supporting & (
+            set(methods["STRONG_DENSE_TOP20"]) - set(methods["STATIC_Q25_FULL"])
+        )
+        if failure_delta < 0 and displaced_support:
+            failure_candidates.append((failure_delta, query_id))
+    if not success_candidates or not failure_candidates:
+        raise RuntimeError("No deterministic qualitative success/failure case is available")
+
+    def median_case(candidates: list[tuple[float, str]]) -> str:
+        median_delta = statistics.median(value for value, _ in candidates)
+        return min(candidates, key=lambda item: (abs(item[0] - median_delta), item[1]))[1]
+
+    selected = [
+        ("Representative success", median_case(success_candidates)),
+        ("Representative failure", median_case(failure_candidates)),
+    ]
+    output = []
+    for case_type, query_id in selected:
+        audit = audits[query_id]["methods"]
+        ranking = rankings[query_id]
+        methods = ranking["methods"]
+        blind_row = blind[query_id]
+        gold_row = gold[query_id]
+        unit_by_id = {unit["unit_id"]: unit for unit in blind_row["candidate_units"]}
+        supporting = set(gold_row["supporting_unit_ids"])
+        inserted_ids = list(ranking["full_inserted_unit_ids"])
+        if case_type == "Representative success":
+            baseline_key = "DENSE_TOP20"
+            baseline_name = "Dense"
+            proposed_key = "STATIC_Q25_FULL"
+            proposed_name = "Full"
+            added_id = next(unit_id for unit_id in inserted_ids if unit_id in supporting)
+            retained = [
+                unit_id
+                for unit_id in methods[baseline_key]
+                if unit_id in supporting
+            ]
+            baseline_evidence_id = retained[0] if retained else methods[baseline_key][0]
+        else:
+            baseline_key = "STRONG_DENSE_TOP20"
+            baseline_name = "BGE"
+            proposed_key = "STATIC_Q25_FULL"
+            proposed_name = "Original Full"
+            displaced = [
+                unit_id
+                for unit_id in methods[baseline_key]
+                if unit_id in supporting
+                and unit_id not in set(methods[proposed_key])
+            ]
+            baseline_evidence_id = displaced[0]
+            added_id = inserted_ids[0] if inserted_ids else methods[proposed_key][10]
+        displaced_ids = [
+            unit_id
+            for unit_id in methods[baseline_key]
+            if unit_id not in set(methods[proposed_key])
+        ]
+        displaced_id = (
+            baseline_evidence_id
+            if baseline_evidence_id in displaced_ids
+            else (displaced_ids[0] if displaced_ids else "")
+        )
+
+        def unit_fields(unit_id: str, ranking_ids: list[str]) -> tuple[Any, ...]:
+            if not unit_id:
+                return ("", "", "", "")
+            unit = unit_by_id[unit_id]
+            rank = ranking_ids.index(unit_id) + 1 if unit_id in ranking_ids else ""
+            return rank, unit["title"], unit["text"], int(unit_id in supporting)
+
+        base_rank, base_title, base_text, base_support = unit_fields(
+            baseline_evidence_id,
+            methods[baseline_key],
+        )
+        added_rank, added_title, added_text, added_support = unit_fields(
+            added_id,
+            methods[proposed_key],
+        )
+        displaced_rank, displaced_title, displaced_text, displaced_support = unit_fields(
+            displaced_id,
+            methods[baseline_key],
+        )
+        output.append(
+            {
+                "case_type": case_type,
+                "selection_rule": "closest to the within-event median delta F1; query_id tie-break",
+                "query_id": query_id,
+                "dataset": blind_row["dataset"],
+                "question": blind_row["question"],
+                "baseline_method": baseline_name,
+                "baseline_answer": predictions[(query_id, baseline_key)],
+                "baseline_f1": audit[baseline_key]["answer_f1"],
+                "proposed_method": proposed_name,
+                "proposed_answer": predictions[(query_id, proposed_key)],
+                "proposed_f1": audit[proposed_key]["answer_f1"],
+                "delta_answer_f1": (
+                    audit[proposed_key]["answer_f1"]
+                    - audit[baseline_key]["answer_f1"]
+                ),
+                "reference_answer": gold_row["answers"][0],
+                "baseline_evidence_rank": base_rank,
+                "baseline_evidence_title": base_title,
+                "baseline_evidence_text": base_text,
+                "baseline_evidence_supporting": base_support,
+                "added_evidence_rank": added_rank,
+                "added_evidence_title": added_title,
+                "added_evidence_text": added_text,
+                "added_evidence_supporting": added_support,
+                "displaced_evidence_rank": displaced_rank,
+                "displaced_evidence_title": displaced_title,
+                "displaced_evidence_text": displaced_text,
+                "displaced_evidence_supporting": displaced_support,
+                "evidence_role": "POST_DECISION_DESCRIPTIVE_ONLY",
+            }
+        )
+    return output
+
+
+def figure5_redesigned(data: dict[str, Any]) -> list[Path]:
+    rows = qualitative_case_rows(data)
+    write_csv(
+        SOURCE / "figure5_qualitative_cases.csv",
+        list(rows[0]),
+        rows,
+    )
+
+    fig, ax = plt.subplots(figsize=(8.5, 5.7))
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
+    ax.axis("off")
+    columns = [
+        (0.015, 0.215, "Question"),
+        (0.235, 0.215, "Baseline evidence and answer"),
+        (0.455, 0.285, "Structural change"),
+        (0.745, 0.24, "Full output"),
+    ]
+
+    def display_text(value: Any) -> str:
+        """Keep raw CSV text intact while avoiding unavailable Khmer glyphs in plots."""
+        rendered = re.sub(
+            r"Khmer:\s*[\u1780-\u17ff\s]+(?=;)",
+            "Khmer: [Khmer script] ",
+            str(value),
+        )
+        return re.sub(r"[\u1780-\u17ff]+", "[Khmer script]", rendered)
+    for x, width, title in columns:
+        ax.text(
+            x + width / 2,
+            0.985,
+            title,
+            ha="center",
+            va="top",
+            fontsize=7.1,
+            fontweight="bold",
+            color=COLORS["ink"],
+        )
+
+    def card(
+        x: float,
+        y: float,
+        width: float,
+        height: float,
+        facecolor: str,
+        title: str,
+        body: str,
+    ) -> None:
+        ax.add_patch(
+            FancyBboxPatch(
+                (x, y),
+                width,
+                height,
+                boxstyle="round,pad=0.008,rounding_size=0.012",
+                facecolor=facecolor,
+                edgecolor="#B9C0C5",
+                linewidth=0.7,
+            )
+        )
+        ax.text(
+            x + 0.012,
+            y + height - 0.025,
+            title,
+            ha="left",
+            va="top",
+            fontsize=6.5,
+            fontweight="bold",
+            color=COLORS["ink"],
+        )
+        ax.text(
+            x + 0.012,
+            y + height - 0.065,
+            body,
+            ha="left",
+            va="top",
+            fontsize=5.8,
+            color=COLORS["ink"],
+            linespacing=1.25,
+        )
+
+    for idx, row in enumerate(rows):
+        y = 0.525 if idx == 0 else 0.055
+        height = 0.395
+        accent = COLORS["protected"] if idx == 0 else COLORS["unprotected"]
+        ax.add_patch(plt.Rectangle((0.006, y), 0.006, height, color=accent))
+        ax.text(
+            0.016,
+            y + height + 0.012,
+            f'{"a" if idx == 0 else "b"}  {row["case_type"]} '
+            f'(delta F1 {row["delta_answer_f1"]:+.2f})',
+            fontsize=7.2,
+            fontweight="bold",
+            color=accent,
+            va="bottom",
+        )
+        dataset = "HotpotQA" if "hotpotqa" in row["dataset"] else "MuSiQue"
+        card(
+            columns[0][0],
+            y,
+            columns[0][1],
+            height,
+            COLORS["pale_gray"],
+            dataset,
+            textwrap.fill(display_text(row["question"]), width=33),
+        )
+        baseline_body = (
+            f'Rank {row["baseline_evidence_rank"]}: '
+            f'{textwrap.shorten(display_text(row["baseline_evidence_title"]), 34)}\n'
+            f'{textwrap.fill(textwrap.shorten(display_text(row["baseline_evidence_text"]), 175), 34)}\n\n'
+            f'Answer: {textwrap.shorten(display_text(row["baseline_answer"]), 40)}\n'
+            f'F1 = {row["baseline_f1"]:.2f}'
+        )
+        card(
+            columns[1][0],
+            y,
+            columns[1][1],
+            height,
+            "#EEF0F2",
+            row["baseline_method"],
+            baseline_body,
+        )
+        added = (
+            f'ADDED (rank {row["added_evidence_rank"]}; '
+            f'supporting={bool(row["added_evidence_supporting"])})\n'
+            f'{textwrap.shorten(display_text(row["added_evidence_title"]), 42)}\n'
+            f'{textwrap.fill(textwrap.shorten(display_text(row["added_evidence_text"]), 150), 42)}'
+        )
+        displaced = (
+            f'\n\nDISPLACED'
+            + (
+                f' (rank {row["displaced_evidence_rank"]}; '
+                f'supporting={bool(row["displaced_evidence_supporting"])})\n'
+                f'{textwrap.shorten(display_text(row["displaced_evidence_title"]), 42)}\n'
+                f'{textwrap.fill(textwrap.shorten(display_text(row["displaced_evidence_text"]), 120), 42)}'
+                if row["displaced_evidence_title"]
+                else ": none shown"
+            )
+        )
+        card(
+            columns[2][0],
+            y,
+            columns[2][1],
+            height,
+            COLORS["pale_blue"] if idx == 0 else COLORS["pale_orange"],
+            "Evidence completion",
+            added + displaced,
+        )
+        output_body = (
+            f'Answer: {textwrap.fill(display_text(row["proposed_answer"]), 34)}\n'
+            f'F1 = {row["proposed_f1"]:.2f}\n\n'
+            f'Reference:\n{textwrap.fill(display_text(row["reference_answer"]), 34)}'
+        )
+        card(
+            columns[3][0],
+            y,
+            columns[3][1],
+            height,
+            "#EDF5FA" if idx == 0 else "#F9EEE7",
+            row["proposed_method"],
+            output_body,
+        )
+    fig.tight_layout(pad=0.4)
+    return save(fig, "figure5_qualitative_cases")
+
+
 def fmt_effect(point: float, low: float, high: float) -> str:
     return f"{point:+.5f} [{low:.5f}, {high:.5f}]"
 
@@ -799,7 +1987,15 @@ def make_table_rows(data: dict[str, Any], effects: list[dict[str, Any]]) -> dict
             "status": r["status"],
         }
         for r in effects
-        if r["evidence_family"] in {"Compact component", "Cross-space placement", "BGE-native placement", "BGE-native facet"}
+        if r["evidence_family"]
+        in {
+            "Compact component",
+            "Compact protection",
+            "Cross-space placement",
+            "Cross-space facet",
+            "BGE-native placement",
+            "BGE-native facet",
+        }
     ]
     table3.append(
         {
@@ -910,45 +2106,70 @@ def write_captions() -> Path:
     path = OUT / "FIGURE_CONTRACTS_AND_CAPTIONS.md"
     text = """# Stage5R Figure Contracts and Captions
 
+## Figure contract
+
+- **Core conclusion:** structured evidence completion repeatedly improves the
+  compact MiniLM retriever, whereas the evaluated strong-BGE extensions do not
+  establish incremental answer-quality gains.
+- **Archetype:** Figure 2 is a quantitative hero composite; Figures 3 and 4 are
+  quantitative grids; Figure 5 is an asymmetric qualitative comparison.
+- **Backend:** Python/Matplotlib only.
+- **Target:** ACL/EMNLP Findings, double-column figures at approximately 175 mm.
+- **Statistics:** confirmatory answer-F1 panels report the frozen paired 10,000
+  sample bootstrap 95% confidence intervals. Mechanism and qualitative panels
+  are explicitly descriptive.
+- **Reviewer risk:** Stage4H, Stage4I, and Stage5A strong-retriever rows are
+  separate frozen boundaries and are never pooled or connected as a monotonic
+  retriever-strength experiment.
+
 ## Figure 1
 
-**HyperGranular-RAG method overview.** The compact system organizes locally
-related evidence as adaptive granular balls, links query-relevant facets across
-balls with high-order hyperedges, and inserts bounded candidates after a
-protected prefix under the same Top-k budget. The dashed cross-space and
-BGE-native variants are evaluated configurations, not validated improvements
-over BGE.
+**Overview of HyperGranular-RAG and the evaluated retrieval variants.**
+Candidate units are ranked by a fixed dense retriever, organized into adaptive
+granular balls, connected through query-aware facet hyperedges, and inserted
+under a protected, bounded Top-k policy before answer generation. Compact,
+cross-space sidecar, and BGE-native variants are evaluated separately rather
+than pooled.
 
 ## Figure 2
 
-**Frozen answer-F1 effect sizes.** Points are paired answer-F1 differences and
-bars are the pre-specified 95% bootstrap confidence intervals. The zero line is
-shown explicitly and the x-axis is not truncated around positive effects.
-`INCONCLUSIVE` means that the interval crosses zero; it is not an equivalence
-claim.
+**Main performance and paired answer-F1 effects.** Panels a and b use paired
+dumbbells to compare absolute answer F1 only within each frozen boundary.
+Panel c reports all confirmatory paired answer-F1 differences with 95%
+bootstrap confidence intervals. Hollow points denote intervals crossing zero;
+they are not equivalence claims. Strong-retriever boundaries are shown as
+separate settings rather than a connected trend.
 
 ## Figure 3
 
-**Strong-retriever boundary and evidence displacement.** Panel A compares each
-structural method only with BGE inside its own frozen Stage4H, Stage4I, or
-Stage5A boundary; the three groups are not pooled or treated as a common
-head-to-head sample. Panel B reports post-decision descriptive Gold evidence
-added and displaced. These counts did not control selection or advancement and
-do not replace end-to-end answer evaluation.
+**Coverage, answer utility, components, and evidence turnover.** Panels a and b
+relate matched changes in CR@20 and ER@20 to answer-F1 changes without fitting a
+trend line. Panel c reports matched component effects with frozen 95%
+confidence intervals. Panel d normalizes post-decision added and displaced
+Gold evidence events per 1,000 queries; raw counts and query denominators remain
+in the source CSV. Panel d is descriptive and did not control selection.
 
 ## Figure 4
 
-**Evidence-state map.** Supported, negative, inconclusive, and not-fairly-defined
-outcomes are kept distinct. Component findings are system-dependent and are not
-transported across semantic spaces without confirmation.
+**Gold-free retrieval mechanism.** Panels a and b show dataset-equal-weight
+query percentages for facet-hyperedge selection, insertion, query-facet supply,
+and eligible structural candidates. Panel c reports bounded insertion-count
+distributions separately for compact, sidecar, and BGE-native settings. Panel d
+decomposes sidecar-eligible candidates by overlap with BGE Top-20. These panels
+describe frozen retrieval behavior and do not establish causal mediation.
 
 ## Figure 5
 
-**Applicability boundary.** Repeated small gains are established only for the
-historical compact MiniLM backbone under closed-candidate Top-20 evaluation.
-The original system is negative against strong BGE, the tested sidecar and
-BGE-native extensions are inconclusive, and full-wiki/open-domain operation was
-not evaluated.
+**Representative success and failure cases.** The success case requires a
+positive Full-minus-Dense answer-F1 change, a CR@20 increase, and insertion of a
+supporting unit. The failure case requires a negative Original-Full-minus-BGE
+answer-F1 change and displacement of a supporting unit. Within each eligible
+HotpotQA sentence-level event set, the query closest to the median answer-F1
+change is selected, with query ID as a deterministic tie-break. These examples
+are post-decision descriptive illustrations, not confirmatory evidence. The
+source CSV preserves the frozen text verbatim; the rendered panel replaces
+Khmer-script spans with a neutral script label when the publication font lacks
+those glyphs.
 
 Each figure is exported as editable SVG, PDF, 600-dpi TIFF, and 300-dpi PNG.
 Every plotted value has a CSV source file, and every export is byte/SHA bound in
@@ -960,10 +2181,19 @@ Every plotted value has a CSV source file, and every export is byte/SHA bound in
 
 def write_manifest(derived: list[Path]) -> Path:
     path = OUT / "STAGE5R_FIGURE_MANIFEST.json"
+
+    def manifest_path(item: Path) -> str:
+        try:
+            return item.relative_to(ROOT).as_posix()
+        except ValueError:
+            return item.as_posix()
+
     manifest = {
-        "schema_version": "stage5r_pmr_figure_manifest_v1",
+        "schema_version": "stage5r_pmr_figure_manifest_v2",
         "status": "STAGE5R_FIGURES_BUILT_FROM_FROZEN_STAGE4E_STAGE5A_EVIDENCE",
         "scientific_reanalysis": False,
+        "descriptive_derivations_added": True,
+        "confirmatory_claims_unchanged": True,
         "backend": {
             "python": os.sys.version.split()[0],
             "matplotlib": matplotlib.__version__,
@@ -975,7 +2205,7 @@ def write_manifest(derived: list[Path]) -> Path:
         "inputs": [
             {
                 "label": label,
-                "path": path_.relative_to(ROOT).as_posix(),
+                "path": manifest_path(path_),
                 "bytes": path_.stat().st_size,
                 "sha256": sha256(path_),
             }
@@ -985,6 +2215,12 @@ def write_manifest(derived: list[Path]) -> Path:
             "path": Path(__file__).resolve().relative_to(ROOT).as_posix(),
             "old_frozen_builder_path": OLD_BUILDER.relative_to(ROOT).as_posix(),
             "old_frozen_builder_sha256": OLD_BUILDER_SHA256,
+        },
+        "figure1_replacement": {
+            "active_asset": "paper/figures_stage5r/figure1_method_overview.png",
+            "latex_inclusion": "PNG_WITH_BOTTOM_EMBEDDED_CAPTION_CLIPPED; ACL_CAPTION_RENDERED_ONCE",
+            "scientific_reanalysis": False,
+            "source_sha256": sha256(OUT / "figure1_method_overview.png"),
         },
         "derived_files": [
             {
@@ -1005,14 +2241,18 @@ def main() -> None:
     configure()
     SOURCE.mkdir(parents=True, exist_ok=True)
     effects = effect_rows(data)
-    derived: list[Path] = []
-    derived += figure1()
-    derived += figure2(effects)
     abs_rows = absolute_rows(data)
+    compact_rows = compact_absolute_rows(data, effects)
     disp_rows = displacement_rows(data)
-    derived += figure3(abs_rows, disp_rows)
-    derived += figure4(evidence_map_rows())
-    derived += figure5(applicability_rows())
+    derived: list[Path] = []
+    derived += [
+        OUT / f"figure1_method_overview.{suffix}"
+        for suffix in ("svg", "pdf", "tiff", "png")
+    ]
+    derived += figure2_redesigned(effects, compact_rows, abs_rows)
+    derived += figure3_redesigned(effects, compact_rows, abs_rows, disp_rows)
+    derived += figure4_redesigned(data)
+    derived += figure5_redesigned(data)
     derived += list(SOURCE.glob("figure*.csv"))
     derived += write_tables(data, effects)
     derived.append(write_captions())

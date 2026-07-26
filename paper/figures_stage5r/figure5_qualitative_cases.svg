@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="620.4pt" height="418.8pt" viewBox="0 0 620.4 418.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.7, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 418.8
+L 620.4 418.8
+L 620.4 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 10.836 199.29
+L 14.472 199.29
+L 14.472 39.552
+L 10.836 39.552
+z
+" clip-path="url(#p3ac57e648d)" style="fill: #2e8b57; stroke: #2e8b57; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 18.714 202.5252
+L 144.156 202.5252
+Q 151.428 202.5252 151.428 197.6724
+L 151.428 41.1696
+Q 151.428 36.3168 144.156 36.3168
+L 18.714 36.3168
+Q 11.442 36.3168 11.442 41.1696
+L 11.442 197.6724
+Q 11.442 202.5252 18.714 202.5252
+z
+" clip-path="url(#p3ac57e648d)" style="fill: #f3f4f5; stroke: #b9c0c5; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 152.034 202.5252
+L 277.476 202.5252
+Q 284.748 202.5252 284.748 197.6724
+L 284.748 41.1696
+Q 284.748 36.3168 277.476 36.3168
+L 152.034 36.3168
+Q 144.762 36.3168 144.762 41.1696
+L 144.762 197.6724
+Q 144.762 202.5252 152.034 202.5252
+z
+" clip-path="url(#p3ac57e648d)" style="fill: #eef0f2; stroke: #b9c0c5; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 285.354 202.5252
+L 453.216 202.5252
+Q 460.488 202.5252 460.488 197.6724
+L 460.488 41.1696
+Q 460.488 36.3168 453.216 36.3168
+L 285.354 36.3168
+Q 278.082 36.3168 278.082 41.1696
+L 278.082 197.6724
+Q 278.082 202.5252 285.354 202.5252
+z
+" clip-path="url(#p3ac57e648d)" style="fill: #e8f3f8; stroke: #b9c0c5; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 461.094 202.5252
+L 601.686 202.5252
+Q 608.958 202.5252 608.958 197.6724
+L 608.958 41.1696
+Q 608.958 36.3168 601.686 36.3168
+L 461.094 36.3168
+Q 453.822 36.3168 453.822 41.1696
+L 453.822 197.6724
+Q 453.822 202.5252 461.094 202.5252
+z
+" clip-path="url(#p3ac57e648d)" style="fill: #edf5fa; stroke: #b9c0c5; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 10.836 389.358
+L 14.472 389.358
+L 14.472 229.62
+L 10.836 229.62
+z
+" clip-path="url(#p3ac57e648d)" style="fill: #d55e00; stroke: #d55e00; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 18.714 392.5932
+L 144.156 392.5932
+Q 151.428 392.5932 151.428 387.7404
+L 151.428 231.2376
+Q 151.428 226.3848 144.156 226.3848
+L 18.714 226.3848
+Q 11.442 226.3848 11.442 231.2376
+L 11.442 387.7404
+Q 11.442 392.5932 18.714 392.5932
+z
+" clip-path="url(#p3ac57e648d)" style="fill: #f3f4f5; stroke: #b9c0c5; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 152.034 392.5932
+L 277.476 392.5932
+Q 284.748 392.5932 284.748 387.7404
+L 284.748 231.2376
+Q 284.748 226.3848 277.476 226.3848
+L 152.034 226.3848
+Q 144.762 226.3848 144.762 231.2376
+L 144.762 387.7404
+Q 144.762 392.5932 152.034 392.5932
+z
+" clip-path="url(#p3ac57e648d)" style="fill: #eef0f2; stroke: #b9c0c5; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 285.354 392.5932
+L 453.216 392.5932
+Q 460.488 392.5932 460.488 387.7404
+L 460.488 231.2376
+Q 460.488 226.3848 453.216 226.3848
+L 285.354 226.3848
+Q 278.082 226.3848 278.082 231.2376
+L 278.082 387.7404
+Q 278.082 392.5932 285.354 392.5932
+z
+" clip-path="url(#p3ac57e648d)" style="fill: #fbede4; stroke: #b9c0c5; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 461.094 392.5932
+L 601.686 392.5932
+Q 608.958 392.5932 608.958 387.7404
+L 608.958 231.2376
+Q 608.958 226.3848 601.686 226.3848
+L 461.094 226.3848
+Q 453.822 226.3848 453.822 231.2376
+L 453.822 387.7404
+Q 453.822 392.5932 461.094 392.5932
+z
+" clip-path="url(#p3ac57e648d)" style="fill: #f9eee7; stroke: #b9c0c5; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 7.1px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #263238" x="81.435" y="18.348047" transform="rotate(-0 81.435 18.348047)">Question</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 7.1px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #263238" x="214.755" y="18.348047" transform="rotate(-0 214.755 18.348047)">Baseline evidence and answer</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 7.1px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #263238" x="369.285" y="18.434578" transform="rotate(-0 369.285 18.434578)">Structural change</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 7.1px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: middle; fill: #263238" x="531.39" y="18.348047" transform="rotate(-0 531.39 18.348047)">Full output</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 7.2px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #2e8b57" x="16.896" y="33.183825" transform="rotate(-0 16.896 33.183825)">a  Representative success (delta F1 +1.00)</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 6.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #263238" x="23.562" y="54.393797" transform="rotate(-0 23.562 54.393797)">HotpotQA</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(23.562 70.060219)">What film by the director of "You</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(23.562 76.558711)">and I" is about the Khmer Rouge?</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 6.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #263238" x="156.882" y="54.314578" transform="rotate(-0 156.882 54.314578)">Dense</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(156.882 70.060219)">Rank 9: The Killing Fields (film)</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(156.882 76.491875)">The Killing Fields is a 1984</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(156.882 82.990367)">British biographical drama film</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(156.882 89.4005)">about the Khmer Rouge regime in</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(156.882 95.810633)">Cambodia, which is based on the</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(156.882 102.241156)">experiences of two journalists:</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(156.882 108.739648)">Cambodian [...]</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(156.882 115.081812)"/>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(156.882 121.423977)">Answer: UNKNOWN</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(156.882 127.766141)">F1 = 0.00</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 6.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #263238" x="290.202" y="54.314578" transform="rotate(-0 290.202 54.314578)">Evidence completion</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 70.060219)">ADDED (rank 12; supporting=True)</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 76.558711)">You and I (2011 film)</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 83.057203)">You and I (Russian: Ты и я ; also known by</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 89.555695)">its working title, Finding t.A.T.u.) is a</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 96.054187)">2011 drama-film directed by Roland Joffé,</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 102.46432)">an English-French [...]</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 108.874453)"/>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 115.304977)">DISPLACED (rank 18; supporting=False)</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 121.715109)">Ieng Thirith</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 128.213602)">Ieng Thirith (née Khieu; Khmer: [Khmer</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 134.712094)">script] ; 10 March 1932 – 22 August 2015)</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 141.210586)">was an influential figure in the [...]</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 6.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #263238" x="465.942" y="54.314578" transform="rotate(-0 465.942 54.314578)">Full</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(465.942 69.989531)">Answer: "The Killing Fields"</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(465.942 76.399664)">F1 = 1.00</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(465.942 82.741828)"/>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(465.942 89.083992)">Reference:</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(465.942 95.426156)">The Killing Fields</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 7.2px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #d55e00" x="16.896" y="223.251825" transform="rotate(-0 16.896 223.251825)">b  Representative failure (delta F1 -1.00)</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 6.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #263238" x="23.562" y="244.461797" transform="rotate(-0 23.562 244.461797)">HotpotQA</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(23.562 260.057531)">Who was the Chairman of the Red</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(23.562 266.399695)">Cross Aid to Russia Fund married</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(23.562 272.741859)">to?</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 6.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #263238" x="156.882" y="244.382578" transform="rotate(-0 156.882 244.382578)">BGE</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(156.882 260.057531)">Rank 2: Clementine Churchill</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(156.882 266.492586)">Clementine Ogilvy Spencer-</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(156.882 272.991078)">Churchill, Baroness Spencer-</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(156.882 279.421602)">Churchill, ("née" Hozier; 1 April</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(156.882 285.920094)">1885 – 12 December 1977) was the</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(156.882 292.330227)">wife of Sir Winston Churchill and</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(156.882 298.76075)">a life peer in [...]</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(156.882 305.102914)"/>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(156.882 311.445078)">Answer: Sir Winston Churchill</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(156.882 317.787242)">F1 = 1.00</text>
+   </g>
+   <g id="text_19">
+    <text style="font-weight: 700; font-size: 6.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #263238" x="290.202" y="244.382578" transform="rotate(-0 290.202 244.382578)">Evidence completion</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 260.128219)">ADDED (rank 11; supporting=False)</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 266.626711)">Red Cross Society of the Republic of China</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 273.036844)">Both societies associate their origins</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 279.446977)">with the founder, Shen Dunhe, a tea</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 285.789141)">merchant.</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 292.131305)"/>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 298.561828)">DISPLACED (rank 2; supporting=True)</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 304.971961)">Clementine Churchill</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 311.407016)">Clementine Ogilvy Spencer-Churchill,</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 317.905508)">Baroness Spencer-Churchill, ("née" Hozier;</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(290.202 324.404)">1 April 1885 – 12 December 1977) [...]</text>
+   </g>
+   <g id="text_21">
+    <text style="font-weight: 700; font-size: 6.5px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; text-anchor: start; fill: #263238" x="465.942" y="244.461797" transform="rotate(-0 465.942 244.461797)">Original Full</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(465.942 260.057531)">Answer: UNKNOWN</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(465.942 266.399695)">F1 = 0.00</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(465.942 272.741859)"/>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(465.942 279.084023)">Reference:</text>
+    <text style="font-size: 5.8px; font-family: 'Arial', 'DejaVu Sans', 'Liberation Sans', sans-serif; fill: #263238" transform="translate(465.942 285.426187)">Sir Winston Churchill</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p3ac57e648d">
+   <rect x="7.2" y="7.2" width="606" height="404.4"/>
+  </clipPath>
+ </defs>
+</svg>

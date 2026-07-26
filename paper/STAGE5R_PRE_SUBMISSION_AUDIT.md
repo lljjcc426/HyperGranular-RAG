@@ -90,17 +90,20 @@ PASS.
   Matplotlib exports.
 - Each figure has SVG, PDF, 600-dpi TIFF, and PNG exports.
 - SVG text remains editable.
-- Twelve CSV files provide figure/table source data.
-- The effect-size forest includes all required compact, transfer, component,
-  sidecar, and BGE-native contrasts and shows the zero line.
+- Seventeen CSV files provide figure/table source data.
+- The main performance composite includes all required compact, transfer,
+  component, sidecar, and BGE-native contrasts and shows the zero line.
 - Strong-retriever negative and inconclusive results are visually explicit.
-- Figure 3 states that its three absolute-score groups are separate evaluation
-  settings and are not pooled.
+- Figure 3 separates coverage and evidence-recall change from answer utility,
+  reports matched component intervals, and normalizes descriptive evidence
+  turnover per 1,000 queries.
+- Figure 4 uses Gold-free traces for facet, insertion, and candidate-overlap
+  summaries; Figure 5 uses a fixed median-representative selection rule.
 - Gold transitions are marked `POST_DECISION_DESCRIPTIVE_ONLY`.
-- Five core tables are rebuilt from frozen JSON/CSV, not typed from memory.
+- Six core tables are rebuilt from frozen JSON/CSV, not typed from memory.
 - The current figure manifest SHA-256 is
-  `0C6318A997F6C636B08CCE5C04E2C4E34690530FCB79D18F110D3F1E2D239E47`;
-  all 34 derived-file identities pass the read-only verifier.
+  `32FEBF39A9DB714175B71C399DDE6D9ABA3AA129D39C507EDD7D1F5EFE58DB4A`;
+  all 39 derived-file identities pass the read-only verifier.
 
 ## 4. Language audit
 
@@ -206,16 +209,17 @@ PASS.
   ranking, prediction, metric, confidence interval, ablation state, or
   scientific conclusion changed.
 - `scripts/stage5r_verify_materials.py` returns
-  `STAGE5R_PMR_MATERIALS_VERIFIED` for 26 scientific inputs, 12 source CSVs,
-  34 derived files, 20 figure exports, and 23 bibliography entries.
+  `STAGE5R_PMR_MATERIALS_VERIFIED` for 32 scientific inputs, 17 source CSVs,
+  39 derived files, 20 figure exports, and 23 bibliography entries.
 - `scripts/stage5_pmc_verify_materials.py` returns
   `STAGE5_PMC_MATERIALS_VERIFIED`.
 - Two clean Tectonic 0.16.9 builds with
-  `SOURCE_DATE_EPOCH=1784950406` produced byte-identical 1,582,631-byte PDFs
+  `SOURCE_DATE_EPOCH=1784950406` produced byte-identical 1,756,382-byte PDFs
   with SHA-256
-  `90F02983291DAEBE3E6EF1027D0B765FB8849935716E13E8731AF9A710CF8D8C`.
-- The 14-page anonymous PDF was inspected on the title/abstract page, method
-  figure page, conclusion/back-matter page, and final claim-table page. No
-  clipping, overlap, missing panel, unresolved citation/reference, overfull
-  box, identity disclosure, `TBD`, `TODO`, `{{CITE: ...}}`, or `??` marker was
+  `9B5E42DFCE7F156C975C603D3B4069300076471B261C859F8110ED130305CC6D`.
+- The 15-page anonymous PDF was inspected on the title/abstract page, workflow
+  page, redesigned main-effect page, discussion/back-matter pages, all three
+  appendix visualization pages, and final claim-table page. No clipping,
+  overlap, missing panel, unresolved citation/reference, overfull box,
+  identity disclosure, `TBD`, `TODO`, `{{CITE: ...}}`, or `??` marker was
   found. Ordinary underfull-box warnings remain non-blocking.

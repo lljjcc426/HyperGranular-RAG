@@ -1,0 +1,7 @@
+setting_group,boundary,delta_answer_f1,delta_cr20,delta_er20,comparability_note
+Compact MiniLM,HotpotQA,0.014780000000000015,0.061000000000000054,0.02957999999999994,matched within the same frozen boundary
+Compact MiniLM,MuSiQue,0.011400000000000021,0.061000000000000054,0.03575000000000006,matched within the same frozen boundary
+Compact MiniLM,Joint,0.013569999999999971,0.05599999999999994,0.031279999999999974,matched within the same frozen boundary
+Strong BGE,Original Full,-0.03997911063667098,-0.13183333333333347,-0.062444444444444414,matched within boundary; strong rows are not pooled
+Strong BGE,Cross-space sidecar,-0.002563487034017875,-0.006166666666666654,-0.0013555555555555543,matched within boundary; strong rows are not pooled
+Strong BGE,BGE-native,-0.003045820121907128,0.0006666666666667043,0.0,matched within boundary; strong rows are not pooled

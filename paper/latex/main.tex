@@ -372,17 +372,19 @@ is checked in full or on a pre-hash deterministic subset.
 
 \begin{figure*}[t]
   \centering
-  \includegraphics[width=0.96\textwidth]{../figures_stage5r/figure2_effect_size_forest.pdf}
-  \caption{\textbf{Paired answer-F1 effect sizes.} Points are paired
-  answer-F1 differences and bars are pre-specified 95\% bootstrap confidence
-  intervals. The zero line is explicit. Comparisons whose intervals cross zero
-  are statistically unresolved rather than evidence of equivalence.}
-  \label{fig:forest}
+  \includegraphics[width=\textwidth]{../figures_stage5r/figure2_main_performance_and_effects.pdf}
+  \caption{\textbf{Main answer-F1 performance and paired effects.}
+  Panels (a) and (b) compare absolute answer F1 only within matched frozen
+  compact-MiniLM and strong-BGE boundaries; the three strong-BGE settings are
+  not pooled. Panel (c) reports paired answer-F1 differences with
+  pre-specified 95\% bootstrap confidence intervals. Hollow markers denote
+  statistically unresolved comparisons, not equivalence.}
+  \label{fig:main-effects}
 \end{figure*}
 
 \subsection{Repeated Gains over Compact Dense Retrieval}
 
-Table~\ref{tab:compact} and Figure~\ref{fig:forest} show three Qwen
+Table~\ref{tab:compact} and Figure~\ref{fig:main-effects} show three Qwen
 comparisons. On 1,000 HotpotQA queries, \full minus \dense answer F1 is
 $+0.01478$ [0.00020, 0.02988]. On 3,000 MuSiQue queries, the difference is
 $+0.01140$ [0.00450, 0.01835]. The separate joint component evaluation again
@@ -550,7 +552,7 @@ reconstruction took 8.544 seconds; BGE and BGE-native \prot generation took
 884.198 seconds, respectively; recorded GPU peak memory was 3.592 GiB.
 
 Post hoc supporting-evidence analysis clarifies why coverage and answer quality diverge
-(Figure~\ref{fig:displacement}). In the BGE-native \prot condition,
+(Figure~\ref{fig:coverage-utility}). In the BGE-native \prot condition,
 HotpotQA adds 3 gold units, displaces 2, and has net $+1$; MuSiQue adds 16,
 displaces 15, and also has net $+1$. Nevertheless, answer-F1 point estimates
 relative to BGE are negative. In the cross-space sidecar, HotpotQA has 21
@@ -566,7 +568,10 @@ compact representation leaves recoverable evidence gaps, local candidate
 organization plus query-conditioned cross-ball expansion can expose
 complementary units that a flat ranking omits. The joint component
 confirmation's facet contrast supports facet-mediated candidate selection
-within that implementation. We therefore interpret the repeated gains as
+within that implementation. The Gold-free mechanism summaries in
+Figure~\ref{fig:mechanism} show that insertions remain bounded and that
+eligible sidecar candidates often lie beyond BGE's Top-20; these descriptive
+patterns do not establish causal mediation. We therefore interpret the repeated gains as
 evidence that structured completion can recover complementary units omitted by
 this compact retriever.
 
@@ -588,6 +593,10 @@ with retained context,
 weakly positioned, difficult for the generator to use, or offset by a
 different displacement. Conversely, a non-gold unit can affect the answer.
 CR/ER, gold transitions, and answer F1 therefore answer different questions.
+The fixed representative cases in Figure~\ref{fig:qualitative} illustrate both
+an inserted supporting unit that repairs an answer and a displacement that
+removes supporting evidence; the examples are descriptive rather than
+confirmatory.
 
 \paragraph{Placement matters but cannot substitute for efficacy.}
 The cross-space sidecar placement result isolates ranking position because
@@ -772,20 +781,11 @@ used a separate finite configuration family and is not pooled with this table.}
 \label{tab:parameters}
 \end{table*}
 
-\section{Scope of Applicability}
-
-\begin{figure*}[h]
-  \centering
-  \includegraphics[width=\textwidth]{../figures_stage5r/figure5_applicability_boundary.pdf}
-  \caption{\textbf{Scope of applicability.} Repeated small gains are
-  established only for the compact MiniLM backbone under
-  closed-candidate Top-20 evaluation. The original system is negative against
-  strong BGE, the tested sidecar and BGE-native extensions are statistically
-  unresolved, and full-wiki/open-domain operation was not evaluated.}
-  \label{fig:boundary}
-\end{figure*}
-
-\section{Absolute Strong-Retriever Outcomes}
+\paragraph{Additional frozen results and analyses.}
+The following tables and figures report absolute strong-retriever outcomes,
+coverage--utility relationships, Gold-free retrieval behavior, representative
+cases, efficiency, and the supported-claim boundary. Confirmatory and
+post-decision descriptive evidence remain explicitly separated.
 
 \begin{table*}[h]
 \centering
@@ -809,18 +809,45 @@ different settings are not pooled.}
 \label{tab:absolute-strong}
 \end{table*}
 
-\section{Analysis of Failure Modes}
-
-\begin{figure*}[h]
+\begin{figure*}[t]
   \centering
-  \includegraphics[width=0.96\textwidth]{../figures_stage5r/figure3_strong_dense_and_displacement.pdf}
-  \caption{\textbf{Strong-retriever comparisons and evidence displacement.}
-  Panel A compares each structural method only with BGE inside its own
-  Stage4H, Stage4I, or Stage5A setting; the groups are not pooled. Panel B
-  reports post-decision descriptive Gold evidence added and displaced. These
-  counts did not control selection or advancement and do not replace
-  end-to-end answer evaluation.}
-  \label{fig:displacement}
+  \includegraphics[width=\textwidth]{../figures_stage5r/figure3_coverage_utility_and_ablation.pdf}
+  \caption{\textbf{Coverage, answer utility, component effects, and evidence
+  turnover.} Panels (a) and (b) plot within-boundary changes in CR@20 and ER@20
+  against answer F1, keeping compact and strong-retriever settings visually
+  distinct. Panel (c) reports matched component effects with 95\% bootstrap
+  confidence intervals. Panel (d) reports post-decision descriptive Gold
+  evidence events per 1,000 queries. Coverage or evidence addition alone does
+  not imply answer improvement.}
+  \label{fig:coverage-utility}
+\end{figure*}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{../figures_stage5r/figure4_mechanism_analysis.pdf}
+  \caption{\textbf{Descriptive retrieval mechanism analysis.}
+  Panel (a) relates selected facet hyperedges to bounded insertions in the
+  compact joint evaluation. Panel (b) relates query-facet counts to eligible
+  BGE-native candidates. Panel (c) reports insertion-count distributions
+  separately for compact, cross-space sidecar, and BGE-native settings.
+  Panel (d) decomposes sidecar-eligible candidates by overlap with the BGE
+  Top-20. All panels are Gold-free descriptive reconstructions and do not
+  establish causal mediation.}
+  \label{fig:mechanism}
+\end{figure*}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{../figures_stage5r/figure5_qualitative_cases.pdf}
+  \caption{\textbf{Fixed representative success and failure cases.}
+  The success case is the deterministic median representative among events
+  with positive Full-minus-Dense answer-F1 change, increased CR@20, and an
+  inserted supporting unit. The failure case is selected analogously among
+  events with negative Original-Full-minus-BGE answer-F1 change and a
+  displaced supporting unit. Both are post-decision descriptive examples.
+  The source CSV preserves frozen text verbatim; a Khmer-script span is
+  abbreviated in the rendered panel for publication-font compatibility.}
+  \label{fig:qualitative}
 \end{figure*}
 
 \begin{table*}[h]
@@ -848,8 +875,6 @@ do not create new confirmatory claims.}
 \label{tab:failure-audit}
 \end{table*}
 
-\section{Efficiency and Verification Summary}
-
 \begin{table*}[h]
 \centering
 \small
@@ -870,8 +895,6 @@ Verification & Independent final verifiers passed & Integrity \\
 support cross-device efficiency claims.}
 \label{tab:efficiency}
 \end{table*}
-
-\section{Scope of Supported Claims}
 
 \begin{table*}[h]
 \centering

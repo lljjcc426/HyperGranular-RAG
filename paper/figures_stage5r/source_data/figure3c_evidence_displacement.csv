@@ -1,0 +1,5 @@
+frozen_boundary,dataset,added_gold,displaced_gold,net_gold,evidence_role,queries,added_gold_per_1000_queries,displaced_gold_per_1000_queries,net_gold_per_1000_queries
+Stage4I cross-space sidecar,HotpotQA,21,29,-8,POST_DECISION_DESCRIPTIVE_ONLY,1000,21.0,29.0,-8.0
+Stage4I cross-space sidecar,MuSiQue,59,50,9,POST_DECISION_DESCRIPTIVE_ONLY,1500,39.333333333333336,33.333333333333336,6.0
+Stage5A BGE-native,HotpotQA,3,2,1,POST_DECISION_DESCRIPTIVE_ONLY,1000,3.0,2.0,1.0
+Stage5A BGE-native,MuSiQue,16,15,1,POST_DECISION_DESCRIPTIVE_ONLY,1500,10.666666666666666,10.0,0.6666666666666666

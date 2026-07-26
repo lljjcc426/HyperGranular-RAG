@@ -1,7 +1,0 @@
-frozen_boundary,method,hotpotqa_answer_f1,musique_answer_f1,dataset_equal_weight_answer_f1,dataset_equal_weight_answer_em,dataset_equal_weight_retrieval_cr20,dataset_equal_weight_retrieval_er20,comparability_note
-Stage4H original,BGE,0.5224710592293088,0.19354567178363838,0.3580083655064736,0.3046666666666667,0.8540000000000001,0.939018253968254,compare only within the same frozen boundary
-Stage4H original,Original Full,0.47654472833929357,0.15951378140031167,0.3180292548698026,0.264,0.7221666666666666,0.8765738095238096,compare only within the same frozen boundary
-Stage4I cross-space,BGE,0.5195248866380948,0.16649846523995956,0.3430116759390272,0.28,0.8496666666666667,0.9359416666666667,compare only within the same frozen boundary
-Stage4I cross-space,MiniLM sidecar Protected,0.5165459462264179,0.16435043158360077,0.34044818890500933,0.2776666666666667,0.8435,0.9345861111111111,compare only within the same frozen boundary
-Stage5A BGE-native,BGE,0.5135207547880715,0.17785618488888189,0.3456884698384767,0.28500000000000003,0.8616666666666666,0.9428833333333333,compare only within the same frozen boundary
-Stage5A BGE-native,Native Protected,0.5106132637284064,0.17467203570473272,0.34264264971656955,0.2813333333333333,0.8623333333333333,0.9428833333333333,compare only within the same frozen boundary

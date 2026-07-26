@@ -363,6 +363,9 @@ HotpotQA queries, Full−Dense answer F1 is
 `+0.01140 [0.00450, 0.01835]`. The separate joint component evaluation again
 supports Full−Dense with a dataset-equal-weight difference of
 `+0.01357 [0.00491, 0.02233]`.
+Figure 2 keeps the three compact-MiniLM boundaries separate from the three
+strong-BGE boundaries and places their paired bootstrap intervals in a common
+effect-size panel; no trend line or cross-boundary pooling is used.
 
 | Setting | F1 Dense/Full | EM Dense/Full | CR@20 Dense/Full | ER@20 Dense/Full | Avg. inserted units | F1 gain/harm queries | ΔF1 [95% CI] |
 |---|---:|---:|---:|---:|---:|---:|---:|
@@ -478,7 +481,7 @@ efficiency. For the BGE-native confirmation run, retrieval reconstruction took
 `884.198` seconds, respectively; recorded GPU peak memory was `3.592 GiB`.
 
 Post hoc supporting-evidence analysis clarifies why coverage and answer quality
-diverge. In the BGE-native Protected condition, HotpotQA adds 3 gold units, displaces 2,
+diverge (Figure 3). In the BGE-native Protected condition, HotpotQA adds 3 gold units, displaces 2,
 and has net `+1`; MuSiQue adds 16, displaces 15, and also has net `+1`.
 Nevertheless, answer-F1 point estimates relative to BGE are negative. In the
 cross-space sidecar, HotpotQA has 21 added, 29 displaced, and net `-8`, whereas
@@ -495,7 +498,10 @@ representation leaves recoverable evidence
 gaps, local candidate organization plus query-conditioned cross-ball expansion
 can expose complementary units that a flat ranking omits. The joint component
 confirmation's facet contrast supports the contribution of facet-mediated
-candidate selection within that implementation. We therefore interpret the
+candidate selection within that implementation. The Gold-free mechanism
+summaries in Figure 4 show bounded insertion-count distributions and the
+overlap between sidecar-eligible candidates and BGE's Top-20; these descriptive
+patterns do not establish causal mediation. We therefore interpret the
 repeated gains as evidence that structured completion can recover complementary
 units omitted by this compact retriever.
 
@@ -518,6 +524,9 @@ increases slightly, but answer quality does not. A unit can be gold-labelled yet
 context, weakly positioned, difficult for the generator to use, or offset by a
 different displacement. Conversely, a non-gold unit can affect the answer.
 Therefore CR/ER, gold transitions, and answer F1 answer different questions.
+Figure 5 illustrates both an inserted supporting unit that repairs an answer
+and a displacement that removes supporting evidence. The cases follow a fixed
+median-representative rule and remain post-decision descriptive examples.
 
 ### 6.4 Placement matters but cannot substitute for efficacy
 

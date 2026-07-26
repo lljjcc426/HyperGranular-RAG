@@ -1,5 +1,0 @@
-frozen_boundary,dataset,added_gold,displaced_gold,net_gold,evidence_role
-Stage4I cross-space sidecar,HotpotQA,21,29,-8,POST_DECISION_DESCRIPTIVE_ONLY
-Stage4I cross-space sidecar,MuSiQue,59,50,9,POST_DECISION_DESCRIPTIVE_ONLY
-Stage5A BGE-native,HotpotQA,3,2,1,POST_DECISION_DESCRIPTIVE_ONLY
-Stage5A BGE-native,MuSiQue,16,15,1,POST_DECISION_DESCRIPTIVE_ONLY

@@ -70,7 +70,8 @@ def verify_manifest() -> dict[str, Any]:
         "manifest input count mismatch",
     )
     for item in manifest["inputs"]:
-        item_path = ROOT / item["path"]
+        raw_path = Path(item["path"])
+        item_path = raw_path if raw_path.is_absolute() else ROOT / raw_path
         require(item_path.stat().st_size == item["bytes"], f"input byte mismatch: {item_path}")
         require(sha256(item_path) == item["sha256"], f"input SHA mismatch: {item_path}")
     for item in manifest["derived_files"]:
@@ -81,17 +82,17 @@ def verify_manifest() -> dict[str, Any]:
 
     stems = [
         "figure1_method_overview",
-        "figure2_effect_size_forest",
-        "figure3_strong_dense_and_displacement",
-        "figure4_evidence_map",
-        "figure5_applicability_boundary",
+        "figure2_main_performance_and_effects",
+        "figure3_coverage_utility_and_ablation",
+        "figure4_mechanism_analysis",
+        "figure5_qualitative_cases",
     ]
     for stem in stems:
         for suffix in ("svg", "pdf", "tiff", "png"):
             require((OUT / f"{stem}.{suffix}").is_file(), f"missing figure export: {stem}.{suffix}")
         svg = (OUT / f"{stem}.svg").read_text(encoding="utf-8")
         require("<text" in svg, f"SVG text is not editable: {stem}")
-    require(len(list(SOURCE.glob("*.csv"))) == 12, "expected twelve Stage5R source CSVs")
+    require(len(list(SOURCE.glob("*.csv"))) == 17, "expected seventeen Stage5R source CSVs")
     return manifest
 
 
@@ -106,7 +107,7 @@ def close(actual: str, expected: float, tolerance: float = 5e-9) -> bool:
 
 def verify_figure_and_table_sources() -> None:
     forest = read_csv("figure2_effect_size_forest.csv")
-    require(len(forest) == 11, "effect forest must contain eleven frozen contrasts")
+    require(len(forest) == 13, "effect forest must contain thirteen frozen contrasts")
     by_key = {(r["evidence_family"], r["contrast"]): r for r in forest}
     expected = {
         ("Strong baseline", "Full − BGE"): (-0.03997911063667102, -0.05393311667777282, -0.026211352078037622, "NEGATIVE"),
@@ -114,6 +115,8 @@ def verify_figure_and_table_sources() -> None:
         ("BGE-native", "Protected − BGE"): (-0.0030458201219070785, -0.006879831388418345, 0.0006312558576688999, "INCONCLUSIVE"),
         ("BGE-native placement", "Protected − Unprotected"): (0.003367058043988329, -0.0012851527336356795, 0.008025643021968454, "INCONCLUSIVE"),
         ("BGE-native facet", "Protected − NoFacet"): (0.0006309544782878872, -0.0042201766774451, 0.005364560771923123, "INCONCLUSIVE"),
+        ("Compact protection", "Full − NoProtection"): (0.0035400399583050907, -0.006745598437691575, 0.013893057862104112, "INCONCLUSIVE"),
+        ("Cross-space facet", "Protected − NoFacet"): (-0.007431143894698319, -0.01616085411047949, 0.0013248250233646012, "INCONCLUSIVE"),
     }
     for key, (point, low, high, status) in expected.items():
         require(key in by_key, f"missing forest contrast: {key}")
@@ -123,7 +126,39 @@ def verify_figure_and_table_sources() -> None:
         require(close(row["ci95_upper"], high), f"upper CI mismatch: {key}")
         require(row["status"] == status, f"status mismatch: {key}")
 
-    displacement = read_csv("figure3b_evidence_displacement.csv")
+    performance = read_csv("figure2_main_performance.csv")
+    require(len(performance) == 6, "main-performance source must contain six matched rows")
+    require(
+        sum(row["setting_group"] == "Compact MiniLM" for row in performance) == 3,
+        "main-performance source must contain three compact rows",
+    )
+    require(
+        sum(row["setting_group"] == "Strong BGE" for row in performance) == 3,
+        "main-performance source must contain three strong-BGE rows",
+    )
+    require(
+        all(
+            "not pooled" in row["comparability_note"]
+            for row in performance
+            if row["setting_group"] == "Strong BGE"
+        ),
+        "strong-BGE rows must remain explicitly unpooled",
+    )
+
+    coverage = read_csv("figure3a_coverage_utility.csv")
+    require(len(coverage) == 6, "coverage-utility source must contain six rows")
+    native = next(row for row in coverage if row["boundary"] == "BGE-native")
+    require(float(native["delta_cr20"]) > 0, "native CR@20 change must remain positive")
+    require(float(native["delta_answer_f1"]) < 0, "native answer-F1 change must remain negative")
+
+    components = read_csv("figure3b_component_effects.csv")
+    require(len(components) == 6, "component source must contain six matched contrasts")
+    require(
+        all(row["evidence_role"] == "CONFIRMATION" for row in components),
+        "component effects must retain confirmation role",
+    )
+
+    displacement = read_csv("figure3c_evidence_displacement.csv")
     require(len(displacement) == 4, "expected four post-decision displacement rows")
     got = {
         (r["frozen_boundary"], r["dataset"]): (
@@ -153,6 +188,60 @@ def verify_figure_and_table_sources() -> None:
         got[("Stage4I cross-space sidecar", "MuSiQue")]
         == (59, 50, 9, "POST_DECISION_DESCRIPTIVE_ONLY"),
         "Stage4I MuSiQue displacement mismatch",
+    )
+
+    edge_matrix = read_csv("figure4a_edge_insertion_matrix.csv")
+    facet_matrix = read_csv("figure4b_facet_supply_matrix.csv")
+    insertion = read_csv("figure4c_insertion_distribution.csv")
+    overlap = read_csv("figure4d_sidecar_overlap.csv")
+    for rows, label in (
+        (edge_matrix, "edge-insertion"),
+        (facet_matrix, "facet-supply"),
+    ):
+        equal_weight_total = sum(
+            float(row["query_percent"])
+            for row in rows
+            if row["dataset"] == "DATASET_EQUAL_WEIGHT"
+        )
+        require(
+            abs(equal_weight_total - 100.0) <= 1e-7,
+            f"{label} matrix must sum to 100 percent",
+        )
+    for setting in {row["setting"] for row in insertion}:
+        total = sum(
+            float(row["query_percent"])
+            for row in insertion
+            if row["setting"] == setting and row["dataset"] == "DATASET_EQUAL_WEIGHT"
+        )
+        require(abs(total - 100.0) <= 1e-7, f"insertion distribution mismatch: {setting}")
+    require(len(overlap) == 6, "sidecar-overlap source must contain six rows")
+    for dataset in {row["dataset"] for row in overlap}:
+        total = sum(
+            float(row["candidate_percent"])
+            for row in overlap
+            if row["dataset"] == dataset
+        )
+        require(abs(total - 100.0) <= 1e-7, f"sidecar overlap mismatch: {dataset}")
+    require(
+        all(row["evidence_role"] == "GOLD_FREE_DESCRIPTIVE" for row in overlap),
+        "sidecar overlap must remain Gold-free descriptive evidence",
+    )
+
+    cases = read_csv("figure5_qualitative_cases.csv")
+    require(len(cases) == 2, "qualitative source must contain two representative cases")
+    cases_by_type = {row["case_type"]: row for row in cases}
+    success = cases_by_type["Representative success"]
+    failure = cases_by_type["Representative failure"]
+    expected_rule = "closest to the within-event median delta F1; query_id tie-break"
+    require(success["selection_rule"] == expected_rule, "success selection rule mismatch")
+    require(failure["selection_rule"] == expected_rule, "failure selection rule mismatch")
+    require(float(success["delta_answer_f1"]) > 0, "success case must improve answer F1")
+    require(success["added_evidence_supporting"] == "1", "success case must add supporting evidence")
+    require(float(failure["delta_answer_f1"]) < 0, "failure case must reduce answer F1")
+    require(failure["displaced_evidence_supporting"] == "1", "failure case must displace supporting evidence")
+    require(
+        all(row["evidence_role"] == "POST_DECISION_DESCRIPTIVE_ONLY" for row in cases),
+        "qualitative cases must remain post-decision descriptive evidence",
     )
 
     tables = (ROOT / "paper" / "STAGE5R_CORE_TABLES.md").read_text(encoding="utf-8")

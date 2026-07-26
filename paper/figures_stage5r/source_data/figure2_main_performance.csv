@@ -1,0 +1,7 @@
+setting_group,boundary,baseline_method,structural_method,baseline_f1,structural_f1,baseline_em,structural_em,comparability_note
+Compact MiniLM,HotpotQA,Dense,Full,0.4215,0.43628,0.356,0.366,matched within the same frozen boundary
+Compact MiniLM,MuSiQue,Dense,Full,0.13595,0.14735,0.10033,0.11033,matched within the same frozen boundary
+Compact MiniLM,Joint,Dense,Full,0.30446,0.31803,0.25467,0.264,matched within the same frozen boundary
+Strong BGE,Original Full,BGE,Original Full,0.3580083655064736,0.3180292548698026,0.3046666666666667,0.264,matched within boundary; strong rows are not pooled
+Strong BGE,Cross-space sidecar,BGE,MiniLM sidecar Protected,0.3430116759390272,0.34044818890500933,0.28,0.2776666666666667,matched within boundary; strong rows are not pooled
+Strong BGE,BGE-native,BGE,Native Protected,0.3456884698384767,0.34264264971656955,0.28500000000000003,0.2813333333333333,matched within boundary; strong rows are not pooled

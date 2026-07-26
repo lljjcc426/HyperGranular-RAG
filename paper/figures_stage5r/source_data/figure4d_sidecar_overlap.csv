@@ -1,0 +1,7 @@
+dataset,candidate_region,candidate_count,candidate_percent,evidence_role
+hotpotqa_train_distractor_v1_1,already in BGE Top-10,1077,34.97888924975641,GOLD_FREE_DESCRIPTIVE
+hotpotqa_train_distractor_v1_1,only in BGE ranks 11-20,825,26.794413770704775,GOLD_FREE_DESCRIPTIVE
+hotpotqa_train_distractor_v1_1,beyond BGE Top-20,1177,38.22669697953881,GOLD_FREE_DESCRIPTIVE
+musique_ans_v1_0_train,already in BGE Top-10,1380,24.686940966010734,GOLD_FREE_DESCRIPTIVE
+musique_ans_v1_0_train,only in BGE ranks 11-20,972,17.38819320214669,GOLD_FREE_DESCRIPTIVE
+musique_ans_v1_0_train,beyond BGE Top-20,3238,57.924865831842574,GOLD_FREE_DESCRIPTIVE
