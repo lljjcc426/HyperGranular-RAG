@@ -1,0 +1,7 @@
+boundary,method,equal_weight_f1,equal_weight_em,equal_weight_cr20,equal_weight_er20
+Stage4H original,BGE,0.35801,0.30467,0.85400,0.93902
+Stage4H original,Original Full,0.31803,0.26400,0.72217,0.87657
+Stage4I cross-space,BGE,0.34301,0.28000,0.84967,0.93594
+Stage4I cross-space,MiniLM sidecar Protected,0.34045,0.27767,0.84350,0.93459
+Stage5A BGE-native,BGE,0.34569,0.28500,0.86167,0.94288
+Stage5A BGE-native,Native Protected,0.34264,0.28133,0.86233,0.94288

@@ -14,9 +14,9 @@
   },
   "derived_files": [
     {
-      "bytes": 3423,
+      "bytes": 4484,
       "path": "paper/STAGE5R_CORE_TABLES.md",
-      "sha256": "16870F44F8C2A60C3C500A099E939CCCC94A714C1E18A600A77200697A045E0D"
+      "sha256": "4D1FB359CC5F7B1F0C378BF3E2D8057F7928EB8EB6DE7659D4061BC7D47D1CF5"
     },
     {
       "bytes": 1980,
@@ -134,9 +134,9 @@
       "sha256": "1E503F80D7DDF3DEDDA506068FA94AFAF94685731D9569FB77DC216CFF4AABCC"
     },
     {
-      "bytes": 911,
+      "bytes": 1317,
       "path": "paper/figures_stage5r/source_data/figure3a_strong_dense_boundary.csv",
-      "sha256": "C5BF3763B82D13F98A4D4BD90F400A0F7DF7E6D3D74E105E2DB03F9379DBF1C3"
+      "sha256": "96135C090B3F4C3A2C198D6FBB1225A636A0C75910C9ACE89F05CEACF35AC72E"
     },
     {
       "bytes": 356,
@@ -154,9 +154,9 @@
       "sha256": "E7B61D095041CB57B08ABDBEAF2E7AC2E0D1BE0E25122FB4A1A7F5894015B38E"
     },
     {
-      "bytes": 285,
+      "bytes": 582,
       "path": "paper/figures_stage5r/source_data/table1_core.csv",
-      "sha256": "BA3860574DB1ED67D43567F1BF87D29D844821B48E742FAE0B944D91B841CB66"
+      "sha256": "75DF6ED70462F7A58294D30393896FAB3408BF9D03400F0586B63FEA78B2BBDD"
     },
     {
       "bytes": 348,
@@ -177,9 +177,26 @@
       "bytes": 659,
       "path": "paper/figures_stage5r/source_data/table5_core.csv",
       "sha256": "1B164DDBA469DFE8C4436FE7C05B22FA77776313BAC6C012AD366435C0EEF045"
+    },
+    {
+      "bytes": 456,
+      "path": "paper/figures_stage5r/source_data/table6_core.csv",
+      "sha256": "6DB3C75D886B144A90134A0F3C5286181BB0AA179F956E59B00839A835766E70"
     }
   ],
   "inputs": [
+    {
+      "bytes": 417568,
+      "label": "stage4e_query_audit",
+      "path": "results/stage4e_e2e_official_train1000_v1_query_audit.jsonl",
+      "sha256": "ACDB9D22C14B9D10FEA0867DFFB2B87DBD4D1B4E07FCDBA8277638E3AB638C19"
+    },
+    {
+      "bytes": 3036774,
+      "label": "stage4e_rankings",
+      "path": "results/stage4e_e2e_official_train1000_v1_rankings.jsonl",
+      "sha256": "AA6CBAD5D37BD66424DCAC6472FEBA8AC5FBAA769B789D968103AAB7CFDD1455"
+    },
     {
       "bytes": 2444,
       "label": "stage4e_summary",
@@ -191,6 +208,18 @@
       "label": "stage4e_telemetry",
       "path": "results/stage4e_e2e_official_train1000_v1_telemetry_main.json",
       "sha256": "D9971191A45F4F2BA2F6BA61716BBF9ACA707FACD66528778E73D3B203D39385"
+    },
+    {
+      "bytes": 1510981,
+      "label": "stage4f_query_audit",
+      "path": "results/stage4f_xdr_musique_train3000_v1_query_audit.jsonl",
+      "sha256": "EA7634EE7354A959A1D03D1E9DD7A220BA39F3F7CF2D6F168D17E3EC53C66ADF"
+    },
+    {
+      "bytes": 7758160,
+      "label": "stage4f_rankings",
+      "path": "results/stage4f_xdr_musique_train3000_v1_rankings.jsonl",
+      "sha256": "732A10DE74E8F97E5CECFDBFBBC3B49E5EF053C6F190948CD5C0B66D71D6AEDD"
     },
     {
       "bytes": 1795,
@@ -233,6 +262,18 @@
       "label": "stage4h_equal",
       "path": "results/stage4h_cbe_hotpot1000_musique1500_v1_equal_weight_summary.json",
       "sha256": "0C8677960F2CB07526B36264CE58883ED28D12C0016F6EAD8A036D3DD0BE7FA4"
+    },
+    {
+      "bytes": 3111653,
+      "label": "stage4h_query_audit",
+      "path": "results/stage4h_cbe_hotpot1000_musique1500_v1_query_audit.jsonl",
+      "sha256": "6232260E8D91D070E8A28B96A4F179538D2EB300F16FE28DB3B24168ADBD4CA9"
+    },
+    {
+      "bytes": 22809912,
+      "label": "stage4h_rankings",
+      "path": "results/stage4h_cbe_hotpot1000_musique1500_v1_rankings.jsonl",
+      "sha256": "EAECD420CEDDFD0E670892E9B78B0D6D02BB3E9BE2A84BC36631C1D985C49822"
     },
     {
       "bytes": 1366,

@@ -12,7 +12,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
-from stage5r_build_materials import INPUTS, OUT, ROOT, SOURCE
+from stage5r_build_materials import MANIFEST_INPUTS, OUT, ROOT, SOURCE
 
 
 REQUIRED_FILES = [
@@ -45,7 +45,7 @@ def sha256(path: Path) -> str:
 
 
 def verify_frozen_inputs() -> None:
-    for label, (path, expected) in INPUTS.items():
+    for label, (path, expected) in MANIFEST_INPUTS.items():
         require(path.is_file(), f"missing frozen input: {label}")
         require(sha256(path) == expected, f"frozen input SHA mismatch: {label}")
 
@@ -65,7 +65,10 @@ def verify_manifest() -> dict[str, Any]:
         "unexpected Stage5R manifest status",
     )
     require(manifest["scientific_reanalysis"] is False, "scientific_reanalysis must be false")
-    require(len(manifest["inputs"]) == len(INPUTS), "manifest input count mismatch")
+    require(
+        len(manifest["inputs"]) == len(MANIFEST_INPUTS),
+        "manifest input count mismatch",
+    )
     for item in manifest["inputs"]:
         item_path = ROOT / item["path"]
         require(item_path.stat().st_size == item["bytes"], f"input byte mismatch: {item_path}")
@@ -88,7 +91,7 @@ def verify_manifest() -> dict[str, Any]:
             require((OUT / f"{stem}.{suffix}").is_file(), f"missing figure export: {stem}.{suffix}")
         svg = (OUT / f"{stem}.svg").read_text(encoding="utf-8")
         require("<text" in svg, f"SVG text is not editable: {stem}")
-    require(len(list(SOURCE.glob("*.csv"))) == 11, "expected eleven Stage5R source CSVs")
+    require(len(list(SOURCE.glob("*.csv"))) == 12, "expected twelve Stage5R source CSVs")
     return manifest
 
 
@@ -165,6 +168,41 @@ def verify_figure_and_table_sources() -> None:
         "NOT_FAIRLY_DEFINED",
     ]:
         require(value in tables, f"core tables missing value/status: {value}")
+
+    compact = read_csv("table1_core.csv")
+    require(len(compact) == 3, "expected three compact absolute-result rows")
+    compact_by_boundary = {row["boundary"]: row for row in compact}
+    hotpot = compact_by_boundary["MiniLM / HotpotQA confirmation"]
+    require(hotpot["dense_f1"] == "0.42150", "Hotpot Dense absolute F1 mismatch")
+    require(hotpot["full_f1"] == "0.43628", "Hotpot Full absolute F1 mismatch")
+    require(hotpot["avg_inserted_units"] == "1.9300", "Hotpot insertion mean mismatch")
+    require(hotpot["f1_gain_harm_queries"] == "47/34", "Hotpot F1 gain/harm mismatch")
+    musique = compact_by_boundary["MiniLM / MuSiQue confirmation"]
+    require(musique["dense_f1"] == "0.13595", "MuSiQue Dense absolute F1 mismatch")
+    require(musique["full_f1"] == "0.14735", "MuSiQue Full absolute F1 mismatch")
+    require(musique["avg_inserted_units"] == "2.4110", "MuSiQue insertion mean mismatch")
+    require(musique["f1_gain_harm_queries"] == "125/77", "MuSiQue F1 gain/harm mismatch")
+    joint = compact_by_boundary["MiniLM / joint component confirmation"]
+    require(joint["dense_f1"] == "0.30446", "Joint Dense absolute F1 mismatch")
+    require(joint["full_f1"] == "0.31803", "Joint Full absolute F1 mismatch")
+    require(joint["avg_inserted_units"] == "2.1628", "Joint insertion mean mismatch")
+    require(joint["f1_gain_harm_queries"] == "102/73", "Joint F1 gain/harm mismatch")
+
+    strong = read_csv("table6_core.csv")
+    require(len(strong) == 6, "expected six strong-boundary absolute-result rows")
+    strong_by_key = {(row["boundary"], row["method"]): row for row in strong}
+    require(
+        strong_by_key[("Stage4H original", "BGE")]["equal_weight_f1"]
+        == "0.35801",
+        "Stage4H BGE absolute F1 mismatch",
+    )
+    require(
+        strong_by_key[("Stage5A BGE-native", "Native Protected")][
+            "equal_weight_f1"
+        ]
+        == "0.34264",
+        "Stage5A native absolute F1 mismatch",
+    )
 
 
 def bib_keys() -> set[str]:
@@ -294,7 +332,7 @@ def main() -> None:
         json.dumps(
             {
                 "status": "STAGE5R_PMR_MATERIALS_VERIFIED",
-                "frozen_inputs": len(INPUTS),
+                "frozen_inputs": len(MANIFEST_INPUTS),
                 "derived_files": len(manifest["derived_files"]),
                 "figure_groups": 5,
                 "figure_exports": 20,

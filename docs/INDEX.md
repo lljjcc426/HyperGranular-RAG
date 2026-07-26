@@ -15,9 +15,10 @@
 | [Anonymous ACL LaTeX source](../paper/latex/main.tex) | 使用官方 ACL 样式快照、冻结 Stage5A 证据和已核验参考文献的投稿格式源码 |
 | [LaTeX draft build status](../paper/latex/DRAFT_BUILD_STATUS.md) | 初稿 Bytes/SHA、编译环境、引用、匿名性和视觉检查结果 |
 | [Weak-reject revision record](../paper/WEAK_REJECT_REVISION_2026-07-26.md) | 四项审核缺口、已完成修订、仍需新实验的证据边界 |
+| [Manuscript-level evaluation response](../paper/MANUSCRIPT_LEVEL_EVALUATION_RESPONSE_2026-07-26.md) | 论文水平评估意见、已落实修订和需要新实验的边界 |
 | [Stage5R English manuscript](../paper/MANUSCRIPT_CORE_DRAFT_STAGE5R.md) | 纳入 Stage5A 后的完整英文核心稿；当前科学证据完整，投稿元数据待作者绑定 |
 | [Stage5R blueprint](../paper/STAGE5R_MANUSCRIPT_BLUEPRINT.md) | 唯一推荐标题、中心论点、主张层级与完成边界 |
-| [Stage5R core tables](../paper/STAGE5R_CORE_TABLES.md) | 从冻结 JSON/CSV 自动生成的五张核心表 |
+| [Stage5R core tables](../paper/STAGE5R_CORE_TABLES.md) | 从冻结 JSON/JSONL/CSV 自动生成的六张核心表 |
 | [Stage5R figures and captions](../paper/figures_stage5r/FIGURE_CONTRACTS_AND_CAPTIONS.md) | 五组 Python 图、caption、CSV 与 Bytes/SHA 追溯 |
 | [Stage5R joint audit](../paper/STAGE5R_PRE_SUBMISSION_AUDIT.md) | evidence/citation/figure/language/reproducibility 联合审计 |
 | [Verified literature corpus](../paper/references/VERIFIED_LITERATURE_CORPUS.md) | 23 条外部文献的官方来源、审阅状态和允许引用用途 |

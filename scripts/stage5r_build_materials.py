@@ -62,6 +62,33 @@ STAGE5A_INPUTS = {
     ),
 }
 INPUTS = {**STAGE4_INPUTS, **STAGE5A_INPUTS}
+PAPER_JSONL_INPUTS = {
+    "stage4e_rankings": (
+        ROOT / "results" / "stage4e_e2e_official_train1000_v1_rankings.jsonl",
+        "AA6CBAD5D37BD66424DCAC6472FEBA8AC5FBAA769B789D968103AAB7CFDD1455",
+    ),
+    "stage4e_query_audit": (
+        ROOT / "results" / "stage4e_e2e_official_train1000_v1_query_audit.jsonl",
+        "ACDB9D22C14B9D10FEA0867DFFB2B87DBD4D1B4E07FCDBA8277638E3AB638C19",
+    ),
+    "stage4f_rankings": (
+        ROOT / "results" / "stage4f_xdr_musique_train3000_v1_rankings.jsonl",
+        "732A10DE74E8F97E5CECFDBFBBC3B49E5EF053C6F190948CD5C0B66D71D6AEDD",
+    ),
+    "stage4f_query_audit": (
+        ROOT / "results" / "stage4f_xdr_musique_train3000_v1_query_audit.jsonl",
+        "EA7634EE7354A959A1D03D1E9DD7A220BA39F3F7CF2D6F168D17E3EC53C66ADF",
+    ),
+    "stage4h_rankings": (
+        ROOT / "results" / "stage4h_cbe_hotpot1000_musique1500_v1_rankings.jsonl",
+        "EAECD420CEDDFD0E670892E9B78B0D6D02BB3E9BE2A84BC36631C1D985C49822",
+    ),
+    "stage4h_query_audit": (
+        ROOT / "results" / "stage4h_cbe_hotpot1000_musique1500_v1_query_audit.jsonl",
+        "6232260E8D91D070E8A28B96A4F179538D2EB300F16FE28DB3B24168ADBD4CA9",
+    ),
+}
+MANIFEST_INPUTS = {**INPUTS, **PAPER_JSONL_INPUTS}
 
 COLORS = {
     "dense": "#4C78A8",
@@ -97,6 +124,14 @@ def load_inputs() -> dict[str, Any]:
                 f"Frozen input mismatch for {label}: expected {expected}, got {actual}"
             )
         loaded[label] = json.loads(path.read_text(encoding="utf-8"))
+    for label, (path, expected) in PAPER_JSONL_INPUTS.items():
+        actual = sha256(path)
+        if actual != expected:
+            raise RuntimeError(
+                f"Frozen paper-audit input mismatch for {label}: "
+                f"expected {expected}, got {actual}"
+            )
+        loaded[label] = path
     return loaded
 
 
@@ -416,6 +451,21 @@ def absolute_rows(data: dict[str, Any]) -> list[dict[str, Any]]:
                 "hotpotqa_answer_f1": hp,
                 "musique_answer_f1": mq,
                 "dataset_equal_weight_answer_f1": (hp + mq) / 2,
+                "dataset_equal_weight_answer_em": (
+                    d["hotpotqa_train_distractor_v1_1"]["methods"][key]["answer_em"]
+                    + d["musique_ans_v1_0_train"]["methods"][key]["answer_em"]
+                )
+                / 2,
+                "dataset_equal_weight_retrieval_cr20": (
+                    d["hotpotqa_train_distractor_v1_1"]["methods"][key]["retrieval_cr20"]
+                    + d["musique_ans_v1_0_train"]["methods"][key]["retrieval_cr20"]
+                )
+                / 2,
+                "dataset_equal_weight_retrieval_er20": (
+                    d["hotpotqa_train_distractor_v1_1"]["methods"][key]["retrieval_er20"]
+                    + d["musique_ans_v1_0_train"]["methods"][key]["retrieval_er20"]
+                )
+                / 2,
                 "comparability_note": "compare only within the same frozen boundary",
             }
         )
@@ -570,17 +620,167 @@ def fmt_effect(point: float, low: float, high: float) -> str:
     return f"{point:+.5f} [{low:.5f}, {high:.5f}]"
 
 
-def make_table_rows(data: dict[str, Any], effects: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
-    table1 = [
-        {
-            "boundary": r["evidence_family"],
-            "contrast": r["contrast"],
-            "delta_f1_ci": fmt_effect(r["delta_answer_f1"], r["ci95_lower"], r["ci95_upper"]),
-            "status": r["status"],
+def jsonl_rows(path: Path) -> Iterable[dict[str, Any]]:
+    with path.open("r", encoding="utf-8") as handle:
+        for line_number, line in enumerate(handle, start=1):
+            row = json.loads(line)
+            if not isinstance(row, dict):
+                raise RuntimeError(f"{path.name}:{line_number} is not a JSON object")
+            yield row
+
+
+def insertion_and_f1_counts(
+    ranking_path: Path,
+    query_audit_path: Path,
+    insertion_key: str,
+    dense_key: str,
+    full_key: str,
+    nested_methods: bool,
+) -> dict[str, Any]:
+    insert_counts: list[int] = []
+    for row in jsonl_rows(ranking_path):
+        inserted = row.get(insertion_key)
+        if not isinstance(inserted, list):
+            raise RuntimeError(f"{ranking_path.name}: invalid {insertion_key}")
+        insert_counts.append(len(inserted))
+
+    gain = harm = same = 0
+    for row in jsonl_rows(query_audit_path):
+        methods = row.get("methods") if nested_methods else row
+        if not isinstance(methods, dict):
+            raise RuntimeError(f"{query_audit_path.name}: invalid methods object")
+        dense = methods[dense_key]["answer_f1"]
+        full = methods[full_key]["answer_f1"]
+        if full > dense:
+            gain += 1
+        elif full < dense:
+            harm += 1
+        else:
+            same += 1
+
+    if len(insert_counts) != gain + harm + same:
+        raise RuntimeError("Ranking and query-audit row counts differ")
+    return {
+        "queries": len(insert_counts),
+        "avg_inserted_units": sum(insert_counts) / len(insert_counts),
+        "inserted_queries": sum(value > 0 for value in insert_counts),
+        "f1_gain_queries": gain,
+        "f1_harm_queries": harm,
+        "f1_same_queries": same,
+    }
+
+
+def compact_absolute_rows(data: dict[str, Any], effects: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    effect_by_boundary = {row["evidence_family"]: row for row in effects}
+    specs: list[tuple[str, str, dict[str, Any], dict[str, Any]]] = []
+
+    stage4e = data["stage4e_summary"]["methods"]
+    specs.append(
+        (
+            "MiniLM / HotpotQA confirmation",
+            "Compact / HotpotQA",
+            stage4e["DENSE_TOP20"],
+            stage4e["STATIC_Q25_TOP20"],
+        )
+    )
+    stage4f = data["stage4f_summary"]["methods"]
+    specs.append(
+        (
+            "MiniLM / MuSiQue confirmation",
+            "Compact / MuSiQue",
+            stage4f["DENSE_TOP20"],
+            stage4f["STATIC_Q25_TOP20"],
+        )
+    )
+
+    stage4h = data["stage4h_datasets"]
+    dataset_names = (
+        "hotpotqa_train_distractor_v1_1",
+        "musique_ans_v1_0_train",
+    )
+
+    def equal_weight(method: str) -> dict[str, float]:
+        return {
+            metric_name: sum(
+                float(stage4h[dataset]["methods"][method][metric_name])
+                for dataset in dataset_names
+            )
+            / len(dataset_names)
+            for metric_name in (
+                "answer_f1",
+                "answer_em",
+                "retrieval_cr20",
+                "retrieval_er20",
+            )
         }
-        for r in effects
-        if r["evidence_family"] in {"Compact / HotpotQA", "Compact / MuSiQue", "Compact / joint"}
+
+    specs.append(
+        (
+            "MiniLM / joint component confirmation",
+            "Compact / joint",
+            equal_weight("DENSE_TOP20"),
+            equal_weight("STATIC_Q25_FULL"),
+        )
+    )
+
+    diagnostics = [
+        insertion_and_f1_counts(
+            data["stage4e_rankings"],
+            data["stage4e_query_audit"],
+            "q25_inserted_unit_ids",
+            "dense",
+            "static_q25",
+            False,
+        ),
+        insertion_and_f1_counts(
+            data["stage4f_rankings"],
+            data["stage4f_query_audit"],
+            "q25_inserted_unit_ids",
+            "dense_top20",
+            "static_q25_top20",
+            False,
+        ),
+        insertion_and_f1_counts(
+            data["stage4h_rankings"],
+            data["stage4h_query_audit"],
+            "full_inserted_unit_ids",
+            "DENSE_TOP20",
+            "STATIC_Q25_FULL",
+            True,
+        ),
     ]
+
+    rows = []
+    for (boundary, effect_key, dense, full), diag in zip(specs, diagnostics):
+        effect = effect_by_boundary[effect_key]
+        rows.append(
+            {
+                "boundary": boundary,
+                "queries": diag["queries"],
+                "dense_f1": f'{dense["answer_f1"]:.5f}',
+                "full_f1": f'{full["answer_f1"]:.5f}',
+                "dense_em": f'{dense["answer_em"]:.5f}',
+                "full_em": f'{full["answer_em"]:.5f}',
+                "dense_cr20": f'{dense["retrieval_cr20"]:.5f}',
+                "full_cr20": f'{full["retrieval_cr20"]:.5f}',
+                "dense_er20": f'{dense["retrieval_er20"]:.5f}',
+                "full_er20": f'{full["retrieval_er20"]:.5f}',
+                "avg_inserted_units": f'{diag["avg_inserted_units"]:.4f}',
+                "f1_gain_harm_queries": (
+                    f'{diag["f1_gain_queries"]}/{diag["f1_harm_queries"]}'
+                ),
+                "delta_f1_ci": fmt_effect(
+                    effect["delta_answer_f1"],
+                    effect["ci95_lower"],
+                    effect["ci95_upper"],
+                ),
+            }
+        )
+    return rows
+
+
+def make_table_rows(data: dict[str, Any], effects: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
+    table1 = compact_absolute_rows(data, effects)
     table2 = [
         {
             "boundary": r["evidence_family"],
@@ -624,7 +824,26 @@ def make_table_rows(data: dict[str, Any], effects: list[dict[str, Any]]) -> dict
         {"claim": r["claim"], "evidence_state": r["status"], "boundary": r["scope"]}
         for r in evidence_map_rows()
     ]
-    return {"table1": table1, "table2": table2, "table3": table3, "table4": table4, "table5": table5}
+    table6 = []
+    for row in absolute_rows(data):
+        table6.append(
+            {
+                "boundary": row["frozen_boundary"],
+                "method": row["method"],
+                "equal_weight_f1": f'{row["dataset_equal_weight_answer_f1"]:.5f}',
+                "equal_weight_em": f'{row["dataset_equal_weight_answer_em"]:.5f}',
+                "equal_weight_cr20": f'{row["dataset_equal_weight_retrieval_cr20"]:.5f}',
+                "equal_weight_er20": f'{row["dataset_equal_weight_retrieval_er20"]:.5f}',
+            }
+        )
+    return {
+        "table1": table1,
+        "table2": table2,
+        "table3": table3,
+        "table4": table4,
+        "table5": table5,
+        "table6": table6,
+    }
 
 
 def markdown_table(rows: list[dict[str, Any]]) -> str:
@@ -653,7 +872,7 @@ All numerical entries below are generated by
 confirmation evidence. Confidence intervals crossing zero are labelled
 `INCONCLUSIVE`, not equivalent or ineffective.
 
-## Table 1. Repeated compact-dense results
+## Table 1. Absolute compact-dense results and paired effects
 
 {table1}
 
@@ -675,6 +894,10 @@ frozen transactions; they are not claims of cross-device efficiency.
 ## Table 5. Claim-evidence-boundary summary
 
 {table5}
+
+## Table 6. Absolute strong-retriever boundary metrics
+
+{table6}
 
 Source CSV files are stored in
 [`paper/figures_stage5r/source_data`](figures_stage5r/source_data/).
@@ -756,7 +979,7 @@ def write_manifest(derived: list[Path]) -> Path:
                 "bytes": path_.stat().st_size,
                 "sha256": sha256(path_),
             }
-            for label, (path_, _) in sorted(INPUTS.items())
+            for label, (path_, _) in sorted(MANIFEST_INPUTS.items())
         ],
         "builder": {
             "path": Path(__file__).resolve().relative_to(ROOT).as_posix(),

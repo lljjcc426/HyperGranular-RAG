@@ -38,10 +38,11 @@ A Verified Study of HyperGranular Retrieval-Augmented Generation}
 Multi-hop retrieval-augmented generation must reconcile evidence completeness
 with a fixed Top-$k$ context: a relevance ranking can omit a complementary
 item, whereas expansion can displace evidence that was already useful. We study
-\hgrag, a Gold-free evidence-completion framework that combines adaptive
-granular balls, query-aware facet hyperedges, and bounded insertion after a
-protected dense prefix. Across three frozen, closed-candidate HotpotQA and
-MuSiQue boundaries using Qwen2.5-1.5B-Instruct, the static system repeatedly
+\hgrag, an inference-time label-free evidence-completion framework whose
+configuration is frozen before each confirmation boundary. It combines
+adaptive granular balls, query-aware facet hyperedges, and bounded insertion
+after a protected dense prefix. Across three frozen, closed-candidate HotpotQA
+and MuSiQue boundaries using Qwen2.5-1.5B-Instruct, the static system repeatedly
 improved answer F1 over a historical MiniLM dense backbone by
 $+0.01478$ [0.00020, 0.02988], $+0.01140$ [0.00450, 0.01835], and
 $+0.01357$ [0.00491, 0.02233]. Removing facet hyperedges reduced performance
@@ -90,11 +91,15 @@ measured separately.
 \hgrag addresses this constrained completion problem. It organizes sentence
 units into adaptive granular balls, identifies cross-ball relations through
 query-aware facet hyperedges, and inserts at most four eligible units after a
-protected Dense Top-10 prefix while preserving an effective Top-20. The design
-is Gold-free: candidate construction and ranking do not use answers,
-supporting-fact labels, or downstream answer scores. Granular balls provide
-adaptive local organization, while hyperedges represent relations involving
-more than pairwise adjacency \citep{xia2019granularball,feng2019hgnn}.
+protected Dense Top-10 prefix while preserving an effective Top-20. Retrieval
+execution is label-free after development-time configuration is frozen:
+candidate construction and ranking do not use answers, supporting-fact labels,
+generator outputs, or downstream answer scores. Development transactions may
+use their designated answer labels for configuration selection; confirmation
+labels remain isolated until rankings and predictions are frozen. Granular
+balls provide adaptive local organization, while hyperedges represent
+relations involving more than pairwise adjacency
+\citep{xia2019granularball,feng2019hgnn}.
 
 This paper asks not only whether the method helps, but where its incremental
 value ends. We evaluate the static system over frozen HotpotQA and MuSiQue
@@ -109,8 +114,8 @@ The results support three bounded positive claims. First, static \hgrag
 repeatedly improves answer F1 over the historical MiniLM Dense backbone under
 the frozen Qwen boundaries. Second, facet-conditioned selection improves over
 the specific centroid-only NoFacet ablation in the frozen MiniLM system.
-Third, when the Stage4I candidate set is held identical, protected placement
-is better than direct unprotected placement.
+Third, when the cross-space sidecar candidate set is held identical, protected
+placement is better than direct unprotected placement.
 The same evidence establishes a strong-retriever boundary: original \full is
 clearly below BGE, and neither the cross-space sidecar nor BGE-native
 reconstruction establishes an answer-quality increment over BGE. We do not
@@ -120,16 +125,14 @@ isolated granular-ball effect.
 
 Our contributions are:
 \begin{itemize}
-  \item a fully specified, Gold-free evidence-completion construction under a
-        fixed Top-$k$ budget;
+  \item a fully specified, inference-time label-free evidence-completion
+        construction under a fixed Top-$k$ budget;
   \item a multi-boundary evaluation that retains compact-backbone gains and
         strong-retriever limits in one claim system;
   \item component evidence that distinguishes candidate construction from
         placement while exposing unidentifiable and untested contrasts;
-  \item a multi-level failure audit showing why evidence gain, displacement,
-        selection, and answer utility diverge; and
-  \item a traceable protocol with Gold isolation, frozen artifacts,
-        deterministic reruns, and independent verification.
+  \item a traceable failure audit and verification protocol that separates
+        evidence gain, displacement, answer utility, and confirmation.
 \end{itemize}
 
 \section{Related Work}
@@ -261,6 +264,10 @@ inserted immediately after that prefix. Remaining Dense units are appended in
 their original order, followed only if necessary by unfilled expansion units,
 and the result is truncated to $K_q$.
 
+The exact floor is the transferred Stage2E calibration 25th percentile; it is
+frozen for reproducibility, not presented as an independent optimum
+(Table~\ref{tab:parameters}).
+
 Protection and efficacy are separate claims. Protection limits displacement,
 but it cannot make a non-complementary candidate useful. This distinction
 motivates the placement and BGE comparisons below.
@@ -275,6 +282,10 @@ structure to propose eligible candidates; no score fusion is introduced. The
 selection in BGE space under one development-selected, then frozen,
 configuration. These variants test different scientific questions and are not
 pooled.
+
+With embeddings precomputed, the closed-candidate procedure is
+$O(H|U_q|d+|U_q|\log|U_q|+|{\cal B}_q|\log|{\cal B}_q|)$; Appendix~A states
+the component bounds and memory cost.
 
 \begin{figure*}[t]
   \centering
@@ -340,15 +351,17 @@ interval crossing zero is \inconclusive; no equivalence margin or formal
 equivalence test was specified. Sample sizes define available resource and
 interval precision, not a formal power guarantee.
 
-\subsection{Gold Isolation and Independent Verification}
+\subsection{Label-Free Retrieval Execution and Gold Isolation}
 
-Retrieval, prompt construction, and generation finish before Gold access.
-Formal evaluators verify Gold identity before parsing it. Independent
-verifiers reconstruct query order, metrics, bootstrap summaries, decisions,
-and artifact identities. Main/rerun transactions are either byte-identical in
-full or use a pre-hash deterministic subset whose selected outputs match the
-corresponding main outputs exactly. All final scientific decisions and
-manifests were frozen before manuscript construction.
+Inference-time candidate construction, retrieval, prompting, and generation
+do not read labels or score feedback. Designated development labels may select
+a configuration (including BGE-native C10), whereas confirmation labels remain
+inaccessible until rankings, prompts, and predictions are frozen and are not
+reused for selection. Thus ``label-free'' qualifies retrieval execution after
+configuration freeze, not the entire research process. Formal evaluators
+verify Gold identity before parsing it; independent verifiers reconstruct
+order, metrics, bootstrap summaries, decisions, and artifact identities.
+Main/rerun identity is checked in full or on a pre-hash deterministic subset.
 
 \section{Results}
 
@@ -371,22 +384,31 @@ $+0.01140$ [0.00450, 0.01835]. The separate joint component boundary again
 supports \full minus \dense with a dataset-equal-weight difference of
 $+0.01357$ [0.00491, 0.02233].
 
-\begin{table}[t]
+\begin{table*}[t]
 \centering
-\small
-\begin{tabular}{@{}lll@{}}
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{@{}lccccccc@{}}
 \toprule
-Boundary & $\Delta$ F1 [95\% CI] & State \\
+Boundary & F1 D/F & EM D/F & CR@20 D/F & ER@20 D/F &
+Avg.\ ins. & F1 G/H & $\Delta$ F1 [95\% CI] \\
 \midrule
-HotpotQA & $+0.01478$ [0.00020, 0.02988] & Supported \\
-MuSiQue & $+0.01140$ [0.00450, 0.01835] & Supported \\
-Joint & $+0.01357$ [0.00491, 0.02233] & Supported \\
+HotpotQA & .42150/.43628 & .35600/.36600 & .73700/.79800 &
+.87860/.90818 & 1.9300 & 47/34 & $+0.01478$ [.00020, .02988] \\
+MuSiQue & .13595/.14735 & .10033/.11033 & .58900/.65000 &
+.80553/.84128 & 2.4110 & 125/77 & $+0.01140$ [.00450, .01835] \\
+Joint & .30446/.31803 & .25467/.26400 & .66617/.72217 &
+.84529/.87657 & 2.1628 & 102/73 & $+0.01357$ [.00491, .02233] \\
 \bottomrule
 \end{tabular}
-\caption{Repeated \full minus \dense results under the historical MiniLM
-backbone, Qwen generator, closed candidates, and Top-20 budget.}
+\caption{Absolute compact-dense outcomes and paired effects. D/F denotes
+\dense/\full; G/H counts queries with positive/negative answer-F1 change.
+Average insertions are structural candidates placed per query. The Joint row
+is dataset-equal-weighted for absolute metrics; G/H and insertions use all
+2,500 queries. All G/H and insertion counts are descriptive reconstructions
+from frozen rankings and query audits.}
 \label{tab:compact}
-\end{table}
+\end{table*}
 
 The effects are small but directionally repeated. Their scope is the
 historical MiniLM backbone, Qwen generator, fixed prompt, closed candidates,
@@ -447,7 +469,8 @@ different from an uncertain contrast: the complete interval lies below zero.
 It rules out the claim that the original compact-backbone \hgrag system is
 competitive with this strong BGE retriever on the frozen boundary.
 
-Two additional Stage4H baselines also prevent a narrow Dense-only reading.
+Two additional baselines on the joint component confirmation boundary also
+prevent a narrow Dense-only reading.
 \full minus BM25 is $-0.00755$ [$-0.02259$, 0.00773], and \full minus a
 Dense--BM25 hybrid is $-0.00320$ [$-0.01591$, 0.00942]. Both are inconclusive
 and neither supports superiority. BGE remains the decisive strong baseline
@@ -513,8 +536,9 @@ result is restricted to the recorded RTX 4060 Laptop 8GB, short-answer prompt,
 \subsection{Efficiency and Evidence Displacement}
 
 Resource values are hardware-bound descriptors rather than cross-device
-efficiency claims. For the Stage5A transaction, retrieval reconstruction took
-8.544 seconds; BGE and BGE-native \prot generation took 887.650 and
+efficiency claims. For the BGE-native confirmation transaction, retrieval
+reconstruction took 8.544 seconds; BGE and BGE-native \prot generation took
+887.650 and
 884.198 seconds, respectively; recorded GPU peak memory was 3.592 GiB.
 
 Post-decision Gold audits clarify why coverage and answer quality diverge
@@ -532,8 +556,9 @@ retune the method.
 The repeated MiniLM gains are consistent with a bounded interpretation: when a
 compact representation leaves recoverable evidence gaps, local candidate
 organization plus query-conditioned cross-ball expansion can expose
-complementary units that a flat ranking omits. The Stage4H facet contrast
-supports facet-mediated candidate selection within that implementation. This
+complementary units that a flat ranking omits. The joint component
+confirmation's facet contrast supports facet-mediated candidate selection
+within that implementation. This
 is a synthesis of the frozen evidence, not a universal theorem about compact
 encoders.
 
@@ -548,17 +573,19 @@ supports this as a study-specific boundary, not as a claim that
 structure-aware retrieval can never complement strong retrievers.
 
 \paragraph{Evidence addition is not evidence utility.}
-Stage5A is especially informative: net Gold increases slightly, but answer
-quality does not. A Gold-labelled unit can be redundant with retained context,
+The BGE-native confirmation is especially informative: net Gold increases
+slightly, but answer quality does not. A Gold-labelled unit can be redundant
+with retained context,
 weakly positioned, difficult for the generator to use, or offset by a
 different displacement. Conversely, a non-Gold unit can affect the answer.
 CR/ER, Gold transitions, and answer F1 therefore answer different questions.
 
 \paragraph{Placement matters but cannot substitute for efficacy.}
-The Stage4I placement result isolates ranking position because protected and
-unprotected conditions contain the same inserted set. It supports preserving
-high-ranked evidence under a fixed budget. However, Stage5A does not
-independently confirm the placement increment, and neither placement
+The cross-space sidecar placement result isolates ranking position because
+protected and unprotected conditions contain the same inserted set. It
+supports preserving high-ranked evidence under a fixed budget. However, the
+BGE-native confirmation does not independently confirm the placement
+increment, and neither placement
 experiment establishes that \prot exceeds BGE.
 
 \paragraph{Facet effects depend on semantic space.}
@@ -599,9 +626,10 @@ and development-selected; untested variants remain unknown.
 
 A scientifically matched flat granular-ball control was not defined, so the
 granular-ball structure lacks an independent ablation claim. Protected
-insertion has inconsistent independent evidence: Stage4I placement is
-supported, while Stage4H and Stage5A protection-related contrasts are
-inconclusive. Facet evidence is representation- and implementation-dependent.
+insertion has inconsistent independent evidence: cross-space sidecar placement
+is supported, while the joint-component and BGE-native protection-related
+contrasts are inconclusive. Facet evidence is representation- and
+implementation-dependent.
 No matched relevance--diversity, maximum-coverage, or other simple completion
 selector was evaluated, so the hyperedge representation has not been shown
 necessary or superior to such alternatives.
@@ -615,37 +643,24 @@ evidence of equivalence.
 
 \section{Reproducibility and Integrity}
 
-The project binds dataset files, model revisions, configurations, scripts,
-rankings, predictions, prompt audits, query audits, bootstrap summaries,
-decisions, and final verifications by byte length and SHA-256. Stage4E through
-Stage5A are frozen and were not recomputed for this manuscript. Independent
-verifiers reconstruct numerical outputs and decisions from formal artifacts
-rather than trusting report text.
-
-Every plotted value has a CSV source; SVG, PDF, 600-dpi TIFF, and PNG exports
-are bound in a derived-file manifest. Two consecutive builds were
-byte-identical. A read-only manuscript verifier checks frozen inputs, figure
-and table sources, citation keys, local links, required claim strings, status
-wording, and unresolved citation placeholders. Dataset and model licenses are
-recorded separately from scientific claims. Large local caches and third-party
-model weights are not part of the manuscript package.
+The repository SHA-binds datasets, models, configurations, rankings,
+predictions, audits, decisions, and final verifications. All confirmation
+artifacts are frozen; independent verifiers reconstruct metrics and decisions
+from those artifacts. Every plot has a CSV source and a derived-file manifest,
+and two manuscript builds are byte-identical. A read-only verifier checks
+frozen inputs, tables, figures, citations, links, and claim-boundary wording.
+Licenses are recorded separately; caches and third-party weights are excluded.
 
 \section{Conclusion}
 
-\hgrag is a protected structured evidence-completion framework for constrained
-multi-hop retrieval. Across three frozen boundaries, it repeatedly improves a
-historical compact MiniLM backbone, and facet-conditioned selection improves
-over the frozen centroid-only comparator. This does not isolate granular-ball
-necessity or establish superiority over generic diversity/coverage selection.
-The evidence also draws a clear limit: the original
-method underperforms strong BGE, while neither cross-space sidecar integration
-nor BGE-native reconstruction establishes an incremental answer-quality gain
-over BGE. Protected placement can matter for a fixed candidate set, yet
-placement and Gold-evidence increments cannot substitute for end-to-end
-efficacy. The contribution is not a universal stronger retriever; it is a
-verified account of when structured evidence completion helps, when its
-marginal value contracts, and how those outcomes should be reported without
-hiding negative or inconclusive evidence.
+\hgrag repeatedly improves a historical compact MiniLM backbone across three
+frozen boundaries, and facet selection improves over its centroid-only
+comparator. This does not establish granular-ball necessity or superiority
+over generic diversity/coverage selection. The original method underperforms
+strong BGE, while cross-space and BGE-native extensions establish no
+incremental answer-quality gain. Placement can help a fixed set but cannot
+substitute for efficacy. Structural completion helps only within the tested
+boundaries.
 
 \section*{Ethical Considerations}
 
@@ -679,17 +694,75 @@ venue's policy before submission.
 
 \appendix
 
-\section{Complete Evidence-State Map}
+\section{Deterministic Procedures and Frozen Parameters}
 
-\begin{figure*}[h]
-  \centering
-  \includegraphics[width=\textwidth]{../figures_stage5r/figure4_evidence_map.pdf}
-  \caption{\textbf{Evidence-state map.} Supported, negative, inconclusive, and
-  not-fairly-defined outcomes are kept distinct. Component findings are
-  system-dependent and are not transported across semantic spaces without
-  confirmation.}
-  \label{fig:evidence-map}
-\end{figure*}
+\paragraph{Algorithm 1: adaptive granular-ball construction.}
+Initialize a queue with $(U_q,0)$. For each ball $B$ at depth $z$, compute
+$c_B$ and $r_B$. If the depth, size, and radius/size gates do not permit a
+split, emit $B$. Otherwise choose the first seed as the unit farthest from
+$c_B$, choose the second as the unit least similar to the first, and assign
+each unit to its more similar seed. Candidate-order ties go to the earlier
+seed. Accept the split only if both children have at least two units; otherwise
+emit $B$. Continue until the queue is empty. Stable candidate order and
+\texttt{unit\_id} resolve remaining ties.
+
+\paragraph{Algorithm 2: query-aware facet-hyperedge selection.}
+Tokenize the query and every ball with the frozen rules, intersect each ball's
+term set with the query-term set, and select the two highest
+query-to-centroid balls as seeds. Compute newly covered terms and the frozen
+$h_B$ score for every non-seed ball. Reject balls that fail any eligibility
+gate. Sort survivors by $( -h_B,\texttt{edge\_id})$, retain at most two
+distinct balls, and order their units by original MiniLM cosine and
+\texttt{unit\_id}. No Gold label or answer score enters this procedure.
+
+\paragraph{Algorithm 3: protected bounded insertion.}
+Let $K_q=\min(20,|U_q|)$ and protect the first $\min(10,K_q)$ unique Dense
+units. Traverse the eligible expansion order, retain units at or above the
+frozen score floor, skip protected duplicates, and place at most four units
+immediately after the prefix. Append unused Dense units in their original
+order, then expansion units only if needed to fill $K_q$. Deduplicate stably
+and truncate to $K_q$.
+
+\paragraph{Complexity.}
+For $n=|U_q|$, $B=|{\cal B}_q|$, embedding dimension $d$, and maximum depth
+$H$, Dense scoring/sorting costs $O(nd+n\log n)$; recursive two-seed
+assignment costs $O(Hnd)$; facet scoring and ordering costs
+$O(n+Bd+B\log B)$ apart from tokenization; insertion costs $O(n)$. Working
+memory is $O(nd+n+B)$. Encoder and generator inference are excluded.
+
+\begin{table*}[h]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.24\textwidth}p{0.31\textwidth}p{0.39\textwidth}@{}}
+\toprule
+Group & Frozen value & Provenance and sensitivity status \\
+\midrule
+Ball split & depth $<6$; splittable size $\geq4$; radius gate 0.78;
+minimum child size 2 & Frozen compact implementation; no confirmatory
+sensitivity sweep \\
+Ball seeds and ties & farthest from centroid; then least similar to seed 1;
+stable candidate order & Deterministic rule, not learned \\
+Facet seeds/budget & 2 seed balls; at most 2 expansion balls & Frozen compact
+implementation; no confirmatory budget sweep \\
+Facet gates & new terms $\geq1$; ball size $\leq8$; $b_B\geq.12$ or
+$a_B\geq.05$; units/new term $\leq6$; redundancy $\leq.90$; $h_B\geq.10$ &
+Frozen compact implementation \\
+Facet score weights & $.45,.20,.20,.15,-.20,-.05$; unit bonus 0 & Frozen
+implementation weights; no claim of global optimality \\
+Insertion & protected prefix 10; budget 4; effective $K=20$ & Frozen
+transferred policy \\
+Candidate floor & 0.1957079917192459 & Stage2E calibration 25th percentile,
+transferred exactly; not an independently established optimum \\
+Ordering & descending cosine or $h_B$, then \texttt{unit\_id} or
+\texttt{edge\_id} & Fully deterministic tie-breaking \\
+\bottomrule
+\end{tabular}
+\caption{Frozen compact-method parameters. ``No confirmatory sensitivity
+sweep'' is a limitation, not evidence of robustness. BGE-native development
+used a separate finite configuration family and is not pooled with this table.}
+\label{tab:parameters}
+\end{table*}
 
 \section{Applicability Boundary}
 
@@ -703,6 +776,30 @@ venue's policy before submission.
   and full-wiki/open-domain operation was not evaluated.}
   \label{fig:boundary}
 \end{figure*}
+
+\section{Absolute Strong-Retriever Outcomes}
+
+\begin{table*}[h]
+\centering
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+Frozen boundary & Method & F1 & EM & CR@20 & ER@20 \\
+\midrule
+Joint component (Stage4H) & BGE & .35801 & .30467 & .85400 & .93902 \\
+Joint component (Stage4H) & Original \full & .31803 & .26400 & .72217 & .87657 \\
+Cross-space sidecar (Stage4I) & BGE & .34301 & .28000 & .84967 & .93594 \\
+Cross-space sidecar (Stage4I) & \prot & .34045 & .27767 & .84350 & .93459 \\
+BGE-native confirmation (Stage5A) & BGE & .34569 & .28500 & .86167 & .94288 \\
+BGE-native confirmation (Stage5A) & \prot & .34264 & .28133 & .86233 & .94288 \\
+\bottomrule
+\end{tabular}
+\caption{Dataset-equal-weight absolute outcomes on strong-retriever
+boundaries. Comparisons are valid only within the same frozen boundary; rows
+from different boundaries are not pooled.}
+\label{tab:absolute-strong}
+\end{table*}
 
 \section{Frozen Failure Audit}
 

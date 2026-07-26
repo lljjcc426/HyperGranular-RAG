@@ -2,7 +2,7 @@
 
 本目录只组织可由仓库证据支持的论文内容，不保存原始数据、模型、embedding cache 或未验证结果。
 
-当前状态为 `WEAK_REJECT_REVISION_COMPLETE` / `SUBMISSION_METADATA_PENDING`：Stage4E–Stage5A 科学实验线已经完成并冻结；Stage5R 已按 weak-reject 审核完成主张收缩、方法精确定义、现有基线/消融完整呈现和失败分析，不启动新算法实验。作者、基金、COI、唯一 venue 和项目 license 尚待人类事实绑定，因此不是 `SUBMISSION_READY`。
+当前状态为 `MANUSCRIPT_LEVEL_EVALUATION_REVISION_COMPLETE` / `SUBMISSION_METADATA_PENDING`：Stage4E–Stage5A 科学实验线已经完成并冻结；Stage5R 已按 weak-reject 与论文水平评估完成主张收缩、方法精确定义、绝对指标/逐 query 变化、现有基线/消融完整呈现和失败分析，不启动新算法实验。作者、基金、COI、唯一 venue 和项目 license 尚待人类事实绑定，因此不是 `SUBMISSION_READY`。
 
 当前文件：
 
@@ -10,9 +10,10 @@
 - [Anonymous ACL LaTeX source](latex/main.tex)：使用冻结证据、官方 ACL 样式快照和 23 条已核验参考文献；
 - [LaTeX build status](latex/DRAFT_BUILD_STATUS.md)：精确 Bytes/SHA、编译环境、页面与引用检查；
 - [Weak-reject revision record](WEAK_REJECT_REVISION_2026-07-26.md)：四项审核缺口、逐项修订、仍需新实验的边界；
+- [Manuscript-level evaluation response](MANUSCRIPT_LEVEL_EVALUATION_RESPONSE_2026-07-26.md)：论文水平评估意见、已落实修订和需要新实验的问题边界；
 - [Stage5R English manuscript](MANUSCRIPT_CORE_DRAFT_STAGE5R.md)：已纳入 Stage5A、引用已绑定的完整英文核心稿；
 - [Stage5R manuscript blueprint](STAGE5R_MANUSCRIPT_BLUEPRINT.md)：唯一推荐标题、中心论点、主张层级和提交边界；
-- [Stage5R core tables](STAGE5R_CORE_TABLES.md)：从冻结 JSON/CSV 自动生成的五张核心表；
+- [Stage5R core tables](STAGE5R_CORE_TABLES.md)：从冻结 JSON/JSONL/CSV 自动生成的六张核心表；
 - [Stage5R joint audit](STAGE5R_PRE_SUBMISSION_AUDIT.md)：evidence/citation/figure/language/reproducibility 联合审计；
 - [Verified literature corpus](references/VERIFIED_LITERATURE_CORPUS.md)：23 条经官方来源核验的文献与允许引用用途；
 - [Stage5R figure contracts](figures_stage5r/FIGURE_CONTRACTS_AND_CAPTIONS.md)：五组图、caption、CSV 与 manifest；

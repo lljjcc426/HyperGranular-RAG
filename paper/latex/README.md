@@ -7,9 +7,10 @@ Current anonymous paper draft:
 - [`DRAFT_BUILD_STATUS.md`](DRAFT_BUILD_STATUS.md)
 - [`ACL_STYLE_PROVENANCE.md`](ACL_STYLE_PROVENANCE.md)
 
-The tracked PDF is the visually inspected 12-page anonymous first draft built
-from the tracked source. It contains eight pages of main text, two pages of
-references, and two pages of appendix content. The build-status record binds
+The tracked PDF is the visually inspected 13-page anonymous draft built from
+the tracked source. It contains eight pages of main text, two pages of
+back matter and references, and three pages of appendix content. The
+build-status record binds
 its exact bytes and SHA-256.
 
 ## Build
