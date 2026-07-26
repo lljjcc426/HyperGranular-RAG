@@ -6,12 +6,12 @@
 
 | 项目 | 当前事实 |
 |---|---|
-| 研究阶段 | Stage4E–Stage5A 科学实验线已完成并冻结；Stage5R-PMR 已按 weak-reject 与论文水平评估完善论文 |
-| 状态 | `CORE_ALGORITHM_EXPERIMENTS_CLOSED` / `MANUSCRIPT_LEVEL_EVALUATION_REVISION_COMPLETE` / `SUBMISSION_METADATA_PENDING` |
+| 研究阶段 | Stage4E–Stage5A 已完成并冻结；Stage5R 论文稿已完成；Stage6-SVE 强证据计划已起草、尚未授权执行 |
+| 状态 | `STAGE6_SVE_LEVEL_A_PROGRAM_DRAFT` / `NO_STAGE6_EXECUTION_AUTHORIZED` / `SUBMISSION_METADATA_PENDING` |
 | Stage5A 新边界 | BGE-native confirmation：HotpotQA train 1,000 + MuSiQue train 1,500；历史正式 ID overlap 0 |
 | 当前证据 | compact MiniLM 上重复小幅正向；Full 明确弱于 BGE；cross-space sidecar 与 BGE-native 增量均不确定 |
-| 当前工作 | 已建立部分确认的人工作者/投稿元数据；继续补齐英文发表姓名、导师、基金、COI、许可与唯一投稿渠道，不启动新算法实验 |
-| Full-wiki | `NOT_AUTHORIZED`，不阻塞当前论文完成 |
+| 当前工作 | 审核 Stage6A 的强检索器与匹配控制实验卡；正式实验尚未启动 |
+| Full-wiki | Stage6B 条件计划，`NOT_AUTHORIZED`；只有 Stage6A 强证据门通过后才定稿 |
 | Gold | 仅在 Gold-free main/rerun 与 pre-Gold verification 后使用；未进入检索、prompt、生成或排序 |
 | Reservation / Stage3B | `KEEP_LOCKED` |
 
@@ -29,6 +29,14 @@ Stage5R 当前论文入口：
 - [论文水平评估响应](paper/MANUSCRIPT_LEVEL_EVALUATION_RESPONSE_2026-07-26.md)
 - [人工作者与投稿元数据](paper/AUTHOR_AND_SUBMISSION_METADATA.yaml)
 - [LaTeX 匿名/camera-ready 开关与构建说明](paper/latex/README.md)
+
+新科研入口：
+
+- [Stage6-SVE 强主干与结构价值证据计划草案](docs/STAGE6_SVE_STRONG_VALUE_EVIDENCE_PROGRAM_DRAFT.md)
+
+该草案把新增证据拆为：Stage6A 现代强检索器与匹配控制、Stage6B full-wiki
+外部效度、Stage6C 结构化 RAG 公平直接对比。当前仅 Stage6A 等待一次阶段级授权；
+没有下载新语料、读取新 Gold、运行模型或修改冻结论文结论。
 
 Stage5A-BNH 冻结结论：BGE-native Protected−BGE 等权 answer-F1 为
 `-0.003046 [-0.006880,0.000631]`，EM 为

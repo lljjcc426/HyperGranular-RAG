@@ -1807,3 +1807,24 @@ was `EFCED94CC12FDDA26360AE958E40EE1C7C2D88FC4B5853CC63B27DCD91ED246A`,
   `SUBMISSION_METADATA_PENDING`. Author facts, final venue, project license,
   and venue formatting remain human decisions; the package is not
   `SUBMISSION_READY`.
+
+### Stage6-SVE Strong-Backbone and Structural-Value Evidence Program Draft (2026-07-26)
+
+- A new outcome-neutral program draft maps the five remaining evidence gaps to
+  three gated stages: Stage6A strong-retriever/matched controls, Stage6B
+  full-wiki external validity, and Stage6C direct structured-RAG comparison.
+- Stage6A uniquely pre-specifies Qwen3-Embedding-0.6B and
+  Qwen3-Reranker-0.6B, three fresh zero-overlap datasets, a common candidate
+  pool, five confirmation arms, three Holm-controlled primary contrasts and a
+  practical `+0.010` answer-F1 gate.
+- Generic MMR/coverage/relevance-diversity controls, paragraph/k-means/
+  hierarchical alternatives, granular-ball without hyperedge and full HGRAG
+  are compared under the same reranker scores, Top-20, token budget and
+  generator.
+- Stage6B and Stage6C remain conditional and unauthorized. Full-wiki cannot
+  start unless Stage6A reaches its complete strong-evidence state; external
+  systems must pass artifact/license/hardware/fairness eligibility before a
+  direct comparison card is frozen.
+- No model, corpus or Gold was read and no experiment ran while drafting this
+  program. Stage4E–Stage5A artifacts and manuscript conclusions remain
+  unchanged; Reservation, Stage3B and U2 remain locked.
