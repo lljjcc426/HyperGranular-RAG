@@ -48,3 +48,5 @@ scripts/stage5a_bnh_*.py -text
 tests/test_stage5a_bnh.py -text
 results/stage5a_bnh_* -text
 reports/超粒球RAG_Stage5A_BNH强语义空间原生检索报告.md -text
+paper/latex/acl_natbib.bst -text
+paper/latex/vendor/acl.sty -text
