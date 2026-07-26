@@ -3,7 +3,7 @@
 ## Material Passport
 
 - Project: HyperGranular-RAG
-- Current stage: Stage4D-CMA/controller are closed; Stage4E–Stage5A are complete, independently verified and frozen; Stage5R-PMR manuscript revision is complete and only author/venue/license metadata remain
+- Current stage: Stage4D-CMA/controller are closed; Stage4E–Stage5A are complete, independently verified and frozen; Stage5R-PMR and the 2026-07-26 weak-reject revision are complete; only author/venue/license metadata remain
 - Current governance: project-wide and durable across all current/future stages; one research stage receives one authorization; stage-internal predefined work is continuous; step/channel reapproval is disabled; only new scientific boundaries or serious integrity anomalies pause execution
 - Data used so far: HotpotQA and MuSiQue development slices; invalidated 2Wiki mirror pilot; official April 7 archive development batch through verified Stage4D-CMA; deterministic new-ID HotpotQA train 1,000 and MuSiQue train 3,000 in Stage4E/4F; separate zero-overlap HotpotQA 1,000 + MuSiQue 1,500 boundaries in Stage4H, Stage4I, and Stage5A confirmation; reservation and Stage3B were not accessed
 - Generators used: Qwen2.5-1.5B-Instruct in verified Stage4E/4F/4H; one pre-specified Gemma 4 E2B official mobile-QAT configuration in verified Stage4G
@@ -30,6 +30,7 @@ BGE_NATIVE_HGRAG_INCONCLUSIVE
 CORE_ALGORITHM_EXPERIMENTS_CLOSED
 STAGE5R_PMR_COMPLETE
 CURRENT_EVIDENCE_MANUSCRIPT_COMPLETE
+WEAK_REJECT_REVISION_COMPLETE
 VERIFIED_LITERATURE_CORPUS_COMPLETE
 FIGURE_AND_TABLE_AUDIT_PASS
 CLAIM_AND_CITATION_AUDIT_PASS
@@ -55,6 +56,14 @@ verified references, builds five traceable tables and five four-format Python
 figures, and completes the evidence/citation/figure/language/reproducibility
 audit.
 
+The 2026-07-26 weak-reject revision makes four unresolved boundaries explicit:
+granular-ball necessity is not established; generic diversity/coverage
+selectors were not tested; the frozen original method is negative against
+strong BGE while both BGE extensions are inconclusive; and open-domain
+operation was not evaluated. It adds exact frozen method definitions, exposes
+all existing baseline/component rows, and deepens the failure audit without
+creating or rerunning any scientific result.
+
 The current Stage5R entry points are:
 
 - `paper/MANUSCRIPT_CORE_DRAFT_STAGE5R.md`
@@ -63,6 +72,7 @@ The current Stage5R entry points are:
 - `paper/figures_stage5r/FIGURE_CONTRACTS_AND_CAPTIONS.md`
 - `paper/references/VERIFIED_LITERATURE_CORPUS.md`
 - `paper/STAGE5R_PRE_SUBMISSION_AUDIT.md`
+- `paper/WEAK_REJECT_REVISION_2026-07-26.md`
 - `paper/submission/SUBMISSION_BLOCKERS.md`
 
 Author identity, funding, conflicts, a unique venue, final venue formatting, and

@@ -1,6 +1,6 @@
 # Stage5R Manuscript Blueprint
 
-Status: `CURRENT_EVIDENCE_MANUSCRIPT_COMPLETE`
+Status: `WEAK_REJECT_REVISION_COMPLETE`
 
 ## Recommended title
 
@@ -37,8 +37,11 @@ improvement, or open-domain validation.
 - Static HGRAG improves the historical MiniLM dense Top-20 backbone on three
   independent frozen Qwen boundaries, with answer-F1 differences between
   `+0.01140` and `+0.01478`.
-- Removing facet hyperedges in the frozen Stage4H MiniLM system reduces
-  answer F1: `+0.01336 [0.00341, 0.02343]` for Full−NoFacet.
+- Facet-conditioned selection exceeds the frozen centroid-only NoFacet ball
+  selector in the Stage4H MiniLM system:
+  `+0.01336 [0.00341, 0.02343]` for Full−NoFacet. This does not establish
+  granular-ball necessity or superiority over an untested generic
+  diversity/coverage selector.
 - When the Stage4I inserted set is held constant, protected placement exceeds
   unprotected placement: `+0.01122 [0.00129, 0.02104]`.
 
@@ -66,6 +69,9 @@ the answer-F1 point estimates are negative and uncertain.
 - **Post-decision descriptive:** Gold added/displaced/net audits.
 - **Not evaluated:** full-wiki/open-domain.
 - **Not fairly defined:** flat granular-ball ablation.
+- **Not established:** granular-ball necessity.
+- **Not tested:** facet hyperedges versus a matched generic
+  diversity/coverage selector.
 
 ## Main-text allocation
 
@@ -82,8 +88,8 @@ the answer-F1 point estimates are negative and uncertain.
    artifact traceability.
 9. Conclusion — bounded scientific result.
 
-Controller and diagnostic work is limited to one paragraph in the main text and
-is documented in the supplementary material.
+Controller and diagnostic work is summarized in the main Discussion and
+documented in a frozen failure-audit appendix table.
 
 ## Completion boundary
 

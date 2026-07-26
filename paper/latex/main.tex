@@ -60,7 +60,9 @@ deterministic reruns, and complete reporting of positive, negative,
 inconclusive, and undefined outcomes support a bounded conclusion: tested
 structural completion can recover evidence gaps in a compact historical
 backbone, but no incremental answer-quality value has been established over
-strong BGE.
+strong BGE. The component contrast is against centroid-only ball expansion;
+neither granular-ball necessity nor hyperedge superiority over a generic
+diversity/coverage selector has been established.
 \end{abstract}
 
 \section{Introduction}
@@ -105,9 +107,10 @@ independently verified.
 
 The results support three bounded positive claims. First, static \hgrag
 repeatedly improves answer F1 over the historical MiniLM Dense backbone under
-the frozen Qwen boundaries. Second, facet hyperedges have incremental value in
-the frozen MiniLM system. Third, when the Stage4I candidate set is held
-identical, protected placement is better than direct unprotected placement.
+the frozen Qwen boundaries. Second, facet-conditioned selection improves over
+the specific centroid-only NoFacet ablation in the frozen MiniLM system.
+Third, when the Stage4I candidate set is held identical, protected placement
+is better than direct unprotected placement.
 The same evidence establishes a strong-retriever boundary: original \full is
 clearly below BGE, and neither the cross-space sidecar nor BGE-native
 reconstruction establishes an answer-quality increment over BGE. We do not
@@ -117,14 +120,14 @@ isolated granular-ball effect.
 
 Our contributions are:
 \begin{itemize}
-  \item a protected, high-order evidence-completion construction under a fixed
-        Top-$k$ budget;
+  \item a fully specified, Gold-free evidence-completion construction under a
+        fixed Top-$k$ budget;
   \item a multi-boundary evaluation that retains compact-backbone gains and
         strong-retriever limits in one claim system;
   \item component evidence that distinguishes candidate construction from
-        placement;
-  \item direct evidence that Gold-count changes do not substitute for
-        end-to-end answer evaluation; and
+        placement while exposing unidentifiable and untested contrasts;
+  \item a multi-level failure audit showing why evidence gain, displacement,
+        selection, and answer utility diverge; and
   \item a traceable protocol with Gold isolation, frozen artifacts,
         deterministic reruns, and independent verification.
 \end{itemize}
@@ -167,6 +170,15 @@ shows that retrieved text can condition language models without parameter
 updates \citep{ram2023incontext}. We therefore use paired answer F1 as the
 primary endpoint and treat retrieval coverage as supporting evidence.
 
+\paragraph{Alternative completion controls.}
+A simpler completion rule could combine relevance with diversity or uncovered
+query-term coverage without constructing high-order relations. The NoFacet arm
+in this study is narrower: it preserves granular-ball geometry and selects up
+to two eligible balls by query-to-centroid score. It is therefore a matched
+test of the frozen facet-conditioned selector against centroid-only ball
+expansion, not a comparison with all relevance--diversity or coverage
+objectives. We retain this distinction in every component claim.
+
 \paragraph{Evaluation and negative evidence.}
 KILT emphasizes provenance-aware evaluation in knowledge-intensive tasks
 \citep{petroni2021kilt}. Reproducibility guidance motivates explicit
@@ -195,14 +207,19 @@ answer, Gold supporting unit, or generator output enters this construction.
 \subsection{Adaptive Granular Balls}
 
 Each query's candidate embeddings begin as one root set. For a current ball
-$B$, the implementation computes a normalized centroid, cosine distances to
-that centroid, a radius equal to the maximum distance, and compactness equal to
-one minus the mean distance. A ball is eligible for a deterministic two-seed
-split when depth is below six, the set can support two children of at least two
-units, and its size or radius crosses the frozen split condition. Each unit is
-assigned to the closer seed; the split is retained only if both children meet
-the minimum size. The resulting partition adapts local granularity to candidate
-geometry rather than imposing a fixed cluster count.
+$B$, let
+\begin{equation}
+ c_B=\operatorname{norm}\left(\frac{1}{|B|}\sum_{i\in B}\hat e_i\right),\quad
+ d_i=1-\hat e_i^\top c_B,
+\end{equation}
+with radius $r_B=\max_{i\in B}d_i$ and compactness
+$1-|B|^{-1}\sum_{i\in B}d_i$. In the compact MiniLM variant, $B$ is split iff
+its depth is below 6, $|B|\geq4$, and either $|B|>3$ or $r_B>0.78$. The first
+seed is the unit farthest from $c_B$; the second has minimum cosine similarity
+to the first. Each unit is assigned to the seed with higher cosine similarity.
+A split is retained only when both children contain at least two units.
+Ties preserve the frozen candidate order. These constants are frozen
+implementation parameters, not learned quantities.
 
 \subsection{Query-Aware Facet Hyperedges}
 
@@ -213,12 +230,27 @@ cosine become seeds. A non-seed ball can form an expansion hyperedge only if it
 introduces a new query term and passes frozen gates on ball size, ball score or
 seed proximity, units per new term, and shared-term redundancy.
 
-The frozen facet score combines the new-facet ratio, total-facet ratio,
-query-to-ball score, seed diversity, redundancy, and size. Hyperedges below
-0.10 are rejected; at most two edge/ball structures are selected. Units inside
-an accepted ball remain ordered by the original MiniLM cosine and
-\texttt{unit\_id}; the facet score does not alter the unit score. Thus, the
-hyperedge selects candidate regions rather than learning a new dense ranker.
+For a candidate ball $B$, let $n_B$ be the number of query terms newly covered
+beyond the seeds, $t_B$ the total number of query terms in $B$, $m$ the number
+of query terms, $b_B=\hat e_q^\top c_B$, $a_B$ the maximum cosine to a seed
+centroid, and $\rho_B$ the fraction of $B$'s facet terms already covered. The
+compact frozen score is
+\begin{equation}
+\begin{split}
+h_B={}&0.45\,n_B/\max(m,1)\\
+     &+0.20\,t_B/\max(m,1)\\
+     &+0.20\,b_B+0.15(1-a_B)\\
+     &-0.20\rho_B-0.05|B|/8.
+\end{split}
+\end{equation}
+A candidate must introduce at least one new term, contain at most 8 units,
+satisfy $b_B\geq0.12$ or $a_B\geq0.05$, have at most 6 units per new term,
+obey $\rho_B\leq0.90$, and have $h_B\geq0.10$. Candidates are ordered by
+descending $h_B$ and then \texttt{edge\_id}; at most two distinct balls are
+selected. Units inside an accepted ball remain ordered by original MiniLM
+cosine and \texttt{unit\_id}; the frozen unit-level facet bonus is zero.
+Consequently, the hyperedge selects candidate regions rather than learning a
+new dense ranker.
 
 \subsection{Protected Bounded Insertion}
 
@@ -365,7 +397,9 @@ retrievers.
 
 Within the frozen MiniLM system, \full minus NoFacet is
 $+0.01336$ [0.00341, 0.02343], supporting an incremental role for facet
-hyperedges. \full minus NoProtection is $+0.00354$
+conditioning relative to the specific centroid-only ball selector. It does
+not establish superiority over generic relevance--diversity or coverage
+selection. \full minus NoProtection is $+0.00354$
 [$-0.00675$, 0.01389], so the independent contribution of protection is
 inconclusive on that boundary. A flat-unit granular-ball contrast is
 \texttt{NOT\_FAIRLY\_DEFINED}: ball seeds, split gates, edge budgets, and radii
@@ -390,13 +424,17 @@ inconclusive. Component effects are therefore system-dependent.
 Contrast & $\Delta$ F1 [95\% CI] & State \\
 \midrule
 MiniLM facet & $+0.01336$ [0.00341, 0.02343] & Supported \\
+MiniLM protection & $+0.00354$ [$-0.00675$, 0.01389] & Inconcl. \\
 Sidecar placement & $+0.01122$ [0.00129, 0.02104] & Supported \\
+Sidecar facet & $-0.00743$ [$-0.01616$, 0.00132] & Inconcl. \\
 Native placement & $+0.00337$ [$-0.00129$, 0.00803] & Inconcl. \\
 Native facet & $+0.00063$ [$-0.00422$, 0.00536] & Inconcl. \\
+Flat-ball control & --- & Not defined \\
 \bottomrule
 \end{tabular}
-\caption{Component evidence. ``Native'' denotes the BGE-native confirmation
-boundary; effects are not transported between semantic spaces.}
+\caption{Complete component evidence. ``Native'' denotes the BGE-native
+confirmation boundary; effects are not transported between semantic spaces.
+The flat-ball row has no matched estimand.}
 \label{tab:components}
 \end{table}
 
@@ -408,6 +446,12 @@ $-0.03998$ [$-0.05393$, $-0.02621$]. This negative result is qualitatively
 different from an uncertain contrast: the complete interval lies below zero.
 It rules out the claim that the original compact-backbone \hgrag system is
 competitive with this strong BGE retriever on the frozen boundary.
+
+Two additional Stage4H baselines also prevent a narrow Dense-only reading.
+\full minus BM25 is $-0.00755$ [$-0.02259$, 0.00773], and \full minus a
+Dense--BM25 hybrid is $-0.00320$ [$-0.01591$, 0.00942]. Both are inconclusive
+and neither supports superiority. BGE remains the decisive strong baseline
+because the entire \full-minus-BGE interval is negative.
 
 \subsection{Cross-Space Sidecar Evaluation}
 
@@ -440,6 +484,8 @@ reconstruction establishes neither improvement, damage, nor equivalence.
 Boundary & $\Delta$ F1 [95\% CI] & State \\
 \midrule
 Gemma transfer & $+0.00516$ [$-0.00262$, 0.01295] & Inconcl. \\
+Full vs.\ BM25 & $-0.00755$ [$-0.02259$, 0.00773] & Inconcl. \\
+Full vs.\ hybrid & $-0.00320$ [$-0.01591$, 0.00942] & Inconcl. \\
 Full vs.\ BGE & $-0.03998$ [$-0.05393$, $-0.02621$] & Negative \\
 Sidecar vs.\ BGE & $-0.00256$ [$-0.00998$, 0.00458] & Inconcl. \\
 Native vs.\ BGE & $-0.00305$ [$-0.00688$, 0.00063] & Inconcl. \\
@@ -470,18 +516,6 @@ Resource values are hardware-bound descriptors rather than cross-device
 efficiency claims. For the Stage5A transaction, retrieval reconstruction took
 8.544 seconds; BGE and BGE-native \prot generation took 887.650 and
 884.198 seconds, respectively; recorded GPU peak memory was 3.592 GiB.
-
-\begin{figure*}[t]
-  \centering
-  \includegraphics[width=0.96\textwidth]{../figures_stage5r/figure3_strong_dense_and_displacement.pdf}
-  \caption{\textbf{Strong-retriever boundary and evidence displacement.}
-  Panel A compares each structural method only with BGE inside its own frozen
-  Stage4H, Stage4I, or Stage5A boundary; the groups are not pooled. Panel B
-  reports post-decision descriptive Gold evidence added and displaced. These
-  counts did not control selection or advancement and do not replace
-  end-to-end answer evaluation.}
-  \label{fig:displacement}
-\end{figure*}
 
 Post-decision Gold audits clarify why coverage and answer quality diverge
 (Figure~\ref{fig:displacement}). In the BGE-native \prot condition,
@@ -528,11 +562,19 @@ independently confirm the placement increment, and neither placement
 experiment establishes that \prot exceeds BGE.
 
 \paragraph{Facet effects depend on semantic space.}
-Facet hyperedges help in the frozen MiniLM system, but their increments are
-inconclusive in cross-space and BGE-native studies. Query-to-ball geometry,
-seed identities, facet eligibility, and competition with the base ranking all
-depend on representation space. The MiniLM effect is therefore not transported
-to BGE.
+Facet-conditioned selection beats the centroid-only NoFacet arm in the frozen
+MiniLM system, but its increments are inconclusive in cross-space and
+BGE-native studies. Query-to-ball geometry, seed identities, facet eligibility,
+and competition with the base ranking all depend on representation space. The
+MiniLM effect is therefore neither transported to BGE nor interpreted as
+superiority over untested diversity/coverage selectors.
+
+\paragraph{Failure occurs at selection and displacement layers.}
+Frozen controller audits locate failure at selection and displacement:
+resource budgeting retained harm more often than gain, the query-level score
+reversed direction, and a candidate-level probe remained below its advancement
+gate (Table~\ref{tab:failure-audit}). These post-Gold development results are
+explanatory, not confirmation; complementary-candidate detection remains open.
 
 \paragraph{Development is not confirmation.}
 The positive BGE-native development result justified opening one frozen
@@ -560,6 +602,9 @@ granular-ball structure lacks an independent ablation claim. Protected
 insertion has inconsistent independent evidence: Stage4I placement is
 supported, while Stage4H and Stage5A protection-related contrasts are
 inconclusive. Facet evidence is representation- and implementation-dependent.
+No matched relevance--diversity, maximum-coverage, or other simple completion
+selector was evaluated, so the hyperedge representation has not been shown
+necessary or superior to such alternatives.
 
 The HotpotQA training split may have appeared in generator pretraining. The
 project can guarantee only that its own retrieval and evaluation respected the
@@ -587,10 +632,12 @@ model weights are not part of the manuscript package.
 
 \section{Conclusion}
 
-\hgrag is a protected high-order evidence-completion framework for constrained
+\hgrag is a protected structured evidence-completion framework for constrained
 multi-hop retrieval. Across three frozen boundaries, it repeatedly improves a
-historical compact MiniLM backbone, and facet hyperedges contribute within the
-frozen MiniLM system. The evidence also draws a clear limit: the original
+historical compact MiniLM backbone, and facet-conditioned selection improves
+over the frozen centroid-only comparator. This does not isolate granular-ball
+necessity or establish superiority over generic diversity/coverage selection.
+The evidence also draws a clear limit: the original
 method underperforms strong BGE, while neither cross-space sidecar integration
 nor BGE-native reconstruction establishes an incremental answer-quality gain
 over BGE. Protected placement can matter for a fixed candidate set, yet
@@ -657,6 +704,45 @@ venue's policy before submission.
   \label{fig:boundary}
 \end{figure*}
 
+\section{Frozen Failure Audit}
+
+\begin{figure*}[h]
+  \centering
+  \includegraphics[width=0.96\textwidth]{../figures_stage5r/figure3_strong_dense_and_displacement.pdf}
+  \caption{\textbf{Strong-retriever boundary and evidence displacement.}
+  Panel A compares each structural method only with BGE inside its own frozen
+  Stage4H, Stage4I, or Stage5A boundary; the groups are not pooled. Panel B
+  reports post-decision descriptive Gold evidence added and displaced. These
+  counts did not control selection or advancement and do not replace
+  end-to-end answer evaluation.}
+  \label{fig:displacement}
+\end{figure*}
+
+\begin{table*}[h]
+\centering
+\small
+\begin{tabular}{@{}p{0.23\textwidth}p{0.49\textwidth}p{0.22\textwidth}@{}}
+\toprule
+Layer & Frozen observation & Evidential role \\
+\midrule
+Static expansion & Repeated compact-MiniLM answer-F1 gains, but query-level
+gain and harm coexist & Confirmatory, bounded \\
+Resource controller & Retained 47/94 gain and 53/69 harm queries; retention
+gap $-0.26812$; two of six gates passed & Valid negative development result \\
+Query score & Gain-vs-harm AUROC 0.39269 [0.30558, 0.48150] & Exploratory,
+direction reversed \\
+Candidate probe & AUROC 0.64310 [0.55520, 0.72974], AP 0.72198; Brier 0.26321
+vs.\ 0.25338 prevalence baseline & Exploratory, inconclusive \\
+Strong-retriever displacement & Small or mixed net Gold changes did not yield
+positive answer-F1 relative to BGE & Post-decision descriptive \\
+\bottomrule
+\end{tabular}
+\caption{Failure analysis from frozen Stage4B--Stage4D and strong-retriever
+audits. Exploratory and post-decision rows explain observed failure modes but
+do not create new confirmatory claims.}
+\label{tab:failure-audit}
+\end{table*}
+
 \section{Efficiency and Verification Summary}
 
 \begin{table*}[h]
@@ -701,6 +787,10 @@ BGE-native placement increment & Inconclusive & Stage5A \\
 BGE-native facet increment & Inconclusive & Stage5A \\
 Additional-generator transfer & Inconclusive & One Gemma mobile-QAT setting \\
 Flat granular-ball control & Not fairly defined & No matched contrast \\
+Granular balls are necessary & Not established & Flat contrast undefined \\
+Facet hyperedges beat generic diversity/coverage & Not tested & No matched
+alternative selector \\
+Open-domain deployment value & Not tested & Closed candidates only \\
 \bottomrule
 \end{tabular}
 \caption{The manuscript's claim system. Inconclusive rows are not equivalence

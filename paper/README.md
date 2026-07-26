@@ -2,13 +2,14 @@
 
 本目录只组织可由仓库证据支持的论文内容，不保存原始数据、模型、embedding cache 或未验证结果。
 
-当前状态为 `ACL_ANONYMOUS_FIRST_DRAFT_COMPLETE` / `SUBMISSION_METADATA_PENDING`：Stage4E–Stage5A 科学实验线已经完成并冻结，Stage5R 已完成论文、引用、图表、supplement、venue/license、联合审计与匿名 ACL 初稿，不启动新算法实验。作者、基金、COI、唯一 venue 和项目 license 尚待人类事实绑定，因此不是 `SUBMISSION_READY`。
+当前状态为 `WEAK_REJECT_REVISION_COMPLETE` / `SUBMISSION_METADATA_PENDING`：Stage4E–Stage5A 科学实验线已经完成并冻结；Stage5R 已按 weak-reject 审核完成主张收缩、方法精确定义、现有基线/消融完整呈现和失败分析，不启动新算法实验。作者、基金、COI、唯一 venue 和项目 license 尚待人类事实绑定，因此不是 `SUBMISSION_READY`。
 
 当前文件：
 
-- [Anonymous ACL first-draft PDF](latex/main.pdf)：12 页匿名初稿，正文 8 页、参考文献 2 页、附录内容 2 页；
+- [Reviewer-responsive anonymous ACL draft PDF](latex/main.pdf)：13 页匿名论文稿，正文第 1–8 页，back matter/参考文献第 9–10 页，附录图表第 11–13 页；
 - [Anonymous ACL LaTeX source](latex/main.tex)：使用冻结证据、官方 ACL 样式快照和 23 条已核验参考文献；
 - [LaTeX build status](latex/DRAFT_BUILD_STATUS.md)：精确 Bytes/SHA、编译环境、页面与引用检查；
+- [Weak-reject revision record](WEAK_REJECT_REVISION_2026-07-26.md)：四项审核缺口、逐项修订、仍需新实验的边界；
 - [Stage5R English manuscript](MANUSCRIPT_CORE_DRAFT_STAGE5R.md)：已纳入 Stage5A、引用已绑定的完整英文核心稿；
 - [Stage5R manuscript blueprint](STAGE5R_MANUSCRIPT_BLUEPRINT.md)：唯一推荐标题、中心论点、主张层级和提交边界；
 - [Stage5R core tables](STAGE5R_CORE_TABLES.md)：从冻结 JSON/CSV 自动生成的五张核心表；
@@ -54,4 +55,6 @@
 - Stage4H 必须同时写明 Full−Dense `SUPPORTED`、Full−StrongDense `NEGATIVE`、NoProtection `INCONCLUSIVE`、NoFacet `SUPPORTED`、flat `NOT_FAIRLY_DEFINED`；不得只保留有利消融；
 - Stage4I 必须把 Protected−BGE `INCONCLUSIVE`、Protected−Unprotected `SUPPORTED` 与 Protected−NoFacet `INCONCLUSIVE` 分层写明；placement 支持不得替代核心 strong-dense comparison；
 - Stage5A 必须把 BGE-native Protected−BGE、Protected−Unprotected 与 Protected−NoFacet 全部写为 `INCONCLUSIVE`；Development `C10 +0.003143` 仅为选择证据，净 Gold `+1/+1` 仅为 post-decision descriptive；
+- 不得把 Full−NoFacet 写成 granular-ball 必要性，或写成 hyperedge 优于任意 diversity/coverage selector；前者未建立，后者未测试；
+- 不得写成已经改善现代强检索器或具有 full-wiki/open-domain 可推广价值；Full−BGE 为负，两个 BGE 扩展边界不确定，开放域未测试；
 - 所有数字必须能定位到 tracked result/report，或明确标记为 protocol parameter。

@@ -11,9 +11,10 @@
 | [REPRODUCIBILITY](REPRODUCIBILITY.md) | 当前环境、冻结 SHA、工件与复现边界 |
 | [ROADMAP](ROADMAP.md) | 完整研究时间线与阶段状态 |
 | [Stage5R revision card](STAGE5R_PMR_MANUSCRIPT_REVISION_CARD.md) | Stage5A 后论文重构范围、派生输出、测试、锁与完成状态 |
-| [Anonymous ACL first-draft PDF](../paper/latex/main.pdf) | 当前 12 页匿名论文初稿；正文 8 页、参考文献 2 页、附录内容 2 页 |
+| [Reviewer-responsive anonymous ACL draft PDF](../paper/latex/main.pdf) | 13 页匿名论文稿；正文第 1–8 页，back matter/参考文献第 9–10 页，附录图表第 11–13 页 |
 | [Anonymous ACL LaTeX source](../paper/latex/main.tex) | 使用官方 ACL 样式快照、冻结 Stage5A 证据和已核验参考文献的投稿格式源码 |
 | [LaTeX draft build status](../paper/latex/DRAFT_BUILD_STATUS.md) | 初稿 Bytes/SHA、编译环境、引用、匿名性和视觉检查结果 |
+| [Weak-reject revision record](../paper/WEAK_REJECT_REVISION_2026-07-26.md) | 四项审核缺口、已完成修订、仍需新实验的证据边界 |
 | [Stage5R English manuscript](../paper/MANUSCRIPT_CORE_DRAFT_STAGE5R.md) | 纳入 Stage5A 后的完整英文核心稿；当前科学证据完整，投稿元数据待作者绑定 |
 | [Stage5R blueprint](../paper/STAGE5R_MANUSCRIPT_BLUEPRINT.md) | 唯一推荐标题、中心论点、主张层级与完成边界 |
 | [Stage5R core tables](../paper/STAGE5R_CORE_TABLES.md) | 从冻结 JSON/CSV 自动生成的五张核心表 |

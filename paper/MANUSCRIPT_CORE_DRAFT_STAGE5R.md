@@ -31,7 +31,9 @@ answers. Independent verification, Gold isolation, deterministic reruns, and
 complete reporting of positive, negative, inconclusive, and undefined outcomes
 support a bounded conclusion: tested structural completion can recover evidence
 gaps in a compact historical backbone, but no incremental answer-quality value
-has been established over strong BGE.
+has been established over strong BGE. The component contrast is against
+centroid-only ball expansion; neither granular-ball necessity nor hyperedge
+superiority over a generic diversity/coverage selector has been established.
 
 ## 1. Introduction
 
@@ -74,9 +76,10 @@ verified.
 
 The results support three bounded positive claims. First, static HGRAG
 repeatedly improves answer F1 over the historical MiniLM Dense backbone under
-the frozen Qwen boundaries. Second, facet hyperedges have incremental value in
-the frozen MiniLM system. Third, when the Stage4I candidate set is held
-identical, protected placement is better than direct unprotected placement.
+the frozen Qwen boundaries. Second, facet-conditioned selection improves over
+the specific centroid-only NoFacet ablation in the frozen MiniLM system. Third,
+when the Stage4I candidate set is held identical, protected placement is better
+than direct unprotected placement.
 The same evidence establishes a strong-retriever boundary: original Full is
 clearly below BGE, and neither the cross-space sidecar nor BGE-native
 reconstruction establishes an answer-quality increment over BGE. We do not
@@ -86,13 +89,14 @@ effect.
 
 Our contribution is consequently empirical as well as methodological:
 
-1. a protected high-order evidence-completion construction under a fixed Top-k
-   budget;
+1. a fully specified Gold-free evidence-completion construction under a fixed
+   Top-k budget;
 2. a multi-boundary evaluation that retains compact-backbone gains and
    strong-retriever limits in one claim system;
-3. component evidence that distinguishes candidate construction from placement;
-4. direct evidence that Gold-count changes do not substitute for end-to-end
-   answer evaluation; and
+3. component evidence that distinguishes candidate construction from placement
+   while exposing unidentifiable and untested contrasts;
+4. a multi-level failure audit showing why evidence gain, displacement,
+   selection, and answer utility diverge; and
 5. a traceable protocol with Gold isolation, frozen artifacts, deterministic
    reruns, and independent verification.
 
@@ -147,6 +151,14 @@ retrieved text can condition language models without parameter updates
 complete recall and evidence recall as supporting measurements. Post-decision
 Gold transitions describe a mechanism but do not determine efficacy.
 
+A simpler completion rule could combine relevance with diversity or uncovered
+query-term coverage without constructing high-order relations. The NoFacet arm
+in this study is narrower: it preserves granular-ball geometry and selects up
+to two eligible balls by query-to-centroid score. It is therefore a matched
+test of the frozen facet-conditioned selector against centroid-only ball
+expansion, not a comparison with all relevance–diversity or coverage
+objectives.
+
 ### 2.5 Evaluation, reproducibility, and negative evidence
 
 KILT emphasizes provenance-aware evaluation in knowledge-intensive tasks
@@ -177,14 +189,21 @@ supporting unit, or generator output enters this construction.
 ### 3.2 Adaptive granular balls
 
 Each query's candidate embeddings begin as one root set. For a current ball
-\(B\), the implementation computes a normalized centroid, cosine distances to
-that centroid, a radius equal to the maximum distance, and compactness equal to
-one minus the mean distance. A ball is eligible for a deterministic two-seed
-split when depth is below six, the set can support two children of at least two
-units, and its size or radius crosses the frozen split condition. Each unit is
-assigned to the closer seed; the split is retained only if both children meet
-the minimum size. The resulting partition adapts local granularity to candidate
-geometry rather than imposing a fixed cluster count.
+\(B\),
+
+\[
+c_B=\operatorname{norm}\left(\frac{1}{|B|}\sum_{i\in B}\hat e_i\right),
+\qquad d_i=1-\hat e_i^\top c_B,
+\]
+
+with radius \(r_B=\max_{i\in B}d_i\) and compactness
+\(1-|B|^{-1}\sum_{i\in B}d_i\). In the compact MiniLM variant, \(B\) is split
+iff its depth is below 6, \(|B|\ge 4\), and either \(|B|>3\) or \(r_B>0.78\).
+The first seed is the unit farthest from \(c_B\); the second has minimum cosine
+similarity to the first. Each unit is assigned to the seed with higher cosine
+similarity. A split is retained only when both children contain at least two
+units. Ties preserve frozen candidate order. These constants are frozen
+implementation parameters, not learned quantities.
 
 ### 3.3 Query-aware facet hyperedges
 
@@ -196,12 +215,29 @@ hyperedge only if it introduces a new query term and passes frozen gates on ball
 size, ball score or seed proximity, units per new term, and shared-term
 redundancy.
 
-The frozen facet score combines the new-facet ratio, total-facet ratio,
-query-to-ball score, seed diversity, redundancy, and size. Hyperedges below
-`0.10` are rejected; at most two edge/ball structures are selected. Units
-inside an accepted ball remain ordered by the original MiniLM cosine and
-`unit_id`; the facet score does not alter the unit score. Thus, the hyperedge
-selects candidate regions rather than learning a new dense ranker.
+For a candidate ball \(B\), let \(n_B\) be the number of query terms newly
+covered beyond the seeds, \(t_B\) the total number of query terms in \(B\),
+\(m\) the query-term count, \(b_B=\hat e_q^\top c_B\), \(a_B\) the maximum
+cosine to a seed centroid, and \(\rho_B\) the fraction of \(B\)'s facet terms
+already covered. The compact frozen score is
+
+\[
+h_B =
+0.45\frac{n_B}{\max(m,1)}
++0.20\frac{t_B}{\max(m,1)}
++0.20b_B
++0.15(1-a_B)
+-0.20\rho_B
+-0.05\frac{|B|}{8}.
+\]
+
+A candidate must introduce at least one new term, contain at most 8 units,
+satisfy \(b_B\ge0.12\) or \(a_B\ge0.05\), have at most 6 units per new term,
+obey \(\rho_B\le0.90\), and have \(h_B\ge0.10\). Candidates are ordered by
+descending \(h_B\) and then `edge_id`; at most two distinct balls are selected.
+Units inside an accepted ball remain ordered by original MiniLM cosine and
+`unit_id`; the frozen unit-level facet bonus is zero. Thus the hyperedge selects
+candidate regions rather than learning a new dense ranker.
 
 ### 3.4 Protected bounded insertion
 
@@ -311,7 +347,9 @@ budget. They do not establish advantage over modern strong retrievers.
 
 Within the frozen MiniLM system, Full−NoFacet is
 `+0.01336 [0.00341, 0.02343]`, supporting an incremental role for facet
-hyperedges. Full−NoProtection is
+conditioning relative to the specific centroid-only ball selector. It does not
+establish superiority over generic relevance–diversity or coverage selection.
+Full−NoProtection is
 `+0.00354 [-0.00675, 0.01389]`, so the independent contribution of protection
 is inconclusive on that boundary. A flat-unit granular-ball contrast is
 `NOT_FAIRLY_DEFINED`: ball seeds, split gates, edge budgets, and radii have no
@@ -327,6 +365,18 @@ Protected−Unprotected is `+0.003367 [-0.001285, 0.008026]`, and
 Protected−NoFacet is `+0.000631 [-0.004220, 0.005365]`; both are
 inconclusive. Component effects are therefore system-dependent.
 
+The complete ablation state is:
+
+| Contrast | Answer-F1 difference [95% CI] | State |
+|---|---:|---|
+| MiniLM Full−NoFacet | `+0.01336 [0.00341, 0.02343]` | Supported |
+| MiniLM Full−NoProtection | `+0.00354 [-0.00675, 0.01389]` | Inconclusive |
+| Sidecar Protected−Unprotected | `+0.01122 [0.00129, 0.02104]` | Supported |
+| Sidecar Protected−NoFacet | `-0.00743 [-0.01616, 0.00132]` | Inconclusive |
+| BGE-native Protected−Unprotected | `+0.003367 [-0.001285, 0.008026]` | Inconclusive |
+| BGE-native Protected−NoFacet | `+0.000631 [-0.004220, 0.005365]` | Inconclusive |
+| Flat granular-ball control | — | Not fairly defined |
+
 ### 5.3 Strong-dense baseline boundary
 
 The pre-specified BGE baseline outperforms original Full. The
@@ -335,6 +385,12 @@ dataset-equal-weight Full−BGE difference is
 from an uncertain contrast: the complete interval lies below zero. It rules out
 the claim that the original compact-backbone HGRAG system is competitive with
 this strong BGE retriever on the frozen boundary.
+
+Two additional Stage4H baselines also prevent a narrow Dense-only reading.
+Full−BM25 is `-0.00755 [-0.02259, 0.00773]`, and Full−Dense–BM25 hybrid is
+`-0.00320 [-0.01591, 0.00942]`. Both are inconclusive and neither supports
+superiority. BGE remains the decisive strong baseline because the entire
+Full−BGE interval is negative.
 
 ### 5.4 Cross-space sidecar evaluation
 
@@ -428,22 +484,36 @@ However, Stage5A does not independently confirm the placement increment, and
 neither placement experiment establishes that Protected exceeds BGE. Placement
 is a mechanism control, not an efficacy substitute.
 
-### 6.5 Facet effects depend on semantic space
+### 6.5 Facet effects depend on semantic space and comparator
 
-Facet hyperedges help in the frozen MiniLM system, but their increments are
-inconclusive in the cross-space and BGE-native studies. The query-to-ball
-geometry, seed identities, facet eligibility, and competition with the base
-ranking all depend on representation space. The Stage4H effect is therefore
-reported as system-specific rather than transported to BGE.
+Facet-conditioned selection beats the centroid-only NoFacet arm in the frozen
+MiniLM system, but its increments are inconclusive in the cross-space and
+BGE-native studies. The query-to-ball geometry, seed identities, facet
+eligibility, and competition with the base ranking all depend on representation
+space. The Stage4H effect is therefore neither transported to BGE nor
+interpreted as superiority over untested diversity/coverage selectors.
 
-### 6.6 Development is not confirmation
+### 6.6 Failure occurs at selection and displacement layers
+
+The closed controller audits explain why a useful static arm did not yield a
+reliable adaptive policy. A resource-constrained controller retained 47 of 94
+gain queries but 53 of 69 harm queries (retention gap `-0.26812`) and passed
+only two of six advancement gates. Its raw query score was directionally
+reversed for gain versus harm (AUROC `0.39269 [0.30558, 0.48150]`). A later
+candidate-level probe recovered partial separation (AUROC
+`0.64310 [0.55520, 0.72974]`; AP `0.72198`), but missed the `0.65` gate and had
+worse Brier score than the prevalence baseline (`0.26321` vs `0.25338`). These
+post-Gold development audits are explanatory, not confirmation; they show that
+detecting complementary candidates and avoiding displacement remain unresolved.
+
+### 6.7 Development is not confirmation
 
 The positive BGE-native development result justified opening one frozen
 confirmation transaction. It did not license retroactive configuration search
 after confirmation. Keeping the two roles separate prevents selection
 optimism from becoming a confirmatory claim.
 
-### 6.7 Inconclusive is not equivalent
+### 6.8 Inconclusive is not equivalent
 
 The sidecar, BGE-native, and generator-transfer intervals cross zero. Without a
 pre-specified equivalence margin and an equivalence test, these results cannot
@@ -451,7 +521,7 @@ be called equal. They also do not establish harm. The correct statement is that
 the current data and frozen tests do not resolve the direction within their
 intervals.
 
-### 6.8 Why the algorithm search stops here
+### 6.9 Why the algorithm search stops here
 
 Continuing to tune BGE-native parameters on the confirmation boundary would
 convert confirmation into development and invalidate the intended evidence
@@ -474,7 +544,9 @@ the granular-ball structure lacks an independent ablation claim. Sixth,
 protected insertion has inconsistent independent evidence: Stage4I placement
 is supported, while Stage4H and Stage5A protection-related contrasts are
 inconclusive. Seventh, facet evidence is representation- and
-implementation-dependent.
+implementation-dependent. No matched relevance–diversity, maximum-coverage, or
+other simple completion selector was evaluated, so the hyperedge representation
+has not been shown necessary or superior to such alternatives.
 
 Eighth, the HotpotQA training split may have appeared in generator pretraining.
 The project can guarantee only that its own retrieval and evaluation respected
@@ -507,10 +579,12 @@ submission blocker rather than being inferred.
 
 ## 9. Conclusion
 
-HyperGranular-RAG is a protected high-order evidence-completion framework for
+HyperGranular-RAG is a protected structured evidence-completion framework for
 constrained multi-hop retrieval. Across three frozen boundaries, it repeatedly
-improves a historical compact MiniLM backbone, and facet hyperedges contribute
-within the frozen MiniLM system. The evidence also draws a clear limit: the
+improves a historical compact MiniLM backbone, and facet-conditioned selection
+improves over the frozen centroid-only comparator. This does not isolate
+granular-ball necessity or establish superiority over generic
+diversity/coverage selection. The evidence also draws a clear limit: the
 original method underperforms strong BGE, while neither cross-space sidecar
 integration nor BGE-native reconstruction establishes an incremental
 answer-quality gain over BGE. Protected placement can matter for a fixed

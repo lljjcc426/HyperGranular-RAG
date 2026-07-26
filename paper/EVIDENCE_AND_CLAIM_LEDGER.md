@@ -18,7 +18,7 @@ Stage5R-PMR 论文定位：`protected high-order evidence completion for constra
 | 静态 HGRAG 在冻结 same-domain closed-distractor 边界上改善端到端答案质量 | verified official positive result | Stage4E：answer F1 `0.42150→0.43628`；paired delta `+0.01478 [0.00020,0.02988]`；final verification PASS | 仅限 HotpotQA deterministic 1,000-query、Qwen2.5-1.5B、Top-20；F1 下界接近 0，不写成大幅或普遍提升 |
 | 静态 HGRAG 的 answer-F1 增益在新的 MuSiQue 边界上复现 | verified cross-dataset replication | Stage4F：answer F1 `0.13595→0.14735`；paired delta `+0.01140 [0.00450,0.01835]`；EM guard 与 final verification PASS | 可写为两个 frozen closed-candidate 多跳 QA 数据集上的复制；不可写成 full-wiki/open-domain、跨生成器或普遍有效 |
 | 静态 HGRAG 的 retrieval gain 在一个额外预指定生成器配置下未获得明确复制或负向证据 | verified generator-transfer replication，inconclusive | Stage4G：HotpotQA F1 delta `+0.01265 [-0.00220,0.02744]`；MuSiQue `-0.00232 [-0.00685,0.00208]`；equal-weight `+0.00516 [-0.00262,0.01295]`；final verification PASS | 只能写为 one-additional-generator inconclusive；Gemma 架构与 mobile-QAT 效应不可分离；不建立普遍鲁棒性或架构排名 |
-| Static q25 full 相对历史 MiniLM Dense 的增益在两个新边界上再次出现，且 facet-hyperedge 有系统内增量价值 | verified component/baseline evaluation | Stage4H：Full−Dense 等权 F1 `+0.01357 [0.00491,0.02233]`；Full−NoFacet `+0.01336 [0.00341,0.02343]`；Holm 后均通过 | 只限固定 Qwen、两个 closed-candidate 新边界和冻结实现；消融支持增量价值，不自动证明一般因果机制 |
+| Static q25 full 相对历史 MiniLM Dense 的增益在两个新边界上再次出现，且 facet-conditioned selection 相对 centroid-only NoFacet 有系统内增量价值 | verified component/baseline evaluation | Stage4H：Full−Dense 等权 F1 `+0.01357 [0.00491,0.02233]`；Full−NoFacet `+0.01336 [0.00341,0.02343]`；Holm 后均通过 | 只限固定 Qwen、两个 closed-candidate 新边界和冻结实现；NoFacet 不是通用 diversity/coverage 对照，不能据此主张粒球必要性或 hyperedge 优于任意简单 selector |
 | Full 方法不优于事前绑定的 BGE strong dense | verified negative strong-baseline result | Stage4H：Full−StrongDense 等权 F1 `-0.03998 [-0.05393,-0.02621]`；EM `-0.04067 [-0.05483,-0.02683]` | 必须如实保留；不得用 Full−MiniLM Dense 正结果声称优于强稠密检索 |
 | Protected insertion 的独立贡献未确定，粒球 flat 对照未公平定义 | verified inconclusive/design boundary | Stage4H：Full−NoProtection F1 `+0.00354 [-0.00675,0.01389]`；flat=`NOT_FAIRLY_DEFINED` | 不得写成保护无作用、等价或已确认；不得把缺失 flat 对照当作粒球贡献证据 |
 | 当前冻结 HGRAG sidecar 没有建立相对 BGE strong dense 的互补增益 | verified strong-dense sidecar result，inconclusive | Stage4I：Protected−BGE 等权 F1 `-0.00256 [-0.00998,0.00458]`；EM `-0.00233 [-0.00983,0.00467]`；final verification PASS | 只能写成该 BGE、Qwen、Top-20 和两个新 closed-candidate 边界下证据不确定；不能写成增益、伤害或等价 |
@@ -39,6 +39,8 @@ Stage4F-XDR 已完成 MuSiQue train 3,000 个新 ID 的完整事务并通过独�
 - “当前结果已 full-wiki、open-domain 或普遍跨生成器泛化”；Stage4G 只测试一个额外 Gemma mobile-QAT 配置，且联合判定 inconclusive。
 - “完整 HyperGranular-RAG 优于强稠密检索器”或“强基线比较支持完整方法”；Stage4H 对 BGE strong dense 为明确负向。
 - “protected insertion 已被独立证明必要/无效”或“粒球结构已通过 flat 消融”；Stage4H 的前者不确定，后者未公平定义。
+- “granular ball 是必要组件”；flat 对照未公平定义，现有 Full−NoFacet 不隔离粒球必要性。
+- “facet hyperedge 优于简单 diversity/coverage/maximum-coverage 方法”；冻结 NoFacet 是 centroid-only ball selector，没有运行匹配的通用替代 selector。
 - “HGRAG sidecar 改善/损害 BGE strong dense”或“二者等价”；Stage4I 核心区间跨 0，冻结结论为 `STRONG_DENSE_COMPLEMENTARITY_INCONCLUSIVE`。
 - “protected placement 获得支持，所以 HGRAG sidecar 优于 BGE”；Stage4I placement 是同一插入集合内的支持性比较，不是核心 advancement comparison。
 - “Stage4I 证明 facet 在 BGE backbone 上有效/无效”；Protected−NoFacet 区间跨 0。
@@ -90,6 +92,7 @@ Stage4H 可写七臂绝对 F1/EM/CR/ER、四个主要等权比较、Holm p、BM2
 - Full−Dense 为 `SUPPORTED`，但对照是历史 MiniLM Dense；
 - Full−StrongDense 为 `NEGATIVE`，因此不能声称 full 优于强稠密检索；
 - Full−NoFacet 为 `SUPPORTED`，只表示冻结系统内的增量价值；
+- Full−NoFacet 的对照是 centroid-only ball selection，不是通用 diversity/coverage 或 maximum-coverage selector；
 - Full−NoProtection 为 `INCONCLUSIVE`，不能解释成有效、无效或等价；
 - granular-ball flat 对照为 `NOT_FAIRLY_DEFINED`；
 - P1 effect-cost curve 为 `NOT_RUN_RESOURCE_BOUNDED`；

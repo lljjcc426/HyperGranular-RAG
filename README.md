@@ -6,8 +6,8 @@
 
 | 项目 | 当前事实 |
 |---|---|
-| 研究阶段 | Stage4E–Stage5A 科学实验线已完成并冻结；Stage5R-PMR 论文重构及匿名 ACL 初稿已完成 |
-| 状态 | `CORE_ALGORITHM_EXPERIMENTS_CLOSED` / `ACL_ANONYMOUS_FIRST_DRAFT_COMPLETE` / `SUBMISSION_METADATA_PENDING` |
+| 研究阶段 | Stage4E–Stage5A 科学实验线已完成并冻结；Stage5R-PMR 已按 weak-reject 审核完善论文 |
+| 状态 | `CORE_ALGORITHM_EXPERIMENTS_CLOSED` / `WEAK_REJECT_REVISION_COMPLETE` / `SUBMISSION_METADATA_PENDING` |
 | Stage5A 新边界 | BGE-native confirmation：HotpotQA train 1,000 + MuSiQue train 1,500；历史正式 ID overlap 0 |
 | 当前证据 | compact MiniLM 上重复小幅正向；Full 明确弱于 BGE；cross-space sidecar 与 BGE-native 增量均不确定 |
 | 当前工作 | 已建立部分确认的人工作者/投稿元数据；继续补齐英文发表姓名、导师、基金、COI、许可与唯一投稿渠道，不启动新算法实验 |
@@ -25,6 +25,7 @@ Stage5R 当前论文入口：
 - [经核验文献语料库](paper/references/VERIFIED_LITERATURE_CORPUS.md)
 - [Stage5R 图表与 Bytes/SHA manifest](paper/figures_stage5r/STAGE5R_FIGURE_MANIFEST.json)
 - [投稿前联合审计](paper/STAGE5R_PRE_SUBMISSION_AUDIT.md)
+- [Weak-reject 修订记录](paper/WEAK_REJECT_REVISION_2026-07-26.md)
 - [人工作者与投稿元数据](paper/AUTHOR_AND_SUBMISSION_METADATA.yaml)
 - [LaTeX 匿名/camera-ready 开关与构建说明](paper/latex/README.md)
 
@@ -104,6 +105,8 @@ Stage4D 和当前 controller 分支已经冻结关闭。Stage4E/4F 支持 static
 
 当前进入 [Stage5-PMC](docs/STAGE5_PMC_PAPER_MANUSCRIPT_CONSOLIDATION_CARD.md)：不再自动启动新的算法实验，而是将上述正结果、负结果、不确定结果和未定义消融整合为边界准确的论文。论文定位为面向 compact dense backbone 的 `structured evidence-completion layer`，不是普遍优于 strong dense 的新 SOTA 检索器。full-wiki 为可选、延后的未来工作；Reservation、Stage3B、U2/controller、新生成器和新 strong-retriever search 均保持锁定。
 
+最新 weak-reject 修订进一步明确：现有证据没有建立 granular-ball 必要性，没有测试 facet-hyperedge 相对通用 diversity/coverage selector 的优越性，Full 明确弱于冻结 BGE strong dense，且 full-wiki/open-domain 未测试。修订补齐了冻结方法参数、现有 BM25/hybrid/BGE 基线、完整组件结果和 Stage4B–Stage4D/strong-retriever 失败分析，但没有新增或重跑实验。
+
 ## 冻结方法边界
 
 - Dense Top-10 受保护；最终 effective-K 为 `K_q=min(20, |C_q|)`。
@@ -133,7 +136,7 @@ Stage4D 和当前 controller 分支已经冻结关闭。Stage4E/4F 支持 static
 | Stage4G-GTR | one-additional-generator controlled replication；独立验证完成 | equal-weight F1 `+0.00516 [-0.00262,0.01295]`；`GENERATOR_TRANSFER_INCONCLUSIVE` |
 | Stage4H-CBE | new-ID component/strong-baseline evaluation；独立验证完成 | Full−Dense/NoFacet supported；Full−StrongDense negative；NoProtection inconclusive；flat not defined |
 | Stage4I-SDC | new-ID strong-dense sidecar complementarity；独立验证完成 | Protected−BGE inconclusive；Protected−Unprotected supported；facet increment inconclusive |
-| Stage5-PMC | 论文整合与投稿准备；非实验阶段 | 主张、核心表、图和内部一致性审计进行中；不新增科学结果 |
+| Stage5-PMC / Stage5R | 论文整合、审核修订与投稿准备；非实验阶段 | 当前证据稿和 weak-reject 修订已完成；投稿元数据待人工绑定；不新增科学结果 |
 
 完整研究轨迹见 [ROADMAP](docs/ROADMAP.md) 和 [文档索引](docs/INDEX.md)。
 

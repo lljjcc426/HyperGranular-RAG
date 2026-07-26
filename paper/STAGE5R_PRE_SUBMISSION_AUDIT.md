@@ -6,6 +6,7 @@ Status:
 STAGE5R_PMR_COMPLETE
 CURRENT_EVIDENCE_MANUSCRIPT_COMPLETE
 ACL_ANONYMOUS_FIRST_DRAFT_COMPLETE
+WEAK_REJECT_REVISION_COMPLETE
 VERIFIED_LITERATURE_CORPUS_COMPLETE
 FIGURE_AND_TABLE_AUDIT_PASS
 CLAIM_AND_CITATION_AUDIT_PASS
@@ -13,7 +14,32 @@ SUBMISSION_METADATA_PENDING
 SUBMISSION_READY = FALSE
 ```
 
-Audit date: 2026-07-25
+Audit date: 2026-07-26
+
+## 0. Weak-reject revision audit
+
+PASS for the current frozen evidence.
+
+- The revision record is
+  [`WEAK_REJECT_REVISION_2026-07-26.md`](WEAK_REJECT_REVISION_2026-07-26.md).
+- The manuscript now states directly that the frozen evidence does not
+  establish granular-ball necessity, generic diversity/coverage-selector
+  superiority, improvement over strong BGE, or open-domain deployment value.
+- The supported Stage4H Full−NoFacet contrast is identified as
+  facet-conditioned selection versus centroid-only ball expansion, not as a
+  comparison with every simpler diversity/coverage objective.
+- The main Results expose the existing BM25 and Dense−BM25 hybrid rows, the BGE
+  negative result, and both inconclusive BGE extension families.
+- The component table includes compact, sidecar, BGE-native, and undefined-flat
+  outcomes without converting inconclusive or undefined evidence into support.
+- The method section now records the frozen ball construction, split rules,
+  facet score and gates, redundancy constraint, expansion budget, protected
+  prefix, q25 floor, and insertion cap.
+- The Discussion and appendix now separate static gains from controller
+  selection failure, reversed query-score direction, below-gate candidate
+  probing, and strong-retriever displacement.
+- No experiment, result artifact, scientific decision, or claim state was
+  changed.
 
 ## 1. Evidence audit
 
@@ -120,10 +146,10 @@ PASS with one explicit author-level blocker.
 
 ## 7. Submission readiness
 
-The scientific package and the anonymous ACL first draft are complete for
-current evidence, but the package is not ready for a submission portal. The
-tracked draft comprises `paper/latex/main.tex` and a visually inspected
-12-page `paper/latex/main.pdf`; exact identities and build checks are recorded
+The scientific package and the reviewer-responsive anonymous ACL draft are
+complete for current evidence, but the package is not ready for a submission
+portal. The tracked draft comprises `paper/latex/main.tex` and a visually
+inspected PDF; exact identities and build checks are recorded
 in [`latex/DRAFT_BUILD_STATUS.md`](latex/DRAFT_BUILD_STATUS.md). The canonical
 partial metadata record is
 [`AUTHOR_AND_SUBMISSION_METADATA.yaml`](AUTHOR_AND_SUBMISSION_METADATA.yaml).

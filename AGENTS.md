@@ -41,6 +41,7 @@
 - 当前核心表：`paper/STAGE5R_CORE_TABLES.md`
 - 当前论文图合同与追溯：`paper/figures_stage5r/FIGURE_CONTRACTS_AND_CAPTIONS.md`
 - 当前投稿前审计：`paper/STAGE5R_PRE_SUBMISSION_AUDIT.md`
+- 当前 weak-reject 修订记录：`paper/WEAK_REJECT_REVISION_2026-07-26.md`
 - 当前文献语料库：`paper/references/VERIFIED_LITERATURE_CORPUS.md`
 - 当前人工投稿元数据：`paper/AUTHOR_AND_SUBMISSION_METADATA.yaml`
 - 人工确认历史：`paper/AUTHOR_AND_SUBMISSION_METADATA_HISTORY.md`
@@ -145,6 +146,7 @@ CORE_ALGORITHM_EXPERIMENTS_CLOSED
 STAGE5R_PMR_COMPLETE
 CURRENT_EVIDENCE_MANUSCRIPT_COMPLETE
 ACL_ANONYMOUS_FIRST_DRAFT_COMPLETE
+WEAK_REJECT_REVISION_COMPLETE
 VERIFIED_LITERATURE_CORPUS_COMPLETE
 FIGURE_AND_TABLE_AUDIT_PASS
 CLAIM_AND_CITATION_AUDIT_PASS
@@ -185,7 +187,7 @@ SCIENTIFIC_SEMANTIC_CHANGE_REQUIRES_PAUSE
 - Stage4I 正式 input/eligibility manifests、两套 embedding cache identities、rankings、candidate trace、main/subset outputs、Gold summaries、mechanism audit、decisions、pre-Gold/final verification 与 artifact manifest 均不可覆盖或重跑。
 - Stage5A-BNH 已在独立零重叠 HotpotQA 1,000 + MuSiQue 1,500 confirmation 边界完成 BGE-native 四臂评价。Protected−BGE 等权 F1 为 `-0.003046 [-0.006880,0.000631]`、EM 为 `-0.003667 [-0.007667,0.000004]`，核心状态为 `BGE_NATIVE_HGRAG_INCONCLUSIVE`；placement 与 facet 增量也均不确定。Development `C10 +0.003143` 仅为配置选择证据。
 - Stage5A 正式 development/confirmation rankings、predictions、prompt/query audits、summaries、mechanism/efficiency、decisions、final verification 与 manifests 均不可覆盖或重跑。Stage5R 只读取冻结证据生成论文、引用、表图和投稿材料。
-- Stage5R-PMR 已完成英文核心稿、23 条经核验文献、五张核心表、五组四格式图、supplement、venue/license/metadata 模板、联合审计及 12 页匿名 ACL 初稿。人工元数据现以 `paper/AUTHOR_AND_SUBMISSION_METADATA.yaml` 为唯一权威来源；`TBD_HUMAN_INPUT` / `TBD_HUMAN_CONFIRMATION` 不得自动填充，任何作者顺序、通讯作者、基金、许可或目标场所变更必须追加到人工确认历史。状态保持 `SUBMISSION_METADATA_PENDING`，不得写成 `SUBMISSION_READY`。
+- Stage5R-PMR 已完成英文核心稿、23 条经核验文献、五张核心表、五组四格式图、supplement、venue/license/metadata 模板、联合审计及 13 页匿名 ACL 论文稿；正文保持在第 1–8 页。2026-07-26 weak-reject 修订已明确 granular-ball 必要性未建立、通用 diversity/coverage selector 未测试、strong-BGE 边界为负/不确定及 open-domain 未测试。人工元数据现以 `paper/AUTHOR_AND_SUBMISSION_METADATA.yaml` 为唯一权威来源；`TBD_HUMAN_INPUT` / `TBD_HUMAN_CONFIRMATION` 不得自动填充，任何作者顺序、通讯作者、基金、许可或目标场所变更必须追加到人工确认历史。状态保持 `SUBMISSION_METADATA_PENDING`，不得写成 `SUBMISSION_READY`。
 
 ## 4. 科研不可变边界
 
