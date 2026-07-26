@@ -21,8 +21,9 @@ VERIFIED_LITERATURE_CORPUS_COMPLETE
 FIGURE_AND_TABLE_AUDIT_PASS
 CLAIM_AND_CITATION_AUDIT_PASS
 SUBMISSION_METADATA_PENDING
-STAGE6_SVE_LEVEL_A_PROGRAM_DRAFT
-NO_STAGE6_EXECUTION_AUTHORIZED
+STAGE6_SVE_LEVEL_A_PROGRAM_ACCEPTED
+STAGE6A_SMC_FULL_TRANSACTION_AUTHORIZED
+STAGE6A_EXECUTION_PENDING
 FULL_WIKI_NOT_AUTHORIZED
 RESERVATION_LOCKED
 STAGE3B_LOCKED
@@ -31,10 +32,11 @@ U2_NOT_AUTHORIZED
 
 Stage5R 的可复现入口是 [匿名 ACL 论文稿 PDF](../paper/latex/main.pdf)、[LaTeX 源码](../paper/latex/main.tex)、[初稿构建状态](../paper/latex/DRAFT_BUILD_STATUS.md)、[英文核心稿](../paper/MANUSCRIPT_CORE_DRAFT_STAGE5R.md)、[weak-reject 修订记录](../paper/WEAK_REJECT_REVISION_2026-07-26.md)、[核心表](../paper/STAGE5R_CORE_TABLES.md)、[图形合同](../paper/figures_stage5r/FIGURE_CONTRACTS_AND_CAPTIONS.md)、[figure manifest](../paper/figures_stage5r/STAGE5R_FIGURE_MANIFEST.json) 和 [联合审计](../paper/STAGE5R_PRE_SUBMISSION_AUDIT.md)。所有 Stage4E–Stage5A 正式工件保持只读。
 
-Stage6 当前只有
-[Level A program draft](STAGE6_SVE_STRONG_VALUE_EVIDENCE_PROGRAM_DRAFT.md)；
-尚无 Stage6 配置、代码、输入、模型绑定或结果可复现，也没有授权下载 full-wiki、
-读取新 Gold 或执行外部方法。该草案不改变任何既有冻结 SHA。
+Stage6A 已按
+[accepted protocol](STAGE6_SVE_STRONG_VALUE_EVIDENCE_PROGRAM.md)
+获得一次阶段级完整授权；当前尚无 Stage6 配置、代码、输入、模型绑定或结果可复现。
+Stage6B full-wiki、Stage6C 外部方法、reservation、Stage3B 和 U2 仍未授权。该协议
+状态更新不改变任何既有冻结 SHA。
 
 作者与投稿信息的唯一权威来源是
 [`paper/AUTHOR_AND_SUBMISSION_METADATA.yaml`](../paper/AUTHOR_AND_SUBMISSION_METADATA.yaml)；

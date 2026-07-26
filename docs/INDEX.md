@@ -10,7 +10,7 @@
 | [项目 AGENTS](../AGENTS.md) | 当前治理、暂停边界和 GitHub 规则 |
 | [REPRODUCIBILITY](REPRODUCIBILITY.md) | 当前环境、冻结 SHA、工件与复现边界 |
 | [ROADMAP](ROADMAP.md) | 完整研究时间线与阶段状态 |
-| [Stage6-SVE program draft](STAGE6_SVE_STRONG_VALUE_EVIDENCE_PROGRAM_DRAFT.md) | 现代强检索器、匹配控制、full-wiki 与结构化 RAG 公平对比的分阶段 Level A 草案；当前未授权执行 |
+| [Stage6-SVE protocol](STAGE6_SVE_STRONG_VALUE_EVIDENCE_PROGRAM.md) | 已接受的强检索器与匹配控制协议；Stage6A 全事务已授权，Stage6B/6C 仍为条件阶段 |
 | [Stage5R revision card](STAGE5R_PMR_MANUSCRIPT_REVISION_CARD.md) | Stage5A 后论文重构范围、派生输出、测试、锁与完成状态 |
 | [Reviewer-responsive anonymous ACL draft PDF](../paper/latex/main.pdf) | 13 页匿名论文稿；正文第 1–8 页，back matter/参考文献第 9–10 页，附录图表第 11–13 页 |
 | [Anonymous ACL LaTeX source](../paper/latex/main.tex) | 使用官方 ACL 样式快照、冻结 Stage5A 证据和已核验参考文献的投稿格式源码 |

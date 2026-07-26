@@ -3,9 +3,9 @@
 状态：
 
 ```text
-STAGE6_SVE_LEVEL_A_PROGRAM_DRAFT
-NO_STAGE6_EXECUTION_AUTHORIZED
-STAGE6A_SMC_AWAITING_STAGE_LEVEL_AUTHORIZATION
+STAGE6_SVE_LEVEL_A_PROGRAM_ACCEPTED
+STAGE6A_SMC_FULL_TRANSACTION_AUTHORIZED
+STAGE6A_EXECUTION_PENDING
 STAGE6B_FULL_WIKI_CONDITIONAL_NOT_AUTHORIZED
 STAGE6C_DIRECT_COMPARISON_CONDITIONAL_NOT_AUTHORIZED
 RESERVATION_LOCKED
@@ -462,10 +462,10 @@ NV-Embed-v2，作者目前明确提供的 OpenIE 示例集中在 MuSiQue；若�
 
 ## 7. 授权、执行和停止边界
 
-本草案本身只授权文档规划和静态审计。Stage6A 需用户对本卡给出一次阶段级接受与
-执行授权；授权后按全局治理连续覆盖 Stage6A-0、实现、synthetic tests、三通道、
-development、configuration lock、confirmation、Gold、verifier、报告和 Git 同步，
-不恢复逐命令审批。
+本协议已获得用户一次阶段级接受与执行授权。授权按全局治理连续覆盖 Stage6A-0、
+实现、synthetic tests、三通道、development、configuration lock、confirmation、
+Gold、verifier、报告和 Git 同步，不恢复逐命令审批。授权保证完整执行与如实冻结，
+不保证统计结果为正，也不允许为了“通过”修改成功门。
 
 Stage6A 授权不自动覆盖：
 

@@ -1828,3 +1828,8 @@ was `EFCED94CC12FDDA26360AE958E40EE1C7C2D88FC4B5853CC63B27DCD91ED246A`,
 - No model, corpus or Gold was read and no experiment ran while drafting this
   program. Stage4E–Stage5A artifacts and manuscript conclusions remain
   unchanged; Reservation, Stage3B and U2 remain locked.
+- The user subsequently accepted the program and authorized the complete
+  Stage6A-SMC transaction. This authorization covers implementation,
+  Gold-free binding, development, configuration lock, confirmation, Gold,
+  independent verification, reporting and Git synchronization, but it does
+  not guarantee a positive result and does not open Stage6B or Stage6C.

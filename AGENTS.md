@@ -33,7 +33,7 @@
 - Stage5A final verification：`results/stage5a_bnh_final_verification.json`
 - Stage5-PMC 阶段卡：`docs/STAGE5_PMC_PAPER_MANUSCRIPT_CONSOLIDATION_CARD.md`
 - Stage5R 完成卡：`docs/STAGE5R_PMR_MANUSCRIPT_REVISION_CARD.md`
-- Stage6-SVE Level A 计划草案：`docs/STAGE6_SVE_STRONG_VALUE_EVIDENCE_PROGRAM_DRAFT.md`
+- Stage6-SVE 已接受协议：`docs/STAGE6_SVE_STRONG_VALUE_EVIDENCE_PROGRAM.md`
 - 当前匿名 ACL 初稿 PDF：`paper/latex/main.pdf`
 - 当前匿名 ACL LaTeX 源码：`paper/latex/main.tex`
 - 当前初稿构建状态：`paper/latex/DRAFT_BUILD_STATUS.md`
@@ -259,4 +259,4 @@ Channel A/Channel B、Gold-free/Gold-only 的代码、输入、依赖和工件�
 
 ## 8. 下一科研门
 
-Stage4B-U1、Stage4C、Stage4D 和当前 controller 线均已停止或关闭，不自动创建 U2。Stage4E–5A 均已完成并冻结。Stage6-SVE 已形成 Level A program draft，但尚未获得执行授权；当前只允许审核该草案。Stage6A 若获一次阶段级授权，可按卡内边界连续完成强检索器与匹配控制事务。Stage6B full-wiki 和 Stage6C 外部方法对比仍是条件阶段，不由 Stage6A 授权自动打开。Reservation、Stage3B、U2、新生成器、第二个新 strong-retriever search 和新 controller 继续锁定。
+Stage4B-U1、Stage4C、Stage4D 和当前 controller 线均已停止或关闭，不自动创建 U2。Stage4E–5A 均已完成并冻结。Stage6-SVE 已获 Level A 接受，Stage6A-SMC 获一次阶段级完整事务授权，可按协议连续完成强检索器与匹配控制事务；该授权保证完整执行和如实冻结，不保证统计结论为正。Stage6B full-wiki 和 Stage6C 外部方法对比仍是条件阶段，不由 Stage6A 授权自动打开。Reservation、Stage3B、U2、新生成器、第二个新 strong-retriever search 和新 controller 继续锁定。
