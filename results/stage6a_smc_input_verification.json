@@ -1,0 +1,14 @@
+{
+  "boundaries": {
+    "confirmation": {
+      "candidate_units": 146732,
+      "queries": 2800
+    },
+    "development": {
+      "candidate_units": 72692,
+      "queries": 1400
+    }
+  },
+  "development_confirmation_overlap": 0,
+  "status": "STAGE6A_INPUT_CHANNELS_VERIFIED"
+}

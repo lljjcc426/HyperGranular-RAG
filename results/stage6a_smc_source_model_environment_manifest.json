@@ -1,0 +1,271 @@
+{
+  "models": {
+    "embedding": {
+      "files": [
+        {
+          "bytes": 1570,
+          "path": ".gitattributes",
+          "sha256": "34448B82C17D60FEC9B65B1F093C115DDBAADC04BEB1B0140B6BFED2E012A930"
+        },
+        {
+          "bytes": 313,
+          "path": "1_Pooling/config.json",
+          "sha256": "37BF193FA101F19101BFAD9C31D3EB0F786E247B7B1E5CB7F007D730EED1DDBD"
+        },
+        {
+          "bytes": 17237,
+          "path": "README.md",
+          "sha256": "C34D9B7E5A267AD3FDD13227A253686BC90844FF4744A2A6A86C7C905E3D06F3"
+        },
+        {
+          "bytes": 727,
+          "path": "config.json",
+          "sha256": "B5BF1F51FC45BE473A54718CEF92448D90A1BE001BF9B9A44B8C7F10A19FEAA9"
+        },
+        {
+          "bytes": 215,
+          "path": "config_sentence_transformers.json",
+          "sha256": "10667C72DDB772627BF1780CB7F86AF8E2AE0032B8C243C731172064105C6961"
+        },
+        {
+          "bytes": 117,
+          "path": "generation_config.json",
+          "sha256": "28396D421A2108ACCE96383F6A7DE78008F7F1B17F807958F3C14C51DBFB65FB"
+        },
+        {
+          "bytes": 1671853,
+          "path": "merges.txt",
+          "sha256": "8831E4F1A044471340F7C0A83D7BD71306A5B867E95FD870F74D0C5308A904D5"
+        },
+        {
+          "bytes": 1191586416,
+          "path": "model.safetensors",
+          "sha256": "0437E45C94563B09E13CB7A64478FC406947A93CB34A7E05870FC8DCD48E23FD"
+        },
+        {
+          "bytes": 349,
+          "path": "modules.json",
+          "sha256": "84E40C8E006C9B1D6C122E02CBA9B02458120B5FB0C87B746C41E0207CF642CF"
+        },
+        {
+          "bytes": 11423705,
+          "path": "tokenizer.json",
+          "sha256": "DEF76FB086971C7867B829C23A26261E38D9D74E02139253B38AEB9DF8B4B50A"
+        },
+        {
+          "bytes": 9706,
+          "path": "tokenizer_config.json",
+          "sha256": "253153D0738CEB4C668D2EFF957714DD2BEA0B56DE772A9FDCCD96CBF517E6A0"
+        },
+        {
+          "bytes": 2776833,
+          "path": "vocab.json",
+          "sha256": "CA10D7E9FB3ED18575DD1E277A2579C16D108E32F27439684AFA0E10B1440910"
+        }
+      ],
+      "files_sha256": "DBC7681739D90B58F4179DF58FAB2F8D651D15BECD9A844C3B8C1E1E62D9303E",
+      "license": "Apache-2.0",
+      "model_id": "Qwen/Qwen3-Embedding-0.6B",
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "snapshot_path": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--Qwen--Qwen3-Embedding-0.6B\\snapshots\\97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3"
+    },
+    "generator": {
+      "files": [
+        {
+          "bytes": 660,
+          "path": "config.json",
+          "sha256": "98D2FF8CC47488D08A2B0B3ACF4EB99EF210779B42BD48605F6B8E36ACDBF670"
+        },
+        {
+          "bytes": 242,
+          "path": "generation_config.json",
+          "sha256": "E558847A8B4402616F1273797B015104DC266FE4B520056FCA88823BA8F8EBE6"
+        },
+        {
+          "bytes": 1671839,
+          "path": "merges.txt",
+          "sha256": "599BAB54075088774B1733FDE865D5BD747CBCC7A547C5BC12610E874E26F5E3"
+        },
+        {
+          "bytes": 3087467144,
+          "path": "model.safetensors",
+          "sha256": "DD924A11B4C220F385B51FFA522DAEA7C9F3D850E31B162BB5661DF483C6D3EE"
+        },
+        {
+          "bytes": 7031645,
+          "path": "tokenizer.json",
+          "sha256": "C0382117EA329CDF097041132F6D735924B697924D6F6FC3945713E96CE87539"
+        },
+        {
+          "bytes": 7305,
+          "path": "tokenizer_config.json",
+          "sha256": "5B5D4F65D0ACD3B2D56A35B56D374A36CBC1C8FA5CF3B3FEBBBFABF22F359583"
+        },
+        {
+          "bytes": 2776833,
+          "path": "vocab.json",
+          "sha256": "CA10D7E9FB3ED18575DD1E277A2579C16D108E32F27439684AFA0E10B1440910"
+        }
+      ],
+      "files_sha256": "29726780E76777165E4E7B462356A18E374FEC4DBFF02A0BC8E4F5ACD09468C4",
+      "license": "Apache-2.0",
+      "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+      "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "snapshot_path": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--Qwen--Qwen2.5-1.5B-Instruct\\snapshots\\989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+    },
+    "reranker": {
+      "files": [
+        {
+          "bytes": 1570,
+          "path": ".gitattributes",
+          "sha256": "34448B82C17D60FEC9B65B1F093C115DDBAADC04BEB1B0140B6BFED2E012A930"
+        },
+        {
+          "bytes": 57,
+          "path": "1_LogitScore/config.json",
+          "sha256": "73E3156450564D8A98B7E47BCF5AACE0F29600828B51937DA545571E84DB3FF3"
+        },
+        {
+          "bytes": 14742,
+          "path": "README.md",
+          "sha256": "5BBA8C734F6DD3AE48317B4139317E45A7FCE48FC55E15670B23A0DD15492AB6"
+        },
+        {
+          "bytes": 741,
+          "path": "chat_template.jinja",
+          "sha256": "6F682162495EC5B39FD9005C01B6AA2A74669379FE967039F1E2CBBE8752369D"
+        },
+        {
+          "bytes": 727,
+          "path": "config.json",
+          "sha256": "D479C427A9CA5295218063D4F9ACA4F297AB4AC27487CCA7AF42C84643D51EF0"
+        },
+        {
+          "bytes": 325,
+          "path": "config_sentence_transformers.json",
+          "sha256": "6A153D6696F78FD588C1C728967F0B773EA869D3C6028F151CE71EBE49140762"
+        },
+        {
+          "bytes": 214,
+          "path": "generation_config.json",
+          "sha256": "81051CD3F6E77013827148D0B8A6EAD93F8AC390D5AB805F849199F0AF6A08DB"
+        },
+        {
+          "bytes": 1671853,
+          "path": "merges.txt",
+          "sha256": "8831E4F1A044471340F7C0A83D7BD71306A5B867E95FD870F74D0C5308A904D5"
+        },
+        {
+          "bytes": 1191588280,
+          "path": "model.safetensors",
+          "sha256": "27CD75A405B9C1B46B59ABFD88AAA209E6FED2A1972CDE9B70E7659537C5E65B"
+        },
+        {
+          "bytes": 280,
+          "path": "modules.json",
+          "sha256": "6F13B6B4A89E577B591B2077BCA40C67C26541A6740A8809267CB474F90806A9"
+        },
+        {
+          "bytes": 362,
+          "path": "sentence_bert_config.json",
+          "sha256": "3234EBD224D492CBE8D55D5EC80A3F408451C4DB3005BAFB64FE1C51C763E01E"
+        },
+        {
+          "bytes": 11422654,
+          "path": "tokenizer.json",
+          "sha256": "AEB13307A71ACD8FE81861D94AD54AB689DF773318809EED3CBE794B4492DAE4"
+        },
+        {
+          "bytes": 9706,
+          "path": "tokenizer_config.json",
+          "sha256": "253153D0738CEB4C668D2EFF957714DD2BEA0B56DE772A9FDCCD96CBF517E6A0"
+        },
+        {
+          "bytes": 2776833,
+          "path": "vocab.json",
+          "sha256": "CA10D7E9FB3ED18575DD1E277A2579C16D108E32F27439684AFA0E10B1440910"
+        }
+      ],
+      "files_sha256": "1C039AE1D7FCB8524F2F35DBD33A3BB643E04799F0B8A691303C82D51994FB66",
+      "license": "Apache-2.0",
+      "model_id": "Qwen/Qwen3-Reranker-0.6B",
+      "revision": "e61197ed45024b0ed8a2d74b80b4d909f1255473",
+      "snapshot_path": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--Qwen--Qwen3-Reranker-0.6B\\snapshots\\e61197ed45024b0ed8a2d74b80b4d909f1255473"
+    }
+  },
+  "runtime": {
+    "environment_variables": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "PYTHONHASHSEED": "0",
+      "TOKENIZERS_PARALLELISM": "false"
+    },
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "total_memory_bytes": 8585216000
+    },
+    "packages": {
+      "accelerate": "1.13.0",
+      "filelock": "3.29.0",
+      "fsspec": "2026.6.0",
+      "huggingface-hub": "1.17.0",
+      "jinja2": "3.1.6",
+      "markupsafe": "3.0.3",
+      "mpmath": "1.3.0",
+      "networkx": "3.6.1",
+      "numpy": "2.5.1",
+      "packaging": "24.0",
+      "psutil": "7.2.2",
+      "pyyaml": "6.0.1",
+      "regex": "2026.5.9",
+      "requests": "2.28.1",
+      "safetensors": "0.8.0",
+      "setuptools": "81.0.0",
+      "sympy": "1.14.0",
+      "tokenizers": "0.22.2",
+      "torch": "2.12.1+cu130",
+      "tqdm": "4.67.3",
+      "transformers": "5.14.1",
+      "typing-extensions": "4.16.0"
+    },
+    "python": {
+      "executable": "E:\\SCIENCE\\HyperGranular-RAG\\temp\\stage4e_env\\Scripts\\python.exe",
+      "implementation": "CPython",
+      "version": "3.12.0"
+    },
+    "runtime": {
+      "cuda": "13.0",
+      "cudnn": 92000,
+      "platform": "Windows-11-10.0.26200-SP0",
+      "torch": "2.12.1+cu130"
+    }
+  },
+  "schema_version": "stage6a_smc_v1",
+  "sources": {
+    "hotpotqa": {
+      "bytes": 566426227,
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\raw\\hotpotqa\\hotpot_train_v1.1.json",
+      "revision": "hotpotqa_v1.1",
+      "sha256": "26650CF50234EF5FB2E664ED70BBECDFD87815E6BFFC257E068EFEA5CF7CD316",
+      "source_url": "http://curtis.ml.cmu.edu/datasets/hotpot/hotpot_train_v1.1.json"
+    },
+    "musique": {
+      "bytes": 241046755,
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\raw\\musique\\data\\musique_ans_v1.0_train.jsonl",
+      "revision": "922ac98f19a201998dbdae6d7f2887a5258dbdeb",
+      "sha256": "83A75B1E11E4E9BB8F8308E72AC40CA617AE4431B3A0D955B61CAB259248490A",
+      "source_url": "https://github.com/StonyBrookNLP/musique/tree/922ac98f19a201998dbdae6d7f2887a5258dbdeb"
+    },
+    "twowiki": {
+      "bytes": 57614142,
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\raw\\2wikimultihopqa\\dev.json",
+      "revision": "f4f0d7e4ae275d9281e90c46c93e66d6cdda3674",
+      "sha256": "79F77AE104088EA8E25B1A65DBECE768D45771194663BC5660EC9A98070DADF5",
+      "source_url": "https://huggingface.co/datasets/kamelliao/2wikimultihopqa/tree/f4f0d7e4ae275d9281e90c46c93e66d6cdda3674/data"
+    }
+  },
+  "status": "STAGE6A_SOURCE_MODEL_ENVIRONMENT_INPUTS_BOUND"
+}

@@ -1,0 +1,417 @@
+{
+  "schema_version": "stage6a_smc_v1",
+  "status": "STAGE6A_INPUT_CHANNELS_VERIFIED_GOLDFREE_EXECUTION_READY",
+  "official_execution": {
+    "authorized": true,
+    "authorization_date": "2026-07-26",
+    "scope": "FULL_STAGE6A_SMC_TRANSACTION_THROUGH_GOLD_FINAL_VERIFICATION_REPORT_AND_GITHUB_SYNC"
+  },
+  "sample_sizes": {
+    "development": {
+      "hotpotqa_train_distractor_v1_1": 400,
+      "musique_ans_v1_0_train": 600,
+      "2wikimultihopqa_official_dev": 400
+    },
+    "confirmation": {
+      "hotpotqa_train_distractor_v1_1": 800,
+      "musique_ans_v1_0_train": 1200,
+      "2wikimultihopqa_official_dev": 800
+    }
+  },
+  "sources": {
+    "hotpotqa": {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\raw\\hotpotqa\\hotpot_train_v1.1.json",
+      "bytes": 566426227,
+      "sha256": "26650CF50234EF5FB2E664ED70BBECDFD87815E6BFFC257E068EFEA5CF7CD316",
+      "revision": "hotpotqa_v1.1",
+      "source_url": "http://curtis.ml.cmu.edu/datasets/hotpot/hotpot_train_v1.1.json"
+    },
+    "musique": {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\raw\\musique\\data\\musique_ans_v1.0_train.jsonl",
+      "bytes": 241046755,
+      "sha256": "83A75B1E11E4E9BB8F8308E72AC40CA617AE4431B3A0D955B61CAB259248490A",
+      "revision": "922ac98f19a201998dbdae6d7f2887a5258dbdeb",
+      "source_url": "https://github.com/StonyBrookNLP/musique/tree/922ac98f19a201998dbdae6d7f2887a5258dbdeb"
+    },
+    "twowiki": {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\raw\\2wikimultihopqa\\dev.json",
+      "bytes": 57614142,
+      "sha256": "79F77AE104088EA8E25B1A65DBECE768D45771194663BC5660EC9A98070DADF5",
+      "revision": "f4f0d7e4ae275d9281e90c46c93e66d6cdda3674",
+      "source_url": "https://huggingface.co/datasets/kamelliao/2wikimultihopqa/tree/f4f0d7e4ae275d9281e90c46c93e66d6cdda3674/data"
+    }
+  },
+  "historical_inputs": [
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\hotpotqa_dev_distractor_sample200_unified.json",
+      "bytes": 1719114,
+      "sha256": "7BCCF19FD8036D4047173B66E76D66D12DB7A5EAEB589FF0A77D4FB64E1661AA"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\musique_ans_dev_sample200_unified.json",
+      "bytes": 2826022,
+      "sha256": "BBA41D7258D045FE66F6B0AA23BBE54D9FDE2EE940EE44389461D9265392E9B1"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage1_sample400_queries.jsonl",
+      "bytes": 234624,
+      "sha256": "51A1389C159CC7703CA0F47F36B709CAE081A1F7BD6E8FC646D59EE3CFF0B13D"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage2f_hotpotqa_unseen200_unified.json",
+      "bytes": 1699596,
+      "sha256": "0818FCB2E130C3BCC207912F59F9ACE14B534321AD93686378E6923FF7405AC5"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage2f_musique_unseen200_unified.json",
+      "bytes": 2941869,
+      "sha256": "728252CED21B4B117DB6091B6C0A131746A0270E58CA5FCE2780702049894BE0"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage2f_unseen400_queries.jsonl",
+      "bytes": 236284,
+      "sha256": "81298D4CE25EFED6B178EB367D9C48A8FB1CACAE420B43E4315199D3C0492715"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage2g_hotpotqa_unseen200_unified.json",
+      "bytes": 1681629,
+      "sha256": "3D7D0B69CE087C77909F56E39431545A49F772EB3898F1196C2C24801E7E05C5"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage2g_musique_unseen200_unified.json",
+      "bytes": 2938875,
+      "sha256": "33B37EED295E5A6B5260C6041AFD970C698CA5AC300853DB5FB5564392458F70"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage2g_unseen400_queries.jsonl",
+      "bytes": 235741,
+      "sha256": "7049C2662C3FE6AAF2F3401D578B5F93465F4046C206256F87F871B5BC227D1E"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage3a_dev800_queries.jsonl",
+      "bytes": 473710,
+      "sha256": "D24A19CD2BDC80DF3886ECEC081FCBE45022F0D761EDDB86E44CFCAA9FBD4785"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage3a_hotpotqa_dev400_unified.json",
+      "bytes": 3362352,
+      "sha256": "A71CB8B9096926F7B024D16CB611EF8E32222707475827C0D13A7B997B7DEEFA"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage3a_musique_dev400_unified.json",
+      "bytes": 6029681,
+      "sha256": "C24C1C57BA66FA4F21F4ED7AE0D9929FC7D7D76F4A548543B907970BB8719426"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4a_2wiki_pilot400_unified.json",
+      "bytes": 2698181,
+      "sha256": "87BEB97A2A959D62B5124C0670B22AD800A04CF403678432C04E277505165A0E"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4a_r2_official_dev4500_unified.json",
+      "bytes": 30800385,
+      "sha256": "0550786FACFBC56B079D5000A74EA361DF83A2E928AB0516ECB1AE1DF488C6B4"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4e_e2e_official_train1000_v1_blind_queries.jsonl",
+      "bytes": 6487688,
+      "sha256": "CB30B9764ADF256A5C5E130F1B78F6AA1EC30613C529FDB554F0F2F29C873958"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4f_xdr_musique_train3000_v1_blind_queries.jsonl",
+      "bytes": 90210161,
+      "sha256": "C8D73F6F8E0B9CA0BEAFD84DC05C43438400966998B5C2C3510E0EB47D1EC4C5"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4h_cbe_hotpot1000_musique1500_v1_blind_queries.jsonl",
+      "bytes": 73895304,
+      "sha256": "19E2659B190E91A4FC6350698C921C8F3FFA86B793BA89F3D726C004C5EA9B64"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4i_sdc_hotpot1000_musique1500_v1_blind_queries.jsonl",
+      "bytes": 74044749,
+      "sha256": "9384866CC3F915CA4D3D7CA660585B3DFC15B800B3152FEA544BF1C9B2249FA1"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage5a_bnh_development_hotpot500_musique750_v1_blind_queries.jsonl",
+      "bytes": 36581554,
+      "sha256": "8AC212D70CA1DA3064207FE4136814A6392ECCC6DC6FF105DC447411A7915A37"
+    },
+    {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage5a_bnh_confirmation_hotpot1000_musique1500_v1_blind_queries.jsonl",
+      "bytes": 74190146,
+      "sha256": "B4310147CEF7BCF706420E8E838A51C32CC5ABBCC6C62E2AA5FCC00AF5242BBD"
+    }
+  ],
+  "models": {
+    "embedding": {
+      "model_id": "Qwen/Qwen3-Embedding-0.6B",
+      "revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "license": "Apache-2.0",
+      "snapshot_path": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--Qwen--Qwen3-Embedding-0.6B\\snapshots\\97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "files_sha256": "DBC7681739D90B58F4179DF58FAB2F8D651D15BECD9A844C3B8C1E1E62D9303E",
+      "files": [
+        {"bytes": 1570, "path": ".gitattributes", "sha256": "34448B82C17D60FEC9B65B1F093C115DDBAADC04BEB1B0140B6BFED2E012A930"},
+        {"bytes": 313, "path": "1_Pooling/config.json", "sha256": "37BF193FA101F19101BFAD9C31D3EB0F786E247B7B1E5CB7F007D730EED1DDBD"},
+        {"bytes": 17237, "path": "README.md", "sha256": "C34D9B7E5A267AD3FDD13227A253686BC90844FF4744A2A6A86C7C905E3D06F3"},
+        {"bytes": 727, "path": "config.json", "sha256": "B5BF1F51FC45BE473A54718CEF92448D90A1BE001BF9B9A44B8C7F10A19FEAA9"},
+        {"bytes": 215, "path": "config_sentence_transformers.json", "sha256": "10667C72DDB772627BF1780CB7F86AF8E2AE0032B8C243C731172064105C6961"},
+        {"bytes": 117, "path": "generation_config.json", "sha256": "28396D421A2108ACCE96383F6A7DE78008F7F1B17F807958F3C14C51DBFB65FB"},
+        {"bytes": 1671853, "path": "merges.txt", "sha256": "8831E4F1A044471340F7C0A83D7BD71306A5B867E95FD870F74D0C5308A904D5"},
+        {"bytes": 1191586416, "path": "model.safetensors", "sha256": "0437E45C94563B09E13CB7A64478FC406947A93CB34A7E05870FC8DCD48E23FD"},
+        {"bytes": 349, "path": "modules.json", "sha256": "84E40C8E006C9B1D6C122E02CBA9B02458120B5FB0C87B746C41E0207CF642CF"},
+        {"bytes": 11423705, "path": "tokenizer.json", "sha256": "DEF76FB086971C7867B829C23A26261E38D9D74E02139253B38AEB9DF8B4B50A"},
+        {"bytes": 9706, "path": "tokenizer_config.json", "sha256": "253153D0738CEB4C668D2EFF957714DD2BEA0B56DE772A9FDCCD96CBF517E6A0"},
+        {"bytes": 2776833, "path": "vocab.json", "sha256": "CA10D7E9FB3ED18575DD1E277A2579C16D108E32F27439684AFA0E10B1440910"}
+      ]
+    },
+    "reranker": {
+      "model_id": "Qwen/Qwen3-Reranker-0.6B",
+      "revision": "e61197ed45024b0ed8a2d74b80b4d909f1255473",
+      "license": "Apache-2.0",
+      "snapshot_path": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--Qwen--Qwen3-Reranker-0.6B\\snapshots\\e61197ed45024b0ed8a2d74b80b4d909f1255473",
+      "files_sha256": "1C039AE1D7FCB8524F2F35DBD33A3BB643E04799F0B8A691303C82D51994FB66",
+      "files": [
+        {"bytes": 1570, "path": ".gitattributes", "sha256": "34448B82C17D60FEC9B65B1F093C115DDBAADC04BEB1B0140B6BFED2E012A930"},
+        {"bytes": 57, "path": "1_LogitScore/config.json", "sha256": "73E3156450564D8A98B7E47BCF5AACE0F29600828B51937DA545571E84DB3FF3"},
+        {"bytes": 14742, "path": "README.md", "sha256": "5BBA8C734F6DD3AE48317B4139317E45A7FCE48FC55E15670B23A0DD15492AB6"},
+        {"bytes": 741, "path": "chat_template.jinja", "sha256": "6F682162495EC5B39FD9005C01B6AA2A74669379FE967039F1E2CBBE8752369D"},
+        {"bytes": 727, "path": "config.json", "sha256": "D479C427A9CA5295218063D4F9ACA4F297AB4AC27487CCA7AF42C84643D51EF0"},
+        {"bytes": 325, "path": "config_sentence_transformers.json", "sha256": "6A153D6696F78FD588C1C728967F0B773EA869D3C6028F151CE71EBE49140762"},
+        {"bytes": 214, "path": "generation_config.json", "sha256": "81051CD3F6E77013827148D0B8A6EAD93F8AC390D5AB805F849199F0AF6A08DB"},
+        {"bytes": 1671853, "path": "merges.txt", "sha256": "8831E4F1A044471340F7C0A83D7BD71306A5B867E95FD870F74D0C5308A904D5"},
+        {"bytes": 1191588280, "path": "model.safetensors", "sha256": "27CD75A405B9C1B46B59ABFD88AAA209E6FED2A1972CDE9B70E7659537C5E65B"},
+        {"bytes": 280, "path": "modules.json", "sha256": "6F13B6B4A89E577B591B2077BCA40C67C26541A6740A8809267CB474F90806A9"},
+        {"bytes": 362, "path": "sentence_bert_config.json", "sha256": "3234EBD224D492CBE8D55D5EC80A3F408451C4DB3005BAFB64FE1C51C763E01E"},
+        {"bytes": 11422654, "path": "tokenizer.json", "sha256": "AEB13307A71ACD8FE81861D94AD54AB689DF773318809EED3CBE794B4492DAE4"},
+        {"bytes": 9706, "path": "tokenizer_config.json", "sha256": "253153D0738CEB4C668D2EFF957714DD2BEA0B56DE772A9FDCCD96CBF517E6A0"},
+        {"bytes": 2776833, "path": "vocab.json", "sha256": "CA10D7E9FB3ED18575DD1E277A2579C16D108E32F27439684AFA0E10B1440910"}
+      ]
+    },
+    "generator": {
+      "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+      "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "license": "Apache-2.0",
+      "snapshot_path": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--Qwen--Qwen2.5-1.5B-Instruct\\snapshots\\989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "files_sha256": "29726780E76777165E4E7B462356A18E374FEC4DBFF02A0BC8E4F5ACD09468C4",
+      "files": [
+        {"bytes": 660, "path": "config.json", "sha256": "98D2FF8CC47488D08A2B0B3ACF4EB99EF210779B42BD48605F6B8E36ACDBF670"},
+        {"bytes": 242, "path": "generation_config.json", "sha256": "E558847A8B4402616F1273797B015104DC266FE4B520056FCA88823BA8F8EBE6"},
+        {"bytes": 1671839, "path": "merges.txt", "sha256": "599BAB54075088774B1733FDE865D5BD747CBCC7A547C5BC12610E874E26F5E3"},
+        {"bytes": 3087467144, "path": "model.safetensors", "sha256": "DD924A11B4C220F385B51FFA522DAEA7C9F3D850E31B162BB5661DF483C6D3EE"},
+        {"bytes": 7031645, "path": "tokenizer.json", "sha256": "C0382117EA329CDF097041132F6D735924B697924D6F6FC3945713E96CE87539"},
+        {"bytes": 7305, "path": "tokenizer_config.json", "sha256": "5B5D4F65D0ACD3B2D56A35B56D374A36CBC1C8FA5CF3B3FEBBBFABF22F359583"},
+        {"bytes": 2776833, "path": "vocab.json", "sha256": "CA10D7E9FB3ED18575DD1E277A2579C16D108E32F27439684AFA0E10B1440910"}
+      ]
+    }
+  },
+  "runtime": {
+    "environment_variables": {
+      "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "PYTHONHASHSEED": "0",
+      "TOKENIZERS_PARALLELISM": "false"
+    },
+    "gpu": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "total_memory_bytes": 8585216000
+    },
+    "packages": {
+      "accelerate": "1.13.0",
+      "filelock": "3.29.0",
+      "fsspec": "2026.6.0",
+      "huggingface-hub": "1.17.0",
+      "jinja2": "3.1.6",
+      "markupsafe": "3.0.3",
+      "mpmath": "1.3.0",
+      "networkx": "3.6.1",
+      "numpy": "2.5.1",
+      "packaging": "24.0",
+      "psutil": "7.2.2",
+      "pyyaml": "6.0.1",
+      "regex": "2026.5.9",
+      "requests": "2.28.1",
+      "safetensors": "0.8.0",
+      "setuptools": "81.0.0",
+      "sympy": "1.14.0",
+      "tokenizers": "0.22.2",
+      "torch": "2.12.1+cu130",
+      "tqdm": "4.67.3",
+      "transformers": "5.14.1",
+      "typing-extensions": "4.16.0"
+    },
+    "python": {
+      "executable": "E:\\SCIENCE\\HyperGranular-RAG\\temp\\stage4e_env\\Scripts\\python.exe",
+      "implementation": "CPython",
+      "version": "3.12.0"
+    },
+    "runtime": {
+      "cuda": "13.0",
+      "cudnn": 92000,
+      "platform": "Windows-11-10.0.26200-SP0",
+      "torch": "2.12.1+cu130"
+    }
+  },
+  "retrieval": {
+    "common_pool": "QWEN3_EMBEDDING_DENSE_TOP_MIN_100_N",
+    "reranker": "QWEN3_RERANKER_SAME_COMMON_POOL",
+    "top_k": 20,
+    "protected_reranker_prefix": 8,
+    "structural_insert_budget": 4,
+    "matched_non_ball_leaf_target": 6,
+    "lambda_family": [0.70, 0.85],
+    "granular_ball_leaf_target_family": [4, 6]
+  },
+  "generation": {
+    "batch_size": 1,
+    "do_sample": false,
+    "dtype": "float16",
+    "input_token_cap": 4096,
+    "max_new_tokens": 32,
+    "num_beams": 1,
+    "postprocess": "strip leading and trailing whitespace only",
+    "system_message": "Answer the question using only the provided evidence. Return only the shortest final answer. If the evidence is insufficient, return UNKNOWN."
+  },
+  "determinism": {
+    "development_rerun_queries_per_dataset": 40,
+    "confirmation_rerun_queries_per_dataset": 80,
+    "contract": "FULL_MAIN_PLUS_PREHASH_STRATIFIED_SUBSET_RERUN"
+  },
+  "evaluation": {
+    "bootstrap_iterations": 10000,
+    "bootstrap_numpy_generator": "PCG64",
+    "bootstrap_percentile_method": "linear",
+    "bootstrap_seed": 20260728,
+    "confirmation_arms": 5,
+    "primary_endpoint": "dataset_equal_weight_delta_answer_f1",
+    "primary_holm_family": "HGRAG_MINUS_QWEN3_RERANK_AND_BEST_GENERIC_AND_BEST_NON_BALL",
+    "familywise_alpha": 0.05,
+    "minimum_baseline_f1_gain": 0.01,
+    "em_interval_lower_minimum": -0.01
+  },
+  "implementation": {
+    "code_commit": "bb9aebdce1bc514e334a9ae9e62fbf6719a82f50",
+    "files": {
+      "scripts/stage6a_smc_common.py": "16B8DD536BF1C186C69777C1362DA1D4A33C08D1DE483618AB9C8D6B1E0B8F8E",
+      "scripts/stage6a_smc_evaluate.py": "52E499E8D47977CE4A0F869AD2820E75B94DC31DF50AED404E4EC2DBAD3CF0D4",
+      "scripts/stage6a_smc_goldfree_runner.py": "4E4F7A4A33430223761387193A335C214CEFACACF9C3E2FEBC071C804B0FF2E1",
+      "scripts/stage6a_smc_independent_retrieval.py": "8C12BAE8D1A2FA5D836896A2D5521E084318279E94A93271FADEC96ECA27D98D",
+      "scripts/stage6a_smc_independent_verifier.py": "5817FE8DBDE9FA40C9E70F38FE529641C2C985E16FE79A798B56B054D3B60F7E",
+      "scripts/stage6a_smc_models.py": "916CF1A5BC8672555D08F00F4C42739E596DCE8BB605D9A9E6C1C33059D993CF",
+      "scripts/stage6a_smc_prepare.py": "FEEA79975A30637FB173ABCD37B27B08B414C594E7270D271ADEEFD3079228BF",
+      "scripts/stage6a_smc_retrieval.py": "1901984379DA490BB905B1C2BFE1D7FCE6FB4FEE5B94F48D032BE3A3D7AE7679"
+    }
+  },
+  "inputs": {
+    "development_blind": {
+      "bytes": 36179973,
+      "sha256": "893F3E7DDB55DB67FA797D0DCF437700D059F6B3249EF330CDDD5BDFF345C5D4"
+    },
+    "development_gold": {
+      "bytes": 504107,
+      "sha256": "4681279C6D42F154EA727B0B71546D64DBA9C64BFB6D75067F48281E6FFA252C"
+    },
+    "development_metadata": {
+      "bytes": 395534,
+      "sha256": "22F5AA35C9692A42A3191DC044A769F478EDAE113CE757B055345947685DCE11"
+    },
+    "confirmation_blind": {
+      "bytes": 73062732,
+      "sha256": "9E90E565C6E2E58EDB7C39232AC2BCB696B5D3B9FBF2B5B7DC49E7DF61A6D232"
+    },
+    "confirmation_gold": {
+      "bytes": 1007568,
+      "sha256": "371E29444A34EEC74C39F72C04C03E3B9CB7A367F5E500660A2C74C1518C7AF0"
+    },
+    "confirmation_metadata": {
+      "bytes": 790801,
+      "sha256": "1312CC630A1BB8C6846E183BF023D6EB0BAA79531D8B1FD0C9650A61A3EC2663"
+    }
+  },
+  "paths": {
+    "development_blind": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage6a_smc_development_hotpot400_musique600_2wiki400_v1_blind_queries.jsonl",
+    "development_gold": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage6a_smc_development_hotpot400_musique600_2wiki400_v1_gold_targets.jsonl",
+    "development_metadata": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage6a_smc_development_hotpot400_musique600_2wiki400_v1_sealed_metadata.jsonl",
+    "confirmation_blind": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage6a_smc_confirmation_hotpot800_musique1200_2wiki800_v1_blind_queries.jsonl",
+    "confirmation_gold": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage6a_smc_confirmation_hotpot800_musique1200_2wiki800_v1_gold_targets.jsonl",
+    "confirmation_metadata": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage6a_smc_confirmation_hotpot800_musique1200_2wiki800_v1_sealed_metadata.jsonl",
+    "input_manifest": "results/stage6a_smc_input_manifest.json",
+    "source_model_environment_manifest": "results/stage6a_smc_source_model_environment_manifest.json",
+    "input_verification": "results/stage6a_smc_input_verification.json",
+    "development_embedding_cache": "E:\\SCIENCE\\超粒球RAG_数据\\cache\\stage6a_smc_development_qwen3_embedding_v1.npz",
+    "development_reranker_trace": "results/stage6a_smc_development_qwen3_reranker_trace.jsonl",
+    "development_main_generation_checkpoint": "temp/stage6a_smc_development_main_generation_checkpoint.jsonl",
+    "development_rerun_generation_checkpoint": "temp/stage6a_smc_development_rerun_generation_checkpoint.jsonl",
+    "development_main_rankings": "results/stage6a_smc_development_main_rankings.jsonl",
+    "development_main_candidate_trace": "results/stage6a_smc_development_main_candidate_trace.jsonl",
+    "development_main_predictions": "results/stage6a_smc_development_main_predictions.jsonl",
+    "development_main_prompt_audit": "results/stage6a_smc_development_main_prompt_audit.jsonl",
+    "development_main_telemetry": "results/stage6a_smc_development_main_telemetry.json",
+    "development_rerun_rankings": "results/stage6a_smc_development_rerun_rankings.jsonl",
+    "development_rerun_candidate_trace": "results/stage6a_smc_development_rerun_candidate_trace.jsonl",
+    "development_rerun_predictions": "results/stage6a_smc_development_rerun_predictions.jsonl",
+    "development_rerun_prompt_audit": "results/stage6a_smc_development_rerun_prompt_audit.jsonl",
+    "development_rerun_telemetry": "results/stage6a_smc_development_rerun_telemetry.json",
+    "development_pregold_verification": "results/stage6a_smc_development_pregold_verification.json",
+    "development_query_scores": "results/stage6a_smc_development_query_scores.jsonl",
+    "development_evaluation_summary": "results/stage6a_smc_development_evaluation_summary.json",
+    "development_selection_lock": "results/stage6a_smc_development_selection_lock.json",
+    "confirmation_embedding_cache": "E:\\SCIENCE\\超粒球RAG_数据\\cache\\stage6a_smc_confirmation_qwen3_embedding_v1.npz",
+    "confirmation_reranker_trace": "results/stage6a_smc_confirmation_qwen3_reranker_trace.jsonl",
+    "confirmation_main_generation_checkpoint": "temp/stage6a_smc_confirmation_main_generation_checkpoint.jsonl",
+    "confirmation_rerun_generation_checkpoint": "temp/stage6a_smc_confirmation_rerun_generation_checkpoint.jsonl",
+    "confirmation_main_rankings": "results/stage6a_smc_confirmation_main_rankings.jsonl",
+    "confirmation_main_candidate_trace": "results/stage6a_smc_confirmation_main_candidate_trace.jsonl",
+    "confirmation_main_predictions": "results/stage6a_smc_confirmation_main_predictions.jsonl",
+    "confirmation_main_prompt_audit": "results/stage6a_smc_confirmation_main_prompt_audit.jsonl",
+    "confirmation_main_telemetry": "results/stage6a_smc_confirmation_main_telemetry.json",
+    "confirmation_rerun_rankings": "results/stage6a_smc_confirmation_rerun_rankings.jsonl",
+    "confirmation_rerun_candidate_trace": "results/stage6a_smc_confirmation_rerun_candidate_trace.jsonl",
+    "confirmation_rerun_predictions": "results/stage6a_smc_confirmation_rerun_predictions.jsonl",
+    "confirmation_rerun_prompt_audit": "results/stage6a_smc_confirmation_rerun_prompt_audit.jsonl",
+    "confirmation_rerun_telemetry": "results/stage6a_smc_confirmation_rerun_telemetry.json",
+    "confirmation_pregold_verification": "results/stage6a_smc_confirmation_pregold_verification.json",
+    "confirmation_query_scores": "results/stage6a_smc_confirmation_query_scores.jsonl",
+    "confirmation_evaluation_summary": "results/stage6a_smc_confirmation_evaluation_summary.json",
+    "scientific_decision": "results/stage6a_smc_scientific_decision.json",
+    "final_verification": "results/stage6a_smc_final_verification.json"
+  },
+  "final_artifact_keys": [
+    "input_manifest",
+    "source_model_environment_manifest",
+    "input_verification",
+    "development_reranker_trace",
+    "development_main_rankings",
+    "development_main_candidate_trace",
+    "development_main_predictions",
+    "development_main_prompt_audit",
+    "development_main_telemetry",
+    "development_rerun_rankings",
+    "development_rerun_candidate_trace",
+    "development_rerun_predictions",
+    "development_rerun_prompt_audit",
+    "development_rerun_telemetry",
+    "development_pregold_verification",
+    "development_query_scores",
+    "development_evaluation_summary",
+    "development_selection_lock",
+    "confirmation_reranker_trace",
+    "confirmation_main_rankings",
+    "confirmation_main_candidate_trace",
+    "confirmation_main_predictions",
+    "confirmation_main_prompt_audit",
+    "confirmation_main_telemetry",
+    "confirmation_rerun_rankings",
+    "confirmation_rerun_candidate_trace",
+    "confirmation_rerun_predictions",
+    "confirmation_rerun_prompt_audit",
+    "confirmation_rerun_telemetry",
+    "confirmation_pregold_verification",
+    "confirmation_query_scores",
+    "confirmation_evaluation_summary",
+    "scientific_decision"
+  ]
+}
