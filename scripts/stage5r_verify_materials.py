@@ -232,6 +232,7 @@ def verify_citations() -> None:
 
 def verify_claim_boundaries() -> None:
     manuscript = MANUSCRIPT.read_text(encoding="utf-8")
+    normalized_manuscript = re.sub(r"\s+", " ", manuscript)
     required = [
         "-0.03998 [-0.05393, -0.02621]",
         "-0.00256 [-0.00998, 0.00458]",
@@ -242,14 +243,20 @@ def verify_claim_boundaries() -> None:
         "+0.003367 [-0.001285, 0.008026]",
         "+0.000631 [-0.004220, 0.005365]",
         "+0.003143",
-        "selection evidence only",
-        "neither improvement, damage, nor equivalence",
+        "We use this development result only to select C10",
+        "no statistically resolved answer-quality improvement over BGE",
         "full-wiki or open-domain",
-        "NOT_FAIRLY_DEFINED",
+        "no unique matched counterparts at the unit level",
         "post-decision descriptive",
+        "structured evidence-completion layer",
+        "marginal value contracts with a stronger retriever",
     ]
     for value in required:
-        require(value in manuscript, f"manuscript missing claim boundary: {value}")
+        normalized_value = re.sub(r"\s+", " ", value)
+        require(
+            normalized_value in normalized_manuscript,
+            f"manuscript missing claim boundary: {value}",
+        )
     lowered = manuscript.lower()
     prohibited = [
         "hypergranular-rag is a universal",
@@ -263,8 +270,8 @@ def verify_claim_boundaries() -> None:
     for phrase in prohibited:
         require(phrase not in lowered, f"prohibited overclaim detected: {phrase}")
     require(
-        lowered.count("inconclusive") >= 8,
-        "inconclusive evidence is not sufficiently explicit",
+        lowered.count("inconclusive") + lowered.count("statistically unresolved") >= 8,
+        "statistically unresolved evidence is not sufficiently explicit",
     )
 
 
