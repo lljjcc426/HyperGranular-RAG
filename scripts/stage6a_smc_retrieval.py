@@ -9,16 +9,19 @@ from typing import Any
 
 import numpy as np
 
-from stage4h_cbe_retrieval import build_units_queries
+from stage4h_cbe_common import normalize_sentence
 from stage5a_bnh_retrieval import _content_tokens, build_bge_native_balls
 from stage6a_smc_common import (
     BALL_FAMILY,
     BASELINE_METHOD,
+    DATASETS,
     GENERIC_FAMILIES,
     HGRAG_FAMILY,
     NON_BALL_FAMILIES,
+    assert_no_gold_fields,
     development_methods,
     parse_method,
+    require_json_int,
     require_native_string,
 )
 
@@ -29,6 +32,88 @@ COMMON_POOL_CAP = 100
 STRUCTURAL_SELECTION_BUDGET = 4
 MATCHED_CONTROL_LEAF_TARGET = 6
 MAX_KMEANS_ITERATIONS = 100
+BLIND_KEYS = {"candidate_units", "dataset", "query_id", "question", "sample_id"}
+UNIT_KEYS = {
+    "dataset",
+    "document_id",
+    "paragraph_index",
+    "query_id",
+    "sample_id",
+    "sentence_index",
+    "text",
+    "title",
+    "unit_id",
+}
+
+
+def build_units_queries(
+    blind_rows: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Validate and flatten the three-dataset Stage6A blind channel."""
+    assert_no_gold_fields(blind_rows, "Stage6A blind input")
+    units: list[dict[str, Any]] = []
+    queries: list[dict[str, Any]] = []
+    seen_query_ids: set[str] = set()
+    for row_index, row in enumerate(blind_rows):
+        if not isinstance(row, dict) or set(row) != BLIND_KEYS:
+            raise ValueError(f"blind[{row_index}] key contract differs")
+        dataset = require_native_string(
+            row["dataset"], f"blind[{row_index}].dataset"
+        )
+        if dataset not in DATASETS:
+            raise ValueError(f"blind[{row_index}].dataset differs")
+        query_id = require_native_string(
+            row["query_id"], f"blind[{row_index}].query_id"
+        )
+        sample_id = require_native_string(
+            row["sample_id"], f"blind[{row_index}].sample_id"
+        )
+        question = require_native_string(
+            row["question"], f"blind[{row_index}].question"
+        )
+        if query_id != f"{dataset}::{sample_id}" or query_id in seen_query_ids:
+            raise ValueError(f"blind[{row_index}] identity differs or duplicates")
+        seen_query_ids.add(query_id)
+        candidate_units = row["candidate_units"]
+        if not isinstance(candidate_units, list) or not candidate_units:
+            raise ValueError(f"{query_id}: candidate_units must be non-empty")
+        for unit_index, unit in enumerate(candidate_units):
+            if not isinstance(unit, dict) or set(unit) != UNIT_KEYS:
+                raise ValueError(f"{query_id}: unit[{unit_index}] key contract differs")
+            if (
+                unit["dataset"] != dataset
+                or unit["query_id"] != query_id
+                or unit["sample_id"] != sample_id
+            ):
+                raise ValueError(f"{query_id}: unit[{unit_index}] identity differs")
+            require_native_string(unit["document_id"], f"{query_id}.document_id")
+            require_native_string(unit["unit_id"], f"{query_id}.unit_id")
+            require_native_string(unit["title"], f"{query_id}.title")
+            if not normalize_sentence(unit["text"]):
+                raise ValueError(f"{query_id}: unit[{unit_index}] text is empty")
+            paragraph_index = require_json_int(
+                unit["paragraph_index"], f"{query_id}.paragraph_index"
+            )
+            sentence_index = require_json_int(
+                unit["sentence_index"], f"{query_id}.sentence_index"
+            )
+            if paragraph_index < 0 or sentence_index < 0:
+                raise ValueError(f"{query_id}: negative unit index")
+            units.append(unit)
+        if len({unit["unit_id"] for unit in candidate_units}) != len(
+            candidate_units
+        ):
+            raise ValueError(f"{query_id}: duplicate unit_id")
+        queries.append(
+            {
+                "dataset": dataset,
+                "num_candidate_units": len(candidate_units),
+                "query_id": query_id,
+                "question": question,
+                "sample_id": sample_id,
+            }
+        )
+    return units, queries
 
 
 def _dot(left: np.ndarray, right: np.ndarray) -> float:

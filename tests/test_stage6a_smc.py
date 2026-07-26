@@ -27,6 +27,7 @@ from stage6a_smc_prepare import build_twowiki_channels  # noqa: E402
 from stage6a_smc_retrieval import (  # noqa: E402
     PROTECTED_PREFIX,
     build_query_rankings,
+    build_units_queries,
     hierarchical_groups,
     spherical_kmeans_groups,
 )
@@ -183,4 +184,28 @@ def test_twowiki_duplicate_title_uses_frozen_first_context_mapping():
     assert len(blind["candidate_units"]) == 2
     assert gold["supporting_unit_ids"] == [
         "2wikimultihopqa_official_dev::abc123::p0::s0"
+    ]
+
+
+def test_stage6_flatten_contract_accepts_twowiki_dataset():
+    row = {
+        "_id": "abc123",
+        "answer": "Answer",
+        "context": [["Alpha", ["Official supporting sentence."]]],
+        "evidences": [],
+        "question": "What is supported?",
+        "supporting_facts": [["Alpha", 0]],
+        "type": "inference",
+    }
+    blind, _, _ = build_twowiki_channels(10000, "abc123", row)
+    units, queries = build_units_queries([blind])
+    assert len(units) == 1
+    assert queries == [
+        {
+            "dataset": "2wikimultihopqa_official_dev",
+            "num_candidate_units": 1,
+            "query_id": "2wikimultihopqa_official_dev::abc123",
+            "question": "What is supported?",
+            "sample_id": "abc123",
+        }
     ]
