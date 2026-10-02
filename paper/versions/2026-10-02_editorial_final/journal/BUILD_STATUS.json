@@ -1,0 +1,156 @@
+{
+  "document": "journal",
+  "pdf": "E:\\SCIENCE\\HyperGranular-RAG\\paper\\versions\\2026-10-02_editorial_final\\journal\\HyperGranular-RAG_Journal.pdf",
+  "pages": 21,
+  "compiler": "MiKTeX pdfTeX 4.23 (25.12)",
+  "commands_exited_zero": 4,
+  "page_checks": [
+    {
+      "page": 1,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3376,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 2,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4070,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 3,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3386,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 4,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3569,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 5,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 2934,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 6,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3105,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 7,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3459,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 8,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3400,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 9,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3701,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 10,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3376,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 11,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 2668,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 12,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 2670,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 13,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3572,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 14,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3099,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 15,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3214,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 16,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3755,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 17,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3722,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 18,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3599,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 19,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3675,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 20,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 2936,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 21,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3184,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    }
+  ]
+}

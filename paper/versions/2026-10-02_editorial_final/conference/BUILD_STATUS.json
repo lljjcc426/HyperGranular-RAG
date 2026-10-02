@@ -1,0 +1,72 @@
+{
+  "document": "conference",
+  "pdf": "E:\\SCIENCE\\HyperGranular-RAG\\paper\\versions\\2026-10-02_editorial_final\\conference\\HyperGranular-RAG_Conference.pdf",
+  "pages": 9,
+  "compiler": "MiKTeX pdfTeX 4.23 (25.12)",
+  "commands_exited_zero": 5,
+  "page_checks": [
+    {
+      "page": 1,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4280,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 2,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4495,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 3,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4672,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 4,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4026,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 5,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4282,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 6,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3778,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 7,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4154,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 8,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4790,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    },
+    {
+      "page": 9,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3422,
+      "visual_review": "REVIEWED_SEE_FINAL_EDITORIAL_CHECK"
+    }
+  ]
+}

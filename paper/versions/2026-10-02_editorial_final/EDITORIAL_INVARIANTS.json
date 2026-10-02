@@ -1,0 +1,42 @@
+{
+  "baseline_commit": "790cbb38de60b98d71074756b3e72b8f1a0f4ce4",
+  "comparison": "2026-10-02_revision2 to 2026-10-02_editorial_final",
+  "scope": "Manuscript sources and shared presentation assets only; no rescoring.",
+  "shared_files_identical": {
+    "acl.sty": true,
+    "acl_natbib.bst": true,
+    "budget_table.tex": true,
+    "components.pdf": true,
+    "effects.json": true,
+    "effects.pdf": true,
+    "figure3c_evidence_displacement.csv": true,
+    "figure4c_insertion_distribution.csv": true,
+    "figure5_qualitative_cases.csv": true,
+    "mechanisms.pdf": true,
+    "numbers.tex": true,
+    "references.bib": true,
+    "reproduction_details.tex": true,
+    "table1_core.csv": true,
+    "table6_core.csv": true,
+    "workflow.pdf": true
+  },
+  "manuscripts": {
+    "conference": {
+      "displayed_equations_unchanged": true,
+      "inline_math_multiset_unchanged": true,
+      "table_bodies_unchanged": true,
+      "citation_keys_unchanged": true,
+      "anonymous_author_unchanged": true,
+      "all_local_figures_and_tables_referenced": true
+    },
+    "journal": {
+      "displayed_equations_unchanged": true,
+      "inline_math_multiset_unchanged": true,
+      "table_bodies_unchanged": true,
+      "citation_keys_unchanged": true,
+      "anonymous_author_unchanged": true,
+      "all_local_figures_and_tables_referenced": true
+    }
+  },
+  "passed": true
+}

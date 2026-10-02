@@ -1,0 +1,238 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo))
+(../shared/acl.sty
+Conference Style for ACL
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/lineno\lineno.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty)))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekey
+s.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.st
+y
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.sty)
+)) (C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitles
+tring.sty))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.st
+y))) (C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilech
+eck.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecoun
+ter.sty))))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\times.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/base\latexsym.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1ptm.fd))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype-pdftex
+.def)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.cfg))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg)
+)) (C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/tools\xspace.sty)
+(../shared/numbers.tex)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex
+.def)
+(E:\SCIENCE\HyperGranular-RAG\paper\versions\2026-10-02_editorial_final\confere
+nce\build\main.aux)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base
+.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg)
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+
+(E:\SCIENCE\HyperGranular-RAG\paper\versions\2026-10-02_editorial_final\confere
+nce\build\main.out)
+(E:\SCIENCE\HyperGranular-RAG\paper\versions\2026-10-02_editorial_final\confere
+nce\build\main.out)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-ptm.cfg)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/base\ulasy.fd)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg)
+Underfull \hbox (badness 1533) in paragraph at lines 39--46
+\T1/ptm/m/n/10.95 (+20) Retrieval-augmented ques-tion an-swer-ing sep-a-
+[1{C:/Users/cc/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/cc/Ap
+pData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd)
+Underfull \hbox (badness 3746) in paragraph at lines 90--93
+\T1/ptm/m/n/10.95 (+20) through a ver-i-fied fixed-visible-evidence
+
+Underfull \hbox (badness 10000) in paragraph at lines 90--93
+\T1/ptm/m/n/10.95 (+20) place-ment com-par-i-son and supporting-
+[2] (C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd)
+[3] [4 <../shared/workflow.pdf>]
+Underfull \hbox (badness 2941) in paragraph at lines 335--340
+\T1/ptm/m/n/10.95 (+20) The orig-i-nal com-pact \T1/ptm/m/sc/10.95 (+20) Full \
+T1/ptm/m/n/10.95 (+20) is be-low BGE
+
+Underfull \hbox (badness 10000) in paragraph at lines 335--340
+\T1/ptm/m/n/10.95 (+20) on the same com-po-nent set: $\OMS/cmsy/m/n/10.95 ^^@\O
+T1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 03998$
+
+Underfull \hbox (badness 3343) in paragraph at lines 335--340
+\OT1/cmr/m/n/10.95 [\OMS/cmsy/m/n/10.95 ^^@\OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10
+.95 :\OT1/cmr/m/n/10.95 05393\OML/cmm/m/it/10.95 ;  \OMS/cmsy/m/n/10.95 ^^@\OT1
+/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 02621]$\T1/ptm/m/n/10.9
+5 (+20) . BM25 and the hy-
+
+Underfull \hbox (badness 2707) in paragraph at lines 335--340
+\T1/ptm/m/n/10.95 (+20) brid are ad-di-tional com-para-tors, with \T1/ptm/m/sc/
+10.95 (+20) Full
+
+Underfull \hbox (badness 2680) in paragraph at lines 335--340
+\T1/ptm/m/n/10.95 (+20) dif-fer-ences of $\OMS/cmsy/m/n/10.95 ^^@\OT1/cmr/m/n/1
+0.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 00755$ $[\OMS/cmsy/m/n/10.95 ^^@\
+OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 02259\OML/cmm/m/it/1
+0.95 ;  \OT1/cmr/m/n/10.95 0\OML/cmm/m/it/10.95 :\OT1/cmr/m/n/10.95 00773]$
+
+Underfull \vbox (badness 2582) has occurred while \output is active
+Underfull \vbox (badness 2582) has occurred while \output is active [5]
+Underfull \hbox (badness 1742) in paragraph at lines 449--459
+\T1/ptm/m/n/10.95 (+20) Structured ev-i-dence com-ple-tion im-proves the
+
+Underfull \vbox (badness 1939) has occurred while \output is active
+Underfull \vbox (badness 1939) has occurred while \output is active [6 <../shar
+ed/effects.pdf>]
+(E:\SCIENCE\HyperGranular-RAG\paper\versions\2026-10-02_editorial_final\confere
+nce\build\main.bbl
+Underfull \hbox (badness 1270) in paragraph at lines 83--90
+\T1/ptm/m/n/10 (+20) with chain-of-thought rea-son-ing for knowledge-
+[7 <../shared/components.pdf>])
+Underfull \hbox (badness 10000) in paragraph at lines 474--483
+\T1/ptm/m/n/10.95 (+20) The com-pact method uses
+
+Underfull \hbox (badness 10000) in paragraph at lines 474--483
+\T1/pcr/m/n/10.95 all-MiniLM-L6-v2\T1/ptm/m/n/10.95 (+20) ; the strong rank-ing
+
+
+Underfull \hbox (badness 1742) in paragraph at lines 474--483
+\T1/ptm/m/n/10.95 (+20) uses \T1/pcr/m/n/10.95 BAAI/bge-large-en-v1.5\T1/ptm/m/
+n/10.95 (+20) . Na-tive
+
+Underfull \hbox (badness 3302) in paragraph at lines 495--502
+[]\T1/ptm/m/n/10.95 (+20) The pa-per's sci-en-tific names map to the
+
+Underfull \hbox (badness 2334) in paragraph at lines 517--527
+ []\T1/ptm/b/n/10.95 (+20) Complexity and mea-sured cost.[] \T1/ptm/m/n/10.95 (
++20) With em-
+(../shared/reproduction_details.tex
+Underfull \hbox (badness 2285) in paragraph at lines 4--13
+ []\T1/ptm/b/n/10.95 (+20) Retrieval and units.[] \T1/ptm/m/n/10.95 (+20) The c
+om-pact en-coder
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--13
+\T1/ptm/m/n/10.95 (+20) is \T1/pcr/m/n/10.95 all-MiniLM-L6-v2\T1/ptm/m/n/10.95 
+(+20) , with attention-
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--13
+\T1/ptm/m/n/10.95 (+20) mask mean pool-ing, L2 nor-mal-iza-tion,
+
+Underfull \hbox (badness 1874) in paragraph at lines 4--13
+\T1/ptm/m/n/10.95 (+20) and a 192-token en-coder limit. BGE uses
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--13
+\T1/pcr/m/n/10.95 bge-large-en-v1.5\T1/ptm/m/n/10.95 (+20) , CLS pool-ing, L2
+
+Underfull \hbox (badness 1968) in paragraph at lines 4--13
+\T1/ptm/m/n/10.95 (+20) the ques-tion. Doc-u-ment in-puts con-cate-nate
+
+Underfull \hbox (badness 1320) in paragraph at lines 4--13
+\T1/ptm/m/n/10.95 (+20) the ti-tle and sen-tence. Hot-potQA pre-serves
+
+Underfull \hbox (badness 2865) in paragraph at lines 4--13
+\T1/ptm/m/n/10.95 (+20) the sup-plied sen-tence bound-aries; MuSiQue
+
+Underfull \hbox (badness 2726) in paragraph at lines 4--13
+\T1/ptm/m/n/10.95 (+20) splits whitespace-normalized para-graphs with
+
+Underfull \hbox (badness 2277) in paragraph at lines 4--13
+\T1/ptm/m/n/10.95 (+20) the frozen punctuation-and-capitalization rule.
+
+Underfull \hbox (badness 1127) in paragraph at lines 4--13
+\T1/ptm/m/n/10.95 (+20) re-pro-ducibil-ity con-fig-u-ra-tion pins the en-coder
+[8]
+Underfull \hbox (badness 1117) in paragraph at lines 15--21
+ []\T1/ptm/b/n/10.95 (+20) Lexical base-lines.[] \T1/ptm/m/n/10.95 (+20) BM25 u
+ses low-er-case al-
+)
+Underfull \hbox (badness 1052) in paragraph at lines 39--538
+\T1/ptm/m/n/10.95 (+20) potQA as-signs zero to-ken F1 to mis-matched
+
+Package lineno Warning: Line number reference failed, re-run to get it right.
+
+[9]
+(E:\SCIENCE\HyperGranular-RAG\paper\versions\2026-10-02_editorial_final\confere
+nce\build\main.aux) )
+(see the transcript file for additional information)<C:/Users/cc/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/cc/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/cc/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/
+cc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/U
+sers/cc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+<C:/Users/cc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.
+pfb><C:/Users/cc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
+mr9.pfb><C:/Users/cc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb><C:/Users/cc/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmsy8.pfb><C:/Users/cc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/c
+ourier/ucrr8a.pfb><C:/Users/cc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/he
+lvetic/uhvb8a.pfb><C:/Users/cc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/ti
+mes/utmb8a.pfb><C:/Users/cc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times
+/utmr8a.pfb><C:/Users/cc/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/ut
+mri8a.pfb>
+Output written on E:\SCIENCE\HyperGranular-RAG\paper\versions\2026-10-02_editor
+ial_final\conference\build\main.pdf (9 pages, 324175 bytes).
+Transcript written on E:\SCIENCE\HyperGranular-RAG\paper\versions\2026-10-02_ed
+itorial_final\conference\build\main.log.
+
+pdflatex: major issue: So far, you have not checked for MiKTeX updates.

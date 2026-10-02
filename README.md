@@ -2,14 +2,22 @@
 
 以自适应粒球组织知识单元、以 query-aware 超边补充跨粒球关系，并通过受保护插入控制检索扩展的多跳 RAG 研究仓库。
 
-## 最新论文二修与评分核查（2026-10-02）
+## 最新双版本编辑终稿（2026-10-02）
+
+- [会议版终稿 PDF（总计 9 页）](paper/versions/2026-10-02_editorial_final/conference/HyperGranular-RAG_Conference.pdf)
+- [期刊版终稿 PDF（总计 21 页）](paper/versions/2026-10-02_editorial_final/journal/HyperGranular-RAG_Journal.pdf)
+- [源码与构建入口](paper/versions/2026-10-02_editorial_final/README.md) · [编辑验收记录](paper/versions/2026-10-02_editorial_final/FINAL_EDITORIAL_CHECK.md)
+
+以“证据选择—证据安排”统一主线，修正过强否定与“最佳”预设。沿用 revision2 的 canonical 数字、区间和固定可见证据结论，未重新实验或评分；已实际编译并逐页检查。页数包含参考文献和附录，具体 venue 与作者/许可元数据待人工确认。此节为最新交付；下方保留历史记录。
+
+## 论文二修与评分核查（2026-10-02，终稿写作依据）
 
 - [会议版二修 PDF（9 页）](paper/versions/2026-10-02_revision2/conference/HyperGranular-RAG_Conference.pdf)
 - [期刊版二修 PDF（21 页）](paper/versions/2026-10-02_revision2/journal/HyperGranular-RAG_Journal.pdf)
 - [源码、评分影响、位置核查及构建记录](paper/versions/2026-10-02_revision2/README.md)
 
 已从真实预测重建旧评分并完成 dataset-canonical 核查：53,500 条确认/迁移预测的分数及区间不变；开发集同一道题的 17 条输出更正不改变方法差值。Stage4I 全部 2,500 对可见证据内容一致、无截断，支持固定可见证据的排序/放置策略解释。两稿已编译并逐页检查，未启动新实验。
-本节是最新交付状态；正式实验仍暂停，受限数据保持锁定。仅同步本轮 allowlist，既有未提交审计工作保留。下方初稿和阶段说明保留为历史记录。
+本节保留二修交付记录；正式实验仍暂停，受限数据保持锁定。既有未提交审计工作保留。下方初稿和阶段说明保留为历史记录。
 
 ## 前版论文交付（2026-10-02）
 
