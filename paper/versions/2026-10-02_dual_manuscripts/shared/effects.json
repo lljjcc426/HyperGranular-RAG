@@ -1,0 +1,155 @@
+[
+  {
+    "key": "Hotpot",
+    "label": "Compact / HotpotQA",
+    "family": "compact",
+    "source": "results/stage4e_e2e_official_train1000_v1_evaluation_summary.json",
+    "point": 0.014779758952329285,
+    "lower": 0.0002025386860936729,
+    "upper": 0.029882683915792907
+  },
+  {
+    "key": "Musique",
+    "label": "Compact / MuSiQue",
+    "family": "compact",
+    "source": "results/stage4f_xdr_musique_train3000_v1_evaluation_summary.json",
+    "point": 0.011401426011948454,
+    "lower": 0.004495336102426787,
+    "upper": 0.01835157947488784
+  },
+  {
+    "key": "Gemma",
+    "label": "Generator transfer / Gemma",
+    "family": "transfer",
+    "source": "results/stage4g_gtr_gemma_hotpot1000_musique3000_v1_equal_weight_summary.json",
+    "point": 0.005163964536727919,
+    "lower": -0.0026229990302156785,
+    "upper": 0.012950454307054302
+  },
+  {
+    "key": "Joint",
+    "label": "Compact / joint",
+    "family": "backbone",
+    "source": "results/stage4h_cbe_hotpot1000_musique1500_v1_equal_weight_summary.json",
+    "point": 0.013568502134698303,
+    "lower": 0.004914009111820089,
+    "upper": 0.022325349137863187
+  },
+  {
+    "key": "Facet",
+    "label": "Compact / Full - NoFacet",
+    "family": "component",
+    "source": "results/stage4h_cbe_hotpot1000_musique1500_v1_equal_weight_summary.json",
+    "point": 0.013357917602763414,
+    "lower": 0.00340838044254275,
+    "upper": 0.02342573799950633
+  },
+  {
+    "key": "Protection",
+    "label": "Compact / Full - NoProtection",
+    "family": "component",
+    "source": "results/stage4h_cbe_hotpot1000_musique1500_v1_equal_weight_summary.json",
+    "point": 0.0035400399583050907,
+    "lower": -0.006745598437691575,
+    "upper": 0.013893057862104112
+  },
+  {
+    "key": "Strong",
+    "label": "Original Full - BGE",
+    "family": "backbone",
+    "source": "results/stage4h_cbe_hotpot1000_musique1500_v1_equal_weight_summary.json",
+    "point": -0.03997911063667102,
+    "lower": -0.05393311667777282,
+    "upper": -0.026211352078037622
+  },
+  {
+    "key": "Bm",
+    "label": "Original Full - BM25",
+    "family": "backbone",
+    "source": "results/stage4h_cbe_hotpot1000_musique1500_v1_equal_weight_summary.json",
+    "point": -0.007546384636305455,
+    "lower": -0.022594058337913458,
+    "upper": 0.007730291021238081
+  },
+  {
+    "key": "Hybrid",
+    "label": "Original Full - hybrid",
+    "family": "backbone",
+    "source": "results/stage4h_cbe_hotpot1000_musique1500_v1_equal_weight_summary.json",
+    "point": -0.003203619303303144,
+    "lower": -0.015911614540638306,
+    "upper": 0.009415566970715744
+  },
+  {
+    "key": "Sidecar",
+    "label": "Sidecar / Protected - BGE",
+    "family": "sidecar",
+    "source": "results/stage4i_sdc_hotpot1000_musique1500_v1_equal_weight_summary.json",
+    "point": -0.002563487034017898,
+    "lower": -0.009981696740290903,
+    "upper": 0.0045765019549832385
+  },
+  {
+    "key": "SidecarFacet",
+    "label": "Sidecar / Protected - NoFacet",
+    "family": "sidecar",
+    "source": "results/stage4i_sdc_hotpot1000_musique1500_v1_equal_weight_summary.json",
+    "point": -0.007431143894698319,
+    "lower": -0.01616085411047949,
+    "upper": 0.0013248250233646012
+  },
+  {
+    "key": "SidecarPlace",
+    "label": "Sidecar / Protected - Unprotected",
+    "family": "sidecar",
+    "source": "results/stage4i_sdc_hotpot1000_musique1500_v1_equal_weight_summary.json",
+    "point": 0.011222464550536135,
+    "lower": 0.0012860023909922955,
+    "upper": 0.02104337340730401
+  },
+  {
+    "key": "SidecarUnprotected",
+    "label": "Sidecar / Unprotected - BGE",
+    "family": "sidecar",
+    "source": "results/stage4i_sdc_hotpot1000_musique1500_v1_equal_weight_summary.json",
+    "point": -0.013785951584554035,
+    "lower": -0.02440232762054237,
+    "upper": -0.003394487420571022
+  },
+  {
+    "key": "Native",
+    "label": "Native / Protected - BGE",
+    "family": "native",
+    "source": "results/stage5a_bnh_confirmation_equal_weight_summary.json",
+    "point": -0.0030458201219070785,
+    "lower": -0.006879831388418345,
+    "upper": 0.0006312558576688999
+  },
+  {
+    "key": "NativeFacet",
+    "label": "Native / Protected - NoFacet",
+    "family": "native",
+    "source": "results/stage5a_bnh_confirmation_equal_weight_summary.json",
+    "point": 0.0006309544782878872,
+    "lower": -0.0042201766774451,
+    "upper": 0.005364560771923123
+  },
+  {
+    "key": "NativePlace",
+    "label": "Native / Protected - Unprotected",
+    "family": "native",
+    "source": "results/stage5a_bnh_confirmation_equal_weight_summary.json",
+    "point": 0.003367058043988329,
+    "lower": -0.0012851527336356795,
+    "upper": 0.008025643021968454
+  },
+  {
+    "key": "NativeUnprotected",
+    "label": "Native / Unprotected - BGE",
+    "family": "native",
+    "source": "results/stage5a_bnh_confirmation_equal_weight_summary.json",
+    "point": -0.006412878165895407,
+    "lower": -0.01171411357799289,
+    "upper": -0.0011762427180099593
+  }
+]

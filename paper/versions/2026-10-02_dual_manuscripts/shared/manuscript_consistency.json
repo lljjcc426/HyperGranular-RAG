@@ -1,0 +1,275 @@
+{
+  "scope": "existing aggregate transcription and citation-key checks; not independent metric recomputation",
+  "absolute_metric_cells_checked": 48,
+  "checks": [
+    {
+      "field": "E/dense/answer_f1",
+      "display": "0.42150",
+      "aggregate_value": 0.42149791071202763
+    },
+    {
+      "field": "E/dense/answer_em",
+      "display": "0.35600",
+      "aggregate_value": 0.356
+    },
+    {
+      "field": "E/dense/retrieval_cr20",
+      "display": "0.73700",
+      "aggregate_value": 0.737
+    },
+    {
+      "field": "E/dense/retrieval_er20",
+      "display": "0.87860",
+      "aggregate_value": 0.8785999999999999
+    },
+    {
+      "field": "E/full/answer_f1",
+      "display": "0.43628",
+      "aggregate_value": 0.43627766966435694
+    },
+    {
+      "field": "E/full/answer_em",
+      "display": "0.36600",
+      "aggregate_value": 0.366
+    },
+    {
+      "field": "E/full/retrieval_cr20",
+      "display": "0.79800",
+      "aggregate_value": 0.798
+    },
+    {
+      "field": "E/full/retrieval_er20",
+      "display": "0.90818",
+      "aggregate_value": 0.9081833333333332
+    },
+    {
+      "field": "F/dense/answer_f1",
+      "display": "0.13595",
+      "aggregate_value": 0.13595239981357152
+    },
+    {
+      "field": "F/dense/answer_em",
+      "display": "0.10033",
+      "aggregate_value": 0.10033333333333333
+    },
+    {
+      "field": "F/dense/retrieval_cr20",
+      "display": "0.58900",
+      "aggregate_value": 0.589
+    },
+    {
+      "field": "F/dense/retrieval_er20",
+      "display": "0.80553",
+      "aggregate_value": 0.8055277777777778
+    },
+    {
+      "field": "F/full/answer_f1",
+      "display": "0.14735",
+      "aggregate_value": 0.14735382582551998
+    },
+    {
+      "field": "F/full/answer_em",
+      "display": "0.11033",
+      "aggregate_value": 0.11033333333333334
+    },
+    {
+      "field": "F/full/retrieval_cr20",
+      "display": "0.65000",
+      "aggregate_value": 0.65
+    },
+    {
+      "field": "F/full/retrieval_er20",
+      "display": "0.84128",
+      "aggregate_value": 0.8412777777777777
+    },
+    {
+      "field": "H/dense/answer_f1",
+      "display": "0.30446",
+      "aggregate_value": 0.3044607527351043
+    },
+    {
+      "field": "H/dense/answer_em",
+      "display": "0.25467",
+      "aggregate_value": 0.25466666666666665
+    },
+    {
+      "field": "H/dense/retrieval_cr20",
+      "display": "0.66617",
+      "aggregate_value": 0.6661666666666667
+    },
+    {
+      "field": "H/dense/retrieval_er20",
+      "display": "0.84529",
+      "aggregate_value": 0.8452940476190477
+    },
+    {
+      "field": "H/full/answer_f1",
+      "display": "0.31803",
+      "aggregate_value": 0.3180292548698026
+    },
+    {
+      "field": "H/full/answer_em",
+      "display": "0.26400",
+      "aggregate_value": 0.264
+    },
+    {
+      "field": "H/full/retrieval_cr20",
+      "display": "0.72217",
+      "aggregate_value": 0.7221666666666666
+    },
+    {
+      "field": "H/full/retrieval_er20",
+      "display": "0.87657",
+      "aggregate_value": 0.8765738095238096
+    },
+    {
+      "field": "H/STRONG_DENSE_TOP20/answer_f1",
+      "display": "0.35801",
+      "aggregate_value": 0.3580083655064736
+    },
+    {
+      "field": "H/STRONG_DENSE_TOP20/answer_em",
+      "display": "0.30467",
+      "aggregate_value": 0.3046666666666667
+    },
+    {
+      "field": "H/STRONG_DENSE_TOP20/retrieval_cr20",
+      "display": "0.85400",
+      "aggregate_value": 0.8540000000000001
+    },
+    {
+      "field": "H/STRONG_DENSE_TOP20/retrieval_er20",
+      "display": "0.93902",
+      "aggregate_value": 0.939018253968254
+    },
+    {
+      "field": "H/STATIC_Q25_FULL/answer_f1",
+      "display": "0.31803",
+      "aggregate_value": 0.3180292548698026
+    },
+    {
+      "field": "H/STATIC_Q25_FULL/answer_em",
+      "display": "0.26400",
+      "aggregate_value": 0.264
+    },
+    {
+      "field": "H/STATIC_Q25_FULL/retrieval_cr20",
+      "display": "0.72217",
+      "aggregate_value": 0.7221666666666666
+    },
+    {
+      "field": "H/STATIC_Q25_FULL/retrieval_er20",
+      "display": "0.87657",
+      "aggregate_value": 0.8765738095238096
+    },
+    {
+      "field": "I/BGE_TOP20/answer_f1",
+      "display": "0.34301",
+      "aggregate_value": 0.3430116759390272
+    },
+    {
+      "field": "I/BGE_TOP20/answer_em",
+      "display": "0.28000",
+      "aggregate_value": 0.28
+    },
+    {
+      "field": "I/BGE_TOP20/retrieval_cr20",
+      "display": "0.84967",
+      "aggregate_value": 0.8496666666666667
+    },
+    {
+      "field": "I/BGE_TOP20/retrieval_er20",
+      "display": "0.93594",
+      "aggregate_value": 0.9359416666666667
+    },
+    {
+      "field": "I/BGE_HGRAG_PROTECTED_TOP20/answer_f1",
+      "display": "0.34045",
+      "aggregate_value": 0.34044818890500933
+    },
+    {
+      "field": "I/BGE_HGRAG_PROTECTED_TOP20/answer_em",
+      "display": "0.27767",
+      "aggregate_value": 0.2776666666666667
+    },
+    {
+      "field": "I/BGE_HGRAG_PROTECTED_TOP20/retrieval_cr20",
+      "display": "0.84350",
+      "aggregate_value": 0.8435
+    },
+    {
+      "field": "I/BGE_HGRAG_PROTECTED_TOP20/retrieval_er20",
+      "display": "0.93459",
+      "aggregate_value": 0.9345861111111111
+    },
+    {
+      "field": "A/BGE_TOP20/answer_f1",
+      "display": "0.34569",
+      "aggregate_value": 0.3456884698384767
+    },
+    {
+      "field": "A/BGE_TOP20/answer_em",
+      "display": "0.28500",
+      "aggregate_value": 0.28500000000000003
+    },
+    {
+      "field": "A/BGE_TOP20/retrieval_cr20",
+      "display": "0.86167",
+      "aggregate_value": 0.8616666666666666
+    },
+    {
+      "field": "A/BGE_TOP20/retrieval_er20",
+      "display": "0.94288",
+      "aggregate_value": 0.9428833333333333
+    },
+    {
+      "field": "A/BGE_NATIVE_HGRAG_PROTECTED_TOP20/answer_f1",
+      "display": "0.34264",
+      "aggregate_value": 0.34264264971656955
+    },
+    {
+      "field": "A/BGE_NATIVE_HGRAG_PROTECTED_TOP20/answer_em",
+      "display": "0.28133",
+      "aggregate_value": 0.2813333333333333
+    },
+    {
+      "field": "A/BGE_NATIVE_HGRAG_PROTECTED_TOP20/retrieval_cr20",
+      "display": "0.86233",
+      "aggregate_value": 0.8623333333333333
+    },
+    {
+      "field": "A/BGE_NATIVE_HGRAG_PROTECTED_TOP20/retrieval_er20",
+      "display": "0.94288",
+      "aggregate_value": 0.9428833333333333
+    }
+  ],
+  "dataset_sources": {
+    "H": "stage4h_cbe_hotpot1000_musique1500_v1_dataset_summaries.json",
+    "I": "stage4i_sdc_hotpot1000_musique1500_v1_dataset_summaries.json",
+    "A": "stage5a_bnh_confirmation_dataset_summaries.json"
+  },
+  "citation_keys": {
+    "conference": {
+      "unique_citations": 13,
+      "missing_keys": []
+    },
+    "journal": {
+      "unique_citations": 13,
+      "missing_keys": []
+    }
+  },
+  "old_manuscripts": [
+    {
+      "path": "paper/latex/main.tex",
+      "unchanged_from_writing_start": true
+    },
+    {
+      "path": "paper/latex/main.pdf",
+      "unchanged_from_writing_start": true
+    },
+    {
+      "path": "paper/references/verified_references.bib",
+      "unchanged_from_writing_start": true
+    }
+  ]
+}

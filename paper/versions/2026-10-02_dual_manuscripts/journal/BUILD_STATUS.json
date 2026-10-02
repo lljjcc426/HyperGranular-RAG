@@ -1,0 +1,145 @@
+{
+  "document": "journal",
+  "pdf": "E:\\SCIENCE\\HyperGranular-RAG\\paper\\versions\\2026-10-02_dual_manuscripts\\journal\\HyperGranular-RAG_Journal.pdf",
+  "pages": 19,
+  "compiler": "MiKTeX pdfTeX 4.23 (25.12)",
+  "commands_exited_zero": 4,
+  "page_checks": [
+    {
+      "page": 1,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3493,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 2,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4053,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 3,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3418,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 4,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3515,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 5,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3219,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 6,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 2375,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 7,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3253,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 8,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3452,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 9,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3469,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 10,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3561,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 11,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3162,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 12,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3130,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 13,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 2711,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 14,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 2927,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 15,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3500,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 16,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3841,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 17,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3565,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 18,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3268,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 19,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 2091,
+      "visual_review": "VISUALLY_REVIEWED"
+    }
+  ],
+  "visual_review_date": "2026-10-02",
+  "visual_review_scope": "Rendered pages inspected for layout, formulas, tables, captions, citations and pagination; not independent scientific replication.",
+  "visual_review_record": "../BUILD_AND_PAGE_REVIEW.md"
+}

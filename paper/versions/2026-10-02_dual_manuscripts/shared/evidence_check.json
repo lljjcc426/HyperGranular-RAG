@@ -1,0 +1,30 @@
+{
+  "scope": "aggregate reuse only; no rescoring or resampling",
+  "effect_rows": 17,
+  "existing_figure_effect_rows_matched": 13,
+  "sources": {
+    "E": "stage4e_e2e_official_train1000_v1_evaluation_summary.json",
+    "F": "stage4f_xdr_musique_train3000_v1_evaluation_summary.json",
+    "G": "stage4g_gtr_gemma_hotpot1000_musique3000_v1_equal_weight_summary.json",
+    "H": "stage4h_cbe_hotpot1000_musique1500_v1_equal_weight_summary.json",
+    "I": "stage4i_sdc_hotpot1000_musique1500_v1_equal_weight_summary.json",
+    "A": "stage5a_bnh_confirmation_equal_weight_summary.json"
+  },
+  "old_manuscript_identity": [
+    {
+      "path": "paper/latex/main.tex",
+      "bytes": 49588,
+      "sha256": "db8fd20013145b9345409aca3bc633c1bcf20ea13e9abcfebaeab1e1742b303c"
+    },
+    {
+      "path": "paper/latex/main.pdf",
+      "bytes": 1756382,
+      "sha256": "9b5e42dfce7f156c975c603d3b4069300076471b261c859f8110ed130305cc6d"
+    },
+    {
+      "path": "paper/references/verified_references.bib",
+      "bytes": 12794,
+      "sha256": "c1ab8427561de65ce8e1a3be0ae2f8579d6b412e561778bb3cf741f8a851a3be"
+    }
+  ]
+}

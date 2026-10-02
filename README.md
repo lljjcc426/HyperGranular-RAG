@@ -2,6 +2,16 @@
 
 以自适应粒球组织知识单元、以 query-aware 超边补充跨粒球关系，并通过受保护插入控制检索扩展的多跳 RAG 研究仓库。
 
+## 最新论文交付（2026-10-02）
+
+- [会议版完整英文 PDF（8 页）](paper/versions/2026-10-02_dual_manuscripts/conference/HyperGranular-RAG_Conference.pdf)
+- [期刊版完整英文 PDF（19 页）](paper/versions/2026-10-02_dual_manuscripts/journal/HyperGranular-RAG_Journal.pdf)
+- [LaTeX、证据核对、构建记录与中文交接](paper/versions/2026-10-02_dual_manuscripts/README.md)
+
+两版共用历史冻结证据，均已本地编译并逐页检查。正式实验仍暂停，作者与投稿元数据待确认。
+后续已授权工作持续同步 GitHub；这一规则不授予新科学实验权限。
+本节为当前权威状态，下文阶段授权与旧稿入口保留为历史记录。
+
 ## 当前状态
 
 | 项目 | 当前事实 |

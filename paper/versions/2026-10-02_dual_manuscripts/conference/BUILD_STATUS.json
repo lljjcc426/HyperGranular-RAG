@@ -1,0 +1,68 @@
+{
+  "document": "conference",
+  "pdf": "E:\\SCIENCE\\HyperGranular-RAG\\paper\\versions\\2026-10-02_dual_manuscripts\\conference\\HyperGranular-RAG_Conference.pdf",
+  "pages": 8,
+  "compiler": "MiKTeX pdfTeX 4.23 (25.12)",
+  "commands_exited_zero": 4,
+  "page_checks": [
+    {
+      "page": 1,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4318,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 2,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4391,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 3,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4661,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 4,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3988,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 5,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3958,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 6,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3745,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 7,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4125,
+      "visual_review": "VISUALLY_REVIEWED"
+    },
+    {
+      "page": 8,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3823,
+      "visual_review": "VISUALLY_REVIEWED"
+    }
+  ],
+  "visual_review_date": "2026-10-02",
+  "visual_review_scope": "Rendered pages inspected for layout, formulas, tables, captions, citations and pagination; not independent scientific replication.",
+  "visual_review_record": "../BUILD_AND_PAGE_REVIEW.md"
+}
