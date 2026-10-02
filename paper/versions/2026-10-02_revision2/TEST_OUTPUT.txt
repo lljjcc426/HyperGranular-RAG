@@ -1,0 +1,18 @@
+Actual command (repository root, 2026-10-02):
+temp/dual_manuscripts_env/Scripts/python.exe paper/versions/2026-10-02_revision2/test_revision2.py
+
+test_actual_visible_content (__main__.ScoringReview.test_actual_visible_content) ... ok
+test_aliases (__main__.ScoringReview.test_aliases) ... ok
+test_categorical_dataset_difference (__main__.ScoringReview.test_categorical_dataset_difference) ... ok
+test_completed_prediction_reconstruction (__main__.ScoringReview.test_completed_prediction_reconstruction) ... ok
+test_empty_and_normalization (__main__.ScoringReview.test_empty_and_normalization) ... ok
+test_placement_set_identity (__main__.ScoringReview.test_placement_set_identity) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.028s
+
+OK
+
+Exit code: 0. This records the actual tool output; it is not a second test run.
+Full real-prediction reconstruction output: scoring/rescore_execution.txt.
+Actual placement output: scoring/PLACEMENT_SUMMARY.json and PLACEMENT_QUERY_CHECKS.csv.

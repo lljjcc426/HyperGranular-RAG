@@ -1,0 +1,178 @@
+{
+  "document": "journal",
+  "pdf": "E:\\SCIENCE\\HyperGranular-RAG\\paper\\versions\\2026-10-02_revision2\\journal\\HyperGranular-RAG_Journal.pdf",
+  "pages": 21,
+  "compiler": "MiKTeX pdfTeX 4.23 (25.12)",
+  "commands_exited_zero": 4,
+  "page_checks": [
+    {
+      "page": 1,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3443,
+      "visual_review": "REVIEWED",
+      "note": "Title, abstract, keywords and introduction readable."
+    },
+    {
+      "page": 2,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4052,
+      "visual_review": "REVIEWED",
+      "note": "Research questions and contribution boundaries coherent; no layout defects."
+    },
+    {
+      "page": 3,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3625,
+      "visual_review": "REVIEWED",
+      "note": "Related work and problem definition; citations and equation 1 readable."
+    },
+    {
+      "page": 4,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3283,
+      "visual_review": "REVIEWED",
+      "note": "Historical split predicate and static score equations fit."
+    },
+    {
+      "page": 5,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3159,
+      "visual_review": "REVIEWED",
+      "note": "Workflow figure and native variant details readable."
+    },
+    {
+      "page": 6,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 2515,
+      "visual_review": "REVIEWED",
+      "note": "Native score, compactness propositions and proofs; mathematical symbols clear."
+    },
+    {
+      "page": 7,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3352,
+      "visual_review": "REVIEWED",
+      "note": "Static coverage counterexample and background greedy bound; no new guarantee claimed."
+    },
+    {
+      "page": 8,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3448,
+      "visual_review": "REVIEWED",
+      "note": "Dataset table and baseline/generator design fit page."
+    },
+    {
+      "page": 9,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3673,
+      "visual_review": "REVIEWED",
+      "note": "Legacy/canonical scorer lineage, 17 corrections and equal-weight estimator readable."
+    },
+    {
+      "page": 10,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3575,
+      "visual_review": "REVIEWED",
+      "note": "Canonical absolute-score table, uncertainty and verification scope readable."
+    },
+    {
+      "page": 11,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3082,
+      "visual_review": "REVIEWED",
+      "note": "Component forest and compact/strong comparison; all labels and intervals legible."
+    },
+    {
+      "page": 12,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 2840,
+      "visual_review": "REVIEWED",
+      "note": "Strong-backbone table, native/transfer intervals and placement-set derivation fit."
+    },
+    {
+      "page": 13,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 2883,
+      "visual_review": "REVIEWED",
+      "note": "Main forest, actual token distribution table and visible-evidence verification clear."
+    },
+    {
+      "page": 14,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3015,
+      "visual_review": "REVIEWED",
+      "note": "Evidence-turnover table and mechanism figure; supporting-unit granularity labeled."
+    },
+    {
+      "page": 15,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3837,
+      "visual_review": "REVIEWED",
+      "note": "Qualitative case table, cases and cost complexity readable."
+    },
+    {
+      "page": 16,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3586,
+      "visual_review": "REVIEWED",
+      "note": "Recorded cost table and discussion; process/transaction distinction explicit."
+    },
+    {
+      "page": 17,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3744,
+      "visual_review": "REVIEWED",
+      "note": "Placement interpretation, future controls and limitations; no clipping."
+    },
+    {
+      "page": 18,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3361,
+      "visual_review": "REVIEWED",
+      "note": "Conclusion, responsibility statement and bibliography start readable."
+    },
+    {
+      "page": 19,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3344,
+      "visual_review": "REVIEWED",
+      "note": "References and evidence appendix; long commit identifier fits."
+    },
+    {
+      "page": 20,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3254,
+      "visual_review": "REVIEWED",
+      "note": "Scorer provenance, terminology table and extension counterexample; no overflow."
+    },
+    {
+      "page": 21,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3718,
+      "visual_review": "REVIEWED",
+      "note": "Path-dependence appendix and reproduction details; final page complete."
+    }
+  ],
+  "review_method": "Agent inspected each final page PNG, not text-only or contact-sheet-only review."
+}

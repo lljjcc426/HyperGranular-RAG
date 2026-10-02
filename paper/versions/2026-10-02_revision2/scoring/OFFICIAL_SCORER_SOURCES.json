@@ -1,0 +1,14 @@
+{
+  "hotpot": {
+    "url": "https://raw.githubusercontent.com/hotpotqa/hotpot/3635853403a8735609ee997664e1528f4480762a/hotpot_evaluate_v1.py",
+    "commit": "3635853403a8735609ee997664e1528f4480762a",
+    "sha256": "D35FC91A6DB21D791DBDDA11DAF3856E9359F5701D54E3EEFBA20D88FECC02C0",
+    "bytes": 4257
+  },
+  "musique": {
+    "url": "https://raw.githubusercontent.com/StonyBrookNLP/musique/922ac98f19a201998dbdae6d7f2887a5258dbdeb/metrics/answer.py",
+    "commit": "922ac98f19a201998dbdae6d7f2887a5258dbdeb",
+    "sha256": "10368F619B4D5EF5D83748C05A96C0AFD332A14AB5C010740C98D58DFAEFE974",
+    "bytes": 2837
+  }
+}

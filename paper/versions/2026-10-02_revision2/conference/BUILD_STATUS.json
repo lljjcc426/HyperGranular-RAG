@@ -1,0 +1,82 @@
+{
+  "document": "conference",
+  "pdf": "E:\\SCIENCE\\HyperGranular-RAG\\paper\\versions\\2026-10-02_revision2\\conference\\HyperGranular-RAG_Conference.pdf",
+  "pages": 9,
+  "compiler": "MiKTeX pdfTeX 4.23 (25.12)",
+  "commands_exited_zero": 5,
+  "page_checks": [
+    {
+      "page": 1,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4260,
+      "visual_review": "REVIEWED",
+      "note": "Title, abstract, motivation; numerical and placement claims legible."
+    },
+    {
+      "page": 2,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4507,
+      "visual_review": "REVIEWED",
+      "note": "Contributions, related work, equations 1-2; line numbers stable after extra pass."
+    },
+    {
+      "page": 3,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4661,
+      "visual_review": "REVIEWED",
+      "note": "Static score, insertion and data design; formula and text fit columns."
+    },
+    {
+      "page": 4,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4018,
+      "visual_review": "REVIEWED",
+      "note": "Workflow figure/caption, scoring lineage and inference boundaries readable."
+    },
+    {
+      "page": 5,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4326,
+      "visual_review": "REVIEWED",
+      "note": "Main table, strong baseline and transfer results; no clipped interval text."
+    },
+    {
+      "page": 6,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3781,
+      "visual_review": "REVIEWED",
+      "note": "Canonical forest, fixed-content placement and limits; graph labels readable."
+    },
+    {
+      "page": 7,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4125,
+      "visual_review": "REVIEWED",
+      "note": "Component forest, conclusion, disclosure and references; no overlap."
+    },
+    {
+      "page": 8,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4815,
+      "visual_review": "REVIEWED",
+      "note": "Remaining references, native definition and geometric appendix; formulas fit."
+    },
+    {
+      "page": 9,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3185,
+      "visual_review": "REVIEWED",
+      "note": "Reproduction appendix and final pagination; no unresolved cross references."
+    }
+  ],
+  "review_method": "Agent inspected each final page PNG, not text-only or contact-sheet-only review."
+}

@@ -1,0 +1,22 @@
+{
+  "hotpotqa_train_distractor_v1_1": {
+    "queries": 1000,
+    "membership_identical": 1000,
+    "visible_content_identical": 1000,
+    "serialized_prompts_verified": 2000,
+    "with_insertions": 458,
+    "under20": 12,
+    "prompt_order_changed": 458,
+    "tokens_differ": 0
+  },
+  "musique_ans_v1_0_train": {
+    "queries": 1500,
+    "membership_identical": 1500,
+    "visible_content_identical": 1500,
+    "serialized_prompts_verified": 3000,
+    "with_insertions": 1070,
+    "under20": 0,
+    "prompt_order_changed": 1070,
+    "tokens_differ": 0
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4e_e2e_official_train1000_v1_gold_targets.jsonl": {
+    "bytes": 500814,
+    "sha256": "7FE6824DA2B46D76DDAF3C0D65C7DBBEC7D0788BD363A4AFC819AAC5F71D6907",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_predictions_main.jsonl": {
+    "bytes": 419866,
+    "sha256": "FE9D6716BBB2D83DD3407CB5A042CB9F888912256C478FA501DE9F5457945D58",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_query_audit.jsonl": {
+    "bytes": 417568,
+    "sha256": "ACDB9D22C14B9D10FEA0867DFFB2B87DBD4D1B4E07FCDBA8277638E3AB638C19",
+    "frozen_binding_verified": false
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_prompt_audit_main.jsonl": {
+    "bytes": 3337447,
+    "sha256": "130B78B896EDDBF0250E60736B223029163C30BBA6A492C6D4978D57E2556055",
+    "frozen_binding_verified": false
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_rankings.jsonl": {
+    "bytes": 3036774,
+    "sha256": "AA6CBAD5D37BD66424DCAC6472FEBA8AC5FBAA769B789D968103AAB7CFDD1455",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4f_xdr_musique_train3000_v1_gold_targets.jsonl": {
+    "bytes": 2194235,
+    "sha256": "E53E3AF330D1D498A8B23CF06BA0AB9DA8452FC7BF4CB565C6ED749B28C60B2D",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_predictions_main.jsonl": {
+    "bytes": 1106316,
+    "sha256": "68F9524542B91C8FD93C7A4B0B3549BFE168DF1EB5D94E6479149E5B4534E62E",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_query_audit.jsonl": {
+    "bytes": 1510981,
+    "sha256": "EA7634EE7354A959A1D03D1E9DD7A220BA39F3F7CF2D6F168D17E3EC53C66ADF",
+    "frozen_binding_verified": false
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_prompt_audit_main.jsonl": {
+    "bytes": 8573108,
+    "sha256": "D27D24E79F79758F860884C2B36D2AC509D0FFA4B587E90E8EE596F10FFF132E",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_rankings.jsonl": {
+    "bytes": 7758160,
+    "sha256": "732A10DE74E8F97E5CECFDBFBBC3B49E5EF053C6F190948CD5C0B66D71D6AEDD",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4g_gtr_gemma_hotpot1000_musique3000_v1_predictions_main.jsonl": {
+    "bytes": 1508328,
+    "sha256": "E6B0A50CB3090A7268E838EC5BBB0DD6C5FE90440A75DA0B103D2E0906D31709",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4g_gtr_gemma_hotpot1000_musique3000_v1_query_scores.jsonl": {
+    "bytes": 1212870,
+    "sha256": "8796DC8033CC9B3993BC02A224CD8585AE89C46E7CDAB20DA1447E9C6B0241BE",
+    "frozen_binding_verified": false
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4g_gtr_gemma_hotpot1000_musique3000_v1_prompt_audit_main.jsonl": {
+    "bytes": 14058957,
+    "sha256": "E8227941D1AF5E3C893AC538E1E5DD61C2FE818F879D0EA6D45FB7137E54F8F1",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4h_cbe_hotpot1000_musique1500_v1_gold_targets.jsonl": {
+    "bytes": 812450,
+    "sha256": "02407A306C0728024CB3D515C7427610C2AFB4898C75FEE9EDA9BA890A22B92F",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_hotpot1000_musique1500_v1_predictions_main.jsonl": {
+    "bytes": 3449765,
+    "sha256": "52B9276E93AF19820B8F2E358F54BE9CDF88D4A8C6A34020AF3EDC153470E310",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_hotpot1000_musique1500_v1_query_audit.jsonl": {
+    "bytes": 3111653,
+    "sha256": "6232260E8D91D070E8A28B96A4F179538D2EB300F16FE28DB3B24168ADBD4CA9",
+    "frozen_binding_verified": false
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_hotpot1000_musique1500_v1_prompt_audit_main.jsonl": {
+    "bytes": 26702494,
+    "sha256": "B7B2D3E3846CD7406C4E646A0DC007F54A5CC3BBA863CAD9E0551F7AB9A5B507",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4h_cbe_hotpot1000_musique1500_v1_rankings.jsonl": {
+    "bytes": 22809912,
+    "sha256": "EAECD420CEDDFD0E670892E9B78B0D6D02BB3E9BE2A84BC36631C1D985C49822",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4i_sdc_hotpot1000_musique1500_v1_gold_targets.jsonl": {
+    "bytes": 811889,
+    "sha256": "BC0538A25C8FB2C4F14DC5FDC39039710C2F9222DB99FF3E6DEA088F8A991867",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4i_sdc_hotpot1000_musique1500_v1_predictions_main.jsonl": {
+    "bytes": 2024605,
+    "sha256": "A6D8A4652A208E39EDEBA590CA17D9DACB05D2C9C29EC37E8E274C8AF30B2D22",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4i_sdc_hotpot1000_musique1500_v1_query_audit.jsonl": {
+    "bytes": 4272115,
+    "sha256": "03AE49C301AD2AB250FB79D7DFA561B936D6C5201AAF9B87131D4DFB4D70ABFB",
+    "frozen_binding_verified": false
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4i_sdc_hotpot1000_musique1500_v1_prompt_audit_main.jsonl": {
+    "bytes": 15313783,
+    "sha256": "3CECDADE511873D0951B24DB9C617042C50900A4B23123CCFFFDF199902E2EA0",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4i_sdc_hotpot1000_musique1500_v1_rankings.jsonl": {
+    "bytes": 13453513,
+    "sha256": "AACC7776AFF4BA512FE9530F366D177DEC7BF04531620F4447245C6E96682FC2",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage5a_bnh_development_hotpot500_musique750_v1_gold_targets.jsonl": {
+    "bytes": 402978,
+    "sha256": "6724C13250010198C1ACBB60D592BE701DD0814C431C8E17680B746706E9F073",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage5a_bnh_development_predictions_main.jsonl": {
+    "bytes": 4314248,
+    "sha256": "43174D969BE28A62FDEB2848619998B82144F94282D87C78C629356FED5B3451",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage5a_bnh_development_query_audit.jsonl": {
+    "bytes": 2702476,
+    "sha256": "DDEB13359F7B58D3B8459421EB3D209D149C82A2BF0C88E5FD4851C649719C6B",
+    "frozen_binding_verified": false
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage5a_bnh_development_prompt_audit_main.jsonl": {
+    "bytes": 32564032,
+    "sha256": "39A612E5D06268B75EB22DAA9D414F6977456BA4B8349224044122D2A8830E5D",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage5a_bnh_development_hotpot500_musique750_v1_rankings.jsonl": {
+    "bytes": 26393671,
+    "sha256": "87366489C9F16D29B1E76B886DF137E2BA13C472562686AF5AB8732AE8B1B7EE",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage5a_bnh_confirmation_hotpot1000_musique1500_v1_gold_targets.jsonl": {
+    "bytes": 810049,
+    "sha256": "1230A75C6D37BA05BA085B3A613ADE626C91187CF013A98103C1BD150DA98364",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage5a_bnh_confirmation_predictions_main.jsonl": {
+    "bytes": 2078579,
+    "sha256": "EE3892B45BD4A7EA776402AE1428438592F1948ED081CEAF39AB07AA4BD2E1F9",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage5a_bnh_confirmation_query_audit.jsonl": {
+    "bytes": 4375509,
+    "sha256": "A8AB7176504AB8C84466F69AC80873C8D5CD62C93B25B15B76DE65C7374FEDBD",
+    "frozen_binding_verified": false
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage5a_bnh_confirmation_prompt_audit_main.jsonl": {
+    "bytes": 15375577,
+    "sha256": "AAC4656D37E45FCE966A7D9B868B1228C1C9F0D18DC7EB934EBB1CD3E8E0DD57",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage5a_bnh_confirmation_hotpot1000_musique1500_v1_rankings.jsonl": {
+    "bytes": 13277645,
+    "sha256": "18FC4DBDAF104F3BCD69FEB0DBED9976BFF389FA3EF84484DC72B52CB91E2D3D",
+    "frozen_binding_verified": true
+  }
+}

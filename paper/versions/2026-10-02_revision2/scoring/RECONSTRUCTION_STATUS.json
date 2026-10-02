@@ -1,0 +1,65 @@
+{
+  "4E": {
+    "queries": 1000,
+    "predictions": 2000,
+    "methods": 2,
+    "affected_predictions": 0,
+    "legacy_per_query_means_and_intervals": "RECONSTRUCTED",
+    "canonical_status": "COMPLETED",
+    "development_reselection": false
+  },
+  "4F": {
+    "queries": 3000,
+    "predictions": 6000,
+    "methods": 2,
+    "affected_predictions": 0,
+    "legacy_per_query_means_and_intervals": "RECONSTRUCTED",
+    "canonical_status": "COMPLETED",
+    "development_reselection": false
+  },
+  "4G": {
+    "queries": 4000,
+    "predictions": 8000,
+    "methods": 2,
+    "affected_predictions": 0,
+    "legacy_per_query_means_and_intervals": "RECONSTRUCTED",
+    "canonical_status": "COMPLETED",
+    "development_reselection": false
+  },
+  "4H": {
+    "queries": 2500,
+    "predictions": 17500,
+    "methods": 7,
+    "affected_predictions": 0,
+    "legacy_per_query_means_and_intervals": "RECONSTRUCTED",
+    "canonical_status": "COMPLETED",
+    "development_reselection": false
+  },
+  "4I": {
+    "queries": 2500,
+    "predictions": 10000,
+    "methods": 4,
+    "affected_predictions": 0,
+    "legacy_per_query_means_and_intervals": "RECONSTRUCTED",
+    "canonical_status": "COMPLETED",
+    "development_reselection": false
+  },
+  "5A_development": {
+    "queries": 1250,
+    "predictions": 21250,
+    "methods": 17,
+    "affected_predictions": 17,
+    "legacy_per_query_means_and_intervals": "RECONSTRUCTED",
+    "canonical_status": "COMPLETED",
+    "development_reselection": false
+  },
+  "5A": {
+    "queries": 2500,
+    "predictions": 10000,
+    "methods": 4,
+    "affected_predictions": 0,
+    "legacy_per_query_means_and_intervals": "RECONSTRUCTED",
+    "canonical_status": "COMPLETED",
+    "development_reselection": false
+  }
+}

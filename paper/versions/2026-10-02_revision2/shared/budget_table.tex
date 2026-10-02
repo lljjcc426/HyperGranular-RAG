@@ -1,0 +1,15 @@
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Sidecar dataset & Min & Median & p95 & Max & At cap\\
+\midrule
+HotpotQA & 184 & 923.5 & 1,156.0 & 1,907 & 0/1,000\\
+MuSiQue & 504 & 884.0 & 1,186.1 & 2,881 & 0/1,500\\
+\bottomrule
+\end{tabular}
+\caption{Serialized input tokens for Protected and Unprotected. Counts are
+identical within every paired query, not merely on average. Both arms have
+zero evidence drops and zero partial truncations. The cap is 4,096 tokens.}
+\label{tab:tokens}
+\end{table}

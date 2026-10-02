@@ -1,0 +1,17 @@
+{
+  "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4i_sdc_hotpot1000_musique1500_v1_blind_queries.jsonl": {
+    "bytes": 74044749,
+    "sha256": "9384866CC3F915CA4D3D7CA660585B3DFC15B800B3152FEA544BF1C9B2249FA1",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4i_sdc_hotpot1000_musique1500_v1_rankings.jsonl": {
+    "bytes": 13453513,
+    "sha256": "AACC7776AFF4BA512FE9530F366D177DEC7BF04531620F4447245C6E96682FC2",
+    "frozen_binding_verified": true
+  },
+  "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4i_sdc_hotpot1000_musique1500_v1_prompt_audit_main.jsonl": {
+    "bytes": 15313783,
+    "sha256": "3CECDADE511873D0951B24DB9C617042C50900A4B23123CCFFFDF199902E2EA0",
+    "frozen_binding_verified": true
+  }
+}

@@ -1,0 +1,145 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/newtx\newtxtext.sty
+`newtxtext' v1.744, 2024/04/01 Text macros taking advantage of TeXGyre Termes a
+nd its extensions (msharpe)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/xpatch\xpatch.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex
+.def))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xparse.s
+ty) (C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty)
+) (C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex)))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/xstring\xstring.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/xstring\xstring.tex))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/carlisle\scalefnt.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/binhex\binhex.tex)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/fontaxes\fontaxes.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/figureversions\figureversi
+ons.sty)))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/newtx\t1minntx.fd))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype-pdftex
+.def)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.cfg))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg)
+)) (C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/amscls\amsthm.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/tools\xspace.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekey
+s.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.st
+y
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.sty)
+)) (C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitles
+tring.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty)))
+ (C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.sty
+) (C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.st
+y))) (C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilech
+eck.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecoun
+ter.sty)))
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty)
+(../shared/numbers.tex)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/newtx\t1ntxtlf.fd)
+(E:\SCIENCE\HyperGranular-RAG\paper\versions\2026-10-02_revision2\journal\build
+\main.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base
+.sty
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg)
+) (C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-ptm.cfg)
+(E:\SCIENCE\HyperGranular-RAG\paper\versions\2026-10-02_revision2\journal\build
+\main.out)
+(E:\SCIENCE\HyperGranular-RAG\paper\versions\2026-10-02_revision2\journal\build
+\main.out)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd)
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg)
+[1{C:/Users/cc/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/cc/Ap
+pData/Local/Programs/MiKTeX/fonts/enc/dvips/newtx/ntx-ec-tlf.enc}] [2] [3]
+[4] [5 <../shared/workflow.pdf>] [6] [7]
+(C:\Users\cc\AppData\Local\Programs\MiKTeX\tex/latex/newtx\t1ntxtt.fd) [8]
+[9] [10] [11{C:/Users/cc/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/newtx/nt
+x-ec-tlf-pc.enc} <../shared/components.pdf>] [12] (../shared/budget_table.tex)
+[13 <../shared/effects.pdf>] [14 <../shared/mechanisms.pdf>] [15] [16] [17]
+(E:\SCIENCE\HyperGranular-RAG\paper\versions\2026-10-02_revision2\journal\build
+\main.bbl [18]) [19] [20] (../shared/reproduction_details.tex) [21]
+(E:\SCIENCE\HyperGranular-RAG\paper\versions\2026-10-02_revision2\journal\build
+\main.aux) )<C:/Users/cc/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmbx10.pfb><C:/Users/cc/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/amsfonts/cm/cmex10.pfb><C:/Users/cc/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmmi10.pfb><C:/Users/cc/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/cc/AppData/Local/Programs/MiKTeX/f
+onts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/cc/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/cc/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/cc/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/cc/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/cc/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/User
+s/cc/AppData/Local/Programs/MiKTeX/fonts/type1/public/txfonts/t1xtt.pfb><C:/Use
+rs/cc/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/ztmb.pfb><C:/Users
+/cc/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/ztmr.pfb><C:/Users/c
+c/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/ztmri.pfb>
+Output written on E:\SCIENCE\HyperGranular-RAG\paper\versions\2026-10-02_revisi
+on2\journal\build\main.pdf (21 pages, 459559 bytes).
+Transcript written on E:\SCIENCE\HyperGranular-RAG\paper\versions\2026-10-02_re
+vision2\journal\build\main.log.
+
+pdflatex: major issue: So far, you have not checked for MiKTeX updates.

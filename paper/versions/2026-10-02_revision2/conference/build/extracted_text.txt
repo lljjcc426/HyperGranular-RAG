@@ -1,0 +1,588 @@
+PAGE 1
+               HyperGranular-RAG: Structured Evidence Completion
+                              for Compact Multi-Hop Retrieval
+
+
+
+                               Anonymous ACL submission
+
+
+
+
+
+001                        Abstract                        to another. HotpotQA and MuSiQue provide com-         043
+                                                           plementary settings for examining this difficulty         044
+002              Multi-hop question answering requires com-      (Yang et al., 2018; Trivedi et al., 2022).                    045
+003              plementary evidence within a limited con-        The challenge becomes sharper under a fixed         046
+004                  text. A relevance ranking can miss a bridge                                                            evidence budget. Adding a candidate does not en-         047
+005                  fact, while indiscriminate expansion can re-
+                                                                    large a Top-20 context indefinitely: it can promote         048
+006           move evidence  that the generator already
+                                                        an already retrieved sentence or displace a differ-         049007               needs. We study structured evidence comple-
+                                                                 ent one. Moreover, a generator does not use all         050008                tion through HyperGranular-RAG, a method
+009                 that groups candidate sentences by embedding        retrieved information equally. Evidence position         051
+010              geometry, selects query-conditioned facet hy-        affects context use (Liu et al., 2024), so improved         052
+011               peredges, and inserts a bounded number of can-        retrieval coverage need not produce an improved         053
+012               didates after a protected dense prefix. In three       answer. A useful completion method must balance         054
+013               closed-candidate evaluations on HotpotQA and                                                                candidate relevance, complementarity, and the cost         055
+014            MuSiQue, the historical compact-MiniLM im-
+                                                                 of disturbing the original ranking.                         056
+015               plementation improves answer F1 by 0.01140–
+                                          We investigate a structured completion layer,         057016             0.01478 with Qwen2.5-1.5B-Instruct; all three
+017              recorded paired bootstrap intervals exclude      HyperGranular-RAG, that preserves the retrieval         058
+018                zero. A component comparison favors facet-      backbone. It organizes the available sentence em-         059
+019              conditioned selection over a centroid-only se-       beddings into local granular balls, uses query-term         060
+020                 lector. The original system nevertheless trails        facets to relate seed balls to candidate expansion         061
+021           BGE, and neither a cross-space sidecar nor a                                                                          balls, and places at most four candidates after ten         062
+022             BGE-native reconstruction establishes an incre-
+                                                                protected entries. Completion describes an inter-         063
+023            ment over BGE. Protected placement outper-
+                                                              vention on the evidence list; it is not a guarantee         064024             forms front insertion in the cross-space study
+                                                                      that all necessary facts have been recovered. The         065025              with identical prompt-visible evidence, isolat-
+026               ing the tested ordering policy. We connect these         historical selector is a static, seed-relative heuristic,         066
+027                results to precise definitions of coverage, can-       not a dynamically optimized coverage objective.           067
+028               didate selection, and evidence displacement.       Our central question is when this intervention         068
+029               Dataset-canonical rescoring preserves all con-      improves end-to-end answers. We examine a com-         069
+030                firmation estimates; historical statistical limita-                                                               pact MiniLM backbone, its component contrasts,         070
+031                tions remain. The evidence supports bounded
+                                                                      transfer to one additional generator configuration,         071
+032              completion for the tested compact backbone,
+                                                       and two extensions around BGE. These compar-         072033                rather than general superiority over strong re-
+034                  trieval.                                          isons distinguish improving a particular compact         073
+                                                                       retriever from improving a stronger system. They         074
+035        1  Introduction                                  also distinguish choosing a useful candidate set         075
+                                                       from placing that set less disruptively.                     076
+036         Retrieval-augmented question answering sepa-     The results reveal a consistent but bounded op-         077
+037           rates access to evidence from answer generation.    portunity.  The compact system improves over         078
+038        Dense retrieval makes relevance ranking efficient   MiniLM Dense in three evaluations, and its facet-         079
+039         (Karpukhin et al., 2020), but multi-hop questions    conditioned selector exceeds the specified centroid-         080
+040          require several facts to be available together. A   only comparator. The original compact system         081
+041         passage about one entity may be highly relevant   remains below BGE. Neither transferring its can-         082
+042         without supplying the bridge needed to connect it    didates to a BGE ranking nor reconstructing the         083
+
+
+                                                    1
+
+PAGE 2
+084         geometry in BGE space establishes additional an-   the historical study did not run budget-matched         132
+085         swer quality over BGE. Thus, the positive compact    versions of them. We therefore compare the facet         133
+086           result and the unresolved strong-backbone exten-    selector only with its actual centroid-only control.         134
+087          sions are part of the same empirical account.         Long-context position effects (Liu et al., 2024) mo-         135
+088        We make three contributions:                         tivate protection, but do not establish that a particu-         136
+                                                                             lar protected-prefix length is optimal.                      137
+089               • We formulate bounded evidence completion
+090              as a separate layer over a dense ranking and   3  Method                                              138
+091               specify a geometry-based, facet-conditioned
+                                                                 3.1  Evidence Budget and Local Organization          139092              implementation with protected insertion.
+                                                          For question q, let Uq be its benchmark-supplied         140
+093               • We report repeated compact-backbone im-
+                                                                candidate sentence units. The retriever embeds the         141
+094             provements and component, generator, and
+                                                           query and each title–sentence pair, normalizes the         142
+095              strong-backbone comparisons, retaining their
+                                                          embeddings, and scores                                   143
+096                 distinct data boundaries and historical evalua-
+097                tion definitions.                                                  s(q, u) = ˆe⊤q ˆeu.               (1)         144
+
+098               • We explain what these comparisons identify                                                        Descending score and ascending unit identity de-         145
+099              through evidence-turnover analysis and math-                                                             termine the dense order Dq. Every arm returns         146
+100              ematical clarification of granular-ball com-                                             Kq = min(20, |Uq|) unique units. The compact         147
+101               pactness, seed-relative coverage, and a ver-                                                                   variant uses the same MiniLM space for ranking         148
+102                 ified fixed-evidence placement contrast.                                                        and organization.                                          149
+                                                             For a nonempty group B, define                         150103        2  Related Work
+104         Retrieving connected evidence.  Dense passage              cB = norm X ˆeu  ,
+105           retrieval learns representations for relevance rank-                        u∈B                (2)         151
+106          ing (Karpukhin et al., 2020). Multi-hop systems             rB = max(1 −ˆe⊤u cB).
+                                                                   u∈B
+107         can instead retrieve iteratively: MDR conditions
+108           later retrieval on earlier evidence (Xiong et al.,   The root contains all candidates, not only Dense         152
+109         2021), whereas IRCoT interleaves retrieval and   Top-20. The compact implementation attempts a         153
+110         reasoning (Trivedi et al., 2023). Our intervention     split when depth is below six, |B| ≥4, and |B| > 3         154
+111            is a single completion of a fixed candidate rank-   or rB > 0.78. The radius condition is redundant         155
+112           ing. It does not search an external corpus or rewrite   under these size settings. A farthest-from-center         156
+113          queries using generated reasoning.                  seed and its least-similar partner partition the group         157
+                                                     by cosine similarity. Both children must contain         158
+114         Structured representations.  RAPTOR uses re-
+                                                                         at least two units; otherwise the group is retained.         159
+115          cursively summarized retrieval trees (Sarthi et al.,
+                                                            Consequently, three is not a strict maximum leaf         160
+116          2024); HippoRAG uses knowledge-graph structure
+                                                                         size. Geometry determines assignments, but ra-         161
+117        and propagation (Gutiérrez et al., 2024). Hyper-
+                                                               dius does not independently trigger splits in this         162
+118       GraphRAG represents n-ary knowledge through
+                                                                        historical configuration.                                   163
+119         hypergraphs (Luo et al., 2025). Our facet hyper-
+                                                     The resulting groups are termed granular balls,         164
+120         edges instead relate query-local sentence groups.
+                                                              following the broader idea of granular represen-         165
+121        They are lexical selection relations, not extracted
+                                                                     tations (Xia et al., 2019). This terminology does         166
+122           factual n-ary assertions. These systems motivate
+                                                              not assert that these groups outperform ordinary         167
+123          structure-aware retrieval, but their published results
+                                                                       clustering.                                                168
+124          are not direct baselines under our candidates, gen-
+125           erator, and budget.                                  3.2  Static Facet-Conditioned Selection                 169
+
+126          Diversity, coverage, and context use. MMR bal-   Let Tq be the content terms of the query under the         170
+127         ances relevance and redundancy (Carbonell and    fixed ASCII-alphanumeric tokenizer and stop-word         171
+128          Goldstein, 1998). Coverage and diversity can also     list. A ball’s facets are the intersection of Tq with         172
+129         be represented by explicit submodular objectives    the union of terms in its titles and sentences. The         173
+130         (Lin and Bilmes, 2011). Such methods are impor-   two balls with highest query–centroid score form         174
+131           tant alternative explanations for a completion gain;    the seed set. An expansion hyperedge relates these         175
+
+
+                                                    2
+
+PAGE 3
+176         seeds to a non-seed ball contributing at least one   one of 16 configurations, with leaf target six, four         221
+177          additional query term.                                insertion slots, unit-score percentile floor .50, and         222
+178           For candidate B, let nB and tB denote seed-   broad relative facet gates. The split depth, balance         223
+179           relative new and total facet counts; m =  |Tq|,    gate, score normalization, and candidate score dif-         224
+180        bB = ˆe⊤q cB, aB is maximum seed-centroid sim-    fer from the compact method (Appendix A). This         225
+181             ilarity, and ρB is the fraction of its facets already    is a related implementation, not an encoder-only         226
+182           in the seeds. The historical compact score is           substitution. None of the results below comes from         227
+                                                                  the later dynamic-selection prototypes.                    228
+                   nB             tB
+          hB = .45      + .20      + .20bB
+                 max(m, 1)     max(m, 1)          4  Experimental Design                              229
+183         + .15(1 −aB) −.20ρB −.05|B|/8.
+                                                                 4.1  Questions and Comparisons                        230
+                                                              (3)
+                                        We use HotpotQA training distractor candidates         231
+184           Eligibility additionally requires |B| ≤8, bB ≥.12   and the answerable MuSiQue training candidate         232
+185          or aB ≥.05, at most six units per new term,    sets (Yang et al., 2018; Trivedi et al., 2022). The         233
+186        ρB ≤.90, and hB ≥.10. At most two expan-   compact evaluations contain 1,000 HotpotQA ques-         234
+187          sion balls survive descending hB and stable edge-    tions, 3,000 MuSiQue questions, and a separate         235
+188           identity ordering. Units inside them retain their    joint component set of 1,000 and 1,500 questions.         236
+189          dense-score order.                           The sidecar and native confirmation studies each         237
+190            All scores are computed once relative to the   use another 1,000/1,500 set.  Their frozen iden-         238
+191          seeds.  Accepting one ball does not change an-    tity manifests record exclusion of the preceding         239
+192          other’s score. Two accepted balls may therefore    evaluation boundaries. These are project-held-out         240
+193           contribute the same new term. Nor does selecting a    subsets of training releases, not official hidden test         241
+194           ball imply that every facet in its union occurs in the    submissions.                                              242
+195          selected sentence or survives prompt truncation.      The joint component study includes MiniLM         243
+                                                           Dense, BM25, a Dense–BM25 hybrid, BGE large-         244
+196          3.3  Protected Insertion                                                                en-v1.5, FULL, NoFacet, and NoProtection. No-         245
+197        The compact policy preserves the first min(10, Kq)   Facet retains compact ball geometry but uses         246
+198         dense units, traverses the candidate order, and in-   centroid-only expansion. NoProtection changes the         247
+199            serts at most four units absent from that prefix with   placement policy. Neither is a flat-unit or budget-         248
+200          score at least 0.1957079917192459. This histor-   matched MMR control. Native development uses         249
+201           ical development-calibrated 25th-percentile floor   500 HotpotQA and 750 MuSiQue questions, sep-         250
+202          gives the policy its internal name, static-q25; it is    arate from confirmation. Its small positive devel-         251
+203          not re-estimated per confirmation query. Remain-   opment difference selects a configuration; it is not         252
+204          ing dense units are appended in order, with stable   pooled with confirmation.                                 253
+205          deduplication and truncation to Kq.
+                                                                 4.2  Generation and Metrics                            254206       A placed unit can already belong to Dense ranks
+207         11–20. We distinguish such a promotion from a   The principal generator is Qwen2.5-1.5B-Instruct         255
+208         genuinely new unit outside Dense Top-20. Equal   FP16 on an RTX 4060 Laptop 8GB. A fixed short-         256
+209       Kq also does not imply equal token count: all meth-   answer prompt requests an answer from the evi-         257
+210         ods share a 4,096-token input cap, while actual   dence or UNKNOWN. Generation is greedy, batch         258
+211         evidence length varies.                               size one, with at most 32 new tokens and a 4,096-         259
+                                                            token input cap. A transfer study uses the same         260
+212          3.4  Two Extensions around BGE                                                                                initial rankings with Gemma 4 E2B in the official         261
+213        The cross-space sidecar keeps BGE’s primary rank-   mobile-QAT deployment format. That compari-         262
+214          ing and uses the frozen MiniLM structure to pro-   son concerns these deployment configurations, not         263
+215         pose candidates outside BGE Top-20. Its protected    pure model architecture or device-independent effi-         264
+216         and unprotected arms use the same insertion candi-    ciency.                                                    265
+217          dates but place them after the prefix or at the front,    We report mean answer F1 and exact match         266
+218           respectively.                                  (EM). Complete recall (CR@20) records whether         267
+219          The native variant reconstructs groups and rel-    all annotated supporting evidence is covered; ev-         268
+220           ative scores in BGE space. Development selected    idence recall (ER@20) records the covered frac-         269
+
+
+                                                    3
+
+PAGE 4
+                   Closed candidates          Fixed encoder           Geometry-based balls               Eligible candidate order
+                + query            Dense Top-20        + seed-relative facets               (static scores; bounded)
+
+
+
+
+              Compact policy:                                     Dense ranks 1--10           up to 4            Dense-order             Fixed prompt
+                                               protected              candidates                        fill to K          + generator
+
+
+
+                                K = min(20, candidate count)  | Stable deduplication  | 4,096-token input cap
+
+
+              Figure 1: The historical compact pipeline. Candidate groups cover the full closed candidate set. Selection is static
+                relative to the seeds; the protected prefix, candidate placement, dense-order fill, and subsequent token cap are
+              separate operations. No answer label enters retrieval or prompting.
+
+
+270           tion. HotpotQA has sentence-level support labels,   value and apply Holm adjustment. Its general null         305
+271         whereas MuSiQue uses supporting paragraphs.   calibration was not established. We preserve the         306
+272        MuSiQue coverage therefore must not be described   recorded decisions for provenance, but base the         307
+273          as sentence-chain recall.                            present description on effect estimates and inter-         308
+274        We independently reconstructed historical per-    vals, without claiming a newly validated family-         309
+275          prediction EM/F1 and then rescored the same pre-   wise test. Intervals crossing zero are unresolved,         310
+276           dictions with each dataset’s pinned official answer    not equivalent. Shared source documents can in-         311
+277          functions. HotpotQA applies its yes/no/noanswer   duce dependencies not captured by query-level re-         312
+278         exception and assigns zero F1 when normalized    sampling.                                                 313
+279          tokens have no overlap; MuSiQue maximizes over
+                                                 5  Results                                              314280           aliases and treats two empty token lists as a match.
+281          All 53,500 confirmation and generator-transfer pre-                                                                 5.1  Does Completion Help Compact                   315
+282          dictions retain their original scores. Native devel-                                                                  Retrieval?                                          316
+283        opment has 17 affected predictions on one ques-
+                                                              Yes, within the tested compact configuration. Ta-         317
+284           tion, equally across all 17 methods, leaving ev-
+                                                                   ble 1 shows positive effects on the initial HotpotQA         318
+285          ery method difference unchanged. No configu-
+                                                        and MuSiQue sets and the separate component set.         319
+286          ration was reselected.  This retrospective check
+                                                               Their recorded 95% intervals exclude zero, with ab-         320
+287         concerns answer scoring on project subsets, not
+                                                                  solute F1 differences between .01140 and .01478.         321
+288            official leaderboard or joint answer-and-support
+                                                    The initial HotpotQA lower bound is close to zero,         322
+289          evaluation.
+                                                           so the magnitude and uncertainty are more infor-         323
+                                                            mative than a binary success label.                         324
+290          4.3  Estimates and Uncertainty
+                                                                      Retrieval coverage also increases: CR@20 rises         325
+291         For paired per-query scores, the target is the mean   from .737 to .798 on HotpotQA and from .589         326
+292         within-query difference.   Joint studies average    to .650 on MuSiQue. These are different support         327
+293          the two dataset means with equal weight. Their    granularities, and neither change by itself measures         328
+294         10,000 bootstrap draws resample queries within   answer improvement. The corresponding answer         329
+295         each dataset, preserving method pairing. We re-   gains supply the end-to-end evidence.                      330
+296          constructed the original intervals and reused the
+297        same draws for canonical scoring; all confirmation    5.2  What Do the Component Contrasts                331
+298           intervals are unchanged. The intervals describe the         Identify?                                            332
+299          frozen query-sampling model, not uncertainty over  On the joint compact set, FULL minus NoFacet is         333
+300        model training or alternative development searches.  +0.01336 with interval [0.00341, 0.02343]. This         334
+301              Statistical tests require a null distribution and    favors the particular facet-conditioned selector over         335
+302           suitable sampling assumptions (Dror et al., 2018).   centroid-only expansion.  It does not show that         336
+303       Some historical decision files call an uncentered   hyperedges are necessary, or that higher-order         337
+304          bootstrap nonpositive-tail fraction a one-sided p-    structure explains more than a simpler coverage         338
+
+
+                                                    4
+
+PAGE 5
+                                 Evaluation set     Queries   Dense F1   Full F1    ∆F1      95% interval
+
+                           HotpotQA         1,000     .42150    .43628   +0.01478   [0.00020, 0.02988]
+                          MuSiQue          3,000     .13595    .14735   +0.01140   [0.00450, 0.01835]
+                                     Joint component    2,500     .30446    .31803   +0.01357   [0.00491, 0.02233]
+
+             Table 1: Compact MiniLM with Qwen. Scores are on the 0–1 scale. The joint row is dataset-equal-weighted, not a
+             pooled average of all 2,500 questions. Dataset-canonical rescoring reproduces every displayed answer score and
+                interval from the frozen predictions.
+
+
+339           heuristic. FULL minus NoProtection is +0.00354   an additional independent retrieval sample. Differ-         380
+340         [−0.00675, 0.01389], leaving the independent ben-   ences in format and runtime prevent interpretation         381
+341             efit of protection unresolved in that compact set-   as a controlled architecture comparison between         382
+342            ting.                                 Qwen and Gemma.                                        383
+343            In the sidecar study, Protected minus Unpro-
+344          tected is +0.01122 [0.00129, 0.02104]. Protected   6  Analysis and Implications                         384
+345          insertion is better than the tested front insertion
+                                                                 6.1  Adding Evidence Can Also Displace It             385
+346           policy. Yet Protected minus BGE remains unre-
+347          solved; avoiding part of an intervention’s damage   The post-decision sidecar audit counts 21 added         386
+348             is different from improving the untouched baseline.   and 29 displaced annotated supporting units in         387
+349        The native facet and placement contrasts also cross   HotpotQA, and 59 added versus 50 displaced in         388
+350          zero (Figure 3).                              MuSiQue. The corresponding native counts are 3/2         389
+                                                       and 16/15. Thus, native completion has a net +1         390
+351          5.3  Does the Benefit Extend to Strong           supporting unit in each dataset while both answer-         391
+352               Retrieval?                            F1 point estimates are negative. These totals con-         392
+353        The  original compact FULL  is below BGE    cern annotated evidence identities at each dataset’s         393
+354        on  the  same  component   set:   −0.03998    support granularity, not complete reasoning chains         394
+355         [−0.05393, −0.02621].   BM25 and  the  hy-   or a causal effect per inserted unit.                         395
+356          brid  are  additional  comparators,  with FULL   A gain can fail to reach the answer because re-         396
+357          differences  of −0.00755  [−0.02259, 0.00773]    tained evidence is redundant, an essential fact is         397
+358        and −0.00320 [−0.01591, 0.00942], respectively.   displaced, or the generator fails to use the con-         398
+359          Neither interval resolves a difference.                   text. The aggregate counts do not distinguish these         399
+360          The two BGE extensions address more specific   mechanisms. They demonstrate why selection, fi-         400
+361           alternatives. The sidecar adds candidates from the    nal ranking, prompt-visible evidence, and answer         401
+362          existing compact structure; its Protected-minus-    quality should be measured separately.                     402
+363      BGE effect is −0.00256 [−0.00998, 0.00458]. Re-
+                                                                 6.2  What Geometry Does and Does Not                403
+364          building the geometry natively in BGE yields
+                                                                   Establish                                           404
+365        −0.00305 [−0.00688, 0.00063]. Both point esti-
+366         mates are slightly negative, and both intervals cross   Mean-cosine compactness equals the normalized         405
+367          zero. These findings do not establish complemen-   length of the sum of unit embeddings. Its weighted         406
+368            tarity with BGE, but they are not equivalence tests.   child average cannot decrease under any partition         407
+369         Because the configurations and query sets differ,   (Appendix B). Thus, increased compactness alone         408
+370          the three BGE comparisons are not a causal dose–   does not establish a meaningful semantic split or         409
+371          response curve for retriever strength.                explain the observed answer gain.                         410
+
+372          5.4  Does the Result Transfer to Another         6.3  Evidence for a Layer, Not an                       411
+373             Generator?                                     Indispensable Component                          412
+
+374        With the fixed Gemma mobile-QAT configura-   The tested pipeline can improve a compact back-         413
+375            tion, the equal-weight FULL-minus-Dense effect is   bone without demonstrating that every named com-         414
+376        +0.00516 [−0.00262, 0.01295]. This result does   ponent is necessary. Ordinary clusters, MMR, and         415
+377          not establish generator transfer. The rankings are    sentence-level coverage remain plausible alterna-         416
+378         reused from the initial studies, so this is an inter-    tives. A decisive comparison would match candi-         417
+379          vention on the tested generator deployment, not    date access, intervention budget, group count, and         418
+
+
+                                                    5
+
+PAGE 6
+                     Compact / HotpotQA                                                          +1.48 [0.02, 2.99]
+
+
+                      Compact / MuSiQue                                                          +1.14 [0.45, 1.84]
+
+
+                          Compact / joint                                                          +1.36 [0.49, 2.23]
+
+
+                               Original Full - BGE                                                                     -4.00 [-5.39, -2.62]
+
+
+                     Sidecar / Protected - BGE                                                                     -0.26 [-1.00, 0.46]
+
+
+                      Native / Protected - BGE                                                                     -0.30 [-0.69, 0.06]
+
+
+                 Generator transfer / Gemma                                                          +0.52 [-0.26, 1.30]
+
+                                −6       −4       −2         0          2
+                                                  Canonical answer F1 difference (pp); reconstructed 95% percentile interval
+
+
+             Figure 2: Paired answer-F1 effects in percentage points (one point is .01 on the score scale). Each interval is the
+              recorded 95% percentile bootstrap interval for that row’s comparison, reproduced under canonical scoring; rows are
+              not pooled. Open markers denote intervals crossing zero.
+
+
+419          generator context. The absence of that compari-   namically recompute coverage. A corrected or dy-         450
+420         son narrows the present contribution to a complete   namic implementation is a different method and         451
+421          pipeline and specific component contrasts.          has no formal result in this paper. The native No-         452
+422           For the cross-space contrast, we verified all    Facet score changes multiple coefficients; its effect         453
+423         2,500 questions: Protected and Unprotected have     is not a pure component ablation. No fair ordinary-         454
+424           identical final members and prompt-visible titles    clustering or generic coverage comparison has been         455
+425        and sentence texts. Each of the 5,000 serialized    completed.                                                456
+426         prompts matches its own recorded identity and to-     Canonical  rescoring  resolves  the measured         457
+427         ken count. There is no evidence dropping or partial    answer-scoring compatibility gap; it does not vali-         458
+428          truncation. This supports an ordering/placement-   date historical tail-probability calibration or replace         459
+429          policy interpretation with fixed visible content, not    the frozen inferential procedure. Query-disjoint         460
+430         an internal-attention mechanism or an improve-   samples are not necessarily independent at the doc-         461
+431        ment over BGE.                               ument or pretraining level. Dataset training releases         462
+432          The twenty-entry budget is distinct from to-  may have appeared in generator pretraining. Post-         463
+433         ken capacity.  Protected and Unprotected have    decision mechanism summaries and representative         464
+434           identical per-query token counts: HotpotQA me-   cases do not identify causal mediation, and finite         465
+435         dian/p95/max are 923.5/1,156/1,907 and MuSiQue    resource-based sample sizes are not a power guar-         466
+436          884/1,186.1/2,881. None reaches 4,096. The ob-    antee.                                                     467
+437         served evidence displacement is due to list mem-
+438          bership, not exhaustion of the context-token limit.   8  Conclusion                                          468
+
+                                                               Structured evidence completion improves  the         469439        7  Limitations
+                                                                    tested compact MiniLM pipeline on three closed-         470
+440         All answer-quality results use closed benchmark    candidate multi-hop QA evaluations. A facet-         471
+441          candidate sets. They do not measure corpus reach-   conditioned selector also exceeds its specified com-         472
+442            ability, ANN recall, full-wiki indexing, or open-   pact centroid-only comparator. The original system         473
+443        domain noise. The positive compact evidence uses   remains below BGE, while cross-space and native         474
+444        one retriever, one principal generator, one short-  BGE extensions do not establish an incremental         475
+445         answer prompt, and Top-20. The additional genera-   answer-quality benefit. Protection helps relative to         476
+446           tor and BGE extensions are unresolved rather than    front insertion in one sidecar setting, but does not         477
+447          demonstrations of broad robustness.             make its candidates useful relative to BGE. The         478
+448          The radius gate is inactive in the historical com-    resulting design lesson is to evaluate completion         479
+449          pact split rule, and the facet selector does not dy-    jointly with its backbone and displacement policy,         480
+
+
+                                                    6
+
+PAGE 7
+                      Compact / Full - NoFacet                                                       +1.34 [0.34, 2.34]
+
+
+                   Compact / Full - NoProtection                                                       +0.35 [-0.67, 1.39]
+
+
+                      Sidecar / Protected - NoFacet                                                                  -0.74 [-1.62, 0.13]
+
+
+                  Sidecar / Protected - Unprotected                                                       +1.12 [0.13, 2.10]
+
+
+                       Native / Protected - NoFacet                                                       +0.06 [-0.42, 0.54]
+
+
+                   Native / Protected - Unprotected                                                       +0.34 [-0.13, 0.80]
+
+                                   −6       −4       −2         0         2
+                                                       Canonical answer F1 difference (pp); reconstructed 95% percentile interval
+
+
+              Figure 3: Component contrasts under dataset-canonical answer scoring. NoFacet is a specific historical comparator;
+              native NoFacet also changes the candidate-score coefficients, so that row is a pipeline contrast rather than a pure
+             removal of one coefficient. The sidecar placement comparison fixes actual visible evidence; this verification is not
+              extrapolated to other variants.
+
+
+481          using answer quality rather than structural coverage      language models. In Advances in Neural Information         512
+482          alone as the endpoint.                                   Processing Systems, volume 37, pages 59532–59569.         513
+
+                                                                  Vladimir Karpukhin, Barlas Oguz, Sewon Min, Patrick         514483         Ethical and Reproducibility Considerations
+                                                                     Lewis, Ledell Wu, Sergey Edunov, Danqi Chen, and         515
+                                                                 Wen-tau Yih. 2020. Dense passage retrieval for open-         516484         This study uses existing benchmark releases and
+                                                            domain question answering. In Proceedings of the         517
+485        model artifacts; it introduces no new participant                                                            2020 Conference on Empirical Methods in Natural         518
+486           study. Negative and unresolved results are retained.     Language Processing (EMNLP), pages 6769–6781.          519
+487         Source code, configurations, derived predictions,
+                                                          Hui Lin and Jeff Bilmes. 2011. A class of submodular         520488         and result manifests exist in the research repository.
+                                                                         functions for document summarization. In Proceed-         521
+489          Third-party datasets and weights remain subject                                                                        ings of the 49th Annual Meeting of the Association         522
+490          to their original terms. An anonymous distribu-       for Computational Linguistics: Human Language         523
+491          tion and author-approved licensing statement are       Technologies, pages 510–520.                             524
+492          required before submission. AI-assisted coding,
+                                                              Nelson F. Liu, Kevin Lin, John Hewitt, Ashwin Paran-         525
+493          analysis preparation, and writing were used; re-                                                                               jape, Michele Bevilacqua, Fabio Petroni, and Percy         526
+494          sponsibility for the submitted work remains with       Liang. 2024. Lost in the middle: How language mod-         527
+495          the human authors.                                             els use long contexts. Transactions of the Association         528
+                                                                               for Computational Linguistics, 12:157–173.                 529
+
+                                                             Haoran Luo, Haihong E, Guanting Chen, Yandan Zheng,         530496        References
+                                                               Xiaobao Wu, Yikai Guo, Qika Lin, Yu Feng, Zemin         531
+497          Jaime Carbonell and Jade Goldstein. 1998. The use of      Kuang, Meina Song, Yifan Zhu, and Anh Tuan Luu.         532
+498        MMR, diversity-based reranking for reordering doc-      2025. HyperGraphRAG: Retrieval-augmented gener-         533
+499           uments and producing summaries. In Proceedings       ation via hypergraph-structured knowledge represen-         534
+500               of the 21st Annual International ACM SIGIR Confer-       tation. In Advances in Neural Information Process-         535
+501            ence on Research and Development in Information       ing Systems, volume 38, pages 152206–152234.             536
+502              Retrieval, pages 335–336.
+                                                                     Parth Sarthi, Salman Abdullah, Aditi Tuli, Shubh         537
+503        Rotem Dror, Gili Baumer, Segev Shlomov, and Roi      Khanna, Anna Goldie, and Christopher D. Manning.         538
+504              Reichart. 2018. The hitchhiker’s guide to testing      2024. RAPTOR: Recursive abstractive processing         539
+505                 statistical significance in natural language processing.       for tree-organized retrieval. In International Confer-         540
+506             In Proceedings of the 56th Annual Meeting of the      ence on Learning Representations.                         541
+507             Association for Computational Linguistics (Volume
+508             1: Long Papers), pages 1383–1392.                  Harsh Trivedi, Niranjan Balasubramanian, Tushar Khot,         542
+                                                              and Ashish Sabharwal. 2022.  MuSiQue:  Multi-         543
+509          Bernal Jiménez Gutiérrez, Yiheng Shu, Yu Gu, Michi-     hop questions via single-hop question composition.         544
+510              hiro Yasunaga, and Yu Su. 2024. HippoRAG: Neu-      Transactions of the Association for Computational         545
+511              robiologically inspired long-term memory for large       Linguistics, 10:539–554.                                  546
+
+
+                                                    7
+
+PAGE 8
+547          Harsh Trivedi, Niranjan Balasubramanian, Tushar Khot,    to Stage4G, joint components to Stage4H, cross-         597
+548            and Ashish Sabharwal. 2023. Interleaving retrieval   space sidecar to Stage4I, and native confirmation         598
+549            with chain-of-thought reasoning  for knowledge-                                                                    to Stage5A. Aggregate summaries, implementa-         599
+550              intensive multi-step questions. In Proceedings of the
+551             61st Annual Meeting of the Association for Compu-    tion configurations, and the manuscript evidence         600
+552               tational Linguistics (Volume 1: Long Papers), pages    ledger provide the exact artifact paths. The later         601
+553            10014–10037.                                 Stage6 development outputs, engineering repairs,         602
+                                                         and synthetic v2 prototype are excluded from these         603554         Shuyin Xia, Yunsheng Liu, Xin Ding, Guoyin Wang,
+555          Hong Yu, and Yuoguo Luo. 2019.  Granular ball    empirical results.                                          604
+556            computing classifiers for efficient, scalable and robust
+557              learning. Information Sciences, 483:136–152.         Verification   scope.  Historical   verification         605
+                                                               records are retained as records of their original         606
+558        Wenhan Xiong, Xiang Lorraine Li, Srinivasan Iyer,
+                                                              checks. This revision independently reconstructs         607559              Jingfei Du, Patrick Lewis, William Yang Wang,
+560            Yashar Mehdad, Wen-tau Yih, Sebastian Riedel,   legacy scores from stored predictions, performs         608
+561          Douwe Kiela, and Barlas O˘guz. 2021.  Answer-   dataset-canonical  rescoring,  and  reproduces         609
+562             ing complex open-domain questions with multi-hop    percentile intervals under the original resampling         610
+563            dense retrieval.   In International Conference on
+                                                                    contracts. Retrieval and generation are not rerun.         611564            Learning Representations.
+                                                         Subsequent algorithm repairs are not retroactive         612
+565           Zhilin Yang, Peng Qi, Saizheng Zhang, Yoshua Ben-    certification of the historical method, and rescoring         613
+566              gio, William W. Cohen, Ruslan Salakhutdinov, and
+                                                                                 is not new independent confirmation.                      614
+567             Christopher D. Manning. 2018. HotpotQA: A dataset
+568              for diverse, explainable multi-hop question answer-                                                     Complexity and measured  cost.  With em-         615
+569               ing. In Proceedings of the 2018 Conference on Em-
+570               pirical Methods in Natural Language Processing,   beddings available,  recursive two-seed assign-         616
+571            pages 2369–2380.                           ment costs O(H|Uq|d), scoring and sorting cost         617
+                                                         O(|Uq| log |Uq| + |Bq|d + |Bq| log |Bq|), and work-         618
+572     A  Historical Implementation and                                                               ing memory is O(|Uq|d + |Uq| + |Bq|), excluding         619
+573           Provenance                                                                 tokenization and model inference. The native con-         620
+574        The       compact       method        uses    firmation records 8.544 s retrieval reconstruction,         621
+575       all-MiniLM-L6-v2;   the  strong  ranking   887.650 s BGE generation, 884.198 s protected-         622
+576         uses BAAI/bge-large-en-v1.5.   Native    native generation, and 3.592 GiB peak GPU mem-         623
+577        C10 uses depth limit eight, minimum child fraction    ory. These are transaction-specific measurements,         624
+578           .20, and compactness-gain threshold 10−10.  Its    not corpus-index costs or a controlled speed advan-         625
+579         two seed balls are ranked by query-score percentile,    tage. Generation seconds accumulate checkpoint         626
+580          density percentile, then identity.  Broad gates    calls across resumed processes; they are not the         627
+581          require query-score percentile at least .35 and    wall time of the final process.                              628
+582          density percentile at least .25. Eligible non-seed
+                                     B  Geometric Clarification                           629583           balls must contribute a seed-relative new facet;
+584           at most four balls supply candidates. Only units   For unit vectors in nonempty B, mean-cosine com-         630
+
+                                                                                                                             631585          outside BGE Top-20 with unit-score percentile at    pactness is C(B) = ∥Pi∈B xi∥/|B|. The triangle
+                                                                                                                             632586           least .50 are eligible. Candidate scoring is            inequality gives Pj |Bj|C(Bj)/|B| ≥C(B) for
+                                                        any partition into nonempty groups. This elemen-         633
+                 hnativeu  = .45pu + .25pb(u) + .15pρ(u)
+                                                                       tary property is explanatory background, not a new         634
+587            + .10pC(u) + .05 min(nb(u), 3)/3,      theoretical contribution or an answer-F1 guaran-         635
+                                                              (4)    tee. At zero sum, the scalar extends to zero but         636
+                                                           a normalized center requires an implementation         637588        where the p terms are within-query empirical per-
+                                                                convention.                                               638589           centiles of unit relevance, ball relevance, density,
+590         and compactness. Native NoFacet replaces this by                                  C  Reproduction Details                              639
+591         .50pu+.30pb(u)+.10pρ(u)+.10pC(u) and removes
+592          the new-facet eligibility requirement. The compari-   Retrieval and  units.  The compact encoder         640
+593         son therefore changes both gating and weights.        is  all-MiniLM-L6-v2,   with   attention-         641
+594          The  paper’s  scientific names map  to  the   mask  mean   pooling,   L2   normalization,         642
+595          frozen repository records as follows: initial Hot-   and a 192-token encoder  limit.  BGE uses         643
+596        potQA/MuSiQue to Stage4E/4F, generator transfer   bge-large-en-v1.5,  CLS  pooling,  L2         644
+
+
+                                                    8
+
+PAGE 9
+645          normalization, and a 512-token encoder limit.   both normalized strings are empty. MuSiQue’s of-         695
+646            Its query instruction is “Represent this sentence     ficial token F1 assigns one to the latter case and         696
+647          for searching relevant passages:”  followed by   does not inherit HotpotQA’s categorical exception.         697
+648          the  question.   Document  inputs concatenate   The archived per-query scores, means, and paired         698
+649          the  title and sentence.   HotpotQA preserves    percentile intervals are first independently recon-         699
+650          the  supplied  sentence  boundaries;  MuSiQue    structed.  Canonical scores then reuse the same         700
+651            splits  whitespace-normalized  paragraphs  with   10,000 bootstrap draws. This isolates scorer migra-         701
+652          the  frozen  punctuation-and-capitalization  rule.    tion from statistical redesign: no new confirmatory         702
+653          Neither splitter is changed in this review.  The     test, model selection, or independent confirmation         703
+654          reproducibility configuration pins the encoder     is claimed. Supporting-evidence coverage retains         704
+655          revisions and unit IDs.                               the dataset’s original sentence or paragraph granu-         705
+                                                                              larity and is not a complete-chain recovery metric.          706
+656         Lexical baselines.  BM25 uses lowercase  al-
+657         phanumeric tokens, k1 = 1.5, and b = 0.75 within
+658         each query’s candidate set. Its inverse document
+659          frequency is log(1 + (N −df + 0.5)/(df + 0.5)).
+660        The hybrid baseline averages query-local min–max-
+661         normalized dense and BM25 scores with equal
+662          weights; a constant score vector maps to zero.
+663         Unit ID breaks score ties. These are local closed-
+664          candidate baselines, not corpus-scale retrieval sys-
+665          tems.
+
+666        Generation and budgets.  The principal reader
+667            is Qwen2.5-1.5B-Instruct in FP16, using greedy
+668          decoding, one beam, batch size one, and at most 32
+669          generated tokens. The full serialized input, includ-
+670          ing the chat template, is capped at 4,096 tokens.
+671        The system instruction is: “Answer the question
+672          using only the provided evidence. Return only the
+673          shortest final answer.  If the evidence is insuffi-
+674           cient, return UNKNOWN.” Evidence is rendered
+675          in rank order as numbered title–sentence entries,
+676          followed by the question and “Final answer:”. The
+677       Qwen runner sets CPU/CUDA seeds to zero, uses
+678        one CPU thread, and enables deterministic algo-
+679          rithms. The renderer admits whole units in order
+680           until the cap; only an overlong first unit permits
+681            partial truncation. The compact policy protects ten
+682         dense positions and places at most four candidates
+683         under a final budget K = min(20, |Uq|). Its frozen
+684        q25 floor is 0.1957079917192459. BGE-native has
+685             its own recorded eligibility policy; it is not retro-
+686          spectively identified with compact static-q25.
+
+687         Scoring and interpretation.  The reanalysis fixes
+688          the original predictions and reference channel. It
+689          executes the pure answer-metric functions from
+690          the pinned official HotpotQA and MuSiQue im-
+691          plementations, with maximum-over-alias scoring
+692         only where the dataset permits aliases.   Hot-
+693       potQA assigns zero token F1 to mismatched
+694       yes/no/noanswer responses, and zero F1 when
+
+
+                                                    9
