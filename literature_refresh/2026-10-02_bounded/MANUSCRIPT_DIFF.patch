@@ -1,0 +1,370 @@
+--- editorial_final/conference/main.tex
++++ bounded_refresh/conference/main.tex
+@@ -81,9 +81,8 @@
+ 
+ We make three contributions:
+ \begin{itemize}
+-\item We formulate bounded evidence completion as a separate layer over a
+-dense ranking and specify a geometry-based, facet-conditioned implementation
+-with protected insertion.
++\item We specify a bounded, geometry-based completion layer over a dense
++ranking, making its evidence-selection and placement decisions explicit.
+ \item We report repeated compact-backbone improvements and component,
+ generator, and strong-backbone comparisons, retaining their distinct data
+ boundaries and dataset-specific evaluation definitions.
+@@ -102,15 +101,33 @@
+ candidate ranking. It does not search an external corpus or rewrite queries
+ using generated reasoning.
+ 
+-\paragraph{Structured representations.}
+-RAPTOR uses recursively summarized retrieval trees
+-\citep{sarthi2024raptor}; HippoRAG uses knowledge-graph structure and
+-propagation \citep{gutierrez2024hipporag}. HyperGraphRAG represents n-ary
+-knowledge through hypergraphs \citep{luo2025hypergraphrag}. Our facet
+-hyperedges instead relate query-local sentence groups. They are lexical
+-selection relations, not extracted factual n-ary assertions. These systems
+-motivate structure-aware retrieval, but their published results are not direct
+-baselines under our candidates, generator, and budget.
++\paragraph{Granular-ball and hypergraph learning.}
++Granular-ball representations precede this study
++\citep{xia2019granularball}. SAGHL constructs hierarchical hyperedges from
++graph topology \citep{ni2026saghl}; the MGHRL preprint combines topological
++ball decomposition with a trained multi-granularity network
++\citep{zhao2026mghrl}. Granular-ball divergence also supports fuzzy rough
++hypergraph feature selection \citep{li2026gbfrh}. Thus, combining granular
++balls and hypergraphs is not itself our novelty claim. Our evaluated groups
++organize sentence embeddings for inference-time selection, rather than graph
++classification or feature reduction. These task differences still leave the
++need to compare grouping rules under matched QA budgets.
++
++\paragraph{Hypergraph and cross-granularity RAG.}
++RAPTOR and HippoRAG organize evidence using hierarchies and knowledge graphs
++\citep{sarthi2024raptor,gutierrez2024hipporag}.
++The closest task-level neighbor is HGRAG (Wang et al., AAAI 2026): entities
++are nodes, passages are hyperedges, and query-conditioned diffusion combines
++entity and passage similarity \citep{wang2026crossgranularity}.
++HyperGraphRAG retrieves extracted n-ary facts
++\citep{luo2025hypergraphrag}, while Hyper-RAG combines extracted low- and
++high-order relations with corpus text \citep{feng2026hyperrag}.
++\emph{HyperGranular-RAG} denotes our method throughout; it is distinct from
++Wang et al.'s HGRAG. Our facet hyperedges are lexical selection relations
++between local sentence groups, without LLM fact extraction or learned graph
++propagation. This is an operational distinction, not evidence of superiority
++over those systems. Their corpus, reader and context budgets differ from ours;
++their published scores are not entries in our empirical comparison.
+ 
+ \paragraph{Diversity, coverage, and context use.}
+ MMR balances relevance and redundancy \citep{carbonell1998mmr}.
+@@ -409,6 +426,29 @@
+ The absence of that comparison narrows the present contribution to a complete
+ pipeline and specific component contrasts.
+ 
++Table~\ref{tab:attribution} separates the conclusions available from the
++completed comparisons from the alternatives they do not exclude. A larger
++Dense list and a shared token-cap comparison would additionally be needed
++to establish a quality--cost advantage; the present Top-20 results do not
++establish one.
++
++\begin{table}[t]
++\centering\small
++\begin{tabular}{@{}p{.45\columnwidth}p{.49\columnwidth}@{}}
++\toprule
++Completed contrast & Scope of the evidence\\
++\midrule
++Compact Full vs Dense & Pipeline gain; grouping vs simple coverage remains open\\
++Compact Full vs NoFacet & Specified selector gain; not a matched MMR comparison\\
++Protected vs front insertion & Ordering effect with fixed visible evidence\\
++Full / extensions vs BGE & Original Full worse; extension gains unresolved\\
++\bottomrule
++\end{tabular}
++\caption{Attribution boundaries. No unexecuted baseline is assigned a score,
++and no comparison to an external hypergraph RAG system is implied.}
++\label{tab:attribution}
++\end{table}
++
+ \subsection{Arranging a Fixed Evidence Set}
+ For the cross-space contrast, reconstruction covers all 2,500 questions: Protected and
+ Unprotected have identical final members and prompt-visible titles and
+@@ -424,26 +464,6 @@
+ are 923.5/1,156/1,907 and MuSiQue 884/1,186.1/2,881. None reaches 4,096.
+ The observed evidence displacement is due to list membership, not exhaustion
+ of the context-token limit.
+-
+-\section{Limitations}
+-All answer-quality results use closed benchmark candidate sets. They do not
+-measure corpus reachability, ANN recall, full-wiki indexing, or open-domain
+-noise. The positive compact evidence uses one retriever, one principal
+-generator, one short-answer prompt, and Top-20. The additional generator and
+-BGE extensions are unresolved rather than demonstrations of broad robustness.
+-
+-The radius gate is inactive in the compact split rule, and the
+-facet selector does not dynamically recompute coverage.
+-The native NoFacet score changes multiple coefficients; its effect is
+-not a pure component ablation. No fair ordinary-clustering or generic
+-coverage comparison has been completed.
+-
+-The calibration of archived bootstrap-tail tests remains unestablished;
+-scoring reconciliation does not validate those tests. Query-disjoint samples are not
+-necessarily independent at the document or pretraining level. Dataset
+-training releases may have appeared in generator pretraining. Post-decision
+-mechanism summaries and representative cases do not identify causal
+-mediation, and finite resource-based sample sizes are not a power guarantee.
+ 
+ \section{Conclusion}
+ Structured evidence completion improves the tested compact MiniLM pipeline on
+@@ -456,6 +476,26 @@
+ Evidence selection and arrangement therefore require distinct comparisons,
+ with answer quality as the endpoint and coverage and displacement as
+ complementary descriptions of the intervention.
++
++\section{Limitations}
++All answer-quality results use closed benchmark candidate sets. They do not
++measure corpus reachability, ANN recall, full-wiki indexing, or open-domain
++noise. The positive compact evidence uses one retriever, one principal
++generator, one short-answer prompt, and Top-20. The additional generator and
++BGE extensions are unresolved rather than demonstrations of broad robustness.
++
++The radius gate is inactive in the compact split rule, and the
++facet selector does not dynamically recompute coverage.
++The native NoFacet score changes multiple coefficients; its effect is
++not a pure component ablation. No fair ordinary-clustering or generic
++coverage comparison has been completed.
++
++The calibration of archived bootstrap-tail tests remains unestablished;
++scoring reconciliation does not validate those tests. Query-disjoint samples are not
++necessarily independent at the document or pretraining level. Dataset
++training releases may have appeared in generator pretraining. Post-decision
++mechanism summaries and representative cases do not identify causal
++mediation, and finite resource-based sample sizes are not a power guarantee.
+ 
+ \section*{Ethical and Reproducibility Considerations}
+ This study uses existing benchmark releases and model artifacts; it introduces
+@@ -500,6 +540,14 @@
+ The later Stage6 development outputs, engineering repairs, and synthetic v2
+ prototype are excluded from these empirical results.
+ 
++\paragraph{Scope of the follow-up proposal.}
++A subsequent bounded comparison proposal retained matched MMR, selected-sentence
++coverage, ordinary grouping, larger Dense contexts, and a shared strong
++retrieval score. It was not executed because prior exposure of the available
++confirmation set could not be established. No substitute confirmation set
++was selected. This eligibility limitation supplies neither a new negative
++algorithm result nor evidence against the historical compact gains.
++
+ \paragraph{Scoring reconciliation and verification scope.}
+ \label{app:scoring}
+ The retrospective reconciliation reconstructs legacy scores from stored
+--- editorial_final/journal/main.tex
++++ bounded_refresh/journal/main.tex
+@@ -104,7 +104,7 @@
+ and scoring in BGE space. The latter changes more than the encoder.
+ We specify these differences before interpreting their results together.
+ 
+-The article contributes a defined evidence-completion layer, an empirical
++The article contributes an explicitly defined evidence-completion layer, an empirical
+ account of its benefits and boundaries, and an analysis separating evidence
+ selection from arrangement. Repeated compact gains and the specified facet
+ comparison provide the positive evidence. Strong-backbone and generator
+@@ -130,15 +130,45 @@
+ second type of problem conditional on candidate availability. It therefore
+ does not claim to solve open-domain reachability.
+ 
+-\subsection{Structure at Different Representational Levels}
++\subsection{Granular-Ball Organization and Hypergraph Learning}
++Granular-ball computing supplies a representation of groups at different
++scales \citep{xia2019granularball}; it is more specific than granular
++computing in general. SAGHL uses graph topology to construct hierarchical
++hyperedges and couples them to learned representations \citep{ni2026saghl}.
++The MGHRL preprint partitions graph nodes using shortest-path assignments
++and combines multiple hypergraph-network columns \citep{zhao2026mghrl}.
++Granular-ball divergence and fuzzy rough hypergraphs also support feature
++selection \citep{li2026gbfrh}. These precedents cover the general combination
++of granular balls and hypergraphs. We do not claim to originate it.
++
++Our evaluated implementation instead partitions sentence embeddings and
++uses the resulting groups for query-conditioned, inference-time selection.
++Its cosine geometry, static seed-relative scores and answer-quality endpoint
++differ from graph-topological learning or feature discrimination. These
++differences define an application and evaluation question; they do not by
++themselves establish a superior construction. In particular, shortest-path
++metric arguments cannot be transferred to one-minus-cosine dissimilarity,
++and classification improvements do not imply QA evidence utility.
++
++\subsection{Hypergraph and Cross-Granularity Retrieval}
+ RAPTOR constructs a hierarchy through recursive abstraction
+ \citep{sarthi2024raptor}. HippoRAG uses knowledge-graph structure and
+-propagation \citep{gutierrez2024hipporag}. HyperGraphRAG encodes n-ary
+-knowledge using hypergraph-structured representation
+-\citep{luo2025hypergraphrag}. These methods differ in the object being
+-organized, how relations are produced, and how the structure is traversed.
+-Their results cannot be imported as measurements under our generator and
+-evidence budget.
++propagation \citep{gutierrez2024hipporag}. The closest task-level neighbor,
++HGRAG (Wang et al., AAAI 2026), treats extracted entities as nodes and
++passages as hyperedges \citep{wang2026crossgranularity}. Query-dependent
++diffusion combines entity and passage similarity, followed by semantic
++mixing and structural context selection. Its pooled passage corpus, large
++encoder and reader, and variable passage budget differ from our per-question
++sentence candidates. We use the full name \emph{HyperGranular-RAG} for our
++method to distinguish the two systems.
++
++HyperGraphRAG retrieves LLM-extracted n-ary facts and fuses them with raw
++chunks \citep{luo2025hypergraphrag}. Hyper-RAG extracts low- and high-order
++relations, retrieves related entities and correlations, and evaluates
++domain-specific generation \citep{feng2026hyperrag}. These methods already
++establish hypergraphs as a RAG design choice. Their reported gains are not
++measurements under our candidates, generator, scoring function or budget.
++Table~\ref{tab:neighbors} summarizes the representational distinctions.
+ 
+ In \hgrag, a granular ball is a local group of sentence embeddings with a
+ center and radius, inspired by granular representations
+@@ -147,7 +177,33 @@
+ real-world fact and does not result from an entity-relation extraction model.
+ The structure is query-local, computed from the available candidate set, and
+ used to rank a small expansion. The historical study contains no
+-budget-aligned direct comparison with RAPTOR, HippoRAG, or HyperGraphRAG.
++budget-aligned direct comparison with these external systems.
++Incidence storage is not the relevant difference: a bipartite graph with
++explicit hyperedge identities can preserve membership losslessly, as also
++described by \citet{luo2025hypergraphrag}. Removing those identities or
++altering selection is a different intervention from changing storage format.
++Likewise, a richer representation does not guarantee a better answer when
++extraction noise, evidence displacement and a finite context intervene.
++
++\begin{table}[t]
++\centering\small
++\begin{tabular}{@{}p{.22\textwidth}p{.34\textwidth}p{.35\textwidth}@{}}
++\toprule
++Family & Structural object and operation & Relation to this study\\
++\midrule
++SAGHL / MGHRL & Graph-node groups and learned hypergraph representations & Construction precedents; not QA baselines\\
++Fuzzy rough feature selection & Granular-ball discrimination and feature relations & Coverage/selection precedent; different utility target\\
++HGRAG (Wang et al.) & Entity--passage incidence and query-conditioned diffusion & Closest QA neighbor; different corpus, extraction and reader\\
++HyperGraphRAG / Hyper-RAG & Extracted multi-entity relations, retrieval and text fusion & Factual hyperedges, unlike lexical group-selection relations\\
++HyperGranular-RAG (ours) & Sentence-embedding groups, static facets, bounded placement & Evaluated local completion; no established advantage over the above systems\\
++\bottomrule
++\end{tabular}
++\caption{Conceptual comparisons, not reproduced-system results. Names and
++structural objects are separated from performance claims. The MGHRL source
++is a preprint; the SAGHL and feature-selection comparison is limited to
++verified publisher descriptions.}
++\label{tab:neighbors}
++\end{table}
+ 
+ \subsection{Coverage and Diversity as Alternative Explanations}
+ A structured selector may improve a ranking simply by avoiding redundant
+@@ -1049,6 +1105,35 @@
+ results of this article. Corpus-scale retrieval and external structured
+ methods would additionally require aligned corpora, readers, and budgets.
+ 
++The comparison hierarchy matters. An exact reproduction preserves the
++external method's extraction, corpus and reader. An adapted control may
++share our candidate pool and reader, but must identify every change to that
++method. A conceptual comparison, such as Table~\ref{tab:neighbors}, identifies
++algorithmic differences without providing a performance ranking. Merely
++sharing an encoder does not align different corpora or context budgets.
++Table~\ref{tab:remaining} connects these requirements to the questions left
++open by the completed evidence.
++
++\begin{table}[t]
++\centering\small
++\begin{tabular}{@{}p{.26\textwidth}p{.31\textwidth}p{.34\textwidth}@{}}
++\toprule
++Scientific question & Existing evidence & Uncompleted matched comparison\\
++\midrule
++Selection beyond relevance & Repeated compact Full--Dense gains & MMR and actual selected-sentence coverage\\
++Value of grouping & Specified compact NoFacet contrast & Ordinary clusters at actual group count; size-matched random groups\\
++Pure component effect & Native comparison changes several weights & Single coefficient removal at fixed remaining parameters\\
++Ordering vs membership & Fixed-visible-content placement effect & Evidence-set intervention at fixed placement\\
++Quality--cost trade-off & Prompt lengths and local transaction timings & Larger Dense list and shared token-cap comparisons\\
++Strong-score increment & Original Full negative; BGE extensions unresolved & Common strong candidate pool and base scores\\
++\bottomrule
++\end{tabular}
++\caption{What the completed evidence answers and what remains unmeasured.
++Uncompleted comparisons are not negative results. None is counted as an
++additional contribution or confirmation experiment.}
++\label{tab:remaining}
++\end{table}
++
+ \section{Limitations}
+ The evidence is restricted to closed candidates in two English multi-hop QA
+ benchmarks. We do not evaluate corpus reachability, ANN recall, index
+@@ -1146,6 +1231,16 @@
+ tables. Their mathematical counterexamples help delimit possible claims,
+ but their synthetic behavior is not evidence about held-out answer quality.
+ No restricted reservation or Stage3B data is used in this manuscript revision.
++
++\paragraph{Subsequent bounded proposal.}
++A follow-up proposal retained simple matched selectors, larger Dense lists,
++shared token caps, and one shared strong-score setting. Execution did not
++begin: the prior exposure history of the available confirmation set could
++not be verified, and no substitute set was sought. Resource ceilings were
++agreed, but no development choice or confirmation was performed. This is an
++eligibility limit, not evidence of method failure. The proposal's dynamic
++coverage and bridge terms are not used to reinterpret the evaluated static
++selector or to claim a new completed algorithmic contribution.
+ 
+ \paragraph{Scorer sources and reconstruction.}
+ The first HotpotQA and generator-transfer scorers apply the official
+--- editorial_final/shared/references.bib
++++ bounded_refresh/shared/references.bib
+@@ -271,3 +271,59 @@
+   doi = {10.18653/v1/P18-1128},
+   url = {https://aclanthology.org/P18-1128/}
+ }
++
++@article{ni2026saghl,
++  title = {Structure-aware granular-ball hypergraph learning},
++  author = {Ni, Jinyuan and Xia, Shuyin and Wang, Guan and Yang, Meng and Chen, Long and Liu, Yi and Wang, Yi},
++  journal = {Engineering Applications of Artificial Intelligence},
++  volume = {181},
++  pages = {115428},
++  year = {2026},
++  doi = {10.1016/j.engappai.2026.115428},
++  url = {https://doi.org/10.1016/j.engappai.2026.115428}
++}
++
++@article{li2026gbfrh,
++  title = {An Efficient Feature Selection Method Using the Granular-Ball Divergence-Based Fuzzy Rough Hypergraph},
++  author = {Li, Ye and Yang, Lei and Sang, Binbin and Wang, Guoyin and Xia, Shuyin and Xu, Weihua and Yu, Jianhang},
++  journal = {IEEE Transactions on Knowledge and Data Engineering},
++  volume = {38},
++  number = {10},
++  pages = {6334--6347},
++  year = {2026},
++  doi = {10.1109/TKDE.2026.3716345},
++  url = {https://doi.org/10.1109/TKDE.2026.3716345}
++}
++
++@article{zhao2026mghrl,
++  title = {Multi-granularity Adaptive Hypergraph Representation Learning via Granular-ball},
++  author = {Zhao, Sen and Guan, Yifan and Ni, Jinyuan and Xu, Gaojie and Xu, Zhang and Lian, Xiaoyu and Liu, Yi and Wang, Yi and Wang, Wei},
++  journal = {arXiv preprint arXiv:2609.05574},
++  year = {2026},
++  note = {Version 1; no conference acceptance verified},
++  doi = {10.48550/arXiv.2609.05574},
++  url = {https://arxiv.org/abs/2609.05574v1}
++}
++
++@inproceedings{wang2026crossgranularity,
++  title = {Cross-Granularity Hypergraph Retrieval-Augmented Generation for Multi-hop Question Answering},
++  author = {Wang, Changjian and Deng, Weihong and Guan, Weili and Lu, Quan and Jiang, Ning},
++  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
++  volume = {40},
++  number = {39},
++  pages = {33368--33376},
++  year = {2026},
++  doi = {10.1609/aaai.v40i39.40623},
++  url = {https://ojs.aaai.org/index.php/AAAI/article/view/40623}
++}
++
++@article{feng2026hyperrag,
++  title = {{Hyper-RAG}: combating {LLM} hallucinations using hypergraph-driven retrieval-augmented generation},
++  author = {Feng, Yifan and Hu, Hao and Ying, Shihui and Hou, Xingliang and Liu, Shiquan and Yang, Mingyuan and Li, Junchang and Du, Shaoyi and Zheng, Nanning and Hu, Han and Gao, Yue},
++  journal = {Nature Communications},
++  volume = {17},
++  pages = {5778},
++  year = {2026},
++  doi = {10.1038/s41467-026-71411-1},
++  url = {https://www.nature.com/articles/s41467-026-71411-1}
++}

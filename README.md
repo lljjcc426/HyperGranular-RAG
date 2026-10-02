@@ -1,5 +1,12 @@
 # HyperGranular-RAG
 
+## 当前交付：有限文献刷新与论文回退（2026-10-02）
+
+- [会议版 PDF（总计10页）](research/2026-10-02_bounded_upgrade/manuscripts/conference/HyperGranular-RAG_Conference.pdf) · [期刊版 PDF（总计23页）](research/2026-10-02_bounded_upgrade/manuscripts/journal/HyperGranular-RAG_Journal.pdf)
+- [最终状态与实际检查](research/2026-10-02_bounded_upgrade/FINAL_STATUS.md) · [最近邻比较](literature_refresh/2026-10-02_bounded/REVIEW.md) · [投稿定位](research/2026-10-02_bounded_upgrade/TARGETS_AND_STORY.md)
+
+本轮未启动升级实验：旧确认集独立性无法核实，不能判为方法失败，也没有新增优势证据。两稿保留 canonical 数字、全部负结果和未决结果，补充近期先行工作、名称区分及匹配对照缺口。未改图或历史工件；受限数据保持锁定。本节为当前状态，下方保留此前交付与阶段记录。
+
 以自适应粒球组织知识单元、以 query-aware 超边补充跨粒球关系，并通过受保护插入控制检索扩展的多跳 RAG 研究仓库。
 
 ## 最新双版本编辑终稿（2026-10-02）

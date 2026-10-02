@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: build/main.aux
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+The style file: acl_natbib.bst
+Reallocating 'name_of_file' (item size: 1) to 21 items.
+Reallocating 'glb_str_end' (item size: 4) to 20 items.
+Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
+Reallocating 'global_strs' (item size: 1) to 4000000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Database file #1: ../shared/references.bib
+Warning--can't use both volume and number fields in wang2026crossgranularity
+You've used 18 entries,
+            3782 wiz_defined-function locations,
+            875 strings with 11920 characters,
+and the built_in function-call counts, 18778 in all, are:
+= -- 1565
+> -- 1150
+< -- 14
++ -- 476
+- -- 352
+* -- 1378
+:= -- 2671
+add.period$ -- 73
+call.type$ -- 18
+change.case$ -- 230
+chr.to.int$ -- 19
+cite$ -- 19
+duplicate$ -- 1055
+empty$ -- 1179
+format.name$ -- 409
+if$ -- 4032
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 257
+newline$ -- 95
+num.names$ -- 72
+pop$ -- 686
+preamble$ -- 1
+purify$ -- 189
+quote$ -- 0
+skip$ -- 901
+stack$ -- 0
+substring$ -- 743
+swap$ -- 672
+text.length$ -- 27
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 162
+warning$ -- 1
+while$ -- 91
+width$ -- 0
+write$ -- 239
+(There was 1 warning)

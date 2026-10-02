@@ -1,0 +1,50 @@
+{
+  "baseline": "7a91fa1a4029d5fde85a4277bca1856fc45b306e",
+  "scope": "Document-only checks; no predictions, Gold or algorithm execution",
+  "unchanged_shared_assets": {
+    "acl.sty": true,
+    "acl_natbib.bst": true,
+    "budget_table.tex": true,
+    "components.pdf": true,
+    "effects.json": true,
+    "effects.pdf": true,
+    "figure3c_evidence_displacement.csv": true,
+    "figure4c_insertion_distribution.csv": true,
+    "figure5_qualitative_cases.csv": true,
+    "mechanisms.pdf": true,
+    "numbers.tex": true,
+    "reproduction_details.tex": true,
+    "table1_core.csv": true,
+    "table6_core.csv": true,
+    "workflow.pdf": true
+  },
+  "unique_bib_keys": true,
+  "unique_dois": true,
+  "versions": {
+    "conference": {
+      "equations_unchanged": true,
+      "inline_math_multiset_unchanged": true,
+      "all_old_table_bodies_retained": true,
+      "old_citations_retained": true,
+      "all_citations_resolve": true,
+      "anonymous_author": true,
+      "figures_tables_referenced": true,
+      "no_overfull_or_undefined_or_rerun_warning": true,
+      "pages": 10,
+      "visual_review": "Recorded separately in FINAL_EDITORIAL_CHECK.md; not inferred from successful compilation"
+    },
+    "journal": {
+      "equations_unchanged": true,
+      "inline_math_multiset_unchanged": true,
+      "all_old_table_bodies_retained": true,
+      "old_citations_retained": true,
+      "all_citations_resolve": true,
+      "anonymous_author": true,
+      "figures_tables_referenced": true,
+      "no_overfull_or_undefined_or_rerun_warning": true,
+      "pages": 23,
+      "visual_review": "Recorded separately in FINAL_EDITORIAL_CHECK.md; not inferred from successful compilation"
+    }
+  },
+  "passed": true
+}

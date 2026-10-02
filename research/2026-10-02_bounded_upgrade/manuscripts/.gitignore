@@ -1,0 +1,7 @@
+# Keep real build evidence; exclude regenerable LaTeX auxiliaries and duplicate PDFs.
+*/build/*
+!*/build/command_*.log
+!*/build/main.log
+!*/build/main.blg
+!*/build/extracted_text.txt
+*/page_review/page_*.png

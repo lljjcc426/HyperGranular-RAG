@@ -1,0 +1,170 @@
+{
+  "document": "journal",
+  "pdf": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-02_bounded_upgrade\\manuscripts\\journal\\HyperGranular-RAG_Journal.pdf",
+  "pages": 23,
+  "compiler": "MiKTeX pdfTeX 4.23 (25.12)",
+  "commands_exited_zero": 5,
+  "page_checks": [
+    {
+      "page": 1,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3376,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 2,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4162,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 3,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3851,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 4,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3041,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 5,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3630,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 6,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 2739,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 7,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3105,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 8,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3459,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 9,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3400,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 10,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3702,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 11,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3376,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 12,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 2668,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 13,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 2670,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 14,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3572,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 15,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3099,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 16,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3214,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 17,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3755,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 18,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3817,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 19,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3565,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 20,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3553,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 21,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4058,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 22,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3048,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 23,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 2491,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    }
+  ]
+}

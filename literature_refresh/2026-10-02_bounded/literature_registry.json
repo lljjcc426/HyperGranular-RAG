@@ -1,0 +1,99 @@
+{
+  "review_date": "2026-10-02",
+  "scope": "Bounded nearest-neighbor review, not a systematic review; no external method executed",
+  "date_policy": "null means unverified; Crossref created dates are not online publication dates",
+  "records": [
+    {
+      "id": "ni2026saghl",
+      "title": "Structure-aware granular-ball hypergraph learning",
+      "authors": ["Jinyuan Ni", "Shuyin Xia", "Guan Wang", "Meng Yang", "Long Chen", "Yi Liu", "Yi Wang"],
+      "doi": "10.1016/j.engappai.2026.115428",
+      "status": "Published journal article, EAAI 181 Part 2, 115428",
+      "first_preprint": null, "accepted": null, "online": null, "issue_date": "2026-10-01",
+      "sources": ["https://www.sciencedirect.com/science/article/pii/S0952197626017124", "https://api.crossref.org/works/10.1016/j.engappai.2026.115428"],
+      "reading_depth": "Publisher abstract, introduction and section previews; Crossref metadata. Full methods, experiments and proofs unavailable. No code inspection/run.",
+      "missing": ["Exact modularity-density split/stopping equations", "Training and tuning details", "Complete ablation and cost tables", "Theorem assumptions"],
+      "version_note": "Shared authors with MGHRL do not establish that it is the same work. Distinct titles and constructions retained separately."
+    },
+    {
+      "id": "li2026gbfrh",
+      "title": "An Efficient Feature Selection Method Using the Granular-Ball Divergence-Based Fuzzy Rough Hypergraph",
+      "authors": ["Ye Li", "Lei Yang", "Binbin Sang", "Guoyin Wang", "Shuyin Xia", "Weihua Xu", "Jianhang Yu"],
+      "doi": "10.1109/TKDE.2026.3716345",
+      "status": "Published journal article, TKDE 38(10):6334-6347",
+      "first_preprint": null, "accepted": null, "online": "2026-07-28", "issue_date": "2026-10",
+      "sources": ["https://ieeexplore.ieee.org/abstract/document/11626581/media", "https://api.crossref.org/works/10.1109/TKDE.2026.3716345"],
+      "reading_depth": "Publisher abstract and publication metadata, not full text. No code inspection/run.",
+      "missing": ["Full ball generation and label-use rules", "Exact coverage/weight update equations", "Proof assumptions", "Dataset splits, tuning, costs and full ablations"]
+    },
+    {
+      "id": "zhao2026mghrl",
+      "title": "Multi-granularity Adaptive Hypergraph Representation Learning via Granular-ball",
+      "authors": ["Sen Zhao", "Yifan Guan", "Jinyuan Ni", "Gaojie Xu", "Zhang Xu", "Xiaoyu Lian", "Yi Liu", "Yi Wang", "Wei Wang"],
+      "arxiv": "2609.05574v1",
+      "status": "Preprint only; conference template is not acceptance",
+      "first_preprint": "2026-09-04", "accepted": null, "online": "2026-09-04", "issue_date": null,
+      "sources": ["https://arxiv.org/abs/2609.05574v1", "https://arxiv.org/pdf/2609.05574v1"],
+      "reading_depth": "All 15 extracted PDF pages, including methods, experiments, references and appendices A-D. Figures read through text/captions, not pixel-level validation. No code inspection/run.",
+      "missing": ["Acceptance record", "Implementation resolution of split/stopping wording ambiguity"]
+    },
+    {
+      "id": "wang2026crossgranularity",
+      "title": "Cross-Granularity Hypergraph Retrieval-Augmented Generation for Multi-hop Question Answering",
+      "authors": ["Changjian Wang", "Weihong Deng", "Weili Guan", "Quan Lu", "Ning Jiang"],
+      "doi": "10.1609/aaai.v40i39.40623",
+      "status": "AAAI 2026 proceedings 40(39):33368-33376",
+      "first_preprint": "2025-08-15", "accepted": null, "online": "2026-03-14", "issue_date": "2026",
+      "sources": ["https://ojs.aaai.org/index.php/AAAI/article/view/40623", "https://ojs.aaai.org/index.php/AAAI/article/download/40623/44584", "https://arxiv.org/abs/2508.11247"],
+      "reading_depth": "Proceedings PDF: abstract, related work, complete method and experimental sections, conclusion and references (pp.1-9); introduction partly read. No code inspection/run.",
+      "version_note": "arXiv lists v1; proceedings is the primary method version read. Versions linked by title/authors, not claimed byte-identical.",
+      "display_name": "HGRAG (Wang et al., AAAI 2026)",
+      "missing": ["Exact aligned local reproduction cost", "Full code-level tuning implementation"]
+    },
+    {
+      "id": "luo2025hypergraphrag",
+      "title": "HyperGraphRAG: Retrieval-Augmented Generation via Hypergraph-Structured Knowledge Representation",
+      "doi": "10.52202/085713-5089",
+      "status": "NeurIPS 2025 main conference, volume 38; existing bibliography key reused",
+      "first_preprint": "2025-03-27", "accepted": null, "online": null, "issue_date": "2025",
+      "sources": ["https://proceedings.neurips.cc/paper_files/paper/2025/hash/df55ee6e59f8ac4a625219e11fe9ddba-Abstract-Conference.html", "https://proceedings.neurips.cc/paper_files/paper/2025/file/df55ee6e59f8ac4a625219e11fe9ddba-Paper-Conference.pdf", "https://arxiv.org/abs/2503.21322"],
+      "reading_depth": "Full main body pp.1-9; proofs B.1-B.3 pp.13-15 and baseline/settings appendices F-G p.20. Other supplements/checklist not fully read; no code inspection/run.",
+      "version_note": "arXiv v1 2025-03-27, v2 2025-05-22, v3 2025-10-21; current arXiv states NeurIPS acceptance, exact acceptance date unverified.",
+      "missing": ["Every extraction/evaluation prompt and checklist item", "Independent validation of reported experiments"]
+    },
+    {
+      "id": "feng2026hyperrag",
+      "title": "Hyper-RAG: combating LLM hallucinations using hypergraph-driven retrieval-augmented generation",
+      "authors": ["Yifan Feng", "Hao Hu", "Shihui Ying", "Xingliang Hou", "Shiquan Liu", "Mingyuan Yang", "Junchang Li", "Shaoyi Du", "Nanning Zheng", "Han Hu", "Yue Gao"],
+      "doi": "10.1038/s41467-026-71411-1",
+      "status": "Nature Communications 17:5778",
+      "first_preprint": "2025-03-30", "accepted": "2026-03-19", "online": "2026-04-27", "issue_date": "2026", "version_of_record": "2026-07-02",
+      "sources": ["https://www.nature.com/articles/s41467-026-71411-1", "https://arxiv.org/abs/2504.08758", "https://api.crossref.org/works/10.1038/s41467-026-71411-1"],
+      "reading_depth": "Publisher HTML abstract, results/ablation/efficiency descriptions and methods through entity retrieval equation (6); bibliographic history. Partial full text; supplements not read. No code inspection/run.",
+      "version_note": "arXiv page reports v1 submitted 2025-03-30 although identifier begins 2504; retain the explicit history date. Final journal author list differs from preprint. Downloaded 1-page PDF was an access placeholder, not article full text.",
+      "missing": ["Complete retrieval settings and token budget", "Supplementary evaluation prompts and cost details", "Full preprint-to-journal textual comparison"]
+    },
+    {
+      "id": "zhou2027blgbh",
+      "title": "Unsupervised feature selection via pseudo-label guided Bi-level granular-ball hypergraph",
+      "doi": "10.1016/j.eswa.2026.133729",
+      "status": "Publisher article record, ESWA 332:133729, future 2027 issue",
+      "first_preprint": null, "accepted": null, "online": null, "issue_date": "2027-01-01",
+      "sources": ["https://www.sciencedirect.com/science/article/pii/S0957417426026370", "https://api.crossref.org/works/10.1016/j.eswa.2026.133729"],
+      "reading_depth": "Publisher preview abstract/introduction and Crossref metadata only",
+      "version_note": "DOI registration created 2026-07-25 is not an online date; precise first online remains unverified. Do not merge with TKDE or INS.",
+      "missing": ["Full text", "Verified first-online and acceptance dates"]
+    },
+    {
+      "id": "li2027fghps",
+      "title": "Fuzzy granular-ball-hypergraph based efficient feature selection exploring pruning strategies and synergistic features",
+      "doi": "10.1016/j.ins.2026.124067",
+      "status": "Publisher article record, Information Sciences 759:124067, future 2027 issue",
+      "first_preprint": null, "accepted": null, "online": null, "issue_date": "2027-01-15",
+      "sources": ["https://www.sciencedirect.com/science/article/pii/S0020025526009989", "https://api.crossref.org/works/10.1016/j.ins.2026.124067"],
+      "reading_depth": "Publisher preview and Crossref metadata only",
+      "version_note": "DOI registration created 2026-08-26 is not first-online date; distinct title and author list preserved.",
+      "missing": ["Full text", "Verified first-online and acceptance dates"]
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "document": "conference",
+  "pdf": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-02_bounded_upgrade\\manuscripts\\conference\\HyperGranular-RAG_Conference.pdf",
+  "pages": 10,
+  "compiler": "MiKTeX pdfTeX 4.23 (25.12)",
+  "commands_exited_zero": 5,
+  "page_checks": [
+    {
+      "page": 1,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4280,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 2,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4396,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 3,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4548,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 4,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4051,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 5,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4598,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 6,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3384,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 7,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 3730,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 8,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 5566,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 9,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 4775,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    },
+    {
+      "page": 10,
+      "width": 595.2760009765625,
+      "height": 841.8900146484375,
+      "text_characters": 2508,
+      "visual_review": "CONTACT_SHEET_LAYOUT_CHECKED; detail scope in FINAL_EDITORIAL_CHECK.md"
+    }
+  ]
+}

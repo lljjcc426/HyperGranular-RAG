@@ -1,0 +1,586 @@
+\documentclass[11pt]{article}
+\usepackage[review]{../shared/acl}
+\usepackage{times,latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype,graphicx,booktabs,amsmath,amssymb,array,xspace}
+\input{../shared/numbers.tex}
+\newcommand{\hgrag}{HyperGranular-RAG\xspace}
+\newcommand{\full}{\textsc{Full}\xspace}
+\title{HyperGranular-RAG: Structured Evidence Completion\\
+for Compact Multi-Hop Retrieval}
+\author{Anonymous authors}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Multi-hop question answering requires both selecting complementary evidence
+and arranging it for a generator under a limited evidence budget.
+A relevance ranking can miss a bridge fact, while expansion can displace
+useful context. We study these decisions through \hgrag, a structured
+evidence-completion layer that groups candidate sentences by embedding
+geometry, selects query-conditioned facet hyperedges, and inserts a bounded
+number of candidates after a protected dense prefix.
+In three closed-candidate evaluations on HotpotQA and MuSiQue,
+the compact MiniLM implementation improves answer F1 by
+$0.01140$--$0.01478$ with Qwen2.5-1.5B-Instruct; all three recorded paired
+bootstrap intervals exclude zero. A component comparison favors
+facet-conditioned selection over a centroid-only selector. The original system
+nevertheless trails BGE, and neither a cross-space sidecar nor a BGE-native
+reconstruction establishes an increment over BGE; generator transfer also
+remains unresolved. With identical prompt-visible evidence, protected
+placement outperforms front insertion in the cross-space study.
+Together, these comparisons support completion for the tested compact
+backbone and distinguish the benefit of an ordering policy from evidence
+that its selected candidates improve a stronger retriever.
+\end{abstract}
+
+\section{Introduction}
+Retrieval-augmented question answering separates access to evidence from
+answer generation. Dense retrieval makes relevance ranking efficient
+\citep{karpukhin2020dpr}, but multi-hop questions require several facts to be
+available together. A passage about one entity may be highly relevant without
+supplying the bridge needed to connect it to another. HotpotQA and MuSiQue
+provide complementary settings for examining this difficulty
+\citep{yang2018hotpotqa,trivedi2022musique}.
+
+The challenge becomes sharper under a fixed evidence budget. Adding a
+candidate does not enlarge a Top-20 context indefinitely: it can promote an
+already retrieved sentence or displace a different one. Moreover, a generator
+does not use all retrieved information equally. Evidence position affects
+context use \citep{liu2024lostmiddle}, so improved retrieval coverage need not
+produce an improved answer. A useful completion method must balance
+candidate relevance, complementarity, and the cost of disturbing the original
+ranking.
+
+We investigate a structured completion layer, \hgrag, that preserves the
+retrieval backbone. It organizes the available sentence embeddings into local
+granular balls, uses query-term facets to relate seed balls to candidate
+expansion balls, and places at most four candidates after ten protected
+entries. \emph{Completion} describes an intervention on the evidence list; it is
+not a guarantee that all necessary facts have been recovered. The compact
+selector is a static, seed-relative heuristic, not a dynamically optimized
+coverage objective.
+
+Our central question is how evidence selection and arrangement contribute to
+end-to-end answer quality. Full-versus-Dense comparisons evaluate the
+completion pipeline, and Full-versus-NoFacet tests its specified selector.
+The cross-space Protected-versus-Unprotected comparison holds visible evidence
+fixed and tests its ordering. Comparisons with BGE and one additional
+generator then examine the boundaries of these findings. Each contrast
+addresses a different claim: a better ordering need not imply that the
+selected candidates improve the original ranking.
+
+The results reveal a consistent but bounded opportunity. The compact system
+improves over MiniLM Dense in three evaluations, and its facet-conditioned
+selector exceeds the specified centroid-only comparator. The original compact
+system remains below BGE. Neither transferring its candidates to a BGE
+ranking nor reconstructing the geometry in BGE space establishes additional
+answer quality over BGE. Thus, the positive compact result and the unresolved
+strong-backbone extensions are part of the same empirical account.
+
+We make three contributions:
+\begin{itemize}
+\item We specify a bounded, geometry-based completion layer over a dense
+ranking, making its evidence-selection and placement decisions explicit.
+\item We report repeated compact-backbone improvements and component,
+generator, and strong-backbone comparisons, retaining their distinct data
+boundaries and dataset-specific evaluation definitions.
+\item We distinguish selection from arrangement through a verified
+fixed-visible-evidence placement comparison and supporting-evidence turnover
+analysis, clarifying what the observed gains can be attributed to.
+\end{itemize}
+
+\section{Related Work}
+\paragraph{Retrieving connected evidence.}
+Dense passage retrieval learns representations for relevance ranking
+\citep{karpukhin2020dpr}. Multi-hop systems can instead retrieve iteratively:
+MDR conditions later retrieval on earlier evidence \citep{xiong2021mdr},
+whereas IRCoT interleaves retrieval and reasoning
+\citep{trivedi2023ircot}. Our intervention is a single completion of a fixed
+candidate ranking. It does not search an external corpus or rewrite queries
+using generated reasoning.
+
+\paragraph{Granular-ball and hypergraph learning.}
+Granular-ball representations precede this study
+\citep{xia2019granularball}. SAGHL constructs hierarchical hyperedges from
+graph topology \citep{ni2026saghl}; the MGHRL preprint combines topological
+ball decomposition with a trained multi-granularity network
+\citep{zhao2026mghrl}. Granular-ball divergence also supports fuzzy rough
+hypergraph feature selection \citep{li2026gbfrh}. Thus, combining granular
+balls and hypergraphs is not itself our novelty claim. Our evaluated groups
+organize sentence embeddings for inference-time selection, rather than graph
+classification or feature reduction. These task differences still leave the
+need to compare grouping rules under matched QA budgets.
+
+\paragraph{Hypergraph and cross-granularity RAG.}
+RAPTOR and HippoRAG organize evidence using hierarchies and knowledge graphs
+\citep{sarthi2024raptor,gutierrez2024hipporag}.
+The closest task-level neighbor is HGRAG (Wang et al., AAAI 2026): entities
+are nodes, passages are hyperedges, and query-conditioned diffusion combines
+entity and passage similarity \citep{wang2026crossgranularity}.
+HyperGraphRAG retrieves extracted n-ary facts
+\citep{luo2025hypergraphrag}, while Hyper-RAG combines extracted low- and
+high-order relations with corpus text \citep{feng2026hyperrag}.
+\emph{HyperGranular-RAG} denotes our method throughout; it is distinct from
+Wang et al.'s HGRAG. Our facet hyperedges are lexical selection relations
+between local sentence groups, without LLM fact extraction or learned graph
+propagation. This is an operational distinction, not evidence of superiority
+over those systems. Their corpus, reader and context budgets differ from ours;
+their published scores are not entries in our empirical comparison.
+
+\paragraph{Diversity, coverage, and context use.}
+MMR balances relevance and redundancy \citep{carbonell1998mmr}.
+Coverage and diversity can also be represented by explicit submodular
+objectives \citep{lin2011submodular}. Such methods are important alternative
+explanations for a completion gain; the historical study did not run
+budget-matched versions of them. We therefore compare the facet selector only
+with its actual centroid-only control. Long-context position effects
+\citep{liu2024lostmiddle} motivate protection, but do not establish that a
+particular protected-prefix length is optimal.
+
+\section{Method}
+\subsection{Evidence Budget and Local Organization}
+For question $q$, let $U_q$ be its benchmark-supplied candidate sentence
+units. The retriever embeds the query and each title--sentence pair, normalizes
+the embeddings, and scores
+\begin{equation}
+s(q,u)=\hat e_q^\top\hat e_u.
+\end{equation}
+Descending score and ascending unit identity determine the dense order $D_q$.
+Every arm returns $K_q=\min(20,|U_q|)$ unique units.
+The compact variant uses the same MiniLM space for ranking and organization.
+
+For a nonempty group $B$, define
+\begin{equation}
+\begin{aligned}
+c_B&=\operatorname{norm}\Big(\sum_{u\in B}\hat e_u\Big),\\
+r_B&=\max_{u\in B}(1-\hat e_u^\top c_B).
+\end{aligned}
+\end{equation}
+The root contains all candidates, not only Dense Top-20. The compact
+implementation attempts a split when depth is below six, $|B|\geq4$, and
+$|B|>3$ or $r_B>0.78$. The radius condition is redundant under these size
+settings. A farthest-from-center seed and its least-similar partner partition
+the group by cosine similarity. Both children must contain at least two units;
+otherwise the group is retained. Consequently, three is not a strict maximum
+leaf size. Geometry determines assignments, but radius does not independently
+trigger splits in this compact configuration.
+
+The resulting groups are termed granular balls, following the broader idea of
+granular representations \citep{xia2019granularball}. This terminology does not
+assert that these groups outperform ordinary clustering.
+
+\subsection{Static Facet-Conditioned Selection}
+Let $T_q$ be the content terms of the query under the fixed ASCII-alphanumeric
+tokenizer and stop-word list. A ball's facets are the intersection of $T_q$
+with the union of terms in its titles and sentences. The two balls with highest
+query--centroid score form the seed set. An expansion hyperedge relates these
+seeds to a non-seed ball contributing at least one additional query term.
+
+For candidate $B$, let $n_B$ and $t_B$ denote seed-relative new and total facet
+counts; $m=|T_q|$, $b_B=\hat e_q^\top c_B$, $a_B$ is maximum seed-centroid
+similarity, and $\rho_B$ is the fraction of its facets already in the seeds.
+The compact score is
+\begin{equation}
+\begin{split}
+h_B={}&.45\frac{n_B}{\max(m,1)}+.20\frac{t_B}{\max(m,1)}
+       +.20b_B\\
+     &+.15(1-a_B)-.20\rho_B-.05|B|/8 .
+\end{split}\label{eq:score}
+\end{equation}
+Eligibility additionally requires $|B|\leq8$, $b_B\geq.12$ or $a_B\geq.05$,
+at most six units per new term, $\rho_B\leq.90$, and $h_B\geq.10$.
+At most two expansion balls survive descending $h_B$ and stable edge-identity
+ordering. Units inside them retain their dense-score order.
+
+All scores are computed once relative to the seeds. Accepting one ball does
+not change another's score. Two accepted balls may therefore contribute the
+same new term. Nor does selecting a ball imply that every facet in its union
+occurs in the selected sentence or survives prompt truncation.
+
+\subsection{Protected Insertion}
+The compact policy preserves the first $\min(10,K_q)$ dense units, traverses
+the candidate order, and inserts at most four units absent from that prefix
+with score at least $0.1957079917192459$. This development-calibrated
+25th-percentile floor gives the policy its internal name, static-q25; it is not
+re-estimated per confirmation query. Remaining dense units are appended in
+order, with stable deduplication and truncation to $K_q$.
+
+A placed unit can already belong to Dense ranks 11--20. We distinguish such a
+promotion from a genuinely new unit outside Dense Top-20. Equal $K_q$ also does
+not imply equal token count: all methods share a 4,096-token input cap, while
+actual evidence length varies.
+Figure~\ref{fig:workflow} separates selection, placement, and prompting.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=.98\textwidth]{../shared/workflow.pdf}
+\caption{The compact pipeline. Candidate groups cover the full
+closed candidate set. Selection is static relative to the seeds; the protected
+prefix, candidate placement, dense-order fill, and subsequent token cap are
+separate operations. No answer label enters retrieval or prompting.}
+\label{fig:workflow}
+\end{figure*}
+
+\subsection{Two Extensions around BGE}
+The cross-space \emph{sidecar} keeps BGE's primary ranking and uses the frozen
+MiniLM structure to propose candidates outside BGE Top-20. Its protected and
+unprotected arms use the same insertion candidates but place them after the
+prefix or at the front, respectively.
+
+The \emph{native} variant reconstructs groups and relative scores in BGE
+space. Development selected one of 16 configurations, with leaf target six,
+four insertion slots, unit-score percentile floor $.50$, and broad relative
+facet gates. The split depth, balance gate, score normalization, and candidate
+score differ from the compact method (Appendix~\ref{app:native}).
+This is a related implementation, not an encoder-only substitution.
+
+\section{Experimental Design}
+\subsection{Questions and Comparisons}
+We use HotpotQA training distractor candidates and the answerable MuSiQue
+training candidate sets \citep{yang2018hotpotqa,trivedi2022musique}.
+The compact evaluations contain 1,000 HotpotQA questions, 3,000 MuSiQue
+questions, and a separate joint component set of 1,000 and 1,500 questions.
+The sidecar and native confirmation studies each use another 1,000/1,500
+set. Their frozen identity manifests record exclusion of the preceding
+evaluation boundaries. These are project-held-out subsets of training
+releases, not official hidden test submissions.
+
+The joint component study includes MiniLM Dense, BM25, a Dense--BM25 hybrid,
+BGE large-en-v1.5, \full, NoFacet, and NoProtection.
+NoFacet retains compact ball geometry but uses centroid-only expansion.
+NoProtection changes the placement policy. Neither is a flat-unit or
+budget-matched MMR control.
+Native development uses 500 HotpotQA and 750 MuSiQue questions, separate from
+confirmation. Its small positive development difference selects a
+configuration; it is not pooled with confirmation.
+
+\subsection{Generation and Metrics}
+The principal generator is Qwen2.5-1.5B-Instruct FP16 on an RTX 4060 Laptop
+8GB. A fixed short-answer prompt requests an answer from the evidence or
+\texttt{UNKNOWN}. Generation is greedy, batch size one, with at most 32 new
+tokens and a 4,096-token input cap. A transfer study uses the same initial
+rankings with Gemma 4 E2B in the official mobile-QAT deployment format.
+That comparison concerns these deployment configurations, not pure model
+architecture or device-independent efficiency.
+
+We report mean answer F1 and exact match (EM). Complete recall (CR@20)
+records whether all annotated supporting evidence is covered; evidence recall
+(ER@20) records the covered fraction. HotpotQA has sentence-level support
+labels, whereas MuSiQue uses supporting paragraphs. MuSiQue coverage therefore
+must not be described as sentence-chain recall.
+
+We use each dataset's pinned official answer functions. HotpotQA applies
+its yes/no/noanswer exception and assigns zero
+F1 when normalized tokens have no overlap; MuSiQue maximizes over aliases
+and treats two empty token lists as a match. A retrospective scoring
+reconciliation preserves all confirmation and generator-transfer scores and
+all method differences; a common development-score correction did not trigger
+configuration reselection (Appendix~\ref{app:scoring}). These are answer
+metrics on project subsets, not official leaderboard or joint
+answer-and-support evaluation.
+
+\subsection{Estimates and Uncertainty}
+For paired per-query scores, the target is the mean within-query difference.
+Joint studies average the two dataset means with equal weight. Their 10,000
+bootstrap draws resample queries within each dataset, preserving method
+pairing. We reconstructed the original intervals and reused the same draws
+for canonical scoring; all confirmation intervals are unchanged.
+The intervals describe the specified query-sampling model,
+not uncertainty over model training or alternative development searches.
+
+Statistical tests require a null distribution and suitable sampling assumptions
+\citep{dror2018hitchhiker}. Some historical decision files call an uncentered
+bootstrap nonpositive-tail fraction a one-sided p-value and apply Holm
+adjustment. Its general null calibration was not established. We preserve the
+recorded decisions for provenance, but base the present description on effect
+estimates and intervals, without claiming a newly validated familywise test.
+Intervals crossing zero are unresolved, not equivalent. Shared source
+documents can induce dependencies not captured by query-level resampling.
+
+\section{Results}
+\subsection{Does Completion Help Compact Retrieval?}
+Yes, within the tested compact configuration. Table~\ref{tab:compact} shows
+positive effects on the initial HotpotQA and MuSiQue sets and the separate
+component set. Their recorded 95\% intervals exclude zero, with absolute
+F1 differences between $.01140$ and $.01478$. The initial HotpotQA lower
+bound is close to zero, so the magnitude and uncertainty are more informative
+than a binary success label.
+
+\begin{table*}[t]
+\centering\small
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+Evaluation set & Queries & Dense F1 & Full F1 & $\Delta$F1 & 95\% interval\\
+\midrule
+HotpotQA & 1,000 & .42150 & .43628 & $\effHotpot$ & $\ciHotpot$\\
+MuSiQue & 3,000 & .13595 & .14735 & $\effMusique$ & $\ciMusique$\\
+Joint component & 2,500 & .30446 & .31803 & $\effJoint$ & $\ciJoint$\\
+\bottomrule
+\end{tabular}
+\caption{Compact MiniLM with Qwen. Scores are on the 0--1 scale. The joint row
+is dataset-equal-weighted, not a pooled average of all 2,500 questions.
+Dataset-canonical rescoring reproduces every displayed answer score and
+interval from the frozen predictions.}
+\label{tab:compact}
+\end{table*}
+
+Retrieval coverage also increases: CR@20 rises from $.737$ to $.798$ on
+HotpotQA and from $.589$ to $.650$ on MuSiQue. These are different support
+granularities, and neither change by itself measures answer improvement.
+The corresponding answer gains supply the end-to-end evidence.
+
+\subsection{Selection and Placement Contrasts}
+On the joint compact set, \full minus NoFacet is $\effFacet$
+with interval $\ciFacet$. This favors the particular facet-conditioned
+selector over centroid-only expansion. It does not show that hyperedges are
+necessary, or that higher-order structure explains more than a simpler
+coverage heuristic. \full minus NoProtection is $\effProtection$
+$\ciProtection$, leaving the independent benefit of protection unresolved
+in that compact setting.
+
+In the sidecar study, Protected minus Unprotected is $\effSidecarPlace$
+$\ciSidecarPlace$. Protected insertion is better than the tested front
+insertion policy at fixed visible evidence. Protected minus BGE remains
+unresolved: the two comparisons test ordering and BGE-relative answer
+quality, respectively.
+The native facet and placement contrasts also cross zero
+(Figure~\ref{fig:components}).
+
+\subsection{Does the Benefit Extend to Strong Retrieval?}
+The original compact \full is below BGE on the same component set:
+$\effStrong$ $\ciStrong$. BM25 and the hybrid are additional comparators,
+with \full differences of $\effBm$ $\ciBm$ and
+$\effHybrid$ $\ciHybrid$, respectively.
+Neither interval resolves a difference.
+
+The two BGE extensions address more specific alternatives.
+The sidecar adds candidates from the existing compact structure; its
+Protected-minus-BGE effect is $\effSidecar$ $\ciSidecar$.
+Rebuilding the geometry natively in BGE yields $\effNative$ $\ciNative$.
+Both point estimates are slightly negative, and both intervals cross zero.
+These findings do not establish complementarity with BGE, but they are not
+equivalence tests. Because the configurations and query sets differ, the three
+BGE comparisons are not a causal dose--response curve for retriever strength.
+Figure~\ref{fig:effects} places these distinct effects and intervals on a
+common display scale.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=.98\textwidth]{../shared/effects.pdf}
+\caption{Paired answer-F1 effects in percentage points (one point is $.01$
+on the score scale). Each interval is the recorded 95\% percentile bootstrap
+interval for that row's comparison, reproduced under canonical scoring;
+rows are not pooled. Open markers denote intervals crossing zero.}
+\label{fig:effects}
+\end{figure*}
+
+\subsection{Does the Result Transfer to Another Generator?}
+With the fixed Gemma mobile-QAT configuration, the equal-weight
+\full-minus-Dense effect is $\effGemma$ $\ciGemma$.
+This result does not establish generator transfer. The rankings are reused
+from the initial studies, so this is an intervention on the tested generator
+deployment, not an additional independent retrieval sample. Differences in
+format and runtime prevent interpretation as a controlled architecture
+comparison between Qwen and Gemma.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=.98\textwidth]{../shared/components.pdf}
+\caption{Component contrasts under dataset-canonical answer scoring. NoFacet is a specific
+historical comparator; native NoFacet also changes the candidate-score
+coefficients, so that row is a pipeline contrast rather than a pure removal of
+one coefficient. The sidecar placement comparison fixes actual visible
+evidence; this verification is not extrapolated to other variants.}
+\label{fig:components}
+\end{figure*}
+
+\section{Analysis and Implications}
+\subsection{Adding Evidence Can Also Displace It}
+The post-decision sidecar audit counts 21 added and 29 displaced annotated
+supporting units in HotpotQA, and 59 added versus 50 displaced in MuSiQue.
+The corresponding native counts are 3/2 and 16/15.
+Thus, native completion has a net $+1$ supporting unit in each dataset while
+both answer-F1 point estimates are negative. These totals concern annotated
+evidence identities at each dataset's support granularity, not complete
+reasoning chains or a causal effect per inserted unit.
+
+A gain can fail to reach the answer because retained evidence is redundant,
+an essential fact is displaced, or the generator fails to use the context.
+The aggregate counts do not distinguish these mechanisms. They demonstrate
+why selection, final ranking, prompt-visible evidence, and answer quality
+should be measured separately.
+
+\subsection{What Geometry Does and Does Not Establish}
+Mean-cosine compactness equals the normalized length of the sum of unit
+embeddings. Its weighted child average cannot decrease under any partition
+(Appendix~\ref{app:geometry}). Thus, increased compactness alone does not
+establish a meaningful semantic split or explain the observed answer gain.
+
+\subsection{Limits of Structural Attribution}
+The tested pipeline can improve a compact backbone without demonstrating that
+every named component is necessary. Ordinary clusters, MMR, and sentence-level
+coverage remain plausible alternatives. A decisive comparison would match
+candidate access, intervention budget, group count, and generator context.
+The absence of that comparison narrows the present contribution to a complete
+pipeline and specific component contrasts.
+
+Table~\ref{tab:attribution} separates the conclusions available from the
+completed comparisons from the alternatives they do not exclude. A larger
+Dense list and a shared token-cap comparison would additionally be needed
+to establish a quality--cost advantage; the present Top-20 results do not
+establish one.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}p{.45\columnwidth}p{.49\columnwidth}@{}}
+\toprule
+Completed contrast & Scope of the evidence\\
+\midrule
+Compact Full vs Dense & Pipeline gain; grouping vs simple coverage remains open\\
+Compact Full vs NoFacet & Specified selector gain; not a matched MMR comparison\\
+Protected vs front insertion & Ordering effect with fixed visible evidence\\
+Full / extensions vs BGE & Original Full worse; extension gains unresolved\\
+\bottomrule
+\end{tabular}
+\caption{Attribution boundaries. No unexecuted baseline is assigned a score,
+and no comparison to an external hypergraph RAG system is implied.}
+\label{tab:attribution}
+\end{table}
+
+\subsection{Arranging a Fixed Evidence Set}
+For the cross-space contrast, reconstruction covers all 2,500 questions: Protected and
+Unprotected have identical final members and prompt-visible titles and
+sentence texts. Each of the 5,000 serialized prompts matches its own recorded
+identity and token count. There is no evidence dropping or partial truncation.
+The effect retains all original queries as its denominator, including those
+with unchanged ordering. It estimates an ordering/placement-policy effect at
+fixed visible content, without identifying an internal attention mechanism.
+The separate answer-quality comparison with BGE remains unresolved.
+
+The twenty-entry budget is distinct from token capacity. Protected and
+Unprotected have identical per-query token counts: HotpotQA median/p95/max
+are 923.5/1,156/1,907 and MuSiQue 884/1,186.1/2,881. None reaches 4,096.
+The observed evidence displacement is due to list membership, not exhaustion
+of the context-token limit.
+
+\section{Conclusion}
+Structured evidence completion improves the tested compact MiniLM pipeline on
+three closed-candidate multi-hop QA evaluations. A facet-conditioned selector
+also exceeds its specified compact centroid-only comparator. The original
+system remains below BGE, while cross-space and native BGE extensions do not
+establish an incremental answer-quality benefit. At fixed visible evidence,
+protected placement improves on front insertion in the sidecar study;
+the comparison with BGE has not established an answer-quality gain.
+Evidence selection and arrangement therefore require distinct comparisons,
+with answer quality as the endpoint and coverage and displacement as
+complementary descriptions of the intervention.
+
+\section{Limitations}
+All answer-quality results use closed benchmark candidate sets. They do not
+measure corpus reachability, ANN recall, full-wiki indexing, or open-domain
+noise. The positive compact evidence uses one retriever, one principal
+generator, one short-answer prompt, and Top-20. The additional generator and
+BGE extensions are unresolved rather than demonstrations of broad robustness.
+
+The radius gate is inactive in the compact split rule, and the
+facet selector does not dynamically recompute coverage.
+The native NoFacet score changes multiple coefficients; its effect is
+not a pure component ablation. No fair ordinary-clustering or generic
+coverage comparison has been completed.
+
+The calibration of archived bootstrap-tail tests remains unestablished;
+scoring reconciliation does not validate those tests. Query-disjoint samples are not
+necessarily independent at the document or pretraining level. Dataset
+training releases may have appeared in generator pretraining. Post-decision
+mechanism summaries and representative cases do not identify causal
+mediation, and finite resource-based sample sizes are not a power guarantee.
+
+\section*{Ethical and Reproducibility Considerations}
+This study uses existing benchmark releases and model artifacts; it introduces
+no new participant study. Negative and unresolved results are retained.
+Source code, configurations, derived predictions, and result manifests exist
+in the research repository. Third-party datasets and weights remain subject
+to their original terms. An anonymous distribution and author-approved
+licensing statement are required before submission. AI-assisted coding,
+analysis preparation, and writing were used; responsibility for the submitted
+work remains with the human authors.
+
+\bibliography{../shared/references}
+\appendix
+\section{Historical Implementation and Provenance}
+\label{app:native}
+The compact method uses \texttt{all-MiniLM-L6-v2}; the strong ranking uses
+\texttt{BAAI/bge-large-en-v1.5}. Native C10 uses depth limit eight,
+minimum child fraction $.20$, and compactness-gain threshold $10^{-10}$.
+Its two seed balls are ranked by query-score percentile, density percentile,
+then identity. Broad gates require query-score percentile at least $.35$ and
+density percentile at least $.25$. Eligible non-seed balls must contribute a
+seed-relative new facet; at most four balls supply candidates.
+Only units outside BGE Top-20 with unit-score percentile at least $.50$ are
+eligible. Candidate scoring is
+\begin{equation}
+\begin{split}
+h_u^{\mathrm{native}}={}&.45p_u+.25p_{b(u)}+.15p_{\rho(u)}\\
+&+.10p_{C(u)}+.05\min(n_{b(u)},3)/3 ,
+\end{split}
+\end{equation}
+where the $p$ terms are within-query empirical percentiles of unit relevance,
+ball relevance, density, and compactness. Native NoFacet replaces this by
+$.50p_u+.30p_{b(u)}+.10p_{\rho(u)}+.10p_{C(u)}$ and removes the new-facet
+eligibility requirement. The comparison therefore changes both gating and
+weights.
+
+The paper's scientific names map to the frozen repository records as follows:
+initial HotpotQA/MuSiQue to Stage4E/4F, generator transfer to Stage4G,
+joint components to Stage4H, cross-space sidecar to Stage4I, and native
+confirmation to Stage5A. Aggregate summaries, implementation configurations,
+and the manuscript evidence ledger provide the exact artifact paths.
+The later Stage6 development outputs, engineering repairs, and synthetic v2
+prototype are excluded from these empirical results.
+
+\paragraph{Scope of the follow-up proposal.}
+A subsequent bounded comparison proposal retained matched MMR, selected-sentence
+coverage, ordinary grouping, larger Dense contexts, and a shared strong
+retrieval score. It was not executed because prior exposure of the available
+confirmation set could not be established. No substitute confirmation set
+was selected. This eligibility limitation supplies neither a new negative
+algorithm result nor evidence against the historical compact gains.
+
+\paragraph{Scoring reconciliation and verification scope.}
+\label{app:scoring}
+The retrospective reconciliation reconstructs legacy scores from stored
+predictions and applies dataset-canonical scoring with the original
+resampling draws. It covers 74,750 prediction records across method arms,
+not 74,750 independent questions. All 53,500 confirmation and
+generator-transfer records retain their scores. Native development has 17
+affected predictions on one question, equally across all 17 methods, leaving
+every method difference unchanged; no configuration was reselected.
+Retrieval and generation were not rerun, and this additional check is not
+new independent confirmation. Verification records describe their original
+scope; subsequent algorithm repairs do not retroactively certify those results.
+
+\paragraph{Complexity and measured cost.}
+With embeddings available, recursive two-seed assignment costs
+$O(H|U_q|d)$, scoring and sorting cost
+$O(|U_q|\log|U_q|+|{\cal B}_q|d+|{\cal B}_q|\log|{\cal B}_q|)$,
+and working memory is $O(|U_q|d+|U_q|+|{\cal B}_q|)$, excluding tokenization
+and model inference. The native confirmation records 8.544\,s retrieval
+reconstruction, 887.650\,s BGE generation, 884.198\,s protected-native
+generation, and 3.592\,GiB peak GPU memory. These are transaction-specific
+measurements, not corpus-index costs or a controlled speed advantage.
+Generation seconds accumulate checkpoint calls across resumed processes;
+they are not the wall time of the final process.
+
+\section{Geometric Clarification}
+\label{app:geometry}
+For unit vectors in nonempty $B$, mean-cosine compactness is
+$C(B)=\|\sum_{i\in B}x_i\|/|B|$. The triangle inequality gives
+$\sum_j |B_j|C(B_j)/|B|\geq C(B)$ for any partition into nonempty groups.
+This elementary property is explanatory background, not a new theoretical
+contribution or an answer-F1 guarantee. At zero sum, the scalar extends to
+zero but a normalized center requires an implementation convention.
+
+\input{../shared/reproduction_details.tex}
+\end{document}

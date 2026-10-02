@@ -1,0 +1,52 @@
+\section{Reproduction Details}
+\label{app:reproduction}
+\paragraph{Retrieval and units.}
+The compact encoder is \texttt{all-MiniLM-L6-v2}, with attention-mask mean
+pooling, L2 normalization, and a 192-token encoder limit. BGE uses
+\texttt{bge-large-en-v1.5}, CLS pooling, L2 normalization, and a 512-token
+encoder limit. Its query instruction is ``Represent this sentence for
+searching relevant passages:'' followed by the question. Document inputs
+concatenate the title and sentence. HotpotQA preserves the supplied sentence
+boundaries; MuSiQue splits whitespace-normalized paragraphs with the frozen
+punctuation-and-capitalization rule. Neither splitter is changed in this review.
+The reproducibility configuration pins the encoder revisions and unit IDs.
+
+\paragraph{Lexical baselines.}
+BM25 uses lowercase alphanumeric tokens, $k_1=1.5$, and $b=0.75$ within each
+query's candidate set. Its inverse document frequency is
+$\log(1+(N-df+0.5)/(df+0.5))$. The hybrid baseline averages query-local
+min--max-normalized dense and BM25 scores with equal weights; a constant
+score vector maps to zero. Unit ID breaks score ties. These are local
+closed-candidate baselines, not corpus-scale retrieval systems.
+
+\paragraph{Generation and budgets.}
+The principal reader is Qwen2.5-1.5B-Instruct in FP16, using greedy decoding,
+one beam, batch size one, and at most 32 generated tokens. The full serialized
+input, including the chat template, is capped at 4,096 tokens. The system
+instruction is: ``Answer the question using only the provided evidence.
+Return only the shortest final answer. If the evidence is insufficient,
+return UNKNOWN.'' Evidence is rendered in rank order as numbered
+title--sentence entries, followed by the question and ``Final answer:''.
+The Qwen runner sets CPU/CUDA seeds to zero, uses one CPU thread, and
+enables deterministic algorithms. The renderer admits whole units in order
+until the cap; only an overlong first unit permits partial truncation.
+The compact policy protects ten dense positions and places at most four
+candidates under a final budget $K=\min(20,|U_q|)$. Its frozen q25 floor is
+0.1957079917192459. BGE-native has its own recorded eligibility policy;
+it is not retrospectively identified with compact static-q25.
+
+\paragraph{Scoring and interpretation.}
+The reanalysis fixes the original predictions and reference channel. It
+executes the pure answer-metric functions from the pinned official HotpotQA
+and MuSiQue implementations, with maximum-over-alias scoring only where
+the dataset permits aliases. HotpotQA assigns zero token F1 to mismatched
+\texttt{yes}/\texttt{no}/\texttt{noanswer} responses, and zero F1 when both
+normalized strings are empty. MuSiQue's official token F1 assigns one to
+the latter case and does not inherit HotpotQA's categorical exception.
+The archived per-query scores, means, and paired percentile intervals are
+first independently reconstructed. Canonical scores then reuse the same
+10,000 bootstrap draws. This isolates scorer migration from statistical
+redesign: no new confirmatory test, model selection, or independent
+confirmation is claimed. Supporting-evidence coverage retains the
+dataset's original sentence or paragraph granularity and is not a
+complete-chain recovery metric.
