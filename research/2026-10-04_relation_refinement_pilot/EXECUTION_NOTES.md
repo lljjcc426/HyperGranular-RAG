@@ -40,3 +40,13 @@ before any natural model output; see MODEL_RESOLUTION.json. The 3B model has not
 been evaluated and no relative capability claim is made. Tokenizers share the
 existing Qwen vocabulary; D0 windows will be rebuilt in memory with the actual
 selected tokenizer during model calibration, rather than assuming identity.
+
+Before any D0 model output, Transformers returned a tokenization object instead of
+the expected list from `apply_chat_template(tokenize=True)`. The adapter now renders
+the exact chat template then calls `encode(add_special_tokens=False)`. The failed
+attempt made no generation calls. The first completed synthetic model batch used
+explicit eager attention and produced nonfinite binary logits/repeated token0;
+its calls and RESOURCE_CALIBRATION.json remain diagnostic failures. Returning to
+the historical default attention implementation yielded finite scores and normal
+text; RESOURCE_CALIBRATION_v2.json is the valid timing batch. Both batches count
+towards resource/call totals; eight distinct windows were each attempted twice.

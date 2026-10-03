@@ -16,7 +16,7 @@ class LM:
         self.torch=torch;self.cpu=time.process_time();self.wall=time.perf_counter()
         torch.set_num_threads(1);torch.manual_seed(1729);torch.use_deterministic_algorithms(True)
         self.tokenizer=AutoTokenizer.from_pretrained(MODEL,local_files_only=True)
-        self.model=AutoModelForCausalLM.from_pretrained(MODEL,local_files_only=True,dtype=torch.float16,attn_implementation='eager').eval().to('cuda')
+        self.model=AutoModelForCausalLM.from_pretrained(MODEL,local_files_only=True,dtype=torch.float16).eval().to('cuda')
         torch.cuda.reset_peak_memory_stats();self.calls=0;self.pairs=0
         logs=rows(LOCAL/'calls.jsonl') if (LOCAL/'calls.jsonl').exists() else []
         self.prior_calls=sum(z['kind']=='generate' for z in logs);self.prior_pairs=sum(z['kind']=='binary' for z in logs)
@@ -24,7 +24,8 @@ class LM:
         self.yes=self.tokenizer.encode('yes',add_special_tokens=False);self.no=self.tokenizer.encode('no',add_special_tokens=False)
         assert len(self.yes)==len(self.no)==1
     def ids(self,user,system='You are a careful evidence assistant.'):
-        return self.tokenizer.apply_chat_template([{'role':'system','content':system},{'role':'user','content':user}],tokenize=True,add_generation_prompt=True)
+        text=self.tokenizer.apply_chat_template([{'role':'system','content':system},{'role':'user','content':user}],tokenize=False,add_generation_prompt=True)
+        return self.tokenizer.encode(text,add_special_tokens=False)
     def check(self):
         if self.prior_calls+self.calls>=6500 or self.prior_pairs+self.pairs>=16000:
             raise RuntimeError('CALL_CAP_AT_REQUEST_BOUNDARY')
@@ -46,7 +47,9 @@ class LM:
         with torch.inference_mode(): logits=self.model(input_ids=x,attention_mask=torch.ones_like(x),use_cache=False).logits[0,-1,[self.no[0],self.yes[0]]].float()
         score=float(logits.softmax(0)[1]);torch.cuda.synchronize();seconds=time.perf_counter()-start;self.pairs+=1
         result=dict(score=score,seconds=seconds,input_tokens=len(ids),input_digest=digest(ids))
-        append(LOCAL/'calls.jsonl',dict(kind='binary',stage=stage,**result));return result
+        append(LOCAL/'calls.jsonl',dict(kind='binary',stage=stage,**result))
+        if not np.isfinite(score):raise RuntimeError('NONFINITE_BINARY_LOGITS_RUNTIME_FAILURE')
+        return result
     def close(self,stage):
         peak=self.torch.cuda.max_memory_allocated();del self.model;self.torch.cuda.empty_cache()
         charge(stage,self.cpu,self.wall,gpu_process_seconds=time.perf_counter()-self.wall,
@@ -90,7 +93,7 @@ def measure():
         ans=max(t['seconds'] for t in timings if t['kind']=='reader')
         binary=max(t.get('binary_seconds',0) for t in timings)
         projection=4544*ext+96*par+1056*ans+13800*binary
-        save(HERE/'RESOURCE_CALIBRATION.json',dict(timings=timings,projection_seconds=projection,
+        save(HERE/'RESOURCE_CALIBRATION_v2.json',dict(timings=timings,projection_seconds=projection,
             projection_type='maximum observed synthetic cost times conservative request envelope, excluding indexing/loading; not guarantee',
             full_plan_within_six_hours_before_overhead=projection<21600,peak_gpu_bytes=lm.torch.cuda.max_memory_allocated()))
         print('RESOURCE_PROJECTION',projection,flush=True)

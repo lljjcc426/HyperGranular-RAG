@@ -36,12 +36,13 @@ def run(phase):
         assert fresh.text==p['annotation_window']['text'],'annotation window changed with selected tokenizer'
         p['windows']=[asdict(w) for w in ws];p['annotation_window']=asdict(fresh)
     try:
-        if phase=='parse':
+        if phase in ('parse_dev','parse_check'):
             for j,p in enumerate(packets):
+                if p['role']!=('D0_DEV' if phase=='parse_dev' else 'D0_CHECK'):continue
                 r=lm.generate(p['question'],PARSE,224,'D0_parse');raw=json_object(r['text'])
-                append(LOCAL/'d0_parses.jsonl',dict(index=j,query_id=p['query_id'],role=p['role'],raw=raw,slots=parse_contract(p['question'],raw),**r))
+                append(LOCAL/('d0_'+phase+'.jsonl'),dict(index=j,query_id=p['query_id'],role=p['role'],raw=raw,slots=parse_contract(p['question'],raw),**r))
         elif phase=='extract':
-            parses={z['index']:z for z in rows(LOCAL/'d0_parses.jsonl')}
+            parses={z['index']:z for phase_name in ('parse_dev','parse_check') for z in rows(LOCAL/('d0_'+phase_name+'.jsonl'))}
             from core import Window
             for j,p in enumerate(packets):
                 slots=parses[j]['slots'];w=Window(**p['annotation_window'])
@@ -57,9 +58,11 @@ def run(phase):
                     b=lm.binary(w.text,claim,'D0_extracted_fact')
                     facts.append(dict(raw=f,score=b['score']))
                 append(LOCAL/'d0_extractions.jsonl',dict(index=j,status='EXTRACTED',facts=facts,**r))
-        elif phase=='verify':
+        elif phase in ('verify_dev','verify_check'):
             for a in read(LOCAL/'annotations.json'):
-                p=packets[a['index']];r=lm.binary(p['annotation_window']['text'],a['claim'],'D0_annotation')
+                p=packets[a['index']]
+                if p['role']!=('D0_DEV' if phase=='verify_dev' else 'D0_CHECK'):continue
+                r=lm.binary(p['annotation_window']['text'],a['claim'],'D0_annotation')
                 append(LOCAL/'d0_verification.jsonl',dict(**a,role=p['role'],**r))
         elif phase=='reader':
             sys.path.insert(0,str(OLD));from score import scorers,answer_score

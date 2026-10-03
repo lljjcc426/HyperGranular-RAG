@@ -3,3 +3,6 @@
 {"stage": "synthetic_32", "cpu_seconds": 2.53125, "wall_seconds": 2.628029300001799, "gpu_process_seconds": 0}
 {"stage": "tests", "cpu_seconds": 0.109375, "wall_seconds": 0.09687850000045728, "gpu_process_seconds": 0}
 {"stage": "synthetic_32", "cpu_seconds": 2.765625, "wall_seconds": 2.785901200004446, "gpu_process_seconds": 0}
+{"stage": "synthetic_model_calibration", "cpu_seconds": 5.15625, "wall_seconds": 2.6087736999979825, "gpu_process_seconds": 2.608734399997047, "generate_calls": 0, "binary_pairs": 0, "peak_allocated_bytes": 3088347136}
+{"stage": "synthetic_model_calibration", "cpu_seconds": 107.6875, "wall_seconds": 111.73227860000043, "gpu_process_seconds": 111.73225430000457, "generate_calls": 16, "binary_pairs": 8, "peak_allocated_bytes": 3219514880}
+{"stage": "synthetic_model_calibration", "cpu_seconds": 35.671875, "wall_seconds": 34.163606699999946, "gpu_process_seconds": 34.16358609999588, "generate_calls": 16, "binary_pairs": 8, "peak_allocated_bytes": 3219514880}

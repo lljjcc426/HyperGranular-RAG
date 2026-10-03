@@ -1,0 +1,104 @@
+{
+  "timings": [
+    {
+      "kind": "extract",
+      "seconds": 3.2418657000016537,
+      "input_tokens": 235,
+      "output_tokens": 83,
+      "binary_seconds": 0.04249379999964731
+    },
+    {
+      "kind": "extract",
+      "seconds": 3.025066499998502,
+      "input_tokens": 268,
+      "output_tokens": 92,
+      "binary_seconds": 0.04189510000287555
+    },
+    {
+      "kind": "extract",
+      "seconds": 3.304459399994812,
+      "input_tokens": 301,
+      "output_tokens": 92,
+      "binary_seconds": 0.04052580000279704
+    },
+    {
+      "kind": "extract",
+      "seconds": 2.5885090000010678,
+      "input_tokens": 334,
+      "output_tokens": 83,
+      "binary_seconds": 0.04075369999918621
+    },
+    {
+      "kind": "extract",
+      "seconds": 2.6667396999982884,
+      "input_tokens": 367,
+      "output_tokens": 83,
+      "binary_seconds": 0.04546909999771742
+    },
+    {
+      "kind": "extract",
+      "seconds": 2.8517012000011164,
+      "input_tokens": 400,
+      "output_tokens": 89,
+      "binary_seconds": 0.04575979999935953
+    },
+    {
+      "kind": "extract",
+      "seconds": 2.583301400001801,
+      "input_tokens": 433,
+      "output_tokens": 83,
+      "binary_seconds": 0.057200299997930415
+    },
+    {
+      "kind": "extract",
+      "seconds": 2.786422400000447,
+      "input_tokens": 466,
+      "output_tokens": 87,
+      "binary_seconds": 0.059757700000773184
+    },
+    {
+      "kind": "parse",
+      "seconds": 1.961986700000125,
+      "output_tokens": 61
+    },
+    {
+      "kind": "reader",
+      "seconds": 0.13757829999667592,
+      "output_tokens": 4
+    },
+    {
+      "kind": "parse",
+      "seconds": 1.8882458000007318,
+      "output_tokens": 61
+    },
+    {
+      "kind": "reader",
+      "seconds": 0.13292399999772897,
+      "output_tokens": 4
+    },
+    {
+      "kind": "parse",
+      "seconds": 1.9802018000045791,
+      "output_tokens": 62
+    },
+    {
+      "kind": "reader",
+      "seconds": 0.13585900000180118,
+      "output_tokens": 4
+    },
+    {
+      "kind": "parse",
+      "seconds": 1.9353166000000783,
+      "output_tokens": 62
+    },
+    {
+      "kind": "reader",
+      "seconds": 0.13582150000002002,
+      "output_tokens": 4
+    }
+  ],
+  "projection_seconds": 16175.501831184025,
+  "projection_type": "maximum observed synthetic cost times conservative request envelope, excluding indexing/loading; not guarantee",
+  "full_plan_within_six_hours_before_overhead": true,
+  "peak_gpu_bytes": 3219514880
+}
