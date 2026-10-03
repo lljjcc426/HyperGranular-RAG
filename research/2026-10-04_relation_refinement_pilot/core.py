@@ -16,6 +16,7 @@ class Window:
     text:str
     sentences:tuple # (original id, retained text, original char start, char end)
     truncated:bool=False
+    tokens:int=0
 
 @dataclass(frozen=True)
 class Fact:
@@ -95,7 +96,7 @@ def bundles(slots,facts,windows,base,catalog):
 def bundle_key(fs,windows,base):
     return (-len(fs),-min((f.score for f in fs),default=0),
             -sum(base[f.window] for f in fs)/max(1,len(fs)),
-            sum(len(windows[i].text.split()) for i in {f.window for f in fs}),
+            sum(windows[i].tokens or len(windows[i].text.split()) for i in {f.window for f in fs}),
             tuple((f.slot,f.window,f.head_id,f.tail_id) for f in fs))
 
 def active(slots,states):
@@ -172,7 +173,8 @@ def feedback_pair(g,observed,slots,states,relevant,windows,catalog,x,ids):
             fb=[f for f in observed[ids[b]] if f.slot==slot['id']]
             sa={(f.head_id,f.tail_id) for f in fa};sb={(f.head_id,f.tail_id) for f in fb}
             if sa==sb or not(sa or sb):continue
-            extends=any(extend(binding,slot,f,windows[f.window],catalog) is not None
+            extends=any(any(not slot[k].startswith('?') or slot[k] in binding for k in ('head','tail'))
+                        and extend(binding,slot,f,windows[f.window],catalog) is not None
                         for binding,_ in states for f in fa+fb)
             if extends:pairs.append((a,b));break
     return min(pairs,key=lambda ab:(-float(np.sum((x[ab[0]]-x[ab[1]])**2)),ids[ab[0]],ids[ab[1]])) if pairs else None

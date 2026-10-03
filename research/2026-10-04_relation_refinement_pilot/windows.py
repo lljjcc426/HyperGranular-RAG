@@ -28,5 +28,5 @@ def make_windows(units,tokenizer):
                     body=' '.join(candidate[i][1] for i in sorted(candidate))
                     if len(tokenizer.encode(body,add_special_tokens=False))<=320:selected=candidate
             sentences=tuple(selected[i] for i in sorted(selected));body=' '.join(s[1] for s in sentences)
-            result.append(Window(u['unit_id'],doc,u['title'],body,sentences,truncated))
+            result.append(Window(u['unit_id'],doc,u['title'],body,sentences,truncated,len(tokenizer.encode(body,add_special_tokens=False))))
     return result

@@ -48,7 +48,7 @@ def run():
                     complete16=int(r['snapshots'][16]['complete']),complete32=int(r['snapshots'][32]['complete']),
                     false_joins=false,splits=len(r['splits']),split_seconds=sum(z['seconds'] for z in r['splits']),
                     actual_probes=oracle.actual_calls,seconds=r['seconds']))
-    with (HERE/'SYNTHETIC_RESULTS.csv').open('x',newline='',encoding='utf-8') as f:
+    with (HERE/'SYNTHETIC_RESULTS_v2.csv').open('x',newline='',encoding='utf-8') as f:
         w=csv.DictWriter(f,fieldnames=list(out[0]));w.writeheader();w.writerows(out)
     charge('synthetic_32',cpu,wall,gpu_process_seconds=0)
     print('SYNTHETIC',len(out),'false_joins',sum(x['false_joins'] for x in out),flush=True)
@@ -107,7 +107,7 @@ class Contracts(unittest.TestCase):
 if __name__=='__main__':
     if '--tests' in sys.argv:
         cpu=time.process_time();wall=time.perf_counter()
-        with (HERE/'TEST_OUTPUT.txt').open('x',encoding='utf-8') as f:
+        with (HERE/'TEST_OUTPUT_v2.txt').open('x',encoding='utf-8') as f:
             result=unittest.TextTestRunner(stream=f,verbosity=2).run(unittest.defaultTestLoader.loadTestsFromTestCase(Contracts))
         charge('tests',cpu,wall,gpu_process_seconds=0)
         print('tests',result.testsRun,'success',result.wasSuccessful())

@@ -1,0 +1,11 @@
+test_bindings_and_legal_alternatives (__main__.Contracts.test_bindings_and_legal_alternatives) ... ok
+test_degenerate_geometry (__main__.Contracts.test_degenerate_geometry) ... ok
+test_feedback_same_signal_and_fact_preservation (__main__.Contracts.test_feedback_same_signal_and_fact_preservation) ... ok
+test_lazy_and_cost_and_budget (__main__.Contracts.test_lazy_and_cost_and_budget) ... ok
+test_provenance_and_parser (__main__.Contracts.test_provenance_and_parser) ... ok
+test_renderer_no_answer_leak_and_failure_fallback (__main__.Contracts.test_renderer_no_answer_leak_and_failure_fallback) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.096s
+
+OK
