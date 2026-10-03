@@ -1,2 +1,3 @@
 {"stage": "prepare", "cpu_seconds": 0.109375, "wall_seconds": 0.12789019999763696, "gpu_process_seconds": 0}
 {"stage": "tests", "cpu_seconds": 0.078125, "wall_seconds": 0.10374469999806024, "gpu_process_seconds": 0}
+{"stage": "synthetic_32", "cpu_seconds": 2.53125, "wall_seconds": 2.628029300001799, "gpu_process_seconds": 0}

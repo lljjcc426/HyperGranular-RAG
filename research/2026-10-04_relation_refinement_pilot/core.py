@@ -187,13 +187,13 @@ class LazyProbe:
             if not uncached:self.__cache[key]=result
         return tuple(result),hit
 
-def search(method,question,slots,windows,x,qvector,embed,probe,threshold=.7,uncached=False):
+def search(method,question,slots,windows,x,qvector,embed,probe,threshold=.7,uncached=False,max_probes=32):
     assert method in METHODS and method!='Dense-window'
     start=time.perf_counter();ids=[w.id for w in windows];wm={w.id:w for w in windows}
     catalog=tuple({(w.title,w.source) for w in windows});base={w.id:float(x[i]@qvector) for i,w in enumerate(windows)}
     kind=method.split('-')[0];groups,repairs=initialize(x,ids,kind) if kind!='Flat' else ([],0)
     observed={};facts=[];states=[({},())];conditional={};snapshots={};trace=[];splits=[];hits=0;cap_fallback=0
-    for step in range(min(32,len(windows))):
+    for step in range(min(max_probes,len(windows))):
         queries,relevant=active(slots,states);vs=[]
         for text in queries:
             if text not in conditional:

@@ -18,15 +18,17 @@ class LM:
         self.tokenizer=AutoTokenizer.from_pretrained(MODEL,local_files_only=True)
         self.model=AutoModelForCausalLM.from_pretrained(MODEL,local_files_only=True,dtype=torch.float16,attn_implementation='eager').eval().to('cuda')
         torch.cuda.reset_peak_memory_stats();self.calls=0;self.pairs=0
+        logs=rows(LOCAL/'calls.jsonl') if (LOCAL/'calls.jsonl').exists() else []
+        self.prior_calls=sum(z['kind']=='generate' for z in logs);self.prior_pairs=sum(z['kind']=='binary' for z in logs)
+        self.prior_cost=rows(HERE/'COST_LEDGER.jsonl') if (HERE/'COST_LEDGER.jsonl').exists() else []
         self.yes=self.tokenizer.encode('yes',add_special_tokens=False);self.no=self.tokenizer.encode('no',add_special_tokens=False)
         assert len(self.yes)==len(self.no)==1
     def ids(self,user,system='You are a careful evidence assistant.'):
         return self.tokenizer.apply_chat_template([{'role':'system','content':system},{'role':'user','content':user}],tokenize=True,add_generation_prompt=True)
     def check(self):
-        logs=rows(LOCAL/'calls.jsonl') if (LOCAL/'calls.jsonl').exists() else []
-        if sum(z['kind']=='generate' for z in logs)>=6500 or sum(z['kind']=='binary' for z in logs)>=16000:
+        if self.prior_calls+self.calls>=6500 or self.prior_pairs+self.pairs>=16000:
             raise RuntimeError('CALL_CAP_AT_REQUEST_BOUNDARY')
-        completed=rows(HERE/'COST_LEDGER.jsonl') if (HERE/'COST_LEDGER.jsonl').exists() else []
+        completed=self.prior_cost
         gpu=sum(z.get('gpu_process_seconds',0) for z in completed)+time.perf_counter()-self.wall
         cpu=sum(z['cpu_seconds'] for z in completed)+time.process_time()-self.cpu
         if gpu>=21600 or cpu>=14400:raise RuntimeError('RESOURCE_CAP_AT_REQUEST_BOUNDARY')
