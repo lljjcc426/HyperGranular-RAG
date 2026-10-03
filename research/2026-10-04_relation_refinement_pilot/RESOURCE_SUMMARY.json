@@ -1,0 +1,19 @@
+{
+  "gpu_process_seconds": 498.33923029997095,
+  "ledger_cpu_seconds": 577.890625,
+  "stopped_downloader_observed_cpu_seconds": 31.53125,
+  "cpu_measurement_limit": "Ledger plus observed stopped process; initial tokenizer/download and shell/document CPU not fully metered. Not an exact total.",
+  "cumulative_measured_gpu_seconds": 1343.8125290999715,
+  "cumulative_measured_cpu_lower_bound": 1395.453125,
+  "prior_document_cpu": null,
+  "actual_generate_calls": 254,
+  "actual_binary_pairs": 212,
+  "max_gpu_allocated_bytes": 6417428992,
+  "paid": 0,
+  "d1_calls": 0,
+  "cache_hit_speedup_claim": false,
+  "model_directory_bytes": 6183459769,
+  "pilot_directory_bytes": 6115344,
+  "xet_cache_current_bytes_upper_bound": 0,
+  "new_bytes_conservative_snapshot": 6189575113
+}

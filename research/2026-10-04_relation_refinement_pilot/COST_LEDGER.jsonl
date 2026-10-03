@@ -16,3 +16,10 @@
 {"stage": "D0_reader", "cpu_seconds": 21.96875, "wall_seconds": 20.151702000002842, "gpu_process_seconds": 20.151678599999286, "generate_calls": 64, "binary_pairs": 0, "peak_allocated_bytes": 3169143296}
 {"stage": "window_contract_tests", "cpu_seconds": 0.0, "wall_seconds": 0.0007961000010254793, "gpu_process_seconds": 0}
 {"stage": "model_download", "cpu_seconds": 34.4375, "wall_seconds": 1104.5370334000036, "gpu_process_seconds": 0, "bytes": 6183459769}
+{"stage": "synthetic_model_calibration", "cpu_seconds": 33.0625, "wall_seconds": 28.294033899997885, "gpu_process_seconds": 28.294009199998982, "generate_calls": 9, "binary_pairs": 4, "peak_allocated_bytes": 6417428992}
+{"stage": "D0_parse_dev", "cpu_seconds": 62.328125, "wall_seconds": 61.46384250000119, "gpu_process_seconds": 61.463818999996874, "generate_calls": 16, "binary_pairs": 0, "peak_allocated_bytes": 6347730432}
+{"stage": "D0_verify_dev", "cpu_seconds": 14.09375, "wall_seconds": 8.695801800000481, "gpu_process_seconds": 8.695777199995064, "generate_calls": 0, "binary_pairs": 48, "peak_allocated_bytes": 6374453248}
+{"stage": "D0_parse_check", "cpu_seconds": 51.78125, "wall_seconds": 48.187575999996625, "gpu_process_seconds": 48.18755099999544, "generate_calls": 16, "binary_pairs": 0, "peak_allocated_bytes": 6351341056}
+{"stage": "D0_verify_check", "cpu_seconds": 13.890625, "wall_seconds": 8.582684200002404, "gpu_process_seconds": 8.582661100001133, "generate_calls": 0, "binary_pairs": 48, "peak_allocated_bytes": 6382965760}
+{"stage": "D0_extract", "cpu_seconds": 16.46875, "wall_seconds": 11.733675499999663, "gpu_process_seconds": 11.733652099996107, "generate_calls": 2, "binary_pairs": 0, "peak_allocated_bytes": 6393221120}
+{"stage": "D0_reader", "cpu_seconds": 61.265625, "wall_seconds": 58.696718999999575, "gpu_process_seconds": 58.69669169999543, "generate_calls": 64, "binary_pairs": 0, "peak_allocated_bytes": 6384176128}

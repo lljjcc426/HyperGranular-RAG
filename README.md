@@ -1,6 +1,12 @@
 # HyperGranular-RAG
 
-## 当前研究：上游准入机制 CPU 诊断（2026-10-04）
+## 当前研究：关系反馈粒度细化原型（2026-10-04）
+
+- [本轮结果与决定](research/2026-10-04_relation_refinement_pilot/RESULTS_AND_DECISION.md) · [能力校准](research/2026-10-04_relation_refinement_pilot/CALIBRATION_REPORT.md) · [合成分层结果](research/2026-10-04_relation_refinement_pilot/RESULTS.csv) · [配对比较](research/2026-10-04_relation_refinement_pilot/PAIRED_COMPARISONS.csv)
+
+完成共享原文见证/绑定接口、七种结构搜索的32实例合成比较及1.5B/3B的固定D0校准。合成16-probe时GB-feedback完整链19/32，GB-uniform为14/32；32-probe时GB-feedback与Flat均29/32、KM-feedback为30/32。自然解析/见证接口未达到能力门，判为D，D1未运行，不判定细化机制失败。论文、历史结果和受限边界保持；本轮完成后停止。
+
+## 上一轮：上游准入机制 CPU 诊断（2026-10-04）
 
 - [会议版 PDF（总计10页）](research/2026-10-02_bounded_upgrade/manuscripts/conference/HyperGranular-RAG_Conference.pdf) · [期刊版 PDF（总计23页）](research/2026-10-02_bounded_upgrade/manuscripts/journal/HyperGranular-RAG_Journal.pdf)
 - [本轮结果与决定](research/2026-10-04_upstream_admission_audit/RESULTS_AND_DECISION.md) · [六条件与数量匹配参照](research/2026-10-04_upstream_admission_audit/MASK_AND_BREADTH_COMPARISON.csv) · [有限案例](research/2026-10-04_upstream_admission_audit/CASE_REVIEW.md) · [前轮 R1/R2 结果](research/2026-10-03_evidence_delivery_repair/RESULTS_AND_DECISION.md)

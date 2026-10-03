@@ -1,0 +1,21 @@
+{
+  "status": "D_CAPABILITY_GATE_NOT_MET",
+  "run_d1": false,
+  "selected_model": "Qwen/Qwen2.5-3B-Instruct",
+  "model_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+  "threshold": 0.7,
+  "d0_dev_schema_pass": 1,
+  "d0_dev_n": 16,
+  "d0_check_schema_pass": 1,
+  "d0_check_n": 16,
+  "schema_valid_and_semantically_usable": 0,
+  "actual_extraction_calls": 2,
+  "parse_failed_without_extraction": 30,
+  "provenance_valid_facts": 0,
+  "reason": "The current fixed prompt/interface yields near-zero usable parsing and no grounded facts. Reader and verifier results do not repair the missing relation inputs.",
+  "model_intrinsic_incapacity_claim": false,
+  "mechanism_failure_claim": false,
+  "d1_generated": false,
+  "independent_confirmation": false,
+  "further_prompt_revision_or_training_executed": false
+}

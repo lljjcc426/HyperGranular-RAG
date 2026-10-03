@@ -1,0 +1,13 @@
+domain,method,control,budget,n,gain,same,harm,delta_complete,delta_answer_f1
+EXACT_WITNESS_SYNTHETIC,GB-feedback,GB-uniform,8,32,3,28,1,0.0625,
+EXACT_WITNESS_SYNTHETIC,GB-feedback,GB-uniform,16,32,6,25,1,0.15625,
+EXACT_WITNESS_SYNTHETIC,GB-feedback,GB-uniform,32,32,2,28,2,0,
+EXACT_WITNESS_SYNTHETIC,GB-feedback,GB-fixed,8,32,3,28,1,0.0625,
+EXACT_WITNESS_SYNTHETIC,GB-feedback,GB-fixed,16,32,9,22,1,0.25,
+EXACT_WITNESS_SYNTHETIC,GB-feedback,GB-fixed,32,32,4,27,1,0.09375,
+EXACT_WITNESS_SYNTHETIC,GB-feedback,KM-feedback,8,32,4,26,2,0.0625,
+EXACT_WITNESS_SYNTHETIC,GB-feedback,KM-feedback,16,32,4,26,2,0.0625,
+EXACT_WITNESS_SYNTHETIC,GB-feedback,KM-feedback,32,32,1,29,2,-0.03125,
+EXACT_WITNESS_SYNTHETIC,GB-feedback,Flat-binding,8,32,7,25,0,0.21875,
+EXACT_WITNESS_SYNTHETIC,GB-feedback,Flat-binding,16,32,2,29,1,0.03125,
+EXACT_WITNESS_SYNTHETIC,GB-feedback,Flat-binding,32,32,0,32,0,0,

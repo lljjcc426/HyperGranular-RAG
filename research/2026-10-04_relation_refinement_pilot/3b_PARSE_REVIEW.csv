@@ -1,0 +1,33 @@
+index,role,schema_valid,semantic_usable,issue
+0,D0_DEV,0,0,Array root and list-valued IDs; missing answer variable and temporal conflict binding
+1,D0_DEV,0,0,Array root and list-valued IDs; extra unknown and answer pseudo-slots
+2,D0_DEV,0,0,String list instead of directed slots
+3,D0_DEV,0,0,Malformed array and more than four slots; film award direction is not preserved
+4,D0_DEV,0,0,Array root; literal generic water/man endpoints replace unresolved entities and birth date is changed to location
+5,D0_DEV,0,0,Malformed array; true is an invented constant and day is disconnected
+6,D0_DEV,0,0,Array root and missing answer variable; squadron self-loop does not bind aircraft
+7,D0_DEV,1,0,Author is treated as the published object and publisher as film creator; missing novel identity
+8,D0_CHECK,0,0,Malformed list-valued object; Norman constraint is omitted
+9,D0_CHECK,0,0,Array root; official is changed to team employee and NFC relation is incorrect
+10,D0_CHECK,0,0,Array root; date is linked to horse without requested event variable
+11,D0_CHECK,0,0,Array root and list fields; district becomes a current member
+12,D0_CHECK,0,0,Array root and missing answer variable; location constraints omitted
+13,D0_CHECK,0,0,Malformed nested quotes and list-valued IDs
+14,D0_CHECK,0,0,Positional string arrays instead of slot objects; requested artist relation is not well formed
+15,D0_CHECK,0,0,Array root; series rather than character is the voiced entity
+16,D0_DEV,0,0,Empty output list
+17,D0_DEV,0,0,Array root and missing answer variable; forming-island direction is under-specified
+18,D0_DEV,0,0,Array root and missing answer variable despite a plausible two-slot sketch
+19,D0_DEV,0,0,Malformed array and list fields; writing relation is introduced without question support
+20,D0_DEV,0,0,Malformed answer metadata and extra unknown slot
+21,D0_DEV,0,0,Array root and missing answer variable; inconsistent body constants and unbound day
+22,D0_DEV,0,0,Malformed array and missing answer variable; redundant year-to-games relation
+23,D0_DEV,0,0,Malformed array with five slots; battle variables are disconnected
+24,D0_CHECK,0,0,Malformed answer metadata despite plausible birthplace/capital sketch
+25,D0_CHECK,0,0,Empty output list
+26,D0_CHECK,0,0,Malformed array; composer father direction reversed and extra unknown slot
+27,D0_CHECK,1,0,Question asks company founding time; output introduces founder/place chain and changes target entity
+28,D0_CHECK,0,0,Array root with metadata pseudo-slots instead of required wrapper
+29,D0_CHECK,0,0,Malformed array; person and party bindings are reversed
+30,D0_CHECK,0,0,Array root and missing answer variable; extra unknown identity steps
+31,D0_CHECK,0,0,Empty output list

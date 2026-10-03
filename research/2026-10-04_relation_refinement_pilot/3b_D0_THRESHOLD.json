@@ -1,0 +1,30 @@
+{
+  "selected": 0.7,
+  "options": [
+    {
+      "threshold": 0.5,
+      "accepted": 11,
+      "true_positive": 11,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 0.6875
+    },
+    {
+      "threshold": 0.7,
+      "accepted": 11,
+      "true_positive": 11,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 0.6875
+    },
+    {
+      "threshold": 0.9,
+      "accepted": 9,
+      "true_positive": 9,
+      "false_positive": 0,
+      "precision": 1.0,
+      "recall": 0.5625
+    }
+  ],
+  "check_used_for_selection": false
+}

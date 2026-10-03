@@ -1,0 +1,57 @@
+{
+  "model": "3b",
+  "timings": [
+    {
+      "kind": "extract",
+      "seconds": 3.7057091999959084,
+      "input_tokens": 321,
+      "output_tokens": 79,
+      "binary_seconds": 0.08369220000167843
+    },
+    {
+      "kind": "extract",
+      "seconds": 3.383325099996,
+      "input_tokens": 387,
+      "output_tokens": 83,
+      "binary_seconds": 0.06551590000162832
+    },
+    {
+      "kind": "extract",
+      "seconds": 3.5198526000021957,
+      "input_tokens": 486,
+      "output_tokens": 83,
+      "binary_seconds": 0.08160920000227634
+    },
+    {
+      "kind": "extract",
+      "seconds": 3.4978983999972115,
+      "input_tokens": 552,
+      "output_tokens": 83,
+      "binary_seconds": 0.10521609999705106
+    },
+    {
+      "kind": "parse",
+      "seconds": 3.3483755999986897,
+      "output_tokens": 84
+    },
+    {
+      "kind": "reader",
+      "seconds": 0.1457825000034063,
+      "output_tokens": 3
+    },
+    {
+      "kind": "parse",
+      "seconds": 2.6698082000002614,
+      "output_tokens": 63
+    },
+    {
+      "kind": "reader",
+      "seconds": 0.13064299999678042,
+      "output_tokens": 3
+    }
+  ],
+  "projection_seconds": 18766.115162344184,
+  "projection_type": "maximum observed synthetic cost times conservative request envelope, excluding indexing/loading; not guarantee",
+  "full_plan_within_six_hours_before_overhead": true,
+  "peak_gpu_bytes": 6417428992
+}

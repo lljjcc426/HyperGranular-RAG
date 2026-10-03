@@ -72,3 +72,23 @@ its calls and RESOURCE_CALIBRATION.json remain diagnostic failures. Returning to
 the historical default attention implementation yielded finite scores and normal
 text; RESOURCE_CALIBRATION_v2.json is the valid timing batch. Both batches count
 towards resource/call totals; eight distinct windows were each attempted twice.
+
+Final: the preferred 3B download completed and D0 finished without another prompt
+revision. MODEL_RESOLUTION.json is the preserved premature fallback record, not
+the final selected-model record; CALIBRATION_DECISION.json states the final 3B
+identity and D stop. No D1 execution occurred. The two stopped-download CPU
+observations (25.078125 and 31.53125 seconds) are conservatively both reported
+alongside the successful transfer ledger; small download/shell/document CPU is
+still unmetered. No exact all-work CPU accounting is claimed.
+
+New files contain the prototype, synthetic records, calibration summaries and
+reports. README receives only a new top status section; its unrelated local body
+edits are not included in this round's commit. No file was deleted, and no paper,
+historical result, image or plotting script was changed in this task.
+
+Final read-only delivery reconciliation returned:
+`DELIVERY_RECONCILIATION_PASS: calls, 32 parse reviews, 2 extraction calls, 64 reader records, 224 synthetic rows, D1 gated`.
+It compared actual call logs to ledger counts, parse-review schema flags to raw
+outputs, extraction call/fact counts, support visibility and synthetic row counts.
+This was a single summary consistency check, not a repeat model experiment or
+an independent semantic annotation claim.
