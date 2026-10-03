@@ -48,7 +48,7 @@ def main():
                     'tokens':a['input_token_count'],'visible_entries':len(a['evidence_unit_ids']),
                     'omitted_entries':len(a['omitted_ids']),'partial_truncation':a['rank1_truncated'],
                     'new_entries':r['new_count'],'promotions':r['promotion_count'],'evictions':len(r['removed']),
-                    'selection_seconds':r['selection_seconds'],'proposals':r['proposal_count'],
+                    'selection_seconds':r['selection_seconds'],'shared_h0_reconstruction_seconds':r['shared_h0_reconstruction_seconds'],'proposals':r['proposal_count'],
                     'generation_call_seconds':p['generation_seconds'],'actual_generation_seconds':p['actual_generation_seconds'],
                     'cache_hit':p['cache_hit'],'changed_from_h0':r['ranking']!=rm[q,'H0']['ranking'],
                     'changed_members_from_h0':set(r['ranking'])!=set(rm[q,'H0']['ranking']),
@@ -93,7 +93,9 @@ def main():
     table('PILOT_RESULTS.csv',absolute);table('PAIRED_CONTRASTS.csv',contrasts)
     with (LOCAL/'query_scores.jsonl').open('x',encoding='utf-8') as h:
         for r in queryscores:line(h,r)
-    # Proxy-vs-answer joint outcomes; never use these to change configurations.
+    # Legacy diagnostic only: R1 step sums use Dense20, answers below use H0.
+    # Do not interpret this mixed-reference table; proxy_review.py supplies the
+    # aligned append-only correction from fixed rankings. Answer tables unaffected.
     proxies={};qs={(r['query_id'],r['method']):r for r in queryscores}
     for tag in CONFIGS:
         for l in (.85,.70):
@@ -107,6 +109,7 @@ def main():
                     events[('proxy_gain' if gain>0 else 'proxy_same' if gain==0 else 'proxy_harm')+'|'+('answer_gain' if fd>0 else 'answer_harm' if fd<0 else 'answer_same')]+=1
                 proxies[tag+'|'+family+'|'+str(l)]=dict(events)
     save(HERE/'ANALYSIS_DETAILS.json',{'datasets':details,'proxy_answer_cross_tabs':proxies,
+        'correction_notice':'Mixed-reference step diagnostics, not interpretable as proxy/answer alignment. Run proxy_review.py for Phi(R1)-Phi(H0). R1 step sums below are relative to Dense20; answer deltas are relative to H0.',
         'bootstrap':{'iterations':10000,'seed':20261003,'paired_within_dataset':True,'shared_indices_across_methods':True,'descriptive_only':True,'p_values':False},
         'equal_dataset_quantile_columns':'Arithmetic mean of the two dataset quantiles, not pooled quantiles'})
     # Transparent success/counterexample IDs, no private raw targets in public report.

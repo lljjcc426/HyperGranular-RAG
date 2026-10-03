@@ -1,0 +1,65 @@
+{
+  "status": "ALIGNED_PROXY_AND_ANSWER_REFERENCES",
+  "supersedes": "Only proxy_answer_cross_tabs in ANALYSIS_DETAILS.json; all answer scores/CIs unchanged",
+  "reason": "R1 step deltas sum relative to Dense20; original cross table paired them with answer delta relative to H0. Recompute Phi(R1)-Phi(H0) from fixed rankings.",
+  "counts": {
+    "hotpot": {
+      "R1_0.85": {
+        "proxy_same|answer_same": 195,
+        "changed_ranking": 5,
+        "changed_members": 5,
+        "proxy_gain|answer_same": 4,
+        "proxy_gain|answer_gain": 1
+      },
+      "R1_0.70": {
+        "proxy_same|answer_same": 195,
+        "changed_ranking": 5,
+        "changed_members": 5,
+        "proxy_gain|answer_same": 4,
+        "proxy_gain|answer_gain": 1
+      },
+      "R2_0.85": {
+        "proxy_same|answer_same": 198,
+        "changed_ranking": 2,
+        "changed_members": 2,
+        "proxy_gain|answer_same": 2
+      },
+      "R2_0.70": {
+        "proxy_same|answer_same": 198,
+        "changed_ranking": 2,
+        "changed_members": 2,
+        "proxy_gain|answer_same": 2
+      }
+    },
+    "musique": {
+      "R1_0.85": {
+        "proxy_gain|answer_same": 13,
+        "changed_ranking": 13,
+        "changed_members": 13,
+        "proxy_same|answer_same": 187
+      },
+      "R1_0.70": {
+        "proxy_gain|answer_same": 13,
+        "changed_ranking": 13,
+        "changed_members": 13,
+        "proxy_same|answer_same": 187
+      },
+      "R2_0.85": {
+        "proxy_same|answer_same": 190,
+        "changed_ranking": 10,
+        "changed_members": 10,
+        "proxy_gain|answer_same": 8,
+        "proxy_gain|answer_harm": 1,
+        "proxy_gain|answer_gain": 1
+      },
+      "R2_0.70": {
+        "proxy_same|answer_same": 190,
+        "changed_ranking": 10,
+        "changed_members": 10,
+        "proxy_gain|answer_same": 8,
+        "proxy_gain|answer_harm": 1,
+        "proxy_gain|answer_gain": 1
+      }
+    }
+  }
+}

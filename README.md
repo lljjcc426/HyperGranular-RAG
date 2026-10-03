@@ -1,11 +1,11 @@
 # HyperGranular-RAG
 
-## 当前交付：有限文献刷新与论文回退（2026-10-02）
+## 当前研究：证据损失诊断与局部修复（2026-10-03）
 
 - [会议版 PDF（总计10页）](research/2026-10-02_bounded_upgrade/manuscripts/conference/HyperGranular-RAG_Conference.pdf) · [期刊版 PDF（总计23页）](research/2026-10-02_bounded_upgrade/manuscripts/journal/HyperGranular-RAG_Journal.pdf)
-- [最终状态与实际检查](research/2026-10-02_bounded_upgrade/FINAL_STATUS.md) · [最近邻比较](literature_refresh/2026-10-02_bounded/REVIEW.md) · [投稿定位](research/2026-10-02_bounded_upgrade/TARGETS_AND_STORY.md)
+- [本轮结果与决定](research/2026-10-03_evidence_delivery_repair/RESULTS_AND_DECISION.md) · [证据损失诊断](research/2026-10-03_evidence_delivery_repair/LOSS_CHAIN_REPORT.md) · [全部配置表](research/2026-10-03_evidence_delivery_repair/PILOT_RESULTS.csv)
 
-本轮未启动升级实验：旧确认集独立性无法核实，不能判为方法失败，也没有新增优势证据。两稿保留 canonical 数字、全部负结果和未决结果，补充近期先行工作、名称区分及匹配对照缺口。未改图或历史工件；受限数据保持锁定。本节为当前状态，下方保留此前交付与阶段记录。
+已完成 Stage4E/4F 开放历史材料的4,000题诊断和固定400题、13配置开发比较。R1−H0等权F1为+.00250（1题改善）；R2−R1为+.00033（1改善/1受损）。普通KMeans对照与Dense40给出更高等权点估计，未建立粒球独立增量；本轮决定 `SIMPLE_SELECTOR_EXPLAINS_SIGNAL`，不直接推进R1/R2独立确认。上方PDF为保留的上一轮稿件；本轮未改正文、图或历史工件，受限数据继续锁定。下方为历史记录。
 
 以自适应粒球组织知识单元、以 query-aware 超边补充跨粒球关系，并通过受保护插入控制检索扩展的多跳 RAG 研究仓库。
 

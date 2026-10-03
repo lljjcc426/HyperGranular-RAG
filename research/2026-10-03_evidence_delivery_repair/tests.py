@@ -57,4 +57,16 @@ class RepairTests(unittest.TestCase):
         c=fixture();c.x[:]=c.x[0];balls,info=kmeans(c)
         self.assertEqual(len(balls),len(c.balls));self.assertTrue(all(info['sizes']))
 
+    def test_title_only_facet_and_recomputed_duplicate(self):
+        base=fixture();outside=base.order[20:22]
+        units=[dict(u,title='novel' if i in outside else '',text='anchor') for i,u in enumerate(base.units)]
+        c=Context({'query_id':'synthetic','question':'novel anchor'},units,base.x,base.q)
+        self.assertIn('novel',c.title[outside[0]]);self.assertNotIn('novel',c.body[outside[0]])
+        candidates=outside+c.d[10:12]
+        a,ins,steps=r1(c,candidates,.70)
+        self.assertEqual(steps[0]['unit_id'],c.ids[outside[0]])
+        self.assertGreater(steps[0]['proxy_delta'],0)
+        self.assertEqual(steps[1]['proxy_delta'],0)
+        self.assertIn(steps[1]['unit_id'],[c.ids[i] for i in c.d])
+
 if __name__=='__main__':unittest.main(verbosity=2)

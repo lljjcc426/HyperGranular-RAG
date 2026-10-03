@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "prediction_records": 5200,
+  "independent_rerun_calls": 260,
+  "actual_main_and_rerun_calls": 2281,
+  "synthetic_calls": 2,
+  "verified": "complete method/query grid; uncached rerun equality; cache source call IDs; official metric aggregates",
+  "scope_limit": "No independent reimplementation of official scorer; no confirmatory validity claim"
+}

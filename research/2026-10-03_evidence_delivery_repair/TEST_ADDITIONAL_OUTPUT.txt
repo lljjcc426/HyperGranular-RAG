@@ -1,0 +1,15 @@
+Actual command: temp/stage4e_env/Scripts/python.exe research/2026-10-03_evidence_delivery_repair/tests.py
+Added one explicit title-only / duplicate-facet test; production selector unchanged.
+
+test_contracts_and_poison (__main__.RepairTests.test_contracts_and_poison) ... ok
+test_duplicate_vectors_keep_k (__main__.RepairTests.test_duplicate_vectors_keep_k) ... ok
+test_eviction_tie_prefers_original (__main__.RepairTests.test_eviction_tie_prefers_original) ... ok
+test_independent_enumeration (__main__.RepairTests.test_independent_enumeration) ... ok
+test_no_terms_and_saturated_marginals (__main__.RepairTests.test_no_terms_and_saturated_marginals) ... ok
+test_short_and_all_promotions (__main__.RepairTests.test_short_and_all_promotions) ... ok
+test_title_only_facet_and_recomputed_duplicate (__main__.RepairTests.test_title_only_facet_and_recomputed_duplicate) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.043s
+
+OK

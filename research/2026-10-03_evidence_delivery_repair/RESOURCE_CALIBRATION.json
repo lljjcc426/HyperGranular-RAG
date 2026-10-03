@@ -1,0 +1,10 @@
+{
+  "synthetic_calls": 2,
+  "input_tokens": 3946,
+  "seconds": [
+    2.4738940999995975,
+    1.7880769000003056
+  ],
+  "conservative_call_projection_seconds": 13512.409574197802,
+  "projection_is_not_guarantee": true
+}

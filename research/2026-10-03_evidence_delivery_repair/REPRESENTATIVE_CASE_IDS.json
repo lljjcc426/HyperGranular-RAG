@@ -1,0 +1,38 @@
+[
+  {
+    "dataset": "hotpot",
+    "condition": "gain",
+    "query_id": "hotpotqa_train_distractor_v1_1::5ae537e05542992663a4f178",
+    "delta_f1": 1.0
+  },
+  {
+    "dataset": "hotpot",
+    "condition": "same",
+    "query_id": "hotpotqa_train_distractor_v1_1::5a79e8345542990198eaeff2",
+    "delta_f1": 0.0
+  },
+  {
+    "dataset": "hotpot",
+    "condition": "harm",
+    "query_id": null,
+    "delta_f1": null
+  },
+  {
+    "dataset": "musique",
+    "condition": "gain",
+    "query_id": "musique_ans_v1_0_train::2hop__143791_75878",
+    "delta_f1": 0.33333333333333337
+  },
+  {
+    "dataset": "musique",
+    "condition": "same",
+    "query_id": "musique_ans_v1_0_train::2hop__107332_3836",
+    "delta_f1": 0.0
+  },
+  {
+    "dataset": "musique",
+    "condition": "harm",
+    "query_id": "musique_ans_v1_0_train::3hop1__817382_627484_92189",
+    "delta_f1": -0.19999999999999996
+  }
+]

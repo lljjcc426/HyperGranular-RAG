@@ -1,2 +1,7 @@
 {"process":"prepare","cpu_seconds":16.96875,"wall_seconds":17.21730529999968,"gpu_process_seconds":0}
 {"process":"verify_rankings","cpu_seconds":6.84375,"wall_seconds":7.032415100000435,"gpu_process_seconds":0}
+{"process":"delivery_details","cpu_seconds":3.4375,"wall_seconds":3.67554999999993,"gpu_process_seconds":0}
+{"process":"generate","cpu_seconds":602.703125,"wall_seconds":845.4734228000007,"gpu_process_seconds":845.4732988000005,"actual_calls":2283}
+{"process":"analyze","cpu_seconds":1.265625,"wall_seconds":1.3283848999999464,"gpu_process_seconds":0}
+{"process":"verify_results","cpu_seconds":0.203125,"wall_seconds":0.19252179999966756,"gpu_process_seconds":0}
+{"process":"proxy_review","cpu_seconds":2.546875,"wall_seconds":2.5504885999998805,"gpu_process_seconds":0}

@@ -1,0 +1,12 @@
+{
+  "status": "COMPLETE_INPUT_AND_OUTPUT_RERUN_MATCH",
+  "logical_main_predictions": 5200,
+  "main_cache_hits": 3179,
+  "main_actual_calls": 2021,
+  "uncached_rerun_calls": 260,
+  "synthetic_calls": 2,
+  "total_actual_calls": 2283,
+  "peak_gpu_memory_bytes": 5141180416,
+  "gpu_process_wall_seconds": 845.4728539000007,
+  "failed_calls": 0
+}

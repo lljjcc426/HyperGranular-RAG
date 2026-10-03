@@ -1,0 +1,14 @@
+{
+  "hotpot": {
+    "queries": 1000,
+    "title_only_final_facets": 23,
+    "query_with_title_only_final_facet": 23,
+    "partial_first_unit": 0
+  },
+  "musique": {
+    "queries": 3000,
+    "title_only_final_facets": 390,
+    "query_with_title_only_final_facet": 303,
+    "partial_first_unit": 0
+  }
+}

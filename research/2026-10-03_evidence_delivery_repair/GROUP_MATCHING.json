@@ -1,0 +1,20 @@
+{
+  "hotpot": {
+    "queries": 200,
+    "matched_actual_k": 200,
+    "mean_k": 12.24,
+    "mean_sorted_size_l1": 10.92,
+    "size_distribution_equal_queries": 1,
+    "empty_repairs": 0,
+    "max_iterations": 9
+  },
+  "musique": {
+    "queries": 200,
+    "matched_actual_k": 200,
+    "mean_k": 17.845,
+    "mean_sorted_size_l1": 16.99,
+    "size_distribution_equal_queries": 1,
+    "empty_repairs": 10,
+    "max_iterations": 9
+  }
+}

@@ -6,6 +6,10 @@ import csv
 
 def main():
     cpu=time.process_time();wall=time.perf_counter();ps=rows(LOCAL/'predictions_main.jsonl');rs=rows(LOCAL/'predictions_rerun.jsonl')
+    bindings=load(HERE/'DATA_ROLES.json')
+    for tag in CONFIGS:
+        frozen=load(config(tag)['paths']['telemetry_main'])['embedding_cache']
+        assert all(bindings[tag]['embedding_cache'][k]==frozen[k] for k in ('bytes','sha256'))
     pm={(z['query_id'],z['method']):z for z in ps};assert len(ps)==len(pm)==5200
     inputs=rows(LOCAL/'pilot_inputs.jsonl');expected={(z['query']['query_id'],m) for z in inputs for m in METHODS}
     assert set(pm)==expected

@@ -1,0 +1,557 @@
+{
+  "date": "2026-10-03",
+  "research_role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+  "input_roles": {
+    "hotpot": {
+      "blind": {
+        "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4e_e2e_official_train1000_v1_blind_queries.jsonl",
+        "bytes": 6487688,
+        "sha256": "CB30B9764ADF256A5C5E130F1B78F6AA1EC30613C529FDB554F0F2F29C873958",
+        "stage": "Stage4E",
+        "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+        "opened": true,
+        "use": "reconstruction/generation/diagnostic"
+      },
+      "embedding_cache": {
+        "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4e_e2e_official_train1000_v1_embeddings.npz",
+        "bytes": 75756384,
+        "sha256": "C8C7A8D23F0A17869B7CDA7920517CA1B8E18C78CF6202C347C997CC40B0B17A",
+        "stage": "Stage4E",
+        "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+        "opened": true,
+        "use": "reconstruction/generation/diagnostic"
+      },
+      "rankings": {
+        "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_rankings.jsonl",
+        "bytes": 3036774,
+        "sha256": "AA6CBAD5D37BD66424DCAC6472FEBA8AC5FBAA769B789D968103AAB7CFDD1455",
+        "stage": "Stage4E",
+        "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+        "opened": true,
+        "use": "reconstruction/generation/diagnostic"
+      },
+      "prompt_audit_main": {
+        "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_prompt_audit_main.jsonl",
+        "bytes": 3337447,
+        "sha256": "130B78B896EDDBF0250E60736B223029163C30BBA6A492C6D4978D57E2556055",
+        "stage": "Stage4E",
+        "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+        "opened": true,
+        "use": "reconstruction/generation/diagnostic"
+      },
+      "predictions_main": {
+        "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_predictions_main.jsonl",
+        "bytes": 419866,
+        "sha256": "FE9D6716BBB2D83DD3407CB5A042CB9F888912256C478FA501DE9F5457945D58",
+        "stage": "Stage4E",
+        "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+        "opened": true,
+        "use": "reconstruction/generation/diagnostic"
+      },
+      "gold": {
+        "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4e_e2e_official_train1000_v1_gold_targets.jsonl",
+        "bytes": 500814,
+        "sha256": "7FE6824DA2B46D76DDAF3C0D65C7DBBEC7D0788BD363A4AFC819AAC5F71D6907",
+        "stage": "Stage4E",
+        "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+        "opened": true,
+        "use": "evaluation/diagnostic only"
+      }
+    },
+    "musique": {
+      "blind": {
+        "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4f_xdr_musique_train3000_v1_blind_queries.jsonl",
+        "bytes": 90210161,
+        "sha256": "C8D73F6F8E0B9CA0BEAFD84DC05C43438400966998B5C2C3510E0EB47D1EC4C5",
+        "stage": "Stage4F",
+        "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+        "opened": true,
+        "use": "reconstruction/generation/diagnostic"
+      },
+      "embedding_cache": {
+        "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4f_xdr_musique_train3000_v1_embeddings.npz",
+        "bytes": 399838172,
+        "sha256": "5D8A1155C5541F76BB8CCD8BC37E79D48D48FB0F5C9B861BB9CAFF09256D0073",
+        "stage": "Stage4F",
+        "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+        "opened": true,
+        "use": "reconstruction/generation/diagnostic"
+      },
+      "rankings": {
+        "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_rankings.jsonl",
+        "bytes": 7758160,
+        "sha256": "732A10DE74E8F97E5CECFDBFBBC3B49E5EF053C6F190948CD5C0B66D71D6AEDD",
+        "stage": "Stage4F",
+        "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+        "opened": true,
+        "use": "reconstruction/generation/diagnostic"
+      },
+      "prompt_audit_main": {
+        "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_prompt_audit_main.jsonl",
+        "bytes": 8573108,
+        "sha256": "D27D24E79F79758F860884C2B36D2AC509D0FFA4B587E90E8EE596F10FFF132E",
+        "stage": "Stage4F",
+        "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+        "opened": true,
+        "use": "reconstruction/generation/diagnostic"
+      },
+      "predictions_main": {
+        "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_predictions_main.jsonl",
+        "bytes": 1106316,
+        "sha256": "68F9524542B91C8FD93C7A4B0B3549BFE168DF1EB5D94E6479149E5B4534E62E",
+        "stage": "Stage4F",
+        "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+        "opened": true,
+        "use": "reconstruction/generation/diagnostic"
+      },
+      "gold": {
+        "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4f_xdr_musique_train3000_v1_gold_targets.jsonl",
+        "bytes": 2194235,
+        "sha256": "E53E3AF330D1D498A8B23CF06BA0AB9DA8452FC7BF4CB565C6ED749B28C60B2D",
+        "stage": "Stage4F",
+        "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+        "opened": true,
+        "use": "evaluation/diagnostic only"
+      }
+    }
+  },
+  "generation_binding": {
+    "environment": {
+      "determinism": {
+        "completion_token_bytes_sha256": "DFDC83C48298A17B849C441B21C5185ADE24E0287996C962801090BD7B016A75",
+        "encoder_embedding_sha256": "5BBB65443B2359073B6153F00996BC6E45CB51E61CAA1BF701FEAF244F5BD4B9",
+        "encoder_rerun_byte_identical": true,
+        "rerun_token_identical": true,
+        "torch_deterministic_algorithms": true
+      },
+      "environment_variables": {
+        "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "PYTHONHASHSEED": "0",
+        "TOKENIZERS_PARALLELISM": "false"
+      },
+      "gpu": {
+        "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+        "total_memory_bytes": 8585216000
+      },
+      "packages": {
+        "accelerate": "1.13.0",
+        "filelock": "3.29.0",
+        "fsspec": "2026.6.0",
+        "huggingface-hub": "1.17.0",
+        "jinja2": "3.1.6",
+        "markupsafe": "3.0.3",
+        "mpmath": "1.3.0",
+        "networkx": "3.6.1",
+        "numpy": "2.5.1",
+        "packaging": "24.0",
+        "psutil": "7.2.2",
+        "pyyaml": "6.0.1",
+        "regex": "2026.5.9",
+        "requests": "2.28.1",
+        "safetensors": "0.8.0",
+        "setuptools": "81.0.0",
+        "sympy": "1.14.0",
+        "tokenizers": "0.22.2",
+        "torch": "2.12.1+cu130",
+        "tqdm": "4.67.3",
+        "transformers": "5.14.1",
+        "typing-extensions": "4.16.0"
+      },
+      "python": {
+        "executable": "E:\\SCIENCE\\HyperGranular-RAG\\temp\\stage4e_env\\Scripts\\python.exe",
+        "implementation": "CPython",
+        "version": "3.12.0"
+      },
+      "runtime": {
+        "cuda": "13.0",
+        "cudnn": 92000,
+        "platform": "Windows-11-10.0.26200-SP0",
+        "torch": "2.12.1+cu130"
+      },
+      "schema_version": "stage4e_e2e_v1",
+      "status": "STAGE4E_SYNTHETIC_CUDA_ENVIRONMENT_VERIFIED_NO_OFFICIAL_DATA"
+    },
+    "model": {
+      "files": [
+        {
+          "bytes": 660,
+          "path": "config.json",
+          "sha256": "98D2FF8CC47488D08A2B0B3ACF4EB99EF210779B42BD48605F6B8E36ACDBF670"
+        },
+        {
+          "bytes": 242,
+          "path": "generation_config.json",
+          "sha256": "E558847A8B4402616F1273797B015104DC266FE4B520056FCA88823BA8F8EBE6"
+        },
+        {
+          "bytes": 1671839,
+          "path": "merges.txt",
+          "sha256": "599BAB54075088774B1733FDE865D5BD747CBCC7A547C5BC12610E874E26F5E3"
+        },
+        {
+          "bytes": 3087467144,
+          "path": "model.safetensors",
+          "sha256": "DD924A11B4C220F385B51FFA522DAEA7C9F3D850E31B162BB5661DF483C6D3EE"
+        },
+        {
+          "bytes": 7031645,
+          "path": "tokenizer.json",
+          "sha256": "C0382117EA329CDF097041132F6D735924B697924D6F6FC3945713E96CE87539"
+        },
+        {
+          "bytes": 7305,
+          "path": "tokenizer_config.json",
+          "sha256": "5B5D4F65D0ACD3B2D56A35B56D374A36CBC1C8FA5CF3B3FEBBBFABF22F359583"
+        },
+        {
+          "bytes": 2776833,
+          "path": "vocab.json",
+          "sha256": "CA10D7E9FB3ED18575DD1E277A2579C16D108E32F27439684AFA0E10B1440910"
+        }
+      ],
+      "files_sha256": "29726780E76777165E4E7B462356A18E374FEC4DBFF02A0BC8E4F5ACD09468C4",
+      "license": "Apache-2.0",
+      "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+      "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "snapshot_path": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--Qwen--Qwen2.5-1.5B-Instruct\\snapshots\\989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "source_url": "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct/tree/989aa7980e4cf806f80c7fef2b1adb7bc71aa306"
+    },
+    "implementation_commit": "c29cbb6f87c5fdbf1a36db3b6b49b5cd09111d6d",
+    "source_files": {
+      "common.py": {
+        "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\common.py",
+        "bytes": 3732,
+        "sha256": "91B0EBA58256690328CDC9349ACEB8B5F7B51BDEEBACA9F4A8D844FADA0E49DC"
+      },
+      "generate.py": {
+        "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\generate.py",
+        "bytes": 7732,
+        "sha256": "8343ECF887674CCDC840B235ECF165193F821C9634B462A1C157369FE4F7F0FB"
+      },
+      "inspect_inputs.py": {
+        "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\inspect_inputs.py",
+        "bytes": 1168,
+        "sha256": "642767AE382E4E6A5CA275D3FB89EDDF2342FF913C743511764D2A25C87D45C5"
+      },
+      "prepare.py": {
+        "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\prepare.py",
+        "bytes": 9385,
+        "sha256": "3909588A89370EC801A12053BA8D3CA7B4B67111F6018EA22420470EDF6167A8"
+      },
+      "repair.py": {
+        "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\repair.py",
+        "bytes": 8310,
+        "sha256": "9C228AE6677D7B4F5AB79F59C0BA34F5940CA47AFCF2A634899608ECACBF0468"
+      },
+      "score.py": {
+        "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\score.py",
+        "bytes": 1082,
+        "sha256": "7EEEAA6315415E060CC0577D08C3896CE97ED88AB75C997B6756D395A556696D"
+      },
+      "tests.py": {
+        "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\tests.py",
+        "bytes": 3368,
+        "sha256": "22F018958920427C62B3E02D19D3C1FB3E5062C5EDA38976ECCC0FFB17A0AF61"
+      },
+      "verify_rankings.py": {
+        "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\verify_rankings.py",
+        "bytes": 3368,
+        "sha256": "FCE7F7A5D17FA57B81B55DD34480B6C7000CF1C07404D20EFF10478670EA3B8D"
+      }
+    },
+    "prior_experiment_gpu_seconds": 0,
+    "prior_document_cpu_seconds": null,
+    "prior_cpu_unknown_not_imputed": true,
+    "maximum_calls": 5464
+  },
+  "sample": {
+    "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\sample_ids.json",
+    "bytes": 104349,
+    "sha256": "FC6743536854A86489293FF8C8B0287D74E3E75D65816448466E8308B580C521"
+  },
+  "frozen_rankings": {
+    "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\pilot_rankings.jsonl",
+    "bytes": 10249657,
+    "sha256": "62BA29215D60CD4CF755DFA0B228A03CCECB57352232C0D9215A07282A731327"
+  },
+  "generation": {
+    "status": "COMPLETE_INPUT_AND_OUTPUT_RERUN_MATCH",
+    "logical_main_predictions": 5200,
+    "main_cache_hits": 3179,
+    "main_actual_calls": 2021,
+    "uncached_rerun_calls": 260,
+    "synthetic_calls": 2,
+    "total_actual_calls": 2283,
+    "peak_gpu_memory_bytes": 5141180416,
+    "gpu_process_wall_seconds": 845.4728539000007,
+    "failed_calls": 0
+  },
+  "resource_ledger": [
+    {
+      "process": "prepare",
+      "cpu_seconds": 16.96875,
+      "wall_seconds": 17.21730529999968,
+      "gpu_process_seconds": 0
+    },
+    {
+      "process": "verify_rankings",
+      "cpu_seconds": 6.84375,
+      "wall_seconds": 7.032415100000435,
+      "gpu_process_seconds": 0
+    },
+    {
+      "process": "delivery_details",
+      "cpu_seconds": 3.4375,
+      "wall_seconds": 3.67554999999993,
+      "gpu_process_seconds": 0
+    },
+    {
+      "process": "generate",
+      "cpu_seconds": 602.703125,
+      "wall_seconds": 845.4734228000007,
+      "gpu_process_seconds": 845.4732988000005,
+      "actual_calls": 2283
+    },
+    {
+      "process": "analyze",
+      "cpu_seconds": 1.265625,
+      "wall_seconds": 1.3283848999999464,
+      "gpu_process_seconds": 0
+    },
+    {
+      "process": "verify_results",
+      "cpu_seconds": 0.203125,
+      "wall_seconds": 0.19252179999966756,
+      "gpu_process_seconds": 0
+    },
+    {
+      "process": "proxy_review",
+      "cpu_seconds": 2.546875,
+      "wall_seconds": 2.5504885999998805,
+      "gpu_process_seconds": 0
+    }
+  ],
+  "measured_cpu_seconds": 633.96875,
+  "prior_unmetered_document_cpu_seconds": null,
+  "unknown_cpu_not_treated_as_zero": true,
+  "prior_experiment_gpu_seconds": 0,
+  "current_gpu_process_seconds": 845.4732988000005,
+  "prior_derived_files_bytes": 24002602,
+  "current_round_bytes_at_manifest": 143102156,
+  "paid_cost": 0,
+  "new_reranker_calls": 0,
+  "new_embedding_calls": 0,
+  "limits": {
+    "gpu_process_seconds": 43200,
+    "cpu_process_seconds": 86400,
+    "new_disk_bytes": 10000000000,
+    "new_generation_calls": 5464
+  },
+  "artifact_identities": {
+    "ANALYSIS_DETAILS.json": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\ANALYSIS_DETAILS.json",
+      "bytes": 28496,
+      "sha256": "F4321510679F40DD0ACA4ADECE411C4CF03076063B95F656229B557DFA472713"
+    },
+    "analyze.py": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\analyze.py",
+      "bytes": 9427,
+      "sha256": "528B878F5981B6805827BC7F970492039747D37CE307CCB70D7C4C501E4AE6B8"
+    },
+    "common.py": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\common.py",
+      "bytes": 3732,
+      "sha256": "91B0EBA58256690328CDC9349ACEB8B5F7B51BDEEBACA9F4A8D844FADA0E49DC"
+    },
+    "DATA_ROLES.json": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\DATA_ROLES.json",
+      "bytes": 4920,
+      "sha256": "C46610ADDF8E8F774CE8A0D1DC800270EE8E459BF466FE9EDDC0EAA5E2EF0302"
+    },
+    "delivery_details.py": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\delivery_details.py",
+      "bytes": 2229,
+      "sha256": "B52CDBFB0EAB5DC0181137DCCB19E5B35F7084C2BC28FC60B36AAD89907D32BF"
+    },
+    "DELIVERY_FACETS_SUMMARY.json": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\DELIVERY_FACETS_SUMMARY.json",
+      "bytes": 316,
+      "sha256": "F800C596246B6E9AD941C34098DE058A3D3F1DB7C34B594251B4C88886A7AFE3"
+    },
+    "EVALUATION_STATUS.json": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\EVALUATION_STATUS.json",
+      "bytes": 161,
+      "sha256": "E7BEBBBB503AB81C7DF3327F86AA12659A6A72AA7AAD33562256351A4445FC93"
+    },
+    "finalize.py": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\finalize.py",
+      "bytes": 3628,
+      "sha256": "3F42A3BE48F8B8EBA9F2EEA1FC5A9DBF3936B0F05F8CF37E9D498EF13CDBC44C"
+    },
+    "FINAL_VERIFICATION.json": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\FINAL_VERIFICATION.json",
+      "bytes": 382,
+      "sha256": "9822719F0E72202871094DA18173DD162AC589D972B56A236BC43731845D09F2"
+    },
+    "generate.py": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\generate.py",
+      "bytes": 7732,
+      "sha256": "8343ECF887674CCDC840B235ECF165193F821C9634B462A1C157369FE4F7F0FB"
+    },
+    "GENERATION_BINDING.json": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\GENERATION_BINDING.json",
+      "bytes": 5864,
+      "sha256": "6709AE17BF736C2911A0C111CE5D272566CAC41173ED2BEAA2DA085F85DE5E58"
+    },
+    "GENERATION_SUMMARY.json": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\GENERATION_SUMMARY.json",
+      "bytes": 354,
+      "sha256": "E1809E70C85F199A13076D14DC55559856F87E0485A301CFF97ADBEA067E1E82"
+    },
+    "GROUP_MATCHING.json": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\GROUP_MATCHING.json",
+      "bytes": 452,
+      "sha256": "D1709AFFF0C813380B2F307CA58608EC59594FFE43178F4A1D4B2AA9B30C73A8"
+    },
+    "inspect_inputs.py": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\inspect_inputs.py",
+      "bytes": 1168,
+      "sha256": "642767AE382E4E6A5CA275D3FB89EDDF2342FF913C743511764D2A25C87D45C5"
+    },
+    "LOSS_SUMMARY.json": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\LOSS_SUMMARY.json",
+      "bytes": 3797,
+      "sha256": "BDC1EC2DEDCCE1D4A34E9DE27E0E782855FE06447AAACD0E95F7CC5BBB5CF8A0"
+    },
+    "PAIRED_CONTRASTS.csv": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\PAIRED_CONTRASTS.csv",
+      "bytes": 7368,
+      "sha256": "0AE1777DC8F259DA76066BD66379B37E27DF69D5047A2E9302EA5E92F9B1E499"
+    },
+    "PILOT_RESULTS.csv": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\PILOT_RESULTS.csv",
+      "bytes": 12778,
+      "sha256": "9CFD6558A46DEC11358C38F6B912FA35137A010C26D27A9BFC710A080CB85624"
+    },
+    "PREPARATION.json": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\PREPARATION.json",
+      "bytes": 605,
+      "sha256": "BCB050B86FF246B1D5A0BCA36E302B273F41BA2B0C1CB7A01BFB2BA1976DF05C"
+    },
+    "prepare.py": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\prepare.py",
+      "bytes": 9385,
+      "sha256": "3909588A89370EC801A12053BA8D3CA7B4B67111F6018EA22420470EDF6167A8"
+    },
+    "PROXY_REFERENCE_CORRECTION.json": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\PROXY_REFERENCE_CORRECTION.json",
+      "bytes": 1993,
+      "sha256": "B77E0BBB258E83D5A542B61F9AAA2F6B10B0DEDCA60E9999D2CDEC5242E3215E"
+    },
+    "proxy_review.py": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\proxy_review.py",
+      "bytes": 2354,
+      "sha256": "5CBCF465480E9B4476BE29DD83C96DBDD91357B03AA60546119308B04512D09F"
+    },
+    "RANKING_VERIFICATION.json": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\RANKING_VERIFICATION.json",
+      "bytes": 177,
+      "sha256": "DBC73B954822288894E01A424662EBA00F831242732E3CD1DBFDC21C98FB2174"
+    },
+    "repair.py": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\repair.py",
+      "bytes": 8310,
+      "sha256": "9C228AE6677D7B4F5AB79F59C0BA34F5940CA47AFCF2A634899608ECACBF0468"
+    },
+    "REPRESENTATIVE_CASE_IDS.json": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\REPRESENTATIVE_CASE_IDS.json",
+      "bytes": 919,
+      "sha256": "08FE9095DC6A983C55EF1D5B3724462C9F750536568F9DB838FB21798A8C0373"
+    },
+    "RESOURCE_CALIBRATION.json": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\RESOURCE_CALIBRATION.json",
+      "bytes": 229,
+      "sha256": "B55944D51267FFE2A5B20C618D943B8D4BE1D9F3592B3A94AF7A2B14E2C6E3DE"
+    },
+    "sample_ids.json": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\sample_ids.json",
+      "bytes": 104349,
+      "sha256": "FC6743536854A86489293FF8C8B0287D74E3E75D65816448466E8308B580C521"
+    },
+    "score.py": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\score.py",
+      "bytes": 1082,
+      "sha256": "7EEEAA6315415E060CC0577D08C3896CE97ED88AB75C997B6756D395A556696D"
+    },
+    "tests.py": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\tests.py",
+      "bytes": 4091,
+      "sha256": "C48DD77ACBA35F9D7FCA723B361A8CA1EDA9AE2DD82033A3ECE4CC8719EE036A"
+    },
+    "verify_rankings.py": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\verify_rankings.py",
+      "bytes": 3368,
+      "sha256": "FCE7F7A5D17FA57B81B55DD34480B6C7000CF1C07404D20EFF10478670EA3B8D"
+    },
+    "verify_results.py": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\verify_results.py",
+      "bytes": 2935,
+      "sha256": "EA079A638DB9A28444A841B30C2790077434D263E16B7D36759C40A013444E2D"
+    }
+  },
+  "local_private_artifacts": {
+    "aligned_proxy_query_details.jsonl": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\local\\aligned_proxy_query_details.jsonl",
+      "bytes": 259328,
+      "sha256": "D037B12A8DD551BAA9AE1FDEA498D09E2210D67714FC697BCDDF056303C47ED8"
+    },
+    "delivery_facets.jsonl": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\local\\delivery_facets.jsonl",
+      "bytes": 21425539,
+      "sha256": "24D6467B83870D53C3B2DB318BDC4D32E5564E25086D006C9AA51956481983F3"
+    },
+    "loss_queries.jsonl": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\local\\loss_queries.jsonl",
+      "bytes": 16423086,
+      "sha256": "4E661506EEEE721954A465C03AA3CEFF43D7554182296824B553839A967F36A2"
+    },
+    "pilot_inputs.jsonl": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\local\\pilot_inputs.jsonl",
+      "bytes": 10410021,
+      "sha256": "80056A6D9FD79E056168A320BDBDB3B17A9B2D44B7DA5F006CEA6499D1C59C4B"
+    },
+    "predictions_main.jsonl": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\local\\predictions_main.jsonl",
+      "bytes": 2092531,
+      "sha256": "75144107F7FD84F928AFDA99B5206EE1A4DA63DA61CA287FDA508D9E6763CC87"
+    },
+    "predictions_rerun.jsonl": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\local\\predictions_rerun.jsonl",
+      "bytes": 84395,
+      "sha256": "94B75D36E1816721D9290896EAEC6D2E00CFBF15CC7153A463EF138E7CA12229"
+    },
+    "prompt_audit.jsonl": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\local\\prompt_audit.jsonl",
+      "bytes": 80747854,
+      "sha256": "1EC4AA52E390C4D26EA07970D362DBBC4A5F00414AFD4E682C69D6F9AC69AD5C"
+    },
+    "query_scores.jsonl": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\local\\query_scores.jsonl",
+      "bytes": 1088266,
+      "sha256": "70508E223737E75722CCF452A9E29E8F76FE462E2D5D87F530B523B29D406019"
+    }
+  },
+  "source_at_finalization": "e90f4df703417c75bdc8250edeea1a959595812f",
+  "missing_or_limited": [
+    "Prior document CPU unmetered",
+    "No independent confirmation",
+    "Query bootstrap does not resolve shared-document dependence",
+    "Historical prompts have no stored input IDs; pilot anchor prompts reconstructed and compared by archived prompt SHA/visible IDs/token count"
+  ],
+  "manuscripts_figures_modified": false,
+  "historical_results_modified": false
+}
