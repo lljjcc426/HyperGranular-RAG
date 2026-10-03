@@ -1,0 +1,15 @@
+{
+  "status": "H0_4000_MATCHED_PILOT_RANKINGS_FROZEN",
+  "samples": 400,
+  "logical_rankings": 5200,
+  "sample_identity": {
+    "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\sample_ids.json",
+    "bytes": 104349,
+    "sha256": "FC6743536854A86489293FF8C8B0287D74E3E75D65816448466E8308B580C521"
+  },
+  "ranking_identity": {
+    "path": "E:\\SCIENCE\\HyperGranular-RAG\\research\\2026-10-03_evidence_delivery_repair\\pilot_rankings.jsonl",
+    "bytes": 10249657,
+    "sha256": "62BA29215D60CD4CF755DFA0B228A03CCECB57352232C0D9215A07282A731327"
+  }
+}

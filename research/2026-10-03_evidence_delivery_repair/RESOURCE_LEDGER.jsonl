@@ -1,0 +1,2 @@
+{"process":"prepare","cpu_seconds":16.96875,"wall_seconds":17.21730529999968,"gpu_process_seconds":0}
+{"process":"verify_rankings","cpu_seconds":6.84375,"wall_seconds":7.032415100000435,"gpu_process_seconds":0}

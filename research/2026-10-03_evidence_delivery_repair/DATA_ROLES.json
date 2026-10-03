@@ -1,0 +1,114 @@
+{
+  "hotpot": {
+    "blind": {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4e_e2e_official_train1000_v1_blind_queries.jsonl",
+      "bytes": 6487688,
+      "sha256": "CB30B9764ADF256A5C5E130F1B78F6AA1EC30613C529FDB554F0F2F29C873958",
+      "stage": "Stage4E",
+      "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+      "opened": true,
+      "use": "reconstruction/generation/diagnostic"
+    },
+    "embedding_cache": {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4e_e2e_official_train1000_v1_embeddings.npz",
+      "bytes": 75756384,
+      "sha256": "C8C7A8D23F0A17869B7CDA7920517CA1B8E18C78CF6202C347C997CC40B0B17A",
+      "stage": "Stage4E",
+      "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+      "opened": true,
+      "use": "reconstruction/generation/diagnostic"
+    },
+    "rankings": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_rankings.jsonl",
+      "bytes": 3036774,
+      "sha256": "AA6CBAD5D37BD66424DCAC6472FEBA8AC5FBAA769B789D968103AAB7CFDD1455",
+      "stage": "Stage4E",
+      "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+      "opened": true,
+      "use": "reconstruction/generation/diagnostic"
+    },
+    "prompt_audit_main": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_prompt_audit_main.jsonl",
+      "bytes": 3337447,
+      "sha256": "130B78B896EDDBF0250E60736B223029163C30BBA6A492C6D4978D57E2556055",
+      "stage": "Stage4E",
+      "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+      "opened": true,
+      "use": "reconstruction/generation/diagnostic"
+    },
+    "predictions_main": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4e_e2e_official_train1000_v1_predictions_main.jsonl",
+      "bytes": 419866,
+      "sha256": "FE9D6716BBB2D83DD3407CB5A042CB9F888912256C478FA501DE9F5457945D58",
+      "stage": "Stage4E",
+      "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+      "opened": true,
+      "use": "reconstruction/generation/diagnostic"
+    },
+    "gold": {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4e_e2e_official_train1000_v1_gold_targets.jsonl",
+      "bytes": 500814,
+      "sha256": "7FE6824DA2B46D76DDAF3C0D65C7DBBEC7D0788BD363A4AFC819AAC5F71D6907",
+      "stage": "Stage4E",
+      "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+      "opened": true,
+      "use": "evaluation/diagnostic only"
+    }
+  },
+  "musique": {
+    "blind": {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4f_xdr_musique_train3000_v1_blind_queries.jsonl",
+      "bytes": 90210161,
+      "sha256": "C8D73F6F8E0B9CA0BEAFD84DC05C43438400966998B5C2C3510E0EB47D1EC4C5",
+      "stage": "Stage4F",
+      "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+      "opened": true,
+      "use": "reconstruction/generation/diagnostic"
+    },
+    "embedding_cache": {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4f_xdr_musique_train3000_v1_embeddings.npz",
+      "bytes": 399838172,
+      "sha256": "5D8A1155C5541F76BB8CCD8BC37E79D48D48FB0F5C9B861BB9CAFF09256D0073",
+      "stage": "Stage4F",
+      "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+      "opened": true,
+      "use": "reconstruction/generation/diagnostic"
+    },
+    "rankings": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_rankings.jsonl",
+      "bytes": 7758160,
+      "sha256": "732A10DE74E8F97E5CECFDBFBBC3B49E5EF053C6F190948CD5C0B66D71D6AEDD",
+      "stage": "Stage4F",
+      "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+      "opened": true,
+      "use": "reconstruction/generation/diagnostic"
+    },
+    "prompt_audit_main": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_prompt_audit_main.jsonl",
+      "bytes": 8573108,
+      "sha256": "D27D24E79F79758F860884C2B36D2AC509D0FFA4B587E90E8EE596F10FFF132E",
+      "stage": "Stage4F",
+      "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+      "opened": true,
+      "use": "reconstruction/generation/diagnostic"
+    },
+    "predictions_main": {
+      "path": "E:\\SCIENCE\\HyperGranular-RAG\\results\\stage4f_xdr_musique_train3000_v1_predictions_main.jsonl",
+      "bytes": 1106316,
+      "sha256": "68F9524542B91C8FD93C7A4B0B3549BFE168DF1EB5D94E6479149E5B4534E62E",
+      "stage": "Stage4F",
+      "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+      "opened": true,
+      "use": "reconstruction/generation/diagnostic"
+    },
+    "gold": {
+      "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4f_xdr_musique_train3000_v1_gold_targets.jsonl",
+      "bytes": 2194235,
+      "sha256": "E53E3AF330D1D498A8B23CF06BA0AB9DA8452FC7BF4CB565C6ED749B28C60B2D",
+      "stage": "Stage4F",
+      "role": "HISTORICALLY_EXPOSED_EXPLORATORY",
+      "opened": true,
+      "use": "evaluation/diagnostic only"
+    }
+  }
+}

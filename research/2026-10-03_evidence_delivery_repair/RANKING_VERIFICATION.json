@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "queries": 400,
+  "arms": 13,
+  "reference": "ID-set greedy and independent exhaustive eviction",
+  "gold_read": false,
+  "synthetic_tests": 6
+}
