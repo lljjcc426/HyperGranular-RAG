@@ -1,11 +1,11 @@
 # HyperGranular-RAG
 
-## 当前研究：证据损失诊断与局部修复（2026-10-03）
+## 当前研究：上游准入机制 CPU 诊断（2026-10-04）
 
 - [会议版 PDF（总计10页）](research/2026-10-02_bounded_upgrade/manuscripts/conference/HyperGranular-RAG_Conference.pdf) · [期刊版 PDF（总计23页）](research/2026-10-02_bounded_upgrade/manuscripts/journal/HyperGranular-RAG_Journal.pdf)
-- [本轮结果与决定](research/2026-10-03_evidence_delivery_repair/RESULTS_AND_DECISION.md) · [证据损失诊断](research/2026-10-03_evidence_delivery_repair/LOSS_CHAIN_REPORT.md) · [全部配置表](research/2026-10-03_evidence_delivery_repair/PILOT_RESULTS.csv)
+- [本轮结果与决定](research/2026-10-04_upstream_admission_audit/RESULTS_AND_DECISION.md) · [六条件与数量匹配参照](research/2026-10-04_upstream_admission_audit/MASK_AND_BREADTH_COMPARISON.csv) · [有限案例](research/2026-10-04_upstream_admission_audit/CASE_REVIEW.md) · [前轮 R1/R2 结果](research/2026-10-03_evidence_delivery_repair/RESULTS_AND_DECISION.md)
 
-已完成 Stage4E/4F 开放历史材料的4,000题诊断和固定400题、13配置开发比较。R1−H0等权F1为+.00250（1题改善）；R2−R1为+.00033（1改善/1受损）。普通KMeans对照与Dense40给出更高等权点估计，未建立粒球独立增量；本轮决定 `SIMPLE_SELECTOR_EXPLAINS_SIGNAL`，不直接推进R1/R2独立确认。上方PDF为保留的上一轮稿件；本轮未改正文、图或历史工件，受限数据继续锁定。下方为历史记录。
+已完成4,000题共同门诊断、固定400题的4,800条CPU诊断排名和18题案例审阅，新增模型调用/答案实验均为0。新增词项、冗余与分数门存在共同遮挡；放宽候选不保证最终支持增加。数量匹配参照未解释全部身份差异，但未建立粒球独立答案价值。本轮判为C：描述性证据不足以决定下一机制升级，完成后停止。前轮R1/R2不进入确认的决定保持；上方PDF及下方历史记录保留，本轮未改正文、图或历史工件。
 
 以自适应粒球组织知识单元、以 query-aware 超边补充跨粒球关系，并通过受保护插入控制检索扩展的多跳 RAG 研究仓库。
 

@@ -1,0 +1,17 @@
+scope,dataset,condition,queries,gb_k,km_k,group_size_sorted_l1,gb_max_size,km_max_size,gb_oversize_groups,km_oversize_groups,seed_member_symmetric_difference,seed_facet_symmetric_difference,gb_seed_missing_targets,km_seed_missing_targets,observable_saturated,all_question_terms_saturated,gb_reconstruction_seconds,km_group_and_gate_seconds,pre_shared_units,pre_gb_only_units,pre_km_only_units,pre_shared_targets,pre_gb_only_targets,pre_km_only_targets,two_shared_units,two_gb_only_units,two_km_only_units,two_shared_targets,two_gb_only_targets,two_km_only_targets,proposal_shared_units,proposal_gb_only_units,proposal_km_only_units,proposal_shared_targets,proposal_gb_only_targets,proposal_km_only_targets,final_shared_units,final_gb_only_units,final_km_only_units,final_shared_targets,final_gb_only_targets,final_km_only_targets,targets,dense_missing_targets,dense_observable_saturated,dense_all_question_terms,universe_all_question_terms,first_min_new_terms,first_delivered,first_edge_budget,first_score,first_seed_excluded,first_q25_floor,first_insertion_capacity,first_units_per_new_term,first_redundancy,first_size,first_anchor
+pilot,hotpot,BASE,200,2448,2448,2184,1573,1564,59,75,1474,300,10,9,141,68,0.4847326000453904,0.32906020001973957,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+pilot,hotpot,G0,200,,,,,,,,,,,,,,,,781,854,913,70,69,51,278,489,452,48,61,45,185,292,305,24,22,18,3768,207,207,420,13,9,,,,,,,,,,,,,,,,
+pilot,hotpot,G1,200,,,,,,,,,,,,,,,,931,956,1058,73,68,50,296,568,524,49,60,42,199,330,325,25,21,16,3741,234,234,421,12,7,,,,,,,,,,,,,,,,
+pilot,hotpot,G2,200,,,,,,,,,,,,,,,,781,860,913,70,69,51,278,495,452,48,61,45,185,297,305,24,22,18,3765,210,210,420,13,9,,,,,,,,,,,,,,,,
+pilot,hotpot,G3,200,,,,,,,,,,,,,,,,947,970,1074,74,68,52,303,586,531,49,61,44,204,341,329,25,22,16,3736,239,239,421,12,7,,,,,,,,,,,,,,,,
+pilot,hotpot,G4,200,,,,,,,,,,,,,,,,1026,978,1074,77,69,50,315,600,545,49,61,44,217,350,340,25,22,16,3731,244,244,420,12,8,,,,,,,,,,,,,,,,
+pilot,hotpot,G5,200,,,,,,,,,,,,,,,,5002,1080,927,116,83,56,414,830,734,54,60,46,290,494,456,28,22,16,3671,304,304,418,13,10,,,,,,,,,,,,,,,,
+pilot,musique,BASE,200,3569,3569,3398,2635,2134,249,248,2624,278,10,11,58,14,0.8171025999981794,0.5424459999339888,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+pilot,musique,G0,200,,,,,,,,,,,,,,,,1245,1825,1575,80,98,46,310,789,831,41,57,44,196,452,502,32,31,34,3618,382,382,393,11,5,,,,,,,,,,,,,,,,
+pilot,musique,G1,200,,,,,,,,,,,,,,,,2018,2277,1897,107,99,45,293,898,921,43,62,45,186,498,527,34,35,34,3585,415,415,395,12,6,,,,,,,,,,,,,,,,
+pilot,musique,G2,200,,,,,,,,,,,,,,,,1245,1825,1575,80,98,46,310,789,831,41,57,44,196,452,502,32,31,34,3618,382,382,393,11,5,,,,,,,,,,,,,,,,
+pilot,musique,G3,200,,,,,,,,,,,,,,,,2018,2284,1897,107,99,45,293,898,921,43,62,45,186,498,527,34,35,34,3585,415,415,395,12,6,,,,,,,,,,,,,,,,
+pilot,musique,G4,200,,,,,,,,,,,,,,,,2386,2221,1940,115,97,44,299,892,949,43,62,45,194,490,534,34,35,34,3588,412,412,395,12,6,,,,,,,,,,,,,,,,
+pilot,musique,G5,200,,,,,,,,,,,,,,,,7600,2032,2516,221,115,52,314,962,1039,43,66,49,208,535,586,34,36,38,3568,432,432,393,13,8,,,,,,,,,,,,,,,,
+full,hotpot,GB_FULL,1000,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,2384,301,704,308,448,77,84,35,16,37,27,17,5,1,2,
+full,musique,GB_FULL,3000,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,7039,1474,1023,274,754,477,347,278,47,58,107,32,37,,82,9

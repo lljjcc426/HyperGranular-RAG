@@ -1,0 +1,92 @@
+[
+  {
+    "dataset": "hotpot",
+    "category": "A",
+    "hash": "0ca5a37b610c0f53f73c8bc1917156e7c54d9f30fd4bcfa2d207398fbfe954c8"
+  },
+  {
+    "dataset": "hotpot",
+    "category": "A",
+    "hash": "5fc1a9ef565cc9507145c9d9d1d2d1e73470694850d95febb8fc5d87b42d0879"
+  },
+  {
+    "dataset": "hotpot",
+    "category": "A",
+    "hash": "723ee17e36e50386c5813cf155415986ecbcc62e74539791a7bc40dfb3a7511c"
+  },
+  {
+    "dataset": "hotpot",
+    "category": "B",
+    "hash": "00f5e56c4d2ada492252358604623307565bdf36b86e927ecfaef5920f156607"
+  },
+  {
+    "dataset": "hotpot",
+    "category": "B",
+    "hash": "01ea0e54e6a41229d74b7f3e5982d93ac3d1a34aa1c4f49a5642e0acc204369b"
+  },
+  {
+    "dataset": "hotpot",
+    "category": "B",
+    "hash": "055bbbed9eaf5508303015cf3261e49a82ff3798ff6a1595df1faa41c4dd4a0d"
+  },
+  {
+    "dataset": "hotpot",
+    "category": "C",
+    "hash": "01312ae3b17ecb3261536c2f0a2416005a0f42a34be3a22c61170f92306b6d27"
+  },
+  {
+    "dataset": "hotpot",
+    "category": "C",
+    "hash": "046cd29cce3eed4ecbe266b3eb5dea5fad5a32c834bde5a5f73489e042ec1ae6"
+  },
+  {
+    "dataset": "hotpot",
+    "category": "C",
+    "hash": "0604082c64c330f6a81349dc2e692ce751b3a1cd040d47dad209d462e963c730"
+  },
+  {
+    "dataset": "musique",
+    "category": "A",
+    "hash": "095c920df04ef9830c55e40be3bfe9c9807c03dd80e36df83e50019bf3cd3eb7"
+  },
+  {
+    "dataset": "musique",
+    "category": "A",
+    "hash": "288c07090b08046cad377e5f1c71254b0e9ec68bed30de5617476cde0d08f1a4"
+  },
+  {
+    "dataset": "musique",
+    "category": "A",
+    "hash": "3425eda796377d246cea493092855c433dcf6fa20ff54fc76d7c13ae95f2d420"
+  },
+  {
+    "dataset": "musique",
+    "category": "B",
+    "hash": "03d130a3711b152571a6849bb5a135e3cff0738aeaa298bed7f8074caca7f978"
+  },
+  {
+    "dataset": "musique",
+    "category": "B",
+    "hash": "07144e7203a48c0a8c7ea550c418e153a96065b511aada6997736051c0527a1a"
+  },
+  {
+    "dataset": "musique",
+    "category": "B",
+    "hash": "07145943d6388633d7ad0daaf7e10b758ca9a7d9cd486b64aaafc76b8fbe0bd2"
+  },
+  {
+    "dataset": "musique",
+    "category": "C",
+    "hash": "02093590a693c5bf261dca910bc9e77b187177c1e8bf2ac328b63f4d913bba0f"
+  },
+  {
+    "dataset": "musique",
+    "category": "C",
+    "hash": "055be512886ee0f106e6dc4f640a9ca0e639e99c50866ae2d7f989d1f4074514"
+  },
+  {
+    "dataset": "musique",
+    "category": "C",
+    "hash": "09d3bc5beafa94d96b8e0adb8c4371b022f64e480258a7cdea7fce9d960e90c4"
+  }
+]

@@ -1,0 +1,52 @@
+{
+  "status": "COMPLETE",
+  "checks": {
+    "historical_h0_matches": 4000,
+    "kmeans_recorded_metadata_match": 400,
+    "pilot_saturated_queries": 199,
+    "saturation_existing_ranking_checks": 4776
+  },
+  "diagnostic_rankings": 4800,
+  "full_history": {
+    "hotpot": {
+      "queries": 1000,
+      "targets": 2384,
+      "dense_missing_targets": 301,
+      "dense_observable_saturated": 704,
+      "dense_all_question_terms": 308,
+      "universe_all_question_terms": 448,
+      "first_min_new_terms": 77,
+      "first_delivered": 84,
+      "first_edge_budget": 35,
+      "first_score": 16,
+      "first_seed_excluded": 37,
+      "first_q25_floor": 27,
+      "first_insertion_capacity": 17,
+      "first_units_per_new_term": 5,
+      "first_redundancy": 1,
+      "first_size": 2
+    },
+    "musique": {
+      "queries": 3000,
+      "targets": 7039,
+      "dense_missing_targets": 1474,
+      "dense_observable_saturated": 1023,
+      "dense_all_question_terms": 274,
+      "universe_all_question_terms": 754,
+      "first_q25_floor": 107,
+      "first_delivered": 347,
+      "first_score": 47,
+      "first_edge_budget": 278,
+      "first_min_new_terms": 477,
+      "first_size": 82,
+      "first_seed_excluded": 58,
+      "first_insertion_capacity": 32,
+      "first_units_per_new_term": 37,
+      "first_anchor": 9
+    }
+  },
+  "max_saturated_phi_excess": 0.0,
+  "tolerance": 1e-12,
+  "kmeans_member_hash_comparison": "NOT_AVAILABLE_IN_PRIOR_RECORDS",
+  "answer_generation": "NOT_GENERATED"
+}

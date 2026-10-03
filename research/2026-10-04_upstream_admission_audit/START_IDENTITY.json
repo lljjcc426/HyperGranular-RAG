@@ -1,0 +1,111 @@
+{
+  "source_commit": "e8c85377647beee132faad306926f47a151853aa",
+  "bindings": {
+    "research\\2026-10-03_evidence_delivery_repair\\DATA_ROLES.json": {
+      "path": "research\\2026-10-03_evidence_delivery_repair\\DATA_ROLES.json",
+      "bytes": 4920,
+      "sha256": "C46610ADDF8E8F774CE8A0D1DC800270EE8E459BF466FE9EDDC0EAA5E2EF0302"
+    },
+    "research\\2026-10-03_evidence_delivery_repair\\manifest.json": {
+      "path": "research\\2026-10-03_evidence_delivery_repair\\manifest.json",
+      "bytes": 24529,
+      "sha256": "114A532AF1CAB2E78C5DB5E620C9D0BEFA3AEA43CE325E6094ED5FA4B5BBC567"
+    },
+    "research\\2026-10-03_evidence_delivery_repair\\sample_ids.json": {
+      "path": "research\\2026-10-03_evidence_delivery_repair\\sample_ids.json",
+      "bytes": 104349,
+      "sha256": "FC6743536854A86489293FF8C8B0287D74E3E75D65816448466E8308B580C521"
+    },
+    "research\\2026-10-03_evidence_delivery_repair\\pilot_rankings.jsonl": {
+      "path": "research\\2026-10-03_evidence_delivery_repair\\pilot_rankings.jsonl",
+      "bytes": 10249657,
+      "sha256": "62BA29215D60CD4CF755DFA0B228A03CCECB57352232C0D9215A07282A731327"
+    },
+    "research\\2026-10-03_evidence_delivery_repair\\PILOT_RESULTS.csv": {
+      "path": "research\\2026-10-03_evidence_delivery_repair\\PILOT_RESULTS.csv",
+      "bytes": 12778,
+      "sha256": "9CFD6558A46DEC11358C38F6B912FA35137A010C26D27A9BFC710A080CB85624"
+    },
+    "research\\2026-10-03_evidence_delivery_repair\\PROXY_REFERENCE_CORRECTION.json": {
+      "path": "research\\2026-10-03_evidence_delivery_repair\\PROXY_REFERENCE_CORRECTION.json",
+      "bytes": 1993,
+      "sha256": "B77E0BBB258E83D5A542B61F9AAA2F6B10B0DEDCA60E9999D2CDEC5242E3215E"
+    },
+    "research\\2026-10-03_evidence_delivery_repair\\repair.py": {
+      "path": "research\\2026-10-03_evidence_delivery_repair\\repair.py",
+      "bytes": 8310,
+      "sha256": "9C228AE6677D7B4F5AB79F59C0BA34F5940CA47AFCF2A634899608ECACBF0468"
+    },
+    "research\\2026-10-03_evidence_delivery_repair\\local\\loss_queries.jsonl": {
+      "path": "research\\2026-10-03_evidence_delivery_repair\\local\\loss_queries.jsonl",
+      "bytes": 16423086,
+      "sha256": "4E661506EEEE721954A465C03AA3CEFF43D7554182296824B553839A967F36A2"
+    },
+    "research\\2026-10-03_evidence_delivery_repair\\local\\pilot_inputs.jsonl": {
+      "path": "research\\2026-10-03_evidence_delivery_repair\\local\\pilot_inputs.jsonl",
+      "bytes": 10410021,
+      "sha256": "80056A6D9FD79E056168A320BDBDB3B17A9B2D44B7DA5F006CEA6499D1C59C4B"
+    },
+    "research\\2026-10-03_evidence_delivery_repair\\local\\delivery_facets.jsonl": {
+      "path": "research\\2026-10-03_evidence_delivery_repair\\local\\delivery_facets.jsonl",
+      "bytes": 21425539,
+      "sha256": "24D6467B83870D53C3B2DB318BDC4D32E5564E25086D006C9AA51956481983F3"
+    }
+  },
+  "numpy": "2.5.1",
+  "python": "3.12.0",
+  "existing_worktree_status": " M AGENTS.md\n M README.md\n M configs/stage6a_smc_official.json\n M docs/INDEX.md\n M docs/REPRODUCIBILITY.md\n M docs/ROADMAP.md\n M paper/latex/DRAFT_BUILD_STATUS.md\n M paper/latex/main.tex\n M paper/references/verified_references.bib\n M scripts/stage6a_smc_evaluate.py\n M scripts/stage6a_smc_independent_retrieval.py\n M scripts/stage6a_smc_independent_verifier.py\n?? audit/\n?? results/stage6a_smc_development_main_candidate_trace.jsonl\n?? results/stage6a_smc_development_main_predictions.jsonl\n?? results/stage6a_smc_development_main_prompt_audit.jsonl\n?? results/stage6a_smc_development_main_rankings.jsonl\n?? results/stage6a_smc_development_main_telemetry.json\n?? results/stage6a_smc_development_pregold_verification.json\n?? results/stage6a_smc_development_qwen3_reranker_trace.jsonl\n?? results/stage6a_smc_development_rerun_candidate_trace.jsonl\n?? results/stage6a_smc_development_rerun_predictions.jsonl\n?? results/stage6a_smc_development_rerun_prompt_audit.jsonl\n?? results/stage6a_smc_development_rerun_rankings.jsonl\n?? results/stage6a_smc_development_rerun_telemetry.json\n?? scripts/hgrag_theory_audit.py\n?? scripts/stage6a_smc_audit_support.py\n?? scripts/stage6a_smc_independent_groups.py\n?? scripts/stage6a_smc_numeric_audit.py\n?? scripts/stage6a_smc_statistical_simulation.py\n?? scripts/stage6a_smc_v2_independent_selector.py\n?? scripts/stage6a_smc_v2_selector.py\n?? tests/test_hgrag_theory_audit.py\n?? tests/test_stage6a_smc_audit_support.py\n?? tests/test_stage6a_smc_independent_groups.py\n?? tests/test_stage6a_smc_numeric_audit.py\n?? tests/test_stage6a_smc_v2_selector.py\n",
+  "configuration": {
+    "min_size": 2,
+    "max_size": 3,
+    "radius_threshold": 0.78,
+    "max_depth": 6,
+    "boundary_width": 0.2,
+    "top_center_terms": 8,
+    "seed_balls": 2,
+    "top_facet_edges": 2,
+    "max_expanded_balls": 2,
+    "min_new_terms": 1,
+    "min_facet_score": 0.1,
+    "max_candidate_ball_size": 8,
+    "min_ball_score": 0.12,
+    "min_seed_similarity": 0.05,
+    "max_units_per_new_term": 6.0,
+    "max_redundancy": 0.9,
+    "w_new": 0.45,
+    "w_total": 0.2,
+    "w_ball": 0.2,
+    "w_diversity": 0.15,
+    "w_redundancy": 0.2,
+    "w_size": 0.05,
+    "w_facet_unit_bonus": 0.0,
+    "q25_floor": 0.1957079917192459,
+    "protect_n": 10,
+    "insert_budget": 4,
+    "max_k": 20
+  },
+  "masks": {
+    "G0": [],
+    "G1": [
+      "min_new_terms"
+    ],
+    "G2": [
+      "redundancy"
+    ],
+    "G3": [
+      "min_new_terms",
+      "redundancy"
+    ],
+    "G4": [
+      "min_new_terms",
+      "redundancy",
+      "units_per_new_term"
+    ],
+    "G5": [
+      "facet_score_threshold",
+      "min_new_terms",
+      "redundancy",
+      "units_per_new_term"
+    ]
+  }
+}
