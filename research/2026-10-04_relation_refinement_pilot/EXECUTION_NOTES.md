@@ -41,6 +41,28 @@ been evaluated and no relative capability claim is made. Tokenizers share the
 existing Qwen vocabulary; D0 windows will be rebuilt in memory with the actual
 selected tokenizer during model calibration, rather than assuming identity.
 
+Correction after handle closure: total partial-download bytes were 1,598,952,515,
+larger than the observed 706-MB shard snapshot. The observation did NOT establish
+complete transfer inactivity. Treating the preferred model as unavailable was
+premature. The identical HTTP transfer was therefore resumed without deleting any
+file. The 1.5B D0 records remain an attempted fallback, not a selected winner.
+The preferred 3B will be used if retrieval completes, as specified before all
+outcomes; no D1 model output exists. No new prompt revision is introduced for 3B.
+
+Subsequent process I/O inspection showed 1.342 GB written by the resumed downloader
+while directory metadata still showed the old length. Open-file metadata was an
+inadequate progress indicator in this environment. The resumed transfer is allowed
+to finish normally; no further premature download termination. This correction
+invalidates the earlier claim of demonstrated inactivity, not any scientific output.
+
+Source offset clarification before D1: offsets are now explicitly relative to each
+frozen sentence text, with original sentence/source IDs retained. The first D0
+packets used offsets into a space-joined reconstruction; those are not claimed as
+raw-document byte offsets. Source text is unchanged. Renderer quote visibility
+ignores inserted display-number markers but still requires the quoted original
+text sequence to survive; this prevents marker formatting from falsely rejecting
+a multi-sentence quote.
+
 Before any D0 model output, Transformers returned a tokenization object instead of
 the expected list from `apply_chat_template(tokenize=True)`. The adapter now renders
 the exact chat template then calls `encode(add_special_tokens=False)`. The failed

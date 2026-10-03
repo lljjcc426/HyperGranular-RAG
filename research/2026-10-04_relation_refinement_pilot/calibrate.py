@@ -4,6 +4,8 @@ from models import LM,PARSE,EXTRACT,json_object
 from core import parse_contract,witnessed,render
 from windows import make_windows
 from dataclasses import asdict
+PREFIX='3b_' if os.environ.get('RG_MODEL')=='3b' else ''
+def output(name):return LOCAL/(PREFIX+name)
 
 def prepare():
     from transformers import AutoTokenizer
@@ -41,14 +43,14 @@ def run(phase):
                 if p['role']!=('D0_DEV' if phase=='parse_dev' else 'D0_CHECK'):continue
                 r=lm.generate(p['question'],PARSE,224,'D0_parse');raw=json_object(r['text'])
                 target='d0_parse_dev_v2.jsonl' if phase=='parse_dev' else 'd0_parse_check.jsonl'
-                append(LOCAL/target,dict(index=j,query_id=p['query_id'],role=p['role'],raw=raw,slots=parse_contract(p['question'],raw),**r))
+                append(output(target),dict(index=j,query_id=p['query_id'],role=p['role'],raw=raw,slots=parse_contract(p['question'],raw),**r))
         elif phase=='extract':
-            parses={z['index']:z for phase_name in ('parse_dev_v2','parse_check') for z in rows(LOCAL/('d0_'+phase_name+'.jsonl'))}
+            parses={z['index']:z for phase_name in ('parse_dev_v2','parse_check') for z in rows(output('d0_'+phase_name+'.jsonl'))}
             from core import Window
             for j,p in enumerate(packets):
                 slots=parses[j]['slots'];w=Window(**p['annotation_window'])
                 if not slots:
-                    append(LOCAL/'d0_extractions.jsonl',dict(index=j,status='PARSE_FAIL',facts=[]));continue
+                    append(output('d0_extractions.jsonl'),dict(index=j,status='PARSE_FAIL',facts=[]));continue
                 r=lm.generate(json.dumps(dict(question=p['question'],slots=slots,body=w.text)),EXTRACT,320,'D0_extract')
                 raw=json_object(r['text']);facts=[];catalog=[(v['title'],v['source']) for v in p['windows']]
                 for f in raw.get('facts',[])[:3]:
@@ -58,13 +60,13 @@ def run(phase):
                     claim=v.head+' -- '+s['relation']+' --> '+v.tail+'; conditions: '+v.conditions
                     b=lm.binary(w.text,claim,'D0_extracted_fact')
                     facts.append(dict(raw=f,score=b['score']))
-                append(LOCAL/'d0_extractions.jsonl',dict(index=j,status='EXTRACTED',facts=facts,**r))
+                append(output('d0_extractions.jsonl'),dict(index=j,status='EXTRACTED',facts=facts,**r))
         elif phase in ('verify_dev','verify_check'):
             for a in read(LOCAL/'annotations.json'):
                 p=packets[a['index']]
                 if p['role']!=('D0_DEV' if phase=='verify_dev' else 'D0_CHECK'):continue
                 r=lm.binary(p['annotation_window']['text'],a['claim'],'D0_annotation')
-                append(LOCAL/'d0_verification.jsonl',dict(**a,role=p['role'],**r))
+                append(output('d0_verification.jsonl'),dict(**a,role=p['role'],**r))
         elif phase=='reader':
             sys.path.insert(0,str(OLD));from score import scorers,answer_score
             scor=scorers();from core import Window
@@ -75,8 +77,9 @@ def run(phase):
                     r=render(p['question'],context,[],1,lm.ids,1024)
                     out=lm.generate(r['prompt'],'You are a careful evidence assistant.',32,'D0_reader_'+condition)
                     em,f1=answer_score(p['tag'],out['text'],p['gold'],scor)
-                    append(LOCAL/'d0_reader.jsonl',dict(index=j,role=p['role'],tag=p['tag'],condition=condition,
-                         em=em,f1=f1,**out,visible_ids=r['visible_ids']))
+                    append(output('d0_reader.jsonl'),dict(index=j,role=p['role'],tag=p['tag'],condition=condition,
+                         em=em,f1=f1,**out,visible_ids=r['visible_ids'],
+                         supplied_support_all_visible=bool(set(p['support_ids'])<=set(r['visible_ids'])),input_cap=1024))
         else:raise ValueError(phase)
     finally:lm.close('D0_'+phase)
 if __name__=='__main__':

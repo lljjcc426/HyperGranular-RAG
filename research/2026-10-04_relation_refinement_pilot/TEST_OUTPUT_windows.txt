@@ -1,0 +1,7 @@
+test_multisentence_quote_survives_display_markers (__main__.Windows.test_multisentence_quote_survives_display_markers) ... ok
+test_sentence_relative_offsets_and_source_isolation (__main__.Windows.test_sentence_relative_offsets_and_source_isolation) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK

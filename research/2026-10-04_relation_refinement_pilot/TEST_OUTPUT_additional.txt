@@ -1,0 +1,7 @@
+test_feedback_cannot_activate_unanchored_later_slot (__main__.Additional.test_feedback_cannot_activate_unanchored_later_slot) ... ok
+test_homonyms_and_multiple_legitimate_bindings (__main__.Additional.test_homonyms_and_multiple_legitimate_bindings) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

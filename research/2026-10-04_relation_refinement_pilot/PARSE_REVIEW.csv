@@ -1,0 +1,33 @@
+index,role,schema_valid,semantic_usable,issue
+0,D0_DEV,0,0,Empty slots
+1,D0_DEV,0,0,Empty slots
+2,D0_DEV,0,0,Empty slots
+3,D0_DEV,0,0,Empty slots
+4,D0_DEV,0,0,Empty slots
+5,D0_DEV,0,0,Empty slots; question identity ambiguity cannot be repaired by guessed knowledge
+6,D0_DEV,0,0,Wrong schema and aircraft/manufacturer endpoints do not specify requested squadron
+7,D0_DEV,0,0,Empty slots
+8,D0_CHECK,0,0,Empty slots
+9,D0_CHECK,0,0,Empty slots
+10,D0_CHECK,0,0,Wrong schema; date treated as event head and racehorse as held-on tail
+11,D0_CHECK,0,0,Single unwrapped relation; district relation and answer variable absent
+12,D0_CHECK,0,0,Unwrapped relation; question description copied as resolved entity
+13,D0_CHECK,0,0,Malformed multiple objects and unresolved endpoints
+14,D0_CHECK,1,0,Singer treated as produced-by subject; album feature relation absent
+15,D0_CHECK,0,0,Empty slots
+16,D0_DEV,0,0,Empty slots
+17,D0_DEV,0,0,Empty slots
+18,D0_DEV,1,0,Recorded direction and artist-label relation incorrect
+19,D0_DEV,0,0,Empty slots
+20,D0_DEV,0,0,Empty slots
+21,D0_DEV,0,0,Empty slots
+22,D0_DEV,0,0,Empty slots
+23,D0_DEV,0,0,Empty slots
+24,D0_CHECK,0,0,Empty slots
+25,D0_CHECK,0,0,Unwrapped relation; glacier-to-continent-to-border requirement collapsed
+26,D0_CHECK,0,0,Empty slots
+27,D0_CHECK,0,0,Empty slots
+28,D0_CHECK,0,0,Unwrapped relation; place and population group not bound through country
+29,D0_CHECK,0,0,Empty slots
+30,D0_CHECK,1,0,Established-in used as entity; answer is place instead of school
+31,D0_CHECK,0,0,Malformed multiple objects and missing required top-level schema

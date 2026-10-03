@@ -17,6 +17,7 @@ class Window:
     sentences:tuple # (original id, retained text, original char start, char end)
     truncated:bool=False
     tokens:int=0
+    offset_basis:str='frozen_sentence_text'
 
 @dataclass(frozen=True)
 class Fact:
@@ -56,6 +57,7 @@ def witnessed(raw,w,slots,catalog,score):
     required=('slot_id','head','tail','quote','polarity','conditions','explicit')
     if any(k not in raw for k in required):return None
     if raw['explicit'] is not True or raw['polarity']!='positive':return None
+    if not isinstance(raw['conditions'],str):return None
     if raw['slot_id'] not in {s['id'] for s in slots}:return None
     if any(not isinstance(raw[k],str) or not raw[k] for k in ('head','tail','quote')):return None
     if any(raw[k] not in w.text for k in ('head','tail','quote')):return None
@@ -259,7 +261,8 @@ def render(question,windows,states,slot_count,tokenize,limit=1024):
     for _,fs in states:
         if len(fs)!=slot_count:continue
         required=[wm[i] for i in {f.window for f in fs}];u,o=assemble(required);p=prompt(u,o)
-        if len(tokenize(p))<=limit and all(f.quote in p for f in fs):chosen=fs;units=u;order=o;break
+        visible_source=' '.join(u[k] for k in o)
+        if len(tokenize(p))<=limit and all(f.quote in visible_source for f in fs):chosen=fs;units=u;order=o;break
         oversized+=1
     for w in windows:
         u=dict(units);o=list(order)

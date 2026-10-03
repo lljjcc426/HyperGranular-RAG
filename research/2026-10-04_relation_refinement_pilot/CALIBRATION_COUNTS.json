@@ -1,0 +1,124 @@
+{
+  "selected_threshold": 0.5,
+  "verification": {
+    "D0_DEV": [
+      {
+        "threshold": 0.5,
+        "accepted": 15,
+        "correct": 15,
+        "wrong": 0,
+        "precision": 1.0
+      },
+      {
+        "threshold": 0.7,
+        "accepted": 14,
+        "correct": 14,
+        "wrong": 0,
+        "precision": 1.0
+      },
+      {
+        "threshold": 0.9,
+        "accepted": 11,
+        "correct": 11,
+        "wrong": 0,
+        "precision": 1.0
+      }
+    ],
+    "D0_CHECK": [
+      {
+        "threshold": 0.5,
+        "accepted": 12,
+        "correct": 12,
+        "wrong": 0,
+        "precision": 1.0
+      },
+      {
+        "threshold": 0.7,
+        "accepted": 11,
+        "correct": 11,
+        "wrong": 0,
+        "precision": 1.0
+      },
+      {
+        "threshold": 0.9,
+        "accepted": 7,
+        "correct": 7,
+        "wrong": 0,
+        "precision": 1.0
+      }
+    ]
+  },
+  "reader": [
+    {
+      "role": "D0_DEV",
+      "tag": "hotpot",
+      "condition": "SUPPLIED_SUPPORT",
+      "n": 8,
+      "em": 0.5,
+      "f1": 0.5
+    },
+    {
+      "role": "D0_DEV",
+      "tag": "hotpot",
+      "condition": "NO_RETRIEVAL",
+      "n": 8,
+      "em": 0.0,
+      "f1": 0.0
+    },
+    {
+      "role": "D0_DEV",
+      "tag": "musique",
+      "condition": "SUPPLIED_SUPPORT",
+      "n": 8,
+      "em": 0.25,
+      "f1": 0.25
+    },
+    {
+      "role": "D0_DEV",
+      "tag": "musique",
+      "condition": "NO_RETRIEVAL",
+      "n": 8,
+      "em": 0.0,
+      "f1": 0.014705882352941178
+    },
+    {
+      "role": "D0_CHECK",
+      "tag": "hotpot",
+      "condition": "SUPPLIED_SUPPORT",
+      "n": 8,
+      "em": 0.25,
+      "f1": 0.25
+    },
+    {
+      "role": "D0_CHECK",
+      "tag": "hotpot",
+      "condition": "NO_RETRIEVAL",
+      "n": 8,
+      "em": 0.0,
+      "f1": 0.0
+    },
+    {
+      "role": "D0_CHECK",
+      "tag": "musique",
+      "condition": "SUPPLIED_SUPPORT",
+      "n": 8,
+      "em": 0.25,
+      "f1": 0.25
+    },
+    {
+      "role": "D0_CHECK",
+      "tag": "musique",
+      "condition": "NO_RETRIEVAL",
+      "n": 8,
+      "em": 0.0,
+      "f1": 0.01818783068783069
+    }
+  ],
+  "parse_schema_pass": {
+    "D0_DEV": 1,
+    "D0_CHECK": 2
+  },
+  "extracted_windows": 32,
+  "windows_with_provenance_valid_facts": 0,
+  "provenance_valid_facts": 0
+}

@@ -7,3 +7,11 @@
 {"stage": "synthetic_model_calibration", "cpu_seconds": 107.6875, "wall_seconds": 111.73227860000043, "gpu_process_seconds": 111.73225430000457, "generate_calls": 16, "binary_pairs": 8, "peak_allocated_bytes": 3219514880}
 {"stage": "synthetic_model_calibration", "cpu_seconds": 35.671875, "wall_seconds": 34.163606699999946, "gpu_process_seconds": 34.16358609999588, "generate_calls": 16, "binary_pairs": 8, "peak_allocated_bytes": 3219514880}
 {"stage": "D0_parse_dev", "cpu_seconds": 46.25, "wall_seconds": 45.10885939999571, "gpu_process_seconds": 45.108834699996805, "generate_calls": 16, "binary_pairs": 0, "peak_allocated_bytes": 3140725248}
+{"stage": "D0_parse_dev", "cpu_seconds": 15.5, "wall_seconds": 13.209453700001177, "gpu_process_seconds": 13.209436299999652, "generate_calls": 16, "binary_pairs": 0, "peak_allocated_bytes": 3145274368}
+{"stage": "D0_parse_check", "cpu_seconds": 21.4375, "wall_seconds": 21.218300699998508, "gpu_process_seconds": 21.218278499996813, "generate_calls": 16, "binary_pairs": 0, "peak_allocated_bytes": 3147965952}
+{"stage": "additional_contract_tests", "cpu_seconds": 0.0, "wall_seconds": 0.0009988000019802712, "gpu_process_seconds": 0}
+{"stage": "D0_verify_dev", "cpu_seconds": 7.84375, "wall_seconds": 5.668490399999428, "gpu_process_seconds": 5.668462199995702, "generate_calls": 0, "binary_pairs": 48, "peak_allocated_bytes": 3176971264}
+{"stage": "D0_verify_check", "cpu_seconds": 7.578125, "wall_seconds": 5.171308700002555, "gpu_process_seconds": 5.171287100005429, "generate_calls": 0, "binary_pairs": 48, "peak_allocated_bytes": 3185453056}
+{"stage": "D0_extract", "cpu_seconds": 15.875, "wall_seconds": 13.652544000004127, "gpu_process_seconds": 13.65251680000074, "generate_calls": 3, "binary_pairs": 0, "peak_allocated_bytes": 3179649024}
+{"stage": "D0_reader", "cpu_seconds": 21.96875, "wall_seconds": 20.151702000002842, "gpu_process_seconds": 20.151678599999286, "generate_calls": 64, "binary_pairs": 0, "peak_allocated_bytes": 3169143296}
+{"stage": "window_contract_tests", "cpu_seconds": 0.0, "wall_seconds": 0.0007961000010254793, "gpu_process_seconds": 0}

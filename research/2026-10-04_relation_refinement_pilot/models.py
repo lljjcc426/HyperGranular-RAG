@@ -20,8 +20,10 @@ class LM:
         from transformers import AutoTokenizer,AutoModelForCausalLM
         self.torch=torch;self.cpu=time.process_time();self.wall=time.perf_counter()
         torch.set_num_threads(1);torch.manual_seed(1729);torch.use_deterministic_algorithms(True)
-        self.tokenizer=AutoTokenizer.from_pretrained(MODEL,local_files_only=True)
-        self.model=AutoModelForCausalLM.from_pretrained(MODEL,local_files_only=True,dtype=torch.float16).eval().to('cuda')
+        model_path=DOWNLOAD_MODEL if os.environ.get('RG_MODEL')=='3b' else MODEL
+        self.tokenizer=AutoTokenizer.from_pretrained(model_path,local_files_only=True)
+        self.model=AutoModelForCausalLM.from_pretrained(model_path,local_files_only=True,dtype=torch.float16).eval().to('cuda')
+        self.model_tag='3b' if os.environ.get('RG_MODEL')=='3b' else '1.5b'
         torch.cuda.reset_peak_memory_stats();self.calls=0;self.pairs=0
         logs=rows(LOCAL/'calls.jsonl') if (LOCAL/'calls.jsonl').exists() else []
         self.prior_calls=sum(z['kind']=='generate' for z in logs);self.prior_pairs=sum(z['kind']=='binary' for z in logs)
@@ -46,13 +48,13 @@ class LM:
         torch.cuda.synchronize();tokens=output[0,len(ids):].tolist();seconds=time.perf_counter()-start;self.calls+=1
         result=dict(text=self.tokenizer.decode(tokens,skip_special_tokens=True).strip(),input_tokens=len(ids),output_tokens=len(tokens),seconds=seconds,
                     input_digest=digest(ids),output_ids=tokens)
-        append(LOCAL/'calls.jsonl',dict(kind='generate',stage=stage,**result));return result
+        append(LOCAL/'calls.jsonl',dict(kind='generate',model=self.model_tag,stage=stage,**result));return result
     def binary(self,body,claim,stage):
         self.check();torch=self.torch;ids=self.ids('BODY:\n'+body+'\nCLAIM:\n'+claim,VERIFY);x=torch.tensor([ids],device='cuda');start=time.perf_counter()
         with torch.inference_mode(): logits=self.model(input_ids=x,attention_mask=torch.ones_like(x),use_cache=False).logits[0,-1,[self.no[0],self.yes[0]]].float()
         score=float(logits.softmax(0)[1]);torch.cuda.synchronize();seconds=time.perf_counter()-start;self.pairs+=1
         result=dict(score=score,seconds=seconds,input_tokens=len(ids),input_digest=digest(ids))
-        append(LOCAL/'calls.jsonl',dict(kind='binary',stage=stage,**result))
+        append(LOCAL/'calls.jsonl',dict(kind='binary',model=self.model_tag,stage=stage,**result))
         if not np.isfinite(score):raise RuntimeError('NONFINITE_BINARY_LOGITS_RUNTIME_FAILURE')
         return result
     def close(self,stage):
@@ -82,14 +84,14 @@ class Encoder:
 def measure():
     lm=LM();timings=[]
     try:
-        for j in range(8):
+        for j in ((0,2,5,7) if lm.model_tag=='3b' else range(8)):
             body=f'Alba{j} wrote Book{j}. Book{j} was published in City{j}. City{j} is in Country{j}.'
             body+=' This archive also describes unrelated editions and their printing schedules.'*(j*3)
             slots=[dict(id='r1',head=f'Alba{j}',relation='wrote',tail='?book'),dict(id='r2',head='?book',relation='published in',tail='?city')]
             r=lm.generate(json.dumps(dict(question=f'Where was the book by Alba{j} published?',slots=slots,body=body)),EXTRACT,320,'synthetic_extract')
             v=lm.binary(body,f'Alba{j} wrote Book{j}.','synthetic_binary')
             timings.append(dict(kind='extract',**{k:r[k] for k in ('seconds','input_tokens','output_tokens')},binary_seconds=v['seconds']))
-        for j in range(4):
+        for j in range(2 if lm.model_tag=='3b' else 4):
             r=lm.generate(f'Who founded the company that published Book{j}?',PARSE,224,'synthetic_parse');timings.append(dict(kind='parse',seconds=r['seconds'],output_tokens=r['output_tokens']))
             r=lm.generate(f'Question: Where is City{j}? Evidence: City{j} is in Country{j}. Return a short answer.', 'Use only evidence.',32,'synthetic_reader');timings.append(dict(kind='reader',seconds=r['seconds'],output_tokens=r['output_tokens']))
         # Upper request envelope, typical-call timing; not a runtime guarantee.
@@ -98,7 +100,8 @@ def measure():
         ans=max(t['seconds'] for t in timings if t['kind']=='reader')
         binary=max(t.get('binary_seconds',0) for t in timings)
         projection=4544*ext+96*par+1056*ans+13800*binary
-        save(HERE/'RESOURCE_CALIBRATION_v2.json',dict(timings=timings,projection_seconds=projection,
+        filename='3b_RESOURCE_CALIBRATION.json' if lm.model_tag=='3b' else 'RESOURCE_CALIBRATION_v2.json'
+        save(HERE/filename,dict(model=lm.model_tag,timings=timings,projection_seconds=projection,
             projection_type='maximum observed synthetic cost times conservative request envelope, excluding indexing/loading; not guarantee',
             full_plan_within_six_hours_before_overhead=projection<21600,peak_gpu_bytes=lm.torch.cuda.max_memory_allocated()))
         print('RESOURCE_PROJECTION',projection,flush=True)
