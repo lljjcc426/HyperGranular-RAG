@@ -1,0 +1,15 @@
+test_all_failures_not_first (__main__.GateTests.test_all_failures_not_first) ... ok
+test_empty_facet_separate_branch (__main__.GateTests.test_empty_facet_separate_branch) ... ok
+test_label_poison_and_original_h0 (__main__.GateTests.test_label_poison_and_original_h0) ... ok
+test_matched_composition_and_short (__main__.GateTests.test_matched_composition_and_short) ... ok
+test_next_layer_ratio_and_score (__main__.GateTests.test_next_layer_ratio_and_score) ... ok
+test_nonempty_new_zero_redundancy (__main__.GateTests.test_nonempty_new_zero_redundancy) ... ok
+test_paragraph_same_sentence_path (__main__.GateTests.test_paragraph_same_sentence_path) ... ok
+test_relaxation_can_displace (__main__.GateTests.test_relaxation_can_displace) ... ok
+test_saturation_theorem_and_non_saturated (__main__.GateTests.test_saturation_theorem_and_non_saturated) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.371s
+
+OK
+CPU seconds: 0.359375
