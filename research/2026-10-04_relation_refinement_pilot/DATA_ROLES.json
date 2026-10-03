@@ -1,0 +1,777 @@
+{
+  "status": "HISTORICALLY_EXPOSED_DEVELOPMENT",
+  "separator": "U+0000",
+  "source": "previous fixed 400",
+  "native_metadata_available": true,
+  "deficits": [],
+  "samples": [
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a8a5b4955429970aeb702b4",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D0_DEV",
+      "sampling_hash": "04c90dbb2947bb6de26219f30cc3987034b2cc117d9bb588985afc3cd833638f"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5ae5553b55429960a22e02b9",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D0_DEV",
+      "sampling_hash": "07fdbc753fb0c7ffaa96653468503a806be09b7eb1a5fd2e0b6050b25caf0b11"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5ae5fe195542996de7b71abc",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D0_DEV",
+      "sampling_hash": "0b0e6dfe0fc082189c9cf4f240db0752eb0e7c17bea334d3bee3cf5322e1fb84"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5ac31685554299741d48a1c2",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D0_DEV",
+      "sampling_hash": "0f112fba5eae6f5635722f7053a3fa17cf65fd1d828df5096f0219d8dc589f83"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a8afd0b55429950cd6afc39",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D0_DEV",
+      "sampling_hash": "0ff8ee4d7c03179d91a1377b79177988e6901dc6fec6540acb52800de86d9184"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a8f44905542997ba9cb3207",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D0_DEV",
+      "sampling_hash": "12d15d5e74bb6f70142626a867af058a34fbe50c70210ccc1510d041e5d658cc"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a70f4ce5542994082a3e439",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D0_DEV",
+      "sampling_hash": "133bc2b6391e326ca673249e23d9776d2d12b7b8136b7ac5ac45be641d235daf"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5ae52ad755429908b6326534",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D0_DEV",
+      "sampling_hash": "135f7b8535b597acc15e09fe803dce7159d34f35cd76b63536d426a10e031f88"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a8a386755429930ff3c0d11",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D0_CHECK",
+      "sampling_hash": "1675b7a2baa2781d9f0572cdb1fd1477726276d79170a3095e3fbb0b1fcb2b1c"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5ab1fc82554299340b525456",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D0_CHECK",
+      "sampling_hash": "177b451b28d02f81d94e331ef4c68dba361f685865c78d8fdd8a35271ea8c29a"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a7277f15542997f827839e9",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D0_CHECK",
+      "sampling_hash": "1b0f89f3d7c77aeef4fb61a0f20108ad35478edf029fff02aa26c1906ca0727b"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5ac0d4d4554299294b21901f",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D0_CHECK",
+      "sampling_hash": "1bd73b2eb21f084191528503aed63622471508eaf1b938ccc56181467b9290d6"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a81521255429938b6142337",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D0_CHECK",
+      "sampling_hash": "1c4209b932b2e5255839820ae45dc9e3494491019acda5ab6d026a13ed7e5598"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a75dd02554299109176e5aa",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D0_CHECK",
+      "sampling_hash": "1d2cb21662f96ae7617a6a95be5885864bc8f38261691bdf0abcb8af1a8c8601"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a8a78c85542996c9b8d5efa",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D0_CHECK",
+      "sampling_hash": "232c730317d525308622d70c60ad864d802454ea3699173a0650c0cc50ec8ec9"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5ae22a405542996483e64919",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D0_CHECK",
+      "sampling_hash": "23b1c14381463192b9957ecd4c94569e0677a115d52d1e3bacad7160594fc4f1"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5adf01f95542992d7e9f9272",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "246359b2a372035be9a8b131c629a37b5e6c1b7eff1ca123fc74ac25f38fc419"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a7b484d55429931da12ca53",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "251fb57645d437b0789bd675fab52dd6b380357ab5d54738761cf5f52ade5e0f"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a829f3255429954d2e2eb82",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "2533f787b0960d9eb8c2f71ed425450ac306a5e9cb5dd20014cc7b83a11ece85"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a75412355429916b01642c1",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "26184db92e0409f2bf9702491159e21fc8ecab032d12c8c57677d124d6b78e8e"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5ac2726355429963665199b9",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "262a59536aa03836a2d14fadd795af71608985b29324e427b0b2a569329c470c"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a87266b5542991e771816f1",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "2866b5be3c66c55a9ded6f55d489f0281219bfd4c713289b759b6f5649fd6b1c"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5ab4e66355429942dd415f9d",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "2b2caa47ebdca0bde40172ef9bc6ff6d4ae34f31e6707593827c55cd2b6717c6"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5abb13a35542992ccd8e7f01",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "2ccaa6fa57d626d8d689995e572690dd6d447abd0656da846ba35c21c5ee0e58"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a79e8345542990198eaeff2",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "2e14b32dba8eb778a213f4603c103a856b758ab301c6d34bab0f06111ec74f9d"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a845e935542992ef85e23cf",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "30f91d1ebd423ec742007b9064473c997cdf2a87eb9a113fb77c5494b6a28f15"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5abc566f554299700f9d7878",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "31ad2854c2331dadd58dff5a9dd0cdc4ed830617d27ee27d851b5de77dc3f9fc"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5abc6883554299700f9d78b2",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "36a24e1c7fa989b7186d5e49451eb2251015eb6481eec29d517f52f244f573fa"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5ae10fb655429901ffe4ad3d",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "386f0e3b79e66f959a873010ba2dc703e62df8c514860de541f262bab3c70913"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a7552745542993748c8982a",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "3a437db6d9833023e681100420b05f73d1be03684bac1bce87bddf887514b677"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5ae1473c55429920d523437c",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "3cc5b0f51d0a0a645b00eeba37e2c1947e219b75098a0bdbb9ddc5d11a072c0f"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a7ba9c155429927d897c010",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "3df3d70a69d744a21ffde018a15a7c2d1a6a875b4a5ef4db65c7e1d0752dede6"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a733c4a55429901807dafb3",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "4082bf6a1ba473d86c74fc7753f31187b720660dd30e53c8b9b958f10c5a08c2"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5ae73e5d5542991e8301cc36",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "46dea947c47fcd9168a20c6f75c5c8eb06c58fd797f0fa859085dae6054a9c2f"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5adc89c9554299438c868de4",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "47ce9e028e061385bc9af43e98a6d7964667d7db40ceb16eeb5c87dc73c5d1d5"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a8f5b4a5542992414482a76",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "489e17b98f148a92bcd8c1a8386a41050da17fe8157cc3529199ab7cdb4d93e5"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5addd7515542990dbb2f7eb0",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "48c01b1864e7a0caffaf79ddd43dc55094ba34a34f95e714104ac210a308ba5c"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5ae110d655429901ffe4ad45",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "48e200c8651a240e6395c813014ca86e0559838ea1c7903a8fcb0cd5d8942709"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a78bc9b55429974737f7869",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "493148ce8042900490dbd37799e4d0ab71262892a0ba6ec61c97282689fdb498"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5ae398f45542991a06ce99f2",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "49e51ab75a788993b657460e5772dd076392d879fa5de922857155a152eb0630"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a8dafc2554299068b959da1",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "4c6f318f9d010dd56138695837f647c280b1449cb607d70d2badc56d0d3b0084"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a88d42455429938390d3fc6",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "504294e1edad1f7048c69709e28690e5eb5c34a5ab575bea67374b481a33cb39"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a7fa6f955429969796c1b11",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "509efef33375689b711c878994f034aaa1f51d1ca5621b2df685ff5dc8e5d33e"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5ac31865554299741d48a1d5",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "5654b6a4846ad762e683e68ee71cf022168337091ce9a4cb2272cba1991d14d2"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a8ca29c5542996e8ac88af7",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "5661d6a28c8aee02f4bf0ebae107307b8221ea9488cee83069bdeb11bc65543a"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a85ccb65542991dd0999e9e",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "56e7af256fa0103d8990c6e8308945e49822c698586e52981c7ef3e98feba71a"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5adc8654554299438c868ddb",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "580360c94610d6e895e0e2da02e3503890c29fd24a76363660278d80e15983b9"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a74832655429929fddd8460",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "bridge",
+      "role": "D1",
+      "sampling_hash": "5a1b1e23f66c1e93eeb3ed44c198ee929e518dcafa1f1c6a342d366d14088d22"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5ac0369e554299294b218f55",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "comparison",
+      "role": "D1",
+      "sampling_hash": "001e31a6987fc799e9404505c144282eebedeac0bba5a165920e0365ee7d762a"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a7183185542994082a3e85d",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "comparison",
+      "role": "D1",
+      "sampling_hash": "062aa0cf216b18997ae1b93dfa3e1d448e7e33015480cfa115ef86948ddbebf1"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a81d53755429903bc27b9d3",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "comparison",
+      "role": "D1",
+      "sampling_hash": "068be729fd8f166a8bb6a4df2ed7be569f06f5445a884e839e42ffe4cf2b87c4"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5ab3435a55429976abd1bc7c",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "comparison",
+      "role": "D1",
+      "sampling_hash": "0e7fb9f671f4c4f77fb6e2fe0b6a13125bbc8aa9206b5757033d5e6a42e51aba"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a736c9e55429901807db047",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "comparison",
+      "role": "D1",
+      "sampling_hash": "1528601dc6a5e06ef7b0f8bdf91c61d1e9f207ecef01549f5dff3cc7f0d46f1a"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a81ff4e55429926c1cdaddd",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "comparison",
+      "role": "D1",
+      "sampling_hash": "168ea90a09af234fa89fa17e01e0cf2da8b6e3e075744ee135d4518b0df772a6"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5abacc0855429901930fa8be",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "comparison",
+      "role": "D1",
+      "sampling_hash": "1ac6b2d34d1e3961196dc3d454a25066842f89bbb87aeaf26a55ec2bd26f3a3f"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a7b45745542995eb53be8e0",
+      "dataset": "hotpotqa_train_distractor_v1_1",
+      "tag": "hotpot",
+      "stratum": "comparison",
+      "role": "D1",
+      "sampling_hash": "24b46eac30a01806957e38c1ff6a53c62ed2ecc02758eca091a2b67c53d14163"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__129644_85808",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D0_DEV",
+      "sampling_hash": "0035e58d297a43a1c36fc06ee12798896bbf23e00a08ebccec625e0598723ee0"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__66459_55578",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D0_DEV",
+      "sampling_hash": "04c31157aaf075338cb7ad59a56ae604568d0877ddce476024de41e51be9036a"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__143481_696803",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D0_DEV",
+      "sampling_hash": "053128bd7b2e031e9fb980a5ad024ac39a7b100234ce23528e32cc148ae09a54"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__569777_62016",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D0_DEV",
+      "sampling_hash": "05e949f09e31b3afa9ef0a659be497211005811d3c181b7754769d0d72408258"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__693900_53028",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D0_DEV",
+      "sampling_hash": "06e1f3afd99a079d0d3abbe972d79971c017d64660b4ec50fa573e196ef54328"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__56922_49736",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D0_DEV",
+      "sampling_hash": "0c7e6c0a402943357b0b52e0968a80d6d1de130b32000ad392a4190d9ef3082e"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__214765_160851",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D0_DEV",
+      "sampling_hash": "0caa0c00948b49693430d5a8feeb8d410c5226e73a9c804689489c34f8a29be6"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__851864_124042",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D0_DEV",
+      "sampling_hash": "0f6654c025823b84792c4273ec7f792cbd62ed3ba94fa16ba9d86f008bf2984e"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__185977_829081",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D0_CHECK",
+      "sampling_hash": "108f626deae61a284ee42bc70e0b9818e5447221af054daceb54ac72b030243f"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__663183_14948",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D0_CHECK",
+      "sampling_hash": "114a7a674237a9db84c6caffa6c94ed28aa52e0c0139e57985db8d2d9c43bc22"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__411393_125776",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D0_CHECK",
+      "sampling_hash": "16633790c0bc12a416bf2e529bfae8d870291164765d902227115cc5c1d7c978"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__6078_79562",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D0_CHECK",
+      "sampling_hash": "19886428a0aec20285f05291239b3c20270f689dfc0747b2965325e3a45621da"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__463435_20644",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D0_CHECK",
+      "sampling_hash": "1a766d2afa602fbf8cba0d9336bf90804c78111cf7a907d3f516923410ca6366"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__233167_51671",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D0_CHECK",
+      "sampling_hash": "1d2032921afbff5efba60fd0d06e47fac9a9892327acc3bec25fd98f07485816"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__391765_3953",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D0_CHECK",
+      "sampling_hash": "1dec37f4f56a0067bc2b99cb1c218c87368d20dfac65c83b9fd0b255c4a3fca5"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__930_57555",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D0_CHECK",
+      "sampling_hash": "20204e2c83c59a1179ba20db2ec5cd7ed28939d5fc2512c5d97e04dc53703b93"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__803994_47336",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D1",
+      "sampling_hash": "207d342530c849e6b0a71494a4ecc655270c2f58aed50448b9f955f95150555a"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__48264_68700",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D1",
+      "sampling_hash": "26c6773bc11e45d1645f8e93de4c6cb65f5f5a02779143cc899901825ba8af6d"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__313926_22238",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D1",
+      "sampling_hash": "3197cd39ac686764fd9a95b3786546215f2eecf6ff03c61bb9998befb7457e85"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__143791_75878",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D1",
+      "sampling_hash": "31e63aa271cd514da16ae70cc49cd63483e48bb21bfe6238a35c2bb9f944d5ea"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__34208_22796",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D1",
+      "sampling_hash": "32cefa7ccd1b6bcd49986eaf22bb70fbf22ee30c1ec155accf384fdeb21cbf05"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__145865_89481",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D1",
+      "sampling_hash": "3303210834127bbcf36d815632ac2151c6b1f29c978f0a982964656a886e2dbc"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__105042_91604",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D1",
+      "sampling_hash": "3429772718ea385fd94fc3f9a90661eaf05ecf6939dcfa291cae55b8aa6828c9"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__145459_495",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D1",
+      "sampling_hash": "3b3d1014a0887b809b37d6d0bd5be4fc24700d63fe3215dc9ebed839c7e288d9"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__136490_87372",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D1",
+      "sampling_hash": "3c033ca9136e3eb895fa0c704a27fc58156eafb231d443c44c8233a441d03f05"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__25908_872",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D1",
+      "sampling_hash": "3cafd64669bf4e71c9fcc58bb66131a0ed6b3811256a55110556225a04f707ff"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__130639_83815",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D1",
+      "sampling_hash": "3f191e1982807841665bcd94ef7645db9d3ed3f224233c3e5295ef4716f2c74c"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__22755_24960",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D1",
+      "sampling_hash": "42d8a2b790a03cff18357479af3d0c9a196f81ac91e888e9e52ff068b323c64f"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__678834_127418",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D1",
+      "sampling_hash": "43aad99a9866b3630fdd1bacf0e3a7e988edb8405af2763abe77fcdd11ac5035"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__381555_23142",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D1",
+      "sampling_hash": "489e2cd7ab8415dc15c064d2a8a9c001f425c9a9dcd7bfcc0f02b6a188c8b8af"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__430640_80728",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D1",
+      "sampling_hash": "48cb01f6f513f135a9393456c7e31a0514cc337f489bb42611bc071583a1d09a"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__333571_20497",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "2hop",
+      "role": "D1",
+      "sampling_hash": "4a25403eb147365e22d3d52e85d8630c25324e64bd41d4869c9c3742fc5c9c54"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::3hop1__809774_144910_26427",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "3_4hop",
+      "role": "D1",
+      "sampling_hash": "0497d0c1e9301673830005299e7ecb5f8ae9d984a05a5ed90be0b949e635f61a"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::4hop1__405751_4520_65397_79413",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "3_4hop",
+      "role": "D1",
+      "sampling_hash": "07e66ac16082d023f92810eeebbc89bfd7a59b438345f32856d313c95b422d22"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::4hop1__632232_164954_6975_6862",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "3_4hop",
+      "role": "D1",
+      "sampling_hash": "0e7fc5395abfbf9b51f6d07681f07caa7abe6137673e6b59d9d1afe1826ea4bf"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::3hop1__50525_83359_92922",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "3_4hop",
+      "role": "D1",
+      "sampling_hash": "10c5e1aaece6a822edf49165ab4a78e04e5f4205f369c07f6876d4e131718f8d"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::4hop3__677205_9522_28235_22384",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "3_4hop",
+      "role": "D1",
+      "sampling_hash": "1325db88180e62ff324af9b04b6c761b9915d905dee834fa5ec6b7cb8c5a9b58"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::4hop3__411315_75897_8509_19700",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "3_4hop",
+      "role": "D1",
+      "sampling_hash": "16c7b354622f452b3ed9ceb88d3171808fbcf46611d0fb2576b0062164a578d7"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::3hop1__576659_20680_21115",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "3_4hop",
+      "role": "D1",
+      "sampling_hash": "19772f92fe5477fcbea4b361a864658757f8669076fe313ce4dfae4c4670f8c9"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::3hop1__91116_594903_21414",
+      "dataset": "musique_ans_v1_0_train",
+      "tag": "musique",
+      "stratum": "3_4hop",
+      "role": "D1",
+      "sampling_hash": "1cbe9bc8cfe52792868ffd05bbe176a3d2378dbf0d3e6340a54a89c28dd8010a"
+    }
+  ]
+}
