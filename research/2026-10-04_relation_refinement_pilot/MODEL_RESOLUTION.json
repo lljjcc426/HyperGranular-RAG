@@ -1,0 +1,12 @@
+{
+  "selected": "Qwen/Qwen2.5-1.5B-Instruct",
+  "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "dtype": "FP16",
+  "reason": "Authorized availability fallback before any natural model output: 3B snapshot download stalled on Xet and resumed HTTP; incomplete weight shard cannot be loaded. No third download workaround or outcome-based model choice.",
+  "three_b_status": "NOT_LOADED_PARTIAL_DOWNLOAD_PRESERVED",
+  "three_b_weight_partial_bytes_last_observed": 706616154,
+  "natural_outputs_at_selection": 0,
+  "partial_download_cpu_seconds_observed": 31.53125,
+  "small_tokenizer_download_cpu_seconds": null,
+  "license_of_selected_existing_model": "Apache-2.0"
+}

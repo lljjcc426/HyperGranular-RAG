@@ -12,7 +12,8 @@ ROOT=HERE.parents[1]
 LOCAL=HERE/'local'
 OLD=HERE.parent/'2026-10-03_evidence_delivery_repair'
 DATA=ROOT.parent/'超粒球RAG_数据'
-MODEL=DATA/'models'/'rg_refinement_Qwen2.5-3B-Instruct'
+DOWNLOAD_MODEL=DATA/'models'/'rg_refinement_Qwen2.5-3B-Instruct'
+MODEL=DATA/'models/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306'
 def read(p): return json.loads(Path(p).read_text(encoding='utf-8'))
 def rows(p):
     with Path(p).open(encoding='utf-8') as f: return [json.loads(s) for s in f if s.strip()]

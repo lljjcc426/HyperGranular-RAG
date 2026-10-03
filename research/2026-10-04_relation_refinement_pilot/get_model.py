@@ -1,5 +1,6 @@
 """Only the explicitly authorized public 3B checkpoint; no alternate models."""
 from io_utils import *
+MODEL=DOWNLOAD_MODEL
 if '--http-resume' in sys.argv:os.environ['HF_HUB_DISABLE_XET']='1'
 def main():
     from huggingface_hub import HfApi,hf_hub_download

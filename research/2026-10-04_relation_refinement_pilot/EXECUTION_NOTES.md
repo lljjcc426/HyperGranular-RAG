@@ -32,3 +32,11 @@ On-demand conditional BGE encoding is CPU-only while the reader occupies the GPU
 the encoder object is discarded after each new query encoding. This operational
 choice prevents simultaneous GPU residency and charges load/forward costs. Natural
 D1 use still requires the capability/resource gate and complete final code freeze.
+
+The resumed HTTP transfer also remained at 706,616,154 partial weight bytes across
+checks. Its identified downloader was stopped, retaining all partial files. The
+authorized availability fallback was fixed globally to the existing 1.5B snapshot
+before any natural model output; see MODEL_RESOLUTION.json. The 3B model has not
+been evaluated and no relative capability claim is made. Tokenizers share the
+existing Qwen vocabulary; D0 windows will be rebuilt in memory with the actual
+selected tokenizer during model calibration, rather than assuming identity.

@@ -29,6 +29,12 @@ def prepare():
 
 def run(phase):
     packets=read(LOCAL/'d0_packets.json');lm=LM()
+    inputs={c['query_id']:c for c in read(LOCAL/'inputs.json')}
+    for p in packets:
+        ws=make_windows(inputs[p['query_id']]['units'],lm.tokenizer)
+        old_id=p['annotation_window']['id'];fresh=next(w for w in ws if w.id==old_id)
+        assert fresh.text==p['annotation_window']['text'],'annotation window changed with selected tokenizer'
+        p['windows']=[asdict(w) for w in ws];p['annotation_window']=asdict(fresh)
     try:
         if phase=='parse':
             for j,p in enumerate(packets):
