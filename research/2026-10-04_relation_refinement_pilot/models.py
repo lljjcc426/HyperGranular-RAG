@@ -89,6 +89,9 @@ def measure():
             body+=' This archive also describes unrelated editions and their printing schedules.'*(j*3)
             slots=[dict(id='r1',head=f'Alba{j}',relation='wrote',tail='?book'),dict(id='r2',head='?book',relation='published in',tail='?city')]
             r=lm.generate(json.dumps(dict(question=f'Where was the book by Alba{j} published?',slots=slots,body=body)),EXTRACT,320,'synthetic_extract')
+            if lm.model_tag=='3b' and j==0:
+                repeat=lm.generate(json.dumps(dict(question=f'Where was the book by Alba{j} published?',slots=slots,body=body)),EXTRACT,320,'synthetic_uncached_repeat')
+                assert r['input_digest']==repeat['input_digest'] and r['output_ids']==repeat['output_ids'],'synthetic model nondeterminism'
             v=lm.binary(body,f'Alba{j} wrote Book{j}.','synthetic_binary')
             timings.append(dict(kind='extract',**{k:r[k] for k in ('seconds','input_tokens','output_tokens')},binary_seconds=v['seconds']))
         for j in range(2 if lm.model_tag=='3b' else 4):

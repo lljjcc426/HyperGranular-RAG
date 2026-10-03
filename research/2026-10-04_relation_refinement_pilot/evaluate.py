@@ -26,17 +26,25 @@ def main():
         for g in rows(DATA/'processed'/file):
             if g['query_id'] in want:gold[g['query_id']]=g
     scored=[]
+    cases={c['query_id']:c for c in read(LOCAL/'inputs.json') if c['role']=='D1'}
     for r in records:
         em,f1=answer_score(r['tag'],r['answer']['text'],gold[r['query_id']],modules)
+        units={u['unit_id']:u for u in cases[r['query_id']]['units']};g=gold[r['query_id']]
+        full_visible={sid for sid,start,end in r['context']['visible_spans'] if start==0 and end==len(units[sid]['text'])}
+        if r['tag']=='hotpot':
+            targets={a['unit_id'] for a in g['supporting_facts']};hits=len(targets&full_visible)
+        else:
+            targets=set(g['supporting_paragraph_indices']);hits=len(targets&{units[i]['paragraph_index'] for i in full_visible})
         scored.append(dict(query_id=r['query_id'],tag=r['tag'],stratum=r['stratum'],method=r['method'],budget=r['budget'],em=em,f1=f1,
             input_tokens=r['context']['input_tokens'],visible_bundle=int(r['context']['complete_bundle_visible']),
-            probes=r['logical_probes'],binary_pairs=r['logical_binary_pairs']))
+            probes=r['logical_probes'],binary_pairs=r['logical_binary_pairs'],support_hits=hits,support_total=len(targets),
+            support_recall=hits/len(targets),support_complete=int(hits==len(targets))))
     save(LOCAL/'scored.json',scored);groups=collections.defaultdict(list)
     for r in scored:groups[r['tag'],r['stratum'],r['method'],r['budget']].append(r)
     aggregate=[]
     for (tag,s,m,b),rs in sorted(groups.items()):
         aggregate.append(dict(dataset=tag,stratum=s,method=m,budget=b,n=len(rs),
-            **{k:sum(r[k] for r in rs)/len(rs) for k in ('em','f1','input_tokens','visible_bundle','probes','binary_pairs')}))
+            **{k:sum(r[k] for r in rs)/len(rs) for k in ('em','f1','input_tokens','visible_bundle','probes','binary_pairs','support_hits','support_total','support_recall','support_complete')}))
     table('RESULTS.csv',aggregate);comparisons=[]
     for tag,s in sorted({(r['tag'],r['stratum']) for r in scored}):
         for b in (16,32):

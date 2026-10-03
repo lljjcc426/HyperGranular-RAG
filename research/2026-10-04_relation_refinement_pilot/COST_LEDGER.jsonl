@@ -15,3 +15,4 @@
 {"stage": "D0_extract", "cpu_seconds": 15.875, "wall_seconds": 13.652544000004127, "gpu_process_seconds": 13.65251680000074, "generate_calls": 3, "binary_pairs": 0, "peak_allocated_bytes": 3179649024}
 {"stage": "D0_reader", "cpu_seconds": 21.96875, "wall_seconds": 20.151702000002842, "gpu_process_seconds": 20.151678599999286, "generate_calls": 64, "binary_pairs": 0, "peak_allocated_bytes": 3169143296}
 {"stage": "window_contract_tests", "cpu_seconds": 0.0, "wall_seconds": 0.0007961000010254793, "gpu_process_seconds": 0}
+{"stage": "model_download", "cpu_seconds": 34.4375, "wall_seconds": 1104.5370334000036, "gpu_process_seconds": 0, "bytes": 6183459769}

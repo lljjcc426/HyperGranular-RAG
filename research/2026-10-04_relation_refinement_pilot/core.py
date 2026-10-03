@@ -242,6 +242,7 @@ def search(method,question,slots,windows,x,qvector,embed,probe,threshold=.7,unca
             snapshots[step+1]=dict(states=states.copy(),probe_count=step+1,split_count=len(splits),leaf_count=len(groups),
                 accepted_facts=len(facts),complete=any(len(fs)==len(slots) for _,fs in states),
                 logical_probes=step+1,cache_hits=hits,conditional_strings=len(conditional),cap_fallback=cap_fallback)
+            snapshots[step+1]['conditional_texts']=list(conditional)
     return dict(snapshots=snapshots,trace=trace,splits=splits,repair_count=repairs,seconds=time.perf_counter()-start)
 
 def render(question,windows,states,slot_count,tokenize,limit=1024):

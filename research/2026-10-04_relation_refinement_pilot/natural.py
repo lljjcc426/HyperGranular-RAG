@@ -9,16 +9,19 @@ def index():
     from transformers import AutoTokenizer
     cpu=time.process_time();wall=time.perf_counter()
     gate=read(HERE/'CALIBRATION_DECISION.json');assert gate['run_d1'] is True
-    tok=AutoTokenizer.from_pretrained(MODEL,local_files_only=True);enc=Encoder('cuda')
+    model_path=DOWNLOAD_MODEL if os.environ.get('RG_MODEL')=='3b' else MODEL
+    tok=AutoTokenizer.from_pretrained(model_path,local_files_only=True);enc=Encoder('cuda')
     try:
         for c in read(LOCAL/'inputs.json'):
             if c['role']!='D1':continue
+            query_start=time.perf_counter()
             ws=make_windows(c['units'],tok);x=enc.encode([w.text for w in ws]);q=enc.encode([c['query']['question']],True)[0]
             scores=x@q;order=sorted(range(len(ws)),key=lambda i:(-float(scores[i]),ws[i].id))[:64]
             name=c['sampling_hash']
             save(LOCAL/(name+'_windows.json'),[asdict(ws[i]) for i in order])
             np.savez(LOCAL/(name+'_vectors.npz'),x=x[order],q=q)
-            append(LOCAL/'index_summary.jsonl',dict(query_id=c['query_id'],all_windows=len(ws),retained=len(order),truncated=sum(w.truncated for w in ws)))
+            append(LOCAL/'index_summary.jsonl',dict(query_id=c['query_id'],all_windows=len(ws),retained=len(order),truncated=sum(w.truncated for w in ws),
+                window_and_index_seconds=time.perf_counter()-query_start))
     finally:charge('D1_index',cpu,wall,gpu_process_seconds=time.perf_counter()-wall)
 
 def execute(rerun=False):
@@ -84,6 +87,7 @@ def execute(rerun=False):
                         splits=[s for s in result['splits'] if s['step']<=budget],complete=snap['complete'],
                         states=[dict(binding=b,facts=[asdict(f) for f in fs]) for b,fs in states],
                         conditional_queries=snap.get('conditional_strings',0),leaf_count=snap['leaf_count'],
+                        logical_conditional_seconds=sum(embed_cache[t][1] for t in snap.get('conditional_texts',[])),
                         renderer_fit={str(b):render(question,ws,states,len(slots) or 1,lm.ids,b)['complete_bundle_visible'] for b in (512,2048)})
                     append(LOCAL/filename,record)
             print('D1',case['query_id'],'rerun',rerun,flush=True)
