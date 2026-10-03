@@ -2,7 +2,12 @@ from io_utils import *
 import numpy as np
 
 PARSE='''Decompose ONLY the given question into 1-4 directed relation slots. Do not answer it. Constants must be exact substrings of the question. Unknown entities must be variables beginning ?. Reuse a variable only for the same entity. Include all conditions in relation phrases. Output only JSON: {"slots":[{"id":"r1","head":"question literal or ?v","relation":"relation phrase","tail":"?answer"}],"answer_var":"?answer","ambiguous":false}. No reasoning text.'''
+PARSE='''Convert the question into a small JSON object. Do not answer the question. Output a FLAT list of 1 to 4 relation objects, not a list inside a list. An unknown person/place/date is a variable like ?person, ?place or ?answer. Do not invent names or dates. Every constant must be copied exactly from the question. Reuse variables only for the same entity. Preserve qualifiers in relation text.
+Example question: Where was the writer of Night River born?
+Example output: {"slots":[{"id":"r1","head":"Night River","relation":"written by","tail":"?person"},{"id":"r2","head":"?person","relation":"born in","tail":"?answer"}],"answer_var":"?answer","ambiguous":false}
+Now output only the JSON for the user's question. No explanation.'''
 EXTRACT='''Read only this window, not outside knowledge or the title. Return up to 3 facts matching the directed question slots. Both head and tail must be exact body substrings. quote must be an exact body substring supporting this direction and all relevant conditions. A question slot does not make a fact true. Do not guess unresolved names or dates. If unsupported return no fact. Output JSON only: {"facts":[{"slot_id":"r1","head":"exact span","tail":"exact span","quote":"exact quote","polarity":"positive","conditions":"qualifiers or empty","explicit":true}]}. No reasoning text.'''
+EXTRACT+=''' Example BODY: Ada wrote Green Sky. For a slot asking who wrote Green Sky, a valid fact is {"slot_id":"r1","head":"Green Sky","tail":"Ada","quote":"Ada wrote Green Sky.","polarity":"positive","conditions":"","explicit":true}. Output actual names/spans, never ?variables or relation text in head/tail. Use {"facts":[]} when the body does not resolve the slot.'''
 VERIFY='''Does the BODY explicitly support the whole directed CLAIM, including its entity binding, direction, negation and qualifiers? Use only BODY. Missing information or a different entity means no. Answer exactly yes or no.'''
 
 def json_object(text):

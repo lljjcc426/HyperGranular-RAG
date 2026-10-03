@@ -40,9 +40,10 @@ def run(phase):
             for j,p in enumerate(packets):
                 if p['role']!=('D0_DEV' if phase=='parse_dev' else 'D0_CHECK'):continue
                 r=lm.generate(p['question'],PARSE,224,'D0_parse');raw=json_object(r['text'])
-                append(LOCAL/('d0_'+phase+'.jsonl'),dict(index=j,query_id=p['query_id'],role=p['role'],raw=raw,slots=parse_contract(p['question'],raw),**r))
+                target='d0_parse_dev_v2.jsonl' if phase=='parse_dev' else 'd0_parse_check.jsonl'
+                append(LOCAL/target,dict(index=j,query_id=p['query_id'],role=p['role'],raw=raw,slots=parse_contract(p['question'],raw),**r))
         elif phase=='extract':
-            parses={z['index']:z for phase_name in ('parse_dev','parse_check') for z in rows(LOCAL/('d0_'+phase_name+'.jsonl'))}
+            parses={z['index']:z for phase_name in ('parse_dev_v2','parse_check') for z in rows(LOCAL/('d0_'+phase_name+'.jsonl'))}
             from core import Window
             for j,p in enumerate(packets):
                 slots=parses[j]['slots'];w=Window(**p['annotation_window'])
