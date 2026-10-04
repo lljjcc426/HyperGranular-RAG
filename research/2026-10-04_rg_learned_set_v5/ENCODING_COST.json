@@ -1,0 +1,34 @@
+[
+  {
+    "tag": "hotpot",
+    "kind": "blocks",
+    "strings": 9791,
+    "tokens": 1220158,
+    "at_encoder_limit": 17,
+    "seconds": 225.76160630001687
+  },
+  {
+    "tag": "hotpot",
+    "kind": "queries",
+    "strings": 1000,
+    "tokens": 32394,
+    "at_encoder_limit": 0,
+    "seconds": 5.9183705000032205
+  },
+  {
+    "tag": "musique",
+    "kind": "blocks",
+    "strings": 31130,
+    "tokens": 3312557,
+    "at_encoder_limit": 8,
+    "seconds": 684.115822599997
+  },
+  {
+    "tag": "musique",
+    "kind": "queries",
+    "strings": 3000,
+    "tokens": 87063,
+    "at_encoder_limit": 0,
+    "seconds": 13.424784000002546
+  }
+]

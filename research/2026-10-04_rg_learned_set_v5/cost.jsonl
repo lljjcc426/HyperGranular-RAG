@@ -1,1 +1,4 @@
 {"stage": "prepare", "cpu_seconds": 3.546875, "wall_seconds": 3.693207300006179, "gpu_process_seconds": 0}
+{"stage": "encode", "cpu_seconds": 912.078125, "wall_seconds": 931.2597120999999, "gpu_process_seconds": 931.2595769999898, "peak_gpu_bytes": 1561719296}
+{"stage": "first_stage_retrieval", "cpu_seconds": 23.328125, "wall_seconds": 23.637488400010625, "gpu_process_seconds": 0}
+{"stage": "encoder_residency_during_first_cpu_retrieval", "cpu_seconds": 0, "wall_seconds": 0, "gpu_process_seconds": 23.6374884, "note": "Conservative GPU residency charge; CPU already recorded under retrieval."}
