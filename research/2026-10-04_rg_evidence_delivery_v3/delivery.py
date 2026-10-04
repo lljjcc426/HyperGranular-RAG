@@ -20,14 +20,19 @@ class Delivery:
             self.wkeys[w.id]=set(keys)
         # Reproduce v2 Dense's accepted-window insertion order exactly. A span
         # from a skipped early window must not retroactively move a later one.
-        dense_order=[];dense=set()
-        for w in windows:
+        dense_order=[];dense=set();dense_origin={}
+        for wi,w in enumerate(windows):
             trial=list(dense_order)
-            for sid,text,a,b in w.sentences:
+            origin=dict(dense_origin)
+            for si,(sid,text,a,b) in enumerate(w.sentences):
                 k=(sid,a,b)
-                if k not in trial:trial.append(k)
+                if k not in trial:trial.append(k);origin[k]=(wi,si,sid,a,b)
             p=text_prompt(question,[self.units[k] for k in trial])
-            if len(tokenize(p))<=limit:dense_order=trial;dense=set(trial)
+            if len(tokenize(p))<=limit:dense_order=trial;dense=set(trial);dense_origin=origin
+        # Fixed source priority shared by every arm: Dense spans inherit the
+        # window that actually delivered them; new spans use first base-rank
+        # occurrence. This also makes emitted IDs match actual prompt order.
+        self.order.update(dense_origin)
         self.dense=dense;self.dense_order=dense_order
         self.dense_prompt=text_prompt(question,[self.units[k] for k in dense_order])
         empty=self.tokens(set());available=limit-empty
@@ -61,9 +66,21 @@ class Delivery:
                 ks.add(k)
         return ks
     def components(self,states,slots):
-        anchors={norm(s[side]) for s in slots for side in ('head','tail') if not s[side].startswith('?')}
+        generic={'person','place','country','city','year','date','name','company','university','film','movie','state','county','answer'}
+        anchors={norm(s[side]) for s in slots for side in ('head','tail') if not s[side].startswith('?') and norm(s[side]).casefold() not in generic}
+        sm={s['id']:s for s in slots}
         for state in states:
-            fs=state['facts'];remaining=set(range(len(fs)))
+            fs=state['facts'];binding={};valid=True
+            for f in fs:
+                if f['slot'] not in sm:valid=False;break
+                for side in ('head','tail'):
+                    term=sm[f['slot']][side];value=norm(f[side+'_id'])
+                    if term.startswith('?'):
+                        if term in binding and binding[term]!=value:valid=False
+                        binding[term]=value
+                    elif norm(term)!=norm(f[side]):valid=False
+            if not valid:continue
+            remaining=set(range(len(fs)))
             while remaining:
                 seen={remaining.pop()};nodes={fs[next(iter(seen))][s+'_id'] for s in ('head','tail')}
                 changed=True
@@ -79,7 +96,7 @@ class Delivery:
         return dict(kind=kind,prompt=self.prompt(ks),input_tokens=self.tokens(ks),visible_spans=[list(k) for k in self.sorted(ks)],
             new_spans=[list(k) for k in self.sorted(new)],displaced_spans=[list(k) for k in self.sorted(lost)],
             prompt_changed=bool(new or lost),order_only=False,prefix_sentences=len(self.prefix),**extra)
-    def partial(self,states,slots):
+    def partial(self,states,slots,constraints=None):
         options=[];reasons={};required={s['id'] for s in slots}
         for fs in self.components(states,slots):
             try:ks=self.package(fs)
@@ -96,8 +113,12 @@ class Delivery:
         _,fs,ks=min(options,key=lambda z:z[0]);selected={f['slot'] for f in fs};wids=sorted({f['window'] for f in fs},key=self.rank.__getitem__)
         target=sum(bool(self.wkeys[w]-self.dense) for w in wids)
         final=self.fill(self.prefix|ks)
+        missing=[q for s in slots for q in s.get('qualifiers',[])]
+        if constraints is not None:
+            from state import condition_states
+            cs=condition_states(constraints,fs);missing=[c['id'] for c in constraints if cs[c['id']]!='SUPPORTED']
         return self.record(final,'Partial-grounded',package_windows=wids,package_relations=sorted(selected),missing_slots=sorted(required-selected),
-            missing_conditions=[q for s in slots for q in s.get('qualifiers',[])],fallback=False,reasons=reasons,new_window_target=target)
+            missing_conditions=missing,fallback=False,reasons=reasons,new_window_target=target)
     def count_dense(self,partial):
         target=partial['new_window_target'];ks=set(self.prefix);chosen=[]
         if target:

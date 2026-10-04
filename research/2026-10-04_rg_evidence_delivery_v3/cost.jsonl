@@ -1,1 +1,7 @@
 {"stage": "A_construct", "cpu_seconds": 6.53125, "wall_seconds": 6.753870799992001}
+{"stage": "B_v30_regression", "cpu_seconds": 679.09375, "wall_seconds": 703.1397578000033, "gpu_process_seconds": 703.1397421000001, "peak_gpu_bytes": 2249379840}
+{"stage": "B_v31_regression", "cpu_seconds": 36.640625, "wall_seconds": 41.38009880000027, "gpu_process_seconds": 41.38008390000323, "peak_gpu_bytes": 2216122880}
+{"stage": "B_v32_regression", "cpu_seconds": 119.84375, "wall_seconds": 129.0510304999916, "gpu_process_seconds": 129.05101289998856, "peak_gpu_bytes": 2215488000}
+{"stage": "B_v33_regression", "cpu_seconds": 48.03125, "wall_seconds": 52.33756669999275, "gpu_process_seconds": 52.33755240000028, "peak_gpu_bytes": 2200827904}
+{"stage": "B_D0_through", "cpu_seconds": 49.0, "wall_seconds": 51.80609589999949, "gpu_process_seconds": 51.80608029999712, "peak_gpu_bytes": 2216574976}
+{"stage": "B_D0_through", "cpu_seconds": 69.484375, "wall_seconds": 71.9199779999908, "gpu_process_seconds": 71.91994700000214, "peak_gpu_bytes": 2213502976}

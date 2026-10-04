@@ -1,0 +1,19 @@
+Actual command: temp/stage4e_env/Scripts/python.exe research/2026-10-04_rg_evidence_delivery_v3/tests.py
+Latest completed suite before C: 11 unique tests, 4.903 seconds, exit 0.
+test_already_dense_no_forced_change ... ok
+test_feedback_compares_only_requested_same_relation ... ok
+test_partial_source_delivery_and_dense_fallback ... ok
+test_polarity_conditions_and_normalization ... ok
+test_prompt_ids_follow_actual_order ... ok
+test_provenance_and_oversize ... ok
+test_scoped_owner_and_missing_preservation ... ok
+test_semantic_beam_keeps_alternative ... ok
+test_source_rules_multivalue_direction_and_dimensions ... ok
+test_task_cache_identity ... ok
+test_verifier_source_and_unknown_owner ... ok
+Ran 11 tests in 4.903s
+OK
+
+Earlier development suites: 8 tests / 3.454s; 9 tests / 7.825s.
+These overlap the final suite and are NOT summed as additional unique tests.
+Synthetic and interface tests do not establish natural semantic correctness.
