@@ -1,0 +1,3 @@
+tag,queries,same_selected_set,representative_minus_flat_score,representative_minus_flat_coverage,representative_minus_flat_complete,representative_minus_flat_blocks,representative_minus_flat_tokens,evidence
+hotpot,196,0,-7.183772991095024,-0.3474489795918367,-0.3622448979591837,-0.3877551020408163,-34.545918367346935,APPROXIMATION_DIAGNOSTIC_NO_QA
+musique,542,0,-5.098755461742316,-0.289360393603936,-0.16974169741697417,-0.8284132841328413,-101.44464944649447,APPROXIMATION_DIAGNOSTIC_NO_QA

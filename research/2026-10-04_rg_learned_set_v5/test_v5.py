@@ -43,6 +43,18 @@ class Algebra(unittest.TestCase):
     def test_average_radius_fails(self):
         z=np.array([[0.],[0.],[9.]]);c=z.mean(0);mean=np.linalg.norm(z-c,axis=1).mean();mx=np.linalg.norm(z-c,axis=1).max()
         self.assertLess(float(c[0]+mean),9);self.assertGreaterEqual(float(c[0]+mx),9)
+    def test_leaf_threshold_preserves_feasible_ties(self):
+        rng=np.random.default_rng(701);checks=0
+        for trial in range(12):
+            a=rng.normal(size=32);v=rng.normal(size=(32,32))
+            if trial==0:a[:]=0;v[:]=0
+            s=HScore(a,v,rng.normal(size=(3,32)),rng.normal(size=7),4)
+            ids=[f'b{i:03}' for i in range(32)];f=Feasible(rng.integers(1,9,32),20)
+            flat=beam(s,f,ids,(),kind='Flat')
+            for kind in ('GB','KM'):
+                actual=beam(s,f,ids,(),kind=kind,leaf_threshold=True)
+                self.assertEqual(actual[0],flat[0]);self.assertEqual(actual[2],flat[2]);checks+=len(flat[2])
+        print('leaf_threshold_parent_comparisons',checks)
     def test_same_leaf_members_not_removed(self):
         s=HScore(np.zeros(8),np.zeros((8,32)),np.zeros((3,32)),np.arange(7),4)
         for kind in ('Flat','GB','KM'):

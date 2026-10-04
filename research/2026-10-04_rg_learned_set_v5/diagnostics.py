@@ -17,12 +17,24 @@ def run(seed=1729):
                     n=len(r['indices']);ix=r['indices']+[0]*(6-n);X.append(xx[ix]);L.append(ll[ix]);M.append([1.]*n+[0.]*(6-n))
                 Q=np.repeat(store.qx[q['query_id']][None],len(sets),axis=0)
                 args=[torch.tensor(np.asarray(a),dtype=torch.float32) for a in (Q,X,L,M)];pred,terms=net(*args,terms=True);p=pred.numpy();pairs=s['pairs'];dif=[p[a,0]-p[b,0] for a,b in pairs]
-                per.append(dict(tag=tag,stratum=q['stratum'],sets=len(sets),pairs=len(pairs),pair_correct=sum(d>0 for d in dif),pair_ties=sum(d==0 for d in dif),full_bce=float(torch.nn.functional.binary_cross_entropy_with_logits(pred[:,0],torch.tensor([r['full'] for r in sets]))),cov_mse=float(np.mean((torch.sigmoid(pred[:,1]).numpy()-[r['cov'] for r in sets])**2)),terms=[float(t[:,0].abs().mean()) for t in terms],positive_sets=sum(r['full'] for r in sets)))
+                # Deleting a complete paragraph is a different, cardinality-changing
+                # diagnostic from the matched replacement pairs above. For Hotpot
+                # it can remove multiple annotated sentences, not a sentence edit.
+                members=[set(r['indices']) for r in sets]
+                deletions=[(i,j) for i,a in enumerate(sets) if a['full'] for j,b in enumerate(sets) if not b['full'] and len(members[j])+1==len(members[i]) and members[j]<members[i]]
+                dd=[float(p[i,0]-p[j,0]) for i,j in deletions]
+                per.append(dict(tag=tag,stratum=q['stratum'],sets=len(sets),pairs=len(pairs),pair_correct=sum(d>0 for d in dif),pair_ties=sum(d==0 for d in dif),full_bce=float(torch.nn.functional.binary_cross_entropy_with_logits(pred[:,0],torch.tensor([r['full'] for r in sets]))),cov_mse=float(np.mean((torch.sigmoid(pred[:,1]).numpy()-[r['cov'] for r in sets])**2)),terms=[float(t[:,0].abs().mean()) for t in terms],positive_sets=sum(r['full'] for r in sets),deletion_pairs=len(dd),deletion_correct=sum(d>0 for d in dd),deletion_margin_sum=sum(dd)))
         for tag in ('hotpot','musique'):
             for stratum in ('ALL',)+tuple(sorted({r['stratum'] for r in per if r['tag']==tag})):
                 rr=[r for r in per if r['tag']==tag and (stratum=='ALL' or r['stratum']==stratum)];pairs=sum(r['pairs'] for r in rr)
-                out.append(dict(seed=seed,model=kind,tag=tag,stratum=stratum,queries=len(rr),sets=sum(r['sets'] for r in rr),positive_sets=sum(r['positive_sets'] for r in rr),same_size_pairs=pairs,pair_accuracy=sum(r['pair_correct'] for r in rr)/pairs if pairs else None,pair_ties=sum(r['pair_ties'] for r in rr),full_bce=float(np.mean([r['full_bce'] for r in rr])),cov_mse=float(np.mean([r['cov_mse'] for r in rr])),term_abs=json.dumps(np.mean([r['terms'] for r in rr],axis=0).tolist())))
+                nd=sum(r['deletion_pairs'] for r in rr)
+                out.append(dict(seed=seed,model=kind,tag=tag,stratum=stratum,queries=len(rr),sets=sum(r['sets'] for r in rr),positive_sets=sum(r['positive_sets'] for r in rr),same_size_pairs=pairs,pair_accuracy=sum(r['pair_correct'] for r in rr)/pairs if pairs else None,pair_ties=sum(r['pair_ties'] for r in rr),full_bce=float(np.mean([r['full_bce'] for r in rr])),cov_mse=float(np.mean([r['cov_mse'] for r in rr])),term_abs=json.dumps(np.mean([r['terms'] for r in rr],axis=0).tolist()),deletion_pairs=nd,deletion_preference=sum(r['deletion_correct'] for r in rr)/nd if nd else None,deletion_margin=sum(r['deletion_margin_sum'] for r in rr)/nd if nd else None))
     table(HERE/f'SET_DIAGNOSTICS_{seed}.csv',out)
+    if seed!=1729:
+        # Shared data interfaces were checked on the primary run. New seeds
+        # require new learned-score diagnostics, not identical data checks.
+        charge(f'diagnostics_{seed}',cpu,wall,gpu_process_seconds=0)
+        return
     # Verify all group roles, panel exclusion and source offsets once on actual inputs.
     groups={}
     for q in store.queries:groups.setdefault(q['group'],set()).add(q['role'])

@@ -1,0 +1,50 @@
+[
+  {
+    "query_hash": "446be4a4b5bdf1d3f358803ec9558fcdef7be8cec7bf8b71b533332b705fe874",
+    "method": "H4-Flat",
+    "same_output_ids": true,
+    "same_input": true
+  },
+  {
+    "query_hash": "db91bcecab566b122fc93224260ae92f5651a616fac133ef231ddd106caca331",
+    "method": "Dense",
+    "same_output_ids": true,
+    "same_input": true
+  },
+  {
+    "query_hash": "26069170c82cd6d34c5e6bbe9cbd026463ed0e10827725f7badbb07b34e353f0",
+    "method": "H4-Flat",
+    "same_output_ids": true,
+    "same_input": true
+  },
+  {
+    "query_hash": "afbf6aa1ae3d681cfad6ca3efce7a5ba4fb57a74df9ef02ede2a3997c451bd53",
+    "method": "H4-Flat",
+    "same_output_ids": true,
+    "same_input": true
+  },
+  {
+    "query_hash": "e11a31b2bb892ed2e9ea97a0e1204d6bab1269c0464826af180bcb7b4e31ab92",
+    "method": "Dense",
+    "same_output_ids": true,
+    "same_input": true
+  },
+  {
+    "query_hash": "011159cd7a233d763e0463760acdaad97d9d1e0c9a4e7688d747556dcbeb96e1",
+    "method": "Dense",
+    "same_output_ids": true,
+    "same_input": true
+  },
+  {
+    "query_hash": "f40c6d9b2c1e0b21df42a12f4952c8b9c677282126b110f2be2344645f7901b2",
+    "method": "Dense",
+    "same_output_ids": true,
+    "same_input": true
+  },
+  {
+    "query_hash": "4f34ea859915e42e5ea270328ae5ca433b49f71e3cfe332e3b4e2e2b43e387a0",
+    "method": "H4-Flat",
+    "same_output_ids": true,
+    "same_input": true
+  }
+]

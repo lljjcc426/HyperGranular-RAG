@@ -41,7 +41,7 @@ class Tree:
     def representatives(self):
         return [int(n['idx'][np.argmin(((self.z[n['idx']]-n['c'])**2).sum(1))]) for n in self.nodes if not n['children']]
 
-def beam(scorer,feasible,ids,dense,kind='Flat',width=4,maxk=6):
+def beam(scorer,feasible,ids,dense,kind='Flat',width=4,maxk=6,leaf_threshold=False):
     start=time.perf_counter();tree=Tree(scorer.z,kind) if kind in ('GB','KM','Representative') else None
     build=time.perf_counter()-start;stats=dict(build_seconds=build,node_visits=0,true_scores=0,token_checks=0,expansions=0,pruned_nodes=0)
     allowed=set(tree.representatives()) if kind=='Representative' else None
@@ -64,7 +64,13 @@ def beam(scorer,feasible,ids,dense,kind='Flat',width=4,maxk=6):
                     for ch in node['children']:heapq.heappush(heap,(-ub(ch),ch))
                 else:
                     idx=np.array([i for i in node['idx'] if i not in S],dtype=int);values=offset+scorer.z[idx]@theta;stats['true_scores']+=len(idx)
-                    for i,v in zip(idx,values):
+                    items=list(zip(idx,values))
+                    if leaf_threshold:items.sort(key=lambda p:(-p[1],key(add(S,p[0]))))
+                    for i,v in items:
+                        # Once a feasible incumbent exists, a strictly worse
+                        # exact leaf score cannot enter top-width. Retain ties
+                        # and near-boundary values; do not use feasibility guesses.
+                        if leaf_threshold and len(got)>=width and v<got[-1][0]-margin:continue
                         ss=add(S,i)
                         if ok(ss):got.append((float(v),ss));got.sort(key=lambda p:(-p[0],key(p[1])));got=got[:width]
         else:

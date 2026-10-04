@@ -1,0 +1,17 @@
+{
+  "python": "3.12.0",
+  "packages": {
+    "torch": "2.12.1+cu130",
+    "transformers": "5.14.1",
+    "numpy": "2.5.1",
+    "lm-format-enforcer": "0.11.3",
+    "tokenizers": "0.22.2"
+  },
+  "thread_settings": {
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+  },
+  "models": "existing frozen BGE FP32; unadapted Qwen2.5-3B FP16; no relation frontend"
+}

@@ -61,7 +61,8 @@ def main(seed=1729):
                 row=dict(seed=seed,model=kind,epoch=epoch+1,train_loss=float(np.mean(trainloss)),tune_loss=value,tune_pair_accuracy=rank,pair_queries=count,parameters=sum(p.numel() for p in net.parameters()),seconds=time.perf_counter()-start,
                     term_abs=json.dumps(np.mean(terms,axis=0).tolist()),order_weight_grad=json.dumps(np.mean(grads,axis=0).tolist() if grads else []))
                 history.append(row);append(LOCAL/'training_history.jsonl',row);print(json.dumps(row),flush=True)
-                # Loss primary; ranking only resolves numerical ties, not QA.
+                # Epoch selection uses TUNE loss only; pair ranking is reported,
+                # not used for checkpoint ties or answer-based selection.
                 if value<best-1e-5:
                     best=value;stale=0;torch.save(dict(kind=kind,seed=seed,normal=normal,state=net.cpu().state_dict(),epoch=epoch+1,validation=row),LOCAL/f'{kind}_{seed}.best.pt');net.cuda()
                 else:stale+=1

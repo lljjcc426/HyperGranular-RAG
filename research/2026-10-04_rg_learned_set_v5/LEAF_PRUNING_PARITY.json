@@ -1,0 +1,6 @@
+{
+  "comparisons": 128,
+  "parent_states": 2688,
+  "mismatches": 0,
+  "scope": "Fixed sensitivity64; seed1729;1024tokens; exact leaf threshold only; no model or QA change"
+}
