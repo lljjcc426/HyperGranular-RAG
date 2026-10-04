@@ -36,8 +36,11 @@ def plan_contract(question,raw):
 
 def parse(lm,question,stage):
     r=lm.generate(question,PARSE_PROMPT,512,stage,PLAN)
+    draft=r
+    if not stage.startswith('v20_'):
+        r=lm.generate(json.dumps(dict(question=question,draft=r['raw']),ensure_ascii=False),REVISE_PROMPT,512,stage+'_revise',PLAN)
     slots,errors=plan_contract(question,r['raw'])
-    return dict(generation=r,slots=slots,errors=errors)
+    return dict(generation=r,draft=draft,slots=slots,errors=errors)
 
 def packet(w):
     return dict(title=w.title,sentences=[dict(sid='s'+str(j),text=s[1]) for j,s in enumerate(w.sentences)])

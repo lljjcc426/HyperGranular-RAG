@@ -28,3 +28,18 @@ Example relation: Green Sky --written by--> ?answer. Body s0: Ada wrote Green Sk
 Do not infer a publication relation just because a writer and a publisher occur in the same window. Preserve has father direction, dates, places and qualifiers. Return JSON only.'''
 
 VERIFY_PROMPT='''Judge whether the supplied EVIDENCE explicitly supports CLAIM with its direction, all qualifiers, and the proposed mention-to-identity links. Use only the shown original sentences and title. Title may resolve a body pronoun but cannot by itself establish a relation. Wrong binding, inverse relation, missing qualifier or insufficient evidence means no. Other question relations need not be satisfied here. Answer exactly yes or no.'''
+
+REVISE_PROMPT='''Correct the draft relation plan using ONLY the question. Return ONE object {status,relations}, with the same schema as the draft. Do not answer the question. This is a semantic correction, not copying the draft.
+CRITICAL: A description of an unknown entity is NOT a name. Split descriptions into linked variables. Constants should be names or explicitly requested anchors. ?answer means precisely the object asked for, not an intermediate entity. Keep all defining/time/type conditions as exact question phrases in qualifiers. An unknown answer does not make the question ambiguous. Only an unidentified reference such as "the island" without a name or defining description justifies ambiguous.
+Examples (invented):
+Q: Where is the airline entirely owned by Dara Lee based?
+{"status":"ok","relations":[{"head":"?v1","relation":"owned by","tail":"Dara Lee","qualifiers":["airline","entirely"]},{"head":"?v1","relation":"based in","tail":"?answer","qualifiers":[]}]}
+Q: What label did the artist who recorded Cloud Song record for?
+{"status":"ok","relations":[{"head":"Cloud Song","relation":"recorded by","tail":"?v1","qualifiers":[]},{"head":"?v1","relation":"recorded for","tail":"?answer","qualifiers":["label"]}]}
+Q: What county contains the birthplace of Nara Reed?
+{"status":"ok","relations":[{"head":"Nara Reed","relation":"born in","tail":"?v1","qualifiers":[]},{"head":"?v1","relation":"in county","tail":"?answer","qualifiers":[]}]}
+Q: Who published the novel by Ava Smith that became a film?
+{"status":"ok","relations":[{"head":"?v1","relation":"written by","tail":"Ava Smith","qualifiers":["novel","became a film"]},{"head":"?v1","relation":"published by","tail":"?answer","qualifiers":[]}]}
+Q: Who is the father of the composer of Silver Lake?
+{"status":"ok","relations":[{"head":"Silver Lake","relation":"composed by","tail":"?v1","qualifiers":[]},{"head":"?v1","relation":"has father","tail":"?answer","qualifiers":[]}]}
+Remove spurious relations, do not remove real conditions. Dates are not places. A publisher publishes a work, not its writer. Preserve correct drafts.'''
