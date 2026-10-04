@@ -9,6 +9,7 @@ def run(seed=1729,mode='main'):
     store=Store();qmap={q['query_id']:q for q in store.queries};scorers=scoring.scorers()
     source=rows(LOCAL/f'selections_{seed}_{mode}.jsonl')
     allowed={'Dense','MMR','H1','H2','DeepSets','H4-Flat','H4-GB','H4-KM'}
+    if mode=='closed':allowed={'Dense','H1','H4-Flat'}
     source=[r for r in source if r['panel'] and r['method'] in allowed]
     dest=LOCAL/'qa.jsonl';done={(r['query_id'],r['seed'],r['setting'],r['budget'],r['method']) for r in rows(dest)} if dest.exists() else set()
     cp=LOCAL/'reader_cache.jsonl';cache={r['key']:r for r in rows(cp)} if cp.exists() else {}
