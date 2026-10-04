@@ -1,0 +1,193 @@
+query_id,dataset,method,changed,new_sentences,displaced_sentences,package_relations,missing_slots,count_match,new_window_target,partial_tokens,control_tokens,reasons
+hotpotqa_train_distractor_v1_1::5ac0369e554299294b218f55,hotpot,Flat-binding,False,0,0,0,2,MATCHED,0,838,838,{}
+hotpotqa_train_distractor_v1_1::5ac0369e554299294b218f55,hotpot,GB-feedback,False,0,0,0,2,MATCHED,0,838,838,{}
+hotpotqa_train_distractor_v1_1::5ac0369e554299294b218f55,hotpot,KM-feedback,False,0,0,0,2,MATCHED,0,838,838,{}
+musique_ans_v1_0_train::3hop1__809774_144910_26427,musique,Flat-binding,False,0,0,0,0,MATCHED,0,1013,1013,{}
+musique_ans_v1_0_train::3hop1__809774_144910_26427,musique,GB-feedback,False,0,0,0,0,MATCHED,0,1013,1013,{}
+musique_ans_v1_0_train::3hop1__809774_144910_26427,musique,KM-feedback,False,0,0,0,0,MATCHED,0,1013,1013,{}
+hotpotqa_train_distractor_v1_1::5a7183185542994082a3e85d,hotpot,Flat-binding,False,0,0,0,1,MATCHED,0,1005,1005,"{""ALREADY_DENSE"": 2}"
+hotpotqa_train_distractor_v1_1::5a7183185542994082a3e85d,hotpot,GB-feedback,False,0,0,0,1,MATCHED,0,1005,1005,"{""ALREADY_DENSE"": 2}"
+hotpotqa_train_distractor_v1_1::5a7183185542994082a3e85d,hotpot,KM-feedback,False,0,0,0,1,MATCHED,0,1005,1005,"{""ALREADY_DENSE"": 2}"
+hotpotqa_train_distractor_v1_1::5a81d53755429903bc27b9d3,hotpot,Flat-binding,False,0,0,0,0,MATCHED,0,953,953,{}
+hotpotqa_train_distractor_v1_1::5a81d53755429903bc27b9d3,hotpot,GB-feedback,False,0,0,0,0,MATCHED,0,953,953,{}
+hotpotqa_train_distractor_v1_1::5a81d53755429903bc27b9d3,hotpot,KM-feedback,False,0,0,0,0,MATCHED,0,953,953,{}
+musique_ans_v1_0_train::4hop1__405751_4520_65397_79413,musique,Flat-binding,False,0,0,0,2,MATCHED,0,1021,1021,{}
+musique_ans_v1_0_train::4hop1__405751_4520_65397_79413,musique,GB-feedback,False,0,0,0,2,MATCHED,0,1021,1021,{}
+musique_ans_v1_0_train::4hop1__405751_4520_65397_79413,musique,KM-feedback,False,0,0,0,2,MATCHED,0,1021,1021,{}
+hotpotqa_train_distractor_v1_1::5ab3435a55429976abd1bc7c,hotpot,Flat-binding,False,0,0,0,2,MATCHED,0,1008,1008,{}
+hotpotqa_train_distractor_v1_1::5ab3435a55429976abd1bc7c,hotpot,GB-feedback,False,0,0,0,2,MATCHED,0,1008,1008,{}
+hotpotqa_train_distractor_v1_1::5ab3435a55429976abd1bc7c,hotpot,KM-feedback,False,0,0,0,2,MATCHED,0,1008,1008,{}
+musique_ans_v1_0_train::4hop1__632232_164954_6975_6862,musique,Flat-binding,False,0,0,0,4,MATCHED,0,1024,1024,{}
+musique_ans_v1_0_train::4hop1__632232_164954_6975_6862,musique,GB-feedback,False,0,0,0,4,MATCHED,0,1024,1024,{}
+musique_ans_v1_0_train::4hop1__632232_164954_6975_6862,musique,KM-feedback,False,0,0,0,4,MATCHED,0,1024,1024,{}
+musique_ans_v1_0_train::3hop1__50525_83359_92922,musique,Flat-binding,False,0,0,0,0,MATCHED,0,1016,1016,{}
+musique_ans_v1_0_train::3hop1__50525_83359_92922,musique,GB-feedback,False,0,0,0,0,MATCHED,0,1016,1016,{}
+musique_ans_v1_0_train::3hop1__50525_83359_92922,musique,KM-feedback,False,0,0,0,0,MATCHED,0,1016,1016,{}
+musique_ans_v1_0_train::4hop3__677205_9522_28235_22384,musique,Flat-binding,False,0,0,0,2,MATCHED,0,998,998,{}
+musique_ans_v1_0_train::4hop3__677205_9522_28235_22384,musique,GB-feedback,False,0,0,0,2,MATCHED,0,998,998,{}
+musique_ans_v1_0_train::4hop3__677205_9522_28235_22384,musique,KM-feedback,False,0,0,0,2,MATCHED,0,998,998,{}
+hotpotqa_train_distractor_v1_1::5a736c9e55429901807db047,hotpot,Flat-binding,False,0,0,0,1,MATCHED,0,1003,1003,{}
+hotpotqa_train_distractor_v1_1::5a736c9e55429901807db047,hotpot,GB-feedback,False,0,0,0,1,MATCHED,0,1003,1003,{}
+hotpotqa_train_distractor_v1_1::5a736c9e55429901807db047,hotpot,KM-feedback,False,0,0,0,1,MATCHED,0,1003,1003,{}
+hotpotqa_train_distractor_v1_1::5a81ff4e55429926c1cdaddd,hotpot,Flat-binding,False,0,0,0,2,MATCHED,0,1015,1015,{}
+hotpotqa_train_distractor_v1_1::5a81ff4e55429926c1cdaddd,hotpot,GB-feedback,False,0,0,0,2,MATCHED,0,1015,1015,{}
+hotpotqa_train_distractor_v1_1::5a81ff4e55429926c1cdaddd,hotpot,KM-feedback,False,0,0,0,2,MATCHED,0,1015,1015,{}
+musique_ans_v1_0_train::4hop3__411315_75897_8509_19700,musique,Flat-binding,False,0,0,0,3,MATCHED,0,1015,1015,{}
+musique_ans_v1_0_train::4hop3__411315_75897_8509_19700,musique,GB-feedback,False,0,0,0,3,MATCHED,0,1015,1015,{}
+musique_ans_v1_0_train::4hop3__411315_75897_8509_19700,musique,KM-feedback,False,0,0,0,3,MATCHED,0,1015,1015,{}
+musique_ans_v1_0_train::3hop1__576659_20680_21115,musique,Flat-binding,False,0,0,0,0,MATCHED,0,996,996,{}
+musique_ans_v1_0_train::3hop1__576659_20680_21115,musique,GB-feedback,False,0,0,0,0,MATCHED,0,996,996,{}
+musique_ans_v1_0_train::3hop1__576659_20680_21115,musique,KM-feedback,False,0,0,0,0,MATCHED,0,996,996,{}
+hotpotqa_train_distractor_v1_1::5abacc0855429901930fa8be,hotpot,Flat-binding,False,0,0,0,2,MATCHED,0,976,976,"{""ALREADY_DENSE"": 2}"
+hotpotqa_train_distractor_v1_1::5abacc0855429901930fa8be,hotpot,GB-feedback,False,0,0,0,2,MATCHED,0,976,976,"{""ALREADY_DENSE"": 2}"
+hotpotqa_train_distractor_v1_1::5abacc0855429901930fa8be,hotpot,KM-feedback,False,0,0,0,2,MATCHED,0,976,976,"{""ALREADY_DENSE"": 2}"
+musique_ans_v1_0_train::3hop1__91116_594903_21414,musique,Flat-binding,False,0,0,0,0,MATCHED,0,1023,1023,{}
+musique_ans_v1_0_train::3hop1__91116_594903_21414,musique,GB-feedback,False,0,0,0,0,MATCHED,0,1023,1023,{}
+musique_ans_v1_0_train::3hop1__91116_594903_21414,musique,KM-feedback,False,0,0,0,0,MATCHED,0,1023,1023,{}
+musique_ans_v1_0_train::2hop__803994_47336,musique,Flat-binding,False,0,0,0,2,MATCHED,0,1005,1005,"{""ALREADY_DENSE"": 2}"
+musique_ans_v1_0_train::2hop__803994_47336,musique,GB-feedback,False,0,0,0,2,MATCHED,0,1005,1005,"{""ALREADY_DENSE"": 2}"
+musique_ans_v1_0_train::2hop__803994_47336,musique,KM-feedback,False,0,0,0,2,MATCHED,0,1005,1005,"{""ALREADY_DENSE"": 2}"
+hotpotqa_train_distractor_v1_1::5adf01f95542992d7e9f9272,hotpot,Flat-binding,False,0,0,0,1,MATCHED,0,1007,1007,{}
+hotpotqa_train_distractor_v1_1::5adf01f95542992d7e9f9272,hotpot,GB-feedback,False,0,0,0,1,MATCHED,0,1007,1007,{}
+hotpotqa_train_distractor_v1_1::5adf01f95542992d7e9f9272,hotpot,KM-feedback,False,0,0,0,1,MATCHED,0,1007,1007,{}
+hotpotqa_train_distractor_v1_1::5a7b45745542995eb53be8e0,hotpot,Flat-binding,False,0,0,0,0,MATCHED,0,991,991,{}
+hotpotqa_train_distractor_v1_1::5a7b45745542995eb53be8e0,hotpot,GB-feedback,False,0,0,0,0,MATCHED,0,991,991,{}
+hotpotqa_train_distractor_v1_1::5a7b45745542995eb53be8e0,hotpot,KM-feedback,False,0,0,0,0,MATCHED,0,991,991,{}
+hotpotqa_train_distractor_v1_1::5a7b484d55429931da12ca53,hotpot,Flat-binding,False,0,0,0,0,MATCHED,0,1020,1020,{}
+hotpotqa_train_distractor_v1_1::5a7b484d55429931da12ca53,hotpot,GB-feedback,False,0,0,0,0,MATCHED,0,1020,1020,{}
+hotpotqa_train_distractor_v1_1::5a7b484d55429931da12ca53,hotpot,KM-feedback,False,0,0,0,0,MATCHED,0,1020,1020,{}
+hotpotqa_train_distractor_v1_1::5a829f3255429954d2e2eb82,hotpot,Flat-binding,False,0,0,0,2,MATCHED,0,1015,1015,{}
+hotpotqa_train_distractor_v1_1::5a829f3255429954d2e2eb82,hotpot,GB-feedback,False,0,0,0,2,MATCHED,0,1015,1015,{}
+hotpotqa_train_distractor_v1_1::5a829f3255429954d2e2eb82,hotpot,KM-feedback,False,0,0,0,2,MATCHED,0,1015,1015,{}
+hotpotqa_train_distractor_v1_1::5a75412355429916b01642c1,hotpot,Flat-binding,False,0,0,0,2,MATCHED,0,1023,1023,{}
+hotpotqa_train_distractor_v1_1::5a75412355429916b01642c1,hotpot,GB-feedback,False,0,0,0,2,MATCHED,0,1023,1023,{}
+hotpotqa_train_distractor_v1_1::5a75412355429916b01642c1,hotpot,KM-feedback,False,0,0,0,2,MATCHED,0,1023,1023,{}
+hotpotqa_train_distractor_v1_1::5ac2726355429963665199b9,hotpot,Flat-binding,False,0,0,0,1,MATCHED,0,1016,1016,{}
+hotpotqa_train_distractor_v1_1::5ac2726355429963665199b9,hotpot,GB-feedback,False,0,0,0,1,MATCHED,0,1016,1016,{}
+hotpotqa_train_distractor_v1_1::5ac2726355429963665199b9,hotpot,KM-feedback,False,0,0,0,1,MATCHED,0,1016,1016,{}
+musique_ans_v1_0_train::2hop__48264_68700,musique,Flat-binding,False,0,0,0,2,MATCHED,0,1023,1023,"{""ALREADY_DENSE"": 1}"
+musique_ans_v1_0_train::2hop__48264_68700,musique,GB-feedback,False,0,0,0,2,MATCHED,0,1023,1023,"{""ALREADY_DENSE"": 1}"
+musique_ans_v1_0_train::2hop__48264_68700,musique,KM-feedback,False,0,0,0,2,MATCHED,0,1023,1023,"{""ALREADY_DENSE"": 1}"
+hotpotqa_train_distractor_v1_1::5a87266b5542991e771816f1,hotpot,Flat-binding,False,0,0,0,0,MATCHED,0,666,666,{}
+hotpotqa_train_distractor_v1_1::5a87266b5542991e771816f1,hotpot,GB-feedback,False,0,0,0,0,MATCHED,0,666,666,{}
+hotpotqa_train_distractor_v1_1::5a87266b5542991e771816f1,hotpot,KM-feedback,False,0,0,0,0,MATCHED,0,666,666,{}
+hotpotqa_train_distractor_v1_1::5ab4e66355429942dd415f9d,hotpot,Flat-binding,False,0,0,0,0,MATCHED,0,1009,1009,{}
+hotpotqa_train_distractor_v1_1::5ab4e66355429942dd415f9d,hotpot,GB-feedback,False,0,0,0,0,MATCHED,0,1009,1009,{}
+hotpotqa_train_distractor_v1_1::5ab4e66355429942dd415f9d,hotpot,KM-feedback,False,0,0,0,0,MATCHED,0,1009,1009,{}
+hotpotqa_train_distractor_v1_1::5abb13a35542992ccd8e7f01,hotpot,Flat-binding,False,0,0,0,0,MATCHED,0,1006,1006,{}
+hotpotqa_train_distractor_v1_1::5abb13a35542992ccd8e7f01,hotpot,GB-feedback,False,0,0,0,0,MATCHED,0,1006,1006,{}
+hotpotqa_train_distractor_v1_1::5abb13a35542992ccd8e7f01,hotpot,KM-feedback,False,0,0,0,0,MATCHED,0,1006,1006,{}
+hotpotqa_train_distractor_v1_1::5a79e8345542990198eaeff2,hotpot,Flat-binding,False,0,0,0,0,MATCHED,0,1013,1013,{}
+hotpotqa_train_distractor_v1_1::5a79e8345542990198eaeff2,hotpot,GB-feedback,False,0,0,0,0,MATCHED,0,1013,1013,{}
+hotpotqa_train_distractor_v1_1::5a79e8345542990198eaeff2,hotpot,KM-feedback,False,0,0,0,0,MATCHED,0,1013,1013,{}
+hotpotqa_train_distractor_v1_1::5a845e935542992ef85e23cf,hotpot,Flat-binding,False,0,0,0,1,MATCHED,0,1017,1017,"{""ALREADY_DENSE"": 2}"
+hotpotqa_train_distractor_v1_1::5a845e935542992ef85e23cf,hotpot,GB-feedback,False,0,0,0,1,MATCHED,0,1017,1017,"{""ALREADY_DENSE"": 2}"
+hotpotqa_train_distractor_v1_1::5a845e935542992ef85e23cf,hotpot,KM-feedback,False,0,0,0,1,MATCHED,0,1017,1017,"{""ALREADY_DENSE"": 2}"
+musique_ans_v1_0_train::2hop__313926_22238,musique,Flat-binding,False,0,0,0,0,MATCHED,0,1011,1011,{}
+musique_ans_v1_0_train::2hop__313926_22238,musique,GB-feedback,False,0,0,0,0,MATCHED,0,1011,1011,{}
+musique_ans_v1_0_train::2hop__313926_22238,musique,KM-feedback,False,0,0,0,0,MATCHED,0,1011,1011,{}
+hotpotqa_train_distractor_v1_1::5abc566f554299700f9d7878,hotpot,Flat-binding,False,0,0,0,0,MATCHED,0,1004,1004,{}
+hotpotqa_train_distractor_v1_1::5abc566f554299700f9d7878,hotpot,GB-feedback,False,0,0,0,0,MATCHED,0,1004,1004,{}
+hotpotqa_train_distractor_v1_1::5abc566f554299700f9d7878,hotpot,KM-feedback,False,0,0,0,0,MATCHED,0,1004,1004,{}
+musique_ans_v1_0_train::2hop__143791_75878,musique,Flat-binding,False,0,0,0,2,MATCHED,0,985,985,{}
+musique_ans_v1_0_train::2hop__143791_75878,musique,GB-feedback,False,0,0,0,2,MATCHED,0,985,985,{}
+musique_ans_v1_0_train::2hop__143791_75878,musique,KM-feedback,False,0,0,0,2,MATCHED,0,985,985,{}
+musique_ans_v1_0_train::2hop__34208_22796,musique,Flat-binding,False,0,0,0,0,MATCHED,0,1021,1021,{}
+musique_ans_v1_0_train::2hop__34208_22796,musique,GB-feedback,False,0,0,0,0,MATCHED,0,1021,1021,{}
+musique_ans_v1_0_train::2hop__34208_22796,musique,KM-feedback,False,0,0,0,0,MATCHED,0,1021,1021,{}
+musique_ans_v1_0_train::2hop__145865_89481,musique,Flat-binding,False,0,0,0,2,MATCHED,0,1021,1021,{}
+musique_ans_v1_0_train::2hop__145865_89481,musique,GB-feedback,False,0,0,0,2,MATCHED,0,1021,1021,{}
+musique_ans_v1_0_train::2hop__145865_89481,musique,KM-feedback,False,0,0,0,2,MATCHED,0,1021,1021,{}
+musique_ans_v1_0_train::2hop__105042_91604,musique,Flat-binding,False,0,0,0,2,MATCHED,0,1021,1021,{}
+musique_ans_v1_0_train::2hop__105042_91604,musique,GB-feedback,False,0,0,0,2,MATCHED,0,1021,1021,{}
+musique_ans_v1_0_train::2hop__105042_91604,musique,KM-feedback,False,0,0,0,2,MATCHED,0,1021,1021,{}
+hotpotqa_train_distractor_v1_1::5abc6883554299700f9d78b2,hotpot,Flat-binding,False,0,0,0,2,MATCHED,0,1005,1005,{}
+hotpotqa_train_distractor_v1_1::5abc6883554299700f9d78b2,hotpot,GB-feedback,False,0,0,0,2,MATCHED,0,1005,1005,{}
+hotpotqa_train_distractor_v1_1::5abc6883554299700f9d78b2,hotpot,KM-feedback,False,0,0,0,2,MATCHED,0,1005,1005,{}
+hotpotqa_train_distractor_v1_1::5ae10fb655429901ffe4ad3d,hotpot,Flat-binding,False,0,0,0,2,MATCHED,0,989,989,{}
+hotpotqa_train_distractor_v1_1::5ae10fb655429901ffe4ad3d,hotpot,GB-feedback,False,0,0,0,2,MATCHED,0,989,989,{}
+hotpotqa_train_distractor_v1_1::5ae10fb655429901ffe4ad3d,hotpot,KM-feedback,False,0,0,0,2,MATCHED,0,989,989,{}
+hotpotqa_train_distractor_v1_1::5a7552745542993748c8982a,hotpot,Flat-binding,False,0,0,0,2,MATCHED,0,1012,1012,{}
+hotpotqa_train_distractor_v1_1::5a7552745542993748c8982a,hotpot,GB-feedback,False,0,0,0,2,MATCHED,0,1012,1012,{}
+hotpotqa_train_distractor_v1_1::5a7552745542993748c8982a,hotpot,KM-feedback,False,0,0,0,2,MATCHED,0,1012,1012,{}
+musique_ans_v1_0_train::2hop__145459_495,musique,Flat-binding,False,0,0,0,2,MATCHED,0,1023,1023,{}
+musique_ans_v1_0_train::2hop__145459_495,musique,GB-feedback,False,0,0,0,2,MATCHED,0,1023,1023,{}
+musique_ans_v1_0_train::2hop__145459_495,musique,KM-feedback,False,0,0,0,2,MATCHED,0,1023,1023,{}
+musique_ans_v1_0_train::2hop__136490_87372,musique,Flat-binding,False,0,0,0,0,MATCHED,0,1003,1003,{}
+musique_ans_v1_0_train::2hop__136490_87372,musique,GB-feedback,False,0,0,0,0,MATCHED,0,1003,1003,{}
+musique_ans_v1_0_train::2hop__136490_87372,musique,KM-feedback,False,0,0,0,0,MATCHED,0,1003,1003,{}
+musique_ans_v1_0_train::2hop__25908_872,musique,Flat-binding,False,0,0,0,0,MATCHED,0,1019,1019,{}
+musique_ans_v1_0_train::2hop__25908_872,musique,GB-feedback,False,0,0,0,0,MATCHED,0,1019,1019,{}
+musique_ans_v1_0_train::2hop__25908_872,musique,KM-feedback,False,0,0,0,0,MATCHED,0,1019,1019,{}
+hotpotqa_train_distractor_v1_1::5ae1473c55429920d523437c,hotpot,Flat-binding,False,0,0,0,2,MATCHED,0,998,998,{}
+hotpotqa_train_distractor_v1_1::5ae1473c55429920d523437c,hotpot,GB-feedback,False,0,0,0,2,MATCHED,0,998,998,{}
+hotpotqa_train_distractor_v1_1::5ae1473c55429920d523437c,hotpot,KM-feedback,False,0,0,0,2,MATCHED,0,998,998,{}
+hotpotqa_train_distractor_v1_1::5a7ba9c155429927d897c010,hotpot,Flat-binding,False,0,0,0,1,MATCHED,0,1007,1007,{}
+hotpotqa_train_distractor_v1_1::5a7ba9c155429927d897c010,hotpot,GB-feedback,False,0,0,0,1,MATCHED,0,1007,1007,{}
+hotpotqa_train_distractor_v1_1::5a7ba9c155429927d897c010,hotpot,KM-feedback,False,0,0,0,1,MATCHED,0,1007,1007,{}
+musique_ans_v1_0_train::2hop__130639_83815,musique,Flat-binding,False,0,0,0,2,MATCHED,0,995,995,{}
+musique_ans_v1_0_train::2hop__130639_83815,musique,GB-feedback,False,0,0,0,2,MATCHED,0,995,995,{}
+musique_ans_v1_0_train::2hop__130639_83815,musique,KM-feedback,False,0,0,0,2,MATCHED,0,995,995,{}
+hotpotqa_train_distractor_v1_1::5a733c4a55429901807dafb3,hotpot,Flat-binding,False,0,0,0,2,MATCHED,0,1011,1011,{}
+hotpotqa_train_distractor_v1_1::5a733c4a55429901807dafb3,hotpot,GB-feedback,False,0,0,0,2,MATCHED,0,1011,1011,{}
+hotpotqa_train_distractor_v1_1::5a733c4a55429901807dafb3,hotpot,KM-feedback,False,0,0,0,2,MATCHED,0,1011,1011,{}
+musique_ans_v1_0_train::2hop__22755_24960,musique,Flat-binding,False,0,0,0,2,MATCHED,0,1005,1005,{}
+musique_ans_v1_0_train::2hop__22755_24960,musique,GB-feedback,False,0,0,0,2,MATCHED,0,1005,1005,{}
+musique_ans_v1_0_train::2hop__22755_24960,musique,KM-feedback,False,0,0,0,2,MATCHED,0,1005,1005,{}
+musique_ans_v1_0_train::2hop__678834_127418,musique,Flat-binding,False,0,0,0,2,MATCHED,0,1004,1004,{}
+musique_ans_v1_0_train::2hop__678834_127418,musique,GB-feedback,False,0,0,0,2,MATCHED,0,1004,1004,{}
+musique_ans_v1_0_train::2hop__678834_127418,musique,KM-feedback,False,0,0,0,2,MATCHED,0,1004,1004,{}
+hotpotqa_train_distractor_v1_1::5ae73e5d5542991e8301cc36,hotpot,Flat-binding,False,0,0,0,0,MATCHED,0,1001,1001,{}
+hotpotqa_train_distractor_v1_1::5ae73e5d5542991e8301cc36,hotpot,GB-feedback,False,0,0,0,0,MATCHED,0,1001,1001,{}
+hotpotqa_train_distractor_v1_1::5ae73e5d5542991e8301cc36,hotpot,KM-feedback,False,0,0,0,0,MATCHED,0,1001,1001,{}
+hotpotqa_train_distractor_v1_1::5adc89c9554299438c868de4,hotpot,Flat-binding,False,0,0,0,0,MATCHED,0,975,975,{}
+hotpotqa_train_distractor_v1_1::5adc89c9554299438c868de4,hotpot,GB-feedback,False,0,0,0,0,MATCHED,0,975,975,{}
+hotpotqa_train_distractor_v1_1::5adc89c9554299438c868de4,hotpot,KM-feedback,False,0,0,0,0,MATCHED,0,975,975,{}
+hotpotqa_train_distractor_v1_1::5a8f5b4a5542992414482a76,hotpot,Flat-binding,False,0,0,0,2,MATCHED,0,978,978,{}
+hotpotqa_train_distractor_v1_1::5a8f5b4a5542992414482a76,hotpot,GB-feedback,False,0,0,0,2,MATCHED,0,978,978,{}
+hotpotqa_train_distractor_v1_1::5a8f5b4a5542992414482a76,hotpot,KM-feedback,False,0,0,0,2,MATCHED,0,978,978,{}
+musique_ans_v1_0_train::2hop__381555_23142,musique,Flat-binding,False,0,0,0,2,MATCHED,0,999,999,{}
+musique_ans_v1_0_train::2hop__381555_23142,musique,GB-feedback,False,0,0,0,2,MATCHED,0,999,999,{}
+musique_ans_v1_0_train::2hop__381555_23142,musique,KM-feedback,False,0,0,0,2,MATCHED,0,999,999,{}
+hotpotqa_train_distractor_v1_1::5addd7515542990dbb2f7eb0,hotpot,Flat-binding,False,0,0,0,1,MATCHED,0,976,976,"{""ALREADY_DENSE"": 2}"
+hotpotqa_train_distractor_v1_1::5addd7515542990dbb2f7eb0,hotpot,GB-feedback,False,0,0,0,1,MATCHED,0,976,976,"{""ALREADY_DENSE"": 2}"
+hotpotqa_train_distractor_v1_1::5addd7515542990dbb2f7eb0,hotpot,KM-feedback,False,0,0,0,1,MATCHED,0,976,976,"{""ALREADY_DENSE"": 2}"
+musique_ans_v1_0_train::2hop__430640_80728,musique,Flat-binding,False,0,0,0,2,MATCHED,0,1020,1020,"{""ALREADY_DENSE"": 1}"
+musique_ans_v1_0_train::2hop__430640_80728,musique,GB-feedback,False,0,0,0,2,MATCHED,0,1020,1020,"{""ALREADY_DENSE"": 1}"
+musique_ans_v1_0_train::2hop__430640_80728,musique,KM-feedback,False,0,0,0,2,MATCHED,0,1020,1020,"{""ALREADY_DENSE"": 1}"
+hotpotqa_train_distractor_v1_1::5ae110d655429901ffe4ad45,hotpot,Flat-binding,False,0,0,0,2,MATCHED,0,996,996,{}
+hotpotqa_train_distractor_v1_1::5ae110d655429901ffe4ad45,hotpot,GB-feedback,False,0,0,0,2,MATCHED,0,996,996,{}
+hotpotqa_train_distractor_v1_1::5ae110d655429901ffe4ad45,hotpot,KM-feedback,False,0,0,0,2,MATCHED,0,996,996,{}
+hotpotqa_train_distractor_v1_1::5a78bc9b55429974737f7869,hotpot,Flat-binding,False,0,0,0,2,MATCHED,0,1018,1018,{}
+hotpotqa_train_distractor_v1_1::5a78bc9b55429974737f7869,hotpot,GB-feedback,False,0,0,0,2,MATCHED,0,1018,1018,{}
+hotpotqa_train_distractor_v1_1::5a78bc9b55429974737f7869,hotpot,KM-feedback,False,0,0,0,2,MATCHED,0,1018,1018,{}
+hotpotqa_train_distractor_v1_1::5ae398f45542991a06ce99f2,hotpot,Flat-binding,False,0,0,0,2,MATCHED,0,993,993,{}
+hotpotqa_train_distractor_v1_1::5ae398f45542991a06ce99f2,hotpot,GB-feedback,False,0,0,0,2,MATCHED,0,993,993,{}
+hotpotqa_train_distractor_v1_1::5ae398f45542991a06ce99f2,hotpot,KM-feedback,False,0,0,0,2,MATCHED,0,993,993,{}
+musique_ans_v1_0_train::2hop__333571_20497,musique,Flat-binding,False,0,0,0,2,MATCHED,0,981,981,{}
+musique_ans_v1_0_train::2hop__333571_20497,musique,GB-feedback,False,0,0,0,2,MATCHED,0,981,981,{}
+musique_ans_v1_0_train::2hop__333571_20497,musique,KM-feedback,False,0,0,0,2,MATCHED,0,981,981,{}
+hotpotqa_train_distractor_v1_1::5a8dafc2554299068b959da1,hotpot,Flat-binding,False,0,0,0,2,MATCHED,0,1011,1011,{}
+hotpotqa_train_distractor_v1_1::5a8dafc2554299068b959da1,hotpot,GB-feedback,False,0,0,0,2,MATCHED,0,1011,1011,{}
+hotpotqa_train_distractor_v1_1::5a8dafc2554299068b959da1,hotpot,KM-feedback,False,0,0,0,2,MATCHED,0,1011,1011,{}
+hotpotqa_train_distractor_v1_1::5a88d42455429938390d3fc6,hotpot,Flat-binding,False,0,0,0,2,MATCHED,0,997,997,{}
+hotpotqa_train_distractor_v1_1::5a88d42455429938390d3fc6,hotpot,GB-feedback,False,0,0,0,2,MATCHED,0,997,997,{}
+hotpotqa_train_distractor_v1_1::5a88d42455429938390d3fc6,hotpot,KM-feedback,False,0,0,0,2,MATCHED,0,997,997,{}
+hotpotqa_train_distractor_v1_1::5a7fa6f955429969796c1b11,hotpot,Flat-binding,False,0,0,0,0,MATCHED,0,1004,1004,{}
+hotpotqa_train_distractor_v1_1::5a7fa6f955429969796c1b11,hotpot,GB-feedback,False,0,0,0,0,MATCHED,0,1004,1004,{}
+hotpotqa_train_distractor_v1_1::5a7fa6f955429969796c1b11,hotpot,KM-feedback,False,0,0,0,0,MATCHED,0,1004,1004,{}
+hotpotqa_train_distractor_v1_1::5ac31865554299741d48a1d5,hotpot,Flat-binding,False,0,0,0,2,MATCHED,0,1020,1020,{}
+hotpotqa_train_distractor_v1_1::5ac31865554299741d48a1d5,hotpot,GB-feedback,False,0,0,0,2,MATCHED,0,1020,1020,{}
+hotpotqa_train_distractor_v1_1::5ac31865554299741d48a1d5,hotpot,KM-feedback,False,0,0,0,2,MATCHED,0,1020,1020,{}
+hotpotqa_train_distractor_v1_1::5a8ca29c5542996e8ac88af7,hotpot,Flat-binding,False,0,0,0,0,MATCHED,0,1018,1018,{}
+hotpotqa_train_distractor_v1_1::5a8ca29c5542996e8ac88af7,hotpot,GB-feedback,False,0,0,0,0,MATCHED,0,1018,1018,{}
+hotpotqa_train_distractor_v1_1::5a8ca29c5542996e8ac88af7,hotpot,KM-feedback,False,0,0,0,0,MATCHED,0,1018,1018,{}
+hotpotqa_train_distractor_v1_1::5a85ccb65542991dd0999e9e,hotpot,Flat-binding,False,0,0,0,0,MATCHED,0,1016,1016,{}
+hotpotqa_train_distractor_v1_1::5a85ccb65542991dd0999e9e,hotpot,GB-feedback,False,0,0,0,0,MATCHED,0,1016,1016,{}
+hotpotqa_train_distractor_v1_1::5a85ccb65542991dd0999e9e,hotpot,KM-feedback,False,0,0,0,0,MATCHED,0,1016,1016,{}
+hotpotqa_train_distractor_v1_1::5adc8654554299438c868ddb,hotpot,Flat-binding,False,0,0,0,2,MATCHED,0,1007,1007,{}
+hotpotqa_train_distractor_v1_1::5adc8654554299438c868ddb,hotpot,GB-feedback,False,0,0,0,2,MATCHED,0,1007,1007,{}
+hotpotqa_train_distractor_v1_1::5adc8654554299438c868ddb,hotpot,KM-feedback,False,0,0,0,2,MATCHED,0,1007,1007,{}
+hotpotqa_train_distractor_v1_1::5a74832655429929fddd8460,hotpot,Flat-binding,False,0,0,0,0,MATCHED,0,1024,1024,{}
+hotpotqa_train_distractor_v1_1::5a74832655429929fddd8460,hotpot,GB-feedback,False,0,0,0,0,MATCHED,0,1024,1024,{}
+hotpotqa_train_distractor_v1_1::5a74832655429929fddd8460,hotpot,KM-feedback,False,0,0,0,0,MATCHED,0,1024,1024,{}

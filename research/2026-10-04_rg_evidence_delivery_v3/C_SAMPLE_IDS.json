@@ -1,0 +1,114 @@
+[
+  {
+    "query_id": "hotpotqa_train_distractor_v1_1::5a88d42455429938390d3fc6",
+    "dataset": "hotpot",
+    "stratum": "bridge",
+    "selection_hash": "0d2ef5c28b1b44ca5213c01457e271e42b9b35671340f087ef4f774688d62d6b",
+    "sampling_hash": "504294e1edad1f7048c69709e28690e5eb5c34a5ab575bea67374b481a33cb39"
+  },
+  {
+    "query_id": "hotpotqa_train_distractor_v1_1::5a733c4a55429901807dafb3",
+    "dataset": "hotpot",
+    "stratum": "bridge",
+    "selection_hash": "196499ade08773d1474570553f0082f25149d36341bfe2c1a7c15073b4a4a65e",
+    "sampling_hash": "4082bf6a1ba473d86c74fc7753f31187b720660dd30e53c8b9b958f10c5a08c2"
+  },
+  {
+    "query_id": "hotpotqa_train_distractor_v1_1::5a78bc9b55429974737f7869",
+    "dataset": "hotpot",
+    "stratum": "bridge",
+    "selection_hash": "2902c0046e6a0c5107dbd928289ac751ff50458a6b7ddbd60d204d4d7f440533",
+    "sampling_hash": "493148ce8042900490dbd37799e4d0ab71262892a0ba6ec61c97282689fdb498"
+  },
+  {
+    "query_id": "hotpotqa_train_distractor_v1_1::5adc89c9554299438c868de4",
+    "dataset": "hotpot",
+    "stratum": "bridge",
+    "selection_hash": "2e48e7a7c9c4673b20a4ae8c8c9dbb18865ab6c608419383976ca998c645e1b6",
+    "sampling_hash": "47ce9e028e061385bc9af43e98a6d7964667d7db40ceb16eeb5c87dc73c5d1d5"
+  },
+  {
+    "query_id": "hotpotqa_train_distractor_v1_1::5abb13a35542992ccd8e7f01",
+    "dataset": "hotpot",
+    "stratum": "bridge",
+    "selection_hash": "31e72505c006d6ee3b483ba8bdb1ac9155e28205ddb1abf03f28df1b080cab3f",
+    "sampling_hash": "2ccaa6fa57d626d8d689995e572690dd6d447abd0656da846ba35c21c5ee0e58"
+  },
+  {
+    "query_id": "hotpotqa_train_distractor_v1_1::5ab4e66355429942dd415f9d",
+    "dataset": "hotpot",
+    "stratum": "bridge",
+    "selection_hash": "33b268ea7b9dbf1b6f0887ca58978661c3c1551b01e3bccc19e01efa743c209d",
+    "sampling_hash": "2b2caa47ebdca0bde40172ef9bc6ff6d4ae34f31e6707593827c55cd2b6717c6"
+  },
+  {
+    "query_id": "hotpotqa_train_distractor_v1_1::5a829f3255429954d2e2eb82",
+    "dataset": "hotpot",
+    "stratum": "bridge",
+    "selection_hash": "3744d7cb79834fb4d19d41c0fcd177e3e78b6a1f6d43b58f074d489692a168e9",
+    "sampling_hash": "2533f787b0960d9eb8c2f71ed425450ac306a5e9cb5dd20014cc7b83a11ece85"
+  },
+  {
+    "query_id": "hotpotqa_train_distractor_v1_1::5a8f5b4a5542992414482a76",
+    "dataset": "hotpot",
+    "stratum": "bridge",
+    "selection_hash": "3b82d46c2d35e67ecb7314fb2ef34f3c1c856d4aff37722750dbeb32983e2af7",
+    "sampling_hash": "489e17b98f148a92bcd8c1a8386a41050da17fe8157cc3529199ab7cdb4d93e5"
+  },
+  {
+    "query_id": "musique_ans_v1_0_train::2hop__143791_75878",
+    "dataset": "musique",
+    "stratum": "2hop",
+    "selection_hash": "075d1739a79e210cff085569a799f7b581a9df29a879b4a96d55cf1a02f0eb49",
+    "sampling_hash": "31e63aa271cd514da16ae70cc49cd63483e48bb21bfe6238a35c2bb9f944d5ea"
+  },
+  {
+    "query_id": "musique_ans_v1_0_train::2hop__105042_91604",
+    "dataset": "musique",
+    "stratum": "2hop",
+    "selection_hash": "16651357ff1513eb4864360475bb9ae0c1746f6c322ef4e91b23ceb90e59d6e3",
+    "sampling_hash": "3429772718ea385fd94fc3f9a90661eaf05ecf6939dcfa291cae55b8aa6828c9"
+  },
+  {
+    "query_id": "musique_ans_v1_0_train::2hop__22755_24960",
+    "dataset": "musique",
+    "stratum": "2hop",
+    "selection_hash": "1a7c316eda62c8d6722f6175426d93e29ab3699010ed4208b42b11cde3ddafd0",
+    "sampling_hash": "42d8a2b790a03cff18357479af3d0c9a196f81ac91e888e9e52ff068b323c64f"
+  },
+  {
+    "query_id": "musique_ans_v1_0_train::2hop__25908_872",
+    "dataset": "musique",
+    "stratum": "2hop",
+    "selection_hash": "265db5517cb1696d79927dce116aff518cf52fb1cea9f365f6ecb8a54b910fd7",
+    "sampling_hash": "3cafd64669bf4e71c9fcc58bb66131a0ed6b3811256a55110556225a04f707ff"
+  },
+  {
+    "query_id": "musique_ans_v1_0_train::2hop__430640_80728",
+    "dataset": "musique",
+    "stratum": "2hop",
+    "selection_hash": "320329cdee3aea755fc714f2015f548c684b48c4386ec414a6e55295860a8315",
+    "sampling_hash": "48cb01f6f513f135a9393456c7e31a0514cc337f489bb42611bc071583a1d09a"
+  },
+  {
+    "query_id": "musique_ans_v1_0_train::2hop__803994_47336",
+    "dataset": "musique",
+    "stratum": "2hop",
+    "selection_hash": "55dc96a440e7215430509ed80ecf9d1515bf3d3cb6cd91152d790f810c1e9694",
+    "sampling_hash": "207d342530c849e6b0a71494a4ecc655270c2f58aed50448b9f955f95150555a"
+  },
+  {
+    "query_id": "musique_ans_v1_0_train::2hop__381555_23142",
+    "dataset": "musique",
+    "stratum": "2hop",
+    "selection_hash": "8492ba410aa4c6c9169e89b4a7fee15654ae8183ba715f125d0e234008f9d6c1",
+    "sampling_hash": "489e2cd7ab8415dc15c064d2a8a9c001f425c9a9dcd7bfcc0f02b6a188c8b8af"
+  },
+  {
+    "query_id": "musique_ans_v1_0_train::2hop__333571_20497",
+    "dataset": "musique",
+    "stratum": "2hop",
+    "selection_hash": "8aea0ab22beb2865eaacd5a866644809a4dce27bca912b7352bf05653e7d3c50",
+    "sampling_hash": "4a25403eb147365e22d3d52e85d8630c25324e64bd41d4869c9c3742fc5c9c54"
+  }
+]
