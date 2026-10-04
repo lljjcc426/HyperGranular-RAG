@@ -1,0 +1,126 @@
+{
+  "main": [
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a88d42455429938390d3fc6",
+      "dataset": "hotpot",
+      "sampling_hash": "504294e1edad1f7048c69709e28690e5eb5c34a5ab575bea67374b481a33cb39"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a733c4a55429901807dafb3",
+      "dataset": "hotpot",
+      "sampling_hash": "4082bf6a1ba473d86c74fc7753f31187b720660dd30e53c8b9b958f10c5a08c2"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a78bc9b55429974737f7869",
+      "dataset": "hotpot",
+      "sampling_hash": "493148ce8042900490dbd37799e4d0ab71262892a0ba6ec61c97282689fdb498"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5adc89c9554299438c868de4",
+      "dataset": "hotpot",
+      "sampling_hash": "47ce9e028e061385bc9af43e98a6d7964667d7db40ceb16eeb5c87dc73c5d1d5"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5abb13a35542992ccd8e7f01",
+      "dataset": "hotpot",
+      "sampling_hash": "2ccaa6fa57d626d8d689995e572690dd6d447abd0656da846ba35c21c5ee0e58"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5ab4e66355429942dd415f9d",
+      "dataset": "hotpot",
+      "sampling_hash": "2b2caa47ebdca0bde40172ef9bc6ff6d4ae34f31e6707593827c55cd2b6717c6"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a829f3255429954d2e2eb82",
+      "dataset": "hotpot",
+      "sampling_hash": "2533f787b0960d9eb8c2f71ed425450ac306a5e9cb5dd20014cc7b83a11ece85"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a8f5b4a5542992414482a76",
+      "dataset": "hotpot",
+      "sampling_hash": "489e17b98f148a92bcd8c1a8386a41050da17fe8157cc3529199ab7cdb4d93e5"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__143791_75878",
+      "dataset": "musique",
+      "sampling_hash": "31e63aa271cd514da16ae70cc49cd63483e48bb21bfe6238a35c2bb9f944d5ea"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__105042_91604",
+      "dataset": "musique",
+      "sampling_hash": "3429772718ea385fd94fc3f9a90661eaf05ecf6939dcfa291cae55b8aa6828c9"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__22755_24960",
+      "dataset": "musique",
+      "sampling_hash": "42d8a2b790a03cff18357479af3d0c9a196f81ac91e888e9e52ff068b323c64f"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__25908_872",
+      "dataset": "musique",
+      "sampling_hash": "3cafd64669bf4e71c9fcc58bb66131a0ed6b3811256a55110556225a04f707ff"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__430640_80728",
+      "dataset": "musique",
+      "sampling_hash": "48cb01f6f513f135a9393456c7e31a0514cc337f489bb42611bc071583a1d09a"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__803994_47336",
+      "dataset": "musique",
+      "sampling_hash": "207d342530c849e6b0a71494a4ecc655270c2f58aed50448b9f955f95150555a"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__381555_23142",
+      "dataset": "musique",
+      "sampling_hash": "489e2cd7ab8415dc15c064d2a8a9c001f425c9a9dcd7bfcc0f02b6a188c8b8af"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__333571_20497",
+      "dataset": "musique",
+      "sampling_hash": "4a25403eb147365e22d3d52e85d8630c25324e64bd41d4869c9c3742fc5c9c54"
+    }
+  ],
+  "d0": [
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5a8a5b4955429970aeb702b4",
+      "dataset": "hotpot",
+      "sampling_hash": "04c90dbb2947bb6de26219f30cc3987034b2cc117d9bb588985afc3cd833638f"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5ae5553b55429960a22e02b9",
+      "dataset": "hotpot",
+      "sampling_hash": "07fdbc753fb0c7ffaa96653468503a806be09b7eb1a5fd2e0b6050b25caf0b11"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5ae5fe195542996de7b71abc",
+      "dataset": "hotpot",
+      "sampling_hash": "0b0e6dfe0fc082189c9cf4f240db0752eb0e7c17bea334d3bee3cf5322e1fb84"
+    },
+    {
+      "query_id": "hotpotqa_train_distractor_v1_1::5ac31685554299741d48a1c2",
+      "dataset": "hotpot",
+      "sampling_hash": "0f112fba5eae6f5635722f7053a3fa17cf65fd1d828df5096f0219d8dc589f83"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__129644_85808",
+      "dataset": "musique",
+      "sampling_hash": "0035e58d297a43a1c36fc06ee12798896bbf23e00a08ebccec625e0598723ee0"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__66459_55578",
+      "dataset": "musique",
+      "sampling_hash": "04c31157aaf075338cb7ad59a56ae604568d0877ddce476024de41e51be9036a"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__143481_696803",
+      "dataset": "musique",
+      "sampling_hash": "053128bd7b2e031e9fb980a5ad024ac39a7b100234ce23528e32cc148ae09a54"
+    },
+    {
+      "query_id": "musique_ans_v1_0_train::2hop__569777_62016",
+      "dataset": "musique",
+      "sampling_hash": "05e949f09e31b3afa9ef0a659be497211005811d3c181b7754769d0d72408258"
+    }
+  ]
+}
