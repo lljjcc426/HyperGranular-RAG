@@ -1,0 +1,11 @@
+{
+  "status": "POST_RUN_ORDER_AND_CONFIG_BINDING",
+  "rows": {
+    "hotpot_blocks": 9791,
+    "hotpot_queries": 1000,
+    "musique_blocks": 31130,
+    "musique_queries": 3000
+  },
+  "source": "Unchanged corpus/queries and completed encoding loop at c110195; no re-encoding or changed row order.",
+  "claim_limit": "Records executed construction/order; not an independent second embedding computation."
+}

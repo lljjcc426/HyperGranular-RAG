@@ -81,12 +81,17 @@ def encode():
     cpu=time.process_time();wall=time.perf_counter();torch.set_num_threads(1);torch.manual_seed(1729)
     tok=AutoTokenizer.from_pretrained(BGE,local_files_only=True);model=AutoModel.from_pretrained(BGE,local_files_only=True).eval().to('cuda')
     corpus=read(LOCAL/'corpus.json');queries=read(LOCAL/'queries.json');log=[]
+    identities=read(LOCAL/'embedding_identity.json') if (LOCAL/'embedding_identity.json').exists() else {}
     try:
         for tag in corpus:
             qq=[q for q in queries if q['tag']==tag]
             for kind,texts in [('blocks',[b['title']+'\n'+b['text'] for b in corpus[tag]]),('queries',['Represent this sentence for searching relevant passages: '+q['question'] for q in qq])]:
                 path=LOCAL/f'{tag}_{kind}.npy'
-                if path.exists():continue
+                ident=dict(model_revision=BGE.name,tokenizer_revision=BGE.name,pooling='CLS/L2',precision='float32',max_length=512,query_instruction='Represent this sentence for searching relevant passages: ',text_digest=digest(texts),row_ids=[b['id'] for b in corpus[tag]] if kind=='blocks' else [q['query_id'] for q in qq])
+                ikey=tag+'_'+kind
+                if path.exists():
+                    if identities.get(ikey)!=ident:raise ValueError('EMBEDDING_CACHE_IDENTITY_MISMATCH')
+                    continue
                 out=np.lib.format.open_memmap(LOCAL/f'{tag}_{kind}.pending.npy',mode='w+',dtype='float32',shape=(len(texts),1024));truncated=0;tokens=0;start=time.perf_counter()
                 for i in range(0,len(texts),8):
                     budget(time.perf_counter()-wall,time.process_time()-cpu,qa_reserve=True)
@@ -96,6 +101,7 @@ def encode():
                     out[i:i+len(x)]=x.cpu().numpy()
                     if i%800==0:out.flush();print(tag,kind,i,len(texts),round(time.perf_counter()-start,1),flush=True)
                 out.flush();del out;os.replace(LOCAL/f'{tag}_{kind}.pending.npy',path)
+                identities[ikey]=ident;save(LOCAL/'embedding_identity.json',identities)
                 log.append(dict(tag=tag,kind=kind,strings=len(texts),tokens=tokens,at_encoder_limit=truncated,seconds=time.perf_counter()-start))
         save(HERE/'ENCODING_COST.json',log)
     finally:

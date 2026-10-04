@@ -1,0 +1,9 @@
+{
+  "groups": 3999,
+  "panel": 128,
+  "old_dev_excluded": true,
+  "group_roles_disjoint": true,
+  "gold_mutation_inference_unchanged": true,
+  "all_source_offsets_in_range": true,
+  "actual_token_and_protocol_cache_identity": true
+}

@@ -6,3 +6,4 @@
 {"stage": "subsets", "cpu_seconds": 682.796875, "wall_seconds": 695.8415161999874, "gpu_process_seconds": 0}
 {"stage": "real_fit_capability", "cpu_seconds": 12.25, "wall_seconds": 12.738579299999401, "gpu_process_seconds": 12.738564500003122}
 {"stage": "train_seed_1729", "cpu_seconds": 236.984375, "wall_seconds": 255.3019987999869, "gpu_process_seconds": 255.30186360000516, "peak_gpu_bytes": 89729024}
+{"stage": "diagnostics_1729", "cpu_seconds": 30.96875, "wall_seconds": 31.67912809998961, "gpu_process_seconds": 0}
