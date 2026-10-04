@@ -12,3 +12,9 @@
 {"stage": "v25_A", "cpu_seconds": 137.25, "wall_seconds": 144.2017523000104, "gpu_process_seconds": 144.2017296000122, "peak_gpu_bytes": 6499948032}
 {"stage": "v26_verify_regression", "cpu_seconds": 130.09375, "wall_seconds": 131.39951020000444, "gpu_process_seconds": 131.3994873000047, "peak_gpu_bytes": 6381892096}
 {"stage": "v27_train", "cpu_seconds": 119.078125, "wall_seconds": 162.47638890000235, "gpu_process_seconds": 162.47637309999845, "status": "TRAINED_ADAPTER_ONLY", "optimizer_steps": 30}
+{"stage": "v27_grouped_development_comparison", "cpu_seconds": 194.890625, "wall_seconds": 207.15469219999795, "gpu_process_seconds": 207.1546731999988, "peak_gpu_bytes": 2216828928}
+{"stage": "v28_object_regression", "cpu_seconds": 71.09375, "wall_seconds": 78.91450210000039, "gpu_process_seconds": 78.91448740000487, "peak_gpu_bytes": 2186980352}
+{"stage": "v27_A", "cpu_seconds": 191.546875, "wall_seconds": 201.36258810000436, "gpu_process_seconds": 201.36254899999767, "peak_gpu_bytes": 2217712640}
+{"stage": "v27_B", "cpu_seconds": 487.96875, "wall_seconds": 524.2294091999938, "gpu_process_seconds": 524.2293864999956, "peak_gpu_bytes": 2223220224}
+{"stage": "v27_C", "cpu_seconds": 323.53125, "wall_seconds": 350.84824960000697, "gpu_process_seconds": 350.8482309999963, "peak_gpu_bytes": 2222830080}
+{"stage": "v29_grouped_development_comparison", "cpu_seconds": 162.125, "wall_seconds": 166.5171607999946, "gpu_process_seconds": 166.51713819999713, "peak_gpu_bytes": 6426003456}

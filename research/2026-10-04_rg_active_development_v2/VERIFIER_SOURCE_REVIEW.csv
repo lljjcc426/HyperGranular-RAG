@@ -1,0 +1,59 @@
+index,dataset,condition,fact_index,relation,source_supported,v23_fp16_accepted,v24_fp16_accepted,v26_fp16_accepted,v28_nf4_accepted
+0,hotpot,ANNOTATED_SUPPORT,0,became a general of,0,0,0,0,0
+0,hotpot,ANNOTATED_SUPPORT,1,became general after,0,0,0,1,0
+1,hotpot,ANNOTATED_SUPPORT,0,owns,0,0,0,1,0
+1,hotpot,ANNOTATED_SUPPORT,1,headquartered in,0,0,0,0,0
+1,hotpot,GOLDFREE_LEXICAL,0,headquartered in,1,1,0,1,1
+2,hotpot,ANNOTATED_SUPPORT,0,born on,1,1,0,1,1
+2,hotpot,GOLDFREE_LEXICAL,0,born on,1,1,0,1,0
+4,hotpot,ANNOTATED_SUPPORT,0,born on,1,1,0,1,1
+5,hotpot,ANNOTATED_SUPPORT,0,founded by,0,0,0,1,0
+5,hotpot,GOLDFREE_LEXICAL,0,died on,0,0,0,0,0
+5,hotpot,GOLDFREE_LEXICAL,1,died on,0,0,0,0,0
+6,hotpot,ANNOTATED_SUPPORT,0,operates,0,1,0,1,0
+6,hotpot,GOLDFREE_LEXICAL,0,built by,0,0,0,1,0
+6,hotpot,GOLDFREE_LEXICAL,1,operates,0,1,0,1,0
+7,hotpot,ANNOTATED_SUPPORT,0,published by,0,0,0,0,0
+7,hotpot,ANNOTATED_SUPPORT,1,published by,0,0,0,0,0
+7,hotpot,GOLDFREE_LEXICAL,0,published by,0,0,0,0,0
+8,hotpot,ANNOTATED_SUPPORT,0,has athletic director,0,0,0,0,0
+8,hotpot,ANNOTATED_SUPPORT,1,born in year,0,1,0,0,0
+8,hotpot,GOLDFREE_LEXICAL,0,has athletic director,0,0,0,1,0
+8,hotpot,GOLDFREE_LEXICAL,1,born in year,0,0,0,0,0
+8,hotpot,GOLDFREE_LEXICAL,2,born in year,0,0,0,1,0
+9,hotpot,ANNOTATED_SUPPORT,0,had NFC team,0,0,0,1,0
+9,hotpot,GOLDFREE_LEXICAL,0,had NFC team,0,0,0,1,0
+11,hotpot,GOLDFREE_LEXICAL,0,represents,0,0,0,0,0
+16,musique,ANNOTATED_SUPPORT,0,located in state,1,1,0,1,1
+16,musique,ANNOTATED_SUPPORT,1,held when,0,0,0,1,0
+16,musique,GOLDFREE_LEXICAL,0,held when,0,0,0,1,0
+17,musique,GOLDFREE_LEXICAL,0,forming in,0,0,0,0,0
+18,musique,ANNOTATED_SUPPORT,0,recorded by,1,0,0,1,0
+18,musique,ANNOTATED_SUPPORT,1,recorded for,0,0,0,0,0
+18,musique,GOLDFREE_LEXICAL,0,recorded for,0,0,0,1,0
+19,musique,ANNOTATED_SUPPORT,0,sung by,1,1,0,1,1
+19,musique,GOLDFREE_LEXICAL,0,by,0,0,0,0,0
+19,musique,GOLDFREE_LEXICAL,1,came out on,1,0,0,1,0
+20,musique,GOLDFREE_LEXICAL,0,has largest city,1,0,0,1,0
+21,musique,ANNOTATED_SUPPORT,0,has members elected on,0,0,0,1,0
+21,musique,GOLDFREE_LEXICAL,0,has sole power of,0,0,0,0,0
+21,musique,GOLDFREE_LEXICAL,1,has members elected on,0,0,0,0,0
+22,musique,ANNOTATED_SUPPORT,0,located in country,1,0,0,1,1
+22,musique,GOLDFREE_LEXICAL,0,first participated in Olympic games in,0,0,0,0,0
+23,musique,ANNOTATED_SUPPORT,0,in city,1,0,0,1,0
+23,musique,ANNOTATED_SUPPORT,1,ended on,0,0,0,0,0
+23,musique,GOLDFREE_LEXICAL,0,named after,0,0,0,0,0
+23,musique,GOLDFREE_LEXICAL,1,ended on,0,0,0,0,0
+24,musique,ANNOTATED_SUPPORT,0,capital of,0,0,0,1,0
+24,musique,GOLDFREE_LEXICAL,0,capital of,0,0,0,0,0
+25,musique,ANNOTATED_SUPPORT,0,has border latitude,0,0,0,1,0
+26,musique,ANNOTATED_SUPPORT,0,has father,1,1,0,1,1
+28,musique,ANNOTATED_SUPPORT,0,located in country,1,0,0,1,0
+28,musique,ANNOTATED_SUPPORT,1,has majority race,0,0,0,0,0
+28,musique,GOLDFREE_LEXICAL,0,has majority race,0,0,0,0,0
+29,musique,ANNOTATED_SUPPORT,0,first elected Muslim president,0,0,0,0,0
+30,musique,ANNOTATED_SUPPORT,0,located in,1,1,1,1,1
+30,musique,ANNOTATED_SUPPORT,1,established in,0,0,0,0,0
+30,musique,GOLDFREE_LEXICAL,0,established in,0,0,0,0,0
+31,musique,ANNOTATED_SUPPORT,0,has latest version named,0,0,0,1,0
+31,musique,GOLDFREE_LEXICAL,0,has latest version named,0,0,0,0,0

@@ -1,0 +1,24 @@
+{
+  "task_version": "RG-active-development-v2.0",
+  "version": "v27_shared_frontend_v2",
+  "precision": "nf4",
+  "adapter": "adapters/v27",
+  "reader": "unadapted original 3B FP16",
+  "threshold": 0.5,
+  "verifier_rule": "direct yes AND tail-blind exact object-location agreement; discrete 0/1, not calibrated probability",
+  "natural_execution_ready": true,
+  "development_basis": {
+    "schema_valid": "32/32",
+    "question_only_semantic_usable": "10/32",
+    "controlled_reference_plan_witness_queries": "8/32",
+    "predicted_plan_witness_queries": "6/32 (2 Hotpot, 4 MuSiQue), all six source-reviewed",
+    "two_diagnostic_window_complete_bundles": "0/32 for B and C; not an all-window search result",
+    "verifier_regression": "58 reviewed generated claims: 8 true accepts, 0 false accepts, 6 false rejects, 44 true rejects",
+    "same_nf4_adapter_off_on_exact_validation": "2/25 -> 11/25",
+    "fp16_adapter_off_on_exact_validation": "10/25 -> 10/25; no added adapter benefit in that precision"
+  },
+  "decision": "Proceed with a limited-capability exploratory comparison, not a claim of a reliable complete-chain frontend. Keep every D1 question and the common fallback. No D1 evidence was used for this choice.",
+  "resource_rule": "Use existing round/cumulative caps. Reserve 600 GPU-process seconds and 600 CPU seconds for readers/replay/reporting at query checkpoints; incomplete work is a resource outcome, never a method failure.",
+  "d1": "original 64; 8 methods; 16/32 probes; 1024 input tokens; no new sample, model or search",
+  "rerun": "first sampling hash per dataset; GB-feedback and KM-feedback at 16; bypass probe and reader caches"
+}

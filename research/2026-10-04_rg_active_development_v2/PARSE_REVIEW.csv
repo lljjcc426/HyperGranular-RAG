@@ -1,0 +1,33 @@
+index,dataset,schema_valid,contract_pass,direction,target_role,variable_roles,conditions,semantic_usable,issue,contract_recheck
+0,hotpot,1,0,1,0,0,0,0,No answer variable; temporal conflict target lost,final lexical provenance validator; original model output unchanged
+1,hotpot,1,1,1,1,1,1,1,Usable owner-airline-headquarters chain,final lexical provenance validator; original model output unchanged
+2,hotpot,1,0,0,0,0,1,0,Answer is player instead of birth date; disconnected,final lexical provenance validator; original model output unchanged
+3,hotpot,1,1,0,0,1,0,0,Award nomination substitutes for requested performance film,final lexical provenance validator; original model output unchanged
+4,hotpot,1,1,0,1,0,0,0,Waterfall/work variable is assigned a birth date; year omitted,final lexical provenance validator; original model output unchanged
+5,hotpot,1,0,0,0,0,1,0,Founder direction reversed and answer missing,final lexical provenance validator; original model output unchanged
+6,hotpot,1,0,1,0,0,0,0,No requested squadron answer and invented condition phrase,final lexical provenance validator; original model output unchanged
+7,hotpot,1,1,1,1,1,1,1,Usable novel-author-publisher chain; Anthony spelling remains literal,final lexical provenance validator; original model output unchanged
+8,hotpot,1,1,0,0,0,0,0,School and director conflated; year target is not preserved,final lexical provenance validator; original model output unchanged
+9,hotpot,1,1,1,1,1,1,1,Event to NFC team retained; nonstandard predicate wording,final lexical provenance validator; original model output unchanged
+10,hotpot,1,1,0,0,0,1,0,attended by reverses role; requested stake becomes time relation,final lexical provenance validator; original model output unchanged
+11,hotpot,1,1,1,1,1,0,0,Current time condition now omitted,final lexical provenance validator; original model output unchanged
+12,hotpot,1,0,0,0,0,0,0,Invented naming relation; machinery/bell target lost,final lexical provenance validator; original model output unchanged
+13,hotpot,1,0,1,0,0,1,0,Acquisition condition present but requested answer variable absent,final lexical provenance validator; original model output unchanged
+14,hotpot,1,1,0,0,0,0,0,Requested guest artist replaced by producer-album target,final lexical provenance validator; original model output unchanged
+15,hotpot,1,0,0,0,0,1,0,Voicing assigned to series; extra answer role,final lexical provenance validator; original model output unchanged
+16,musique,1,1,1,0,0,1,0,Question asks when; output asks which tournament,final lexical provenance validator; original model output unchanged
+17,musique,1,1,0,0,0,0,0,New island condition attached to filming; location roles wrong,final lexical provenance validator; original model output unchanged
+18,musique,1,1,1,1,1,1,1,Album-artist-label roles retained,final lexical provenance validator; original model output unchanged
+19,musique,1,0,1,0,0,0,0,Requested release date replaced by created work,final lexical provenance validator; original model output unchanged
+20,musique,1,1,1,1,1,1,1,Place-county-largest-city chain retained,final lexical provenance validator; original model output unchanged
+21,musique,1,0,0,0,0,0,0,Invalid body variable and no grounded identity chain,final lexical provenance validator; original model output unchanged
+22,musique,1,1,1,1,1,1,1,Source question complete/compete typo retained; chain and first condition usable,final lexical provenance validator; original model output unchanged
+23,musique,1,1,0,0,0,0,0,Village/city and named-after directions reversed; end date lost,final lexical provenance validator; original model output unchanged
+24,musique,1,1,1,1,1,1,1,Birthplace-county chain retained,final lexical provenance validator; original model output unchanged
+25,musique,1,1,1,1,1,1,1,Glacier-continent-border-latitude roles retained; spelling not repaired,final lexical provenance validator; original model output unchanged
+26,musique,1,1,1,1,1,1,1,Composer has-father direction retained,final lexical provenance validator; original model output unchanged
+27,musique,1,0,0,0,0,0,0,Unidentified island retained as unresolved task; generated founder chain incorrect,final lexical provenance validator; original model output unchanged
+28,musique,1,1,1,1,1,1,1,Building-country-majority group chain retained,final lexical provenance validator; original model output unchanged
+29,musique,1,1,1,1,1,0,0,First Muslim president retained but elected condition omitted,final lexical provenance validator; original model output unchanged
+30,musique,1,1,0,1,1,1,0,Place is made establishment agent rather than school location,final lexical provenance validator; original model output unchanged
+31,musique,1,1,0,0,0,0,0,Producer made versioned object instead of OS X,final lexical provenance validator; original model output unchanged

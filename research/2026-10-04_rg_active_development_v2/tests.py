@@ -9,6 +9,9 @@ class Contracts(unittest.TestCase):
         self.assertFalse(plan_contract('Who?',[])[0])
         r=dict(status='ok',relations=[dict(head='?v1',relation='knows',tail='?answer',qualifiers=[])])
         self.assertIn('DISCONNECTED',plan_contract('Who?',r)[1])
+        self.assertIsNotNone(qualifier_origin('the country where the Layou River is found','country where Layou River is found'))
+        self.assertIsNone(qualifier_origin('Who was born in Rome?','?'))
+        self.assertIsNone(qualifier_origin('Who was born in Rome?','died in Rome'))
     def test_exact_location_occurrence_and_identity(self):
         w=engine.Window('w','d','Ada Lane','Ada Lane wrote Rose. She wrote Rose.',(('u','Ada Lane wrote Rose. She wrote Rose.',0,35),))
         m=dict(sid='s0',text='Rose',occurrence=1,identity='')
@@ -63,4 +66,4 @@ class Contracts(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'CONSTANT_BINDING'):
             recover(dict(slot=0,head=m('Ada Lane'),tail=m('Rose'),support_sids=['s0'],status='supported'),a,ss,cat)
 
-if __name__=='__main__':unittest.main(verbosity=2)
+if __name__=='__main__':unittest.main(testRunner=unittest.TextTestRunner(stream=sys.stdout,verbosity=2))

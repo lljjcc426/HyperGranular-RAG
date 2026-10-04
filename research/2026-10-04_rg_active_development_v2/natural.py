@@ -28,7 +28,7 @@ def index():
 def detail_cost(d):
     gs=d['generation'] if isinstance(d['generation'],list) else [d['generation']]
     vs=d['verification']
-    return dict(extraction_calls=len(gs),verification_calls=len(vs),
+    return dict(extraction_calls=len(gs),verification_calls=sum(v.get('model_calls',1) for v in vs),
         seconds=sum(r['seconds'] for r in gs+vs),input_tokens=sum(r['input_tokens'] for r in gs+vs),
         output_tokens=sum(r.get('output_tokens',0) for r in gs+vs))
 
@@ -38,11 +38,14 @@ def execute(rerun=False):
     version=selection['version'];threshold=selection['threshold']
     cc=sorted(cases('D1'),key=lambda c:c['sampling_hash'])
     if rerun:cc=[next(c for c in cc if c['tag']==tag) for tag in ('hotpot','musique')]
-    lm=LM();enc=Encoder('cpu')
+    adapted=bool(selection.get('adapter'))
+    lm=LM(quantized=selection.get('precision')=='nf4',adapter=HERE/selection['adapter'] if adapted else None);enc=Encoder('cpu')
     try:
         for c in cc:
-            folder=LOCAL/'d1'/c['sampling_hash'];outpath=folder/('rerun.json' if rerun else 'main.json')
+            folder=LOCAL/'d1'/c['sampling_hash'];outpath=folder/('frontend_rerun.json' if rerun else 'frontend_main.json')
             if outpath.exists():continue
+            if not rerun:
+                budget(time.perf_counter()-lm.wall+600,time.process_time()-lm.cpu+600)
             ix=read(folder/'index.json');ws=[engine.Window(**w) for w in ix['windows']];catalog=ix['catalog'];question=c['query']['question']
             with np.load(folder/'vectors.npz') as z:x=z['x'];q=z['q']
             cachepath=folder/'probes.jsonl';stored={r['window_id']:r for r in rows(cachepath)} if cachepath.exists() else {}
@@ -72,9 +75,10 @@ def execute(rerun=False):
                     available=[k for k in result['snapshots'] if k<=b]
                     snap=result['snapshots'][max(available)] if available else dict(states=[],complete=False,conditional_texts=[],leaf_count=0,accepted_facts=0)
                     context=render(question,ws,snap['states'],len(slots) or 1,lm.ids)
-                    hit=context['prompt'] in answers and not rerun
-                    answer=answers[context['prompt']] if hit else lm.generate(context['prompt'],'You are a careful evidence assistant.',32,version+'_D1_reader'+('_rerun' if rerun else ''))
-                    answers[context['prompt']]=answer;trace=result['trace'][:b];used=[costs[t['window']] for t in trace]
+                    # Reader runs later in a separate unadapted FP16 process.
+                    # This avoids changing its precision or exceeding 8GB VRAM.
+                    hit=False;answer=dict(status='PENDING_UNADAPTED_FP16_READER',seconds=0.)
+                    trace=result['trace'][:b];used=[costs[t['window']] for t in trace]
                     r=dict(query_id=c['query_id'],tag=c['tag'],stratum=c['stratum'],method=method,budget=b,version=version,
                         parse=parsed if method!='Dense-window' else None,slots=slots if method!='Dense-window' else [],
                         context=context,answer=answer,reader_cache_hit=hit,trace=trace,
@@ -84,13 +88,29 @@ def execute(rerun=False):
                         logical_parse_seconds=parsed['generation']['seconds'] if method!='Dense-window' else 0,
                         logical_index_seconds=ix['seconds'],logical_reader_seconds=answer['seconds'],
                         logical_conditional_seconds=sum(embeddings[t][1] for t in snap['conditional_texts']),
+                        search_transaction_seconds=result['seconds'],search_transaction_max_probes=16 if rerun else 32,
                         conditional_queries=len(snap['conditional_texts']),leaf_count=snap['leaf_count'],
                         **{'logical_'+key:sum(z[key] for z in used) for key in ('extraction_calls','verification_calls','seconds','input_tokens','output_tokens')})
                     records.append(r)
             save(outpath,records);print('D1',c['tag'],c['query_id'],'rerun',rerun,flush=True)
     finally:lm.close('D1_rerun' if rerun else 'D1_main')
 
+def readers(rerun=False):
+    lm=LM()
+    try:
+        for c in sorted(cases('D1'),key=lambda c:c['sampling_hash']):
+            folder=LOCAL/'d1'/c['sampling_hash'];src=folder/('frontend_rerun.json' if rerun else 'frontend_main.json');dest=folder/('rerun.json' if rerun else 'main.json')
+            if not src.exists() or dest.exists():continue
+            records=read(src);cache={}
+            for r in records:
+                prompt=r['context']['prompt'];hit=prompt in cache and not rerun
+                answer=cache[prompt] if hit else lm.generate(prompt,'You are a careful evidence assistant.',32,'D1_unadapted_fp16_reader'+('_rerun' if rerun else ''))
+                cache[prompt]=answer;r.update(answer=answer,reader_cache_hit=hit,logical_reader_seconds=answer['seconds'])
+            save(dest,records);print('reader',c['query_id'],'rerun',rerun,flush=True)
+    finally:lm.close('D1_reader_rerun' if rerun else 'D1_reader_main')
+
 if __name__=='__main__':
-    ap=argparse.ArgumentParser();ap.add_argument('action',choices=['index','run','rerun']);a=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('action',choices=['index','run','rerun','read','read-rerun']);a=ap.parse_args()
     if a.action=='index':index()
+    elif a.action.startswith('read'):readers(a.action=='read-rerun')
     else:execute(a.action=='rerun')

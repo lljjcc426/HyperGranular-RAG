@@ -8,7 +8,7 @@ def run(args):
     path=LOCAL/(args.round+'_'+args.phase+'.jsonl')
     done={r['index'] for r in rows(path)} if path.exists() else set()
     packets=read(V1/'local/d0_packets.json');cc={c['query_id']:c for c in cases('D0')}
-    lm=LM(quantized=True,adapter=HERE/'adapters/v27') if args.round=='v27' else LM()
+    lm=LM(quantized=args.round=='v27',adapter=HERE/'adapters/v27') if args.round in ('v27','v29') else LM()
     try:
         for i,p in enumerate(packets):
             if i in done or (args.indices and i not in args.indices):continue
@@ -18,7 +18,7 @@ def run(args):
                 from references import plans
                 ref=plans(i)
                 pred={r['index']:r for r in rows(LOCAL/(args.round+'_A.jsonl'))}[i]
-                slots=ref if args.phase=='B' else pred['slots']
+                slots=ref if args.phase=='B' else plan_contract(q,pred['generation']['raw'])[0]
                 selected=[('ANNOTATED_SUPPORT',next(w for w in ws if w.id==p['annotation_window']['id']))]
                 words=lambda s:set(re.findall(r'[a-z0-9]+',s.lower()))
                 lexical=sorted(ws,key=lambda w:(-len(words(q)&words(w.text)),w.id))

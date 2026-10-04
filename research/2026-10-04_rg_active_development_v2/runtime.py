@@ -57,6 +57,18 @@ class LM:
             input_digest=digest(ids),schema_digest=digest(schema),stage=stage)
         append(LOCAL/'calls.jsonl',dict(kind='generate',**r));return r
     def verify(self,payload,stage):
+        if stage.startswith(('v27_','v29_')):
+            from verification import serialize
+            from schemas import VERIFY_PROMPT
+            from verify_object import check
+            with self.base_only():
+                r=self.generate(serialize(payload),VERIFY_PROMPT,8,stage+'_direct')
+                obj=check(self,payload,stage+'_object')
+            label=r['text'].strip().lower();g=obj['generation']
+            return dict(score=float(label=='yes' and obj['matched']),label=label,object_check=obj,
+                input_tokens=r['input_tokens']+g['input_tokens'],output_tokens=r['output_tokens']+g['output_tokens'],
+                seconds=r['seconds']+g['seconds'],input_digest=digest([r['input_digest'],g['input_digest']]),
+                score_kind='two_checks_accept_not_probability',model_calls=2)
         if not stage.startswith(('v20_','v21_','v22_')):
             from verification import serialize
             from schemas import VERIFY_PROMPT,VERIFY_V24

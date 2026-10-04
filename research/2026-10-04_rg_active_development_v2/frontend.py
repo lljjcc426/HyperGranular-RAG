@@ -4,6 +4,22 @@ from dataclasses import dataclass,asdict
 import re,unicodedata
 
 def normalized(text):return ' '.join(unicodedata.normalize('NFKC',text).split())
+def qualifier_origin(question,phrase):
+    """Traceable lexical association, allowing omitted function words only."""
+    if not isinstance(phrase,str):return None
+    q=normalized(question);p=normalized(phrase)
+    if p and any(ch.isalnum() for ch in p) and p in q:return dict(text=q[q.index(p):q.index(p)+len(p)],rule='exact')
+    def tokens(s):return [(m.group().casefold(),m.start(),m.end()) for m in re.finditer(r'\w+|[^\w\s]',s)]
+    qt=tokens(q);pt=tokens(p);skip={'a','an','the','of','in','on','was','is','were','are'}
+    if not pt or not any(t[0].isalnum() for t in pt):return None
+    for start in range(len(qt)):
+        j=start;k=0
+        while j<len(qt) and k<len(pt):
+            if qt[j][0]==pt[k][0]:j+=1;k+=1
+            elif qt[j][0] in skip:j+=1
+            else:break
+        if k==len(pt):return dict(text=q[qt[start][1]:qt[j-1][2]],rule='case_and_function_word_omission')
+    return None
 def plan_contract(question,raw):
     errors=[]
     if not isinstance(raw,dict) or set(raw)!= {'status','relations'}:return [],['TOP_OBJECT']
@@ -15,7 +31,7 @@ def plan_contract(question,raw):
     for j,r in enumerate(rs):
         if not isinstance(r,dict) or set(r)!= {'head','relation','tail','qualifiers'}:return [],['RELATION_KEYS']
         if any(not isinstance(r[k],str) or not r[k].strip() for k in ('head','relation','tail')):return [],['STRING_TYPE']
-        if not isinstance(r['qualifiers'],list) or any(not isinstance(q,str) or normalized(q) not in normalized(question) for q in r['qualifiers']):errors.append('QUALIFIER_ORIGIN')
+        if not isinstance(r['qualifiers'],list) or any(qualifier_origin(question,q) is None for q in r['qualifiers']):errors.append('QUALIFIER_ORIGIN')
         for k in ('head','tail'):
             x=r[k]
             if x.startswith('?'):
@@ -35,7 +51,7 @@ def plan_contract(question,raw):
     return ([] if errors else slots),sorted(set(errors))
 
 def parse(lm,question,stage):
-    if stage.startswith('v27_'):
+    if stage.startswith(('v27_','v29_')):
         from parse_develop import SIMPLE
         prompt=SIMPLE
     elif stage.startswith('v25_'):
@@ -102,7 +118,9 @@ def recover(raw,w,slots,catalog):
     slot=slots[i];payload=verification_payload(w,slot,h,t,ss)
     f=Fact(slot['id'],h['identity'],t['identity'],json.dumps([s['text'] for s in spans],ensure_ascii=False),w.id,
         entity(h['identity'],w,catalog),entity(t['identity'],w,catalog),0.,conditions=json.dumps(slot.get('qualifiers',[])),
-        provenance=dict(head=h,tail=t,spans=spans,title=w.title,payload=payload))
+        provenance=dict(head=h,tail=t,spans=spans,title=w.title,payload=payload,
+            verification_spans=[dict(original_id=sid,text=text,start=a,end=b) for sid,text,a,b in w.sentences],
+            evidence_scope='entire_requested_window; model-cited spans retained separately'))
     return f,payload
 
 def extract(lm,question,slots,w,catalog,stage):
@@ -150,7 +168,7 @@ def render(question,windows,states,slot_count,tokenize,limit=1024):
         u={};o=[]
         for w in sorted((wm[i] for i in {f.window for f in fs}),key=lambda w:rank[w.id]):add(u,o,w)
         visible={(k[0],k[1],k[2],u[k][1]) for k in o}
-        if len(tokenize(prompt(u,o)))<=limit and all((s['original_id'],s['start'],s['end'],s['text']) in visible for f in fs for s in f.provenance['spans']):
+        if len(tokenize(prompt(u,o)))<=limit and all((s['original_id'],s['start'],s['end'],s['text']) in visible for f in fs for s in f.provenance.get('verification_spans',f.provenance['spans'])):
             units,order,chosen=u,o,fs;break
         oversized+=1
     skipped=0

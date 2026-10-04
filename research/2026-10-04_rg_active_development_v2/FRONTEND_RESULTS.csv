@@ -1,0 +1,120 @@
+version,dataset,path,condition,metric,numerator,denominator,value,scope
+v27,all,A,QUESTION_ONLY,schema_valid,32,32,1.0,assistant_question_review; exposed D0; partly adapted
+v27,all,A,QUESTION_ONLY,contract_pass,22,32,0.6875,assistant_question_review; exposed D0; partly adapted
+v27,all,A,QUESTION_ONLY,direction,17,32,0.53125,assistant_question_review; exposed D0; partly adapted
+v27,all,A,QUESTION_ONLY,target_role,14,32,0.4375,assistant_question_review; exposed D0; partly adapted
+v27,all,A,QUESTION_ONLY,variable_roles,14,32,0.4375,assistant_question_review; exposed D0; partly adapted
+v27,all,A,QUESTION_ONLY,conditions,17,32,0.53125,assistant_question_review; exposed D0; partly adapted
+v27,all,A,QUESTION_ONLY,semantic_usable,10,32,0.3125,assistant_question_review; exposed D0; partly adapted
+v27,hotpot,A,QUESTION_ONLY,schema_valid,16,16,1.0,assistant_question_review; exposed D0; partly adapted
+v27,hotpot,A,QUESTION_ONLY,contract_pass,9,16,0.5625,assistant_question_review; exposed D0; partly adapted
+v27,hotpot,A,QUESTION_ONLY,direction,7,16,0.4375,assistant_question_review; exposed D0; partly adapted
+v27,hotpot,A,QUESTION_ONLY,target_role,5,16,0.3125,assistant_question_review; exposed D0; partly adapted
+v27,hotpot,A,QUESTION_ONLY,variable_roles,5,16,0.3125,assistant_question_review; exposed D0; partly adapted
+v27,hotpot,A,QUESTION_ONLY,conditions,8,16,0.5,assistant_question_review; exposed D0; partly adapted
+v27,hotpot,A,QUESTION_ONLY,semantic_usable,3,16,0.1875,assistant_question_review; exposed D0; partly adapted
+v27,musique,A,QUESTION_ONLY,schema_valid,16,16,1.0,assistant_question_review; exposed D0; partly adapted
+v27,musique,A,QUESTION_ONLY,contract_pass,13,16,0.8125,assistant_question_review; exposed D0; partly adapted
+v27,musique,A,QUESTION_ONLY,direction,10,16,0.625,assistant_question_review; exposed D0; partly adapted
+v27,musique,A,QUESTION_ONLY,target_role,9,16,0.5625,assistant_question_review; exposed D0; partly adapted
+v27,musique,A,QUESTION_ONLY,variable_roles,9,16,0.5625,assistant_question_review; exposed D0; partly adapted
+v27,musique,A,QUESTION_ONLY,conditions,9,16,0.5625,assistant_question_review; exposed D0; partly adapted
+v27,musique,A,QUESTION_ONLY,semantic_usable,7,16,0.4375,assistant_question_review; exposed D0; partly adapted
+v27,all,B,ANNOTATED_SUPPORT,windows_available,32,32,1.0,REFERENCE_PLAN_DIAGNOSTIC
+v27,all,B,ANNOTATED_SUPPORT,queries_with_located_fact,20,32,0.625,REFERENCE_PLAN_DIAGNOSTIC
+v27,all,B,ANNOTATED_SUPPORT,queries_with_accepted_witness,7,32,0.21875,REFERENCE_PLAN_DIAGNOSTIC
+v27,all,B,ANNOTATED_SUPPORT,accepted_fraction_of_located_facts,7,22,0.3181818181818182,REFERENCE_PLAN_DIAGNOSTIC
+v27,all,B,ANNOTATED_SUPPORT,hard_rejected_candidates,21,32,0.65625,per query; not semantic error count
+v27,all,B,GOLDFREE_LEXICAL,windows_available,32,32,1.0,REFERENCE_PLAN_DIAGNOSTIC
+v27,all,B,GOLDFREE_LEXICAL,queries_with_located_fact,18,32,0.5625,REFERENCE_PLAN_DIAGNOSTIC
+v27,all,B,GOLDFREE_LEXICAL,queries_with_accepted_witness,1,32,0.03125,REFERENCE_PLAN_DIAGNOSTIC
+v27,all,B,GOLDFREE_LEXICAL,accepted_fraction_of_located_facts,1,21,0.047619047619047616,REFERENCE_PLAN_DIAGNOSTIC
+v27,all,B,GOLDFREE_LEXICAL,hard_rejected_candidates,32,32,1.0,per query; not semantic error count
+v27,all,B,TWO_DIAGNOSTIC_WINDOWS,complete_bundle_queries,0,32,0.0,includes one support-selected window; not deployment recall
+v27,hotpot,B,ANNOTATED_SUPPORT,windows_available,16,16,1.0,REFERENCE_PLAN_DIAGNOSTIC
+v27,hotpot,B,ANNOTATED_SUPPORT,queries_with_located_fact,7,16,0.4375,REFERENCE_PLAN_DIAGNOSTIC
+v27,hotpot,B,ANNOTATED_SUPPORT,queries_with_accepted_witness,2,16,0.125,REFERENCE_PLAN_DIAGNOSTIC
+v27,hotpot,B,ANNOTATED_SUPPORT,accepted_fraction_of_located_facts,2,8,0.25,REFERENCE_PLAN_DIAGNOSTIC
+v27,hotpot,B,ANNOTATED_SUPPORT,hard_rejected_candidates,16,16,1.0,per query; not semantic error count
+v27,hotpot,B,GOLDFREE_LEXICAL,windows_available,16,16,1.0,REFERENCE_PLAN_DIAGNOSTIC
+v27,hotpot,B,GOLDFREE_LEXICAL,queries_with_located_fact,8,16,0.5,REFERENCE_PLAN_DIAGNOSTIC
+v27,hotpot,B,GOLDFREE_LEXICAL,queries_with_accepted_witness,1,16,0.0625,REFERENCE_PLAN_DIAGNOSTIC
+v27,hotpot,B,GOLDFREE_LEXICAL,accepted_fraction_of_located_facts,1,8,0.125,REFERENCE_PLAN_DIAGNOSTIC
+v27,hotpot,B,GOLDFREE_LEXICAL,hard_rejected_candidates,17,16,1.0625,per query; not semantic error count
+v27,hotpot,B,TWO_DIAGNOSTIC_WINDOWS,complete_bundle_queries,0,16,0.0,includes one support-selected window; not deployment recall
+v27,musique,B,ANNOTATED_SUPPORT,windows_available,16,16,1.0,REFERENCE_PLAN_DIAGNOSTIC
+v27,musique,B,ANNOTATED_SUPPORT,queries_with_located_fact,13,16,0.8125,REFERENCE_PLAN_DIAGNOSTIC
+v27,musique,B,ANNOTATED_SUPPORT,queries_with_accepted_witness,5,16,0.3125,REFERENCE_PLAN_DIAGNOSTIC
+v27,musique,B,ANNOTATED_SUPPORT,accepted_fraction_of_located_facts,5,14,0.35714285714285715,REFERENCE_PLAN_DIAGNOSTIC
+v27,musique,B,ANNOTATED_SUPPORT,hard_rejected_candidates,5,16,0.3125,per query; not semantic error count
+v27,musique,B,GOLDFREE_LEXICAL,windows_available,16,16,1.0,REFERENCE_PLAN_DIAGNOSTIC
+v27,musique,B,GOLDFREE_LEXICAL,queries_with_located_fact,10,16,0.625,REFERENCE_PLAN_DIAGNOSTIC
+v27,musique,B,GOLDFREE_LEXICAL,queries_with_accepted_witness,0,16,0.0,REFERENCE_PLAN_DIAGNOSTIC
+v27,musique,B,GOLDFREE_LEXICAL,accepted_fraction_of_located_facts,0,13,0.0,REFERENCE_PLAN_DIAGNOSTIC
+v27,musique,B,GOLDFREE_LEXICAL,hard_rejected_candidates,15,16,0.9375,per query; not semantic error count
+v27,musique,B,TWO_DIAGNOSTIC_WINDOWS,complete_bundle_queries,0,16,0.0,includes one support-selected window; not deployment recall
+v27,all,C,ANNOTATED_SUPPORT,windows_available,32,32,1.0,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,all,C,ANNOTATED_SUPPORT,queries_with_located_fact,16,32,0.5,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,all,C,ANNOTATED_SUPPORT,queries_with_accepted_witness,5,32,0.15625,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,all,C,ANNOTATED_SUPPORT,accepted_fraction_of_located_facts,5,17,0.29411764705882354,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,all,C,ANNOTATED_SUPPORT,hard_rejected_candidates,13,32,0.40625,per query; not semantic error count
+v27,all,C,GOLDFREE_LEXICAL,windows_available,32,32,1.0,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,all,C,GOLDFREE_LEXICAL,queries_with_located_fact,11,32,0.34375,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,all,C,GOLDFREE_LEXICAL,queries_with_accepted_witness,1,32,0.03125,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,all,C,GOLDFREE_LEXICAL,accepted_fraction_of_located_facts,1,11,0.09090909090909091,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,all,C,GOLDFREE_LEXICAL,hard_rejected_candidates,22,32,0.6875,per query; not semantic error count
+v27,all,C,TWO_DIAGNOSTIC_WINDOWS,complete_bundle_queries,0,32,0.0,includes one support-selected window; not deployment recall
+v27,hotpot,C,ANNOTATED_SUPPORT,windows_available,16,16,1.0,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,hotpot,C,ANNOTATED_SUPPORT,queries_with_located_fact,4,16,0.25,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,hotpot,C,ANNOTATED_SUPPORT,queries_with_accepted_witness,1,16,0.0625,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,hotpot,C,ANNOTATED_SUPPORT,accepted_fraction_of_located_facts,1,4,0.25,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,hotpot,C,ANNOTATED_SUPPORT,hard_rejected_candidates,9,16,0.5625,per query; not semantic error count
+v27,hotpot,C,GOLDFREE_LEXICAL,windows_available,16,16,1.0,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,hotpot,C,GOLDFREE_LEXICAL,queries_with_located_fact,4,16,0.25,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,hotpot,C,GOLDFREE_LEXICAL,queries_with_accepted_witness,1,16,0.0625,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,hotpot,C,GOLDFREE_LEXICAL,accepted_fraction_of_located_facts,1,4,0.25,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,hotpot,C,GOLDFREE_LEXICAL,hard_rejected_candidates,10,16,0.625,per query; not semantic error count
+v27,hotpot,C,TWO_DIAGNOSTIC_WINDOWS,complete_bundle_queries,0,16,0.0,includes one support-selected window; not deployment recall
+v27,musique,C,ANNOTATED_SUPPORT,windows_available,16,16,1.0,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,musique,C,ANNOTATED_SUPPORT,queries_with_located_fact,12,16,0.75,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,musique,C,ANNOTATED_SUPPORT,queries_with_accepted_witness,4,16,0.25,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,musique,C,ANNOTATED_SUPPORT,accepted_fraction_of_located_facts,4,13,0.3076923076923077,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,musique,C,ANNOTATED_SUPPORT,hard_rejected_candidates,4,16,0.25,per query; not semantic error count
+v27,musique,C,GOLDFREE_LEXICAL,windows_available,16,16,1.0,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,musique,C,GOLDFREE_LEXICAL,queries_with_located_fact,7,16,0.4375,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,musique,C,GOLDFREE_LEXICAL,queries_with_accepted_witness,0,16,0.0,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,musique,C,GOLDFREE_LEXICAL,accepted_fraction_of_located_facts,0,7,0.0,PREDICTED_PLAN_CASCADE; no reference plan injection
+v27,musique,C,GOLDFREE_LEXICAL,hard_rejected_candidates,12,16,0.75,per query; not semantic error count
+v27,musique,C,TWO_DIAGNOSTIC_WINDOWS,complete_bundle_queries,0,16,0.0,includes one support-selected window; not deployment recall
+v27_nf4_adapter_off,mixed,ADAPT_VALIDATION,parse,exact_target_match,0,14,0.0,grouped exposed development; exact match is stricter than semantic equivalence
+v27_nf4_adapter_off,mixed,ADAPT_VALIDATION,extract,exact_target_match,2,11,0.18181818181818182,grouped exposed development; exact match is stricter than semantic equivalence
+v27_nf4_adapter_off,mixed,ADAPT_VALIDATION,all,exact_target_match,2,25,0.08,grouped exposed development; exact match is stricter than semantic equivalence
+v27_nf4_adapter_on,mixed,ADAPT_VALIDATION,parse,exact_target_match,4,14,0.2857142857142857,grouped exposed development; exact match is stricter than semantic equivalence
+v27_nf4_adapter_on,mixed,ADAPT_VALIDATION,extract,exact_target_match,7,11,0.6363636363636364,grouped exposed development; exact match is stricter than semantic equivalence
+v27_nf4_adapter_on,mixed,ADAPT_VALIDATION,all,exact_target_match,11,25,0.44,grouped exposed development; exact match is stricter than semantic equivalence
+v23_fp16,all,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,true_accept_recall,8,14,0.5714285714285714,assistant source review of model-generated candidates; not overall extraction recall
+v23_fp16,all,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,false_accept_rate,3,44,0.06818181818181818,exposed development; versions and precision differ as stated
+v23_fp16,hotpot,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,true_accept_recall,4,4,1.0,assistant source review of model-generated candidates; not overall extraction recall
+v23_fp16,hotpot,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,false_accept_rate,3,21,0.14285714285714285,exposed development; versions and precision differ as stated
+v23_fp16,musique,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,true_accept_recall,4,10,0.4,assistant source review of model-generated candidates; not overall extraction recall
+v23_fp16,musique,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,false_accept_rate,0,23,0.0,exposed development; versions and precision differ as stated
+v24_fp16,all,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,true_accept_recall,1,14,0.07142857142857142,assistant source review of model-generated candidates; not overall extraction recall
+v24_fp16,all,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,false_accept_rate,0,44,0.0,exposed development; versions and precision differ as stated
+v24_fp16,hotpot,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,true_accept_recall,0,4,0.0,assistant source review of model-generated candidates; not overall extraction recall
+v24_fp16,hotpot,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,false_accept_rate,0,21,0.0,exposed development; versions and precision differ as stated
+v24_fp16,musique,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,true_accept_recall,1,10,0.1,assistant source review of model-generated candidates; not overall extraction recall
+v24_fp16,musique,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,false_accept_rate,0,23,0.0,exposed development; versions and precision differ as stated
+v26_fp16,all,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,true_accept_recall,14,14,1.0,assistant source review of model-generated candidates; not overall extraction recall
+v26_fp16,all,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,false_accept_rate,17,44,0.38636363636363635,exposed development; versions and precision differ as stated
+v26_fp16,hotpot,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,true_accept_recall,4,4,1.0,assistant source review of model-generated candidates; not overall extraction recall
+v26_fp16,hotpot,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,false_accept_rate,10,21,0.47619047619047616,exposed development; versions and precision differ as stated
+v26_fp16,musique,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,true_accept_recall,10,10,1.0,assistant source review of model-generated candidates; not overall extraction recall
+v26_fp16,musique,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,false_accept_rate,7,23,0.30434782608695654,exposed development; versions and precision differ as stated
+v28_nf4,all,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,true_accept_recall,8,14,0.5714285714285714,assistant source review of model-generated candidates; not overall extraction recall
+v28_nf4,all,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,false_accept_rate,0,44,0.0,exposed development; versions and precision differ as stated
+v28_nf4,hotpot,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,true_accept_recall,3,4,0.75,assistant source review of model-generated candidates; not overall extraction recall
+v28_nf4,hotpot,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,false_accept_rate,0,21,0.0,exposed development; versions and precision differ as stated
+v28_nf4,musique,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,true_accept_recall,5,10,0.5,assistant source review of model-generated candidates; not overall extraction recall
+v28_nf4,musique,VERIFIER,58_SOURCE_REVIEWED_CANDIDATES,false_accept_rate,0,23,0.0,exposed development; versions and precision differ as stated
+v1_3b,all,A,QUESTION_ONLY,schema_valid,2,32,0.0625,reused historical report; not rerun
+v1_3b,all,A,QUESTION_ONLY,semantic_usable,0,32,0.0,reused historical report; changed interface and adaptation in v2
