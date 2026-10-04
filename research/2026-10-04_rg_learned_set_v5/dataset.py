@@ -39,8 +39,11 @@ class Store:
         self.corpus=read(LOCAL/'corpus.json');self.queries=read(LOCAL/'queries.json');self.targets=read(LOCAL/'targets.json');self.retr=read(LOCAL/'retrieved.json')
         self.xx={t:np.load(LOCAL/f'{t}_blocks.npy',mmap_mode='r') for t in self.corpus}
         self.qx={};self.index={t:{b['id']:i for i,b in enumerate(c)} for t,c in self.corpus.items()}
+        binding=read(LOCAL/'embedding_identity.json')
         for t in self.corpus:
             qq=[q for q in self.queries if q['tag']==t];x=np.load(LOCAL/f'{t}_queries.npy')
+            if binding[t+'_blocks']['row_ids']!=[b['id'] for b in self.corpus[t]] or binding[t+'_queries']['row_ids']!=[q['query_id'] for q in qq]:raise ValueError('EMBEDDING_ROW_ID_MISMATCH')
+            if self.xx[t].shape!=(len(self.corpus[t]),1024) or x.shape!=(len(qq),1024):raise ValueError('EMBEDDING_ROW_SHAPE_MISMATCH')
             self.qx.update({q['query_id']:x[j] for j,q in enumerate(qq)})
         self.tok=AutoTokenizer.from_pretrained(MODEL,local_files_only=True)
         self.lengths=read(LOCAL/'lengths.json') if (LOCAL/'lengths.json').exists() else {t:[len(self.tok.encode(b['title']+'\n'+b['text'],add_special_tokens=False)) for b in c] for t,c in self.corpus.items()}
