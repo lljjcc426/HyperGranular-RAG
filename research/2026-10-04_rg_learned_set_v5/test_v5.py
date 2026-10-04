@@ -43,6 +43,11 @@ class Algebra(unittest.TestCase):
     def test_average_radius_fails(self):
         z=np.array([[0.],[0.],[9.]]);c=z.mean(0);mean=np.linalg.norm(z-c,axis=1).mean();mx=np.linalg.norm(z-c,axis=1).max()
         self.assertLess(float(c[0]+mean),9);self.assertGreaterEqual(float(c[0]+mx),9)
+    def test_same_leaf_members_not_removed(self):
+        s=HScore(np.zeros(8),np.zeros((8,32)),np.zeros((3,32)),np.arange(7),4)
+        for kind in ('Flat','GB','KM'):
+            selected,_,_=beam(s,Feasible([1]*8,6),list('abcdefgh'),(),kind=kind)
+            self.assertEqual(selected,(0,1,2,3,4,5))
     def test_cubic_not_quadratic(self):
         # Third finite difference of x*y*z is one, any degree <=2 polynomial zero.
         cube=sum((-1)**(3-sum(bits))*math.prod(bits) for bits in itertools.product([0,1],repeat=3));self.assertEqual(cube,1)

@@ -99,7 +99,8 @@ def encode():
                 log.append(dict(tag=tag,kind=kind,strings=len(texts),tokens=tokens,at_encoder_limit=truncated,seconds=time.perf_counter()-start))
         save(HERE/'ENCODING_COST.json',log)
     finally:
-        torch.cuda.synchronize();charge('encode',cpu,wall,gpu_process_seconds=time.perf_counter()-wall,peak_gpu_bytes=torch.cuda.max_memory_allocated())
+        torch.cuda.synchronize();peak=torch.cuda.max_memory_allocated();del model;torch.cuda.empty_cache()
+        charge('encode',cpu,wall,gpu_process_seconds=time.perf_counter()-wall,peak_gpu_bytes=peak)
     # Vectorized exact first-stage retrieval; deterministic ties by corpus hash order.
     start=time.perf_counter();cpu=time.process_time();retrieved={}
     for tag in corpus:
