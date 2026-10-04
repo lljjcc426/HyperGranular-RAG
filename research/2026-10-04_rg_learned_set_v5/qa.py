@@ -7,7 +7,11 @@ scoring=load_module('v5_canonical_score',HERE.parent/'2026-10-03_evidence_delive
 
 def run(seed=1729,mode='main'):
     store=Store();qmap={q['query_id']:q for q in store.queries};scorers=scoring.scorers()
-    source=rows(LOCAL/f'selections_{seed}_{mode}.jsonl')
+    # A CPU selector may still append other queries while GPU reads a completed
+    # snapshot. Only newline-committed rows enter this invocation; later calls
+    # resume missing logical rows without repeating an identical generation.
+    raw=(LOCAL/f'selections_{seed}_{mode}.jsonl').read_text(encoding='utf-8')
+    source=[json.loads(line) for line in raw.rsplit('\n',1)[0].splitlines() if line.strip()]
     allowed={'Dense','MMR','H1','H2','DeepSets','H4-Flat','H4-GB','H4-KM'}
     if mode=='closed':allowed={'Dense','H1','H4-Flat'}
     source=[r for r in source if r['panel'] and r['method'] in allowed]
