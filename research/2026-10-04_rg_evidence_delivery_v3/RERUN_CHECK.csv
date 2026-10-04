@@ -1,0 +1,5 @@
+query_id,method,tasks_equal,model_inputs_outputs_equal,prompt_equal,reader_output_equal
+musique_ans_v1_0_train::2hop__143791_75878,GB-feedback-v3,True,True,True,True
+musique_ans_v1_0_train::2hop__143791_75878,KM-feedback-v3,True,True,True,True
+hotpotqa_train_distractor_v1_1::5a88d42455429938390d3fc6,GB-feedback-v3,True,True,True,True
+hotpotqa_train_distractor_v1_1::5a88d42455429938390d3fc6,KM-feedback-v3,True,True,True,True

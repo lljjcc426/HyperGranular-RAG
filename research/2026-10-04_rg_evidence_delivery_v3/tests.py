@@ -35,6 +35,12 @@ class Contracts(unittest.TestCase):
     def test_provenance_and_oversize(self):
         d,ws,f,slots=self.fixture();f['provenance']['verification_spans'][0]['text']='invented answer'
         r=d.partial([dict(facts=[f])],slots);self.assertTrue(r['fallback']);self.assertIn('PROVENANCE_MISMATCH',r['reasons'])
+        extra=[window(100+i,'Grounded original sentence. '*60) for i in range(3)]
+        d=Delivery('How is Anchor linked?',ws[:15]+extra,self.ids)
+        slots=[dict(id='r1',head='Anchor',tail='?v1'),dict(id='r2',head='?v1',tail='?v2'),dict(id='r3',head='?v2',tail='?answer')]
+        fs=[fact('r1','Anchor','B',extra[0]),fact('r2','B','C',extra[1]),fact('r3','C','D',extra[2])]
+        r=d.partial([dict(binding={},facts=fs)],slots)
+        self.assertTrue(r['fallback']);self.assertIn('PACKAGE_TOO_LARGE',r['reasons']);self.assertEqual(r['prompt'],d.prompt(d.dense))
     def test_semantic_beam_keeps_alternative(self):
         ws=[window(i,'source '+str(i)) for i in range(6)];slots=[dict(id='r1',head='A',tail='?v1'),dict(id='r2',head='?v1',tail='?answer')]
         fs=[fact('r1','A','X',w) for w in ws[:4]]+[fact('r1','A','Y',ws[4]),fact('r2','Y','Z',ws[5])]
@@ -85,5 +91,26 @@ class Contracts(unittest.TestCase):
         items=[d.units[tuple(k)] for k in r['visible_spans']]
         from delivery import text_prompt
         self.assertEqual(text_prompt(d.q,items),r['prompt'])
+    def test_scope_program_preserves_source_phrase(self):
+        from frontend import scope
+        class Stub:
+            def base_only(self):return nullcontext()
+            def generate(self,*a):return dict(raw=dict(assignments=[dict(index=0,owner='?answer',predicate='nationality',scope='entity')]))
+        slots=[dict(id='r1',head='Mara',relation='directed',tail='?answer',qualifiers=['Australian'])]
+        cs,_=scope(Stub(),'Which Australian film did Mara direct?',slots,'test')
+        self.assertEqual(cs[0]['value_or_text'],'Australian');self.assertEqual(cs[0]['question_span'],'Australian');self.assertEqual(cs[0]['owner'],'?answer')
+    def test_bound_endpoint_alignment_is_then_verified(self):
+        from frontend import extract_task
+        class Stub:
+            def base_only(self):return nullcontext()
+            def generate(self,user,system,tokens,stage,schema=None):
+                raw=dict(support_sids=['s0'])
+                if stage.endswith('_extract'):
+                    raw=dict(facts=[dict(head=dict(sid='s0',text='X',identity=''),tail=dict(sid='s0',text='H',identity=''),support_sids=['s0'])])
+                return dict(raw=raw,text='yes',seconds=0.,input_tokens=1,output_tokens=1)
+        w=window(0,'H owns X.');s=dict(id='r1',head='H',relation='owns',tail='?answer',qualifiers=[])
+        r=extract_task(Stub(),'What does H own?',[s],[],s,{},w,[(w.title,w.source)],'test')
+        self.assertEqual((r['facts'][0]['head'],r['facts'][0]['tail']),('H','X'))
+        self.assertTrue(r['detail']['verification'][0]['bound_endpoint_alignment'])
 
 if __name__=='__main__':unittest.main(verbosity=2)

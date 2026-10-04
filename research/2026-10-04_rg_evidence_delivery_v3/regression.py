@@ -31,13 +31,13 @@ def examples():
     return out
 
 def run():
-    dest=LOCAL/'regression_v33.jsonl';done={r['id'] for r in rows(dest)} if dest.exists() else set();lm=LM(quantized=True,adapter=V2/'adapters/v27')
+    dest=LOCAL/'regression_v35.jsonl';done={r['id'] for r in rows(dest)} if dest.exists() else set();lm=LM(quantized=True,adapter=V2/'adapters/v27')
     try:
         for e in examples():
             if e['id'] in done:continue
-            r=verify(lm,e['payload'],e['constraints'],e['owners'],'B_v33_verify')
+            r=verify(lm,e['payload'],e['constraints'],e['owners'],'B_v35_verify')
             append(dest,dict(**e,result=r));print(e['id'],r['verdict'],flush=True)
-    finally:lm.close('B_v33_regression')
+    finally:lm.close('B_v35_regression')
 
 def summarize():
     out=[]

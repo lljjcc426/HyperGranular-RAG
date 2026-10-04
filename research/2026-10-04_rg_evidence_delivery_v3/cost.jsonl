@@ -5,3 +5,9 @@
 {"stage": "B_v33_regression", "cpu_seconds": 48.03125, "wall_seconds": 52.33756669999275, "gpu_process_seconds": 52.33755240000028, "peak_gpu_bytes": 2200827904}
 {"stage": "B_D0_through", "cpu_seconds": 49.0, "wall_seconds": 51.80609589999949, "gpu_process_seconds": 51.80608029999712, "peak_gpu_bytes": 2216574976}
 {"stage": "B_D0_through", "cpu_seconds": 69.484375, "wall_seconds": 71.9199779999908, "gpu_process_seconds": 71.91994700000214, "peak_gpu_bytes": 2213502976}
+{"stage": "A_source_order_metadata_check", "cpu_seconds": 11.3125, "wall_seconds": 11.68406440000399}
+{"stage": "C_frontend_8", "cpu_seconds": 1084.203125, "wall_seconds": 1126.935126899989, "gpu_process_seconds": 1126.9350956999988, "peak_gpu_bytes": 2256306176}
+{"stage": "C_frontend_16", "cpu_seconds": 598.046875, "wall_seconds": 630.0268860999931, "gpu_process_seconds": 630.0268676999985, "peak_gpu_bytes": 2257136640}
+{"stage": "C_frontend_rerun", "cpu_seconds": 186.28125, "wall_seconds": 195.20507650000218, "gpu_process_seconds": 195.20506110000133, "peak_gpu_bytes": 2222897152}
+{"stage": "C_reader_rerun", "cpu_seconds": 23.109375, "wall_seconds": 16.164175500001875, "gpu_process_seconds": 16.16414399999485, "peak_gpu_bytes": 6555340800}
+{"stage": "final_source_token_check", "cpu_seconds": 2.765625, "wall_seconds": 2.8013425999961328}

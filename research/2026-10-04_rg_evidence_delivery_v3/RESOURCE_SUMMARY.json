@@ -1,0 +1,36 @@
+{
+  "round_gpu_process_seconds": 3017.965587099985,
+  "round_cpu_process_seconds_measured": 2914.34375,
+  "new_directory_bytes": 30468096,
+  "cumulative_gpu_process_seconds_measured": 19515.44397879995,
+  "cumulative_cpu_process_seconds_lower_bound": 18269.749875,
+  "unknown_cpu": "Historical unmeasured CPU, shell work, two failed A constructions, unit tests and short analysis commands were not process-timed; not zero.",
+  "actual_frontend_calls": 810,
+  "actual_reader_calls": 4,
+  "actual_input_tokens": 331747,
+  "actual_output_tokens": 20824,
+  "actual_encoding_strings": 27,
+  "actual_encoding_input_tokens": 440,
+  "actual_encoding_seconds": 10.005276900032186,
+  "peak_gpu_allocated_bytes": 6555340800,
+  "training_steps": 0,
+  "new_models": 0,
+  "paid": 0,
+  "caps": {
+    "gpu_process_seconds": 10800,
+    "cpu_process_seconds": 10800,
+    "disk_bytes": 1000000000,
+    "frontend_calls": 2500,
+    "reader_calls": 768
+  },
+  "versions": {
+    "torch": "2.12.1+cu130",
+    "transformers": "5.14.1",
+    "numpy": "2.5.1",
+    "peft": "0.21.2",
+    "bitsandbytes": "0.50.2",
+    "lm-format-enforcer": "0.11.3",
+    "accelerate": "1.13.0"
+  },
+  "accounting": "Process wall includes loading and CPU work inside GPU processes. Encoding seconds are already included in process time; do not add twice. Historical cached parse/index/reader costs are charged logically per method but not new physical work."
+}

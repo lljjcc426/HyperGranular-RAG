@@ -1,0 +1,13 @@
+{
+  "status": "SOURCE_INPUT_AND_REPLAY_CHECKED",
+  "queries": 16,
+  "records": 160,
+  "checked_visible_spans": 3350,
+  "all_five_arms_at_8_and_16": true,
+  "source_coordinates_match_frozen_units": true,
+  "all_input_tokens_at_most_1024": true,
+  "reader_input_identity": true,
+  "only_requested_windows_observed": true,
+  "uncached_replays": 4,
+  "scientific_limit": "These checks do not certify relation truth, plan semantics, general determinism or independent confirmation."
+}

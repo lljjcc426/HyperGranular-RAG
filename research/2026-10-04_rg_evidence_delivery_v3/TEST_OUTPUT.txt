@@ -17,3 +17,19 @@ OK
 Earlier development suites: 8 tests / 3.454s; 9 tests / 7.825s.
 These overlap the final suite and are NOT summed as additional unique tests.
 Synthetic and interface tests do not establish natural semantic correctness.
+
+After strengthening the existing oversize/provenance assertion:
+Actual targeted command: tests.py Contracts.test_provenance_and_oversize
+Ran 1 test in 3.912s
+OK (existing test; not another unique test)
+
+Targeted v35 interface tests:
+test_scope_program_preserves_source_phrase ... ok
+test_bound_endpoint_alignment_is_then_verified ... ok
+Ran 2 tests in 3.424s
+OK
+
+Total distinct tests executed: 13. No claim that all 13 were rerun as one suite.
+The subsequent real C run exercised the final shared interfaces.
+Final source/input verification: 160 records, 3350 visible spans, 4 uncached replays checked.
+See FINAL_VERIFICATION.json and RERUN_CHECK.csv for scope and limitations.

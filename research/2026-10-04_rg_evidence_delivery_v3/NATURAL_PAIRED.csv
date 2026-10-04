@@ -1,0 +1,25 @@
+dataset,budget,comparison,n,delta_f1,gain,same,harm
+hotpot,8,GB-feedback-v3 minus Dense-window-v3,8,0.0,0,8,0
+musique,8,GB-feedback-v3 minus Dense-window-v3,8,0.0,0,8,0
+EQUAL_WEIGHT_16,8,GB-feedback-v3 minus Dense-window-v3,16,0.0,0,16,0
+hotpot,8,GB-feedback-v3 minus Flat-binding-v3,8,0.0,0,8,0
+musique,8,GB-feedback-v3 minus Flat-binding-v3,8,0.0,0,8,0
+EQUAL_WEIGHT_16,8,GB-feedback-v3 minus Flat-binding-v3,16,0.0,0,16,0
+hotpot,8,GB-feedback-v3 minus GB-uniform-v3,8,0.0,0,8,0
+musique,8,GB-feedback-v3 minus GB-uniform-v3,8,0.0,0,8,0
+EQUAL_WEIGHT_16,8,GB-feedback-v3 minus GB-uniform-v3,16,0.0,0,16,0
+hotpot,8,GB-feedback-v3 minus KM-feedback-v3,8,0.0,0,8,0
+musique,8,GB-feedback-v3 minus KM-feedback-v3,8,0.0,0,8,0
+EQUAL_WEIGHT_16,8,GB-feedback-v3 minus KM-feedback-v3,16,0.0,0,16,0
+hotpot,16,GB-feedback-v3 minus Dense-window-v3,8,0.0,0,8,0
+musique,16,GB-feedback-v3 minus Dense-window-v3,8,0.0,0,8,0
+EQUAL_WEIGHT_16,16,GB-feedback-v3 minus Dense-window-v3,16,0.0,0,16,0
+hotpot,16,GB-feedback-v3 minus Flat-binding-v3,8,0.0,0,8,0
+musique,16,GB-feedback-v3 minus Flat-binding-v3,8,0.0,0,8,0
+EQUAL_WEIGHT_16,16,GB-feedback-v3 minus Flat-binding-v3,16,0.0,0,16,0
+hotpot,16,GB-feedback-v3 minus GB-uniform-v3,8,0.0,0,8,0
+musique,16,GB-feedback-v3 minus GB-uniform-v3,8,0.0,0,8,0
+EQUAL_WEIGHT_16,16,GB-feedback-v3 minus GB-uniform-v3,16,0.0,0,16,0
+hotpot,16,GB-feedback-v3 minus KM-feedback-v3,8,0.0,0,8,0
+musique,16,GB-feedback-v3 minus KM-feedback-v3,8,0.0,0,8,0
+EQUAL_WEIGHT_16,16,GB-feedback-v3 minus KM-feedback-v3,16,0.0,0,16,0

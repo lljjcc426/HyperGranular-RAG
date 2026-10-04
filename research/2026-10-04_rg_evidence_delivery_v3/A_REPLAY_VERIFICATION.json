@@ -1,0 +1,10 @@
+{
+  "queries": 64,
+  "records": 640,
+  "all_prompts_unchanged": true,
+  "all_token_counts_unchanged": true,
+  "source_order_metadata_corrected_records": 14,
+  "original_local_input_preserved": true,
+  "new_model_calls": 0,
+  "detail": "A source IDs initially used first possible window rank, while exact prompts used accepted Dense-window order. Corrected metadata follows the actual emitted prompt; no answer, text membership, metric or prompt changed."
+}
