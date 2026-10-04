@@ -1,0 +1,3 @@
+tag,corpus_blocks,encoder_truncated_blocks,encoder_limit512_blocks,max_encoder_tokens,tune_queries,known_support_fits_K6_and_1024,known_support_exceeds_K6,known_support_exceeds_1024,mean_known_support_prompt_tokens
+hotpot,9791,16,1,1515,196,196,0,0,374.4795918367347
+musique,31130,8,0,724,542,533,0,9,470.9981549815498
