@@ -18,3 +18,9 @@
 {"stage": "v27_B", "cpu_seconds": 487.96875, "wall_seconds": 524.2294091999938, "gpu_process_seconds": 524.2293864999956, "peak_gpu_bytes": 2223220224}
 {"stage": "v27_C", "cpu_seconds": 323.53125, "wall_seconds": 350.84824960000697, "gpu_process_seconds": 350.8482309999963, "peak_gpu_bytes": 2222830080}
 {"stage": "v29_grouped_development_comparison", "cpu_seconds": 162.125, "wall_seconds": 166.5171607999946, "gpu_process_seconds": 166.51713819999713, "peak_gpu_bytes": 6426003456}
+{"stage": "D1_index", "cpu_seconds": 36.859375, "wall_seconds": 38.36192769999616, "gpu_process_seconds": 38.361917000001995}
+{"stage": "D1_main", "cpu_seconds": 10100.734375, "wall_seconds": 10953.195098900003, "gpu_process_seconds": 10953.194942300004, "peak_gpu_bytes": 2256718848}
+{"stage": "D1_reader_main", "cpu_seconds": 255.6875, "wall_seconds": 266.60736939999333, "gpu_process_seconds": 266.60733269999037, "peak_gpu_bytes": 6565146112}
+{"stage": "D1_rerun", "cpu_seconds": 561.625, "wall_seconds": 628.04582449999, "gpu_process_seconds": 628.0457835999987, "peak_gpu_bytes": 2213931520}
+{"stage": "D1_reader_rerun", "cpu_seconds": 400.359375, "wall_seconds": 526.8963003000099, "gpu_process_seconds": 526.8962784000032, "peak_gpu_bytes": 6561126912}
+{"stage": "D1_evaluate", "cpu_seconds": 0.3125, "wall_seconds": 0.40502510000078473, "gpu_process_seconds": 0}

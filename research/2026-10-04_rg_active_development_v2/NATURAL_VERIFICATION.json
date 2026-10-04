@@ -1,0 +1,143 @@
+{
+  "status": "DESCRIPTIVE_DEVELOPMENT_ONLY",
+  "queries": 64,
+  "prediction_records": 1024,
+  "parse_contract_pass_queries": 42,
+  "predicted_slot_count_histogram": {
+    "1": 7,
+    "0": 22,
+    "2": 33,
+    "4": 1,
+    "3": 1
+  },
+  "actual_reader_tokens_match_renderer": true,
+  "reader_input_token_range": [
+    666,
+    1024
+  ],
+  "main_actual_reader_calls": 64,
+  "main_unique_reader_prompts": 64,
+  "method_diagnostics": {
+    "Dense-window/16": {
+      "prompt_equal_to_dense": 64,
+      "answer_tokens_equal_to_dense": 64,
+      "queries_with_accepted_fact": 0,
+      "queries_with_split": 0,
+      "total_splits": 0
+    },
+    "Dense-window/32": {
+      "prompt_equal_to_dense": 64,
+      "answer_tokens_equal_to_dense": 64,
+      "queries_with_accepted_fact": 0,
+      "queries_with_split": 0,
+      "total_splits": 0
+    },
+    "Flat-binding/16": {
+      "prompt_equal_to_dense": 64,
+      "answer_tokens_equal_to_dense": 64,
+      "queries_with_accepted_fact": 11,
+      "queries_with_split": 0,
+      "total_splits": 0
+    },
+    "Flat-binding/32": {
+      "prompt_equal_to_dense": 64,
+      "answer_tokens_equal_to_dense": 64,
+      "queries_with_accepted_fact": 14,
+      "queries_with_split": 0,
+      "total_splits": 0
+    },
+    "GB-fixed/16": {
+      "prompt_equal_to_dense": 64,
+      "answer_tokens_equal_to_dense": 64,
+      "queries_with_accepted_fact": 11,
+      "queries_with_split": 0,
+      "total_splits": 0
+    },
+    "GB-fixed/32": {
+      "prompt_equal_to_dense": 64,
+      "answer_tokens_equal_to_dense": 64,
+      "queries_with_accepted_fact": 14,
+      "queries_with_split": 0,
+      "total_splits": 0
+    },
+    "GB-uniform/16": {
+      "prompt_equal_to_dense": 64,
+      "answer_tokens_equal_to_dense": 64,
+      "queries_with_accepted_fact": 10,
+      "queries_with_split": 42,
+      "total_splits": 168
+    },
+    "GB-uniform/32": {
+      "prompt_equal_to_dense": 64,
+      "answer_tokens_equal_to_dense": 64,
+      "queries_with_accepted_fact": 14,
+      "queries_with_split": 42,
+      "total_splits": 321
+    },
+    "GB-feedback/16": {
+      "prompt_equal_to_dense": 64,
+      "answer_tokens_equal_to_dense": 64,
+      "queries_with_accepted_fact": 11,
+      "queries_with_split": 11,
+      "total_splits": 34
+    },
+    "GB-feedback/32": {
+      "prompt_equal_to_dense": 64,
+      "answer_tokens_equal_to_dense": 64,
+      "queries_with_accepted_fact": 14,
+      "queries_with_split": 14,
+      "total_splits": 57
+    },
+    "KM-fixed/16": {
+      "prompt_equal_to_dense": 64,
+      "answer_tokens_equal_to_dense": 64,
+      "queries_with_accepted_fact": 12,
+      "queries_with_split": 0,
+      "total_splits": 0
+    },
+    "KM-fixed/32": {
+      "prompt_equal_to_dense": 64,
+      "answer_tokens_equal_to_dense": 64,
+      "queries_with_accepted_fact": 14,
+      "queries_with_split": 0,
+      "total_splits": 0
+    },
+    "KM-uniform/16": {
+      "prompt_equal_to_dense": 64,
+      "answer_tokens_equal_to_dense": 64,
+      "queries_with_accepted_fact": 11,
+      "queries_with_split": 42,
+      "total_splits": 168
+    },
+    "KM-uniform/32": {
+      "prompt_equal_to_dense": 64,
+      "answer_tokens_equal_to_dense": 64,
+      "queries_with_accepted_fact": 14,
+      "queries_with_split": 42,
+      "total_splits": 321
+    },
+    "KM-feedback/16": {
+      "prompt_equal_to_dense": 64,
+      "answer_tokens_equal_to_dense": 64,
+      "queries_with_accepted_fact": 12,
+      "queries_with_split": 11,
+      "total_splits": 31
+    },
+    "KM-feedback/32": {
+      "prompt_equal_to_dense": 64,
+      "answer_tokens_equal_to_dense": 64,
+      "queries_with_accepted_fact": 14,
+      "queries_with_split": 14,
+      "total_splits": 48
+    }
+  },
+  "uncached_rerun_queries": 2,
+  "uncached_rerun_records": 4,
+  "rerun_scope": "GB-feedback and KM-feedback at 16 probes; first sampling hash per dataset",
+  "states_traces_prompts_answers_equal": true,
+  "reader": "unadapted Qwen2.5-3B FP16",
+  "scorers": "revision2 official canonical pure functions",
+  "support_scope": "Hotpot sentence; MuSiQue paragraph, not chain gold",
+  "cost_scope": "Logical model+encoding timings and split timings; full search transaction is separately measured with shared actual caches (32-probe maximum even in a 16-probe summary), not uncached deployment latency. Do not add it to logical timings or count both budget rows twice. Actual process costs include all search/renderer work.",
+  "interpretation": "No confirmation, significance, equivalence or architecture claim."
+}

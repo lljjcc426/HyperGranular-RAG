@@ -1,0 +1,39 @@
+{
+  "round_gpu_process_seconds": 15153.665391699964,
+  "round_cpu_process_seconds_measured": 13959.953125,
+  "prior_gpu_process_seconds": 1343.813,
+  "prior_cpu_seconds_lower_bound": 1395.453,
+  "cumulative_gpu_process_seconds_measured": 16497.478391699966,
+  "cumulative_cpu_seconds_lower_bound": 15355.406125,
+  "unknown_cpu": "Historical unmeasured time and shell/package-install overhead are unknown, not zero.",
+  "run_directory_bytes": 83414619,
+  "new_dependency_installed_bytes": 139659995,
+  "measured_new_disk_bytes": 223074614,
+  "caps": {
+    "round_gpu_seconds": 21600,
+    "round_cpu_seconds": 14400,
+    "round_disk_bytes": 2000000000,
+    "paid": 0
+  },
+  "actual_model_calls": 5310,
+  "model_call_count_scope": "Logged inference requests only; training is counted separately and its process cost is included in the same resource totals.",
+  "adapter_optimizer_steps": 30,
+  "adapter_epochs": 3,
+  "paid": 0,
+  "versions": {
+    "lm-format-enforcer": "0.11.3",
+    "pydantic": "2.13.5",
+    "pydantic-core": "2.46.5",
+    "interegular": "0.3.3",
+    "annotated-types": "0.8.0",
+    "typing-inspection": "0.4.4",
+    "peft": "0.21.2",
+    "bitsandbytes": "0.50.2",
+    "torch": "2.12.1+cu130",
+    "transformers": "5.14.1",
+    "numpy": "2.5.1",
+    "accelerate": "1.13.0"
+  },
+  "peak_gpu_allocated_bytes": 6565146112,
+  "accounting": "GPU process wall time includes loading and CPU work inside those processes; not pure kernel time. Logical method costs are separate from cached actual calls."
+}
