@@ -1,0 +1,105 @@
+{
+  "spec": "HGRAG-LEARNED-SET-V5-20261004",
+  "status": "EXPOSED_DEVELOPMENT",
+  "inputs": {
+    "hotpot": {
+      "blind": {
+        "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4e_e2e_official_train1000_v1_blind_queries.jsonl",
+        "bytes": 6487688,
+        "previous_binding": {
+          "bytes": 6487688,
+          "sha256": "CB30B9764ADF256A5C5E130F1B78F6AA1EC30613C529FDB554F0F2F29C873958"
+        }
+      },
+      "gold": {
+        "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4e_e2e_official_train1000_v1_gold_targets.jsonl",
+        "bytes": 500814,
+        "previous_binding": {
+          "bytes": 500814,
+          "sha256": "7FE6824DA2B46D76DDAF3C0D65C7DBBEC7D0788BD363A4AFC819AAC5F71D6907"
+        }
+      }
+    },
+    "musique": {
+      "blind": {
+        "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4f_xdr_musique_train3000_v1_blind_queries.jsonl",
+        "bytes": 90210161,
+        "previous_binding": {
+          "bytes": 90210161,
+          "sha256": "C8D73F6F8E0B9CA0BEAFD84DC05C43438400966998B5C2C3510E0EB47D1EC4C5"
+        }
+      },
+      "gold": {
+        "path": "E:\\SCIENCE\\超粒球RAG_数据\\processed\\stage4f_xdr_musique_train3000_v1_gold_targets.jsonl",
+        "bytes": 2194235,
+        "previous_binding": {
+          "bytes": 2194235,
+          "sha256": "E53E3AF330D1D498A8B23CF06BA0AB9DA8452FC7BF4CB565C6ED749B28C60B2D"
+        }
+      }
+    }
+  },
+  "counts": {
+    "hotpot/FIT/comparison": 162,
+    "hotpot/FIT/bridge": 586,
+    "hotpot/DEV/bridge": 48,
+    "hotpot/TUNE/bridge": 149,
+    "hotpot/TUNE/comparison": 47,
+    "hotpot/DEV/comparison": 8,
+    "musique/TUNE/2hop": 386,
+    "musique/FIT/2hop": 1730,
+    "musique/TUNE/3_4hop": 156,
+    "musique/FIT/3_4hop": 688,
+    "musique/DEV/2hop": 32,
+    "musique/DEV/3_4hop": 8
+  },
+  "panel": {
+    "hotpot/bridge": 48,
+    "hotpot/comparison": 16,
+    "musique/3_4hop": 32,
+    "musique/2hop": 32
+  },
+  "corpus": {
+    "hotpot": 9791,
+    "musique": 31130
+  },
+  "document_overlap": {
+    "hotpot": {
+      "fit_documents": 7363,
+      "tune_documents": 1946,
+      "shared": 57
+    },
+    "musique": {
+      "fit_documents": 27062,
+      "tune_documents": 8581,
+      "shared": 4753
+    }
+  },
+  "subquestion_overlap": "Native blind inputs do not retain decomposition IDs; not reconstructed from locked/raw material; no unseen-composition claim.",
+  "encoder": {
+    "path": "E:\\SCIENCE\\超粒球RAG_数据\\models\\huggingface\\hub\\models--BAAI--bge-large-en-v1.5\\snapshots\\d4aa6901d3a41ba39fb536a557fa166f842b0e09",
+    "revision": "d4aa6901d3a41ba39fb536a557fa166f842b0e09",
+    "max_tokens": 512,
+    "pooling": "CLS/L2",
+    "precision": "float32"
+  },
+  "reader": {
+    "path": "E:\\SCIENCE\\超粒球RAG_数据\\models\\rg_refinement_Qwen2.5-3B-Instruct",
+    "revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+    "precision": "float16",
+    "adapter": false,
+    "protocol": "v4-P2"
+  },
+  "budget": {
+    "gpu_seconds": 18000,
+    "cpu_seconds": 14400,
+    "disk_bytes": 2000000000,
+    "reader_calls": 3000,
+    "paid": 0
+  },
+  "initial_cumulative": {
+    "gpu_seconds": 19764.376329,
+    "cpu_seconds_lower_bound": 18520.078,
+    "prior_unmeasured_cpu": "UNKNOWN"
+  }
+}
