@@ -1,0 +1,9 @@
+query_id,context,protocol,input_identical,output_tokens_identical,cache_bypassed
+hotpotqa_train_distractor_v1_1::5a88d42455429938390d3fc6,D,P2,True,True,True
+hotpotqa_train_distractor_v1_1::5a88d42455429938390d3fc6,A_G,P2,True,True,True
+hotpotqa_train_distractor_v1_1::5a733c4a55429901807dafb3,D,P2,True,True,True
+hotpotqa_train_distractor_v1_1::5a733c4a55429901807dafb3,A_G,P2,True,True,True
+musique_ans_v1_0_train::2hop__143791_75878,D,P2,True,True,True
+musique_ans_v1_0_train::2hop__143791_75878,A_G,P2,True,True,True
+musique_ans_v1_0_train::2hop__105042_91604,D,P2,True,True,True
+musique_ans_v1_0_train::2hop__105042_91604,A_G,P2,True,True,True

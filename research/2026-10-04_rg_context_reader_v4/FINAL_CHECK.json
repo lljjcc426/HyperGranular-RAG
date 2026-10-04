@@ -1,0 +1,12 @@
+{
+  "logical_rows": 384,
+  "queries": 16,
+  "contexts": 8,
+  "protocols": 3,
+  "all_input_identities_match": true,
+  "common_body_per_context": true,
+  "all_inputs_at_most_1024": true,
+  "prescribed_uncached_replays": 8,
+  "output_token_identity": true,
+  "limitations": "Source coordinates were checked by tests.py before inference. This check does not certify semantic evidence sufficiency or independent confirmation."
+}

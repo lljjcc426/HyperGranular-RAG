@@ -1,0 +1,4 @@
+stage,actual_calls,input_tokens,output_tokens,generation_seconds
+v4_reader_D0,24,22922,508,34.761616099989624
+v4_reader_core,120,71107,3135,182.09058410002035
+v4_reader_rerun,8,6503,77,8.683568600012222

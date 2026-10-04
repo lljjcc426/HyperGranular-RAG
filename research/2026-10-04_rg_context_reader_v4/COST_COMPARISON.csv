@@ -1,0 +1,9 @@
+context,n,protocol,logical_reader_seconds,historical_search_model_seconds,accounted_model_seconds,historical_search_calls,annotation_cost,limitation
+D,16,P2,15.613213899996481,0.0,15.613213899996481,0,NOT_APPLICABLE,"Model-time accounting, not measured end-to-end deployment latency. L uses A-derived length."
+A_G,16,P2,14.110291400007554,1319.2615598001285,1333.371851200136,280,NOT_APPLICABLE,"Model-time accounting, not measured end-to-end deployment latency. L uses A-derived length."
+L_G,16,P2,14.209344200018677,1319.2615598001285,1333.4709040001471,280,NOT_APPLICABLE,"Model-time accounting, not measured end-to-end deployment latency. L uses A-derived length."
+R,16,P2,12.272868200016092,0.0,12.272868200016092,0,NOT_MEASURED,"Model-time accounting, not measured end-to-end deployment latency. L uses A-derived length."
+A_F,16,P2,14.110291400007554,1376.7670773001591,1390.8773687001667,286,NOT_APPLICABLE,"Model-time accounting, not measured end-to-end deployment latency. L uses A-derived length."
+L_F,16,P2,14.209344200018677,1376.7670773001591,1390.9764215001778,286,NOT_APPLICABLE,"Model-time accounting, not measured end-to-end deployment latency. L uses A-derived length."
+A_K,16,P2,14.110291400007554,1359.4997669001168,1373.6100583001244,290,NOT_APPLICABLE,"Model-time accounting, not measured end-to-end deployment latency. L uses A-derived length."
+L_K,16,P2,14.209344200018677,1359.4997669001168,1373.7091111001355,290,NOT_APPLICABLE,"Model-time accounting, not measured end-to-end deployment latency. L uses A-derived length."

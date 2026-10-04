@@ -1,3 +1,6 @@
 {"stage": "construct", "cpu_seconds": 3.734375, "wall_seconds": 3.7873146000056295}
 {"stage": "construct", "cpu_seconds": 3.84375, "wall_seconds": 3.8505127000098582}
 {"stage": "reader_D0", "cpu_seconds": 43.25, "wall_seconds": 42.40915099999984, "gpu_process_seconds": 42.40912749999552, "peak_gpu_bytes": 6564832256}
+{"stage": "reader_core", "cpu_seconds": 178.59375, "wall_seconds": 190.61894060000486, "gpu_process_seconds": 190.6189180000074, "peak_gpu_bytes": 6564832256}
+{"stage": "reader_rerun", "cpu_seconds": 19.5, "wall_seconds": 15.904414400007227, "gpu_process_seconds": 15.904304700001376, "peak_gpu_bytes": 6564307456}
+{"stage": "final_binding_check", "cpu_seconds": 1.40625, "wall_seconds": 1.4674058999953559}

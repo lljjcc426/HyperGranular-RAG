@@ -39,8 +39,8 @@ def construct():
                 budget_tokens=v.get('budget_tokens',''),budget_gap=v.get('budget_gap',''),
                 budget_relative_gap=v['budget_gap']/v['budget_tokens'] if v.get('budget_tokens',0) else '',
                 reference_complete=v.get('reference_complete',''),reference_outside_top64=v.get('reference_outside_top64',''),
-                full_reference_body_tokens=v.get('full_reference_body_tokens',''),missing_reference_ids=json.dumps(v.get('missing_reference_ids',[])),
-                source_spans=json.dumps(v['visible_spans'])))
+                full_reference_body_tokens=v.get('full_reference_body_tokens',''),missing_reference_count=len(v.get('missing_reference_ids',[])),
+                source_span_count=len(v['visible_spans']),source_identity=digest(v['visible_spans'])))
     save(LOCAL/'contexts.json',records);table(HERE/'CONTEXT_AUDIT.csv',audit)
     # Fixed D0 sources: existing diagnostic windows in stored order, no new retrieval.
     packets={p['query_id']:p for p in read(V1/'local/d0_packets.json')};dev=[]

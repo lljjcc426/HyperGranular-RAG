@@ -16,4 +16,34 @@ D0按已有sampling_hash两类各取4题，不按表现选；先开发输出接�
 
 使用 academic-research-suite / experiment-agent 的执行与可复现性角色；用户本轮授权覆盖实现、运行、修复及同步，不套用逐命令确认或默认硬超时。新增成本与历史搜索成本分开；公开代码和派生表，原文/回答/标注留忽略的local目录。
 
-当前：范围已登记，实施中。完成后以 RESULTS_AND_NEXT_DECISION.md 为实际结果入口。
+## 已完成
+
+384/384逻辑结果、24次D0开发调用和8次指定绕缓存复跑完成。主比较仅需120次真实reader推理，264行按完整身份复用。GPU进程墙钟248.932秒；无新搜索、抽取、核验、embedding、训练或下载。
+
+主要发现：P2将共同Dense的F1由P1的0.124169提高到0.541667；单独增加输出长度无整体改善。自动包在5/16题改变正文，但P2总体未超过简单预算控制；GB/Flat/KM选出的正文逐题相同。参考条件F1为0.645833，仍有目标角色及答案形式问题。保留公共回答协议成果，不将其当作粒球增量或直接扩大关系搜索。
+
+完整解释先读 [RESULTS_AND_NEXT_DECISION.md](RESULTS_AND_NEXT_DECISION.md)，固定案例见 [CASE_REVIEW.md](CASE_REVIEW.md)。384是逻辑行数，研究问题只有16个，均为暴露开发题。
+
+## 入口与交付
+
+从仓库根用 `temp/stage4e_env/Scripts/python.exe` 执行本目录脚本。本轮实际顺序：
+
+1. `construct.py`：全部CPU构造，输出 `CONTEXT_AUDIT.csv` 和本地contexts；`tests.py`：针对性检查。
+2. `reader.py D0` → `evaluate.py D0`：固定8题公共协议开发。
+3. `reader.py core` → `reader.py extra`：核心和归因表，既有搜索不运行。
+4. `reader.py rerun`：指定8次P2绕缓存推理。
+5. `evaluate.py factorial`、`finish.py`、`case_review.py`、`describe.py`：评分、最终绑定、固定案例和成本汇总。
+6. `publish_audit.py`：公开来源表只保留计数/身份，逐句参考派生ID保留本地。此步骤不改变输入或评分。
+
+依赖v1/v2/v3已存输入、窗口、轨迹，原FP16 3B模型，以及既有revision2 canonical scorer；精确环境和成本见 `RESOURCE_AND_IDENTITY.json`。模型、答案、原文、标注和缓存不随公开代码提供。输出保留且推理可按已完成身份续接；不要为查看状态重复已完成实验。
+
+| 文件 | 内容 |
+|---|---|
+| `CONTEXT_AUDIT.csv`, `CONTEXT_SUMMARY.csv` | 来源身份、删减/回退、token预算和参考状态 |
+| `FACTORIAL_RESULTS.csv`, `SUMMARY.csv` | 全384条逐题结果与数据集/等权汇总 |
+| `CONTRASTS.csv` | EM/F1配对差、得失数、全体及明示子集、描述性交互 |
+| `COST_COMPARISON.csv`, `ACTUAL_CALL_COSTS.csv` | 历史搜索+reader逻辑成本与本轮实际调用分别核算 |
+| `RERUN_CHECK.csv`, `FINAL_CHECK.json` | 8次独立reader复跑及输入绑定范围 |
+| `DEV_LOG.md`, `TEST_OUTPUT.txt` | 实际修改、错误修正和真实测试结果 |
+
+仅本轮目录新增/修改，3个初始CPU构造文件转存同目录local/initial记录，无文件删除。旧结果、论文及无关dirty不动。主表完成后停止，不自动开启新实验或投稿。

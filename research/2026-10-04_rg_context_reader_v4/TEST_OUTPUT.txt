@@ -16,3 +16,16 @@ OK
 Actual-source test covers 128 constructed contexts, original character spans,
 body reconstruction and the common 1024-token cap for all three protocols.
 These are not proof of relation truth or answer quality.
+
+Actual subsequent execution:
+D0: 24 calls / 24 rows, exit 0; P2 8/8 legal single-answer objects.
+Core: 192 rows, exit 0. Attribution: 192 rows, exit 0.
+Prescribed uncached reader replay: 8 calls, exit 0.
+finish.py: 384 logical outputs bound; 8 uncached replays identical;
+152 actual calls; GPU process seconds 248.9323502000043; exit 0.
+
+P0/P1 raw text remains unedited for canonical scoring.
+P2 valid single-answer fields are scored without Gold-based cleanup.
+All main rows retained, including fallbacks and UNKNOWN.
+Source-ID publication reduction only changed public metadata fields;
+no additional inference or repeated test suite was run for that export change.
