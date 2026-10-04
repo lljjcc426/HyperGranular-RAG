@@ -1,3 +1,14 @@
 {"stage": "v20_A", "cpu_seconds": 36.796875, "wall_seconds": 32.11779170000227, "gpu_process_seconds": 32.1177663999988, "peak_gpu_bytes": 6414183424}
 {"stage": "v20_B", "cpu_seconds": 36.625, "wall_seconds": 29.9138787999982, "gpu_process_seconds": 29.913835900006234, "peak_gpu_bytes": 6462501888}
 {"stage": "v20_C", "cpu_seconds": 29.34375, "wall_seconds": 22.350385799989454, "gpu_process_seconds": 22.350351699991734, "peak_gpu_bytes": 6462501888}
+{"stage": "v21_A", "cpu_seconds": 65.921875, "wall_seconds": 60.487042399996426, "gpu_process_seconds": 60.48701169999549, "peak_gpu_bytes": 6427768320}
+{"stage": "v22_A", "cpu_seconds": 33.140625, "wall_seconds": 29.467707699994207, "gpu_process_seconds": 29.467675399995642, "peak_gpu_bytes": 6497810432}
+{"stage": "v22_B", "cpu_seconds": 71.015625, "wall_seconds": 71.56956250000803, "gpu_process_seconds": 71.56953700000304, "peak_gpu_bytes": 6466698752}
+{"stage": "v23_verify_diagnostic", "cpu_seconds": 14.21875, "wall_seconds": 9.343057200007024, "gpu_process_seconds": 9.343031399999745, "peak_gpu_bytes": 6361473024}
+{"stage": "v23_A", "cpu_seconds": 88.21875, "wall_seconds": 90.95969940000214, "gpu_process_seconds": 90.95967579999706, "peak_gpu_bytes": 6511514624}
+{"stage": "v23_B", "cpu_seconds": 338.0625, "wall_seconds": 353.35085089999484, "gpu_process_seconds": 353.3508273999905, "peak_gpu_bytes": 6427250176}
+{"stage": "v24_parse_diagnostic", "cpu_seconds": 53.109375, "wall_seconds": 52.93665259999398, "gpu_process_seconds": 52.93660779998754, "peak_gpu_bytes": 6497810432}
+{"stage": "v24_verify_regression", "cpu_seconds": 20.34375, "wall_seconds": 20.95878410000296, "gpu_process_seconds": 20.958761899993988, "peak_gpu_bytes": 6459674112}
+{"stage": "v25_A", "cpu_seconds": 137.25, "wall_seconds": 144.2017523000104, "gpu_process_seconds": 144.2017296000122, "peak_gpu_bytes": 6499948032}
+{"stage": "v26_verify_regression", "cpu_seconds": 130.09375, "wall_seconds": 131.39951020000444, "gpu_process_seconds": 131.3994873000047, "peak_gpu_bytes": 6381892096}
+{"stage": "v27_train", "cpu_seconds": 119.078125, "wall_seconds": 162.47638890000235, "gpu_process_seconds": 162.47637309999845, "status": "TRAINED_ADAPTER_ONLY", "optimizer_steps": 30}

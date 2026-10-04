@@ -29,6 +29,42 @@ Do not infer a publication relation just because a writer and a publisher occur 
 
 VERIFY_PROMPT='''Judge whether the supplied EVIDENCE explicitly supports CLAIM with its direction, all qualifiers, and the proposed mention-to-identity links. Use only the shown original sentences and title. Title may resolve a body pronoun but cannot by itself establish a relation. Wrong binding, inverse relation, missing qualifier or insufficient evidence means no. Other question relations need not be satisfied here. Answer exactly yes or no.'''
 
+VERIFY_V24='''Read the claim as a directed assertion, then compare it with the original evidence. Answer exactly yes or no. Both names appearing is NOT enough. The predicate, subject/object roles, and every required condition must be supported. Do not substitute a similar relation. A part-of relation does not mean operates. A publication is not its author. Titles may resolve a body pronoun, never supply the asserted relation by themselves. Insufficient evidence means no.
+Examples (invented):
+Evidence: The 12th squadron is part of the Southern Wing. Claim: The 12th squadron operates the Southern Wing. Answer: no
+Evidence: The teams are called Rangers, a nickname from 1901. Claim: Rangers was born in 1901. Answer: no
+Evidence: Elm Song is an album by Mira Lane. Claim: Elm Song was recorded by Mira Lane. Answer: yes
+Evidence: Elm Song is an album by Mira Lane. Claim: Elm Song was recorded for Mira Lane (required: record label). Answer: no
+Evidence: Nara was born to her father Elias. Claim: Nara has father Elias. Answer: yes
+Evidence: Nara was born to her father Elias. Claim: Elias has father Nara. Answer: no
+Evidence: The film adapts Blue Road, a novel published by Elm Press. Claim: The film was published by Elm Press. Answer: no
+Evidence: The film adapts Blue Road, a novel published by Elm Press. Claim: Blue Road was published by Elm Press. Answer: yes
+Evidence: Dara owns Cloud Air. Claim: Dara owns Cloud Air (required: 100%). Answer: no
+Evidence: Nara Lane (born 4 May 1980) is a writer. Claim: Nara Lane was born on 4 May 1980. Answer: yes
+Now evaluate only the supplied actual claim. Return exactly yes or no.'''
+
+LOCATOR_MENTION=obj(dict(sid=STR,text=STR,identity=dict(type='string')))
+LOCATOR=obj(dict(facts=dict(type='array',maxItems=2,items=obj(dict(head=LOCATOR_MENTION,tail=LOCATOR_MENTION,support_sids=dict(type='array',items=STR,minItems=1,maxItems=3))))))
+LOCATE_PROMPT='''Find instances of the ONE requested relation in the supplied sentences. A ?variable is an unknown endpoint; replace it with the name actually found in the text. Return {"facts": []} if the relation is not supported. Otherwise give exact short head and tail substrings, their sentence IDs, and the supporting sentence IDs. Do not output variables. identity is normally ""; use an exact supplied title or another exact name in this window only when the mention is its explicit alias or pronoun. Preserve relation direction. Do not fill a missing qualifier using outside knowledge.
+Examples:
+Relation: ?v1 --has father--> ?answer. s0: Elena's father was Marco.
+{"facts":[{"head":{"sid":"s0","text":"Elena","identity":""},"tail":{"sid":"s0","text":"Marco","identity":""},"support_sids":["s0"]}]}
+Relation: Cloud Song --recorded by--> ?v1. s0: Cloud Song is an album by Iris Vale.
+{"facts":[{"head":{"sid":"s0","text":"Cloud Song","identity":""},"tail":{"sid":"s0","text":"Iris Vale","identity":""},"support_sids":["s0"]}]}
+Relation: ?v1 --published by--> ?answer. s0: The film adapts the novel Red Moon, published by Elm Press.
+{"facts":[{"head":{"sid":"s0","text":"Red Moon","identity":""},"tail":{"sid":"s0","text":"Elm Press","identity":""},"support_sids":["s0"]}]}
+Use the actual supplied text, never the invented example names. Return only the object.'''
+
+PARSE_V22=PARSE_PROMPT+'''
+Additional decompositions (invented):
+Q: Dara Lee is 100% owner of a cargo airline headquartered where?
+{"status":"ok","relations":[{"head":"?v1","relation":"owned by","tail":"Dara Lee","qualifiers":["100%","cargo airline"]},{"head":"?v1","relation":"headquartered in","tail":"?answer","qualifiers":[]}]}
+Q: What was the record label of the artist who recorded Cloud Song?
+{"status":"ok","relations":[{"head":"Cloud Song","relation":"recorded by","tail":"?v1","qualifiers":[]},{"head":"?v1","relation":"recorded for","tail":"?answer","qualifiers":["record label"]}]}
+Q: What county is Nara Reed's birth place the capital of?
+{"status":"ok","relations":[{"head":"Nara Reed","relation":"born in","tail":"?v1","qualifiers":[]},{"head":"?v1","relation":"capital of","tail":"?answer","qualifiers":["county"]}]}
+Describe unnamed entities with variables. A compound description such as "the artist who recorded Cloud Song" is not a named entity. The father's name is the TAIL of has father, never the tail of father of. Return the decomposition, not an answer.'''
+
 REVISE_PROMPT='''Correct the draft relation plan using ONLY the question. Return ONE object {status,relations}, with the same schema as the draft. Do not answer the question. This is a semantic correction, not copying the draft.
 CRITICAL: A description of an unknown entity is NOT a name. Split descriptions into linked variables. Constants should be names or explicitly requested anchors. ?answer means precisely the object asked for, not an intermediate entity. Keep all defining/time/type conditions as exact question phrases in qualifiers. An unknown answer does not make the question ambiguous. Only an unidentified reference such as "the island" without a name or defining description justifies ambiguous.
 Examples (invented):

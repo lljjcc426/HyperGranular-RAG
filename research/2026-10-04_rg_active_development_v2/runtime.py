@@ -2,7 +2,7 @@ from common import *
 import numpy as np
 
 class LM:
-    def __init__(self):
+    def __init__(self,quantized=False,adapter=None):
         import torch,transformers
         from transformers import AutoTokenizer,AutoModelForCausalLM
         # LMFE 0.11.3 imports this type from its pre-v5 location. Process-local
@@ -14,13 +14,25 @@ class LM:
         self.cpu=time.process_time();self.wall=time.perf_counter();self.torch=torch
         torch.set_num_threads(1);torch.manual_seed(1729);torch.use_deterministic_algorithms(True)
         self.tokenizer=AutoTokenizer.from_pretrained(MODEL,local_files_only=True)
-        self.model=AutoModelForCausalLM.from_pretrained(MODEL,local_files_only=True,dtype=torch.float16).eval().to('cuda')
+        if quantized:
+            from transformers import BitsAndBytesConfig
+            q=BitsAndBytesConfig(load_in_4bit=True,bnb_4bit_quant_type='nf4',bnb_4bit_use_double_quant=True,bnb_4bit_compute_dtype=torch.bfloat16)
+            self.model=AutoModelForCausalLM.from_pretrained(MODEL,local_files_only=True,quantization_config=q,device_map={'':'cuda:0'},dtype=torch.bfloat16)
+        else:self.model=AutoModelForCausalLM.from_pretrained(MODEL,local_files_only=True,dtype=torch.float16).to('cuda')
+        self.adapter_loaded=adapter is not None
+        if adapter:
+            from peft import PeftModel
+            self.model=PeftModel.from_pretrained(self.model,adapter,is_trainable=False)
+        self.model.eval();self.model.config.use_cache=True
         torch.cuda.reset_peak_memory_stats();self.token_data=build_token_enforcer_tokenizer_data(self.tokenizer)
         self.yes=self.tokenizer.encode('yes',add_special_tokens=False)[0];self.no=self.tokenizer.encode('no',add_special_tokens=False)[0]
     def ids(self,user,system='You are a careful evidence assistant.'):
         text=self.tokenizer.apply_chat_template([{'role':'system','content':system},{'role':'user','content':user}],tokenize=False,add_generation_prompt=True)
         return self.tokenizer.encode(text,add_special_tokens=False)
     def check(self):budget(time.perf_counter()-self.wall,time.process_time()-self.cpu)
+    def base_only(self):
+        from contextlib import nullcontext
+        return self.model.disable_adapter() if self.adapter_loaded else nullcontext()
     def generate(self,user,system,max_tokens,stage,schema=None):
         self.check();torch=self.torch;ids=self.ids(user,system);x=torch.tensor([ids],device='cuda');start=time.perf_counter();kwargs={};mask_calls=0
         if schema:
@@ -45,6 +57,14 @@ class LM:
             input_digest=digest(ids),schema_digest=digest(schema),stage=stage)
         append(LOCAL/'calls.jsonl',dict(kind='generate',**r));return r
     def verify(self,payload,stage):
+        if not stage.startswith(('v20_','v21_','v22_')):
+            from verification import serialize
+            from schemas import VERIFY_PROMPT,VERIFY_V24
+            r=self.generate(serialize(payload),VERIFY_PROMPT if stage.startswith('v23_') else VERIFY_V24,8,stage)
+            label=r['text'].strip().lower()
+            return dict(score=float(label=='yes'),label=label if label in ('yes','no') else 'invalid',
+                input_tokens=r['input_tokens'],output_tokens=r['output_tokens'],seconds=r['seconds'],input_digest=r['input_digest'],
+                score_kind='discrete_model_verdict_not_probability')
         from schemas import VERIFY_PROMPT
         self.check();torch=self.torch;ids=self.ids(json.dumps(payload,ensure_ascii=False,sort_keys=True),VERIFY_PROMPT)
         x=torch.tensor([ids],device='cuda');start=time.perf_counter()
@@ -74,4 +94,3 @@ class Encoder:
             out.append(self.torch.nn.functional.normalize(x,p=2,dim=1).cpu().numpy())
         append(LOCAL/'encoding.jsonl',dict(strings=len(texts),query=query,seconds=time.perf_counter()-start,input_tokens=tokens,device=self.device))
         return np.concatenate(out)
-

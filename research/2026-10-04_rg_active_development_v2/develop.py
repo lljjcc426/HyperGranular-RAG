@@ -8,7 +8,7 @@ def run(args):
     path=LOCAL/(args.round+'_'+args.phase+'.jsonl')
     done={r['index'] for r in rows(path)} if path.exists() else set()
     packets=read(V1/'local/d0_packets.json');cc={c['query_id']:c for c in cases('D0')}
-    lm=LM()
+    lm=LM(quantized=True,adapter=HERE/'adapters/v27') if args.round=='v27' else LM()
     try:
         for i,p in enumerate(packets):
             if i in done or (args.indices and i not in args.indices):continue

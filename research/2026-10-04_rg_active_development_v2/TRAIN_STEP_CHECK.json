@@ -1,0 +1,14 @@
+{
+  "step": 1,
+  "epoch": 0,
+  "mean_loss": 0.452637278707698,
+  "gradient_norm": 8.070778846740723,
+  "peak_gpu_bytes": 4629244416,
+  "status": "REAL_OPTIMIZER_STEP_PASSED",
+  "microbatch": 1,
+  "accumulation": 8,
+  "target_only_loss": true,
+  "max_tokens": 600,
+  "train_records": 73,
+  "trainable_parameters": 3686400
+}

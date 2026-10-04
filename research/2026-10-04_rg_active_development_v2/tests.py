@@ -46,4 +46,21 @@ class Contracts(unittest.TestCase):
         self.assertFalse(a['splits']);self.assertFalse(b['splits']);self.assertEqual(len(called),len(set(called)))
         self.assertEqual(b['snapshots'][8]['logical_probes'],8)
 
+    def test_explicit_title_identity_joins_and_wrong_constant_rejected(self):
+        a=engine.Window('a','book','Rose','Ada wrote Rose.',(('a0','Ada wrote Rose.',0,15),),tokens=4)
+        b=engine.Window('b','bio','Ada Lane','She was born in Rome.',(('b0','She was born in Rome.',0,21),),tokens=5)
+        # The first window must itself supply the proposed complete identity.
+        a=engine.Window('a','book','Rose','Ada Lane wrote Rose.',(('a0','Ada Lane wrote Rose.',0,20),),tokens=5)
+        ss=[dict(id='r1',head='Rose',relation='written by',tail='?v1',qualifiers=[]),dict(id='r2',head='?v1',relation='born in',tail='?answer',qualifiers=[])]
+        cat=[('Rose','book'),('Ada Lane','bio')]
+        def m(text,identity=''):return dict(sid='s0',text=text,occurrence=0,identity=identity)
+        f,_=recover(dict(slot=0,head=m('Rose'),tail=m('Ada Lane'),support_sids=['s0'],status='supported'),a,ss,cat)
+        g,_=recover(dict(slot=1,head=m('She','Ada Lane'),tail=m('Rome'),support_sids=['s0'],status='supported'),b,ss,cat)
+        states=engine.bundles(ss,[f,g],{'a':a,'b':b},{'a':1.,'b':.9},cat)
+        self.assertTrue(any(len(fs)==2 for _,fs in states))
+        shown=render('Where was the writer of Rose born?',[a,b],states,2,lambda x:x.split())
+        self.assertTrue(shown['complete_bundle_visible']);self.assertIn('Title: Ada Lane',shown['prompt'])
+        with self.assertRaisesRegex(ValueError,'CONSTANT_BINDING'):
+            recover(dict(slot=0,head=m('Ada Lane'),tail=m('Rose'),support_sids=['s0'],status='supported'),a,ss,cat)
+
 if __name__=='__main__':unittest.main(verbosity=2)

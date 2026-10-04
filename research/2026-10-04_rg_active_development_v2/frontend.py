@@ -35,9 +35,16 @@ def plan_contract(question,raw):
     return ([] if errors else slots),sorted(set(errors))
 
 def parse(lm,question,stage):
-    r=lm.generate(question,PARSE_PROMPT,512,stage,PLAN)
+    if stage.startswith('v27_'):
+        from parse_develop import SIMPLE
+        prompt=SIMPLE
+    elif stage.startswith('v25_'):
+        from parse_develop import SIMPLE
+        prompt=SIMPLE+'''\nDo not drop qualifiers. The answer type (county/date/record label) and defining conditions must appear in the predicate or qualifiers. More examples:\nQ: Dara Lee is 100% owner of a cargo airline headquartered where?\n{"status":"ok","relations":[{"head":"?v1","relation":"owned by","tail":"Dara Lee","qualifiers":["100%","cargo airline"]},{"head":"?v1","relation":"headquartered in","tail":"?answer","qualifiers":[]}]}\nQ: What day did the founder of Elm Press, who was also an American heir and hotelier, die?\n{"status":"ok","relations":[{"head":"Elm Press","relation":"founded by","tail":"?v1","qualifiers":["American heir and hotelier"]},{"head":"?v1","relation":"died on","tail":"?answer","qualifiers":[]}]}\nQ: What county is Nara Reed's birth place the capital of?\n{"status":"ok","relations":[{"head":"Nara Reed","relation":"born in","tail":"?v1","qualifiers":[]},{"head":"?v1","relation":"capital of","tail":"?answer","qualifiers":["county"]}]}\nDo not introduce founders, places or unnamed objects as literal noun phrases. Unnamed objects require variables.'''
+    else:prompt=PARSE_V22 if not stage.startswith(('v20_','v21_')) else PARSE_PROMPT
+    r=lm.generate(question,prompt,512,stage,PLAN)
     draft=r
-    if not stage.startswith('v20_'):
+    if stage.startswith('v21_'):
         r=lm.generate(json.dumps(dict(question=question,draft=r['raw']),ensure_ascii=False),REVISE_PROMPT,512,stage+'_revise',PLAN)
     slots,errors=plan_contract(question,r['raw'])
     return dict(generation=r,draft=draft,slots=slots,errors=errors)
@@ -82,6 +89,9 @@ def recover(raw,w,slots,catalog):
     i=raw.get('slot')
     if type(i)!=int or not 0<=i<len(slots):raise ValueError('SLOT_ID')
     h=locate(raw['head'],w);t=locate(raw['tail'],w);ss=raw['support_sids']
+    for role,m in (('head',h),('tail',t)):
+        required=slots[i][role]
+        if not required.startswith('?') and normalized(required)!=normalized(m['identity']):raise ValueError('CONSTANT_BINDING')
     if not isinstance(ss,list) or not ss or len(ss)>3 or len(set(ss))!=len(ss):raise ValueError('SUPPORT_IDS')
     if not {h['sid'],t['sid']}<=set(ss):raise ValueError('MENTION_OUTSIDE_SUPPORT')
     indices=[]
@@ -96,6 +106,7 @@ def recover(raw,w,slots,catalog):
     return f,payload
 
 def extract(lm,question,slots,w,catalog,stage):
+    if not stage.startswith(('v20_','v21_')):return extract_locators(lm,question,slots,w,catalog,stage)
     prompt=json.dumps(dict(question=question,relations=[{k:s[k] for k in ('head','relation','tail','qualifiers')} for s in slots],window=packet(w)),ensure_ascii=False)
     r=lm.generate(prompt,EXTRACT_PROMPT,512,stage,EXTRACTION);fs=[];rejected=[];verifications=[]
     raw=r['raw']
@@ -107,6 +118,22 @@ def extract(lm,question,slots,w,catalog,stage):
         v=lm.verify(payload,stage+'_verify');verifications.append(dict(**v,payload=payload))
         f=Fact(**{**asdict(f),'score':v['score']});fs.append(f)
     return fs,dict(generation=r,rejected=rejected,verification=verifications)
+
+def extract_locators(lm,question,slots,w,catalog,stage):
+    fs=[];rejected=[];verifications=[];generations=[]
+    for i,slot in enumerate(slots):
+        prompt=json.dumps(dict(relation={k:slot[k] for k in ('head','relation','tail','qualifiers')},window=packet(w)),ensure_ascii=False)
+        r=lm.generate(prompt,LOCATE_PROMPT,384,stage+'_r'+str(i),LOCATOR);generations.append(r)
+        if not isinstance(r['raw'],dict):rejected.append('EXTRACTION_SCHEMA');continue
+        for item in r['raw']['facts']:
+            # First literal occurrence within the model-selected sentence. This
+            # only chooses an offset for an identical string, never an entity.
+            raw=dict(slot=i,head=dict(item['head'],occurrence=0),tail=dict(item['tail'],occurrence=0),support_sids=item['support_sids'],status='supported')
+            try:f,payload=recover(raw,w,slots,catalog)
+            except (ValueError,KeyError,TypeError) as e:rejected.append(str(e));continue
+            v=lm.verify(payload,stage+'_verify');verifications.append(dict(**v,payload=payload))
+            fs.append(Fact(**{**asdict(f),'score':v['score']}))
+    return fs,dict(generation=generations,rejected=rejected,verification=verifications)
 
 def render(question,windows,states,slot_count,tokenize,limit=1024):
     wm={w.id:w for w in windows};rank={w.id:i for i,w in enumerate(windows)}
