@@ -58,7 +58,10 @@ def main(seed=1729,mode='main'):
                     record(method,S,dict(total_seconds=time.perf_counter()-st,token_seconds=c['ctx'].seconds,tokenizations=c['ctx'].checks))
                 for kind,net in models.items():
                     if closed and kind not in ('H1','H4'):continue
-                    methods=['H4-Flat','H4-GB','H4-KM','H4-Representative'] if kind=='H4' else [kind]
+                    # Full exact-index cost/parity is measured on all primary
+                    # TUNE queries. Later seed/budget QA needs the learned score,
+                    # not repeated profiling of three equivalent exact indexes.
+                    methods=(['H4-Flat','H4-GB','H4-KM','H4-Representative'] if seed==1729 and mode=='main' else ['H4-Flat']) if kind=='H4' else [kind]
                     if all((q['query_id'],limit,m) in done for m in methods):continue
                     if kind=='DeepSets':net.float()
                     s,network_seconds=scorer(net,c);reference=None
