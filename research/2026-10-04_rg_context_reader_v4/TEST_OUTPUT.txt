@@ -1,0 +1,18 @@
+Command: temp/stage4e_env/Scripts/python.exe research/2026-10-04_rg_context_reader_v4/tests.py
+Initial run: 6 tests, 3.725s, one test-implementation failure.
+The label-isolation assertion searched docstring text instead of imports.
+Changed it to inspect the import AST and automatic() parameter signature.
+
+Second complete run:
+test_actual_constructed_sources_and_shared_cap ... ok
+test_cache_cannot_cross_protocol_length_precision ... ok
+test_dense_member_package_delivered_without_fill ... ok
+test_field_protocol_has_no_answer_cleaning ... ok
+test_no_package_falls_back_and_budget_control ... ok
+test_unobserved_or_missing_provenance_rejected ... ok
+Ran 6 tests in 4.018s
+OK
+
+Actual-source test covers 128 constructed contexts, original character spans,
+body reconstruction and the common 1024-token cap for all three protocols.
+These are not proof of relation truth or answer quality.

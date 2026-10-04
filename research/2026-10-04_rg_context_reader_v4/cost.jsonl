@@ -1,2 +1,3 @@
 {"stage": "construct", "cpu_seconds": 3.734375, "wall_seconds": 3.7873146000056295}
 {"stage": "construct", "cpu_seconds": 3.84375, "wall_seconds": 3.8505127000098582}
+{"stage": "reader_D0", "cpu_seconds": 43.25, "wall_seconds": 42.40915099999984, "gpu_process_seconds": 42.40912749999552, "peak_gpu_bytes": 6564832256}
