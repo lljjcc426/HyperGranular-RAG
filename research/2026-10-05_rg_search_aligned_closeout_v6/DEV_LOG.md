@@ -19,3 +19,11 @@ Resource starting point: v5 reports cumulative GPU 24114.6555248 seconds; CPU lo
 Mentor design check: directly testing the score/search mismatch is distinguishable from adding interactions. Mined partial comparisons must train the deployed logit, and replay separates added updates from changed examples/objective.
 
 Reviewer design check: high support coverage is not answer utility; MMR and low-order/general-set controls are mandatory. Exposed QA cannot confirm generalization. Existing no-speedup results remain relevant and no tree rerun is needed. This bounded repair cannot validate older static-q25 mechanisms retrospectively.
+
+## Completed development checkpoints
+
+Round 1 completed all four aligned models and the H4 static-replay control (8 epochs each). Selected aligned epochs: H1=2, H2=8, DeepSets=2, H4=4. Dataset-equal selected support completeness is respectively 0.5078125, 0.5000000, 0.5078125, 0.5156250. These are checkpoint-panel measurements, not QA results. Later epochs did not improve every model, so training loss alone is not used to select a checkpoint. Round 2 re-mines all four selected models within the remaining budget.
+
+Clarification of the pre-execution shorthand above: Dense-K6 and MMR-K6 are both retained in the mining reference pool. Only Dense-K6 is included as an additional final deployment candidate, exactly as in v5; MMR-K6 has not been added to the deployed decoder.
+
+The first source tests exercised direct gradients from partial-coverage preferences, empty-pair masking, same-parent pair construction, and intact grouped sampling: four tests passed. Manuscript work creates only new v6 copies; old papers, figures, and plotting scripts are untouched. A missing LaTeX backslash in the new conference preference equation was corrected before compilation.
