@@ -156,7 +156,7 @@ share 57 HotpotQA and 4,753 MuSiQue source documents. All are exposed
 development material. In particular, excluding the answer-evaluation panel
 from checkpoint selection does not retrospectively turn it into an
 independent test set.
-\input{../shared/data_roles.tex}
+\input{data_roles.tex}
 
 \subsection{Feasibility and support labels}
 For question $q$, let $V_q$ be the dense candidate list and $S\subseteq V_q$
@@ -478,14 +478,14 @@ terms, so their existence in the model is not merely nominal. Their
 activation still does not establish their necessity.
 
 \subsection{Search-aligned development results}
-\input{../shared/aligned_results.tex}
+\input{aligned_results.tex}
 
 \section{Results: natural answers and computational cost}\label{sec:answers}
 \subsection{The fixed natural-QA panel}
-\input{../shared/qa_table.tex}
-\input{../shared/qa_interpretation.tex}
-\input{../shared/own_static.tex}
-\input{../shared/qa_details.tex}
+\input{qa_table.tex}
+\input{qa_interpretation.tex}
+\input{own_static.tex}
+\input{qa_details.tex}
 
 Table~\ref{tab:qa-details} separates the cardinality actually used, the full
 tokenized input, annotated support, and exact answer match. The nominal
@@ -551,7 +551,7 @@ member matters here. It does not refute every approximate grouping method,
 and no additional reader outputs were generated for that control.
 
 \subsection{Model calls and experiment cost}
-\input{../shared/cost_text.tex}
+\input{cost_text.tex}
 The prior static-selector study used 4,350.28 GPU process-wall seconds,
 10,541.75 measured CPU seconds, and 2,287 real reader calls including eight
 uncached checks. Its 3,520 logical rows contain 1,241 cache hits. Those rows
@@ -738,5 +738,5 @@ This computational study uses the cited benchmark materials and existing
 models. It did not recruit human participants or collect new personal data.
 The supplementary release excludes original text and answer annotations.
 
-\bibliography{../shared/references,../shared/additions}
+\bibliography{references,additions}
 \end{document}

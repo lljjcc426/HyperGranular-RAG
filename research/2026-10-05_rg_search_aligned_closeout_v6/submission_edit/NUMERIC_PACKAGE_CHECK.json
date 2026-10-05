@@ -1,0 +1,16 @@
+{
+  "status": "NUMERIC_AND_PACKAGE_CHECKS_PASSED",
+  "reconstruction_stdout": "Reconstructed 2432 numeric method-question records on 128 questions; no inference or rescoring.",
+  "numeric_rows_checked": 19,
+  "maximum_numeric_roundoff": 5.551115123125783e-17,
+  "paired_counts_match": true,
+  "anonymous_text_files_checked": 17,
+  "source_paths_flat": true,
+  "conference_cited_entries": 11,
+  "journal_cited_entries": 20,
+  "research_model_calls": 0,
+  "new_scoring_or_statistical_tests": 0,
+  "wall_seconds": 0.0650339999992866,
+  "cpu_seconds": 0.0,
+  "visual_review": "Recorded separately in EDITORIAL_CHECK.md"
+}

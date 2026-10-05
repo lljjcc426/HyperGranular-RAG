@@ -1,0 +1,130 @@
+{
+  "document": "journal",
+  "status": "COMPILED_AND_VISUALLY_REVIEWED_READY_FOR_AUTHOR_CHECK",
+  "pdf": "submission_bundle/Evidence_Selection_Journal_V6_Submission_Edit.pdf",
+  "pages": 19,
+  "citations": 20,
+  "bibliography_items": 20,
+  "commands_succeeded": 4,
+  "flat_bundle": true,
+  "warnings": [
+    "Package hyperref Warning: Difference (3) between bookmark levels is greater ",
+    "Package hyperref Warning: Difference (2) between bookmark levels is greater "
+  ],
+  "page_checks": [
+    {
+      "page": 1,
+      "characters": 2626,
+      "visual_check": "REVIEWED_CONTACT_SHEET"
+    },
+    {
+      "page": 2,
+      "characters": 3435,
+      "visual_check": "REVIEWED_CONTACT_SHEET"
+    },
+    {
+      "page": 3,
+      "characters": 3026,
+      "visual_check": "REVIEWED_CONTACT_SHEET"
+    },
+    {
+      "page": 4,
+      "characters": 2790,
+      "visual_check": "REVIEWED_CONTACT_SHEET"
+    },
+    {
+      "page": 5,
+      "characters": 3006,
+      "visual_check": "REVIEWED_CONTACT_SHEET"
+    },
+    {
+      "page": 6,
+      "characters": 3296,
+      "visual_check": "REVIEWED_CONTACT_SHEET"
+    },
+    {
+      "page": 7,
+      "characters": 2916,
+      "visual_check": "REVIEWED_CONTACT_SHEET_AND_ENLARGED_PAGE"
+    },
+    {
+      "page": 8,
+      "characters": 3054,
+      "visual_check": "REVIEWED_CONTACT_SHEET"
+    },
+    {
+      "page": 9,
+      "characters": 3002,
+      "visual_check": "REVIEWED_CONTACT_SHEET"
+    },
+    {
+      "page": 10,
+      "characters": 3089,
+      "visual_check": "REVIEWED_CONTACT_SHEET"
+    },
+    {
+      "page": 11,
+      "characters": 2797,
+      "visual_check": "REVIEWED_CONTACT_SHEET_AND_ENLARGED_PAGE"
+    },
+    {
+      "page": 12,
+      "characters": 3120,
+      "visual_check": "REVIEWED_CONTACT_SHEET"
+    },
+    {
+      "page": 13,
+      "characters": 3090,
+      "visual_check": "REVIEWED_CONTACT_SHEET"
+    },
+    {
+      "page": 14,
+      "characters": 3130,
+      "visual_check": "REVIEWED_CONTACT_SHEET_AND_ENLARGED_PAGE"
+    },
+    {
+      "page": 15,
+      "characters": 3058,
+      "visual_check": "REVIEWED_CONTACT_SHEET"
+    },
+    {
+      "page": 16,
+      "characters": 2945,
+      "visual_check": "REVIEWED_CONTACT_SHEET"
+    },
+    {
+      "page": 17,
+      "characters": 2609,
+      "visual_check": "REVIEWED_CONTACT_SHEET"
+    },
+    {
+      "page": 18,
+      "characters": 2740,
+      "visual_check": "REVIEWED_CONTACT_SHEET"
+    },
+    {
+      "page": 19,
+      "characters": 1743,
+      "visual_check": "REVIEWED_CONTACT_SHEET"
+    }
+  ],
+  "pdf_metadata": {
+    "format": "PDF 1.5",
+    "title": "",
+    "author": "",
+    "subject": "",
+    "keywords": "",
+    "creator": "LaTeX with hyperref",
+    "producer": "MiKTeX pdfTeX-1.40.28",
+    "creationDate": "D:20261005202447+08'00'",
+    "modDate": "D:20261005202447+08'00'",
+    "trapped": "",
+    "encryption": null
+  },
+  "wall_seconds": 3.7184794999993755,
+  "python_cpu_seconds": 1.34375,
+  "compiler_cpu_seconds": 2.421875,
+  "new_model_calls": 0,
+  "training_calls": 0,
+  "paid": 0
+}

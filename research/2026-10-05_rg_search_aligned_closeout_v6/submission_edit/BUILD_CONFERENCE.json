@@ -1,0 +1,70 @@
+{
+  "document": "conference",
+  "status": "COMPILED_AND_VISUALLY_REVIEWED_READY_FOR_AUTHOR_CHECK",
+  "pdf": "anonymous_conference/Set_Selection_Conference_V6_Submission_Edit.pdf",
+  "pages": 7,
+  "citations": 11,
+  "bibliography_items": 11,
+  "commands_succeeded": 4,
+  "flat_bundle": true,
+  "warnings": [
+    "Package amsmath Warning: Unable to redefine math accent \\vec.",
+    "Package hyperref Warning: Token not allowed in a PDF string (Unicode):"
+  ],
+  "page_checks": [
+    {
+      "page": 1,
+      "characters": 2699,
+      "visual_check": "REVIEWED_CONTACT_SHEET"
+    },
+    {
+      "page": 2,
+      "characters": 2906,
+      "visual_check": "REVIEWED_CONTACT_SHEET_AND_ENLARGED_PAGE"
+    },
+    {
+      "page": 3,
+      "characters": 3001,
+      "visual_check": "REVIEWED_CONTACT_SHEET_AND_ENLARGED_PAGE"
+    },
+    {
+      "page": 4,
+      "characters": 2793,
+      "visual_check": "REVIEWED_CONTACT_SHEET"
+    },
+    {
+      "page": 5,
+      "characters": 2737,
+      "visual_check": "REVIEWED_CONTACT_SHEET_AND_ENLARGED_PAGE"
+    },
+    {
+      "page": 6,
+      "characters": 2512,
+      "visual_check": "REVIEWED_CONTACT_SHEET"
+    },
+    {
+      "page": 7,
+      "characters": 3049,
+      "visual_check": "REVIEWED_CONTACT_SHEET"
+    }
+  ],
+  "pdf_metadata": {
+    "format": "PDF 1.5",
+    "title": "",
+    "author": "",
+    "subject": "",
+    "keywords": "",
+    "creator": "LaTeX with hyperref",
+    "producer": "MiKTeX pdfTeX-1.40.28",
+    "creationDate": "D:20261005202445+08'00'",
+    "modDate": "D:20261005202445+08'00'",
+    "trapped": "",
+    "encryption": null
+  },
+  "wall_seconds": 2.5129121000027226,
+  "python_cpu_seconds": 0.5625,
+  "compiler_cpu_seconds": 1.921875,
+  "new_model_calls": 0,
+  "training_calls": 0,
+  "paid": 0
+}

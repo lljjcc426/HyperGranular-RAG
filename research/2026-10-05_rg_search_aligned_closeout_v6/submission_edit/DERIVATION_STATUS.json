@@ -1,0 +1,15 @@
+{
+  "task": "V6-SUBMISSION-EDITORIAL-ONLY-20261005",
+  "source": "Completed per-query v5/v6 QA records; no prediction rescoring",
+  "verified_same_panel_h4_counts": [
+    55,
+    57
+  ],
+  "questions": 128,
+  "full_record_count": 2432,
+  "model_calls": 0,
+  "training_calls": 0,
+  "paid": 0,
+  "wall_seconds": 0.11824960000012652,
+  "cpu_seconds": 0.125
+}

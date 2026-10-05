@@ -1,0 +1,8 @@
+{"stage":"first_build_conference","wall_seconds":2.6709818999988784,"python_cpu_seconds":0.546875,"compiler_cpu_seconds":2.0,"new_model_calls":0,"paid":0}
+{"stage":"first_build_journal","wall_seconds":3.7658181999977387,"python_cpu_seconds":1.359375,"compiler_cpu_seconds":2.375,"new_model_calls":0,"paid":0}
+{"stage":"first_derivation_completed_before_print_key_error","wall_seconds":0.10891489999994519,"cpu_seconds":0.109375,"new_model_calls":0,"paid":0}
+{"stage":"corrected_derivation","wall_seconds":0.10555519999979879,"cpu_seconds":0.09375,"new_model_calls":0,"paid":0}
+{"stage":"derivation_with_supplement_assets","wall_seconds":0.11824960000012652,"cpu_seconds":0.125,"new_model_calls":0,"paid":0}
+{"stage": "build_conference", "wall_seconds": 2.5129121000027226, "python_cpu_seconds": 0.5625, "compiler_cpu_seconds": 1.921875, "new_model_calls": 0, "paid": 0}
+{"stage": "build_journal", "wall_seconds": 3.7184794999993755, "python_cpu_seconds": 1.34375, "compiler_cpu_seconds": 2.421875, "new_model_calls": 0, "paid": 0}
+{"stage": "numeric_package_check", "wall_seconds": 0.0650339999992866, "cpu_seconds": 0.0, "new_model_calls": 0, "paid": 0}

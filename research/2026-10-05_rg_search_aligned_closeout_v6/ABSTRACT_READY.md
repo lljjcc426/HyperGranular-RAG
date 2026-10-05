@@ -1,5 +1,7 @@
 # Ready-to-use abstract — completed evidence only
 
+**Current editorial version:** [submission_edit/ABSTRACT_READY.md](submission_edit/ABSTRACT_READY.md). The text below preserves earlier versions for traceability and should not be copied instead of the same-QA-panel editorial correction. No abstract-registration receipt has been supplied.
+
 ## Initial version, prepared before new experiments
 
 Title: **When Set Scores Fail to Select Evidence: A Controlled Study of Budgeted Multi-hop RAG**

@@ -1,5 +1,15 @@
 # Complete alternative manuscripts for the v6 closeout
 
+## Current editorial submission alternatives
+
+- [Conference PDF, submission edit](../submission_edit/anonymous_conference/Set_Selection_Conference_V6_Submission_Edit.pdf) and [flat editable source](../submission_edit/anonymous_conference/main.tex).
+- [Journal PDF, submission edit](../submission_edit/submission_bundle/Evidence_Selection_Journal_V6_Submission_Edit.pdf) and [flat editable source](../submission_edit/submission_bundle/main.tex).
+- [Editorial changes and delivery](../submission_edit/EDITORIAL_CHANGES.md), [actual build/page checks](../submission_edit/EDITORIAL_CHECK.md), and [anonymous numerical supplement](../submission_edit/anonymous_supplement/README.md).
+
+The internal `conference/main.tex`, `journal/main.tex`, and shared inputs now contain the submission edit. The older named PDFs below remain unchanged; their corresponding pre-edit sources remain in Git at `b7c91fde94d1de7213ab50382ba4f50f313187c3`. Use `../submission_edit/build_submission.py` for the new deliverables; the older `build.py` is the earlier build entry. Status: READY_FOR_AUTHOR_CHECK, not submitted.
+
+## Preserved pre-edit PDFs
+
 - Conference: [PDF](conference/HyperGranular-RAG_Conference_V6.pdf), [LaTeX](conference/main.tex). A focused empirical paper in LNCS format for a conditional ECIR 2027 Short submission.
 - Journal: [PDF](journal/HyperGranular-RAG_Journal_V6.pdf), [LaTeX](journal/main.tex). A fuller empirical study prepared with the Springer Nature class for possible JIIS submission.
 - Shared numerical tables and bibliography: `shared/`.

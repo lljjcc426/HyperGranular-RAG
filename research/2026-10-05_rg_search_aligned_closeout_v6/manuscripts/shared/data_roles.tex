@@ -1,0 +1,14 @@
+\begin{table}[t]\centering\small
+\caption{Data roles (HotpotQA/MuSiQue question counts). MINE is within FIT;
+DEV\_SELECT and QA are disjoint subsets of TUNE. All are exposed development
+material. Repeated seeds reuse these same questions.}
+\label{tab:roles}
+\begin{tabular}{lrrl}\toprule
+Role & HotpotQA & MuSiQue & Use\\\midrule
+FIT & 748 & 2,418 & Supervised training\\
+TUNE & 196 & 542 & Static model development\\
+Historical DEV & 56 & 40 & Earlier interface development\\
+MINE & 256 & 256 & Search-state collection\\
+DEV\_SELECT & 64 & 64 & Continuation checkpoint choice\\
+QA & 64 & 64 & Fixed reader evaluation\\\bottomrule
+\end{tabular}\end{table}

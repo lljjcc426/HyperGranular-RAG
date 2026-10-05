@@ -1,0 +1,70 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{blondel2016hofm}
+Blondel, M., Fujino, A., Ueda, N., Ishihata, M.: Higher-order factorization
+  machines. In: Advances in Neural Information Processing Systems. vol.~29
+  (2016),
+  \url{https://proceedings.neurips.cc/paper/2016/hash/158fc2ddd52ec2cf54d3c161f2dd6517-Abstract.html}
+
+\bibitem{carbonell1998mmr}
+Carbonell, J., Goldstein, J.: The use of {MMR}, diversity-based reranking for
+  reordering documents and producing summaries. In: Proceedings of the 21st
+  Annual International ACM SIGIR Conference on Research and Development in
+  Information Retrieval. pp. 335--336 (1998). \doi{10.1145/290941.291025},
+  \url{https://dl.acm.org/doi/10.1145/290941.291025}
+
+\bibitem{lee2025setr}
+Lee, D., Jo, Y., Park, H., Lee, M.: Shifting from ranking to set selection for
+  retrieval augmented generation. In: Proceedings of ACL. pp. 17606--17619
+  (2025). \doi{10.18653/v1/2025.acl-long.861}
+
+\bibitem{qwen2024release}
+{Qwen Team}: {Qwen2.5}: A party of foundation models (September 2024),
+  \url{https://qwenlm.github.io/blog/qwen2.5/}, official model release
+
+\bibitem{trabucco2021com}
+Trabucco, B., Kumar, A., Geng, X., Levine, S.: Conservative objective models
+  for effective offline model-based optimization. In: Proceedings of ICML.
+  Proceedings of Machine Learning Research, vol.~139, pp. 10358--10368 (2021),
+  \url{https://proceedings.mlr.press/v139/trabucco21a.html}
+
+\bibitem{trivedi2022musique}
+Trivedi, H., Balasubramanian, N., Khot, T., Sabharwal, A.: {MuSiQue}: Multihop
+  questions via single-hop question composition. Transactions of the
+  Association for Computational Linguistics  \textbf{10},  539--554 (2022).
+  \doi{10.1162/tacl_a_00475}, \url{https://aclanthology.org/2022.tacl-1.31/}
+
+\bibitem{wiseman2016bso}
+Wiseman, S., Rush, A.M.: Sequence-to-sequence learning as beam-search
+  optimization. In: Proceedings of EMNLP. pp. 1296--1306 (2016).
+  \doi{10.18653/v1/D16-1137}
+
+\bibitem{xiao2023bge}
+Xiao, S., Liu, Z., Zhang, P., Muennighoff, N., Lian, D., Nie, J.Y.: {C-Pack}:
+  Packed resources for general chinese embeddings. arXiv preprint
+  arXiv:2309.07597  (2023). \doi{10.48550/arXiv.2309.07597},
+  \url{https://arxiv.org/abs/2309.07597v5}, first posted 2023; version 5, 24
+  September 2024
+
+\bibitem{yang2018hotpotqa}
+Yang, Z., Qi, P., Zhang, S., Bengio, Y., Cohen, W.W., Salakhutdinov, R.,
+  Manning, C.D.: {HotpotQA}: A dataset for diverse, explainable multi-hop
+  question answering. In: Proceedings of the 2018 Conference on Empirical
+  Methods in Natural Language Processing. pp. 2369--2380 (2018).
+  \doi{10.18653/v1/D18-1259}, \url{https://aclanthology.org/D18-1259/}
+
+\bibitem{zaheer2017deepsets}
+Zaheer, M., Kottur, S., Ravanbakhsh, S., P{\'o}czos, B., Salakhutdinov, R.,
+  Smola, A.J.: Deep sets. In: Advances in Neural Information Processing
+  Systems. vol.~30 (2017),
+  \url{https://proceedings.neurips.cc/paper/2017/hash/f22e4747da1aa27e363d86d40ff442fe-Abstract.html}
+
+\bibitem{zhang2024beam}
+Zhang, J., Zhang, H., Zhang, D., Yong, L., Huang, S.: End-to-end beam retrieval
+  for multi-hop question answering. In: Proceedings of NAACL-HLT. pp.
+  1718--1731 (2024). \doi{10.18653/v1/2024.naacl-long.96}
+
+\end{thebibliography}

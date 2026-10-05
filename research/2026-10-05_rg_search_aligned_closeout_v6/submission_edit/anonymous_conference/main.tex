@@ -145,7 +145,7 @@ evaluation. The 738-query selection analysis contains 196 HotpotQA and 542
 MuSiQue questions. Top128 reaches all known support for 190 and 367,
 respectively. Nine MuSiQue questions have known support that cannot all fit
 the six-block/1,024-token constraint. All remain in the denominator.
-\input{../shared/data_roles.tex}
+\input{data_roles.tex}
 
 The continuation mines 256 FIT queries per dataset and selects checkpoints
 using 64 non-QA TUNE queries per dataset. Hash-based sampling preserves
@@ -210,8 +210,8 @@ three-seed experiment, H4's mean dataset-equal F1 was 0.4171 (seed standard
 deviation 0.0139), compared with Dense's 0.4055 and MMR's 0.4303.
 The H4 range is 0.4027--0.4304; seed variation is neither a query confidence
 interval nor an ensemble result.
-\input{../shared/qa_table.tex}
-\input{../shared/qa_interpretation.tex}
+\input{qa_table.tex}
+\input{qa_interpretation.tex}
 The token ceiling is shared, but actual input lengths and block counts
 differ: Dense/MMR average 1,009.9/1,007.3 tokens, versus 916.9/842.2 for
 static/aligned H4. This is a pipeline answer comparison; the size-matched
@@ -227,7 +227,7 @@ work and retained index overhead. These measurements include per-query
 construction and network work; some ran alongside GPU reading, so they are
 not isolated hardware benchmarks. We preserve this no-speedup finding and
 do not repeat index tuning in the present intervention.
-\input{../shared/cost_short.tex}
+\input{cost_short.tex}
 
 \section{Discussion and Conclusion}
 Evidence selection has multiple objectives that cannot be substituted for
@@ -256,6 +256,6 @@ implementation, analysis, literature checking, drafting, and revision,
 beyond language polishing.
 
 \clearpage
-\bibliographystyle{../shared/splncs04}
-\bibliography{../shared/references,../shared/additions}
+\bibliographystyle{splncs04}
+\bibliography{references,additions}
 \end{document}
