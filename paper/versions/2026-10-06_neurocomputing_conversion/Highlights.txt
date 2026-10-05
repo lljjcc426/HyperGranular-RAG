@@ -1,0 +1,4 @@
+Accurate set prediction can coexist with poor evidence selection.
+Search-aligned training affects support and answer quality differently.
+Simple relevance-diversity selection remains competitive in this study.
+Exact ball indexes preserve choices but add cost at 128 candidates.

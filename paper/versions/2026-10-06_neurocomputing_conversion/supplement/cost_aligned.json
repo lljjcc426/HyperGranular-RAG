@@ -1,0 +1,21 @@
+{
+  "gpu_process_seconds": 4513.065632200001,
+  "cpu_seconds_measured": 7035.5,
+  "new_disk_bytes": 276613232,
+  "new_reader_calls": 986,
+  "logical_qa_rows": 1536,
+  "cache_hits": 558,
+  "input_tokens": 761847,
+  "output_tokens": 9460,
+  "generation_seconds": 867.9391438000166,
+  "cumulative_gpu_seconds": 28627.721157,
+  "cumulative_cpu_lower_bound": 36097.328,
+  "prior_unknown_cpu": "UNKNOWN",
+  "paid": 0,
+  "accounting_scope": "Phase CPU and GPU model-residency wall time; includes recorded compiler CPU. Interpreter startup, shell operations and older unknown CPU are not imputed.",
+  "peak_gpu_bytes": 6565146112,
+  "format_failures": 0,
+  "hit_limits": 0,
+  "cpu_research_seconds_measured": 6997.0625,
+  "cpu_build_seconds_measured": 38.4375
+}

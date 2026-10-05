@@ -1,0 +1,117 @@
+{
+  "status": "DELIVERY_CHECKS_PASSED",
+  "pages": 23,
+  "clean_archive_pdf_text_matches": true,
+  "fonts_embedded": 23,
+  "reconstructed_csvs_byte_equal": [
+    "ENDPOINT_DECOMPOSITION.csv",
+    "PAIRED_TRANSITIONS.csv",
+    "QA_SUMMARY.csv",
+    "SELECTED_SCORE_BINS.csv"
+  ],
+  "build_commands": {
+    "main": [
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.6946294000003945,
+        "cpu_seconds": 0.703125
+      },
+      {
+        "command": [
+          "bibtex",
+          "main"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.20426890000044295,
+        "cpu_seconds": 0.203125
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.7093346999999994,
+        "cpu_seconds": 0.6875
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.7025494999998045,
+        "cpu_seconds": 0.671875
+      }
+    ],
+    "clean": [
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.8068195999999261,
+        "cpu_seconds": 0.765625
+      },
+      {
+        "command": [
+          "bibtex",
+          "main"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.23301290000017616,
+        "cpu_seconds": 0.234375
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.8067568000001302,
+        "cpu_seconds": 0.796875
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.8172561000001224,
+        "cpu_seconds": 0.828125
+      }
+    ]
+  },
+  "public_author_metadata_hits": [],
+  "public_paths_checked": 73,
+  "gpu_seconds": 0,
+  "new_model_calls": 0,
+  "answer_rescoring": 0,
+  "paid_cost": 0,
+  "retained_instrumented_cpu_seconds_lower_bound": 8.046875,
+  "cpu_scope_note": "Preparation, last plot/build/render passes and two numerical reconstructions only. Shell, Node/LibreOffice, installation and earlier corrected builds were not all instrumented; total CPU is not claimed exact.",
+  "task_disk_bytes_by_directory": {
+    "paper/versions/2026-10-06_neurocomputing_conversion": 18055630,
+    "temp/nc_conversion_runtime": 13965723,
+    "temp/nc_conversion_20261006_input": 733052,
+    "temp/nc_lo_profile": 455377
+  },
+  "task_disk_bytes_total": 33209782
+}

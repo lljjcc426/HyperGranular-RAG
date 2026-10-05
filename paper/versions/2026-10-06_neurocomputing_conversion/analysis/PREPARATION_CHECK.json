@@ -1,0 +1,11 @@
+{
+  "qa_questions": 128,
+  "paired_rows": 1024,
+  "expected_paired_rows": 1024,
+  "case_questions": 16,
+  "saved_score_rows": 2952,
+  "cpu_seconds": 0.484375,
+  "wall_seconds": 0.4887797999999748,
+  "new_model_calls": 0,
+  "answer_rescoring": 0
+}

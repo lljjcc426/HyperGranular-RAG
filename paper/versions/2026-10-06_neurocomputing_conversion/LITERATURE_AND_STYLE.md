@@ -1,0 +1,17 @@
+# Targeted literature and writing check
+
+Checked 6 October 2026. Published status, text actually read, and experimental reproduction are distinct. No external method was run. Existing v6 bibliography was reused rather than repeating a broad survey; newly added journal metadata were verified against publisher/Crossref records.
+
+| Work / status | Actual reading in this conversion | Supports / does not support |
+|---|---|---|
+| Chen et al., Neurocomputing 431 (2021), 47–56, DOI [10.1016/j.neucom.2020.11.040](https://doi.org/10.1016/j.neucom.2020.11.040) | Publisher metadata; accessible [arXiv preprint](https://arxiv.org/pdf/2011.09954), method, experimental setting, comparisons, negative-result discussion, cases and conclusion. Not a complete published-PDF audit. | Organize specific component expectations against controls and explanatory cases. Does not support claims about RAG or our model. |
+| Guo et al., Neurocomputing 650 (2025), 130931, DOI [10.1016/j.neucom.2025.130931](https://doi.org/10.1016/j.neucom.2025.130931) | Publisher-indexed abstract, introduction and method/result excerpts; full paginated PDF not obtained. Author list verified through Crossref. | Inter-chunk graph and evidence-chain retrieval are prior mechanisms. Their reported gains are not comparable numeric baselines here. |
+| Zhai, Tang, Jin, Neurocomputing 656 (2025), 131514, DOI [10.1016/j.neucom.2025.131514](https://doi.org/10.1016/j.neucom.2025.131514) | Publisher abstract/introduction and training/results/limitations excerpts; full PDF not obtained. Metadata verified. | LM-generated/confidence-weighted reranking supervision differs from annotated support. No superiority or replication claim. |
+| Tian, Ganguly, Macdonald, ECIR 2025, pp32–48, DOI [10.1007/978-3-031-88708-6_3](https://doi.org/10.1007/978-3-031-88708-6_3) | [Author accepted manuscript](https://eprints.gla.ac.uk/343843/3/343843.pdf): introduction, relevance/utility definition and experimental settings/results passages | Distinguishes topical relevance from generated utility. Uses TREC/MS MARCO and semantic output measures, not our support targets/canonical EM-F1. No transfer of statistical claims. |
+| SetR ACL2025; RECOMP ICLR2024; Beam Retrieval NAACL2024 | Reused v6 verified reference notes and direct conceptual boundaries; Beam author metadata rechecked on [ACL](https://aclanthology.org/2024.naacl-long.96/) | Established set/context selection and multi-hop beam retrieval; none was reproduced here. |
+| BSO EMNLP2016; COM ICML2021; HOFM NeurIPS2016; DeepSets NeurIPS2017 | Reused v6 method/equation reading and verified records | Established search-aware learning / optimized-objective issues / set architectures. No novelty claim for these ingredients. |
+| Ram & Gray (2012) | Reused cited arXiv tree-bound formulation | Center-plus-maximum-radius bound, not F1 or global-beam optimality. |
+
+Writing changes: the opening states the actual set-decision problem; methods precede interventions; three research questions connect prediction, selection/answers, and cost. New same-question analysis replaces an unsupported implication that adding support causes harm. H2 gains, MMR, replay and no-speedup results remain visible. Historical project stage labels are confined to provenance materials.
+
+New entries are in `manuscript/nc_references.bib`. The rendered bibliography has 20 cited entries; uncited inherited entries do not appear. This record does not claim full-text rereading of every inherited reference or numerical verification of external papers.

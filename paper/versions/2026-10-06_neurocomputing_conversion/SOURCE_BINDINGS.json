@@ -1,0 +1,41 @@
+{
+  "spec_id": "HGRAG-NEUROCOMPUTING-CONVERSION-20261006",
+  "base_commit": "987189ce48a9eb31bc8fc1468e55bbe5bc57d6b4",
+  "analysis_role": "POST_HOC_DESCRIPTIVE_ANALYSIS_OF_EXISTING_RUNS",
+  "files": [
+    {
+      "path": "research/2026-10-04_rg_learned_set_v5/local/qa.jsonl",
+      "bytes": 3849488
+    },
+    {
+      "path": "research/2026-10-05_rg_search_aligned_closeout_v6/local/qa.jsonl",
+      "bytes": 1556821
+    },
+    {
+      "path": "research/2026-10-04_rg_learned_set_v5/local/selections_1729_main.jsonl",
+      "bytes": 5679656
+    },
+    {
+      "path": "research/2026-10-04_rg_learned_set_v5/DENSE_K6_DIAGNOSTIC.csv",
+      "bytes": 564
+    },
+    {
+      "path": "research/2026-10-04_rg_learned_set_v5/local/selection_cost_batches.jsonl",
+      "bytes": 4326115
+    },
+    {
+      "path": "research/2026-10-04_rg_learned_set_v5/SEARCH_COSTS_LEAF_PRUNING.csv",
+      "bytes": 1020
+    },
+    {
+      "path": "research/2026-10-04_rg_learned_set_v5/local/queries.json",
+      "bytes": 7081101
+    },
+    {
+      "path": "research/2026-10-05_rg_search_aligned_closeout_v6/local/boundaries.json",
+      "bytes": 45664
+    }
+  ],
+  "private_sources": "User input package and author metadata retained locally; excluded from public artifacts",
+  "score_gap_limitation": "Original diagnostic saved two aggregate rows only; no per-query Dense-K6 score/set trace. No model was loaded to reconstruct it."
+}

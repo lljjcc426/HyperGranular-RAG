@@ -1,0 +1,11 @@
+{
+  "status": "NUMERIC_RECONSTRUCTION_PASSED",
+  "unique_questions": 128,
+  "paired_rows": 1024,
+  "numeric_observations": 2688,
+  "groups": 24,
+  "new_model_calls": 0,
+  "answer_rescoring": 0,
+  "new_statistical_tests": 0,
+  "cpu_seconds": 0.046875
+}

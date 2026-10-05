@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering\small
+\caption{Each aligned model against its own static checkpoint on the same QA panel. The seeds reuse the same 128 questions; they do not create independent samples.}\label{tab:paired}
+\begin{tabular}{llrrrr}\toprule
+Seed & Model & Full count & Static F1 & Aligned F1 & $\Delta$F1 \\
+\midrule
+1729 & H1 & 50 $\to$ 61 & 0.3738 & 0.4065 & +0.0326 \\
+1729 & H2 & 47 $\to$ 56 & 0.3998 & 0.4057 & +0.0060 \\
+1729 & H4 & 55 $\to$ 57 & 0.4181 & 0.3766 & -0.0415 \\
+1729 & DeepSets & 54 $\to$ 60 & 0.4123 & 0.4090 & -0.0033 \\
+2026 & H1 & 49 $\to$ 56 & 0.4277 & 0.4126 & -0.0151 \\
+2026 & H2 & 53 $\to$ 54 & 0.4123 & 0.4173 & +0.0051 \\
+2026 & H4 & 53 $\to$ 57 & 0.4304 & 0.3831 & -0.0473 \\
+2026 & DeepSets & 45 $\to$ 56 & 0.4027 & 0.3521 & -0.0505 \\
+\bottomrule\end{tabular}
+\end{table}

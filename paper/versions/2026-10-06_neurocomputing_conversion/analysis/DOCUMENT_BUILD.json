@@ -1,0 +1,26 @@
+{
+  "highlights": [
+    {
+      "text": "Accurate set prediction can coexist with poor evidence selection.",
+      "characters": 65
+    },
+    {
+      "text": "Search-aligned training affects support and answer quality differently.",
+      "characters": 71
+    },
+    {
+      "text": "Simple relevance-diversity selection remains competitive in this study.",
+      "characters": 71
+    },
+    {
+      "text": "Exact ball indexes preserve choices but add cost at 128 candidates.",
+      "characters": 67
+    }
+  ],
+  "private_documents": [
+    "Title_Page.docx",
+    "Cover_Letter_DRAFT.docx"
+  ],
+  "author_order_source": "Private metadata; no inferred roles",
+  "generated": true
+}

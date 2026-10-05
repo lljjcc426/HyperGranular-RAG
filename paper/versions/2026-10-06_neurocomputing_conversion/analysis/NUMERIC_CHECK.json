@@ -1,0 +1,35 @@
+{
+  "status": "PASSED",
+  "h4_saved_endpoint_checks": [
+    {
+      "seed": "1729",
+      "counts": [
+        55,
+        57
+      ],
+      "f1": [
+        0.4181066176470588,
+        0.3765887605042017
+      ],
+      "joint_total": 128,
+      "decomposition_matches": true
+    },
+    {
+      "seed": "2026",
+      "counts": [
+        53,
+        57
+      ],
+      "f1": [
+        0.43038340336134456,
+        0.38309917717086833
+      ],
+      "joint_total": 128,
+      "decomposition_matches": true
+    }
+  ],
+  "abstract_word_count": 228,
+  "keyword_count": 6,
+  "new_inference": 0,
+  "new_scoring": 0
+}

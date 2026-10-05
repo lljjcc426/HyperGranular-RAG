@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering\small
+\caption{Answers and selected contexts on the same 128 development questions (64 per dataset), seed 1729. F1 and EM are proportions. Dense and MMR share the 1,024-token ceiling but may exceed six paragraphs; learned models cannot. Replay matches optimizer steps, not total computation.}\label{tab:qa}
+\begin{tabular}{lrrrrr}\toprule
+Selector & Full & F1 & EM & Blocks & Input tokens \\
+\midrule
+Dense & 64/128 & 0.4055 & 0.3359 & 6.95 & 1009.9 \\
+MMR & 61/128 & 0.4303 & 0.3672 & 7.25 & 1007.3 \\
+H4 static & 55/128 & 0.4181 & 0.3594 & 5.91 & 916.9 \\
+H4-replay & 55/128 & 0.4046 & 0.3359 & 5.91 & 900.9 \\
+H1 aligned & 61/128 & 0.4065 & 0.3359 & 4.45 & 696.2 \\
+H2 aligned & 56/128 & 0.4057 & 0.3516 & 5.53 & 789.7 \\
+DeepSets aligned & 60/128 & 0.4090 & 0.3516 & 4.43 & 693.4 \\
+H4 aligned & 57/128 & 0.3766 & 0.2969 & 5.70 & 842.2 \\
+\bottomrule\end{tabular}
+\end{table}
