@@ -1,0 +1,47 @@
+{
+  "document": "conference",
+  "pages": 7,
+  "commands": 5,
+  "page_checks": [
+    {
+      "page": 1,
+      "characters": 2488,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 2,
+      "characters": 2711,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 3,
+      "characters": 2960,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 4,
+      "characters": 2621,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 5,
+      "characters": 2334,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 6,
+      "characters": 1904,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 7,
+      "characters": 2528,
+      "visual_status": "REVIEWED"
+    }
+  ],
+  "wall_seconds": 3.157127299997228,
+  "python_cpu_seconds": 0.4375,
+  "child_cpu_seconds": 2.59375,
+  "visual_review_record": "../../FINAL_MANUSCRIPT_CHECK.md",
+  "visual_review_scope": "All rendered pages inspected individually; affected pages rechecked after final editorial corrections."
+}

@@ -1,0 +1,246 @@
+\documentclass[runningheads]{llncs}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,booktabs,array,microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+\begin{document}
+\title{When Set Scores Fail to Select Evidence:\\A Controlled Study of Budgeted Multi-hop RAG}
+\titlerunning{When Set Scores Fail to Select Evidence}
+\author{Anonymous authors}
+\authorrunning{Anonymous authors}
+\institute{Anonymous affiliation}
+\maketitle
+\begin{abstract}
+Selecting complementary evidence under a limited context budget requires a
+score that remains useful on the sets found by search. We examine this
+requirement with first-, second-, and fourth-order factorization models and
+a permutation-invariant set model, sharing dense candidates and
+support-annotation supervision. Strong performance on constructed set pairs
+does not translate into stronger evidence selection: the static fourth-order
+model loses complete annotated support relative to a size-matched dense
+baseline. A bounded correction trains the deployed score on actual search
+frontiers and final sets, with an equal-update static replay control.
+For the primary seed, fourth-order checkpoint-panel completeness increases
+from 0.4531 to 0.5156, but answer F1 on a separate 128-question development
+panel falls from 0.4181 to 0.3766, below maximal marginal relevance's 0.4303.
+In both training seeds, every aligned model remains below this baseline
+in F1 point estimate.
+Exact granular-ball and k-means indexes preserve flat-search
+selections but do not accelerate the measured 128-candidate search.
+The study distinguishes proxy fit, selection quality, answer quality, and
+runtime, identifying where additional model structure does and does not
+provide practical value. All learned-selector comparisons are development
+evidence, rather than a new independent confirmation.
+\keywords{Evidence selection \and Multi-hop QA \and Search alignment}
+\end{abstract}
+
+\section{Introduction}
+Multi-hop question answering often depends on a small combination of
+passages rather than the single passage most similar to the question.
+Under a limited reader budget, evidence selection must balance relevance,
+redundancy, and coverage. Set-wise selection makes this collective objective
+explicit~\cite{lee2025setr}, while beam retrieval preserves multiple partial
+evidence hypotheses~\cite{zhang2024beam}. Neither modeling interactions nor
+searching more combinations ensures that the resulting context will help a
+reader.
+
+We investigate a particular failure mode: a learned evidence-set score can
+perform well on constructed training comparisons while assigning high
+scores to poorer sets encountered during deployment. This motivates a
+controlled study with frozen embeddings, shared candidates, a fixed
+reader, and four comparable set models. The first-, second-, and
+fourth-order models test the value of explicit interactions; a DeepSets
+control tests whether any benefit requires their particular factorization.
+Earlier HyperGranular-RAG sentence-completion experiments motivate this
+distinct paragraph-selector study.
+
+Our contribution is an empirical separation of three gaps: constructed-set
+prediction versus actual selection, support coverage versus answer quality,
+and fewer score computations versus lower runtime. A bounded search-aligned
+training intervention probes the first gap without changing model families
+or first-stage retrieval. It follows established search-aware learning
+ideas~\cite{wiseman2016bso}; we claim neither a new factorization algebra nor a
+new tree bound. This framing makes the simple controls and negative cost
+results central to the research question.
+
+\section{Budgeted Evidence Selection}
+\paragraph{Shared task.}
+For question $q$, BGE-large-en-v1.5~\cite{xiao2023bge} retrieves a common candidate set $V_q$ of at most 128
+whole paragraphs from a corpus assembled from exposed development data. A context contains
+$S\subseteq V_q$, $|S|\leq6$, rendered in original BGE order. The actual
+tokenized reader input, including the question and instructions, must not
+exceed 1,024 tokens. This token constraint is distinct from the six-block
+constraint. No support paragraph is inserted into evaluation candidates.
+
+Let $G_q$ denote the known support annotations and $C(S)$ the annotations
+covered by the selected original passages. Supervision is
+\begin{equation}
+ c(S)=|C(S)\cap G_q|/|G_q|,\qquad f(S)=\mathbf1[G_q\subseteq C(S)].
+\end{equation}
+These labels measure annotated support, not factual truth or exact answer
+utility. Unannotated passages may still be useful. Training can use known
+support references, whereas deployment selection receives only the question,
+passages, embeddings, and token lengths.
+
+\paragraph{Set scores and search.}
+Query--passage features combine frozen normalized embeddings, their product
+and absolute difference, cosine similarity, and log length. A shared
+128-dimensional network produces unary factors $a_i$ and 32-dimensional
+interaction factors $v_i$. For order $H\in\{1,2,4\}$, the deployed score is
+\begin{equation}\label{eq:score}
+g_H(S)=b_q(|S|)+\frac1{6}\sum_{i\in S}a_i+
+\sum_{h=2}^{H}\frac{w_{q,h}^{\top}e_h(\{v_i:i\in S\})}{32\binom6h},
+\end{equation}
+where $e_h$ is the coordinatewise elementary symmetric polynomial.
+Its recurrence is the standard distinct-member ANOVA computation from
+higher-order factorization machines~\cite{blondel2016hofm}.
+The DeepSets control replaces the interaction sum with an MLP of the summed
+passage features and query representation~\cite{zaheer2017deepsets}.
+Each model has a full-support logit and an auxiliary coverage head.
+
+Width-four beam search evaluates feasible extensions through depth six,
+retains visited sets, and includes a feasible Dense-K6 set in the final
+comparison. It returns the highest-scoring visited set, with token length
+then stable IDs resolving final ties. Beam search is not a global optimum.
+Dense-budget and MMR-budget may retain more than six short blocks under the
+same token limit; Dense-K6 and MMR-K6 isolate cardinality in support analyses.
+MMR uses the fixed score $0.7\,s(q,i)-0.3\max_{j\in S}s(i,j)$.
+
+\paragraph{Search-aligned continuation.}
+Static supervision contains support sets, missing-support variants,
+same-size replacements, redundant additions, and random sets. We continue
+each model on a shared pool mined from actual FIT search: model final sets,
+partial frontiers, Dense-K6/MMR-K6, and limited replacements. Pools are
+merged across all four architectures, deduplicated, and capped at 64 sets
+per question. Reference support can augment static FIT examples but never
+the mined candidate universe.
+
+For $u(S)=(f(S)+c(S))/2$ and $u(S^+)>u(S^-)$, the added preference loss is
+\begin{equation}
+\ell(S^+,S^-)=\operatorname{softplus}\!\left(
+0.2[u(S^+)-u(S^-)]-[g(S^+)-g(S^-)]\right).
+\end{equation}
+Final pairs prioritize equal cardinality and similar length; frontier pairs
+prioritize the same parent and depth. Thus coverage differences between two
+incomplete sets supervise the score used by search directly. The objective
+is $L_{\mathrm{base}}+0.5L_{\mathrm{final}}+0.5L_{\mathrm{frontier}}$,
+with query-normalized losses and equal static/mined base sampling.
+H4 static replay receives the same optimizer settings and number of updates,
+without mined examples or the added preferences. Search-aware training and
+overestimation control have established precedents
+\cite{wiseman2016bso,trabucco2021com}; our intervention tests their relevance
+to this annotation-supervised selection problem, without borrowing their
+performance or theoretical guarantees.
+
+\section{Experimental Setting}
+We reuse previously exposed HotpotQA and MuSiQue materials
+\cite{yang2018hotpotqa,trivedi2022musique}. Paragraph reconstruction yields
+9,791 and 31,130 blocks. The 4,000 questions are divided into 3,166
+FIT, 738 TUNE, and 96 historical-development questions. Query groups remain
+separate, but FIT and TUNE share 57 HotpotQA and 4,753 MuSiQue documents.
+This is development-corpus retrieval, not full-Wikipedia or unseen-document
+evaluation. The 738-query selection analysis contains 196 HotpotQA and 542
+MuSiQue questions. Top128 reaches all known support for 190 and 367,
+respectively. Nine MuSiQue questions have known support that cannot all fit
+the six-block/1,024-token constraint. All remain in the denominator.
+
+The continuation mines 256 FIT queries per dataset and selects checkpoints
+using 64 non-QA TUNE queries per dataset. Hash-based sampling preserves
+existing question-type proportions and query groups. Up to two eight-epoch
+rounds use AdamW (learning rate $3\times10^{-4}$, weight decay $10^{-4}$,
+batch eight queries, gradient norm capped at one). At epochs 2, 4, and 8,
+checkpoint selection uses dataset-equal actual support completeness, then
+coverage, original development loss, and earlier epoch. QA never selects
+the checkpoint. The replay checkpoint follows the selected H4 update count.
+Both seeds (1729/2026) complete two rounds; the second seed was triggered
+by selection-panel improvement before new QA scores were observed.
+
+The fixed QA panel contains 64 questions per dataset: 48 bridge and 16
+comparison HotpotQA questions, and 32 two-hop and 32 longer-hop MuSiQue
+questions. The original FP16 Qwen2.5-3B-Instruct reader~\cite{qwen2024release} uses greedy decoding,
+at most 128 output tokens, and a shared constrained single-answer-field
+protocol. Dataset-specific canonical EM/F1 score that field without
+answer-dependent cleaning. Identical full token/model/decoder identities
+reuse outputs; this is not a new generation. Failures remain in every mean.
+All panel questions are exposed development data. We report paired
+descriptive comparisons without new confirmation tests or significance
+claims. Three original training seeds are not three independent datasets.
+
+\section{Results}
+\paragraph{Good proxy fit can coexist with support loss.}
+Table~\ref{tab:proxy} contrasts constructed-pair accuracy with actual
+selection. H4 correctly orders most sampled complete/incomplete pairs, yet
+selects less complete support than Dense-K6 on both datasets. Relative to
+Dense-K6, it loses 27 and 42 complete-support queries while recovering only
+5 and 24. Its mean sigmoid outputs on selected sets are 0.992 and 0.967,
+against actual completeness 0.709 and 0.223. These outputs are not calibrated
+probabilities. The discrepancy motivates training on states produced by
+search rather than improving only an auxiliary prediction metric.
+
+\begin{table}[t]
+\caption{Original static models (seed 1729): constructed-pair accuracy and actual complete
+support on all 738 TUNE questions. H/M denote HotpotQA/MuSiQue.}
+\label{tab:proxy}\centering\small
+\begin{tabular}{lrrrr}\toprule
+Method & Pair H & Pair M & Full H & Full M\\\midrule
+Dense-K6 & -- & -- & .8214 & .2565\\
+H1 & .9475 & .8978 & .6531 & .2454\\
+H2 & .9638 & .9422 & .6429 & .2325\\
+DeepSets & .9620 & .9482 & .6990 & .2306\\
+H4 & .9645 & .9464 & .7092 & .2232\\\bottomrule
+\end{tabular}
+\end{table}
+
+\input{../shared/aligned_results.tex}
+
+\paragraph{Answer quality remains a separate endpoint.}
+Table~\ref{tab:qa} retains Dense, MMR, the original H4 checkpoint, replay,
+and every aligned architecture on the same 128 questions. In the earlier
+three-seed experiment, H4's mean dataset-equal F1 was 0.4171 (seed standard
+deviation 0.0139), compared with Dense's 0.4055 and MMR's 0.4303.
+The H4 range is 0.4027--0.4304; seed variation is neither a query confidence
+interval nor an ensemble result.
+\input{../shared/qa_table.tex}
+\input{../shared/qa_interpretation.tex}
+
+\paragraph{Exact selection does not imply acceleration.}
+The original exact granular-ball and k-means indexes matched Flat on 1,476
+natural comparisons across 738 questions. In the subsequent fixed
+32+32-query timing comparison, Flat took 0.335/0.546 seconds per question,
+granular balls 0.426/0.653, and k-means 0.423/0.644. Granular balls reduced
+candidate inner products by about 66\%/44\%, but increased token-feasibility
+work and retained index overhead. These measurements include per-query
+construction and network work; some ran alongside GPU reading, so they are
+not isolated hardware benchmarks. We preserve this no-speedup finding and
+do not repeat index tuning in the present intervention.
+\input{../shared/cost_short.tex}
+
+\section{Discussion and Conclusion}
+Evidence selection has multiple objectives that cannot be substituted for
+one another. Annotation supervision makes set prediction inexpensive, but
+does not certify answer utility. Search can expose a mismatch that sampled
+set comparisons miss. Exact indexing can preserve a poor choice perfectly,
+and fewer inner products can still cost more time. The bounded continuation
+therefore evaluates actual selected support and a fixed reader rather than
+declaring success from loss reduction alone. H2 improves slightly over its
+own static checkpoint in both seeds; H1 improves in only the primary seed.
+All aligned models remain below MMR in F1 point estimate, and H4 declines
+in both seeds. These controls support a conditional analysis of
+training alignment, not an exclusive advantage of higher interaction order.
+
+These findings are bounded by exposed development data, document overlap,
+incomplete support annotation, one reader, and 128-candidate retrieval.
+They establish neither open-domain gains nor an exclusive granular-ball
+benefit. Independent confirmation requires a prospective data boundary.
+
+\paragraph{Reproducibility and disclosure.}
+Code and aggregate results accompany the paper; source text and answers
+are not redistributed. AI assistance covered implementation, analysis,
+literature checking, and writing. Authorship, funding, interests, licensing,
+and final submission require human confirmation.
+
+\clearpage
+\bibliographystyle{../shared/splncs04}
+\bibliography{../shared/references,../shared/additions}
+\end{document}

@@ -14,6 +14,8 @@ Bounded new readings on 2026-10-05:
 
 Reading depth: targeted method sections and existing verified records, not a new full-literature survey. Earlier manuscript related-work descriptions and canonical historical tables are reused only for their corresponding method/version boundary.
 
+Model attribution checked against the official Qwen/Qwen2.5-3B-Instruct and BAAI/bge-large-en-v1.5 model cards. The Qwen card supplies the September 2024 Qwen Team release citation. This identifies the existing reader; it is not a model search or a claim that the default distributed tensor dtype is our FP16 runtime. A duplicate RECOMP entry was removed from the new additions bibliography because the copied references bibliography already contains it; the cited work remains present.
+
 Templates: llncs.cls 2.26 and splncs04.bst obtained from CTAN's Springer LNCS distribution; sn-jnl.cls and sn-mathphys-num.bst from the official December2024 Springer Nature template download. The old smallcondensed download linked by JIIS returns 404. The generic Springer template is usable for local drafting; final journal-system requirements remain a human check.
 
 Planned evidence map: static fit/actual selection from v5 TRAINING_AND_SELECTION_RESULTS/FIT_CAPABILITY; seed QA from v5 QA_SEED_STABILITY; exact-index cost from v5 SEARCH_COSTS_LEAF_PRUNING; aligned support/QA from this round's actual CSVs; old static-q25 from the prior manuscript's canonical table1_core/table6_core/effects files. New paragraphs must not interpret missing experiments as zero or use repaired algorithms to explain earlier results.

@@ -1,0 +1,18 @@
+\begin{table}[t]\centering\small
+\caption{Canonical answer F1 on the fixed 128-query development panel (64 per dataset), at 1,024 input tokens. Original rows reuse their exact prior generations.}
+\label{tab:qa}
+\begin{tabular}{llrrr}\toprule
+Seed & Method & HotpotQA & MuSiQue & Mean\\\midrule
+1729 & Dense & 0.6324 & 0.1786 & 0.4055\\
+1729 & MMR & 0.6615 & 0.1991 & 0.4303\\
+1729 & Static H4 & 0.6341 & 0.2021 & 0.4181\\
+1729 & H4 replay & 0.6492 & 0.1600 & 0.4046\\
+1729 & H1 aligned & 0.6415 & 0.1714 & 0.4065\\
+1729 & H2 aligned & 0.6188 & 0.1927 & 0.4057\\
+1729 & DeepSets aligned & 0.6136 & 0.2044 & 0.4090\\
+1729 & H4 aligned & 0.5902 & 0.1630 & 0.3766\\
+2026 & H1 aligned & 0.6289 & 0.1962 & 0.4126\\
+2026 & H2 aligned & 0.6482 & 0.1865 & 0.4173\\
+2026 & DeepSets aligned & 0.5777 & 0.1266 & 0.3521\\
+2026 & H4 aligned & 0.6084 & 0.1578 & 0.3831\\
+\bottomrule\end{tabular}\end{table}

@@ -1,0 +1,50 @@
+[
+  {
+    "method": "H4-replay",
+    "tag": "musique",
+    "same_input": true,
+    "same_output_ids": true
+  },
+  {
+    "method": "H4-aligned",
+    "tag": "musique",
+    "same_input": true,
+    "same_output_ids": true
+  },
+  {
+    "method": "H1-aligned",
+    "tag": "hotpot",
+    "same_input": true,
+    "same_output_ids": true
+  },
+  {
+    "method": "DeepSets-aligned",
+    "tag": "hotpot",
+    "same_input": true,
+    "same_output_ids": true
+  },
+  {
+    "method": "H4-aligned",
+    "tag": "hotpot",
+    "same_input": true,
+    "same_output_ids": true
+  },
+  {
+    "method": "H2-aligned",
+    "tag": "hotpot",
+    "same_input": true,
+    "same_output_ids": true
+  },
+  {
+    "method": "H4-aligned",
+    "tag": "musique",
+    "same_input": true,
+    "same_output_ids": true
+  },
+  {
+    "method": "H1-aligned",
+    "tag": "musique",
+    "same_input": true,
+    "same_output_ids": true
+  }
+]

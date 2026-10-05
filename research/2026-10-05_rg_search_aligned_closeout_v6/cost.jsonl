@@ -1,0 +1,31 @@
+{"stage": "baseline_dev_1729", "cpu_seconds": 251.640625, "wall_seconds": 256.31456030000027, "gpu_process_seconds": 256.3145470999998}
+{"stage": "mine_1729_1", "cpu_seconds": 829.671875, "wall_seconds": 841.2275866, "gpu_process_seconds": 0}
+{"stage": "train_1729_1", "cpu_seconds": 733.671875, "wall_seconds": 759.5581344000002, "gpu_process_seconds": 759.5581235}
+{"stage": "mine_1729_2", "cpu_seconds": 525.4375, "wall_seconds": 534.9160998000007, "gpu_process_seconds": 0}
+{"stage": "baseline_dev_2026", "cpu_seconds": 195.3125, "wall_seconds": 199.9142948000008, "gpu_process_seconds": 199.91428450000058}
+{"stage": "train_1729_2", "cpu_seconds": 984.140625, "wall_seconds": 1009.3720159999993, "gpu_process_seconds": 1009.3720064999998}
+{"stage": "qa_selection_1729", "cpu_seconds": 180.53125, "wall_seconds": 182.39974650000113, "gpu_process_seconds": 0}
+{"stage": "qa_select_1729_overhead", "cpu_seconds": 0, "wall_seconds": 182.43889840000156, "gpu_process_seconds": 0}
+{"stage": "mine_2026_1", "cpu_seconds": 729.640625, "wall_seconds": 745.1257714000003, "gpu_process_seconds": 0}
+{"stage": "qa_1729", "cpu_seconds": 424.84375, "wall_seconds": 519.3747143, "gpu_process_seconds": 519.3746909000001, "peak_gpu_bytes": 6565146112}
+{"stage": "qa_run_1729_overhead", "cpu_seconds": 0, "wall_seconds": 520.5419328999997, "gpu_process_seconds": 0}
+{"stage": "build_conference", "cpu_seconds": 3.171875, "wall_seconds": 3.357925800000885, "gpu_process_seconds": 0}
+{"stage": "build_failed_journal", "cpu_seconds": 0.28125, "wall_seconds": 0.2510054000013042, "gpu_process_seconds": 0}
+{"stage": "build_failed_journal", "cpu_seconds": 4.46875, "wall_seconds": 25.68682500000068, "gpu_process_seconds": 0}
+{"stage": "train_2026_1", "cpu_seconds": 423.515625, "wall_seconds": 434.4788623000004, "gpu_process_seconds": 434.47884970000086}
+{"stage": "build_journal", "cpu_seconds": 4.28125, "wall_seconds": 4.230069100000037, "gpu_process_seconds": 0}
+{"stage": "uncached_reader_check", "cpu_seconds": 18.1875, "wall_seconds": 17.300348500000837, "gpu_process_seconds": 17.300331300000835, "peak_gpu_bytes": 6565042176}
+{"stage": "qa_rerun_1729_overhead", "cpu_seconds": 0.875, "wall_seconds": 18.19131759999982, "gpu_process_seconds": 0}
+{"stage": "build_conference", "cpu_seconds": 3.203125, "wall_seconds": 3.3810079999984737, "gpu_process_seconds": 0}
+{"stage": "build_journal", "cpu_seconds": 4.40625, "wall_seconds": 4.582715000000462, "gpu_process_seconds": 0}
+{"stage": "mine_2026_2", "cpu_seconds": 344.15625, "wall_seconds": 351.908404400001, "gpu_process_seconds": 0}
+{"stage": "train_2026_2", "cpu_seconds": 925.3125, "wall_seconds": 943.4706855999993, "gpu_process_seconds": 943.4706714000004}
+{"stage": "qa_selection_2026", "cpu_seconds": 115.8125, "wall_seconds": 118.47601050000048, "gpu_process_seconds": 0}
+{"stage": "qa_select_2026_overhead", "cpu_seconds": 0.046875, "wall_seconds": 118.52483010000105, "gpu_process_seconds": 0}
+{"stage": "qa_2026", "cpu_seconds": 313.109375, "wall_seconds": 373.28214990000015, "gpu_process_seconds": 373.28212729999905, "peak_gpu_bytes": 6565042176}
+{"stage": "qa_run_2026_overhead", "cpu_seconds": 1.15625, "wall_seconds": 374.5009938000003, "gpu_process_seconds": 0}
+{"stage": "build_conference", "cpu_seconds": 3.046875, "wall_seconds": 3.2097073000004457, "gpu_process_seconds": 0}
+{"stage": "build_journal", "cpu_seconds": 4.296875, "wall_seconds": 4.391526899999008, "gpu_process_seconds": 0}
+{"stage": "build_journal", "cpu_seconds": 4.109375, "wall_seconds": 4.297128500002145, "gpu_process_seconds": 0}
+{"stage": "build_conference", "cpu_seconds": 3.03125, "wall_seconds": 3.157127299997228, "gpu_process_seconds": 0}
+{"stage": "build_journal", "cpu_seconds": 4.140625, "wall_seconds": 4.205574400002661, "gpu_process_seconds": 0}

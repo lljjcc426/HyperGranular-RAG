@@ -1,0 +1,107 @@
+{
+  "document": "journal",
+  "pages": 19,
+  "commands": 5,
+  "page_checks": [
+    {
+      "page": 1,
+      "characters": 2148,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 2,
+      "characters": 3401,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 3,
+      "characters": 3143,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 4,
+      "characters": 2782,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 5,
+      "characters": 2372,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 6,
+      "characters": 3033,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 7,
+      "characters": 2855,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 8,
+      "characters": 3038,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 9,
+      "characters": 2866,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 10,
+      "characters": 2128,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 11,
+      "characters": 2376,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 12,
+      "characters": 2736,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 13,
+      "characters": 2865,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 14,
+      "characters": 2885,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 15,
+      "characters": 2949,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 16,
+      "characters": 2974,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 17,
+      "characters": 2658,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 18,
+      "characters": 2699,
+      "visual_status": "REVIEWED"
+    },
+    {
+      "page": 19,
+      "characters": 746,
+      "visual_status": "REVIEWED"
+    }
+  ],
+  "wall_seconds": 4.205574400002661,
+  "python_cpu_seconds": 1.109375,
+  "child_cpu_seconds": 3.03125,
+  "visual_review_record": "../../FINAL_MANUSCRIPT_CHECK.md",
+  "visual_review_scope": "All rendered pages inspected individually; affected pages rechecked after final editorial corrections."
+}

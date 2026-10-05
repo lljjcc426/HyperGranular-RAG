@@ -1,0 +1,13 @@
+boundary,tag,stratum,queries
+mine,hotpot,bridge,201
+mine,hotpot,comparison,55
+mine,musique,2hop,183
+mine,musique,3_4hop,73
+dev,hotpot,bridge,49
+dev,hotpot,comparison,15
+dev,musique,2hop,47
+dev,musique,3_4hop,17
+qa,hotpot,bridge,48
+qa,hotpot,comparison,16
+qa,musique,2hop,32
+qa,musique,3_4hop,32

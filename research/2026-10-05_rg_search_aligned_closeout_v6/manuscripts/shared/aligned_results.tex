@@ -1,0 +1,16 @@
+\begin{table}[t]\centering\small
+\caption{Checkpoint-panel support completeness before and after search alignment (64 questions per dataset). Selection uses this panel, not QA.}
+\label{tab:aligned}
+\begin{tabular}{llrrrr}\toprule
+Seed & Model & Static H & Aligned H & Static M & Aligned M\\\midrule
+1729 & H1 & 0.5938 & 0.7500 & 0.2656 & 0.2656\\
+1729 & H2 & 0.6406 & 0.7500 & 0.2344 & 0.2500\\
+1729 & DeepSets & 0.6719 & 0.7500 & 0.2188 & 0.2656\\
+1729 & H4 & 0.6719 & 0.7500 & 0.2344 & 0.2812\\
+2026 & H1 & 0.6094 & 0.7656 & 0.2344 & 0.2656\\
+2026 & H2 & 0.6406 & 0.7188 & 0.2500 & 0.2500\\
+2026 & DeepSets & 0.6250 & 0.7812 & 0.2344 & 0.2656\\
+2026 & H4 & 0.6719 & 0.7188 & 0.2344 & 0.2500\\
+\bottomrule\end{tabular}\end{table}
+
+Table~\ref{tab:aligned} shows actual checkpoint-panel selections. For seed 1729, H1 changes equal-dataset completeness by $+0.0781$, H2 changes equal-dataset completeness by $+0.0625$, DeepSets changes equal-dataset completeness by $+0.0625$, H4 changes equal-dataset completeness by $+0.0625$. These are selected development effects, with the full checkpoint trajectory retained. They do not by themselves establish answer improvement or a unique advantage of fourth-order interactions. Every reported aligned checkpoint comes from round one; the completed second rounds did not improve the best selection criterion. Continued loss reduction was not continued selection progress.

@@ -1,0 +1,739 @@
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
+\usepackage{amsmath,amssymb,booktabs,array,microtype}
+\usepackage{xurl}
+\providecommand{\burl}[1]{\url{#1}}
+\raggedbottom
+\begin{document}
+\title[Evidence selection in budgeted multi-hop RAG]{Evidence Selection in Budgeted Multi-hop Retrieval-Augmented Generation: From Proxy Objectives to Answer Quality}
+\author{Anonymous authors}
+\abstract{Evidence selection for multi-hop question answering must preserve complementary information within a limited reader context. This study examines the relationship between supervised evidence-set scores, the sets found by search, downstream answers, and computational cost. We compare first-, second-, and fourth-order factorization models with a general permutation-invariant set model, sharing frozen dense embeddings, paragraph candidates, annotation supervision, and a fixed reader. Strong accuracy on constructed set comparisons coexists with losses of complete annotated support during actual selection. A bounded continuation trains the deployed score on merged search frontiers and final sets, with an equal-update static replay comparator. For the primary seed, fourth-order support completeness rises from 0.4531 to 0.5156 on the checkpoint panel, but answer F1 falls from 0.4181 to 0.3766 on a separate 128-question development panel; maximal marginal relevance scores 0.4303. Neither seed yields an aligned model above MMR in F1 point estimate; lower-order responses differ from H4's. We also separate search preservation from efficiency: granular-ball and k-means indexes retain flat-search choices but do not reduce measured latency at 128 candidates. Earlier sentence-level completion and fixed-evidence placement results are reported separately. The findings show how favorable proxy metrics can fail to establish practical value, without claiming independent confirmation or a general advantage of higher-order models, granular balls, or open-domain retrieval.}
+\keywords{Retrieval-augmented generation, Evidence selection, Multi-hop question answering, Set prediction, Search-aligned learning, Empirical evaluation}
+\maketitle
+
+\section{Introduction}
+A retrieval-augmented question-answering system must decide which evidence
+to place in its reader's context. For multi-hop questions, individual
+relevance is only part of that decision: several passages may jointly supply
+a connection that no passage provides alone. A large candidate list can
+contain the required facts and still yield an incomplete or distracting
+context after selection. Conversely, adding more retrieved material can
+consume a limited input budget without improving an answer.
+
+This motivates evidence-set models, which score combinations rather than
+isolated passages. Recent retrieval work explicitly models collective
+information needs~\cite{lee2025setr}, and multi-hop beam retrieval retains
+multiple partial hypotheses~\cite{zhang2024beam}. Such designs raise a
+measurement question: does a model that recognizes good evidence sets also
+select them when optimized by its actual search procedure? The two tasks
+need not induce the same input distribution. Constructed positive and
+negative sets may be easy to distinguish, while search discovers sets that
+exploit inaccurate scores. The resulting selection must then pass a second
+test: helping a particular reader produce a correct answer.
+
+We investigate these transitions in a controlled development study. Frozen
+BGE embeddings retrieve a shared list of 128 paragraphs. Four compact
+models receive the same known-support supervision: first-order (H1),
+second-order (H2), fourth-order (H4), and a general DeepSets control.
+All select under the same actual 1,024-token input limit, use the same
+six-block maximum, and feed the same unadapted FP16 reader. The analysis
+distinguishes sampled-set prediction, actual selected support, canonical
+answer quality, and measured cost. A bounded continuation then changes the
+training distribution and preference loss while retaining the model
+families, candidates, renderer, and search.
+
+The investigation originates in HyperGranular-RAG, a sentence-level
+structured evidence-completion system. Its earlier compact-backbone gains
+are real but conditional: they did not establish an advantage over a
+stronger BGE retriever. The present paragraph-set models are a subsequent
+design, not a corrected implementation of that historical heuristic.
+Likewise, using granular balls to index conditional set scores changes
+search computation, not the selected evidence when the index is exact.
+Keeping these method identities separate prevents a later mechanism from
+being used to explain an earlier score retrospectively.
+
+The article makes an empirical contribution. It documents a case in which
+strong support-proxy prediction fails to preserve support during search,
+tests a direct and bounded correction with simple and learned controls,
+and shows why exact indexing and reduced inner-product counts are
+insufficient evidence of acceleration. The evidence includes favorable,
+unfavorable, and unresolved comparisons. It does not establish that high
+interaction order is necessary, that granular balls are uniquely useful,
+or that one tested method generalizes to unrestricted open-domain RAG.
+
+\section{Related work and the scope of comparison}
+\subsection{Retrieval, compression, and set selection}
+Dense passage retrieval represents queries and passages in a shared space
+for efficient relevance ranking~\cite{karpukhin2020dpr}. Multi-hop methods
+such as MDR condition later retrieval on previously found evidence
+\cite{xiong2021mdr}, while IRCoT alternates retrieval with generated reasoning
+\cite{trivedi2023ircot}. Beam Retrieval jointly trains an encoder and
+hop-dependent heads to preserve multiple passage hypotheses
+\cite{zhang2024beam}. Our candidate universe is fixed before set selection;
+we do not reproduce those systems or borrow their reported performance.
+
+Compression and joint selection are also established research directions.
+RECOMP trains extractive and abstractive compressors for downstream language
+model utility~\cite{xu2024recomp}. SetR uses information-requirement reasoning
+and teacher-generated set selections~\cite{lee2025setr}. Our models operate
+on cached embeddings and known support annotations, without an answer-based
+teacher or a generated summary. These differences define a low-cost
+experimental boundary. They do not establish superiority to compression or
+LLM-based set selection, which are not directly evaluated here.
+
+MMR balances query relevance and redundancy~\cite{carbonell1998mmr}.
+Coverage-based summarization objectives similarly formalize complementarity
+\cite{lin2011submodular}. Both are important alternatives to attributing a
+gain to higher-order structure. Our MMR baseline shares the candidate set,
+renderer, reader, and input limit with the learned selectors. A
+size-constrained version additionally supports like-for-like retrieval
+diagnostics.
+
+\subsection{Learned interactions and optimization of learned scores}
+Higher-order factorization machines provide low-rank ANOVA interactions
+and efficient recurrences for training them~\cite{blondel2016hofm}.
+Deep Sets represents permutation-invariant functions through pooled member
+features~\cite{zaheer2017deepsets}. We adapt these standard forms to
+query-conditioned evidence sets. Explicit fourth-order terms represent
+interactions among distinct members; they do not by themselves identify
+semantic relations or establish that a four-hop problem requires an
+order-four model.
+
+The mismatch between training and search is not a new observation in
+machine learning. Beam-search optimization trains sequence scores on
+search violations~\cite{wiseman2016bso}. Conservative objective models address
+the tendency of optimization to exploit overestimated regions of a learned
+objective~\cite{trabucco2021com}. Our intervention collects discrete
+evidence sets encountered by the existing selector and trains preferences
+from support annotations. It is neither a reproduction of sequence-level
+BSO nor the conservative objective in COMs, and inherits no guarantee from
+either. Their relevance is the need to evaluate scores where optimization
+will use them.
+
+\subsection{Granular and hypergraph representations}
+Granular-ball computing groups observations at different scales
+\cite{xia2019granularball}. In retrieval, Cross-Granularity Hypergraph RAG
+uses entity--passage incidence and query-conditioned diffusion
+\cite{wang2026crossgranularity}; HyperGraphRAG retrieves extracted n-ary
+relations together with text~\cite{luo2025hypergraphrag}. These works precede
+general claims about combining structure with retrieval. We use the full
+name HyperGranular-RAG to avoid the shared HGRAG acronym, and do not equate
+its old lexical facet hyperedges with factual relations or learned ANOVA
+factors.
+
+In the learned-selector study, a granular ball is an index node over
+query-conditioned scoring vectors. The maximum-inner-product bound is a
+standard center-plus-radius construction~\cite{ram2012tree}. K-means receives
+the same vectors, bound, budget, and correctness requirements. Exact
+agreement with flat search establishes preservation, not an independent
+retrieval gain. Actual runtime determines whether the index is useful at
+the tested candidate count.
+
+\section{Task, evidence units, and information boundaries}
+\subsection{Retrieval over the development paragraph corpus}
+HotpotQA and MuSiQue provide multi-hop questions with supporting evidence
+\cite{yang2018hotpotqa,trivedi2022musique}. We reuse 4,000 previously exposed
+questions and reconstruct whole paragraphs from their original sentence
+sources, retaining sentence-to-paragraph mappings. The resulting per-dataset
+corpora contain 9,791 HotpotQA and 31,130 MuSiQue blocks. A fixed BGE-large-en-v1.5~\cite{xiao2023bge}
+encoder supplies normalized 1,024-dimensional query and paragraph vectors,
+and the top 128 paragraphs by dense score are shared by every selector.
+Evaluation never inserts a paragraph because it has a support annotation.
+
+This corpus is broader than each question's original closed candidate set,
+but it is not full Wikipedia. There is no ANN approximation in this
+candidate stage, and the corpora are assembled from the exposed benchmark
+materials. Source availability and the corpus construction therefore limit
+external validity. The BGE encoder uses its existing 512-token truncation
+rule: 16 HotpotQA and 8 MuSiQue blocks exceed that limit. The reader receives
+whole selected blocks under a separate input budget; encoder truncation and
+reader feasibility are different operations.
+
+The group split contains 3,166 FIT questions, 738 TUNE questions, and 96
+historical-development questions. FIT has 3,165 groups. Question groups are
+not split across roles, but the roles are not document-disjoint: FIT and TUNE
+share 57 HotpotQA and 4,753 MuSiQue source documents. All are exposed
+development material. In particular, excluding the answer-evaluation panel
+from checkpoint selection does not retrospectively turn it into an
+independent test set.
+
+\subsection{Feasibility and support labels}
+For question $q$, let $V_q$ be the dense candidate list and $S\subseteq V_q$
+a set of paragraph indices. Blocks are rendered with their titles and
+original text, in BGE order. Define
+\begin{equation}\label{eq:feasible}
+\mathcal F_q=\{S\subseteq V_q:|S|\leq6,\;T(q,S)\leq1024\},
+\end{equation}
+where $T$ is the actual tokenizer length of the complete reader input,
+including chat framing, question, and protocol instructions. We neither
+truncate individual selected paragraphs nor assume that summing separately
+tokenized lengths exactly predicts $T$. The cardinality and token limits
+are both enforced. A long block may be infeasible even when a cardinality
+slot remains available.
+
+Let $G_q$ be the set of known support annotations, and let $C(S)$ be the
+annotations recovered through the original source mapping. We define
+\begin{equation}\label{eq:labels}
+\operatorname{cov}(S)=\frac{|C(S)\cap G_q|}{|G_q|},\qquad
+\operatorname{full}(S)=\mathbf1[G_q\subseteq C(S)].
+\end{equation}
+Full support is stricter than mean coverage. Neither is a complete label of
+semantic usefulness: an unannotated paragraph can provide an alternative
+derivation, and a reader can fail despite seeing all annotated support.
+Targets supervise FIT sets and evaluate outputs; they are not inputs to the
+deployment scorer, candidate ranking, or token feasibility check.
+
+On all 738 TUNE questions, Top128 contains all known support for 190/196
+HotpotQA and 367/542 MuSiQue questions. Known support fits the six-block and
+input-token constraints for all 196 HotpotQA questions and 533/542 MuSiQue
+questions, considered from their source blocks. These are separate
+diagnostics: support may fit yet be absent from Top128. We retain the nine
+budget-infeasible MuSiQue questions and every unreachable query in
+unconditional results.
+
+\section{Scoring sets and searching under the reader budget}
+\subsection{Common representation and model families}
+Let $e_q,e_i\in\mathbb R^{1024}$ be normalized embeddings and $l_i$ the
+standalone paragraph token length. Each query--paragraph feature vector
+concatenates $e_q,e_i,e_q\odot e_i,|e_q-e_i|$, dense cosine similarity,
+and $\log(1+l_i)$. The last two features use FIT normalization statistics.
+A linear layer, GELU, and layer normalization produce $h_i\in\mathbb R^{128}$;
+a query network produces $h_q\in\mathbb R^{128}$. No answer, query ID, source
+support identity, or rank label enters these features.
+
+Unary outputs $a_{it}$ and query-conditioned cardinality biases $b_{qt}(k)$
+are shared by the two prediction heads $t$: full support and coverage.
+For interaction order $H$, factors $v_i\in\mathbb R^{32}$ use a linear
+projection, layer normalization, and $\tanh$. Query weights
+$w_{qth}\in\mathbb R^{32}$ score order $h$. The set logit is
+\begin{equation}\label{eq:hofm}
+g_{Ht}(S)=b_{qt}(|S|)+\frac{1}{6}\sum_{i\in S}a_{it}
++\sum_{h=2}^{H}\frac{w_{qth}^{\top}e_h(S)}{32\binom6h},
+\end{equation}
+where
+\begin{equation}
+e_h(S)=\sum_{i_1<\cdots<i_h,\;i_j\in S}v_{i_1}\odot\cdots\odot v_{i_h}.
+\end{equation}
+H1 has no interaction sum, H2 includes pairs, and H4 includes orders two
+through four. The denominator is fixed by the maximum cardinality six,
+not recomputed from $|S|$. An auxiliary coverage prediction is a separate
+head; only the full-support logit ranks deployed sets.
+
+The general-set control retains unary and cardinality outputs and adds
+$\rho([\sum_{i\in S}h_i/6,h_q])$, a two-layer MLP with hidden width 192 and
+two outputs. This is a DeepSets-style architecture, not a reproduction of
+an LLM-based set selector. Parameter counts are comparable but not identical:
+H2 has 670,640, H4 687,152, and DeepSets 707,922 parameters. H1 registers
+662,384 parameters, of which 4,192 interaction-projection parameters do not
+affect its score. Its effective scored parameter count is 658,192. We do
+not conceal that inactive branch as useful first-order capacity.
+
+\subsection{Static training and its evaluation target}
+The initial training collection includes complete known-support sets,
+sets with one known support removed, same-size replacements,
+redundant additions, Dense-K6/MMR-K6, and bounded random examples.
+FIT-only reference construction may append missing support blocks and
+matched distractors to form supervised sets. That injection is limited to
+static training examples. Actual evaluation and search mining always use
+the original Top128 candidates.
+
+The base objective combines binary cross-entropy for full support,
+$0.5$ times coverage MSE after a sigmoid, $0.25$ times pointwise support
+classification, and $0.25$ times a softplus ranking term for constructed
+same-cardinality complete/incomplete pairs. Pointwise support labels again
+mean annotation membership, not factual correctness. Initial checkpoints
+were selected using original TUNE loss. Three initial training seeds
+(1729, 2026, and 426) are retained. They share the same questions, inputs,
+and answer-evaluation panel.
+
+The constructed pair task is easier to control than deployment. It fixes
+the alternatives presented to the model, often around known supports.
+Search instead asks the model to choose among many feasible combinations.
+Consequently, a high pair accuracy can be compatible with a low rate of
+complete support in the selected output. We measure both endpoints rather
+than treating the first as a substitute for the second.
+
+\subsection{Actual Flat search and simple selectors}
+The common learned search starts from the empty set. At each of six depths,
+each surviving parent proposes its four highest-scoring feasible distinct
+extensions, and the global beam retains four unique sets. All visited sets,
+including those not retained for further expansion, remain eligible for
+final selection. A feasible Dense-K6 set is also included. The final choice
+maximizes the deployed full-support logit, with fewer actual input tokens
+and then stable block identities breaking ties. Search does not terminate
+merely because the next score increment is negative. This procedure is
+exact with respect to each tested extension ranking, but the beam does not
+enumerate all feasible sets and is not globally optimal.
+
+Dense-budget greedily considers paragraphs in their initial dense order,
+accepting a block when the complete input still fits. MMR-budget repeatedly
+chooses the largest $0.7\,e_q^\top e_i-0.3\max_{j\in S}e_i^\top e_j$ among
+remaining candidates, accepting it if feasible. Both skip overlong additions
+and can retain more than six short blocks. Their K6 versions impose the
+same cardinality as learned search. All selected contexts are finally
+rendered in original BGE order, so MMR's selection sequence does not grant
+it a different placement policy.
+
+\subsection{What exact ball search can guarantee}
+The ANOVA recurrence updates $e_h$ by descending order,
+$e_h\leftarrow e_h+v_i\odot e_{h-1}$, with $e_0=\mathbf1$.
+This is the standard higher-order factorization computation
+\cite{blondel2016hofm}. For fixed parent $S$, the score of adding $i$ can be
+written
+\begin{equation}
+g_H(S\cup\{i\})=o_q(S)+\theta_q(S)^\top z_i,
+\end{equation}
+where $z_i=[a_i/6,v_i]$ and the offset includes the parent score and
+cardinality-bias change. Thus the conditional extension ranking is a maximum
+inner-product problem in a learned query-specific space.
+
+For a group with center $c_B$ and maximum Euclidean radius
+$r_B=\max_{i\in B}\|z_i-c_B\|_2$, Cauchy--Schwarz gives
+\begin{equation}\label{eq:bound}
+\max_{i\in B}\theta^\top z_i\leq\theta^\top c_B+\|\theta\|_2r_B.
+\end{equation}
+The proof is immediate from $z_i=c_B+(z_i-c_B)$ and the definition of
+$r_B$. An average cosine radius would not justify this bound. The
+granular-ball index recursively partitions the scoring vectors with
+farthest pivots; the k-means control uses the same space and bound with
+iterated two-center assignments. Both preserve every original member and
+perform the same token feasibility checks. They prune only groups unable
+to improve the current feasible extension threshold, retaining ties and
+numerical boundary cases.
+
+Equation~\ref{eq:bound} is a standard search bound~\cite{ram2012tree}, not an
+answer-quality theorem. Even exact preservation offers no rescue when the
+score chooses an incomplete set. Nor does pruning prove a speedup: factor
+construction, per-query indexing, traversal, and tokenizer work all contribute
+to latency. These costs are measured separately in Section~\ref{sec:cost}.
+
+\section{A bounded search-aligned correction}
+\subsection{Mining the shared error distribution}
+We select 512 FIT questions by deterministic group hash, with 256 per
+dataset and proportional allocation to existing question types. Every
+architecture searches these questions using its current score. The mined
+pool merges final sets, high-scoring partial frontiers, Dense-K6/MMR-K6,
+and at most eight deterministic feasible replacement attempts per model
+trajectory. The merged, deduplicated pool is capped at 64 sets per question.
+Model outputs are labeled from actual source identities, and are not
+presumed incorrect merely because they were selected by a model.
+
+All four architectures receive the same merged pool. No method receives
+exclusive teacher calls, stronger candidates, or a different reader.
+Unreachable queries still supply differences in partial annotated coverage;
+we neither delete them nor invent a complete positive set. A possible second
+round re-mines the current selected models rather than merely replaying the
+first pool. The entire intervention is capped at two rounds.
+
+The primary-seed pools retain 64 sets for each of the 512 queries in each
+round. A missing preference is not fabricated: round one has no eligible
+final-set pair for 171/256 HotpotQA and 115/256 MuSiQue queries, and no
+frontier pair for 17/256 and 42/256. In round two these counts are 196/256,
+135/256, 19/256, and 59/256, respectively. Pool capacity prioritizes model
+finals and high-scoring frontiers, so attempted replacements need not survive
+the cap. This limits the final-pair supervision actually available, even
+though every query continues to contribute base observations.
+
+\subsection{Preferences that train the deployed score}
+Define the training preference $u(S)=0.5\operatorname{full}(S)+
+0.5\operatorname{cov}(S)$. For $u(S^+)>u(S^-)$, use
+\begin{equation}\label{eq:pair}
+\ell=\log\!\left(1+\exp\{0.2[u(S^+)-u(S^-)]
+-[g(S^+)-g(S^-)]\}\right).
+\end{equation}
+Final-set comparisons prefer equal cardinality and token-length ratios in
+$[0.8,1.25]$, with same-cardinality fallback when no near-length pairs exist.
+Frontier comparisons prefer the same parent and depth; same-depth comparisons
+are a fallback when those pairs provide no preference. Missing pair
+categories are masked and counted. The deployed logit $g$, rather than only
+the auxiliary coverage head, receives gradients even when both partial
+sets have zero full-support labels.
+
+The total loss is
+\begin{equation}
+L=L_{\rm base}+0.5L_{\rm final}+0.5L_{\rm frontier}.
+\end{equation}
+Each query supplies four static and four mined base observations and up to
+one sampled pair from each added category. Base and preference terms are
+normalized within query and then across queries. More enumerated states
+therefore do not automatically increase a query's training weight.
+The preference is deliberately an annotation utility, not a reader reward.
+No generated answer F1 is used to form pairs or choose a checkpoint.
+
+\subsection{Controls, checkpoints, and stopping}
+Continuation starts from the corresponding original checkpoint with AdamW,
+learning rate $3\times10^{-4}$, weight decay $10^{-4}$, query batch eight,
+and gradient clipping at one. Each round permits eight epochs over the same
+512-query mined FIT subset. H4 static replay uses eight static sets per
+query, the original loss, and the same optimizer-update budget. Its reported
+checkpoint matches the selected aligned H4 checkpoint's update count,
+including the corresponding preceding-round starting point when applicable.
+It is not independently chosen for favorable QA performance.
+
+A disjoint-from-QA checkpoint panel contains 128 TUNE questions, 64 per
+dataset. At epochs 2, 4, and 8 we run actual selection. The fixed
+lexicographic criterion maximizes dataset-equal full support, then coverage,
+then minimizes original development loss, with earlier checkpoints breaking
+remaining ties. The fixed natural-QA panel is excluded from this decision.
+Because all materials have been exposed during development, the study is
+still exploratory.
+
+Both seeds (1729 and 2026) completed two rounds. The second seed was
+triggered by selection-panel improvement before any new QA score was
+observed; all four architectures received the same continuation.
+
+The protocol caps new GPU process wall time at two hours, measured CPU
+process time at three hours, and new reader calls at 1,200, subject to the
+remaining cumulative budget. At least one quarter of the GPU allowance is
+reserved for primary QA. Optional second-seed work applies to all four
+aligned models only when actual checkpoint-panel selection improves and
+resources permit. Stop rules prohibit another model family, a larger beam,
+an answer reward, a new data boundary, or a later experiment round in order
+to obtain a preferred outcome. The achieved scope and costs are reported
+with the results.
+
+\section{Evaluation and reproducibility}
+\subsection{Reader and canonical scores}
+The reader is the original Qwen2.5-3B-Instruct checkpoint~\cite{qwen2024release} in FP16, without
+the relation-front-end adapter. Its P2 interface requests a single answer
+field, uses constrained decoding and greedy generation, and permits 128
+new tokens. Every method shares the tokenizer, chat framing, original-text
+renderer, precision, and input limit. A public protocol improvement is not
+attributed to granular balls or higher-order scoring.
+
+The main panel has 128 questions: 48 HotpotQA bridge and 16 comparison
+questions, and 32 MuSiQue two-hop and 32 three/four-hop questions. Canonical
+dataset-specific EM and token F1 score the parsed answer field, including
+each dataset's normalization and alias conventions. We do not apply
+HotpotQA-specific yes/no handling indiscriminately to MuSiQue, and do not
+clean answers using the target. Invalid output remains a failure in the
+full denominator. UNKNOWN, EOS, output caps, and format failures are
+recorded separately.
+
+The primary continuation comparison retains Dense, MMR, the original H4,
+static H4 replay, and H1/H2/H4/DeepSets aligned models. A logical result
+can reuse a prior generation only when full input token IDs, model,
+precision, generation configuration, and constrained-decoding identity
+match. Merely sharing evidence text does not satisfy that condition.
+Cache reuse is reported as reuse, not independent inference or a deployment
+latency advantage.
+
+\subsection{Interpretation of repeated comparisons}
+Dataset means are reported separately and combined with equal dataset
+weight. The same questions appear across methods and training seeds.
+Seed standard deviations describe training variation, not confidence
+intervals over independent questions. The continuation does not introduce
+new confirmation p-values, and no nonsignificant or close comparison is
+called equivalent. We retain failures, unreachable support, and contexts
+that cannot accommodate all reference evidence. Conditional diagnostics
+are labeled and do not replace unconditional means.
+
+Historical sentence-completion results in Section~\ref{sec:history} use
+their existing canonical rescoring and original paired-bootstrap intervals.
+That additive re-evaluation fixes predictions rather than generating new
+ones and is not a new independent confirmation. Those intervals are not
+transferred to the current learned-selector comparisons.
+
+\section{Results: from proxy fit to actual selection}
+\subsection{The original mismatch}
+On constructed same-size complete/incomplete pairs, H4 achieves accuracy
+0.9645 on HotpotQA and 0.9464 on MuSiQue. Yet its actual selected support
+completeness on all 738 TUNE queries is 0.7092 and 0.2232, below Dense-K6's
+0.8214 and 0.2565. Table~\ref{tab:static} includes the lower-order and general
+set alternatives. H4's favorable pair metric therefore cannot establish a
+practical selection advantage.
+
+\begin{table}[t]\centering
+\caption{Original static models (seed 1729) on the 738-query TUNE boundary. Pair accuracy
+uses constructed same-cardinality complete/incomplete pairs. Full support
+uses the actual chosen set. H/M denote HotpotQA/MuSiQue.}
+\label{tab:static}
+\begin{tabular}{lrrrr}\toprule
+Method & Pair H & Pair M & Full H & Full M\\\midrule
+Dense-K6 & -- & -- & .8214 & .2565\\
+H1 & .9475 & .8978 & .6531 & .2454\\
+H2 & .9638 & .9422 & .6429 & .2325\\
+DeepSets & .9620 & .9482 & .6990 & .2306\\
+H4 & .9645 & .9464 & .7092 & .2232\\\bottomrule
+\end{tabular}
+\end{table}
+
+The loss is visible at the query level. Relative to Dense-K6, H4 loses full
+support on 27 HotpotQA and 42 MuSiQue queries while recovering it on only
+5 and 24. The selected set scores are at least as high as the included
+Dense-K6 scores, so this is not caused by omitting that fallback from the
+score comparison. Mean sigmoid outputs on selected sets are 0.9920 and
+0.9667, far above their observed full-support frequencies. We describe these
+as model outputs, not calibrated probabilities. The scorer is optimizing
+its learned criterion successfully while that criterion can favor poorer
+annotated evidence.
+
+Additional controls limit the interpretation of high pair accuracy.
+On exact-length and same-cardinality matched comparisons, H4 accuracy is
+0.8333/0.7878, compared with DeepSets 0.9524/0.8525. These are smaller
+diagnostic subsets: 65 HotpotQA queries with 84 pairs and 185 MuSiQue queries
+with 278 pairs. They do not replace the full selection boundary, but weaken
+an explanation based on uniquely superior higher-order discrimination.
+High-order parameters receive nonzero gradients and contribute nonzero
+terms, so their existence in the model is not merely nominal. Their
+activation still does not establish their necessity.
+
+\subsection{Search-aligned development results}
+\input{../shared/aligned_results.tex}
+
+\section{Results: natural answers and computational cost}
+\subsection{The fixed natural-QA panel}
+\input{../shared/qa_table.tex}
+\input{../shared/qa_interpretation.tex}
+\input{../shared/own_static.tex}
+\input{../shared/qa_details.tex}
+
+Table~\ref{tab:qa-details} separates the cardinality actually used, the full
+tokenized input, annotated support, and exact answer match. The nominal
+1,024-token cap is shared, not a claim of identical input lengths. Dense and
+MMR may use more short paragraphs than the learned six-block selectors.
+
+The original three-seed results provide context without being pooled with
+the continuation as new replications. Dataset-equal mean F1 is 0.4048 for
+H1, 0.4109 for H2, 0.4041 for DeepSets, and 0.4171 for H4. Dense and MMR
+score 0.4055 and 0.4303. H4's seed range is 0.4027--0.4304, and H1/H2 exceed
+it for seed 426. Thus a favorable single checkpoint does not establish a
+general interaction-order advantage. The fixed reader's response can
+change when an annotation-equivalent set contains different context, so
+support and answer comparisons must both remain visible.
+
+Earlier 64-query token-budget sensitivity also remains a separate boundary.
+At 512/1,024/2,048 tokens, H4's equal-dataset F1 is
+0.4020/0.4649/0.4857, while MMR's is 0.4281/0.4489/0.3737.
+These measurements use the same smaller subset across token budgets, not
+the full 128-question panel. They suggest dependence on context and
+selection policy but do not license choosing 2,048 tokens post hoc for the
+present main result. The continuation retains the prescribed 1,024-token
+budget and does not run a new budget grid.
+
+\subsection{Search correctness and latency}\label{sec:cost}
+Exact granular-ball and k-means search agree with Flat on 1,476 comparisons
+over all 738 TUNE queries and 30,956 tested parent states. A bounded
+implementation improvement that skips demonstrably inferior exact leaf
+scores was subsequently tested on a fixed 32+32-query subset, producing
+128 comparisons and 2,688 parent states with no mismatch. Table~\ref{tab:cost}
+reports that latter timing boundary. The initial full-boundary timings are
+also retained in the reproducibility materials rather than overwritten.
+
+\begin{table}[t]\centering
+\caption{Existing fixed-subset mean selection time in seconds per query,
+including network, per-query index construction, and tokenizer feasibility.
+These component timings precede the search-aligned training intervention.}
+\label{tab:cost}
+\begin{tabular}{lrrr}\toprule
+Dataset (queries) & Flat & Granular ball & K-means\\\midrule
+HotpotQA (32) & .33459 & .42557 & .42268\\
+MuSiQue (32) & .54612 & .65282 & .64392\\\bottomrule
+\end{tabular}
+\end{table}
+
+Granular balls reduce inner-product evaluations by approximately 66\% on
+HotpotQA and 44\% on MuSiQue, but their measured latency remains 27.2\%
+and 19.5\% above Flat. Both tree types incur construction and traversal
+overhead and can require more token checks before establishing feasible
+incumbents. All candidate embeddings and small-network factors are still
+computed. Some CPU measurements overlap GPU reader work, which precludes
+claims of isolated device-independent speed. The evidence supports exact
+preservation at this boundary, not acceleration.
+
+Replacing each leaf by one permanent representative is a different,
+approximate method. It changes all 738 selected sets and reduces complete
+support to 0.3469/0.0535. This diagnostic explains why preserving every raw
+member matters here. It does not refute every approximate grouping method,
+and no additional reader outputs were generated for that control.
+
+\subsection{Actual experiment expenditure}
+\input{../shared/cost_text.tex}
+The prior static-selector study used 4,350.28 GPU process-wall seconds,
+10,541.75 measured CPU seconds, and 2,287 real reader calls including eight
+uncached checks. Its 3,520 logical rows contain 1,241 cache hits. Those rows
+are neither 3,520 independent examples nor 3,520 fresh generations. Costs
+for old relation-search prototypes do not disappear when their outputs are
+reused, but they are not charged as new calls in the present continuation.
+
+\section{Context from earlier evidence-completion studies}\label{sec:history}
+The earlier static-q25 system used sentence units, compact MiniLM geometry,
+query-term facet relations, and at most four inserted units after ten
+protected dense entries. It retained a final Top-20 entry budget under a
+separate 4,096-token input cap and used Qwen2.5-1.5B-Instruct. Its facet
+proposal was scored once relative to seed groups; it was not the dynamically
+recomputed learned set score of this article. Table~\ref{tab:history}
+preserves canonical effects and recorded intervals under their original
+boundaries.
+
+\begin{table}[t]\centering\small
+\caption{Historical sentence-completion evidence, kept separate from the
+paragraph-selector experiments. Effects are answer-F1 differences, with
+recorded 95\% paired-bootstrap intervals. Joint studies use equal dataset
+weight. Unmarked component/BGE/placement rows contain 2,500 queries on their
+respective boundaries; Gemma transfer contains 4,000. Each contrast retains
+its original full denominator; different boundaries are not pooled.}
+\label{tab:history}
+\begin{tabular}{p{.52\linewidth}rr}\toprule
+Comparison & $\Delta$F1 & 95\% interval\\\midrule
+Compact minus Dense, HotpotQA (1,000) & .01478 & [.00020,.02988]\\
+Compact minus Dense, MuSiQue (3,000) & .01140 & [.00450,.01835]\\
+Compact minus Dense, joint (2,500) & .01357 & [.00491,.02233]\\
+Compact Full minus NoFacet & .01336 & [.00341,.02343]\\
+Original compact Full minus BGE & -.03998 & [-.05393,-.02621]\\
+BGE sidecar Protected minus BGE & -.00256 & [-.00998,.00458]\\
+BGE-native Protected minus BGE & -.00305 & [-.00688,.00063]\\
+Gemma transfer, completion minus Dense & .00516 & [-.00262,.01295]\\
+Cross-space Protected minus Unprotected & .01122 & [.00129,.02104]\\\bottomrule
+\end{tabular}
+\end{table}
+
+Three compact-backbone answer improvements are supported within those
+closed-candidate conditions. The specified facet selector also exceeds its
+centroid-only control, but that comparison does not isolate every possible
+coverage or diversity heuristic. The original compact Full system is worse
+than BGE. Neither its cross-space sidecar nor a BGE-native reconstruction
+establishes an increment over BGE, and the Gemma transfer interval crosses
+zero. These unresolved effects are not evidence of equivalence or of
+universal ineffectiveness.
+
+The original Full versus NoProtection ablation remains unresolved
+($\Delta$F1 $=0.00354$, recorded interval $[-0.00675,0.01389]$). It does not
+establish the independent necessity of the old protection component. This
+ablation and the later fixed-content ordering comparison test different
+interventions and must not be substituted for one another.
+
+The cross-space placement comparison holds prompt-visible evidence content
+fixed and changes its ordering. With outside-Top20 insertions $I$, $|I|=m\leq4$,
+both policies contain $I\cup\{d_1,\ldots,d_{20-m}\}$, and the completed
+position audit verified the visible text and truncation conditions. Its
+positive effect therefore describes the tested ordering/placement policy
+on all original queries, not an internal attention mechanism or a favorable
+post hoc subset. A policy can improve how a reader uses a fixed set without
+establishing that the set improves BGE's own evidence.
+
+These results motivate studying evidence selection more directly, but they
+cannot validate the new learned models. Conversely, a successful search
+correction would not retroactively prove that the old granular-ball or
+facet construction caused the compact gains. The two studies differ in
+candidate universe, unit granularity, generator, prompt, and budgets.
+
+\section{Discussion}
+\subsection{A score must be evaluated under its optimizer}
+The constructed-set results show that the models learn a useful supervised
+distinction, but the deployment results identify a different requirement.
+Optimization changes the distribution of evaluated sets. A model may
+recognize a supplied missing-support contrast while assigning excessive
+scores to other combinations that its search discovers. Including Dense-K6
+as a feasible candidate makes the failure particularly informative: the
+search can reject an available, more complete set because the deployed
+criterion ranks it lower.
+
+The continuation targets this discrepancy directly. Its partial-state
+preferences can change the actual search order even when no set in a
+comparison is fully complete. The static replay control distinguishes that
+change from additional optimizer steps. Low-order and general-set controls
+test whether explicit fourth-order interactions are responsible for any
+gain. An improvement shared by those controls is evidence for training
+alignment within this setup, not evidence for a unique granular or
+hypergraph mechanism.
+
+\subsection{Evidence quality and reader quality remain distinct}
+Support annotation offers inexpensive supervision with interpretable labels,
+but it is an incomplete account of useful context. Alternative evidence,
+entity disambiguation, distracting text, and the reader's own knowledge can
+all change an answer without changing known-support completeness. Conversely,
+complete annotated support does not guarantee that the reader will combine
+the facts correctly. Reader protocol and constrained-output changes belong
+to the public interface and must not be attributed to the evidence model.
+
+This distinction also limits a negative interpretation. A model's failure
+to improve F1 on one exposed panel does not prove that its evidence is
+useless on all readers. Equally, a positive point estimate cannot establish
+generalization after repeated development. The appropriate conclusion is
+the effect actually measured under the shared candidate, budget, and reader
+conditions, together with the controls that explain or fail to explain it.
+
+\subsection{Indexing is a systems hypothesis}
+Exact indexing asks whether the same answer to a search problem can be
+obtained more cheaply. It does not add evidence-selection capacity when it
+preserves the scorer and beam. At only 128 candidates, vectorized Flat
+search has small arithmetic cost, while index traversal and actual-token
+feasibility remain visible. The ball and k-means results therefore favor
+Flat in this implementation. A larger corpus or another feasibility regime
+might change the balance, but no such result is claimed here.
+
+The practical lesson is to evaluate a sequence of interfaces rather than
+one attractive metric: supervision must train the deployed score; the
+score must choose useful evidence; the reader must use it; and any
+acceleration must include the costs it introduces. This decomposition is
+applicable as an evaluation strategy beyond the present model family,
+although its empirical outcomes are bounded to the tested system.
+
+\section{Limitations}
+All learned-selector and continuation results use exposed development
+materials. There is no new independent confirmation, full-Wikipedia run,
+new language, or external-method deployment. Document overlap between FIT
+and TUNE prevents unseen-document claims. The answer panel is small and
+balanced by design rather than representative of an arbitrary deployment
+distribution. Training-seed variation cannot replace query-level external
+validation, and resource-bounded continuation does not rule out all future
+learning objectives.
+
+Known supports are incomplete semantic labels. Some required blocks are
+unreachable or too long, and the encoder itself truncates a small number of
+paragraphs. We report these boundaries rather than labeling every lost or
+unannotated passage as noise. The use of a single 3B reader and a fixed
+structured-output protocol limits generator conclusions. Earlier generator
+transfer remains unresolved under its own conditions.
+
+The study does not reproduce SetR, RECOMP, Beam Retrieval, or a large
+graph-RAG system under matched conditions. It supplies simple and internal
+learned controls, not a comprehensive leaderboard. The historical facet
+comparison leaves ordinary clustering and direct selection attribution
+unresolved. Standard ANOVA algebra and maximum-radius bounds are included
+to define the evaluated algorithms; they are not new theoretical
+contributions or guarantees about answer F1.
+
+\section{Conclusion}
+Budgeted evidence selection should be judged where its score is used.
+In this study, strong constructed-set prediction coexists with losses of
+annotated support during search, and higher-order modeling does not by
+itself establish an answer-quality advantage over MMR. A bounded continuation
+improves checkpoint-panel support selection without changing the reader or
+candidate universe, but H4 answer F1 declines in both training seeds and
+every aligned architecture remains below MMR in F1 point estimate.
+H2 improves slightly over its own static checkpoint in both seeds, while
+H1 improves in only the primary seed. The answer effects therefore depend
+on architecture and seed. Exact granular-ball and k-means indexes
+preserve selection but provide no measured acceleration at 128 candidates.
+Together with the separately reported historical completion and placement
+results, the evidence supports an empirical account of the gap between
+proxy objectives, selected context, answers, and cost. Stronger deployment
+claims require new prospective evidence, not reinterpretation of the
+development comparisons reported here.
+
+\backmatter
+\section*{Statements and declarations}
+\paragraph{Data and code availability.}
+The study uses the cited public benchmark sources and existing local model
+snapshots. Reproducible code and public aggregate tables accompany the
+manuscript. Source text, answer annotations, model weights, and caches are
+not bundled in the public summaries. Exact local artifacts retain the
+question, source, selection, checkpoint, and generation identities required
+for tracing reported values. A final persistent archival link and
+redistribution terms require author confirmation.
+\paragraph{AI assistance.}
+An AI assistant contributed implementation, analysis, targeted literature
+checking, and manuscript drafting and revision. This extends beyond
+copy editing. Human authors must verify the final evidence and text,
+approve submission, and take responsibility for the work. The manuscript's
+mentor-style and reviewer-style checks are two perspectives of the same
+assistant, not independent expert peer review.
+\paragraph{Authorship, funding, interests, and ethics.}
+Author names, affiliations, contributions, funding, competing interests,
+and the final applicable ethics and licensing declarations remain for
+human confirmation. No absence of conflicts or funding is inferred. No
+new human-participant study was conducted by this computational work.
+
+\bibliography{../shared/references,../shared/additions}
+\end{document}
