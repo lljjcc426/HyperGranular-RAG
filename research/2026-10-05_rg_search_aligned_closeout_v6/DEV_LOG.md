@@ -1,0 +1,21 @@
+# RG-search-aligned-closeout-v6.0
+
+SPEC_ID=HGRAG-SEARCH-ALIGNED-CLOSEOUT-V6-20261005
+
+## Before execution (2026-10-05)
+
+Reference: 1463755cc56d84622e875607f67fc063298a1833. Existing unrelated working-tree changes remain untouched. The attachment is the active specification; historical v5 files, weights and scores are read-only dependencies. No paper figures or plotting scripts change.
+
+Shared implementation: existing BGE Top128, whole paragraphs, original FP16 3B/P2, actual 1024 input-token limit, K<=6, width-four vectorized Flat search. No new model or index optimization.
+
+MINE512 uses at most 256 FIT queries per dataset, allocated proportionally by existing strata using largest remainders, then group-hash order with prefix rg-v6-mine. Groups are kept together; an overflowing group is omitted rather than split. DEV_SELECT uses the same procedure (prefix rg-v6-select), at most 64 per dataset, excluding every QA-panel group. All boundaries are development, not confirmation.
+
+Continued training uses these same MINE queries for all models, with four static and four mined sets per query (plus sampled ranking pairs). The static sets may contain FIT-only support injection from v5; mined candidates never do. This is a bounded continuation on the mined FIT subset, not an additional epoch over every original FIT query. H4 replay uses the same query order, eight static sets, optimizer and update count, with its original loss. Four aligned architectures share each merged pool. At most two rounds, eight epochs each; evaluate epochs 2/4/8. Checkpoint selection is lexicographic dataset-equal actual full support, coverage, negative original development loss, earlier epoch; QA is excluded.
+
+The aligned loss retains the original point/full/coverage/static ranking terms and adds 0.5 each for final-set and frontier preferences, using the deployment logit and margin 0.2 times the annotated utility difference. Query normalization and missing-pair masks prevent large pools dominating. Per-query pool <=64; deterministic replacements <=8 per model trajectory. Frontiers prioritize same-parent, same-depth extensions; final pairs prioritize same size and token length ratio within [0.8,1.25], then other same-size pairs when necessary. Dense-K6/MMR-K6 remain candidates.
+
+Resource starting point: v5 reports cumulative GPU 24114.6555248 seconds; CPU lower bound 29061.828 seconds, with older unknown CPU not imputed as zero. This round caps GPU at 7200 seconds, measured CPU at 10800 seconds, new disk 1 GB, new reader calls 1200, payment zero. At least 1800 GPU seconds reserved for primary QA. Stop model experiments by 2026-10-07. Use complete common stages before optional round two/seed two; no outcome-based method omission.
+
+Mentor design check: directly testing the score/search mismatch is distinguishable from adding interactions. Mined partial comparisons must train the deployed logit, and replay separates added updates from changed examples/objective.
+
+Reviewer design check: high support coverage is not answer utility; MMR and low-order/general-set controls are mandatory. Exposed QA cannot confirm generalization. Existing no-speedup results remain relevant and no tree rerun is needed. This bounded repair cannot validate older static-q25 mechanisms retrospectively.
