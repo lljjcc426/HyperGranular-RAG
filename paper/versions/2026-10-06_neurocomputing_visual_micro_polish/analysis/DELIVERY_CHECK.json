@@ -1,0 +1,368 @@
+{
+  "neutral_pages": 26,
+  "authored_pages": 26,
+  "independent_source_build_text_equal": true,
+  "unchanged_tables": {
+    "data_roles_table.tex": true,
+    "qa_table.tex": true,
+    "paired_table.tex": true,
+    "decomposition.tex": true,
+    "reference_table.tex": true,
+    "cost_table.tex": true
+  },
+  "unchanged_references": {
+    "references.bib": true,
+    "additions.bib": true,
+    "nc_references.bib": true
+  },
+  "unchanged_highlights": {
+    "Highlights.txt": true,
+    "Highlights.docx": true
+  },
+  "unchanged_numerical_supplement": true,
+  "unchanged_private_materials": {
+    "author_credit.tex": true,
+    "Author_Declarations.docx": true,
+    "author_frontmatter.tex": true,
+    "Competing_Interests.docx": true,
+    "Cover_Letter_DRAFT.docx": true,
+    "Funding.docx": true,
+    "Title_Page.docx": true
+  },
+  "saved_plot_values_unchanged": true,
+  "frozen_result_figures": {
+    "selected_scores.pdf": true,
+    "selected_scores.png": true,
+    "joint_transitions.pdf": true,
+    "joint_transitions.png": true,
+    "index_cost.pdf": true,
+    "index_cost.png": true
+  },
+  "frozen_plot_script": true,
+  "figures": [
+    {
+      "label": "fig:motivation",
+      "number": 1,
+      "page": 3
+    },
+    {
+      "label": "fig:design",
+      "number": 2,
+      "page": 6
+    },
+    {
+      "label": "fig:scores",
+      "number": 3,
+      "page": 14
+    },
+    {
+      "label": "fig:joint",
+      "number": 4,
+      "page": 17
+    },
+    {
+      "label": "fig:cost",
+      "number": 5,
+      "page": 19
+    }
+  ],
+  "tables": [
+    {
+      "label": "tab:roles",
+      "number": 1,
+      "page": 9
+    },
+    {
+      "label": "tab:reference",
+      "number": 2,
+      "page": 13
+    },
+    {
+      "label": "tab:qa",
+      "number": 3,
+      "page": 15
+    },
+    {
+      "label": "tab:paired",
+      "number": 4,
+      "page": 16
+    },
+    {
+      "label": "tab:decomp",
+      "number": 5,
+      "page": 17
+    },
+    {
+      "label": "tab:cost",
+      "number": 6,
+      "page": 20
+    }
+  ],
+  "authored_figures": [
+    {
+      "label": "fig:motivation",
+      "number": 1,
+      "page": 3
+    },
+    {
+      "label": "fig:design",
+      "number": 2,
+      "page": 6
+    },
+    {
+      "label": "fig:scores",
+      "number": 3,
+      "page": 14
+    },
+    {
+      "label": "fig:joint",
+      "number": 4,
+      "page": 17
+    },
+    {
+      "label": "fig:cost",
+      "number": 5,
+      "page": 19
+    }
+  ],
+  "authored_tables": [
+    {
+      "label": "tab:roles",
+      "number": 1,
+      "page": 9
+    },
+    {
+      "label": "tab:reference",
+      "number": 2,
+      "page": 13
+    },
+    {
+      "label": "tab:qa",
+      "number": 3,
+      "page": 15
+    },
+    {
+      "label": "tab:paired",
+      "number": 4,
+      "page": 16
+    },
+    {
+      "label": "tab:decomp",
+      "number": 5,
+      "page": 17
+    },
+    {
+      "label": "tab:cost",
+      "number": 6,
+      "page": 20
+    }
+  ],
+  "new_training_inference_rescoring_tests_paid_calls": 0,
+  "manuscript_unchanged_except_design_caption": true,
+  "study_diagram_words": {
+    "baseline": 85,
+    "current": 70
+  },
+  "figure_previews": [
+    {
+      "name": "motivating_examples",
+      "width_pdf_points": 388.57519207850765,
+      "width_mm": 137.08069276102907,
+      "minimum_inserted_font_points": 9.25658893585205,
+      "font_names": [
+        "FQIHQS+Arial-BoldMT",
+        "GFESQK+ArialMT"
+      ],
+      "embedded": true
+    },
+    {
+      "name": "study_design",
+      "width_pdf_points": 388.57519207850765,
+      "width_mm": 137.08069276102907,
+      "minimum_inserted_font_points": 9.25658893585205,
+      "font_names": [
+        "HYHLKX+Arial-BoldMT",
+        "VQHEXQ+ArialMT"
+      ],
+      "embedded": true
+    }
+  ],
+  "builds": {
+    "main": [
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.7223024999984773,
+        "cpu_seconds": 0.734375
+      },
+      {
+        "command": [
+          "bibtex",
+          "main"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.20701320000807755,
+        "cpu_seconds": 0.21875
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.7403328999935184,
+        "cpu_seconds": 0.703125
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.7422875999909593,
+        "cpu_seconds": 0.71875
+      }
+    ],
+    "authored": [
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.7908438999875216,
+        "cpu_seconds": 0.828125
+      },
+      {
+        "command": [
+          "bibtex",
+          "main"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.21899900000425987,
+        "cpu_seconds": 0.21875
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.7902971000003163,
+        "cpu_seconds": 0.75
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.7845836999913445,
+        "cpu_seconds": 0.765625
+      }
+    ],
+    "clean_source": [
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.769253899998148,
+        "cpu_seconds": 0.765625
+      },
+      {
+        "command": [
+          "bibtex",
+          "main"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.22133310000936035,
+        "cpu_seconds": 0.25
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.7734491000010166,
+        "cpu_seconds": 0.8125
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.7539777999918442,
+        "cpu_seconds": 0.75
+      }
+    ]
+  },
+  "latex_issues": {
+    "neutral": [
+      "Underfull \\hbox (badness 10000) in paragraph at lines 72--77",
+      "Underfull \\hbox (badness 10000) in paragraph at lines 79--84"
+    ],
+    "authored": [
+      "Package hyperref Warning: Token not allowed in a PDF string (Unicode):",
+      "Package hyperref Warning: Token not allowed in a PDF string (Unicode):",
+      "Package hyperref Warning: Token not allowed in a PDF string (Unicode):",
+      "Package hyperref Warning: Token not allowed in a PDF string (Unicode):",
+      "Underfull \\hbox (badness 10000) in paragraph at lines 72--77",
+      "Underfull \\hbox (badness 10000) in paragraph at lines 79--84"
+    ],
+    "clean": [
+      "Underfull \\hbox (badness 10000) in paragraph at lines 72--77",
+      "Underfull \\hbox (badness 10000) in paragraph at lines 79--84"
+    ]
+  },
+  "docx_figure_number_mentions": {
+    "Highlights.docx": [],
+    "Cover_Letter_DRAFT.docx": []
+  },
+  "public_source_members": [
+    "main.tex",
+    "references.bib",
+    "additions.bib",
+    "nc_references.bib",
+    "main.bbl",
+    "elsarticle.cls",
+    "elsarticle-num.bst",
+    "data_roles_table.tex",
+    "qa_table.tex",
+    "paired_table.tex",
+    "decomposition.tex",
+    "reference_table.tex",
+    "cost_table.tex",
+    "joint_transitions.pdf",
+    "selected_scores.pdf",
+    "index_cost.pdf",
+    "study_design.pdf",
+    "study_design.tex",
+    "motivating_examples.pdf",
+    "motivating_examples.tex"
+  ]
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "name": "motivating_examples",
+    "wall_seconds": 0.937231799995061,
+    "embedded_fonts": true,
+    "box": [
+      0.0,
+      0.0,
+      355.4800109863281,
+      183.99000549316406
+    ]
+  },
+  {
+    "name": "study_design",
+    "wall_seconds": 1.0111195999925258,
+    "embedded_fonts": true,
+    "box": [
+      0.0,
+      0.0,
+      355.4800109863281,
+      219.4199981689453
+    ]
+  }
+]

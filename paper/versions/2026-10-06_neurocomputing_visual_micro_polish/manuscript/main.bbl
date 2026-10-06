@@ -1,0 +1,150 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{lee2025setr}
+D.~Lee, Y.~Jo, H.~Park, M.~Lee, Shifting from ranking to set selection for
+  retrieval augmented generation, in: Proceedings of ACL, 2025, pp.
+  17606--17619.
+\newblock \href {https://doi.org/10.18653/v1/2025.acl-long.861}
+  {\path{doi:10.18653/v1/2025.acl-long.861}}.
+
+\bibitem{xu2024recomp}
+F.~Xu, W.~Shi, E.~Choi,
+  \href{https://openreview.net/forum?id=mlJLVigNHp}{{RECOMP}: Improving
+  retrieval-augmented {LMs} with compression and selective augmentation}, in:
+  International Conference on Learning Representations, 2024.
+\newline\urlprefix\url{https://openreview.net/forum?id=mlJLVigNHp}
+
+\bibitem{zhang2024beam}
+J.~Zhang, H.~Zhang, D.~Zhang, L.~Yong, S.~Huang, End-to-end beam retrieval for
+  multi-hop question answering, in: Proceedings of NAACL-HLT, 2024, pp.
+  1718--1731.
+\newblock \href {https://doi.org/10.18653/v1/2024.naacl-long.96}
+  {\path{doi:10.18653/v1/2024.naacl-long.96}}.
+
+\bibitem{guo2025interchunk}
+T.~Guo, C.~Wang, Y.~Liu, J.~Tang, P.~Li, S.~Xu, Q.~Yang, X.~Gao, Z.~Li, Y.~Wen,
+  Leveraging inter-chunk interactions for enhanced retrieval in large language
+  model-based question answering, Neurocomputing 650 (2025) 130931.
+\newblock \href {https://doi.org/10.1016/j.neucom.2025.130931}
+  {\path{doi:10.1016/j.neucom.2025.130931}}.
+
+\bibitem{karpukhin2020dpr}
+V.~Karpukhin, B.~Oguz, S.~Min, P.~Lewis, L.~Wu, S.~Edunov, D.~Chen, W.-t. Yih,
+  \href{https://aclanthology.org/2020.emnlp-main.550/}{Dense passage retrieval
+  for open-domain question answering}, in: Proceedings of the 2020 Conference
+  on Empirical Methods in Natural Language Processing (EMNLP), 2020, pp.
+  6769--6781.
+\newblock \href {https://doi.org/10.18653/v1/2020.emnlp-main.550}
+  {\path{doi:10.18653/v1/2020.emnlp-main.550}}.
+\newline\urlprefix\url{https://aclanthology.org/2020.emnlp-main.550/}
+
+\bibitem{xiong2021mdr}
+W.~Xiong, X.~L. Li, S.~Iyer, J.~Du, P.~Lewis, W.~Y. Wang, Y.~Mehdad, W.-t. Yih,
+  S.~Riedel, D.~Kiela, B.~O{\u g}uz,
+  \href{https://openreview.net/forum?id=EMHoBG0avc1}{Answering complex
+  open-domain questions with multi-hop dense retrieval}, in: International
+  Conference on Learning Representations, 2021.
+\newline\urlprefix\url{https://openreview.net/forum?id=EMHoBG0avc1}
+
+\bibitem{carbonell1998mmr}
+J.~Carbonell, J.~Goldstein,
+  \href{https://dl.acm.org/doi/10.1145/290941.291025}{The use of {MMR},
+  diversity-based reranking for reordering documents and producing summaries},
+  in: Proceedings of the 21st Annual International ACM SIGIR Conference on
+  Research and Development in Information Retrieval, 1998, pp. 335--336.
+\newblock \href {https://doi.org/10.1145/290941.291025}
+  {\path{doi:10.1145/290941.291025}}.
+\newline\urlprefix\url{https://dl.acm.org/doi/10.1145/290941.291025}
+
+\bibitem{lin2011submodular}
+H.~Lin, J.~Bilmes, \href{https://aclanthology.org/P11-1052/}{A class of
+  submodular functions for document summarization}, in: Proceedings of the 49th
+  Annual Meeting of the Association for Computational Linguistics: Human
+  Language Technologies, 2011, pp. 510--520.
+\newline\urlprefix\url{https://aclanthology.org/P11-1052/}
+
+\bibitem{blondel2016hofm}
+M.~Blondel, A.~Fujino, N.~Ueda, M.~Ishihata,
+  \href{https://proceedings.neurips.cc/paper/2016/hash/158fc2ddd52ec2cf54d3c161f2dd6517-Abstract.html}{Higher-order
+  factorization machines}, in: Advances in Neural Information Processing
+  Systems, Vol.~29, 2016.
+\newline\urlprefix\url{https://proceedings.neurips.cc/paper/2016/hash/158fc2ddd52ec2cf54d3c161f2dd6517-Abstract.html}
+
+\bibitem{zaheer2017deepsets}
+M.~Zaheer, S.~Kottur, S.~Ravanbakhsh, B.~P{\'o}czos, R.~Salakhutdinov, A.~J.
+  Smola,
+  \href{https://proceedings.neurips.cc/paper/2017/hash/f22e4747da1aa27e363d86d40ff442fe-Abstract.html}{Deep
+  sets}, in: Advances in Neural Information Processing Systems, Vol.~30, 2017.
+\newline\urlprefix\url{https://proceedings.neurips.cc/paper/2017/hash/f22e4747da1aa27e363d86d40ff442fe-Abstract.html}
+
+\bibitem{wiseman2016bso}
+S.~Wiseman, A.~M. Rush, Sequence-to-sequence learning as beam-search
+  optimization, in: Proceedings of EMNLP, 2016, pp. 1296--1306.
+\newblock \href {https://doi.org/10.18653/v1/D16-1137}
+  {\path{doi:10.18653/v1/D16-1137}}.
+
+\bibitem{trabucco2021com}
+B.~Trabucco, A.~Kumar, X.~Geng, S.~Levine,
+  \href{https://proceedings.mlr.press/v139/trabucco21a.html}{Conservative
+  objective models for effective offline model-based optimization}, in:
+  Proceedings of ICML, Vol. 139 of Proceedings of Machine Learning Research,
+  2021, pp. 10358--10368.
+\newline\urlprefix\url{https://proceedings.mlr.press/v139/trabucco21a.html}
+
+\bibitem{zhai2025ragler}
+F.~Zhai, W.~Tang, J.~Jin, {RAG-LER}: Ranking adapted generation with
+  language-model enabled regulation, Neurocomputing 656 (2025) 131514.
+\newblock \href {https://doi.org/10.1016/j.neucom.2025.131514}
+  {\path{doi:10.1016/j.neucom.2025.131514}}.
+
+\bibitem{tian2025relevance}
+F.~Tian, D.~Ganguly, C.~Macdonald, Is relevance propagated from retriever to
+  generator in {RAG}?, in: Advances in Information Retrieval, Vol. 15572 of
+  Lecture Notes in Computer Science, 2025, pp. 32--48.
+\newblock \href {https://doi.org/10.1007/978-3-031-88708-6_3}
+  {\path{doi:10.1007/978-3-031-88708-6_3}}.
+
+\bibitem{ram2012tree}
+P.~Ram, A.~G. Gray, \href{https://arxiv.org/abs/1202.6101}{Maximum
+  inner-product search using tree data-structures}, arXiv:1202.6101, tree-bound
+  formulation (2012).
+\newline\urlprefix\url{https://arxiv.org/abs/1202.6101}
+
+\bibitem{xiao2023bge}
+S.~Xiao, Z.~Liu, P.~Zhang, N.~Muennighoff, D.~Lian, J.-Y. Nie,
+  \href{https://arxiv.org/abs/2309.07597v5}{{C-Pack}: Packed resources for
+  general chinese embeddings}, arXiv preprint arXiv:2309.07597 (2023).
+\newblock \href {https://doi.org/10.48550/arXiv.2309.07597}
+  {\path{doi:10.48550/arXiv.2309.07597}}.
+\newline\urlprefix\url{https://arxiv.org/abs/2309.07597v5}
+
+\bibitem{yang2018hotpotqa}
+Z.~Yang, P.~Qi, S.~Zhang, Y.~Bengio, W.~W. Cohen, R.~Salakhutdinov, C.~D.
+  Manning, \href{https://aclanthology.org/D18-1259/}{{HotpotQA}: A dataset for
+  diverse, explainable multi-hop question answering}, in: Proceedings of the
+  2018 Conference on Empirical Methods in Natural Language Processing, 2018,
+  pp. 2369--2380.
+\newblock \href {https://doi.org/10.18653/v1/D18-1259}
+  {\path{doi:10.18653/v1/D18-1259}}.
+\newline\urlprefix\url{https://aclanthology.org/D18-1259/}
+
+\bibitem{trivedi2022musique}
+H.~Trivedi, N.~Balasubramanian, T.~Khot, A.~Sabharwal,
+  \href{https://aclanthology.org/2022.tacl-1.31/}{{MuSiQue}: Multihop questions
+  via single-hop question composition}, Transactions of the Association for
+  Computational Linguistics 10 (2022) 539--554.
+\newblock \href {https://doi.org/10.1162/tacl_a_00475}
+  {\path{doi:10.1162/tacl_a_00475}}.
+\newline\urlprefix\url{https://aclanthology.org/2022.tacl-1.31/}
+
+\bibitem{qwen2024release}
+{Qwen Team}, \href{https://qwenlm.github.io/blog/qwen2.5/}{{Qwen2.5}: A party
+  of foundation models}, official model release (September 2024).
+\newline\urlprefix\url{https://qwenlm.github.io/blog/qwen2.5/}
+
+\end{thebibliography}
