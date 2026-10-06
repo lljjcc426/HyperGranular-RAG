@@ -1,0 +1,23 @@
+{
+  "public_source": [
+    "main.tex",
+    "references.bib",
+    "additions.bib",
+    "nc_references.bib",
+    "main.bbl",
+    "elsarticle.cls",
+    "elsarticle-num.bst",
+    "data_roles_table.tex",
+    "qa_table.tex",
+    "paired_table.tex",
+    "decomposition.tex",
+    "reference_table.tex",
+    "cost_table.tex",
+    "joint_transitions.pdf",
+    "selected_scores.pdf",
+    "index_cost.pdf",
+    "study_design.pdf",
+    "study_design.tex"
+  ],
+  "private_included": false
+}

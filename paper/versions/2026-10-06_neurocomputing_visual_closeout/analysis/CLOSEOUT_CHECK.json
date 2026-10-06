@@ -1,0 +1,324 @@
+{
+  "status": "PASS",
+  "scope": "Editorial regression only; no rescoring or statistical testing",
+  "unchanged_body_except_overview_insertion": true,
+  "unchanged_assets": [
+    "data_roles_table.tex",
+    "qa_table.tex",
+    "paired_table.tex",
+    "decomposition.tex",
+    "reference_table.tex",
+    "cost_table.tex",
+    "joint_transitions.pdf",
+    "selected_scores.pdf",
+    "index_cost.pdf",
+    "references.bib",
+    "additions.bib",
+    "nc_references.bib"
+  ],
+  "numerical_supplement_byte_identical": true,
+  "author_materials_unchanged": true,
+  "clean_extract_text_matches": true,
+  "public_source_members": [
+    "main.tex",
+    "references.bib",
+    "additions.bib",
+    "nc_references.bib",
+    "main.bbl",
+    "elsarticle.cls",
+    "elsarticle-num.bst",
+    "data_roles_table.tex",
+    "qa_table.tex",
+    "paired_table.tex",
+    "decomposition.tex",
+    "reference_table.tex",
+    "cost_table.tex",
+    "joint_transitions.pdf",
+    "selected_scores.pdf",
+    "index_cost.pdf",
+    "study_design.pdf",
+    "study_design.tex"
+  ],
+  "builds": {
+    "main": {
+      "pages": 25,
+      "figure_labels": [
+        [
+          "fig:design",
+          "1"
+        ],
+        [
+          "fig:scores",
+          "2"
+        ],
+        [
+          "fig:joint",
+          "3"
+        ],
+        [
+          "fig:cost",
+          "4"
+        ]
+      ],
+      "table_labels": [
+        [
+          "tab:roles",
+          "1"
+        ],
+        [
+          "tab:reference",
+          "2"
+        ],
+        [
+          "tab:qa",
+          "3"
+        ],
+        [
+          "tab:paired",
+          "4"
+        ],
+        [
+          "tab:decomp",
+          "5"
+        ],
+        [
+          "tab:cost",
+          "6"
+        ]
+      ],
+      "embedded_fonts": true,
+      "passes": [
+        {
+          "command": [
+            "pdflatex",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "main.tex"
+          ],
+          "exit": 0,
+          "wall_seconds": 0.7590762999971048,
+          "cpu_seconds": 0.75
+        },
+        {
+          "command": [
+            "bibtex",
+            "main"
+          ],
+          "exit": 0,
+          "wall_seconds": 0.21150309999939054,
+          "cpu_seconds": 0.234375
+        },
+        {
+          "command": [
+            "pdflatex",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "main.tex"
+          ],
+          "exit": 0,
+          "wall_seconds": 0.7666709999975865,
+          "cpu_seconds": 0.703125
+        },
+        {
+          "command": [
+            "pdflatex",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "main.tex"
+          ],
+          "exit": 0,
+          "wall_seconds": 0.7626965000017663,
+          "cpu_seconds": 0.765625
+        }
+      ]
+    },
+    "authored": {
+      "pages": 25,
+      "figure_labels": [
+        [
+          "fig:design",
+          "1"
+        ],
+        [
+          "fig:scores",
+          "2"
+        ],
+        [
+          "fig:joint",
+          "3"
+        ],
+        [
+          "fig:cost",
+          "4"
+        ]
+      ],
+      "table_labels": [
+        [
+          "tab:roles",
+          "1"
+        ],
+        [
+          "tab:reference",
+          "2"
+        ],
+        [
+          "tab:qa",
+          "3"
+        ],
+        [
+          "tab:paired",
+          "4"
+        ],
+        [
+          "tab:decomp",
+          "5"
+        ],
+        [
+          "tab:cost",
+          "6"
+        ]
+      ],
+      "embedded_fonts": true,
+      "passes": [
+        {
+          "command": [
+            "pdflatex",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "main.tex"
+          ],
+          "exit": 0,
+          "wall_seconds": 0.8261524999979883,
+          "cpu_seconds": 0.890625
+        },
+        {
+          "command": [
+            "bibtex",
+            "main"
+          ],
+          "exit": 0,
+          "wall_seconds": 0.23533219999808352,
+          "cpu_seconds": 0.234375
+        },
+        {
+          "command": [
+            "pdflatex",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "main.tex"
+          ],
+          "exit": 0,
+          "wall_seconds": 0.9350139000016497,
+          "cpu_seconds": 0.8125
+        },
+        {
+          "command": [
+            "pdflatex",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "main.tex"
+          ],
+          "exit": 0,
+          "wall_seconds": 0.8511339000033331,
+          "cpu_seconds": 0.890625
+        }
+      ]
+    },
+    "clean": {
+      "pages": 25,
+      "figure_labels": [
+        [
+          "fig:design",
+          "1"
+        ],
+        [
+          "fig:scores",
+          "2"
+        ],
+        [
+          "fig:joint",
+          "3"
+        ],
+        [
+          "fig:cost",
+          "4"
+        ]
+      ],
+      "table_labels": [
+        [
+          "tab:roles",
+          "1"
+        ],
+        [
+          "tab:reference",
+          "2"
+        ],
+        [
+          "tab:qa",
+          "3"
+        ],
+        [
+          "tab:paired",
+          "4"
+        ],
+        [
+          "tab:decomp",
+          "5"
+        ],
+        [
+          "tab:cost",
+          "6"
+        ]
+      ],
+      "embedded_fonts": true,
+      "passes": [
+        {
+          "command": [
+            "pdflatex",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "main.tex"
+          ],
+          "exit": 0,
+          "wall_seconds": 0.7941052999958629,
+          "cpu_seconds": 0.765625
+        },
+        {
+          "command": [
+            "bibtex",
+            "main"
+          ],
+          "exit": 0,
+          "wall_seconds": 0.23419199999625562,
+          "cpu_seconds": 0.234375
+        },
+        {
+          "command": [
+            "pdflatex",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "main.tex"
+          ],
+          "exit": 0,
+          "wall_seconds": 0.7934292999998434,
+          "cpu_seconds": 0.78125
+        },
+        {
+          "command": [
+            "pdflatex",
+            "-interaction=nonstopmode",
+            "-halt-on-error",
+            "main.tex"
+          ],
+          "exit": 0,
+          "wall_seconds": 0.8157328000015696,
+          "cpu_seconds": 0.78125
+        }
+      ]
+    }
+  },
+  "model_calls": 0,
+  "new_experiments": 0,
+  "gpu_seconds": 0,
+  "paid_cost": 0
+}
