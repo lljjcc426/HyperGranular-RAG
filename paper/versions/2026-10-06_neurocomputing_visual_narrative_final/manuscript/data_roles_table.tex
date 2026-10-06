@@ -1,0 +1,14 @@
+\begin{table}[!htbp]
+\centering\small
+\caption{Development roles and their nesting. MINE is inside FIT; DEV-SELECT and QA are disjoint subsets of TUNE. Initial static checkpoint selection used all TUNE, including QA.}\label{tab:roles}
+\begin{tabular}{@{}p{2.5cm}rrp{5.2cm}@{}}\toprule
+Role & HotpotQA & MuSiQue & Use \\
+\midrule
+FIT & 748 & 2,418 & Supervised training \\
+TUNE & 196 & 542 & Initial checkpoint loss; selection analysis \\
+Historical DEV & 56 & 40 & Earlier exposed development \\
+\addlinespace MINE (FIT) & 256 & 256 & Shared search-state pool \\
+DEV-SELECT (TUNE) & 64 & 64 & Continuation checkpoint selection \\
+QA (TUNE) & 64 & 64 & Saved answer comparison \\
+\bottomrule\end{tabular}
+\end{table}

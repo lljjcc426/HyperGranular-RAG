@@ -1,0 +1,384 @@
+{
+  "neutral_pages": 26,
+  "authored_pages": 26,
+  "independent_source_build_text_equal": true,
+  "unchanged_tables": {
+    "data_roles_table.tex": true,
+    "qa_table.tex": true,
+    "paired_table.tex": true,
+    "decomposition.tex": true,
+    "reference_table.tex": true,
+    "cost_table.tex": true
+  },
+  "unchanged_references": {
+    "references.bib": true,
+    "additions.bib": true,
+    "nc_references.bib": true
+  },
+  "unchanged_highlights": {
+    "Highlights.txt": true,
+    "Highlights.docx": true
+  },
+  "unchanged_numerical_supplement": true,
+  "unchanged_private_materials": {
+    "author_credit.tex": true,
+    "Author_Declarations.docx": true,
+    "author_frontmatter.tex": true,
+    "Competing_Interests.docx": true,
+    "Cover_Letter_DRAFT.docx": true,
+    "Funding.docx": true,
+    "Title_Page.docx": true
+  },
+  "saved_plot_values_unchanged": true,
+  "figures": [
+    {
+      "label": "fig:motivation",
+      "number": 1,
+      "page": 3
+    },
+    {
+      "label": "fig:design",
+      "number": 2,
+      "page": 6
+    },
+    {
+      "label": "fig:scores",
+      "number": 3,
+      "page": 14
+    },
+    {
+      "label": "fig:joint",
+      "number": 4,
+      "page": 17
+    },
+    {
+      "label": "fig:cost",
+      "number": 5,
+      "page": 19
+    }
+  ],
+  "tables": [
+    {
+      "label": "tab:roles",
+      "number": 1,
+      "page": 9
+    },
+    {
+      "label": "tab:reference",
+      "number": 2,
+      "page": 13
+    },
+    {
+      "label": "tab:qa",
+      "number": 3,
+      "page": 15
+    },
+    {
+      "label": "tab:paired",
+      "number": 4,
+      "page": 16
+    },
+    {
+      "label": "tab:decomp",
+      "number": 5,
+      "page": 17
+    },
+    {
+      "label": "tab:cost",
+      "number": 6,
+      "page": 20
+    }
+  ],
+  "authored_figures": [
+    {
+      "label": "fig:motivation",
+      "number": 1,
+      "page": 3
+    },
+    {
+      "label": "fig:design",
+      "number": 2,
+      "page": 6
+    },
+    {
+      "label": "fig:scores",
+      "number": 3,
+      "page": 14
+    },
+    {
+      "label": "fig:joint",
+      "number": 4,
+      "page": 17
+    },
+    {
+      "label": "fig:cost",
+      "number": 5,
+      "page": 19
+    }
+  ],
+  "authored_tables": [
+    {
+      "label": "tab:roles",
+      "number": 1,
+      "page": 9
+    },
+    {
+      "label": "tab:reference",
+      "number": 2,
+      "page": 13
+    },
+    {
+      "label": "tab:qa",
+      "number": 3,
+      "page": 15
+    },
+    {
+      "label": "tab:paired",
+      "number": 4,
+      "page": 16
+    },
+    {
+      "label": "tab:decomp",
+      "number": 5,
+      "page": 17
+    },
+    {
+      "label": "tab:cost",
+      "number": 6,
+      "page": 20
+    }
+  ],
+  "new_training_inference_rescoring_tests_paid_calls": 0,
+  "figure_previews": [
+    {
+      "name": "motivating_examples",
+      "width_pdf_points": 388.57519207850765,
+      "width_mm": 137.08069276102907,
+      "minimum_inserted_font_points": 9.25658893585205,
+      "font_names": [
+        "DLKEHI+Arial-BoldMT",
+        "FHGLUJ+ArialMT"
+      ],
+      "embedded": true
+    },
+    {
+      "name": "study_design",
+      "width_pdf_points": 388.57519207850765,
+      "width_mm": 137.08069276102907,
+      "minimum_inserted_font_points": 9.25658893585205,
+      "font_names": [
+        "BOWAAD+Arial-BoldMT",
+        "HPPRLG+ArialMT"
+      ],
+      "embedded": true
+    },
+    {
+      "name": "selected_scores",
+      "width_pdf_points": 388.5508510161205,
+      "width_mm": 137.0721057751314,
+      "minimum_inserted_font_points": 9.616475105285645,
+      "font_names": [
+        "EDBAVG+ArialMT"
+      ],
+      "embedded": true
+    },
+    {
+      "name": "joint_transitions",
+      "width_pdf_points": 388.5508510161205,
+      "width_mm": 137.0721057751314,
+      "minimum_inserted_font_points": 9.616475105285645,
+      "font_names": [
+        "FNUYAA+ArialMT"
+      ],
+      "embedded": true
+    },
+    {
+      "name": "index_cost",
+      "width_pdf_points": 388.5508510161205,
+      "width_mm": 137.0721057751314,
+      "minimum_inserted_font_points": 9.616475105285645,
+      "font_names": [
+        "DKOISS+ArialMT"
+      ],
+      "embedded": true
+    }
+  ],
+  "builds": {
+    "main": [
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.7910525999977835,
+        "cpu_seconds": 0.78125
+      },
+      {
+        "command": [
+          "bibtex",
+          "main"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.24882220000290545,
+        "cpu_seconds": 0.234375
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.8107130999997025,
+        "cpu_seconds": 0.765625
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.7925348999997368,
+        "cpu_seconds": 0.828125
+      }
+    ],
+    "authored": [
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.8443348000000697,
+        "cpu_seconds": 0.828125
+      },
+      {
+        "command": [
+          "bibtex",
+          "main"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.23589799999899697,
+        "cpu_seconds": 0.234375
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.8592833000002429,
+        "cpu_seconds": 0.90625
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.8327254000032553,
+        "cpu_seconds": 0.90625
+      }
+    ],
+    "clean_source": [
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.820322200001101,
+        "cpu_seconds": 0.796875
+      },
+      {
+        "command": [
+          "bibtex",
+          "main"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.22752279999986058,
+        "cpu_seconds": 0.296875
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.8267067999986466,
+        "cpu_seconds": 0.828125
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.8183207999973092,
+        "cpu_seconds": 0.796875
+      }
+    ]
+  },
+  "latex_issues": {
+    "neutral": [
+      "Underfull \\hbox (badness 10000) in paragraph at lines 72--77",
+      "Underfull \\hbox (badness 10000) in paragraph at lines 79--84"
+    ],
+    "authored": [
+      "Package hyperref Warning: Token not allowed in a PDF string (Unicode):",
+      "Package hyperref Warning: Token not allowed in a PDF string (Unicode):",
+      "Package hyperref Warning: Token not allowed in a PDF string (Unicode):",
+      "Package hyperref Warning: Token not allowed in a PDF string (Unicode):",
+      "Underfull \\hbox (badness 10000) in paragraph at lines 72--77",
+      "Underfull \\hbox (badness 10000) in paragraph at lines 79--84"
+    ],
+    "clean": [
+      "Underfull \\hbox (badness 10000) in paragraph at lines 72--77",
+      "Underfull \\hbox (badness 10000) in paragraph at lines 79--84"
+    ]
+  },
+  "docx_figure_number_mentions": {
+    "Highlights.docx": [],
+    "Cover_Letter_DRAFT.docx": []
+  },
+  "public_source_members": [
+    "main.tex",
+    "references.bib",
+    "additions.bib",
+    "nc_references.bib",
+    "main.bbl",
+    "elsarticle.cls",
+    "elsarticle-num.bst",
+    "data_roles_table.tex",
+    "qa_table.tex",
+    "paired_table.tex",
+    "decomposition.tex",
+    "reference_table.tex",
+    "cost_table.tex",
+    "joint_transitions.pdf",
+    "selected_scores.pdf",
+    "index_cost.pdf",
+    "study_design.pdf",
+    "study_design.tex",
+    "motivating_examples.pdf",
+    "motivating_examples.tex"
+  ]
+}
