@@ -1,0 +1,235 @@
+{
+  "unchanged_v1_numeric_and_reconstruction_files": [
+    "checkpoint_selection.csv",
+    "cost_aligned.json",
+    "cost_static.json",
+    "data_roles.csv",
+    "derived/CHECK.json",
+    "derived/ENDPOINT_DECOMPOSITION.csv",
+    "derived/PAIRED_TRANSITIONS.csv",
+    "derived/QA_SUMMARY.csv",
+    "derived/SELECTED_SCORE_BINS.csv",
+    "index_cost_original738.csv",
+    "index_cost_refined64.csv",
+    "matched_length_diagnostics.csv",
+    "observations.csv",
+    "paired_numeric.csv",
+    "reconstruct.py",
+    "reference_gaps.csv",
+    "role_overlap.csv",
+    "selected_scores.csv",
+    "static_selection.csv",
+    "static_set_diagnostics.csv",
+    "training_history.jsonl"
+  ],
+  "clean_reconstruction_equal": [
+    "QA_SUMMARY.csv",
+    "PAIRED_TRANSITIONS.csv",
+    "ENDPOINT_DECOMPOSITION.csv",
+    "SELECTED_SCORE_BINS.csv"
+  ],
+  "unchanged_equations": 8,
+  "resolved_unchanged_bibliographic_entries": 19,
+  "table_checks": {
+    "qa": 8,
+    "paired": 8,
+    "decomposition": 8,
+    "reference": 2,
+    "cost_dataset_method_pairs": 6,
+    "roles": "Reviewed against data_roles.csv and role_overlap.csv; nesting clarified"
+  },
+  "figure_data_source": "Unchanged saved bins, paired counts, and refined timing aggregates; no intervals added",
+  "abstract_words": 217,
+  "conclusion_words": 165,
+  "authored_scientific_source": "Same main.tex plus author switch; identical tables and figure files; named front matter/CRediT and bibliography spacing are local only",
+  "public_pdf_pages": 24,
+  "clean_source_pdf_text_and_pagination_equal": true,
+  "private_authored_pdf_pages": 24,
+  "public_fonts_embedded": true,
+  "final_builds": {
+    "main": [
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.931530300003942,
+        "cpu_seconds": 1.765625
+      },
+      {
+        "command": [
+          "bibtex",
+          "main"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.5595259999972768,
+        "cpu_seconds": 0.46875
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.644405499995628,
+        "cpu_seconds": 1.453125
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.7881628000031924,
+        "cpu_seconds": 1.6875
+      }
+    ],
+    "clean_source_final": [
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.5462275999962003,
+        "cpu_seconds": 1.296875
+      },
+      {
+        "command": [
+          "bibtex",
+          "main"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.440782699995907,
+        "cpu_seconds": 0.453125
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.32946400000219,
+        "cpu_seconds": 1.328125
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 1.2694393999991007,
+        "cpu_seconds": 1.234375
+      }
+    ],
+    "authored_final": [
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.9765235999948345,
+        "cpu_seconds": 0.953125
+      },
+      {
+        "command": [
+          "bibtex",
+          "main"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.263116699999955,
+        "cpu_seconds": 0.234375
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.9913261999972747,
+        "cpu_seconds": 0.984375
+      },
+      {
+        "command": [
+          "pdflatex",
+          "-interaction=nonstopmode",
+          "-halt-on-error",
+          "main.tex"
+        ],
+        "exit": 0,
+        "wall_seconds": 0.9788196999943466,
+        "cpu_seconds": 0.96875
+      }
+    ]
+  },
+  "office_documents": {
+    "Highlights.docx": {
+      "xml_well_formed": true,
+      "libreoffice_rendered_pages": 1
+    },
+    "Author_Declarations.docx": {
+      "xml_well_formed": true,
+      "libreoffice_rendered_pages": 1
+    },
+    "Competing_Interests.docx": {
+      "xml_well_formed": true,
+      "libreoffice_rendered_pages": 1
+    },
+    "Cover_Letter_DRAFT.docx": {
+      "xml_well_formed": true,
+      "libreoffice_rendered_pages": 1
+    },
+    "Funding.docx": {
+      "xml_well_formed": true,
+      "libreoffice_rendered_pages": 1
+    },
+    "Title_Page.docx": {
+      "xml_well_formed": true,
+      "libreoffice_rendered_pages": 1
+    }
+  },
+  "full_office_xsd_validation": "Not run: provided validator import blocked by missing defusedxml; XML parsing, actual LibreOffice conversion, and visual review performed instead",
+  "highlights_characters": [
+    71,
+    73,
+    70,
+    67
+  ],
+  "runtime": {
+    "python": "3.11.5",
+    "matplotlib": "3.11.2",
+    "pymupdf": "1.28.2"
+  },
+  "new_experiment_counts": {
+    "training": 0,
+    "model_forward": 0,
+    "reader": 0,
+    "retrieval": 0,
+    "embedding": 0,
+    "answer_rescoring": 0,
+    "statistical_tests": 0,
+    "gpu": 0,
+    "paid_calls": 0
+  },
+  "this_check_cpu_seconds": 0.09375,
+  "retained_task_directory_bytes": 58715904,
+  "status": "EDITORIAL_AND_NUMERICAL_CHECKS_PASSED_WITH_STATED_SCOPE"
+}

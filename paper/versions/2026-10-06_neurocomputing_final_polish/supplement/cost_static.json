@@ -1,0 +1,23 @@
+{
+  "gpu_process_seconds": 4350.279195800034,
+  "cpu_seconds_measured": 10541.75,
+  "new_disk_bytes": 445593770,
+  "paid": 0,
+  "new_reader_calls": 2287,
+  "qa_logical_rows": 3520,
+  "cache_hits": 1241,
+  "reader_input_tokens": 2133577,
+  "reader_output_tokens": 22292,
+  "generation_seconds": 2532.215557100775,
+  "cumulative_gpu_seconds": 24114.655524800033,
+  "cumulative_cpu_seconds_lower_bound": 29061.828,
+  "prior_unmeasured_cpu": "UNKNOWN",
+  "caps_respected": true,
+  "accounting_scope": "Measured phase CPU and GPU model-residency wall time; interpreter imports, shell operations and older unmeasured CPU are not reconstructed.",
+  "cumulative_cpu_complete": false,
+  "cumulative_gpu_cap_respected": true,
+  "cumulative_cpu_lower_bound_below_cap": true,
+  "reader_json_errors": 1,
+  "reader_hit_limits": 0,
+  "peak_gpu_bytes": 7121464832
+}

@@ -1,0 +1,25 @@
+{
+  "highlights": [
+    {
+      "text": "Strong set discrimination can coexist with losses of annotated support.",
+      "characters": 71
+    },
+    {
+      "text": "Answer losses can occur even when complete annotated support is retained.",
+      "characters": 73
+    },
+    {
+      "text": "Search-aligned training has model-dependent effects on answer quality.",
+      "characters": 70
+    },
+    {
+      "text": "Exact ball indexes preserve choices but add cost at 128 candidates.",
+      "characters": 67
+    }
+  ],
+  "confirmed_funding": true,
+  "confirmed_competing_interests": true,
+  "credit_source": "Current user-supplied private metadata",
+  "withdrawal": "AUTHOR_CONFIRMED_WITHDRAWN_NOT_INDEPENDENTLY_ACCESSED",
+  "final_approval": "PENDING_NEW_MANUSCRIPT_AUTHOR_REVIEW"
+}

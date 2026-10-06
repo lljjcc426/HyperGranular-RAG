@@ -1,0 +1,9 @@
+private/
+submission_local/
+build/
+__pycache__/
+manuscript/*.aux
+manuscript/*.blg
+manuscript/*.out
+manuscript/*.spl
+manuscript/main.pdf

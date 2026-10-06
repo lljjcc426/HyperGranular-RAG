@@ -1,0 +1,12 @@
+\begin{table}[!htbp]
+\centering\small
+\caption{Measured selection time in seconds per question, 32 questions per dataset. Means and medians are retained aggregates of the refined-leaf diagnostic; per-question timing distributions are unavailable.}\label{tab:cost}
+\begin{tabular}{@{}lrrrr@{}}\toprule
+& \multicolumn{2}{c}{HotpotQA} & \multicolumn{2}{c}{MuSiQue} \\ \cmidrule(lr){2-3}\cmidrule(l){4-5}
+Selector & Mean & Median & Mean & Median \\
+\midrule
+Flat & 0.3346 & 0.1694 & 0.5461 & 0.1868 \\
+Granular-ball & 0.4256 & 0.2781 & 0.6528 & 0.3005 \\
+K-means & 0.4227 & 0.2632 & 0.6439 & 0.2994 \\
+\bottomrule\end{tabular}
+\end{table}
