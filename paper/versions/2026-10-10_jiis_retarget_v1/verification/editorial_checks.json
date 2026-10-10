@@ -1,0 +1,24 @@
+{
+  "neutral": {
+    "pages": 22,
+    "unresolved_question_marks": false,
+    "overfull_boxes": 0
+  },
+  "authored": {
+    "pages": 22,
+    "unresolved_question_marks": false,
+    "overfull_boxes": 0
+  },
+  "abstract_word_count": 212,
+  "figures": 5,
+  "tables": 6,
+  "old_source": "manuscript\\main.tex",
+  "display_equations_unchanged": true,
+  "five_figure_bytes_unchanged": false,
+  "independent_source_same_page_text": true,
+  "numerical_reconstruction_returncode": 0,
+  "numerical_reconstruction_output": "{\"status\": \"NUMERIC_RECONSTRUCTION_PASSED\", \"unique_questions\": 128, \"paired_rows\": 1024, \"numeric_observations\": 2688, \"groups\": 24, \"new_model_calls\": 0, \"answer_rescoring\": 0, \"new_statistical_tests\": 0, \"cpu_seconds\": 0.03125}\n",
+  "derived_csv_unchanged": true,
+  "si_private_pages": 5,
+  "si_neutral_pages": 5
+}

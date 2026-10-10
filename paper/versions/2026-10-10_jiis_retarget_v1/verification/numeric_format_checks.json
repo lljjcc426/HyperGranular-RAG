@@ -1,0 +1,60 @@
+{
+  "six_tabular_blocks_exactly_equal": true,
+  "eight_display_equations_exactly_equal": true,
+  "keyword_count": 6,
+  "font_embedding": [
+    {
+      "figure": 1,
+      "fonts": [
+        {
+          "name": "DPIWVO+Arial-BoldMT",
+          "embedded": true
+        },
+        {
+          "name": "FFEZJF+ArialMT",
+          "embedded": true
+        }
+      ]
+    },
+    {
+      "figure": 2,
+      "fonts": [
+        {
+          "name": "PCLJGW+Arial-BoldMT",
+          "embedded": true
+        },
+        {
+          "name": "FQEZSD+ArialMT",
+          "embedded": true
+        }
+      ]
+    },
+    {
+      "figure": 3,
+      "fonts": [
+        {
+          "name": "EDBAVG+ArialMT",
+          "embedded": true
+        }
+      ]
+    },
+    {
+      "figure": 4,
+      "fonts": [
+        {
+          "name": "FNUYAA+ArialMT",
+          "embedded": true
+        }
+      ]
+    },
+    {
+      "figure": 5,
+      "fonts": [
+        {
+          "name": "DKOISS+ArialMT",
+          "embedded": true
+        }
+      ]
+    }
+  ]
+}

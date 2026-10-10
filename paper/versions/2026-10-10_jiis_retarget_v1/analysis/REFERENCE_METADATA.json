@@ -1,0 +1,638 @@
+[
+  {
+    "key": "blondel2016hofm",
+    "manuscript_title": "Higher-Order Factorization Machines",
+    "manuscript_authors": "Blondel, Mathieu and Fujino, Akinori and Ueda, Naonori and Ishihata, Masakazu",
+    "manuscript_year": "2016",
+    "doi": "",
+    "url": "https://proceedings.neurips.cc/paper/2016/hash/158fc2ddd52ec2cf54d3c161f2dd6517-Abstract.html",
+    "status": "PRIMARY_URL_AND_PRIOR_REGISTER_REVIEW"
+  },
+  {
+    "key": "carbonell1998mmr",
+    "manuscript_title": "The Use of {MMR}, Diversity-Based Reranking for Reordering Documents and Producing Summaries",
+    "manuscript_authors": "Carbonell, Jaime and Goldstein, Jade",
+    "manuscript_year": "1998",
+    "doi": "10.1145/290941.291025",
+    "url": "https://dl.acm.org/doi/10.1145/290941.291025",
+    "status": "CROSSREF_METADATA_RETRIEVED",
+    "registered_title": [
+      "The use of MMR, diversity-based reranking for reordering documents and producing summaries"
+    ],
+    "registered_authors": [
+      "Jaime Carbonell",
+      "Jade Goldstein"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          1998,
+          8
+        ]
+      ]
+    },
+    "published_online": {
+      "date-parts": [
+        [
+          1998,
+          8
+        ]
+      ]
+    },
+    "published_print": {
+      "date-parts": [
+        [
+          1998,
+          8
+        ]
+      ]
+    },
+    "volume": null,
+    "pages": "335-336"
+  },
+  {
+    "key": "gerber2025benchmarking",
+    "manuscript_title": "Benchmarking state of the art website embedding methods for effective processing and analysis in the public sector",
+    "manuscript_authors": "Gerber, Jonathan and Saxer, Jasmin and Kreiner, Bruno and Weiler, Andreas",
+    "manuscript_year": "2026",
+    "doi": "10.1007/s10844-025-00954-4",
+    "url": "",
+    "status": "CROSSREF_METADATA_RETRIEVED",
+    "registered_title": [
+      "Benchmarking state of the art website embedding methods for effective processing and analysis in the public sector"
+    ],
+    "registered_authors": [
+      "Jonathan Gerber",
+      "Jasmin Saxer",
+      "Bruno Kreiner",
+      "Andreas Weiler"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2025,
+          6,
+          13
+        ]
+      ]
+    },
+    "published_online": {
+      "date-parts": [
+        [
+          2025,
+          6,
+          13
+        ]
+      ]
+    },
+    "published_print": {
+      "date-parts": [
+        [
+          2026,
+          2
+        ]
+      ]
+    },
+    "volume": "64",
+    "pages": "97-120"
+  },
+  {
+    "key": "guo2025interchunk",
+    "manuscript_title": "Leveraging inter-chunk interactions for enhanced retrieval in large language model-based question answering",
+    "manuscript_authors": "Guo, Tiezheng and Wang, Chen and Liu, Yanyi and Tang, Jiawei and Li, Pan and Xu, Sai and Yang, Qingwen and Gao, Xianlin and Li, Zhi and Wen, Yingyou",
+    "manuscript_year": "2025",
+    "doi": "10.1016/j.neucom.2025.130931",
+    "url": "",
+    "status": "CROSSREF_METADATA_RETRIEVED",
+    "registered_title": [
+      "Leveraging inter-chunk interactions for enhanced retrieval in large language model-based question answering"
+    ],
+    "registered_authors": [
+      "Tiezheng Guo",
+      "Chen Wang",
+      "Yanyi Liu",
+      "Jiawei Tang",
+      "Pan Li",
+      "Sai Xu",
+      "Qingwen Yang",
+      "Xianlin Gao",
+      "Zhi Li",
+      "Yingyou Wen"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2025,
+          10
+        ]
+      ]
+    },
+    "published_online": null,
+    "published_print": {
+      "date-parts": [
+        [
+          2025,
+          10
+        ]
+      ]
+    },
+    "volume": "650",
+    "pages": "130931"
+  },
+  {
+    "key": "karpukhin2020dpr",
+    "manuscript_title": "Dense Passage Retrieval for Open-Domain Question Answering",
+    "manuscript_authors": "Karpukhin, Vladimir and Oguz, Barlas and Min, Sewon and Lewis, Patrick and Wu, Ledell and Edunov, Sergey and Chen, Danqi and Yih, Wen-tau",
+    "manuscript_year": "2020",
+    "doi": "10.18653/v1/2020.emnlp-main.550",
+    "url": "https://aclanthology.org/2020.emnlp-main.550/",
+    "status": "CROSSREF_METADATA_RETRIEVED",
+    "registered_title": [
+      "Dense Passage Retrieval for Open-Domain Question Answering"
+    ],
+    "registered_authors": [
+      "Vladimir Karpukhin",
+      "Barlas Oguz",
+      "Sewon Min",
+      "Patrick Lewis",
+      "Ledell Wu",
+      "Sergey Edunov",
+      "Danqi Chen",
+      "Wen-tau Yih"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "published_online": null,
+    "published_print": {
+      "date-parts": [
+        [
+          2020
+        ]
+      ]
+    },
+    "volume": null,
+    "pages": "6769-6781"
+  },
+  {
+    "key": "lee2025setr",
+    "manuscript_title": "Shifting from Ranking to Set Selection for Retrieval Augmented Generation",
+    "manuscript_authors": "Lee, Dahyun and Jo, Yongrae and Park, Haeju and Lee, Moontae",
+    "manuscript_year": "2025",
+    "doi": "10.18653/v1/2025.acl-long.861",
+    "url": "",
+    "status": "CROSSREF_METADATA_RETRIEVED",
+    "registered_title": [
+      "Shifting from Ranking to Set Selection for Retrieval Augmented Generation"
+    ],
+    "registered_authors": [
+      "Dahyun Lee",
+      "Yongrae Jo",
+      "Haeju Park",
+      "Moontae Lee"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2025
+        ]
+      ]
+    },
+    "published_online": null,
+    "published_print": {
+      "date-parts": [
+        [
+          2025
+        ]
+      ]
+    },
+    "volume": null,
+    "pages": "17606-17619"
+  },
+  {
+    "key": "lin2011submodular",
+    "manuscript_title": "A Class of Submodular Functions for Document Summarization",
+    "manuscript_authors": "Lin, Hui and Bilmes, Jeff",
+    "manuscript_year": "2011",
+    "doi": "",
+    "url": "https://aclanthology.org/P11-1052/",
+    "status": "PRIMARY_URL_AND_PRIOR_REGISTER_REVIEW"
+  },
+  {
+    "key": "qwen2024release",
+    "manuscript_title": "{Qwen2.5}: A Party of Foundation Models",
+    "manuscript_authors": "{Qwen Team}",
+    "manuscript_year": "2024",
+    "doi": "",
+    "url": "https://qwenlm.github.io/blog/qwen2.5/",
+    "status": "PRIMARY_URL_AND_PRIOR_REGISTER_REVIEW"
+  },
+  {
+    "key": "ram2012tree",
+    "manuscript_title": "Maximum Inner-Product Search using Cone Trees",
+    "manuscript_authors": "Ram, Parikshit and Gray, Alexander G.",
+    "manuscript_year": "2012",
+    "doi": "10.1145/2339530.2339677",
+    "url": "",
+    "status": "CROSSREF_METADATA_RETRIEVED",
+    "registered_title": [
+      "Maximum inner-product search using cone trees"
+    ],
+    "registered_authors": [
+      "Parikshit Ram",
+      "Alexander G. Gray"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2012,
+          8,
+          12
+        ]
+      ]
+    },
+    "published_online": {
+      "date-parts": [
+        [
+          2012,
+          8,
+          12
+        ]
+      ]
+    },
+    "published_print": {
+      "date-parts": [
+        [
+          2012,
+          8,
+          12
+        ]
+      ]
+    },
+    "volume": null,
+    "pages": "931-939"
+  },
+  {
+    "key": "tian2025relevance",
+    "manuscript_title": "Is Relevance Propagated from Retriever to Generator in {RAG}?",
+    "manuscript_authors": "Tian, Fangzheng and Ganguly, Debasis and Macdonald, Craig",
+    "manuscript_year": "2025",
+    "doi": "10.1007/978-3-031-88708-6_3",
+    "url": "",
+    "status": "CROSSREF_METADATA_RETRIEVED",
+    "registered_title": [
+      "Is Relevance Propagated from Retriever to Generator in RAG?"
+    ],
+    "registered_authors": [
+      "Fangzheng Tian",
+      "Debasis Ganguly",
+      "Craig Macdonald"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2025
+        ]
+      ]
+    },
+    "published_online": {
+      "date-parts": [
+        [
+          2025,
+          4,
+          3
+        ]
+      ]
+    },
+    "published_print": {
+      "date-parts": [
+        [
+          2025
+        ]
+      ]
+    },
+    "volume": null,
+    "pages": "32-48"
+  },
+  {
+    "key": "trabucco2021com",
+    "manuscript_title": "Conservative Objective Models for Effective Offline Model-Based Optimization",
+    "manuscript_authors": "Trabucco, Brandon and Kumar, Aviral and Geng, Xinyang and Levine, Sergey",
+    "manuscript_year": "2021",
+    "doi": "",
+    "url": "https://proceedings.mlr.press/v139/trabucco21a.html",
+    "status": "PRIMARY_URL_AND_PRIOR_REGISTER_REVIEW"
+  },
+  {
+    "key": "trivedi2022musique",
+    "manuscript_title": "{MuSiQue}: Multihop Questions via Single-hop Question Composition",
+    "manuscript_authors": "Trivedi, Harsh and Balasubramanian, Niranjan and Khot, Tushar and Sabharwal, Ashish",
+    "manuscript_year": "2022",
+    "doi": "10.1162/tacl_a_00475",
+    "url": "https://aclanthology.org/2022.tacl-1.31/",
+    "status": "CROSSREF_METADATA_RETRIEVED",
+    "registered_title": [
+      "♫ MuSiQue: Multihop Questions via Single-hop Question Composition"
+    ],
+    "registered_authors": [
+      "Harsh Trivedi",
+      "Niranjan Balasubramanian",
+      "Tushar Khot",
+      "Ashish Sabharwal"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2022
+        ]
+      ]
+    },
+    "published_online": {
+      "date-parts": [
+        [
+          2022,
+          5,
+          4
+        ]
+      ]
+    },
+    "published_print": {
+      "date-parts": [
+        [
+          2022,
+          5,
+          4
+        ]
+      ]
+    },
+    "volume": "10",
+    "pages": "539-554"
+  },
+  {
+    "key": "wiseman2016bso",
+    "manuscript_title": "Sequence-to-Sequence Learning as Beam-Search Optimization",
+    "manuscript_authors": "Wiseman, Sam and Rush, Alexander M.",
+    "manuscript_year": "2016",
+    "doi": "10.18653/v1/D16-1137",
+    "url": "",
+    "status": "CROSSREF_METADATA_RETRIEVED",
+    "registered_title": [
+      "Sequence-to-Sequence Learning as Beam-Search Optimization"
+    ],
+    "registered_authors": [
+      "Sam Wiseman",
+      "Alexander M. Rush"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2016
+        ]
+      ]
+    },
+    "published_online": null,
+    "published_print": {
+      "date-parts": [
+        [
+          2016
+        ]
+      ]
+    },
+    "volume": null,
+    "pages": "1296-1306"
+  },
+  {
+    "key": "xiao2023bge",
+    "manuscript_title": "{C-Pack}: Packed Resources For General Chinese Embeddings",
+    "manuscript_authors": "Xiao, Shitao and Liu, Zheng and Zhang, Peitian and Muennighoff, Niklas and Lian, Defu and Nie, Jian-Yun",
+    "manuscript_year": "2024",
+    "doi": "10.1145/3626772.3657878",
+    "url": "",
+    "status": "CROSSREF_METADATA_RETRIEVED",
+    "registered_title": [
+      "C-Pack: Packed Resources For General Chinese Embeddings"
+    ],
+    "registered_authors": [
+      "Shitao Xiao",
+      "Zheng Liu",
+      "Peitian Zhang",
+      "Niklas Muennighoff",
+      "Defu Lian",
+      "Jian-Yun Nie"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2024,
+          7,
+          10
+        ]
+      ]
+    },
+    "published_online": {
+      "date-parts": [
+        [
+          2024,
+          7,
+          11
+        ]
+      ]
+    },
+    "published_print": {
+      "date-parts": [
+        [
+          2024,
+          7,
+          10
+        ]
+      ]
+    },
+    "volume": null,
+    "pages": "641-649"
+  },
+  {
+    "key": "xiong2021mdr",
+    "manuscript_title": "Answering Complex Open-Domain Questions with Multi-Hop Dense Retrieval",
+    "manuscript_authors": "Xiong, Wenhan and Li, Xiang Lorraine and Iyer, Srinivasan and Du, Jingfei and Lewis, Patrick and Wang, William Yang and Mehdad, Yashar and Yih, Wen-tau and Riedel, Sebastian and Kiela, Douwe and O{\\u g}uz, Barlas",
+    "manuscript_year": "2021",
+    "doi": "",
+    "url": "https://openreview.net/forum?id=EMHoBG0avc1",
+    "status": "PRIMARY_URL_AND_PRIOR_REGISTER_REVIEW"
+  },
+  {
+    "key": "xu2024recomp",
+    "manuscript_title": "{RECOMP}: Improving Retrieval-Augmented {LMs} with Compression and Selective Augmentation",
+    "manuscript_authors": "Xu, Fangyuan and Shi, Weijia and Choi, Eunsol",
+    "manuscript_year": "2024",
+    "doi": "",
+    "url": "https://openreview.net/forum?id=mlJLVigNHp",
+    "status": "PRIMARY_URL_AND_PRIOR_REGISTER_REVIEW"
+  },
+  {
+    "key": "yang2018hotpotqa",
+    "manuscript_title": "{HotpotQA}: A Dataset for Diverse, Explainable Multi-hop Question Answering",
+    "manuscript_authors": "Yang, Zhilin and Qi, Peng and Zhang, Saizheng and Bengio, Yoshua and Cohen, William W. and Salakhutdinov, Ruslan and Manning, Christopher D.",
+    "manuscript_year": "2018",
+    "doi": "10.18653/v1/D18-1259",
+    "url": "https://aclanthology.org/D18-1259/",
+    "status": "CROSSREF_METADATA_RETRIEVED",
+    "registered_title": [
+      "HotpotQA: A Dataset for Diverse, Explainable Multi-hop Question Answering"
+    ],
+    "registered_authors": [
+      "Zhilin Yang",
+      "Peng Qi",
+      "Saizheng Zhang",
+      "Yoshua Bengio",
+      "William Cohen",
+      "Ruslan Salakhutdinov",
+      "Christopher D. Manning"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "published_online": null,
+    "published_print": {
+      "date-parts": [
+        [
+          2018
+        ]
+      ]
+    },
+    "volume": null,
+    "pages": "2369-2380"
+  },
+  {
+    "key": "zaheer2017deepsets",
+    "manuscript_title": "Deep Sets",
+    "manuscript_authors": "Zaheer, Manzil and Kottur, Satwik and Ravanbakhsh, Siamak and P{\\'o}czos, Barnab{\\'a}s and Salakhutdinov, Ruslan and Smola, Alexander J.",
+    "manuscript_year": "2017",
+    "doi": "",
+    "url": "https://proceedings.neurips.cc/paper/2017/hash/f22e4747da1aa27e363d86d40ff442fe-Abstract.html",
+    "status": "PRIMARY_URL_AND_PRIOR_REGISTER_REVIEW"
+  },
+  {
+    "key": "zhai2025ragler",
+    "manuscript_title": "{RAG-LER}: Ranking adapted generation with language-model enabled regulation",
+    "manuscript_authors": "Zhai, Fengwen and Tang, Wenyang and Jin, Jing",
+    "manuscript_year": "2025",
+    "doi": "10.1016/j.neucom.2025.131514",
+    "url": "",
+    "status": "CROSSREF_METADATA_RETRIEVED",
+    "registered_title": [
+      "RAG-LER: Ranking adapted generation with language-model enabled regulation"
+    ],
+    "registered_authors": [
+      "Fengwen Zhai",
+      "Wenyang Tang",
+      "Jing Jin"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2025,
+          12
+        ]
+      ]
+    },
+    "published_online": null,
+    "published_print": {
+      "date-parts": [
+        [
+          2025,
+          12
+        ]
+      ]
+    },
+    "volume": "656",
+    "pages": "131514"
+  },
+  {
+    "key": "zhang2024beam",
+    "manuscript_title": "End-to-End Beam Retrieval for Multi-Hop Question Answering",
+    "manuscript_authors": "Zhang, Jiahao and Zhang, Haiyang and Zhang, Dongmei and Yong, Liu and Huang, Shen",
+    "manuscript_year": "2024",
+    "doi": "10.18653/v1/2024.naacl-long.96",
+    "url": "",
+    "status": "CROSSREF_METADATA_RETRIEVED",
+    "registered_title": [
+      "End-to-End Beam Retrieval for Multi-Hop Question Answering"
+    ],
+    "registered_authors": [
+      "Jiahao Zhang",
+      "Haiyang Zhang",
+      "Dongmei Zhang",
+      "Liu Yong",
+      "Shen Huang"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2024
+        ]
+      ]
+    },
+    "published_online": null,
+    "published_print": {
+      "date-parts": [
+        [
+          2024
+        ]
+      ]
+    },
+    "volume": null,
+    "pages": "1718-1731"
+  },
+  {
+    "key": "zoralioglu2026feedback",
+    "manuscript_title": "Dynamic feedback loops in recommender systems: Analyzing fairness, popularity bias, and user group disparities",
+    "manuscript_authors": "Zoralioglu, Yildiz and Yalcin, Emre",
+    "manuscript_year": "2026",
+    "doi": "10.1007/s10844-026-01025-y",
+    "url": "",
+    "status": "CROSSREF_METADATA_RETRIEVED",
+    "registered_title": [
+      "Dynamic feedback loops in recommender systems: Analyzing fairness, popularity bias, and user group disparities"
+    ],
+    "registered_authors": [
+      "Yildiz Zoralioglu",
+      "Emre Yalcin"
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2026,
+          1,
+          14
+        ]
+      ]
+    },
+    "published_online": {
+      "date-parts": [
+        [
+          2026,
+          1,
+          14
+        ]
+      ]
+    },
+    "published_print": {
+      "date-parts": [
+        [
+          2026,
+          10
+        ]
+      ]
+    },
+    "volume": "64",
+    "pages": "2091-2119"
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "source": "scope",
+    "url": "https://link.springer.com/journal/10844/aims-and-scope",
+    "title": "Aims and scope | Journal of Intelligent Information Systems | Springer Nature Link",
+    "status": 200,
+    "text_characters": 3491,
+    "retrieved_date": "2026-10-10"
+  },
+  {
+    "source": "publishing",
+    "url": "https://link.springer.com/journal/10844/how-to-publish-with-us",
+    "title": "How to publish with us | Journal of Intelligent Information Systems | Springer Nature Link",
+    "status": 200,
+    "text_characters": 4708,
+    "retrieved_date": "2026-10-10"
+  },
+  {
+    "source": "guidelines",
+    "url": "https://link.springer.com/journal/10844/submission-guidelines",
+    "title": "Submission guidelines | Journal of Intelligent Information Systems | Springer Nature Link",
+    "status": 200,
+    "text_characters": 51498,
+    "retrieved_date": "2026-10-10"
+  },
+  {
+    "source": "feedback",
+    "url": "https://link.springer.com/article/10.1007/s10844-026-01025-y",
+    "title": "Dynamic feedback loops in recommender systems: Analyzing fairness, popularity bias, and user group disparities | Journal of Intelligent Information Systems | Springer Nature Link",
+    "status": 200,
+    "text_characters": 87337,
+    "retrieved_date": "2026-10-10"
+  }
+]
